@@ -1,3 +1,4 @@
+config/var/www/upload/
 www/admin.ncdd.com/logs/
 www/ncdd.com/logs/
 vendor/
