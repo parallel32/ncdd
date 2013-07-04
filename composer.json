@@ -1,0 +1,33 @@
+{
+    "minimum-stability": "dev",
+    "require": {
+        "silex/silex": "1.0.*@dev",
+		"pimple/pimple": "1.0.*@dev",
+		"symfony/config": "2.1.*",
+        "symfony/dependency-injection": "2.1.*",
+        "symfony/browser-kit": "2.1.*",
+        "symfony/class-loader": "2.1.*",
+        "symfony/console": "2.1.*",
+        "symfony/finder": "2.1.*",
+        "symfony/browser-kit": "2.1.*",
+        "symfony/css-selector": "2.1.*",
+        "symfony/dom-crawler": "2.1.*",
+        "symfony/yaml": "2.1.*",
+        "symfony/process": "2.1.*",
+		"symfony/validator": "2.1.*",
+		"symfony/locale": "2.2.*",	
+		"doctrine/common": "2.1.*",
+        "stripe/stripe-php": "dev-master",
+        "monolog/monolog": "1.1.*",
+        "facebook/php-sdk": "3.*",
+        "amazonwebservices/aws-sdk-for-php": "1.5.*",
+		"swiftmailer/swiftmailer": "4.1.*",
+		"nicl/silex-markdown": "1.0.*",
+        "querypath/QueryPath": ">=2.0.0",
+        "jbroadway/urlify": "dev-master",
+        "cocur/slugify": "dev-master"
+    },
+    "autoload": {
+		"psr-0": {"Saw":"src/"}
+    }
+}
