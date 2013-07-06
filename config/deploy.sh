@@ -1,6 +1,6 @@
 #!/bin/bash
 
-### temp commented out ###
+#### temp commented out ###
 #echo "making ssl files......"
 #/home/ec2-user/staging/config/ssl_maker.sh
 
