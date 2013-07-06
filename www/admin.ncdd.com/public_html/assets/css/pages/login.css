@@ -19,7 +19,7 @@ Login page
   background-color:#fff; 
   width: 291px;
   margin: 0 auto; 
-  margin-bottom: 50px;
+  margin-bottom: 0px;
   padding: 30px;  
   padding-top: 20px;  
   padding-bottom: 15px;  
@@ -125,4 +125,30 @@ Login page
   padding: 10px 10px 0 10px;
   color: #999;
   font-size: 11px;
+}
+
+@media (max-width: 480px) {
+  /***
+  Login page
+  ***/
+  .login .logo {
+    margin-top:10px;
+  }
+
+  .login .content {
+    padding: 30px; 
+    width: 222px;
+  }
+
+  .login .content h3 {
+    font-size: 22px;
+  }
+
+  .login .content .m-wrap {
+      width: 180px;
+  }
+
+  .login .checkbox {
+    font-size: 13px;
+  }
 }

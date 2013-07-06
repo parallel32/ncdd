@@ -105,7 +105,7 @@ var Index = function () {
 
             var h = {};
 
-            if ($('#calendar').width() <= 500) {
+            if ($('#calendar').width() <= 400) {
                 $('#calendar').addClass("mobile");
                 h = {
                     left: 'title, prev, next',
@@ -114,11 +114,19 @@ var Index = function () {
                 };
             } else {
                 $('#calendar').removeClass("mobile");
-                h = {
-                    left: 'title',
-                    center: '',
-                    right: 'prev,next,today,month,agendaWeek,agendaDay'
-                };
+                if (App.isRTL()) {
+                    h = {
+                        right: 'title',
+                        center: '',
+                        left: 'prev,next,today,month,agendaWeek,agendaDay'
+                    };
+                } else {
+                    h = {
+                        left: 'title',
+                        center: '',
+                        right: 'prev,next,today,month,agendaWeek,agendaDay'
+                    };
+                }               
             }
 
             $('#calendar').fullCalendar('destroy'); // destroy the calendar
@@ -127,20 +135,24 @@ var Index = function () {
                 header: h,
                 editable: true,
                 events: [{
-                        title: 'All Day Event',
+                        title: 'All Day Event',                        
                         start: new Date(y, m, 1),
+                        backgroundColor: App.getLayoutColorCode('yellow')
                     }, {
                         title: 'Long Event',
                         start: new Date(y, m, d - 5),
                         end: new Date(y, m, d - 2),
+                        backgroundColor: App.getLayoutColorCode('green')
                     }, {
                         title: 'Repeating Event',
                         start: new Date(y, m, d - 3, 16, 0),
                         allDay: false,
+                        backgroundColor: App.getLayoutColorCode('red')
                     }, {
                         title: 'Repeating Event',
                         start: new Date(y, m, d + 4, 16, 0),
                         allDay: false,
+                        backgroundColor: App.getLayoutColorCode('green')
                     }, {
                         title: 'Meeting',
                         start: new Date(y, m, d, 10, 30),
@@ -149,16 +161,19 @@ var Index = function () {
                         title: 'Lunch',
                         start: new Date(y, m, d, 12, 0),
                         end: new Date(y, m, d, 14, 0),
+                        backgroundColor: App.getLayoutColorCode('grey'),
                         allDay: false,
                     }, {
                         title: 'Birthday Party',
                         start: new Date(y, m, d + 1, 19, 0),
                         end: new Date(y, m, d + 1, 22, 30),
+                        backgroundColor: App.getLayoutColorCode('purple'),
                         allDay: false,
                     }, {
                         title: 'Click for Google',
                         start: new Date(y, m, 28),
                         end: new Date(y, m, 29),
+                        backgroundColor: App.getLayoutColorCode('yellow'),
                         url: 'http://google.com/',
                     }
                 ]
@@ -274,79 +289,83 @@ var Index = function () {
                 [30, 31 + randValue()]
             ];
 
-            $('#site_statistics_loading').hide();
-            $('#site_statistics_content').show();
+            if ($('#site_statistics').size() != 0) {
 
-            var plot_statistics = $.plot($("#site_statistics"), [{
-                    data: pageviews,
-                    label: "Unique Visits"
-                }, {
-                    data: visitors,
-                    label: "Page Views"
-                }
-            ], {
-                series: {
-                    lines: {
-                        show: true,
-                        lineWidth: 2,
-                        fill: true,
-                        fillColor: {
-                            colors: [{
-                                    opacity: 0.05
-                                }, {
-                                    opacity: 0.01
-                                }
-                            ]
-                        }
-                    },
-                    points: {
-                        show: true
-                    },
-                    shadowSize: 2
-                },
-                grid: {
-                    hoverable: true,
-                    clickable: true,
-                    tickColor: "#eee",
-                    borderWidth: 0
-                },
-                colors: ["#d12610", "#37b7f3", "#52e136"],
-                xaxis: {
-                    ticks: 11,
-                    tickDecimals: 0
-                },
-                yaxis: {
-                    ticks: 11,
-                    tickDecimals: 0
-                }
-            });
+                $('#site_statistics_loading').hide();
+                $('#site_statistics_content').show();
 
-            var previousPoint = null;
-            $("#site_statistics").bind("plothover", function (event, pos, item) {
-                $("#x").text(pos.x.toFixed(2));
-                $("#y").text(pos.y.toFixed(2));
-                if (item) {
-                    if (previousPoint != item.dataIndex) {
-                        previousPoint = item.dataIndex;
-
-                        $("#tooltip").remove();
-                        var x = item.datapoint[0].toFixed(2),
-                            y = item.datapoint[1].toFixed(2);
-
-                        showTooltip('24 Jan 2013', item.pageX, item.pageY, item.series.label + " of " + x + " = " + y);
+                var plot_statistics = $.plot($("#site_statistics"), [{
+                        data: pageviews,
+                        label: "Unique Visits"
+                    }, {
+                        data: visitors,
+                        label: "Page Views"
                     }
-                } else {
-                    $("#tooltip").remove();
-                    previousPoint = null;
-                }
-            });
+                ], {
+                    series: {
+                        lines: {
+                            show: true,
+                            lineWidth: 2,
+                            fill: true,
+                            fillColor: {
+                                colors: [{
+                                        opacity: 0.05
+                                    }, {
+                                        opacity: 0.01
+                                    }
+                                ]
+                            }
+                        },
+                        points: {
+                            show: true
+                        },
+                        shadowSize: 2
+                    },
+                    grid: {
+                        hoverable: true,
+                        clickable: true,
+                        tickColor: "#eee",
+                        borderWidth: 0
+                    },
+                    colors: ["#d12610", "#37b7f3", "#52e136"],
+                    xaxis: {
+                        ticks: 11,
+                        tickDecimals: 0
+                    },
+                    yaxis: {
+                        ticks: 11,
+                        tickDecimals: 0
+                    }
+                });
 
-            //server load
-            $('#load_statistics_loading').hide();
-            $('#load_statistics_content').show();
+                var previousPoint = null;
+                $("#site_statistics").bind("plothover", function (event, pos, item) {
+                    $("#x").text(pos.x.toFixed(2));
+                    $("#y").text(pos.y.toFixed(2));
+                    if (item) {
+                        if (previousPoint != item.dataIndex) {
+                            previousPoint = item.dataIndex;
 
-            var updateInterval = 30;
-            var plot_statistics = $.plot($("#load_statistics"), [getRandomData()], {
+                            $("#tooltip").remove();
+                            var x = item.datapoint[0].toFixed(2),
+                                y = item.datapoint[1].toFixed(2);
+
+                            showTooltip('24 Jan 2013', item.pageX, item.pageY, item.series.label + " of " + x + " = " + y);
+                        }
+                    } else {
+                        $("#tooltip").remove();
+                        previousPoint = null;
+                    }
+                });
+            }               
+
+            if ($('#load_statistics').size() != 0) {
+                 //server load
+                $('#load_statistics_loading').hide();
+                $('#load_statistics_content').show();
+        
+                var updateInterval = 30;
+                var plot_statistics = $.plot($("#load_statistics"), [getRandomData()], {
                 series: {
                     shadowSize: 1
                 },
@@ -378,132 +397,140 @@ var Index = function () {
                     tickColor: "#a8a3a3",
                     borderWidth: 0
                 }
-            });
-
-            function statisticsUpdate() {
+                });
+                
+                function statisticsUpdate() {
                 plot_statistics.setData([getRandomData()]);
                 plot_statistics.draw();
                 setTimeout(statisticsUpdate, updateInterval);
+                
+                }
+                
+                statisticsUpdate();
+
+                $('#load_statistics').bind("mouseleave", function () {
+                    $("#tooltip").remove();
+                });
             }
-            statisticsUpdate();
 
-            //site activities
+            if ($('#site_activities').size() != 0) {
+                //site activities
+                var previousPoint2 = null;
+                $('#site_activities_loading').hide();
+                $('#site_activities_content').show();
 
-            var previousPoint2 = null;
-            $('#site_activities_loading').hide();
-            $('#site_activities_content').show();
+                var activities = [
+                    [1, 10],
+                    [2, 9],
+                    [3, 8],
+                    [4, 6],
+                    [5, 5],
+                    [6, 3],
+                    [7, 9],
+                    [8, 10],
+                    [9, 12],
+                    [10, 14],
+                    [11, 15],
+                    [12, 13],
+                    [13, 11],
+                    [14, 10],
+                    [15, 9],
+                    [16, 8],
+                    [17, 12],
+                    [18, 14],
+                    [19, 16],
+                    [20, 19],
+                    [21, 20],
+                    [22, 20],
+                    [23, 19],
+                    [24, 17],
+                    [25, 15],
+                    [25, 14],
+                    [26, 12],
+                    [27, 10],
+                    [28, 8],
+                    [29, 10],
+                    [30, 12],
+                    [31, 10],
+                    [32, 9],
+                    [33, 8],
+                    [34, 6],
+                    [35, 5],
+                    [36, 3],
+                    [37, 9],
+                    [38, 10],
+                    [39, 12],
+                    [40, 14],
+                    [41, 15],
+                    [42, 13],
+                    [43, 11],
+                    [44, 10],
+                    [45, 9],
+                    [46, 8],
+                    [47, 12],
+                    [48, 14],
+                    [49, 16],
+                    [50, 12],
+                    [51, 10]
+                ];
 
-            var activities = [
-                [1, 10],
-                [2, 9],
-                [3, 8],
-                [4, 6],
-                [5, 5],
-                [6, 3],
-                [7, 9],
-                [8, 10],
-                [9, 12],
-                [10, 14],
-                [11, 15],
-                [12, 13],
-                [13, 11],
-                [14, 10],
-                [15, 9],
-                [16, 8],
-                [17, 12],
-                [18, 14],
-                [19, 16],
-                [20, 19],
-                [21, 20],
-                [22, 20],
-                [23, 19],
-                [24, 17],
-                [25, 15],
-                [25, 14],
-                [26, 12],
-                [27, 10],
-                [28, 8],
-                [29, 10],
-                [30, 12],
-                [31, 10],
-                [32, 9],
-                [33, 8],
-                [34, 6],
-                [35, 5],
-                [36, 3],
-                [37, 9],
-                [38, 10],
-                [39, 12],
-                [40, 14],
-                [41, 15],
-                [42, 13],
-                [43, 11],
-                [44, 10],
-                [45, 9],
-                [46, 8],
-                [47, 12],
-                [48, 14],
-                [49, 16],
-                [50, 12],
-                [51, 10]
-            ];
-
-            var plot_activities = $.plot(
-                $("#site_activities"), [{
-                    data: activities,
-                    color: "rgba(107,207,123, 0.9)",
-                    shadowSize: 0,
-                    bars: {
-                        show: true,
-                        lineWidth: 0,
-                        fill: true,
-                        fillColor: {
-                            colors: [{
-                                    opacity: 1
-                                }, {
-                                    opacity: 1
-                                }
-                            ]
+                var plot_activities = $.plot(
+                    $("#site_activities"), [{
+                        data: activities,
+                        color: "rgba(107,207,123, 0.9)",
+                        shadowSize: 0,
+                        bars: {
+                            show: true,
+                            lineWidth: 0,
+                            fill: true,
+                            fillColor: {
+                                colors: [{
+                                        opacity: 1
+                                    }, {
+                                        opacity: 1
+                                    }
+                                ]
+                            }
                         }
                     }
-                }
-            ], {
-                series: {
-                    bars: {
-                        show: true,
-                        barWidth: 0.9
+                ], {
+                    series: {
+                        bars: {
+                            show: true,
+                            barWidth: 0.9
+                        }
+                    },
+                    grid: {
+                        show: false,
+                        hoverable: true,
+                        clickable: false,
+                        autoHighlight: true,
+                        borderWidth: 0
+                    },
+                    yaxis: {
+                        min: 0,
+                        max: 20
                     }
-                },
-                grid: {
-                    show: false,
-                    hoverable: true,
-                    clickable: false,
-                    autoHighlight: true,
-                    borderWidth: 0
-                },
-                yaxis: {
-                    min: 0,
-                    max: 20
-                }
-            });
+                });
 
-            $("#site_activities").bind("plothover", function (event, pos, item) {
-                $("#x").text(pos.x.toFixed(2));
-                $("#y").text(pos.y.toFixed(2));
-                if (item) {
-                    if (previousPoint2 != item.dataIndex) {
-                        previousPoint2 = item.dataIndex;
-                        $("#tooltip").remove();
-                        var x = item.datapoint[0].toFixed(2),
-                            y = item.datapoint[1].toFixed(2);
-                        showTooltip('24 Feb 2013', item.pageX, item.pageY, x);
+                $("#site_activities").bind("plothover", function (event, pos, item) {
+                    $("#x").text(pos.x.toFixed(2));
+                    $("#y").text(pos.y.toFixed(2));
+                    if (item) {
+                        if (previousPoint2 != item.dataIndex) {
+                            previousPoint2 = item.dataIndex;
+                            $("#tooltip").remove();
+                            var x = item.datapoint[0].toFixed(2),
+                                y = item.datapoint[1].toFixed(2);
+                            showTooltip('24 Feb 2013', item.pageX, item.pageY, x);
+                        }
                     }
-                }
-            });
+                });
 
-            $('#site_activities, #load_statistics').bind("mouseleave", function () {
-                $("#tooltip").remove();
-            });
+                $('#site_activities').bind("mouseleave", function () {
+                    $("#tooltip").remove();
+                });
+            }
         },
 
         initMiniCharts: function () {
@@ -572,7 +599,9 @@ var Index = function () {
             var input = $('input', form);
             var btn = $('.btn', form);
 
-            var handleClick = function () {
+            var handleClick = function (e) {
+                e.preventDefault();
+                
                 var text = input.val();
                 if (text.length == 0) {
                     return;
@@ -600,9 +629,11 @@ var Index = function () {
                 });
             }
 
+            /*
             $('.scroller', cont).slimScroll({
                 scrollTo: list.height()
             });
+            */
 
             btn.click(handleClick);
             input.keypress(function (e) {
@@ -632,7 +663,7 @@ var Index = function () {
                             days: -1
                         })]
                 },
-                opens: 'left',
+                opens: (App.isRTL() ? 'right' : 'left'),
                 format: 'MM/dd/yyyy',
                 separator: ' to ',
                 startDate: Date.today().add({

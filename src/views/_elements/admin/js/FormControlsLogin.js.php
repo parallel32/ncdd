@@ -13,43 +13,54 @@
 	}
 	Login.init = function(){
 		$('.login-form input').keypress(function (e) {
-	            if (e.which == 13) {
-					attemptLogin();
-	                return false;
-	            }
-	        });
-	        $('.login-form :submit').click(function(e){
-	        	e.preventDefault();
-	        	attemptLogin();
-	        });
+            if (e.which == 13) {
+            	console.log('here');
+            	e.preventDefault();
+				attemptLogin();
+                return false;
+            }
+        });
+        $('.login-form :submit').click(function(e){
+        	e.preventDefault();
+        	attemptLogin();
+        });
 
-	        $('.forget-form input').keypress(function (e) {
-	            if (e.which == 13) {
-	                if ($('.forget-form').validate().form()) {
-	                    window.location.href = "index.html";
-	                }
-	                return false;
-	            }
-	        });
+        $('.forget-form input').keypress(function (e) {
+            if (e.which == 13) {
+            	console.log('hereerererer');
+            	e.preventDefault();
+                attemptLogin();
+	            return false;
+            }
+        });
 
-	        $('#forget-password').click(function () {
-	            $('.login-form').hide();
-	            $('.forget-form').show();
-	        });
+        $('#forget-password').click(function () {
+            $('.login-form').hide();
+            $('.forget-form').show();
+        });
 
-	        $('#back-btn').click(function () {
-	            $('.login-form').show();
-	            $('.forget-form').hide();
-	        });
-	        $('#register-btn').click(function () {
-	            $('.login-form').hide();
-	            $('.register-form').show();
-	        });
+        $('#back-btn').click(function () {
+            $('.login-form').show();
+            $('.forget-form').hide();
+        });
+        $('#register-btn').click(function () {
+            $('.login-form').hide();
+            $('.register-form').show();
+        });
 
-	        $('#register-back-btn').click(function () {
-	            $('.login-form').show();
-	            $('.register-form').hide();
-	        });		
+        $('#register-back-btn').click(function () {
+            $('.login-form').show();
+            $('.register-form').hide();
+        });	
+
+        $.backstretch([
+	        "assets/img/bg/2.jpg",
+	        "assets/img/bg/1.jpg",
+	        "assets/img/bg/3.jpg"
+	        ], {
+	          fade: 1000,
+	          duration: 8000
+	      });	
 	};
     
 }( io.saw.Login = io.saw.Login || {}, io.saw.jQuery || jQuery ));

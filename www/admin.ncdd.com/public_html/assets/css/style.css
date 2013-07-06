@@ -1,6 +1,6 @@
 /*   
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap v2.3.1
-Version: 1.2.1
+Version: 1.3
 Author: KeenThemes
 Website: http://www.keenthemes.com/preview/?theme=metronic
 Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469
@@ -31,11 +31,6 @@ Import fonts
 ***/
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
 
-/*
-@import url(../fonts/font.css);
-*/
-
-
 /***
 Reset and overrides  
 ***/
@@ -46,6 +41,7 @@ body {
   padding: 0px !important;
   margin: 0px !important;
   font-size:13px; 
+  direction: ltr;
 }
 
 /***
@@ -109,6 +105,21 @@ Apply fix for font awesome icons.
 [class^="icon-"]:hover, 
 [class*=" icon-"]:hover { 
   background: none !important;
+}
+
+/***
+Make font awesome icons fixed width(latest version issue)
+***/
+li [class^="icon-"],
+li [class*=" icon-"] {
+  display: inline-block;
+  width: 1.25em;
+  text-align: center;
+}
+li [class^="icon-"].icon-large,
+li [class*=" icon-"].icon-large {
+  /* increased font size for icon-large */
+  width: 1.5625em;
 }
 
 /***
@@ -293,6 +304,10 @@ Misc tools
   border: 1px solid #ddd
 }
 
+.inline {
+  display: inline;
+}
+
 hr {
   margin: 20px 0;
   border: 0;
@@ -317,9 +332,21 @@ Header and header elements.
   margin: 0 !important;
 }
 
+.header.navbar-fixed-top {
+  z-index: 9995 !important;
+}
+
 .header .brand {
+  display: inline-block;
   margin-top: -1px;
-  width: 86px;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+  width: 225px;
+}
+
+.header .brand img {
+  margin-left: 20px;
 }
 
 .header .btn-navbar {
@@ -362,13 +389,17 @@ Header and header elements.
   padding-right: 4px;
 }
 
+.header .nav > li.dropdown > a:last-child {
+  padding-right: 0;
+}
+
 .header .nav > li.dropdown:last-child {
    padding-right: 2px;
 }
 
 .header .nav > li.dropdown .dropdown-toggle {
   margin: 0px;
-  padding: 14px 12px 8px 12px;
+  padding: 15px 10px 7px 10px;
 }
 
 .header .nav > li.dropdown .dropdown-toggle i {
@@ -392,6 +423,11 @@ Header and header elements.
   margin-top: 5px;
   margin: 0;
   font-size: 16px;
+}
+
+.header .nav > li.dropdown.user .dropdown-menu i {
+  width: 15px;
+  display: inline-block;
 }
 
 .header .nav > li.dropdown .dropdown-toggle .badge {
@@ -429,14 +465,21 @@ Page container
   padding: 0px;
 }
 
-.fixed-top .page-container {
+.page-header-fixed .page-container {
   margin-top: 42px;  
 }
 
 /***
 Page sidebar
 ***/
-.page-sidebar > ul {
+
+/* ie8 fixes */
+.ie8 .page-sidebar {
+  position: absolute;
+  width: 225px;
+}
+
+ul.page-sidebar-menu {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -444,22 +487,23 @@ Page sidebar
   padding: 0; 
 }
 
-.page-sidebar > ul > li {
+ul.page-sidebar-menu > li {
   display: block;
   margin: 0;
   padding: 0; 
   border: 0px;
 }
 
-.page-sidebar > ul > li.start > a {
+ul.page-sidebar-menu > li.start > a {
    border-top-color: transparent !important;
 }
 
-.page-sidebar > ul > li:last-child > a {
-   border-bottom: 1px solid transparent !important;
+ul.page-sidebar-menu > li:last-child > a,
+ul.page-sidebar-menu > li.last > a {
+   border-bottom-color: transparent !important;
 }
 
-.page-sidebar > ul > li > a {
+ul.page-sidebar-menu > li > a {
   display: block;
   position: relative;
   margin: 0;
@@ -470,18 +514,29 @@ Page sidebar
   font-weight: 300;
 }
 
-.page-sidebar > ul > li > a i {
+.page-sidebar-fixed ul.page-sidebar-menu > li > a {
+  -webkit-transition: all 0.2s ease;
+     -moz-transition: all 0.2s ease;
+       -o-transition: all 0.2s ease;
+          transition: all 0.2s ease;
+}
+
+ul.page-sidebar-menu > li > a i {
   font-size: 16px;
   margin-right: 5px;
   text-shadow:none; 
 }
 
-.page-sidebar > ul > li.active > a {
+ul.page-sidebar-menu > li.break {
+  margin-bottom: 20px;
+}
+
+ul.page-sidebar-menu > li.active > a {
   border: none; 
   text-shadow:none;
 }  
 
-.page-sidebar > ul > li.active > a .selected {
+ul.page-sidebar-menu > li.active > a .selected {
   display: block;
   width: 8px;
   height: 25px;
@@ -505,7 +560,7 @@ Page sidebar
    text-shadow:none;
 }
 
-.page-sidebar > ul > li > a > .arrow.open:before {   
+ul.page-sidebar-menu > li > a > .arrow.open:before {   
    float: right;
    margin-top: 1px;
    margin-right: 3px;
@@ -518,46 +573,44 @@ Page sidebar
    text-shadow:none;
 }
 
-.page-sidebar > ul > li > ul.sub-menu {
+ul.page-sidebar-menu > li > ul.sub-menu {
   display: none;
   list-style: none;
   clear: both;
   margin: 8px 0px 8px 0px;
 }
 
-.page-sidebar > ul > li.active > ul.sub-menu {
+ul.page-sidebar-menu > li.active > ul.sub-menu {
   display: block;
 }
 
-.page-sidebar > ul > li > ul.sub-menu > li {
+ul.page-sidebar-menu > li > ul.sub-menu > li {
   background: none;
   margin: 0px;
   padding: 0px;
   margin-top: 1px !important;
 }
 
-.page-sidebar > ul > li > ul.sub-menu > li > a {
+ul.page-sidebar-menu > li > ul.sub-menu > li > a {
   display: block;
   margin: 0px 0px 0px 0px;
   padding: 5px 0px;
   padding-left: 44px !important;
-  color: #ccc;
   text-decoration: none;
-  text-shadow: 0 1px 1px #000;
   font-size: 14px;
   font-weight: 300;
   background: none;
 }
 
 /* 3rd level sub menu */
-.page-sidebar > ul > li > ul.sub-menu  > li ul.sub-menu {
+ul.page-sidebar-menu > li > ul.sub-menu  > li ul.sub-menu {
   display: none;
   list-style: none;
   clear: both;
   margin: 0px 0px 0px 0px;
 }
 
-.page-sidebar > ul > li > ul.sub-menu  li > a > .arrow:before   {  
+ul.page-sidebar-menu > li > ul.sub-menu  li > a > .arrow:before   {  
    float: right;
    margin-top: 1px;
    margin-right: 20px;
@@ -570,7 +623,7 @@ Page sidebar
    text-shadow:none;
 }
 
-.page-sidebar > ul > li > ul.sub-menu  li > a > .arrow.open:before {   
+ul.page-sidebar-menu > li > ul.sub-menu  li > a > .arrow.open:before {   
    float: right;
    margin-top: 1px;
    margin-right: 18px;
@@ -583,43 +636,41 @@ Page sidebar
    text-shadow:none;
 }
 
-.page-sidebar > ul > li.active > ul.sub-menu > li.active ul.sub-menu {
+ul.page-sidebar-menu > li.active > ul.sub-menu > li.active ul.sub-menu {
   display: block;
 }
 
-.page-sidebar > ul > li > ul.sub-menu > li  ul.sub-menu li {
+ul.page-sidebar-menu > li > ul.sub-menu > li  ul.sub-menu li {
   background: none;
   margin: 0px;
   padding: 0px;
   margin-top: 1px !important;
 }
 
-.page-sidebar > ul > li > ul.sub-menu  li > ul.sub-menu > li > a {
+ul.page-sidebar-menu > li > ul.sub-menu  li > ul.sub-menu > li > a {
   display: block;
   margin: 0px 0px 0px 0px;
   padding: 5px 0px;
-  color: #ccc;
   text-decoration: none;
-  text-shadow: 0 1px 1px #000;
   font-size: 14px;
   font-weight: 300;
   background: none;
 }
 
-.page-sidebar > ul > li > ul.sub-menu > li > ul.sub-menu > li > a {  
+ul.page-sidebar-menu > li > ul.sub-menu > li > ul.sub-menu > li > a {  
   padding-left: 60px;
 }
 
-.page-sidebar > ul > li > ul.sub-menu > li > ul.sub-menu > li > ul.sub-menu > li > a {  
+ul.page-sidebar-menu > li > ul.sub-menu > li > ul.sub-menu > li > ul.sub-menu > li > a {  
   padding-left: 80px;
 }
 
-.page-sidebar > ul > li.active > ul.sub-menu > li.active ul.sub-menu > li.active ul.sub-menu {
+ul.page-sidebar-menu > li.active > ul.sub-menu > li.active ul.sub-menu > li.active ul.sub-menu {
   display: block;
 }
 
 
-.page-sidebar > ul > li > ul.sub-menu  li > ul.sub-menu > li > a > i {
+ul.page-sidebar-menu > li > ul.sub-menu  li > ul.sub-menu > li > a > i {
   font-size: 13px;
 }
 
@@ -629,7 +680,7 @@ Page sidebar
   margin: 8px 20px 20px 20px;
 }
 
-.page-sidebar .sidebar-search .submit {
+.page-sidebar .sidebar-search .submit {  
   display: block;
   float: right;
   margin-top: 8px;
@@ -652,14 +703,13 @@ Page sidebar
 
 .page-sidebar .sidebar-search .input-box {
    padding-bottom: 2px;
-   border-bottom:1px solid #959595;
 }
 
 /***
 Sidebar toggler(show/hide)
 ***/
 
-.sidebar-toggler {
+.page-sidebar .sidebar-toggler {
   cursor: pointer; 
   opacity: 0.5;
   filter: alpha(opacity=50);
@@ -675,37 +725,37 @@ Sidebar toggler(show/hide)
   opacity: 1;
 }
 
-.sidebar-closed .sidebar-toggler {  
+.page-sidebar-closed .sidebar-toggler {  
   margin-left: 3px;
 }
 
-.sidebar-closed .page-sidebar .sidebar-search {  
+.page-sidebar-closed .page-sidebar .sidebar-search {  
   height: 34px;    
   width: 29px;
   margin-left: 3px;  
-  margin-bottom: 0px;
+  margin-bottom: 15px !important;
 }
 
-.sidebar-closed .page-sidebar .sidebar-search input {
+.page-sidebar-closed .page-sidebar .sidebar-search input {
   display: none;
 }
 
-.sidebar-closed .page-sidebar .sidebar-search .submit { 
+.page-sidebar-closed .page-sidebar .sidebar-search .submit { 
   margin: 11px 7px !important;
   display: block !important;
 }
 
-.sidebar-closed .page-sidebar .sidebar-search .input-box {
-  border-bottom: 0;
+.page-sidebar-closed .page-sidebar .sidebar-search .input-box {
+  border-bottom: 0 !important;
 }
 
-.sidebar-closed .page-sidebar .sidebar-search.open {  
+.page-sidebar-closed .page-sidebar .sidebar-search.open {  
   height: 34px;    
   width: 255px;
   overflow: hidden;
 }
 
-.sidebar-closed .page-sidebar .sidebar-search.open input {  
+.page-sidebar-closed .page-sidebar .sidebar-search.open input {  
   margin-top: 3px;
   padding-left: 10px;
   padding-bottom: 2px;
@@ -713,14 +763,14 @@ Sidebar toggler(show/hide)
   display: inline-block !important;
 }
 
-.sidebar-closed .page-sidebar .sidebar-search.open .submit {
+.page-sidebar-closed .page-sidebar .sidebar-search.open .submit {
   display: inline-block;
   width: 13px;
   height: 13px;
   margin: 10px 8px 9px 6px !important;
 }
 
-.sidebar-closed .page-sidebar .sidebar-search.open .remove {
+.page-sidebar-closed .page-sidebar .sidebar-search.open .remove {
   background-repeat: no-repeat;
   width: 11px;
   height: 11px;
@@ -729,56 +779,63 @@ Sidebar toggler(show/hide)
   float: left !important;
 }
 
-.sidebar-closed > .page-sidebar > ul > li > a .selected {
+.page-sidebar-closed ul.page-sidebar-menu > li > a .selected {
   right: -3px !important;
 }
 
-.sidebar-closed > .page-sidebar > ul > li > a > .title,
-.sidebar-closed > .page-sidebar > ul > li > a > .arrow {
+.page-sidebar-closed ul.page-sidebar-menu > li > a > .title,
+.page-sidebar-closed ul.page-sidebar-menu > li > a > .arrow {
   display: none !important;
 }
 
-.sidebar-closed .sidebar-toggler {
+.page-sidebar-closed .sidebar-toggler {
   margin-right: 3px;
 }
 
-.sidebar-closed .page-sidebar .sidebar-search {
+.page-sidebar-closed .page-sidebar .sidebar-search {
   margin-top: 6px;
   margin-bottom: 6px;
 }
 
-.sidebar-closed > .page-sidebar > ul {
+.page-sidebar-closed ul.page-sidebar-menu {
   width: 35px !important;
 }
 
-.sidebar-closed > .page-sidebar > ul > li > a {
+.page-sidebar-closed ul.page-sidebar-menu > li > a {
   padding-left: 7px;
 }
 
-.sidebar-closed > .page-sidebar > ul > li:hover {
-  width: 225px;   
-  position: relative;
+.page-sidebar-fixed.page-sidebar-closed ul.page-sidebar-menu > li > a {
+  -webkit-transition: all 0.2s ease;
+     -moz-transition: all 0.2s ease;
+       -o-transition: all 0.2s ease;
+          transition: all 0.2s ease;
+}
+
+.page-sidebar-closed ul.page-sidebar-menu > li:hover {
+  width: 225px !important;
+  position: relative !important;
   z-index: 2000;
   display: block !important;
 }
 
-.sidebar-closed > .page-sidebar > ul > li:hover .selected {
+.page-sidebar-closed ul.page-sidebar-menu > li:hover .selected {
   display: none;
 }
 
-.sidebar-closed > .page-sidebar > ul > li:hover > a > i {
+.page-sidebar-closed ul.page-sidebar-menu > li:hover > a > i {
   margin-right: 10px;
 }
 
-.sidebar-closed > .page-sidebar > ul > li:hover .title {
+.page-sidebar-closed ul.page-sidebar-menu > li:hover .title {
   display: inline !important;
 }
 
-.sidebar-closed > .page-sidebar > ul > li > .sub-menu {
+.page-sidebar-closed ul.page-sidebar-menu > li > .sub-menu {
   display: none !important;
 }
 
-.sidebar-closed > .page-sidebar > ul > li:hover > .sub-menu {  
+.page-sidebar-closed ul.page-sidebar-menu > li:hover > .sub-menu {  
   width: 189px;
   position: absolute;
   z-index: 2000;
@@ -788,44 +845,34 @@ Sidebar toggler(show/hide)
   display: block !important;
 }
 
-.sidebar-closed > .page-sidebar > ul > li:hover > .sub-menu > li > .sub-menu,
-.sidebar-closed > .page-sidebar > ul > li:hover > .sub-menu > li > .sub-menu > li > .sub-menu {
+.page-sidebar-closed ul.page-sidebar-menu > li:hover > .sub-menu > li > .sub-menu,
+.page-sidebar-closed ul.page-sidebar-menu > li:hover > .sub-menu > li > .sub-menu > li > .sub-menu {
   width: 189px;
 }
 
 /* 2rd level sub menu*/
-.sidebar-closed > .page-sidebar > ul > li:hover > .sub-menu > li > a {
+.page-sidebar-closed ul.page-sidebar-menu > li:hover > .sub-menu > li > a {
   padding-left: 15px !important;
 }
 
 /* 3rd level sub menu*/
-.sidebar-closed > .page-sidebar > ul > li > ul.sub-menu > li > .sub-menu > li > a {  
+.page-sidebar-closed ul.page-sidebar-menu > li > ul.sub-menu > li > .sub-menu > li > a {  
   padding-left: 30px !important;
 }
 
 /* 4rd level sub menu*/
-.sidebar-closed > .page-sidebar > ul > li > ul.sub-menu > li > .sub-menu > li > .sub-menu > li > a {  
+.page-sidebar-closed ul.page-sidebar-menu > li > ul.sub-menu > li > .sub-menu > li > .sub-menu > li > a {  
   padding-left: 45px !important;
 }
 
 /* sidebar container */
  
-.sidebar-closed > .page-sidebar {
+.page-sidebar-closed  .page-sidebar {
   width: 35px;
 }
 
-.sidebar-closed > .page-content {
+.page-sidebar-closed  .page-content {
   margin-left: 35px !important;
-}
-
-/* ie8 fixes */
-.ie8 .page-sidebar {
-  position: absolute;
-  width: 225px;
-}
-
-.ie8 .page-sidebar ul{
-  width: 225px;
 }
 
 
@@ -841,11 +888,21 @@ Page content
 .ie8 .page-content { 
     margin-left: 225px; 
     margin-top: 0px;
+    min-height: 760px;
 }
 
-.ie8 .full-width-page .page-content {
+.ie8 .page-sidebar-fixed .page-content {
+    min-height: 600px; 
+}
+
+.ie8 .page-content.no-min-height {
+    min-height: auto;
+  }
+
+.page-full-width .page-content {
     margin-left: 0px !important;
 }
+
 
 /***
 Page title
@@ -906,7 +963,6 @@ Dashboard date range panel
   padding: 8px;
   padding-bottom: 7px;
   cursor: pointer;
-  min-width: 275x;
   color: #fff;
   background-color: #e02222;
 }
@@ -938,27 +994,62 @@ Footer
 .footer {
   padding: 8px 20px 5px 20px; 
   font-size: 12px;
-  color: #999;
 }
 
-.footer .go-top { 
+.footer:after,
+.footer:before {
+  content: "";
+  display: table;
+  line-height: 0;
+}
+
+.footer:after {
+  clear: both;
+}
+
+.footer .footer-inner {
+  float: left;
+  display: inline-block;
+}
+
+.footer .footer-tools {
+  float: right;
+  display: inline-block;
+}
+
+.footer .footer-tools .go-top { 
   display: block;
   text-decoration: none;
-  color: #fff;
   cursor: pointer;
   margin-top: -2px;
   margin-right: 0px;
   margin-bottom: 0px;
   font-size: 16px;
-  background-color: #111;
   padding: 0px 6px 0px 6px;
 }
 
-.footer .go-top i {
-  color: #666;
+.footer .footer-tools .go-top i {
   font-size: 22px;
   margin-bottom: 5px; 
 }
+
+/* begin: fixed footer */
+.page-footer-fixed .footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  bottom: 0;
+}
+
+.page-footer-fixed .page-container {
+  margin-bottom: 33px;
+}
+
+.page-footer-fixed.page-sidebar-fixed .footer {
+  margin-left: 0 !important;
+}
+/* end: fixed footer */
 
 /********************
  GENERAL UI ELEMENTS 
@@ -1030,8 +1121,10 @@ Custom wells
 /***
 Form stuff
 ***/
-form legend {
-  margin: 15px 0px 10px 0px !important;
+.form-section {
+  margin: 15px 0px 20px 0px !important;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #eee;
 }
 
 .form form {
@@ -1102,7 +1195,6 @@ Input icons
   margin: 9px 2px 4px 10px; 
   width: 16px;
   height: 16px;
-  border1: 1px solid #ddd;
   font-size: 16px;
   text-align: center;
 }
@@ -1121,17 +1213,24 @@ Portlets
   padding: 0px;
 }
 
-.portlet:after, .portlet:before {
-  display: table;
-  color: "";
-}
-
 .portlet-title {  
   margin-bottom: 15px;
   border-bottom: 1px solid #eee;
 }
 
-.portlet-title h4 {
+.portlet-title:after,
+.portlet-title:before {
+  content: "";
+  display: table;
+  line-height: 0;
+}
+
+.portlet-title:after {
+  clear: both;
+}
+
+.portlet-title .caption {
+  float: left;
   display: inline-block;
   font-size: 18px;
   font-weight: 400;
@@ -1140,28 +1239,31 @@ Portlets
   margin-bottom: 7px; 
 }
 
-.portlet-title h4 i {
+.portlet-title .caption i {
+  float: left;
+  margin-top: 5px;
+  display: inline-block !important;
   font-size: 13px;
   margin-right: 5px;
   color: #666;
 }
 
-.portlet.blue .portlet-title h4, .portlet-title.blue h4, 
-.portlet.green .portlet-title h4, .portlet-title.green h4,
-.portlet.yellow .portlet-title h4, .portlet-title.yellow h4,
-.portlet.red .portlet-title h4, .portlet-title.red h4,
-.portlet.purple .portlet-title h4, .portlet-title.purple h4,
-.portlet.dark-grey .portlet-title h4, .portlet-title.dark-grey h4, {
+.portlet.blue > .portlet-title .caption, .portlet-title.blue .caption, 
+.portlet.green > .portlet-title .caption, .portlet-title.green .caption,
+.portlet.yellow > .portlet-title .caption, .portlet-title.yellow .caption,
+.portlet.red > .portlet-title .caption, .portlet-title.red .caption,
+.portlet.purple > .portlet-title .caption, .portlet-title.purple .caption,
+.portlet.grey > .portlet-title .caption, .portlet-title.dark-grey .caption, {
   color: #fff;
 }
 
-.portlet.box.blue .portlet-title h4 > i, 
-.portlet.box.green .portlet-title h4 > i,
-.portlet.box.grey .portlet-title h4 > i,
-.portlet.box.yellow .portlet-title h4 > i, 
-.portlet.box.red .portlet-title h4 > i,  
-.portlet.box.purple .portlet-title h4 > i, 
-.portlet.box.light-grey .portlet-title h4 > i{
+.portlet.box.blue > .portlet-title .caption > i, 
+.portlet.box.green > .portlet-title .caption > i,
+.portlet.box.grey > .portlet-title .caption > i,
+.portlet.box.yellow > .portlet-title .caption > i, 
+.portlet.box.red > .portlet-title .caption > i,  
+.portlet.box.purple > .portlet-title .caption > i, 
+.portlet.box.light-grey > .portlet-title .caption > i{
   color: #fff;
 }
 
@@ -1303,7 +1405,7 @@ Portlets
 
 /*  draggable girds */
 
- .ui-sortable-placeholder { 
+.ui-sortable-placeholder { 
     border: 1px dotted black; 
     visibility: visible !important; 
     height: 100% !important; 
@@ -1857,6 +1959,10 @@ General list for item with image
 /***
 Custom tables
 ***/
+.table.table-full-width {
+  width: 100% !important;
+}
+
 .table .m-btn {
   margin-top: 0px;
   margin-left: 0px; 
@@ -1967,6 +2073,7 @@ Rows seperated form layout
   border-bottom: 1px solid #efefef;
   padding-bottom: 10px;
   padding-right: 10px;
+  margin-bottom: 10px;
   margin-left: -10px;
   margin-right: -10px;
 }
@@ -2020,11 +2127,13 @@ Bordered form layout
   border-left: 1px solid #eee;
 }
 
-.form-horizontal.form-bordered .control-group .controls .chosen-container  {
+.form-horizontal.form-bordered .control-group .controls .chosen-container,
+.form-horizontal.form-bordered .control-group .controls .select2-wrapper  {
   min-height: 32px;
 }
 
-.form-horizontal.form-bordered .control-group .controls .chosen-container .help-block {
+.form-horizontal.form-bordered .control-group .controls .chosen-container .help-block,
+.form-horizontal.form-bordered .control-group .controls .select2-wrapper .help-block {
   clear: both;
   padding-top: 10px !important;
 }
@@ -2096,7 +2205,7 @@ textarea.placeholder {
 }
 
 .help-block {
- margin-top: 10px;
+ margin-top: 0px;
 }
 
 .form-inline input {
@@ -2113,6 +2222,31 @@ textarea.placeholder {
   padding-left: 2px;
 }
 
+.validate-inline {
+  display: inline-block;
+  *display: inline;
+  padding-left: 5px;
+  vertical-align: middle;
+  *zoom: 1;
+  margin-top: 6px;
+}
+
+.control-group.success .validate-inline {
+  color: #468847;
+}
+
+.control-group.info .validate-inline {
+  color: #3a87ad;
+}
+
+.control-group.error .validate-inline {
+  color: #b94a48;
+}
+
+.control-group.warning .validate-inline {
+  color: #c09853;
+}
+
 .help-inline {
   margin-top: 6px;
 }
@@ -2125,6 +2259,7 @@ textarea.placeholder {
   padding-bottom: 0;
 }
 
+.success .validate-inline.ok:before,
 .success .help-inline.ok:before {
   content: "\f00c";
   font-size: 16px;
@@ -2738,8 +2873,9 @@ Custom portlet tabs
 ***/
 .portlet-tabs .nav-tabs {
     position: relative;
-    margin-top: -41px;
+    top: -41px;
     margin-right: 10px;
+    overflow: hidden;
 }
 
 .portlet-tabs .nav-tabs > li {
@@ -2812,7 +2948,7 @@ Custom portlet tabs
 .portlet-tabs .tab-content {
   padding: 10px !important;
   margin: 0px;
-  margin-top: -10px;
+  margin-top: -60px !important;
 }
 
 .portlet.tabbable .portlet-body {
@@ -3311,7 +3447,7 @@ Styler Panel
 }
 
 .color-mode {
-  top:5px;
+  top:4px;
   right:40px;
   display:none;
   padding:10px 0;
@@ -3334,11 +3470,13 @@ Styler Panel
 .color-mode ul {
   list-style:none;
   padding:4px 11px 5px;
+  display: block;
+  margin-bottom: 1px !important;
 }
 
 .color-mode li {
-  width:20px;
-  height:30px;
+  width:16px;
+  height:23px;
   margin:0 4px;
   cursor:pointer;
   list-style:none;
@@ -3353,6 +3491,10 @@ Styler Panel
 
 .color-mode li.color-black {
   background:#333438;
+}
+
+.color-mode li.color-grey {
+  background:#6d6d6d;
 }
 
 .color-mode li.color-blue {
@@ -3373,19 +3515,31 @@ Styler Panel
 
 .color-mode label {
   color:#cfcfcf;
-  padding-top:12px;
-  text-transform:uppercase;
+  padding-top:10px;
+  padding-bottom: 0px;
   border-top:1px solid #585858;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.color-mode label span {  
+  text-transform:uppercase;
+}
+
+.color-mode label > span {
+  display: inline-block;
+  width: 85px;
+}
+
+.color-mode label > select {
+  margin-top: 5px;
+  text-transform: lowercase;
 }
 
 .color-mode label  span.color-mode-label {
   top:2px;
   position:relative;
 }
-
-/********************
- PAGES 
-*********************/
 
 /***
 Calendar with full calendar
@@ -3394,7 +3548,7 @@ Calendar with full calendar
   display: inline-block !important;
   cursor:move;
   margin-bottom: 5px !important;  
-  margin-right: 5px !important;
+  margin-left: 5px !important;
 }
 
 .portlet .event-form-title {
@@ -3404,45 +3558,39 @@ Calendar with full calendar
   margin-bottom: 0px;
 }
 
-.portlet.calendar .fc-event-time {
-  color: #fff;
-  font-size: 13px;
-  font-weight: 300 !important;
-}
-
-.portlet.calendar .fc-event-title {
-  color: #fff;
-  font-size: 13px;
-  font-weight: 300 !important;
-}
-
-.portlet.calendar .fc-event-skin {
-  border: 0px !important;
-  background-color: #69a4e0 !important;
-}
-
 .portlet.calendar .fc-button {
-  padding: 8px 8px 9px 8px;
-  margin-right:2px; 
+  -webkit-box-shadow: none !important;
+     -moz-box-shadow: none !important;
+          box-shadow: none !important;
+  -webkit-text-shadow: none !important;
+     -moz-text-shadow: none !important;
+          text-shadow: none !important;
+  border: 0 !important;
+  padding: 7px 8px 11px 8px;
+  margin-left:2px; 
   color: #fff !important;
   border-top-style: none;
   border-bottom-style: none;
-  border-left-style: solid;
   border-right-style: solid;
+  border-left-style: solid;
   border-color: #ddd;
   background: transparent;
   color: #646464;
   top: -47px;
 }
 
+.portlet.calendar .fc-header {
+  margin-bottom:-21px;
+}
+
 .portlet.calendar .fc-button-prev {
-  padding-left: 10px;
-  padding-right: 8px;
+  padding-right: 10px;
+  padding-left: 8px;
 }
 
 .portlet.calendar .fc-button-next {
-  padding-left: 8px;
-  padding-right: 10px;
+  padding-right: 8px;
+  padding-left: 10px;
 }
 
 .portlet.calendar .fc-button.fc-state-active,
@@ -3461,32 +3609,33 @@ Calendar with full calendar
   vertical-align: baseline; 
 }
 
+/* begin: event element */
 .portlet.calendar .fc-event {
-  border: 0px !important;
+  border: 0px;
+  background-color: #69a4e0;
+  color: #fff;
 }
 
 .portlet.calendar .fc-event-inner {
-  border: 0px !important;
-  background-color: #69a4e0 !important;
-  color: #fff !important;
-}
-
-.portlet.calendar .fc-event-bg {
-  background-color: #69a4e0 !important;
-  opacity: 0 !important;
-  filter: alpha(opacity=0);
-  color: #fff !important;
+  border: 0px;
 }
 
 .portlet.calendar .fc-event-time {
-   background-color: #4783BF !important;
+  float: left;
+  text-align: left;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 300;
 }
 
-.portlet.calendar .fc-event-time,
 .portlet.calendar .fc-event-title {
-   background-color: #69a4e0 !important;
-   color: #fff !important;
+  text-align: left;
+  float: left;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 300;
 }
+/* end: event element */
 
 .portlet.calendar .fc-header-title h2 {
   font-size: 14px !important;
@@ -3498,7 +3647,6 @@ Calendar with full calendar
 .portlet.calendar .fc-widget-header {
   background-image: none !important;
   filter:none !important;
-
   background-color: #eee !important;
   text-transform: uppercase;
   font-color:#000;
@@ -3506,12 +3654,12 @@ Calendar with full calendar
 }
 
 .portlet.calendar .mobile .fc-button {
-  margin-right: 2px !important;
+  margin-left: 2px !important;
 }
 
 .portlet.calendar .mobile .fc-button {
     padding: 6px 6px 6px 6px;
-    margin-right:2px;  
+    margin-left:2px;  
     border: none !important;    
     background-color: #ddd !important;
       background-image: none;
@@ -3533,15 +3681,15 @@ Calendar with full calendar
 }
 
 .portlet.calendar .mobile .fc-button-prev {
-  margin-left: 5px;
+  margin-right: 5px;
   margin-top: -2px;
-  padding: 3px 4px 3px 6px;
+  padding: 3px 6px 3px 4px;
 }
 
 .portlet.calendar .mobile .fc-button-next {   
-  margin-left: -0px;
+  margin-right: -0px;
   margin-top: -2px;
-  padding: 3px 6px 3px 4px;
+  padding: 3px 4px 3px 6px;
 }
 
 .portlet.calendar .mobile .fc-header-space {
@@ -3570,7 +3718,7 @@ Calendar with full calendar
 
   .portlet.calendar .mobile .fc-header-right {
     position: relative;
-    left:0;
+    right:0;
   }
 
   .portlet.calendar .mobile .fc-header-right .fc-button { 
@@ -3578,13 +3726,12 @@ Calendar with full calendar
   }
 
   .portlet.calendar .mobile .fc-header-right .fc-button:last-child {
-    margin-right: 0px !important;
+    margin-left: 0px !important;
   }
 
   .portlet.calendar .mobile .fc-content {
     margin-top: 53px;
   }
-
 
 /***
 Form wizard
@@ -3735,6 +3882,10 @@ jqvmap changes
 /***
 Daterangepicker plugin css changes
 ***/
+.modal-open .daterangepicker {
+  z-index: 10060 !important;
+}
+
 .daterangepicker td {
   text-shadow: none !important;
 }
@@ -3924,6 +4075,40 @@ Choosen plugin css changes
 Select2 plugin css changes
 ***/
 
+/* enable form validation classes for select2 dropdowns */
+.error .select2-container .select2-choice {
+  border-color: #B94A48;
+}
+
+.error .select2-container .select2-choice > span {
+  color: #B94A48;
+}
+
+.error .select2-container.select2-dropdown-open .select2-choice {
+  border-color: #e5e5e5; 
+}
+
+.error .select2-container.select2-dropdown-open .select2-choice > span {
+  color: #999999;
+}
+
+.success .select2-container .select2-choice {
+  border-color: #468847;
+}
+
+.success .select2-container .select2-choice > span {
+  color: #468847;
+}
+
+.success .select2-container.select2-dropdown-open .select2-choice {
+  border-color: #e5e5e5; 
+}
+
+.success .select2-container.select2-dropdown-open .select2-choice > span {
+  color: #999999;
+}
+
+
 /***
 Fileuploader plugin css changes
 ***/
@@ -4088,23 +4273,17 @@ div.tagsinput .not_valid {
 }
 
 /***
-Date tables plugin changes
-***/
-.dataTable {  
-  clear: both;
-  margin-top: 5px;
-}
-
-.dataTables_filter label {
-  line-height: 32px !important;
-}
-
-/***
 Gritter notification modify
 ***/
 .gritter-close {
   left:auto !important;
   right: 3px !important;
+}
+
+.gritter-title {
+  font-family:  'Open Sans' !important;
+  font-size: 18px !important;
+  font-weight: 300 !important;
 }
 
 /***
@@ -4368,6 +4547,113 @@ jQuery UI Datepicker(new in v1.2.2)
 }
 
 /***
+jQuery UI Dialogs(new in v1.2.4)
+***/
+.ui-dialog {
+  z-index: 10011 !important;
+  background: none !important;
+  background-color: #eee !important;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+  font-weight: 300 !important;
+  font-size: 14px !important;
+  text-transform: uppercase !important;
+  color: #333 !important;
+  background: none !important;
+  background-color: #e0e0e0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  font-family: 'Open Sans';
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+  outline: none !important;
+  border: 0 !important;
+  box-shadow: none;
+  background: url(../img/hor-menu-search-close.png) no-repeat center;
+  margin-top: -12px !important;
+}
+
+.ui-dialog .ui-dialog-titlebar-close:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+
+/*dialog title bg colors*/
+.ui-dialog.ui-dialog-blue .ui-dialog-titlebar {
+  color: #fff !important;
+  background-color: #4b8df8 !important;
+}
+
+.ui-dialog.ui-dialog-blue .ui-dialog-titlebar-close {
+  background: url(../img/hor-menu-search-close-white.png) no-repeat center;
+}
+
+.ui-dialog.ui-dialog-red .ui-dialog-titlebar {
+  color: #fff !important;
+  background-color: #e02222 !important;
+}
+
+.ui-dialog.ui-dialog-red .ui-dialog-titlebar-close {
+  background: url(../img/hor-menu-search-close-white.png) no-repeat center;
+}
+
+.ui-dialog.ui-dialog-yellow .ui-dialog-titlebar {
+  color: #fff !important;
+  background-color: #ffb848 !important;
+}
+
+.ui-dialog.ui-dialog-yellow .ui-dialog-titlebar-close {
+  background: url(../img/hor-menu-search-close-white.png) no-repeat center;
+}
+
+.ui-dialog.ui-dialog-green .ui-dialog-titlebar {
+  color: #fff !important;
+  background-color: #35aa47 !important;
+}
+
+.ui-dialog.ui-dialog-green .ui-dialog-titlebar-close {
+  background: url(../img/hor-menu-search-close-white.png) no-repeat center;
+}
+
+.ui-dialog.ui-dialog-purple .ui-dialog-titlebar {
+  color: #fff !important;
+  background-color: #852b99 !important;
+}
+
+.ui-dialog.ui-dialog-purple .ui-dialog-titlebar-close {
+  background: url(../img/hor-menu-search-close-white.png) no-repeat center;
+}
+
+.ui-dialog.ui-dialog-grey .ui-dialog-titlebar {
+  color: #fff !important;
+  background-color: #555555 !important;
+}
+
+.ui-dialog.ui-dialog-grey .ui-dialog-titlebar-close {
+  background: url(../img/hor-menu-search-close-white.png) no-repeat center;
+}
+/*dialog title bg colors*/
+
+.ui-dialog .ui-dialog-content {
+  font-family: 'Open Sans';
+  font-size: 13px !important;
+  color: #333 !important;
+}
+
+.ui-dialog .ui-dialog-content .icon {
+  display: inline-block;
+  float: left; 
+  margin: 5px 7px 20px 0;
+}
+
+.ui-widget-overlay.ui-front {
+  z-index: 10010;
+  background: #333 !important;
+}
+
+/***
 Sidebar Content
 ***/
 .sidebar-content {
@@ -4377,10 +4663,10 @@ Sidebar Content
 /***
 Horezantal Menu(new in v1.2)
 ***/
+
 .header .hor-menu {
   margin: 0;
   float: left;
-  margin-left: 99px;
 }
 
 .header .hor-menu ul.nav li a {
@@ -4398,7 +4684,17 @@ Horezantal Menu(new in v1.2)
 
 .header .hor-menu ul.nav li.active > a,
 .header .hor-menu ul.nav li.active > a:hover {
-  background: #e02222 !important;  
+  background: #e02222 !important; 
+}
+
+.ie8 .header .hor-menu ul.nav li.active > a {
+  padding-top: 13px;
+  padding-bottom: 12px; 
+}
+
+.ie9 .header .hor-menu ul.nav li.active > a {
+  padding-top: 10px;
+  padding-bottom: 12px; 
 }
 
 .header .hor-menu ul.nav li.active .selected {
@@ -4432,7 +4728,7 @@ Horezantal Menu(new in v1.2)
 .header .hor-menu .dropdown-menu li > a {
     color: #999;
     padding: 7px 18px !important; 
-    margin-top:1px;
+    margin-bottom:1px;
 }
 
 .header .dropdown-menu .arrow {
@@ -4782,3 +5078,232 @@ Social Icons(new in v1.2.2)
 .social-icons .xing {background: url(../img/social/xing.png) no-repeat;}
 .social-icons .yahoo {background: url(../img/social/yahoo.png) no-repeat;}
 .social-icons .youtube {background: url(../img/social/youtube.png) no-repeat;}
+.social-icons .vk {background: url(../img/social/vk.png) no-repeat;}
+.social-icons .instagram {background: url(../img/social/instagram.png) no-repeat;}
+
+
+/***
+Responsive tables(new in v1.2.3)
+***/
+
+.flip-scroll table { width: 100%; }
+
+@media only screen and (max-width: 800px) {
+  
+  .flip-scroll table {border-left: 1px solid #ddd}
+  .flip-scroll .flip-content:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+  .flip-scroll * html .flip-content { zoom: 1; }
+  .flip-scroll *:first-child+html .flip-content { zoom: 1; }
+  
+  .flip-scroll table { width: 100%; border-collapse: collapse; border-spacing: 0; }
+ 
+  .flip-scroll th,
+  .flip-scroll td { margin: 0; vertical-align: top; }
+  .flip-scroll th { text-align: left; }
+  
+  .flip-scroll table { display: block; position: relative; width: 100%; }
+  .flip-scroll thead { display: block; float: left; }
+  .flip-scroll tbody { display: block; width: auto; position: relative; overflow-x: auto; white-space: nowrap; }
+  .flip-scroll thead tr { display: block; }
+  .flip-scroll th { display: block; text-align: right; }
+  .flip-scroll tbody tr { display: inline-block; vertical-align: top; }
+  .flip-scroll td { display: block; min-height: 1.25em; text-align: left; }
+ 
+ 
+  /* sort out borders */
+ 
+  .flip-scroll th { border-bottom: 0; border-left: 0; }
+  .flip-scroll td { border-left: 0; border-right: 0; border-bottom: 0; }
+  .flip-scroll tbody tr { border-left: 1px solid #ddd; }
+  .flip-scroll th:last-child,
+  .flip-scroll td:last-child { border-bottom: 1px solid #ddd; }
+}
+
+.no-more-tables table {
+  width: 100%;
+}
+
+@media only screen and (max-width: 800px) {
+  
+  /* Force table to not be like tables anymore */
+  .no-more-tables table, 
+  .no-more-tables thead, 
+  .no-more-tables tbody, 
+  .no-more-tables th, 
+  .no-more-tables td, 
+  .no-more-tables tr { 
+    display: block; 
+  }
+ 
+  /* Hide table headers (but not display: none;, for accessibility) */
+  .no-more-tables thead tr { 
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+ 
+  .no-more-tables tr { 
+    border-left: 1px solid #ddd; 
+    border-bottom: 1px solid #ddd; 
+  }
+
+  .no-more-tables tr:last-child {
+    border-bottom: 0;
+  }
+ 
+  .no-more-tables td { 
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee; 
+    position: relative;
+    padding-left: 50%; 
+    white-space: normal;
+    text-align:left;
+  }
+ 
+  .no-more-tables td:before { 
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%; 
+    padding-right: 10px; 
+    white-space: nowrap;
+    text-align:left;
+    font-weight: bold;
+  }
+ 
+  /*
+  Label the data
+  */
+  .no-more-tables td:before { content: attr(data-title); }
+}
+
+/***
+Fancy box fix overlay fix(in v1.2.4)
+***/
+.fancybox-overlay {
+  z-index: 10000 !important;
+}
+
+/***
+Bootstrap Datetimepickers Restyle(in v1.2.4)
+***/
+.modal-open .datetimepicker {
+  z-index: 10060 !Important;
+}
+
+.datetimepicker table .active {
+  background-image: none !important;
+  background-color: #4b8df8 !important;
+  filter: none !important;
+}
+
+.datetimepicker table td {
+  font-weight: 300 !important;
+  font-family: 'Open Sans' !important;
+}
+
+.datetimepicker table th {
+  font-family: 'Open Sans' !important;
+  font-weight: 400 !important;
+}
+
+/***
+Bootstrap Datepickers Restyle(in v1.2.4)
+***/
+.modal-open .datepicker {
+  z-index: 10060 !Important;
+}
+
+.datepicker table .active {
+  background-image: none !important;
+  background-color: #4b8df8 !important;
+  filter: none !important;
+}
+
+.datepicker table td {
+  font-weight: 300 !important;
+  font-family: 'Open Sans' !important;
+}
+
+.datepicker table th {
+  font-family: 'Open Sans' !important;
+  font-weight: 400 !important;
+}
+
+
+/***
+Bootstrap Colorpicker (in v1.3)
+***/
+.modal-open .colorpicker {
+  z-index: 10060 !important;
+}
+
+/***
+Dropdown Checkboxes (in v1.3)
+***/
+.dropdown-checkboxes {
+  padding: 5px;
+}
+
+.dropdown-checkboxes label {
+  color: #333;
+  margin-bottom: 4px;
+  margin-top: 4px; 
+}
+
+/***
+Datatables Plugin(in v1.3)
+***/
+.dataTable {  
+  clear: both;
+  margin-top: 5px;
+}
+
+.dataTables_filter label {
+  line-height: 32px !important;
+}
+
+.dataTable .row-details {  
+  margin-top: 3px;
+  display: inline-block;
+  cursor: pointer;
+  width: 14px;
+  height: 14px;
+}
+
+.dataTable .row-details.row-details-close {
+  background: url("../img/datatable-row-openclose.png") no-repeat 0 0;
+}
+
+.dataTable .row-details.row-details-open {  
+  background: url("../img/datatable-row-openclose.png") no-repeat 0 -23px !important;
+}
+
+.dataTable .details {
+  background-color: #eee !important;
+}
+
+.dataTable .details td,
+.dataTable .details th {
+  padding: 4px;
+  background-color: none !important;
+  border: 0;
+}
+
+.dataTable .details tr:hover td,
+.dataTable .details tr:hover th {
+  background-color: none !important;
+}
+
+.dataTable .details tr:nth-child(odd) td,
+.dataTable .details tr:nth-child(odd) th {
+  background-color: #eee !important;
+}
+
+.dataTable .details tr:nth-child(even) td,
+.dataTable .details tr:nth-child(even) th {
+  background-color: #eee !important;
+}

@@ -56,7 +56,7 @@ var TableManaged = function () {
 
             jQuery('#sample_1_wrapper .dataTables_filter input').addClass("m-wrap medium"); // modify table search input
             jQuery('#sample_1_wrapper .dataTables_length select').addClass("m-wrap small"); // modify table per page dropdown
-            jQuery('#sample_1_wrapper .dataTables_length select').select2(); // initialzie select2 dropdown
+            //jQuery('#sample_1_wrapper .dataTables_length select').select2(); // initialzie select2 dropdown
 
             // begin second table
             $('#sample_2').dataTable({
@@ -137,7 +137,7 @@ var TableManaged = function () {
             });
 
             jQuery('#sample_3_wrapper .dataTables_filter input').addClass("m-wrap small"); // modify table search input
-            jQuery('#sample_3_wrapper .dataTables_length select').addClass("m-wrap xsmall"); // modify table per page dropdown
+            jQuery('#sample_3_wrapper .dataTables_length select').addClass("m-wrap small"); // modify table per page dropdown
             jQuery('#sample_3_wrapper .dataTables_length select').select2(); // initialzie select2 dropdown
 
         }

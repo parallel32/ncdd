@@ -26,8 +26,8 @@ define("PAGE_STATUS_EXPIRED", -10);
 define("PAGE_STATUS_DEACTIVATED", -20);
 
 define("PAGE_DEFAULT_PUBLISH_STATUS", PAGE_STATUS_PENDING_MODERATION);
-$app['humanizeOfferStatus'] = $app->protect(function($offerStatus){
-	switch ($offerStatus) {        
+$app['humanizePageStatus'] = $app->protect(function($pageStatus){
+	switch ($pageStatus) {        
 		case PAGE_STATUS_EXPIRED:
 			return 'EXPIRED';
 			break;        
@@ -39,7 +39,7 @@ $app['humanizeOfferStatus'] = $app->protect(function($offerStatus){
             return 'PENDING';
             break;            
 		case PAGE_STATUS_PUBLISHED:
-            return 'ACTIVE';
+            return 'PUBLISHED';
             break;
 		default:
 			return 'DRAFT';
@@ -55,8 +55,8 @@ define("USER_STATUS_INACTIVE", -1);
 // user constants
 // - access levels
 define("ADMIN", 300);
-define("CLIENT",200); // top level users (account holder)
-define("EDITOR",100); // editors are made by clients or by admin but still with a client parent
+define("EDITOR",200); // top level users (account holder)
+define("MEMBER",100); // editors are made by clients or by admin but still with a client parent
 define("STRINGIFY_ACCESS_LEVELS", "ADMIN:300|CLIENT:200|EDITOR:100");
 $app['humanizeAccessLevels'] = $app->protect(function ($accessLevel) {
 	switch (floor($accessLevel)) {
@@ -64,10 +64,10 @@ $app['humanizeAccessLevels'] = $app->protect(function ($accessLevel) {
 			return 'ADMIN';
 			break;
 		case 200:
-			return 'CLIENT';
+			return 'EDITOR';
 			break;
 		case 100:
-			return 'EDITOR';
+			return 'MEMBER';
 			break;
 	}
 });
@@ -100,8 +100,8 @@ define("SAW_STRIPE_SECRET_KEY",apache_getenv('SAW_STRIPE_SECRET_KEY'));
 define("SAW_AWS_KEY",apache_getenv('SAW_AWS_KEY'));
 define("SAW_AWS_SECRET",apache_getenv('SAW_AWS_SECRET'));
 
-define("SAW_SALT", '$2y$08$iopkookooruskadyetkarilsk$');
-define("SAW_SALT_KEYWORD",'s@w');
+define("SAW_SALT", '$2y$08$ncddjack2012tomthumb$');
+define("SAW_SALT_KEYWORD",'n@dd');
 
 define("SAW_UNKNOWN_USER_ID","401xxxxxxxxxxxxxxxxxxxxx");
 

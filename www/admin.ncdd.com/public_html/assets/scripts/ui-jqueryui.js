@@ -49,10 +49,144 @@ var UIJQueryUI = function () {
 	    });
     }
 
+    var handleDialogs = function () {
+
+    	// basic dialog1
+    	$( "#dialog_basic1" ).dialog({
+		      autoOpen: false,
+		      dialogClass: 'ui-dialog-yellow',
+		      show: {
+		        effect: "blind",
+		        duration: 500
+		      },
+		      hide: {
+		        effect: "explode",
+		        duration: 500
+		      }
+	    });
+	 
+	    $( "#basic_opener1").click(function() {
+	      $( "#dialog_basic1" ).dialog( "open" );	
+	      $('.ui-dialog button').blur();// avoid button autofocus     
+	    });
+
+	    // basic dialog2
+    	$( "#dialog_basic2" ).dialog({
+		      autoOpen: false,
+		      dialogClass: 'ui-dialog-purple',
+		      show: {
+		        effect: "blind",
+		        duration: 500
+		      },
+		      hide: {
+		        effect: "explode",
+		        duration: 500
+		      }
+	    });
+	 
+	    $( "#basic_opener2").click(function() {
+	      $( "#dialog_basic2" ).dialog( "open" );	
+	      $('.ui-dialog button').blur();// avoid button autofocus     
+	    });
+
+	    // basic dialog3
+    	$( "#dialog_basic3" ).dialog({
+		      autoOpen: false,
+		      dialogClass: 'ui-dialog-grey',
+		      show: {
+		        effect: "blind",
+		        duration: 500
+		      },
+		      hide: {
+		        effect: "explode",
+		        duration: 500
+		      }
+	    });
+	 
+	    $( "#basic_opener3").click(function() {
+	      $( "#dialog_basic3" ).dialog( "open" );	
+	      $('.ui-dialog button').blur();// avoid button autofocus     
+	    });
+
+	    // basic dialog4
+    	$( "#dialog_basic4" ).dialog({
+		      autoOpen: false,
+		      dialogClass: 'ui-dialog-red',
+		      show: {
+		        effect: "blind",
+		        duration: 500
+		      },
+		      hide: {
+		        effect: "explode",
+		        duration: 500
+		      }
+	    });
+	 
+	    $( "#basic_opener4").click(function() {
+	      $( "#dialog_basic4" ).dialog( "open" );	
+	      $('.ui-dialog button').blur();// avoid button autofocus     
+	    });
+
+	    // info dialog
+	    $("#dialog_info").dialog({
+	      dialogClass: 'ui-dialog-blue',
+	      autoOpen: false,
+	      resizable: false,
+	      height: 250,
+	      modal: true,
+	      buttons: [
+	      	{
+	      		"text" : "OK",
+	      		'class' : 'btn green',
+	      		click: function() {
+        			$(this).dialog( "close" );
+      			}
+	      	}
+	      ]
+	    });
+
+	    $( "#info_opener").click(function() {
+	      $( "#dialog_info" ).dialog( "open" );
+	       $('.ui-dialog button').blur();// avoid button autofocus
+	    });
+
+	    //confirm dialog
+	    $("#dialog_confirm" ).dialog({
+	      dialogClass: 'ui-dialog-green',
+	      autoOpen: false,
+	      resizable: false,
+	      height: 210,
+	      modal: true,
+	      buttons: [
+	      	{
+	      		'class' : 'btn red',	
+	      		"text" : "Delete",
+	      		click: function() {
+        			$(this).dialog( "close" );
+      			}
+	      	},
+	      	{
+	      		'class' : 'btn',
+	      		"text" : "Cancel",
+	      		click: function() {
+        			$(this).dialog( "close" );
+      			}
+	      	}
+	      ]
+	    });
+
+	    $( "#confirm_opener").click(function() {
+	      $( "#dialog_confirm" ).dialog( "open" );
+	       $('.ui-dialog button').blur();// avoid button autofocus
+	    });
+
+    }
+
     return {
         //main function to initiate the module
         init: function () {
             handleDatePickers();
+            handleDialogs();
         }
 
     };

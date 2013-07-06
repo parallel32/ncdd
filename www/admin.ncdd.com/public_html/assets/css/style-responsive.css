@@ -1,19 +1,11 @@
-@media (min-width: 1280px) { 
-	.header .hor-menu {
-  		margin-left: 99px;
-	}
+@media (min-width: 980px) and (max-width: 1280px) {  
+
+	.page-boxed .header .dropdown .username {
+		display: none;
+	}	
 }
 
-@media (max-width: 1024px) { 
-	.header .hor-menu {
-  		margin-left: 29px;
-	}
-}
-
-/***
-Large notebooks and desktops
-***/
- @media (min-width: 980px) { 
+@media (min-width: 980px) { 
 
  	/***
  	Page sidebar
@@ -23,9 +15,54 @@ Large notebooks and desktops
  		width: 225px;
   	}
 
-  	.page-sidebar ul{
-  		width: 225px;
-  	}
+	.page-sidebar-fixed .page-sidebar {
+	  	position: fixed !important;
+	 	top: 41px;
+	}
+
+	.page-sidebar-fixed ul.page-sidebar-menu > li.last {
+		margin-bottom: 15px !important;
+	}
+
+	.page-sidebar-fixed.page-sidebar-hover-on .page-sidebar {
+		z-index: 10000;		
+		width: 35px;		
+	}
+
+	.page-sidebar-fixed.page-sidebar-hover-on .page-sidebar .selected {
+		display: none;
+	}
+
+	.page-sidebar-fixed.page-sidebar-hover-on .page-content {
+		margin-left: 35px;
+	}
+	.page-sidebar-fixed.page-sidebar-hover-on .footer {
+		margin-left: 35px;
+	}
+
+	.page-sidebar-fixed .page-sidebar-closed .page-sidebar .sidebar-search .submit,
+	.page-sidebar-fixed .page-sidebar .sidebar-toggler {
+		-webkit-transition: all  0.2s ease;
+	     -moz-transition: all  0.2s ease;
+	       -o-transition: all  0.2s ease;
+	          transition: all  0.2s ease;
+	}
+
+	.page-sidebar-hovering {
+		overflow: hidden !important;
+	}
+
+	.page-sidebar-hovering .sub-menu,
+	.page-sidebar-hovering span.title,
+	.page-sidebar-hovering span.arrow {		  
+		display: none !important;
+	}
+
+	.page-sidebar-hovering .submit {
+		opacity: 0;
+		width: 0 !important;
+		height: 0 !important;
+	}
 
   	/***
   	Page content
@@ -33,15 +70,51 @@ Large notebooks and desktops
   	.page-content { 
   		margin-left: 225px; 
 		margin-top: 0px;
-		min-height: 860px; 
+		min-height: 760px; 
+	}
+
+	.page-sidebar-fixed .page-content {
+		min-height: 600px; 
 	}
 
 	.page-content.no-min-height {
 		min-height: auto;
 	}
 
-	.full-width-page .page-content {
-		margin-left: 0px !important;
+	/***
+	Footer
+	***/
+
+	/* fixed sidebar */
+	.page-sidebar-fixed .footer {
+	  margin-left: 225px;
+	  background-color: #fff;
+	}
+
+	.page-sidebar-fixed .footer .footer-inner {
+	  color: #333;
+	}
+
+	.page-sidebar-fixed.page-sidebar-closed .footer {
+	  margin-left: 35px;
+	}
+
+	.page-sidebar-fixed .footer .footer-tools .go-top { 
+	  background-color: #666;
+	}
+
+	.page-sidebar-fixed .footer .footer-tools .go-top i {
+	  color: #ddd;
+	}
+
+	/* boxed layout */
+	.page-boxed	.header .brand {
+  		margin-left: 0px !important;
+  		width: 226px;
+	}
+
+	.page-boxed .header .brand img {
+		margin-left: 10px;
 	}
 }
 
@@ -75,6 +148,15 @@ For tablets and phones
 		margin-bottom: 0px !important;
 	}
 
+	.header .brand {
+  		margin-left: 0px !important;
+  		padding-left: 0px !important; 
+	}
+
+	.header .brand img {
+		margin-left: 2px !important;
+	}
+
 	/***
 	Page container
 	***/
@@ -83,7 +165,7 @@ For tablets and phones
 		padding: 0 !important;
 	}
 
-	.fixed-top .page-container {
+	.page-header-fixed .page-container {
 		margin-top: 0px !important;
 	}
 
@@ -239,6 +321,12 @@ For tablets and phones
 	.header .nav > li > .dropdown-menu.tasks {
   		margin-right: -90px;
 	}
+
+  	/* Header logo */
+	.header .brand {
+  		margin-left: 0px !important;
+  		width: 110px;
+	}
 	
 	/***
 	Page content
@@ -313,9 +401,7 @@ For tablets and phones
 	.footer .go-top {  
 		float: right;
 		display: block;
-		margin-top: -22px;
 		margin-right: 0px;
-		margin-bottom: 5px !important;
 	}
 
 	/***
@@ -460,6 +546,21 @@ For tablets and phones
 	.hidden-480 {
 		display: none;
 	}
+
+	/***
+	Modal header close button fix
+	***/
+	.modal-header .close {
+		margin-top: 5px !important;
+	}
+
+	/***
+	Fix text view
+	***/
+	.control-group .controls .text {
+  		display: block !important;
+  		margin-bottom: 10px;
+  	}
 }
 
 @media (max-width: 320px) {
@@ -475,4 +576,8 @@ For tablets and phones
 	.hidden-320 {
 		display: none;
 	}
+
+	.header .brand {
+		width: 100px;
+	}	
 }	

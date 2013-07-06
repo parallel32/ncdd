@@ -6,7 +6,21 @@ var FormComponents = function () {
         }
 
         if ($('.wysihtml5').size() > 0) {
-            $('.wysihtml5').wysihtml5();
+            $('.wysihtml5').wysihtml5({
+                "stylesheets": ["assets/plugins/bootstrap-wysihtml5/wysiwyg-color.css"]
+            });
+        }
+    }
+
+    var resetWysihtml5 = function () {
+        if (!jQuery().wysihtml5) {
+            return;
+        }
+
+        if ($('.wysihtml5').size() > 0) {
+            $('.wysihtml5').wysihtml5({
+                "stylesheets": ["assets/plugins/bootstrap-wysihtml5/wysiwyg-color.css"]
+            });
         }
     }
 
@@ -77,12 +91,17 @@ var FormComponents = function () {
         $( ".ui-date-picker" ).datepicker();
     }
 
-    var handleDateTimePickers = function () {
+    var handleDatePickers = function () {
 
         if (jQuery().datepicker) {
-            $('.date-picker').datepicker();
+            $('.date-picker').datepicker({
+                rtl : App.isRTL()
+            });
         }
+    }
 
+    var handleTimePickers = function () {
+        
         if (jQuery().timepicker) {
             $('.timepicker-default').timepicker();
             $('.timepicker-24').timepicker({
@@ -91,71 +110,26 @@ var FormComponents = function () {
                 showMeridian: false
             });
         }
+    }
 
+    var handleDateRangePickers = function () {
         if (!jQuery().daterangepicker) {
             return;
         }
 
-        $('.date-range').daterangepicker();
-
-        $('#dashboard-report-range').daterangepicker({
-            ranges: {
-                'Today': ['today', 'today'],
-                'Yesterday': ['yesterday', 'yesterday'],
-                'Last 7 Days': [Date.today().add({
-                        days: -6
-                    }), 'today'],
-                'Last 30 Days': [Date.today().add({
-                        days: -29
-                    }), 'today'],
-                'This Month': [Date.today().moveToFirstDayOfMonth(), Date.today().moveToLastDayOfMonth()],
-                'Last Month': [Date.today().moveToFirstDayOfMonth().add({
-                        months: -1
-                    }), Date.today().moveToFirstDayOfMonth().add({
-                        days: -1
-                    })]
-            },
-            opens: 'left',
-            format: 'MM/dd/yyyy',
-            separator: ' to ',
-            startDate: Date.today().add({
-                days: -29
-            }),
-            endDate: Date.today(),
-            minDate: '01/01/2012',
-            maxDate: '12/31/2014',
-            locale: {
-                applyLabel: 'Submit',
-                fromLabel: 'From',
-                toLabel: 'To',
-                customRangeLabel: 'Custom Range',
-                daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-                monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-                firstDay: 1
-            },
-            showWeekNumbers: true,
-            buttonClasses: ['btn-danger']
-        },
-
-        function (start, end) {
-            App.blockUI(jQuery("#dashboard"));
-            setTimeout(function () {
-                App.unblockUI(jQuery("#dashboard"));
-                $.gritter.add({
-                    title: 'Dashboard',
-                    text: 'Dashboard date range updated.'
-                });
-                App.scrollTo();
-            }, 1000);
-            $('#dashboard-report-range span').html(start.toString('MMMM d, yyyy') + ' - ' + end.toString('MMMM d, yyyy'));
-
-        });
-
-        $('#dashboard-report-range').show();
-
-        $('#dashboard-report-range span').html(Date.today().add({
-            days: -29
-        }).toString('MMMM d, yyyy') + ' - ' + Date.today().toString('MMMM d, yyyy'));
+        $('.date-range').daterangepicker(
+            {
+                opens: (App.isRTL() ? 'left' : 'right'),
+                format: 'MM/dd/yyyy',
+                separator: ' to ',
+                startDate: Date.today().add({
+                    days: -29
+                }),
+                endDate: Date.today(),
+                minDate: '01/01/2012',
+                maxDate: '12/31/2014',
+            }
+        );
 
         $('#form-date-range').daterangepicker({
             ranges: {
@@ -164,7 +138,7 @@ var FormComponents = function () {
                 'Last 7 Days': [Date.today().add({
                         days: -6
                     }), 'today'],
-                'Last 30 Days': [Date.today().add({
+                'Last 29 Days': [Date.today().add({
                         days: -29
                     }), 'today'],
                 'This Month': [Date.today().moveToFirstDayOfMonth(), Date.today().moveToLastDayOfMonth()],
@@ -174,7 +148,7 @@ var FormComponents = function () {
                         days: -1
                     })]
             },
-            opens: 'right',
+            opens: (App.isRTL() ? 'left' : 'right'),
             format: 'MM/dd/yyyy',
             separator: ' to ',
             startDate: Date.today().add({
@@ -205,9 +179,80 @@ var FormComponents = function () {
         }).toString('MMMM d, yyyy') + ' - ' + Date.today().toString('MMMM d, yyyy'));
 
 
-        if (!jQuery().datepicker || !jQuery().timepicker) {
-            return;
-        }
+        //modal version:
+
+        $('#form-date-range-modal').daterangepicker({
+            ranges: {
+                'Today': ['today', 'today'],
+                'Yesterday': ['yesterday', 'yesterday'],
+                'Last 7 Days': [Date.today().add({
+                        days: -6
+                    }), 'today'],
+                'Last 29 Days': [Date.today().add({
+                        days: -29
+                    }), 'today'],
+                'This Month': [Date.today().moveToFirstDayOfMonth(), Date.today().moveToLastDayOfMonth()],
+                'Last Month': [Date.today().moveToFirstDayOfMonth().add({
+                        months: -1
+                    }), Date.today().moveToFirstDayOfMonth().add({
+                        days: -1
+                    })]
+            },
+            opens: (App.isRTL() ? 'left' : 'right'),
+            format: 'MM/dd/yyyy',
+            separator: ' to ',
+            startDate: Date.today().add({
+                days: -29
+            }),
+            endDate: Date.today(),
+            minDate: '01/01/2012',
+            maxDate: '12/31/2014',
+            locale: {
+                applyLabel: 'Submit',
+                fromLabel: 'From',
+                toLabel: 'To',
+                customRangeLabel: 'Custom Range',
+                daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+                monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                firstDay: 1
+            },
+            showWeekNumbers: true,
+            buttonClasses: ['btn-danger']
+        },
+
+        function (start, end) {
+            $('#form-date-range-modal span').html(start.toString('MMMM d, yyyy') + ' - ' + end.toString('MMMM d, yyyy'));
+        });
+
+        $('#form-date-range-modal span').html(Date.today().add({
+            days: -29
+        }).toString('MMMM d, yyyy') + ' - ' + Date.today().toString('MMMM d, yyyy'));
+
+    }
+
+    var handleDatetimePicker = function () {        
+
+          $(".form_datetime").datetimepicker({
+              format: "dd MM yyyy - hh:ii",
+              pickerPosition: (App.isRTL() ? "bottom-right" : "bottom-left")
+          });
+
+         $(".form_advance_datetime").datetimepicker({
+              format: "dd MM yyyy - hh:ii",
+              autoclose: true,
+              todayBtn: true,
+              startDate: "2013-02-14 10:00",
+              pickerPosition: (App.isRTL() ? "bottom-right" : "bottom-left"),
+              minuteStep: 10
+          });
+
+         $(".form_meridian_datetime").datetimepicker({
+            format: "dd MM yyyy - HH:ii P",
+            showMeridian: true,
+            autoclose: true,
+            pickerPosition: (App.isRTL() ? "bottom-right" : "bottom-left"),
+            todayBtn: true
+        });
     }
 
     var handleClockfaceTimePickers = function () {
@@ -216,19 +261,29 @@ var FormComponents = function () {
             return;
         }
 
-        $('#clockface_1').clockface();
+        $('.clockface_1').clockface();
 
         $('#clockface_2').clockface({
             format: 'HH:mm',
             trigger: 'manual'
         });
 
-        $('#clockface_2_toggle-btn').click(function (e) {
+        $('#clockface_2_toggle').click(function (e) {
             e.stopPropagation();
             $('#clockface_2').clockface('toggle');
         });
 
-        $('#clockface_3').clockface({
+        $('#clockface_2_modal').clockface({
+            format: 'HH:mm',
+            trigger: 'manual'
+        });
+
+        $('#clockface_2_modal_toggle').click(function (e) {
+            e.stopPropagation();
+            $('#clockface_2_modal').clockface('toggle');
+        });
+
+        $('.clockface_3').clockface({
             format: 'H:mm'
         }).clockface('show', '14:30');
     }
@@ -358,20 +413,28 @@ var FormComponents = function () {
         });
     }
 
+    var handleMultiSelect = function () {
+        $('#my_multi_select1').multiSelect();
+        $('#my_multi_select2').multiSelect({
+            selectableOptgroup: true
+        });        
+    }
+
     var handleInputMasks = function () {
         $.extend($.inputmask.defaults, {
             'autounmask': true
         });
 
-        $("#mask_date").inputmask("d/m/y");  //direct mask        
-        $("#mask_date1").inputmask("d/m/y",{ "placeholder": "*" }); //change the placeholder
+        $("#mask_date").inputmask("d/m/y", {autoUnmask: true});  //direct mask        
+        $("#mask_date1").inputmask("d/m/y",{ "placeholder": "*"}); //change the placeholder
         $("#mask_date2").inputmask("d/m/y",{ "placeholder": "dd/mm/yyyy" }); //multi-char placeholder
         $("#mask_phone").inputmask("mask", {"mask": "(999) 999-9999"}); //specifying fn & options
         $("#mask_tin").inputmask({"mask": "99-9999999"}); //specifying options only
         $("#mask_number").inputmask({ "mask": "9", "repeat": 10, "greedy": false });  // ~ mask "9" or mask "99" or ... mask "9999999999"
         $("#mask_decimal").inputmask('decimal', { rightAlignNumerics: false }); //disables the right alignment of the decimal input
         $("#mask_currency").inputmask('€ 999.999.999,99', { numericInput: true });  //123456  =>  € ___.__1.234,56
-        $("#mask_currency2").inputmask('€ 999,999,999.99', { numericInput: true, rightAlignNumerics: false  }); //123456  =>  € ___.__1.234,56
+       
+        $("#mask_currency2").inputmask('€ 999,999,999.99', { numericInput: true, rightAlignNumerics: false, greedy: false}); //123456  =>  € ___.__1.234,56
         $("#mask_ssn").inputmask("999-99-9999", {placeholder:" ", clearMaskOnLostFocus: true }); //default
     }
 
@@ -387,12 +450,20 @@ var FormComponents = function () {
             handleToggleButtons();
             handleTagsInput();
             handlejQueryUIDatePickers();
-            handleDateTimePickers();
+            handleDatePickers();
+            handleTimePickers();
+            handleDatetimePicker();
+            handleDateRangePickers();
             handleClockfaceTimePickers();
             handleColorPicker();
             handleSelec2();
             handleInputMasks();
             handleIPAddressInput();
+            handleMultiSelect();
+
+            App.addResponsiveHandler(function(){
+                resetWysihtml5();
+            })
         }
 
     };

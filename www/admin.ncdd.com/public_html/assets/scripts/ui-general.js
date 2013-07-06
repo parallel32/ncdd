@@ -49,7 +49,7 @@ var UIGeneral = function () {
                 // (string | mandatory) the heading of the notification
                 title: 'This is a sticky notice!',
                 // (string | mandatory) the text inside the notification
-                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget tincidunt velit. Cum sociis natoque penatibus et <a href="#" style="color:#ccc">magnis dis parturient</a> montes, nascetur ridiculus mus.',
+                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget tincidunt velit. Cum sociis natoque penatibus et <a href="#">some link sample</a> montes, nascetur ridiculus mus.',
                 // (string | optional) the image to display on the left
                 image: './assets/img/avatar1.jpg',
                 // (bool | optional) if you want it to fade out on its own or just sit there
@@ -68,7 +68,7 @@ var UIGeneral = function () {
                 // (string | mandatory) the heading of the notification
                 title: 'This is a regular notice!',
                 // (string | mandatory) the text inside the notification
-                text: 'This will fade out after a certain amount of time. Vivamus eget tincidunt velit. Cum sociis natoque penatibus et <a href="#" style="color:#ccc">magnis dis parturient</a> montes, nascetur ridiculus mus.',
+                text: 'This will fade out after a certain amount of time. Vivamus eget tincidunt velit. Cum sociis natoque penatibus et <a href="#">some link sample</a> montes, nascetur ridiculus mus.',
                 // (string | optional) the image to display on the left
                 image: './assets/img/avatar1.jpg',
                 // (bool | optional) if you want it to fade out on its own or just sit there
@@ -87,7 +87,7 @@ var UIGeneral = function () {
                 // (string | mandatory) the heading of the notification
                 title: 'This is a notice with a max of 3 on screen at one time!',
                 // (string | mandatory) the text inside the notification
-                text: 'This will fade out after a certain amount of time. Vivamus eget tincidunt velit. Cum sociis natoque penatibus et <a href="#" style="color:#ccc">magnis dis parturient</a> montes, nascetur ridiculus mus.',
+                text: 'This will fade out after a certain amount of time. Vivamus eget tincidunt velit. Cum sociis natoque penatibus et <a href="#">some link sample</a> montes, nascetur ridiculus mus.',
                 // (string | optional) the image to display on the left
                 image: './assets/img/avatar1.jpg',
                 // (bool | optional) if you want it to fade out on its own or just sit there
@@ -108,7 +108,7 @@ var UIGeneral = function () {
                 // (string | mandatory) the heading of the notification
                 title: 'This is a notice without an image!',
                 // (string | mandatory) the text inside the notification
-                text: 'This will fade out after a certain amount of time. Vivamus eget tincidunt velit. Cum sociis natoque penatibus et <a href="#" style="color:#ccc">magnis dis parturient</a> montes, nascetur ridiculus mus.'
+                text: 'This will fade out after a certain amount of time. Vivamus eget tincidunt velit. Cum sociis natoque penatibus et <a href="#">some link sample</a> montes, nascetur ridiculus mus.'
             });
 
             return false;
@@ -135,11 +135,29 @@ var UIGeneral = function () {
         });
     }
 
+    var handleDynamicPagination = function() {
+        $('#dynamic_pager_demo1').bootpag({
+            total: 6,
+            page: 1,
+        }).on("page", function(event, num){
+            $("#dynamic_pager_content1").html("Page " + num + " content here"); // or some ajax content loading...
+        });
+
+        $('#dynamic_pager_demo2').bootpag({
+            total: 24,
+            page: 1,
+            maxVisible: 6 
+        }).on('page', function(event, num){
+            $("#dynamic_pager_content2").html("Page " + num + " content here"); // or some ajax content loading...
+        });
+    }
+
     return {
         //main function to initiate the module
         init: function () {
             handlePulsate();
             handleGritterNotifications();
+            handleDynamicPagination();
         }
 
     };

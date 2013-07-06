@@ -39,7 +39,7 @@ $app->get('/logout', function (Request $request) use ($app) {
 		$user_id = call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$app);
 		if(!empty($user_id)) {
 		    $document = array('_id'=>$user_id);
-		    $user = new Model\Consumer($document, $app);
+		    $user = new Model\Member($document, $app);
 	        $user->deauthenticate();
 		}
 	}

@@ -17,7 +17,7 @@ var Inbox = function () {
 
             loading.hide();
             content.html(res);
-
+            App.fixContentHeight();
             App.initUniform();
         });
     }
@@ -36,7 +36,7 @@ var Inbox = function () {
 
             loading.hide();
             content.html(res);
-
+            App.fixContentHeight();
             App.initUniform();
         });
     }
@@ -58,7 +58,9 @@ var Inbox = function () {
     }
 
     var initWysihtml5 = function () {
-        $('.inbox-wysihtml5').wysihtml5();
+        $('.inbox-wysihtml5').wysihtml5({
+            "stylesheets": ["assets/plugins/bootstrap-wysihtml5/wysiwyg-color.css"]
+        });
     }
 
     var initFileupload = function () {
@@ -103,7 +105,7 @@ var Inbox = function () {
             initWysihtml5();
 
             $('.inbox-wysihtml5').focus();
-
+            App.fixContentHeight();
             App.initUniform();
         });
     }
@@ -128,7 +130,7 @@ var Inbox = function () {
 
             initFileupload();
             initWysihtml5();
-
+            App.fixContentHeight();
             App.initUniform();
         });
     }
@@ -145,7 +147,7 @@ var Inbox = function () {
 
             loading.hide();
             content.html(res);
-
+            App.fixContentHeight();
             App.initUniform();
         });
     }

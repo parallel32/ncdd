@@ -36,14 +36,14 @@ $mustbeADMIN = function (Request $request) use ($app, $checkPermissions){
         return $response;
     endif;
 };
-$mustbeCLIENT = function (Request $request) use ($app, $checkPermissions){
-    $response = $checkPermissions($request, CLIENT);
+$mustbeEDITOR = function (Request $request) use ($app, $checkPermissions){
+    $response = $checkPermissions($request, EDITOR);
     if(!$response->isOk()):
         return $response;
     endif;
 };
-$mustbeEDITOR = function (Request $request) use ($app, $checkPermissions){
-    $response = $checkPermissions($request, EDITOR);
+$mustbeMEMBER = function (Request $request) use ($app, $checkPermissions){
+    $response = $checkPermissions($request, MEMBER);
     if(!$response->isOk()):
         return $response;
     endif;
@@ -53,7 +53,7 @@ $app['clientLogin'] = $app->protect(function ($app,$request) {
     try{
         // retrieve document from request
         $document = $request->get('doc');
-        $user = new Model\Client($document, $app);
+        $user = new Model\Member($document, $app);
         // validate the model
         $app['validateModel']($app,$user,$groups=array('login'));
         
@@ -76,7 +76,7 @@ $app['adminLogin'] = $app->protect(function ($app,$request) {
     try{
         // retrieve document from request
         $document = $request->get('doc');
-        $user = new Model\Client($document, $app);
+        $user = new Model\Member($document, $app);
         // validate the model
         $app['validateModel']($app,$user,$groups=array('login'));
         

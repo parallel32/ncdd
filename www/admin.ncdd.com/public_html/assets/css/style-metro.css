@@ -26,7 +26,6 @@ select:focus {
 	background-image: none;
 	filter: none;
 	border: 0;
-	box-shadow: none;
 	padding: 7px 14px; 
 	text-shadow: none;
 	font-family: "Segoe UI", Helvetica, Arial, sans-serif;
@@ -34,6 +33,9 @@ select:focus {
   color: #333333;
 	cursor: pointer;
 	outline: none;
+  -webkit-box-shadow: none !important;
+     -moz-box-shadow: none !important;
+          box-shadow: none !important;
   -webkit-border-radius: 0 !important;
      -moz-border-radius: 0 !important;
           border-radius: 0 !important;
@@ -44,10 +46,8 @@ select:focus {
 .btn.active,
 .btn[disabled],
 .btn.disabled {  
-  font-family: "Segoe UI", Helvetica, Arial, sans-serif;
   color: #333333;
-  box-shadow: none;
-  background-color: #d8d8d8;
+  background-color: #d8d8d8 !important;
 }
 
 .btn.red-stripe
@@ -449,6 +449,28 @@ input[type="color"].m-wrap:focus,
           box-shadow: none;      
 }
 
+input[disabled],
+select[disabled],
+textarea[disabled] {
+  cursor: not-allowed;
+  background-color: #F4F4F4 !important;
+}
+
+input[readonly],
+select[readonly],
+textarea[readonly] {
+  cursor: not-allowed;
+  background-color: #F9F9F9 !important;
+}
+
+
+input[type="radio"][disabled],
+input[type="checkbox"][disabled],
+input[type="radio"][readonly],
+input[type="checkbox"][readonly] {
+  background-color: transparent;
+}
+
 input[type="radio"].m-wrap,
 input[type="checkbox"].m-wrap {
   	margin: 4px 0 0;
@@ -691,6 +713,31 @@ Custom label and badges
 /***
 Bootstrap modal 
 ***/
+.modal-header {
+  border-bottom: 1px solid #EFEFEF;
+}
+
 .modal-header h3{
   font-weight: 300;
+}
+
+.modal-footer {
+  border-top: 0;
+}
+
+.modal {
+  z-index: 10050 !important;
+}
+
+.modal-backdrop {
+  z-index: 10049 !important;
+}
+
+.modal-backdrop, 
+.modal-backdrop.fade.in {
+  background-color: #333 !important;
+}
+
+.modal-open .header .container-fluid {
+  padding-right: 37px;
 }

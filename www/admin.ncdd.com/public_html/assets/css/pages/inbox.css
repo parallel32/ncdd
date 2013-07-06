@@ -44,7 +44,7 @@ Inbox Page
 .inbox .inbox-nav li.active:hover a {
   color: #fff;
   border-left: none;
-  background: #169ef4;
+  background: #169ef4 !important;
   text-decoration: none;
 }
 
@@ -60,7 +60,7 @@ Inbox Page
 
 .inbox .inbox-nav li:hover a {
   color: #4d82a3;
-  background: #eef4f7;
+  background: #eef4f7 !important;
   text-decoration: none;
 }
 
@@ -79,6 +79,10 @@ Inbox Page
   font-size: 15px;
   position: relative;
   background: none !important;
+}
+
+.inbox .inbox-nav li.compose-btn a:hover {
+  background-color: #1d943b !important;
 }
 
 /*Inbox Content*/
