@@ -49,7 +49,8 @@ $app['humanizePageStatus'] = $app->protect(function($pageStatus){
 
 // user constants
 define("USER_STATUS_ACTIVE", 2);
-define("USER_STATUS_UNVERIFIED", 1);
+define("USER_STATUS_VERIFIED", 1);
+define("USER_STATUS_UNVERIFIED", 0);
 define("USER_STATUS_INACTIVE", -1);
 
 // user constants

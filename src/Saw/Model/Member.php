@@ -14,28 +14,16 @@ use Symfony\Component\Validator\ExecutionContext;
 class Member extends User {
 	
 	public $collection = 'member';
-	public $businessName;
 	public $location;// this is the member's primary address | used for primary contact and billing
+	public $locations; // an array office locations
+	public $stateBarNumber;
+	public $webSite;
+	public $webSites;
+	public $addToListServ;
+	public $listServEmail;
 
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
-		$metadata->addPropertyConstraint('businessName', new Constraints\NotBlank(
-			array('message'=>'cannot be blank','groups' => array('signup','account-edit'))
-		));
-		$metadata->addPropertyConstraint('firstName', new Constraints\NotBlank(
-			array('message'=>'cannot be blank','groups' => array('signup','account-edit'))
-		));
-		$metadata->addPropertyConstraint('lastName', new Constraints\NotBlank(
-			array('message'=>'cannot be blank','groups' => array('signup','account-edit'))
-		));
-		$metadata->addPropertyConstraint('email', new Constraints\NotBlank(
-			array('message'=>'cannot be blank','groups' => array('signup','account-edit'))
-		));
-		$metadata->addPropertyConstraint('email', new Constraints\Email(
-			array('message'=>'invalid email','groups' => array('signup','account-edit'))
-		));
-		$metadata->addPropertyConstraint('password', new Constraints\NotBlank(
-			array('message'=>'cannot be blank','groups' => array('signup'))
-		));
+		
 		
 	}
 	public function __construct($doc, Application $app, $location=array(),$preference=array()){
@@ -43,18 +31,28 @@ class Member extends User {
 		$this->init($doc);
 		
 		if(!empty($doc['_id'])) $this->_id = (is_object($doc['_id'])) ? $doc['_id'] : new \MongoId($doc['_id']);
-		$this->businessName = $doc['businessName'];
         $this->accessLevel = $doc['accessLevel'];
 		$this->location = (is_object($location)) ? $location->__toArray() : $doc['location'];
-		
+		$this->stateBarNumber = $doc['stateBarNumber'];
+		$this->webSite = $doc['webSite'];
+		$this->addToListServ = $doc['addToListServ'];
+		$this->listServEmail = $doc['listServEmail'];
+
 	}
 	
 	/**
 	 * This method prepares defaults for empty attributes
 	*/
 	protected function prepareInsert(){
-		$this->businessName = $this->businessName ?: '';
 		$this->accessLevel = MEMBER;		
+		$this->location = $this->location ?: new \StdClass();
+		$this->locations = $this->locations ?: array();
+		$this->stateBarNumber = $this->stateBarNumber ?: '';
+		$this->webSite = $this->webSite ?: '';
+		$this->addToListServ = $this->addToListServ ?: '';
+		$this->listServEmail = $this->listServEmail ?: '';
+
+
 		parent::prepareInsert();
 	}
 	public function insert(){
@@ -64,6 +62,18 @@ class Member extends User {
         }else{
 			throw new Saw\Exceptions\SawException(new Saw\Model\Exceptions\DomainException(),"Adding failed.  Please try again.");
 		}
+	}
+	public function addLocation(){
+
+	}
+	public function removeLocation(){
+
+	}
+	public function addWebSite(){
+
+	}
+	public function removeWebsite(){
+
 	}
 	public static function getAccountBySession(Application $app, $fields=array(),$collection=''){
 		

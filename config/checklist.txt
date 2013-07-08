@@ -1,0 +1,5 @@
+do the google query for indexed routes and re-map with responses in the c.system.php file
+
+get an ssl cert for ecommerce
+
+prepare the AWS server

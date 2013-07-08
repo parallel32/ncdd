@@ -1,5 +1,7 @@
-<!-- BEGIN SIDEBAR MENU -->         
-         <ul>
+   <!-- BEGIN SIDEBAR -->
+      <div class="page-sidebar nav-collapse collapse">
+         <!-- BEGIN SIDEBAR MENU -->         
+         <ul class="page-sidebar-menu">
             <li>
                <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
                <div class="sidebar-toggler hidden-phone"></div>
@@ -61,24 +63,19 @@
                </a>
                <ul class="sub-menu">
                   <li class="<? echo ($this->vars['active'] == 'Utilities/phpinfo') ? 'active':'';?>">
-                     <i class="icon-search"></i> 
-                     <a href="/utilities/phpinfo">Search Members</a>
+                     <a href="/utilities/phpinfo"><i class="icon-search"></i> Search Members</a>
                   </li>
                   <li class="<? echo ($this->vars['active'] == 'Utilities/phpinfo') ? 'active':'';?>">
-                     <i class="icon-user"></i> 
-                     <a href="/">Founding Members</a>
+                     <a href="/"><i class="icon-user"></i> Founding Members</a>
                   </li>
                   <li class="<? echo ($this->vars['active'] == 'Utilities/phpinfo') ? 'active':'';?>">
-                     <i class="icon-user"></i> 
-                     <a href="/">Regents and Fellows</a>
+                     <a href="/"><i class="icon-user"></i> Regents and Fellows</a>
                   </li>
                   <li class="<? echo ($this->vars['active'] == 'Utilities/phpinfo') ? 'active':'';?>">
-                     <i class="icon-user"></i> 
-                     <a href="/">Sate Delegates</a>
+                     <a href="/"><i class="icon-user"></i> Sate Delegates</a>
                   </li>
                   <li class="<? echo ($this->vars['active'] == 'Utilities/phpinfo') ? 'active':'';?>">
-                     <i class="icon-briefcase"></i> 
-                     <a href="/">Membership Forms</a>
+                     <a href="/"><i class="icon-briefcase"></i> Membership Forms</a>
                   </li>
                </ul>
             </li>
@@ -97,3 +94,5 @@
             
          </ul>
          <!-- END SIDEBAR MENU -->
+      </div>
+   <!-- END SIDEBAR -->

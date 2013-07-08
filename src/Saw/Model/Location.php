@@ -6,8 +6,7 @@ use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Validator\Constraints;
 
 /**
- * Location model.  Belongs to Client.
- * in terms of users it's their address (billing or otherwise)
+ * Location model.  Belongs to Member.
  */
 class Location extends Model {
 	
@@ -23,6 +22,8 @@ class Location extends Model {
 	public $zip;
 	public $country;
 	public $phone;
+	public $fax;
+	public $tollFree;
 	public $hours;
 	public $ownerId;
 	
@@ -50,6 +51,8 @@ class Location extends Model {
         $this->zip = $doc['zip'];
         $this->country = $doc['country'];
 		$this->phone = $doc['phone'];
+		$this->fax = $doc['fax'];
+		$this->tollFree = $doc['phone'];
 		$this->hours = $doc['hours'];
 		$this->ownerId = (!empty($doc['ownerId'])) ? (is_object($doc['ownerId'])) ? $doc['ownerId'] : new \MongoId($doc['ownerId']) : $doc['ownerId'];
 	}
@@ -66,6 +69,8 @@ class Location extends Model {
         $this->zip = $this->zip ?: '';
         $this->country = $this->country ?: 'US';
 		$this->phone = $this->phone ?: '';
+		$this->fax = $this->fax ?: '';
+		$this->tollFree = $this->tollFree ?: '';
 		$this->hours = $this->hours ?: '';
 		$this->ownerId = (!empty($this->ownerId)) ? (is_object($this->ownerId)) ? $this->ownerId : new \MongoId($this->ownerId) : new \stdClass();
 	}

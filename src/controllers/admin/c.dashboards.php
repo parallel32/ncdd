@@ -26,16 +26,15 @@ $app->get('/', function (Request $request) use ($app) {
 			array_push($view_vars['crumbs'],array('name'=>'Admin','href'=>'/'));
 			return $app['view']->render('dashboards/admin', 'default', $view_vars);
 			break;
-		case CLIENT:
+		case EDITOR:
 			array_push($view_vars['crumbs'],array('name'=>'Client','href'=>'/'));
 			return $app['view']->render('dashboards/client', 'default', $view_vars);
 			break;
-		case EDITOR:
+		case MEMBER:
 			array_push($view_vars['crumbs'],array('name'=>'Editor','href'=>'/'));
 			return $app['view']->render('dashboards/editor', 'default', $view_vars);
 			break;
 	}
-	
 })->before($mustbeADMIN);
 
 return $app;

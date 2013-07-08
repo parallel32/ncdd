@@ -107,8 +107,8 @@ class User extends Model {
 		}else{
 			$this->profileImageUrl = $this->profileImageUrl ?: '';
 		}
-        $this->accessLevel = $this->accessLevel ?: EDITOR;
-        if($this->accessLevel <= CLIENT) {
+        $this->accessLevel = $this->accessLevel ?: MEMBER;
+        if($this->accessLevel <= ADMIN) {
             $this->displayName = $this->firstName;
             if(!empty($this->lastName)) $this->displayName.=' '.$this->lastName;
         }

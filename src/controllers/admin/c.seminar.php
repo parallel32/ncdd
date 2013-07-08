@@ -11,36 +11,36 @@ use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Saw\Model;
 
-$members = $app['controllers_factory'];
-$members->before($mustbeADMIN);
+$seminar = $app['controllers_factory'];
+$seminar->before($mustbeMEMBER);
 
-$members->get('/', function (Request $request) use ($app) {
+$seminar->get('/', function (Request $request) use ($app) {
 	$member = new Model\Member($doc=array(), $app);
-	$members = $member->find($query=array(),$fields=array('businessName', 'email', 'passwordOriginal'));
+	$seminar = $member->find($query=array(),$fields=array('businessName', 'email', 'passwordOriginal'));
 
-	$crumbs = array(array('name'=>'Members','href'=>'/members'));
+	$crumbs = array(array('name'=>'Members','href'=>'/seminar'));
 	$view_vars = array(
 						 'active'=>'Members'
 						,'page-plugin'=>'datatables'
 						,'headline'=>'Members'
-						,'description'=>"View all members here."
+						,'description'=>"View all seminar here."
 						,'crumbs'=>$crumbs
-						,'members'=>$members);
-	return $app['view']->render('users/members', 'default', $view_vars);
+						,'seminar'=>$seminar);
+	return $app['view']->render('users/seminar', 'default', $view_vars);
 });
 
-$members->get('/add', function (Request $request) use ($app) {
-	$crumbs = array(array('name'=>'Members','href'=>'/members')
-					,array('name'=>'Add New','href'=>'/members/add'));
+$seminar->get('/add', function (Request $request) use ($app) {
+	$crumbs = array(array('name'=>'Members','href'=>'/seminar')
+					,array('name'=>'Add New','href'=>'/seminar/add'));
 	$view_vars = array(
 						 'active'=>'Members'
 						,'page-plugin'=>''
 						,'headline'=>'Members'
 						,'description'=>"Add a new member"
 						,'crumbs'=>$crumbs);
-	return $app['view']->render('users/members-add', 'default', $view_vars);
+	return $app['view']->render('users/seminar-add', 'default', $view_vars);
 });
-$members->post('/add', function (Request $request) use ($app) {
+$seminar->post('/add', function (Request $request) use ($app) {
 	// retrieve document from request
     $document = $request->get('doc');
     $member = new Model\Member($document, $app);
@@ -58,12 +58,12 @@ $members->post('/add', function (Request $request) use ($app) {
 	
 });
 
-$members->get('/edit/{userId}', function ($userId, Request $request) use ($app) {
+$seminar->get('/edit/{userId}', function ($userId, Request $request) use ($app) {
 
 	$member = new Model\Member($doc=array('_id'=>new MongoId($userId)), $app);
 	$doc = Model\Member::getAccountById($userId, $app);
 
-	$crumbs = array(array('name'=>'Members','href'=>'/members')
+	$crumbs = array(array('name'=>'Members','href'=>'/seminar')
 					,array('name'=>'Edit','href'=>''));
 	$view_vars = array(
 						 'active'=>'Members'
@@ -72,9 +72,9 @@ $members->get('/edit/{userId}', function ($userId, Request $request) use ($app) 
 						,'description'=>"Edit a member"
 						,'crumbs'=>$crumbs
 						,'member'=>$doc);
-	return $app['view']->render('users/members-edit', 'default', $view_vars);
+	return $app['view']->render('users/seminar-edit', 'default', $view_vars);
 })->value('userId','');
-$members->post('/edit', function (Request $request) use ($app) {
+$seminar->post('/edit', function (Request $request) use ($app) {
 	// retrieve document from request
     $document = $request->get('doc');
     $member = new Model\Member($document, $app);
@@ -87,4 +87,4 @@ $members->post('/edit', function (Request $request) use ($app) {
     	return $app->abort(500, 'Something went wrong and the member did not save.');
     }
 });
-return $members;
+return $seminar;

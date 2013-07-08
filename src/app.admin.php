@@ -12,6 +12,8 @@ $app = require __DIR__.'/controllers/admin/c.dashboards.php';
 
 $app->mount('/ufs', 		include __DIR__.'/controllers/admin/c.ufs.php');//user uploaded files file system
 $app->mount('/utilities', 	include __DIR__.'/controllers/admin/c.utilities.php');
+$app->mount('/member', 		include __DIR__.'/controllers/admin/c.member.php');
+$app->mount('/seminar', 	include __DIR__.'/controllers/admin/c.seminar.php');
 
 /**
  * Before Filter
