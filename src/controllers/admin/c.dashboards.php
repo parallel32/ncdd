@@ -12,15 +12,20 @@ use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Saw\Model;
 
-$app->get('/', function (Request $request) use ($app) {
+$common_view_vars = array(
+	'active'=>'Dashboard'
+	,'headline'=>'Dashboard'
+	,'add-link'=>''
+);
+
+$app->get('/', function (Request $request) use ($app, $common_view_vars) {
 	$user = Model\User::getUserAccessLevelBySession($app);
 	$crumbs = array(array('name'=>'Dashboard','href'=>'/'));
 	$view_vars = array(
-						 'active'=>'Dashboard'
-						,'page-plugin'=>'dashboard'
-						,'headline'=>'Dashboard'
+						 'page-plugin'=>'dashboard'
 						,'description'=>"Welcome.  Here you'll find aggregated data from your account."
 						,'crumbs'=>$crumbs);
+	$view_vars = array_merge($common_view_vars, $view_vars);
 	switch ($user['accessLevel']) {
 		case ADMIN:
 			array_push($view_vars['crumbs'],array('name'=>'Admin','href'=>'/'));

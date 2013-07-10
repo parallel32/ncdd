@@ -6,6 +6,8 @@ use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Validator\Constraints;
 use Symfony\Component\Validator\Constraints\Callback;
 use Symfony\Component\Validator\ExecutionContext;
+use Cocur\Slugify\Slugiy;
+use Carbon\Carbon;
 
 /**
  * Sessions and Seminars Model.
@@ -15,6 +17,7 @@ class Seminar extends Model {
 	
 	public $collection = 'seminar';
 	public $headline;
+	public $timeZone;
 	public $startDate;
 	public $endDate;
 	public $description;
@@ -23,6 +26,8 @@ class Seminar extends Model {
 
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addPropertyConstraint('headline', new Constraints\NotBlank(array('message'=>'cannot be blank')));
+		$metadata->addPropertyConstraint('description', new Constraints\NotBlank(array('message'=>'cannot be blank')));
+		$metadata->addPropertyConstraint('timeZone', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('startDate', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('endDate', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addConstraint(new Callback(array(
@@ -60,7 +65,7 @@ class Seminar extends Model {
 				$result = $e_epoch - $s_epoch;
 				if($result < 0){
 					$propertyPath = $context->getPropertyPath().'startDate';
-		        	$context->addViolationAtPath($propertyPath,'Start Date cannot be after Expiration Date.', array(), null);
+		        	$context->addViolationAtPath($propertyPath,'Start Date cannot be after End Date.', array(), null);
 				}
 			}
 		}
@@ -94,7 +99,7 @@ class Seminar extends Model {
 				$result = $e_epoch - $s_epoch;
 				if($result < 0){
 					$propertyPath = $context->getPropertyPath().'endDate';
-		        	$context->addViolationAtPath($propertyPath,'Expiration Date cannot be before Start Date.', array(), null);
+		        	$context->addViolationAtPath($propertyPath,'End Date cannot be before Start Date.', array(), null);
 				}
 			}
 		}
@@ -105,10 +110,12 @@ class Seminar extends Model {
 		
 		if(!empty($doc['_id'])) $this->_id = (is_object($doc['_id'])) ? $doc['_id'] : new \MongoId($doc['_id']);
         $this->headline = $doc['headline'];
-        $this->startDate = $doc['startDate'];
-        $this->endDate = $doc['endDate'];
-        $this->description = $doc['descriptino'];
-        $this->files = $doc['files'];
+        $this->timeZone = $doc['timeZone'];
+        $this->startDate = (!empty($doc['startDate'])) ? (is_object($doc['startDate'])) ? $doc['startDate']->__toArray() : new Date(self::$app,$doc['startDate'])  : $doc['startDate'];
+		$this->endDate = (!empty($doc['endDate'])) ? (is_object($doc['endDate'])) ? $doc['endDate']->__toArray() : new Date(self::$app,$doc['endDate'])  : $doc['endDate'];
+		include __DIR__.'/../Provider/WordPress/ncdd-wp-includes.php';
+		$this->description = (!empty($doc['description'])) ? wptexturize(wpautop($doc['description'])) : '';
+		$this->files = $doc['files'];
         $this->image = (is_object($doc['image'])) ? $doc['image']->__toArray() : $doc['image'];
 	}
 	
@@ -117,6 +124,7 @@ class Seminar extends Model {
 	*/
 	protected function prepareInsert(){
 		$this->headline = $this->headline ?: '';
+		$this->timeZone = $this->timeZone ?: 'America/New_York';
 		$this->startDate = (!empty($this->startDate)) ? (is_object($this->startDate)) ? $this->startDate->__toArray() : $this->startDate  : new Date(self::$app,'now');
 		$this->endDate = (!empty($this->endDate)) ? (is_object($this->endDate)) ? $this->endDate->__toArray() : $this->endDate  : new Date(self::$app,'now');
 		$this->description = $this->description ?: '';
@@ -126,6 +134,24 @@ class Seminar extends Model {
 	public function insert(){
 		$this->prepareInsert();
 		if(parent::insert()){
+			
+			// prepare the Agenda Objects
+			$startDate = (is_object($this->startDate)) ? $this->startDate->__toArray() : $this->startDate;
+			$endDate = (is_object($this->endDate)) ? $this->endDate->__toArray() : $this->endDate;
+			$start = Carbon::createFromTimeStamp(strtotime($startDate['fullMonth']), $this->timeZone);
+			$end = Carbon::createFromTimeStamp(strtotime($endDate['fullMonth']), $this->timeZone);
+			$days = $start->diffInDays($end);
+			for ($i=0; $i <= $days; $i++) { 
+				$start = Carbon::createFromTimeStamp(strtotime($startDate['fullMonth']), $this->timeZone);
+				$date = new Date(self::$app,$start->addDays($i)->toATOMString());
+	     		$agenda = new Agenda(array(
+	     			'seminarId'=>$this->_id,
+	     			'name'=>'Agenda Day '.($i+1),
+	     			'date'=> $date
+	     		),self::$app);
+	     		$agenda->insert();
+	     	}     
+
         	return $this->_id;
         }else{
 			throw new \Saw\Model\Exceptions\DomainException("Adding failed.  Please try again.");
@@ -146,5 +172,18 @@ class Seminar extends Model {
 			throw new \Saw\Exceptions\InternalServerErrorException("Deleting <strong>".$this->headline."</strong> failed due to a database error.");
 		}
 
+	}
+	public static function slugify($str){
+
+		$slugify = new \Cocur\Slugify\Slugify();//for iconv translit
+		
+		$arr = explode('/',$str);
+		for ($i=0; $i < count($arr); $i++) { 
+			$slug = $slugify->slugify($arr[$i]);
+			$arr[$i] = ($slug == 'n-a') ? '':$slug;
+		}
+		$slug = implode('/',$arr);
+		
+		return $slug;
 	}
 }

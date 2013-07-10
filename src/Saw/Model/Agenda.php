@@ -31,7 +31,7 @@ class Agenda extends Model {
 		if(!empty($doc['_id'])) $this->_id = (is_object($doc['_id'])) ? $doc['_id'] : new \MongoId($doc['_id']);
         if(!empty($doc['seminarId'])) $this->seminarId = (is_object($doc['seminarId'])) ? $doc['seminarId'] : new \MongoId($doc['seminarId']);
 		$this->name = $doc['name'];
-		$this->date = $doc['date'];
+		$this->date = (!empty($doc['date'])) ? (is_object($doc['date'])) ? $doc['date']->__toArray() : new Date(self::$app,$doc['date'])  : $doc['date'];
 		$this->timeSlots = $doc['timeSlots'];
 	}
 	
@@ -41,7 +41,7 @@ class Agenda extends Model {
 	protected function prepareInsert(){
 		$this->seminarId = $this->seminarId ?: '';
 		$this->name = $this->name ?: '';
-		$this->date = $this->date ?: new \StdClass();
+		$this->date = (!empty($this->date)) ? (is_object($this->date)) ? $this->date->__toArray() : $this->date  : new Date(self::$app,'now');
 		$this->timeSlots = $this->timeSlots ?: array();		
 	}
 	public function insert(){

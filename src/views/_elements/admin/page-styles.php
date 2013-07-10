@@ -3,6 +3,7 @@
 <link rel="stylesheet" type="text/css" href="/assets/plugins/select2/select2_metro.css" />
 <link rel="stylesheet" type="text/css" href="/assets/plugins/chosen-bootstrap/chosen/chosen.css" />
 <link rel="stylesheet" type="text/css" href="/assets/plugins/jquery-tags-input/jquery.tagsinput.css" />
+<link rel="stylesheet" type="text/css" href="/assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.css"/>
 
 <? 
    $plugins = explode(',',$this->vars['page-plugin']);
@@ -27,6 +28,13 @@ EOT;
       case 'checkboxes':
          echo <<< EOT
             <link rel="stylesheet" type="text/css" href="/assets/plugins/bootstrap-toggle-buttons/static/stylesheets/bootstrap-toggle-buttons.css" />
+
+EOT;
+         break;
+      case 'editor':
+         echo <<< EOT
+            <link rel="stylesheet" href="/assets/aloha/aloha/css/aloha.css" type="text/css">
+
 
 EOT;
          break;

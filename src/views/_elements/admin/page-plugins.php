@@ -47,6 +47,35 @@ EOT;
 
 EOT;
          break;
+      case 'editor':
+         echo <<< EOT
+            <script>
+            Aloha = {};
+            
+            Aloha.settings = {
+                 sidebar: { disabled: false }
+                 ,plugins: {
+                     format: {
+                         // all elements with no specific configuration get this configuration
+                         config : [ 'strong', 'b', 'i', 'del', 'sub', 'sup', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'pre', 'removeFormat'],
+                         editables: {
+                             // example: no formatting allowed for title
+                             '#title': [],
+                             // exampple: just bold and italic for the teaser
+                             '#teaser': [ 'b', 'i' ]
+                         },
+                         // those are the tags that will be cleaned when clicking "remove formatting"
+                         // this example resembles the default configuration
+                         removeFormats : [ 'strong', 'em', 'b', 'i', 's', 'cite', 'q', 'code', 'abbr', 'del', 'sub', 'sup']
+                     }
+                 }
+             }
+            </script>
+             <script src="/assets/aloha/aloha/lib/require.js"></script>
+             <script src="/assets/aloha/aloha/lib/aloha.js" data-aloha-plugins="common/ui,common/format,common/highlighteditables,common/link,common/align"></script>
+
+EOT;
+         break;
       case 'fileupload':
          echo <<< EOT
             <!-- BEGIN:File Upload Plugin JS files-->

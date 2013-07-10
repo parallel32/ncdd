@@ -22,48 +22,61 @@
                <a href="/">
                <i class="icon-dashboard"></i> 
                <span class="title">Dashboard</span>
-               <span class="selected"></span>
+               <? echo ($this->vars['active'] == 'Dashboard') ? '<span class="selected"></span>':'';?>
                </a>
             </li>
             <li class="<? echo ($this->vars['active'] == 'Clients') ? 'active':'';?>">
                <a href="/page">
                <i class="icon-copy"></i> 
                <span class="title">Website Pages</span>
+               <? echo ($this->vars['active'] == 'Clients') ? '<span class="selected"></span>':'';?>
                </a>
             </li>
             <li class="<? echo ($this->vars['active'] == 'Modules') ? 'active':'';?>">
                <a href="/store">
                <i class="icon-shopping-cart"></i> 
                <span class="title">NCDD Store</span>
+               <? echo ($this->vars['active'] == 'Modules') ? '<span class="selected"></span>':'';?>
                </a>
             </li>
             <li class="<? echo ($this->vars['active'] == 'Modules') ? 'active':'';?>">
                <a href="/album">
                <i class="icon-picture"></i> 
                <span class="title">Photo Gallery</span>
+               <? echo ($this->vars['active'] == 'Modules') ? '<span class="selected"></span>':'';?>
                </a>
             </li>
             <li class="<? echo ($this->vars['active'] == 'Modules') ? 'active':'';?>">
                <a href="/blog">
                <i class="icon-edit"></i> 
                <span class="title">DUI Blog</span>
+               <? echo ($this->vars['active'] == 'Modules') ? '<span class="selected"></span>':'';?>
                </a>
             </li>
             <li class="<? echo ($this->vars['active'] == 'Modules') ? 'active':'';?>">
                <a href="/contact">
                <i class="icon-envelope"></i> 
                <span class="title">Web Contacts</span>
+               <? echo ($this->vars['active'] == 'Modules') ? '<span class="selected"></span>':'';?>
                </a>
             </li>
-            <li class="<? echo (strpos($this->vars['active'], 'Utilities') !== false) ? 'active':'';?>">
+            <li class="<? echo ($this->vars['active'] == 'Seminar') ? 'active':'';?>">
+               <a href="/seminar">
+               <i class="icon-facetime-video"></i> 
+               <span class="title">Sessions &amp; Seminars</span>
+               <? echo ($this->vars['active'] == 'Seminar') ? '<span class="selected"></span>':'';?>
+               </a>
+            </li>
+            <li class="<? echo (strpos($this->vars['active'], 'Utilities') !== false) ? 'active open':'';?>">
                <a href="javascript:;">
                <i class="icon-group"></i> 
                <span class="title">Members</span>
-               <span class="arrow "></span>
+               <? echo ($this->vars['active'] == 'Utilities') ? '<span class="selected"></span><span class="arrow open"></span>':'<span class="arrow"></span>';?>
                </a>
                <ul class="sub-menu">
                   <li class="<? echo ($this->vars['active'] == 'Utilities/phpinfo') ? 'active':'';?>">
                      <a href="/utilities/phpinfo"><i class="icon-search"></i> Search Members</a>
+
                   </li>
                   <li class="<? echo ($this->vars['active'] == 'Utilities/phpinfo') ? 'active':'';?>">
                      <a href="/"><i class="icon-user"></i> Founding Members</a>
@@ -83,12 +96,14 @@
                <a href="/forum">
                <i class="icon-comments"></i> 
                <span class="title">DUI Forum</span>
+               <? echo ($this->vars['active'] == 'Modules') ? '<span class="selected"></span>':'';?>
                </a>
             </li>
             <li class="<? echo ($this->vars['active'] == 'Modules') ? 'active':'';?>">
                <a href="/vfl">
                <i class="icon-legal"></i> 
                <span class="title">Virtual Library</span>
+               <? echo ($this->vars['active'] == 'Modules') ? '<span class="selected"></span>':'';?>
                </a>
             </li>
             

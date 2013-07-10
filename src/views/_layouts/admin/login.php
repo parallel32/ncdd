@@ -29,7 +29,7 @@
 <body class="login">
   <!-- BEGIN LOGO -->
   <div class="logo">
-    <img src="/assets/img/login2-logo.png" alt="" /> 
+    <img src="/assets/img/ncdd-login2-logo.png" alt="" /> 
   </div>
   <!-- END LOGO -->
   <!-- BEGIN LOGIN -->
