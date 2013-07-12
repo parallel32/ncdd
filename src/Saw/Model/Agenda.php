@@ -17,6 +17,7 @@ class Agenda extends Model {
 	public $seminarId;
 	public $name; // pre-defined as Agenda Day {day-number}
 	public $date;
+	public $timeZone;
 	public $timeSlots; // array of AgendaTime objects with their time as the array index so they can be sorted with ksort
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
@@ -31,7 +32,8 @@ class Agenda extends Model {
 		if(!empty($doc['_id'])) $this->_id = (is_object($doc['_id'])) ? $doc['_id'] : new \MongoId($doc['_id']);
         if(!empty($doc['seminarId'])) $this->seminarId = (is_object($doc['seminarId'])) ? $doc['seminarId'] : new \MongoId($doc['seminarId']);
 		$this->name = $doc['name'];
-		$this->date = (!empty($doc['date'])) ? (is_object($doc['date'])) ? $doc['date']->__toArray() : new Date(self::$app,$doc['date'])  : $doc['date'];
+		$this->timeZone = $doc['timeZone'];
+		$this->date = (!empty($doc['date'])) ? (is_object($doc['date'])) ? $doc['date']->__toArray() : new Date(self::$app,$doc['date'], $this->timeZone)  : $doc['date'];
 		$this->timeSlots = $doc['timeSlots'];
 	}
 	
@@ -41,7 +43,8 @@ class Agenda extends Model {
 	protected function prepareInsert(){
 		$this->seminarId = $this->seminarId ?: '';
 		$this->name = $this->name ?: '';
-		$this->date = (!empty($this->date)) ? (is_object($this->date)) ? $this->date->__toArray() : $this->date  : new Date(self::$app,'now');
+		$this->timeZone = $this->timeZone ?: 'America/New_York';
+		$this->date = (!empty($this->date)) ? (is_object($this->date)) ? $this->date->__toArray() : $this->date  : new Date(self::$app,'now', $this->timeZone);
 		$this->timeSlots = $this->timeSlots ?: array();		
 	}
 	public function insert(){
@@ -75,8 +78,28 @@ class Agenda extends Model {
 	}
 	public function removeTimeSlot($agendaTime){
 		// mongo atomic push onto the array
+		$agendaTime = $agendaTime->__toArray(false);
+
 		$criteria = array('_id'=>$this->_id);
-		$update_spec = array('$pull'=>array('timeSlots.date'=>$agendaTime['date']));
+		$update_spec = array('$pull'=>array('timeSlots'=>array('date.date'=>$agendaTime['date']['date'])));
 		return self::$app['mongo']->update($update_spec, $this->collection, $criteria, $multiple=false, $upsert=false,$options=array('safe'=>true,'fsync'=>true));
+	}
+	public function findBySeminarId(){
+		$results = $this->find($query=array('seminarId'=>$this->seminarId),$fields=array(),$slaveOkay=true,$sort=array('date.date'=>1),$offset=0,$limit=100);
+		if(!empty($results)):
+			for ($i=0; $i < count($results); $i++) { 
+				$t_arr = array();
+				foreach ($results[$i]['timeSlots'] as $timeSlot){
+					$t_arr[$timeSlot['date']['date']->sec] = $timeSlot;
+				}
+				ksort($t_arr,SORT_NUMERIC);
+				$results[$i]['timeSlots'] = $t_arr;
+
+			}
+		endif;
+		return $results;
+	}
+	public function removeBySeminarId(){
+		return $this->removeByCriteria(array('seminarId'=>$this->seminarId));
 	}
 }

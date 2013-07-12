@@ -23,7 +23,7 @@
 		}		
 		
 
-		/*
+		/* // other options 
 		$("#ui_date_picker").datepicker();
 
         $("#ui_date_picker_with_button_bar").datepicker({

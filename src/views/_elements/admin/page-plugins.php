@@ -13,6 +13,7 @@
    <script src="/assets/plugins/jquery.cookie.min.js" type="text/javascript"></script>
    <script src="/assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
    <!-- END CORE PLUGINS -->
+
    <!-- BEGIN PAGE LEVEL PLUGINS -->
    <?
       $plugins = explode(',',$this->vars['page-plugin']);
@@ -28,6 +29,11 @@
             <script type="text/javascript" src="/assets/plugins/data-tables/jquery.dataTables.js"></script>
             <script type="text/javascript" src="/assets/plugins/data-tables/DT_bootstrap.js"></script>
 
+EOT;
+         break;
+      case 'timeline':
+         echo <<< EOT
+            <script type="text/javascript" src="/assets/plugins/clockface/js/clockface.js"></script>
 EOT;
          break;
       case 'forms':

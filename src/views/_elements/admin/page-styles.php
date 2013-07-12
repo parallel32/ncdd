@@ -19,6 +19,13 @@
 
 EOT;
          break;
+      case 'timeline':
+         echo <<< EOT
+            <link rel="stylesheet" href="/assets/css/pages/timeline.css" />
+            <link rel="stylesheet" type="text/css" href="/assets/plugins/clockface/css/clockface.css" />
+
+EOT;
+         break;
       case 'forms':
          echo <<< EOT
             <link rel="stylesheet" type="text/css" href="/assets/plugins/chosen-bootstrap/chosen/chosen.css" />

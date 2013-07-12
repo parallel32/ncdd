@@ -13,7 +13,8 @@ use Symfony\Component\Validator\ExecutionContext;
  */
 class AgendaTime extends Model {
 	
-	public $date; // a data object that also holds the time.
+	public $timeZone;
+	public $date; // a date object that also holds the time.
 	public $title; // pre-defined as Agenda Day {day-number}
 	public $description;
 	public $color; // yellow, green, blue , purple, red, grey
@@ -29,10 +30,11 @@ class AgendaTime extends Model {
 		parent::__construct($app);
 		$this->init($doc);
 		
-		if(!empty($doc['_id'])) $this->_id = (is_object($doc['_id'])) ? $doc['_id'] : new \MongoId($doc['_id']);
-        $this->date = $doc['date'];
+		$this->timeZone = $doc['timeZone'];
+		$this->date = (!empty($doc['date'])) ? (is_object($doc['date'])) ? $doc['date']->__toArray() : new Date(self::$app,$doc['date'],$this->timeZone)  : $doc['date'];
 		$this->title = $doc['title'];
-		$this->description = $doc['description'];
+		include_once __DIR__.'/../Provider/WordPress/ncdd-wp-includes.php';
+		$this->description = (!empty($doc['description'])) ? wptexturize(wpautop($doc['description'])) : '';
 		$this->color = $doc['color'];
 
 	}

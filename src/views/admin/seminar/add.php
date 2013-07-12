@@ -16,7 +16,7 @@
                   <!-- BEGIN VALIDATION STATES-->
                   <div class="portlet box blue">
                      <div class="portlet-title">
-                        <h4><i class="icon-user"></i> Add a new Seminar</h4>
+                        <h4><i class="icon-facetime-video"></i> Add a new Seminar</h4>
                      </div>
                      <div class="portlet-body form">
                         <!-- BEGIN FORM-->
@@ -78,7 +78,7 @@
 
 
                            <div class="form-actions">
-                              <button type="button" class="btn green">Save & Publish</button>
+                              <button type="button" class="btn green">Save & Continue</button>
                               <button type="button" class="btn cancel">Cancel</button>
                            </div>
                         </form>
@@ -97,7 +97,7 @@
                            </div>
                            <div class="modal-footer">
                               <button class="btn finished" aria-hidden="true">Finished</button>
-                              <button class="btn blue add-more">Add More</button>
+                              <button class="btn blue continue" data-insertid="">Continue To Agenda</button>
                            </div>
                         </div>
 
@@ -120,8 +120,7 @@
          io.saw.Seminar.sluggify('headline','headline');         
 
          Aloha.ready( function() {
-
-              Aloha.jQuery('.description').aloha();
+            Aloha.jQuery('.description').aloha();
          });
       });
       

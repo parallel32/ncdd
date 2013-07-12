@@ -21,17 +21,43 @@ $common_view_vars = array(
 
 $seminar->get('/', function (Request $request) use ($app, $common_view_vars) {
 	$seminar = new Model\Seminar($doc=array(), $app);
-	$seminar = $seminar->find($query=array(),$fields=array('businessName', 'email', 'passwordOriginal'));
-
+	$seminars = $seminar->find($query=array(),$fields=array(),true,$sort=array('startDate.date'=>1));
+	if(!empty($seminars)):
+		for ($i=0; $i < count($seminars); $i++) {
+			$agenda = new Model\Agenda(array('seminarId'=>$seminars[$i]['_id']),$app);
+			$agendas = $agenda->findBySeminarId();
+			$seminars[$i]['agendas'] = $agendas;
+		}
+	endif;
 	$crumbs = array(array('name'=>'Sessions & Seminars','href'=>'/seminar'));
+	$view_vars = array(
+						'page-plugin'=>'datatables'
+						,'description'=>"View all Sessions & Seminars here."
+						,'crumbs'=>$crumbs
+						,'seminars'=>$seminars);
+	$view_vars = array_merge($common_view_vars, $view_vars);
+	return $app['view']->render('seminar/index', 'default', $view_vars);
+});
+$seminar->get('/view/{id}', function ($id, Request $request) use ($app, $common_view_vars) {
+	$seminar = new Model\Seminar($doc=array('_id'=>$id), $app);
+	//$seminar = $seminar->findOne($query=array('_id'=>$id),$fields=array());
+	$seminar = $seminar->findById();
+	
+	$agenda = new Model\Agenda(array('seminarId'=>$id),$app);
+	$agendas = $agenda->findBySeminarId();
+	$seminar['agendas'] = $agendas;
+	
+	$crumbs = array(array('name'=>'Seminars','href'=>'/seminar/')
+					,array('name'=>$seminar['headline'],'href'=>'/seminar/view/'.$id)
+					);
 	$view_vars = array(
 						'page-plugin'=>'datatables'
 						,'description'=>"View all Sessions & Seminars here."
 						,'crumbs'=>$crumbs
 						,'seminar'=>$seminar);
 	$view_vars = array_merge($common_view_vars, $view_vars);
-	return $app['view']->render('seminar/index', 'default', $view_vars);
-});
+	return $app['view']->render('seminar/view', 'default', $view_vars);
+})->value('id','');
 
 $seminar->get('/add', function (Request $request) use ($app, $common_view_vars) {
 	$crumbs = array(array('name'=>'Sessions & Seminars','href'=>'/seminar')
@@ -49,9 +75,9 @@ $seminar->post('/add', function (Request $request) use ($app, $common_view_vars)
     $seminar = new Model\Seminar($document, $app);
     // validate the model
     $app['validateModel']($app,$seminar);
-    $seminar->insert();
+    $_id = $seminar->insert();
     $message = 'If you would like to add another click Add More or click Finished.';
-    return new Response(json_encode(array('message' => $message)), 200,array('Content-Type' => 'application/json'));
+    return new Response(json_encode(array('id'=>$_id,'message' => $message)), 200,array('Content-Type' => 'application/json'));
 	
 });
 
@@ -83,6 +109,14 @@ $seminar->post('/edit', function (Request $request) use ($app, $common_view_vars
     	return $app->abort(500, 'Something went wrong and did not save.');
     }
 });
+
+$seminar->get('/delete/{id}', function ($id, Request $request) use ($app, $common_view_vars) {
+	$seminar = new Model\Seminar(array('_id'=>$id), $app);
+    $seminar->delete();
+    return new Response(json_encode(array('message' => 'Removed successfully')), 200,array('Content-Type' => 'application/json'));
+    
+})->value('id','');
+
 ////////////////////////
 // REAL-TIME SLUGGIFY //
 ////////////////////////
@@ -91,5 +125,4 @@ $seminar->post('/slugify', function (Request $request) use ($app) {
 	$slug = Model\Seminar::slugify($str);
 	return new Response(json_encode(array('message' => 'Successfully converted.', "slug"=>$slug)), 200,array('Content-Type' => 'application/json'));
 });
-
 return $seminar;

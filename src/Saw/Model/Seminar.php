@@ -111,9 +111,9 @@ class Seminar extends Model {
 		if(!empty($doc['_id'])) $this->_id = (is_object($doc['_id'])) ? $doc['_id'] : new \MongoId($doc['_id']);
         $this->headline = $doc['headline'];
         $this->timeZone = $doc['timeZone'];
-        $this->startDate = (!empty($doc['startDate'])) ? (is_object($doc['startDate'])) ? $doc['startDate']->__toArray() : new Date(self::$app,$doc['startDate'])  : $doc['startDate'];
-		$this->endDate = (!empty($doc['endDate'])) ? (is_object($doc['endDate'])) ? $doc['endDate']->__toArray() : new Date(self::$app,$doc['endDate'])  : $doc['endDate'];
-		include __DIR__.'/../Provider/WordPress/ncdd-wp-includes.php';
+        $this->startDate = (!empty($doc['startDate'])) ? (is_object($doc['startDate'])) ? $doc['startDate']->__toArray() : new Date(self::$app,$doc['startDate'], $this->timeZone)  : $doc['startDate'];
+		$this->endDate = (!empty($doc['endDate'])) ? (is_object($doc['endDate'])) ? $doc['endDate']->__toArray() : new Date(self::$app,$doc['endDate'], $this->timeZone)  : $doc['endDate'];
+		include_once __DIR__.'/../Provider/WordPress/ncdd-wp-includes.php';
 		$this->description = (!empty($doc['description'])) ? wptexturize(wpautop($doc['description'])) : '';
 		$this->files = $doc['files'];
         $this->image = (is_object($doc['image'])) ? $doc['image']->__toArray() : $doc['image'];
@@ -125,8 +125,8 @@ class Seminar extends Model {
 	protected function prepareInsert(){
 		$this->headline = $this->headline ?: '';
 		$this->timeZone = $this->timeZone ?: 'America/New_York';
-		$this->startDate = (!empty($this->startDate)) ? (is_object($this->startDate)) ? $this->startDate->__toArray() : $this->startDate  : new Date(self::$app,'now');
-		$this->endDate = (!empty($this->endDate)) ? (is_object($this->endDate)) ? $this->endDate->__toArray() : $this->endDate  : new Date(self::$app,'now');
+		$this->startDate = (!empty($this->startDate)) ? (is_object($this->startDate)) ? $this->startDate->__toArray() : $this->startDate  : new Date(self::$app,'now', $this->timeZone);
+		$this->endDate = (!empty($this->endDate)) ? (is_object($this->endDate)) ? $this->endDate->__toArray() : $this->endDate  : new Date(self::$app,'now', $this->timeZone);
 		$this->description = $this->description ?: '';
 		$this->files = $this->files ?: array();
 		$this->image = (!empty($this->image)) ? (is_object($this->image)) ? $this->image->__toArray() : $this->image  : new \stdClass();
@@ -143,10 +143,11 @@ class Seminar extends Model {
 			$days = $start->diffInDays($end);
 			for ($i=0; $i <= $days; $i++) { 
 				$start = Carbon::createFromTimeStamp(strtotime($startDate['fullMonth']), $this->timeZone);
-				$date = new Date(self::$app,$start->addDays($i)->toATOMString());
+				$date = new Date(self::$app,$start->addDays($i)->toATOMString(), $this->timeZone);
 	     		$agenda = new Agenda(array(
 	     			'seminarId'=>$this->_id,
 	     			'name'=>'Agenda Day '.($i+1),
+	     			'timeZone'=>$this->timeZone,
 	     			'date'=> $date
 	     		),self::$app);
 	     		$agenda->insert();
@@ -167,6 +168,8 @@ class Seminar extends Model {
 	public function delete(){
 		try {
 			$this->remove();
+			$agenda = new Agenda(array('seminarId'=>$this->_id),self::$app);
+			$agenda->removeBySeminarId();
 			// TODO remove all the Agenda records
 		} catch (Exception $e) {
 			throw new \Saw\Exceptions\InternalServerErrorException("Deleting <strong>".$this->headline."</strong> failed due to a database error.");

@@ -14,8 +14,7 @@
                <div class="span12 blog-page">
                   <div class="row-fluid">
                      <div class="span9 article-block">
-                        <? if(!empty($this->vars['seminars'])): ?>
-                        <? foreach ($this->vars['seminars'] as $seminar): ?>
+                        <? $seminar = $this->vars['seminar']; ?>
                         <div class="row-fluid">
                            <div class="span8 blog-article">
                               <? $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user'); return $user['accessLevel'];},$this->app);
@@ -47,10 +46,7 @@
                            
                         </div>
                         <hr>
-                        <? endforeach; ?>
-                        <? else: ?>
-                        <p>Currently, there are no Seminars in the system.</p>
-                        <? endif; ?>
+                        
                      </div>
                      <!--end span9--
                      <div class="span3 blog-sidebar">

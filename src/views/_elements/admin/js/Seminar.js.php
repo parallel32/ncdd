@@ -7,6 +7,7 @@
 		   ,postOnSuccess:function(responseObj){
 		      $('#save-success .modal-body p').html(responseObj.message);
 		      $('#save-success').modal({keyboard: false});
+		      $('#save-success .continue').attr('data-insertid',responseObj.id.$id);
 		   }
 		});      
 	};
@@ -19,6 +20,31 @@
 		      $('#save-success').modal({keyboard: false});
 		   }
 		});      
+	};
+	Seminar.indexInit = function (){
+		// prepare the edit seminar and edit agenda buttons
+		$('.edit-seminar').click(function(e){
+			e.preventDefault();
+			document.location.href='/seminar/edit/'+$(this).attr('data-id');
+		});
+		$('.edit-agenda').click(function(e){
+			e.preventDefault();
+			document.location.href='/agenda/'+$(this).attr('data-id')+'/manage';
+		});
+		$('.remove-seminar').click(function(e){
+			e.preventDefault();
+			$('#save-success .modal-body p').html($(this).attr('data-name'));
+			$('#save-success .green').attr('data-id',$(this).attr('data-id'));
+		    $('#save-success').modal({keyboard: false});
+		});
+		// modal buttons
+		$('#save-success .green').click(function(e){
+			Seminar.delete($(this).attr('data-id'));
+		});
+		$('#save-success .cancel').click(function(e){
+			$('#save-success').modal('hide');
+		});
+		
 	};
 	Seminar.init = function(saveMode){
 		$('#saw-form input').keypress(function (e) {
@@ -47,9 +73,9 @@
 		$('#save-success .finished').click(function(e){
 			document.location.href='/seminar/';
 		});
-		$('#save-success .add-more').click(function(e){
+		$('#save-success .continue').click(function(e){
 			if(saveMode == 'add'){
-				document.location.href='/seminar/add';
+				document.location.href='/agenda/'+$('#save-success .continue').attr('data-insertid')+'/manage';
 			}else if(saveMode == 'edit'){
 				document.location.href="/seminar/edit/<?=(array_key_exists('seminar',$this->vars)) ? $this->vars['seminar']['_id']: '';?>";	
 			}			
@@ -59,7 +85,7 @@
 		io.saw.FormGet.activate({postUrl:'/seminar/delete/'+id
 			,postOnComplete:function(responseObj,responseStatus){}
 			,postOnSuccess:function(responseObj){
-				$('#'+responseObj.id.$id).remove();
+				document.location.href='/seminar/';
 			}
 		});
 	};
