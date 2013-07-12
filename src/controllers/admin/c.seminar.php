@@ -40,7 +40,6 @@ $seminar->get('/', function (Request $request) use ($app, $common_view_vars) {
 });
 $seminar->get('/view/{id}', function ($id, Request $request) use ($app, $common_view_vars) {
 	$seminar = new Model\Seminar($doc=array('_id'=>$id), $app);
-	//$seminar = $seminar->findOne($query=array('_id'=>$id),$fields=array());
 	$seminar = $seminar->findById();
 	
 	$agenda = new Model\Agenda(array('seminarId'=>$id),$app);
@@ -60,7 +59,7 @@ $seminar->get('/view/{id}', function ($id, Request $request) use ($app, $common_
 })->value('id','');
 
 $seminar->get('/add', function (Request $request) use ($app, $common_view_vars) {
-	$crumbs = array(array('name'=>'Sessions & Seminars','href'=>'/seminar')
+	$crumbs = array(array('name'=>'Seminars','href'=>'/seminar/')
 					,array('name'=>'Add New','href'=>'/seminar/add'));
 	$view_vars = array(
 						'page-plugin'=>'editor'
@@ -84,30 +83,28 @@ $seminar->post('/add', function (Request $request) use ($app, $common_view_vars)
 $seminar->get('/edit/{id}', function ($id, Request $request) use ($app, $common_view_vars) {
 
 	$seminar = new Model\Seminar($doc=array('_id'=>new MongoId($id)), $app);
-	$doc = Model\Seminar::getAccountById($id, $app);
+	$seminar = $seminar->findById();
 
-	$crumbs = array(array('name'=>'Sessions & Seminars','href'=>'/seminar')
+	$crumbs = array(array('name'=>'Seminars','href'=>'/seminar/')
+					,array('name'=>$seminar['headline'],'href'=>'/seminar/view/'.$seminar['_id'])
 					,array('name'=>'Edit','href'=>''));
 	$view_vars = array(
-						'page-plugin'=>''
-						,'description'=>"Edit a seminar"
+						'page-plugin'=>'editor'
+						,'description'=>"Edit a Seminar"
 						,'crumbs'=>$crumbs
-						,'seminar'=>$doc);
+						,'seminar'=>$seminar);
 	$view_vars = array_merge($common_view_vars, $view_vars);
-	return $app['view']->render('users/seminar-edit', 'default', $view_vars);
+	return $app['view']->render('seminar/edit', 'default', $view_vars);
 })->value('id','');
 $seminar->post('/edit', function (Request $request) use ($app, $common_view_vars) {
 	// retrieve document from request
     $document = $request->get('doc');
     $seminar = new Model\Seminar($document, $app);
     // validate the model
-    $app['validateModel']($app,$seminar,$groups=array('signup'));
+    $app['validateModel']($app,$seminar);
     
-    if($seminar->saveSafe()){
-    	return new Response(json_encode(array('message' => 'Saved successfully')), 200,array('Content-Type' => 'application/json'));
-    }else{
-    	return $app->abort(500, 'Something went wrong and did not save.');
-    }
+    $seminar->edit();
+    return new Response(json_encode(array('message' => 'Saved successfully')), 200,array('Content-Type' => 'application/json'));
 });
 
 $seminar->get('/delete/{id}', function ($id, Request $request) use ($app, $common_view_vars) {

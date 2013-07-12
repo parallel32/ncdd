@@ -144,7 +144,7 @@ class Model {
 		return self::$app['mongo']->deleteById(array('_id'=>$this->_id), $this->collection);
 	}
 	public function removeByCriteria($criteria){
-		return self::$app['mongo']->remove($criteria, $this->collection);
+		return self::$app['mongo']->remove($criteria, $this->collection, $justOne=false, $options=array('fsync'=>true));
 		return false;
 	}
 	public function findById($id='_id', $slaveOkay=true){

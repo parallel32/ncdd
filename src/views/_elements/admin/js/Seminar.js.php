@@ -67,7 +67,10 @@
 			}
 		});
 		$('#saw-form .cancel').click(function(e){
-			document.location.href='/seminar/';
+			document.location.href="/seminar/view/<?=(array_key_exists('seminar',$this->vars)) ? $this->vars['seminar']['_id']: '';?>";	
+		});
+		$('#saw-form .manage').click(function(e){
+			document.location.href="/agenda/<?=(array_key_exists('seminar',$this->vars)) ? $this->vars['seminar']['_id']: '';?>/manage";	
 		});
 		// modal buttons
 		$('#save-success .finished').click(function(e){

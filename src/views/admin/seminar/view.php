@@ -24,7 +24,7 @@
                                 Edit Seminar <i class="icon-pencil"></i>
                               </a>
                               <a class="btn yellow edit-agenda" data-id="<?=$seminar['_id']?>">
-                                Edit Agenda <i class="icon-pencil"></i>
+                                Edit Agendas <i class="icon-pencil"></i>
                               </a>
                               <a class="btn red remove-seminar" data-name="<?=$seminar['headline']?>" data-id="<?=$seminar['_id']?>">
                                 Remove Seminar <i class="icon-pencil"></i>

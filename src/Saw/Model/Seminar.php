@@ -160,6 +160,53 @@ class Seminar extends Model {
 	}
 	public function edit(){
 		if($this->saveSafe()){
+			// update the agendas
+			// prepare the Agenda Objects
+			$startDate = (is_object($this->startDate)) ? $this->startDate->__toArray() : $this->startDate;
+			$endDate = (is_object($this->endDate)) ? $this->endDate->__toArray() : $this->endDate;
+
+			$start = Carbon::createFromTimeStamp(strtotime($startDate['fullMonth']), $this->timeZone);
+			$end = Carbon::createFromTimeStamp(strtotime($endDate['fullMonth']), $this->timeZone);
+		// use this to check the timezone bug
+			//error_log('start:'.print_r($start,true));
+     		//error_log('end:'.print_r($end,true));
+     		error_log('');
+			$days = $start->diffInDays($end);
+			for ($i=0; $i <= $days; $i++) { 
+				$start = Carbon::createFromTimeStamp(strtotime($startDate['fullMonth']), $this->timeZone);
+				$date = new Date(self::$app,$start->addDays($i)->toATOMString(), $this->timeZone);
+				$agenda_name = 'Agenda Day '.($i+1);
+	     		$agenda = new Agenda(array(
+	     			'seminarId'=>$this->_id,
+	     			'name'=>$agenda_name,
+	     			'timeZone'=>$this->timeZone,
+	     			'date'=> $date
+	     		),self::$app);
+	     		//error_log('date:'.print_r($date->__toArray(),true));
+	     		$find_res = $agenda->findOne(array('seminarId'=>$this->_id,'name'=>$agenda_name));
+	     		if(!empty($find_res)  && !empty($find_res['_id'])){
+	     			// update
+	     			//$agenda->_id = $find_res['_id'];
+	     			foreach($find_res['timeSlots'] as $timeSlot):
+	     				$date = new Date(self::$app,$find_res['date']['fullMonth'].' '.$timeSlot['date']['longTime'], $this->timeZone);
+	     				$agendaTime = new AgendaTime(array('date'=>$date
+	     													,'title'=>$timeSlot['title']
+	     													,'description'=>$timeSlot['description']
+	     													,'color'=>$timeSlot['color']
+	     													,'timeZone'=>$this->timeZone
+	     													), self::$app);
+	     				$agenda->timeSlots[] = $agendaTime->__toArray();
+	     			endforeach;
+	     		}
+	     		$agendas[] = $agenda;
+	     	}// end for  
+	     	// remove the old agenda records by seminarId
+	     	$agenda->removeBySeminarId();
+
+	     	// add the new ones
+	     	foreach ($agendas as $agenda_obj){
+	     		$agenda_obj->insert();
+	     	}
 			return $this->_id;
         }else{
 			throw new \Saw\Model\Exceptions\DomainException("Editing failed.  Please try again.");
