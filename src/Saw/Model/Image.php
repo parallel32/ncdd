@@ -1,5 +1,5 @@
 <?php
-namespace Grapeword\Model;
+namespace Saw\Model;
 
 /*
 general usage for user uploaded images:
@@ -107,7 +107,7 @@ class Image {
 	 */
 	public function generateQR($shortCode, $accentColor=array()){		
 		if(!$this->cdn){
-			throw new \Grapeword\Exceptions\GrapewordException(new \LogicException(),"Trying to create QR Images without first specifying that you want to use a CDN.  You must pass cdn true to the Image constructor in order to use this method.");
+			throw new \Saw\Exceptions\SawException(new \LogicException(),"Trying to create QR Images without first specifying that you want to use a CDN.  You must pass cdn true to the Image constructor in order to use this method.");
 		}
 		$qrBase = 'http://'.GW_QR_HOST.'/';
 		$code = $qrBase.$shortCode;
@@ -154,7 +154,7 @@ class Image {
                     'acl' => \AmazonS3::ACL_PUBLIC
 				));
 				if(!$response->isOK()):
-					throw new \Grapeword\Exceptions\GrapewordException(new \Exception(),"The following error occurred on S3: ".print_r($response,true));
+					throw new \Saw\Exceptions\SawException(new \Exception(),"The following error occurred on S3: ".print_r($response,true));
 				endif;
 
 			}
@@ -165,7 +165,7 @@ class Image {
 	}    
     public function generateQRNoImage($shortCode){
 		if($this->cdn){
-			throw new \Grapeword\Exceptions\GrapewordException(new \LogicException(),"Trying to use QR Image by on the fly rendering but using a CDN. You must pass cdn false in order to use this method.");
+			throw new \Saw\Exceptions\SawException(new \LogicException(),"Trying to use QR Image by on the fly rendering but using a CDN. You must pass cdn false in order to use this method.");
 		}
 		$qrBase = 'http://'.GW_QR_HOST.'/';
 		$code = $qrBase.$shortCode;
