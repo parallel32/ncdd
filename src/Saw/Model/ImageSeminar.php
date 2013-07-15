@@ -7,12 +7,12 @@ class ImageSeminar extends Image {
 		$this->parentObject = '\Saw\Model\Seminar';
 		$this->belongsTo = (!is_object($belongsTo)) ? new \MongoId($belongsTo) : $belongsTo;
 		$this->context = 'seminar';
-        $this->base = SAW_CDN_IMAGE;
-        $this->baseSSL = SAW_SSL_CDN_IMAGE;      
+        $this->base = SAW_CDN;
+        $this->baseSSL = SAW_SSL_CDN;      
         $this->modified = time(); 
-		$this->sizes = array(	array('name'=>'small', 'size'=>400,'id'=>'')
-							 	,array('name'=>'medium', 'size'=>600,'id'=>'')
-								,array('name'=>'large', 'size'=>800,'id'=>'')
+		$this->sizes = array('small'=>array('size'=>400,'id'=>'')
+							 ,'medium'=>array('size'=>600,'id'=>'')
+							 ,'large'=>array('size'=>800,'id'=>'')
 							);
 	}
 }

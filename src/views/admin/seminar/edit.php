@@ -90,6 +90,7 @@
                               <button type="button" class="btn green">Save</button>
                               <button type="button" class="btn cancel">Cancel</button>
                               <button type="button" class="btn blue manage">Manage Agendas</button>
+                              <button type="button" class="btn red image <?=($this->vars['image'] == '/noimage') ? 'hide' :'' ?>">Delete Image</button>
                            </div>
                         </form>
                         <form id="saw-slug" class="form-horizontal" novalidate="novalidate">
@@ -127,10 +128,8 @@
                         <h4><i class="icon-picture"></i> Edit Seminar Image</h4>
                      </div>
                      <div class="portlet-body form">
-
                        <blockquote>
-                          <p style="font-size:16px">Upload an image in .gif, .jpg or .png format.
-                          </p>
+                          <img id="image" src="<?=$this->vars['image']?>">
                        </blockquote>
                        <br>
                        <!-- The file upload form used as target for the file upload widget -->
@@ -145,7 +144,7 @@
                                 <!-- The fileinput-button span is used to style the file input field as button -->
                                 <span class="btn green fileinput-button">
                                 <i class="icon-plus icon-white"></i>
-                                <span>Add files...</span>
+                                <span>Add a file for upload</span>
                                 <input type="file" name="file" multiple>
                                 </span>
                                 <button type="submit" class="btn blue start">
@@ -304,7 +303,7 @@
             }
             ,onDone:function(e,data){
                if(data.textStatus == 'success'){
-                  //nothing
+                  $('#image').attr('src',data.result.files[0].thumbnail_url);
                }
             }
             ,onFail:function(e,data){

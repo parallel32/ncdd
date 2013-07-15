@@ -390,6 +390,18 @@ class MongoWrapper
 		else // not found
 			return false;
 	}
+	public function getFileByCriteria($criteria, $collection, $slaveOkay=false){
+		$collection_obj = $this->database->getGridFS($collection);
+		if(!$slaveOkay)
+			$collection_obj->setReadPreference(\MongoClient::RP_PRIMARY);
+		else
+			$collection_obj->setReadPreference(\MongoClient::RP_SECONDARY);
+		$mongo_file_obj = $collection_obj->findOne($criteria);
+		if(is_object($mongo_file_obj)) // found
+			return $mongo_file_obj->getBytes();
+		else // not found
+			return false;
+	}
 	/**
 	 * retrieves the file document from mongo grid fs
 	 * @param $fileId 		MongoId or string	The variable which identifies the file 
@@ -406,6 +418,18 @@ class MongoWrapper
 		else
 			$collection_obj->setReadPreference(\MongoClient::RP_SECONDARY);
 		$mongo_file_obj = $collection_obj->get($fileId);
+		if(is_object($mongo_file_obj)) // found
+			return $mongo_file_obj;
+		else // not found
+			return false;
+	}
+	public function getFileObjectByCriteria($criteria, $collection, $slaveOkay=false){
+		$collection_obj = $this->database->getGridFS($collection);
+		if(!$slaveOkay)
+			$collection_obj->setReadPreference(\MongoClient::RP_PRIMARY);
+		else
+			$collection_obj->setReadPreference(\MongoClient::RP_SECONDARY);
+		$mongo_file_obj = $collection_obj->get($criteria);
 		if(is_object($mongo_file_obj)) // found
 			return $mongo_file_obj;
 		else // not found
@@ -520,6 +544,11 @@ class MongoWrapper
 	public function removeFile($id, $collection){
 		$grid = $this->database->getGridFS($collection);
 		return $grid->remove(array('_id' => new \MongoId($id)));
+		
+	}
+	public function removeFileByCriteria($criteria, $collection){
+		$grid = $this->database->getGridFS($collection);
+		return $grid->remove($criteria);
 		
 	}
 	public function gridfsremove($criteria=array(), $collection){

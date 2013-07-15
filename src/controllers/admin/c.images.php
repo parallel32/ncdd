@@ -7,6 +7,7 @@ use Saw\Model;
 ///////////////////////////////
 // RECEIVE THE UPLOADED FILE //
 ///////////////////////////////
+$imgUnavailable = './../../../www/admin.ncdd.com/public_html/assets/img/404-250.jpg';
 $app->match('/image/upload', function (Request $request) use ($app) {
 	$doc = $app['request']->get('doc');
 	if(empty($doc['belongsTo'])){
@@ -25,11 +26,12 @@ $app->match('/image/upload', function (Request $request) use ($app) {
         }
         $app['upload-mongo']->saveImage($image);
 		
+
 		$response_arr = array('files'=>array(0=>array('name'=>$image->getUploadedFileName()
 														,'size'=>$image->getUploadedFileSize()
-														,'type'=>'zip'
+														,'thumbnail_url'=>$app['getImageURL']($image,'medium')
 														,'delete_type'=>"GET"
-														,'delete_url'=>SAW_SERVER_PUBLIC_URL."/images/delete-uploaded-file/".$doc['belongsTo'])));
+														,'delete_url'=>"/image/delete/".$image->context."/".$image->belongsTo)));
 		return new Response(json_encode($response_arr), 200,array('Content-Type' => 'application/json'));	
 	} catch (Saw\Model\Exceptions\DomainException $e) {
 		$fileName = $_FILES['file']['name'];
@@ -52,11 +54,11 @@ $app->match('/image/upload', function (Request $request) use ($app) {
 		//Otherwise if it's 500 it will display Internal Server Error by default
 		return new Response(json_encode($response_arr), 200,array('Content-Type' => 'application/json'));	
 	}
-})->method('POST');
+})->method('POST')->before($mustbeMEMBER);
 $app->match('/image/upload', function (Request $request) use ($app) {
 		$response_arr = array('files'=>array(0=>array('name'=>'','size'=>0,'type'=>'')));
 		return new Response(json_encode($response_arr), 200,array('Content-Type' => 'application/json'));	
-})->method('HEAD|GET');
+})->method('HEAD|GET')->before($mustbeMEMBER);
 // HEAD is for the initial CORS request and POST is to receive the file
 //...then HEAD stopped working but GET works as a response for the HEAD request
 //...don't know why but I debugged it and silex was interpreting a HEAD request as GET in Symfony\Component\Routing\Matcher\UrlMather::match() function.
@@ -68,24 +70,64 @@ $app->get('/image/upload/nojavascript', function (Request $request) use ($app) {
 	return $app['view']->render('errors/nojavascript', 'default', $view_vars);
 });
 
-
-
-
-
-
-$app->get('/tmp/image/{id}', function ($id, Request $request) use ($app) {
-	return new Response($app['upload-mongo']->getImage($id), 200, array('Content-Type' => 'image/jpeg'));
+/////////////////////
+// DELETE AN IMAGE //
+/////////////////////
+$app->get('/image/delete/{context}/{belongsTo}', function ($context, $belongsTo, Request $request) use ($app) {
+	try {
+		$belongsTo = new \MongoId($belongsTo);
+		$deleteQuery = array('belongsTo'=>$belongsTo);
+		$app['upload-mongo']->deleteByCriteria($deleteQuery);
+		$parentObj = $app['imageParentFactory']($context,$belongsTo);
+		$parentObj->image = array();
+		$parentObj->saveSafe();
+		return new Response('success', 200, array('Content-Type' => 'text/html'));	
+	} catch (Exception $e) {
+		$response_arr = array('files'=>array(0=>array('name'=>''
+													,'size'=>0
+													,'type'=>''
+													,'error'=>$e->getMessage()
+													)));	
+		// 200 response is needed for the javascript fileupload library so that it can display the error message.
+		//Otherwise if it's 500 it will display Internal Server Error by default
+		return new Response(json_encode($response_arr), 200,array('Content-Type' => 'application/json'));
+	}
+})->before($mustbeMEMBER);
+/////////////////////
+// STREAM AN IMAGE //
+/////////////////////
+$app->get('/noimage', function (Request $request) use ($app,$imgUnavailable) {
+    $file_contents = file_get_contents($imgUnavailable);
+	return new Response($file_contents, 200, array('Content-Type' => 'image/jpeg'));
+});
+$app->get('/images/{imageId}', function ($imageId, Request $request) use ($app,$imgUnavailable) {
+    $file_contents = $app['upload-mongo']->getImage($imageId);
+    if(!empty($file_contents))
+		return new Response($file_contents, 200, array('Content-Type' => 'image/jpeg'));
+	else{
+		$file_contents = file_get_contents($imgUnavailable);
+		return new Response($file_contents, 200, array('Content-Type' => 'image/jpeg'));
+	}
+});
+$app->get('/image/{context}/{belongsTo}/{size}', function ($context, $belongsTo, $size, Request $request) use ($app,$imgUnavailable) {
+	$belongsTo = new \MongoId($belongsTo);
+	$file_contents = $app['upload-mongo']->getImageByCriteria(array('belongsTo'=>$belongsTo, 'size'=>$size));
+    if(!empty($file_contents)){
+    	return new Response($file_contents, 200, array('Content-Type' => 'image/jpeg'));
+	}else{
+		$file_contents = file_get_contents($imgUnavailable);
+		return new Response($file_contents, 200, array('Content-Type' => 'image/jpeg'));
+	}
 });
 
 
-/* Gets image URLs in PHP. This also exists as a js function client side. 
- */
-$app['getImageURL'] = $app->protect(function ($image,$size,$brokenImage='/assets/img/broke_offer.png',$ssl=false) { 
-    $url = $brokenImage;    
+// prepares an image url 
+$app['getImageURL'] = $app->protect(function ($image,$size,$ssl=false) { 
+	$url = '';
     if(is_object($image)) $image = $image->__toArray();
     if(!empty($image) && !empty($image['base'])) {
         $base = ($ssl) ? $image['baseSSL'] : $image['base'];
-        $url = $base.'/'.$image['context'].'/'.$size.'/'.$image['imageId'];
+        $url = $base.'/image/'.$image['context'].'/'.$image['belongsTo'].'/'.$size;
         if(!empty($image['modified'])) {
             $url.='?v='.$image['modified'];
         }
@@ -100,22 +142,11 @@ $app['imageFactory'] = $app->protect(function ($context,$belongsTo) {
 			break;
 	}
 });
-
-
-
-
-
-$app->get('/{file_path}', function ($file_path, Request $request) use ($app) {
-	
-	$regex = new \MongoRegex('/'.addcslashes($file_path,'/').'/i');
-    $query = array('siteKey'=>SAW_SITE_KEY,'filename'=>$regex);
-    $fields=array('filename','_id');
-    $gridFSFile = $app['mongo']->gridfsfindOne('userland-images-and-files', $query, $fields, $slaveOkay=false);
-
-    $file_contents = $app['mongo']->getFile($gridFSFile->file['_id'], 'domain');
-
-	return new Response($file_contents, 200, array('Content-Type' => 'image/jpeg'));
-
-})->assert('file_path','.+');
-
+$app['imageParentFactory'] = $app->protect(function ($context,$belongsTo) use ($app) {
+	switch ($context) {
+		case 'seminar':
+			return new Model\Seminar(array('_id'=>$belongsTo),$app);
+			break;
+	}
+});
 return $app;

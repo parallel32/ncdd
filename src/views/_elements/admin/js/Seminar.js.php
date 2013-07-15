@@ -83,6 +83,17 @@
 				document.location.href="/seminar/edit/<?=(array_key_exists('seminar',$this->vars)) ? $this->vars['seminar']['_id']: '';?>";	
 			}			
 		});
+		$('#saw-form .red.image').click(function(e){
+			if(saveMode == 'edit'){
+				io.saw.FormGet.activate({postUrl:"<?=(array_key_exists('imageDelete',$this->vars)) ? $this->vars['imageDelete']: '';?>"
+					,postOnComplete:function(responseObj,responseStatus){}
+					,postOnSuccess:function(responseObj){
+						$('#image').attr('src','/noimage');
+						$('#saw-form .red.image').hide();
+					}
+				});
+			}			
+		});
 		if(saveMode == 'add'){
 			$('#save-success .yellow.continue').click(function(e){
 				document.location.href='/seminar/edit/'+$(this).attr('data-insertid');

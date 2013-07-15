@@ -130,6 +130,9 @@ class Model {
 				if($value === 0){
 					$doc[$key]=$value;
 				}
+				if(is_array($value) && empty($value)){
+					$doc[$key]=array();	
+				}
 			}
 			$document = array('$set' => $doc);
 			$criteria = array('_id'=>$this->_id);

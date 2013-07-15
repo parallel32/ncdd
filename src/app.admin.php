@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 $app = require __DIR__.'/controllers/admin/c.authentication-functions.php';
 $app = require __DIR__.'/controllers/admin/c.authentication.php';
 $app = require __DIR__.'/controllers/admin/c.dashboards.php';
+$app = require __DIR__.'/controllers/admin/c.images.php';
 
 $app->mount('/utilities', 	include __DIR__.'/controllers/admin/c.utilities.php');
 $app->mount('/member', 		include __DIR__.'/controllers/admin/c.member.php');

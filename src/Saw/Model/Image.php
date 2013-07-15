@@ -44,10 +44,10 @@ class Image {
 
 	public function __construct($cdn=true){
 		$this->context = '';
-        $this->base = '';
-        $this->baseSSL = '';
+        $this->base = SAW_CDN;
+        $this->baseSSL = SAW_SSL_CDN;
         $this->modified = '';
-		$this->sizes = array('small'=>150,'medium'=>300,'large'=>500);
+		$this->sizes = array();
 		$this->urls = array();
 		$this->urlTemplate = 'image/{context}/{size}/{imageId}';
 		$this->setCDN($cdn);
@@ -68,12 +68,12 @@ class Image {
 	}
 	public function makeUrls(){
 		$tmp = array();
-        foreach($this->sizes as $size):
+        foreach($this->sizes as $key=>$size):
 			$find = array('{context}','{size}','{imageId}');
 			$replace = array($this->context, $size['size'], $size['id']);
-			$tmp[$size['name']]['CDN'] = str_replace($find, $replace, $this->urlCDN);
-			$tmp[$size['name']]['SSLCDN'] = str_replace($find, $replace, $this->urlSSLCDN);
-			$tmp[$size['name']]['RELATIVE'] = str_replace($find, $replace, $this->urlRelative);
+			$tmp[$key]['CDN'] = str_replace($find, $replace, $this->urlCDN);
+			$tmp[$key]['SSLCDN'] = str_replace($find, $replace, $this->urlSSLCDN);
+			$tmp[$key]['RELATIVE'] = str_replace($find, $replace, $this->urlRelative);
 		endforeach;
 		$this->urls = $tmp;
 	}
@@ -84,8 +84,6 @@ class Image {
 		unset($doc['urlSSLCDN']);
 		unset($doc['urlRelative']);
 		unset($doc['cdn']);
-		unset($doc['base']);
-		unset($doc['baseSSL']);
 		return $doc;
 	}
 	public function instantiateParent($app){

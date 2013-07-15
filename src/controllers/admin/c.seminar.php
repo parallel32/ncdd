@@ -92,7 +92,9 @@ $seminar->get('/edit/{id}', function ($id, Request $request) use ($app, $common_
 						'page-plugin'=>'fileupload,editor'
 						,'description'=>"Edit a Seminar"
 						,'crumbs'=>$crumbs
-						,'seminar'=>$seminar);
+						,'seminar'=>$seminar
+						,'image'=>(!empty($seminar['image'])) ? $app['getImageURL']($seminar['image'],'small') : '/noimage'
+						,'imageDelete'=>(!empty($seminar['image'])) ? '/image/delete/'.$seminar['image']['context'].'/'.$seminar['image']['belongsTo'] : '');
 	$view_vars = array_merge($common_view_vars, $view_vars);
 	return $app['view']->render('seminar/edit', 'default', $view_vars);
 })->value('id','');

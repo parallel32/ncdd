@@ -13,7 +13,6 @@ use Saw\Model;
  * c.system.php must always be first.
  */
 $app = require __DIR__.'/controllers/c.system.php';
-$app = require __DIR__.'/controllers/c.images.php';
 $app = require __DIR__.'/controllers/../../src/Saw/Component/Connect/Controllers/c.twitter.php';
 $app = require __DIR__.'/controllers/../../src/Saw/Component/Connect/Controllers/c.facebook.php';
 
