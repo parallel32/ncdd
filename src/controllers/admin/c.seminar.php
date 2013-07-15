@@ -75,7 +75,7 @@ $seminar->post('/add', function (Request $request) use ($app, $common_view_vars)
     // validate the model
     $app['validateModel']($app,$seminar);
     $_id = $seminar->insert();
-    $message = 'If you would like to add another click Add More or click Finished.';
+    $message = 'The Seminar has been added.  Continue to create the agneda or click Finished.';
     return new Response(json_encode(array('id'=>$_id,'message' => $message)), 200,array('Content-Type' => 'application/json'));
 	
 });
@@ -89,7 +89,7 @@ $seminar->get('/edit/{id}', function ($id, Request $request) use ($app, $common_
 					,array('name'=>$seminar['headline'],'href'=>'/seminar/view/'.$seminar['_id'])
 					,array('name'=>'Edit','href'=>''));
 	$view_vars = array(
-						'page-plugin'=>'editor'
+						'page-plugin'=>'fileupload,editor'
 						,'description'=>"Edit a Seminar"
 						,'crumbs'=>$crumbs
 						,'seminar'=>$seminar);

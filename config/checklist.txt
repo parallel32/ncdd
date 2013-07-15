@@ -3,3 +3,14 @@ do the google query for indexed routes and re-map with responses in the c.system
 get an ssl cert for ecommerce
 
 prepare the AWS server
+
+upload Virtual Library
+
+upload George Stein's NCDD Dean acceptance speech
+
+
+DEPLOYMENT CHECKLIST
+---------------------
+aloha's vendor folder mustbe added because .gitignore ignores all vendor folder.. change this?
+
+clear the /var/www/upload folder for files older than 5 days .. cron / shell script runs daily

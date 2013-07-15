@@ -1,6 +1,5 @@
-<!-- BEGIN PAGE -->
+      <!-- BEGIN PAGE -->
       <div class="page-content">
-         
          <!-- BEGIN PAGE CONTAINER-->        
          <div class="container-fluid">
             <!-- BEGIN PAGE HEADER-->
@@ -97,6 +96,7 @@
                            </div>
                            <div class="modal-footer">
                               <button class="btn finished" aria-hidden="true">Finished</button>
+                              <button class="btn yellow continue" data-insertid="">Add an Image</button>
                               <button class="btn blue continue" data-insertid="">Continue To Agenda</button>
                            </div>
                         </div>
@@ -107,6 +107,9 @@
                </div>
             </div>
             <!-- END PAGE CONTENT-->
+
+            
+
          </div>
          <!-- END PAGE CONTAINER-->
       </div>
@@ -117,11 +120,9 @@
       jQuery(document).ready(function() {    
          io.saw.FormDatePicker.init('range');
          io.saw.Seminar.init('add');
-         io.saw.Seminar.sluggify('headline','headline');         
-
+         io.saw.Seminar.sluggify('headline','headline');
          Aloha.ready( function() {
             Aloha.jQuery('.description').aloha();
          });
-      });
-      
+      });      
       </script>

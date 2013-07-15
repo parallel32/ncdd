@@ -26,7 +26,8 @@
         "querypath/QueryPath": ">=2.0.0",
         "jbroadway/urlify": "dev-master",
         "cocur/slugify": "dev-master",
-        "nesbot/Carbon": "dev-master"
+        "nesbot/Carbon": "dev-master",
+        "imagine/imagine": "dev-master"
     },
     "autoload": {
 		"psr-0": {"Saw":"src/"}

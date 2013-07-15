@@ -17,6 +17,7 @@
             <div class="row-fluid">
                <div class="span12">
                   <ul class="timeline">
+                     <? if(!empty($agenda['timeSlots'])): ?>
                      <? foreach($agenda['timeSlots'] as $timeSlot): ?>
                      <li class="timeline-<?=$timeSlot['color']?>">
                         <div class="timeline-time">
@@ -33,7 +34,8 @@
                            </div>
                         </div>
                      </li>
-                     <? endforeach; ?>                     
+                     <? endforeach; ?>              
+                     <? endif; ?>       
                   </ul>
                </div>
             </div>

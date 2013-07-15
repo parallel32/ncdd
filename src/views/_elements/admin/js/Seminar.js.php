@@ -76,13 +76,18 @@
 		$('#save-success .finished').click(function(e){
 			document.location.href='/seminar/';
 		});
-		$('#save-success .continue').click(function(e){
+		$('#save-success .blue.continue').click(function(e){
 			if(saveMode == 'add'){
 				document.location.href='/agenda/'+$('#save-success .continue').attr('data-insertid')+'/manage';
 			}else if(saveMode == 'edit'){
 				document.location.href="/seminar/edit/<?=(array_key_exists('seminar',$this->vars)) ? $this->vars['seminar']['_id']: '';?>";	
 			}			
 		});
+		if(saveMode == 'add'){
+			$('#save-success .yellow.continue').click(function(e){
+				document.location.href='/seminar/edit/'+$(this).attr('data-insertid');
+			});
+		}
 	};
 	Seminar.delete = function(id){
 		io.saw.FormGet.activate({postUrl:'/seminar/delete/'+id

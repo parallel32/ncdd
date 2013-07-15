@@ -33,12 +33,14 @@
                               <h2><a href="/seminar/view/<?=$seminar['_id']?>"><?=$seminar['headline']?></a></h2>
                               <h4><a href="/seminar/view/<?=$seminar['_id']?>"><?=$seminar['startDate']['monthDay']?> - <?=$seminar['endDate']['monthDay']?>, <?=$seminar['startDate']['year']?></a></h4>
                               <p><?=$seminar['description']?></p>
+                              <? if(!empty($seminar['agendas'])): ?>
                               <? foreach($seminar['agendas'] as $agenda): ?>
                                  <a class="btn blue" href="/agenda/<?=$seminar['_id']?>/<?=$agenda['_id']?>">
                                  <?=$agenda['name'] ?>
                                  <i class="m-icon-swapright m-icon-white"></i>
                                  </a>
                               <? endforeach; ?>
+                              <? endif; ?>
                            </div>
                            <div class="span4 blog-img blog-tag-data">
                               <img src="/assets/img/gallery/image4.jpg" alt="">

@@ -5,7 +5,7 @@
 	
 	FileUpload.init = function(p){
 		params = p; 
-		params.fileUploadLimit = params.fileUploadLimit || 1;
+        params.maxNumberOfFiles = params.maxNumberOfFiles || 1;
 	    params.formId = params.formId || '';
 	    params.uploadURL = params.uploadURL || '';
 	    params.onLoad = params.onLoad || function(){};
@@ -16,11 +16,9 @@
 
 		// Initialize the jQuery File Upload widget:
         $(params.formId).fileupload({
-            // Uncomment the following to send cross-domain cookies:
-            //xhrFields: {withCredentials: true},
             url: params.uploadURL
-            ,acceptFileTypes:'/(\.|\/)(zip)$/i'
-            ,maxNumberOfFiles:1
+            ,acceptFileTypes:'/(\.|\/)(gif|jpe?g|png)$/i'
+            ,maxNumberOfFiles:params.maxNumberOfFiles
         }).bind('fileuploadsend',function (e,data){
         	params.onSend(e,data);
         }).bind('fileuploaddone',function (e,data){

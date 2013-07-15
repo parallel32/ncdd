@@ -1,0 +1,1 @@
+You must have JavaScript enabled if you want to upload files or pictures.

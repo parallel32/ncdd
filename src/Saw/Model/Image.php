@@ -6,12 +6,6 @@ general usage for user uploaded images:
 	$offerImg = new OfferImage($imageId);
 	$offer_doc['image'] = $offerImg->__toArray();
 
-general usage for QR code images:
-	$image = new ImageQRSetup($this->_id,$cdn=false);
-	$this->QR = $image->generateQRNoImage($this->shortCode);
-AND
-	$image = new ImageQRProfile($this->_id);
-	$this->QR = $image->generateQR($this->shortCode);
 */
 
 /**
@@ -21,7 +15,6 @@ AND
  */
 class Image {
 
-	public $imageId;
 	public $context;
     public $base;
     public $baseSSL;
@@ -41,36 +34,33 @@ class Image {
 	// image will be nested so that it can be saved more efficiently
 	public $parentObject;
 	
-	/**
-	 * if $cdn gets passed in as false then generateQRNoImage() must be called 
-	 * because not using a cdn and calling generateQR() makes no sense since
-	 * generateQR()'s purpose is to send the images it creates up to S3
-	 */
-	public function __construct($imageId,$cdn=true){
-		if(empty($imageId)){
-			$this->imageId = '';
-		}else{
-			$this->imageId = (is_object($imageId)) ? $imageId : new \MongoId($imageId);
-		}
+	public static $uploadedFileName;
+	public static $uploadBaseDir = SAW_FILE_UPLOAD_DIR;
+	public static $uploadedServer = SAW_SERVER_PUBLIC_NAME;
+	public static $uploadPath;
+	public static $request;
+	public static $file; // symfony File object: http://api.symfony.com/2.0/Symfony/Component/HttpFoundation/File/File.html
+	
+
+	public function __construct($cdn=true){
 		$this->context = '';
         $this->base = '';
         $this->baseSSL = '';
         $this->modified = '';
 		$this->sizes = array('small'=>150,'medium'=>300,'large'=>500);
 		$this->urls = array();
-		$this->urlTemplate = 'images/{context}/{size}/{imageId}';
+		$this->urlTemplate = 'image/{context}/{size}/{imageId}';
 		$this->setCDN($cdn);
 		$this->urlRelative = $this->urlTemplate;
 	}
-    //TODO get rid of these
-	public function setCdn($cdn=true){
+	public function setCDN($cdn=true){
 		if($cdn){
-			$cdn = GW_CDN;
-			$ssl_cdn = GW_SSL_CDN;
+			$cdn = SAW_CDN;
+			$ssl_cdn = SAW_SSL_CDN;
 			$this->cdn = true;
 		}else{
-			$cdn = GW_BASE_URL;
-			$ssl_cdn = GW_BASE_URL;
+			$cdn = SAW_BASE_URL;
+			$ssl_cdn = SAW_BASE_URL;
 			$this->cdn = false;
 		}
 		$this->urlCDN = $cdn.'/'.$this->urlTemplate;
@@ -78,12 +68,12 @@ class Image {
 	}
 	public function makeUrls(){
 		$tmp = array();
-        foreach($this->sizes as $name => $size):
+        foreach($this->sizes as $size):
 			$find = array('{context}','{size}','{imageId}');
-			$replace = array($this->context, $size, $this->imageId->__toString());
-			$tmp[$name]['CDN'] = str_replace($find, $replace, $this->urlCDN);
-			$tmp[$name]['SSLCDN'] = str_replace($find, $replace, $this->urlSSLCDN);
-			$tmp[$name]['RELATIVE'] = str_replace($find, $replace, $this->urlRelative);
+			$replace = array($this->context, $size['size'], $size['id']);
+			$tmp[$size['name']]['CDN'] = str_replace($find, $replace, $this->urlCDN);
+			$tmp[$size['name']]['SSLCDN'] = str_replace($find, $replace, $this->urlSSLCDN);
+			$tmp[$size['name']]['RELATIVE'] = str_replace($find, $replace, $this->urlRelative);
 		endforeach;
 		$this->urls = $tmp;
 	}
@@ -93,91 +83,58 @@ class Image {
 		unset($doc['urlCDN']);
 		unset($doc['urlSSLCDN']);
 		unset($doc['urlRelative']);
-        unset($doc['urls']);
 		unset($doc['cdn']);
-        unset($doc['sizes']);
+		unset($doc['base']);
+		unset($doc['baseSSL']);
 		return $doc;
 	}
-	
-	/**
-	 * @ecc (one form: L,M,Q,H)
-	 * @size qr code size: 6 = 6x6 dimensions
-	 * @squareBoundaries code will have 1 code square white boundary around
-	 * @image this is an image object
-	 */
-	public function generateQR($shortCode, $accentColor=array()){		
-		if(!$this->cdn){
-			throw new \Saw\Exceptions\SawException(new \LogicException(),"Trying to create QR Images without first specifying that you want to use a CDN.  You must pass cdn true to the Image constructor in order to use this method.");
-		}
-		$qrBase = 'http://'.GW_QR_HOST.'/';
-		$code = $qrBase.$shortCode;
-
-		$ecc='M';
-		$qsize=16;
-		$squareBoundaries=0;
-		
-		include __DIR__.'/../../phpqrcode/qrlib.php';
-		// seed and save QR Code to /tmp
-		$uri = '/tmp/'.$this->imageId.'.png';            
-		if(!empty($shortCode)) {
-			\QRcode::png($code, $uri, $ecc, $qsize, $squareBoundaries);
-
-			$imagefrompng = imagecreatefrompng($uri);
-			$original_width = imagesx($imagefrompng);
-			$original_height = imagesy($imagefrompng);                 
-            if(empty($accentColor)) {
-                $accentColor = array('R'=>151, 'G'=>104, 'B'=>121); //purple
-            }
-            $accent = imagecolorallocate($imagefrompng, $accentColor['R'], $accentColor['G'], $accentColor['B']); 
-            imagefilledrectangle($imagefrompng, $qsize*2, $qsize*2, $qsize*5, $qsize*5, $accent);                
-
-			// s3 start //
-			$s3 = new \AmazonS3();
-			$s3->path_style = true;
-			$bucket = str_replace('http://','',GW_CDN);
-			// s3 end //
-
-			foreach($this->sizes as $key=>$thumbSize) {
-				// size and store thumb
-				$final_image = imagecreatetruecolor($thumbSize, $thumbSize);
-				imagecopyresampled($final_image, $imagefrompng, 0, 0, 0, 0, $thumbSize, $thumbSize, $original_width, $original_height);  
-				ob_start();
-				imagejpeg($final_image, NULL, 100);
-				$base = ob_get_contents();
-				ob_end_clean();
-                
-                $filename = 'images/'.$this->context.'/'.$key.'/'.$this->imageId->__toString(); // TODO: Verify $this->urls[$key]['RELATIVE']
-                //echo $filename; exit;
-				$response = $s3->create_object($bucket, $filename, array(
-                    'body' => $base,
-                    'contentType' => 'image/jpeg',
-                    'acl' => \AmazonS3::ACL_PUBLIC
-				));
-				if(!$response->isOK()):
-					throw new \Saw\Exceptions\SawException(new \Exception(),"The following error occurred on S3: ".print_r($response,true));
-				endif;
-
-			}
-
-			return array('code'=>$code,'image'=>$this->__toArray());
-		}
-		return false;
-	}    
-    public function generateQRNoImage($shortCode){
-		if($this->cdn){
-			throw new \Saw\Exceptions\SawException(new \LogicException(),"Trying to use QR Image by on the fly rendering but using a CDN. You must pass cdn false in order to use this method.");
-		}
-		$qrBase = 'http://'.GW_QR_HOST.'/';
-		$code = $qrBase.$shortCode;
-		return array('code'=>$code,'image'=>$this->__toArray());
-	}
-	
-	public function instantiateParent($app,$context=''){
+	public function instantiateParent($app){
 		$reflectionClass = new \ReflectionClass($this->parentObject);
-        if ($context == 'barcode') {
-            return $reflectionClass->newInstance(array('_id'=>$this->belongsTo), $app);
-        } else {
-            return $reflectionClass->newInstance(array('_id'=>$this->belongsTo,'image'=>$this->__toArray()), $app);
-        }		
+        return $reflectionClass->newInstance(array('_id'=>$this->belongsTo,'image'=>$this->__toArray()), $app);
+	}
+
+	public function setRequest(\Symfony\Component\HttpFoundation\Request $request){
+		self::$request = $request;
+		self::$file = $request->files->get('file');// 'file' is the html input element's name on the file upload form
+	}
+	public function moveUploadedFile(){
+		if(!is_dir(self::$uploadPath)){
+			mkdir(self::$uploadPath);
+		}
+		self::$file->move(self::$uploadPath,self::$uploadedFileName);
+	}
+	public function getUploadedFileName(){
+		return self::$uploadedFileName;		
+	}
+	public function getFile(){
+		self::$file = new \SplFileInfo($this->getFilePath());
+		return self::$file;		
+	}
+	public function getUploadedFileSize(){
+		filesize($this->getFilePath());
+	}
+	public function getFilePath(){
+		return self::$uploadPath.'/'.self::$uploadedFileName;
+	}
+	public function prepareFile(){
+		self::$uploadedFileName = $this->context.'-'.$this->belongsTo.'-'.self::$file->getClientOriginalName();
+		self::$uploadPath = self::$uploadBaseDir;
+		$this->moveUploadedFile();
+	}
+	public function getImageType(){
+		$image_type = exif_imagetype($this->getFilePath());
+        // add new
+		switch ($image_type) {
+			case IMAGETYPE_GIF:
+				return 'jpg';
+			case IMAGETYPE_JPEG:
+				return 'jpg';
+			case IMAGETYPE_PNG:
+				return 'png';
+				break;
+			default:
+				return 'jpg';
+				break;
+		}
 	}
 }
