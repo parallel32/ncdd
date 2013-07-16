@@ -48,8 +48,8 @@ EOT;
       case 'fileupload':
          echo <<< EOT
             <link rel="stylesheet" type="text/css" href="/assets/plugins/jquery-file-upload/css/jquery.fileupload-ui.css" />
-
 EOT;
+/*          <link rel="stylesheet" type="text/css" href="/assets/plugins/jcrop/css/jquery.Jcrop.css" />*/
          break;
       default:
          echo "";

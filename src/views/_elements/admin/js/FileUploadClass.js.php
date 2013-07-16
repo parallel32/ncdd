@@ -19,6 +19,8 @@
             url: params.uploadURL
             ,acceptFileTypes:'/(\.|\/)(gif|jpe?g|png)$/i'
             ,maxNumberOfFiles:params.maxNumberOfFiles
+            ,previewMaxWidth:800
+            ,previewMaxHeight:600
         }).bind('fileuploadsend',function (e,data){
         	params.onSend(e,data);
         }).bind('fileuploaddone',function (e,data){
@@ -26,7 +28,11 @@
         }).bind('fileuploadfail',function (e,data){
         	params.onFail(e,data);
         }).bind('fileuploadalways',function (e,data){
-        	params.onAlways(e,data);
+            params.onAlways(e,data);
+        }).bind('fileuploadadd',function (e,data){
+        	$('canvas').Jcrop({
+            aspectRatio: 1
+          });
         })
         // Upload server status check for browsers with CORS support:
         if ($.support.cors) {
