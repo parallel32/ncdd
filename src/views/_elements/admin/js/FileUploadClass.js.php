@@ -12,15 +12,16 @@
 	    params.onSend = params.onSend || function(){};
 		params.onDone = params.onDone || function(){};
 		params.onFail = params.onFail || function(){};
-		params.onAlways = params.onAlways || function(){};
+        params.onAlways = params.onAlways || function(){};
+		params.onFileAddToQueue = params.onFileAddToQueue || function(){};
 
 		// Initialize the jQuery File Upload widget:
         $(params.formId).fileupload({
             url: params.uploadURL
             ,acceptFileTypes:'/(\.|\/)(gif|jpe?g|png)$/i'
             ,maxNumberOfFiles:params.maxNumberOfFiles
-            ,previewMaxWidth:800
-            ,previewMaxHeight:600
+            ,previewMaxWidth:600
+            ,previewMaxHeight:400
         }).bind('fileuploadsend',function (e,data){
         	params.onSend(e,data);
         }).bind('fileuploaddone',function (e,data){
@@ -30,10 +31,16 @@
         }).bind('fileuploadalways',function (e,data){
             params.onAlways(e,data);
         }).bind('fileuploadadd',function (e,data){
-        	$('canvas').Jcrop({
-            aspectRatio: 1
-          });
-        })
+            params.onFileAddToQueue(e,data);        	
+        }).bind('fileuploaddestroy', function (e, data) {/* ... */})
+        .bind('fileuploaddestroyed', function (e, data) {/* ... */})
+        .bind('fileuploadadded', function (e, data) {/* ... */})
+        .bind('fileuploadsent', function (e, data) {/* ... */})
+        .bind('fileuploadcompleted', function (e, data) {/* ... */})
+        .bind('fileuploadfailed', function (e, data) {/* ... */})
+        .bind('fileuploadfinished', function (e, data) {/* ... */})
+        .bind('fileuploadstarted', function (e) {/* ... */})
+        .bind('fileuploadstopped', function (e) {/* ... */});
         // Upload server status check for browsers with CORS support:
         if ($.support.cors) {
             $.ajax({

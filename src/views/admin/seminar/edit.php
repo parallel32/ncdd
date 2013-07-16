@@ -147,19 +147,19 @@
                                 <span>Add a file for upload</span>
                                 <input type="file" name="file" multiple>
                                 </span>
-                                <button type="submit" class="btn blue start">
+                                <button type="submit" class="btn blue start hide">
                                 <i class="icon-upload icon-white"></i>
                                 <span>Start upload</span>
                                 </button>
-                                <button type="reset" class="btn yellow cancel">
+                                <button type="reset" class="btn yellow cancel hide">
                                 <i class="icon-ban-circle icon-white"></i>
                                 <span>Cancel upload</span>
                                 </button>
-                                <button type="button" class="btn red delete">
+                                <button type="button" class="btn red delete hide">
                                 <i class="icon-trash icon-white"></i>
                                 <span>Delete</span>
                                 </button>
-                                <input type="checkbox" class="toggle fileupload-toggle-checkbox">
+                                <!--<input type="checkbox" class="toggle fileupload-toggle-checkbox">-->
                              </div>
                              <!-- The global progress information -->
                              <div class="span5 fileupload-progress fade">
@@ -319,8 +319,12 @@
                }else if(data.textStatus == 'error'){
                   //nothing to do
                }
+               $('.btn.blue.start').hide();
+            }
+            ,onFileAddToQueue:function(e,data){
+               $('.btn.blue.start').show();
             }
          });
-         
+
       });
       </script>

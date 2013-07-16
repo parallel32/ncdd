@@ -43,7 +43,9 @@
                               <? endif; ?>
                            </div>
                            <div class="span4 blog-img blog-tag-data">
-                              <img src="/assets/img/gallery/image4.jpg" alt="">
+                              <?if(!empty($this->vars['image'])) {?>
+                              <img src="<?=$this->vars['image']?>" width="232" alt="">
+                              <? } ?>
                            </div>
                            
                         </div>

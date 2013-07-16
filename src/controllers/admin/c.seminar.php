@@ -45,7 +45,7 @@ $seminar->get('/view/{id}', function ($id, Request $request) use ($app, $common_
 	$agenda = new Model\Agenda(array('seminarId'=>$id),$app);
 	$agendas = $agenda->findBySeminarId();
 	$seminar['agendas'] = $agendas;
-	
+
 	$crumbs = array(array('name'=>'Seminars','href'=>'/seminar/')
 					,array('name'=>$seminar['headline'],'href'=>'/seminar/view/'.$id)
 					);
@@ -53,6 +53,7 @@ $seminar->get('/view/{id}', function ($id, Request $request) use ($app, $common_
 						'page-plugin'=>'datatables'
 						,'description'=>"View all Sessions & Seminars here."
 						,'crumbs'=>$crumbs
+						,'image'=>(!empty($seminar['image'])) ? $app['getImageURL']($seminar['image'],'small') : ''
 						,'seminar'=>$seminar);
 	$view_vars = array_merge($common_view_vars, $view_vars);
 	return $app['view']->render('seminar/view', 'default', $view_vars);
