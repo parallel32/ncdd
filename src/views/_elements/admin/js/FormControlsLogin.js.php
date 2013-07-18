@@ -44,8 +44,7 @@
             $('.forget-form').hide();
         });
         $('#register-btn').click(function () {
-            $('.login-form').hide();
-            $('.register-form').show();
+            document.location.href="/application/new-member";
         });
 
         $('#register-back-btn').click(function () {

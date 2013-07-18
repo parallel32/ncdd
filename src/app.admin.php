@@ -11,10 +11,15 @@ $app = require __DIR__.'/controllers/admin/c.authentication.php';
 $app = require __DIR__.'/controllers/admin/c.dashboards.php';
 $app = require __DIR__.'/controllers/admin/c.images.php';
 
+// mounted controllers have one level of access defined
 $app->mount('/utilities', 	include __DIR__.'/controllers/admin/c.utilities.php');
 $app->mount('/member', 		include __DIR__.'/controllers/admin/c.member.php');
 $app->mount('/seminar', 	include __DIR__.'/controllers/admin/c.seminar.php');
 $app->mount('/agenda', 		include __DIR__.'/controllers/admin/c.agenda.php');
+
+// unmounted controllers usually have several levels of access defined in the routes. 
+// i.e. some admin, some public, some member only.
+$app = require __DIR__.'/controllers/admin/c.application.php';
 
 /**
  * Before Filter

@@ -77,8 +77,8 @@
       </div>
       <div class="create-account">
         <p>
-          Don't have an account yet ?&nbsp; 
-          <a href="javascript:;" id="register-btn" class="">Create an account</a>
+          Consider becoming a member ?&nbsp; 
+          <a href="javascript:;" id="register-btn" class="">Apply Online</a>
         </p>
       </div>
     </form>
