@@ -69,7 +69,7 @@
 				}
 			}
 		})
-		.always(function(response){
+		.always(function(response,status){
 			if(params.validate == 'yes'){
 				if (jQuery().animate) {
 		            /*
@@ -81,7 +81,7 @@
 		            jQuery('.error.pulsate').animate({backgroundColor: "#f2dede"},{duration:800}).delay(1000).animate({backgroundColor: "#fff"}).animate({color:'red'})
 		        }
 		    }
-			params.postOnComplete(jQuery.parseJSON(response.responseText),response.status);
+		    params.postOnComplete(response,status);
 			if(params.blockObj != undefined){
 				params.blockObj.unblock();
 			}

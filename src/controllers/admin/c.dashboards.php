@@ -22,12 +22,15 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 	$user = Model\User::getUserAccessLevelBySession($app);
 	$crumbs = array(array('name'=>'Dashboard','href'=>'/'));
 	$view_vars = array(
-						 'page-plugin'=>'dashboard'
+						 'page-plugin'=>'dashboard,datatables'
 						,'description'=>"Welcome.  Here you'll find aggregated data from your account."
 						,'crumbs'=>$crumbs);
 	$view_vars = array_merge($common_view_vars, $view_vars);
 	switch ($user['accessLevel']) {
 		case ADMIN:
+			$apply = new Model\Apply(array(),$app);
+			$applications = $apply->fetch($offset=0,$limit=5);
+			$view_vars['applications']=$applications;
 			array_push($view_vars['crumbs'],array('name'=>'Admin','href'=>'/'));
 			return $app['view']->render('dashboards/admin', 'default', $view_vars);
 			break;

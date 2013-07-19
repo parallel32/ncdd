@@ -27,13 +27,12 @@
    <!-- jquery included here instead of in page level plugins section at the bottom because I need access to the document.ready function to 
    initialize page level scripts within the page itself -->
    <script src="/assets/plugins/jquery-1.10.1.min.js" type="text/javascript"></script>   
-   <script src="/assets/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js" type="text/javascript"></script>   
-
    <!-- define the namespace as early as possible to make it accessible to page level scripts defined in the page itself. -->
    <?=$this->element('js/Namespace.js');?>
    <?=$this->element('js/BlockUI.Class.js');?>
    <?=$this->element('js/FormPostClass.js');?>
    <?=$this->element('js/FormGetClass.js');?>
+   
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -48,13 +47,21 @@
    <script src="/assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>      
    <script src="/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
    <!--[if lt IE 9]>
-   <script src="assets/plugins/excanvas.min.js"></script>
-   <script src="assets/plugins/respond.min.js"></script>  
+   <script src="/assets/plugins/excanvas.min.js"></script>
+   <script src="/assets/plugins/respond.min.js"></script>  
    <![endif]-->   
    <script src="/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
    <script src="/assets/plugins/jquery.blockui.min.js" type="text/javascript"></script>  
    <script src="/assets/plugins/jquery.cookie.min.js" type="text/javascript"></script>
    <script src="/assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
-   <!-- END CORE PLUGINS -->
+   <script src="/assets/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js" type="text/javascript"></script>   
+<!-- END CORE PLUGINS -->
+   <script src="/assets/scripts/app.js" type="text/javascript"></script>
+
+   <script>
+    jQuery(document).ready(function() {     
+      App.init();
+    });
+  </script>
 
 </html>

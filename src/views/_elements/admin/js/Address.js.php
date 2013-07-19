@@ -16,7 +16,6 @@
 		var geocoder = new google.maps.Geocoder();
 		geocoder.geocode( { 'address': address}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
-				console.log(results);
 				if(results.length == 1){
 					processAddress(results[0].address_components
 									,results[0].geometry.location.lat()

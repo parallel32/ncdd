@@ -39,11 +39,11 @@
                <? echo ($this->vars['active'] == 'Modules') ? '<span class="selected"></span>':'';?>
                </a>
             </li>
-            <li class="<? echo ($this->vars['active'] == 'Modules') ? 'active':'';?>">
-               <a href="/album">
-               <i class="icon-picture"></i> 
-               <span class="title">Photo Gallery</span>
-               <? echo ($this->vars['active'] == 'Modules') ? '<span class="selected"></span>':'';?>
+            <li class="<? echo ($this->vars['active'] == 'Application') ? 'active':'';?>">
+               <a href="/application">
+               <i class="icon-copy"></i> 
+               <span class="title">Applictions</span>
+               <? echo ($this->vars['active'] == 'Application') ? '<span class="selected"></span>':'';?>
                </a>
             </li>
             <li class="<? echo ($this->vars['active'] == 'Modules') ? 'active':'';?>">

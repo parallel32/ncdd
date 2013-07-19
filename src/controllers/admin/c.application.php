@@ -19,86 +19,59 @@ $app->get('/application/new-member', function (Request $request) use ($app) {
 });
 $app->post('/application/new-member', function (Request $request) use ($app) {
 	// retrieve document from request
-    $document = $request->get('doc');
-    $application = new Model\Application($document, $app);
+    $doc = $request->get('doc');
+    $application = new Model\NewMemberApplication($doc, $app);
     // validate the model
-    $app['validateModel']($app,$application,$groups=array('signup'));
+    $app['validateModel']($app,$application);
 
     if($application->findByEmail()){
-    	$application->upsert();
-    	$message = 'This application already exists and was updated. Click Add More to try again or Finished.';
+    	$label = 'Success, but...';
+    	$message = 'Our records indicate you have already submitted an application.  Please Log-in if you are looking for another Application or contact NCDD directly.';
+    	$response_status = 400;
     }else{
     	$application->insert();
-    	$message = 'If you would like to add another click Add More or click Finished.';
+    	$label = 'Your application was received.  Thank you.';
+    	$message = 'Thank you for your interest in NCDD.  Your application has been submitted.  You will be notified by the College when it is approved or if there are any questions.';
+    	$response_status = 200;
     }
-    return new Response(json_encode(array('message' => $message)), 200,array('Content-Type' => 'application/json'));
+    return new Response(json_encode(array('message' => $message,'label'=>$label)), $response_status,array('Content-Type' => 'application/json'));
+})->after(function (Request $request, Response $response, Silex\Application $app) {
+		if((int)$response->getStatusCode() == 200):
+	    	$doc = $request->get('doc');
+	    	// send admin the email notification
+	    	$subject = 'General Member Application Form Submitted';
+	    	$to = SAW_ADMIN_EMAIL;
+	    	$view_vars = array('firstName'=>$doc['firstName']
+	    						,'lastName'=>$doc['lastName']
+	    						,'city'=>$doc['city']
+	    						,'state'=>$doc['state']
+	    						,'email'=>$doc['email']
+	    	);
+	    	$body = $app['view']->render('email/new-member','email', $view_vars);
+	    	$app['sendMail']($subject, $body, $to, $app);
+	    endif;
 });
 
-
-
-
-
-$app->get('/', function (Request $request) use ($app) {
-	$application = new Model\Application($doc=array(), $app);
-	$application = $application->find($query=array(),$fields=array('businessName', 'email', 'passwordOriginal'));
-
-	$crumbs = array(array('name'=>'Applications','href'=>'/application'));
+$app->get('/application/{id}/view', function ($id, Request $request) use ($app) {
+	
+	$application = new Model\Apply($doc=array('_id'=>$id), $app);
+	$application = $application->findById();
+	$crumbs = array(array('name'=>'Applications','href'=>'/application')
+					,array('name'=>$application['firstName'].' '.$application['lastName'],'href'=>'/application/'.$id.'/view')
+					,array('name'=>$application['type'],'href'=>'/application/'.$id.'/view')
+					);
 	$view_vars = array(
-						 'active'=>'Applications'
+						 'active'=>'Application'
 						,'page-plugin'=>'datatables'
 						,'headline'=>'Applications'
 						,'description'=>"View all application here."
 						,'crumbs'=>$crumbs
 						,'application'=>$application);
-	return $app['view']->render('users/application', 'default', $view_vars);
-});
+	return $app['view']->render('application/view', 'default', $view_vars);
+})->value('id','')
+->before($mustbeADMIN);
 
-$app->get('/add', function (Request $request) use ($app) {
-	$crumbs = array(array('name'=>'Applications','href'=>'/application')
-					,array('name'=>'Add New','href'=>'/application/add'));
-	$view_vars = array(
-						 'active'=>'Applications'
-						,'page-plugin'=>''
-						,'headline'=>'Applications'
-						,'description'=>"Add a new application"
-						,'crumbs'=>$crumbs);
-	return $app['view']->render('users/application-add', 'default', $view_vars);
-});
-$app->post('/add', function (Request $request) use ($app) {
-	// retrieve document from request
-    $document = $request->get('doc');
-    $application = new Model\Application($document, $app);
-    // validate the model
-    $app['validateModel']($app,$application,$groups=array('signup'));
-    
-    if($application->findByEmail()){
-    	$application->upsert();
-    	$message = 'This application already exists and was updated. Click Add More to try again or Finished.';
-    }else{
-    	$application->insert();
-    	$message = 'If you would like to add another click Add More or click Finished.';
-    }
-    return new Response(json_encode(array('message' => $message)), 200,array('Content-Type' => 'application/json'));
-	
-});
-
-$app->get('/edit/{id}', function ($id, Request $request) use ($app) {
-
-	$application = new Model\Application($doc=array('_id'=>new MongoId($id)), $app);
-	$doc = Model\Application::getAccountById($id, $app);
-
-	$crumbs = array(array('name'=>'Applications','href'=>'/application')
-					,array('name'=>'Edit','href'=>''));
-	$view_vars = array(
-						 'active'=>'Applications'
-						,'page-plugin'=>''
-						,'headline'=>'Applications'
-						,'description'=>"Edit a application"
-						,'crumbs'=>$crumbs
-						,'application'=>$doc);
-	return $app['view']->render('users/application-edit', 'default', $view_vars);
-})->value('id','');
-$app->post('/edit', function (Request $request) use ($app) {
+$app->post('/application/{id}/approve', function (Request $request) use ($app) {
 	// retrieve document from request
     $document = $request->get('doc');
     $application = new Model\Application($document, $app);
@@ -110,5 +83,40 @@ $app->post('/edit', function (Request $request) use ($app) {
     }else{
     	return $app->abort(500, 'Something went wrong and the application did not save.');
     }
-});
+})->before($mustbeADMIN);
+
+$app->post('/application/{id}/delete', function (Request $request) use ($app) {
+	// retrieve document from request
+    $document = $request->get('doc');
+    $application = new Model\Application($document, $app);
+    // validate the model
+    $app['validateModel']($app,$application,$groups=array('signup'));
+    
+    if($application->saveSafe()){
+    	return new Response(json_encode(array('message' => 'Saved successfully')), 200,array('Content-Type' => 'application/json'));
+    }else{
+    	return $app->abort(500, 'Something went wrong and the application did not save.');
+    }
+})->before($mustbeADMIN);
+
+$app->get('/application/{offset}/{limit}', function ($offset, $limit, Request $request) use ($app) {
+	$application = new Model\Apply($doc=array(), $app);
+	$approved = $application->fetch($offset, $limit);
+	$unapproved = $application->fetch($offset, $limit);
+
+	$crumbs = array(array('name'=>'Applications','href'=>'/application'));
+	$view_vars = array(
+						 'active'=>'Applications'
+						,'page-plugin'=>'datatables'
+						,'headline'=>'Applications'
+						,'description'=>"View all application here."
+						,'crumbs'=>$crumbs
+						,'approved'=>$approved
+						,'unapproved'=>$unapproved);
+	return $app['view']->render('users/application', 'default', $view_vars);
+})
+->value('offset','0')
+->value('limit','100')
+->before($mustbeADMIN);
+
 return $app;

@@ -158,7 +158,7 @@
   <!-- END LOGIN -->
   <!-- BEGIN COPYRIGHT -->
   <div class="copyright">
-    <?=date('Y')?> &copy; National College for DUI Defense.
+    <?=date('Y')?> &copy; National College for DUI Defense, Inc.
   </div>
   <!-- END COPYRIGHT -->
   <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->

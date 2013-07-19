@@ -20,4 +20,12 @@ $app['validateModel'] = $app->protect(function ($app,$model,$groups=array()) {
 		throw new Saw\Model\Exceptions\DomainException($model::$invalidFieldsMessage, $fields);
 	endif;	
 });
+$app['sendMail'] = $app->protect(function ($subject, $body, $to, $app, $from=array(SAW_MAILER_FROM=>SAW_MAILER_FROM_NAME)) {
+	$message = \Swift_Message::newInstance()
+		        ->setSubject($subject)
+		        ->setFrom($from)
+		        ->setTo($to)
+		        ->setBody($body,'text/html');
+	$app['mailer']->send($message);
+});
 return $app;
