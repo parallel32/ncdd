@@ -69,15 +69,18 @@
                                  </tr>
                               </thead>
                               <tbody role="alert" aria-live="polite" aria-relevant="all">
-                                 <? foreach($this->vars['applications'] as $application): ?>
+                                 <? if(!empty($this->vars['applications'])): foreach($this->vars['applications'] as $application): ?>
                                  <tr class="gradeX odd">
                                     <td class=" "><?=$application['firstName'].' '.$application['lastName']?></td>
                                     <td class="hidden-480 "><?=$application['city'].', '.$application['state']?></td>
-                                    <td class="hidden-480 "><?=$application['date']['monthDay'].' '.$application['date']['shortTime']?></td>
+                                    <td class="hidden-480 "><?=$application['submittedDate']['monthDay'].' '.$application['submittedDate']['shortTime']?></td>
                                     <td class="center hidden-480 "><?=$application['type']?></td>
                                     <td class=" "><a data-id="<?=$application['_id']?>" class="btn blue mini view"><i class=" icon-eye-open"></i> View Application</a></td>
                                  </tr>
-                                 <? endforeach; ?>
+                                 <? endforeach;?>
+                                 <? else: ?>
+                                    <td colspan="5">Nothing to approve.</td>
+                                 <? endif;?>
                               </tbody>
                            </table>
                         </div>

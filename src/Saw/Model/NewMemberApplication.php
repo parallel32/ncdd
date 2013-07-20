@@ -14,6 +14,7 @@ use Symfony\Component\Validator\ExecutionContext;
 class NewMemberApplication extends Apply {
 	
 	public $type = 'NEW MEMBER APPLICATION';
+	public $class = 'NewMemberApplication';
 	public $hearAboutNCDD;
 	public $yearsInLawPractice;
 	public $percentDUIDefense;
@@ -120,6 +121,7 @@ class NewMemberApplication extends Apply {
 	protected function prepareInsert(){
 		parent::prepareInsert();
 		$this->type = $this->type ?: 'NEW MEMBER APPLICATION';
+		$this->class = $this->class ?: 'NewMemberApplication';
 		$this->hearAboutNCDD = $this->hearAboutNCDD ?: '';
 		$this->yearsInLawPractice = $this->yearsInLawPractice ?: '';
 		$this->percentDUIDefense = $this->percentDUIDefense ?: '';
@@ -157,5 +159,42 @@ class NewMemberApplication extends Apply {
 		 $month = $date->format('F');
 		 $year = $date->format('y');
 		 $this->executed = "Executed at ".$executed.', this '.$day.' day of '.$month.', 20'.$year;
+	}
+
+	public function approve(){
+		// prepare member record
+		$password = rand();
+		$mem_doc['password'] = $password;
+		$mem_doc['firstName'] = $this->firstName;
+		$mem_doc['lastName'] = $this->lastName;
+		$mem_doc['barNumber'] = $this->barNumber;
+		$mem_doc['email'] = $this->email;
+		// prepare location record
+		$loc_doc['raw'] = $this->formattedAddress;
+		$loc_doc['name'] = 'primary';
+		$loc_doc['point'] = array($this->lon, $this->lat);
+		$loc_doc['addressLine1'] = $this->address1;
+		$loc_doc['addressLine2'] = $this->address2;
+		$loc_doc['city'] = $this->city;
+		$loc_doc['state'] = $this->state;
+		$loc_doc['zip'] = $this->postalCode;
+		$loc_doc['country'] = $this->country;
+		$loc_doc['phone'] = $this->phone;
+		$loc_doc['fax'] = $this->fax;
+		$location = new Location($loc_doc, self::$app);
+
+		$member = new Member($mem_doc, self::$app, $location);
+		$mem_id = $member->insert();
+		$member->password = $password;
+
+		$location->ownerId = $mem_id;
+		$location->insert();
+
+		// update record to approved status
+		$this->currentStatus = self::$status['APPROVED'];
+		$this->approvedDate = new Date(self::$app,'now', $this->timeZone);
+		$this->saveSafe();
+
+		return $member;
 	}
 }

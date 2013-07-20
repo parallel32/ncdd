@@ -58,7 +58,7 @@ class User extends Model {
 		$this->displayName = $doc['displayName'];
         $this->email = trim(strtolower($doc['email'])); 
 		$this->password = $doc['password'];
-		$this->passwordOriginal = $doc['password'];
+		$this->passwordOriginal = $doc['passwordOriginal'];
 		$this->firstName = $doc['firstName'];
 		$this->lastName = $doc['lastName'];
 		$this->gender = $doc['gender'];
@@ -94,10 +94,10 @@ class User extends Model {
 		$this->firstName = $this->firstName ?: '';
 		$this->lastName = $this->lastName ?: '';        		
 		$this->gender = $this->gender ?: '';
-		$this->dob = (!empty($this->dob)) ? (is_object($this->dob)) ? $this->dob->__toArray() : $this->dob  : new Date(self::$app,'now');
+		$this->dob = (!empty($this->dob)) ? (is_object($this->dob)) ? $this->dob->__toArray() : $this->dob  : new \stdClass();
 		$this->email = (!empty($this->email)) ? trim(strtolower($this->email)) : '';
 		$this->password = $this->password ?: '';
-		$this->passwordOriginal = $this->password ?: '';
+		$this->passwordOriginal = $this->passwordOriginal ?: '';
 		$this->lastLogin = new \MongoDate();
 	    $this->lastLogout = new \MongoDate();
 		$this->locale = $this->locale ?: 'en_US';
@@ -112,7 +112,7 @@ class User extends Model {
             $this->displayName = $this->firstName;
             if(!empty($this->lastName)) $this->displayName.=' '.$this->lastName;
         }
-        $this->displayName = $this->displayName ?: 'User';             
+        $this->displayName = $this->displayName ?: $this->firstName.' '.$this->lastName;             
 		$this->slug = $this->createSlug($this->displayName);
 		$this->status = $this->status ?: USER_STATUS_UNVERIFIED;	    
 		$this->connections = $this->connections ?: array();
@@ -126,7 +126,7 @@ class User extends Model {
 	
 	public function insert(){
 		if(parent::insert()){
-            $this->password = $this->sawPassword($this->password);
+            $this->password = self::sawPassword($this->password);
             if($this->saveSafe()) {
                 $this->password = '';
                 $this->passwordOriginal = '';
@@ -143,7 +143,7 @@ class User extends Model {
 	public function upsert(){
 		if(!empty($this->password)){
 			$this->passwordOriginal = $this->password;
-			$this->password = $this->sawPassword($this->password);
+			$this->password = self::sawPassword($this->password);
 		}
 		parent::upsert();
 	}
@@ -194,7 +194,7 @@ class User extends Model {
 		$fields = array('password');
 		$result = self::$app['mongo']->findOne($this->collection, $query, $fields, $slaveOkay=true);
 		if(!empty($result)):
-            $password = $this->sawPassword($this->password);
+            $password = self::sawPassword($this->password);
             if($password === $result['password']) {
                 return true;
             }
@@ -207,7 +207,7 @@ class User extends Model {
 	public function editSave(){
 		if(!empty($this->password)){
 			$this->passwordOriginal = $this->password;
-            $this->password = $this->sawPassword($this->password);
+            $this->password = self::sawPassword($this->password);
 		}
 		return $this->saveSafe();
 	}
@@ -290,7 +290,7 @@ class User extends Model {
 	
 	public function resetPassword(){
 		$this->passwordOriginal = $this->password;
-        $this->password = $this->sawPassword($this->password);
+        $this->password = self::sawPassword($this->password);
 		return $this->saveSafe();
 	}
 	
@@ -335,10 +335,9 @@ class User extends Model {
 		$query = array('email'=>trim(strtolower($this->email)));
 		$fields = array('_id','password');
 		$result = self::$app['mongo']->findOne($this->collection, $query, $fields, $slaveOkay=true);
-        
-		if(!empty($result)):
+        if(!empty($result)):
             $this->_id = $result['_id'];
-            $password = $this->sawPassword($this->password);
+            $password = self::sawPassword(trim($this->password));
             if($password === $result['password']) {
                 $this->password = '';                
                 return $result;
@@ -349,11 +348,8 @@ class User extends Model {
 		endif;
 	}
 	
-    //NOTE: this requires the user's id to be set prior
-    public function sawPassword($password) {
-        $id = $this->_id->__toString();        
-        $key = md5($password).md5($id.SAW_SALT_KEYWORD);
-        return crypt($key, SAW_SALT);   
+    public static function sawPassword($password) {
+        return md5($password.SAW_SALT_KEYWORD);
     }
 	
 	public function updateAccessLevel(){

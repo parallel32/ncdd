@@ -14,7 +14,7 @@ use Symfony\Component\Validator\ExecutionContext;
 class Apply extends Model {
 	
 	public $collection = 'application';
-	static public $status = array('DRAFT'=>0,'SUBMITTED'=>10, 'APPROVED'=>20, 'UNPAID'=>30, 'PAID'=>40);
+	static public $status = array('DRAFT'=>0,'SUBMITTED'=>10, 'APPROVED'=>20, 'PAID'=>40);
 	static public $statusReversed = array(0=>'DRAFT',10=>'SUBMITTED', 20=>'APPROVED', 30=>'UNPAID', 40=>'PAID');
 	public $currentStatus = 0;
 	public $firstName;
@@ -37,7 +37,10 @@ class Apply extends Model {
 	public $lon;
 	public $memberId;
 	public $invoiceId;
-	public $date;
+	public $submittedDate;
+	public $paidDate;
+	public $approvedDate;
+	public $timeZone='America/New_York';
 
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addPropertyConstraint('firstName', new Constraints\NotBlank(array('message'=>'cannot be blank')));
@@ -99,7 +102,9 @@ class Apply extends Model {
 	 * This method prepares defaults for empty attributes
 	*/
 	protected function prepareInsert(){
-		$this->date = new Date(self::$app, 'now');
+		$this->submittedDate = new Date(self::$app, 'now');
+		$this->paidDate = new \stdClass();
+		$this->approvedDate = new \stdClass();
 		$this->currentStatus = $this->currentStatus ?: self::$status['SUBMITTED'];
 		$this->firstName = $this->firstName ?: '';
 		$this->lastName = $this->lastName ?: '';
@@ -121,6 +126,8 @@ class Apply extends Model {
 		$this->lon = $this->lon ?: 84.3881;//atlanta
 		$this->memberId = $this->memberId ?: new \stdClass();
 		$this->invoiceId = $this->invoiceId ?: new \stdClass();
+		$this->timeZone = $this->timeZone ?: 'America/New_York';
+
 	}
 	
 	public function findByEmail(){
@@ -138,13 +145,15 @@ class Apply extends Model {
 
 	public function fetch($offset=0,$limit=100){
 		$query = array();
-		$fields = array('date'=>true
-						,'firstName'=>true
+		$fields = array('firstName'=>true
 						,'lastName'=>true
 						,'city'=>true
 						,'state'=>true
 						,'type'=>true
-						,'date'=>true
+						,'class'=>true
+						,'submittedDate'=>true
+						,'paidDate'=>true
+						,'approvedDate'=>true
 						,'_id'=>true
 						);
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('_id'=>-1),(int)$offset,(int)$limit);
@@ -152,6 +161,45 @@ class Apply extends Model {
 		return $result;
 
 	}
-	
+	public function fetchByStatus($status, $offset=0,$limit=100){
+		$query = array('currentStatus'=>self::$status[$status]);
+		$fields = array('firstName'=>true
+						,'lastName'=>true
+						,'city'=>true
+						,'state'=>true
+						,'type'=>true
+						,'class'=>true
+						,'submittedDate'=>true
+						,'paidDate'=>true
+						,'approvedDate'=>true
+						,'_id'=>true
+						);
+		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('_id'=>-1),(int)$offset,(int)$limit);
+		//error_log('fetch:'.print_r($result,true));
+		return $result;
+
+	}
+	public function fetchByDatePaid($days=90, $offset=0,$limit=100){
+		$query = array('currentStatus'=>self::$status['PAID']
+						,'paidDate.date'=>array('$lte'=>new \MongoDate(strtotime('now'))
+												,'$gte'=>new \MongoDate(strtotime('-'.$days.' day')))
+		);
+		$fields = array('firstName'=>true
+						,'lastName'=>true
+						,'city'=>true
+						,'state'=>true
+						,'type'=>true
+						,'class'=>true
+						,'submittedDate'=>true
+						,'paidDate'=>true
+						,'approvedDate'=>true
+						,'_id'=>true
+						);
+		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('_id'=>-1),(int)$offset,(int)$limit);
+		//error_log('fetch:'.print_r($query,true));
+		//error_log('result:'.print_r($result,true));
+		return $result;
+
+	}
 	
 }

@@ -27,7 +27,7 @@ class Preference extends Model {
 			// and then the same one as the value for the 'current' key
 			$feed = array('settings'=>array('locations'=>array('current'=>array()),
 							  				'range'=>50),
-						  'type'=>'offer',
+						  'type'=>'',
 						  'filter'=>'nearby');
 		else:
 			$feed = $doc['feed'];

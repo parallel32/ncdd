@@ -29,20 +29,20 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 	switch ($user['accessLevel']) {
 		case ADMIN:
 			$apply = new Model\Apply(array(),$app);
-			$applications = $apply->fetch($offset=0,$limit=5);
+			$applications = $apply->fetchByStatus('SUBMITTED');
 			$view_vars['applications']=$applications;
 			array_push($view_vars['crumbs'],array('name'=>'Admin','href'=>'/'));
 			return $app['view']->render('dashboards/admin', 'default', $view_vars);
 			break;
 		case EDITOR:
 			array_push($view_vars['crumbs'],array('name'=>'Client','href'=>'/'));
-			return $app['view']->render('dashboards/client', 'default', $view_vars);
+			return $app['view']->render('dashboards/editor', 'default', $view_vars);
 			break;
 		case MEMBER:
 			array_push($view_vars['crumbs'],array('name'=>'Editor','href'=>'/'));
-			return $app['view']->render('dashboards/editor', 'default', $view_vars);
+			return $app['view']->render('dashboards/member', 'default', $view_vars);
 			break;
 	}
-})->before($mustbeADMIN);
+})->before($mustbeMEMBER);
 
 return $app;

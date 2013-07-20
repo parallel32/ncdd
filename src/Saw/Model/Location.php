@@ -1,5 +1,5 @@
 <?php
-namespace Grapeword\Model;
+namespace Saw\Model;
 
 use Silex\Application;
 use Symfony\Component\Validator\Mapping\ClassMetadata;

@@ -483,32 +483,49 @@
                      </div>
                      <!--/span-->
                   </div>
-                  <!-- SUCCESSFUL SAVE MODAL -->
-                  <div id="save-success" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="save-success-label" aria-hidden="true">
-                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                        <h3 id="save-success-label">Successful Operation</h3>
-                     </div>
-                     <div class="modal-body">
-                        <p></p>
-                     </div>
-                     <div class="modal-footer">
-                        <button class="btn blue continue" data-insertid="">Return to NCDD.com</button>
-                     </div>
-                  </div>
-                  <!--/ SUCCESSFUL SAVE MODAL -->
                   <div class="alert alert-error hide">
                      <button class="close" data-dismiss="alert"></button>
                      You have some form errors. Please check below.
                   </div>
                   
                   <div class="form-actions text-center">
-                     <button type="button" data-id="<?=$this->vars['_id']?>" class="btn green"><i class="icon-ok"></i> Approve Application</button>
+                     <button type="button" data-id="<?=$this->vars['application']['_id']?>" data-type="<?=$this->vars['application']['class']?>" class="btn green approve"><i class="icon-ok"></i> Approve Application</button>
                      <button type="button" class="btn cancel">Cancel and Go Back</button>
-                     <button type="button" data-id="<?=$this->vars['_id']?>" class="btn red">Delete Application</button>
+                     <button type="button" data-id="<?=$this->vars['application']['_id']?>" class="btn red delete">Delete Application</button>
                   </div>
                </form>
                <!-- END FORM--> 
+
+               <!-- SUCCESSFUL SAVE MODAL -->
+               <div id="save-success" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="save-success-label" aria-hidden="true">
+                  <div class="modal-header">
+                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                     <h3 id="save-success-label">Successful Operation</h3>
+                  </div>
+                  <div class="modal-body">
+                     <p></p>
+                  </div>
+                  <div class="modal-footer">
+                     <button class="btn blue continue" data-insertid="">Return to NCDD.com</button>
+                  </div>
+               </div>
+               <!--/ SUCCESSFUL SAVE MODAL -->
+               <!-- DELETE MODAL -->
+               <div id="delete-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="delete-modal-label" aria-hidden="true">
+                  <div class="modal-header">
+                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                     <h3 id="delete-modal-label">Are you sure you want to delete this?</h3>
+                  </div>
+                  <div class="modal-body">
+                     <p>This delete action cannot be undone.</p>
+                  </div>
+                  <div class="modal-footer">
+                     <button class="btn green continue" data-id="<?=$this->vars['application']['_id']?>">Yes, Delete it.</button>
+                     <button class="btn cancel">Cancel</button>
+                  </div>
+               </div>
+               <!--/ DELETE MODAL -->
+
             </div>
          </div>
          <!-- END PAGE CONTENT-->
@@ -519,6 +536,6 @@
       <?=$this->element('js/Application.js');?>
       <script>
       jQuery(document).ready(function() {    
-         io.saw.Application.init();
+         io.saw.Application.approveInit();
       });      
       </script>

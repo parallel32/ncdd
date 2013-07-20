@@ -40,7 +40,7 @@
                </a>
             </li>
             <li class="<? echo ($this->vars['active'] == 'Application') ? 'active':'';?>">
-               <a href="/application">
+               <a href="/applications">
                <i class="icon-copy"></i> 
                <span class="title">Applictions</span>
                <? echo ($this->vars['active'] == 'Application') ? '<span class="selected"></span>':'';?>

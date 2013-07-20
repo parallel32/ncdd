@@ -42,44 +42,44 @@
 		
 	};
 	Application.init = function(){
-		$('#saw-form input').keypress(function (e) {
-		   if (e.which == 13) {
-		   	  e.preventDefault();
-		   	  
-		   }
-		});
-		$('#saw-form .btn.green').click(function(e){
-			e.preventDefault();
-			
+		$('.btn.blue.mini.view').click(function(e){
+			document.location.href='/application/'+$(this).attr('data-id')+'/view';
 		});		
 	};
 	Application.approveInit = function(){
-		$('#saw-form .btn.green').click(function(e){
-			e.preventDefault();
-			approve($(this).attr('data-id'));
+		$('#saw-form .btn.green.approve').click(function(e){
+			approve($(this).attr('data-id'),$(this).attr('data-type'));
 		});
 		$('#saw-form .btn.cancel').click(function(e){
 			document.location.href='/application';			
 		});
 		$('#saw-form .btn.red').click(function(e){
-			e.preventDefault();
-			delete($(this).attr('data-id')); // add are you sure modal.....
+			// pop delete are you sure modal
+			$('#delete-modal').modal({keyboard: false});
 		});		
+		$('#delete-modal .btn.green.continue').click(function(e){
+			$('#delete-modal').modal('hide');
+			remove($(this).attr('data-id'));
+		});		
+		$('#delete-modal .btn.cancel').click(function(e){
+			$('#delete-modal').modal('hide');
+		});		
+
 	};
 	
-	function delete (id){
+	function remove (id){
 		io.saw.FormGet.activate({postUrl:'/application/'+id+'/delete'
 			,postOnComplete:function(responseObj,responseStatus){}
 			,postOnSuccess:function(responseObj){
-				document.location.href='/application/';
+				document.location.href='/applications';
 			}
 		});
 	};
-	function approve (id){
-		io.saw.FormGet.activate({postUrl:'/application/'+id+'/approve'
+	function approve (id,type){
+		io.saw.FormGet.activate({postUrl:'/application/'+id+'/approve/'+type
 			,postOnComplete:function(responseObj,responseStatus){}
 			,postOnSuccess:function(responseObj){
-				document.location.href='/application/';
+				document.location.href='/applications';
 			}
 		});
 	};

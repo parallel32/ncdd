@@ -40,7 +40,7 @@
 		<div class="navbar-inner">
 			<div class="container-fluid">
 				<!-- BEGIN LOGO -->
-				<a class="brand" href="index.html" style="margin-top:-7px">
+				<a class="brand" href="/" style="margin-top:-7px">
 				<img src="/assets/img/ncdd-dashboard-logo.png" alt="logo" />
 				</a>
 				<!-- END LOGO -->

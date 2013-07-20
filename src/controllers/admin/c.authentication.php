@@ -30,6 +30,7 @@ $app->post('/login', function (Request $request) use ($app) {
     		return $clientResponse;
     	}
     }
+    return $clientResponse;
 });
 $app->get('/logout', function (Request $request) use ($app) {
 	$accessLevel = call_user_func(function($app){ $user = $app['session']->get('user'); return $user['accessLevel'];},$app);

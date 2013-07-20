@@ -48,7 +48,7 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 	    						,'email'=>$doc['email']
 	    	);
 	    	$body = $app['view']->render('email/new-member','email', $view_vars);
-	    	$app['sendMail']($subject, $body, $to, $app);
+	    	$app['sendMail']($subject, $body, $to);
 	    endif;
 });
 
@@ -56,7 +56,7 @@ $app->get('/application/{id}/view', function ($id, Request $request) use ($app) 
 	
 	$application = new Model\Apply($doc=array('_id'=>$id), $app);
 	$application = $application->findById();
-	$crumbs = array(array('name'=>'Applications','href'=>'/application')
+	$crumbs = array(array('name'=>'Applications','href'=>'/applications')
 					,array('name'=>$application['firstName'].' '.$application['lastName'],'href'=>'/application/'.$id.'/view')
 					,array('name'=>$application['type'],'href'=>'/application/'.$id.'/view')
 					);
@@ -71,52 +71,65 @@ $app->get('/application/{id}/view', function ($id, Request $request) use ($app) 
 })->value('id','')
 ->before($mustbeADMIN);
 
-$app->post('/application/{id}/approve', function (Request $request) use ($app) {
-	// retrieve document from request
-    $document = $request->get('doc');
-    $application = new Model\Application($document, $app);
-    // validate the model
-    $app['validateModel']($app,$application,$groups=array('signup'));
-    
-    if($application->saveSafe()){
-    	return new Response(json_encode(array('message' => 'Saved successfully')), 200,array('Content-Type' => 'application/json'));
-    }else{
-    	return $app->abort(500, 'Something went wrong and the application did not save.');
-    }
+$app->get('/application/{id}/approve/{type}', function ($id,$type, Request $request) use ($app) {
+	switch ($type) {
+		case 'NewMemberApplication':
+			$application = new Model\NewMemberApplication(array('_id'=>$id), $app);
+			break;
+		case 'UpdateMember':
+			$application = new Model\UpdateMember(array('_id'=>$id), $app);
+			break;
+		case 'UpdateFoundingMember':
+			$application = new Model\UpdateFoundingMember(array('_id'=>$id), $app);
+			break;
+		case 'UpdateSustainingMember':
+			$application = new Model\UpdateSustainingMember(array('_id'=>$id), $app);
+			break;
+		case 'NewSustainingMember':
+			$application = new Model\NewSustainingMember(array('_id'=>$id), $app);
+			break;		
+	}
+	$application->findById();
+    $member = $application->approve();
+
+    // email welcome message
+	$subject = 'Welcome To NCDD';
+	$to = $member->email;
+	$view_vars = array('email'=>$member->email
+						,'password'=>$member->password
+	);
+	$body = $app['view']->render('email/new-member-welcome','email', $view_vars);
+	$app['sendMail']($subject, $body, $to);
+
+    return new Response(json_encode(array('message' => 'Approved successfully')), 200,array('Content-Type' => 'application/json'));
 })->before($mustbeADMIN);
 
-$app->post('/application/{id}/delete', function (Request $request) use ($app) {
-	// retrieve document from request
-    $document = $request->get('doc');
-    $application = new Model\Application($document, $app);
-    // validate the model
-    $app['validateModel']($app,$application,$groups=array('signup'));
-    
-    if($application->saveSafe()){
-    	return new Response(json_encode(array('message' => 'Saved successfully')), 200,array('Content-Type' => 'application/json'));
-    }else{
-    	return $app->abort(500, 'Something went wrong and the application did not save.');
-    }
+$app->get('/application/{id}/delete', function ($id, Request $request) use ($app) {
+    $application = new Model\Apply(array('_id'=>$id), $app);
+    $application->remove();
+    return new Response(json_encode(array('message' => 'Successfully Deleted')), 200,array('Content-Type' => 'application/json'));
 })->before($mustbeADMIN);
 
-$app->get('/application/{offset}/{limit}', function ($offset, $limit, Request $request) use ($app) {
+$app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $request) use ($app) {
 	$application = new Model\Apply($doc=array(), $app);
-	$approved = $application->fetch($offset, $limit);
-	$unapproved = $application->fetch($offset, $limit);
-
-	$crumbs = array(array('name'=>'Applications','href'=>'/application'));
+	$submitted = $application->fetchByStatus('SUBMITTED',$offset, $limit);
+	$approved = $application->fetchByStatus('APPROVED',$offset, $limit);
+	$paid = $application->fetchByDatePaid(90, $offset, $limit);
+	$crumbs = array(array('name'=>'Applications','href'=>'/applications'));
 	$view_vars = array(
-						 'active'=>'Applications'
+						 'active'=>'Application'
 						,'page-plugin'=>'datatables'
 						,'headline'=>'Applications'
 						,'description'=>"View all application here."
 						,'crumbs'=>$crumbs
+						,'submitted'=>$submitted
 						,'approved'=>$approved
-						,'unapproved'=>$unapproved);
-	return $app['view']->render('users/application', 'default', $view_vars);
+						,'paid'=>$paid);
+	return $app['view']->render('application/index', 'default', $view_vars);
 })
 ->value('offset','0')
 ->value('limit','100')
 ->before($mustbeADMIN);
 
 return $app;
+//echo"<pre>";print_r($submitted);echo "</pre>";

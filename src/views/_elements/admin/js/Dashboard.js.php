@@ -8,7 +8,7 @@
 		});
 		$('#application .btn.view').click(function(e){
 			e.preventDefault();
-			document.location.href='/application/';
+			document.location.href='/applications';
 		});
 		
 	};
