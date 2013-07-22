@@ -104,6 +104,35 @@ $app->get('/application/{id}/approve/{type}', function ($id,$type, Request $requ
     return new Response(json_encode(array('message' => 'Approved successfully')), 200,array('Content-Type' => 'application/json'));
 })->before($mustbeADMIN);
 
+$app->get('/application/{id}/pay', function ($id, Request $request) use ($app) {
+	
+	$application = new Model\Apply($doc=array('_id'=>$id), $app);
+	$application = $application->findById();
+	$crumbs = array(array('name'=>'Applications','href'=>'/applications')
+					,array('name'=>$application['firstName'].' '.$application['lastName'],'href'=>'/application/'.$id.'/view')
+					,array('name'=>$application['type'],'href'=>'/application/'.$id.'/view')
+					,array('name'=>'Submit Payment','href'=>'/application/'.$id.'/pay')
+					);
+	$view_vars = array(
+						 'active'=>'Application'
+						,'page-plugin'=>'datatables'
+						,'headline'=>'Membership Application Payment'
+						,'description'=>"Pay membership Dues."
+						,'crumbs'=>$crumbs
+						,'application'=>$application);
+	return $app['view']->render('application/pay', 'default', $view_vars);
+})->value('id','')
+->before($mustbeMEMBER);
+$app->post('/application/{id}/pay', function ($id, Request $request) use ($app) {
+    
+    $doc = $request->get('doc');
+    $application = new Model\NewMemberApplication($doc, $app);
+    // validate the model
+    $app['validateModel']($app,$application);
+
+    return new Response(json_encode(array('message' => 'Successfully Paid')), 200,array('Content-Type' => 'application/json'));
+})->before($mustbeMEMBER);
+
 $app->get('/application/{id}/delete', function ($id, Request $request) use ($app) {
     $application = new Model\Apply(array('_id'=>$id), $app);
     $application->remove();

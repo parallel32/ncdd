@@ -52,7 +52,7 @@ class ViewWrapper
 		
 		ob_start();
 		if(!empty($params)){
-			extract($param);
+			extract($params);
 		}
 		include($this->elementPath.$element.'.php');
 		$content = ob_get_contents();

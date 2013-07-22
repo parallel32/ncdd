@@ -57,8 +57,7 @@ class User extends Model {
 		if(!empty($doc['_id'])) $this->_id = (is_object($doc['_id'])) ? $doc['_id'] : new \MongoId($doc['_id']);
 		$this->displayName = $doc['displayName'];
         $this->email = trim(strtolower($doc['email'])); 
-		$this->password = $doc['password'];
-		$this->passwordOriginal = $doc['passwordOriginal'];
+		$this->password = (!empty($doc['password'])) ? self::sawPassword($doc['password']): '';
 		$this->firstName = $doc['firstName'];
 		$this->lastName = $doc['lastName'];
 		$this->gender = $doc['gender'];
@@ -97,7 +96,6 @@ class User extends Model {
 		$this->dob = (!empty($this->dob)) ? (is_object($this->dob)) ? $this->dob->__toArray() : $this->dob  : new \stdClass();
 		$this->email = (!empty($this->email)) ? trim(strtolower($this->email)) : '';
 		$this->password = $this->password ?: '';
-		$this->passwordOriginal = $this->passwordOriginal ?: '';
 		$this->lastLogin = new \MongoDate();
 	    $this->lastLogout = new \MongoDate();
 		$this->locale = $this->locale ?: 'en_US';
@@ -114,7 +112,7 @@ class User extends Model {
         }
         $this->displayName = $this->displayName ?: $this->firstName.' '.$this->lastName;             
 		$this->slug = $this->createSlug($this->displayName);
-		$this->status = $this->status ?: USER_STATUS_UNVERIFIED;	    
+		$this->status = $this->status ?: USER_STATUS_ACTIVE;	    
 		$this->connections = $this->connections ?: array();
 		$this->location = $this->location ?: new \stdClass();
 		$this->timezone = $this->timezone ?: array();
@@ -126,10 +124,7 @@ class User extends Model {
 	
 	public function insert(){
 		if(parent::insert()){
-            $this->password = self::sawPassword($this->password);
             if($this->saveSafe()) {
-                $this->password = '';
-                $this->passwordOriginal = '';
                 return $this->_id;
             }
             else{
@@ -141,10 +136,6 @@ class User extends Model {
 	}
 
 	public function upsert(){
-		if(!empty($this->password)){
-			$this->passwordOriginal = $this->password;
-			$this->password = self::sawPassword($this->password);
-		}
 		parent::upsert();
 	}
 	
@@ -194,8 +185,9 @@ class User extends Model {
 		$fields = array('password');
 		$result = self::$app['mongo']->findOne($this->collection, $query, $fields, $slaveOkay=true);
 		if(!empty($result)):
-            $password = self::sawPassword($this->password);
-            if($password === $result['password']) {
+			error_log('db pass:'.$this->password);
+			error_log('entered pass:'.$result['password']);
+            if($this->password === $result['password']) {
                 return true;
             }
             return false;
@@ -205,10 +197,6 @@ class User extends Model {
 
 	}
 	public function editSave(){
-		if(!empty($this->password)){
-			$this->passwordOriginal = $this->password;
-            $this->password = self::sawPassword($this->password);
-		}
 		return $this->saveSafe();
 	}
 	public function setTimezone(TimeZone $timezone){
@@ -259,7 +247,6 @@ class User extends Model {
 		$sess_user = $app['session']->get('user');
 		return array('_id'=>$sess_user['user_id'],
 					 'accessLevel'=>$sess_user['accessLevel']);
-        
 	}
     
 	public function findByEmailVerifyToken(){
@@ -289,8 +276,6 @@ class User extends Model {
 	}
 	
 	public function resetPassword(){
-		$this->passwordOriginal = $this->password;
-        $this->password = self::sawPassword($this->password);
 		return $this->saveSafe();
 	}
 	
@@ -337,8 +322,7 @@ class User extends Model {
 		$result = self::$app['mongo']->findOne($this->collection, $query, $fields, $slaveOkay=true);
         if(!empty($result)):
             $this->_id = $result['_id'];
-            $password = self::sawPassword(trim($this->password));
-            if($password === $result['password']) {
+            if($this->password === $result['password']) {
                 $this->password = '';                
                 return $result;
             }
@@ -349,7 +333,9 @@ class User extends Model {
 	}
 	
     public static function sawPassword($password) {
-        return md5($password.SAW_SALT_KEYWORD);
+        //return md5($password.SAW_SALT_KEYWORD);
+        return md5($password);
+
     }
 	
 	public function updateAccessLevel(){

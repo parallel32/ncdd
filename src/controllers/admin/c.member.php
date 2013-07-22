@@ -12,7 +12,7 @@ use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Saw\Model;
 
 $member = $app['controllers_factory'];
-$member->before($mustbeADMIN);
+$member->before($mustbeMEMBER);
 
 $member->get('/', function (Request $request) use ($app) {
 	$member = new Model\Member($doc=array(), $app);
@@ -58,33 +58,34 @@ $member->post('/add', function (Request $request) use ($app) {
 	
 });
 
-$member->get('/edit/{userId}', function ($userId, Request $request) use ($app) {
+$member->get('/{userId}/edit', function ($userId, Request $request) use ($app) {
 
 	$member = new Model\Member($doc=array('_id'=>new MongoId($userId)), $app);
-	$doc = Model\Member::getAccountById($userId, $app);
-
+	$member = $member->findById();
+	$member['membershipBadge'] = Model\Member::$membershipBadge[$member['currentMembership']];
+	$member['boardCertifiedBadge'] = Model\Member::$boardCertifiedBadge;
+	$member['facultyBadge'] = Model\Member::$facultyBadge[$member['currentFacultyPosition']];
 	$crumbs = array(array('name'=>'Members','href'=>'/member')
-					,array('name'=>'Edit','href'=>''));
+					,array('name'=>$member['firstName'].' '.$member['lastName'],'href'=>'/member/'.$userId.'/edit')
+					,array('name'=>'Edit','href'=>'/member/'.$userId.'/edit')
+					);
 	$view_vars = array(
-						 'active'=>'Members'
-						,'page-plugin'=>''
+						 'active'=>'Members/edit'
+						,'page-plugin'=>'datatables'
 						,'headline'=>'Members'
 						,'description'=>"Edit a member"
 						,'crumbs'=>$crumbs
-						,'member'=>$doc);
-	return $app['view']->render('users/member-edit', 'default', $view_vars);
+						,'member'=>$member);
+	return $app['view']->render('member/edit', 'default', $view_vars);
 })->value('userId','');
 $member->post('/edit', function (Request $request) use ($app) {
 	// retrieve document from request
     $document = $request->get('doc');
     $member = new Model\Member($document, $app);
     // validate the model
-    $app['validateModel']($app,$member,$groups=array('signup'));
+    $app['validateModel']($app,$member);
+    $member->saveSafe();
     
-    if($member->saveSafe()){
-    	return new Response(json_encode(array('message' => 'Saved successfully')), 200,array('Content-Type' => 'application/json'));
-    }else{
-    	return $app->abort(500, 'Something went wrong and the member did not save.');
-    }
+    return new Response(json_encode(array('message' => 'Member details have saved successfully.')), 200,array('Content-Type' => 'application/json'));
 });
 return $member;

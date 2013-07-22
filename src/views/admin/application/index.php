@@ -121,7 +121,7 @@
                                  <td class="center hidden-480 "><?=$application['type']?></td>
                                  <td class=" ">
                                     <a data-id="<?=$application['_id']?>" class="btn blue mini view"><i class=" icon-eye-open"></i> View Application</a>
-                                    <a data-id="<?=$application['_id']?>" class="btn blue mini view invoice"><i class=" icon-eye-open"></i> View Invoice</a>
+                                    <a data-id="<?=$application['_id']?>" class="btn blue mini view payment"><i class=" icon-eye-open"></i> View Payment</a>
                                  </td>
                               </tr>
                               <? endforeach;?>

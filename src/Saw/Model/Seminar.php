@@ -6,7 +6,7 @@ use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Validator\Constraints;
 use Symfony\Component\Validator\Constraints\Callback;
 use Symfony\Component\Validator\ExecutionContext;
-use Cocur\Slugify\Slugiy;
+use Cocur\Slugify\Slugify;
 use Carbon\Carbon;
 
 /**

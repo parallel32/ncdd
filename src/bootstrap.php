@@ -43,14 +43,6 @@ $app->register(new Saw\Provider\Facebook\FacebookServiceProvider(), array(
 $app->register(new Saw\Provider\Store\Mongo\MongoServiceProvider());
 
 //////////////////////////////
-// Register Payment Service //
-//////////////////////////////
-$app->register(new Saw\Component\Payment\Services\PaymentServiceProvider(), array(
-	'payment.stripe.pkey' => SAW_STRIPE_PUBLIC_KEY,
-	'payment.stripe.skey' => SAW_STRIPE_SECRET_KEY
-));
-
-//////////////////////////////
 // Register Utility Service //
 //////////////////////////////
 $app->register(new Saw\Provider\Utility\UtilityServiceProvider());

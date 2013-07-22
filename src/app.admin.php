@@ -20,6 +20,8 @@ $app->mount('/agenda', 		include __DIR__.'/controllers/admin/c.agenda.php');
 // unmounted controllers usually have several levels of access defined in the routes. 
 // i.e. some admin, some public, some member only.
 $app = require __DIR__.'/controllers/admin/c.application.php';
+$app = require __DIR__.'/controllers/admin/c.payment-manage.php';
+$app = require __DIR__.'/controllers/admin/c.badge.php';
 
 /**
  * Before Filter

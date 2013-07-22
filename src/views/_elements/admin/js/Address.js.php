@@ -136,13 +136,13 @@
 		});
 
 	}
-	Address.init = function(){
+	Address.init = function(formId){
 		$('#geocodeaddress').keypress(function (e) {
 		   if (e.which == 13) {
 		   	  geocode($('#geocodeaddress').val());
 		   }
 		});
-		$('#saw-form .btn.geocodeaddress').click(function(e){
+		$(formId+' .btn.geocodeaddress').click(function(e){
 			e.preventDefault();
 			geocode($('#geocodeaddress').val());
 		});

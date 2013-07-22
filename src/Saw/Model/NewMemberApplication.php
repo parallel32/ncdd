@@ -107,7 +107,7 @@ class NewMemberApplication extends Apply {
 		$this->everLawEnforcementExplain = $doc['everLawEnforcementExplain'];
 		$this->futureLawEnforcement = $doc['futureLawEnforcement'];
 		$this->futureLawEnforcementExplain = $doc['futureLawEnforcementExplain'];
-		$this->prepareExecuted($doc['executed']);
+		$this->executed = (!empty($doc['executed'])) ? $this->prepareExecuted($doc['executed']) : '';
 		$this->executedPrintedName = $doc['executedPrintedName'];
 		$this->membershipDues = $doc['membershipDues'];
 		$this->authorizationReleasePrintedName = $doc['authorizationReleasePrintedName'];
@@ -158,7 +158,7 @@ class NewMemberApplication extends Apply {
 		 $day = $date->format('dS');
 		 $month = $date->format('F');
 		 $year = $date->format('y');
-		 $this->executed = "Executed at ".$executed.', this '.$day.' day of '.$month.', 20'.$year;
+		 return "Executed at ".$executed.', this '.$day.' day of '.$month.', 20'.$year;
 	}
 
 	public function approve(){
@@ -169,6 +169,8 @@ class NewMemberApplication extends Apply {
 		$mem_doc['lastName'] = $this->lastName;
 		$mem_doc['barNumber'] = $this->barNumber;
 		$mem_doc['email'] = $this->email;
+		$mem_doc['primaryPhone'] = $this->phone;
+		$mem_doc['primaryFax'] = $this->fax;
 		// prepare location record
 		$loc_doc['raw'] = $this->formattedAddress;
 		$loc_doc['name'] = 'primary';
@@ -193,6 +195,7 @@ class NewMemberApplication extends Apply {
 		// update record to approved status
 		$this->currentStatus = self::$status['APPROVED'];
 		$this->approvedDate = new Date(self::$app,'now', $this->timeZone);
+		$this->memberId = $mem_id;
 		$this->saveSafe();
 
 		return $member;

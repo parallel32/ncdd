@@ -136,6 +136,8 @@ class Model {
 			}
 			$document = array('$set' => $doc);
 			$criteria = array('_id'=>$this->_id);
+			//error_log('document:'.print_r($document,true));
+			//error_log('criteria:'.print_r($criteria,true));
 			$result = self::$app['mongo']->update($document, $this->collection, $criteria, $multiple=false, $upsert=false, $options);
 		    return $result;
 		else:

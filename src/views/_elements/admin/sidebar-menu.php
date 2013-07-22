@@ -46,6 +46,13 @@
                <? echo ($this->vars['active'] == 'Application') ? '<span class="selected"></span>':'';?>
                </a>
             </li>
+            <li class="<? echo ($this->vars['active'] == 'Payment') ? 'active':'';?>">
+               <a href="/payment">
+               <i class="icon-money"></i> 
+               <span class="title">Payments</span>
+               <? echo ($this->vars['active'] == 'Payment') ? '<span class="selected"></span>':'';?>
+               </a>
+            </li>
             <li class="<? echo ($this->vars['active'] == 'Modules') ? 'active':'';?>">
                <a href="/blog">
                <i class="icon-edit"></i> 
@@ -67,27 +74,29 @@
                <? echo ($this->vars['active'] == 'Seminar') ? '<span class="selected"></span>':'';?>
                </a>
             </li>
-            <li class="<? echo (strpos($this->vars['active'], 'Utilities') !== false) ? 'active open':'';?>">
+            <li class="<? echo (strpos($this->vars['active'], 'Members') !== false) ? 'active open':'';?>">
                <a href="javascript:;">
                <i class="icon-group"></i> 
                <span class="title">Members</span>
-               <? echo ($this->vars['active'] == 'Utilities') ? '<span class="selected"></span><span class="arrow open"></span>':'<span class="arrow"></span>';?>
+               <? echo ($this->vars['active'] == 'Members') ? '<span class="selected"></span><span class="arrow open"></span>':'<span class="arrow"></span>';?>
                </a>
                <ul class="sub-menu">
-                  <li class="<? echo ($this->vars['active'] == 'Utilities/phpinfo') ? 'active':'';?>">
-                     <a href="/utilities/phpinfo"><i class="icon-search"></i> Search Members</a>
-
+                  <li class="<? echo ($this->vars['active'] == 'Members/edit') ? 'active':'';?>">
+                     <a href="/member/<?=call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$this->app);?>/edit"><i class="icon-pencil"></i> Edit My Profile</a>
                   </li>
-                  <li class="<? echo ($this->vars['active'] == 'Utilities/phpinfo') ? 'active':'';?>">
+                  <li class="<? echo ($this->vars['active'] == 'Members/phpinfo') ? 'active':'';?>">
+                     <a href="/utilities/phpinfo"><i class="icon-search"></i> Search Members</a>
+                  </li>
+                  <li class="<? echo ($this->vars['active'] == 'Members/phpinfo') ? 'active':'';?>">
                      <a href="/"><i class="icon-user"></i> Founding Members</a>
                   </li>
-                  <li class="<? echo ($this->vars['active'] == 'Utilities/phpinfo') ? 'active':'';?>">
+                  <li class="<? echo ($this->vars['active'] == 'Members/phpinfo') ? 'active':'';?>">
                      <a href="/"><i class="icon-user"></i> Regents and Fellows</a>
                   </li>
-                  <li class="<? echo ($this->vars['active'] == 'Utilities/phpinfo') ? 'active':'';?>">
+                  <li class="<? echo ($this->vars['active'] == 'Members/phpinfo') ? 'active':'';?>">
                      <a href="/"><i class="icon-user"></i> Sate Delegates</a>
                   </li>
-                  <li class="<? echo ($this->vars['active'] == 'Utilities/phpinfo') ? 'active':'';?>">
+                  <li class="<? echo ($this->vars['active'] == 'Members/phpinfo') ? 'active':'';?>">
                      <a href="/"><i class="icon-briefcase"></i> Membership Forms</a>
                   </li>
                </ul>

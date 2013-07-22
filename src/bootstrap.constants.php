@@ -3,21 +3,6 @@
 // Define Constants //
 //////////////////////
 
-// minimum allowed invoice total that can be charged in dollars
-define("MINIMUM_INVOICE_TOTAL", 1);
-define("MINIMUM_INVOICE_TRANSACTION_AMOUNT", 1);
-define("PAYMENT_CHARGE_CURRENCY", 'usd');
-// invoice constants
-define("INVOICE_PAID", 3);
-define("INVOICE_OVERDUE", 2);
-define("INVOICE_UNPAID", 1);
-define("PAYMENT_TYPE_CC", "cc");
-define("PAYMENT_TYPE_CHECK", "check");
-define("PAYMENT_TYPE_FRIENDS", "friends");
-define("INVOICE_ITEM_TYPE_SALE", "sale");
-define("SUCCEEDED", 1);
-define("DECLINED", 0);
-
 define("PAGE_STATUS_PUBLISHED", 30);
 define("PAGE_STATUS_PENDING_MODERATION", 20);
 define("PAGE_STATUS_PENDING_APPROVAL", 10);
@@ -58,7 +43,7 @@ define("USER_STATUS_INACTIVE", -1);
 define("ADMIN", 300);
 define("EDITOR",200); // top level users (account holder)
 define("MEMBER",100); // editors are made by clients or by admin but still with a client parent
-define("STRINGIFY_ACCESS_LEVELS", "ADMIN:300|CLIENT:200|EDITOR:100");
+define("STRINGIFY_ACCESS_LEVELS", "ADMIN:300|EDITOR:200|MEMBER:100");
 $app['humanizeAccessLevels'] = $app->protect(function ($accessLevel) {
 	switch (floor($accessLevel)) {
 		case 300:

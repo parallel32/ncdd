@@ -62,11 +62,10 @@
 						invalid_fields_str+='<li>'+fieldObj.name+'</li>';
 					});
 					$(params.formName+' .alert-error').removeClass('hide').html('<span>'+responseObj.message+'</span>'+invalid_fields_str);
-				}else if(responseObj.hasOwnProperty('errors') && responseObj.errors.length > 0){
-					params.postOnErrors(responseObj);
 				}else if(responseObj.hasOwnProperty('message') && responseObj.message.length > 0){
 					$(params.formName+' .alert-error').removeClass('hide').html('<span>'+responseObj.message+'</span>');
 				}
+				params.postOnErrors(responseObj);
 			}
 		})
 		.always(function(response,status){

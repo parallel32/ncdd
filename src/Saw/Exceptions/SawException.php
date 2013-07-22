@@ -70,7 +70,6 @@ class SawException extends \Exception {
 		$this->exception = $exception;
 		$this->invalidFields = $invalidFields;
 		$this->headers = $extraResponseHeaders;
-		
 		parent::__construct($message, $exception->getCode());
 		if($useMap)
 			$this->mapExceptionObject();

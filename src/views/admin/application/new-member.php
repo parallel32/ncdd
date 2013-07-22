@@ -615,6 +615,6 @@
 <script>
 jQuery(document).ready(function() {    
    io.saw.Application.newMemberInit();
-   io.saw.Address.init();
+   io.saw.Address.init('#saw-form');
 });      
 </script>

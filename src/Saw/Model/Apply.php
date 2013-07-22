@@ -15,7 +15,7 @@ class Apply extends Model {
 	
 	public $collection = 'application';
 	static public $status = array('DRAFT'=>0,'SUBMITTED'=>10, 'APPROVED'=>20, 'PAID'=>40);
-	static public $statusReversed = array(0=>'DRAFT',10=>'SUBMITTED', 20=>'APPROVED', 30=>'UNPAID', 40=>'PAID');
+	static public $statusReversed = array(0=>'DRAFT',10=>'SUBMITTED', 20=>'APPROVED', 40=>'PAID');
 	public $currentStatus = 0;
 	public $firstName;
 	public $lastName;
@@ -36,7 +36,7 @@ class Apply extends Model {
 	public $lat;
 	public $lon;
 	public $memberId;
-	public $invoiceId;
+	public $paymentId;
 	public $submittedDate;
 	public $paidDate;
 	public $approvedDate;
@@ -93,8 +93,10 @@ class Apply extends Model {
 		$this->country = $doc['country'];
 		$this->lat = $doc['lat'];
 		$this->lon = $doc['lon'];
+		$this->paidDate = $doc['paidDate'];
+		$this->approvedDate = $doc['approvedDate'];
 		if(!empty($doc['memberId'])) $this->memberId = (is_object($doc['memberId'])) ? $doc['memberId'] : new \MongoId($doc['memberId']);
-		if(!empty($doc['invoiceId'])) $this->invoiceId = (is_object($doc['invoiceId'])) ? $doc['invoiceId'] : new \MongoId($doc['invoiceId']);
+		if(!empty($doc['paymentId'])) $this->paymentId = (is_object($doc['paymentId'])) ? $doc['paymentId'] : new \MongoId($doc['paymentId']);
 
 	}
 	
@@ -103,8 +105,8 @@ class Apply extends Model {
 	*/
 	protected function prepareInsert(){
 		$this->submittedDate = new Date(self::$app, 'now');
-		$this->paidDate = new \stdClass();
-		$this->approvedDate = new \stdClass();
+		$this->paidDate = $this->paidDate ?: new \stdClass();
+		$this->approvedDate = $this->approvedDate ?: new \stdClass();
 		$this->currentStatus = $this->currentStatus ?: self::$status['SUBMITTED'];
 		$this->firstName = $this->firstName ?: '';
 		$this->lastName = $this->lastName ?: '';
@@ -125,7 +127,7 @@ class Apply extends Model {
 		$this->lat = $this->lat ?: 33.7489;//atlanta
 		$this->lon = $this->lon ?: 84.3881;//atlanta
 		$this->memberId = $this->memberId ?: new \stdClass();
-		$this->invoiceId = $this->invoiceId ?: new \stdClass();
+		$this->paymentId = $this->paymentId ?: new \stdClass();
 		$this->timeZone = $this->timeZone ?: 'America/New_York';
 
 	}
@@ -176,6 +178,26 @@ class Apply extends Model {
 						);
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('_id'=>-1),(int)$offset,(int)$limit);
 		//error_log('fetch:'.print_r($result,true));
+		return $result;
+
+	}
+	public function fetchByMember($status, $offset=0,$limit=100){
+		$user = User::getUserAccessLevelBySession(self::$app);
+		$query = array('currentStatus'=>self::$status[$status]
+						,'memberId'=>$user['_id']);
+		$fields = array('firstName'=>true
+						,'lastName'=>true
+						,'city'=>true
+						,'state'=>true
+						,'type'=>true
+						,'class'=>true
+						,'submittedDate'=>true
+						,'paidDate'=>true
+						,'approvedDate'=>true
+						,'_id'=>true
+						);
+		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('_id'=>-1),(int)$offset,(int)$limit);
+		//error_log('fetch:'.print_r($query,true));
 		return $result;
 
 	}

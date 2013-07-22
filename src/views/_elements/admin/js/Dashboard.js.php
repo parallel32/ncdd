@@ -26,6 +26,14 @@
 			document.location.href="/application/view/<?=(array_key_exists('application',$this->vars)) ? $this->vars['application']['_id']: '';?>";	
 		});
 		
+		$('#approved-applications .pay').click(function(e){
+			document.location.href='/application/'+$(this).attr('data-id')+'/pay';	
+		});
+
+		$('.btn.edit-profile').click(function(e){
+			document.location.href='/member/'+$(this).attr('data-id')+'/edit';	
+		});
+
 	};
 	Dashboard.editorInit = function(saveMode){
 		$('#saw-form .btn.green').click(function(e){

@@ -39,6 +39,9 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 			return $app['view']->render('dashboards/editor', 'default', $view_vars);
 			break;
 		case MEMBER:
+			$apply = new Model\Apply(array(),$app);
+			$applications = $apply->fetchByMember('APPROVED');
+			$view_vars['applications']=$applications;
 			array_push($view_vars['crumbs'],array('name'=>'Editor','href'=>'/'));
 			return $app['view']->render('dashboards/member', 'default', $view_vars);
 			break;

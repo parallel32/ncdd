@@ -14,7 +14,6 @@
 	Login.init = function(){
 		$('.login-form input').keypress(function (e) {
             if (e.which == 13) {
-            	console.log('here');
             	e.preventDefault();
 				attemptLogin();
                 return false;
@@ -27,7 +26,6 @@
 
         $('.forget-form input').keypress(function (e) {
             if (e.which == 13) {
-            	console.log('hereerererer');
             	e.preventDefault();
                 attemptLogin();
 	            return false;
