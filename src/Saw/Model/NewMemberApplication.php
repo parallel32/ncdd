@@ -189,6 +189,7 @@ class NewMemberApplication extends Apply {
 		$mem_id = $member->insert();
 		$member->password = $password;
 
+		$location->member = $member->__toArray();
 		$location->ownerId = $mem_id;
 		$location->insert();
 

@@ -66,7 +66,7 @@ class User extends Model {
         $this->image = $doc['image'];
 		$this->profileImageUrl = $doc['profileImageUrl'];
 		$this->slug = $doc['slug'];
-		$this->status = $doc['status'];
+		$this->status = (!empty($doc['status'])) ? ($doc['status']=='yes') ? USER_STATUS_ACTIVE: USER_STATUS_INACTIVE : '' ;
 		$this->accessLevel = $doc['accessLevel'];
 		$this->connections = $doc['connections'];
 		$this->location = (is_object($location)) ? $location->__toArray() : $doc['location'];
@@ -318,9 +318,9 @@ class User extends Model {
 	public function findByEmailPassword(){
         
 		$query = array('email'=>trim(strtolower($this->email)));
-		$fields = array('_id','password');
+		$fields = array('_id','password','status');
 		$result = self::$app['mongo']->findOne($this->collection, $query, $fields, $slaveOkay=true);
-        if(!empty($result)):
+        if(!empty($result) && $result['status'] === USER_STATUS_ACTIVE):
             $this->_id = $result['_id'];
             if($this->password === $result['password']) {
                 $this->password = '';                

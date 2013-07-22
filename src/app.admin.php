@@ -21,7 +21,6 @@ $app->mount('/agenda', 		include __DIR__.'/controllers/admin/c.agenda.php');
 // i.e. some admin, some public, some member only.
 $app = require __DIR__.'/controllers/admin/c.application.php';
 $app = require __DIR__.'/controllers/admin/c.payment-manage.php';
-$app = require __DIR__.'/controllers/admin/c.badge.php';
 
 /**
  * Before Filter

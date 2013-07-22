@@ -65,6 +65,14 @@ $member->get('/{userId}/edit', function ($userId, Request $request) use ($app) {
 	$member['membershipBadge'] = Model\Member::$membershipBadge[$member['currentMembership']];
 	$member['boardCertifiedBadge'] = Model\Member::$boardCertifiedBadge;
 	$member['facultyBadge'] = Model\Member::$facultyBadge[$member['currentFacultyPosition']];
+	$member ['membershipReversed'] = Model\Member::$membershipReversed;
+	$member ['facultyPositionReversed'] = Model\Member::$facultyPositionReversed;
+	$member ['orderReversed'] = Model\Member::$orderReversed;
+
+
+	$location = new Model\Location(array('ownerId'=>$userId),$app);
+	$locations = $location->getByOwner();
+	$member['locations'] = $locations;
 	$crumbs = array(array('name'=>'Members','href'=>'/member')
 					,array('name'=>$member['firstName'].' '.$member['lastName'],'href'=>'/member/'.$userId.'/edit')
 					,array('name'=>'Edit','href'=>'/member/'.$userId.'/edit')
@@ -84,8 +92,93 @@ $member->post('/edit', function (Request $request) use ($app) {
     $member = new Model\Member($document, $app);
     // validate the model
     $app['validateModel']($app,$member);
-    $member->saveSafe();
+    $member->saveEdit();
     
     return new Response(json_encode(array('message' => 'Member details have saved successfully.')), 200,array('Content-Type' => 'application/json'));
 });
+
+$member->post('/{id}/location/add', function ($id, Request $request) use ($app) {
+	
+	// get the member to embed
+	$member = new Model\Member(array('_id'=>$id), $app);
+    $member->findById();
+    
+    // retrieve document from request
+    $doc = $request->get('doc');
+    $doc['point'] = array($doc['lon'],$doc['lat']);
+    $doc['ownerId'] = $id;
+    
+    $location = new Model\Location($doc,$app, $member);
+    $app['validateModel']($app,$location);
+
+    $insert_id = $location->insert();
+    
+    return new Response(json_encode(array('id'=>$insert_id, 'message' => 'added successfully.')), 200,array('Content-Type' => 'application/json'));
+});
+$member->get('/location/{id}/delete', function ($id, Request $request) use ($app) {
+    $location = new Model\Location(array('_id'=>$id), $app);
+    $location->remove();
+    return new Response(json_encode(array('message' => 'removed successfully.')), 200,array('Content-Type' => 'application/json'));
+});
+
+$member->post('/{id}/website/add', function ($id, Request $request) use ($app) {
+	
+	$doc = $request->get('doc');
+	// get the member to embed
+	$member = new Model\Member(array('_id'=>$id), $app);
+	$member->addWebsite($doc);
+	$member->getWebsites();
+	$member->saveEdit();    
+    return new Response(json_encode(array('name'=>$doc['website'], 'id'=>$id, 'message' => 'added successfully.')), 200,array('Content-Type' => 'application/json'));
+});
+$member->get('/{id}/website/{website}/delete', function ($id, $website, Request $request) use ($app) {
+    
+	$member = new Model\Member(array('_id'=>$id), $app);
+	$member->removeWebsite($website);
+	$member->getWebsites();
+	$member->saveEdit();
+    return new Response(json_encode(array('message' => 'removed successfully.')), 200,array('Content-Type' => 'application/json'));
+});
+
+$member->post('/{id}/language/add', function ($id, Request $request) use ($app) {
+	
+	$doc = $request->get('doc');
+	// get the member to embed
+	$member = new Model\Member(array('_id'=>$id), $app);
+	$member->addLanguage($doc);
+	$member->getLanguages();
+	$member->saveEdit();    
+    return new Response(json_encode(array('name'=>$doc['language'], 'id'=>$id, 'message' => 'added successfully.')), 200,array('Content-Type' => 'application/json'));
+});
+$member->get('/{id}/language/{language}/delete', function ($id, $language, Request $request) use ($app) {
+    
+	$member = new Model\Member(array('_id'=>$id), $app);
+	$member->removeLanguage($language);
+	$member->getLanguages();
+	$member->saveEdit();
+    return new Response(json_encode(array('message' => 'removed successfully.')), 200,array('Content-Type' => 'application/json'));
+});
+
+$member->post('/{id}/pa/add', function ($id, Request $request) use ($app) {
+	
+	$doc = $request->get('doc');
+	// get the member to embed
+	$member = new Model\Member(array('_id'=>$id), $app);
+	$member->addPracticeArea($doc);
+	$member->getPracticeAreas();
+	$member->saveEdit();    
+    return new Response(json_encode(array('name'=>$doc['pa'], 'id'=>$id, 'message' => 'added successfully.')), 200,array('Content-Type' => 'application/json'));
+});
+$member->get('/{id}/pa/{pa}/delete', function ($id, $pa, Request $request) use ($app) {
+    
+	$member = new Model\Member(array('_id'=>$id), $app);
+	$member->removePracticeArea($pa);
+	$member->getPracticeAreas();
+	$member->saveEdit();
+    return new Response(json_encode(array('message' => 'removed successfully.')), 200,array('Content-Type' => 'application/json'));
+});
+
+
+
+
 return $member;

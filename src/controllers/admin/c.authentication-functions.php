@@ -84,6 +84,7 @@ $app['adminLogin'] = $app->protect(function ($app,$request) {
             $sess_user['user_id']       = SAW_ADMIN_USER_ID;
             $sess_user['displayName']   = SAW_ADMIN_DISPLAY_NAME;
             $sess_user['accessLevel']   = ADMIN;
+            $sess_user['status']        = USER_STATUS_ACTIVE;
             $app['session']->set('user',$sess_user);
 
             return new Response(json_encode(array('message' => 'login successful')), 200,array('Content-Type' => 'application/json'));

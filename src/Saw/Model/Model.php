@@ -152,6 +152,10 @@ class Model {
 		return self::$app['mongo']->remove($criteria, $this->collection, $justOne=false, $options=array('fsync'=>true));
 		return false;
 	}
+	public function updateByCriteria($document, $criteria){
+		return self::$app['mongo']->update($document, $this->collection, $criteria, $multiple=true, $upsert=false, $options=array('fsync'=>true));
+		return false;
+	}
 	public function findById($id='_id', $slaveOkay=true){
 		$query = array($id=>$this->$id);
 		$result = self::$app['mongo']->findOne($this->collection, $query, $fields=array(),$slaveOkay);

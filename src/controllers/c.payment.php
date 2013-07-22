@@ -18,7 +18,7 @@ $app->post('/payment/charge', function (Request $request) use ($app) {
 	$app['validateModel']($app, $payment);
 	$paymentId = $payment->charge();
 	
-	return new Response(json_encode(array('paymentId'=>$paymentId,'message'=>"success")), 200,array('Content-Type' => 'payment/json'));
+	return new Response(json_encode(array('paymentId'=>$paymentId,'message'=>"success")), 200,array('Content-Type' => 'application/json'));
 		
 });
 $app->post('/payment/refund', function (Request $request) use ($app) {
@@ -26,7 +26,7 @@ $app->post('/payment/refund', function (Request $request) use ($app) {
 	$doc = $request->get('doc');
 	// instantiate payment and do the refund
 
-	return new Response(json_encode(array('message'=>"success")), 200,array('Content-Type' => 'payment/json'));
+	return new Response(json_encode(array('message'=>"success")), 200,array('Content-Type' => 'application/json'));
 		
 });
 

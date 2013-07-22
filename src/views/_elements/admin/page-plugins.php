@@ -196,13 +196,16 @@ EOT;
       endforeach;
       ?>
 
-   <script type="text/javascript" src="/assets/plugins/jquery.pulsate.min.js"></script>
+   <script src="/assets/plugins/jquery.pulsate.min.js" type="text/javascript"></script>
+   <script src="/assets/plugins/bootstrap-modal/js/bootstrap-modal.js" type="text/javascript" ></script>
+  <script src="/assets/plugins/bootstrap-modal/js/bootstrap-modalmanager.js" type="text/javascript" ></script>
    <!-- END PAGE LEVEL PLUGINS -->
    <!-- BEGIN PAGE LEVEL SCRIPTS -->
    <script src="/assets/scripts/app.js" type="text/javascript"></script>
    <!-- END PAGE LEVEL SCRIPTS -->  
    <script>
       jQuery(document).ready(function() {    
+        $.fn.modalmanager.defaults.resize = true;
          App.init(); // initlayout and core plugins
       });
    </script>

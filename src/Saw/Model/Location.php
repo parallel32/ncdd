@@ -26,14 +26,18 @@ class Location extends Model {
 	public $tollFree;
 	public $hours;
 	public $ownerId;
+	public $member;
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addPropertyConstraint('point', new Constraints\NotBlank(
             array('message'=>'Enter your full address and press enter.')
         ));
+        $metadata->addPropertyConstraint('name', new Constraints\NotBlank(
+            array('message'=>'A location name is required.')
+        ));
 	}
 
-	public function __construct($doc, Application $app){
+	public function __construct($doc, Application $app, $member=array()){
 		parent::__construct($app);
 		$this->init($doc);
 		
@@ -55,8 +59,9 @@ class Location extends Model {
 		$this->tollFree = $doc['phone'];
 		$this->hours = $doc['hours'];
 		$this->ownerId = (!empty($doc['ownerId'])) ? (is_object($doc['ownerId'])) ? $doc['ownerId'] : new \MongoId($doc['ownerId']) : $doc['ownerId'];
+		$this->member = (is_object($member)) ? $member->__toArray(false) : $doc['member'];
+
 	}
-	
 	protected function prepareInsert(){
 		$this->raw = $this->raw ?: '';
 		$this->name = $this->name?: '';
@@ -73,6 +78,7 @@ class Location extends Model {
 		$this->tollFree = $this->tollFree ?: '';
 		$this->hours = $this->hours ?: '';
 		$this->ownerId = (!empty($this->ownerId)) ? (is_object($this->ownerId)) ? $this->ownerId : new \MongoId($this->ownerId) : new \stdClass();
+		$this->member = $this->member ?: new \StdClass();
 	}
 	public function insert(){
 		$this->prepareInsert();
@@ -86,12 +92,10 @@ class Location extends Model {
         $fields = array(); /* Need all fields for locations list table */
 		return $this->find($query=array('ownerId'=>$this->ownerId),$fields,$slaveOkay=true,$sort=array('_id'=>-1),$offset,$limit);
 	}
-	public function remove(){
-        $query = array('location._id'=>$this->_id);  
-        $offer = self::$app['mongo']->findOne('offer', $query, $fields=array(),$slaveOkay=false);
-        if(empty($offer)) {
-            return parent::remove();
-        }
-        return false;
-	}    
+	public function updateMember($member){
+		$doc = array('$set'=>array('member'=>$member));
+		$criteria = array('ownerId'=>$this->ownerId);
+		return $this->updateByCriteria($doc, $criteria);
+	}
+	    
 }

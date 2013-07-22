@@ -1,5 +1,5 @@
-// SAW INDEXES
-db.domain.files.ensureIndex({siteKey:1,filename:1});
+// INDEXES
+db.location.ensureIndex({'point':'2d'});
 
 ///////////
 // examples:

@@ -10,7 +10,7 @@ use Symfony\Component\Validator\ExecutionContext;
 /**
  * Member Model.  Extends User.
  * This is a concrete class.
- * board position progression progession: 
+ * board position progession: 
  *	regent(12 years), 
  *	dean(1yr), 
  *	dean ameritus(1yr following dean w/board vote), 
@@ -20,11 +20,9 @@ use Symfony\Component\Validator\ExecutionContext;
 class Member extends User {
 	
 	public $collection = 'member';
-	public $location;// this is the member's primary address | used for primary contact and billing
-	public $locations; // an array office locations
+	public $location;// this is the member's primary address | used for primary contact
 	public $barNumber;
-	public $webSite;// primary website
-	public $webSites;// all websites
+	public $websites;// array of websites
 	public $listServEmail;
 
 	public $linkedInUrl;
@@ -43,33 +41,33 @@ class Member extends User {
 	// order not relevant
 	static public $membership = array('FACULTY'=>10,'GENERAL MEMBER'=>20,'SUSTAINING MEMBER'=>30,'FOUNDING MEMBER'=>40);
 	static public $membershipReversed = array(10=>'FACULTY',20=>'GENERAL MEMBER',30=>'SUSTAINING MEMBER',40=>'FOUNDING MEMBER');
-	public $currentMembership = 0;
-	static public $membershipBadge = array(10=>'/assets/img/badges/faculty.png'
-											,20=>'/assets/img/badges/general.jpg'
-											,30=>'/assets/img/badges/sustaining.png'
-											,40=>'/assets/img/badges/founding.png');
+	public $currentMembership;
+	static public $membershipBadge = array(10=>'./../../../www/ncdd.com/public_html/assets/img/badges/faculty.png'
+											,20=>'./../../../www/ncdd.com/public_html/assets/img/badges/general.png'
+											,30=>'./../../../www/ncdd.com/public_html/assets/img/badges/sustaining.png'
+											,40=>'./../../../www/ncdd.com/public_html/assets/img/badges/founding.png');
 
 	// order descending
-	static public $order = array('FELLOW'=>60,'REGENT'=>50,'BOARD CERTIFIED'=>40,'STATE DELEGATE'=>30,'SUSTAINING MEMBER'=>20,'GENERAL MEMBER'=>10,'FACULTY'=>5);
-	static public $orderReversed = array(60=>'FELLOW',50=>'REGENT',40=>'BOARD CERTIFIED',30=>'STATE DELEGATE',20=>'SUSTAINING MEMBER',10=>'GENERAL MEMBER',5=>'FACULTY');
-	public $currentOrder = 0;
+	static public $order = array('FELLOW'=>60,'DEAN AMERITUS'=>58,'DEAN'=>55,'REGENT'=>50,'BOARD CERTIFIED'=>40,'FOUNDING MEMBER'=>40,'STATE DELEGATE'=>30,'SUSTAINING MEMBER'=>20,'GENERAL MEMBER'=>10,'FACULTY'=>5);
+	static public $orderReversed = array(60=>'FELLOW',58=>'DEAN AMERITUS',55=>'DEAN',50=>'REGENT',40=>'BOARD CERTIFIED',40=>'FOUNDING MEMBER',30=>'STATE DELEGATE',20=>'SUSTAINING MEMBER',10=>'GENERAL MEMBER',5=>'FACULTY');
+	public $currentOrder;
 	
 	// order descending
 	static public $facultyPosition = array('FELLOW'=>90,'DEAN AMERITUS'=>80,'DEAN'=>70, 'REGENT'=>60,'ASSISSTANT DEAN'=>50,'SECRETARY'=>40,'TREASURER'=>30,'DELEGATE'=>20,'FORMER REGENT'=>10);
 	static public $facultyPositionReversed = array(90=>'FELLOW',80=>'DEAN AMERITUS',70=>'DEAN',60=>'REGENT',50=>'ASSISSTANT DEAN',40=>'SECRETARY',30=>'TREASURER',20=>'DELEGATE',10=>'FORMER REGENT');
-	public $currentFacultyPosition = 0;
-	static public $facultyBadge = array(90=>'/assets/img/badges-exec/fellow.png'
-										,80=>'/assets/img/badges-exec/dean_ameritus.png'
-										,70=>'/assets/img/badges-exec/dean.png'
-										,60=>'/assets/img/badges-exec/regent.png'
-										,50=>'/assets/img/badges-exec/assisstant_dean.png'
-										,40=>'/assets/img/badges-exec/secretary.png'
-										,30=>'/assets/img/badges-exec/treasurer.png'
-										,20=>'/assets/img/badges-exec/delegate.png'
-										,10=>'/assets/img/badges-exec/former_regent.png');
+	public $currentFacultyPosition;
+	static public $facultyBadge = array(90=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/fellow.png'
+										,80=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/dean_ameritus.png'
+										,70=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/dean.png'
+										,60=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/regent.png'
+										,50=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/assisstant_dean.png'
+										,40=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/secretary.png'
+										,30=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/treasurer.png'
+										,20=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/delegate.png'
+										,10=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/former_regent.png');
 	
 	public $boardCertified; // yes | no
-	public static $boardCertifiedBadge = '/assets/img/badges/certified.png';
+	public static $boardCertifiedBadge = './../../../www/ncdd.com/public_html/assets/img/badges/boardcertified.png';
 	public $listed;
 	public $joinDate;
 	public $timeZone='America/New_York';
@@ -85,16 +83,11 @@ class Member extends User {
 		if(!empty($doc['_id'])) $this->_id = (is_object($doc['_id'])) ? $doc['_id'] : new \MongoId($doc['_id']);
         $this->accessLevel = $doc['accessLevel'];
 		$this->location = (is_object($location)) ? $location->__toArray() : $doc['location'];
-		$this->locations = $doc['locations'];
 		$this->barNumber = $doc['barNumber'];
-		$this->webSite = $doc['webSite'];
-		$this->webSites = $doc['webSites'];
+		$this->websites = $doc['websites'];
 		$this->listServEmail = $doc['listServEmail'];
-		$this->listed = $doc['listed'];
-		$this->currentMembership = $doc['currentMembership'];
-		$this->currentOrder = $doc['currentOrder'];
-		$this->currentFacultyPosition = $doc['currentFacultyPosition'];
-		$this->boardCertified = $doc['boardCertified'];
+		$this->listed = (!empty($doc['listed'])) ? ($doc['listed']=='yes') ? 1: 0 : '' ;
+		$this->boardCertified = (!empty($doc['boardCertified'])) ? ($doc['boardCertified']=='yes') ? 1: 0 : '' ;
         $this->joinDate = (!empty($doc['joinDate'])) ? (is_object($doc['joinDate'])) ? $doc['joinDate']->__toArray() : new Date(self::$app,$doc['joinDate'], $this->timeZone)  : $doc['joinDate'];
         include_once __DIR__.'/../Provider/WordPress/ncdd-wp-includes.php';
 		$this->aboutMe = (!empty($doc['aboutMe'])) ? wptexturize(wpautop($doc['aboutMe'])) : '';
@@ -110,6 +103,32 @@ class Member extends User {
 		$this->financialPayment = $doc['financialPayment'];
 		$this->practiceAreas = $doc['practiceAreas'];
 		
+		$this->currentMembership = $doc['currentMembership'];
+		$this->currentFacultyPosition = $doc['currentFacultyPosition'];
+
+		$order1=null;
+		$order2=null;
+		if(!empty($this->currentMembership)){
+			$order1 = self::$order[self::$membershipReversed[$this->currentMembership]];
+		}
+		if(!empty($this->currentFacultyPosition)){
+			$order2 = self::$order[self::$facultyPositionReversed[$this->currentFacultyPosition]];
+		}
+		if(!empty($order1) && !empty($order2)){
+			if($order1 > $order2){
+				$this->currentOrder = $order1;
+			}else{
+				$this->currentOrder = $order2;
+			}
+		}
+		if(!empty($order1) && empty($order2)){
+			$this->currentOrder = $order1;
+		}
+		if(!empty($order2) && empty($order1)){
+			$this->currentOrder = $order2;
+		}
+
+		
 	}
 	
 	/**
@@ -118,10 +137,8 @@ class Member extends User {
 	protected function prepareInsert(){
 		$this->accessLevel = MEMBER;		
 		$this->location = $this->location ?: new \StdClass();
-		$this->locations = $this->locations ?: array(0=>$this->location);
 		$this->barNumber = $this->barNumber ?: '';
-		$this->webSite = $this->webSite ?: '';
-		$this->webSites = $this->webSites ?: array(0=>$this->webSite);
+		$this->websites = $this->websites ?: array(0=>$this->website);
 		$this->listServEmail = $this->listServEmail ?: '';
 		$this->listed = $this->listed ?: 1;
 		$this->currentMembership = self::$membership['GENERAL MEMBER'];
@@ -155,17 +172,65 @@ class Member extends User {
 			throw new Saw\Exceptions\SawException(new Saw\Model\Exceptions\DomainException(),"Adding failed.  Please try again.");
 		}
 	}
-	public function addLocation(){
+	public function saveEdit(){
+		// save the member
+		$this->saveSafe();
+		// update info in all the locations
+		$location = new Location(array('ownerId'=>$this->_id),self::$app);
+		$this->findById();
+		$location->updateMember($this->__toArray(false));
 
 	}
-	public function removeLocation(){
-
+	public function addWebSite($website){
+		// mongo atomic push onto the array
+		$criteria = array('_id'=>$this->_id);
+		$update_spec = array('$addToSet'=>array('websites'=>$website));
+		return self::$app['mongo']->update($update_spec, $this->collection, $criteria, $multiple=false, $upsert=false,$options=array('safe'=>true,'fsync'=>true));
 	}
-	public function addWebSite(){
-
+	public function removeWebsite($address){
+		// mongo atomic push onto the array
+		$criteria = array('_id'=>$this->_id);
+		$update_spec = array('$pull'=>array('websites'=>array('website'=>$address)));
+		return self::$app['mongo']->update($update_spec, $this->collection, $criteria, $multiple=false, $upsert=false,$options=array('safe'=>true,'fsync'=>true));
 	}
-	public function removeWebsite(){
-
+	public function getWebsites(){
+		$result = $this->findOne($query=array('_id'=>$this->_id),$fields=array('websites'=>1));
+		$this->websites = $result['websites'];
+		return $result['websites'];
+	}
+	public function addPracticeArea($pa){
+		// mongo atomic push onto the array
+		$criteria = array('_id'=>$this->_id);
+		$update_spec = array('$addToSet'=>array('practiceAreas'=>$pa));
+		return self::$app['mongo']->update($update_spec, $this->collection, $criteria, $multiple=false, $upsert=false,$options=array('safe'=>true,'fsync'=>true));
+	}
+	public function removePracticeArea($pa){
+		// mongo atomic push onto the array
+		$criteria = array('_id'=>$this->_id);
+		$update_spec = array('$pull'=>array('practiceAreas'=>array('pa'=>$pa)));
+		return self::$app['mongo']->update($update_spec, $this->collection, $criteria, $multiple=false, $upsert=false,$options=array('safe'=>true,'fsync'=>true));
+	}
+	public function getPracticeAreas(){
+		$result = $this->findOne($query=array('_id'=>$this->_id),$fields=array('practiceAreas'=>1));
+		$this->practiceAreas = $result['practiceAreas'];
+		return $result['practiceAreas'];
+	}
+	public function addLanguage($language){
+		// mongo atomic push onto the array
+		$criteria = array('_id'=>$this->_id);
+		$update_spec = array('$addToSet'=>array('languages'=>$language));
+		return self::$app['mongo']->update($update_spec, $this->collection, $criteria, $multiple=false, $upsert=false,$options=array('safe'=>true,'fsync'=>true));
+	}
+	public function removeLanguage($language){
+		// mongo atomic push onto the array
+		$criteria = array('_id'=>$this->_id);
+		$update_spec = array('$pull'=>array('languages'=>array('language'=>$language)));
+		return self::$app['mongo']->update($update_spec, $this->collection, $criteria, $multiple=false, $upsert=false,$options=array('safe'=>true,'fsync'=>true));
+	}
+	public function getLanguages(){
+		$result = $this->findOne($query=array('_id'=>$this->_id),$fields=array('languages'=>1));
+		$this->languages = $result['languages'];
+		return $result['languages'];
 	}
 	public static function getAccountBySession(Application $app, $fields=array(),$collection=''){
 		
@@ -202,6 +267,7 @@ class Member extends User {
 			$sess_user['user_id'] 		= $user['_id'];
 			$sess_user['accessLevel'] 	= $user['accessLevel'];
 			$sess_user['displayName'] 	= $user['displayName'];
+			$sess_user['status']	 	= $user['status'];
 			self::$app['session']->set('user',$sess_user);
 			return true;
         }
