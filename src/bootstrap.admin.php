@@ -30,10 +30,15 @@ $app['session.storage.options'] = array(
 );
 
 try {
+	/*
 	$mongoObj = new \MongoClient('mongodb://'.SAW_SESSION_DATABASE_MONGO_SERVERS, 
 									array(	'connect'=>true,
 											'replicaSet'=>SAW_SESSION_DATABASE_MONGO_REPLICASET,
 											'readPreference'=>\MongoClient::RP_PRIMARY_PREFERRED)
+								  );
+	//*/
+	$mongoObj = new \MongoClient('mongodb://'.SAW_SESSION_DATABASE_MONGO_SERVERS, 
+									array(	'connect'=>true)
 								  );
 	$app['session.storage.handler'] = $app->share(function () use ($app, $mongoObj) {
 	    return new MongoDbSessionHandler(

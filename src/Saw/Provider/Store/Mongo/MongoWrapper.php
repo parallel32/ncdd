@@ -21,8 +21,11 @@ class MongoWrapper
 	
 	public function __construct()
 	{
+		$aryServers = explode(",",SAW_DATABASE_MONGO_SERVERS);
+        if(count($aryServers) > 1) {
+        	$mongo_config['replicaSet'] = SAW_DATABASE_MONGO_REPLICASET;
+        }
 		
-		$mongo_config['replicaSet'] = SAW_DATABASE_MONGO_REPLICASET;
 		$mongo_config['database'] = SAW_DATABASE_MONGO_DATABASE;
 		$mongo_config['username'] = SAW_DATABASE_MONGO_USERNAME;
 		$mongo_config['password'] = SAW_DATABASE_MONGO_PASSWORD;
@@ -59,7 +62,9 @@ class MongoWrapper
         // load db
         try {
             $this->database = $this->mongo->selectDB($this->options['database']);
-			$this->database->setReadPreference(\MongoClient::RP_PRIMARY_PREFERRED);
+            if(count($aryServers) > 1) {
+				$this->database->setReadPreference(\MongoClient::RP_PRIMARY_PREFERRED);
+			}
         } catch (\Exception $e) {
 			new Saw\Exceptions\SawException($e,"Couldn't select the database in MongoWrapper _init(): ".$e->getMessage());
         }

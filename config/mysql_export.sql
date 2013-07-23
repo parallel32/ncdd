@@ -1,0 +1,8 @@
+
+# export users
+
+SELECT * INTO OUTFILE '/tmp/result.csv'
+FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
+ESCAPED BY '\\'
+LINES TERMINATED BY '\n'
+FROM user_info_DB;
