@@ -49,7 +49,7 @@ class Image {
         $this->modified = '';
 		$this->sizes = array();
 		$this->urls = array();
-		$this->urlTemplate = 'image/{context}/{size}/{imageId}';
+		$this->urlTemplate = 'image/{context}/{belongsTo}/{size}';
 		$this->setCDN($cdn);
 		$this->urlRelative = $this->urlTemplate;
 	}
@@ -69,8 +69,8 @@ class Image {
 	public function makeUrls(){
 		$tmp = array();
         foreach($this->sizes as $key=>$size):
-			$find = array('{context}','{size}','{imageId}');
-			$replace = array($this->context, $size['size'], $size['id']);
+			$find = array('{context}','{size}','{belongsTo}');
+			$replace = array($this->context, $key, $this->belongsTo);
 			$tmp[$key]['CDN'] = str_replace($find, $replace, $this->urlCDN);
 			$tmp[$key]['SSLCDN'] = str_replace($find, $replace, $this->urlSSLCDN);
 			$tmp[$key]['RELATIVE'] = str_replace($find, $replace, $this->urlRelative);
@@ -114,10 +114,15 @@ class Image {
 	public function getFilePath(){
 		return self::$uploadPath.'/'.self::$uploadedFileName;
 	}
-	public function prepareFile(){
-		self::$uploadedFileName = $this->context.'-'.$this->belongsTo.'-'.self::$file->getClientOriginalName();
+	public function prepareFile($file_name=''){
+		if(empty($file_name))
+			self::$uploadedFileName = $this->context.'-'.$this->belongsTo.'-'.self::$file->getClientOriginalName();
+		else
+			self::$uploadedFileName = $this->context.'-'.$this->belongsTo.'-'.$file_name;
+		
 		self::$uploadPath = self::$uploadBaseDir;
-		$this->moveUploadedFile();
+		if(empty($file_name))
+			$this->moveUploadedFile();
 	}
 	public function getImageType(){
 		$image_type = exif_imagetype($this->getFilePath());

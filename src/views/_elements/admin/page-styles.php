@@ -49,7 +49,12 @@ EOT;
          echo <<< EOT
             <link rel="stylesheet" type="text/css" href="/assets/plugins/jquery-file-upload/css/jquery.fileupload-ui.css" />
 EOT;
-/*          <link rel="stylesheet" type="text/css" href="/assets/plugins/jcrop/css/jquery.Jcrop.css" />*/
+         break;
+      case 'crop':
+         echo <<< EOT
+            <link rel="stylesheet" type="text/css" href="/assets/plugins/jcrop/css/jquery.Jcrop.css" />
+EOT;
+
          break;
       default:
          echo "";

@@ -83,7 +83,9 @@ $member->get('/{userId}/edit', function ($userId, Request $request) use ($app) {
 						,'headline'=>'Members'
 						,'description'=>"Edit a member"
 						,'crumbs'=>$crumbs
-						,'member'=>$member);
+						,'member'=>$member
+						,'image'=>(!empty($member['image'])) ? $app['getImageURL']($member['image'],'small') : '/noprofileimage'
+						);
 	return $app['view']->render('member/edit', 'default', $view_vars);
 })->value('userId','');
 $member->post('/edit', function (Request $request) use ($app) {
@@ -96,6 +98,51 @@ $member->post('/edit', function (Request $request) use ($app) {
     
     return new Response(json_encode(array('message' => 'Member details have saved successfully.')), 200,array('Content-Type' => 'application/json'));
 });
+
+$member->get('/{userId}/edit-photo', function ($userId, Request $request) use ($app) {
+
+	$member = new Model\Member($doc=array('_id'=>new MongoId($userId)), $app);
+	$member = $member->findById();
+	
+	$crumbs = array(array('name'=>'Members','href'=>'/member')
+					,array('name'=>$member['firstName'].' '.$member['lastName'],'href'=>'/member/'.$userId.'/edit')
+					,array('name'=>'Edit','href'=>'/member/'.$userId.'/edit')
+					,array('name'=>'Photo','href'=>'/member/'.$userId.'/edit-photo')
+					);
+	$view_vars = array(
+						 'active'=>'Members/edit'
+						,'page-plugin'=>'fileupload'
+						,'headline'=>'Members'
+						,'description'=>"Edit member photo"
+						,'crumbs'=>$crumbs
+						,'member'=>$member
+						,'image'=>(!empty($member['image'])) ? $app['getImageURL']($member['image'],'small') : '/noprofileimage'
+						,'imageDelete'=>(!empty($member['image'])) ? '/image/delete/'.$member['image']['context'].'/'.$member['image']['belongsTo'] : '');
+	return $app['view']->render('member/edit-photo', 'default', $view_vars);
+})->value('userId','');
+$member->get('/{userId}/edit-photo-crop', function ($userId, Request $request) use ($app) {
+
+	$member = new Model\Member($doc=array('_id'=>new MongoId($userId)), $app);
+	$member = $member->findById();
+	
+	$crumbs = array(array('name'=>'Members','href'=>'/member')
+					,array('name'=>$member['firstName'].' '.$member['lastName'],'href'=>'/member/'.$userId.'/edit')
+					,array('name'=>'Edit','href'=>'/member/'.$userId.'/edit')
+					,array('name'=>'Photo','href'=>'/member/'.$userId.'/edit-photo')
+					,array('name'=>'Crop','href'=>'/member/'.$userId.'/edit-photo-crop')
+					);
+	$view_vars = array(
+						 'active'=>'Members/edit'
+						,'page-plugin'=>'crop'
+						,'headline'=>'Members'
+						,'description'=>"Crop member photo"
+						,'crumbs'=>$crumbs
+						,'member'=>$member
+						,'image'=>(!empty($member['image'])) ? $app['getImageURL']($member['image'],'small') : '/noprofileimage'
+						);
+	return $app['view']->render('member/edit-photo-crop', 'default', $view_vars);
+})->value('userId','');
+
 
 $member->post('/{id}/location/add', function ($id, Request $request) use ($app) {
 	
@@ -177,8 +224,6 @@ $member->get('/{id}/pa/{pa}/delete', function ($id, $pa, Request $request) use (
 	$member->saveEdit();
     return new Response(json_encode(array('message' => 'removed successfully.')), 200,array('Content-Type' => 'application/json'));
 });
-
-
 
 
 return $member;

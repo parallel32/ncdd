@@ -84,9 +84,11 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                <? echo ($this->vars['active'] == 'Members') ? '<span class="selected"></span><span class="arrow open"></span>':'<span class="arrow"></span>';?>
                </a>
                <ul class="sub-menu">
+                  <? if($accessLevel == MEMBER):?>
                   <li class="<? echo ($this->vars['active'] == 'Members/edit') ? 'active':'';?>">
                      <a href="/member/<?=call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$this->app);?>/edit"><i class="icon-pencil"></i> Edit My Profile</a>
                   </li>
+                  <? endif; ?>
                   <li class="<? echo ($this->vars['active'] == 'Members/phpinfo') ? 'active':'';?>">
                      <a href="/utilities/phpinfo"><i class="icon-search"></i> Search Members</a>
                   </li>

@@ -35,7 +35,7 @@
   <!-- BEGIN LOGIN -->
   <div class="content">
     <!-- BEGIN LOGIN FORM -->
-    <form class="form-vertical login-form">
+    <form id="login-form" class="form-vertical login-form">
       <h3 class="form-title">NCDD Member Login</h3>
       <div class="alert alert-error hide">
         <button class="close" data-dismiss="alert"></button>
@@ -64,7 +64,7 @@
         <label class="checkbox">
         <input type="checkbox" name="doc[remember]" value="1"/> Remember me
         </label>
-        <button type="submit" class="btn blue pull-right">
+        <button type="button" class="btn blue pull-right submit">
         Login <i class="m-icon-swapright m-icon-white"></i>
         </button>            
       </div>
@@ -84,7 +84,11 @@
     </form>
     <!-- END LOGIN FORM -->        
     <!-- BEGIN FORGOT PASSWORD FORM -->
-    <form class="form-vertical forget-form">
+    <form id="forgotpass-form" class="form-vertical forget-form">
+      <div class="alert alert-error hide">
+        <button class="close" data-dismiss="alert"></button>
+        <span>Enter any username and password.</span>
+      </div>
       <h3 class="">Forget Password ?</h3>
       <p>Enter your e-mail address below to reset your password.</p>
       <div class="control-group">
@@ -99,7 +103,7 @@
         <button type="button" id="back-btn" class="btn">
         <i class="m-icon-swapleft"></i> Back
         </button>
-        <button type="submit" class="btn blue pull-right">
+        <button type="button" class="btn blue pull-right submit">
         Submit <i class="m-icon-swapright m-icon-white"></i>
         </button>            
       </div>

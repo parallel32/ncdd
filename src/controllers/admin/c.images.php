@@ -8,6 +8,7 @@ use Saw\Model;
 // RECEIVE THE UPLOADED FILE //
 ///////////////////////////////
 $imgUnavailable = './../../../www/admin.ncdd.com/public_html/assets/img/404-250.jpg';
+$profileImgUnavailable = './../../../www/admin.ncdd.com/public_html/assets/img/404-profile-159.png';
 $app->match('/image/upload', function (Request $request) use ($app) {
 	$doc = $app['request']->get('doc');
 	if(empty($doc['belongsTo'])){
@@ -29,7 +30,7 @@ $app->match('/image/upload', function (Request $request) use ($app) {
 
 		$response_arr = array('files'=>array(0=>array('name'=>$image->getUploadedFileName()
 														,'size'=>$image->getUploadedFileSize()
-														,'thumbnail_url'=>$app['getImageURL']($image,'medium')
+														,'thumbnail_url'=>$app['getImageURL']($image,'small')
 														,'delete_type'=>"GET"
 														,'delete_url'=>"/image/delete/".$image->context."/".$image->belongsTo)));
 		return new Response(json_encode($response_arr), 200,array('Content-Type' => 'application/json'));	
@@ -70,6 +71,21 @@ $app->get('/image/upload/nojavascript', function (Request $request) use ($app) {
 	return $app['view']->render('errors/nojavascript', 'default', $view_vars);
 });
 
+///////////////////
+// CROP AN IMAGE //
+///////////////////
+$app->match('/image/crop', function (Request $request) use ($app) {
+	$doc = $app['request']->get('doc');
+	if(empty($doc['belongsTo'])){
+		throw new \Saw\Model\Exceptions\DomainException("You must pass up a record id (belongsTo).  Please try again.");
+	}
+	$image = $app['imageFactory']($doc['context'],$doc['belongsTo']);
+  
+    $app['upload-mongo']->cropImage($doc['x'],$doc['y'],$doc['w'],$doc['h'],$doc['imageId'],$image,$doc['size']);
+	$image = $image->__toArray();
+	return new Response(json_encode(array('imageUrl'=>$image['urls'][$doc['size']]['CDN'].'?v='.time(), 'message'=>'success')), 200,array('Content-Type' => 'application/json'));	
+})->method('POST')->before($mustbeMEMBER);
+
 /////////////////////
 // DELETE AN IMAGE //
 /////////////////////
@@ -80,7 +96,7 @@ $app->get('/image/delete/{context}/{belongsTo}', function ($context, $belongsTo,
 		$app['upload-mongo']->deleteByCriteria($deleteQuery);
 		$parentObj = $app['imageParentFactory']($context,$belongsTo);
 		$parentObj->image = array();
-		$parentObj->saveSafe();
+		$parentObj->saveEdit();
 		return new Response('success', 200, array('Content-Type' => 'text/html'));	
 	} catch (Exception $e) {
 		$response_arr = array('files'=>array(0=>array('name'=>''
@@ -98,6 +114,10 @@ $app->get('/image/delete/{context}/{belongsTo}', function ($context, $belongsTo,
 /////////////////////
 $app->get('/noimage', function (Request $request) use ($app,$imgUnavailable) {
     $file_contents = file_get_contents($imgUnavailable);
+	return new Response($file_contents, 200, array('Content-Type' => 'image/jpeg'));
+});
+$app->get('/noprofileimage', function (Request $request) use ($app,$profileImgUnavailable) {
+    $file_contents = file_get_contents($profileImgUnavailable);
 	return new Response($file_contents, 200, array('Content-Type' => 'image/jpeg'));
 });
 $app->get('/images/{imageId}', function ($imageId, Request $request) use ($app,$imgUnavailable) {
@@ -140,12 +160,18 @@ $app['imageFactory'] = $app->protect(function ($context,$belongsTo) {
 		case 'seminar':
 			return new Model\ImageSeminar($belongsTo);
 			break;
+		case 'member':
+			return new Model\ImageMember($belongsTo);
+			break;
 	}
 });
 $app['imageParentFactory'] = $app->protect(function ($context,$belongsTo) use ($app) {
 	switch ($context) {
 		case 'seminar':
 			return new Model\Seminar(array('_id'=>$belongsTo),$app);
+			break;
+		case 'member':
+			return new Model\Member(array('_id'=>$belongsTo),$app);
 			break;
 	}
 });

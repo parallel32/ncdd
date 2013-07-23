@@ -48,10 +48,28 @@ class UploadWrapperMongo
             
         }
         $modelObj = $image->instantiateParent($this->app);
-        $modelObj->saveSafe();
+        $modelObj->saveEdit();
         return true;
     }
     
+    public function cropImage($x,$y,$w,$h,$fileId,&$image,$size){
+
+        $image->prepareFile($fileId.'.jpg');
+
+        // download the file and store it
+        $file_bytes = $this->getImage($fileId);
+        file_put_contents($image->getFilePath(),$file_bytes);
+        
+        // crop
+        $img = $this->imagine->open($image->getFilePath());
+        $img->crop(new Point($x,$y),new Box($w,$h))->save($image->getFilePath());
+        
+        // store the file
+        $image->sizes[$size]['id'] = $this->app['mongo']->updateFile($fileId,$image->getFilePath(),$this->collection);
+        $image->makeUrls();
+        $modelObj = $image->instantiateParent($this->app);
+        $modelObj->saveEdit();
+    }
 	/**
      * pulls an image out of mongo and returns the stream
      */

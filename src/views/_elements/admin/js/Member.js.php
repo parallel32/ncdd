@@ -2,7 +2,10 @@
 (function( Member, $, undefined ) {
 
 	Member.init = function(){
-		$('#saw-form input').keypress(function (e) {
+		$('.edit-photo').click(function(e){
+			document.location.href='/member/'+$(this).attr('data-id')+'/edit-photo';
+		});
+		$('#saw-form input').keypress(function(e) {
 			if (e.which == 13) {
 				save();
 			}

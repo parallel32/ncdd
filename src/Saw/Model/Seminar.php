@@ -158,6 +158,9 @@ class Seminar extends Model {
 			throw new \Saw\Model\Exceptions\DomainException("Adding failed.  Please try again.");
 		}
 	}
+	public function saveEdit(){
+		return $this->saveSafe();
+	}
 	public function edit(){
 		if($this->saveSafe()){
 			// update the agendas

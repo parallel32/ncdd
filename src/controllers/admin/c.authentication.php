@@ -47,4 +47,31 @@ $app->get('/logout', function (Request $request) use ($app) {
 	return new RedirectResponse('/login');
 });
 
+$app->post('/member/forgotpassword', function (Request $request) use ($app) {
+	
+	$doc = $request->get('doc');
+	// get the member to embed
+	$member = new Model\Member($doc, $app);
+	$member = $member->findById('email');
+
+	if(!empty($member)){
+		$arr = array('_id'=>$member['_id'],'password'=>time());
+
+		$member = new Model\Member($arr, $app);
+		$member->saveSafe();
+
+		// email new password
+		$subject = 'NCDD Member Portal Password Reset';
+		$to = $doc['email'];
+		$view_vars = array('email'=>$doc['email']
+							,'password'=>$arr['password']
+		);
+		$body = $app['view']->render('email/member-password-reset','email', $view_vars);
+		$app['sendMail']($subject, $body, $to);
+		return new Response(json_encode(array('message' => 'Your email has been found and your password has been reset.  We\'ve sent you an email with your new password.')), 200,array('Content-Type' => 'application/json'));
+	}
+
+	return new Response(json_encode(array('message' => 'We could not find this email address. Please try again.')), 400,array('Content-Type' => 'application/json'));
+});
+
 return $app;

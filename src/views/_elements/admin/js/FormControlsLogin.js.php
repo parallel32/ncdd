@@ -2,12 +2,25 @@
 (function( Login, $, undefined ) {
     
 	function attemptLogin (){
-		io.saw.FormPost.activate({postUrl:'/login'
-			,formName:'.login-form'
+        io.saw.FormPost.activate({postUrl:'/login'
+            ,formName:'.login-form'
+            ,serializeSelector:':input'
+            ,postOnComplete:function(responseObj,responseStatus){}
+            ,postOnSuccess:function(responseObj){
+                document.location.href='/';
+            }
+        });     
+    }
+    function forgotPassword (){
+		io.saw.FormPost.activate({postUrl:'/member/forgotpassword'
+			,formName:'#forgotpass-form'
 			,serializeSelector:':input'
 			,postOnComplete:function(responseObj,responseStatus){}
 			,postOnSuccess:function(responseObj){
-				document.location.href='/';
+                $('#forgotpass-form .control-group').hide();
+                $('#forgotpass-form p').hide();
+				$('#forgotpass-form .submit').hide();
+                $('#forgotpass-form h3').after('<p id="forgotmessage">'+responseObj.message+'</p>');
 			}
 		});		
 	}
@@ -19,17 +32,9 @@
                 return false;
             }
         });
-        $('.login-form :submit').click(function(e){
+        $('#login-form .submit').click(function(e){
         	e.preventDefault();
         	attemptLogin();
-        });
-
-        $('.forget-form input').keypress(function (e) {
-            if (e.which == 13) {
-            	e.preventDefault();
-                attemptLogin();
-	            return false;
-            }
         });
 
         $('#forget-password').click(function () {
@@ -40,6 +45,12 @@
         $('#back-btn').click(function () {
             $('.login-form').show();
             $('.forget-form').hide();
+            $('#forgotmessage').remove();
+            $('#forgotpass-form .control-group').show();
+            $('#forgotpass-form p').show();
+            $('#forgotpass-form .submit').show();
+            $('#forgotpass-form input').val('');
+            
         });
         $('#register-btn').click(function () {
             document.location.href="/application/new-member";
@@ -49,6 +60,17 @@
             $('.login-form').show();
             $('.register-form').hide();
         });	
+
+        $('#forgotpass-form .submit').click(function (e){
+            e.preventDefault();
+            forgotPassword();
+        })
+        $('#forgotpass-form input').keypress(function (e) {
+            if (e.which == 13) {
+                e.preventDefault();
+                forgotPassword();
+            }
+        });
 
         $.backstretch([
 	        "assets/img/bg/2.jpg",

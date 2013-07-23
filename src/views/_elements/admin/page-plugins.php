@@ -185,8 +185,15 @@ EOT;
 
 
 EOT;
-/*          <!-- jcrop -->
-            <script src="/assets/plugins/jcrop/js/jquery.Jcrop.min.js"></script>*/
+
+         break;
+         case 'crop':
+         echo <<< EOT
+            <!-- jcrop -->
+            <script src="/assets/plugins/jcrop/js/jquery.Jcrop.min.js"></script>
+
+
+EOT;
          break;
       default:
          echo "<!-- empty ... -->";

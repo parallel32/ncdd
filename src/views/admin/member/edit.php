@@ -146,7 +146,7 @@
                               <div class="control-group ">
                                  <label class="control-label"></label>
                                  <div class="controls">
-                                    <img src="/assets/img/avatar159X165.png">
+                                    <img id="image" src="<?=$this->vars['image']?>">
                                  </div>
                               </div>
                            </div>
@@ -155,7 +155,7 @@
                               <div class="control-group ">
                                  <label class="control-label"></label>
                                  <div class="controls">
-                                    <button type="button" class="btn blue edit-photo">Edit My Photo</button>
+                                    <button type="button" data-id="<?=$this->vars['member']['_id']?>" class="btn blue edit-photo">Edit My Photo</button>
                                  </div>
                               </div>
                            </div>
