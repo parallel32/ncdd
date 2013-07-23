@@ -135,6 +135,7 @@ $app->get('/image/{context}/{belongsTo}/{size}', function ($context, $belongsTo,
     if(!empty($file_contents)){
     	return new Response($file_contents, 200, array('Content-Type' => 'image/jpeg'));
 	}else{
+
 		$file_contents = file_get_contents($imgUnavailable);
 		return new Response($file_contents, 200, array('Content-Type' => 'image/jpeg'));
 	}

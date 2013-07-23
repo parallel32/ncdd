@@ -117,7 +117,7 @@
           onSelect: showCoords,
           aspectRatio: 4/5
           ,minSize:[50,50]
-          ,maxSize:[200,300]
+          ,maxSize:[600,700]
         },function(){
           jcrop_api = this;
         });

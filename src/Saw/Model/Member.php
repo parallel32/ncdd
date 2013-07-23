@@ -48,8 +48,8 @@ class Member extends User {
 											,40=>'./../../../www/ncdd.com/public_html/assets/img/badges/founding.png');
 
 	// order descending
-	static public $order = array('FELLOW'=>60,'DEAN AMERITUS'=>58,'DEAN'=>55,'REGENT'=>50,'BOARD CERTIFIED'=>40,'FOUNDING MEMBER'=>40,'STATE DELEGATE'=>30,'SUSTAINING MEMBER'=>20,'GENERAL MEMBER'=>10,'FACULTY'=>5);
-	static public $orderReversed = array(60=>'FELLOW',58=>'DEAN AMERITUS',55=>'DEAN',50=>'REGENT',40=>'BOARD CERTIFIED',40=>'FOUNDING MEMBER',30=>'STATE DELEGATE',20=>'SUSTAINING MEMBER',10=>'GENERAL MEMBER',5=>'FACULTY');
+	static public $order = array('FELLOW'=>60,'DEAN AMERITUS'=>58,'DEAN'=>55,'REGENT'=>50,'BOARD CERTIFIED'=>40,'FOUNDING MEMBER'=>40,'FORMER REGENT'=>35,'STATE DELEGATE'=>30,'SUSTAINING MEMBER'=>20,'GENERAL MEMBER'=>10,'FACULTY'=>5);
+	static public $orderReversed = array(60=>'FELLOW',58=>'DEAN AMERITUS',55=>'DEAN',50=>'REGENT',40=>'BOARD CERTIFIED',40=>'FOUNDING MEMBER',35=>'FORMER REGENT',30=>'STATE DELEGATE',20=>'SUSTAINING MEMBER',10=>'GENERAL MEMBER',5=>'FACULTY');
 	public $currentOrder;
 	
 	// order descending
@@ -71,7 +71,8 @@ class Member extends User {
 	public $listed;
 	public $joinDate;
 	public $timeZone='America/New_York';
-
+	public $yearsinpractice;
+	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		
 		
@@ -102,6 +103,7 @@ class Member extends User {
 		$this->financialFees = $doc['financialFees'];
 		$this->financialPayment = $doc['financialPayment'];
 		$this->practiceAreas = $doc['practiceAreas'];
+		$this->yearsinpractice = $doc['yearsinpractice'];
 		
 		$this->currentMembership = $doc['currentMembership'];
 		$this->currentFacultyPosition = $doc['currentFacultyPosition'];
@@ -138,11 +140,11 @@ class Member extends User {
 		$this->accessLevel = MEMBER;		
 		$this->location = $this->location ?: new \StdClass();
 		$this->barNumber = $this->barNumber ?: '';
-		$this->websites = $this->websites ?: array(0=>$this->website);
+		$this->websites = $this->websites ?: new \StdClass();
 		$this->listServEmail = $this->listServEmail ?: '';
 		$this->listed = $this->listed ?: 1;
-		$this->currentMembership = self::$membership['GENERAL MEMBER'];
-		$this->currentOrder = self::$order['GENERAL MEMBER'];
+		$this->currentMembership = $this->currentMembership ?: self::$membership['GENERAL MEMBER'];
+		$this->currentOrder = $this->currentOrder ?: self::$order['GENERAL MEMBER'];
 		$this->currentFacultyPosition = $this->currentFacultyPosition ?: 0;
 		$this->boardCertified = $this->boardCertified ?: 0;
 		$this->joinDate = (!empty($this->joinDate)) ? (is_object($this->joinDate)) ? $this->joinDate->__toArray() : $this->joinDate  : new Date(self::$app,'now', $this->timeZone);
@@ -160,6 +162,7 @@ class Member extends User {
 		$this->financialFees = $this->financialFees ?: '';
 		$this->financialPayment = $this->financialPayment ?: '';
 		$this->practiceAreas = $this->practiceAreas ?: array();
+		$this->yearsinpractice = $this->yearsinpractice ?: '';
 		
 
 		parent::prepareInsert();

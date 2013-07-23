@@ -151,6 +151,7 @@ class SawException extends \Exception {
 			case 'BadMethodCallException':
 			case 'ErrorException':
 			case 'ServerException':
+			case 'ContextErrorException':
 			      $this->httpStatusCode = 500;
 				  $this->message = $this->exception->getMessage();
                   $this->writeErrorLog(true);

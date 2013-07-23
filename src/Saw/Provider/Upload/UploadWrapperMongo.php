@@ -93,7 +93,7 @@ class UploadWrapperMongo
 	public function getImageByCriteria($criteria) {
         
 		$bytes = $this->app['mongo']->getFileByCriteria($criteria,$this->collection,$slaveOkay=true);
-		return $bytes;
+        return $bytes;
 	}
 	/**
 	 * pulls an image out of mongo and returns the gridFS object
