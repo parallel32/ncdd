@@ -1,9 +1,9 @@
                     <div class="row-fluid becomeAmember">
                         <div class="title text-center">
                             <div class="bg">
-                                <h3>The National College of DUI Defense (NCDD)</h3>
-                                <h3 class="stroke">The National College of DUI Defense (NCDD)</h3>
-                                <h3 class="insetShadow">The National College of DUI Defense (NCDD)</h3>
+                                <h3>alabama dui laws</h3>
+                                <h3 class="stroke">alabama dui laws</h3>
+                                <h3 class="insetShadow">alabama dui laws</h3>
                             </div>
                         </div>
                         <div class="becomeAmemberContent">
@@ -15,4 +15,18 @@
                             <p>If you are an attorney interested in applying for membership, please contact our Executive Director, Rhea Kirk at the contact information listed on the website.</p>
                             <p><b>George A. Stein<br></b>Dean 2013</p>
                         </div>
+                    </div>
+                    <div class="attorneyContent">
+                        <div class="dropdown mapsPhone">
+                                <a class="dropdown-toggle btn"href="javascript:void(0)">
+                                    Select Another State
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="mapsPhoneDropdown">
+                                    <li class="titleMap">USA</li>
+                                    <li><a href="#">Alabama</a></li>
+                                    <li><a href="#">Arizona</a></li>
+                                    <li class="titleMap">Canada</li>
+                                </ul>
+                            </div>
                     </div>

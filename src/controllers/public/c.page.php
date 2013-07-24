@@ -25,6 +25,24 @@ $app->get('/blog', function (Request $request) use ($app) {
 $app->get('/dui-laws-in-your-state', function (Request $request) use ($app) {
 	return $app['view']->render('page/dui-laws-in-your-state', 'content');
 });
+$app->get('/dui-laws-in-your-state/{country}/{state}', function ($country, $state, Request $request) use ($app) {
+	switch ($country) {
+		case 'USA':
+			switch ($state) {
+				case 'Alabama':
+					return $app['view']->render('page/dui-laws/Alabama', 'content');
+					break;
+				
+				default:
+					# code...
+					break;
+			}
+			break;
+		case 'CANADA':
+			# code...
+			break;
+	}
+});
 
 
 return $app;

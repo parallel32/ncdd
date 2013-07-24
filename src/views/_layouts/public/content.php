@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="/assets/stylesheets/bootstrap.css" rel="stylesheet" media="screen">
         <link href="/assets/stylesheets/bootstrap-responsive.css" rel="stylesheet">
+        <link href="/assets/stylesheets/theCss.css" rel="stylesheet">
         <link href="/assets/stylesheets/screen.css" rel="stylesheet">
         <link href="/assets/stylesheets/responsive.css" rel="stylesheet">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
