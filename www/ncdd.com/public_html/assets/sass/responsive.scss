@@ -1,0 +1,2395 @@
+@import "compass/reset";
+@import "compass/css3/text-shadow";
+@import "compass/css3/box-shadow";
+@import "compass/css3/images";
+@import "compass/css3/border-radius";
+@import "compass/css3/box-sizing";
+@import "compass/css3/opacity";
+@import "compass/css3/transform";
+@import "compass/css3/transition";
+$i: "../img/";
+
+@media (max-width: 1200px) {
+	.content .attorneyContent .membersList .membersListItem img.avatar {
+		width: 24%;
+	}
+
+	.content .attorneyContent .membersList .membersListItem .info {
+		width: 76%;
+	}
+
+	#boardCertification {
+		#boardCertificationMenu {
+			margin-right: 0;
+		}
+	}
+
+	.content .blog .postBody .postHeader li a {
+		padding-right: 11px;
+	}
+}
+
+@media (min-width: 768px) {
+	.welcome .nav-tabs {
+		min-width: 704px;
+	}
+}
+
+@media (max-width: 767px) and (min-width: 602px) {
+	.welcome .nav-tabs {
+		min-width: 602px;
+	}
+}
+
+@media (max-width: 601px) and (min-width: 520px) {
+	.welcome .nav-tabs {
+		min-width: 509px;
+	}
+}
+
+@media (max-width: 980px) {
+
+	.navbar {
+		ul.nav {
+			.signIn {
+				.dropdown-toggle {
+					background-position: 130px center;
+
+					&:hover {
+						background-position: 130px center;
+					}
+				}
+
+				.dropdown-menu {
+					form {
+						a {
+							padding:  0;
+							font-size: 16px;
+							&::hover {
+								background: none;
+								text-decoration: underline
+							}
+						}
+
+						.checkbox {
+							font-size: 16px;
+						}
+					}
+				}
+			}
+
+			li.dropdown.open.signIn  {
+				.dropdown-toggle {
+					background-position: 130px center;
+				}
+			}
+
+			li {
+				a {
+					padding-left: 10px;
+					@include box-sizing(border-box);
+
+					&:hover {
+						background: rgba(0,0,0,0.3);
+					}
+				}
+			}
+		}
+
+		.dropdown-menu {
+			width: 100%;
+			background: none;
+			@include box-shadow(none);
+			border-top: 1px solid #a5bdd2;
+			border-bottom: 1px solid #a5bdd2;
+			@include box-sizing(border-box);
+			margin-left: 0;
+			@extend .flw;
+
+			input[type="text"] {
+				width: 41%;
+			}
+
+			input.username {
+				background: url($i+"usernameIcon.png") no-repeat 95% center #fff;
+			}
+
+			input.password {
+				background: url($i+"passwordIcon.png") no-repeat 95% center #fff;
+			}
+
+			input[type="submit"] {
+				margin: 0;
+			}
+
+			label, a {
+				color: #a5bdd2;
+			}
+		}
+
+		.navbar-form {
+			padding: 0;
+
+			li:last-child {
+				padding: 0 10px 20px;
+			}
+		}
+
+		.search {
+			width: 100%;
+			@include box-sizing(border-box);
+			height:  31px;
+		}
+
+		.sep {
+			display: none;
+		}
+
+		.searchBtn {
+			top: 12px;
+		}
+	}
+
+	.mainMenu  {
+
+		.mainMenuBody {
+			margin-top: 155px;
+		}
+
+		.btn-navbar {
+			width: 40px;
+			height:  40px;
+			margin-top: 10px;
+		}
+
+		.nav-collapse-menu {
+			width: 80%;
+			float: right;
+
+			.menu {
+				float: right;
+			}
+		}
+
+		.fullWidthDropDown.dropdown-menu {
+			
+			#boardCertification{
+				padding: 0;
+			}
+
+			#boardCertificationMenu {
+				background: none;
+				border-left: none;
+				padding: 0;
+				margin: 0;
+				text-align: left;
+
+				.arrow {
+					display: none;
+				}
+
+				li {
+					a {
+						background: none;
+					}
+				}
+			}
+		}
+	}
+
+	.content  {
+		.attorneyContent  {
+			.attorneyMapTitleBg  {
+				.attorneyMapTitleBgSep {
+					display: none
+				}
+			}
+			.membersList {
+				.membersListItem {
+					.info {
+
+						.nameBlock {
+							padding: 5px 0;
+
+							.name {
+								font-size: 25px;
+							}
+
+							.descr {
+								margin-top: 5px;
+							}
+						}
+
+						.numbers {
+							padding:10px 0 10px;
+
+							li {
+
+								.memberBadgeBlock {
+									margin-top: 0;
+								}
+
+								&:last-child {
+									width: 213px;
+
+									.memberBadge {
+										width: 23%;
+										margin-right: 2%;
+
+										&:last-child {
+											margin-right: 0;
+										}
+									}
+								}
+
+								.envelope {
+									margin-top: -4px;
+								}
+							}
+						}
+
+						.address {
+							height: 30px;
+
+							p {
+								line-height: 30px;
+								padding:  0;
+
+								a {
+									padding-left: 0px;
+								}
+							}
+
+							.btn {
+								padding: 2px 10px;
+								font-size: 12px;
+								margin-top: 3px;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.blog {
+			.postBody {
+				.postHeader  {
+
+					li {
+						padding-left: 7px;
+
+						a {
+							font-size: 12px;
+							padding-right: 7px;
+						}
+					}
+					.mediaBlock {
+
+						a {
+							width: 40px;
+							padding-right: 0px;
+						}
+					}
+				}
+			}
+		}
+
+		.membersList {
+			.membersListItem {
+				.info {
+					.nameBlock {
+						padding: 5px 0 5px;
+
+						.name {
+							text-align: left;
+							padding-left: 10px;
+							font-size: 22px;
+						}
+
+						.descr {
+							text-align:left;
+							padding-left: 10px;
+							margin-top: 5px;
+							font-size: 12px;
+						}
+
+						.regentsFellowsLabel {
+							right: 0;
+						}
+					}
+
+					.numbers {
+						padding: 5px  0;
+
+						li {
+							@include box-sizing(border-box);
+
+							.nemberTitle {
+								font-size: 16px;
+							}
+
+							p {
+								font-size: 12px;
+							}
+
+							&:first-child {
+								width: 20%;
+							}
+
+							&:nth-of-type(2) {
+								width: 30%;
+							}
+
+							&:last-child {
+								width: 50%;
+							}
+						}
+					}
+
+					.address {
+						p {
+							line-height: 1.5em;
+							width: 65%;
+							padding-top: 3%;
+						}
+					}
+				}
+			}
+		}
+
+		.memberProfile {
+			.userMainInfo .pull-right {
+				float: none;
+				clear: both;
+
+				.socialNetwork {
+					float: left;
+					margin-top: 10px;
+				}
+
+				.telephone {
+					float: left;
+					margin-left: 10px;
+				}
+			}
+
+			.userProfile {
+				.userProfileItem:first-child {
+					width: 49%;
+					@include box-sizing(border-box);
+				}
+
+				.userProfileItem:nth-of-type(2) {
+					width: 49%;
+					@include box-sizing(border-box);
+					margin-left: 2%;
+				}
+
+				.userProfileItem:last-child {
+					width: 100%;
+					text-align:center;
+					margin: 10px 0 0;
+				}
+			}
+
+			.contactInfo {
+				text-align: center;
+				.contactInfoMap {
+					float: none;
+					display: inline-block;
+				}
+
+				.address {
+					float: none;
+					margin-top: 20px;
+					width: 100%;
+				}
+
+				.addressBlock {
+					li {
+						address {
+							.viewMap, .sep, .skype {
+								float: none;
+								display: inline-block;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.NCDDListDetailPage {
+			.productList {
+				.productListItem {
+
+					.pull-left.text-center {
+						float: none;
+					}
+
+					.productImg {
+						width: 100%;
+						max-width: 242px;
+						display: block;
+						margin:  0 auto;
+					}
+
+					.productInfo {
+						float: none;
+						width: 100%;
+						margin-top: 20px;
+					}
+				}
+			}
+		}
+
+		.breadcrumb {
+			li {
+				font-size: 14px;
+				padding: 23px 24px 20px 9px;
+			}
+		}
+
+		.sessionSeminarsDetailPage {
+			.sesseionSeminarsInfo {
+				.sesseionSeminarsInfoItem {
+					&:first-child {
+						width: 20%;
+						@include box-sizing(border-box);
+					}
+
+					&:nth-of-type(2) {
+						width: 20%;
+						@include box-sizing(border-box);
+					}
+
+					&:last-child {
+						width: 20%;
+						@include box-sizing(border-box);
+					}
+
+					&:nth-of-type(3) {
+						width: 40%;
+						@include box-sizing(border-box);
+
+						p a {
+							word-break:break-all;
+							 word-wrap: break-word;
+							 display: block;
+						}
+					}
+				}
+			}
+		}
+
+		.discoverLearnPage {
+			.tab-content {
+				#sessionsSeminarsPage, #stateApprovedSeminarsPage  {
+					table {
+						thead {
+							tr {
+								th:last-child {
+									.text {
+										line-height: 1.4em;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.post {
+			.postBody {
+				.postFooter {
+					.postTags {
+						padding:  10px 0;
+						li {
+							line-height: 1.5em;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	@media screen and (min-width:0\0) { 
+    	.content .blog .members {
+    		top: 35px;
+    	}
+	}
+}
+
+@media (width: 980px) {
+	.mainMenu .mainMenuBody {
+		margin-top:  0;
+	}
+}
+
+@media (max-width: 768px) {
+
+	.navbar .searchBtn {
+		top:  5px;
+	}
+	.mainMenuBody {
+		display: inline-block;
+	}
+	.mainMenu  {
+		.menu {
+			float: none;
+		}
+
+		.fullWidthDropDown.dropdown-menu .dropDownMenu .active .dropDownMenuLink, .fullWidthDropDown.dropdown-menu .dropDownMenu .dropDownMenuItem .dropDownMenuLink {
+			background: none;
+		}
+	}
+
+	.content {
+		.attorneyContent {
+			.membersList {
+				.membersListItem {
+					.avatar {
+						float: left;
+					}
+
+					.info {
+						float: right;
+
+						.numbers li:last-child {
+							width: 203px;
+						}
+
+						.nameBlock .regentsFellowsLabel {
+							top:  -1px;
+						}
+
+						.address p {
+							padding-top: 0;
+						}
+					}
+				}
+			}
+		}
+
+		.blog {
+
+			.members {
+				top: 0;
+				right: 10px;
+			}
+
+			.postBody {
+				.postHeader {
+					li {
+						padding-left: 14px;
+
+						a {
+							font-size: 14px;
+							padding-right: 14px;
+						}
+					}
+					.mediaBlock {
+
+						a {
+							width: 54px;
+							padding-right: 0px;
+						}
+					}
+				}
+			}
+		}
+
+		.contact {
+			.contactContent {
+				form {
+					border-right:none;
+					padding-right: 0;
+					margin-bottom: 0;
+				}
+
+				.address {
+					margin-bottom: 40px;
+					text-align: center;
+					padding-left: 0;
+				}
+			}
+		}
+
+		.discoverLearnPage {
+			.nav.nav-tabs {
+				width: 30%;
+				float: left;
+			}
+
+			.tab-content {
+				float: right;
+				width: 68%;
+
+				#stateApprovedSeminarsPage table thead tr th:nth-of-type(2) .text,#stateApprovedSeminarsPage table thead tr th:nth-of-type(4) .text,#sessionsSeminarsPage table thead tr th:nth-of-type(2) .text, #sessionsSeminarsPage table thead tr th:nth-of-type(4) .text {
+					line-height: 1.3em;
+				}
+			}
+		}
+
+		.NCDDListDetailPage .productList .productListItem .productImg {
+			display: block;
+			margin:  0 auto;
+		}
+	}
+
+	footer {
+		.footerLinks {
+			.container {
+				padding-left: 0;
+			}
+			.span4 {
+				margin-bottom: 30px;
+				padding-left: 20px;
+
+				&:last-child {
+					text-align: center;
+					padding-left: 0;
+				}
+			}
+
+
+			.smaillLogo {
+				margin: 30px auto 0;
+			}
+		}
+	}
+
+	.footerCopyright {
+		.copyright {
+			font-size: 12px;
+		}
+	}
+}
+
+@media(max-width: 767px){
+	.wrapper {
+		position: relative;
+		transition-delay: 0s;
+	    transition-duration: 0.5s;
+	    transition-property: all;
+	    transition-timing-function: ease;
+	    -webkit-transition-delay: 0s;
+	    -webkit-transition-duration: 0.5s;
+	    -webkit-transition-property: all;
+	    -webkit-transition-timing-function: ease;
+
+	    left:0;
+	}
+
+	.menuVisible.wrapper {
+		left:80%;
+	}
+
+	.navbar .btn-navbar-phone {
+		float: left;
+		margin:  15px;
+	}
+
+	.nav-collapse {
+		position: absolute;
+		left:0;
+		background: url($i+"navbarBg.png") repeat;
+		min-height: 100%;
+		width: 80%;
+		overflow: hidden;
+		@include box-sizing(border-box);
+		left: -80%;
+
+		.navbar-form {
+			display: none;
+		}
+
+		ul.nav {
+			margin-bottom: 0;
+
+			li {
+				display: none;
+				a {
+		 			font-size: 20px;
+		 			color: #A5BDD2;
+		 			font-family: ubuntu_condensedregular;
+		 			font-weight: bold;
+		 			@include text-shadow(0 1px 0 rgba(12, 58, 99, 0.5));
+		 			@include box-sizing(border-box);
+		 			line-height: 1.5em;
+		 			padding: 15px 10px;
+		 			@include border-radius(0);
+
+		 			&:hover {
+		 				background-color: rgba(0,0,0,0.3);
+		 			}
+				}
+			}
+
+		 	.signIn {
+		 		display: block;
+		 		border-top: 2px solid rgba(0,0,0,0.3);
+
+		 		.dropdown-toggle {
+		 			background: url("/assets/img/mainMenuArrow.png") no-repeat 95% center;
+
+		 			&:hover {
+		 				background-position: 95% center;
+		 			}
+		 		}
+
+		 		.dropdown-menu {
+
+	 				li {
+	 					display: block;
+
+		 				form {
+
+		 					input[type="text"] {
+								width: 90%;
+		 					}
+
+							label {
+				 				color: #a5bdd2;
+			 					font-family: ubuntu_condensedregular;
+			 					line-height: 22px;
+			 					float: none;
+			 				}
+
+			 				a {
+			 					float: none;
+			 					padding: 0;
+			 					font-size: 16px;
+			 					display: block;
+			 					@include text-shadow(none);
+			 					clear: both;
+			 					margin: 2px 0 5px;
+
+			 					&:hover {
+			 						background: none;
+			 					}
+			 				}
+			 			}
+	 				}
+		 		}
+
+		 		ul {
+		 			border-bottom:none;
+		 		}
+		 	}
+
+		 	.dropdown.open.signIn {
+		 		.dropdown-toggle {
+		 			background-position: 95% center;
+		 		}
+		 	}
+		}
+
+		.fullWidthDropDown {
+			display: block;
+		}
+	}
+
+	.navbar-custom-inner{
+		position: relative;
+		overflow: hidden;
+	}
+
+	.mainMenu {
+		background: none;
+		border-bottom:none;
+
+		.mainMenuBody {
+			margin-top:0px;
+			display: block;
+		}
+
+		.menu {
+			margin: 0;
+			float: none;
+			@extend .flw;
+
+			li {
+				float: none;
+				width: 100%;
+				height: 100%;
+				background: none;
+
+				a {
+					width: 100%;
+					line-height: 1.5em;
+					height: 100%;
+					background: none;
+					text-align: left;
+					padding:15px 10px;
+					color: #A5BDD2;
+					font-size: 20px;
+					font-family: ubuntu_condensedregular;
+					@include text-shadow(0 1px 0 rgba(12, 58, 99, 0.5));
+					font-weight: bold;
+					@include box-sizing(border-box);
+
+					small, br {
+						display: none;
+					}
+
+					&:hover {
+						background: rgba(0,0,0,0.3);
+					}
+				}
+
+				&:last-child {
+					margin: 0;
+				}
+			}
+
+			&:last-child {
+				li:last-child {
+					a {
+						height:  100%;
+						padding: 15px 10px;
+					}
+				}
+			}
+
+			li.dropdown {
+
+				.arrow {
+					bottom: 16px;
+				}
+
+				.dropdown-menu {
+					margin: 0;
+					height:  100%;
+					z-index: 199999;
+					top: 0;
+					background: none;
+
+					.close {
+						display: none;
+					}
+
+					a {
+						background: none;
+						@include text-shadow(none);
+						color: #84A9C0;
+						font-size: 14px;
+					}
+
+					.btn {
+						@include background(linear-gradient(center top , #FEFEFE, #F2F2F2));
+						color: #717171;
+						@include box-sizing(border-box);
+						@include text-shadow(none);
+						font-size: 16px;
+						padding: 10px 20px;
+					}
+
+					#latestNews {
+						.links {
+							.linksItem {
+								width: 25%;
+							}
+						}
+					}
+
+					.thumbnail {
+						text-align:left;
+					}
+				}
+			} 
+
+			li.dropdown {
+				@extend .flw;
+				overflow: hidden;
+
+				.tab-content {
+					display: none;
+				}
+
+				.fullWidthDropDown {
+					overflow: hidden;
+					min-height: 100%;
+				}
+			}
+
+			&:first-child {
+				margin-right: 0;
+			}
+		}
+
+		.menu>li>a.active {
+			background: rgba(0,0,0,0.3);
+		}
+
+		#latestNews, #sessionSeminars, #NCDDGallery{
+			.btn {
+				display: inline-block;
+				width: 50%;
+			}
+		}
+
+		#NCDDStore, #breathTestDevices {
+			.btn {
+				width: 70%;
+			}
+		}
+
+		.fullWidthDropDown.dropdown-menu {
+
+			.dropDownMenuItem {
+				display: block;
+			}
+			
+			#boardCertificationMenu {
+				border: none;
+				li {
+					display: block;
+					margin: 0;
+
+					a {
+						padding: 10px 10px 10px 60px;
+						color: #A5BDD2;
+						font-family: ubuntu_condensedregular;
+						font-size: 15px;
+						line-height: 1.2em;
+
+						&:hover{
+							@include box-shadow(none);
+							background: rgba(0,0,0,0.3);
+						}
+
+						&:focus {
+							@include box-shadow(none);
+						}
+					}
+				}
+
+				.active {
+					a {
+						@include box-shadow(none);
+						background: rgba(0,0,0,0.3);
+						font-family: ubuntu_condensedregular;
+					}
+				}
+			}
+
+			#learnTab {
+				margin-top: 0;
+			}
+
+			#breathTestDevices, #oneLineContinuingEducation, #youMustNow,#defensesWork, #interstaetConsequence, #calculateBac, #breathTestDevices, #lawsInYourState, #foundation, 
+			#regentsAndFellows, #latestNews, #sessionSeminars, #stateApprovedSeminars, #NCDDStore, #NCDDGallery, #sustainMembership, #stateDelegateProgram, #foundMembers, #erwin-taylorAward{
+				padding-top: 45px;
+			}
+
+			.dropDownMenu {
+				margin-top: 0;
+
+				.dropDownMenuItem {
+					border: none;
+
+					.dropDownMenuLink {
+						text-align: left;
+						@include text-shadow(none);
+						background: none;
+						padding:10px 30px;
+						color: #A5BDD2;
+						font-family: ubuntu_condensedregular;
+						font-size: 15px;
+						line-height: 1.3em;
+						width: 100%;
+
+						&:hover {
+							color: #A5BDD2;
+						}
+
+						.arrow {
+							display: none;
+						}
+					}
+				}
+
+				.active {
+
+					.dropDownMenuLink {
+						@include box-shadow(none);
+						background:rgba(0,0,0,0.3);
+						color: #A5BDD2;
+					}
+				}
+			}
+		}
+
+		.logo {
+			position: relative;
+			left: 0;
+			margin: 0;
+
+			a {
+				margin:  0 auto;
+			}
+		}
+	}
+
+	.content {
+		.title h2 {
+			font-size: 59px;
+		}
+
+		.tabBg .nav-tabs li {
+			margin-right: 21px;
+		}
+	}
+}
+
+@media (max-width: 705px) {
+	.content .attorneyContent .membersList .membersListItem {
+		img.avatar {
+			width: 40%;
+		}
+		.info {
+			width: 60%;
+
+			.numbers {
+				@extend .flw;
+				li {
+					&:first-child {
+						width: 50%;
+						@include box-sizing(border-box);
+
+						.envelope {
+							margin: -4px auto 0;
+						}
+					}
+					&:nth-of-type(2) {
+						width: 50%;
+						border-right:none;
+						@include box-sizing(border-box);
+
+						.nemberTitle {
+							font-size: 20px;
+						}
+
+						p {
+							font-size: 16px;
+						}
+					}
+					&:last-child {
+						@include box-sizing(border-box);
+						width: 100%;
+						text-align: center;
+						margin:  20px auto 10px;
+						border-left: none;
+						border-top: 1px solid #d6d6d7;
+						@extend .flw;
+						height:  100%;
+
+						.memberBadgeBlock {
+							border-top: 1px solid #fff;
+							padding-top:  20px;
+						}	
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 620px) {
+	.content .discoverLearnPage .membersList .membersListItem .info .address {
+		text-align: center;
+		height:  100%;
+
+		p {
+			width: 100%;
+			float: none;
+		}
+
+		.btn {
+			display: inline-block;
+			margin-bottom:  10px;
+			float: none;
+		}
+	}
+}
+
+@media (max-width: 600px) {
+	.content {
+		.blog {
+			.postBody {
+				.postHeader {
+					li {
+						padding-left: 10px;
+
+						a {
+							font-size: 12px;
+							padding-right: 10px;
+						}
+					}
+					.mediaBlock {
+
+						a {
+							width: 40px;
+							padding-right: 0px;
+						}
+					}
+				}
+
+				.postFooter {
+					padding-bottom: 10px;
+				}
+			}
+		}
+
+		.breadcrumb {
+			li {
+				padding: 19px 15px 18px 5px;
+				font-size: 11px;
+				
+				a {
+					font-size: 11px;
+				}
+			}
+		}
+
+		.title h2 {
+			font-size: 48px;
+		}
+		
+		.tabBg .nav-tabs li {
+			margin-right: 10px;
+
+			a {
+				font-size: 16px;
+			}
+		}
+
+		.discoverLearnPage .membersList .membersListItem .info .nameBlock .name {
+			width: 64%;
+		}
+
+		.attorneyContent .membersList .membersListItem .info  {
+			.address {
+				height:  100%;
+				text-align: center;
+
+				p  {
+					width: 100%;
+					text-align:center;
+					float: none;
+				}
+
+				a.btn {
+					margin:0 auto 10px;
+					float: none;
+					display: inline-block;
+				}
+			}
+
+			.nameBlock .name {
+				font-size: 23px;
+			}
+		}
+	}
+}
+
+@media (max-width: 520px) {
+	.content {
+		.blog {
+			.postBody {
+				.postHeader {
+					li {
+						padding-left: 5px;
+
+						a {
+							font-size: 11px;
+							padding-right: 5px;
+						}
+					}
+					.mediaBlock {
+
+						a {
+							width: 40px;
+							padding-right: 0px;
+						}
+					}
+				}
+			}
+		}
+
+		.breadcrumb {
+			li {
+				padding: 20px 7px 18px 2px;
+				font-size: 10px;
+				
+				a {
+					font-size: 10px;
+				}
+			}
+		}
+
+		.title h2 {
+			font-size: 53px;
+		}
+
+		.tabBg {
+			.nav-tabsBg {
+				height:  100%;
+			}
+			.nav-tabs {
+				height:  100%;
+				text-align: center;
+				li {
+					margin: 0 10px;
+					display: inline-block;
+					float: none;
+
+					a {
+						font-size: 18px;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 480px) {
+	.mainMenu .logo a {
+		@include border-radius(110px 110px 70px 70px);
+	}
+
+	.content {
+		border: none;
+		padding: 0;
+
+		.blog {
+			.title h2 {
+				padding-top: 10px;
+			}
+
+			.postBody {
+				.postHeader {
+					li {
+						padding-left: 25px;
+
+						a {
+							font-size: 14.5px;
+							padding-right: 25px;
+						}
+
+						&:first-child {
+							padding-left: 90px;
+						}
+						&:nth-of-type(2) {
+							border-right:none;
+						}
+						&:nth-of-type(3) {
+							padding-left: 35px;
+						}
+						&:first-child, &:nth-of-type(2) {
+							margin-bottom: 5px;
+						}
+					}
+					.mediaBlock {
+
+						a {
+							width: 40px;
+							padding-right: 0px;
+						}
+					}
+				}
+
+				.postFooter {
+					.postTags {
+						margin-top: 10px;
+						li {
+							line-height:  1.5em;
+						}
+					}
+
+					.readMore {
+						float: none;
+						margin-bottom: 0;
+					}
+				}
+			}
+		}
+
+		.checkout {
+			.checkoutBody {
+				form {
+					.formBody {
+						label {
+							margin-bottom: 5px;
+						}
+					}
+				}
+			}
+		}
+
+		.discoverLearnPage {
+			.nav.nav-tabs {
+				width: 100%;
+				float: none;
+			}
+
+			.tab-content {
+				width: 100%;
+				float: none;
+			}
+
+			#boardCertificationPageDropDownMenu.dropdown-menu {
+				left: 32px;
+				top: 50px;
+
+				.arrow {
+					top:  -18px;
+					left:15px;
+					@include transform(rotate(90deg));
+				}
+			}
+		}
+
+		.breadcrumb {
+			border: none;
+			height: 100%;
+
+			li {
+				font-size: 14px;
+				padding: 5px 25px 4px 15px;
+				margin-bottom: 10px;
+
+				a {
+					font-size: 14px;
+				}
+			}
+		}
+
+		.sloganBlock {
+			.indexPageSlogan {
+				h2 {
+					padding-top: 100px;
+				}
+			}
+		}
+
+		.welcome {
+			.title {
+				h2 {
+					font-size: 66px;
+				}
+			}
+		}		
+
+		.tabBg {
+
+			.nav-tabsBg  {
+				height: 100%;
+			}
+
+			.nav-tabs {
+				height: 100%;
+				text-align:center;
+
+				li {
+					display: inline-block;
+					float: none;
+
+					a {
+						font-size: 17px;
+					}
+
+					&:nth-of-type(2) {
+						margin-right: 0;
+					}
+				}
+			}
+		}
+
+		.attorneyContent {
+			.membersList {
+				.membersListItem {
+					img.avatar {
+						float: none;
+						width: 100%;
+					}
+					.info {
+						float: none;
+						width: 100%;
+							
+						.nameBlock {
+							padding: 10px 0;
+
+							.name {
+								font-size: 30px;
+							}
+
+							.descr {
+								margin-top: 10px;
+							}
+						}
+
+						.numbers {
+							padding: 30px 0 20px;
+
+							li {
+								height: 100%;
+
+								&:first-child {
+									width: 49%;
+								}
+
+								&:nth-of-type(2) {
+									width: 50%;
+									border-right: none;
+								}
+
+								&:last-child {
+									width: 100%;
+									margin: 20px 0 0;
+									border-top: 1px solid #d6d6d7;
+									border-left: none;
+									text-align: center;
+
+									.memberBadgeBlock {
+										border-top: 1px solid #fff;
+										padding-top: 20px;
+										margin-left: 0;
+									}	
+								}
+
+
+								.envelope {
+									margin:  0 auto;
+								}
+							}
+						}
+
+						.address {
+							height:  40px;
+
+							p {
+								line-height: 40px;
+								width: 65%;
+								float: left;
+							}
+
+							a.btn {
+								padding:  4px 10px;
+								font-size: 13px;
+								margin: 5px 0 0;
+								float: right;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.membersList {
+			.membersListItem {
+
+				.avatar {
+					width: 100%;
+					float:  none;
+				}
+				.info {
+					float: none;
+					width: 100%;
+
+					.nameBlock {
+						padding: 5px 0 5px;
+
+						.name {
+							text-align: left;
+							padding-left: 10px;
+							font-size: 22px;
+						}
+
+						.descr {
+							text-align:left;
+							padding-left: 10px;
+							margin-top: 5px;
+							font-size: 12px;
+						}
+
+						.regentsFellowsLabel {
+							right: 0;
+						}
+					}
+
+					.numbers {
+						padding: 5px  0;
+
+						li {
+							@include box-sizing(border-box);
+
+							.nemberTitle {
+								font-size: 22px;
+							}
+
+							p {
+								font-size: 14px;
+							}
+
+							&:first-child {
+								width: 20%;
+							}
+
+							&:nth-of-type(2) {
+								width: 30%;
+							}
+
+							&:last-child {
+								width: 50%;
+							}
+						}
+					}
+
+					.address {
+						p {
+							line-height: 1.5em;
+							width: 65%;
+							padding-top: 3%;
+						}
+					}
+				}
+			}
+		}
+		
+		.memberProfile {
+			.userMainInfo {
+				text-align:center;
+
+				.pull-left {
+					float: none;
+				}
+				
+				.avatar {
+					float: none;
+					display: inline-block;
+					margin: 0;
+				}
+
+				.pull-right {
+					.socialNetwork {
+						float: none;
+						padding-top:  20px;
+					}
+
+					.telephone {
+						float: none;
+					}
+				}
+			}
+
+			.userProfile {
+				.userProfileItem {
+					.memberBadgeBlock {
+						.memberBadge {
+							margin-bottom: 10px;
+						}
+					}
+				}
+			}
+
+			.pricticeCaseFinancial {
+				text-align:center;
+
+				.practiceCase {
+					width: 100%;
+					padding: 0;
+					background: none;
+					margin-bottom: 20px;
+					float: none;
+				}
+
+				.financial {
+					float: none;
+					width: 100%;
+				}
+			}
+
+			.aboutMe {
+				.languages {
+					.languagesTitle {
+						margin-bottom: 10px;
+					}
+				}
+			}
+
+			.contactInfo {
+				.contactInfoMap {
+					width: 100%;
+				}
+			}
+		}
+
+		.NCDDListDetailPage {
+			.productList {
+				.productListItem {
+					.productInfoBlock {
+						form {
+							margin-top: 10px;
+						}
+					}
+				}
+			}
+		}
+		
+		.shoppingCart {
+			.shoppingCartBody {
+				table {
+					tr {
+						td:nth-of-type(1), th:nth-of-type(1),td:nth-of-type(2), th:nth-of-type(2) {
+							padding-left: 10px;
+						}
+
+						td {
+							img {
+								margin-right: 0;
+								width: 70%;
+							}
+
+							form {
+								input[type="submit"] {
+									padding: 4px 10px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.sessionSeminarsDetailPage {
+			.tab-content {
+				#sessionsSeminarsPage {
+					table {
+						tr:first-child {
+							td:first-child {
+								.bd {
+									line-height: 1.6em;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.becomeAmember .title h3 {
+			font-size: 64px;
+		}
+	}
+
+	.footerCopyright  {
+		text-align:center;
+
+		.copyright {
+			font-size: 13px;
+			float: none;
+			text-align: center;
+		}
+
+		.socialNetwork {
+			float: none;
+			margin: 10px auto;
+			clear: both;
+			display: inline-block;
+		}
+	}
+
+	@media screen and (min-width:0\0) { 
+		.content .blog .title h2 {
+			line-height:  150px;
+		}
+    	
+	}
+}
+
+@media (max-width: 415px) {
+	.content .attorneyContent .membersList .membersListItem .info .address {
+		height:  100%;
+		p {
+			width: 100%;
+			float: none;
+			text-align: center;
+		}
+
+		a.btn {
+			float: none;
+			margin-bottom:  10px;
+		}
+	}
+}
+
+@media (max-width: 400px) {
+	.content {
+
+		.welcome {
+			.title {
+				h2 {
+					font-size: 62px;
+				}
+			}
+		}
+
+		.attorneyContent .membersList .membersListItem .info .nameBlock .name {
+			font-size: 20px;
+			width: 63%;
+		}
+	}
+}
+
+@media (max-width: 320px) {
+	.mainMenu {
+		.menu {
+			li {
+				float: none;
+				margin: 0;
+
+				&:last-child {
+					margin:  0;
+				}
+			}
+
+			&:last-child {
+				margin-top: 0;
+			}
+		}
+
+		.fullWidthDropDown.dropdown-menu {
+			.dropDownMenu {
+				width: 100%;
+				float: none;
+			}
+		}
+	}
+
+	.dropdown-menu.discover .tab-content, .dropdown-menu.learn .tab-content {
+		float: none;
+		width: 100%;
+	}
+
+	.sloganBlock {
+		.indexPageSlogan {
+			h2 {
+				padding-top: 100px;
+			}
+		}
+
+		.becomeAmemberSlogan {
+			h2 {
+				padding-top: 55px;
+			}
+		}
+
+		.attorneySlogan {
+			h2 {
+				padding-top: 95px;
+			}
+		}
+
+		.deansMessage {
+			h2 {
+				padding-top: 70px;
+			}
+		}
+	}
+
+	.content {
+
+		.title h3 {
+			line-height: 65px;
+		}
+
+		.attorney {
+			.title h3 {
+				font-size: 48px;
+			}
+		}
+
+		.attorneyContent {
+			@include box-sizing(border-box);
+			.membersList {
+				.membersListItem {
+					.info {
+							
+						.nameBlock {
+
+							.name {
+								font-size: 20px;
+								width: 60%;
+
+								.regentsFellowsLabel {
+									top: -5px;
+								}
+							}
+
+							.descr {
+								margin-top: 10px;
+							}
+						}
+
+						.numbers {
+							padding: 30px 0 20px;
+
+							li {
+								height: 100%;
+
+								&:first-child {
+									min-height: 69px;
+								}
+
+								&:nth-of-type(2) {
+									width: 49%;
+								}
+							}
+						}
+
+						.address {
+							height:  100%;
+							padding: 5px 0;
+							text-align: center;
+
+							p {
+								line-height: 20px;
+								float: none;
+							}
+
+							.btn {
+								float: none;
+							}
+						}
+					}
+				}
+			}
+		}	
+
+		.blog {
+			.title {
+				h2 {
+					font-size: 51px;
+					height: 180px;
+				    line-height: 70px;
+				    padding-top: 50px;
+				}
+			}
+
+			.postBody {
+				.postHeader {
+					li {
+						padding-left: 20px;
+						margin-bottom: 5px;
+
+						a {
+							font-size: 14px;
+							padding-right: 20px;
+						}
+
+						&:first-child {
+							padding-left: 28px;
+						}
+						&:nth-of-type(2) {
+							border-right:none;
+						}
+						&:nth-of-type(3) {
+							padding-left: 37px;
+						}
+						&:nth-of-type(4) {
+							border-right:none;
+						}
+						&:last-child {
+							margin-bottom: 0px;
+							padding-left: 90px;
+
+						}
+					}
+					.mediaBlock {
+
+						a {
+							width: 40px;
+							padding-right: 0px;
+						}
+					}
+				}
+			}
+		}
+
+		.checkout {
+			padding: 40px 25px;
+			.checkoutBody {
+				table {
+					thead {
+						tr {
+							th {
+								font-size: 11px;
+							}
+						}
+					}
+					tr {
+						td {
+							font-size: 11px;
+						}
+
+						td:nth-of-type(1), th:nth-of-type(1) {
+							padding: 13px 5px 10px;
+						}
+
+						td:nth-of-type(2), th:nth-of-type(2) {
+							padding: 13px 5px 10px;
+						}
+
+						td:nth-of-type(3), th:nth-of-type(3) {
+							padding: 13px 5px 10px;
+						}
+
+						td:nth-of-type(4), th:nth-of-type(4) {
+							padding: 13px 5px 10px 0;
+						}
+
+						td:nth-of-type(2) {
+							font-size: 16px;
+						}
+
+						td:nth-of-type(3) {
+							font-size: 12px;
+						}
+					}
+
+					tr:nth-last-of-type(2) {
+						ul li {
+							font-size: 11px;
+							line-height: 1.5em;
+						}
+
+						td:nth-of-type(4) ul li {
+							font-size: 13px;
+						}
+					}
+
+					tr:nth-last-of-type(1) td {
+						font-size: 14px;
+    					padding-left: 5px;
+					}
+				}
+			}
+		}
+
+		.contact {
+			.contactContent {
+				.address {
+					.socialNetwork {
+						li {
+							margin-right: 9px;
+						}
+					}
+				}
+			}
+		} 
+
+		.membersList {
+			.membersListItem {
+				.info {
+					.nameBlock {
+						.name {
+						    padding-left: 5px;
+						    text-align: left;
+						    width: 60%
+						}
+
+						.descr {
+							text-align:left;
+							padding-left: 5px;
+						}
+					}
+
+					.numbers {
+						li {
+							min-height: 70px;
+						}
+					}
+
+					.address {
+
+						p {
+							width: 100%;
+						}
+
+						.btn {
+							margin-bottom: 10px;
+						}
+					}
+				}
+			}
+		}
+
+		.discoverLearnPage {
+
+			.title {
+				h3 {
+					line-height: 85px;
+				}
+			}
+
+			#boardCertificationPageDropDownMenu.dropdown-menu {
+				left: -22px;
+				padding: 20px 10px;
+			}
+
+			.menu li a.dropdown-toggle {
+				z-index: 10;
+			}
+
+			.nav-tabs .open .dropdown-toggle, .nav-pills .open .dropdown-toggle, .nav > li.dropdown.open.active > a:hover, .nav > li.dropdown.open.active > a:focus {
+				background: none;
+			}
+
+			.tab-content {
+
+				.discoverTabTitle {
+					text-align: left;
+				}
+
+				#erwinTaylorAwardPage {
+					table {
+						tr {
+							margin-bottom: 10px;
+							
+							td {
+								line-height: 1.5em;
+
+								&:nth-of-type(2) {
+									padding-left: 10px;
+								}
+
+								&:last-child {
+									padding: 0 0 10px 10px; 
+								}
+							}
+						}
+					}
+				}
+				#sessionsSeminarsPage, #stateApprovedSeminarsPage {
+					table {
+						thead {
+							tr {
+								th {
+									.text {
+										font-size: 12px;
+										padding-left: 5px;
+									}
+								}
+								th:nth-of-type(2),th:nth-of-type(4), th:nth-of-type(1)  {
+									.text {
+										line-height: 1.4em;
+									}
+								}
+							}
+						}
+
+						tr {
+
+							td {
+								font-size: 13px;
+							}
+
+							td:first-child {
+								font-size: 13px;
+							}
+
+							.calendarIcon {
+								margin-left: 0;
+							}
+						}
+					}
+				}
+
+				#stateApprovedSeminarsPage {
+					table {
+						thead {
+							tr {
+
+								th:nth-of-type(1)  {
+									.text {
+										line-height: 40px;
+									}
+								}
+							}
+						}
+
+						tr {
+
+							td {
+								font-size: 13px;
+							}
+
+							td:first-child {
+								font-size: 13px;
+							}
+
+							.calendarIcon {
+								margin-left: 0;
+							}
+						}
+					}
+				}
+
+				#stateDelegateProgrammPage {
+					.regionList {
+						.regionListItem {
+							width: 50%;
+
+							ul {
+								padding-left: 0;
+							}
+						}
+					}
+				}
+
+				#calculateYouBacpage {
+					.alcoholTableBlock {
+						.alcoholTable {
+							img {
+								width: 100%;
+							}
+						}
+
+						.values {
+							@extend .flw;
+							
+							li {
+								@extend .flw;
+								display: block;
+								margin-bottom: 5px;
+								overflow: hidden;
+							}
+						}
+					}
+				}
+
+				.btn {
+					font-size: 14px;
+				}
+			}
+		}
+
+		.becomeAmember {
+			.title {
+				h3 {
+					line-height: 75px;
+					font-size: 60px;
+				}
+			}
+		}
+
+		.welcome {
+			.title {
+				h2 {
+					line-height: 90px;
+				}
+			}
+		}
+
+		.upcomingSeminars {
+			.title {
+				h3 {
+					font-size: 47px;
+				}
+			}
+		}
+
+		.tabBg {
+			.tab-content {
+				img {
+					margin-left: 0;
+				}
+			}
+			.nav-tabs {
+				li {
+					margin-right:  25px;
+				}
+			}
+		}
+
+		.memberProfile {
+			.userProfile {
+				.userProfileItem:first-child {
+					width: 100%;
+					background: none;
+				}
+
+				.userProfileItem:nth-of-type(2) {
+					width: 100%;
+					margin: 20px 0 0;
+					background: none;
+					min-height: 100%;
+				}
+
+				.userProfileItem:last-child {
+					text-align: left;
+					margin-top: 20px;
+				}
+			}
+
+			.aboutMe {
+				.languages {
+					.languagesTitle {
+						margin-bottom: 10px;
+					}
+				}
+			}
+
+			.contactInfo .addressBlock li address .sep {
+				display: none;
+			}
+		}
+
+		.NCDDListDetailPage {
+			.productList {
+				.productListItem {
+					.productInfo {
+						.productDescr {
+							.productDescrleft {
+								float: none;
+								width: 100%;
+							}
+
+							.quantityBox {
+								width: 100%;
+								float: none;
+
+								form {
+									text-align: left;
+									padding: 10px 0  0 38px;
+
+									.quantity {
+										label {
+											text-align: left;
+											margin-left: 5px;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.commentBlock {
+			.commentList {
+				.commentListItem {
+					.commentListBody {
+						.avatar {
+							display: none;
+						}
+
+						.commentBody {
+							width: 100%;
+							float: none;
+
+							.arrowComment {
+								display: none;
+							}
+						}
+					}
+
+					.subComment {
+						margin-left: 30px;
+					}
+				}
+			}
+
+			form {
+				.captcha {
+					.captchaCode {
+						margin-left: 0px;
+						margin-top: 10px;
+					}
+
+					.btn {
+						float: left;
+					}
+				}
+			}
+		}
+
+		.pagination ul > li > a, .pagination ul > li > span {
+			padding: 4px 11px;
+		}
+
+		.sessionSeminarsDetailPage {
+			.sesseionSeminarsInfo {
+				.sesseionSeminarsInfoItem {
+					&:first-child {
+						width: 50%;
+						margin-bottom: 10px;
+					}
+
+					&:nth-of-type(2) {
+						width: 50%;
+						border-right:none;
+						margin-bottom:  10px;
+					}
+
+					&:nth-of-type(3) {
+						width: 70%;
+						padding-left: 0;
+					}
+
+					&:last-child {
+						width: 30%;
+					}
+				}
+			}
+
+			.tab-content {
+				#sessionsSeminarsPage {
+					table {
+						tr {
+							td {
+								font-size: 12px;
+								padding: 10px 5px;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.sessionSeminarsDetailPage .tab-content #sessionsSeminarsPage table tr:first-child td .bd {
+			line-height: 1.5em;
+		}
+
+		.shoppingCart {
+			overflow-x: scroll;
+
+			.shoppingCartBody {
+				width: 470px;
+				padding-right: 10px;
+				
+				table {
+				}
+
+				.checkoutBtn {
+					margin-bottom: 10px;
+				}
+			}
+		}
+
+		.attorneyContent, .becomeAmemberContent, .blog .blogContent, .checkout, .contactContent, .discoverContent, .learnContent, .memberProfile, .search, .shoppingCart {
+			padding-left:10px;
+			padding-right: 10px;
+		}
+	}
+}
+
+
+.flw:after {display:block; content:"."; clear:both; font-size:0; line-height:0; height:0; overflow:hidden;}
+
+a:focus {
+	background: none;
+}

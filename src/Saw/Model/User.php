@@ -55,7 +55,11 @@ class User extends Model {
 		$this->init($doc);
 		
 		if(!empty($doc['_id'])) $this->_id = (is_object($doc['_id'])) ? $doc['_id'] : new \MongoId($doc['_id']);
-		$this->displayName = $doc['displayName'];
+		
+		if(!empty($doc['firstName']) && !empty($doc['lastName']) && empty($doc['displayName']))
+			$this->displayName = $doc['firstName'].' '.$doc['lastName'];
+		else
+			$this->displayName = $doc['displayName'];
         $this->email = trim(strtolower($doc['email'])); 
 		$this->password = (!empty($doc['password'])) ? self::sawPassword($doc['password']): '';
 		$this->firstName = $doc['firstName'];

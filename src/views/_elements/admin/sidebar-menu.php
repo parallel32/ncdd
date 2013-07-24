@@ -12,10 +12,10 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
             </li>
             <li>
                <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
-               <form class="sidebar-search">
+               <form id="qs-form" class="sidebar-search">
                   <div class="input-box">
-                     <a href="javascript:;" class="remove"></a>
-                     <input type="text" placeholder="Member Search.." />            
+                     <a class="remove"></a>
+                     <input type="text" class="query" placeholder="Member Search.." />            
                      <input type="button" class="submit" value=" " />
                   </div>
                </form>
@@ -28,24 +28,24 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                <? echo ($this->vars['active'] == 'Dashboard') ? '<span class="selected"></span>':'';?>
                </a>
             </li>
-            <li class="<? echo ($this->vars['active'] == 'Clients') ? 'active':'';?>">
+            <li class="<? echo ($this->vars['active'] == 'Pages') ? 'active':'';?>">
                <a href="/page">
                <i class="icon-copy"></i> 
                <span class="title">Website Pages</span>
-               <? echo ($this->vars['active'] == 'Clients') ? '<span class="selected"></span>':'';?>
+               <? echo ($this->vars['active'] == 'Pages') ? '<span class="selected"></span>':'';?>
                </a>
             </li>
-            <li class="<? echo ($this->vars['active'] == 'Modules') ? 'active':'';?>">
+            <li class="<? echo ($this->vars['active'] == 'Store') ? 'active':'';?>">
                <a href="/store">
                <i class="icon-shopping-cart"></i> 
                <span class="title">NCDD Store</span>
-               <? echo ($this->vars['active'] == 'Modules') ? '<span class="selected"></span>':'';?>
+               <? echo ($this->vars['active'] == 'Store') ? '<span class="selected"></span>':'';?>
                </a>
             </li>
             <li class="<? echo ($this->vars['active'] == 'Application') ? 'active':'';?>">
                <a href="/applications">
                <i class="icon-copy"></i> 
-               <span class="title">Applictions</span>
+               <span class="title">Applications</span>
                <? echo ($this->vars['active'] == 'Application') ? '<span class="selected"></span>':'';?>
                </a>
             </li>
@@ -56,18 +56,11 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                <? echo ($this->vars['active'] == 'Payment') ? '<span class="selected"></span>':'';?>
                </a>
             </li>
-            <li class="<? echo ($this->vars['active'] == 'Modules') ? 'active':'';?>">
+            <li class="<? echo ($this->vars['active'] == 'Blog') ? 'active':'';?>">
                <a href="/blog">
                <i class="icon-edit"></i> 
                <span class="title">DUI Blog</span>
-               <? echo ($this->vars['active'] == 'Modules') ? '<span class="selected"></span>':'';?>
-               </a>
-            </li>
-            <li class="<? echo ($this->vars['active'] == 'Modules') ? 'active':'';?>">
-               <a href="/contact">
-               <i class="icon-envelope"></i> 
-               <span class="title">Web Contacts</span>
-               <? echo ($this->vars['active'] == 'Modules') ? '<span class="selected"></span>':'';?>
+               <? echo ($this->vars['active'] == 'Blog') ? '<span class="selected"></span>':'';?>
                </a>
             </li>
             <li class="<? echo ($this->vars['active'] == 'Seminar') ? 'active':'';?>">
@@ -89,35 +82,41 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                      <a href="/member/<?=call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$this->app);?>/edit"><i class="icon-pencil"></i> Edit My Profile</a>
                   </li>
                   <? endif; ?>
-                  <li class="<? echo ($this->vars['active'] == 'Members/phpinfo') ? 'active':'';?>">
-                     <a href="/utilities/phpinfo"><i class="icon-search"></i> Search Members</a>
+                  <li class="<? echo ($this->vars['active'] == 'Members/search') ? 'active':'';?>">
+                     <a href="/member/search"><i class="icon-search"></i> Search Members</a>
                   </li>
-                  <li class="<? echo ($this->vars['active'] == 'Members/phpinfo') ? 'active':'';?>">
-                     <a href="/"><i class="icon-user"></i> Founding Members</a>
+                  <li class="<? echo ($this->vars['active'] == 'Members/src') ? 'active':'';?>">
+                     <a href="/member/search?query=Founding Members"><i class="icon-user"></i> Founding Members</a>
                   </li>
-                  <li class="<? echo ($this->vars['active'] == 'Members/phpinfo') ? 'active':'';?>">
-                     <a href="/"><i class="icon-user"></i> Regents and Fellows</a>
+                  <li class="<? echo ($this->vars['active'] == 'Members/src') ? 'active':'';?>">
+                     <a href="/member/search?query=Regents and Fellows"><i class="icon-user"></i> Regents and Fellows</a>
                   </li>
-                  <li class="<? echo ($this->vars['active'] == 'Members/phpinfo') ? 'active':'';?>">
-                     <a href="/"><i class="icon-user"></i> Sate Delegates</a>
+                  <li class="<? echo ($this->vars['active'] == 'Members/src') ? 'active':'';?>">
+                     <a href="/member/search?query=State Delegates"><i class="icon-user"></i> State Delegates</a>
                   </li>
-                  <li class="<? echo ($this->vars['active'] == 'Members/phpinfo') ? 'active':'';?>">
-                     <a href="/"><i class="icon-briefcase"></i> Membership Forms</a>
+                  <li class="<? echo ($this->vars['active'] == 'Members/src') ? 'active':'';?>">
+                     <a href="/member/search?query=Board Certified"><i class="icon-user"></i> Board Certified</a>
+                  </li>
+                  <li class="<? echo ($this->vars['active'] == 'Members/src') ? 'active':'';?>">
+                     <a href="/member/search?query=Sustaining Members"><i class="icon-user"></i> Sustaining Members</a>
+                  </li>
+                  <li class="<? echo ($this->vars['active'] == 'Members/src') ? 'active':'';?>">
+                     <a href="/member/search?query=General Members"><i class="icon-user"></i> General Members</a>
                   </li>
                </ul>
             </li>
-            <li class="<? echo ($this->vars['active'] == 'Modules') ? 'active':'';?>">
+            <li class="<? echo ($this->vars['active'] == 'Forum') ? 'active':'';?>">
                <a href="/forum">
                <i class="icon-comments"></i> 
                <span class="title">DUI Forum</span>
-               <? echo ($this->vars['active'] == 'Modules') ? '<span class="selected"></span>':'';?>
+               <? echo ($this->vars['active'] == 'Forum') ? '<span class="selected"></span>':'';?>
                </a>
             </li>
-            <li class="<? echo ($this->vars['active'] == 'Modules') ? 'active':'';?>">
+            <li class="<? echo ($this->vars['active'] == 'VFL') ? 'active':'';?>">
                <a href="/vfl">
                <i class="icon-legal"></i> 
                <span class="title">Virtual Library</span>
-               <? echo ($this->vars['active'] == 'Modules') ? '<span class="selected"></span>':'';?>
+               <? echo ($this->vars['active'] == 'VFL') ? '<span class="selected"></span>':'';?>
                </a>
             </li>
             

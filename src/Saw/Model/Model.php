@@ -64,6 +64,9 @@ class Model {
 			if($value === 0){
 				$doc[$key]=$value;
 			}
+			if(is_array($value) && empty($value)){
+				$doc[$key]=array();	
+			}
 		}
 		$response = self::$app['mongo']->update($doc, $this->collection, $criteria, $multiple=false, $upsert=true, $options=array('safe'=>true,'fsync'=>true));
 		if(is_array($response)){

@@ -332,7 +332,7 @@ var App = function () {
         // handle the search query submit on enter press
         $('.page-sidebar').on('keypress', '.sidebar-search input', function (e) {
             if (e.which == 13) {
-                window.location.href = "extra_search.html";
+                document.location.href='/member/search?query='+$('#qs-form .query').val();
                 return false; //<---- Add this line
             }
         });
@@ -348,10 +348,10 @@ var App = function () {
                         }
                         $('.sidebar-search').addClass("open");
                     } else {
-                        window.location.href = "extra_search.html";
+                        document.location.href='/member/search?query='+$('#qs-form .query').val();
                     }
                 } else {
-                    window.location.href = "extra_search.html";
+                    document.location.href='/member/search?query='+$('#qs-form .query').val();
                 }
         });
     }
@@ -371,14 +371,14 @@ var App = function () {
 
         //handle hor menu search button click
         $('.header').on('click', '.hor-menu .search-form .btn', function (e) {
-                window.location.href = "extra_search.html";
+                document.location.href='/member/search?query='+$('#qs-form .query').val();
                 e.preventDefault();
             });
 
         //handle hor menu search form on enter press
         $('.header').on('keypress', '.hor-menu .search-form input', function (e) {
                 if (e.which == 13) {
-                    window.location.href = "extra_search.html";
+                    document.location.href='/member/search?query='+$('#qs-form .query').val();
                     return false;
                 }
             });

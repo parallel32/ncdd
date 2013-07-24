@@ -14,19 +14,33 @@ use Saw\Model;
 $member = $app['controllers_factory'];
 $member->before($mustbeMEMBER);
 
-$member->get('/', function (Request $request) use ($app) {
-	$member = new Model\Member($doc=array(), $app);
-	$member = $member->find($query=array(),$fields=array('businessName', 'email', 'passwordOriginal'));
+$member->get('/search', function (Request $request) use ($app) {
+	// retrieve from query string
+    $query = $request->get('query');
 
-	$crumbs = array(array('name'=>'Members','href'=>'/member'));
+	$crumbs = array(array('name'=>'Member Search','href'=>'/member/search'));
 	$view_vars = array(
-						 'active'=>'Members'
+						 'active'=>'Members/search'
 						,'page-plugin'=>'datatables'
-						,'headline'=>'Members'
-						,'description'=>"View all member here."
+						,'headline'=>'Members Search'
+						,'description'=>"Search for all members here."
 						,'crumbs'=>$crumbs
-						,'member'=>$member);
-	return $app['view']->render('users/member', 'default', $view_vars);
+						,'query'=>$query
+						);
+	return $app['view']->render('member/search', 'default', $view_vars);
+});
+$member->post('/search', function (Request $request) use ($app) {
+	// retrieve document from request
+    $doc = $request->get('doc');
+    $member = new Model\Member(array(), $app);
+    $results = $member->search($doc['search']);
+    if(!empty($results)){
+    	$message = count($results).' members found.';
+    }else{
+    	$message = 'No members matched that name.';
+    }
+    return new Response(json_encode(array('results'=>$results,'message' => $message)), 200,array('Content-Type' => 'application/json'));
+	
 });
 
 $member->get('/add', function (Request $request) use ($app) {

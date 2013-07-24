@@ -105,8 +105,9 @@ $utilities->get('/importmembers', function () use ($app) {
     $fellow['Yes'] = 90;
     $fellow['No'] = null;
     
-    $boardCertified['Yes'] = 1;
-    $boardCertified['No'] = 0;
+    $boardCertified['Yes'] = 'yes';
+    $boardCertified['No'] = 'no';
+    $boardCertified[''] = 'no';
 
     $membership = array();
     $membership['Founding Member'] = 40;
@@ -176,11 +177,6 @@ $utilities->get('/importmembers', function () use ($app) {
     $total = count($output);
     foreach ($output as $record):
         if($record['fname'] !='Administrator' && $record['fname'] !='Webmaster' && $record['fname'] !='TestT' ):
-            if(!array_key_exists('state', $record)){
-                $record['state'] = '';
-                error_log('no state record??? '.$record['fname'].'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
-                error_log(print_r($record,true));
-            }
             $loc_doc['raw'] = $record['addr'].' '.$record['city'].', '.$stateMap[$record['state']].' '.$record['zip'].', '.$countryMap[$record['country']];
             $loc_doc['name'] = $record['practice'];
             $loc_doc['addressLine1'] = $record['addr'];
@@ -208,30 +204,34 @@ $utilities->get('/importmembers', function () use ($app) {
             //else
             //    $member_doc['aboutMe'] = '';
             $member_doc['yearsinpractice'] = $record['yearsinpractice'];
+            $member_doc['boardCertified'] = $boardCertified[$record['boardcertified']];
 
             if($record['membertype'] == 'Former Regent'){
                 $member_doc['currentFacultyPosition'] = $membership['Former Regent'];
+                error_log('record membertype:'.$record['membertype']. 'currentFP:'.$membership['Former Regent']);
             }else{
                 $member_doc['currentMembership'] = $membership[$record['membertype']];    
+                error_log('else ... record membertype:'.$record['membertype']. 'currentMembership:'.$member_doc['currentMembership']);
             }
-            if(!array_key_exists('currentFacultyPosition', $member_doc)){
-                $member_doc['currentFacultyPosition'] = $position[$record['position']];
+            if($record['regent'] == 'Yes'){
+                error_log('RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR    '.$regent[$record['regent']]);
+                $member_doc['currentFacultyPosition'] = $regent[$record['regent']];
             }
-            if(array_key_exists('regent', $record)){
-                if(!empty($regent[$record['regent']]) && $member_doc['currentFacultyPosition'] != 70 )
-                    $member_doc['currentFacultyPosition'] = $regent[$record['regent']];
-            }else{
-                error_log('no regent record '.$record['fname'].'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
-                error_log(print_r($record,true));
-            }
-            if(array_key_exists('fellow', $record)){
-                if(!empty($regent[$record['fellow']]) && $member_doc['currentFacultyPosition'] <= 80 )
-                    $member_doc['currentFacultyPosition'] = $regent[$record['fellow']];
-            }else{
-                error_log('no fellow record '.$record['fname'].'lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll');
-                error_log(print_r($record,true));
+        
+            if($record['fellow'] == 'Yes'){
+                $member_doc['currentFacultyPosition'] = $fellow[$record['fellow']];
+                error_log('FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF    '.$fellow[$record['fellow']]);
             }
             
+            if($record['position'] != '' && $record['position'] != 'None'){
+                $member_doc['currentFacultyPosition'] = $position[$record['position']];
+                error_log('PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP    '.$position[$record['position']].' '.$record['position']);
+            }
+            
+            if(array_key_exists('currentFacultyPosition', $member_doc) && $member_doc['currentFacultyPosition'] == 10){
+                echo "<pre>";print_r($record);echo "</pre>";
+                echo "<pre>";print_r($member_doc);echo "</pre>";
+            }
             $member = new Model\Member($member_doc,$app);
             $mem_id = $member->insert();
             $member_arr = $member->findById();
@@ -246,8 +246,8 @@ $utilities->get('/importmembers', function () use ($app) {
                 $img_name = str_replace('lawyerimages/','',$record['image']);
                 $img_path = '/var/www/upload/'.$img_name;
                 if(file_exists($img_path)){
-        error_log('imag_name:'.$img_name);
-        error_log('img_path:'.$img_path);
+        //error_log('imag_name:'.$img_name);
+        //error_log('img_path:'.$img_path);
 
                     $image = $app['imageFactory']('member',$mem_id);
                     $image->prepareFile($img_name);
@@ -262,7 +262,9 @@ $utilities->get('/importmembers', function () use ($app) {
                 }
             }   
             error_log($cnt.' of '.$total);
-            echo "<pre>";print_r($member_doc);echo "</pre>";
+            //echo "<pre>";print_r($member_doc);echo "</pre>";
+            unset($member_doc);
+            unset($loc_doc);
         endif;
         $cnt++;
         

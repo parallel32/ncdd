@@ -48,8 +48,8 @@ class Member extends User {
 											,40=>'./../../../www/ncdd.com/public_html/assets/img/badges/founding.png');
 
 	// order descending
-	static public $order = array('FELLOW'=>60,'DEAN AMERITUS'=>58,'DEAN'=>55,'REGENT'=>50,'BOARD CERTIFIED'=>40,'FOUNDING MEMBER'=>40,'FORMER REGENT'=>35,'STATE DELEGATE'=>30,'SUSTAINING MEMBER'=>20,'GENERAL MEMBER'=>10,'FACULTY'=>5);
-	static public $orderReversed = array(60=>'FELLOW',58=>'DEAN AMERITUS',55=>'DEAN',50=>'REGENT',40=>'BOARD CERTIFIED',40=>'FOUNDING MEMBER',35=>'FORMER REGENT',30=>'STATE DELEGATE',20=>'SUSTAINING MEMBER',10=>'GENERAL MEMBER',5=>'FACULTY');
+	static public $order = array('FELLOW'=>60,'DEAN AMERITUS'=>59,'DEAN'=>58,'ASSISSTANT DEAN'=>57,'SECRETARY'=>56,'TREASURER'=>55,'FOUNDING MEMBER'=>52,'REGENT'=>50,'BOARD CERTIFIED'=>40,'FORMER REGENT'=>35,'DELEGATE'=>30,'SUSTAINING MEMBER'=>20,'GENERAL MEMBER'=>10,'FACULTY'=>5);
+	static public $orderReversed = array(60=>'FELLOW',59=>'DEAN AMERITUS',58=>'DEAN',57=>'ASSISSTANT DEAN',56=>'SECRETARY',55=>'TREASURER',52=>'FOUNDING MEMBER',50=>'REGENT',40=>'BOARD CERTIFIED',35=>'FORMER REGENT',30=>'DELEGATE',20=>'SUSTAINING MEMBER',10=>'GENERAL MEMBER',5=>'FACULTY');
 	public $currentOrder;
 	
 	// order descending
@@ -87,8 +87,8 @@ class Member extends User {
 		$this->barNumber = $doc['barNumber'];
 		$this->websites = $doc['websites'];
 		$this->listServEmail = $doc['listServEmail'];
-		$this->listed = (!empty($doc['listed'])) ? ($doc['listed']=='yes') ? 1: 0 : '' ;
-		$this->boardCertified = (!empty($doc['boardCertified'])) ? ($doc['boardCertified']=='yes') ? 1: 0 : '' ;
+		$this->listed = (!empty($doc['listed'])) ? (strtolower($doc['listed'])=='yes') ? 1: 0 : '' ;
+		$this->boardCertified = (!empty($doc['boardCertified'])) ? (strtolower($doc['boardCertified'])=='yes') ? 1: 0 : '' ;
         $this->joinDate = (!empty($doc['joinDate'])) ? (is_object($doc['joinDate'])) ? $doc['joinDate']->__toArray() : new Date(self::$app,$doc['joinDate'], $this->timeZone)  : $doc['joinDate'];
         include_once __DIR__.'/../Provider/WordPress/ncdd-wp-includes.php';
 		$this->aboutMe = (!empty($doc['aboutMe'])) ? wptexturize(wpautop($doc['aboutMe'])) : '';
@@ -263,6 +263,62 @@ class Member extends User {
 
 	}
 	
+	public function search($string){
+
+		$fields=array('_id'=>1
+					,'displayName'=>1
+					,'primaryPhone'=>1
+					,'email'=>1
+					,'image'=>1
+					,'currentMembership'=>1
+					,'currentFacultyPosition'=>1
+					,'boardCertified'=>1
+					,'listed'=>1
+					);
+		switch ($string) {
+			case 'Sustaining Members':
+				$result = $this->find($query=array('currentMembership'=>self::$membership['SUSTAINING MEMBER']),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);		
+				break;
+			case 'General Members':
+				$result = $this->find($query=array('currentMembership'=>self::$membership['GENERAL MEMBER']),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);		
+				break;
+			case 'Founding Members':
+				$result = $this->find($query=array('currentMembership'=>self::$membership['FOUNDING MEMBER']),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);		
+				break;
+			case 'Regents and Fellows':
+				$result = $this->find($query=array('currentFacultyPosition'=>array('$gte'=>self::$facultyPosition['REGENT'])),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);		
+				break;
+			case 'Regents':
+				$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['REGENT']),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);		
+				break;
+			case 'Fellows':
+				$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['FELLOW']),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);		
+				break;
+			case 'State Delegates':
+				$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['DELEGATE']),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);		
+				break;
+			case 'Board Certified':
+				$result = $this->find($query=array('boardCertified'=>1),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);		
+				break;
+			
+			default:
+				$search = new \MongoRegex("/".$string."/i");
+				$result = $this->find($query=array('displayName'=>$search),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);		
+				break;
+		}
+		
+		if(!empty($result)):
+			for ($i=0; $i < count($result); $i++) {
+				$result[$i]['image'] = (!empty($result[$i]['image'])) ? $result[$i]['image']['urls']['small']['CDN'] : '/noprofileimage';
+				$result[$i]['currentMembership'] = (!empty($result[$i]['currentMembership'])) ? self::$membershipReversed[$result[$i]['currentMembership']] : '';
+				$result[$i]['currentFacultyPosition'] = (!empty($result[$i]['currentFacultyPosition'])) ? self::$facultyPositionReversed[$result[$i]['currentFacultyPosition']] : '';
+				$result[$i]['boardCertified'] = ($result[$i]['boardCertified']) ? "Yes" : "No";
+				$result[$i]['listed'] = ($result[$i]['listed']) ? "Yes" : "No";
+			}
+		endif;
+		return $result;
+	}
+
 	// saves user_id into session
 	public function setUserSession() {
         $user = $this->findById();

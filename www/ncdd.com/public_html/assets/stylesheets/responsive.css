@@ -1,0 +1,2066 @@
+/* line 17, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+@media (max-width: 1200px) {
+  /* line 13, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem img.avatar {
+    width: 24%;
+  }
+
+  /* line 17, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info {
+    width: 76%;
+  }
+
+  /* line 22, ../sass/responsive.scss */
+  #boardCertification #boardCertificationMenu {
+    margin-right: 0;
+  }
+
+  /* line 27, ../sass/responsive.scss */
+  .content .blog .postBody .postHeader li a {
+    padding-right: 11px;
+  }
+}
+@media (min-width: 768px) {
+  /* line 33, ../sass/responsive.scss */
+  .welcome .nav-tabs {
+    min-width: 704px;
+  }
+}
+@media (max-width: 767px) and (min-width: 602px) {
+  /* line 39, ../sass/responsive.scss */
+  .welcome .nav-tabs {
+    min-width: 602px;
+  }
+}
+@media (max-width: 601px) and (min-width: 520px) {
+  /* line 45, ../sass/responsive.scss */
+  .welcome .nav-tabs {
+    min-width: 509px;
+  }
+}
+@media (max-width: 980px) {
+  /* line 55, ../sass/responsive.scss */
+  .navbar ul.nav .signIn .dropdown-toggle {
+    background-position: 130px center;
+  }
+  /* line 58, ../sass/responsive.scss */
+  .navbar ul.nav .signIn .dropdown-toggle:hover {
+    background-position: 130px center;
+  }
+  /* line 65, ../sass/responsive.scss */
+  .navbar ul.nav .signIn .dropdown-menu form a {
+    padding: 0;
+    font-size: 16px;
+  }
+  /* line 68, ../sass/responsive.scss */
+  .navbar ul.nav .signIn .dropdown-menu form a::hover {
+    background: none;
+    text-decoration: underline;
+  }
+  /* line 74, ../sass/responsive.scss */
+  .navbar ul.nav .signIn .dropdown-menu form .checkbox {
+    font-size: 16px;
+  }
+  /* line 82, ../sass/responsive.scss */
+  .navbar ul.nav li.dropdown.open.signIn .dropdown-toggle {
+    background-position: 130px center;
+  }
+  /* line 88, ../sass/responsive.scss */
+  .navbar ul.nav li a {
+    padding-left: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  /* line 92, ../sass/responsive.scss */
+  .navbar ul.nav li a:hover {
+    background: rgba(0, 0, 0, 0.3);
+  }
+  /* line 99, ../sass/responsive.scss */
+  .navbar .dropdown-menu {
+    width: 100%;
+    background: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border-top: 1px solid #a5bdd2;
+    border-bottom: 1px solid #a5bdd2;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-left: 0;
+  }
+  /* line 109, ../sass/responsive.scss */
+  .navbar .dropdown-menu input[type="text"] {
+    width: 41%;
+  }
+  /* line 113, ../sass/responsive.scss */
+  .navbar .dropdown-menu input.username {
+    background: url("../img/usernameIcon.png") no-repeat 95% center white;
+  }
+  /* line 117, ../sass/responsive.scss */
+  .navbar .dropdown-menu input.password {
+    background: url("../img/passwordIcon.png") no-repeat 95% center white;
+  }
+  /* line 121, ../sass/responsive.scss */
+  .navbar .dropdown-menu input[type="submit"] {
+    margin: 0;
+  }
+  /* line 125, ../sass/responsive.scss */
+  .navbar .dropdown-menu label, .navbar .dropdown-menu a {
+    color: #a5bdd2;
+  }
+  /* line 130, ../sass/responsive.scss */
+  .navbar .navbar-form {
+    padding: 0;
+  }
+  /* line 133, ../sass/responsive.scss */
+  .navbar .navbar-form li:last-child {
+    padding: 0 10px 20px;
+  }
+  /* line 138, ../sass/responsive.scss */
+  .navbar .search {
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 31px;
+  }
+  /* line 144, ../sass/responsive.scss */
+  .navbar .sep {
+    display: none;
+  }
+  /* line 148, ../sass/responsive.scss */
+  .navbar .searchBtn {
+    top: 12px;
+  }
+
+  /* line 155, ../sass/responsive.scss */
+  .mainMenu .mainMenuBody {
+    margin-top: 155px;
+  }
+  /* line 159, ../sass/responsive.scss */
+  .mainMenu .btn-navbar {
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+  }
+  /* line 165, ../sass/responsive.scss */
+  .mainMenu .nav-collapse-menu {
+    width: 80%;
+    float: right;
+  }
+  /* line 169, ../sass/responsive.scss */
+  .mainMenu .nav-collapse-menu .menu {
+    float: right;
+  }
+  /* line 176, ../sass/responsive.scss */
+  .mainMenu .fullWidthDropDown.dropdown-menu #boardCertification {
+    padding: 0;
+  }
+  /* line 180, ../sass/responsive.scss */
+  .mainMenu .fullWidthDropDown.dropdown-menu #boardCertificationMenu {
+    background: none;
+    border-left: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+  }
+  /* line 187, ../sass/responsive.scss */
+  .mainMenu .fullWidthDropDown.dropdown-menu #boardCertificationMenu .arrow {
+    display: none;
+  }
+  /* line 192, ../sass/responsive.scss */
+  .mainMenu .fullWidthDropDown.dropdown-menu #boardCertificationMenu li a {
+    background: none;
+  }
+
+  /* line 203, ../sass/responsive.scss */
+  .content .attorneyContent .attorneyMapTitleBg .attorneyMapTitleBgSep {
+    display: none;
+  }
+  /* line 211, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .nameBlock {
+    padding: 5px 0;
+  }
+  /* line 214, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .nameBlock .name {
+    font-size: 25px;
+  }
+  /* line 218, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .nameBlock .descr {
+    margin-top: 5px;
+  }
+  /* line 223, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .numbers {
+    padding: 10px 0 10px;
+  }
+  /* line 228, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .numbers li .memberBadgeBlock {
+    margin-top: 0;
+  }
+  /* line 232, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .numbers li:last-child {
+    width: 213px;
+  }
+  /* line 235, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .numbers li:last-child .memberBadge {
+    width: 23%;
+    margin-right: 2%;
+  }
+  /* line 239, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .numbers li:last-child .memberBadge:last-child {
+    margin-right: 0;
+  }
+  /* line 245, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .numbers li .envelope {
+    margin-top: -4px;
+  }
+  /* line 251, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .address {
+    height: 30px;
+  }
+  /* line 254, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .address p {
+    line-height: 30px;
+    padding: 0;
+  }
+  /* line 258, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .address p a {
+    padding-left: 0px;
+  }
+  /* line 263, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .address .btn {
+    padding: 2px 10px;
+    font-size: 12px;
+    margin-top: 3px;
+  }
+  /* line 278, ../sass/responsive.scss */
+  .content .blog .postBody .postHeader li {
+    padding-left: 7px;
+  }
+  /* line 281, ../sass/responsive.scss */
+  .content .blog .postBody .postHeader li a {
+    font-size: 12px;
+    padding-right: 7px;
+  }
+  /* line 288, ../sass/responsive.scss */
+  .content .blog .postBody .postHeader .mediaBlock a {
+    width: 40px;
+    padding-right: 0px;
+  }
+  /* line 300, ../sass/responsive.scss */
+  .content .membersList .membersListItem .info .nameBlock {
+    padding: 5px 0 5px;
+  }
+  /* line 303, ../sass/responsive.scss */
+  .content .membersList .membersListItem .info .nameBlock .name {
+    text-align: left;
+    padding-left: 10px;
+    font-size: 22px;
+  }
+  /* line 309, ../sass/responsive.scss */
+  .content .membersList .membersListItem .info .nameBlock .descr {
+    text-align: left;
+    padding-left: 10px;
+    margin-top: 5px;
+    font-size: 12px;
+  }
+  /* line 316, ../sass/responsive.scss */
+  .content .membersList .membersListItem .info .nameBlock .regentsFellowsLabel {
+    right: 0;
+  }
+  /* line 321, ../sass/responsive.scss */
+  .content .membersList .membersListItem .info .numbers {
+    padding: 5px  0;
+  }
+  /* line 324, ../sass/responsive.scss */
+  .content .membersList .membersListItem .info .numbers li {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  /* line 327, ../sass/responsive.scss */
+  .content .membersList .membersListItem .info .numbers li .nemberTitle {
+    font-size: 16px;
+  }
+  /* line 331, ../sass/responsive.scss */
+  .content .membersList .membersListItem .info .numbers li p {
+    font-size: 12px;
+  }
+  /* line 335, ../sass/responsive.scss */
+  .content .membersList .membersListItem .info .numbers li:first-child {
+    width: 20%;
+  }
+  /* line 339, ../sass/responsive.scss */
+  .content .membersList .membersListItem .info .numbers li:nth-of-type(2) {
+    width: 30%;
+  }
+  /* line 343, ../sass/responsive.scss */
+  .content .membersList .membersListItem .info .numbers li:last-child {
+    width: 50%;
+  }
+  /* line 350, ../sass/responsive.scss */
+  .content .membersList .membersListItem .info .address p {
+    line-height: 1.5em;
+    width: 65%;
+    padding-top: 3%;
+  }
+  /* line 361, ../sass/responsive.scss */
+  .content .memberProfile .userMainInfo .pull-right {
+    float: none;
+    clear: both;
+  }
+  /* line 365, ../sass/responsive.scss */
+  .content .memberProfile .userMainInfo .pull-right .socialNetwork {
+    float: left;
+    margin-top: 10px;
+  }
+  /* line 370, ../sass/responsive.scss */
+  .content .memberProfile .userMainInfo .pull-right .telephone {
+    float: left;
+    margin-left: 10px;
+  }
+  /* line 377, ../sass/responsive.scss */
+  .content .memberProfile .userProfile .userProfileItem:first-child {
+    width: 49%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  /* line 382, ../sass/responsive.scss */
+  .content .memberProfile .userProfile .userProfileItem:nth-of-type(2) {
+    width: 49%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-left: 2%;
+  }
+  /* line 388, ../sass/responsive.scss */
+  .content .memberProfile .userProfile .userProfileItem:last-child {
+    width: 100%;
+    text-align: center;
+    margin: 10px 0 0;
+  }
+  /* line 395, ../sass/responsive.scss */
+  .content .memberProfile .contactInfo {
+    text-align: center;
+  }
+  /* line 397, ../sass/responsive.scss */
+  .content .memberProfile .contactInfo .contactInfoMap {
+    float: none;
+    display: inline-block;
+  }
+  /* line 402, ../sass/responsive.scss */
+  .content .memberProfile .contactInfo .address {
+    float: none;
+    margin-top: 20px;
+    width: 100%;
+  }
+  /* line 411, ../sass/responsive.scss */
+  .content .memberProfile .contactInfo .addressBlock li address .viewMap, .content .memberProfile .contactInfo .addressBlock li address .sep, .content .memberProfile .contactInfo .addressBlock li address .skype {
+    float: none;
+    display: inline-block;
+  }
+  /* line 425, ../sass/responsive.scss */
+  .content .NCDDListDetailPage .productList .productListItem .pull-left.text-center {
+    float: none;
+  }
+  /* line 429, ../sass/responsive.scss */
+  .content .NCDDListDetailPage .productList .productListItem .productImg {
+    width: 100%;
+    max-width: 242px;
+    display: block;
+    margin: 0 auto;
+  }
+  /* line 436, ../sass/responsive.scss */
+  .content .NCDDListDetailPage .productList .productListItem .productInfo {
+    float: none;
+    width: 100%;
+    margin-top: 20px;
+  }
+  /* line 446, ../sass/responsive.scss */
+  .content .breadcrumb li {
+    font-size: 14px;
+    padding: 23px 24px 20px 9px;
+  }
+  /* line 455, ../sass/responsive.scss */
+  .content .sessionSeminarsDetailPage .sesseionSeminarsInfo .sesseionSeminarsInfoItem:first-child {
+    width: 20%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  /* line 460, ../sass/responsive.scss */
+  .content .sessionSeminarsDetailPage .sesseionSeminarsInfo .sesseionSeminarsInfoItem:nth-of-type(2) {
+    width: 20%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  /* line 465, ../sass/responsive.scss */
+  .content .sessionSeminarsDetailPage .sesseionSeminarsInfo .sesseionSeminarsInfoItem:last-child {
+    width: 20%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  /* line 470, ../sass/responsive.scss */
+  .content .sessionSeminarsDetailPage .sesseionSeminarsInfo .sesseionSeminarsInfoItem:nth-of-type(3) {
+    width: 40%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  /* line 474, ../sass/responsive.scss */
+  .content .sessionSeminarsDetailPage .sesseionSeminarsInfo .sesseionSeminarsInfoItem:nth-of-type(3) p a {
+    word-break: break-all;
+    word-wrap: break-word;
+    display: block;
+  }
+  /* line 491, ../sass/responsive.scss */
+  .content .discoverLearnPage .tab-content #sessionsSeminarsPage table thead tr th:last-child .text, .content .discoverLearnPage .tab-content #stateApprovedSeminarsPage table thead tr th:last-child .text {
+    line-height: 1.4em;
+  }
+  /* line 505, ../sass/responsive.scss */
+  .content .post .postBody .postFooter .postTags {
+    padding: 10px 0;
+  }
+  /* line 507, ../sass/responsive.scss */
+  .content .post .postBody .postFooter .postTags li {
+    line-height: 1.5em;
+  }
+}
+@media screen and (max-width: 980px) and (min-width: 0 \0) {
+  /* line 517, ../sass/responsive.scss */
+  .content .blog .members {
+    top: 35px;
+  }
+}
+@media (width: 980px) {
+  /* line 524, ../sass/responsive.scss */
+  .mainMenu .mainMenuBody {
+    margin-top: 0;
+  }
+}
+@media (max-width: 768px) {
+  /* line 531, ../sass/responsive.scss */
+  .navbar .searchBtn {
+    top: 5px;
+  }
+
+  /* line 534, ../sass/responsive.scss */
+  .mainMenuBody {
+    display: inline-block;
+  }
+
+  /* line 538, ../sass/responsive.scss */
+  .mainMenu .menu {
+    float: none;
+  }
+  /* line 542, ../sass/responsive.scss */
+  .mainMenu .fullWidthDropDown.dropdown-menu .dropDownMenu .active .dropDownMenuLink, .mainMenu .fullWidthDropDown.dropdown-menu .dropDownMenu .dropDownMenuItem .dropDownMenuLink {
+    background: none;
+  }
+
+  /* line 551, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .avatar {
+    float: left;
+  }
+  /* line 555, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info {
+    float: right;
+  }
+  /* line 558, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .numbers li:last-child {
+    width: 203px;
+  }
+  /* line 562, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .nameBlock .regentsFellowsLabel {
+    top: -1px;
+  }
+  /* line 566, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .address p {
+    padding-top: 0;
+  }
+  /* line 576, ../sass/responsive.scss */
+  .content .blog .members {
+    top: 0;
+    right: 10px;
+  }
+  /* line 583, ../sass/responsive.scss */
+  .content .blog .postBody .postHeader li {
+    padding-left: 14px;
+  }
+  /* line 586, ../sass/responsive.scss */
+  .content .blog .postBody .postHeader li a {
+    font-size: 14px;
+    padding-right: 14px;
+  }
+  /* line 593, ../sass/responsive.scss */
+  .content .blog .postBody .postHeader .mediaBlock a {
+    width: 54px;
+    padding-right: 0px;
+  }
+  /* line 604, ../sass/responsive.scss */
+  .content .contact .contactContent form {
+    border-right: none;
+    padding-right: 0;
+    margin-bottom: 0;
+  }
+  /* line 610, ../sass/responsive.scss */
+  .content .contact .contactContent .address {
+    margin-bottom: 40px;
+    text-align: center;
+    padding-left: 0;
+  }
+  /* line 619, ../sass/responsive.scss */
+  .content .discoverLearnPage .nav.nav-tabs {
+    width: 30%;
+    float: left;
+  }
+  /* line 624, ../sass/responsive.scss */
+  .content .discoverLearnPage .tab-content {
+    float: right;
+    width: 68%;
+  }
+  /* line 628, ../sass/responsive.scss */
+  .content .discoverLearnPage .tab-content #stateApprovedSeminarsPage table thead tr th:nth-of-type(2) .text, .content .discoverLearnPage .tab-content #stateApprovedSeminarsPage table thead tr th:nth-of-type(4) .text, .content .discoverLearnPage .tab-content #sessionsSeminarsPage table thead tr th:nth-of-type(2) .text, .content .discoverLearnPage .tab-content #sessionsSeminarsPage table thead tr th:nth-of-type(4) .text {
+    line-height: 1.3em;
+  }
+  /* line 634, ../sass/responsive.scss */
+  .content .NCDDListDetailPage .productList .productListItem .productImg {
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* line 642, ../sass/responsive.scss */
+  footer .footerLinks .container {
+    padding-left: 0;
+  }
+  /* line 645, ../sass/responsive.scss */
+  footer .footerLinks .span4 {
+    margin-bottom: 30px;
+    padding-left: 20px;
+  }
+  /* line 649, ../sass/responsive.scss */
+  footer .footerLinks .span4:last-child {
+    text-align: center;
+    padding-left: 0;
+  }
+  /* line 656, ../sass/responsive.scss */
+  footer .footerLinks .smaillLogo {
+    margin: 30px auto 0;
+  }
+
+  /* line 663, ../sass/responsive.scss */
+  .footerCopyright .copyright {
+    font-size: 12px;
+  }
+}
+@media (max-width: 767px) {
+  /* line 670, ../sass/responsive.scss */
+  .wrapper {
+    position: relative;
+    transition-delay: 0s;
+    transition-duration: 0.5s;
+    transition-property: all;
+    transition-timing-function: ease;
+    -webkit-transition-delay: 0s;
+    -webkit-transition-duration: 0.5s;
+    -webkit-transition-property: all;
+    -webkit-transition-timing-function: ease;
+    left: 0;
+  }
+
+  /* line 684, ../sass/responsive.scss */
+  .menuVisible.wrapper {
+    left: 80%;
+  }
+
+  /* line 688, ../sass/responsive.scss */
+  .navbar .btn-navbar-phone {
+    float: left;
+    margin: 15px;
+  }
+
+  /* line 693, ../sass/responsive.scss */
+  .nav-collapse {
+    position: absolute;
+    left: 0;
+    background: url("../img/navbarBg.png") repeat;
+    min-height: 100%;
+    width: 80%;
+    overflow: hidden;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    left: -80%;
+  }
+  /* line 703, ../sass/responsive.scss */
+  .nav-collapse .navbar-form {
+    display: none;
+  }
+  /* line 707, ../sass/responsive.scss */
+  .nav-collapse ul.nav {
+    margin-bottom: 0;
+  }
+  /* line 710, ../sass/responsive.scss */
+  .nav-collapse ul.nav li {
+    display: none;
+  }
+  /* line 712, ../sass/responsive.scss */
+  .nav-collapse ul.nav li a {
+    font-size: 20px;
+    color: #A5BDD2;
+    font-family: ubuntu_condensedregular;
+    font-weight: bold;
+    text-shadow: 0 1px 0 rgba(12, 58, 99, 0.5);
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    line-height: 1.5em;
+    padding: 15px 10px;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0;
+  }
+  /* line 723, ../sass/responsive.scss */
+  .nav-collapse ul.nav li a:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  /* line 729, ../sass/responsive.scss */
+  .nav-collapse ul.nav .signIn {
+    display: block;
+    border-top: 2px solid rgba(0, 0, 0, 0.3);
+  }
+  /* line 733, ../sass/responsive.scss */
+  .nav-collapse ul.nav .signIn .dropdown-toggle {
+    background: url("../img/mainMenuArrow.png") no-repeat 95% center;
+  }
+  /* line 736, ../sass/responsive.scss */
+  .nav-collapse ul.nav .signIn .dropdown-toggle:hover {
+    background-position: 95% center;
+  }
+  /* line 743, ../sass/responsive.scss */
+  .nav-collapse ul.nav .signIn .dropdown-menu li {
+    display: block;
+  }
+  /* line 748, ../sass/responsive.scss */
+  .nav-collapse ul.nav .signIn .dropdown-menu li form input[type="text"] {
+    width: 90%;
+  }
+  /* line 752, ../sass/responsive.scss */
+  .nav-collapse ul.nav .signIn .dropdown-menu li form label {
+    color: #a5bdd2;
+    font-family: ubuntu_condensedregular;
+    line-height: 22px;
+    float: none;
+  }
+  /* line 759, ../sass/responsive.scss */
+  .nav-collapse ul.nav .signIn .dropdown-menu li form a {
+    float: none;
+    padding: 0;
+    font-size: 16px;
+    display: block;
+    text-shadow: none;
+    clear: both;
+    margin: 2px 0 5px;
+  }
+  /* line 768, ../sass/responsive.scss */
+  .nav-collapse ul.nav .signIn .dropdown-menu li form a:hover {
+    background: none;
+  }
+  /* line 776, ../sass/responsive.scss */
+  .nav-collapse ul.nav .signIn ul {
+    border-bottom: none;
+  }
+  /* line 782, ../sass/responsive.scss */
+  .nav-collapse ul.nav .dropdown.open.signIn .dropdown-toggle {
+    background-position: 95% center;
+  }
+  /* line 788, ../sass/responsive.scss */
+  .nav-collapse .fullWidthDropDown {
+    display: block;
+  }
+
+  /* line 793, ../sass/responsive.scss */
+  .navbar-custom-inner {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* line 798, ../sass/responsive.scss */
+  .mainMenu {
+    background: none;
+    border-bottom: none;
+  }
+  /* line 802, ../sass/responsive.scss */
+  .mainMenu .mainMenuBody {
+    margin-top: 0px;
+    display: block;
+  }
+  /* line 807, ../sass/responsive.scss */
+  .mainMenu .menu {
+    margin: 0;
+    float: none;
+  }
+  /* line 812, ../sass/responsive.scss */
+  .mainMenu .menu li {
+    float: none;
+    width: 100%;
+    height: 100%;
+    background: none;
+  }
+  /* line 818, ../sass/responsive.scss */
+  .mainMenu .menu li a {
+    width: 100%;
+    line-height: 1.5em;
+    height: 100%;
+    background: none;
+    text-align: left;
+    padding: 15px 10px;
+    color: #A5BDD2;
+    font-size: 20px;
+    font-family: ubuntu_condensedregular;
+    text-shadow: 0 1px 0 rgba(12, 58, 99, 0.5);
+    font-weight: bold;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  /* line 832, ../sass/responsive.scss */
+  .mainMenu .menu li a small, .mainMenu .menu li a br {
+    display: none;
+  }
+  /* line 836, ../sass/responsive.scss */
+  .mainMenu .menu li a:hover {
+    background: rgba(0, 0, 0, 0.3);
+  }
+  /* line 841, ../sass/responsive.scss */
+  .mainMenu .menu li:last-child {
+    margin: 0;
+  }
+  /* line 848, ../sass/responsive.scss */
+  .mainMenu .menu:last-child li:last-child a {
+    height: 100%;
+    padding: 15px 10px;
+  }
+  /* line 857, ../sass/responsive.scss */
+  .mainMenu .menu li.dropdown .arrow {
+    bottom: 16px;
+  }
+  /* line 861, ../sass/responsive.scss */
+  .mainMenu .menu li.dropdown .dropdown-menu {
+    margin: 0;
+    height: 100%;
+    z-index: 199999;
+    top: 0;
+    background: none;
+  }
+  /* line 868, ../sass/responsive.scss */
+  .mainMenu .menu li.dropdown .dropdown-menu .close {
+    display: none;
+  }
+  /* line 872, ../sass/responsive.scss */
+  .mainMenu .menu li.dropdown .dropdown-menu a {
+    background: none;
+    text-shadow: none;
+    color: #84A9C0;
+    font-size: 14px;
+  }
+  /* line 879, ../sass/responsive.scss */
+  .mainMenu .menu li.dropdown .dropdown-menu .btn {
+    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fefefe), color-stop(100%, #f2f2f2));
+    background: -webkit-linear-gradient(center top, #fefefe, #f2f2f2);
+    background: -moz-linear-gradient(center top, #fefefe, #f2f2f2);
+    background: -o-linear-gradient(center top, #fefefe, #f2f2f2);
+    background: linear-gradient(center top, #fefefe, #f2f2f2);
+    color: #717171;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    text-shadow: none;
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+  /* line 890, ../sass/responsive.scss */
+  .mainMenu .menu li.dropdown .dropdown-menu #latestNews .links .linksItem {
+    width: 25%;
+  }
+  /* line 896, ../sass/responsive.scss */
+  .mainMenu .menu li.dropdown .dropdown-menu .thumbnail {
+    text-align: left;
+  }
+  /* line 902, ../sass/responsive.scss */
+  .mainMenu .menu li.dropdown {
+    overflow: hidden;
+  }
+  /* line 906, ../sass/responsive.scss */
+  .mainMenu .menu li.dropdown .tab-content {
+    display: none;
+  }
+  /* line 910, ../sass/responsive.scss */
+  .mainMenu .menu li.dropdown .fullWidthDropDown {
+    overflow: hidden;
+    min-height: 100%;
+  }
+  /* line 916, ../sass/responsive.scss */
+  .mainMenu .menu:first-child {
+    margin-right: 0;
+  }
+  /* line 921, ../sass/responsive.scss */
+  .mainMenu .menu > li > a.active {
+    background: rgba(0, 0, 0, 0.3);
+  }
+  /* line 926, ../sass/responsive.scss */
+  .mainMenu #latestNews .btn, .mainMenu #sessionSeminars .btn, .mainMenu #NCDDGallery .btn {
+    display: inline-block;
+    width: 50%;
+  }
+  /* line 933, ../sass/responsive.scss */
+  .mainMenu #NCDDStore .btn, .mainMenu #breathTestDevices .btn {
+    width: 70%;
+  }
+  /* line 940, ../sass/responsive.scss */
+  .mainMenu .fullWidthDropDown.dropdown-menu .dropDownMenuItem {
+    display: block;
+  }
+  /* line 944, ../sass/responsive.scss */
+  .mainMenu .fullWidthDropDown.dropdown-menu #boardCertificationMenu {
+    border: none;
+  }
+  /* line 946, ../sass/responsive.scss */
+  .mainMenu .fullWidthDropDown.dropdown-menu #boardCertificationMenu li {
+    display: block;
+    margin: 0;
+  }
+  /* line 950, ../sass/responsive.scss */
+  .mainMenu .fullWidthDropDown.dropdown-menu #boardCertificationMenu li a {
+    padding: 10px 10px 10px 60px;
+    color: #A5BDD2;
+    font-family: ubuntu_condensedregular;
+    font-size: 15px;
+    line-height: 1.2em;
+  }
+  /* line 957, ../sass/responsive.scss */
+  .mainMenu .fullWidthDropDown.dropdown-menu #boardCertificationMenu li a:hover {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    background: rgba(0, 0, 0, 0.3);
+  }
+  /* line 962, ../sass/responsive.scss */
+  .mainMenu .fullWidthDropDown.dropdown-menu #boardCertificationMenu li a:focus {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+  /* line 969, ../sass/responsive.scss */
+  .mainMenu .fullWidthDropDown.dropdown-menu #boardCertificationMenu .active a {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    background: rgba(0, 0, 0, 0.3);
+    font-family: ubuntu_condensedregular;
+  }
+  /* line 977, ../sass/responsive.scss */
+  .mainMenu .fullWidthDropDown.dropdown-menu #learnTab {
+    margin-top: 0;
+  }
+  /* line 982, ../sass/responsive.scss */
+  .mainMenu .fullWidthDropDown.dropdown-menu #breathTestDevices, .mainMenu .fullWidthDropDown.dropdown-menu #oneLineContinuingEducation, .mainMenu .fullWidthDropDown.dropdown-menu #youMustNow, .mainMenu .fullWidthDropDown.dropdown-menu #defensesWork, .mainMenu .fullWidthDropDown.dropdown-menu #interstaetConsequence, .mainMenu .fullWidthDropDown.dropdown-menu #calculateBac, .mainMenu .fullWidthDropDown.dropdown-menu #breathTestDevices, .mainMenu .fullWidthDropDown.dropdown-menu #lawsInYourState, .mainMenu .fullWidthDropDown.dropdown-menu #foundation,
+  .mainMenu .fullWidthDropDown.dropdown-menu #regentsAndFellows, .mainMenu .fullWidthDropDown.dropdown-menu #latestNews, .mainMenu .fullWidthDropDown.dropdown-menu #sessionSeminars, .mainMenu .fullWidthDropDown.dropdown-menu #stateApprovedSeminars, .mainMenu .fullWidthDropDown.dropdown-menu #NCDDStore, .mainMenu .fullWidthDropDown.dropdown-menu #NCDDGallery, .mainMenu .fullWidthDropDown.dropdown-menu #sustainMembership, .mainMenu .fullWidthDropDown.dropdown-menu #stateDelegateProgram, .mainMenu .fullWidthDropDown.dropdown-menu #foundMembers, .mainMenu .fullWidthDropDown.dropdown-menu #erwin-taylorAward {
+    padding-top: 45px;
+  }
+  /* line 986, ../sass/responsive.scss */
+  .mainMenu .fullWidthDropDown.dropdown-menu .dropDownMenu {
+    margin-top: 0;
+  }
+  /* line 989, ../sass/responsive.scss */
+  .mainMenu .fullWidthDropDown.dropdown-menu .dropDownMenu .dropDownMenuItem {
+    border: none;
+  }
+  /* line 992, ../sass/responsive.scss */
+  .mainMenu .fullWidthDropDown.dropdown-menu .dropDownMenu .dropDownMenuItem .dropDownMenuLink {
+    text-align: left;
+    text-shadow: none;
+    background: none;
+    padding: 10px 30px;
+    color: #A5BDD2;
+    font-family: ubuntu_condensedregular;
+    font-size: 15px;
+    line-height: 1.3em;
+    width: 100%;
+  }
+  /* line 1003, ../sass/responsive.scss */
+  .mainMenu .fullWidthDropDown.dropdown-menu .dropDownMenu .dropDownMenuItem .dropDownMenuLink:hover {
+    color: #A5BDD2;
+  }
+  /* line 1007, ../sass/responsive.scss */
+  .mainMenu .fullWidthDropDown.dropdown-menu .dropDownMenu .dropDownMenuItem .dropDownMenuLink .arrow {
+    display: none;
+  }
+  /* line 1015, ../sass/responsive.scss */
+  .mainMenu .fullWidthDropDown.dropdown-menu .dropDownMenu .active .dropDownMenuLink {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    background: rgba(0, 0, 0, 0.3);
+    color: #A5BDD2;
+  }
+  /* line 1024, ../sass/responsive.scss */
+  .mainMenu .logo {
+    position: relative;
+    left: 0;
+    margin: 0;
+  }
+  /* line 1029, ../sass/responsive.scss */
+  .mainMenu .logo a {
+    margin: 0 auto;
+  }
+
+  /* line 1036, ../sass/responsive.scss */
+  .content .title h2 {
+    font-size: 59px;
+  }
+  /* line 1040, ../sass/responsive.scss */
+  .content .tabBg .nav-tabs li {
+    margin-right: 21px;
+  }
+}
+@media (max-width: 705px) {
+  /* line 1048, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem img.avatar {
+    width: 40%;
+  }
+  /* line 1051, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info {
+    width: 60%;
+  }
+  /* line 1057, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .numbers li:first-child {
+    width: 50%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  /* line 1061, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .numbers li:first-child .envelope {
+    margin: -4px auto 0;
+  }
+  /* line 1065, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .numbers li:nth-of-type(2) {
+    width: 50%;
+    border-right: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  /* line 1070, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .numbers li:nth-of-type(2) .nemberTitle {
+    font-size: 20px;
+  }
+  /* line 1074, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .numbers li:nth-of-type(2) p {
+    font-size: 16px;
+  }
+  /* line 1078, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .numbers li:last-child {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    margin: 20px auto 10px;
+    border-left: none;
+    border-top: 1px solid #d6d6d7;
+    height: 100%;
+  }
+  /* line 1088, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .numbers li:last-child .memberBadgeBlock {
+    border-top: 1px solid #fff;
+    padding-top: 20px;
+  }
+}
+@media (max-width: 620px) {
+  /* line 1100, ../sass/responsive.scss */
+  .content .discoverLearnPage .membersList .membersListItem .info .address {
+    text-align: center;
+    height: 100%;
+  }
+  /* line 1104, ../sass/responsive.scss */
+  .content .discoverLearnPage .membersList .membersListItem .info .address p {
+    width: 100%;
+    float: none;
+  }
+  /* line 1109, ../sass/responsive.scss */
+  .content .discoverLearnPage .membersList .membersListItem .info .address .btn {
+    display: inline-block;
+    margin-bottom: 10px;
+    float: none;
+  }
+}
+@media (max-width: 600px) {
+  /* line 1122, ../sass/responsive.scss */
+  .content .blog .postBody .postHeader li {
+    padding-left: 10px;
+  }
+  /* line 1125, ../sass/responsive.scss */
+  .content .blog .postBody .postHeader li a {
+    font-size: 12px;
+    padding-right: 10px;
+  }
+  /* line 1132, ../sass/responsive.scss */
+  .content .blog .postBody .postHeader .mediaBlock a {
+    width: 40px;
+    padding-right: 0px;
+  }
+  /* line 1139, ../sass/responsive.scss */
+  .content .blog .postBody .postFooter {
+    padding-bottom: 10px;
+  }
+  /* line 1146, ../sass/responsive.scss */
+  .content .breadcrumb li {
+    padding: 19px 15px 18px 5px;
+    font-size: 11px;
+  }
+  /* line 1150, ../sass/responsive.scss */
+  .content .breadcrumb li a {
+    font-size: 11px;
+  }
+  /* line 1156, ../sass/responsive.scss */
+  .content .title h2 {
+    font-size: 48px;
+  }
+  /* line 1160, ../sass/responsive.scss */
+  .content .tabBg .nav-tabs li {
+    margin-right: 10px;
+  }
+  /* line 1163, ../sass/responsive.scss */
+  .content .tabBg .nav-tabs li a {
+    font-size: 16px;
+  }
+  /* line 1168, ../sass/responsive.scss */
+  .content .discoverLearnPage .membersList .membersListItem .info .nameBlock .name {
+    width: 64%;
+  }
+  /* line 1173, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .address {
+    height: 100%;
+    text-align: center;
+  }
+  /* line 1177, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .address p {
+    width: 100%;
+    text-align: center;
+    float: none;
+  }
+  /* line 1183, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .address a.btn {
+    margin: 0 auto 10px;
+    float: none;
+    display: inline-block;
+  }
+  /* line 1190, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .nameBlock .name {
+    font-size: 23px;
+  }
+}
+@media (max-width: 520px) {
+  /* line 1202, ../sass/responsive.scss */
+  .content .blog .postBody .postHeader li {
+    padding-left: 5px;
+  }
+  /* line 1205, ../sass/responsive.scss */
+  .content .blog .postBody .postHeader li a {
+    font-size: 11px;
+    padding-right: 5px;
+  }
+  /* line 1212, ../sass/responsive.scss */
+  .content .blog .postBody .postHeader .mediaBlock a {
+    width: 40px;
+    padding-right: 0px;
+  }
+  /* line 1222, ../sass/responsive.scss */
+  .content .breadcrumb li {
+    padding: 20px 7px 18px 2px;
+    font-size: 10px;
+  }
+  /* line 1226, ../sass/responsive.scss */
+  .content .breadcrumb li a {
+    font-size: 10px;
+  }
+  /* line 1232, ../sass/responsive.scss */
+  .content .title h2 {
+    font-size: 53px;
+  }
+  /* line 1237, ../sass/responsive.scss */
+  .content .tabBg .nav-tabsBg {
+    height: 100%;
+  }
+  /* line 1240, ../sass/responsive.scss */
+  .content .tabBg .nav-tabs {
+    height: 100%;
+    text-align: center;
+  }
+  /* line 1243, ../sass/responsive.scss */
+  .content .tabBg .nav-tabs li {
+    margin: 0 10px;
+    display: inline-block;
+    float: none;
+  }
+  /* line 1248, ../sass/responsive.scss */
+  .content .tabBg .nav-tabs li a {
+    font-size: 18px;
+  }
+}
+@media (max-width: 480px) {
+  /* line 1258, ../sass/responsive.scss */
+  .mainMenu .logo a {
+    -webkit-border-radius: 110px 110px 70px 70px;
+    -moz-border-radius: 110px 110px 70px 70px;
+    -ms-border-radius: 110px 110px 70px 70px;
+    -o-border-radius: 110px 110px 70px 70px;
+    border-radius: 110px 110px 70px 70px;
+  }
+
+  /* line 1262, ../sass/responsive.scss */
+  .content {
+    border: none;
+    padding: 0;
+  }
+  /* line 1267, ../sass/responsive.scss */
+  .content .blog .title h2 {
+    padding-top: 10px;
+  }
+  /* line 1273, ../sass/responsive.scss */
+  .content .blog .postBody .postHeader li {
+    padding-left: 25px;
+  }
+  /* line 1276, ../sass/responsive.scss */
+  .content .blog .postBody .postHeader li a {
+    font-size: 14.5px;
+    padding-right: 25px;
+  }
+  /* line 1281, ../sass/responsive.scss */
+  .content .blog .postBody .postHeader li:first-child {
+    padding-left: 90px;
+  }
+  /* line 1284, ../sass/responsive.scss */
+  .content .blog .postBody .postHeader li:nth-of-type(2) {
+    border-right: none;
+  }
+  /* line 1287, ../sass/responsive.scss */
+  .content .blog .postBody .postHeader li:nth-of-type(3) {
+    padding-left: 35px;
+  }
+  /* line 1290, ../sass/responsive.scss */
+  .content .blog .postBody .postHeader li:first-child, .content .blog .postBody .postHeader li:nth-of-type(2) {
+    margin-bottom: 5px;
+  }
+  /* line 1296, ../sass/responsive.scss */
+  .content .blog .postBody .postHeader .mediaBlock a {
+    width: 40px;
+    padding-right: 0px;
+  }
+  /* line 1304, ../sass/responsive.scss */
+  .content .blog .postBody .postFooter .postTags {
+    margin-top: 10px;
+  }
+  /* line 1306, ../sass/responsive.scss */
+  .content .blog .postBody .postFooter .postTags li {
+    line-height: 1.5em;
+  }
+  /* line 1311, ../sass/responsive.scss */
+  .content .blog .postBody .postFooter .readMore {
+    float: none;
+    margin-bottom: 0;
+  }
+  /* line 1323, ../sass/responsive.scss */
+  .content .checkout .checkoutBody form .formBody label {
+    margin-bottom: 5px;
+  }
+  /* line 1332, ../sass/responsive.scss */
+  .content .discoverLearnPage .nav.nav-tabs {
+    width: 100%;
+    float: none;
+  }
+  /* line 1337, ../sass/responsive.scss */
+  .content .discoverLearnPage .tab-content {
+    width: 100%;
+    float: none;
+  }
+  /* line 1342, ../sass/responsive.scss */
+  .content .discoverLearnPage #boardCertificationPageDropDownMenu.dropdown-menu {
+    left: 32px;
+    top: 50px;
+  }
+  /* line 1346, ../sass/responsive.scss */
+  .content .discoverLearnPage #boardCertificationPageDropDownMenu.dropdown-menu .arrow {
+    top: -18px;
+    left: 15px;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+  }
+  /* line 1354, ../sass/responsive.scss */
+  .content .breadcrumb {
+    border: none;
+    height: 100%;
+  }
+  /* line 1358, ../sass/responsive.scss */
+  .content .breadcrumb li {
+    font-size: 14px;
+    padding: 5px 25px 4px 15px;
+    margin-bottom: 10px;
+  }
+  /* line 1363, ../sass/responsive.scss */
+  .content .breadcrumb li a {
+    font-size: 14px;
+  }
+  /* line 1371, ../sass/responsive.scss */
+  .content .sloganBlock .indexPageSlogan h2 {
+    padding-top: 100px;
+  }
+  /* line 1379, ../sass/responsive.scss */
+  .content .welcome .title h2 {
+    font-size: 66px;
+  }
+  /* line 1387, ../sass/responsive.scss */
+  .content .tabBg .nav-tabsBg {
+    height: 100%;
+  }
+  /* line 1391, ../sass/responsive.scss */
+  .content .tabBg .nav-tabs {
+    height: 100%;
+    text-align: center;
+  }
+  /* line 1395, ../sass/responsive.scss */
+  .content .tabBg .nav-tabs li {
+    display: inline-block;
+    float: none;
+  }
+  /* line 1399, ../sass/responsive.scss */
+  .content .tabBg .nav-tabs li a {
+    font-size: 17px;
+  }
+  /* line 1403, ../sass/responsive.scss */
+  .content .tabBg .nav-tabs li:nth-of-type(2) {
+    margin-right: 0;
+  }
+  /* line 1413, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem img.avatar {
+    float: none;
+    width: 100%;
+  }
+  /* line 1417, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info {
+    float: none;
+    width: 100%;
+  }
+  /* line 1421, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .nameBlock {
+    padding: 10px 0;
+  }
+  /* line 1424, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .nameBlock .name {
+    font-size: 30px;
+  }
+  /* line 1428, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .nameBlock .descr {
+    margin-top: 10px;
+  }
+  /* line 1433, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .numbers {
+    padding: 30px 0 20px;
+  }
+  /* line 1436, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .numbers li {
+    height: 100%;
+  }
+  /* line 1439, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .numbers li:first-child {
+    width: 49%;
+  }
+  /* line 1443, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .numbers li:nth-of-type(2) {
+    width: 50%;
+    border-right: none;
+  }
+  /* line 1448, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .numbers li:last-child {
+    width: 100%;
+    margin: 20px 0 0;
+    border-top: 1px solid #d6d6d7;
+    border-left: none;
+    text-align: center;
+  }
+  /* line 1455, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .numbers li:last-child .memberBadgeBlock {
+    border-top: 1px solid #fff;
+    padding-top: 20px;
+    margin-left: 0;
+  }
+  /* line 1463, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .numbers li .envelope {
+    margin: 0 auto;
+  }
+  /* line 1469, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .address {
+    height: 40px;
+  }
+  /* line 1472, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .address p {
+    line-height: 40px;
+    width: 65%;
+    float: left;
+  }
+  /* line 1478, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .address a.btn {
+    padding: 4px 10px;
+    font-size: 13px;
+    margin: 5px 0 0;
+    float: right;
+  }
+  /* line 1493, ../sass/responsive.scss */
+  .content .membersList .membersListItem .avatar {
+    width: 100%;
+    float: none;
+  }
+  /* line 1497, ../sass/responsive.scss */
+  .content .membersList .membersListItem .info {
+    float: none;
+    width: 100%;
+  }
+  /* line 1501, ../sass/responsive.scss */
+  .content .membersList .membersListItem .info .nameBlock {
+    padding: 5px 0 5px;
+  }
+  /* line 1504, ../sass/responsive.scss */
+  .content .membersList .membersListItem .info .nameBlock .name {
+    text-align: left;
+    padding-left: 10px;
+    font-size: 22px;
+  }
+  /* line 1510, ../sass/responsive.scss */
+  .content .membersList .membersListItem .info .nameBlock .descr {
+    text-align: left;
+    padding-left: 10px;
+    margin-top: 5px;
+    font-size: 12px;
+  }
+  /* line 1517, ../sass/responsive.scss */
+  .content .membersList .membersListItem .info .nameBlock .regentsFellowsLabel {
+    right: 0;
+  }
+  /* line 1522, ../sass/responsive.scss */
+  .content .membersList .membersListItem .info .numbers {
+    padding: 5px  0;
+  }
+  /* line 1525, ../sass/responsive.scss */
+  .content .membersList .membersListItem .info .numbers li {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  /* line 1528, ../sass/responsive.scss */
+  .content .membersList .membersListItem .info .numbers li .nemberTitle {
+    font-size: 22px;
+  }
+  /* line 1532, ../sass/responsive.scss */
+  .content .membersList .membersListItem .info .numbers li p {
+    font-size: 14px;
+  }
+  /* line 1536, ../sass/responsive.scss */
+  .content .membersList .membersListItem .info .numbers li:first-child {
+    width: 20%;
+  }
+  /* line 1540, ../sass/responsive.scss */
+  .content .membersList .membersListItem .info .numbers li:nth-of-type(2) {
+    width: 30%;
+  }
+  /* line 1544, ../sass/responsive.scss */
+  .content .membersList .membersListItem .info .numbers li:last-child {
+    width: 50%;
+  }
+  /* line 1551, ../sass/responsive.scss */
+  .content .membersList .membersListItem .info .address p {
+    line-height: 1.5em;
+    width: 65%;
+    padding-top: 3%;
+  }
+  /* line 1562, ../sass/responsive.scss */
+  .content .memberProfile .userMainInfo {
+    text-align: center;
+  }
+  /* line 1565, ../sass/responsive.scss */
+  .content .memberProfile .userMainInfo .pull-left {
+    float: none;
+  }
+  /* line 1569, ../sass/responsive.scss */
+  .content .memberProfile .userMainInfo .avatar {
+    float: none;
+    display: inline-block;
+    margin: 0;
+  }
+  /* line 1576, ../sass/responsive.scss */
+  .content .memberProfile .userMainInfo .pull-right .socialNetwork {
+    float: none;
+    padding-top: 20px;
+  }
+  /* line 1581, ../sass/responsive.scss */
+  .content .memberProfile .userMainInfo .pull-right .telephone {
+    float: none;
+  }
+  /* line 1590, ../sass/responsive.scss */
+  .content .memberProfile .userProfile .userProfileItem .memberBadgeBlock .memberBadge {
+    margin-bottom: 10px;
+  }
+  /* line 1597, ../sass/responsive.scss */
+  .content .memberProfile .pricticeCaseFinancial {
+    text-align: center;
+  }
+  /* line 1600, ../sass/responsive.scss */
+  .content .memberProfile .pricticeCaseFinancial .practiceCase {
+    width: 100%;
+    padding: 0;
+    background: none;
+    margin-bottom: 20px;
+    float: none;
+  }
+  /* line 1608, ../sass/responsive.scss */
+  .content .memberProfile .pricticeCaseFinancial .financial {
+    float: none;
+    width: 100%;
+  }
+  /* line 1616, ../sass/responsive.scss */
+  .content .memberProfile .aboutMe .languages .languagesTitle {
+    margin-bottom: 10px;
+  }
+  /* line 1623, ../sass/responsive.scss */
+  .content .memberProfile .contactInfo .contactInfoMap {
+    width: 100%;
+  }
+  /* line 1633, ../sass/responsive.scss */
+  .content .NCDDListDetailPage .productList .productListItem .productInfoBlock form {
+    margin-top: 10px;
+  }
+  /* line 1645, ../sass/responsive.scss */
+  .content .shoppingCart .shoppingCartBody table tr td:nth-of-type(1), .content .shoppingCart .shoppingCartBody table tr th:nth-of-type(1), .content .shoppingCart .shoppingCartBody table tr td:nth-of-type(2), .content .shoppingCart .shoppingCartBody table tr th:nth-of-type(2) {
+    padding-left: 10px;
+  }
+  /* line 1650, ../sass/responsive.scss */
+  .content .shoppingCart .shoppingCartBody table tr td img {
+    margin-right: 0;
+    width: 70%;
+  }
+  /* line 1656, ../sass/responsive.scss */
+  .content .shoppingCart .shoppingCartBody table tr td form input[type="submit"] {
+    padding: 4px 10px;
+  }
+  /* line 1672, ../sass/responsive.scss */
+  .content .sessionSeminarsDetailPage .tab-content #sessionsSeminarsPage table tr:first-child td:first-child .bd {
+    line-height: 1.6em;
+  }
+  /* line 1682, ../sass/responsive.scss */
+  .content .becomeAmember .title h3 {
+    font-size: 64px;
+  }
+
+  /* line 1687, ../sass/responsive.scss */
+  .footerCopyright {
+    text-align: center;
+  }
+  /* line 1690, ../sass/responsive.scss */
+  .footerCopyright .copyright {
+    font-size: 13px;
+    float: none;
+    text-align: center;
+  }
+  /* line 1696, ../sass/responsive.scss */
+  .footerCopyright .socialNetwork {
+    float: none;
+    margin: 10px auto;
+    clear: both;
+    display: inline-block;
+  }
+}
+@media screen and (max-width: 480px) and (min-width: 0 \0) {
+  /* line 1705, ../sass/responsive.scss */
+  .content .blog .title h2 {
+    line-height: 150px;
+  }
+}
+@media (max-width: 415px) {
+  /* line 1713, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .address {
+    height: 100%;
+  }
+  /* line 1715, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .address p {
+    width: 100%;
+    float: none;
+    text-align: center;
+  }
+  /* line 1721, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .address a.btn {
+    float: none;
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 400px) {
+  /* line 1733, ../sass/responsive.scss */
+  .content .welcome .title h2 {
+    font-size: 62px;
+  }
+  /* line 1739, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .nameBlock .name {
+    font-size: 20px;
+    width: 63%;
+  }
+}
+@media (max-width: 320px) {
+  /* line 1749, ../sass/responsive.scss */
+  .mainMenu .menu li {
+    float: none;
+    margin: 0;
+  }
+  /* line 1753, ../sass/responsive.scss */
+  .mainMenu .menu li:last-child {
+    margin: 0;
+  }
+  /* line 1758, ../sass/responsive.scss */
+  .mainMenu .menu:last-child {
+    margin-top: 0;
+  }
+  /* line 1764, ../sass/responsive.scss */
+  .mainMenu .fullWidthDropDown.dropdown-menu .dropDownMenu {
+    width: 100%;
+    float: none;
+  }
+
+  /* line 1771, ../sass/responsive.scss */
+  .dropdown-menu.discover .tab-content, .dropdown-menu.learn .tab-content {
+    float: none;
+    width: 100%;
+  }
+
+  /* line 1778, ../sass/responsive.scss */
+  .sloganBlock .indexPageSlogan h2 {
+    padding-top: 100px;
+  }
+  /* line 1784, ../sass/responsive.scss */
+  .sloganBlock .becomeAmemberSlogan h2 {
+    padding-top: 55px;
+  }
+  /* line 1790, ../sass/responsive.scss */
+  .sloganBlock .attorneySlogan h2 {
+    padding-top: 95px;
+  }
+  /* line 1796, ../sass/responsive.scss */
+  .sloganBlock .deansMessage h2 {
+    padding-top: 70px;
+  }
+
+  /* line 1804, ../sass/responsive.scss */
+  .content .title h3 {
+    line-height: 65px;
+  }
+  /* line 1809, ../sass/responsive.scss */
+  .content .attorney .title h3 {
+    font-size: 48px;
+  }
+  /* line 1814, ../sass/responsive.scss */
+  .content .attorneyContent {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  /* line 1822, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .nameBlock .name {
+    font-size: 20px;
+    width: 60%;
+  }
+  /* line 1826, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .nameBlock .name .regentsFellowsLabel {
+    top: -5px;
+  }
+  /* line 1831, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .nameBlock .descr {
+    margin-top: 10px;
+  }
+  /* line 1836, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .numbers {
+    padding: 30px 0 20px;
+  }
+  /* line 1839, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .numbers li {
+    height: 100%;
+  }
+  /* line 1842, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .numbers li:first-child {
+    min-height: 69px;
+  }
+  /* line 1846, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .numbers li:nth-of-type(2) {
+    width: 49%;
+  }
+  /* line 1852, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .address {
+    height: 100%;
+    padding: 5px 0;
+    text-align: center;
+  }
+  /* line 1857, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .address p {
+    line-height: 20px;
+    float: none;
+  }
+  /* line 1862, ../sass/responsive.scss */
+  .content .attorneyContent .membersList .membersListItem .info .address .btn {
+    float: none;
+  }
+  /* line 1873, ../sass/responsive.scss */
+  .content .blog .title h2 {
+    font-size: 51px;
+    height: 180px;
+    line-height: 70px;
+    padding-top: 50px;
+  }
+  /* line 1883, ../sass/responsive.scss */
+  .content .blog .postBody .postHeader li {
+    padding-left: 20px;
+    margin-bottom: 5px;
+  }
+  /* line 1887, ../sass/responsive.scss */
+  .content .blog .postBody .postHeader li a {
+    font-size: 14px;
+    padding-right: 20px;
+  }
+  /* line 1892, ../sass/responsive.scss */
+  .content .blog .postBody .postHeader li:first-child {
+    padding-left: 28px;
+  }
+  /* line 1895, ../sass/responsive.scss */
+  .content .blog .postBody .postHeader li:nth-of-type(2) {
+    border-right: none;
+  }
+  /* line 1898, ../sass/responsive.scss */
+  .content .blog .postBody .postHeader li:nth-of-type(3) {
+    padding-left: 37px;
+  }
+  /* line 1901, ../sass/responsive.scss */
+  .content .blog .postBody .postHeader li:nth-of-type(4) {
+    border-right: none;
+  }
+  /* line 1904, ../sass/responsive.scss */
+  .content .blog .postBody .postHeader li:last-child {
+    margin-bottom: 0px;
+    padding-left: 90px;
+  }
+  /* line 1912, ../sass/responsive.scss */
+  .content .blog .postBody .postHeader .mediaBlock a {
+    width: 40px;
+    padding-right: 0px;
+  }
+  /* line 1921, ../sass/responsive.scss */
+  .content .checkout {
+    padding: 40px 25px;
+  }
+  /* line 1927, ../sass/responsive.scss */
+  .content .checkout .checkoutBody table thead tr th {
+    font-size: 11px;
+  }
+  /* line 1933, ../sass/responsive.scss */
+  .content .checkout .checkoutBody table tr td {
+    font-size: 11px;
+  }
+  /* line 1937, ../sass/responsive.scss */
+  .content .checkout .checkoutBody table tr td:nth-of-type(1), .content .checkout .checkoutBody table tr th:nth-of-type(1) {
+    padding: 13px 5px 10px;
+  }
+  /* line 1941, ../sass/responsive.scss */
+  .content .checkout .checkoutBody table tr td:nth-of-type(2), .content .checkout .checkoutBody table tr th:nth-of-type(2) {
+    padding: 13px 5px 10px;
+  }
+  /* line 1945, ../sass/responsive.scss */
+  .content .checkout .checkoutBody table tr td:nth-of-type(3), .content .checkout .checkoutBody table tr th:nth-of-type(3) {
+    padding: 13px 5px 10px;
+  }
+  /* line 1949, ../sass/responsive.scss */
+  .content .checkout .checkoutBody table tr td:nth-of-type(4), .content .checkout .checkoutBody table tr th:nth-of-type(4) {
+    padding: 13px 5px 10px 0;
+  }
+  /* line 1953, ../sass/responsive.scss */
+  .content .checkout .checkoutBody table tr td:nth-of-type(2) {
+    font-size: 16px;
+  }
+  /* line 1957, ../sass/responsive.scss */
+  .content .checkout .checkoutBody table tr td:nth-of-type(3) {
+    font-size: 12px;
+  }
+  /* line 1963, ../sass/responsive.scss */
+  .content .checkout .checkoutBody table tr:nth-last-of-type(2) ul li {
+    font-size: 11px;
+    line-height: 1.5em;
+  }
+  /* line 1968, ../sass/responsive.scss */
+  .content .checkout .checkoutBody table tr:nth-last-of-type(2) td:nth-of-type(4) ul li {
+    font-size: 13px;
+  }
+  /* line 1973, ../sass/responsive.scss */
+  .content .checkout .checkoutBody table tr:nth-last-of-type(1) td {
+    font-size: 14px;
+    padding-left: 5px;
+  }
+  /* line 1985, ../sass/responsive.scss */
+  .content .contact .contactContent .address .socialNetwork li {
+    margin-right: 9px;
+  }
+  /* line 1997, ../sass/responsive.scss */
+  .content .membersList .membersListItem .info .nameBlock .name {
+    padding-left: 5px;
+    text-align: left;
+    width: 60%;
+  }
+  /* line 2003, ../sass/responsive.scss */
+  .content .membersList .membersListItem .info .nameBlock .descr {
+    text-align: left;
+    padding-left: 5px;
+  }
+  /* line 2010, ../sass/responsive.scss */
+  .content .membersList .membersListItem .info .numbers li {
+    min-height: 70px;
+  }
+  /* line 2017, ../sass/responsive.scss */
+  .content .membersList .membersListItem .info .address p {
+    width: 100%;
+  }
+  /* line 2021, ../sass/responsive.scss */
+  .content .membersList .membersListItem .info .address .btn {
+    margin-bottom: 10px;
+  }
+  /* line 2032, ../sass/responsive.scss */
+  .content .discoverLearnPage .title h3 {
+    line-height: 85px;
+  }
+  /* line 2037, ../sass/responsive.scss */
+  .content .discoverLearnPage #boardCertificationPageDropDownMenu.dropdown-menu {
+    left: -22px;
+    padding: 20px 10px;
+  }
+  /* line 2042, ../sass/responsive.scss */
+  .content .discoverLearnPage .menu li a.dropdown-toggle {
+    z-index: 10;
+  }
+  /* line 2046, ../sass/responsive.scss */
+  .content .discoverLearnPage .nav-tabs .open .dropdown-toggle, .content .discoverLearnPage .nav-pills .open .dropdown-toggle, .content .discoverLearnPage .nav > li.dropdown.open.active > a:hover, .content .discoverLearnPage .nav > li.dropdown.open.active > a:focus {
+    background: none;
+  }
+  /* line 2052, ../sass/responsive.scss */
+  .content .discoverLearnPage .tab-content .discoverTabTitle {
+    text-align: left;
+  }
+  /* line 2058, ../sass/responsive.scss */
+  .content .discoverLearnPage .tab-content #erwinTaylorAwardPage table tr {
+    margin-bottom: 10px;
+  }
+  /* line 2061, ../sass/responsive.scss */
+  .content .discoverLearnPage .tab-content #erwinTaylorAwardPage table tr td {
+    line-height: 1.5em;
+  }
+  /* line 2064, ../sass/responsive.scss */
+  .content .discoverLearnPage .tab-content #erwinTaylorAwardPage table tr td:nth-of-type(2) {
+    padding-left: 10px;
+  }
+  /* line 2068, ../sass/responsive.scss */
+  .content .discoverLearnPage .tab-content #erwinTaylorAwardPage table tr td:last-child {
+    padding: 0 0 10px 10px;
+  }
+  /* line 2080, ../sass/responsive.scss */
+  .content .discoverLearnPage .tab-content #sessionsSeminarsPage table thead tr th .text, .content .discoverLearnPage .tab-content #stateApprovedSeminarsPage table thead tr th .text {
+    font-size: 12px;
+    padding-left: 5px;
+  }
+  /* line 2086, ../sass/responsive.scss */
+  .content .discoverLearnPage .tab-content #sessionsSeminarsPage table thead tr th:nth-of-type(2) .text, .content .discoverLearnPage .tab-content #sessionsSeminarsPage table thead tr th:nth-of-type(4) .text, .content .discoverLearnPage .tab-content #sessionsSeminarsPage table thead tr th:nth-of-type(1) .text, .content .discoverLearnPage .tab-content #stateApprovedSeminarsPage table thead tr th:nth-of-type(2) .text, .content .discoverLearnPage .tab-content #stateApprovedSeminarsPage table thead tr th:nth-of-type(4) .text, .content .discoverLearnPage .tab-content #stateApprovedSeminarsPage table thead tr th:nth-of-type(1) .text {
+    line-height: 1.4em;
+  }
+  /* line 2095, ../sass/responsive.scss */
+  .content .discoverLearnPage .tab-content #sessionsSeminarsPage table tr td, .content .discoverLearnPage .tab-content #stateApprovedSeminarsPage table tr td {
+    font-size: 13px;
+  }
+  /* line 2099, ../sass/responsive.scss */
+  .content .discoverLearnPage .tab-content #sessionsSeminarsPage table tr td:first-child, .content .discoverLearnPage .tab-content #stateApprovedSeminarsPage table tr td:first-child {
+    font-size: 13px;
+  }
+  /* line 2103, ../sass/responsive.scss */
+  .content .discoverLearnPage .tab-content #sessionsSeminarsPage table tr .calendarIcon, .content .discoverLearnPage .tab-content #stateApprovedSeminarsPage table tr .calendarIcon {
+    margin-left: 0;
+  }
+  /* line 2116, ../sass/responsive.scss */
+  .content .discoverLearnPage .tab-content #stateApprovedSeminarsPage table thead tr th:nth-of-type(1) .text {
+    line-height: 40px;
+  }
+  /* line 2125, ../sass/responsive.scss */
+  .content .discoverLearnPage .tab-content #stateApprovedSeminarsPage table tr td {
+    font-size: 13px;
+  }
+  /* line 2129, ../sass/responsive.scss */
+  .content .discoverLearnPage .tab-content #stateApprovedSeminarsPage table tr td:first-child {
+    font-size: 13px;
+  }
+  /* line 2133, ../sass/responsive.scss */
+  .content .discoverLearnPage .tab-content #stateApprovedSeminarsPage table tr .calendarIcon {
+    margin-left: 0;
+  }
+  /* line 2142, ../sass/responsive.scss */
+  .content .discoverLearnPage .tab-content #stateDelegateProgrammPage .regionList .regionListItem {
+    width: 50%;
+  }
+  /* line 2145, ../sass/responsive.scss */
+  .content .discoverLearnPage .tab-content #stateDelegateProgrammPage .regionList .regionListItem ul {
+    padding-left: 0;
+  }
+  /* line 2155, ../sass/responsive.scss */
+  .content .discoverLearnPage .tab-content #calculateYouBacpage .alcoholTableBlock .alcoholTable img {
+    width: 100%;
+  }
+  /* line 2163, ../sass/responsive.scss */
+  .content .discoverLearnPage .tab-content #calculateYouBacpage .alcoholTableBlock .values li {
+    display: block;
+    margin-bottom: 5px;
+    overflow: hidden;
+  }
+  /* line 2173, ../sass/responsive.scss */
+  .content .discoverLearnPage .tab-content .btn {
+    font-size: 14px;
+  }
+  /* line 2181, ../sass/responsive.scss */
+  .content .becomeAmember .title h3 {
+    line-height: 75px;
+    font-size: 60px;
+  }
+  /* line 2190, ../sass/responsive.scss */
+  .content .welcome .title h2 {
+    line-height: 90px;
+  }
+  /* line 2198, ../sass/responsive.scss */
+  .content .upcomingSeminars .title h3 {
+    font-size: 47px;
+  }
+  /* line 2206, ../sass/responsive.scss */
+  .content .tabBg .tab-content img {
+    margin-left: 0;
+  }
+  /* line 2211, ../sass/responsive.scss */
+  .content .tabBg .nav-tabs li {
+    margin-right: 25px;
+  }
+  /* line 2219, ../sass/responsive.scss */
+  .content .memberProfile .userProfile .userProfileItem:first-child {
+    width: 100%;
+    background: none;
+  }
+  /* line 2224, ../sass/responsive.scss */
+  .content .memberProfile .userProfile .userProfileItem:nth-of-type(2) {
+    width: 100%;
+    margin: 20px 0 0;
+    background: none;
+    min-height: 100%;
+  }
+  /* line 2231, ../sass/responsive.scss */
+  .content .memberProfile .userProfile .userProfileItem:last-child {
+    text-align: left;
+    margin-top: 20px;
+  }
+  /* line 2239, ../sass/responsive.scss */
+  .content .memberProfile .aboutMe .languages .languagesTitle {
+    margin-bottom: 10px;
+  }
+  /* line 2245, ../sass/responsive.scss */
+  .content .memberProfile .contactInfo .addressBlock li address .sep {
+    display: none;
+  }
+  /* line 2255, ../sass/responsive.scss */
+  .content .NCDDListDetailPage .productList .productListItem .productInfo .productDescr .productDescrleft {
+    float: none;
+    width: 100%;
+  }
+  /* line 2260, ../sass/responsive.scss */
+  .content .NCDDListDetailPage .productList .productListItem .productInfo .productDescr .quantityBox {
+    width: 100%;
+    float: none;
+  }
+  /* line 2264, ../sass/responsive.scss */
+  .content .NCDDListDetailPage .productList .productListItem .productInfo .productDescr .quantityBox form {
+    text-align: left;
+    padding: 10px 0  0 38px;
+  }
+  /* line 2269, ../sass/responsive.scss */
+  .content .NCDDListDetailPage .productList .productListItem .productInfo .productDescr .quantityBox form .quantity label {
+    text-align: left;
+    margin-left: 5px;
+  }
+  /* line 2286, ../sass/responsive.scss */
+  .content .commentBlock .commentList .commentListItem .commentListBody .avatar {
+    display: none;
+  }
+  /* line 2290, ../sass/responsive.scss */
+  .content .commentBlock .commentList .commentListItem .commentListBody .commentBody {
+    width: 100%;
+    float: none;
+  }
+  /* line 2294, ../sass/responsive.scss */
+  .content .commentBlock .commentList .commentListItem .commentListBody .commentBody .arrowComment {
+    display: none;
+  }
+  /* line 2300, ../sass/responsive.scss */
+  .content .commentBlock .commentList .commentListItem .subComment {
+    margin-left: 30px;
+  }
+  /* line 2308, ../sass/responsive.scss */
+  .content .commentBlock form .captcha .captchaCode {
+    margin-left: 0px;
+    margin-top: 10px;
+  }
+  /* line 2313, ../sass/responsive.scss */
+  .content .commentBlock form .captcha .btn {
+    float: left;
+  }
+  /* line 2320, ../sass/responsive.scss */
+  .content .pagination ul > li > a, .content .pagination ul > li > span {
+    padding: 4px 11px;
+  }
+  /* line 2327, ../sass/responsive.scss */
+  .content .sessionSeminarsDetailPage .sesseionSeminarsInfo .sesseionSeminarsInfoItem:first-child {
+    width: 50%;
+    margin-bottom: 10px;
+  }
+  /* line 2332, ../sass/responsive.scss */
+  .content .sessionSeminarsDetailPage .sesseionSeminarsInfo .sesseionSeminarsInfoItem:nth-of-type(2) {
+    width: 50%;
+    border-right: none;
+    margin-bottom: 10px;
+  }
+  /* line 2338, ../sass/responsive.scss */
+  .content .sessionSeminarsDetailPage .sesseionSeminarsInfo .sesseionSeminarsInfoItem:nth-of-type(3) {
+    width: 70%;
+    padding-left: 0;
+  }
+  /* line 2343, ../sass/responsive.scss */
+  .content .sessionSeminarsDetailPage .sesseionSeminarsInfo .sesseionSeminarsInfoItem:last-child {
+    width: 30%;
+  }
+  /* line 2353, ../sass/responsive.scss */
+  .content .sessionSeminarsDetailPage .tab-content #sessionsSeminarsPage table tr td {
+    font-size: 12px;
+    padding: 10px 5px;
+  }
+  /* line 2363, ../sass/responsive.scss */
+  .content .sessionSeminarsDetailPage .tab-content #sessionsSeminarsPage table tr:first-child td .bd {
+    line-height: 1.5em;
+  }
+  /* line 2367, ../sass/responsive.scss */
+  .content .shoppingCart {
+    overflow-x: scroll;
+  }
+  /* line 2370, ../sass/responsive.scss */
+  .content .shoppingCart .shoppingCartBody {
+    width: 470px;
+    padding-right: 10px;
+  }
+  /* line 2377, ../sass/responsive.scss */
+  .content .shoppingCart .shoppingCartBody .checkoutBtn {
+    margin-bottom: 10px;
+  }
+  /* line 2383, ../sass/responsive.scss */
+  .content .attorneyContent, .content .becomeAmemberContent, .content .blog .blogContent, .content .checkout, .content .contactContent, .content .discoverContent, .content .learnContent, .content .memberProfile, .content .search, .content .shoppingCart {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+/* line 2391, ../sass/responsive.scss */
+.flw:after {
+  display: block;
+  content: ".";
+  clear: both;
+  font-size: 0;
+  line-height: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* line 2393, ../sass/responsive.scss */
+a:focus {
+  background: none;
+}
