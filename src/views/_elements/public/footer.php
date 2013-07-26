@@ -4,29 +4,19 @@
                     <div class="container">
                         <div class="row-fluid">
                             <div class="span4">
-                                <h4 class="menuTitle">Public</h4>
+                                <h4 class="menuTitle">Discover</h4>
                                 <ul class="footerMenu">
-                                    <li class="footerMenuItem"><a href="#" class="footerMenuLink">DUI Information in Your State</a></li>
-                                    <li class="footerMenuItem"><a href="#" class="footerMenuLink">Latest DUI News</a></li>
-                                    <li class="footerMenuItem"><a href="#" class="footerMenuLink">Find an Attorney</a></li>
-                                    <li class="footerMenuItem"><a href="#" class="footerMenuLink">What You Need To Know Now</a></li>
-                                    <li class="footerMenuItem"><a href="#" class="footerMenuLink">Save Your Drivers License</a></li>
-                                    <li class="footerMenuItem"><a href="#" class="footerMenuLink">DUI Defenses That Work</a></li>
-                                    <li class="footerMenuItem"><a href="#" class="footerMenuLink">DUI Drug / Prescription Medicine</a></li>
-                                    <li class="footerMenuItem"><a href="#" class="footerMenuLink">DUI &amp; Women</a></li>
+                                    <? foreach($this->vars['pages']['DISCOVER'] as $page):?>
+                                        <li class="footerMenuItem"><a href="/<?=$page['slug']?>" class="footerMenuLink"><?=$page['headline']?></a></li>    
+                                    <? endforeach; ?>
                                 </ul>
                             </div>
                             <div class="span4">
-                                <h4 class="menuTitle">Members</h4>
+                                <h4 class="menuTitle">Learn</h4>
                                 <ul class="footerMenu">
-                                    <li class="footerMenuItem"><a href="#" class="footerMenuLink">Your Details</a></li>
-                                    <li class="footerMenuItem"><a href="#" class="footerMenuLink">Online Seminars</a></li>
-                                    <li class="footerMenuItem"><a href="#" class="footerMenuLink">Article Archives</a></li>
-                                    <li class="footerMenuItem"><a href="#" class="footerMenuLink">DUI Resource Links</a></li>
-                                    <li class="footerMenuItem"><a href="#" class="footerMenuLink">DUI Practice &amp; Scientific Transcripts</a></li>
-                                    <li class="footerMenuItem"><a href="#" class="footerMenuLink">Virtual Forensic Library</a></li>
-                                    <li class="footerMenuItem"><a href="#" class="footerMenuLink">Brief Bank - Legal &amp; Scientific Issues</a></li>
-                                    <li class="footerMenuItem"><a href="#" class="footerMenuLink">Case Law Updates</a></li>
+                                    <? foreach($this->vars['pages']['LEARN'] as $page):?>
+                                        <li class="footerMenuItem"><a href="/<?=$page['slug']?>" class="footerMenuLink"><?=$page['headline']?></a></li>    
+                                    <? endforeach; ?>
                                 </ul>
                             </div>
                             <div class="span4">
@@ -46,7 +36,7 @@
                 <div class="footerCopyright">
                     <div class="bgSep"></div>
                     <div class="container">
-                        <span class="copyright pull-left">Copyright 2013. All Rights Reserved by The NCDD.</span>
+                        <span class="copyright pull-left">Copyright <?=date('Y')?>. All Rights Reserved by The NCDD.</span>
                         <ul class="pull-right socialNetwork">
                             <li class="socialNetworkItem"><a href="http://www.twitter.com/NCDDNews" class="socialNetworkLinl twitter" target="_blank"></a></li>
                         </ul>

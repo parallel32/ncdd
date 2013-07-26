@@ -44,7 +44,7 @@ $member->post('/search', function (Request $request) use ($app) {
 });
 
 $member->get('/add', function (Request $request) use ($app) {
-	$crumbs = array(array('name'=>'Members','href'=>'/member')
+	$crumbs = array(array('name'=>'Members','href'=>'/member/search')
 					,array('name'=>'Add New','href'=>'/member/add'));
 	$view_vars = array(
 						 'active'=>'Members'
@@ -76,9 +76,9 @@ $member->get('/{userId}/edit', function ($userId, Request $request) use ($app) {
 
 	$member = new Model\Member($doc=array('_id'=>new MongoId($userId)), $app);
 	$member = $member->findById();
-	$member['membershipBadge'] = Model\Member::$membershipBadge[$member['currentMembership']];
+	$member['membershipBadge'] = (!empty($member['currentMembership'])) ? Model\Member::$membershipBadge[$member['currentMembership']] : '';
 	$member['boardCertifiedBadge'] = Model\Member::$boardCertifiedBadge;
-	$member['facultyBadge'] = Model\Member::$facultyBadge[$member['currentFacultyPosition']];
+	$member['facultyBadge'] = (!empty($member['currentFacultyPosition'])) ? Model\Member::$facultyBadge[$member['currentFacultyPosition']]: '';;
 	$member ['membershipReversed'] = Model\Member::$membershipReversed;
 	$member ['facultyPositionReversed'] = Model\Member::$facultyPositionReversed;
 	$member ['orderReversed'] = Model\Member::$orderReversed;
@@ -87,7 +87,7 @@ $member->get('/{userId}/edit', function ($userId, Request $request) use ($app) {
 	$location = new Model\Location(array('ownerId'=>$userId),$app);
 	$locations = $location->getByOwner();
 	$member['locations'] = $locations;
-	$crumbs = array(array('name'=>'Members','href'=>'/member')
+	$crumbs = array(array('name'=>'Members','href'=>'/member/search')
 					,array('name'=>$member['firstName'].' '.$member['lastName'],'href'=>'/member/'.$userId.'/edit')
 					,array('name'=>'Edit','href'=>'/member/'.$userId.'/edit')
 					);
@@ -118,7 +118,7 @@ $member->get('/{userId}/edit-photo', function ($userId, Request $request) use ($
 	$member = new Model\Member($doc=array('_id'=>new MongoId($userId)), $app);
 	$member = $member->findById();
 	
-	$crumbs = array(array('name'=>'Members','href'=>'/member')
+	$crumbs = array(array('name'=>'Members','href'=>'/member/search')
 					,array('name'=>$member['firstName'].' '.$member['lastName'],'href'=>'/member/'.$userId.'/edit')
 					,array('name'=>'Edit','href'=>'/member/'.$userId.'/edit')
 					,array('name'=>'Photo','href'=>'/member/'.$userId.'/edit-photo')
@@ -139,7 +139,7 @@ $member->get('/{userId}/edit-photo-crop', function ($userId, Request $request) u
 	$member = new Model\Member($doc=array('_id'=>new MongoId($userId)), $app);
 	$member = $member->findById();
 	
-	$crumbs = array(array('name'=>'Members','href'=>'/member')
+	$crumbs = array(array('name'=>'Members','href'=>'/member/search')
 					,array('name'=>$member['firstName'].' '.$member['lastName'],'href'=>'/member/'.$userId.'/edit')
 					,array('name'=>'Edit','href'=>'/member/'.$userId.'/edit')
 					,array('name'=>'Photo','href'=>'/member/'.$userId.'/edit-photo')

@@ -1,63 +1,80 @@
-<div class="row-fluid memberProfile">
-                        <div class="contactMe pull-right"><a href="#">CONTACT  ME</a></div>
+                    <? $member = $this->vars['member']; ?>
+                    <div class="row-fluid memberProfile">
+                        <div class="contactMe pull-right"><a href="mailto:<?=$member['email']?>">CONTACT  ME</a></div>
                         <div class="userMainInfo">
-                            <div class="avatar pull-left"><img src="/assets/img/avatar159X165.png" alt=""></div>
+                            <div class="avatar pull-left"><img width="161" src="<?=$member['image']?>" alt=""></div>
                             <div class="pull-left">
-                                <h3 class="username">Abraham Lincoln</h3>
+                                <h3 class="username"><?=$member['firstName']?> <?=$member['lastName']?></h3>
                                 <ul class="links inline">
-                                    <li class="linksItem">Specialize in <a href="#">DWI / DUI Defense</a></li>
-                                    <li class="linksItem"><a href="#">Visit Member’s Website</a></li>
+                                    <li class="linksItem">Specialize in <a href="#"><?=$member['specializeIn']?></a></li>
+                                    <li class="linksItem"><a href="//<?=$member['websites'][0]['website']?>">Visit Member’s Website</a></li>
                                 </ul>
                             </div>
                             <div class="pull-right">
                                 <ul class="socialNetwork inline">
-                                    <li class="socialNetworkItem"><a href="http://www.linkedin.com/" target="_blank" class="socialNetworkLink linkedin"></a></li>
-                                    <li class="socialNetworkItem"><a href="https://accounts.google.com/" target="_blank" class="socialNetworkLink google"></a></li>
-                                    <li class="socialNetworkItem"><a href="http://www.twitter.com/" target="_blank" class="socialNetworkLink twitter"></a></li>
-                                    <li class="socialNetworkItem"><a href="http://www.facebook.com/" target="_blank" class="socialNetworkLink facebook"></a></li>
+                                    <? if(!empty($member['linkedInUrl'])): ?>
+                                    <li class="socialNetworkItem"><a href="<?=$member['linkedInUrl']?>" target="_blank" class="socialNetworkLink linkedin"></a></li>
+                                    <? endif; ?>
+                                    
+                                    <? if(!empty($member['googlePlusUrl'])): ?>
+                                    <li class="socialNetworkItem"><a href="<?=$member['googlePlusUrl']?>" target="_blank" class="socialNetworkLink google"></a></li>
+                                    <? endif; ?>
+                                    
+                                    <? if(!empty($member['twitterUrl'])): ?>
+                                    <li class="socialNetworkItem"><a href="<?=$member['twitterUrl']?>" target="_blank" class="socialNetworkLink twitter"></a></li>
+                                    <? endif; ?>
+                                    
+                                    <? if(!empty($member['facebookUrl'])): ?>
+                                    <li class="socialNetworkItem"><a href="<?=$member['facebookUrl']?>" target="_blank" class="socialNetworkLink facebook"></a></li>
+                                    <? endif; ?>
+                                    
                                 </ul>
-                                <p class="telephone"><small>Call Now:</small> 800 1 800</p>
+                                <p class="telephone"><?=$member['primaryPhone']?></p>
                             </div>
                         </div>
                         <ul class="userProfile">
                             <li class="userProfileItem">
                                 <h5 class="userProfileTitle">Additional Websites</h5>
                                 <ul class="infoList websites">
-                                    <li class="infoListItem"><a href="www.ncdd.com">www.ncdd.com</a></li>
-                                    <li class="infoListItem"><a href="www.duideffence.com">www.duideffence.com</a></li>
-                                    <li class="infoListItem"><a href="www.nationalcollage.com">www.nationalcollage.com</a></li>
-                                    <li class="infoListItem"><a href="www.lawdui.com">www.lawdui.com</a></li>
+                                    <? foreach($member['websites'] as $website): ?>
+                                    <li class="infoListItem"><a href="//<?=$website['website']?>" alt="<?=$website['websiteDesc']?>" title="<?=$website['websiteDesc']?>"><?=$website['website']?></a></li>
+                                    <? endforeach; ?>
                                 </ul>
                             </li>
                             <li class="userProfileItem numbers">
                                 <h5 class="userProfileTitle">Additional Numders</h5>
                                 <ul class="infoList">
-                                    <li class="infoListItem">+1 (123) 456-7890</li>
-                                    <li class="infoListItem">+1 (123) 456-7890</li>
+                                    <? foreach($member['locations'] as $location): ?>
+                                    <li class="infoListItem"><?=$location['phone']?></li>
+                                    <? endforeach; ?>
                                 </ul>
                             </li>
                             <li class="userProfileItem">
                                 <h5 class="userProfileTitle">Types of Membership</h5>
                                 <ul class="memberBadgeBlock inline">
-                                    <li class="memberBadge"><img src="/assets/img/badge3.png" alt=""></li>
-                                    <li class="memberBadge"><img src="/assets/img/badge4.png" alt=""></li>
-                                    <li class="memberBadge opacity"><img src="/assets/img/badge2.png" alt=""></li>
-                                    <li class="memberBadge opacity"><img src="/assets/img/badge1.png" alt=""></li>
+
+                                    <li class="memberBadge"><img width="102" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/member" alt="NCDD National College for DUI Defense: <?=$member['firstName']?> <?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?> <?=$member['lastName']?>" /></li>
+                                    <? if($member['boardCertified'] =='Yes'): ?>
+                                        <li class="memberBadge"><img width="138" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/boardcertified" alt="NCDD National College for DUI Defense: <?=$member['firstName']?> <?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?> <?=$member['lastName']?>" /></li>
+                                    <? endif; ?>
+                                    <? if(!empty($member['currentFacultyPosition'])): ?>
+                                        <li class="memberBadge"><img src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/exec" alt="NCDD National College for DUI Defense: <?=$member['firstName']?> <?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?> <?=$member['lastName']?>" /></li>
+                                    <? endif; ?>
+                                    
                                 </ul>
                             </li>
                         </ul>
                         <div class="aboutMe dottedSep">
                             <h4 class="memberProfileTitle">About Me:</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut ante quam. In nec enim lacus, vel porttitor nibh. Cras iaculis, nunc sed convallis ultrices, erat dolor hendrerit mauris, sed rutrum velit tellus ut metus. Phasellus et tortor mauris, quis consectetur metus. Maecenas quis velit dolor. Integer tincidunt metus sed lorem dictum vel consequat justo suscipit. Nam imperdiet rutrum mollis. Donec vel lacus eu risus luctus sollicitudin sit amet eu diam. Integer egestas luctus lectus, et pellentesque tellus dignissim vel.</p>
-                            <p class="dottedSep">Nunc eu lacinia turpis. Nam semper posuere orci. Aliquam erat volutpat. Nunc lectus diam, pulvinar eu egestas scelerisque, laoreet a est. Sed vel hendrerit ante. Praesent vestibulum ornare interdum. Nulla mattis facilisis est vel blandit. Etiam dictum arcu vitae justo cursus ac sagittis leo pulvinar. Etiam quis arcu dolor.</p>
+                            <p><?=$member['aboutMe']?></p>
                             <div class="languages">
                                 <h5 class="languagesTitle">Languages</h5>
                                 <ul class="languagesList">
-                                    <li>English</li>
-                                    <li class="sep"></li>
-                                    <li>Japanese</li>
-                                    <li class="sep"></li>
-                                    <li>Spanish</li>
+                                    <? $i=0; foreach($member['languages'] as $lang): ?>
+                                    <li><?=$lang['language']?></li>
+                                    <? if($i < count($member['languages'])-1){?>
+                                    <li class="sep"></li><?}?>
+                                    <? $i++; endforeach; ?>
                                 </ul>
                             </div>
                         </div>
@@ -68,69 +85,61 @@
                             </div>
                             <div class="pull-right address">
                                 <ul class="addressBlock dottedSep">
+                                <? $i=1; foreach($member['locations'] as $location): ?>
+                                
                                     <li>
                                         <address>
-                                            <b>Jon Doe, Attorney At Law</b> <br>
-                                            Peachtree Street NE <br>
-                                            Atlanta, GA 30309 <br>
-                                            <b>Office:</b> 123-456-7890 <br>
-                                            <b>Fax:</b> 123-456-7890 <br>
-                                            <a href="mailto:jondoe@ncdd.com">jondoe@ncdd.com</a><br>
-                                            <a href="www.ncdd.com.com">www.ncdd.com.com</a>    <br>
-                                            <a href="#" class="viewMap">View map</a>  <div class="sep">|</div>  <a href="#" class="skype">Skype</a>
+                                            <b><?=$location['name']?></b> <br>
+                                            <?=$location['addressLine1']?> <br>
+                                            <?=$location['city']?>, <?=$location['state']?> <?=$location['zip']?> <br>
+                                            <b>Office:</b> <?=$location['phone']?> <br>
+                                            <b>Fax:</b> <?=$location['fax']?> <br>
+                                            <a target="_blank" href="https://maps.google.com/maps?q=<?=$location['raw']?>&hl=en&t=m&z=16&iwloc=A" class="viewMap">View map</a>
                                         </address>
                                     </li>
-                                    <li>
-                                        <address>
-                                            <b>Jon Doe, Attorney At Law</b> <br>
-                                            Peachtree Street NE <br>
-                                            Atlanta, GA 30309 <br>
-                                            <b>Office:</b> 123-456-7890 <br>
-                                            <b>Fax:</b> 123-456-7890 <br>
-                                            <a href="mailto:jondoe@ncdd.com">jondoe@ncdd.com</a><br>
-                                            <a href="www.ncdd.com.com">www.ncdd.com.com</a>    <br>
-                                            <a href="#" class="viewMap">View map</a>  <div class="sep">|</div>  <a href="#" class="skype">Skype</a>
-                                        </address>
-                                    </li>
+                                    <? if($i % 2 == 0): ?>
+                                        </ul>
+                                        <ul class="addressBlock">
+                                    <? endif; ?>
+
+                                <? $i++; endforeach; ?>    
                                 </ul>
-                                <ul class="addressBlock">
-                                    <li>
-                                        <address>
-                                            <b>Jon Doe, Attorney At Law</b> <br>
-                                            Peachtree Street NE <br>
-                                            Atlanta, GA 30309 <br>
-                                            <b>Office:</b> 123-456-7890 <br>
-                                            <b>Fax:</b> 123-456-7890 <br>
-                                            <a href="mailto:jondoe@ncdd.com">jondoe@ncdd.com</a><br>
-                                            <a href="www.ncdd.com.com">www.ncdd.com.com</a>    <br>
-                                            <a href="#" class="viewMap">View map</a>  <div class="sep">|</div>  <a href="#" class="skype">Skype</a>
-                                        </address>
-                                    </li>
-                                    <li>
-                                        <address>
-                                            <b>Jon Doe, Attorney At Law</b> <br>
-                                            Peachtree Street NE <br>
-                                            Atlanta, GA 30309 <br>
-                                            <b>Office:</b> 123-456-7890 <br>
-                                            <b>Fax:</b> 123-456-7890 <br>
-                                            <a href="mailto:jondoe@ncdd.com">jondoe@ncdd.com</a><br>
-                                            <a href="www.ncdd.com.com">www.ncdd.com.com</a>    <br>
-                                            <a href="#" class="viewMap">View map</a>  <div class="sep">|</div>  <a href="#" class="skype">Skype</a>
-                                        </address>
-                                    </li>
-                                </ul>
-                                <p class="text-center"><a href="#">Check Out Additional Addresses +</a></p>
+                                
                             </div>
                         </div>
                         <div class="pricticeCaseFinancial">
                             <div class="practiceCase dottedSepVertical pull-left">
                                 <h5 class="memberProfileTitle">Practice and Cases</h5>
-                                <img src="/assets/img/practiceCase.png" alt="">
+                                
+
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          <? foreach($member['practiceAreas'] as $pa): ?>
+          ['<?=$pa['pa']?>',     <?=$pa['percent']?>],
+          <? endforeach; ?>
+        ]);
+
+        var options = {
+          title: 'My Daily Activities'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+    <div id="chart_div" style="width: 500px; height: 160px;"></div>
+
                             </div>
                             <div class="financial pull-right">
                                 <h5 class="memberProfileTitle">Financial</h5>
-                                <p><b>Fees:</b><br>Free Consultation (60 minutes)</p>
-                                <p><b>Payment:</b><br>Cash, Credit Card, Check</p>
+                                <p><b>Fees:</b><br><?=$member['financialFees']?></p>
+                                <p><b>Payment:</b><br><?=$member['financialPayment']?></p>
                             </div>
                         </div>
                     </div>

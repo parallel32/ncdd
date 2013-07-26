@@ -23,91 +23,91 @@
                                 'namescolor':'#666666', //color of the abbreviations 
                                 'namesShadowColor':'#666666', //tooltip shadow color
                             },
-                            /*
+                            //*
                             'map_1':{
                                 'namesId':'AB',//name's ID (Don't change it)
                                 'name': 'ALBERTA',  //province name
-                                'url':'/dui-laws-in-your-state/canada/alberta', //Goto URL
+                                'url':'/find-an-attorney/canada/alberta', //Goto URL
                                 'target':'_self', //open link in new window:_self, open in current window:_self
                                 'upcolor':'#EBECED', //province's color when page loads
                                 'overcolor':'#99CC00', //province's color when mouse hover
                                 'downcolor':'#993366',//province's color when mouse clicking
-                                'enable':true,//true/false to enable/disable this province
+                                'enable':false,//true/false to enable/disable this province
                             },
                             'map_2':{
                                 'namesId':'BC',
                                 'name': 'BRITISH COLUMBIA',
-                                'url':'/dui-laws-in-your-state/canada/british-columbia',
+                                'url':'/find-an-attorney/canada/british-columbia',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
                                 'downcolor':'#993366',
-                                'enable':true,
+                                'enable':false,
                             },
                             'map_3':{
                                 'namesId':'MB',
                                 'name': 'MANITOBA',
-                                'url':'/dui-laws-in-your-state/canada/manitoba',
+                                'url':'/find-an-attorney/canada/manitoba',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
                                 'downcolor':'#993366',
-                                'enable':true,
+                                'enable':false,
                             },
                             'map_4':{
                                 'namesId':'NB',
                                 'name': 'NEW BRUNSWICK',
-                                'url':'/dui-laws-in-your-state/canada/new-brunswick',
+                                'url':'/find-an-attorney/canada/new-brunswick',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
                                 'downcolor':'#993366',
-                                'enable':true,
+                                'enable':false,
                             },
                             'map_5':{
                                 'namesId':'NL',
                                 'name': 'NEWFOUNDLAND AND LABRADOR',
-                                'url':'/dui-laws-in-your-state/canada/newfoundland-and-labrador',
+                                'url':'/find-an-attorney/canada/newfoundland-and-labrador',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
                                 'downcolor':'#993366',
-                                'enable':true,
+                                'enable':false,
                             },  
                             'map_6':{
                                 'namesId':'NT',
                                 'name': 'NORTHWEST TERRITORIES',
-                                'url':'/dui-laws-in-your-state/canada/northwest-territories',
+                                'url':'/find-an-attorney/canada/northwest-territories',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
                                 'downcolor':'#993366',
-                                'enable':true,
+                                'enable':false,
                             },
                             'map_7':{
                                 'namesId':'NS',
                                 'name': 'NOVA SCOTIA',
-                                'url':'/dui-laws-in-your-state/canada/nova-scotia',
+                                'url':'/find-an-attorney/canada/nova-scotia',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
                                 'downcolor':'#993366',
-                                'enable':true,
+                                'enable':false,
                             },
                             'map_8':{
                                 'namesId':'NU',
                                 'name': 'NUNAVUT',
-                                'url':'/dui-laws-in-your-state/canada/nunavut',
+                                'url':'/find-an-attorney/canada/nunavut',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
                                 'downcolor':'#993366',
-                                'enable':true,
+                                'enable':false,
                             },  
                             'map_9':{
                                 'namesId':'ON',
                                 'name': 'ONTARIO',
-                                'url':'/dui-laws-in-your-state/canada/ontario',
+                                'url':'/find-an-attorney/canada/ontario',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -117,17 +117,17 @@
                             'map_10':{
                                 'namesId':'PE',
                                 'name': 'PRINCE EDWARD ISLAND',
-                                'url':'/dui-laws-in-your-state/canada/prince-edward-island',
+                                'url':'/find-an-attorney/canada/prince-edward-island',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
                                 'downcolor':'#993366',
-                                'enable':true,
+                                'enable':false,
                             },
                             'map_11':{
                                 'namesId':'QC',
                                 'name': 'QUEBEC',
-                                'url':'/dui-laws-in-your-state/canada/quebeck',
+                                'url':'/find-an-attorney/canada/quebec',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -137,7 +137,7 @@
                             'map_12':{
                                 'namesId':'SK',
                                 'name': 'SASKATCHEWAN',
-                                'url':'/dui-laws-in-your-state/canada/saskatchewan',
+                                'url':'/find-an-attorney/canada/saskatchewan',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -147,21 +147,21 @@
                             'map_13':{
                                 'namesId':'YT',
                                 'name': 'YUKON',
-                                'url':'/dui-laws-in-your-state/canada/yukon',
+                                'url':'/find-an-attorney/canada/yukon',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
                                 'downcolor':'#993366',
-                                'enable':true,
+                                'enable':false,
                             },
                             'map_14':{
                                 'name': 'OTTAWA',
-                                'url':'/dui-laws-in-your-state/canada/ottawa',
+                                'url':'/find-an-attorney/canada/ottawa',
                                 'target':'_self',
                                 'upcolor':'#FF0000',
                                 'overcolor':'#99CC00',
                                 'downcolor':'#993366',
-                                'enable':true,
+                                'enable':false,
                             },
 
                             //*/
@@ -169,7 +169,7 @@
                             'map_15':{
                                 'namesId':'AL',//name's ID (Don't change it)
                                 'name': 'ALABAMA',  //state name
-                                'url':'/dui-laws-in-your-state/usa/alabama', //Goto URL
+                                'url':'/find-an-attorney/usa/alabama', //Goto URL
                                 'target':'_self', //open link in new window:_self, open in current window:_self
                                 'upcolor':'#EBECED', //state's color when page loads
                                 'overcolor':'#99CC00', //state's color when mouse hover
@@ -179,7 +179,7 @@
                             'map_16':{
                                 'namesId':'AK',
                                 'name': 'ALASKA',
-                                'url':'/dui-laws-in-your-state/usa/alaska',
+                                'url':'/find-an-attorney/usa/alaska',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -189,7 +189,7 @@
                             'map_17':{
                                 'namesId':'AZ',
                                 'name': 'ARIZONA',
-                                'url':'/dui-laws-in-your-state/usa/arizona',
+                                'url':'/find-an-attorney/usa/arizona',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -199,7 +199,7 @@
                             'map_18':{
                                 'namesId':'AR',
                                 'name': 'ARKANSAS',
-                                'url':'/dui-laws-in-your-state/usa/arkansas',
+                                'url':'/find-an-attorney/usa/arkansas',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -209,7 +209,7 @@
                             'map_19':{
                                 'namesId':'CA',
                                 'name': 'CALIFORNIA',
-                                'url':'/dui-laws-in-your-state/usa/california',
+                                'url':'/find-an-attorney/usa/california',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -219,7 +219,7 @@
                             'map_20':{
                                 'namesId':'CO',
                                 'name': 'COLORADO',
-                                'url':'/dui-laws-in-your-state/usa/colorado',
+                                'url':'/find-an-attorney/usa/colorado',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -229,7 +229,7 @@
                             'map_21':{
                                 'namesId':'CT',
                                 'name': 'CONNECTICUT',
-                                'url':'/dui-laws-in-your-state/usa/connecticut',
+                                'url':'/find-an-attorney/usa/connecticut',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -239,7 +239,7 @@
                             'map_22':{
                                 'namesId':'DE',
                                 'name': 'DELAWARE',
-                                'url':'/dui-laws-in-your-state/usa/deleware',
+                                'url':'/find-an-attorney/usa/deleware',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -249,7 +249,7 @@
                             'map_23':{
                                 'namesId':'FL',
                                 'name': 'FLORIDA',
-                                'url':'/dui-laws-in-your-state/usa/florida',
+                                'url':'/find-an-attorney/usa/florida',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -259,7 +259,7 @@
                             'map_24':{
                                 'namesId':'GA',
                                 'name': 'GEORGIA',
-                                'url':'/dui-laws-in-your-state/usa/georgia',
+                                'url':'/find-an-attorney/usa/georgia',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -269,7 +269,7 @@
                             'map_25':{
                                 'namesId':'HI',
                                 'name': 'HAWAII',
-                                'url':'/dui-laws-in-your-state/usa/hawaii',
+                                'url':'/find-an-attorney/usa/hawaii',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -279,7 +279,7 @@
                             'map_26':{
                                 'namesId':'ID',
                                 'name': 'IDAHO',
-                                'url':'/dui-laws-in-your-state/usa/idaho',
+                                'url':'/find-an-attorney/usa/idaho',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -289,7 +289,7 @@
                             'map_27':{
                                 'namesId':'IL',
                                 'name': 'ILLINOIS',
-                                'url':'/dui-laws-in-your-state/usa/illinois',
+                                'url':'/find-an-attorney/usa/illinois',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -299,7 +299,7 @@
                             'map_28':{
                                 'namesId':'IN',
                                 'name': 'INDIANA',
-                                'url':'/dui-laws-in-your-state/usa/indiana',
+                                'url':'/find-an-attorney/usa/indiana',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -309,7 +309,7 @@
                             'map_29':{
                                 'namesId':'IA',
                                 'name': 'IOWA',
-                                'url':'/dui-laws-in-your-state/usa/iowa',
+                                'url':'/find-an-attorney/usa/iowa',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -319,7 +319,7 @@
                             'map_30':{
                                 'namesId':'KS',
                                 'name': 'KANSAS',
-                                'url':'/dui-laws-in-your-state/usa/kansas',
+                                'url':'/find-an-attorney/usa/kansas',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -329,7 +329,7 @@
                             'map_31':{
                                 'namesId':'KY',
                                 'name': 'KENTUCKY',
-                                'url':'/dui-laws-in-your-state/usa/kentucky',
+                                'url':'/find-an-attorney/usa/kentucky',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -339,7 +339,7 @@
                             'map_32':{
                                 'namesId':'LA',
                                 'name': 'LOUISIANA',
-                                'url':'/dui-laws-in-your-state/usa/louisiana',
+                                'url':'/find-an-attorney/usa/louisiana',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -349,7 +349,7 @@
                             'map_33':{
                                 'namesId':'ME',
                                 'name': 'MAINE',
-                                'url':'/dui-laws-in-your-state/usa/maine',
+                                'url':'/find-an-attorney/usa/maine',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -359,7 +359,7 @@
                             'map_34':{
                                 'namesId':'MD',
                                 'name': 'MARYLAND',
-                                'url':'/dui-laws-in-your-state/usa/maryland',
+                                'url':'/find-an-attorney/usa/maryland',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -369,7 +369,7 @@
                             'map_35':{
                                 'namesId':'MA',
                                 'name': 'MASSACHUSETTS',
-                                'url':'/dui-laws-in-your-state/usa/massachusetts',
+                                'url':'/find-an-attorney/usa/massachusetts',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -379,7 +379,7 @@
                             'map_36':{
                                 'namesId':'MI',
                                 'name': 'MICHIGAN',
-                                'url':'/dui-laws-in-your-state/usa/michigan',
+                                'url':'/find-an-attorney/usa/michigan',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -389,7 +389,7 @@
                             'map_37':{
                                 'namesId':'MN',
                                 'name': 'MINNESOTA',
-                                'url':'/dui-laws-in-your-state/usa/minnesota',
+                                'url':'/find-an-attorney/usa/minnesota',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -399,7 +399,7 @@
                             'map_38':{
                                 'namesId':'MS',
                                 'name': 'MISSISSIPPI',
-                                'url':'/dui-laws-in-your-state/usa/mississippi',
+                                'url':'/find-an-attorney/usa/mississippi',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -409,7 +409,7 @@
                             'map_39':{
                                 'namesId':'MO',
                                 'name': 'MISSOURI',
-                                'url':'/dui-laws-in-your-state/usa/missouri',
+                                'url':'/find-an-attorney/usa/missouri',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -419,7 +419,7 @@
                             'map_40':{
                                 'namesId':'MT',
                                 'name': 'MONTANA',
-                                'url':'/dui-laws-in-your-state/usa/montana',
+                                'url':'/find-an-attorney/usa/montana',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -429,7 +429,7 @@
                             'map_41':{
                                 'namesId':'NE',
                                 'name': 'NEBRASKA',
-                                'url':'/dui-laws-in-your-state/usa/nebraska',
+                                'url':'/find-an-attorney/usa/nebraska',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -439,7 +439,7 @@
                             'map_42':{
                                 'namesId':'NV',
                                 'name': 'NEVADA',
-                                'url':'/dui-laws-in-your-state/usa/nevada',
+                                'url':'/find-an-attorney/usa/nevada',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -449,7 +449,7 @@
                             'map_43':{
                                 'namesId':'NH',
                                 'name': 'NEW HAMPSHIRE',
-                                'url':'/dui-laws-in-your-state/usa/new-hampshire',
+                                'url':'/find-an-attorney/usa/new-hampshire',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -459,7 +459,7 @@
                             'map_44':{
                                 'namesId':'NJ',
                                 'name': 'NEW JERSEY',
-                                'url':'/dui-laws-in-your-state/usa/new-jersey',
+                                'url':'/find-an-attorney/usa/new-jersey',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -469,7 +469,7 @@
                             'map_45':{
                                 'namesId':'NM',
                                 'name': 'NEW MEXICO',
-                                'url':'/dui-laws-in-your-state/usa/new-mexico',
+                                'url':'/find-an-attorney/usa/new-mexico',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -479,7 +479,7 @@
                             'map_46':{
                                 'namesId':'NY',
                                 'name': 'NEW YORK',
-                                'url':'/dui-laws-in-your-state/usa/new-york',
+                                'url':'/find-an-attorney/usa/new-york',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -489,7 +489,7 @@
                             'map_47':{
                                 'namesId':'NC',
                                 'name': 'NORTH CAROLINA',
-                                'url':'/dui-laws-in-your-state/usa/north-carolina',
+                                'url':'/find-an-attorney/usa/north-carolina',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -499,7 +499,7 @@
                             'map_48':{
                                 'namesId':'ND',
                                 'name': 'NORTH DAKOTA',
-                                'url':'/dui-laws-in-your-state/usa/north-dakota',
+                                'url':'/find-an-attorney/usa/north-dakota',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -509,7 +509,7 @@
                             'map_49':{
                                 'namesId':'OH',
                                 'name': 'OHIO',
-                                'url':'/dui-laws-in-your-state/usa/ohio',
+                                'url':'/find-an-attorney/usa/ohio',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -519,7 +519,7 @@
                             'map_50':{
                                 'namesId':'OK',
                                 'name': 'OKLAHOMA',
-                                'url':'/dui-laws-in-your-state/usa/oklahoma',
+                                'url':'/find-an-attorney/usa/oklahoma',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -529,7 +529,7 @@
                             'map_51':{
                                 'namesId':'OR',
                                 'name': 'OREGON',
-                                'url':'/dui-laws-in-your-state/usa/oregon',
+                                'url':'/find-an-attorney/usa/oregon',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -539,7 +539,7 @@
                             'map_52':{
                                 'namesId':'PA',
                                 'name': 'PENNSYLVANIA',
-                                'url':'/dui-laws-in-your-state/usa/pennsylvania',
+                                'url':'/find-an-attorney/usa/pennsylvania',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -549,7 +549,7 @@
                             'map_53':{
                                 'namesId':'RI',
                                 'name': 'RHODE ISLAND',
-                                'url':'/dui-laws-in-your-state/usa/rhode-island',
+                                'url':'/find-an-attorney/usa/rhode-island',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -559,7 +559,7 @@
                             'map_54':{
                                 'namesId':'SC',
                                 'name': 'SOUTH CAROLINA',
-                                'url':'/dui-laws-in-your-state/usa/south-carolina',
+                                'url':'/find-an-attorney/usa/south-carolina',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -569,7 +569,7 @@
                             'map_55':{
                                 'namesId':'SD',
                                 'name': 'SOUTH DAKOTA',
-                                'url':'/dui-laws-in-your-state/usa/south-dakota',
+                                'url':'/find-an-attorney/usa/south-dakota',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -579,7 +579,7 @@
                             'map_56':{
                                 'namesId':'TN',
                                 'name': 'TENNESSEE',
-                                'url':'/dui-laws-in-your-state/usa/tennessee',
+                                'url':'/find-an-attorney/usa/tennessee',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -589,7 +589,7 @@
                             'map_57':{
                                 'namesId':'TX',
                                 'name': 'TEXAS',
-                                'url':'/dui-laws-in-your-state/usa/texas',
+                                'url':'/find-an-attorney/usa/texas',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -599,7 +599,7 @@
                             'map_58':{
                                 'namesId':'UT',
                                 'name': 'UTAH',
-                                'url':'/dui-laws-in-your-state/usa/utah',
+                                'url':'/find-an-attorney/usa/utah',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -609,7 +609,7 @@
                             'map_59':{
                                 'namesId':'VT',
                                 'name': 'VERMONT',
-                                'url':'/dui-laws-in-your-state/usa/vermont',
+                                'url':'/find-an-attorney/usa/vermont',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -619,7 +619,7 @@
                             'map_60':{
                                 'namesId':'VA',
                                 'name': 'VIRGINIA',
-                                'url':'/dui-laws-in-your-state/usa/virginia',
+                                'url':'/find-an-attorney/usa/virginia',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -629,7 +629,7 @@
                             'map_61':{
                                 'namesId':'WA',
                                 'name': 'WASHINGTON',
-                                'url':'/dui-laws-in-your-state/usa/washington',
+                                'url':'/find-an-attorney/usa/washington',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -639,7 +639,7 @@
                             'map_62':{
                                 'namesId':'WV',
                                 'name': 'WEST VIRGINIA',
-                                'url':'/dui-laws-in-your-state/usa/west-virginia',
+                                'url':'/find-an-attorney/usa/west-virginia',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -649,7 +649,7 @@
                             'map_63':{
                                 'namesId':'WI',
                                 'name': 'WISCONSIN',
-                                'url':'/dui-laws-in-your-state/usa/wisconsin',
+                                'url':'/find-an-attorney/usa/wisconsin',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -659,7 +659,7 @@
                             'map_64':{
                                 'namesId':'WY',
                                 'name': 'WYOMING',
-                                'url':'/dui-laws-in-your-state/usa/wyoming',
+                                'url':'/find-an-attorney/usa/wyoming',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
@@ -669,7 +669,7 @@
                             'map_65':{
                                 'namesId':'DC',
                                 'name': 'WASHINGTON DC',
-                                'url':'/dui-laws-in-your-state/usa/washington-dc',
+                                'url':'/find-an-attorney/usa/washington-dc',
                                 'target':'_self',
                                 'upcolor':'#FF6600',
                                 'overcolor':'#0000FF',
@@ -681,7 +681,7 @@
                         </script>
                         <script type="text/javascript">
                             $(function(){
-                                /*
+                                //*
                                 addEvent('map_1');
                                 addEvent('map_2');
                                 addEvent('map_3');
@@ -764,7 +764,7 @@
                                         <div class="attorneyMapTitleBgSep"></div>
                                     </div>
                                 </div>
-                                <?if(false):?>
+                                <?if(true):?>
                                 <!-- map code canada-->
                                 <div id="map_base" class="canadaMap">
                                     <span class="tip" id="tip"></span>
@@ -2505,74 +2505,63 @@
                                 </a>
                                 <ul class="mapsPhoneDropdown">
                                     <li class="titleMap">USA</li>
-                                    <li><a href="/dui-laws-in-your-state/usa/alabama">Alabama</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/alaska">Alaska</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/arizona">Arizona</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/arkansas">Arkansas</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/california">California</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/colorado">Colorado</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/connecticut">Connecticut</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/delaware">Delaware</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/washington-dc">Washington DC</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/florida">Florida</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/georgia">Georgia</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/hawaii">Hawaii</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/idaho">Idaho</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/illinois">Illinois</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/indiana">Indiana</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/iowa">Iowa</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/kansas">Kansas</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/kentucky">Kentucky</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/louisiana">Louisiana</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/maine">Maine</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/maryland">Maryland</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/massachusetts">Massachusetts</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/michigan">Michigan</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/minnesota">Minnesota</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/mississippi">Mississippi</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/missouri">Missouri</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/montana">Montana</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/nebraska">Nebraska</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/nevada">Nevada</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/new-hampshire">New Hampshire</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/new-jersey">New Jersey</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/new-mexico">New Mexico</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/new-york">New York</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/north-carolina">North Carolina</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/north-dakota">North Dakota</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/ohio">Ohio</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/oklahoma">Oklahoma</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/oregon">Oregon</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/pennsylvania">Pennsylvania</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/rhode-island">Rhode Island</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/south-carolina">South Carolina</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/south-dakota">South Dakota</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/tennessee">Tennessee</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/texas">Texas</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/utah">Utah</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/vermont">Vermont</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/virginia">Virginia </a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/washington">Washington</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/west-virginia">West Virginia</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/wisconsin">Wisconsin</a></li>
-                                    <li><a href="/dui-laws-in-your-state/usa/wyoming">Wyoming </a></li>
-                                    <? if(false):?>
+                                    <li><a href="/find-an-attorney/usa/alabama">Alabama</a></li>
+                                    <li><a href="/find-an-attorney/usa/alaska">Alaska</a></li>
+                                    <li><a href="/find-an-attorney/usa/arizona">Arizona</a></li>
+                                    <li><a href="/find-an-attorney/usa/arkansas">Arkansas</a></li>
+                                    <li><a href="/find-an-attorney/usa/california">California</a></li>
+                                    <li><a href="/find-an-attorney/usa/colorado">Colorado</a></li>
+                                    <li><a href="/find-an-attorney/usa/connecticut">Connecticut</a></li>
+                                    <li><a href="/find-an-attorney/usa/delaware">Delaware</a></li>
+                                    <li><a href="/find-an-attorney/usa/washington-dc">Washington DC</a></li>
+                                    <li><a href="/find-an-attorney/usa/florida">Florida</a></li>
+                                    <li><a href="/find-an-attorney/usa/georgia">Georgia</a></li>
+                                    <li><a href="/find-an-attorney/usa/hawaii">Hawaii</a></li>
+                                    <li><a href="/find-an-attorney/usa/idaho">Idaho</a></li>
+                                    <li><a href="/find-an-attorney/usa/illinois">Illinois</a></li>
+                                    <li><a href="/find-an-attorney/usa/indiana">Indiana</a></li>
+                                    <li><a href="/find-an-attorney/usa/iowa">Iowa</a></li>
+                                    <li><a href="/find-an-attorney/usa/kansas">Kansas</a></li>
+                                    <li><a href="/find-an-attorney/usa/kentucky">Kentucky</a></li>
+                                    <li><a href="/find-an-attorney/usa/louisiana">Louisiana</a></li>
+                                    <li><a href="/find-an-attorney/usa/maine">Maine</a></li>
+                                    <li><a href="/find-an-attorney/usa/maryland">Maryland</a></li>
+                                    <li><a href="/find-an-attorney/usa/massachusetts">Massachusetts</a></li>
+                                    <li><a href="/find-an-attorney/usa/michigan">Michigan</a></li>
+                                    <li><a href="/find-an-attorney/usa/minnesota">Minnesota</a></li>
+                                    <li><a href="/find-an-attorney/usa/mississippi">Mississippi</a></li>
+                                    <li><a href="/find-an-attorney/usa/missouri">Missouri</a></li>
+                                    <li><a href="/find-an-attorney/usa/montana">Montana</a></li>
+                                    <li><a href="/find-an-attorney/usa/nebraska">Nebraska</a></li>
+                                    <li><a href="/find-an-attorney/usa/nevada">Nevada</a></li>
+                                    <li><a href="/find-an-attorney/usa/new-hampshire">New Hampshire</a></li>
+                                    <li><a href="/find-an-attorney/usa/new-jersey">New Jersey</a></li>
+                                    <li><a href="/find-an-attorney/usa/new-mexico">New Mexico</a></li>
+                                    <li><a href="/find-an-attorney/usa/new-york">New York</a></li>
+                                    <li><a href="/find-an-attorney/usa/north-carolina">North Carolina</a></li>
+                                    <li><a href="/find-an-attorney/usa/north-dakota">North Dakota</a></li>
+                                    <li><a href="/find-an-attorney/usa/ohio">Ohio</a></li>
+                                    <li><a href="/find-an-attorney/usa/oklahoma">Oklahoma</a></li>
+                                    <li><a href="/find-an-attorney/usa/oregon">Oregon</a></li>
+                                    <li><a href="/find-an-attorney/usa/pennsylvania">Pennsylvania</a></li>
+                                    <li><a href="/find-an-attorney/usa/rhode-island">Rhode Island</a></li>
+                                    <li><a href="/find-an-attorney/usa/south-carolina">South Carolina</a></li>
+                                    <li><a href="/find-an-attorney/usa/south-dakota">South Dakota</a></li>
+                                    <li><a href="/find-an-attorney/usa/tennessee">Tennessee</a></li>
+                                    <li><a href="/find-an-attorney/usa/texas">Texas</a></li>
+                                    <li><a href="/find-an-attorney/usa/utah">Utah</a></li>
+                                    <li><a href="/find-an-attorney/usa/vermont">Vermont</a></li>
+                                    <li><a href="/find-an-attorney/usa/virginia">Virginia </a></li>
+                                    <li><a href="/find-an-attorney/usa/washington">Washington</a></li>
+                                    <li><a href="/find-an-attorney/usa/west-virginia">West Virginia</a></li>
+                                    <li><a href="/find-an-attorney/usa/wisconsin">Wisconsin</a></li>
+                                    <li><a href="/find-an-attorney/usa/wyoming">Wyoming </a></li>
+                                    
                                     <li class="titleMap">Canada</li>
-                                    <li><a href="/dui-laws-in-your-state/cananda/alberta">Wyoming </a></li>
-                                    <li><a href="/dui-laws-in-your-state/cananda/alberta">Alberta </a></li>
-                                    <li><a href="/dui-laws-in-your-state/cananda/british-columbia">British Columbia </a></li>
-                                    <li><a href="/dui-laws-in-your-state/cananda/manitoba">Manitoba </a></li>
-                                    <li><a href="/dui-laws-in-your-state/cananda/new-brunswick">New Brunswick </a></li>
-                                    <li><a href="/dui-laws-in-your-state/cananda/newfoundland-and-labrador">Newfoundland and Labrador </a></li>
-                                    <li><a href="/dui-laws-in-your-state/cananda/nothwest-territories">Northwest Territories </a></li>
-                                    <li><a href="/dui-laws-in-your-state/cananda/nova-scotia">Nova Scotia </a></li>
-                                    <li><a href="/dui-laws-in-your-state/cananda/nunavut">Nunavut </a></li>
-                                    <li><a href="/dui-laws-in-your-state/cananda/ontario">Ontario </a></li>
-                                    <li><a href="/dui-laws-in-your-state/cananda/prince-edward-island">Prince Edward Island </a></li>
-                                    <li><a href="/dui-laws-in-your-state/cananda/quebec">Quebec </a></li>
-                                    <li><a href="/dui-laws-in-your-state/cananda/saskatchewan">Saskatchewan </a></li>
-                                    <li><a href="/dui-laws-in-your-state/cananda/yukon">Yukon </a></li>
-                                    <? endif; ?>
+                                    <li><a href="/find-an-attorney/cananda/ontario">Ontario </a></li>
+                                    <li><a href="/find-an-attorney/cananda/quebec">Quebec </a></li>
+                                    <li><a href="/find-an-attorney/cananda/saskatchewan">Saskatchewan </a></li>
+                                    
                                 </ul>
                             </div>
                     </div>

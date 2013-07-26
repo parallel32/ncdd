@@ -199,6 +199,11 @@ class Model {
 		return self::$app['mongo']->count($query,$this->collection,$slaveOkay);
 		
 	}
+	public function distinct($key, $query=array()){
+
+		return self::$app['mongo']->distinct($this->collection, $key, $query);
+		
+	}
 	public function createSlug($string){
 		
 		return $this->toAscii($string);

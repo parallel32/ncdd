@@ -105,30 +105,24 @@ class Member extends User {
 		$this->practiceAreas = $doc['practiceAreas'];
 		$this->yearsinpractice = $doc['yearsinpractice'];
 		
-		$this->currentMembership = (int)$doc['currentMembership'];
-		$this->currentFacultyPosition = (int)$doc['currentFacultyPosition'];
+		$this->currentMembership = (!empty($doc['currentMembership'])) ? (int)$doc['currentMembership']: null;
+		$this->currentFacultyPosition = (!empty($doc['currentFacultyPosition'])) ? (int)$doc['currentFacultyPosition']: null;
 
-		$order1=null;
-		$order2=null;
+		$order_arr = array();
 		if(!empty($this->currentMembership)){
-			$order1 = self::$order[self::$membershipReversed[$this->currentMembership]];
+			array_push($order_arr, self::$order[self::$membershipReversed[$this->currentMembership]]);
 		}
 		if(!empty($this->currentFacultyPosition)){
-			$order2 = self::$order[self::$facultyPositionReversed[$this->currentFacultyPosition]];
+			array_push($order_arr, self::$order[self::$facultyPositionReversed[$this->currentFacultyPosition]]);
 		}
-		if(!empty($order1) && !empty($order2)){
-			if($order1 > $order2){
-				$this->currentOrder = $order1;
-			}else{
-				$this->currentOrder = $order2;
-			}
+		if($this->boardCertified){
+			array_push($order_arr, self::$order['BOARD CERTIFIED']);	
 		}
-		if(!empty($order1) && empty($order2)){
-			$this->currentOrder = $order1;
+		rsort($order_arr);
+		if(!empty($order_arr)){
+			$this->currentOrder = $order_arr[0];
 		}
-		if(!empty($order2) && empty($order1)){
-			$this->currentOrder = $order2;
-		}
+		
 
 		
 	}
@@ -262,7 +256,9 @@ class Member extends User {
 		return parent::getUserBySession($app,'member');
 
 	}
-	
+	public function distinctStates(){
+		return $this->distinct('location.state');
+	}
 	public function search($string){
 
 		$fields=array('_id'=>1
@@ -314,6 +310,34 @@ class Member extends User {
 				$result[$i]['currentFacultyPosition'] = (!empty($result[$i]['currentFacultyPosition'])) ? self::$facultyPositionReversed[$result[$i]['currentFacultyPosition']] : '';
 				$result[$i]['boardCertified'] = ($result[$i]['boardCertified']) ? "Yes" : "No";
 				$result[$i]['listed'] = ($result[$i]['listed']) ? "Yes" : "No";
+			}
+		endif;
+		return $result;
+	}
+
+	public function searchByState($state){
+
+		$fields=array('_id'=>1
+					,'firstName'=>1
+					,'lastName'=>1
+					,'slug'=>1
+					,'primaryPhone'=>1
+					,'email'=>1
+					,'image'=>1
+					,'currentMembership'=>1
+					,'currentFacultyPosition'=>1
+					,'boardCertified'=>1
+					,'websites'=>1
+					);
+		$result = $this->find($query=array('location.state'=>$state),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);		
+				
+		if(!empty($result)):
+			for ($i=0; $i < count($result); $i++) {
+				$result[$i]['image'] = (!empty($result[$i]['image'])) ? $result[$i]['image']['urls']['small']['CDN'] : '/noprofileimage';
+				$result[$i]['currentMembership'] = (!empty($result[$i]['currentMembership'])) ? self::$membershipReversed[$result[$i]['currentMembership']] : '';
+				$result[$i]['currentFacultyPosition'] = (!empty($result[$i]['currentFacultyPosition'])) ? self::$facultyPositionReversed[$result[$i]['currentFacultyPosition']] : '';
+				$result[$i]['boardCertified'] = ($result[$i]['boardCertified']) ? "Yes" : "No";
+				$result[$i]['boardCertifiedBadge'] = self::$boardCertifiedBadge;
 			}
 		endif;
 		return $result;

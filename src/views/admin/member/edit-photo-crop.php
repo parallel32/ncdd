@@ -115,7 +115,7 @@
         $('#image').Jcrop({
           onChange: showCoords,
           onSelect: showCoords,
-          aspectRatio: 4/5
+          aspectRatio: 1
           ,minSize:[50,50]
           ,maxSize:[600,700]
         },function(){

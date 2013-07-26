@@ -187,7 +187,12 @@ class MongoWrapper
 			return false;
 		endif;
 	}
-	
+	public function distinct($collection, $key, $query=array()){
+		$c = $this->database->selectCollection($collection);
+		$result = $c->distinct($key,$query);
+
+		return $result;
+	}
 	/**
 	 * 
 	 */ 

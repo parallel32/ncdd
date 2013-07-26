@@ -12,6 +12,12 @@ use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Saw\Model;
 
 $imgUnavailable = __DIR__.'/../../../www/admin.ncdd.com/public_html/assets/img/404-250.jpg';
+$profileImgUnavailable = __DIR__.'/../../../www/admin.ncdd.com/public_html/assets/img/404-profile-159.png';
+$app->get('/noprofileimage', function (Request $request) use ($app,$profileImgUnavailable) {
+    $file_contents = file_get_contents($profileImgUnavailable);
+	return new Response($file_contents, 200, array('Content-Type' => 'image/jpeg'));
+});
+
 $app->get('/badge/{id}/member', function ($id, Request $request) use ($app, $imgUnavailable) {
 	// return the badge
 	$member = new Model\Member(array('_id'=>$id),$app);
@@ -71,6 +77,29 @@ $app->get('/badge/{id}/boardcertified', function ($id, Request $request) use ($a
 	
 	$file_contents = file_get_contents($img_path);
 	return new Response($file_contents, 200, array('Content-Type' => 'image/jpeg'));
+		
+});
+$app->get('/member/{id}/{slug}', function ($id, $slug, Request $request) use ($app) {
+	
+	// return the badge
+	$member = new Model\Member(array('_id'=>$id),$app);
+	$member = $member->findById();
+	
+	$member['image'] = (!empty($member['image'])) ? $member['image']['urls']['small']['CDN'] : '/noprofileimage';
+	$member['currentMembership'] = (!empty($member['currentMembership'])) ? Model\Member::$membershipReversed[$member['currentMembership']] : '';
+	$member['currentFacultyPosition'] = (!empty($member['currentFacultyPosition'])) ? Model\Member::$facultyPositionReversed[$member['currentFacultyPosition']] : '';
+	$member['boardCertified'] = ($member['boardCertified']) ? "Yes" : "No";
+	$member['boardCertifiedBadge'] = Model\Member::$boardCertifiedBadge;
+
+	$location = new Model\Location(array('ownerId'=>$member['_id']),$app);
+	$locations = $location->getByOwner();
+	$member['locations'] = $locations;
+
+	$view_vars['member'] = $member;
+	$page_vars = $app['get_pages']('');
+	$view_vars = array_merge($page_vars,$view_vars);
+
+	return $app['view']->render('page/profile', 'content', $view_vars);
 		
 });
 
