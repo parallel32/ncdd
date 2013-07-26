@@ -23,7 +23,7 @@
 
 	};
 	function save (){
-		$('#body').val($('.body').html());
+		$('#input-body').val($('#body').html());
 		io.saw.FormPost.activate({postUrl:'/page/edit'
 		   ,serializeSelector:':input'
 		   ,postOnComplete:function(responseObj,responseStatus){

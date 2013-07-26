@@ -15,6 +15,7 @@
                      <form id="saw-form" class="horizontal-form portlet">
                         <input type="hidden" name="doc[currentType]" value="<?=$this->vars['currentType']?>">
                         <input type="hidden" name="doc[slug]" value="<?=$this->vars['slug']?>">
+                        <input type="hidden" name="doc[add]" value="<?=$this->vars['add']?>">
                         <? if($this->vars['currentType'] == $this->vars['type']['MANAGED']): ?>
                            <input type="hidden" name="doc[currentStatus]" value="<?=$this->vars['status']['PUBLISHED']?>">
                         <? endif; ?>
@@ -42,6 +43,7 @@
                            </div>
                            <!--/span-->
                         </div>
+                        <? endif; ?>
                         <h3 class="form-section text-info"><strong>Section</strong></h3>
                         <div class="row-fluid">
                            <div class="span12 ">
@@ -49,7 +51,7 @@
                                  <label class="control-label"></label>
                                  <div class="controls">
                                     <select class="large m-wrap section" name="doc[section]">
-                                       <? $sections = array('DISCOVER','LEARN','BOARD CERTIFICATION');
+                                       <? $sections = \Saw\Model\Page::$sections;
                                           foreach($sections as $key=>$val): ?>
                                        <option value="<?=$val?>" <?=(!empty($this->vars['page']) && array_key_exists('section',$this->vars['page']) && $this->vars['page']['section'] == $val) ?'selected':'';?>><?=$val?></option>
                                        <? endforeach; ?>
@@ -60,14 +62,29 @@
                            </div>
                            <!--/span-->
                         </div>
-                        <? endif; ?>
+                        
                         <h3 class="form-section text-info"><strong>Headline</strong></h3>
                         <div class="row-fluid">
                            <div class="span12 ">
                               <div class="control-group ">
                                  <label class="control-label"></label>
                                  <div class="controls">
-                                    <input <?=($this->vars['currentType'] == $this->vars['type']['MANAGED']) ? 'readonly="readonly"' : '' ?> type="text" name="doc[headline]" value="<?=(!empty($this->vars['page']) && array_key_exists('headline',$this->vars['page'])) ? $this->vars['page']['headline']: $this->vars['headline']?>" class="m-wrap span10 headline">
+                                    <input type="text" name="doc[headline]" value="<?=(!empty($this->vars['page']) && array_key_exists('headline',$this->vars['page'])) ? $this->vars['page']['headline']: $this->vars['headline']?>" class="m-wrap span10 headline">
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        <h3 class="form-section text-info"><strong>Page Url</strong></h3>
+                        <div class="row-fluid">
+                           <div class="span12 ">
+                              <div class="control-group ">
+                                 <label class="control-label"></label>
+                                 <div class="controls">
+                                    <input type="text" name="doc[slug]" value="<?=(!empty($this->vars['page']) && array_key_exists('slug',$this->vars['page'])) ? $this->vars['page']['slug']: $this->vars['slug']?>" class="m-wrap span10 slug">
+                                    <span class="help-block">Here you can overwrite the url.  If this is a new page and you leave this blank the system will create one based on the Headline.</span>
+                                    <span class="help-block">Example urls: deans-message, dui-laws-in-your-state</span>
+                                    <span class="help-block">NOTE: changing this on "Managed" pages will cause the link to break on the public website.</span>
                                  </div>
                               </div>
                            </div>
@@ -79,8 +96,8 @@
                               <div class="control-group ">
                                  <label class="control-label"></label>
                                  <div class="controls">
-                                    <span class="help-block body"><?=(!empty($this->vars['page']) && array_key_exists('body',$this->vars['page'])) ? $this->vars['page']['body'] : ''?></span>
-                                    <input id="body" type="hidden" name="doc[body]" value="">
+                                    <span id="body" class="help-block"><?=(!empty($this->vars['page']) && array_key_exists('body',$this->vars['page'])) ? $this->vars['page']['body'] : 'Click Here To Add Content...'?></span>
+                                    <input id="input-body" type="hidden" name="doc[body]" value="">
                                  </div>
                               </div>
                            </div>
@@ -128,12 +145,24 @@
          <script>
          jQuery(document).ready(function() {    
             io.saw.Page.init();
+            /*
             Aloha.ready( function() {
                Aloha.jQuery('.body').aloha();
             });
-            /*var inPlaceEditor = new SnapEditor.Form("body", { 
-             
-           });*/   
+            //*/
+             var editor = new SnapEditor.InPlace("body", {
+                 buttons: [
+    "styleBlock", "|",
+    "p", "|",
+    "bold", "italic", "underline", "|",
+    "alignment", "|",
+    "alignLeft", "alignCentre", "alignRight", "alignJustify", "|",
+    "orderedList", "unorderedList", "indent", "outdent", "|",
+    "link", "table", "horizontalRule" 
+  ]
+            });
+
+           
          });
             
          </script>

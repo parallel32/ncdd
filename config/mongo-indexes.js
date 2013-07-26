@@ -1,6 +1,9 @@
 // INDEXES
 db.location.ensureIndex({'point':'2d'});
 db.page.ensureIndex({slug:1});
+db.page.ensureIndex({currentType:1});
+db.page.ensureIndex({section:1});
+db.page.ensureIndex({currentStatus:1});
 
 ///////////
 // examples:

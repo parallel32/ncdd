@@ -115,8 +115,8 @@
                            <div class="row-fluid">
                               <div class="span12 ">
                                  <div class="control-group">
-                                    <span class="help-block description"></span>
-                                    <input id="description" type="hidden" name="doc[description]" value="">
+                                    <span id="description" class="help-block"></span>
+                                    <input id="input-description" type="hidden" name="doc[description]" value="">
                                  </div>
                               </div>
                            </div>
@@ -192,10 +192,24 @@
       jQuery(document).ready(function() {    
          io.saw.FormClockFacePicker.init();
          io.saw.Agenda.init();
-
+         /*
          Aloha.ready( function() {
               Aloha.jQuery('.description').aloha();
          });
+         */
+         var editor = new SnapEditor.InPlace("description", {
+                 buttons: [
+    "styleBlock", "|",
+    "p", "|",
+    "bold", "italic", "underline", "|",
+    "alignment", "|",
+    "alignLeft", "alignCentre", "alignRight", "alignJustify", "|",
+    "orderedList", "unorderedList", "indent", "outdent", "|",
+    "link", "table", "horizontalRule" 
+  ]
+            });
+
+      
       });
       
       </script>

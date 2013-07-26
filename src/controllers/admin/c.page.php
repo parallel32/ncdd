@@ -32,6 +32,19 @@ $page->get('/dynamic', function (Request $request) use ($app) {
 	// retrieve document from request
     $page = new Model\Page(array(), $app);
     $results = $page->fetchDynamic();
+    //error_log('results:'.print_r($results,true));
+    if(!empty($results)){
+    	$message = count($results).' pages found.';
+    }else{
+    	$message = 'No pages matched that name.';
+    }
+    return new Response(json_encode(array('results'=>$results,'message' => $message)), 200,array('Content-Type' => 'application/json'));
+	
+});
+$page->get('/managed', function (Request $request) use ($app) {
+	// retrieve document from request
+    $page = new Model\Page(array(), $app);
+    $results = $page->fetchManaged();
     if(!empty($results)){
     	$message = count($results).' pages found.';
     }else{
@@ -50,7 +63,7 @@ $page->get('/{slug}/delete', function ($slug, Request $request) use ($app) {
 });
 
 $page->get('/{slug}/{type}/edit/{headline}', function ($slug, $type, $headline, Request $request) use ($app) {
-
+	$add = ($headline == 'place-holder' && $slug == 'place-holder') ? 'yes': 'no';
 	$headline = ($headline == 'place-holder') ? '' : $headline ;
 	$slug = ($slug == 'place-holder') ? '' : $slug;
 
@@ -75,6 +88,7 @@ $page->get('/{slug}/{type}/edit/{headline}', function ($slug, $type, $headline, 
 						,'headline'=>$headline
 						,'statusReversed'=>Model\Page::$statusReversed
 						,'status'=>Model\Page::$status
+						,'add'=>$add
 						);
 	return $app['view']->render('page/edit', 'default', $view_vars);
 })->value('slug','')->value('headline','');

@@ -49,7 +49,7 @@
 	Seminar.init = function(saveMode){
 		$('#saw-form input').keypress(function (e) {
 		   if (e.which == 13) {
-		   	  $('#description').val($('.description').html());
+		   	  $('#input-description').val($('#description').html());
 		      if(saveMode == 'edit'){
 		         edit();
 		      }else if(saveMode == 'add'){
@@ -59,7 +59,7 @@
 		});
 		$('#saw-form .btn.green').click(function(e){
 			e.preventDefault();
-			$('#description').val($('.description').html());
+			$('#input-description').val($('#description').html());
 			if(saveMode == 'edit'){
 				edit();
 			}else if(saveMode == 'add'){

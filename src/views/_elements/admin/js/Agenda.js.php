@@ -1,7 +1,7 @@
 <script type="text/javascript">
 (function( Agenda, $, undefined ) {
 	function save (){
-		$('#description').val($('.description').html());
+		$('#input-description').val($('#description').html());
 		io.saw.FormPost.activate({postUrl:'/agenda/saveTimeSlot'
 		   ,serializeSelector:':input'
 		   ,postOnComplete:function(responseObj,responseStatus){}
@@ -12,7 +12,7 @@
 		});      
 	};
 	function remove (){
-		$('#description').val($('.description').html());
+		$('#input-description').val($('#description').html());
 		io.saw.FormPost.activate({postUrl:'/agenda/removeTimeSlot'
 		   ,serializeSelector:':input'
 		   ,postOnComplete:function(responseObj,responseStatus){}
@@ -43,7 +43,7 @@
 			$('.dateTime').val($(this).attr('data-date'));
 			$('.title').val($('#'+$('#id').val()+'-title').html());
 			$('.color').val($('#'+$('#id').val()+'-color').html());
-			$('.description').html($('#'+$('#id').val()+'-description').html());
+			$('#description').html($('#'+$('#id').val()+'-description').html());
 			// activate the modal
 			$('#timeslot-modal').modal({keyboard: false});	
 		})

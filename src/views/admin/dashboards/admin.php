@@ -10,7 +10,7 @@
             </div>
             <!-- END PAGE HEADER-->
                   <div id="dashboard">
-               <!-- BEGIN DASHBOARD STATS -->
+               <!-- BEGIN DASHBOARD STATS --
                <div class="row-fluid">
                   <div class="span6 responsive" data-tablet="span6" data-desktop="span6">
                      <div class="dashboard-stat blue">

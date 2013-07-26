@@ -13,38 +13,27 @@
             
             <div id="tab_1_5" class="tab-pane active">
                <h3>Managed Pages</h3>
+               <a class="btn green managed" href="/page/place-holder/MANAGED/edit/place-holder">Add New <i class="icon-plus"></i></a>
                <div id="managed-pages" class="portlet-body">
+                  <p id="managed-pages-result-message"></p>
                   <table class="table table-striped table-hover">
                      <thead class="hide">
                         <tr>
                            <th>Headline</th>
                            <th>URL Path</th>
+                           <th>Section</th>
                            <th></th>
                         </tr>
                      </thead>
                      <tbody>
-                        <tr>
-                           <td>Home</td>
-                           <td>/home</td>
-                           <td><a class="btn large blue-stripe managed" data-headline="Home" data-slug="home" data-type="MANAGED">Edit</a></td>
-                        </tr>
-                        <tr>
-                           <td>Founding Members</td>
-                           <td>/founding-members</td>
-                           <td><a class="btn large blue-stripe managed" data-headline="Founding Members" data-slug="founding-members" data-type="MANAGED">Edit</a></td>
-                        </tr>
-                        <tr>
-                           <td>Dean's Message</td>
-                           <td>/deans-message</td>
-                           <td><a class="btn large blue-stripe managed" data-headline="Dean's Message" data-slug="deans-message" data-type="MANAGED">Edit</a></td>
-                        </tr>
-
+                        
                      </tbody>
                   </table>
                </div>
                <h3>Dynamic Pages</h3>
-               <a class="btn green" href="/page/place-holder/DYNAMIC/edit/place-holder">Add New <i class="icon-plus"></i></a>
-               <div id="results" class="portlet-body">
+               <a class="btn green dynamic" href="/page/place-holder/DYNAMIC/edit/place-holder">Add New <i class="icon-plus"></i></a>
+               <div id="dynamic-pages" class="portlet-body">
+                  <p id="dynamic-pages-result-message"></p>
                   <table class="table table-striped table-hover">
                      <thead class="hide">
                         <tr>
@@ -76,6 +65,7 @@
                         </div>
                      </div>
                      <!--/ SUCCESSFUL SAVE MODAL -->
+                     
 
                
             </div>
@@ -85,17 +75,13 @@
       <!-- END PAGE -->
 <script>
 jQuery(document).ready(function() {  
-   $('#managed-pages td .managed').click(function(e){
-      document.location.href='/page/'+$(this).attr('data-slug')+'/'+$(this).attr('data-type')+'/edit/'+$(this).attr('data-headline');
-   });
-
    io.saw.FormGet.activate({postUrl:'/page/dynamic'
       ,postOnComplete:function(responseObj,responseStatus){}
       ,postOnSuccess:function(responseObj){
             
             //clear all records
-            $('#results tbody').html('');
-            $('#result-message').html(responseObj.message);
+            $('#dynamic-pages tbody').html('');
+            $('#dynamic-pages-result-message').html(responseObj.message);
 
             $.each(responseObj.results,function(key,page){
                html = '<tr>'+
@@ -105,15 +91,15 @@ jQuery(document).ready(function() {
                      '   <td class=" hidden-phone">'+page.currentStatus+'</td>'+
                      '   <td><a class="btn large green-stripe dynamic" data-headline="'+page.headline+'" data-slug="'+page.slug+'" data-type="DYNAMIC">Edit</a> <a class="btn large red-stripe delete" data-slug="'+page.slug+'">Delete</a></td>'+
                      '</tr>';
-               $('#results tbody').append(html);
-               $('#results thead').removeClass('hide');
+               $('#dynamic-pages tbody').append(html);
+               $('#dynamic-pages thead').removeClass('hide');
             });
             
                // bind click events to the records....
-            $('#results td .dynamic').click(function(e){
+            $('#dynamic-pages td .dynamic').click(function(e){
                document.location.href='/page/'+$(this).attr('data-slug')+'/'+$(this).attr('data-type')+'/edit/'+$(this).attr('data-headline');
             });   
-            $('#results td .delete').click(function(e){
+            $('#dynamic-pages td .delete').click(function(e){
                $('#save-modal').modal({keyboard: false});
                window.the_this = $(this);
                
@@ -133,8 +119,40 @@ jQuery(document).ready(function() {
             
 
       }
-   });
+   });   
+//*
+   window.setTimeout(function(){
 
+      io.saw.FormGet.activate({postUrl:'/page/managed'
+         ,postOnComplete:function(responseObj,responseStatus){}
+         ,postOnSuccess:function(responseObj){
+               
+               //clear all records
+               $('#managed-pages tbody').html('');
+               $('#managed-pages-result-message').html(responseObj.message);
+
+               $.each(responseObj.results,function(key,page){
+                  html = '<tr>'+
+                        '   <td class="">'+page.headline+'</td>'+
+                        '   <td class="">'+page.slug+'</td>'+
+                        '   <td class="">'+page.section+'</td>'+
+                        '   <td><a class="btn large green-stripe managed" data-headline="'+page.headline+'" data-slug="'+page.slug+'" data-type="MANAGED">Edit</a></td>'+
+                        '</tr>';
+                  $('#managed-pages tbody').append(html);
+                  $('#managed-pages thead').removeClass('hide');
+               });
+               
+                  // bind click events to the records....
+               $('#managed-pages td .managed').click(function(e){
+                  document.location.href='/page/'+$(this).attr('data-slug')+'/'+$(this).attr('data-type')+'/edit/'+$(this).attr('data-headline');
+               });   
+
+         }
+      });
+      
+   }, 3000);
+   
+//*/
    
 });      
 </script>

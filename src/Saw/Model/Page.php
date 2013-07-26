@@ -22,15 +22,32 @@ class Page extends Model {
 	static public $type = array('MANAGED'=>0,'DYNAMIC'=>10);
 	static public $typeReversed = array(0=>'MANAGED',10=>'DYNAMIC');
 	public $currentType;
+	static public $sections = array('DISCOVER','LEARN','BOARD CERTIFICATION','DUI-LAWS-USA');
 	public $slug;
 	public $headline;
 	public $body;
 	public $section;
 	public $publishedDate;
+	public $add;
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addPropertyConstraint('headline', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('body', new Constraints\NotBlank(array('message'=>'cannot be blank')));
+		$metadata->addConstraint(new Callback(array(
+            'methods' => array('isValidSlug'),
+        )));
+	}
+	/**
+	 * validator helper function
+	*/
+	public function isValidSlug(ExecutionContext $context){
+		if($this->add == 'yes'){
+			$result = $this->findById('slug');
+			if(!empty($result)){
+				$propertyPath = $context->getPropertyPath().'slug';
+	        	$context->addViolationAtPath($propertyPath,'This url already exists in the system.  Please define another variation and save again.', array(), null);
+	        }
+	    }
 	}
 	public function __construct($doc, Application $app){
 		parent::__construct($app);
@@ -45,6 +62,7 @@ class Page extends Model {
 		$this->publishedDate = $doc['publishedDate'];
 		$this->section = $doc['section'];
 		$this->currentType = (int)$doc['currentType'];
+		$this->add = $doc['add'];
 		
 	}
 	
@@ -80,10 +98,20 @@ class Page extends Model {
 	public function fetchDynamic($offset=0,$limit=100){
 		$query = array('currentType'=>self::$type['DYNAMIC']);
 		$fields = array();
-		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('_id'=>-1),(int)$offset,(int)$limit);
-		for ($i=0; $i < count($result); $i++) { 
-			$result[$i]['currentStatus'] = self::$statusReversed[$result[$i]['currentStatus']];
-		}
+		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('section'=>1,'headline'=>1),(int)$offset,(int)$limit);
+		if(!empty($result)):
+			for ($i=0; $i < count($result); $i++) { 
+				$result[$i]['currentStatus'] = self::$statusReversed[$result[$i]['currentStatus']];
+			}
+		endif;
+		return $result;
+
+	}
+	public function fetchManaged($offset=0,$limit=100){
+		$query = array('currentType'=>self::$type['MANAGED']);
+		$fields = array();
+		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('section'=>1,'headline'=>1),(int)$offset,(int)$limit);
+		//error_log('fetch:'.print_r($result,true));
 		return $result;
 
 	}
@@ -98,7 +126,31 @@ class Page extends Model {
 	public function fetchBySection($section, $offset=0,$limit=100){
 		$query = array('section'=>$section);
 		$fields = array();
-		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('_id'=>-1),(int)$offset,(int)$limit);
+		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('headline'=>1),(int)$offset,(int)$limit);
+		//error_log('fetch:'.print_r($result,true));
+		return $result;
+
+	}
+	public function fetchBySectionSlug($offset=0,$limit=500){
+		$query = array('section'=>$this->section,'slug'=>$this->slug);
+		$fields = array();
+		$result = $this->findOne($query,$fields,$slaveOkay=true,$sort=array('headline'=>1),(int)$offset,(int)$limit);
+		//error_log('fetch:'.print_r($result,true));
+		return $result;
+
+	}
+	public function fetchBySectionPublishedOnly($section, $offset=0,$limit=100){
+		$query = array('section'=>$section, 'currentStatus'=>self::$status['PUBLISHED']);
+		$fields = array();
+		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('headline'=>1),(int)$offset,(int)$limit);
+		//error_log('fetch:'.print_r($result,true));
+		return $result;
+
+	}
+	public function fetchBySectionSlugPublishedOnly($offset=0,$limit=500){
+		$query = array('section'=>$this->section,'slug'=>$this->slug, 'currentStatus'=>self::$status['PUBLISHED']);
+		$fields = array();
+		$result = $this->findOne($query,$fields,$slaveOkay=true,$sort=array('headline'=>1),(int)$offset,(int)$limit);
 		//error_log('fetch:'.print_r($result,true));
 		return $result;
 

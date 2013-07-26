@@ -69,8 +69,8 @@
                            <div class="row-fluid">
                               <div class="span12 ">
                                  <div class="control-group">
-                                    <span class="help-block description"></span>
-                                    <input id="description" type="hidden" name="doc[description]" value="">
+                                    <span id="description" class="help-block">Description Goes Here</span>
+                                    <input id="input-description" type="hidden" name="doc[description]" value="">
                                  </div>
                               </div>
                            </div>
@@ -121,8 +121,22 @@
          io.saw.FormDatePicker.init('range');
          io.saw.Seminar.init('add');
          io.saw.Seminar.sluggify('headline','headline');
+         /*
          Aloha.ready( function() {
             Aloha.jQuery('.description').aloha();
          });
+         */
+         var editor = new SnapEditor.InPlace("description", {
+                 buttons: [
+    "styleBlock", "|",
+    "p", "|",
+    "bold", "italic", "underline", "|",
+    "alignment", "|",
+    "alignLeft", "alignCentre", "alignRight", "alignJustify", "|",
+    "orderedList", "unorderedList", "indent", "outdent", "|",
+    "link", "table", "horizontalRule" 
+  ]
+            });
+
       });      
       </script>

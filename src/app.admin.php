@@ -22,6 +22,7 @@ $app->mount('/page', 		include __DIR__.'/controllers/admin/c.page.php');
 // i.e. some admin, some public, some member only.
 $app = require __DIR__.'/controllers/admin/c.application.php';
 $app = require __DIR__.'/controllers/admin/c.payment-manage.php';
+$app = require __DIR__.'/controllers/admin/c.vfl.php';
 
 /**
  * Before Filter

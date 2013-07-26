@@ -2,13 +2,13 @@
                     <div class="row-fluid becomeAmember">
                         <div class="title text-center">
                             <div class="bg">
-                                <h3>DUI Laws In your state</h3>
-                                <h3 class="stroke">dui laws in your state</h3>
-                                <h3 class="insetShadow">dui laws in your state</h3>
+                                <h3><?=$this->vars['page']['headline']?></h3>
+                                <h3 class="stroke"><?=$this->vars['page']['headline']?></h3>
+                                <h3 class="insetShadow"><?=$this->vars['page']['headline']?></h3>
                             </div>
                         </div>
                         <div class="becomeAmemberContent">
-                            <p>The information contained on this page is intended for general informational purposes only and is not intended to be nor should it be taken or relied upon as legal advice. NCDD makes no representation that the information on this page is current and expressly disclaims any information on this page as sufficient to be relied upon in making any legal decision. Laws change frequently and the laws contained on this page may not be current, If you need legal assistance or advice, consult a lawyer in your state. You can find NCDD member lawyers in your State listed under "Find an Attorney" in the menu to the left or at the top of the page. None of the information on this page represents the opinion or views of the NCDD.</p>
+                            <?=$this->vars['page']['body']?>
                         </div>
                     </div>
                     <div class="attorneyContent">
@@ -23,6 +23,7 @@
                                 'namescolor':'#666666', //color of the abbreviations 
                                 'namesShadowColor':'#666666', //tooltip shadow color
                             },
+                            /*
                             'map_1':{
                                 'namesId':'AB',//name's ID (Don't change it)
                                 'name': 'ALBERTA',  //province name
@@ -162,6 +163,8 @@
                                 'downcolor':'#993366',
                                 'enable':true,
                             },
+
+                            //*/
 
                             'map_15':{
                                 'namesId':'AL',//name's ID (Don't change it)
@@ -678,6 +681,7 @@
                         </script>
                         <script type="text/javascript">
                             $(function(){
+                                /*
                                 addEvent('map_1');
                                 addEvent('map_2');
                                 addEvent('map_3');
@@ -692,6 +696,7 @@
                                 addEvent('map_12');
                                 addEvent('map_13');
                                 addEvent('map_14');
+                                //*/
                                 addEvent('map_15');
                                 addEvent('map_16');
                                 addEvent('map_17');
@@ -759,6 +764,7 @@
                                         <div class="attorneyMapTitleBgSep"></div>
                                     </div>
                                 </div>
+                                <?if(false):?>
                                 <!-- map code canada-->
                                 <div id="map_base" class="canadaMap">
                                     <span class="tip" id="tip"></span>
@@ -1435,6 +1441,7 @@
                                         </g>
                                     </svg>
                                 </div>
+                                <? endif; ?>
                                 <!-- map code usa-->
                                 <div id="map_base" class="usaMap">
                                     <span class="tip" id="tip"></span>
@@ -2549,6 +2556,7 @@
                                     <li><a href="/dui-laws-in-your-state/usa/westVirginia">West Virginia</a></li>
                                     <li><a href="/dui-laws-in-your-state/usa/wisconsin">Wisconsin</a></li>
                                     <li><a href="/dui-laws-in-your-state/usa/wyoming">Wyoming </a></li>
+                                    <? if(false):?>
                                     <li class="titleMap">Canada</li>
                                     <li><a href="/dui-laws-in-your-state/cananda/alberta">Wyoming </a></li>
                                     <li><a href="/dui-laws-in-your-state/cananda/alberta">Alberta </a></li>
@@ -2564,6 +2572,7 @@
                                     <li><a href="/dui-laws-in-your-state/cananda/quebec">Quebec </a></li>
                                     <li><a href="/dui-laws-in-your-state/cananda/saskatchewan">Saskatchewan </a></li>
                                     <li><a href="/dui-laws-in-your-state/cananda/yukon">Yukon </a></li>
+                                    <? endif; ?>
                                 </ul>
                             </div>
                     </div>

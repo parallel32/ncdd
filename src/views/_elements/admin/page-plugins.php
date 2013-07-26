@@ -55,6 +55,12 @@ EOT;
          break;
       case 'editor':
          echo <<< EOT
+             <script type="text/javascript" src="/assets/snapeditor/snapeditor.js"></script>
+
+EOT;
+         break;
+      case 'editor-aloha':
+         echo <<< EOT
             <script>
             var Aloha = window.Aloha || ( window.Aloha = {} );
             
@@ -212,7 +218,7 @@ EOT;
    <!-- END PAGE LEVEL SCRIPTS -->  
    <script>
       jQuery(document).ready(function() {    
-        $.fn.modalmanager.defaults.resize = true;
+        //$.fn.modalmanager.defaults.resize = true;
          App.init(); // initlayout and core plugins
       });
    </script>

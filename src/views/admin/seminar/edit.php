@@ -79,8 +79,8 @@
                            <div class="row-fluid">
                               <div class="span12 ">
                                  <div class="control-group">
-                                    <span class="help-block description"><?=$seminar['description']?></span>
-                                    <input id="description" type="hidden" name="doc[description]" value="">
+                                    <span id="description" class="help-block "><?=$seminar['description']?></span>
+                                    <input id="input-description" type="hidden" name="doc[description]" value="">
                                  </div>
                               </div>
                            </div>
@@ -290,9 +290,24 @@
          io.saw.FormDatePicker.init('range');
          io.saw.Seminar.init('edit');
          io.saw.Seminar.sluggify('headline','headline');
+         /*
          Aloha.ready( function() {
             Aloha.jQuery('.description').aloha();
          });
+         */
+         var editor = new SnapEditor.InPlace("description", {
+                 buttons: [
+    "styleBlock", "|",
+    "p", "|",
+    "bold", "italic", "underline", "|",
+    "alignment", "|",
+    "alignLeft", "alignCentre", "alignRight", "alignJustify", "|",
+    "orderedList", "unorderedList", "indent", "outdent", "|",
+    "link", "table", "horizontalRule" 
+  ]
+            });
+
+            
          io.saw.FileUpload.init({
             fileUploadLimit:1
             ,formId:'#fileupload'

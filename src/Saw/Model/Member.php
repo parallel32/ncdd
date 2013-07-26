@@ -105,8 +105,8 @@ class Member extends User {
 		$this->practiceAreas = $doc['practiceAreas'];
 		$this->yearsinpractice = $doc['yearsinpractice'];
 		
-		$this->currentMembership = $doc['currentMembership'];
-		$this->currentFacultyPosition = $doc['currentFacultyPosition'];
+		$this->currentMembership = (int)$doc['currentMembership'];
+		$this->currentFacultyPosition = (int)$doc['currentFacultyPosition'];
 
 		$order1=null;
 		$order2=null;
