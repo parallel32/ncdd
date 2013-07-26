@@ -18,7 +18,8 @@
                             </div>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="welcome">
-                                    <img src="/assets/img/video.png" alt="" class="pull-right video">
+                                    <iframe class="pull-right" width="435" height="245" src="//www.youtube.com/embed/IgTzHmMDqng" frameborder="0" allowfullscreen></iframe>
+                                    
                                     <p>The National College for DUI Defense®, Inc. (NCDD) is a professional, non-profit corporation dedicated to the improvement of the criminal defense bar, and to the
                                         dissemination of information to the public about DUI Defense Law as a specialty area of law practice. The National College is headquartered in Montgomery, Alabama.It consists of a governing Board of Regents, a Founding Membership, a Sustaining Membership and a General Membership.</p>
                                     <p>College members represent the most experienced DUI defense attorneys in the country. The original Founding Members funded the establishment of the college, and are among the top DUI practitioners in the United States. Since its founding, the College continues to recognize, as Sustaining Members, defense lawyers who have demonstrated the skill and experience of the original Founding Members, as well as the generosity to financially sustain the growth of the NCDD. General Members are the backbone of the college—capable, experienced attorneys who dedicate a portion of their practice to the defense of DUI cases throughout the country. </p>
@@ -56,6 +57,7 @@
                         </div>
                     </div>
                     <div class="row-fluid postsList">
+                        <!--
                         <div class="title text-center">
                             <div class="bg">
                                 <h3>latest DUI Blog posts</h3>
@@ -63,6 +65,7 @@
                                 <h3 class="insetShadow">latest DUI Blog posts</h3>
                             </div>
                         </div>
+
                         <ul class="thumbnails">
                             <li class="span3">
                                 <div class="thumbnail">
@@ -137,7 +140,10 @@
                                 </div>
                             </li>
                         </ul>
+                    -->
                     </div>
+
+                    <!--
                     <div class="row-fluid bottomPadding upcomingSeminars">
                         <div class="title text-center">
                             <div class="bg">
@@ -192,6 +198,9 @@
                             <a href="#" class="btn">All Seminars</a>
                         </div>
                     </div>
+
+                    -->
+                    <!--
                     <div class="row-fluid bottomPadding recentNews">
                         <div class="title text-center">
                             <div class="bg">
@@ -266,6 +275,7 @@
                             <a href="#" class="btn">All News</a>
                         </div>
                     </div>
+                    -->
                     <div class="row-fluid bottomPadding findAnAttorney">
                         <div class="title text-center">
                             <div class="bg">
@@ -275,13 +285,12 @@
                             </div>
                         </div>
                         <p class="text-center">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consequat elementum condimentum. Etiam et nisi quis libero semper iaculis. Cras vel vehicula justo. Vestibulum blandit odio et nunc volutpat fermentum. Fusce egestas 
-                            bibendum massa, et convallis purus accumsan id. Proin eget enim in erat malesuada accumsan in non dui.
+                            
                         </p>
                         <div class="tagCloud">
                             <img src="/assets/img/tagCloud.png" alt="">
                         </div>
                         <div class="text-center">
-                            <a href="#" class="btn blueBtn">Learn More</a>
+                            <a href="/find-an-attorney" class="btn blueBtn">Learn More</a>
                         </div>
                     </div>

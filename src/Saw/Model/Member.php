@@ -39,8 +39,8 @@ class Member extends User {
 	public $practiceAreas; //array('95'=>'DUI 22 years, 400 cases') // array indexes should add up to 100
 	
 	// order not relevant
-	static public $membership = array('FACULTY'=>10,'GENERAL MEMBER'=>20,'SUSTAINING MEMBER'=>30,'FOUNDING MEMBER'=>40);
-	static public $membershipReversed = array(10=>'FACULTY',20=>'GENERAL MEMBER',30=>'SUSTAINING MEMBER',40=>'FOUNDING MEMBER');
+	static public $membership = array('FACULTY'=>10,'GENERAL MEMBER'=>20,'FOUNDING MEMBER'=>30,'SUSTAINING MEMBER'=>40);
+	static public $membershipReversed = array(10=>'FACULTY',20=>'GENERAL MEMBER',30=>'FOUNDING MEMBER', 40=>'SUSTAINING MEMBER');
 	public $currentMembership;
 	static public $membershipBadge = array(10=>'./../../../www/ncdd.com/public_html/assets/img/badges/faculty.png'
 											,20=>'./../../../www/ncdd.com/public_html/assets/img/badges/general.png'
@@ -48,8 +48,8 @@ class Member extends User {
 											,40=>'./../../../www/ncdd.com/public_html/assets/img/badges/founding.png');
 
 	// order descending
-	static public $order = array('FELLOW'=>60,'DEAN AMERITUS'=>59,'DEAN'=>58,'ASSISSTANT DEAN'=>57,'SECRETARY'=>56,'TREASURER'=>55,'FOUNDING MEMBER'=>52,'REGENT'=>50,'BOARD CERTIFIED'=>40,'FORMER REGENT'=>35,'DELEGATE'=>30,'SUSTAINING MEMBER'=>20,'GENERAL MEMBER'=>10,'FACULTY'=>5);
-	static public $orderReversed = array(60=>'FELLOW',59=>'DEAN AMERITUS',58=>'DEAN',57=>'ASSISSTANT DEAN',56=>'SECRETARY',55=>'TREASURER',52=>'FOUNDING MEMBER',50=>'REGENT',40=>'BOARD CERTIFIED',35=>'FORMER REGENT',30=>'DELEGATE',20=>'SUSTAINING MEMBER',10=>'GENERAL MEMBER',5=>'FACULTY');
+	static public $order = array('FELLOW'=>60,'DEAN AMERITUS'=>59,'DEAN'=>58,'ASSISSTANT DEAN'=>57,'SECRETARY'=>56,'TREASURER'=>55,'REGENT'=>50,'BOARD CERTIFIED'=>40,'DELEGATE'=>35,'FORMER REGENT'=>30,'SUSTAINING MEMBER'=>20,'FOUNDING MEMBER'=>15,'GENERAL MEMBER'=>10,'FACULTY'=>5);
+	static public $orderReversed = array(60=>'FELLOW',59=>'DEAN AMERITUS',58=>'DEAN',57=>'ASSISSTANT DEAN',56=>'SECRETARY',55=>'TREASURER',50=>'REGENT',40=>'BOARD CERTIFIED',35=>'DELEGATE',30=>'FORMER REGENT',20=>'SUSTAINING MEMBER',15=>'FOUNDING MEMBER',10=>'GENERAL MEMBER',5=>'FACULTY');
 	public $currentOrder;
 	
 	// order descending

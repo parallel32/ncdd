@@ -12,7 +12,7 @@
                     </div>
                     
                     <div class="attorneyContent">
-                        <a href="/attorneys/<?=$this->vars['page']['slug']?>" class="btn btn-large">View Attorneys in <?=$this->vars['page']['headline']?></a><br><br>
+                        <a href="/find-an-attorney/usa/<?=$this->vars['page']['slug']?>" class="btn btn-large">View Attorneys in <?=$this->vars['page']['headline']?></a><br><br>
 
                         <div class="dropdown mapsPhone">
                                 <a class="dropdown-toggle btn"href="javascript:void(0)">

@@ -193,6 +193,9 @@ $app->get('/dui-laws-in-your-state/{country}/{state}', function ($country, $stat
 ////////////////////////
 $app->get('/{slug}', function ($slug, Request $request) use ($app) {
 	
+	$page_vars = $app['get_pages']($slug);
+	$view_vars['slogan_block'] = strtolower($page_vars['page']['section']);
+	
 	switch ($slug) {
 		case 'deans-message':
 			$view_vars = array('slogan_block'=>'deansmessage');
@@ -203,8 +206,7 @@ $app->get('/{slug}', function ($slug, Request $request) use ($app) {
 			break;
 	}
 
-	$page_vars = $app['get_pages']($slug);
-	$view_vars['slogan_block'] = strtolower($page_vars['page']['section']);
+	
 	$view_vars = array_merge($page_vars,$view_vars);
 
 	return $app['view']->render('page/content', 'content', $view_vars);

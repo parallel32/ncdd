@@ -7,8 +7,8 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 // unmounted controllers usually have several levels of access defined in the routes. 
 // i.e. some admin, some public, some member only.
-$app = require __DIR__.'/controllers/public/c.page.php';
 $app = require __DIR__.'/controllers/public/c.member.php';
+$app = require __DIR__.'/controllers/public/c.page.php';
 
 /**
  * Before Filter
