@@ -5,6 +5,7 @@
                                 <h2 class="stroke">PUBLIC DUI BLOG</h2>
                                 <h2 class="insetShadow">PUBLIC DUI BLOG</h2>
                             </div>
+                            <!--
                             <div class="members">
                                 <a class="dropdown-toggle pull-right" data-toggle="dropdown">
                                     <h5 class="membersTitle pull-left">MEMBERS</h5>
@@ -17,8 +18,11 @@
                                     <li><a href="#" class="signIn">SIGN IN</a></li>
                                 </ul>
                             </div>
+                            -->
                         </div>
                         <div class="blogContent">
+                            <p class="blogDescr">The NCDD DUI Blog is coming soon.</p>
+                            <!--
                             <p class="blogDescr">The NCDD Blog is for members of the public to comment on matters of general interest in the field of DUI Defense and to ask general questions concerning the topics posted. NCDD does not monitor or control answers from the various lawyers (many of whom are regarded as among the best in the country) who may respond and the answers or comments they provide are solely their own. Responses to questions and comments are not legal advice: they are only the opinions of the lawyer providing the answer or making the comment. No attorney client relationship is formed between the person who posts a question or comment and any attorney who posts an answer or comment. The NCDD Blog is not for the purpose of soliciting legal advice for any specific case and should not be relied upon for that purpose. No lawyer can provide advice for a specific case without far more Information than can be included in a blog post. If you need legal assistance or advice, consult a lawyer in your state. You can find NCDD member lawyers in your State listed under "Find an Attorney" in the menu to the left or at the top of the page. No opinion expressed by an attorney or other person on the NCDD Blog represents the opinion or views of the NCDD.</p>
                             <div class="row-fluid">
                                 <div class="span8 pull-left">
@@ -330,5 +334,6 @@
                                     </aside>
                                 </div>
                             </div>
+                            -->
                         </div>
                     </div>
