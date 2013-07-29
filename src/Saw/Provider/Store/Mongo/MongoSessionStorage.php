@@ -75,7 +75,8 @@ class MongoSessionStorage {
 		$options = array(
 			'connect' => true, // Immediately connect to MongoDB
 			'replicaSet' => $this->mongoOptions['replicaSet'],
-			'readPreference' => \MongoClient::RP_PRIMARY_PREFERRED
+			'readPreference' => \MongoClient::RP_PRIMARY_PREFERRED,
+			'persist'=>'x'
 		);
 		try {
 			// load mongo servers

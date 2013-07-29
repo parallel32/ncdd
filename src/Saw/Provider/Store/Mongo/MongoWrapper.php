@@ -32,6 +32,7 @@ class MongoWrapper
 		$mongo_config['servers'] = SAW_DATABASE_MONGO_SERVERS;
 		$mongo_config['safe'] = SAW_DATABASE_MONGO_SAFE;
 		$mongo_config['fsync'] = SAW_DATABASE_MONGO_FSYNC;
+		$mongo_config['persist'] = 'x';
 		$this->options = array_merge($this->options, $mongo_config);
 		$this->_init();		
 		
