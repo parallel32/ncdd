@@ -49,13 +49,13 @@ class Member extends User {
 											);
 
 	// order descending
-	static public $order = array('FELLOW'=>60,'DEAN AMERITUS'=>59,'DEAN'=>58,'ASSISSTANT DEAN'=>57,'SECRETARY'=>56,'TREASURER'=>55,'REGENT'=>50,'BOARD CERTIFIED'=>40,'DELEGATE'=>35,'FORMER REGENT'=>30,'SUSTAINING MEMBER'=>20,'FOUNDING MEMBER'=>15,'GENERAL MEMBER'=>10,'FACULTY'=>5);
-	static public $orderReversed = array(60=>'FELLOW',59=>'DEAN AMERITUS',58=>'DEAN',57=>'ASSISSTANT DEAN',56=>'SECRETARY',55=>'TREASURER',50=>'REGENT',40=>'BOARD CERTIFIED',35=>'DELEGATE',30=>'FORMER REGENT',20=>'SUSTAINING MEMBER',15=>'FOUNDING MEMBER',10=>'GENERAL MEMBER',5=>'FACULTY');
+	static public $order = array('FELLOW'=>60,'DEAN EMERITUS'=>59,'DEAN'=>58,'ASSISTANT DEAN'=>57,'SECRETARY'=>56,'TREASURER'=>55,'REGENT'=>50,'BOARD CERTIFIED'=>40,'DELEGATE'=>35,'FORMER REGENT'=>30,'SUSTAINING MEMBER'=>20,'FOUNDING MEMBER'=>15,'GENERAL MEMBER'=>10,'FACULTY'=>5);
+	static public $orderReversed = array(60=>'FELLOW',59=>'DEAN EMERITUS',58=>'DEAN',57=>'ASSISTANT DEAN',56=>'SECRETARY',55=>'TREASURER',50=>'REGENT',40=>'BOARD CERTIFIED',35=>'DELEGATE',30=>'FORMER REGENT',20=>'SUSTAINING MEMBER',15=>'FOUNDING MEMBER',10=>'GENERAL MEMBER',5=>'FACULTY');
 	public $currentOrder;
 	
 	// order descending
-	static public $facultyPosition = array('FELLOW'=>90,'DEAN AMERITUS'=>80,'DEAN'=>70, 'REGENT'=>60,'ASSISSTANT DEAN'=>50,'SECRETARY'=>40,'TREASURER'=>30,'DELEGATE'=>20,'FORMER REGENT'=>10);
-	static public $facultyPositionReversed = array(90=>'FELLOW',80=>'DEAN AMERITUS',70=>'DEAN',60=>'REGENT',50=>'ASSISSTANT DEAN',40=>'SECRETARY',30=>'TREASURER',20=>'DELEGATE',10=>'FORMER REGENT');
+	static public $facultyPosition = array('FELLOW'=>90,'DEAN EMERITUS'=>80,'DEAN'=>70, 'REGENT'=>60,'ASSISTANT DEAN'=>50,'SECRETARY'=>40,'TREASURER'=>30,'DELEGATE'=>20,'FORMER REGENT'=>10);
+	static public $facultyPositionReversed = array(90=>'FELLOW',80=>'DEAN EMERITUS',70=>'DEAN',60=>'REGENT',50=>'ASSISTANT DEAN',40=>'SECRETARY',30=>'TREASURER',20=>'DELEGATE',10=>'FORMER REGENT');
 	public $currentFacultyPosition;
 	static public $facultyBadge = array(90=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/fellow.png'
 										,80=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/dean_ameritus.png'
