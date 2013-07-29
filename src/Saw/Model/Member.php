@@ -44,8 +44,9 @@ class Member extends User {
 	public $currentMembership;
 	static public $membershipBadge = array(10=>'./../../../www/ncdd.com/public_html/assets/img/badges/faculty.png'
 											,20=>'./../../../www/ncdd.com/public_html/assets/img/badges/general.png'
-											,30=>'./../../../www/ncdd.com/public_html/assets/img/badges/sustaining.png'
-											,40=>'./../../../www/ncdd.com/public_html/assets/img/badges/founding.png');
+											,30=>'./../../../www/ncdd.com/public_html/assets/img/badges/founding.png'
+											,40=>'./../../../www/ncdd.com/public_html/assets/img/badges/sustaining.png'
+											);
 
 	// order descending
 	static public $order = array('FELLOW'=>60,'DEAN AMERITUS'=>59,'DEAN'=>58,'ASSISSTANT DEAN'=>57,'SECRETARY'=>56,'TREASURER'=>55,'REGENT'=>50,'BOARD CERTIFIED'=>40,'DELEGATE'=>35,'FORMER REGENT'=>30,'SUSTAINING MEMBER'=>20,'FOUNDING MEMBER'=>15,'GENERAL MEMBER'=>10,'FACULTY'=>5);

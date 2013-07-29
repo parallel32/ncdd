@@ -95,7 +95,7 @@ $utilities->get('/importmembers', function () use ($app) {
     $position['Secretary'] = 40;
     $position['Assistant Dean'] = 50;
     $position['Dean'] = 70;
-
+    
     $formerRegent['Yes'] = 10;
     $formerRegent['No'] = null;
 
@@ -110,10 +110,10 @@ $utilities->get('/importmembers', function () use ($app) {
     $boardCertified[''] = 'no';
 
     $membership = array();
-    $membership['Founding Member'] = 40;
+    $membership['Founding Member'] = 30;
     $membership['General Member'] = 20;
     $membership['Former Regent'] = Model\Member::$facultyPosition['FORMER REGENT'];
-    $membership['Sustaining Member'] = 30;
+    $membership['Sustaining Member'] = 40;
     
 
 
