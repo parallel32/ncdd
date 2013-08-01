@@ -290,10 +290,14 @@ class Member extends User {
 				}else{
 					$result = $this->find($query=array('currentMembership'=>self::$membership['FOUNDING MEMBER']),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);		
 				}
-				
 				break;
 			case 'Regents and Fellows':
-				$result = $this->find($query=array('currentFacultyPosition'=>array('$gte'=>self::$facultyPosition['REGENT'])),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);		
+				if($listedOnly){
+					$result = $this->find($query=array('currentFacultyPosition'=>array('$gte'=>self::$facultyPosition['REGENT']),'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);			
+				}else{
+					$result = $this->find($query=array('currentFacultyPosition'=>array('$gte'=>self::$facultyPosition['REGENT'])),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);			
+				}
+				
 				break;
 			case 'Regents':
 				$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['REGENT']),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);		

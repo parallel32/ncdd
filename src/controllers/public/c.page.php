@@ -205,6 +205,26 @@ $app->get('/founding-members', function (Request $request) use ($app) {
 	return $app['view']->render('page/founding-members', 'content', $view_vars);
 });
 
+// Regents and Fellows
+$app->get('/regents-and-fellows', function (Request $request) use ($app) {
+	$slug = 'regents-and-fellows';
+	$page = new Model\Page($doc=array('slug'=>$slug), $app);
+	$page = $page->findById('slug');
+
+	$view_vars = array('page'=>$page);
+	$view_vars['slogan_block'] = 'attorneys';
+
+	$page_vars = $app['get_pages']($slug);
+	
+	$member = new Model\Member(array(), $app);
+	$members = $member->search('Regents and Fellows',true);
+
+	$view_vars['members'] = $members;
+	$view_vars = array_merge($page_vars,$view_vars);
+	
+	return $app['view']->render('page/founding-members', 'content', $view_vars);
+});
+
 
 
 ////////////////////////
