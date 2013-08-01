@@ -2,8 +2,6 @@
                         <div class="title text-center">
                             <div class="bg">
                                 <h3><?=$this->vars['state']?> Attorneys</h3>
-                                <h3 class="stroke"><?=$this->vars['state']?> Attorneys</h3>
-                                <h3 class="insetShadow"><?=$this->vars['state']?> Attorneys</h3>
                             </div>
                         </div>
                         

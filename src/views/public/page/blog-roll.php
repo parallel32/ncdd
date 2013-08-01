@@ -2,8 +2,6 @@
                         <div class="title text-center">
                             <div class="bg">
                                 <h2>PUBLIC DUI BLOG</h2>
-                                <h2 class="stroke">PUBLIC DUI BLOG</h2>
-                                <h2 class="insetShadow">PUBLIC DUI BLOG</h2>
                             </div>
                             <!--
                             <div class="members">

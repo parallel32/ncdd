@@ -3,8 +3,6 @@
                         <div class="title text-center bigTitle">
                             <div class="bg">
                                 <h2>Welcome   To   The   Ncdd</h2>
-                                <h2 class="stroke">Welcome   To   The   Ncdd</h2>
-                                <h2 class="insetShadow">Welcome   To   The   Ncdd</h2>
                             </div>
                         </div>
                         <div class="tabBg">

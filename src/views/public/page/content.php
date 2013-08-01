@@ -2,8 +2,6 @@
                         <div class="title text-center">
                             <div class="bg">
                                 <h3><?=$this->vars['page']['headline']?></h3>
-                                <h3 class="stroke"><?=$this->vars['page']['headline']?></h3>
-                                <h3 class="insetShadow"><?=$this->vars['page']['headline']?></h3>
                             </div>
                         </div>
                         <div class="becomeAmemberContent">

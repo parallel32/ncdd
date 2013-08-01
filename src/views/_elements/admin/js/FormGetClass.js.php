@@ -20,7 +20,7 @@
 		if(params.blockUI == 'yes'){
 			io.saw.BlockUI.block({});	
 		}		
-		$.get(
+		return $.get(
 			params.postUrl
 		)
 		.done(function(response){

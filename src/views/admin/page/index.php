@@ -75,7 +75,8 @@
       <!-- END PAGE -->
 <script>
 jQuery(document).ready(function() {  
-   io.saw.FormGet.activate({postUrl:'/page/dynamic'
+
+   var request = io.saw.FormGet.activate({postUrl:'/page/dynamic'
       ,postOnComplete:function(responseObj,responseStatus){}
       ,postOnSuccess:function(responseObj){
             
@@ -121,9 +122,8 @@ jQuery(document).ready(function() {
       }
    });   
 //*
-   window.setTimeout(function(){
-
-      io.saw.FormGet.activate({postUrl:'/page/managed'
+   chained = request.pipe(function( data ) {
+         return    io.saw.FormGet.activate({postUrl:'/page/managed'
          ,postOnComplete:function(responseObj,responseStatus){}
          ,postOnSuccess:function(responseObj){
                
@@ -150,7 +150,15 @@ jQuery(document).ready(function() {
          }
       });
       
-   }, 3000);
+   });
+   
+
+   chained.done(function( data ) {
+     return true;
+   });
+   return chained.fail(function( data ) {
+     return false;
+   });
    
 //*/
    
