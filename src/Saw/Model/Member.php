@@ -260,9 +260,12 @@ class Member extends User {
 	public function distinctStates(){
 		return $this->distinct('location.state');
 	}
-	public function search($string){
+	public function search($string,$listedOnly=false){
 
 		$fields=array('_id'=>1
+					,'firstName'=>1
+					,'lastName'=>1
+					,'slug'=>1
 					,'displayName'=>1
 					,'primaryPhone'=>1
 					,'email'=>1
@@ -271,7 +274,9 @@ class Member extends User {
 					,'currentFacultyPosition'=>1
 					,'boardCertified'=>1
 					,'listed'=>1
+					,'websites'=>1
 					);
+
 		switch ($string) {
 			case 'Sustaining Members':
 				$result = $this->find($query=array('currentMembership'=>self::$membership['SUSTAINING MEMBER']),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);		
@@ -280,7 +285,12 @@ class Member extends User {
 				$result = $this->find($query=array('currentMembership'=>self::$membership['GENERAL MEMBER']),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);		
 				break;
 			case 'Founding Members':
-				$result = $this->find($query=array('currentMembership'=>self::$membership['FOUNDING MEMBER']),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);		
+				if($listedOnly){
+					$result = $this->find($query=array('currentMembership'=>self::$membership['FOUNDING MEMBER'],'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);		
+				}else{
+					$result = $this->find($query=array('currentMembership'=>self::$membership['FOUNDING MEMBER']),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);		
+				}
+				
 				break;
 			case 'Regents and Fellows':
 				$result = $this->find($query=array('currentFacultyPosition'=>array('$gte'=>self::$facultyPosition['REGENT'])),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);		
@@ -311,6 +321,7 @@ class Member extends User {
 				$result[$i]['currentFacultyPosition'] = (!empty($result[$i]['currentFacultyPosition'])) ? self::$facultyPositionReversed[$result[$i]['currentFacultyPosition']] : '';
 				$result[$i]['boardCertified'] = ($result[$i]['boardCertified']) ? "Yes" : "No";
 				$result[$i]['listed'] = ($result[$i]['listed']) ? "Yes" : "No";
+				$result[$i]['boardCertifiedBadge'] = self::$boardCertifiedBadge;
 			}
 		endif;
 		return $result;
@@ -330,7 +341,7 @@ class Member extends User {
 					,'boardCertified'=>1
 					,'websites'=>1
 					);
-		$result = $this->find($query=array('location.state'=>$state),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);		
+		$result = $this->find($query=array('location.state'=>$state,'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);		
 				
 		if(!empty($result)):
 			for ($i=0; $i < count($result); $i++) {

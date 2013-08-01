@@ -185,6 +185,25 @@ $app->get('/dui-laws-in-your-state/{country}/{state}', function ($country, $stat
 	return $app['view']->render('page/dui-laws/state', 'content', $view_vars);
 
 });
+// founding members
+$app->get('/founding-members', function (Request $request) use ($app) {
+	$slug = 'founding-members';
+	$page = new Model\Page($doc=array('slug'=>$slug), $app);
+	$page = $page->findById('slug');
+
+	$view_vars = array('page'=>$page);
+	$view_vars['slogan_block'] = 'attorneys';
+
+	$page_vars = $app['get_pages']($slug);
+	
+	$member = new Model\Member(array(), $app);
+	$members = $member->search('Founding Members',true);
+
+	$view_vars['members'] = $members;
+	$view_vars = array_merge($page_vars,$view_vars);
+	
+	return $app['view']->render('page/founding-members', 'content', $view_vars);
+});
 
 
 
