@@ -297,9 +297,9 @@ class Member extends User {
 				break;
 			case 'Founding Members':
 				if($listedOnly){
-					$result = $this->find($query=array('currentMembership'=>self::$membership['FOUNDING MEMBER'],'listed'=>1),$fields,true,$sort=array('joinDate.date'=>1),$offset=0,$limit=3000);		
+					$result = $this->find($query=array('currentMembership'=>self::$membership['FOUNDING MEMBER'],'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'joinDate.date'=>1),$offset=0,$limit=3000);		
 				}else{
-					$result = $this->find($query=array('currentMembership'=>self::$membership['FOUNDING MEMBER']),$fields,true,$sort=array('joinDate.date'=>1),$offset=0,$limit=3000);		
+					$result = $this->find($query=array('currentMembership'=>self::$membership['FOUNDING MEMBER']),$fields,true,$sort=array('currentOrder'=>-1,'joinDate.date'=>1),$offset=0,$limit=3000);		
 				}
 				break;
 			case 'Regents and Fellows':
@@ -311,16 +311,16 @@ class Member extends User {
 				
 				break;
 			case 'Regents':
-				$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['REGENT']),$fields,true,$sort=array('joinDate.date'=>1),$offset=0,$limit=3000);		
+				$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['REGENT']),$fields,true,$sort=array('currentOrder'=>-1,'joinDate.date'=>1),$offset=0,$limit=3000);		
 				break;
 			case 'Fellows':
-				$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['FELLOW']),$fields,true,$sort=array('joinDate.date'=>1),$offset=0,$limit=3000);		
+				$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['FELLOW']),$fields,true,$sort=array('currentOrder'=>-1,'joinDate.date'=>1),$offset=0,$limit=3000);		
 				break;
 			case 'State Delegates':
-				$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['DELEGATE']),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=3000);		
+				$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['DELEGATE']),$fields,true,$sort=array('currentOrder'=>-1,'joinDate.date'=>1),$offset=0,$limit=3000);		
 				break;
 			case 'Board Certified':
-				$result = $this->find($query=array('boardCertified'=>1),$fields,true,$sort=array('joinDate.date'=>1),$offset=0,$limit=3000);		
+				$result = $this->find($query=array('boardCertified'=>1),$fields,true,$sort=array('currentOrder'=>-1,'joinDate.date'=>1),$offset=0,$limit=3000);		
 				break;
 			
 			default:
