@@ -269,7 +269,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   }
   /* line 235, ../sass/responsive.scss */
   .content .attorneyContent .membersList .membersListItem .info .numbers li:last-child .memberBadge {
-    width: 23%;
+    width: 47%;
     margin-right: 2%;
   }
   /* line 239, ../sass/responsive.scss */
