@@ -122,8 +122,11 @@
                                             <a href="/member/<?=$member['_id']?>/<?=$member['slug']?>" class="btn pull-right">Full Profile</a>
                                         </div>
                                         <? if(!empty($member['location']['raw'])): ?>
-                                        <div class="address pull-left">
-                                            <a style="font-size:20px"><?=$member['location']['raw']?></a>
+                                        <div class="address">
+                                            <p class="pull-left">
+                                                <a style="font-size:20px"><?=$member['location']['raw']?></a>
+                                            </p>
+                                            <a href="/member/<?=$member['_id']?>/<?=$member['slug']?>" class=" hide btn pull-right"></a>
                                         </div>
                                         <? endif; ?>
                                         
