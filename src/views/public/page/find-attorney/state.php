@@ -68,9 +68,9 @@
                                     <li><a href="/find-an-attorney/usa/wyoming">Wyoming </a></li>
                                     
                                     <li class="titleMap">Canada</li>
-                                    <li><a href="/find-an-attorney/cananda/ontario">Ontario </a></li>
-                                    <li><a href="/find-an-attorney/cananda/quebec">Quebec </a></li>
-                                    <li><a href="/find-an-attorney/cananda/saskatchewan">Saskatchewan </a></li>
+                                    <li><a href="/find-an-attorney/canada/ontario">Ontario </a></li>
+                                    <li><a href="/find-an-attorney/canada/quebec">Quebec </a></li>
+                                    <li><a href="/find-an-attorney/canada/saskatchewan">Saskatchewan </a></li>
                                 </ul>
                             </div>
 
@@ -91,6 +91,7 @@
                                         <div class="nameBlock">
                                             <h3 class="name text-center"><?=$member['firstName']?> <?=$member['lastName']?></h3>
                                             <h5 class="descr text-center"><?=$member['currentMembership']?></h5>
+                                            <h5 class="descr text-center"><a class="text-error"><?=$member['currentFacultyPosition']?></a></h5>
                                             <? if(!empty($member['currentFacultyPosition'])): ?>
                                                 <div class="regentsFellowsLabel"><img src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/exec" alt="NCDD National College for DUI Defense: <?=$member['firstName']?> <?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?> <?=$member['lastName']?>" /></div>
                                         <? endif; ?>
@@ -120,6 +121,12 @@
                                             </p>
                                             <a href="/member/<?=$member['_id']?>/<?=$member['slug']?>" class="btn pull-right">Full Profile</a>
                                         </div>
+                                        <? if(!empty($member['location']['raw'])): ?>
+                                        <div class="address pull-left">
+                                            <a style="font-size:20px"><?=$member['location']['raw']?></a>
+                                        </div>
+                                        <? endif; ?>
+                                        
                                     </div>
                                 </li>
                             <? endforeach; ?>

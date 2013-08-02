@@ -91,15 +91,15 @@ $utilities->get('/importmembers', function () use ($app) {
     $position[''] = null;
     $position['None'] = null;
     $position['Delegate'] = 20;
-    $position['Treasurer'] = 30;
-    $position['Secretary'] = 40;
-    $position['Assistant Dean'] = 50;
-    $position['Dean'] = 70;
+    $position['Treasurer'] = 40;
+    $position['Secretary'] = 50;
+    $position['Assistant Dean'] = 60;
+    $position['Dean'] = 80;
     
     $formerRegent['Yes'] = 10;
     $formerRegent['No'] = null;
 
-    $regent['Yes'] = 60;
+    $regent['Yes'] = 30;
     $regent['No'] = null;
     
     $fellow['Yes'] = 90;
@@ -111,7 +111,7 @@ $utilities->get('/importmembers', function () use ($app) {
 
     $membership = array();
     $membership['Founding Member'] = 30;
-    $membership['General Member'] = 20;
+    $membership['General Member'] = 10;
     $membership['Former Regent'] = Model\Member::$facultyPosition['FORMER REGENT'];
     $membership['Sustaining Member'] = 40;
     
@@ -189,6 +189,10 @@ $utilities->get('/importmembers', function () use ($app) {
 
             $location = new Model\Location($loc_doc,$app);
 
+            $member_doc['listed'] = strtolower($record['haslisting']);
+            if($record['creationdate'] != '0000-00-00 00:00:00')
+                $member_doc['joinDate'] = new Model\Date($app, $record['creationdate']);
+
             $member_doc['location'] = $location->__toArray();
             $member_doc['firstName'] = $record['fname'];
             $member_doc['email'] = $record['email'];
@@ -233,6 +237,7 @@ $utilities->get('/importmembers', function () use ($app) {
                 echo "<pre>";print_r($member_doc);echo "</pre>";
             }
             $member = new Model\Member($member_doc,$app);
+
             $mem_id = $member->insert();
             $member_arr = $member->findById();
 

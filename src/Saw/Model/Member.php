@@ -39,31 +39,31 @@ class Member extends User {
 	public $practiceAreas; //array('95'=>'DUI 22 years, 400 cases') // array indexes should add up to 100
 	
 	// order not relevant
-	static public $membership = array('FACULTY'=>10,'GENERAL MEMBER'=>20,'FOUNDING MEMBER'=>30,'SUSTAINING MEMBER'=>40);
-	static public $membershipReversed = array(10=>'FACULTY',20=>'GENERAL MEMBER',30=>'FOUNDING MEMBER', 40=>'SUSTAINING MEMBER');
+	static public $membership = array('GENERAL MEMBER'=>10,'FACULTY'=>20,'FOUNDING MEMBER'=>30,'SUSTAINING MEMBER'=>40);
+	static public $membershipReversed = array(10=>'GENERAL MEMBER',20=>'FACULTY',30=>'FOUNDING MEMBER', 40=>'SUSTAINING MEMBER');
 	public $currentMembership;
-	static public $membershipBadge = array(10=>'./../../../www/ncdd.com/public_html/assets/img/badges/faculty.png'
-											,20=>'./../../../www/ncdd.com/public_html/assets/img/badges/general.png'
+	static public $membershipBadge = array(10=>'./../../../www/ncdd.com/public_html/assets/img/badges/general.png'
+											,20=>'./../../../www/ncdd.com/public_html/assets/img/badges/faculty.png'
 											,30=>'./../../../www/ncdd.com/public_html/assets/img/badges/founding.png'
 											,40=>'./../../../www/ncdd.com/public_html/assets/img/badges/sustaining.png'
 											);
 
 	// order descending
-	static public $order = array('FELLOW'=>60,'DEAN EMERITUS'=>59,'DEAN'=>58,'ASSISTANT DEAN'=>57,'SECRETARY'=>56,'TREASURER'=>55,'REGENT'=>50,'BOARD CERTIFIED'=>40,'DELEGATE'=>35,'FORMER REGENT'=>30,'SUSTAINING MEMBER'=>20,'FOUNDING MEMBER'=>15,'GENERAL MEMBER'=>10,'FACULTY'=>5);
-	static public $orderReversed = array(60=>'FELLOW',59=>'DEAN EMERITUS',58=>'DEAN',57=>'ASSISTANT DEAN',56=>'SECRETARY',55=>'TREASURER',50=>'REGENT',40=>'BOARD CERTIFIED',35=>'DELEGATE',30=>'FORMER REGENT',20=>'SUSTAINING MEMBER',15=>'FOUNDING MEMBER',10=>'GENERAL MEMBER',5=>'FACULTY');
+	static public $order = array('FELLOW'=>60,'DEAN'=>59,'DEAN EMERITUS'=>58,'ASSISTANT DEAN'=>57,'SECRETARY'=>56,'TREASURER'=>55,'REGENT'=>50,'FOUNDING MEMBER'=>45,'BOARD CERTIFIED'=>40,'DELEGATE'=>35,'FORMER REGENT'=>30,'SUSTAINING MEMBER'=>20,'FACULTY'=>10,'GENERAL MEMBER'=>5);
+	static public $orderReversed = array(60=>'FELLOW',59=>'DEAN',58=>'DEAN EMERITUS',57=>'ASSISTANT DEAN',56=>'SECRETARY',55=>'TREASURER',50=>'REGENT',45=>'FOUNDING MEMBER',40=>'BOARD CERTIFIED',35=>'DELEGATE',30=>'FORMER REGENT',20=>'SUSTAINING MEMBER',10=>'FACULTY',5=>'GENERAL MEMBER');
 	public $currentOrder;
 	
 	// order descending
-	static public $facultyPosition = array('FELLOW'=>90,'DEAN EMERITUS'=>80,'DEAN'=>70, 'REGENT'=>60,'ASSISTANT DEAN'=>50,'SECRETARY'=>40,'TREASURER'=>30,'DELEGATE'=>20,'FORMER REGENT'=>10);
-	static public $facultyPositionReversed = array(90=>'FELLOW',80=>'DEAN EMERITUS',70=>'DEAN',60=>'REGENT',50=>'ASSISTANT DEAN',40=>'SECRETARY',30=>'TREASURER',20=>'DELEGATE',10=>'FORMER REGENT');
+	static public $facultyPosition = array('FELLOW'=>90,'DEAN'=>80,'DEAN EMERITUS'=>70,'ASSISTANT DEAN'=>60,'SECRETARY'=>50,'TREASURER'=>40,'REGENT'=>30,'DELEGATE'=>20,'FORMER REGENT'=>10);
+	static public $facultyPositionReversed = array(90=>'FELLOW',80=>'DEAN',70=>'DEAN EMERITUS',60=>'ASSISTANT DEAN',50=>'SECRETARY',40=>'TREASURER',30=>'REGENT',20=>'DELEGATE',10=>'FORMER REGENT');
 	public $currentFacultyPosition;
 	static public $facultyBadge = array(90=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/fellow.png'
-										,80=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/dean_ameritus.png'
-										,70=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/dean.png'
-										,60=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/regent.png'
-										,50=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/assisstant_dean.png'
-										,40=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/secretary.png'
-										,30=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/treasurer.png'
+										,80=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/dean.png'
+										,70=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/dean_ameritus.png'
+										,60=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/assisstant_dean.png'
+										,50=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/secretary.png'
+										,40=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/treasurer.png'
+										,30=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/regent.png'
 										,20=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/delegate.png'
 										,10=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/former_regent.png');
 	
@@ -137,7 +137,7 @@ class Member extends User {
 		$this->barNumber = $this->barNumber ?: '';
 		$this->websites = $this->websites ?: new \StdClass();
 		$this->listServEmail = $this->listServEmail ?: '';
-		$this->listed = $this->listed ?: 1;
+		$this->listed = ($this->listed == 0) ? 0 : 1;
 		$this->currentMembership = $this->currentMembership ?: self::$membership['GENERAL MEMBER'];
 		$this->currentOrder = $this->currentOrder ?: self::$order['GENERAL MEMBER'];
 		$this->currentFacultyPosition = $this->currentFacultyPosition ?: 0;
@@ -260,8 +260,14 @@ class Member extends User {
 	public function distinctStates(){
 		return $this->distinct('location.state');
 	}
-	public function search($string,$listedOnly=false){
 
+	public function search($string,$listedOnly=false){
+		$states = array('alabama'=>'AL','alaska'=>'AK','arizona'=>'AZ','arkansas'=>'AR','california'=>'CA','colorado'=>'CO','connecticut'=>'CT','delaware'=>'DE','washington dc'=>'DC','florida'=>'FL','georgia'=>'GA','hawaii'=>'HI','idaho'=>'ID','illinois'=>'IL','indiana'=>'IN','iowa'=>'IA','kansas'=>'KS','kentucky'=>'KY','louisiana'=>'LA','maine'=>'ME','maryland'=>'MD','massachusetts'=>'MA','michigan'=>'MI','minnesota'=>'MN','mississippi'=>'MS','missouri'=>'MO','montana'=>'MT','nebraska'=>'NE','nevada'=>'NV','new hampshire'=>'NH','new jersey'=>'NJ','new mexico'=>'NM','new york'=>'NY','north carolina'=>'NC','north dakota'=>'ND','ohio'=>'OH','oklahoma'=>'OK','oregon'=>'OR','pennsylvania'=>'PA','rhode island'=>'RI','south carolina'=>'SC','south dakota'=>'SD','tennessee'=>'TN','texas'=>'TX','utah'=>'UT','vermont'=>'VT','virginia'=>'VA','washington'=>'WA','west virginia'=>'WV','wisconsin'=>'WI','wyoming'=>'WY','ontario'=>'ON','quebec'=>'QC','saskatchewan'=>'SK');
+		
+		if(array_key_exists(strtolower($string),$states)){
+			$state = $states[strtolower($string)];
+			$string = "state";
+		}
 		$fields=array('_id'=>1
 					,'firstName'=>1
 					,'lastName'=>1
@@ -270,57 +276,63 @@ class Member extends User {
 					,'primaryPhone'=>1
 					,'email'=>1
 					,'image'=>1
+					,'currentOrder'=>1
 					,'currentMembership'=>1
 					,'currentFacultyPosition'=>1
 					,'boardCertified'=>1
 					,'listed'=>1
 					,'websites'=>1
+					,'joinDate.feed'
 					);
 
 		switch ($string) {
+			case 'state':
+				$result = $this->find($query=array('location.state'=>$state,'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'joinDate.date'=>1),$offset=0,$limit=3000);		
+				break;
 			case 'Sustaining Members':
-				$result = $this->find($query=array('currentMembership'=>self::$membership['SUSTAINING MEMBER']),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);		
+				$result = $this->find($query=array('currentMembership'=>self::$membership['SUSTAINING MEMBER']),$fields,true,$sort=array('currentOrder'=>-1,'joinDate.date'=>1),$offset=0,$limit=3000);		
 				break;
 			case 'General Members':
-				$result = $this->find($query=array('currentMembership'=>self::$membership['GENERAL MEMBER']),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);		
+				$result = $this->find($query=array('currentMembership'=>self::$membership['GENERAL MEMBER']),$fields,true,$sort=array('currentOrder'=>-1,'joinDate.date'=>1),$offset=0,$limit=3000);		
 				break;
 			case 'Founding Members':
 				if($listedOnly){
-					$result = $this->find($query=array('currentMembership'=>self::$membership['FOUNDING MEMBER'],'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);		
+					$result = $this->find($query=array('currentMembership'=>self::$membership['FOUNDING MEMBER'],'listed'=>1),$fields,true,$sort=array('joinDate.date'=>1),$offset=0,$limit=3000);		
 				}else{
-					$result = $this->find($query=array('currentMembership'=>self::$membership['FOUNDING MEMBER']),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);		
+					$result = $this->find($query=array('currentMembership'=>self::$membership['FOUNDING MEMBER']),$fields,true,$sort=array('joinDate.date'=>1),$offset=0,$limit=3000);		
 				}
 				break;
 			case 'Regents and Fellows':
 				if($listedOnly){
-					$result = $this->find($query=array('currentFacultyPosition'=>array('$gte'=>self::$facultyPosition['REGENT']),'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);			
+					$result = $this->find($query=array('currentFacultyPosition'=>array('$gte'=>self::$facultyPosition['REGENT']),'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'joinDate.date'=>1),$offset=0,$limit=3000);			
 				}else{
-					$result = $this->find($query=array('currentFacultyPosition'=>array('$gte'=>self::$facultyPosition['REGENT'])),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);			
+					$result = $this->find($query=array('currentFacultyPosition'=>array('$gte'=>self::$facultyPosition['REGENT'])),$fields,true,$sort=array('currentOrder'=>-1,'joinDate.date'=>1),$offset=0,$limit=3000);			
 				}
 				
 				break;
 			case 'Regents':
-				$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['REGENT']),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);		
+				$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['REGENT']),$fields,true,$sort=array('joinDate.date'=>1),$offset=0,$limit=3000);		
 				break;
 			case 'Fellows':
-				$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['FELLOW']),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);		
+				$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['FELLOW']),$fields,true,$sort=array('joinDate.date'=>1),$offset=0,$limit=3000);		
 				break;
 			case 'State Delegates':
-				$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['DELEGATE']),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);		
+				$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['DELEGATE']),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=3000);		
 				break;
 			case 'Board Certified':
-				$result = $this->find($query=array('boardCertified'=>1),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);		
+				$result = $this->find($query=array('boardCertified'=>1),$fields,true,$sort=array('joinDate.date'=>1),$offset=0,$limit=3000);		
 				break;
 			
 			default:
 				$search = new \MongoRegex("/".$string."/i");
-				$result = $this->find($query=array('displayName'=>$search),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);		
+				$result = $this->find($query=array('displayName'=>$search),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=3000);		
 				break;
 		}
 		
 		if(!empty($result)):
 			for ($i=0; $i < count($result); $i++) {
 				$result[$i]['image'] = (!empty($result[$i]['image'])) ? $result[$i]['image']['urls']['small']['CDN'] : '/noprofileimage';
+				$result[$i]['currentOrder'] = (!empty($result[$i]['currentOrder'])) ? self::$orderReversed[$result[$i]['currentOrder']] : '';
 				$result[$i]['currentMembership'] = (!empty($result[$i]['currentMembership'])) ? self::$membershipReversed[$result[$i]['currentMembership']] : '';
 				$result[$i]['currentFacultyPosition'] = (!empty($result[$i]['currentFacultyPosition'])) ? self::$facultyPositionReversed[$result[$i]['currentFacultyPosition']] : '';
 				$result[$i]['boardCertified'] = ($result[$i]['boardCertified']) ? "Yes" : "No";
@@ -344,8 +356,9 @@ class Member extends User {
 					,'currentFacultyPosition'=>1
 					,'boardCertified'=>1
 					,'websites'=>1
+					,'location'=>1
 					);
-		$result = $this->find($query=array('location.state'=>$state,'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=2000);		
+		$result = $this->find($query=array('location.state'=>$state,'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'joinDate.date'=>1),$offset=0,$limit=3000);		
 				
 		if(!empty($result)):
 			for ($i=0; $i < count($result); $i++) {

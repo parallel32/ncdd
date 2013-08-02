@@ -72,20 +72,20 @@
                                     <li><a href="/dui-laws-in-your-state/usa/wyoming">Wyoming </a></li>
                                     <? if(false):?>
                                     <li class="titleMap">Canada</li>
-                                    <li><a href="/dui-laws-in-your-state/cananda/alberta">Wyoming </a></li>
-                                    <li><a href="/dui-laws-in-your-state/cananda/alberta">Alberta </a></li>
-                                    <li><a href="/dui-laws-in-your-state/cananda/british-columbia">British Columbia </a></li>
-                                    <li><a href="/dui-laws-in-your-state/cananda/manitoba">Manitoba </a></li>
-                                    <li><a href="/dui-laws-in-your-state/cananda/new-brunswick">New Brunswick </a></li>
-                                    <li><a href="/dui-laws-in-your-state/cananda/newfoundland-and-labrador">Newfoundland and Labrador </a></li>
-                                    <li><a href="/dui-laws-in-your-state/cananda/nothwest-territories">Northwest Territories </a></li>
-                                    <li><a href="/dui-laws-in-your-state/cananda/nova-scotia">Nova Scotia </a></li>
-                                    <li><a href="/dui-laws-in-your-state/cananda/nunavut">Nunavut </a></li>
-                                    <li><a href="/dui-laws-in-your-state/cananda/ontario">Ontario </a></li>
-                                    <li><a href="/dui-laws-in-your-state/cananda/prince-edward-island">Prince Edward Island </a></li>
-                                    <li><a href="/dui-laws-in-your-state/cananda/quebec">Quebec </a></li>
-                                    <li><a href="/dui-laws-in-your-state/cananda/saskatchewan">Saskatchewan </a></li>
-                                    <li><a href="/dui-laws-in-your-state/cananda/yukon">Yukon </a></li>
+                                    <li><a href="/dui-laws-in-your-state/canada/alberta">Wyoming </a></li>
+                                    <li><a href="/dui-laws-in-your-state/canada/alberta">Alberta </a></li>
+                                    <li><a href="/dui-laws-in-your-state/canada/british-columbia">British Columbia </a></li>
+                                    <li><a href="/dui-laws-in-your-state/canada/manitoba">Manitoba </a></li>
+                                    <li><a href="/dui-laws-in-your-state/canada/new-brunswick">New Brunswick </a></li>
+                                    <li><a href="/dui-laws-in-your-state/canada/newfoundland-and-labrador">Newfoundland and Labrador </a></li>
+                                    <li><a href="/dui-laws-in-your-state/canada/nothwest-territories">Northwest Territories </a></li>
+                                    <li><a href="/dui-laws-in-your-state/canada/nova-scotia">Nova Scotia </a></li>
+                                    <li><a href="/dui-laws-in-your-state/canada/nunavut">Nunavut </a></li>
+                                    <li><a href="/dui-laws-in-your-state/canada/ontario">Ontario </a></li>
+                                    <li><a href="/dui-laws-in-your-state/canada/prince-edward-island">Prince Edward Island </a></li>
+                                    <li><a href="/dui-laws-in-your-state/canada/quebec">Quebec </a></li>
+                                    <li><a href="/dui-laws-in-your-state/canada/saskatchewan">Saskatchewan </a></li>
+                                    <li><a href="/dui-laws-in-your-state/canada/yukon">Yukon </a></li>
                                     <? endif; ?>
                                 </ul>
                             </div>

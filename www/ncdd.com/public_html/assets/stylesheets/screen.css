@@ -3361,7 +3361,7 @@ body {
 }
 /* line 3295, ../sass/screen.scss */
 .content .attorneyContent .membersList .membersListItem .info .numbers li {
-  height: 40px;
+  height: 105px;
 }
 /* line 3298, ../sass/screen.scss */
 .content .attorneyContent .membersList .membersListItem .info .numbers li .envelope {
@@ -4519,9 +4519,9 @@ body {
 /* line 4497, ../sass/screen.scss */
 .content .membersList .membersListItem .info .nameBlock .regentsFellowsLabel {
   position: absolute;
-  width: 71px;
+  width: 106px;
   height: 55px;
-  background: url("/assets/img/regentsFellowsLabelBg.png") no-repeat;
+  /*background: url("/assets/img/regentsFellowsLabelBg.png") no-repeat;*/
   top: -1px;
   right: 20px;
   line-height: 37px;

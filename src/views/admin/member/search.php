@@ -1,3 +1,6 @@
+<?
+$accessLevel = call_user_func(function($app){ $user = $app['session']->get('user'); return $user['accessLevel'];},$this->app); 
+?>      
       <link href="/assets/css/pages/search.css" rel="stylesheet" type="text/css"/>
       <!-- BEGIN PAGE -->
       <div class="page-content portlet">
@@ -22,7 +25,7 @@
                      </div>
                   </form>
                </div>
-               <span class="help-block">You can enter a full name or a partial name.</span>
+               <span class="help-block alert">You can enter a full name or a partial name.  You can also enter "Regents" or "Fellows" or "New York" to search by any state.</span>
                <span id="result-message" class="help-block"></span>
                <div id="results" class="portlet-body">
                   <table class="table table-striped table-hover">
@@ -30,13 +33,17 @@
                         <tr>
                            <th>Photo</th>
                            <th>Name</th>
+                           <th>Join Date</th>
                            <th>Email</th>
                            <th class="hidden-phone">Phone</th>
+                           <th class="hidden-phone">Order</th>
                            <th class="hidden-phone">Membership</th>
                            <th class="hidden-phone">Executive</th>
                            <th class="hidden-phone">Board Certified</th>
                            <th class="hidden-phone">Listed</th>
+                           <? if($accessLevel >= EDITOR): ?>
                            <th></th>
+                           <? endif; ?>
                         </tr>
                      </thead>
                      <tbody>
@@ -78,13 +85,17 @@ jQuery(document).ready(function() {
                   html = '<tr>'+
                         '   <td><img width="159" src="'+member.image+'" alt=""></td>'+
                         '   <td class="">'+member.displayName+'</td>'+
+                        '   <td class="">'+member.joinDate.feed+'</td>'+
                         '   <td class="">'+member.email+'</td>'+
                         '   <td class=" hidden-phone">'+member.primaryPhone+'</td>'+
+                        '   <td class=" hidden-phone"><span class="label">'+member.currentOrder+'</span></td>'+
                         '   <td class=" hidden-phone"><span class="label">'+member.currentMembership+'</span></td>'+
                         '   <td class=" hidden-phone"><span class="label">'+member.currentFacultyPosition+'</span></td>'+
                         '   <td class=" hidden-phone"><span class="label">'+member.boardCertified+'</span></td>'+
                         '   <td class=" hidden-phone"><span class="label">'+member.listed+'</span></td>'+
+                        <? if($accessLevel >= EDITOR): ?>
                         '   <td><a class="btn mini blue-stripe edit" data-id="'+member._id.$id+'">Edit</a></td>'+
+                        <? endif; ?>
                         '</tr>';
                   $('#results tbody').append(html);
                   $('#results thead').removeClass('hide');

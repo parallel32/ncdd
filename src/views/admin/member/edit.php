@@ -129,6 +129,19 @@
                                     </select>
                                     <span class="help-block">This is the current position in which this member appears in the "Find an Attorney" search results</span>
                                     <span class="help-block">This field is driven by Executive Position and Membership Status and cannot be changed on its own.</span>
+                                    <span class="help-block">If you want to push someone up or down in the order change their Join Date below..</span>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        <div class="row-fluid">
+                           <div class="span6 ">
+                              <div class="control-group ">
+                                 <label class="control-label">Join Date</label>
+                                 <div class="controls">
+                                    <input type="text" name="doc[joinDate]" value="<?=$this->vars['member']['joinDate']['detail']?>" class="m-wrap span10 joinDate">
+                                    <span class="help-block">This date affects the listing order.  Members are ordered by the date they joined within each level of ordering.  For example: all members grouped as founding members will then be ordered by the date they joined.</span>
                                  </div>
                               </div>
                            </div>
