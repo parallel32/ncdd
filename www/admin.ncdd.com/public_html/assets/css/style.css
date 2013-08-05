@@ -42,6 +42,7 @@ body {
   margin: 0px !important;
   font-size:13px; 
   direction: ltr;
+  line-height:0px;
 }
 
 /***
@@ -333,7 +334,7 @@ Header and header elements.
 }
 
 .header.navbar-fixed-top {
-  z-index: 9995 !important;
+  z-index: 200 !important;
 }
 
 .header .brand {

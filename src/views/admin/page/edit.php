@@ -150,16 +150,26 @@
                Aloha.jQuery('.body').aloha();
             });
             //*/
+
              var editor = new SnapEditor.InPlace("body", {
-                 buttons: [
-    "styleBlock", "|",
-    "p", "|",
-    "bold", "italic", "underline", "|",
-    "alignment", "|",
-    "alignLeft", "alignCentre", "alignRight", "alignJustify", "|",
-    "orderedList", "unorderedList", "indent", "outdent", "|",
-    "link", "table", "horizontalRule" 
-  ]
+               toolbar: {
+                 items: [
+                   "styleBlock", "|",
+                   "p", "|",
+                   "bold", "italic", "underline", "|",
+                   "alignment", "|",
+                   "alignLeft", "alignCentre", "alignRight", "alignJustify", "|",
+                   "orderedList", "unorderedList", "indent", "outdent", "|",
+                   "link", "table", "horizontalRule" 
+                 ]
+               }
+               ,snap: false
+               ,onSave: function (e) {
+                  var isSuccess = true;
+                  html = e.html;
+                  io.saw.Page.save();
+                  return isSuccess || "Error";
+               }
             });
 
            

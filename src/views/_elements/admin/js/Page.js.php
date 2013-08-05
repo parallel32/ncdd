@@ -5,11 +5,11 @@
 		$('#saw-form input').keypress(function(e) {
 			if (e.which == 13) {
 				e.preventDefault();
-				save();
+				Page.save();
 			}
 		});
 		$('#saw-form .btn.save').click(function(e){
-			save();
+			Page.save();
 		});
 		$('#saw-form .btn.cancel').click(function(e){
 			document.location.href='/page/';			
@@ -22,7 +22,7 @@
 		});	
 
 	};
-	function save (){
+	Page.save = function (){
 		$('#input-body').val($('#body').html());
 		io.saw.FormPost.activate({postUrl:'/page/edit'
 		   ,serializeSelector:':input'
