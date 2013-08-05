@@ -13,7 +13,7 @@
 												<div class="textdark">
 													Your application for General Membership has been approved.
 													<br/> There are a few more steps to complete the process.
-													<br/> Below you'll find your login credentials.  Please use them to log in and doe the following:
+													<br/> Below you'll find your login credentials.  Please use them to log in and do the following:
 													<br/> 1. Pay your membership dues.
 													<br/> 2. Add your profile details including a personal photo.
 													<br/> 

@@ -597,7 +597,7 @@
                   </div>
                   
                   <div class="form-actions text-center">
-                     <button type="submit" class="btn green"><i class="icon-ok"></i> Submit Application</button>
+                     <button type="button" class="btn green"><i class="icon-ok"></i> Submit Application</button>
                      <button type="button" class="btn cancel">Cancel and Go Back</button>
                   </div>
                </form>

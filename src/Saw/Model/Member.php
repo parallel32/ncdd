@@ -59,7 +59,7 @@ class Member extends User {
 	public $currentFacultyPosition;
 	static public $facultyBadge = array(90=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/fellow.png'
 										,80=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/dean.png'
-										,70=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/dean_ameritus.png'
+										,70=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/dean_emeritus.png'
 										,60=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/assisstant_dean.png'
 										,50=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/secretary.png'
 										,40=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/treasurer.png'

@@ -38,9 +38,9 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                            <th class="hidden-phone">Phone</th>
                            <th class="hidden-phone">Order</th>
                            <th class="hidden-phone">Membership</th>
-                           <th class="hidden-phone">Executive</th>
-                           <th class="hidden-phone">Board Certified</th>
-                           <th class="hidden-phone">Listed</th>
+                           <th class="hidden-phone hidden-tablet">Executive</th>
+                           <th class="hidden-phone hidden-tablet">Board Certified</th>
+                           <th class="hidden-phone hidden-tablet">Listed</th>
                            <? if($accessLevel >= EDITOR): ?>
                            <th></th>
                            <? endif; ?>
@@ -90,9 +90,9 @@ jQuery(document).ready(function() {
                         '   <td class=" hidden-phone">'+member.primaryPhone+'</td>'+
                         '   <td class=" hidden-phone"><span class="label">'+member.currentOrder+'</span></td>'+
                         '   <td class=" hidden-phone"><span class="label">'+member.currentMembership+'</span></td>'+
-                        '   <td class=" hidden-phone"><span class="label">'+member.currentFacultyPosition+'</span></td>'+
-                        '   <td class=" hidden-phone"><span class="label">'+member.boardCertified+'</span></td>'+
-                        '   <td class=" hidden-phone"><span class="label">'+member.listed+'</span></td>'+
+                        '   <td class=" hidden-phone hidden-tablet"><span class="label">'+member.currentFacultyPosition+'</span></td>'+
+                        '   <td class=" hidden-phone hidden-tablet"><span class="label">'+member.boardCertified+'</span></td>'+
+                        '   <td class=" hidden-phone hidden-tablet"><span class="label">'+member.listed+'</span></td>'+
                         <? if($accessLevel >= EDITOR): ?>
                         '   <td><a class="btn mini blue-stripe edit" data-id="'+member._id.$id+'">Edit</a></td>'+
                         <? endif; ?>
