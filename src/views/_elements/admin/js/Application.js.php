@@ -65,7 +65,7 @@
 		});
 		$('#saw-form .btn.green').click(function(e){
 			e.preventDefault();
-			newMemberAdd();
+			newSustainingMemberAdd();
 		});
 		$('#saw-form .cancel').click(function(e){
 			document.location.href="http://<?=SAW_CONSUMER_WEBSITE?>";

@@ -14,7 +14,6 @@ class ApplyNewSustainingMember extends Apply {
 	
 	public $type = 'NEW SUSTAINING MEMBER APPLICATION';
 	public $class = 'ApplyNewSustainingMember';
-	public $hearAboutNCDD;
 	public $yearsInLawPractice;
 	public $percentDUIDefense;
 	public $juryTrialsAvailableInYourState;
@@ -32,13 +31,15 @@ class ApplyNewSustainingMember extends Apply {
 	public $everLawEnforcementExplain;
 	public $futureLawEnforcement;
 	public $futureLawEnforcementExplain;
+	public $attendSeminar;
+	public $attendSeminarExplain;
 	public $executed;
 	public $executedPrintedName;
 	public $membershipDues;
 	public $authorizationReleasePrintedName;
+	public $referenceFormDownload;
 
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
-		$metadata->addPropertyConstraint('hearAboutNCDD', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('yearsInLawPractice', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('percentDUIDefense', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('juryTrialsAvailableInYourState', new Constraints\NotBlank(array('message'=>'cannot be blank')));
@@ -55,6 +56,8 @@ class ApplyNewSustainingMember extends Apply {
 		$metadata->addPropertyConstraint('membershipDues', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('authorizationReleasePrintedName', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addConstraint(new Callback(array('methods' => array('explain'))));
+		$metadata->addConstraint(new Callback(array('methods' => array('referenceFormDownload'))));
+
 	}
 	public function explain(ExecutionContext $context){
 		if($this->everBeenArrested == 'yes' && empty($this->everBeenArrestedExplain)){
@@ -81,14 +84,23 @@ class ApplyNewSustainingMember extends Apply {
 			$propertyPath = $context->getPropertyPath().'futureLawEnforcementExplain';
 			$context->addViolationAtPath($propertyPath,'Please explain your answer.', array(), null);
 		}
+		if($this->attendSeminar == 'yes' && empty($this->attendSeminarExplain)){
+			$propertyPath = $context->getPropertyPath().'attendSeminarExplain';
+			$context->addViolationAtPath($propertyPath,'Please explain your answer.', array(), null);
+		}
 
+	}
+	public function referenceFormDownload(ExecutionContext $context){
+		if($this->referenceFormDownload == 'no'){
+			$propertyPath = $context->getPropertyPath().'referenceFormDownload';
+			$context->addViolationAtPath($propertyPath,'Please confirm you have downloaded the Reference form.', array(), null);
+		}
 	}
 	public function __construct($doc, Application $app){
 		parent::__construct($doc,$app);
 		$this->init($doc);
 		
 		if(!empty($doc['_id'])) $this->_id = (is_object($doc['_id'])) ? $doc['_id'] : new \MongoId($doc['_id']);
-        $this->hearAboutNCDD = $doc['hearAboutNCDD'];
 		$this->yearsInLawPractice = $doc['yearsInLawPractice'];
 		$this->percentDUIDefense = $doc['percentDUIDefense'];
 		$this->juryTrialsAvailableInYourState = $doc['juryTrialsAvailableInYourState'];
@@ -106,10 +118,14 @@ class ApplyNewSustainingMember extends Apply {
 		$this->everLawEnforcementExplain = $doc['everLawEnforcementExplain'];
 		$this->futureLawEnforcement = $doc['futureLawEnforcement'];
 		$this->futureLawEnforcementExplain = $doc['futureLawEnforcementExplain'];
+		$this->attendSeminar = $doc['attendSeminar'];
+		$this->attendSeminarExplain = $doc['attendSeminarExplain'];
 		$this->executed = (!empty($doc['executed'])) ? $this->prepareExecuted($doc['executed']) : '';
 		$this->executedPrintedName = $doc['executedPrintedName'];
 		$this->membershipDues = $doc['membershipDues'];
 		$this->authorizationReleasePrintedName = $doc['authorizationReleasePrintedName'];
+		$this->authorizationRelease = (!empty($doc['authorizationReleasePrintedName'])) ? $this->preparePrintedName($doc['authorizationReleasePrintedName']) : '';
+		$this->referenceFormDownload = $doc['referenceFormDownload'];
 
 
 	}
@@ -121,7 +137,6 @@ class ApplyNewSustainingMember extends Apply {
 		parent::prepareInsert();
 		$this->type = $this->type ?: 'NEW MEMBER APPLICATION';
 		$this->class = $this->class ?: 'ApplyNewMemeber';
-		$this->hearAboutNCDD = $this->hearAboutNCDD ?: '';
 		$this->yearsInLawPractice = $this->yearsInLawPractice ?: '';
 		$this->percentDUIDefense = $this->percentDUIDefense ?: '';
 		$this->juryTrialsAvailableInYourState = $this->juryTrialsAvailableInYourState ?: '';
@@ -139,10 +154,13 @@ class ApplyNewSustainingMember extends Apply {
 		$this->everLawEnforcementExplain = $this->everLawEnforcementExplain ?: '';
 		$this->futureLawEnforcement = $this->futureLawEnforcement ?: '';
 		$this->futureLawEnforcementExplain = $this->futureLawEnforcementExplain ?: '';
+		$this->attendSeminar = $this->attendSeminar ?: '';
+		$this->attendSeminarExplain = $this->attendSeminarExplain ?: '';
 		$this->executed = $this->executed ?: '';
 		$this->executedPrintedName = $this->executedPrintedName ?: '';
 		$this->membershipDues = $this->membershipDues ?: '';
 		$this->authorizationReleasePrintedName = $this->authorizationReleasePrintedName ?: '';
+		$this->referenceFormDownload = $this->referenceFormDownload ?: '';
 	}
 	public function insert(){
 		$this->prepareInsert();
@@ -158,6 +176,13 @@ class ApplyNewSustainingMember extends Apply {
 		 $month = $date->format('F');
 		 $year = $date->format('y');
 		 return "Executed at ".$executed.', this '.$day.' day of '.$month.', 20'.$year;
+	}
+	private function preparePrintedName($authorizationReleasePrintedName){
+		 $date = new \DateTime(); 
+		 $day = $date->format('dS');
+		 $month = $date->format('F');
+		 $year = $date->format('y');
+		 return "Printed name: ".$authorizationReleasePrintedName.', this '.$day.' day of '.$month.', 20'.$year;
 	}
 
 	public function approve(){

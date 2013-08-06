@@ -110,7 +110,17 @@ $app->get('/application/{id}/view', function ($id, Request $request) use ($app) 
 						,'description'=>"View all application here."
 						,'crumbs'=>$crumbs
 						,'application'=>$application);
-	return $app['view']->render('application/view', 'default', $view_vars);
+	switch ($application['class']) {
+		case 'NewMemberApplication': // old deprecated
+		case 'ApplyNewMember':
+			return $app['view']->render('application/view-new-member', 'default', $view_vars);		
+			break;
+		case 'ApplyNewSustainingMember':
+			return $app['view']->render('application/view-new-sustaining-member', 'default', $view_vars);		
+			break;
+		
+	}
+	
 })->value('id','')
 ->before($mustbeADMIN);
 
