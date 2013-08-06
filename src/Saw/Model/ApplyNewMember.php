@@ -8,13 +8,12 @@ use Symfony\Component\Validator\Constraints\Callback;
 use Symfony\Component\Validator\ExecutionContext;
 
 /**
- * Apply Model.
- * This class is the base class for all application-type forms to be submitted.
+ * Extends Apply Model.  Used to facilitate the new member application and does not represent a mongo collection
  */
-class NewMemberApplication extends Apply {
+class ApplyNewMember extends Apply {
 	
 	public $type = 'NEW MEMBER APPLICATION';
-	public $class = 'NewMemberApplication';
+	public $class = 'ApplyNewMember';
 	public $hearAboutNCDD;
 	public $yearsInLawPractice;
 	public $percentDUIDefense;
@@ -37,6 +36,7 @@ class NewMemberApplication extends Apply {
 	public $executedPrintedName;
 	public $membershipDues;
 	public $authorizationReleasePrintedName;
+	public $referenceFormDownload;
 
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addPropertyConstraint('hearAboutNCDD', new Constraints\NotBlank(array('message'=>'cannot be blank')));
@@ -56,6 +56,7 @@ class NewMemberApplication extends Apply {
 		$metadata->addPropertyConstraint('membershipDues', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('authorizationReleasePrintedName', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addConstraint(new Callback(array('methods' => array('explain'))));
+		$metadata->addConstraint(new Callback(array('methods' => array('referenceFormDownload'))));
 	}
 	public function explain(ExecutionContext $context){
 		if($this->everBeenArrested == 'yes' && empty($this->everBeenArrestedExplain)){
@@ -84,6 +85,12 @@ class NewMemberApplication extends Apply {
 		}
 
 	}
+	public function referenceFormDownload(ExecutionContext $context){
+		if($this->referenceFormDownload == 'no'){
+			$propertyPath = $context->getPropertyPath().'referenceFormDownload';
+			$context->addViolationAtPath($propertyPath,'Please confirm you have downloaded the Reference form.', array(), null);
+		}
+	}
 	public function __construct($doc, Application $app){
 		parent::__construct($doc,$app);
 		$this->init($doc);
@@ -111,6 +118,7 @@ class NewMemberApplication extends Apply {
 		$this->executedPrintedName = $doc['executedPrintedName'];
 		$this->membershipDues = $doc['membershipDues'];
 		$this->authorizationReleasePrintedName = $doc['authorizationReleasePrintedName'];
+		$this->referenceFormDownload = $doc['referenceFormDownload'];
 
 
 	}
@@ -121,7 +129,7 @@ class NewMemberApplication extends Apply {
 	protected function prepareInsert(){
 		parent::prepareInsert();
 		$this->type = $this->type ?: 'NEW MEMBER APPLICATION';
-		$this->class = $this->class ?: 'NewMemberApplication';
+		$this->class = $this->class ?: 'ApplyNewMember';
 		$this->hearAboutNCDD = $this->hearAboutNCDD ?: '';
 		$this->yearsInLawPractice = $this->yearsInLawPractice ?: '';
 		$this->percentDUIDefense = $this->percentDUIDefense ?: '';
@@ -144,6 +152,7 @@ class NewMemberApplication extends Apply {
 		$this->executedPrintedName = $this->executedPrintedName ?: '';
 		$this->membershipDues = $this->membershipDues ?: '';
 		$this->authorizationReleasePrintedName = $this->authorizationReleasePrintedName ?: '';
+		$this->referenceFormDownload = $this->referenceFormDownload ?: '';
 	}
 	public function insert(){
 		$this->prepareInsert();

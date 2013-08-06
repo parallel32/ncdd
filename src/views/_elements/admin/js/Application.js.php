@@ -1,5 +1,20 @@
 <script type="text/javascript">
 (function( Application, $, undefined ) {
+	function newSustainingMemberAdd (){
+		io.saw.FormPost.activate({postUrl:'/application/new-sustaining-member'
+		   ,serializeSelector:':input'
+		   ,postOnComplete:function(responseObj,responseStatus){
+			   	if(responseStatus == 'success'){
+					$('#save-success .modal-body p').html(responseObj.message);
+			      	$('#save-success-label').html(responseObj.label);
+			      	$('#save-success').modal({keyboard: false});   		
+			   	}else{
+			   		var responseObj = $.parseJSON(responseObj.responseText);
+			   	}
+		   }
+		   ,postOnSuccess:function(responseObj){}
+		});      
+	};
 	function newMemberAdd (){
 		io.saw.FormPost.activate({postUrl:'/application/new-member'
 		   ,serializeSelector:':input'
@@ -20,6 +35,32 @@
 		   if (e.which == 13) {
 		   	  e.preventDefault();
 		      newMemberAdd();
+		   }
+		});
+		$('#saw-form .btn.green').click(function(e){
+			e.preventDefault();
+			newMemberAdd();
+		});
+		$('#saw-form .cancel').click(function(e){
+			document.location.href="http://<?=SAW_CONSUMER_WEBSITE?>";
+		});
+		$('#save-success .cancel').click(function(e){
+			document.location.href="http://<?=SAW_CONSUMER_WEBSITE?>";
+		});
+
+		$.extend($.inputmask.defaults, {
+            'autounmask': true
+        });
+
+        $("#phone").inputmask("mask", {"mask": "(999) 999-9999"}); //specifying fn & options
+        $("#fax").inputmask("mask", {"mask": "(999) 999-9999"}); //specifying fn & options
+		
+	};
+	Application.newSustainingMemberInit = function(){
+		$('#saw-form input').keypress(function (e) {
+		   if (e.which == 13) {
+		   	  e.preventDefault();
+		      newSustainingMemberAdd();
 		   }
 		});
 		$('#saw-form .btn.green').click(function(e){

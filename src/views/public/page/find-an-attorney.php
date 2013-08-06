@@ -502,7 +502,7 @@
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
                                 'downcolor':'#993366',
-                                'enable':true,
+                                'enable':false,
                             },
                             'map_49':{
                                 'namesId':'OH',

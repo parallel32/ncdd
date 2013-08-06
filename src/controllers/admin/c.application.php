@@ -1,7 +1,7 @@
 <?php
-///////////////////////
-// MEMBER MANAGEMENT //
-///////////////////////
+////////////////////////////
+// APPLICATION MANAGEMENT //
+////////////////////////////
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -20,7 +20,7 @@ $app->get('/application/new-member', function (Request $request) use ($app) {
 $app->post('/application/new-member', function (Request $request) use ($app) {
 	// retrieve document from request
     $doc = $request->get('doc');
-    $application = new Model\NewMemberApplication($doc, $app);
+    $application = new Model\ApplyNewMember($doc, $app);
     // validate the model
     $app['validateModel']($app,$application);
 
@@ -51,7 +51,50 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 	    	$app['sendMail']($subject, $body, $to);
 	    endif;
 });
+///////////////////////////////////////
+// NEW SUSTAINING MEMBER APPLICATION //
+///////////////////////////////////////
+$app->get('/application/new-sustaining-member', function (Request $request) use ($app) {
+	return $app['view']->render('application/new-sustaining-member', 'blank');
+});
+$app->post('/application/new-sustaining-member', function (Request $request) use ($app) {
+	// retrieve document from request
+    $doc = $request->get('doc');
+    $application = new Model\ApplyNewSustainingMember($doc, $app);
+    // validate the model
+    $app['validateModel']($app,$application);
 
+    if($application->findByEmail()){
+    	$label = 'Your submission is correct, but...';
+    	$message = 'Our records indicate you have already submitted an application.  Please Log-in if you are looking for another Application or contact NCDD directly.';
+    	$response_status = 400;
+    }else{
+    	$application->insert();
+    	$label = 'Your application was received.  Thank you.';
+    	$message = 'Thank you for your interest in NCDD.  Your application has been submitted.  You will be notified by the College when it is approved or if there are any questions.';
+    	$response_status = 200;
+    }
+    return new Response(json_encode(array('message' => $message,'label'=>$label)), $response_status,array('Content-Type' => 'application/json'));
+})->after(function (Request $request, Response $response, Silex\Application $app) {
+		if((int)$response->getStatusCode() == 200):
+	    	$doc = $request->get('doc');
+	    	// send admin the email notification
+	    	$subject = 'Sustaining Member Application Form Submitted';
+	    	$to = SAW_ADMIN_EMAIL;
+	    	$view_vars = array('firstName'=>$doc['firstName']
+	    						,'lastName'=>$doc['lastName']
+	    						,'city'=>$doc['city']
+	    						,'state'=>$doc['state']
+	    						,'email'=>$doc['email']
+	    	);
+	    	$body = $app['view']->render('email/new-sustaining-member','email', $view_vars);
+	    	$app['sendMail']($subject, $body, $to);
+	    endif;
+});
+
+///////////////////////
+// GENERAL FUNCTIONS //
+///////////////////////
 $app->get('/application/{id}/view', function ($id, Request $request) use ($app) {
 	
 	$application = new Model\Apply($doc=array('_id'=>$id), $app);
@@ -73,9 +116,30 @@ $app->get('/application/{id}/view', function ($id, Request $request) use ($app) 
 
 $app->get('/application/{id}/approve/{type}', function ($id,$type, Request $request) use ($app) {
 	switch ($type) {
-		case 'NewMemberApplication':
-			$application = new Model\NewMemberApplication(array('_id'=>$id), $app);
+		case 'ApplyNewMember':
+			$application = new Model\ApplyNewMember(array('_id'=>$id), $app);
+			$application->findById();
+		    $member = $application->approve();
+		    // email welcome message
+			$subject = 'Welcome To NCDD';
+			$to = $member->email;
+			$view_vars = array('email'=>$member->email
+								,'password'=>$member->password
+			);
+			$body = $app['view']->render('email/new-member-welcome','email', $view_vars);
 			break;
+		case 'ApplyNewSustainingMember':
+			$application = new Model\ApplyNewSustainingMember(array('_id'=>$id), $app);
+			$application->findById();
+		    $member = $application->approve();
+		    // email welcome message
+			$subject = 'Welcome To NCDD';
+			$to = $member->email;
+			$view_vars = array('email'=>$member->email
+								,'password'=>$member->password
+			);
+			$body = $app['view']->render('email/new-sustaining-member-welcome','email', $view_vars);
+			break;		
 		case 'UpdateMember':
 			$application = new Model\UpdateMember(array('_id'=>$id), $app);
 			break;
@@ -85,23 +149,14 @@ $app->get('/application/{id}/approve/{type}', function ($id,$type, Request $requ
 		case 'UpdateSustainingMember':
 			$application = new Model\UpdateSustainingMember(array('_id'=>$id), $app);
 			break;
-		case 'NewSustainingMember':
-			$application = new Model\NewSustainingMember(array('_id'=>$id), $app);
+		case 'ApplyNewSustainingMember':
+			$application = new Model\ApplyNewSustainingMember(array('_id'=>$id), $app);
 			break;		
 	}
-	$application->findById();
-    $member = $application->approve();
-
-    // email welcome message
-	$subject = 'Welcome To NCDD';
-	$to = $member->email;
-	$view_vars = array('email'=>$member->email
-						,'password'=>$member->password
-	);
-	$body = $app['view']->render('email/new-member-welcome','email', $view_vars);
+	
 	$app['sendMail']($subject, $body, $to);
-
     return new Response(json_encode(array('message' => 'Approved successfully')), 200,array('Content-Type' => 'application/json'));
+
 })->before($mustbeADMIN);
 
 $app->get('/application/{id}/pay', function ($id, Request $request) use ($app) {
@@ -123,10 +178,11 @@ $app->get('/application/{id}/pay', function ($id, Request $request) use ($app) {
 	return $app['view']->render('application/pay', 'default', $view_vars);
 })->value('id','')
 ->before($mustbeMEMBER);
+
 $app->post('/application/{id}/pay', function ($id, Request $request) use ($app) {
     
     $doc = $request->get('doc');
-    $application = new Model\NewMemberApplication($doc, $app);
+    $application = new Model\ApplyNewMember($doc, $app);
     // validate the model
     $app['validateModel']($app,$application);
 

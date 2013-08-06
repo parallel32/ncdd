@@ -167,16 +167,16 @@ class Payment extends Model {
 	}
 	public function ownerClassObj(){
 		switch ($this->ownerClass) {
-			case 'NewMemberApplication':
-				$obj = new NewMemberApplication(array('_id'=>$this->ownerId),self::$app);
+			case 'ApplyNewMemeber':
+				$obj = new ApplyNewMemeber(array('_id'=>$this->ownerId),self::$app);
 				return $obj;
 				break;
 		}
 	}
 	public function markOwnerClassPaid($paymentId){
 		switch ($this->ownerClass) {
-			case 'NewMemberApplication':
-				$obj = new NewMemberApplication(array('_id'=>$this->ownerId
+			case 'ApplyNewMemeber':
+				$obj = new ApplyNewMemeber(array('_id'=>$this->ownerId
 														,'currentStatus'=>Apply::$status['PAID']
 														,'paidDate'=> new Date(self::$app, 'now')
 														,'paymentId'=> $paymentId

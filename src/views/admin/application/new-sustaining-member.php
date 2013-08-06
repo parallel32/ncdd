@@ -8,7 +8,7 @@
                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                <h3 class="page-title text-center">
                   <img src="/assets/img/ncdd-login2-logo.png">
-                  <br/>General Member Application Form
+                  <br/>Sustaining Member Application Form
                </h3>
                <p class="text-center">
                   
@@ -577,23 +577,6 @@
                      </div>
                      <!--/span-->
                   </div>
-                  <div class="row-fluid">
-                     <div class="span12">
-                        <div class="control-group">
-                           <label class="control-label">Please download this reference form and confirm you did so by selecting "Yes": <br>
-                              <a href="http://<?=SAW_ADMIN_WEBSITE?>/assets/membership-forms/ncdd-general-membership-reference-form.pdf">New Member Application Reference Form - click to download the PDF document.</a>
-                           </label>
-                           <div class="controls">
-                              <select class="large m-wrap referenceFormDownload" name="doc[referenceFormDownload]">
-                                 <option value="no">No, I have not downloaded the reference form.</option>
-                                 <option value="yes">Yes, I have downloaded the reference form.</option>
-                              </select>
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                  </div>
-                  
                   <!-- SUCCESSFUL SAVE MODAL -->
                   <div id="save-success" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="save-success-label" aria-hidden="true">
                      <div class="modal-header">
@@ -631,7 +614,7 @@
 <?=$this->element('js/Address.js');?>
 <script>
 jQuery(document).ready(function() {    
-   io.saw.Application.newMemberInit();
+   io.saw.Application.newSustainingMemberInit();
    io.saw.Address.init('#saw-form');
 });      
 </script>
