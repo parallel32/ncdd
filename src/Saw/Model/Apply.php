@@ -149,6 +149,7 @@ class Apply extends Model {
 		$query = array();
 		$fields = array('firstName'=>true
 						,'lastName'=>true
+						,'email'=>true
 						,'city'=>true
 						,'state'=>true
 						,'type'=>true
@@ -157,6 +158,8 @@ class Apply extends Model {
 						,'paidDate'=>true
 						,'approvedDate'=>true
 						,'_id'=>true
+						,'memberId'=>true
+						,'paymentId'=>true
 						);
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('_id'=>-1),(int)$offset,(int)$limit);
 		//error_log('fetch:'.print_r($result,true));
@@ -167,6 +170,7 @@ class Apply extends Model {
 		$query = array('currentStatus'=>self::$status[$status]);
 		$fields = array('firstName'=>true
 						,'lastName'=>true
+						,'email'=>true
 						,'city'=>true
 						,'state'=>true
 						,'type'=>true
@@ -175,6 +179,8 @@ class Apply extends Model {
 						,'paidDate'=>true
 						,'approvedDate'=>true
 						,'_id'=>true
+						,'memberId'=>true
+						,'paymentId'=>true
 						);
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('_id'=>-1),(int)$offset,(int)$limit);
 		//error_log('fetch:'.print_r($result,true));
@@ -187,6 +193,7 @@ class Apply extends Model {
 						,'memberId'=>$user['_id']);
 		$fields = array('firstName'=>true
 						,'lastName'=>true
+						,'email'=>true
 						,'city'=>true
 						,'state'=>true
 						,'type'=>true
@@ -195,6 +202,8 @@ class Apply extends Model {
 						,'paidDate'=>true
 						,'approvedDate'=>true
 						,'_id'=>true
+						,'memberId'=>true
+						,'paymentId'=>true
 						);
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('_id'=>-1),(int)$offset,(int)$limit);
 		//error_log('fetch:'.print_r($query,true));
@@ -208,6 +217,7 @@ class Apply extends Model {
 		);
 		$fields = array('firstName'=>true
 						,'lastName'=>true
+						,'email'=>true
 						,'city'=>true
 						,'state'=>true
 						,'type'=>true
@@ -216,6 +226,8 @@ class Apply extends Model {
 						,'paidDate'=>true
 						,'approvedDate'=>true
 						,'_id'=>true
+						,'memberId'=>true
+						,'paymentId'=>true
 						);
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('_id'=>-1),(int)$offset,(int)$limit);
 		//error_log('fetch:'.print_r($query,true));

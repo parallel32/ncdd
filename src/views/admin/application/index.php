@@ -23,6 +23,7 @@
                            <thead>
                               <tr role="row">
                                  <th class="">Name</th>
+                                 <th class="">Email</th>
                                  <th class="hidden-480">Area</th>
                                  <th class="hidden-480">Date Submitted</th>
                                  <th class="hidden-480">Application Type</th>
@@ -33,6 +34,7 @@
                               <? if(!empty($this->vars['submitted'])): foreach($this->vars['submitted'] as $application): ?>
                               <tr class="gradeX odd">
                                  <td class=" "><?=$application['firstName'].' '.$application['lastName']?></td>
+                                 <td class=" "><?=$application['email']?></td>
                                  <td class="hidden-480 "><?=$application['city'].', '.$application['state']?></td>
                                  <td class="hidden-480 "><?=$application['submittedDate']['monthDay'].' '.$application['submittedDate']['shortTime']?></td>
                                  <td class="center hidden-480 "><?=$application['type']?></td>
@@ -63,6 +65,7 @@
                            <thead>
                               <tr role="row">
                                  <th class="">Name</th>
+                                 <th class="">Email</th>
                                  <th class="hidden-480">Area</th>
                                  <th class="hidden-480">Date Approved</th>
                                  <th class="hidden-480">Application Type</th>
@@ -73,12 +76,13 @@
                               <? if(!empty($this->vars['approved'])): foreach($this->vars['approved'] as $application): ?>
                               <tr class="gradeX odd">
                                  <td class=" "><?=$application['firstName'].' '.$application['lastName']?></td>
+                                 <td class=" "><?=$application['email']?></td>
                                  <td class="hidden-480 "><?=$application['city'].', '.$application['state']?></td>
                                  <td class="hidden-480 "><?=$application['approvedDate']['monthDay'].' '.$application['approvedDate']['shortTime']?></td>
                                  <td class="center hidden-480 "><?=$application['type']?></td>
                                  <td class=" ">
                                     <a data-id="<?=$application['_id']?>" class="btn blue mini view"><i class=" icon-eye-open"></i> View Application</a>
-                                    <a data-id="<?=$application['_id']?>" class="btn blue mini view member"><i class=" icon-eye-open"></i> View Member</a>
+                                    <a data-id="<?=$application['memberId']?>" class="btn blue mini view member"><i class=" icon-eye-open"></i> View Member</a>
                                  </td>
                               </tr>
                               <? endforeach;?>
@@ -106,6 +110,7 @@
                            <thead>
                               <tr role="row">
                                  <th class="">Name</th>
+                                 <th class="">Email</th>
                                  <th class="hidden-480">Area</th>
                                  <th class="hidden-480">Date Paid</th>
                                  <th class="hidden-480">Application Type</th>
@@ -116,12 +121,13 @@
                               <? if(!empty($this->vars['paid'])): foreach($this->vars['paid'] as $application): ?>
                               <tr class="gradeX odd">
                                  <td class=" "><?=$application['firstName'].' '.$application['lastName']?></td>
+                                 <td class=" "><?=$application['email']?></td>
                                  <td class="hidden-480 "><?=$application['city'].', '.$application['state']?></td>
                                  <td class="hidden-480 "><?=$application['paidDate']['monthDay'].' '.$application['paidDate']['shortTime']?></td>
                                  <td class="center hidden-480 "><?=$application['type']?></td>
                                  <td class=" ">
                                     <a data-id="<?=$application['_id']?>" class="btn blue mini view"><i class=" icon-eye-open"></i> View Application</a>
-                                    <a data-id="<?=$application['_id']?>" class="btn blue mini view payment"><i class=" icon-eye-open"></i> View Payment</a>
+                                    <a data-id="<?=$application['paymentId']?>" class="btn blue mini view payment"><i class=" icon-eye-open"></i> View Payment</a>
                                  </td>
                               </tr>
                               <? endforeach;?>

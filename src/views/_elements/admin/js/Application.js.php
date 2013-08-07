@@ -86,6 +86,12 @@
 		$('.btn.blue.mini.view').click(function(e){
 			document.location.href='/application/'+$(this).attr('data-id')+'/view';
 		});		
+		$('.btn.blue.mini.view.member').click(function(e){
+			document.location.href='/member/'+$(this).attr('data-id')+'/edit';
+		});		
+		$('.btn.blue.mini.view.payment').click(function(e){
+			document.location.href='/payment/'+$(this).attr('data-id')+'/view';
+		});		
 	};
 	Application.approveInit = function(){
 		$('#saw-form .btn.green.approve').click(function(e){

@@ -165,7 +165,7 @@
 							<tr>
 								<td align="left" valign="middle" style="padding-left:20px;">
 									<a href="<?=SAW_BASE_URL?>">
-									<img src="<?=SAW_BASE_URL?>/assets/img/ncdd-dashboard-logo.png" alt="NCDD logo"/>
+									<img src="<?=SAW_BASE_URL?>/assets/img/ncdd-dashboard-logo.png" alt="NCDD"/>
 									</a>
 								</td>
 								<td align="right" valign="middle" style="padding-right:20px;">

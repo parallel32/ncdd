@@ -8,7 +8,7 @@
 									<table border="0" cellpadding="20" cellspacing="0" width="100%">
 										<tr>
 											<td valign="top">
-												<h2 class="h2">NCDD Member Portal Password Reset</h2>
+												<h2 class="h2">Member Portal Password Reset</h2>
 												<br />
 												<div class="textdark">
 													Your password has been reset.

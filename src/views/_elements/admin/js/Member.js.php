@@ -250,8 +250,43 @@
 			$('#add-pa-modal').modal('hide');
 		});
 		
+		<? if($accessLevel == ADMIN): ?>
+		////////////
+		// DELETE //
+		////////////
+
+		// activate delete modal
+		$('#verify-delete').click(function(e){
+			$('#delete-modal').modal({keyboard: false});
+		});
+
+		// initiate delete
+		$('#delete-modal .continue.delete').click(function(e){
+			removeMember();
+		});
+		// cancel delete
+		$('#delete-modal .cancel').click(function(e){
+			$('#delete-modal').modal('hide');
+		});
+		<? endif; ?>
 
 	};
+	<? if($accessLevel == ADMIN): ?>
+	function removeMember(){
+		io.saw.FormPost.activate({postUrl:'/utilities/member/delete'
+		   ,serializeSelector:':input'
+		   ,postOnComplete:function(responseObj,responseStatus){
+		   }
+		   ,postOnSuccess:function(responseObj){
+		   		$('#delete-modal').modal('hide');
+		   		$('#save-modal .modal-body p').html(responseObj.message);
+		   		$('#save-modal .continue.edit').hide();
+		      	//$('#save-modal-label').html(responseObj.label);
+		      	$('#save-modal').modal({keyboard: false});   		
+		   }
+		});      
+	}
+	<? endif; ?>
 	function save (){
 		io.saw.FormPost.activate({postUrl:'/member/edit'
 		   ,serializeSelector:':input'

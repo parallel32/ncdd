@@ -966,6 +966,30 @@
                      </div>
                      <!--/ ADD PRACTICE AREA MODAL -->   
                      <!--/ PRACTICE AREA -->
+                     <? if($accessLevel == ADMIN): ?>
+                     <!-- DELETE MODAL -->
+                     <div id="delete-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="delete-modal-label" aria-hidden="true">
+                        <div class="modal-header">
+                           <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                           <h3 id="delete-modal-label">Are you sure you want to delete this member?</h3>
+                        </div>
+                        <div class="modal-body">
+                           <p>This action cannot be undone.  You will delete all records in the database related to this member.</p>
+                        </div>
+                        <div class="modal-footer">
+                           <button class="btn red continue delete">Yes, I'm sure.  Delete.</button>
+                           <button class="btn cancel">Cancel</button>
+                        </div>
+                     </div>
+                     <!--/ DELETE MODAL -->
+
+                     <div class="row-fluid">
+                        <div class="span12">
+                           <button id="verify-delete" class="btn red big btn-block"><i class="icon-remove icon-white"></i>&nbsp;&nbsp;Delete This Member&nbsp;&nbsp;<i class="icon-remove icon-white"></i></button>
+                        </div>
+                     </div>
+                     <? endif; ?>
+                     
                   </div>
                </div>
                <!-- END PAGE CONTENT-->
@@ -973,7 +997,7 @@
             <!-- END PAGE CONTAINER-->    
          </div>
          <!-- END PAGE -->
-         <?=$this->element('js/Member.js');?>
+         <?=$this->element('js/Member.js',array('accessLevel'=>$accessLevel));?>
          <?=$this->element('js/Address.js');?>
 
          <script>

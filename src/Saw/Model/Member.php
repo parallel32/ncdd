@@ -385,5 +385,23 @@ class Member extends User {
         }
         return false;
     }
+
+    public function removeMember(){
+    	// delete member
+    	$this->remove();
+
+    	// purge applications
+    	self::$app['mongo']->remove(array('memberId'=>$this->_id), 'application', $justOne=false, $options=array('fsync'=>true));
+
+    	// delete images
+		self::$app['upload-mongo']->deleteByCriteria(array('belongsTo'=>$this->_id));
+
+		// purge locations
+    	self::$app['mongo']->remove(array('ownerId'=>$this->_id), 'location', $justOne=false, $options=array('fsync'=>true));
+
+    	// purge payments
+    	self::$app['mongo']->remove(array('memberId'=>$this->_id), 'payment', $justOne=false, $options=array('fsync'=>true));
+
+    }
  	
 }

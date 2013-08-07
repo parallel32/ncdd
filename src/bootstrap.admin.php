@@ -26,7 +26,9 @@ $app['session.storage.options'] = array(
     'cookie_path'   	=> SAW_SESSION_COOKIE_PATH,
     'cookie_domain' 	=> SAW_SESSION_COOKIE_DOMAIN,
 	'cookie_secure'		=> SAW_SESSION_COOKIE_SECURE,
-	'cookie_httponly'	=> SAW_SESSION_COOKIE_HTTPONLY
+	'cookie_httponly'	=> SAW_SESSION_COOKIE_HTTPONLY,
+	'gc_probability'	=> 1,
+	'gc_divisor'		=> 10000
 );
 
 try {
@@ -48,7 +50,7 @@ try {
 	    );
 	});
 } catch (\MongoConnectionException $e){
-	$exception = new Saw\Exceptions\SawException($e,"Couldn't connect to mongo..catastrophe!".$e->getMessage());
+	$exception = new Saw\Exceptions\SawException($e,"SESSIONs Couldn't connect to mongo..catastrophe!".$e->getMessage());
 }
 
 // include the before, after filters along with all the controller files
