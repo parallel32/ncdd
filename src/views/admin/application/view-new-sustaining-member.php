@@ -510,7 +510,7 @@
                      <p>This delete action cannot be undone.</p>
                   </div>
                   <div class="modal-footer">
-                     <button class="btn green continue" data-id="<?=$this->vars['application']['_id']?>">Yes, Delete it.</button>
+                     <button class="btn red continue" data-id="<?=$this->vars['application']['_id']?>">Yes, Delete it.</button>
                      <button class="btn cancel">Cancel</button>
                   </div>
                </div>

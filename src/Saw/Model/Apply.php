@@ -235,5 +235,12 @@ class Apply extends Model {
 		return $result;
 
 	}
+	public function markPaid(){
+
+		$this->paidDate = new Date(self::$app,'now', $this->timeZone);
+		$this->currentStatus = self::$status['PAID'];
+		$this->saveSafe();	
+
+	}
 	
 }

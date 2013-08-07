@@ -56,6 +56,12 @@ EOT;
 EOT;
 
          break;
+      case 'invoice':
+         echo <<< EOT
+            <link href="/assets/css/pages/invoice.css" rel="stylesheet" type="text/css"/>
+EOT;
+
+         break;
       default:
          echo "";
          break;

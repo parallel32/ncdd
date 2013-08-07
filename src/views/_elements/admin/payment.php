@@ -63,7 +63,7 @@
                            <div class="control-group ">
                               <label class="control-label">Your name as it appears on the card</label>
                               <div class="controls">
-                                 <input type="text" name="doc[name]" class="m-wrap span8 name">
+                                 <input type="text" name="doc[name]" class="m-wrap span8 name" value="<?=$firstName?> <?=$lastName?>">
                               </div>
                            </div>
                         </div>
@@ -109,7 +109,7 @@
                            <div class="control-group ">
                               <label class="control-label">Address Line 1</label>
                               <div class="controls">
-                                 <input type="text" name="doc[addressLine1]" class="m-wrap span8 addressLine1">
+                                 <input type="text" name="doc[addressLine1]" class="m-wrap span8 addressLine1" value="<?=$address1?>">
                               </div>
                            </div>
                         </div>
@@ -120,7 +120,7 @@
                            <div class="control-group ">
                               <label class="control-label">Address Line 2</label>
                               <div class="controls">
-                                 <input type="text" name="doc[addressLine2]" class="m-wrap span8 addressLine2">
+                                 <input type="text" name="doc[addressLine2]" class="m-wrap span8 addressLine2" value="<?=$address2?>">
                               </div>
                            </div>
                         </div>
@@ -131,7 +131,7 @@
                            <div class="control-group ">
                               <label class="control-label">City</label>
                               <div class="controls">
-                                 <input type="text" name="doc[city]" class="m-wrap span8 city">
+                                 <input type="text" name="doc[city]" class="m-wrap span8 city" value="<?=$city?>">
                               </div>
                            </div>
                         </div>
@@ -142,7 +142,7 @@
                            <div class="control-group ">
                               <label class="control-label">State/Province/Region</label>
                               <div class="controls">
-                                 <input type="text" name="doc[stateProvinceRegion]" class="m-wrap span8 stateProvinceRegion">
+                                 <input type="text" name="doc[stateProvinceRegion]" class="m-wrap span8 stateProvinceRegion" value="<?=$state?>">
                               </div>
                            </div>
                         </div>
@@ -153,7 +153,7 @@
                            <div class="control-group ">
                               <label class="control-label">Zip/PostalCode</label>
                               <div class="controls">
-                                 <input type="text" name="doc[zipPostalCode]" class="m-wrap span8 zipPostalCode">
+                                 <input type="text" name="doc[zipPostalCode]" class="m-wrap span8 zipPostalCode" value="<?=$postalCode?>">
                               </div>
                            </div>
                         </div>
@@ -164,7 +164,7 @@
                            <div class="control-group ">
                               <label class="control-label">Country</label>
                               <div class="controls">
-                                 <input type="text" name="doc[country]" class="m-wrap span8 country">
+                                 <input type="text" name="doc[country]" class="m-wrap span8 country" value="<?=$country?>">
                               </div>
                            </div>
                         </div>
@@ -176,7 +176,7 @@
                            <div class="control-group ">
                               <label class="control-label">Email</label>
                               <div class="controls">
-                                 <input type="text" name="doc[email]" class="m-wrap span8 email">
+                                 <input type="text" name="doc[email]" class="m-wrap span8 email" value="<?=$email?>">
                               </div>
                            </div>
                         </div>
@@ -187,7 +187,7 @@
                            <div class="control-group ">
                               <label class="control-label">Phone</label>
                               <div class="controls">
-                                 <input type="text" name="doc[phone]" class="m-wrap span8 phone">
+                                 <input type="text" name="doc[phone]" class="m-wrap span8 phone" value="<?=$phone?>">
                               </div>
                            </div>
                         </div>
@@ -224,7 +224,7 @@
                   <?=$this->element('js/Payment.js');?>
                   <script>
                   jQuery(document).ready(function() {    
-                     io.saw.Payment.init();
+                     io.saw.Payment.init(<?=$chargeOnSuccess?>);
                   });      
                   </script>
                   <!--/ PAYMENT ELEMENT -->

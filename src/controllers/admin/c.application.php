@@ -180,7 +180,7 @@ $app->get('/application/{id}/pay', function ($id, Request $request) use ($app) {
 					);
 	$view_vars = array(
 						 'active'=>'Application'
-						,'page-plugin'=>'datatables'
+						,'page-plugin'=>'datatables,invoice'
 						,'headline'=>'Membership Application Payment'
 						,'description'=>"Pay membership Dues."
 						,'crumbs'=>$crumbs
@@ -189,12 +189,10 @@ $app->get('/application/{id}/pay', function ($id, Request $request) use ($app) {
 })->value('id','')
 ->before($mustbeMEMBER);
 
-$app->post('/application/{id}/pay', function ($id, Request $request) use ($app) {
+$app->get('/application/{paymentId}/pay/{applicationId}', function ($paymentId, $applicationId, Request $request) use ($app) {
     
-    $doc = $request->get('doc');
-    $application = new Model\ApplyNewMember($doc, $app);
-    // validate the model
-    $app['validateModel']($app,$application);
+    $application = new Model\Apply(array('_id'=>$applicationId, 'paymentId'=>$paymentId), $app);
+    $application->markPaid();
 
     return new Response(json_encode(array('message' => 'Successfully Paid')), 200,array('Content-Type' => 'application/json'));
 })->before($mustbeMEMBER);

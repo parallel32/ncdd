@@ -104,7 +104,7 @@
 			// pop delete are you sure modal
 			$('#delete-modal').modal({keyboard: false});
 		});		
-		$('#delete-modal .btn.green.continue').click(function(e){
+		$('#delete-modal .btn.red.continue').click(function(e){
 			$('#delete-modal').modal('hide');
 			remove($(this).attr('data-id'));
 		});		

@@ -1,6 +1,8 @@
 <script type="text/javascript">
 (function( Payment, $, undefined ) {
 	
+	var params = {};
+
 	function validateCVC(cvc){
 		if(Stripe.validateCVC(cvc.val())){
 		   cvc.parents('.control-group').removeClass('error');// remove the red highlight
@@ -119,7 +121,7 @@
 		   		$('#save-success').modal({keyboard: false});   		
 		   		$('#payment-form .btn.green').removeAttr("disabled");
 	            $('#payment-form .btn.green').html('<i class="icon-ok"></i> Payment Successful');
-	            $('#save-success .continue.payment').attr('data-insertid',responseObj.paymentId.$id);
+	            params.chargeOnSuccess(responseObj,responseObj.paymentId.$id);
 		   }
 		   ,postOnErrors:function(responseObj){
 		   		$('#payment-form .number').val(io.saw.Payment.hold_card);
@@ -140,8 +142,10 @@
 		   ,postOnSuccess:function(responseObj){}
 		});      
 	};	
-	Payment.init = function(){
-
+	Payment.init = function(p){
+		params = p;
+		params.chargeOnSuccess = params.chargeOnSuccess || function(){};
+		
 		$('#payment-form input').keypress(function (e) {
 			if (e.which == 13) {
 				validateCardNumber($('#payment-form .number'));

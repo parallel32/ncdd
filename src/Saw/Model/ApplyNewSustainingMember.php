@@ -120,7 +120,7 @@ class ApplyNewSustainingMember extends Apply {
 		$this->futureLawEnforcementExplain = $doc['futureLawEnforcementExplain'];
 		$this->attendSeminar = $doc['attendSeminar'];
 		$this->attendSeminarExplain = $doc['attendSeminarExplain'];
-		$this->executed = (!empty($doc['executed'])) ? $this->prepareExecuted($doc['executed']) : '';
+		$this->executed = (!empty($doc['executed']) && strpos($doc['executed'], 'Executed at') === false) ? $this->prepareExecuted($doc['executed']) : '';
 		$this->executedPrintedName = $doc['executedPrintedName'];
 		$this->membershipDues = $doc['membershipDues'];
 		$this->authorizationReleasePrintedName = $doc['authorizationReleasePrintedName'];
@@ -225,4 +225,5 @@ class ApplyNewSustainingMember extends Apply {
 
 		return $member;
 	}
+	
 }
