@@ -135,10 +135,10 @@ $utilities->get('/importmembers', function () use ($app) {
     $boardCertified[''] = 'no';
 
     $membership = array();
-    $membership['Founding Member'] = 30;
+    $membership['Founding Member'] = 40;
     $membership['General Member'] = 10;
     $membership['Former Regent'] = Model\Member::$facultyPosition['FORMER REGENT'];
-    $membership['Sustaining Member'] = 40;
+    $membership['Sustaining Member'] = 30;
     
 
 
@@ -214,7 +214,7 @@ $utilities->get('/importmembers', function () use ($app) {
 
             $location = new Model\Location($loc_doc,$app);
 
-            $member_doc['orderNum'] = (int)$record['ordernum'];
+            $member_doc['orderNum'] = trim($record['ordernum'])+0;
 
             $member_doc['listed'] = strtolower($record['haslisting']);
             if($record['creationdate'] != '0000-00-00 00:00:00')
@@ -239,7 +239,7 @@ $utilities->get('/importmembers', function () use ($app) {
 
             if($record['membertype'] == 'Former Regent'){
                 $member_doc['currentFacultyPosition'] = $membership['Former Regent'];
-                error_log('FFFFFFFFFFFFFFFFFFFFF ---- RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR    '.$$record['membertype']);
+                error_log('FFFFFFFFFFFFFFFFFFFFF ---- RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR    '.$record['membertype']);
                 error_log('record membertype:'.$record['membertype']. 'currentFP:'.$membership['Former Regent']);
             }else{
                 $member_doc['currentMembership'] = $membership[$record['membertype']];    

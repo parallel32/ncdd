@@ -40,18 +40,17 @@ class Member extends User {
 	public $orderNum;
 
 	// order not relevant
-	static public $membership = array('GENERAL MEMBER'=>10,'FACULTY'=>20,'FOUNDING MEMBER'=>30,'SUSTAINING MEMBER'=>40);
-	static public $membershipReversed = array(10=>'GENERAL MEMBER',20=>'FACULTY',30=>'FOUNDING MEMBER', 40=>'SUSTAINING MEMBER');
+	static public $membership = array('GENERAL MEMBER'=>10,'FACULTY'=>20,'SUSTAINING MEMBER'=>30,'FOUNDING MEMBER'=>40);
+	static public $membershipReversed = array(10=>'GENERAL MEMBER',20=>'FACULTY',30=>'SUSTAINING MEMBER', 40=>'FOUNDING MEMBER');
 	public $currentMembership;
 	static public $membershipBadge = array(10=>'./../../../www/ncdd.com/public_html/assets/img/badges/general.png'
 											,20=>'./../../../www/ncdd.com/public_html/assets/img/badges/faculty.png'
 											,30=>'./../../../www/ncdd.com/public_html/assets/img/badges/founding.png'
 											,40=>'./../../../www/ncdd.com/public_html/assets/img/badges/sustaining.png'
 											);
-
 	// order descending
-	static public $order = array('FELLOW'=>60,'DEAN'=>59,'DEAN EMERITUS'=>58,'ASSISTANT DEAN'=>57,'SECRETARY'=>56,'TREASURER'=>55,'REGENT'=>50,'BOARD CERTIFIED'=>45,'DELEGATE'=>40,'FOUNDING MEMBER'=>35,'FORMER REGENT'=>30,'SUSTAINING MEMBER'=>20,'FACULTY'=>10,'GENERAL MEMBER'=>5);
-	static public $orderReversed = array(60=>'FELLOW',59=>'DEAN',58=>'DEAN EMERITUS',57=>'ASSISTANT DEAN',56=>'SECRETARY',55=>'TREASURER',50=>'REGENT',45=>'BOARD CERTIFIED',40=>'DELEGATE',35=>'FOUNDING MEMBER',30=>'FORMER REGENT',20=>'SUSTAINING MEMBER',10=>'FACULTY',5=>'GENERAL MEMBER');
+	static public $order = array('FELLOW'=>60,'DEAN'=>59,'DEAN EMERITUS'=>58,'ASSISTANT DEAN'=>57,'SECRETARY'=>56,'TREASURER'=>55,'REGENT'=>50,'BOARD CERTIFIED'=>45,'FOUNDING MEMBER'=>40,'SUSTAINING MEMBER'=>35,'DELEGATE'=>20,'FORMER REGENT'=>15,'FACULTY'=>10,'GENERAL MEMBER'=>5);
+	static public $orderReversed = array(60=>'FELLOW',59=>'DEAN',58=>'DEAN EMERITUS',57=>'ASSISTANT DEAN',56=>'SECRETARY',55=>'TREASURER',50=>'REGENT',45=>'BOARD CERTIFIED',40=>'FOUNDING MEMBER',35=>'SUSTAINING MEMBER',20=>'DELEGATE',15=>'FORMER REGENT',10=>'FACULTY',5=>'GENERAL MEMBER');
 	public $currentOrder;
 	
 	// order descending
@@ -106,7 +105,8 @@ class Member extends User {
 		$this->financialPayment = $doc['financialPayment'];
 		$this->practiceAreas = $doc['practiceAreas'];
 		$this->yearsinpractice = $doc['yearsinpractice'];
-		$this->orderNum = ( $doc['orderNum'] == '*') ? $doc['orderNum']: (int)$doc['orderNum'];
+		//$this->orderNum = ( $doc['orderNum'] == '*') ? $doc['orderNum']: (int)$doc['orderNum'];
+		$this->orderNum = $doc['orderNum'];
 
 		$this->currentMembership = (!empty($doc['currentMembership'])) ? (int)$doc['currentMembership']: null;
 		$this->currentFacultyPosition = (!empty($doc['currentFacultyPosition'])) ? (int)$doc['currentFacultyPosition']: null;
@@ -160,7 +160,7 @@ class Member extends User {
 		$this->financialPayment = $this->financialPayment ?: '';
 		$this->practiceAreas = $this->practiceAreas ?: array();
 		$this->yearsinpractice = $this->yearsinpractice ?: '';
-		$this->orderNum = $this->orderNum ?: '';
+		$this->orderNum = $this->orderNum ?: '*';
 		
 
 		parent::prepareInsert();
@@ -294,7 +294,8 @@ class Member extends User {
 
 		switch ($string) {
 			case 'email':
-				$result = $this->find($query=array('email'=>$email),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				$search = new \MongoRegex("/".$email."/i");
+				$result = $this->find($query=array('email'=>$search),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
 				break;
 			case 'state':
 				$result = $this->find($query=array('location.state'=>$state,'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
