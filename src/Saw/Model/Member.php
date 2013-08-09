@@ -105,8 +105,8 @@ class Member extends User {
 		$this->financialPayment = $doc['financialPayment'];
 		$this->practiceAreas = $doc['practiceAreas'];
 		$this->yearsinpractice = $doc['yearsinpractice'];
-		//$this->orderNum = ( $doc['orderNum'] == '*') ? $doc['orderNum']: (int)$doc['orderNum'];
-		$this->orderNum = $doc['orderNum'];
+		$this->orderNum = ( $doc['orderNum'] == '*') ? $doc['orderNum']: (int)$doc['orderNum'];
+		//$this->orderNum = $doc['orderNum'];
 
 		$this->currentMembership = (!empty($doc['currentMembership'])) ? (int)$doc['currentMembership']: null;
 		$this->currentFacultyPosition = (!empty($doc['currentFacultyPosition'])) ? (int)$doc['currentFacultyPosition']: null;
