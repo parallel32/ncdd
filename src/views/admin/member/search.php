@@ -19,13 +19,12 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                   <form id="saw-form" class="form-search">
                      <div class="chat-form">
                         <div class="input-cont">   
-                           <input type="text" name="doc[search]" placeholder="Enter a member's name..." class="m-wrap" value="<?=$this->vars['query'];?>">
+                           <input type="text" name="doc[search]" placeholder="Search key words can be: email address OR name OR partial name OR state (Alabama, New York, Washington, etc.)" class="m-wrap" value="<?=$this->vars['query'];?>">
                         </div>
                         <button type="button" class="btn green">Search &nbsp; <i class="m-icon-swapright m-icon-white"></i></button>
                      </div>
                   </form>
                </div>
-               <span class="help-block alert">You can enter a full name or a partial name.  You can also enter "Regents" or "Fellows" or "New York" to search by any state.</span>
                <span id="result-message" class="help-block"></span>
                <div id="results" class="portlet-body">
                   <table class="table table-striped table-hover">
@@ -33,9 +32,11 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                         <tr>
                            <th>Photo</th>
                            <th>Name</th>
-                           <th>Join Date</th>
                            <th>Email</th>
                            <th class="hidden-phone">Phone</th>
+                           <? if($accessLevel >= EDITOR): ?>
+                           <th class="hidden-phone">#</th>
+                           <? endif; ?>
                            <th class="hidden-phone">Order</th>
                            <th class="hidden-phone">Membership</th>
                            <th class="hidden-phone hidden-tablet">Executive</th>
@@ -74,6 +75,7 @@ jQuery(document).ready(function() {
       io.saw.FormPost.activate({postUrl:'/member/search'
          ,serializeSelector:':input'
          ,formName:'#saw-form'
+         ,blockUIParams:{elementToBlock:'#results'}
          ,postOnComplete:function(responseObj,responseStatus){}
          ,postOnSuccess:function(responseObj){
                
@@ -85,9 +87,11 @@ jQuery(document).ready(function() {
                   html = '<tr>'+
                         '   <td><img width="159" src="'+member.image+'" alt=""></td>'+
                         '   <td class="">'+member.displayName+'</td>'+
-                        '   <td class="">'+member.joinDate.feed+'</td>'+
                         '   <td class="">'+member.email+'</td>'+
                         '   <td class=" hidden-phone">'+member.primaryPhone+'</td>'+
+                        <? if($accessLevel >= EDITOR): ?>
+                        '   <td class=" hidden-phone" id="'+member._id.$id+'"><input type="text" class="m-wrap" style="width:32px;" value="'+member.orderNum+'"><a data-member-id="'+member._id.$id+'" href="#" class="btn green icn-only"><i class="icon-check icon-white"></i></a></td>'+
+                        <? endif; ?>
                         '   <td class=" hidden-phone"><span class="label">'+member.currentOrder+'</span></td>'+
                         '   <td class=" hidden-phone"><span class="label">'+member.currentMembership+'</span></td>'+
                         '   <td class=" hidden-phone hidden-tablet"><span class="label">'+member.currentFacultyPosition+'</span></td>'+
@@ -105,6 +109,16 @@ jQuery(document).ready(function() {
                $('#results td .edit').click(function(e){
                   document.location.href='/member/'+$(this).attr('data-id')+'/edit';
                });   
+
+               $('#results tbody a').click(function(e){
+                  e.preventDefault();
+                  io.saw.FormGet.activate({postUrl:'/member/order/'+$(this).attr('data-member-id')+'/'+($(this).prev().val() || '*')
+                     ,postOnComplete:function(responseObj,responseStatus){}
+                     ,postOnSuccess:function(responseObj){}
+                     ,blockUI:'yes'
+                     ,blockUIParams:{elementToBlock:'#'+$(this).parents('td').attr('id')}
+                  });
+               });
          }
       });
    };

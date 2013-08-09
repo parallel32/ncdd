@@ -10,6 +10,7 @@
 		params.postOnSuccess = params.postOnSuccess || function(){};
 		params.postOnErrors = params.postOnErrors || function(){};
 		params.blockUI = params.blockUI || 'yes';
+		params.blockUIParams = params.blockUIParams || {};
 		params.validate = params.validate || 'yes';
 	};
 	FormGet.getParams = function(){
@@ -18,7 +19,7 @@
 	FormGet.activate = function(p){
 		init(p);
 		if(params.blockUI == 'yes'){
-			io.saw.BlockUI.block({});	
+			io.saw.BlockUI.block(params.blockUIParams);	
 		}		
 		return $.get(
 			params.postUrl

@@ -214,6 +214,8 @@ $utilities->get('/importmembers', function () use ($app) {
 
             $location = new Model\Location($loc_doc,$app);
 
+            $member_doc['orderNum'] = (int)$record['ordernum'];
+
             $member_doc['listed'] = strtolower($record['haslisting']);
             if($record['creationdate'] != '0000-00-00 00:00:00')
                 $member_doc['joinDate'] = new Model\Date($app, $record['creationdate']);
@@ -237,6 +239,7 @@ $utilities->get('/importmembers', function () use ($app) {
 
             if($record['membertype'] == 'Former Regent'){
                 $member_doc['currentFacultyPosition'] = $membership['Former Regent'];
+                error_log('FFFFFFFFFFFFFFFFFFFFF ---- RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR    '.$$record['membertype']);
                 error_log('record membertype:'.$record['membertype']. 'currentFP:'.$membership['Former Regent']);
             }else{
                 $member_doc['currentMembership'] = $membership[$record['membertype']];    

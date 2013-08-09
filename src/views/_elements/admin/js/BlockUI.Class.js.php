@@ -20,7 +20,7 @@
         }else if(typeof params.elementToBlock =='object'){
             var element = params.elementToBlock;
         }
-		element.block({
+        element.block({
             message: '<img src="'+params.loadingImg+'" align="absmiddle">',
             css: {
                 border: 'none',

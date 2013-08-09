@@ -72,6 +72,14 @@ $member->post('/add', function (Request $request) use ($app) {
 	
 });
 
+// change the member order number
+$member->get('/order/{id}/{order}', function ($id, $order, Request $request) use ($app) {
+    $order = (empty($order)) ? '*' : $order ;
+	$member = new Model\Member(array('_id'=>$id,'orderNum'=>$order), $app);
+	$member->updateOrderNum();
+    return new Response(json_encode(array('message' => 'order updated successfully.')), 200,array('Content-Type' => 'application/json'));
+})->value('order','*');
+
 $member->get('/{userId}/edit', function ($userId, Request $request) use ($app) {
 
 	$member = new Model\Member($doc=array('_id'=>new MongoId($userId)), $app);

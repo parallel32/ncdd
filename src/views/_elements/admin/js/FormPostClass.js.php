@@ -13,6 +13,7 @@
 		params.postOnSuccess = params.postOnSuccess || function(){};
 		params.postOnErrors = params.postOnErrors || function(){};
 		params.blockUI = params.blockUI || 'yes';
+		params.blockUIParams = params.blockUIParams || {};
 		params.validate = params.validate || 'yes';
 		params.blockObj = undefined;
 	};
@@ -22,7 +23,7 @@
 	FormPost.activate = function(p){
 		init(p);
 		if(params.blockUI == 'yes'){
-			params.blockObj = io.saw.BlockUI.block({});	
+			params.blockObj = io.saw.BlockUI.block(params.blockUIParams);	
 		}
 		return $.post(
 			params.postUrl,

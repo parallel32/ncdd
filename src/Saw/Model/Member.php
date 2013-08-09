@@ -37,7 +37,8 @@ class Member extends User {
 	public $financialFees;
 	public $financialPayment;
 	public $practiceAreas; //array('95'=>'DUI 22 years, 400 cases') // array indexes should add up to 100
-	
+	public $orderNum;
+
 	// order not relevant
 	static public $membership = array('GENERAL MEMBER'=>10,'FACULTY'=>20,'FOUNDING MEMBER'=>30,'SUSTAINING MEMBER'=>40);
 	static public $membershipReversed = array(10=>'GENERAL MEMBER',20=>'FACULTY',30=>'FOUNDING MEMBER', 40=>'SUSTAINING MEMBER');
@@ -105,7 +106,8 @@ class Member extends User {
 		$this->financialPayment = $doc['financialPayment'];
 		$this->practiceAreas = $doc['practiceAreas'];
 		$this->yearsinpractice = $doc['yearsinpractice'];
-		
+		$this->orderNum = ( $doc['orderNum'] == '*') ? $doc['orderNum']: (int)$doc['orderNum'];
+
 		$this->currentMembership = (!empty($doc['currentMembership'])) ? (int)$doc['currentMembership']: null;
 		$this->currentFacultyPosition = (!empty($doc['currentFacultyPosition'])) ? (int)$doc['currentFacultyPosition']: null;
 
@@ -158,6 +160,7 @@ class Member extends User {
 		$this->financialPayment = $this->financialPayment ?: '';
 		$this->practiceAreas = $this->practiceAreas ?: array();
 		$this->yearsinpractice = $this->yearsinpractice ?: '';
+		$this->orderNum = $this->orderNum ?: '';
 		
 
 		parent::prepareInsert();
@@ -268,6 +271,10 @@ class Member extends User {
 			$state = $states[strtolower($string)];
 			$string = "state";
 		}
+		if(strpos($string,'@')!== false){
+			$email = $string;
+			$string = 'email';
+		}
 		$fields=array('_id'=>1
 					,'firstName'=>1
 					,'lastName'=>1
@@ -282,45 +289,51 @@ class Member extends User {
 					,'boardCertified'=>1
 					,'listed'=>1
 					,'websites'=>1
-					,'joinDate.feed'
+					,'orderNum'
 					);
 
 		switch ($string) {
+			case 'email':
+				$result = $this->find($query=array('email'=>$email),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				break;
 			case 'state':
-				$result = $this->find($query=array('location.state'=>$state,'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'joinDate.date'=>1),$offset=0,$limit=3000);		
+				$result = $this->find($query=array('location.state'=>$state,'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
 				break;
 			case 'Sustaining Members':
-				$result = $this->find($query=array('currentMembership'=>self::$membership['SUSTAINING MEMBER']),$fields,true,$sort=array('currentOrder'=>-1,'joinDate.date'=>1),$offset=0,$limit=3000);		
+				$result = $this->find($query=array('currentMembership'=>self::$membership['SUSTAINING MEMBER']),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
 				break;
 			case 'General Members':
-				$result = $this->find($query=array('currentMembership'=>self::$membership['GENERAL MEMBER']),$fields,true,$sort=array('currentOrder'=>-1,'joinDate.date'=>1),$offset=0,$limit=3000);		
+				$result = $this->find($query=array('currentMembership'=>self::$membership['GENERAL MEMBER']),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
 				break;
 			case 'Founding Members':
 				if($listedOnly){
-					$result = $this->find($query=array('currentMembership'=>self::$membership['FOUNDING MEMBER'],'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'joinDate.date'=>1),$offset=0,$limit=3000);		
+					$result = $this->find($query=array('currentMembership'=>self::$membership['FOUNDING MEMBER'],'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
 				}else{
-					$result = $this->find($query=array('currentMembership'=>self::$membership['FOUNDING MEMBER']),$fields,true,$sort=array('currentOrder'=>-1,'joinDate.date'=>1),$offset=0,$limit=3000);		
+					$result = $this->find($query=array('currentMembership'=>self::$membership['FOUNDING MEMBER']),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
 				}
 				break;
 			case 'Regents and Fellows':
 				if($listedOnly){
-					$result = $this->find($query=array('currentFacultyPosition'=>array('$gte'=>self::$facultyPosition['REGENT']),'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'joinDate.date'=>1),$offset=0,$limit=3000);			
+					$result = $this->find($query=array('currentFacultyPosition'=>array('$gte'=>self::$facultyPosition['REGENT']),'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);			
 				}else{
-					$result = $this->find($query=array('currentFacultyPosition'=>array('$gte'=>self::$facultyPosition['REGENT'])),$fields,true,$sort=array('currentOrder'=>-1,'joinDate.date'=>1),$offset=0,$limit=3000);			
+					$result = $this->find($query=array('currentFacultyPosition'=>array('$gte'=>self::$facultyPosition['REGENT'])),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);			
 				}
 				
 				break;
 			case 'Regents':
-				$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['REGENT']),$fields,true,$sort=array('currentOrder'=>-1,'joinDate.date'=>1),$offset=0,$limit=3000);		
+				$result = $this->find($query=array('currentFacultyPosition'=>array('$gt'=>self::$facultyPosition['DELEGATE'],'$lt'=>self::$facultyPosition['FELLOW'])),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
 				break;
 			case 'Fellows':
-				$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['FELLOW']),$fields,true,$sort=array('currentOrder'=>-1,'joinDate.date'=>1),$offset=0,$limit=3000);		
+				$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['FELLOW']),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				break;
+			case 'Former Regents':
+				$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['FORMER REGENT']),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
 				break;
 			case 'State Delegates':
-				$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['DELEGATE']),$fields,true,$sort=array('currentOrder'=>-1,'joinDate.date'=>1),$offset=0,$limit=3000);		
+				$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['DELEGATE']),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
 				break;
 			case 'Board Certified':
-				$result = $this->find($query=array('boardCertified'=>1),$fields,true,$sort=array('currentOrder'=>-1,'joinDate.date'=>1),$offset=0,$limit=3000);		
+				$result = $this->find($query=array('boardCertified'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
 				break;
 			
 			default:
@@ -358,7 +371,7 @@ class Member extends User {
 					,'websites'=>1
 					,'location'=>1
 					);
-		$result = $this->find($query=array('location.state'=>$state,'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'joinDate.date'=>1),$offset=0,$limit=3000);		
+		$result = $this->find($query=array('location.state'=>$state,'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
 				
 		if(!empty($result)):
 			for ($i=0; $i < count($result); $i++) {
@@ -385,7 +398,15 @@ class Member extends User {
         }
         return false;
     }
+    // route for this is in c.utilities.php
+    public function updateOrderNum(){
+    	if(!empty($this->_id) && !empty($this->orderNum)){
+    		$this->saveSafe();
+    	}
+    	return true;
+    }
 
+    // route for this is in c.utilities.php
     public function removeMember(){
     	// delete member
     	$this->remove();
