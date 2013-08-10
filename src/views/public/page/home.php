@@ -198,7 +198,7 @@
                     </div>
 
                     -->
-                    <!--
+                    <!-- RECENT DUI NEWS -->
                     <div class="row-fluid bottomPadding recentNews">
                         <div class="title text-center">
                             <div class="bg">
@@ -273,7 +273,11 @@
                             <a href="#" class="btn">All News</a>
                         </div>
                     </div>
-                    -->
+                    <!--/ RECENT DUI NEWS -->
+
+
+
+                    
                     <div class="row-fluid bottomPadding findAnAttorney">
                         <div class="title text-center">
                             <div class="bg">

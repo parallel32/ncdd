@@ -67,7 +67,7 @@
                </div>
                <div class="modal-body">
                   <!-- BEGIN FORM-->
-                        <form id="saw-form" class="form-horizontal" novalidate="novalidate">
+                        <form id="edit-form" class="form-horizontal" novalidate="novalidate">
                            <div class="row-fluid">
                               <div class="span12 ">
                                  
@@ -115,12 +115,12 @@
                            <div class="row-fluid">
                               <div class="span12 ">
                                  <div class="control-group">
-                                    <span id="description" class="help-block"></span>
+                                    <span id="description" class="help-block">Click here to add a description...</span>
                                     <input id="input-description" type="hidden" name="doc[description]" value="">
                                  </div>
                               </div>
                            </div>
-                           <input type="hidden" id="id" name="doc[_id]" value="">
+                           <input type="hidden" id="edit-id" name="doc[_id]" value="">
 						</form>
                         
                         <!-- END FORM-->
@@ -143,7 +143,7 @@
                </div>
                <div class="modal-body">
                   <!-- BEGIN FORM-->
-                        <form id="saw-form" class="form-horizontal" novalidate="novalidate">
+                        <form id="delete-form" class="form-horizontal" novalidate="novalidate">
                            <div class="row-fluid">
                               <div class="span12 ">
                                  
@@ -171,7 +171,7 @@
                                     </div>
                                  </div>
                            </div>
-                           <input type="hidden" id="id" name="doc[_id]" value="">
+                           <input type="hidden" id="delete-id" name="doc[_id]" value="">
 						</form>
                         
                         <!-- END FORM-->
@@ -196,20 +196,45 @@
          Aloha.ready( function() {
               Aloha.jQuery('.description').aloha();
          });
-         */
-         var editor = new SnapEditor.InPlace("description", {
-                 buttons: [
-    "styleBlock", "|",
-    "p", "|",
-    "bold", "italic", "underline", "|",
-    "alignment", "|",
-    "alignLeft", "alignCentre", "alignRight", "alignJustify", "|",
-    "orderedList", "unorderedList", "indent", "outdent", "|",
-    "link", "table", "horizontalRule" 
-  ]
-            });
+         //*/
 
-      
+         var editor = new SnapEditor.InPlace("description", {
+               toolbar: {
+                 items: [
+                   "styleBlock", "|",
+                   "p", "|",
+                   "bold", "italic", "underline", "|",
+                   "alignment", "|",
+                   "alignLeft", "alignCentre", "alignRight", "alignJustify", "|",
+                   "orderedList", "unorderedList", "indent", "outdent", "|",
+                   "link", "table", "horizontalRule" 
+                 ]
+               }
+               ,snap: false
+               ,onSave: function (e) {
+                  var isSuccess = true;
+                  html = e.html;
+                  io.saw.Agenda.save();
+                  return isSuccess || "Error";
+               }
+            });
+         editor.on("snapeditor.ready", function (e) {
+            window.setTimeout(function(){
+               $('.snapeditor_toolbar_floating').css('z-index',12000);   
+               $('.snapeditor_toolbar_menu').css('z-index',12001);   
+               $('.snapeditor_dialog').css('z-index',12010);   
+            },200);
+            
+         });
+         /*
+         $('#description').click(function(e){
+            console.log('here.....');
+            window.setTimeout(function(){
+               
+               
+            },2000);
+         });
+         //*/
       });
       
       </script>

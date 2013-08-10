@@ -1,7 +1,11 @@
 <script type="text/javascript">
 (function( Dashboard, $, undefined ) {
 	
+	function init(){
+		
+	};
 	Dashboard.adminInit = function(){
+		init();
 		$('#applications .btn.view').click(function(e){
 			e.preventDefault();
 			document.location.href='/application/'+$(this).attr('data-id')+'/view';
@@ -13,6 +17,7 @@
 		
 	};
 	Dashboard.memberInit = function(saveMode){
+		init();
 		$('#saw-form .btn.green').click(function(e){
 			e.preventDefault();
 			$('#description').val($('.description').html());
@@ -36,6 +41,7 @@
 
 	};
 	Dashboard.editorInit = function(saveMode){
+		init();
 		$('#saw-form .btn.green').click(function(e){
 			e.preventDefault();
 			$('#description').val($('.description').html());

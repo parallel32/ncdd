@@ -39,7 +39,7 @@ class Date {
 		try {
 			$date = new \DateTime($date, $tz);
 		} catch (\Exception $e) {
-			$date = new \DateTime('1969-12-31');//known to produce a date like this: 1969-12-31 (this will invoke the validator and send back an error)
+			$date = new \DateTime('1969-12-31');//known to produce a date like this: 1969-12-31 (this date is set for Model validator helper functions to check for it so they can invoke bad data)
 		}
 		$this->checkError = $date->format('Y-m-d');
 		$this->feed = $date->format('n/j/Y');

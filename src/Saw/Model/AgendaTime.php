@@ -24,7 +24,20 @@ class AgendaTime extends Model {
 		$metadata->addPropertyConstraint('title', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('description', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('color', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		
+		$metadata->addConstraint(new Callback(array('methods' => array('checkDate'))));
+	}
+	public function checkDate(ExecutionContext $context){
+		$date = '';
+		if(is_object($this->date)){
+			$date = $this->date->checkError;
+		}
+		if(is_array($this->date)){
+			$date = $this->date['checkError'];
+		}
+		if(strpos($date,'1969-12-31') !== false){
+            $propertyPath = $context->getPropertyPath().'date';
+        	$context->addViolationAtPath($propertyPath,'Could not compute a valid time. Please try again.', array(), null);
+		}
 	}
 	public function __construct($doc, Application $app){
 		parent::__construct($app);

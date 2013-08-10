@@ -1,6 +1,7 @@
 <script type="text/javascript">
 (function( Seminar, $, undefined ) {
-	function add (){
+	Seminar.add = function(){
+		$('#input-description').val($('#description').html());
 		io.saw.FormPost.activate({postUrl:'/seminar/add'
 		   ,serializeSelector:':input'
 		   ,postOnComplete:function(responseObj,responseStatus){}
@@ -11,7 +12,8 @@
 		   }
 		});      
 	};
-	function edit (){
+	Seminar.edit = function (){
+		$('#input-description').val($('#description').html());
 		io.saw.FormPost.activate({postUrl:'/seminar/edit'
 		   ,serializeSelector:':input'
 		   ,postOnComplete:function(responseObj,responseStatus){}
@@ -49,21 +51,19 @@
 	Seminar.init = function(saveMode){
 		$('#saw-form input').keypress(function (e) {
 		   if (e.which == 13) {
-		   	  $('#input-description').val($('#description').html());
 		      if(saveMode == 'edit'){
-		         edit();
+		         Seminar.edit();
 		      }else if(saveMode == 'add'){
-		         add();
+		         Seminar.add();
 		      }
 		   }
 		});
 		$('#saw-form .btn.green').click(function(e){
 			e.preventDefault();
-			$('#input-description').val($('#description').html());
 			if(saveMode == 'edit'){
-				edit();
+				Seminar.edit();
 			}else if(saveMode == 'add'){
-				add();
+				Seminar.add();
 			}
 		});
 		$('#saw-form .cancel').click(function(e){

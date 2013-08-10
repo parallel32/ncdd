@@ -71,18 +71,24 @@ $agenda->post('/saveTimeSlot', function (Request $request) use ($app, $common_vi
     	$agenda->findById();
     	$doc['timeZone'] = $agenda->timeZone;
 
+    	$agendaTimeNew = new Model\AgendaTime($doc,$app);
+	    $app['validateModel']($app,$agendaTimeNew);
+
+
     	$old['timeZone'] = $agenda->timeZone;
     	$old['date'] = new Model\Date($app,date('c',$_time),$agenda->timeZone);
     	$agendaTimeOld = new Model\AgendaTime($old,$app);
     	$agenda->removeTimeSlot($agendaTimeOld);
     	
-	    $agendaTimeNew = new Model\AgendaTime($doc,$app);
+
 	    $agenda->addTimeSlot($agendaTimeNew);
     else:
     	$agenda = new Model\Agenda(array('_id'=>$doc['_id']), $app);
-	    $agenda->findById();
+	    $agenda_arr = $agenda->findById();
     	$doc['timeZone'] = $agenda->timeZone;
+
 	    $agendaTime = new Model\AgendaTime($doc,$app);
+	    $app['validateModel']($app,$agendaTime);
 	    $agenda->addTimeSlot($agendaTime);
     endif;
     

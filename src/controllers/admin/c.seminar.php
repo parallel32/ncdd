@@ -45,7 +45,7 @@ $seminar->get('/view/{id}', function ($id, Request $request) use ($app, $common_
 	$agenda = new Model\Agenda(array('seminarId'=>$id),$app);
 	$agendas = $agenda->findBySeminarId();
 	$seminar['agendas'] = $agendas;
-
+	
 	$crumbs = array(array('name'=>'Seminars','href'=>'/seminar/')
 					,array('name'=>$seminar['headline'],'href'=>'/seminar/view/'.$id)
 					);

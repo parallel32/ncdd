@@ -38,11 +38,13 @@ EOT;
 
 EOT;
          break;
-      case 'editor':
+      case 'editor-aloha':
          echo <<< EOT
             <link rel="stylesheet" href="/assets/aloha/aloha/css/aloha.css" type="text/css">
-
-
+EOT;
+      case 'editor':
+         echo <<< EOT
+        
 EOT;
          break;
       case 'fileupload':

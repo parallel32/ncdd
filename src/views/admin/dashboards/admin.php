@@ -91,6 +91,10 @@
                   </div>
                </div>
                <div class="clearfix"></div>
+
+               <?=$this->element('twitter-feed.html')?>
+
+
             </div>
          </div>
          <!-- END PAGE CONTAINER-->    
@@ -100,5 +104,6 @@
 <script>
 jQuery(document).ready(function() {    
    io.saw.Dashboard.adminInit();
-});      
+      
+});
 </script>

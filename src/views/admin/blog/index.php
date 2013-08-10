@@ -15,13 +15,11 @@
             <div class="row-fluid">
                <div class="span12">
                   <h2>Coming Soon</h2>
+
                </div>
             </div>
             
             <!-- END PAGE CONTENT-->
-
-
-
 
          </div>
          <!-- END PAGE CONTAINER-->    
