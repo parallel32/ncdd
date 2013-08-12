@@ -168,19 +168,19 @@ $member->get('/{userId}/edit-photo-crop', function ($userId, Request $request) u
 
 $member->post('/{id}/location/add', function ($id, Request $request) use ($app) {
 	
-	// get the member to embed
-	$member = new Model\Member(array('_id'=>$id), $app);
-    $member->findById();
-    
     // retrieve document from request
     $doc = $request->get('doc');
     $doc['point'] = array($doc['lon'],$doc['lat']);
     $doc['ownerId'] = $id;
     
-    $location = new Model\Location($doc,$app, $member);
+    $location = new Model\Location($doc,$app);
     $app['validateModel']($app,$location);
 
     $insert_id = $location->insert();
+    
+    // get the member to embed
+	$member = new Model\Member(array('_id'=>$id,'location'=>$location), $app);
+	$member->saveEdit();
     
     return new Response(json_encode(array('id'=>$insert_id, 'message' => 'added successfully.')), 200,array('Content-Type' => 'application/json'));
 });

@@ -65,7 +65,7 @@
 				city = value.long_name;
 			}
 			if(value.types[0] == 'administrative_area_level_1'){
-				state = value.long_name;
+				state = value.short_name;
 			}
 			if(value.types[0] == 'postal_code'){
 				zip = value.short_name;
