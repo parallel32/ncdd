@@ -92,7 +92,7 @@
                </div>
                <div class="clearfix"></div>
 
-               <?/*$this->element('twitter-feed.html')*/?>
+               <?=$this->element('twitter-feed.html')?>
 
 
             </div>

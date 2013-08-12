@@ -198,7 +198,7 @@
                     </div>
 
                     -->
-                    <!-- RECENT DUI NEWS 
+                    <!-- RECENT DUI NEWS -->
                     <div class="row-fluid bottomPadding recentNews">
                         <div class="title text-center">
                             <div class="bg">
@@ -249,7 +249,7 @@
                            
                         });
                      };
-                     e = '';
+                     e = '366950396167606272';
                      c = document.createElement("script");
                      c.type = "text/javascript";
                      c.src = "//cdn.syndication.twimg.com/widgets/timelines/" + e + "?&lang=en&callback=cTweet&suppress_response_codes=false&rnd=" + Math.random();
