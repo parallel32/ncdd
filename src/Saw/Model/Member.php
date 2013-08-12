@@ -106,7 +106,8 @@ class Member extends User {
 		$this->financialPayment = $doc['financialPayment'];
 		$this->practiceAreas = $doc['practiceAreas'];
 		$this->yearsinpractice = $doc['yearsinpractice'];
-		$this->orderNum = (!empty($doc['orderNum'])) ? ( $doc['orderNum'] == '*') ? $doc['orderNum']: (int)$doc['orderNum'] : '';
+		// * means no order number present. use this because can't use zero, they'll shoot strait to the top
+		$this->orderNum = (!empty($doc['orderNum'])) ? ( $doc['orderNum'] == '*') ? $doc['orderNum']: (int)$doc['orderNum'] : ''; 
 		// for import only $this->orderNum = $doc['orderNum'];
 
 		$this->currentMembership = (!empty($doc['currentMembership'])) ? (int)$doc['currentMembership']: null;
