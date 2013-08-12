@@ -91,9 +91,9 @@ class Member extends User {
 		$this->listed = (!empty($doc['listed'])) ? (strtolower($doc['listed'])=='yes') ? 1: 0 : '' ;
 		$this->boardCertified = (!empty($doc['boardCertified'])) ? (strtolower($doc['boardCertified'])=='yes') ? 1: 0 : '' ;
         $this->joinDate = (!empty($doc['joinDate'])) ? (is_object($doc['joinDate'])) ? $doc['joinDate']->__toArray() : new Date(self::$app,$doc['joinDate'], $this->timeZone)  : $doc['joinDate'];
-        //include_once __DIR__.'/../Provider/WordPress/ncdd-wp-includes.php';
-		//$this->aboutMe = (!empty($doc['aboutMe'])) ? wptexturize(wpautop($doc['aboutMe'])) : '';
-		$this->aboutMe = $doc['aboutMe'];
+        include_once __DIR__.'/../Provider/WordPress/ncdd-wp-includes.php';
+		$this->aboutMe = (!empty($doc['aboutMe'])) ? wptexturize(wpautop($doc['aboutMe'])) : '';
+		// for import only $this->aboutMe = $doc['aboutMe'];
 		$this->linkedInUrl = $doc['linkedInUrl'];
 		$this->googlePlusUrl = $doc['googlePlusUrl'];
 		$this->twitterUrl = $doc['twitterUrl'];
@@ -106,8 +106,8 @@ class Member extends User {
 		$this->financialPayment = $doc['financialPayment'];
 		$this->practiceAreas = $doc['practiceAreas'];
 		$this->yearsinpractice = $doc['yearsinpractice'];
-		//$this->orderNum = ( $doc['orderNum'] == '*') ? $doc['orderNum']: (int)$doc['orderNum'];
-		$this->orderNum = $doc['orderNum'];
+		$this->orderNum = ( $doc['orderNum'] == '*') ? $doc['orderNum']: (int)$doc['orderNum'];
+		// for import only $this->orderNum = $doc['orderNum'];
 
 		$this->currentMembership = (!empty($doc['currentMembership'])) ? (int)$doc['currentMembership']: null;
 		$this->currentFacultyPosition = (!empty($doc['currentFacultyPosition'])) ? (int)$doc['currentFacultyPosition']: null;
