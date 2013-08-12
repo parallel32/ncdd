@@ -152,17 +152,16 @@
             //*/
 
              var editor = new SnapEditor.InPlace("body", {
-               toolbar: {
-                 items: [
-                   "styleBlock", "|",
-                   "p", "|",
-                   "bold", "italic", "underline", "|",
-                   "alignment", "|",
-                   "alignLeft", "alignCentre", "alignRight", "alignJustify", "|",
-                   "orderedList", "unorderedList", "indent", "outdent", "|",
-                   "link", "table", "horizontalRule" 
-                 ]
-               }
+               path: "/assets/snapeditor",
+             toolbar: {
+               items: [
+                  "styleBlock", "|",
+                  "bold", "italic", "underline", "|",
+                  "alignLeft", "alignCentre", "alignRight", "alignJustify", "|",
+                  "orderedList", "unorderedList", "indent", "outdent", "|",
+                  "link", "table", "horizontalRule", "|"
+                ],
+                         }
                ,snap: false
                ,onSave: function (e) {
                   var isSuccess = true;
@@ -170,6 +169,9 @@
                   io.saw.Page.save();
                   return isSuccess || "Error";
                }
+               ,onUnsavedChanges: function (e) {
+                  e.api.execAction("save");
+              }
             });
 
            

@@ -207,77 +207,60 @@
                                 <h3 class="insetShadow">Recent DUI News</h3>
                             </div>
                         </div>
-                        <ul class="thumbnails">
-                            <li class="span12">
-                                <div class="thumbnail">
-                                    <img src="/assets/img/7.png" alt="" class="pull-left">
-                                    <div class="caption pull-left">
-                                        <h4 class="pull-left">Petaluma police arrest 4 DUI drivers - 3 from crashes</h4>
-                                        <span class="date pull-right">June 18, 2013</span>
-                                        <p class="descr">Officers eventually stopped Timothy Kemp, 50, of Petaluma and arrested him on suspicion of felony DUI and felony hit and run. Kemp, who was already on DUI probation, was also alleged to have violated his DUI probation by driving with a blood alcohol... </p>
-                                        <ul class="links">
-                                            <li class="linksItem"><a href="#">Expand</a></li>
-                                            <li class="linksItem"><a href="#">+ Share</a></li>
-                                            <li class="linksItem"><a href="#"><b>&middot; &middot; &middot;</b>More</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="span12">
-                                <div class="thumbnail">
-                                    <img src="/assets/img/7.png" alt="" class="pull-left">
-                                    <div class="caption pull-left">
-                                        <h4 class="pull-left">Petaluma police arrest 4 DUI drivers - 3 from crashes</h4>
-                                        <span class="date pull-right">June 18, 2013</span>
-                                        <p class="descr">Officers eventually stopped Timothy Kemp, 50, of Petaluma and arrested him on suspicion of felony DUI and felony hit and run. Kemp, who was already on DUI probation, was also alleged to have violated his DUI probation by driving with a blood alcohol... </p>
-                                        <ul class="links">
-                                            <li class="linksItem"><a href="#">Expand</a></li>
-                                            <li class="linksItem"><a href="#">+ Share</a></li>
-                                            <li class="linksItem"><a href="#"><b>&middot; &middot; &middot;</b>More</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="span12">
-                                <div class="thumbnail">
-                                    <img src="/assets/img/7.png" alt="" class="pull-left">
-                                    <div class="caption pull-left">
-                                        <h4 class="pull-left">Petaluma police arrest 4 DUI drivers - 3 from crashes</h4>
-                                        <span class="date pull-right">June 18, 2013</span>
-                                        <p class="descr">Officers eventually stopped Timothy Kemp, 50, of Petaluma and arrested him on suspicion of felony DUI and felony hit and run. Kemp, who was already on DUI probation, was also alleged to have violated his DUI probation by driving with a blood alcohol... </p>
-                                        <ul class="links">
-                                            <li class="linksItem"><a href="#">Expand</a></li>
-                                            <li class="linksItem"><a href="#">+ Share</a></li>
-                                            <li class="linksItem"><a href="#"><b>&middot; &middot; &middot;</b>More</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="span12">
-                                <div class="thumbnail">
-                                    <img src="/assets/img/7.png" alt="" class="pull-left">
-                                    <div class="caption pull-left">
-                                        <h4 class="pull-left">Petaluma police arrest 4 DUI drivers - 3 from crashes</h4>
-                                        <span class="date pull-right">June 18, 2013</span>
-                                        <p class="descr">Officers eventually stopped Timothy Kemp, 50, of Petaluma and arrested him on suspicion of felony DUI and felony hit and run. Kemp, who was already on DUI probation, was also alleged to have violated his DUI probation by driving with a blood alcohol... </p>
-                                        <ul class="links">
-                                            <li class="linksItem"><a href="#">Expand</a></li>
-                                            <li class="linksItem"><a href="#">+ Share</a></li>
-                                            <li class="linksItem"><a href="#"><b>&middot; &middot; &middot;</b>More</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
+                        <div id="dui-tweets-hidden" class="hide"></div>
+                        <ul id="dui-tweets" class="thumbnails">
+                            
                         </ul>
                         <div class="text-center">
-                            <a href="#" class="btn">All News</a>
+                            <a href="http://twitter.com/NCDDNews" class="btn">All News</a>
                         </div>
                     </div>
+                    <script>
+                     jQuery(document).ready(function(){
+                        cTweet = function(obj){
+                        $('#dui-tweets-hidden').html(obj.body);
+                        
+                        $.each($('#dui-tweets-hidden .tweet.h-entry'),function(index, value){
+                           if(index == 5){
+                              return false;
+                           }
+                           var posted_time = $(value).find('time').attr('aria-label');
+                           var post_link = $(value).find('.u-url.permalink').attr('href');
+                           var profile_img = $(value).find('.header .profile img').attr('data-src-2x');
+                           var name = $(value).find('.header .profile .p-name').html();
+                           var handle = $(value).find('.header .profile .p-nickname').html();
+                           var tweet = $(value).find('.e-entry-content').html();
+                           
+                           var new_tweet = ''+
+                           '<li class="span12">'+
+                           '     <div class="thumbnail">'+
+                           '         <a href="'+post_link+'"><img src="'+profile_img+'" alt="" class="pull-left"></a>'+
+                           '         <div class="caption pull-left">'+
+                           '             <h4 class="pull-left">'+name+' - '+handle+'</h4>'+
+                           '             <span class="date pull-right">'+posted_time+'</span>'+
+                           '             <p class="descr">'+tweet+'</p>'+
+                           '             <ul class="links">'+
+                           '                 <li class="linksItem"><a href="'+post_link+'"><b>&middot; &middot; &middot;</b>View</a></li>'+
+                           '             </ul>'+
+                           '         </div>'+
+                           '     </div>'+
+                           ' </li>';
+                           $('#dui-tweets').append(new_tweet);
+                           
+                        });
+                     };
+                     e = '';
+                     c = document.createElement("script");
+                     c.type = "text/javascript";
+                     c.src = "//cdn.syndication.twimg.com/widgets/timelines/" + e + "?&lang=en&callback=cTweet&suppress_response_codes=false&rnd=" + Math.random();
+                     document.getElementsByTagName("head")[0].appendChild(c);
+                     });
+                  </script>
                     <!--/ RECENT DUI NEWS -->
 
 
 
-                    
+
                     <div class="row-fluid bottomPadding findAnAttorney">
                         <div class="title text-center">
                             <div class="bg">

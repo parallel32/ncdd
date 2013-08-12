@@ -45,8 +45,8 @@ class Member extends User {
 	public $currentMembership;
 	static public $membershipBadge = array(10=>'./../../../www/ncdd.com/public_html/assets/img/badges/general.png'
 											,20=>'./../../../www/ncdd.com/public_html/assets/img/badges/faculty.png'
-											,30=>'./../../../www/ncdd.com/public_html/assets/img/badges/founding.png'
-											,40=>'./../../../www/ncdd.com/public_html/assets/img/badges/sustaining.png'
+											,40=>'./../../../www/ncdd.com/public_html/assets/img/badges/founding.png'
+											,30=>'./../../../www/ncdd.com/public_html/assets/img/badges/sustaining.png'
 											);
 	// order descending
 	static public $order = array('FELLOW'=>60,'DEAN'=>59,'DEAN EMERITUS'=>58,'ASSISTANT DEAN'=>57,'SECRETARY'=>56,'TREASURER'=>55,'REGENT'=>50,'BOARD CERTIFIED'=>45,'FOUNDING MEMBER'=>40,'SUSTAINING MEMBER'=>35,'DELEGATE'=>20,'FORMER REGENT'=>15,'FACULTY'=>10,'GENERAL MEMBER'=>5);
@@ -91,8 +91,9 @@ class Member extends User {
 		$this->listed = (!empty($doc['listed'])) ? (strtolower($doc['listed'])=='yes') ? 1: 0 : '' ;
 		$this->boardCertified = (!empty($doc['boardCertified'])) ? (strtolower($doc['boardCertified'])=='yes') ? 1: 0 : '' ;
         $this->joinDate = (!empty($doc['joinDate'])) ? (is_object($doc['joinDate'])) ? $doc['joinDate']->__toArray() : new Date(self::$app,$doc['joinDate'], $this->timeZone)  : $doc['joinDate'];
-        include_once __DIR__.'/../Provider/WordPress/ncdd-wp-includes.php';
-		$this->aboutMe = (!empty($doc['aboutMe'])) ? wptexturize(wpautop($doc['aboutMe'])) : '';
+        //include_once __DIR__.'/../Provider/WordPress/ncdd-wp-includes.php';
+		//$this->aboutMe = (!empty($doc['aboutMe'])) ? wptexturize(wpautop($doc['aboutMe'])) : '';
+		$this->aboutMe = $doc['aboutMe'];
 		$this->linkedInUrl = $doc['linkedInUrl'];
 		$this->googlePlusUrl = $doc['googlePlusUrl'];
 		$this->twitterUrl = $doc['twitterUrl'];

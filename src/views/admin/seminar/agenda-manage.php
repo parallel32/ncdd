@@ -199,16 +199,15 @@
          //*/
 
          var editor = new SnapEditor.InPlace("description", {
-               toolbar: {
-                 items: [
-                   "styleBlock", "|",
-                   "p", "|",
-                   "bold", "italic", "underline", "|",
-                   "alignment", "|",
-                   "alignLeft", "alignCentre", "alignRight", "alignJustify", "|",
-                   "orderedList", "unorderedList", "indent", "outdent", "|",
-                   "link", "table", "horizontalRule" 
-                 ]
+               path: "/assets/snapeditor",
+             toolbar: {
+               items: [
+                  "styleBlock", "|",
+                  "bold", "italic", "underline", "|",
+                  "alignLeft", "alignCentre", "alignRight", "alignJustify", "|",
+                  "orderedList", "unorderedList", "indent", "outdent", "|",
+                  "link", "table", "horizontalRule", "|"
+                ],
                }
                ,snap: false
                ,onSave: function (e) {
@@ -217,12 +216,19 @@
                   io.saw.Agenda.save();
                   return isSuccess || "Error";
                }
+               ,onUnsavedChanges: function (e) {
+                  e.api.execAction("save");
+              }
             });
          editor.on("snapeditor.ready", function (e) {
             window.setTimeout(function(){
-               $('.snapeditor_toolbar_floating').css('z-index',12000);   
-               $('.snapeditor_toolbar_menu').css('z-index',12001);   
-               $('.snapeditor_dialog').css('z-index',12010);   
+               $('.snapeditor_toolbar_component').css('z-index',12000);   
+               
+               $('.snapeditor_toolbar_frame a').click(function(e){
+                  $('.snapeditor_toolbar_component').css('z-index',12000);
+                  $('.snapeditor_dialog').css('z-index',12000);
+                  
+               })
             },200);
             
          });

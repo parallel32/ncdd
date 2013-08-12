@@ -282,6 +282,7 @@
          <!-- END PAGE CONTAINER-->
       </div>
       <!-- END PAGE -->
+
       <?=$this->element('js/Seminar.js');?>
       <?=$this->element('js/FileUploadClass.js');?>
       <?=$this->element('js/FormDatePickerClass.js');?>
@@ -295,17 +296,17 @@
             Aloha.jQuery('.description').aloha();
          });
          */
+
          var editor = new SnapEditor.InPlace("description", {
+              path: "/assets/snapeditor",
              toolbar: {
                items: [
-                 "styleBlock", "|",
-                 "p", "|",
-                 "bold", "italic", "underline", "|",
-                 "alignment", "|",
-                 "alignLeft", "alignCentre", "alignRight", "alignJustify", "|",
-                 "orderedList", "unorderedList", "indent", "outdent", "|",
-                 "link", "table", "horizontalRule" 
-               ]
+                "styleBlock", "|",
+                "bold", "italic", "underline", "|",
+                "alignLeft", "alignCentre", "alignRight", "alignJustify", "|",
+                "orderedList", "unorderedList", "indent", "outdent", "|",
+                "link", "table", "horizontalRule", "|"
+              ],
              }
              ,snap: false
              ,onSave: function (e) {
@@ -314,6 +315,9 @@
                 io.saw.Seminar.edit();
                 return isSuccess || "Error";
              }
+             ,onUnsavedChanges: function (e) {
+                  e.api.execAction("save");
+              }
           });
 
             
