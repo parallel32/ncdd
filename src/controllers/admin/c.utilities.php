@@ -221,7 +221,7 @@ $utilities->get('/importmembers', function () use ($app) {
                 $member_doc['joinDate'] = new Model\Date($app, $record['creationdate']);
 
             $member_doc['location'] = $location->__toArray();
-            $member_doc['firstName'] = $record['fname'];
+            $member_doc['firstName'] = str_replace("\\", "", $record['fname']);
             $member_doc['email'] = $record['email'];
             $member_doc['password'] = $record['password'];
             $member_doc['slug'] = Model\Seminar::slugify($record['fname']);
@@ -231,7 +231,21 @@ $utilities->get('/importmembers', function () use ($app) {
             $member_doc['primaryPhone'] = $record['num'];
             $member_doc['primaryFax'] = $record['fax'];
             //if($record['fname'] != 'Joseph S. Passanise' && $record['fname'] != 'Christopher J. Angles')
-                $member_doc['aboutMe'] = utf8_encode($record['bio']);
+                //*
+                try {
+                    $encoding = mb_detect_encoding($record['bio']);
+                    error_log('encoding: '.$encoding);
+                    if(empty($encoding)){
+                        throw new \Exception();
+                    }
+                    $member_doc['aboutMe'] = html_entity_decode(str_replace("\\", "", $record['bio']));
+                } catch (Exception $e) {
+                    error_log('encoding off EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE ---- ----- ----- ----- '.$member_doc['firstName']);
+                    $member_doc['aboutMe'] = utf8_encode(html_entity_decode(str_replace("\\", "" ,$record['bio'])));    
+
+                }
+                $member_doc['aboutMe'] = str_replace("</p>", "</p><br>", $member_doc['aboutMe']);
+                //*/
             //else
             //    $member_doc['aboutMe'] = '';
             $member_doc['yearsinpractice'] = $record['yearsinpractice'];
