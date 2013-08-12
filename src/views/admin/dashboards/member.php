@@ -92,7 +92,7 @@
                <h3 class="form-section">Profile Information</h3>
                <span><a data-id="<?=call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$this->app);?>" class="btn blue large edit-profile"><i class=" icon-pencil"></i> Edit Your Profile</a></span>
                <br><br>
-               <?=$this->element('twitter-feed.html')?>
+               <?/*$this->element('twitter-feed.html')*/?>
             </div>
          </div>
          <!-- END PAGE CONTAINER-->    
