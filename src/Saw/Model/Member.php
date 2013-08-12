@@ -298,7 +298,6 @@ class Member extends User {
 				$result = $this->find($query=array('email'=>$search),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
 				break;
 			case 'state':
-			error_log('state:'.$state);
 				$result = $this->find($query=array('location.state'=>$state,'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
 				break;
 			case 'Sustaining Members':
