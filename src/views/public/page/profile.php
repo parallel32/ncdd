@@ -7,7 +7,7 @@
                                 <h3 class="username"><?=$member['firstName']?> <?=$member['lastName']?></h3>
                                 <ul class="links inline">
                                     <li class="linksItem">Specialize in <a href="#"><?=$member['specializeIn']?></a></li>
-                                    <li class="linksItem"><a href="//<?=$member['websites'][0]['website']?>">Visit Member’s Website</a></li>
+                                    <li class="linksItem"><a href="//<?=(!empty($member['websites']) && is_array($member['websites'])) ? $member['websites'][0]['website'] : '#' ?>">Visit Member’s Website</a></li>
                                 </ul>
                             </div>
                             <div class="pull-right">

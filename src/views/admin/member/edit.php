@@ -169,6 +169,7 @@
                                  <label class="control-label"></label>
                                  <div class="controls">
                                     <button type="button" data-id="<?=$this->vars['member']['_id']?>" class="btn blue edit-photo">Edit My Photo</button>
+                                    <a target="_blank" class="btn green" href="http://<?=SAW_CONSUMER_WEBSITE?>/member/<?=$this->vars['member']['_id']?>/<?=$this->vars['member']['slug']?>">View My Profile</a>
                                  </div>
                               </div>
                            </div>

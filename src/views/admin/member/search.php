@@ -42,6 +42,7 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                            <th class="hidden-phone hidden-tablet">Executive</th>
                            <th class="hidden-phone hidden-tablet">Board Certified</th>
                            <th class="hidden-phone hidden-tablet">Listed</th>
+                           <th>Profile</th>
                            <? if($accessLevel >= EDITOR): ?>
                            <th></th>
                            <? endif; ?>
@@ -90,13 +91,14 @@ jQuery(document).ready(function() {
                         '   <td class="">'+member.email+'</td>'+
                         '   <td class=" hidden-phone">'+member.primaryPhone+'</td>'+
                         <? if($accessLevel >= EDITOR): ?>
-                        '   <td class=" hidden-phone" id="'+member._id.$id+'"><input type="text" class="m-wrap" style="width:32px;" value="'+member.orderNum+'"><a data-member-id="'+member._id.$id+'" href="#" class="btn green icn-only"><i class="icon-check icon-white"></i></a></td>'+
+                        '   <td class=" hidden-phone" id="'+member._id.$id+'"><input type="text" class="m-wrap" style="width:32px;" value="'+member.orderNum+'"><a data-member-id="'+member._id.$id+'" href="#" class="btn green icn-only order-update"><i class="icon-check icon-white"></i></a></td>'+
                         <? endif; ?>
                         '   <td class=" hidden-phone"><span class="label">'+member.currentOrder+'</span></td>'+
                         '   <td class=" hidden-phone"><span class="label">'+member.currentMembership+'</span></td>'+
                         '   <td class=" hidden-phone hidden-tablet"><span class="label">'+member.currentFacultyPosition+'</span></td>'+
                         '   <td class=" hidden-phone hidden-tablet"><span class="label">'+member.boardCertified+'</span></td>'+
                         '   <td class=" hidden-phone hidden-tablet"><span class="label">'+member.listed+'</span></td>'+
+                        '   <td><a target="_blank" class="btn mini green-stripe" href="http://<?=SAW_CONSUMER_WEBSITE?>/member/'+member._id.$id+'/'+member.slug+'">View</a></td>'+
                         <? if($accessLevel >= EDITOR): ?>
                         '   <td><a class="btn mini blue-stripe edit" data-id="'+member._id.$id+'">Edit</a></td>'+
                         <? endif; ?>
@@ -110,7 +112,7 @@ jQuery(document).ready(function() {
                   document.location.href='/member/'+$(this).attr('data-id')+'/edit';
                });   
 
-               $('#results tbody a').click(function(e){
+               $('#results tbody .order-update').click(function(e){
                   e.preventDefault();
                   io.saw.FormGet.activate({postUrl:'/member/order/'+$(this).attr('data-member-id')+'/'+($(this).prev().val() || '*')
                      ,postOnComplete:function(responseObj,responseStatus){}
