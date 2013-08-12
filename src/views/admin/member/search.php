@@ -32,8 +32,6 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                         <tr>
                            <th>Photo</th>
                            <th>Name</th>
-                           <th>Email</th>
-                           <th class="hidden-phone">Phone</th>
                            <? if($accessLevel >= EDITOR): ?>
                            <th class="hidden-phone">#</th>
                            <? endif; ?>
@@ -88,8 +86,6 @@ jQuery(document).ready(function() {
                   html = '<tr>'+
                         '   <td><img width="159" src="'+member.image+'" alt=""></td>'+
                         '   <td class="">'+member.displayName+'</td>'+
-                        '   <td class="">'+member.email+'</td>'+
-                        '   <td class=" hidden-phone">'+member.primaryPhone+'</td>'+
                         <? if($accessLevel >= EDITOR): ?>
                         '   <td class=" hidden-phone" id="'+member._id.$id+'"><input type="text" class="m-wrap" style="width:32px;" value="'+member.orderNum+'"><a data-member-id="'+member._id.$id+'" href="#" class="btn green icn-only order-update"><i class="icon-check icon-white"></i></a></td>'+
                         <? endif; ?>
