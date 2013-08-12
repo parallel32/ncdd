@@ -101,7 +101,7 @@ $member->get('/{userId}/edit', function ($userId, Request $request) use ($app) {
 					);
 	$view_vars = array(
 						 'active'=>'Members/edit'
-						,'page-plugin'=>'datatables'
+						,'page-plugin'=>'datatables,editor'
 						,'headline'=>'Members'
 						,'description'=>"Edit a member"
 						,'crumbs'=>$crumbs

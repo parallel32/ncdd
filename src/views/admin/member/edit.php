@@ -303,12 +303,13 @@
                            </div>
                            <!--/span-->
                         </div>
+                        <h3 class="form-section text-info"><strong>About Me</strong></h3>
                         <div class="row-fluid">
                            <div class="span12 ">
                               <div class="control-group ">
-                                 <label class="control-label">About Me:</label>
                                  <div class="controls">
-                                    <textarea cols="" rows="10" name="doc[aboutMe]" class="m-wrap span11 aboutMe"><?=strip_tags($this->vars['member']['aboutMe'],'<br /><br/><br>')?></textarea>
+                                    <span id="aboutMe" class="help-block "><?=$this->vars['member']['aboutMe']?></span>
+                                    <input id="input-aboutMe" type="hidden" name="doc[aboutMe]" value="">
                                  </div>
                               </div>
                            </div>
@@ -621,7 +622,7 @@
                                                       <tbody>
                                                          <tr>
                                                             <td class="highlight">
-                                                               585 WELLS STREET .. ETC.
+                                                               101 MAIN STREET .. ETC.
                                                             </td>
                                                             <td><a class="btn mini purple" 
                                                                data-address=""
@@ -1004,6 +1005,29 @@
          jQuery(document).ready(function() {    
             io.saw.Member.init();
             io.saw.Address.init('#location-form');
+
+            var editor = new SnapEditor.InPlace("aboutMe", {
+              path: "/assets/snapeditor",
+             toolbar: {
+               items: [
+                "styleBlock", "|",
+                "bold", "italic", "underline", "|",
+                "alignLeft", "alignCentre", "alignRight", "alignJustify", "|",
+                "orderedList", "unorderedList", "indent", "outdent", "|",
+                "link", "table", "horizontalRule", "|"
+              ],
+             }
+             ,snap: false
+             ,onSave: function (e) {
+                var isSuccess = true;
+                html = e.html;
+                io.saw.Member.save();
+                return isSuccess || "Error";
+             }
+             ,onUnsavedChanges: function (e) {
+                  e.api.execAction("save");
+              }
+          });
          });      
          </script>
 

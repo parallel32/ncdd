@@ -7,11 +7,11 @@
 		});
 		$('#saw-form input').keypress(function(e) {
 			if (e.which == 13) {
-				save();
+				Member.save();
 			}
 		});
 		$('#saw-form .btn.save').click(function(e){
-			save();
+			Member.save();
 		});
 		$('#saw-form .btn.cancel').click(function(e){
 			document.location.href='/';			
@@ -287,7 +287,8 @@
 		});      
 	}
 	<? endif; ?>
-	function save (){
+	Member.save = function (){
+		$('#input-aboutMe').val($('#aboutMe').html());
 		io.saw.FormPost.activate({postUrl:'/member/edit'
 		   ,serializeSelector:':input'
 		   ,postOnComplete:function(responseObj,responseStatus){
