@@ -12,10 +12,13 @@
         });     
     }
     function forgotPassword (){
+        $('#forgotpass-form .submit').html('Checking... <i class="m-icon-swapright m-icon-white"></i>');
 		io.saw.FormPost.activate({postUrl:'/member/forgotpassword'
 			,formName:'#forgotpass-form'
 			,serializeSelector:':input'
-			,postOnComplete:function(responseObj,responseStatus){}
+			,postOnComplete:function(responseObj,responseStatus){
+                $('#forgotpass-form .submit').html('Submit <i class="m-icon-swapright m-icon-white"></i>');
+            }
 			,postOnSuccess:function(responseObj){
                 $('#forgotpass-form .control-group').hide();
                 $('#forgotpass-form p').hide();
