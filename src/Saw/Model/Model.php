@@ -69,6 +69,7 @@ class Model {
 			}
 		}
 		$response = self::$app['mongo']->update($doc, $this->collection, $criteria, $multiple=false, $upsert=true, $options=array('safe'=>true,'fsync'=>true));
+		//error_log('response:'.print_r($response,true));
 		if(is_array($response)){
 			if(!$response['ok']){
 				error_log('true upsert failed:'.print_r($response));

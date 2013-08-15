@@ -64,6 +64,13 @@ EOT;
 EOT;
 
          break;
+      case 'datepicker':
+         echo <<< EOT
+            <link rel="stylesheet" type="text/css" href="/assets/plugins/bootstrap-datetimepicker/css/datetimepicker.css" />
+
+EOT;
+
+         break;
       default:
          echo "";
          break;

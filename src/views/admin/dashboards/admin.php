@@ -46,6 +46,8 @@
                   </div>
                </div>
                <!-- END DASHBOARD STATS -->
+
+               <!-- APPLICATIONS TO APPROVE -->
                <div class="row-fluid">
                   <div class="span12">
                      <!-- BEGIN EXAMPLE TABLE PORTLET-->
@@ -91,6 +93,51 @@
                   </div>
                </div>
                <div class="clearfix"></div>
+               <!--/ APPLICATIONS TO APPROVE -->
+
+               <!-- BLOG POSTS TO APPROVE -->
+               <div id="approve-blogs" class="row-fluid">
+                  <div class="span12">
+                     <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                     <div class="portlet box red">
+                        <div class="portlet-title" id="blog">
+                           <div class="caption"><i class="icon-edit"></i>DUI Blog Posts To Approve</div>
+                           <div class="actions">
+                              <a href="/blog" class="btn yellow view"><i class="icon-eye-open"></i> View All</a>
+                           </div>
+                        </div>
+                        <div class="portlet-body">
+                           <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                           <table class="table table-striped table-bordered table-hover dataTable" id="blogs" aria-describedby="sample_1_info">
+                              <thead>
+                                 <tr role="row">
+                                    <th class="">Headline</th>
+                                    <th class="hidden-480">Date Submitted</th>
+                                    <th class="hidden-480">Author</th>
+                                    <th class=""></th>
+                                 </tr>
+                              </thead>
+                              <tbody role="alert" aria-live="polite" aria-relevant="all">
+                                 <? if(!empty($this->vars['blogs'])): foreach($this->vars['blogs'] as $blog): ?>
+                                 <tr class="gradeX odd">
+                                    <td class=" "><?=$blog['headline']?></td>
+                                    <td class="hidden-480 "><?=$blog['reviewDate']['shortTime'].' '.$blog['reviewDate']['monthDay']?></td>
+                                    <td class="hidden-480 "><?=$blog['author']['firstName'].' '.$blog['author']['lastName']?></td>
+                                    <td class=" "><a data-member-id="<?=$blog['author']['_id']?>" data-blog-id="<?=$blog['_id']?>" class="btn blue mini view-post"><i class=" icon-eye-open"></i> View</a></td>
+                                 </tr>
+                                 <? endforeach;?>
+                                 <? else: ?>
+                                    <td colspan="5">No blog posts.</td>
+                                 <? endif;?>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                     <!-- END EXAMPLE TABLE PORTLET-->
+                  </div>
+               </div>
+               <br><br>
+               <!--/ BLOG POSTS TO APPROVE -->
 
                <?=$this->element('twitter-feed.html')?>
 

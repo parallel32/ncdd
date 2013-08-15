@@ -220,7 +220,10 @@ class Seminar extends Model {
 			$this->remove();
 			$agenda = new Agenda(array('seminarId'=>$this->_id),self::$app);
 			$agenda->removeBySeminarId();
-			// TODO remove all the Agenda records
+			
+	    	// delete images
+			self::$app['upload-mongo']->deleteByCriteria(array('belongsTo'=>$this->_id));
+
 		} catch (Exception $e) {
 			throw new \Saw\Exceptions\InternalServerErrorException("Deleting <strong>".$this->headline."</strong> failed due to a database error.");
 		}

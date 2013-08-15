@@ -32,7 +32,7 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                <a href="javascript:;">
                <i class="icon-group"></i> 
                <span class="title">Members</span>
-               <? echo ($this->vars['active'] == 'Members') ? '<span class="selected"></span><span class="arrow open"></span>':'<span class="arrow"></span>';?>
+               <? echo (strpos($this->vars['active'], 'Members') !== false) ? '<span class="selected"></span><span class="arrow open"></span>':'<span class="arrow"></span>';?>
                </a>
                <ul class="sub-menu">
                   <? if($accessLevel == MEMBER):?>
@@ -86,12 +86,32 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                <? echo ($this->vars['active'] == 'Seminar') ? '<span class="selected"></span>':'';?>
                </a>
             </li>
-            <li class="<? echo ($this->vars['active'] == 'Blog') ? 'active':'';?>">
-               <a href="/blog">
+            <li class="<? echo (strpos($this->vars['active'], 'Blog') !== false) ? 'active open':'';?>">
+               <a id="dui-blog" href="/blog">
                <i class="icon-edit"></i> 
                <span class="title">DUI Blog</span>
-               <? echo ($this->vars['active'] == 'Blog') ? '<span class="selected"></span>':'';?>
+               <? 
+                  if($accessLevel == MEMBER){
+                     echo (strpos($this->vars['active'], 'Blog') !== false) ? '<span class="selected"></span><span class="arrow open"></span>':'<span class="arrow"></span>';
+                  } else {
+                     echo (strpos($this->vars['active'], 'Blog') !== false) ? '<span class="selected"></span>':'';
+                  }
+               ?>
                </a>
+               <? if($accessLevel == MEMBER):?>
+               <ul class="sub-menu">
+                  <li class="<? echo ($this->vars['active'] == 'Blog/My') ? 'active':'';?>">
+                     <a href="/blog/<?=call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$this->app);?>"><i class="icon-pencil"></i> My Blog Posts</a>
+                  </li>
+               </ul>
+               <? endif; ?>
+               <? if($accessLevel >= EDITOR):?>
+               <ul class="sub-menu">
+                  <li class="<? echo ($this->vars['active'] == 'Blog/All') ? 'active':'';?>">
+                     <a href="/blog/all-posts"><i class="icon-pencil"></i> All Blog Posts</a>
+                  </li>
+               </ul>
+               <? endif; ?>
             </li>
             <li class="<? echo ($this->vars['active'] == 'Forum') ? 'active':'';?>">
                <a href="/forum">
@@ -134,9 +154,23 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                <span class="title">ncdd.com</span>
                </a>
             </li>
+            <li class="">
+               <a href="/logout" target="_blank">
+               <i class="icon-key"></i> 
+               <span class="title">Log Out</span>
+               </a>
+            </li>
             
             
          </ul>
          <!-- END SIDEBAR MENU -->
       </div>
    <!-- END SIDEBAR -->
+   <script>
+         jQuery(document).ready(function() {    
+            $('#dui-blog').click(function(e){
+               e.preventDefault();
+               document.location.href="/blog";
+            });
+         });
+         </script>

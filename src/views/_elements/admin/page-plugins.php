@@ -53,6 +53,12 @@ EOT;
 
 EOT;
          break;
+      case 'datepicker':
+         echo <<< EOT
+              <script type="text/javascript" src="/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+
+EOT;
+         break;
       case 'editor':
          echo <<< EOT
             <script type="text/javascript" src="/assets/snapeditor/snapeditor-1.9.0.js"></script>

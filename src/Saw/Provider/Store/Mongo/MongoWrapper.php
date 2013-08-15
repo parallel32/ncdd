@@ -307,13 +307,13 @@ class MongoWrapper
 		$criteria = (!empty($criteria)) ? $criteria : array('_id'=>new \MongoId($document['id']));
 		$collection = $this->database->selectCollection($collection);
 		try {
-			$collection->update($criteria, $document, array('upsert'=>$upsert,
+			$response = $collection->update($criteria, $document, array('upsert'=>$upsert,
 															'safe'=>$options['safe'],
 															'fsync'=>$options['fsync'],
 															'timeout'=>$options['timeout'],
 															'multiple'=>$multiple
 															));
-			return true;
+			return $response;
 		} catch (\MongoCursorException $e){
 			error_log(__METHOD__.'::MongoCursorException::line:'.__LINE__.':'.print_r($e->getMessage(), true));
 			return false;

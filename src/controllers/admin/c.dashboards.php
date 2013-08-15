@@ -31,6 +31,11 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 			$apply = new Model\Apply(array(),$app);
 			$applications = $apply->fetchByStatus('SUBMITTED');
 			$view_vars['applications']=$applications;
+
+			$blog = new Model\Blog(array(),$app);
+			$blogs = $blog->fetchByStatus('REVIEW','no');
+			$view_vars['blogs']=$blogs;
+
 			array_push($view_vars['crumbs'],array('name'=>'Admin','href'=>'/'));
 			return $app['view']->render('dashboards/admin', 'default', $view_vars);
 			break;
@@ -42,6 +47,11 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 			$apply = new Model\Apply(array(),$app);
 			$applications = $apply->fetchByMember('APPROVED');
 			$view_vars['applications']=$applications;
+
+			$blog = new Model\Blog(array(),$app);
+			$blogs = $blog->fetchByStatus('PUBLISH','yes');
+			$view_vars['blogs']=$blogs;
+
 			array_push($view_vars['crumbs'],array('name'=>'Editor','href'=>'/'));
 			return $app['view']->render('dashboards/member', 'default', $view_vars);
 			break;

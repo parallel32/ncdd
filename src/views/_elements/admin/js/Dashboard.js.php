@@ -14,6 +14,14 @@
 			e.preventDefault();
 			document.location.href='/applications';
 		});
+		$('#approve-blogs .btn.view').click(function(e){
+			e.preventDefault();
+			document.location.href='/blog/all-posts';
+		});
+		$('#approve-blogs .btn.view-post').click(function(e){
+			e.preventDefault();
+			document.location.href='/blog/'+$(this).attr('data-member-id')+'/edit/'+$(this).attr('data-blog-id');
+		});
 		
 	};
 	Dashboard.memberInit = function(saveMode){
@@ -33,6 +41,14 @@
 		
 		$('#approved-applications .pay').click(function(e){
 			document.location.href='/application/'+$(this).attr('data-id')+'/pay';	
+		});
+		
+		$('#recent-blogs .view').click(function(e){
+			document.location.href='/blog/'+$(this).attr('data-id')+'/view';	
+		});
+		$('#recent-blogs .draft-post').click(function(e){
+			e.preventDefault();
+			document.location.href='/blog/'+$(this).attr('data-id')+'/edit';	
 		});
 
 		$('.btn.edit-profile').click(function(e){

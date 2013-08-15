@@ -9,6 +9,7 @@ use Saw\Model;
 ///////////////////////////////
 $imgUnavailable = './../../../www/admin.ncdd.com/public_html/assets/img/404-250.jpg';
 $profileImgUnavailable = './../../../www/admin.ncdd.com/public_html/assets/img/404-profile-159.png';
+$placeholder = './../../../www/admin.ncdd.com/public_html/assets/img/placeholder.jpg';
 $app->match('/image/upload', function (Request $request) use ($app) {
 	$doc = $app['request']->get('doc');
 	if(empty($doc['belongsTo'])){
@@ -112,6 +113,10 @@ $app->get('/image/delete/{context}/{belongsTo}', function ($context, $belongsTo,
 /////////////////////
 // STREAM AN IMAGE //
 /////////////////////
+$app->get('/placeholder', function (Request $request) use ($app,$placeholder) {
+    $file_contents = file_get_contents($placeholder);
+	return new Response($file_contents, 200, array('Content-Type' => 'image/jpeg'));
+});
 $app->get('/noimage', function (Request $request) use ($app,$imgUnavailable) {
     $file_contents = file_get_contents($imgUnavailable);
 	return new Response($file_contents, 200, array('Content-Type' => 'image/jpeg'));
@@ -164,6 +169,10 @@ $app['imageFactory'] = $app->protect(function ($context,$belongsTo) {
 		case 'member':
 			return new Model\ImageMember($belongsTo);
 			break;
+		case 'blog':
+			return new Model\ImageBlog($belongsTo);
+			break;
+
 	}
 });
 $app['imageParentFactory'] = $app->protect(function ($context,$belongsTo) use ($app) {
@@ -174,6 +183,10 @@ $app['imageParentFactory'] = $app->protect(function ($context,$belongsTo) use ($
 		case 'member':
 			return new Model\Member(array('_id'=>$belongsTo),$app);
 			break;
+		case 'blog':
+			return new Model\Blog(array('_id'=>$belongsTo),$app);
+			break;
+
 	}
 });
 return $app;

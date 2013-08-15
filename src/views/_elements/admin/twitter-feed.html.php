@@ -7,7 +7,7 @@
                            <div class="portlet-title" id="twitter">
                               <div class="caption"><i class="icon-bullhorn"></i>Latest DUI News</div>
                               <div class="actions">
-                                 <a href="https://twitter.com/NCDDNews" target="_blank" class="btn green view"><i class=" icon-twitter"></i> @NCDDNews</a>
+                                 <a href="https://twitter.com/NCDDNews" target="_blank" class="btn green view"><i class=" icon-twitter"></i> @NCDDNews on Twitter.com</a>
                               </div>
                            </div>
                            <div class="portlet-body">
@@ -39,14 +39,14 @@
                            
                            var new_tweet = ''+
                            '                        <div class="row-fluid portfolio-block">'+
-                           '                           <div class="span5 portfolio-text">'+
+                           '                           <div class="span8 portfolio-text">'+
                            '                              <img src="'+profile_img+'" alt="">'+
                            '                              <div class="portfolio-text-info">'+
                            '                                 <h4>'+name+' - '+handle+'</h4>'+
                            '                                 '+tweet+
                            '                              </div>'+
                            '                           </div>'+
-                           '                           <div class="span5">'+
+                           '                           <div class="span3">'+
                            '                              <div class="portfolio-info">'+
                            '                              </div>'+
                            '                              <div class="portfolio-info">'+
@@ -55,7 +55,7 @@
                            '                                 '+posted_time+
                            '                              </div>'+
                            '                           </div>'+
-                           '                           <div class="span2 portfolio-btn">'+
+                           '                           <div class="span1 portfolio-btn">'+
                            '                              <a href="'+post_link+'" target="_blank" class="btn bigicn-only"><span>View</span></a>                        '+
                            '                           </div>'+
                            '                        </div>';
