@@ -21,7 +21,7 @@
 	<link href="/assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
 	<!-- END GLOBAL MANDATORY STYLES -->
 	<?=$this->element('page-styles')?>
-   	<link rel="shortcut icon" href="favicon.ico" />
+   	<link rel="shortcut icon" href="/assets/img/favicon.ico" />
 	<!-- jquery included here instead of in page level plugins section at the bottom because I need access to the document.ready function to 
    initialize page level scripts within the page itself -->
    <script src="/assets/plugins/jquery-1.10.1.min.js" type="text/javascript"></script>   

@@ -8,18 +8,17 @@
 									<table border="0" cellpadding="20" cellspacing="0" width="100%">
 										<tr>
 											<td valign="top">
-												<h2 class="h2">General Member Application Form</h2>
+												<h2 class="h2">Blog Post Approved for Publishing</h2>
 												<br />
 												<div class="textdark">
-													The general member application form has been submitted:
+													Your blog post:
 													<br/>
-													<br/><?=$this->vars['firstName'].' '.$this->vars['lastName']?>
-													<br/><?=$this->vars['city'].', '.$this->vars['state']?>
-													<br/><?=$this->vars['email']?>
+													<br/><?=$this->vars['headline']?>
+													<br/>
+													Has been approved for publishing on the NCDD DUI Blog.
 													<br/>
 													<br/>
-													<br/>
-													<a href="http://<?=SAW_ADMIN_WEBSITE?>" target="_blank">Go to the Admin Dashboard to view this and other Applications. http://<?=SAW_ADMIN_WEBSITE?></a>. 
+													<a href="http://<?=SAW_ADMIN_WEBSITE?>" target="_blank">Sign-in to the member portal for more information: http://<?=SAW_ADMIN_WEBSITE?></a>. 
 												</div>
 											</td>
 										</tr>

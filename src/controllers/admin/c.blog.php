@@ -14,6 +14,9 @@ use Saw\Model;
 
 $app->get('/blog', function (Request $request) use ($app) {
 	
+	$blog = new Model\Blog(array(),$app);
+	$posts = $blog->fetchByStatus('PUBLISH','yes');
+
 	$crumbs = array(array('name'=>'DUI Blog','href'=>'/blog'));
 	$view_vars = array(
 						 'active'=>'Blog'
@@ -21,9 +24,73 @@ $app->get('/blog', function (Request $request) use ($app) {
 						,'headline'=>'DUI Blog'
 						,'description'=>"Participate in all blogs here."
 						,'crumbs'=>$crumbs
+						,'posts'=>$posts
+						,'tags'=>Model\Blog::getAvailableTags()
 						);
 	return $app['view']->render('blog/index', 'default', $view_vars);
 })->before($mustbeMEMBER);
+
+$app->get('/blog/archives/{month}/{year}', function ($month, $year, Request $request) use ($app) {
+	
+	$blog = new Model\Blog(array(),$app);
+	$posts = $blog->fetchArchives($month,$year);
+
+	$crumbs = array(array('name'=>'DUI Blog','href'=>'/blog')
+					,array('name'=>'Archives for '.$month.', '.$year,'href'=>'/blog/archives/'.$month.'/'.$year)
+	);
+	$view_vars = array(
+						 'active'=>'Blog'
+						,'page-plugin'=>'datatables'
+						,'headline'=>'DUI Blog'
+						,'description'=>"Participate in all blogs here."
+						,'crumbs'=>$crumbs
+						,'posts'=>$posts
+						,'month'=>$month
+						,'year'=>$year
+						,'tags'=>Model\Blog::getAvailableTags()
+						);
+	return $app['view']->render('blog/index', 'default', $view_vars);
+})->before($mustbeMEMBER);
+
+$app->get('/blog/tag/{tag}', function ($tag, Request $request) use ($app) {
+	
+	$blog = new Model\Blog(array(),$app);
+	$posts = $blog->fetchTag($tag);
+
+	$crumbs = array(array('name'=>'DUI Blog','href'=>'/blog')
+					,array('name'=>'Tag: '.$tag, 'href'=>'/blog/tag/'.$tag)
+	);
+	$view_vars = array(
+						 'active'=>'Blog'
+						,'page-plugin'=>'datatables'
+						,'headline'=>'DUI Blog'
+						,'description'=>"Participate in all blogs here."
+						,'crumbs'=>$crumbs
+						,'posts'=>$posts
+						,'tag'=>$tag
+						,'tags'=>Model\Blog::getAvailableTags()
+						);
+	return $app['view']->render('blog/index', 'default', $view_vars);
+})->before($mustbeMEMBER);
+
+// publish scheduled
+$app->get('/blog/publish-schedule', function (Request $request) use ($app) {
+	
+	$blog = new Model\Blog(array(),$app);
+	$posts = $blog->fetchToPublish();
+	if(is_array($posts) && count($posts) > 0){
+		foreach($posts as $post):
+			$b = new Model\Blog(array('_id'=>$post['_id'],'currentStatus'=>Model\Blog::$status['PUBLISH']),$app);
+			$b->add = "no";
+			$b->saveEdit();
+		endforeach;
+		$count = count($posts);
+	}else{
+		$count = 0;
+	}
+	return "posts affected: ".$count;
+});
+
 
 // member blog posts index page.. has drafts and posts approved and posted or scheduled to post.
 $app->get('/blog/all-posts', function (Request $request) use ($app) {
@@ -51,6 +118,28 @@ $app->get('/blog/all-posts', function (Request $request) use ($app) {
 	return $app['view']->render('blog/all-posts', 'default', $view_vars);
 })->before($mustbeEDITOR);
 
+// view a blog post
+$app->get('/blog/{blogId}/view', function ($blogId, Request $request) use ($app) {
+	
+	$blog = new Model\Blog(array('_id'=>$blogId),$app);
+	$post = $blog->findById();
+
+	$crumbs = array(array('name'=>'DUI Blog','href'=>'/blog')
+					,array('name'=>'view','href'=>'/blog/'.$blogId.'/view')
+		);
+	$view_vars = array(
+						 'active'=>'Blog'
+						,'page-plugin'=>'datatables'
+						,'headline'=>'DUI Blog'
+						,'description'=>"Participate in all blogs here."
+						,'crumbs'=>$crumbs
+						,'post'=>$post
+						,'tags'=>Model\Blog::getAvailableTags()
+						);
+	return $app['view']->render('blog/view', 'default', $view_vars);
+})->before($mustbeMEMBER);
+
+
 // remove a blog completely
 $app->get('/blog/{blogId}/remove', function ($blogId, Request $request) use ($app) {
 	$user = $app['session']->get('user');
@@ -65,9 +154,6 @@ $app->get('/blog/{blogId}/remove', function ($blogId, Request $request) use ($ap
 	}else{
 		return new Response(json_encode(array('message' => 'Permission Denied.  Insufficient Privileges.')), 400,array('Content-Type' => 'application/json'));
 	}
-    
-    
-    
     
 
 })->before($mustbeMEMBER);
@@ -163,7 +249,19 @@ $app->post('/blog/{memberId}/edit', function ($memberId, Request $request) use (
 	    			// send out the email to the admin notifying to review the blog post
 			    	$blog = new Model\Blog(array('_id'=>$_POST['current_id']),$app);
 		    		$blog->findById();
-			    	error_log('send ADMIN email......for:'.$blog->headline);
+			    	//error_log('send ADMIN email......for:'.$blog->headline);
+			    	//*
+			    	// send admin the email notification
+			    	$subject = 'Blog Post Submitted for Review';
+			    	$to = SAW_ADMIN_EMAIL;
+			    	$view_vars = array('firstName'=>$blog->author['firstName']
+			    						,'lastName'=>$blog->author['lastName']
+			    						,'headline'=>$blog->headline
+			    						,'email'=>$blog->author['email']
+			    	);
+			    	$body = $app['view']->render('email/blog-post-review','email', $view_vars);
+			    	$app['sendMail']($subject, $body, $to);
+			    	//*/
 	    		}
 		    }
 	    	if((int)$doc['currentStatus'] >= (int)Model\Blog::$status['SCHEDULE']){
@@ -172,23 +270,17 @@ $app->post('/blog/{memberId}/edit', function ($memberId, Request $request) use (
 	    			// send out the email to blog author notifying that the blog posted
 			    	$blog = new Model\Blog(array('_id'=>$_POST['current_id']),$app);
 		    		$blog->findById();
-			    	error_log('send Author email......for:'.$blog->headline);
+			    	//error_log('send Author email......for:'.$blog->headline);
+			    	//*
+			    	// send admin the email notification
+			    	$subject = 'Blog Post Approved';
+			    	$to = $blog->author['email'];
+			    	$view_vars = array('headline'=>$blog->headline);
+			    	$body = $app['view']->render('email/blog-post-approved','email', $view_vars);
+			    	$app['sendMail']($subject, $body, $to);
+			    	//*/
 	    		}
 		    }
-	    	//error_log('inside after function for EDIT blog:'.print_r($blog['headline'],true));
-	    	/*
-	    	// send admin the email notification
-	    	$subject = 'General Member Application Form Submitted';
-	    	$to = SAW_ADMIN_EMAIL;
-	    	$view_vars = array('firstName'=>$doc['firstName']
-	    						,'lastName'=>$doc['lastName']
-	    						,'city'=>$doc['city']
-	    						,'state'=>$doc['state']
-	    						,'email'=>$doc['email']
-	    	);
-	    	$body = $app['view']->render('email/new-member','email', $view_vars);
-	    	$app['sendMail']($subject, $body, $to);
-	    	//*/
 	    endif;
 });
 

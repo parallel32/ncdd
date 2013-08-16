@@ -221,6 +221,39 @@ class Blog extends Model {
 		return $result;
 
 	}
+	public function fetchArchives($month,$year, $offset=0,$limit=100){
+		
+		$query = array('currentStatus'=>self::$status['PUBLISH'],'published'=>'yes','publishDate.month'=>$month, 'publishDate.year'=>$year);
+		$fields = array();
+		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('publishDate.date'=>-1),(int)$offset,(int)$limit);
+		if(!empty($result)):
+			for ($i=0; $i < count($result); $i++) { 
+				$result[$i]['currentStatus'] = self::$statusReversed[$result[$i]['currentStatus']];
+				$result[$i]['currentType'] = self::$typeReversed[$result[$i]['currentType']];
+			}
+		endif;
+		return $result;
+
+	}
+	public function fetchTag($tag, $offset=0,$limit=100){
+		$tag = (strpos($tag,'(') !== false) ? str_replace('(','\(',str_replace(')','\)',$tag)) : $tag;
+		$search = new \MongoRegex("/".$tag."/i");
+		$query = array('tags'=>$search,'currentStatus'=>self::$status['PUBLISH'],'published'=>'yes');
+		$fields = array();
+		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('publishDate.date'=>-1),(int)$offset,(int)$limit);
+
+		//error_log('query'.print_r($query,true));
+		//error_log('result'.print_r($result,true));
+
+		if(!empty($result)):
+			for ($i=0; $i < count($result); $i++) { 
+				$result[$i]['currentStatus'] = self::$statusReversed[$result[$i]['currentStatus']];
+				$result[$i]['currentType'] = self::$typeReversed[$result[$i]['currentType']];
+			}
+		endif;
+		return $result;
+
+	}
 	public function fetchByAuthorByDraft($memberId, $offset=0,$limit=100){
 		$memberId = (is_object($memberId)) ? $memberId : new \MongoId($memberId);
 		$query = array('currentStatus'=>self::$status['DRAFT'],'author._id'=>$memberId);
@@ -260,6 +293,19 @@ class Blog extends Model {
 				$result[$i]['currentType'] = self::$typeReversed[$result[$i]['currentType']];
 			}
 		endif;
+		return $result;
+
+	}
+	public function fetchToPublish($offset=0,$limit=10000){
+		$query = array('currentStatus'=>self::$status['SCHEDULE']
+						,'scheduleDate.date'=>array('$lte'=>new \MongoDate(strtotime('now')))
+		);
+		$fields = array('slug'=>true,'currentStatus'=>true);
+		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('_id'=>-1),(int)$offset,(int)$limit);
+
+		//error_log('fetch:'.print_r($query,true));
+		//error_log('result:'.print_r($result,true));
+
 		return $result;
 
 	}

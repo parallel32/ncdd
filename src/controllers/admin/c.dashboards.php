@@ -29,11 +29,11 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 	switch ($user['accessLevel']) {
 		case ADMIN:
 			$apply = new Model\Apply(array(),$app);
-			$applications = $apply->fetchByStatus('SUBMITTED');
+			$applications = $apply->fetchByStatus('SUBMITTED',0,5);
 			$view_vars['applications']=$applications;
 
 			$blog = new Model\Blog(array(),$app);
-			$blogs = $blog->fetchByStatus('REVIEW','no');
+			$blogs = $blog->fetchByStatus('REVIEW','no',0,5);
 			$view_vars['blogs']=$blogs;
 
 			array_push($view_vars['crumbs'],array('name'=>'Admin','href'=>'/'));
@@ -45,11 +45,11 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 			break;
 		case MEMBER:
 			$apply = new Model\Apply(array(),$app);
-			$applications = $apply->fetchByMember('APPROVED');
+			$applications = $apply->fetchByMember('APPROVED',0,5);
 			$view_vars['applications']=$applications;
 
 			$blog = new Model\Blog(array(),$app);
-			$blogs = $blog->fetchByStatus('PUBLISH','yes');
+			$blogs = $blog->fetchByStatus('PUBLISH','yes',0,5);
 			$view_vars['blogs']=$blogs;
 
 			array_push($view_vars['crumbs'],array('name'=>'Editor','href'=>'/'));

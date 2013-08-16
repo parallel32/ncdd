@@ -130,7 +130,7 @@
                                        <td class="hidden-480 "><?=(empty($blog['publishDate'])) ? $blog['scheduleDate']['shortTime'].'  '.$blog['scheduleDate']['monthDay'] : $blog['publishDate']['shortTime'].'  '.$blog['publishDate']['monthDay'];?></td>
                                        <td class="hidden-480 "><?=$blog['currentType']?></td>
                                        <td class="hidden-480 "><?=$blog['currentStatus']?></td>
-                                       <td class=" "><a data-id="<?=$blog['_id']?>" class="btn blue mini edit"><i class=" icon-pencil"></i> Edit</a></td>
+                                       <td class=" "><a href="/blog/<?=$blog['_id']?>/view" data-id="" class="btn blue mini view"><i class=" icon-eye-open"></i> View</a></td>
                                     </tr>
                                     <? endforeach;?>
                                     <? else: ?>

@@ -1,3 +1,41 @@
+<? $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user'); return $user['accessLevel'];},$this->app); ?>
+<?
+   $show = 'yes';
+   if(!empty($this->vars['blog']) && array_key_exists('currentStatus',$this->vars['blog'])): 
+      $status = \Saw\Model\Blog::$statusReversed[$this->vars['blog']['currentStatus']];
+      switch ($status) {
+         case 'REVIEW':
+            if($accessLevel == MEMBER){
+               $show = 'yes';
+            } else if ($accessLevel >= EDITOR){
+               $show = 'yes';
+            }
+            break;
+         case 'SCHEDULE':
+            if ($accessLevel >= EDITOR){
+               $show = 'yes';
+               break;
+            }else{
+               $show = 'no';
+            }
+         case 'PUBLISH':
+            if ($accessLevel >= EDITOR){
+               $show = 'yes';
+            }else{
+               $show = 'no';
+            }
+            break;
+         case 'UNPUBLISH':
+            if ($accessLevel >= EDITOR){
+               $show = 'yes';
+            }else{
+               $show = 'no';
+            }
+            break;
+      }
+   endif;
+?>
+
          <link rel="stylesheet" type="text/css" href="/assets/plugins/jquery-multi-select/css/multi-select-metro.css" />
          <script type="text/javascript" src="/assets/plugins/jquery-multi-select/js/jquery.multi-select.js"></script>   
 
@@ -33,7 +71,7 @@
                               <div class="control-group ">
                                  <label class="control-label"></label>
                                  <div class="controls">
-                                    <input type="text" name="doc[headline]" value="<?=(!empty($this->vars['blog']) && array_key_exists('headline',$this->vars['blog'])) ? $this->vars['blog']['headline']: ''?>" class="m-wrap span10 headline">
+                                    <input <?=($show=='no') ? 'readonly=""' : ''?> type="text" name="doc[headline]" value="<?=(!empty($this->vars['blog']) && array_key_exists('headline',$this->vars['blog'])) ? $this->vars['blog']['headline']: ''?>" class="m-wrap span10 headline">
                                  </div>
                               </div>
                            </div>
@@ -46,7 +84,7 @@
                               <div class="control-group ">
                                  <label class="control-label"></label>
                                  <div class="controls">
-                                    <input type="text" name="doc[slug]" value="<?=(!empty($this->vars['blog']) && array_key_exists('slug',$this->vars['blog'])) ? $this->vars['blog']['slug']: ''?>" class="m-wrap span10 slug">
+                                    <input <?=($show=='no') ? 'readonly=""' : ''?> type="text" name="doc[slug]" value="<?=(!empty($this->vars['blog']) && array_key_exists('slug',$this->vars['blog'])) ? $this->vars['blog']['slug']: ''?>" class="m-wrap span10 slug">
                                  </div>
                               </div>
                            </div>
@@ -61,20 +99,24 @@
                               <div class="control-group">
                               <label class="control-label">Available Tags</label>
                               <div class="controls">
-                                 <select class="tags" multiple="multiple" id="tags" name="doc[tags][]" style="position: absolute; left: -9999px;">
-                                    <? 
-                                       foreach($this->vars['availableTags'] as $k=>$v): 
-                                          $selected = false;
-                                          if(!empty($this->vars['blog']) && array_key_exists('tags',$this->vars['blog'])){
-                                             if(strpos($this->vars['blog']['tags'],$v) !== false){
-                                                $selected = true;
+                                 <? if($show=='yes'):?>
+                                    <select class="tags" multiple="multiple" id="tags" name="doc[tags][]" style="position: absolute; left: -9999px;">
+                                       <? 
+                                          foreach($this->vars['availableTags'] as $k=>$v): 
+                                             $selected = false;
+                                             if(!empty($this->vars['blog']) && array_key_exists('tags',$this->vars['blog'])){
+                                                if(strpos($this->vars['blog']['tags'],$v) !== false){
+                                                   $selected = true;
+                                                }
                                              }
-                                          }
-                                    ?>
+                                       ?>
 
-                                    <option <?=($selected) ? ' selected' :'' ?>><?=$v?></option>
-                                    <? endforeach; ?>
-                                 </select>
+                                       <option <?=($selected) ? ' selected' :'' ?>><?=$v?></option>
+                                       <? endforeach; ?>
+                                    </select>
+                                 <? else: ?>
+                                    <?=(!empty($this->vars['blog']) && array_key_exists('tags',$this->vars['blog'])) ? '<h4>'.$this->vars['blog']['tags'].'</h4>' : 'no tags were selected'?>
+                                 <? endif; ?>
                               </div>
                            </div>
                            </div>
@@ -87,7 +129,9 @@
                               <div class="control-group ">
                                  <label class="control-label"></label>
                                  <div class="controls">
+                                     <? if($show=='yes'):?>
                                     <a href="#" class="btn blue manage-picture">Click here to manage the picture</a><br><br>
+                                    <? endif; ?>
                                     <img id="image" src="<?=$this->vars['image']?>" width="329">
                                  </div>
                               </div>
@@ -103,7 +147,7 @@
                               <div class="control-group ">
                                  <label class="control-label"></label>
                                  <div class="controls">
-                                    <textarea name="doc[video]" class="span6 m-wrap video" rows="3"><?=(!empty($this->vars['blog']) && array_key_exists('video',$this->vars['blog'])) ? $this->vars['blog']['video']: ''?></textarea>
+                                    <textarea <?=($show=='no') ? 'readonly=""' : ''?> name="doc[video]" class="span6 m-wrap video" rows="3"><?=(!empty($this->vars['blog']) && array_key_exists('video',$this->vars['blog'])) ? $this->vars['blog']['video']: ''?></textarea>
                                  </div>
                               </div>
                            </div>
@@ -119,7 +163,7 @@
                               <div class="control-group ">
                                  <label class="control-label"></label>
                                  <div class="controls">
-                                    <input type="text" name="doc[link]" value="<?=(!empty($this->vars['blog']) && array_key_exists('link',$this->vars['blog'])) ? $this->vars['blog']['link']: ''?>" class="m-wrap span10 link">
+                                    <input <?=($show=='no') ? 'readonly=""' : ''?> type="text" name="doc[link]" value="<?=(!empty($this->vars['blog']) && array_key_exists('link',$this->vars['blog'])) ? $this->vars['blog']['link']: ''?>" class="m-wrap span10 link">
                                  </div>
                               </div>
                            </div>
@@ -138,7 +182,7 @@
                            </div>
                            <!--/span-->
                         </div>
-                        <? $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user'); return $user['accessLevel'];},$this->app); ?>
+                        
                         <? if($accessLevel >= EDITOR): ?>
                            <h3 class="form-section text-info"><strong>Schedule for Publishing</strong></h3>
                            <p>This is optional.  You can go ahead and publish it now by clicking the "Publish Now" button below.</p>
@@ -148,7 +192,7 @@
                                     <label class="control-label"></label>
                                     <div class="controls">
                                        <div class="input-append date " data-date="" data-date-format="dd-mm-yyyy" data-date-viewmode="years">
-                                          <input placeholder="click to enter date" class="m-wrap m-ctrl-medium date-picker span10 scheduleDate" name="doc[scheduleDate]" readonly="" type="text" value="<?=(!empty($this->vars['blog']) && array_key_exists('scheduleDate',$this->vars['blog']) && array_key_exists('detail',$this->vars['blog']['scheduleDate'])) ? $this->vars['blog']['scheduleDate']['detail']: ''?>">
+                                          <input placeholder="click to enter date" class="m-wrap m-ctrl-medium date-picker span10 scheduleDate" name="doc[scheduleDate]" readonly="" type="text" value="<?=(!empty($this->vars['blog']) && array_key_exists('scheduleDate',$this->vars['blog']) && is_array($this->vars['blog']['scheduleDate']) && array_key_exists('detail',$this->vars['blog']['scheduleDate'])) ? $this->vars['blog']['scheduleDate']['detail']: ''?>">
                                           <span class="add-on"><i class="icon-calendar"></i></span>
                                        </div>
                                     </div>
@@ -199,6 +243,8 @@
                                                       <button type='button' class='btn cancel'>Cancel</button>
                                                       <button type='button' class='btn red delete'>Delete</button>";
                                           break;
+                                       }else{
+                                          $buttons = '';
                                        }
                                     case 'PUBLISH':
                                        if ($accessLevel >= EDITOR){
@@ -206,6 +252,8 @@
                                                       <button type='button' class='btn yellow unpublish'><i class='icon-ok'></i> Save and un-publish.</button>
                                                       <button type='button' class='btn cancel'>Cancel</button>
                                                       <button type='button' class='btn red delete'>Delete</button>";
+                                       }else{
+                                          $buttons = '';
                                        }
                                        break;
                                     case 'UNPUBLISH':
@@ -214,6 +262,8 @@
                                                       <button type='button' class='btn yellow publish'><i class='icon-ok'></i> Publish now.</button>
                                                       <button type='button' class='btn cancel'>Cancel</button>
                                                       <button type='button' class='btn red delete'>Delete</button>";
+                                       }else{
+                                          $buttons="";
                                        }
                                        break;
                                  }
@@ -271,14 +321,16 @@
          <script>
          jQuery(document).ready(function() {    
             io.saw.Blog.init();
-            $('#tags').multiSelect();
-            if (jQuery().datepicker) {
-               $('.date-picker').datepicker({
-                  rtl : App.isRTL()
-               });
-            }
 
-             var editor = new SnapEditor.InPlace("body", {
+            <? if ($show == 'yes'): ?>
+               $('#tags').multiSelect();
+               if (jQuery().datepicker) {
+                  $('.date-picker').datepicker({
+                     rtl : App.isRTL()
+                  });
+               }
+               
+                var editor = new SnapEditor.InPlace("body", {
                path: "/assets/snapeditor",
              toolbar: {
                items: [
@@ -301,7 +353,7 @@
               }
                
             });
-
+          <? endif; ?>
            
          });
             

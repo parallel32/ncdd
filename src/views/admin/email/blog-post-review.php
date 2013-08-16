@@ -8,18 +8,19 @@
 									<table border="0" cellpadding="20" cellspacing="0" width="100%">
 										<tr>
 											<td valign="top">
-												<h2 class="h2">General Member Application Form</h2>
+												<h2 class="h2">Blog Post Submitted for Review</h2>
 												<br />
 												<div class="textdark">
-													The general member application form has been submitted:
+													Some information about the blog post and the author:
 													<br/>
 													<br/><?=$this->vars['firstName'].' '.$this->vars['lastName']?>
-													<br/><?=$this->vars['city'].', '.$this->vars['state']?>
 													<br/><?=$this->vars['email']?>
 													<br/>
+													<br/><?=$this->vars['headline']?>
 													<br/>
 													<br/>
-													<a href="http://<?=SAW_ADMIN_WEBSITE?>" target="_blank">Go to the Admin Dashboard to view this and other Applications. http://<?=SAW_ADMIN_WEBSITE?></a>. 
+													<br/>
+													<a href="http://<?=SAW_ADMIN_WEBSITE?>" target="_blank">Go to the Admin Dashboard to view this and other Blog posts. http://<?=SAW_ADMIN_WEBSITE?></a>. 
 												</div>
 											</td>
 										</tr>

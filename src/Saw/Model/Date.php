@@ -52,6 +52,7 @@ class Date {
 		$this->dayOfWeek = $date->format('l');
 		$this->shortDayOfWeek = $date->format('D');
 		$this->year = $date->format('Y');
+		$this->month = $date->format('F');
 		$this->european = $date->format('j/n/Y');
 		$this->europeanFullMonth = $date->format('j F, Y');
 		$this->europeanShortMonth = $date->format('j M, Y');
