@@ -230,8 +230,8 @@
                                              $buttons.=" <button type='button' class='btn red delete'>Delete</button>";
                                           }
                                        } else if ($accessLevel >= EDITOR){
-                                          $buttons = "<button type='button' class='btn green schedule'><i class='icon-pencil'></i> Schedule for publishing.</button>
-                                                      <button type='button' class='btn yellow publish'><i class='icon-ok'></i> Publish now.</button>
+                                          $buttons = "<button type='button' class='btn green publish'><i class='icon-ok'></i> Publish now.</button>
+                                                      <button type='button' class='btn yellow schedule'><i class='icon-pencil'></i> Schedule for publishing.</button>
                                                       <button type='button' class='btn cancel'>Cancel</button>
                                                       <button type='button' class='btn red delete'>Delete</button>";
                                        }
@@ -258,8 +258,8 @@
                                        break;
                                     case 'UNPUBLISH':
                                        if ($accessLevel >= EDITOR){
-                                          $buttons = "<button type='button' class='btn green schedule'><i class='icon-pencil'></i> Schedule for publishing.</button>
-                                                      <button type='button' class='btn yellow publish'><i class='icon-ok'></i> Publish now.</button>
+                                          $buttons = "<button type='button' class='btn green publish'><i class='icon-ok'></i> Publish now.</button>
+                                                      <button type='button' class='btn yellow schedule'><i class='icon-pencil'></i> Schedule for publishing.</button>
                                                       <button type='button' class='btn cancel'>Cancel</button>
                                                       <button type='button' class='btn red delete'>Delete</button>";
                                        }else{
