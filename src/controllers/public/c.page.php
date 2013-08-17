@@ -65,7 +65,7 @@ $app->get('/', function (Request $request) use ($app) {
 	$view_vars = array_merge($page_vars,$view_vars);
 
 	$blog = new Model\Blog(array(),$app);
-	$posts = $blog->fetchByStatus('PUBLISH','yes',0,3);
+	$posts = $blog->fetchByStatus('PUBLISH','yes',0,4);
 	$view_vars['posts'] = $posts;
 	
 
