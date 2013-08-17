@@ -113,6 +113,9 @@ sub {
 
 /* line 101, ../sass/bootstrap.scss */
 img {
+  width: auto\9;
+  height: auto;
+  max-width: 100%;
   vertical-align: middle;
   border: 0;
   -ms-interpolation-mode: bicubic;
@@ -2665,7 +2668,7 @@ table th[class*="span"],
 .dropdown-submenu:focus > a > [class^="icon-"],
 .dropdown-submenu:hover > a > [class*=" icon-"],
 .dropdown-submenu:focus > a > [class*=" icon-"] {
-  background-image: url("../img/glyphicons-halflings-white.png");
+  background-image: url("/assets/img/glyphicons-halflings-white.png");
 }
 
 /* line 2312, ../sass/bootstrap.scss */

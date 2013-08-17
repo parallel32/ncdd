@@ -1,4 +1,140 @@
 /* reset */
+/* line 2, ../sass/theCss.scss */
+form {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 2, ../sass/theCss.scss */
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, fieldset, lengend, button, input, textarea, th, td {
+  /* table elements  */
+  margin: 0;
+  padding: 0;
+}
+
+/* line 2, ../sass/theCss.scss */
+table th, table td {
+  padding: 1px;
+}
+
+/*  */
+/* line 2, ../sass/theCss.scss */
+body, button, input, select, textarea {
+  /* for ie */
+  /*font: 12px/1 Tahoma, Helvetica, Arial, sans-serif;*/
+  font: 12px/1 arial, verdana, tahoma, sans-serif;
+  /*  */
+}
+
+/* line 2, ../sass/theCss.scss */
+h1 {
+  font-size: 18px;
+  /* 18px / 12px = 1.5 */
+}
+
+/* line 2, ../sass/theCss.scss */
+h2 {
+  font-size: 16px;
+}
+
+/* line 2, ../sass/theCss.scss */
+h3 {
+  font-size: 14px;
+}
+
+/* line 2, ../sass/theCss.scss */
+h4, h5, h6 {
+  font-size: 100%;
+}
+
+/* line 2, ../sass/theCss.scss */
+address, cite, dfn, em, var {
+  font-style: normal;
+}
+
+/*  */
+/* line 2, ../sass/theCss.scss */
+code, kbd, pre, samp, tt {
+  font-family: "Courier New", Courier, monospace;
+}
+
+/*  */
+/* line 2, ../sass/theCss.scss */
+small {
+  font-size: 12px;
+}
+
+/* */
+/*  */
+/* line 2, ../sass/theCss.scss */
+ul, ol {
+  list-style: none;
+}
+
+/*  */
+/* line 2, ../sass/theCss.scss */
+a {
+  text-decoration: none;
+  color: #049;
+}
+
+/* line 2, ../sass/theCss.scss */
+a:hover {
+  text-decoration: underline;
+}
+
+/* line 2, ../sass/theCss.scss */
+abbr[title], acronym[title] {
+  /* ：1.ie6  abbr; 2.，ie6  */
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+/* line 2, ../sass/theCss.scss */
+q:before, q:after {
+  content: '';
+}
+
+/*  */
+/* line 2, ../sass/theCss.scss */
+legend {
+  color: #000;
+}
+
+/* for ie6 */
+/* line 2, ../sass/theCss.scss */
+fieldset, img {
+  border: none;
+}
+
+/* img  */
+/* ：optgroup */
+/* line 2, ../sass/theCss.scss */
+button, input, select, textarea {
+  font-size: 100%;
+  /*  */
+}
+
+/*  */
+/* line 2, ../sass/theCss.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*  hr */
+/* line 2, ../sass/theCss.scss */
+hr {
+  border: none;
+  height: 1px;
+}
+
+/* line 2, ../sass/theCss.scss */
+.clear {
+  clear: both;
+}
+
 /* line 3, ../sass/theCss.scss */
 a:hover {
   text-decoration: none;
