@@ -138,7 +138,7 @@
                            </div>
                            <!--/span-->
                         </div>
-                        <h3 class="form-section text-info"><strong>Video (optional)</strong></h3>
+                        <h3 class="form-section text-info"><strong>Video (optional)</strong> recommended width is 640</h3>
                         <p>If you'd like to write up a blog post about a video you found on the web or a video you published to the web.  It's a great idea for a blog post.
                            <br>Add the embed code for the video here.
                            <br>Be sure it's not just the link to the video, but the embedded video player instead.</p>
