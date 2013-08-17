@@ -9,6 +9,7 @@
                             <p class="blogDescr"><?=$this->vars['page']['body']?></p>
                             <div class="row-fluid">
                                 <div class="span8 pull-left">
+                                    <? if(!empty($this->vars['posts'])):?>
                                     <? foreach($this->vars['posts'] as $post): ?>
                                     <?
                                         switch ($post['currentType']) {
@@ -79,6 +80,9 @@
                                     </div>
                                     
                                     <? endforeach; ?>
+                                    <? else: ?>
+                                        <h1>There are no posts in this category</h1>
+                                    <? endif; ?>
                                     <!--
                                     <div class="text-center">
                                         <ul class="pager">
