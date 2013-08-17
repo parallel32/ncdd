@@ -45,7 +45,7 @@
                                     <p class="text-center">please contact </p>
                                     <p class="text-center"><b>Rhea Kirk,</b><br>The NCDD Executive Director</p>
                                     <p class="text-center"><a href="mailto:Rhea@ncdd.com">Rhea@ncdd.com</a></p>
-                                    <div class="text-center"><a href="#" class="btn">Click Here for General Membership Application Form</a></div>
+                                    <div class="text-center"><a href="http://<?=SAW_ADMIN_WEBSITE?>/application/new-member" class="btn">Click Here for General Membership Application Form</a></div>
                                     <ul class="noticeToMembersInfo clearfix">
                                         <li class="noticeToMembersInfoItem"></li>
                                         <li class="noticeToMembersInfoItem"></li>
@@ -55,90 +55,41 @@
                         </div>
                     </div>
                     <div class="row-fluid postsList">
-                        <!--
+                        
                         <div class="title text-center">
                             <div class="bg">
                                 <h3>latest DUI Blog posts</h3>
-                                <h3 class="stroke">latest DUI Blog posts</h3>
-                                <h3 class="insetShadow">latest DUI Blog posts</h3>
                             </div>
                         </div>
-
+                        <? if(!empty($this->vars['posts'])): ?>
                         <ul class="thumbnails">
+                            <? foreach($this->vars['posts'] as $post): ?>
                             <li class="span3">
                                 <div class="thumbnail">
-                                    <img src="/assets/img/1.png" alt="">
+                                    <? if(!empty($post['image'])): ?>
+                                    <img src="<?=$post['image']['urls']['small']['CDN'] ?>" alt="">
+                                    <? endif; ?>
                                     <div class="caption">
-                                        <h4><a href="#">New Study Shows Decrease in DUI But Increase In Drugged Driving</a></h4>
+                                        <h4><a href="/blog/<?=$post['_id']?>/<?=$post['slug']?>"><?=$post['headline']?></a></h4>
                                         <ul class="info">
-                                            <li>March 18, 2013</li>
-                                            <li class="sep"></li>
-                                            <li>2 Comments</li>
+                                            <li><?=$post['publishDate']['fullMonth']?></li>
                                         </ul>
-                                        <p>The District’s attorney general has dropped dozens of drunken driving cases since Jan. 31 and hundreds of others could be dropped as the police department shuts down its troubled alcohol breath-test program… <a href="#">read more</a></p>
+                                        <p><?=substr($post['body'],0,300)?>… <a href="/blog/<?=$post['_id']?>/<?=$post['slug']?>">read more</a></p>
                                         <div class="autor">
-                                            <img src="/assets/img/avatarSmall.png" alt="" class="avatar pull-left">
-                                            <div class="pull-left"><span>Posted By:</span><br><a href="#">Jon D. Jondoe </a></div>
+                                            <img src="<?=(!empty($post['author']['image'])) ? $post['author']['image']['urls']['small']['CDN'] : '/noprofileimage';?>" alt="" class="avatar pull-left">
+                                            <div class="pull-left"><span>Posted By:</span><br><a href="/member/<?=$post['author']['_id']?>/<?=$post['author']['slug']?>"><?=$post['author']['firstName'].' '.$post['author']['lastName']?> </a></div>
                                         </div>
                                     </div>
                                 </div>
                             </li>
-                            <li class="span3">
-                                <div class="thumbnail">
-                                    <img src="/assets/img/2.png" alt="">
-                                    <div class="caption">
-                                        <h4><a href="#">DC Attorney General Dismisses Intox. 5000 Cases</a></h4>
-                                        <ul class="info">
-                                            <li>March 18, 2013</li>
-                                            <li class="sep"></li>
-                                            <li>2 Comments</li>
-                                        </ul>
-                                        <p>The District’s attorney general has dropped dozens of drunken driving cases since Jan. 31 and hundreds of others could be dropped as the police department shuts down its troubled alcohol breath-test program… <a href="#">read more</a></p>
-                                        <div class="autor">
-                                            <img src="/assets/img/avatarSmall.png" alt="" class="avatar pull-left">
-                                            <div class="pull-left"><span>Posted By:</span><br><a href="#">Jon D. Jondoe </a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="span3">
-                                <div class="thumbnail">
-                                    <img src="/assets/img/3.png" alt="">
-                                    <div class="caption">
-                                        <h4><a href="#">DC Attorney General Dismisses Intox. 5000 Cases</a></h4>
-                                        <ul class="info">
-                                            <li>March 18, 2013</li>
-                                            <li class="sep"></li>
-                                            <li>2 Comments</li>
-                                        </ul>
-                                        <p>The District’s attorney general has dropped dozens of drunken driving cases since Jan. 31 and hundreds of others could be dropped as the police department shuts down its troubled alcohol breath-test program… <a href="#">read more</a></p>
-                                        <div class="autor">
-                                            <img src="/assets/img/avatarSmall.png" alt="" class="avatar pull-left">
-                                            <div class="pull-left"><span>Posted By:</span><br><a href="#">Jon D. Jondoe </a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="span3">
-                                <div class="thumbnail">
-                                    <img src="/assets/img/4.png" alt="">
-                                    <div class="caption">
-                                        <h4><a href="#">DC Attorney General Dismisses Intox. 5000 Cases</a></h4>
-                                        <ul class="info">
-                                            <li>March 18, 2013</li>
-                                            <li class="sep"></li>
-                                            <li>2 Comments</li>
-                                        </ul>
-                                        <p>The District’s attorney general has dropped dozens of drunken driving cases since Jan. 31 and hundreds of others could be dropped as the police department shuts down its troubled alcohol breath-test program… <a href="#">read more</a></p>
-                                        <div class="autor">
-                                            <img src="/assets/img/avatarSmall.png" alt="" class="avatar pull-left">
-                                            <div class="pull-left"><span>Posted By:</span><br><a href="#">Jon D. Jondoe </a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                            <? endforeach; ?>
                         </ul>
-                    -->
+                        <? else: ?>
+                        <div class="text-center">
+                            We currently have not published any posts.  Please try back later.
+                        </div>
+                        <? endif; ?>
+                    <!-- -->
                     </div>
 
                     <!--

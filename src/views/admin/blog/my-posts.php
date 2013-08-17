@@ -22,7 +22,7 @@
                            <div class="portlet-title" id="draft">
                               <div class="caption"><i class="icon-edit"></i>Your drafts for the DUI Blog</div>
                               <div class="actions">
-                                 <a href="" class="btn green draft-post" data-id="<?=call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$this->app);?>"><i class="icon-plus"></i> Draft another Blog Post</a>
+                                 <a href="" class="btn green draft-post" data-id="<?=call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$this->app);?>"><i class="icon-plus"></i> Draft a Blog Post</a>
                               </div>
                            </div>
                            <div class="portlet-body">

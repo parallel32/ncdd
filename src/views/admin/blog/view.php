@@ -49,6 +49,14 @@
                         </div>
                         <!--end news-tag-data-->
                         <div>
+                           <? if (!empty($post['video'])){ ?>
+                              <?=$post['video']?>
+                              <br><br>
+                           <? } ?>
+                           <? if (!empty($post['link'])){ ?>
+                              <h2><a href="<?=$post['link']?>"><?=$post['link']?></a></h2>
+                              <br><br>
+                           <? } ?>
                            <p><?=$post['body']?></p>
                         </div>
                         <hr>

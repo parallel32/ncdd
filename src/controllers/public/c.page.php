@@ -64,15 +64,73 @@ $app->get('/', function (Request $request) use ($app) {
 	$page_vars = $app['get_pages']();
 	$view_vars = array_merge($page_vars,$view_vars);
 
+	$blog = new Model\Blog(array(),$app);
+	$posts = $blog->fetchByStatus('PUBLISH','yes',0,3);
+	$view_vars['posts'] = $posts;
+	
+
 	return $app['view']->render('page/home', 'content',$view_vars);
 });
 
-// blog
+// blog roll
 $app->get('/blog', function (Request $request) use ($app) {
 	$view_vars=array();
-	$page_vars = $app['get_pages']();
+	$page_vars = $app['get_pages']('blog');
 	$view_vars = array_merge($page_vars,$view_vars);
+
+	$blog = new Model\Blog(array(),$app);
+	$posts = $blog->fetchByStatus('PUBLISH','yes');
+	
+	$view_vars['posts'] = $posts;
+	$view_vars['tags'] = Model\Blog::getAvailableTags();
+
 	return $app['view']->render('page/blog-roll', 'content',$view_vars);
+});
+
+// blog archives
+$app->get('/blog/archives/{month}/{year}', function ($month, $year, Request $request) use ($app) {
+	$view_vars=array();
+	$page_vars = $app['get_pages']('blog');
+	$view_vars = array_merge($page_vars,$view_vars);
+
+	$blog = new Model\Blog(array(),$app);
+	$posts = $blog->fetchArchives($month,$year);
+	
+	$view_vars['posts'] = $posts;
+	$view_vars['tags'] = Model\Blog::getAvailableTags();
+
+	return $app['view']->render('page/blog-roll', 'content',$view_vars);
+});
+
+// blog tags
+$app->get('/blog/tag/{tag}', function ($tag, Request $request) use ($app) {
+	$view_vars=array();
+	$page_vars = $app['get_pages']('blog');
+	$view_vars = array_merge($page_vars,$view_vars);
+
+	$blog = new Model\Blog(array(),$app);
+	$posts = $blog->fetchTag($tag);
+	
+	$view_vars['posts'] = $posts;
+	$view_vars['tags'] = Model\Blog::getAvailableTags();
+
+	return $app['view']->render('page/blog-roll', 'content',$view_vars);
+});
+
+
+// singl blog post
+$app->get('/blog/{id}/{slug}', function ($id, $slug, Request $request) use ($app) {
+	$view_vars=array();
+	$page_vars = $app['get_pages']('blog');
+	$view_vars = array_merge($page_vars,$view_vars);
+
+	$blog = new Model\Blog(array('_id'=>$id),$app);
+	$post = $blog->findById();
+	
+	$view_vars['post'] = $post;
+	$view_vars['tags'] = Model\Blog::getAvailableTags();
+	
+	return $app['view']->render('page/blog-post', 'content',$view_vars);
 });
 
 // contact
