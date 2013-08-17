@@ -70,14 +70,14 @@
                                     <img src="<?=$post['image']['urls']['small']['CDN'] ?>" alt="">
                                     <? endif; ?>
                                     <div class="caption">
-                                        <h4><a href="/blog/<?=$post['_id']?>/<?=$post['slug']?>"><?=$post['headline']?></a></h4>
+                                        <h4><a href="/blog/<?=$post['_id']?><?=$post['slug']?>"><?=$post['headline']?></a></h4>
                                         <ul class="info">
                                             <li><?=$post['publishDate']['fullMonth']?></li>
                                         </ul>
-                                        <p><?=substr($post['body'],0,300)?>… <a href="/blog/<?=$post['_id']?>/<?=$post['slug']?>">read more</a></p>
+                                        <p><?=substr($post['body'],0,300)?>… <a href="/blog/<?=$post['_id']?><?=$post['slug']?>">read more</a></p>
                                         <div class="autor">
                                             <img src="<?=(!empty($post['author']['image'])) ? $post['author']['image']['urls']['small']['CDN'] : '/noprofileimage';?>" alt="" class="avatar pull-left">
-                                            <div class="pull-left"><span>Posted By:</span><br><a href="/member/<?=$post['author']['_id']?>/<?=$post['author']['slug']?>"><?=$post['author']['firstName'].' '.$post['author']['lastName']?> </a></div>
+                                            <div class="pull-left"><span>Posted By:</span><br><a href="/member/<?=$post['author']['_id']?><?=$post['author']['slug']?>"><?=$post['author']['firstName'].' '.$post['author']['lastName']?> </a></div>
                                         </div>
                                     </div>
                                 </div>
