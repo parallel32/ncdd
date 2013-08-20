@@ -387,6 +387,64 @@ class Member extends User {
 		return $result;
 	}
 
+	public function searchFoundingMembersByState($state){
+
+		$fields=array('_id'=>1
+					,'firstName'=>1
+					,'lastName'=>1
+					,'slug'=>1
+					,'primaryPhone'=>1
+					,'email'=>1
+					,'image'=>1
+					,'currentMembership'=>1
+					,'currentFacultyPosition'=>1
+					,'boardCertified'=>1
+					,'websites'=>1
+					,'location'=>1
+					);
+		$result = $this->find($query=array('currentMembership'=>self::$membership['FOUNDING MEMBER'], 'location.state'=>$state,'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				
+		if(!empty($result)):
+			for ($i=0; $i < count($result); $i++) {
+				$result[$i]['image'] = (!empty($result[$i]['image'])) ? $result[$i]['image']['urls']['small']['CDN'] : '/noprofileimage';
+				$result[$i]['currentMembership'] = (!empty($result[$i]['currentMembership'])) ? self::$membershipReversed[$result[$i]['currentMembership']] : '';
+				$result[$i]['currentFacultyPosition'] = (!empty($result[$i]['currentFacultyPosition'])) ? self::$facultyPositionReversed[$result[$i]['currentFacultyPosition']] : '';
+				$result[$i]['boardCertified'] = ($result[$i]['boardCertified']) ? "Yes" : "No";
+				$result[$i]['boardCertifiedBadge'] = self::$boardCertifiedBadge;
+			}
+		endif;
+		return $result;
+	}
+
+	public function searchStateDelegatesByState($state){
+
+		$fields=array('_id'=>1
+					,'firstName'=>1
+					,'lastName'=>1
+					,'slug'=>1
+					,'primaryPhone'=>1
+					,'email'=>1
+					,'image'=>1
+					,'currentMembership'=>1
+					,'currentFacultyPosition'=>1
+					,'boardCertified'=>1
+					,'websites'=>1
+					,'location'=>1
+					);
+		$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['DELEGATE'], 'location.state'=>$state,'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				
+		if(!empty($result)):
+			for ($i=0; $i < count($result); $i++) {
+				$result[$i]['image'] = (!empty($result[$i]['image'])) ? $result[$i]['image']['urls']['small']['CDN'] : '/noprofileimage';
+				$result[$i]['currentMembership'] = (!empty($result[$i]['currentMembership'])) ? self::$membershipReversed[$result[$i]['currentMembership']] : '';
+				$result[$i]['currentFacultyPosition'] = (!empty($result[$i]['currentFacultyPosition'])) ? self::$facultyPositionReversed[$result[$i]['currentFacultyPosition']] : '';
+				$result[$i]['boardCertified'] = ($result[$i]['boardCertified']) ? "Yes" : "No";
+				$result[$i]['boardCertifiedBadge'] = self::$boardCertifiedBadge;
+			}
+		endif;
+		return $result;
+	}
+
 	// saves user_id into session
 	public function setUserSession() {
         $user = $this->findById();

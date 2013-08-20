@@ -1,18 +1,16 @@
                     <div class="row-fluid becomeAmember">
                         <div class="title text-center">
                             <div class="bg">
-                                <h3><?=$this->vars['page']['headline']?></h3>
+                                <h3><?=$this->vars['state']?> Founding Members</h3>
                             </div>
                         </div>
-                        <div class="becomeAmemberContent">
-                            <?=$this->vars['page']['body']?>
-                        </div>
+                        
                     </div>
                     
                     <div class="attorneyContent">
                         <div class="dropdown mapsPhone">
                             <a class="dropdown-toggle btn"href="javascript:void(0)">
-                                Select A State
+                                Select Another State
                                 <b class="caret"></b>
                             </a>
                             <ul class="mapsPhoneDropdown">
@@ -76,10 +74,13 @@
                             </ul>
                         </div>
 
+
                         <div class="cityNameBlock">
                             <h5 class="cityName pull-left"></h5>
                             <span class="result pull-right"><?=count($this->vars['members'])?> Results</span>
                         </div>
+
+
 
 
                         <ul class="membersList">
@@ -90,6 +91,7 @@
                                     <div class="nameBlock">
                                         <h3 class="name text-center"><?=$member['firstName']?> <?=$member['lastName']?></h3>
                                         <h5 class="descr text-center"><?=$member['currentMembership']?></h5>
+                                        <h5 class="descr text-center"><a class="text-error"><?=$member['currentFacultyPosition']?></a></h5>
                                         <? if(!empty($member['currentFacultyPosition'])): ?>
                                             <div class="regentsFellowsLabel"><img src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/exec" alt="NCDD National College for DUI Defense: <?=$member['firstName']?> <?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?> <?=$member['lastName']?>" /></div>
                                     <? endif; ?>
@@ -104,9 +106,9 @@
                                         </li>
                                         <li>
                                             <div class="memberBadgeBlock">
-                                                <div class="memberBadge"><img width="71" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/member" alt="NCDD National College for DUI Defense: <?=$member['firstName']?> <?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?> <?=$member['lastName']?>" /></div>
+                                                <div class="memberBadge"><img width="140" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/member" alt="NCDD National College for DUI Defense: <?=$member['firstName']?> <?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?> <?=$member['lastName']?>" /></div>
                                                 <? if($member['boardCertified'] =='Yes'): ?>
-                                                <div class="memberBadge"><img width="96" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/boardcertified" alt="NCDD National College for DUI Defense: <?=$member['firstName']?> <?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?> <?=$member['lastName']?>" /></div>
+                                                <div class="memberBadge"><img width="165" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/boardcertified" alt="NCDD National College for DUI Defense: <?=$member['firstName']?> <?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?> <?=$member['lastName']?>" /></div>
                                                 <? endif; ?>
                                             </div>
                                         </li>
@@ -119,6 +121,15 @@
                                         </p>
                                         <a href="/member/<?=$member['_id']?>/<?=$member['slug']?>" class="btn pull-right">Full Profile</a>
                                     </div>
+                                    <? if(!empty($member['location']['raw'])): ?>
+                                    <div class="address">
+                                        <p class="pull-left">
+                                            <a style="font-size:20px"><?=$member['location']['raw']?></a>
+                                        </p>
+                                        <a href="/member/<?=$member['_id']?>/<?=$member['slug']?>" class=" hide btn pull-right"></a>
+                                    </div>
+                                    <? endif; ?>
+                                    
                                 </div>
                             </li>
                         <? endforeach; ?>

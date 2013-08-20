@@ -10,7 +10,7 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Saw\Model;
-
+use Cocur\Slugify\Slugify;
 
 ////////////////////////////////////////////////
 // GETS ALL URLS FOR MAKING THE DROP DOWN NAV //
@@ -209,7 +209,22 @@ $app->get('/find-an-attorney/{country}/{state}', function ($country, $state, Req
 
 });
 
+
 // dui laws in your state routes // 
+// redirects the old foundingmembers.php?location=State to the new routes
+// because Redirect 301 doesn't work with querystrings..
+$app->get('/duilawsinyourstate.php', function (Request $request) use ($app) {
+
+	$location = $request->get('location');
+	$slugify = new \Cocur\Slugify\Slugify();//for iconv translit
+	$slug = $slugify->slugify($location);
+	if($slug == 'n-a'){
+		return $app->redirect('/dui-laws-in-your-state');
+	}
+	return $app->redirect('/dui-laws-in-your-state/usa/'.$slug);	
+
+});
+
 $app->get('/dui-laws-in-your-state', function (Request $request) use ($app) {
 	$slug = 'dui-laws-in-your-state';
 	$page = new Model\Page($doc=array('slug'=>$slug), $app);
@@ -243,7 +258,21 @@ $app->get('/dui-laws-in-your-state/{country}/{state}', function ($country, $stat
 	return $app['view']->render('page/dui-laws/state', 'content', $view_vars);
 
 });
-// founding members
+
+// Founding Members
+// redirects the old foundingmembers.php?location=State to the new routes
+// because Redirect 301 doesn't work with querystrings..
+$app->get('/foundingmembers.php', function (Request $request) use ($app) {
+	
+	$location = $request->get('location');
+	$slugify = new \Cocur\Slugify\Slugify();//for iconv translit
+	$slug = $slugify->slugify($location);
+	if($slug == 'n-a'){
+		return $app->redirect('/founding-members');
+	}
+	return $app->redirect('/founding-members/usa/'.$slug);	
+
+});
 $app->get('/founding-members', function (Request $request) use ($app) {
 	$slug = 'founding-members';
 	$page = new Model\Page($doc=array('slug'=>$slug), $app);
@@ -261,6 +290,91 @@ $app->get('/founding-members', function (Request $request) use ($app) {
 	$view_vars = array_merge($page_vars,$view_vars);
 	
 	return $app['view']->render('page/founding-members', 'content', $view_vars);
+});
+$app->get('/founding-members/{country}/{state}', function ($country, $state, Request $request) use ($app) {
+
+	switch (strtolower($country)) {
+		case 'usa':
+			$country = 'US';
+			break;
+		case 'canada':
+			$country = 'CA';
+			break;
+	}
+	$states = array('alabama'=>'AL','alaska'=>'AK','arizona'=>'AZ','arkansas'=>'AR','california'=>'CA','colorado'=>'CO','connecticut'=>'CT','delaware'=>'DE','washington-dc'=>'DC','florida'=>'FL','georgia'=>'GA','hawaii'=>'HI','idaho'=>'ID','illinois'=>'IL','indiana'=>'IN','iowa'=>'IA','iowa'=>'IO','kansas'=>'KS','kentucky'=>'KY','louisiana'=>'LA','maine'=>'ME','maryland'=>'MD','massachusetts'=>'MA','michigan'=>'MI','minnesota'=>'MN','mississippi'=>'MS','missouri'=>'MO','montana'=>'MT','nebraska'=>'NE','nevada'=>'NV','new-hampshire'=>'NH','new-jersey'=>'NJ','new-mexico'=>'NM','new-york'=>'NY','north-carolina'=>'NC','north-dakota'=>'ND','ohio'=>'OH','oklahoma'=>'OK','oregon'=>'OR','pennsylvania'=>'PA','rhode-island'=>'RI','south-carolina'=>'SC','south-dakota'=>'SD','tennessee'=>'TN','texas'=>'TX','utah'=>'UT','vermont'=>'VT','virginia'=>'VA','washington'=>'WA','west-virginia'=>'WV','wisconsin'=>'WI','wyoming'=>'WY','ontario'=>'ON','quebec'=>'QC','saskatchewan'=>'SK');
+	$state = $states[$state];
+	$state_reversed = array('AL'=>'Alabama','AK'=>'Alaska',    'AZ'=>'Arizona',    'AR'=>'Arkansas',    'CA'=>'California',    'CO'=>'Colorado',    'CT'=>'Connecticut',    'DE'=>'Delaware',    'DC'=>'District of Columbia',    'FL'=>'Florida',    'GA'=>'Georgia',    'HI'=>'Hawaii',    'ID'=>'Idaho',    'IL'=>'Illinois',    'IN'=>'Indiana',    'IA'=>'Iowa',  'IO'=>'Iowa',    'KS'=>'Kansas',    'KY'=>'Kentucky',    'LA'=>'Louisiana',    'ME'=>'Maine',    'MD'=>'Maryland',    'MA'=>'Massachusetts',    'MI'=>'Michigan',    'MN'=>'Minnesota',    'MS'=>'Mississippi',    'MO'=>'Missouri',    'MT'=>'Montana', 'NE'=>'Nebraska',    'NV'=>'Nevada',    'NH'=>'New Hampshire',    'NJ'=>'New Jersey',    'NM'=>'New Mexico',    'NY'=>'New York',    'NC'=>'North Carolina',    'ND'=>'North Dakota',    'OH'=>'Ohio',    'OK'=>'Oklahoma',    'OR'=>'Oregon',    'PA'=>'Pennsylvania',    'RI'=>'Rhode Island',    'SC'=>'South Carolina',    'SD'=>'South Dakota',    'TN'=>'Tennessee',    'TX'=>'Texas',    'UT'=>'Utah',    'VT'=>'Vermont',    'VA'=>'Virginia',    'WA'=>'Washington',    'WV'=>'West Virginia',   'WI'=>'Wisconsin',    'WY'=>'Wyoming','ON'=>'Ontario','SK'=>'Saskatchewan','QC'=>'Quebec');
+	
+	$member = new Model\Member(array(), $app);
+	$members = $member->searchFoundingMembersByState($state);
+
+	$view_vars['slogan_block'] = 'attorneys';
+	$view_vars['state'] = $state_reversed[$state];
+	$view_vars['members'] = $members;
+	$page_vars = $app['get_pages']($state);
+	$view_vars = array_merge($page_vars,$view_vars);
+	
+	return $app['view']->render('page/founding-members/state', 'content', $view_vars);
+
+});
+
+// State Delegates
+// redirects the old foundingmembers.php?location=State to the new routes
+// because Redirect 301 doesn't work with querystrings..
+$app->get('/findstatedelegate.php', function (Request $request) use ($app) {
+	
+	$location = $request->get('location');
+	$slugify = new \Cocur\Slugify\Slugify();//for iconv translit
+	$slug = $slugify->slugify($location);
+	if($slug == 'n-a'){
+		return $app->redirect('/state-delegates');
+	}
+	return $app->redirect('/state-delegates/usa/'.$slug);	
+
+});
+$app->get('/state-delegates', function (Request $request) use ($app) {
+	$slug = 'state-delegates';
+	$page = new Model\Page($doc=array('slug'=>$slug), $app);
+	$page = $page->findById('slug');
+
+	$view_vars = array('page'=>$page);
+	$view_vars['slogan_block'] = 'attorneys';
+
+	$page_vars = $app['get_pages']($slug);
+	
+	$member = new Model\Member(array(), $app);
+	$members = $member->search('State Delegates',true);
+
+	$view_vars['members'] = $members;
+	$view_vars = array_merge($page_vars,$view_vars);
+	
+	return $app['view']->render('page/state-delegates', 'content', $view_vars);
+});
+$app->get('/state-delegates/{country}/{state}', function ($country, $state, Request $request) use ($app) {
+
+	switch (strtolower($country)) {
+		case 'usa':
+			$country = 'US';
+			break;
+		case 'canada':
+			$country = 'CA';
+			break;
+	}
+	$states = array('alabama'=>'AL','alaska'=>'AK','arizona'=>'AZ','arkansas'=>'AR','california'=>'CA','colorado'=>'CO','connecticut'=>'CT','delaware'=>'DE','washington-dc'=>'DC','florida'=>'FL','georgia'=>'GA','hawaii'=>'HI','idaho'=>'ID','illinois'=>'IL','indiana'=>'IN','iowa'=>'IA','iowa'=>'IO','kansas'=>'KS','kentucky'=>'KY','louisiana'=>'LA','maine'=>'ME','maryland'=>'MD','massachusetts'=>'MA','michigan'=>'MI','minnesota'=>'MN','mississippi'=>'MS','missouri'=>'MO','montana'=>'MT','nebraska'=>'NE','nevada'=>'NV','new-hampshire'=>'NH','new-jersey'=>'NJ','new-mexico'=>'NM','new-york'=>'NY','north-carolina'=>'NC','north-dakota'=>'ND','ohio'=>'OH','oklahoma'=>'OK','oregon'=>'OR','pennsylvania'=>'PA','rhode-island'=>'RI','south-carolina'=>'SC','south-dakota'=>'SD','tennessee'=>'TN','texas'=>'TX','utah'=>'UT','vermont'=>'VT','virginia'=>'VA','washington'=>'WA','west-virginia'=>'WV','wisconsin'=>'WI','wyoming'=>'WY','ontario'=>'ON','quebec'=>'QC','saskatchewan'=>'SK');
+	$state = $states[$state];
+	$state_reversed = array('AL'=>'Alabama','AK'=>'Alaska',    'AZ'=>'Arizona',    'AR'=>'Arkansas',    'CA'=>'California',    'CO'=>'Colorado',    'CT'=>'Connecticut',    'DE'=>'Delaware',    'DC'=>'District of Columbia',    'FL'=>'Florida',    'GA'=>'Georgia',    'HI'=>'Hawaii',    'ID'=>'Idaho',    'IL'=>'Illinois',    'IN'=>'Indiana',    'IA'=>'Iowa',  'IO'=>'Iowa',    'KS'=>'Kansas',    'KY'=>'Kentucky',    'LA'=>'Louisiana',    'ME'=>'Maine',    'MD'=>'Maryland',    'MA'=>'Massachusetts',    'MI'=>'Michigan',    'MN'=>'Minnesota',    'MS'=>'Mississippi',    'MO'=>'Missouri',    'MT'=>'Montana', 'NE'=>'Nebraska',    'NV'=>'Nevada',    'NH'=>'New Hampshire',    'NJ'=>'New Jersey',    'NM'=>'New Mexico',    'NY'=>'New York',    'NC'=>'North Carolina',    'ND'=>'North Dakota',    'OH'=>'Ohio',    'OK'=>'Oklahoma',    'OR'=>'Oregon',    'PA'=>'Pennsylvania',    'RI'=>'Rhode Island',    'SC'=>'South Carolina',    'SD'=>'South Dakota',    'TN'=>'Tennessee',    'TX'=>'Texas',    'UT'=>'Utah',    'VT'=>'Vermont',    'VA'=>'Virginia',    'WA'=>'Washington',    'WV'=>'West Virginia',   'WI'=>'Wisconsin',    'WY'=>'Wyoming','ON'=>'Ontario','SK'=>'Saskatchewan','QC'=>'Quebec');
+	
+	$member = new Model\Member(array(), $app);
+	$members = $member->searchStateDelegatesByState($state);
+
+	$view_vars['slogan_block'] = 'attorneys';
+	$view_vars['state'] = $state_reversed[$state];
+	$view_vars['members'] = $members;
+	$page_vars = $app['get_pages']($state);
+	$view_vars = array_merge($page_vars,$view_vars);
+	
+	return $app['view']->render('page/state-delegates/state', 'content', $view_vars);
+
 });
 
 // Regents and Fellows
@@ -282,7 +396,6 @@ $app->get('/regents-and-fellows', function (Request $request) use ($app) {
 	
 	return $app['view']->render('page/founding-members', 'content', $view_vars);
 });
-
 
 
 ////////////////////////

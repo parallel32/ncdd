@@ -132,7 +132,7 @@
                                 'downcolor':'#993366',
                                 'enable':true,
                             },  
-                            'map_12':{
+                            /*'map_12':{
                                 'namesId':'SK',
                                 'name': 'SASKATCHEWAN',
                                 'url':'/find-an-attorney/canada/saskatchewan',
@@ -141,7 +141,7 @@
                                 'overcolor':'#99CC00',
                                 'downcolor':'#993366',
                                 'enable':true,
-                            },
+                            },*/
                             'map_13':{
                                 'namesId':'YT',
                                 'name': 'YUKON',
@@ -2558,7 +2558,7 @@
                                     <li class="titleMap">Canada</li>
                                     <li><a href="/find-an-attorney/cananda/ontario">Ontario </a></li>
                                     <li><a href="/find-an-attorney/cananda/quebec">Quebec </a></li>
-                                    <li><a href="/find-an-attorney/cananda/saskatchewan">Saskatchewan </a></li>
+                                    <!--<li><a href="/find-an-attorney/cananda/saskatchewan">Saskatchewan </a></li> -->
                                     
                                 </ul>
                             </div>
