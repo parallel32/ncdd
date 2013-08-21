@@ -691,7 +691,7 @@
                                 addEvent('map_9');
                                 addEvent('map_10');
                                 addEvent('map_11');
-                                addEvent('map_12');
+                                /*addEvent('map_12');*/
                                 addEvent('map_13');
                                 addEvent('map_14');
                                 //*/

@@ -340,7 +340,7 @@
                                 'downcolor':'#993366',
                                 'enable':true,
                             },  
-                            'map_12':{
+                            /*'map_12':{
                                 'namesId':'SK',
                                 'name': 'SASKATCHEWAN',
                                 'url':'/find-an-attorney/canada/saskatchewan',
@@ -349,7 +349,7 @@
                                 'overcolor':'#99CC00',
                                 'downcolor':'#993366',
                                 'enable':true,
-                            },
+                            },*/
                             'map_13':{
                                 'namesId':'YT',
                                 'name': 'YUKON',
@@ -899,7 +899,7 @@
                                 addEvent('map_9');
                                 addEvent('map_10');
                                 addEvent('map_11');
-                                addEvent('map_12');
+                                /*addEvent('map_12');*/
                                 addEvent('map_13');
                                 addEvent('map_14');
                                 //*/
