@@ -32,16 +32,18 @@ $app['session.storage.options'] = array(
 );
 
 try {
-	/*
+	/* - REPLICA SET */
 	$mongoObj = new \MongoClient('mongodb://'.SAW_SESSION_DATABASE_MONGO_SERVERS, 
 									array(	'connect'=>true,
 											'replicaSet'=>SAW_SESSION_DATABASE_MONGO_REPLICASET,
 											'readPreference'=>\MongoClient::RP_PRIMARY_PREFERRED)
 								  );
 	//*/
+	/* - SINGLE INSTANCE
 	$mongoObj = new \MongoClient('mongodb://'.SAW_SESSION_DATABASE_MONGO_SERVERS, 
 									array(	'connect'=>true)
 								  );
+	//*/
 	$app['session.storage.handler'] = $app->share(function () use ($app, $mongoObj) {
 	    return new MongoDbSessionHandler(
 	        $mongoObj,
