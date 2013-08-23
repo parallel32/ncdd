@@ -10,14 +10,14 @@
 ### temp commented out ###
 
 
-#echo "sync web-b"
-#rsync --delete --exclude "logs" --exclude ".gitignore" --exclude ".git" -rlz /home/ec2-user/staging/ ec2-user@10.211.149.123:/var/www/saw
+echo "sync web1"
+rsync --delete --exclude "logs" --exclude ".gitignore" --exclude ".git" -rlz /home/ec2-user/staging/ncdd/ ec2-user@web1:/var/www/ncdd
 
-echo "sync web-c"
-rsync --delete --exclude "logs" --exclude ".gitignore" --exclude ".git" -rlz /home/ec2-user/staging/ ec2-user@10.211.149.123:/var/www/saw
+echo "sync web2"
+rsync --delete --exclude "logs" --exclude ".gitignore" --exclude ".git" -rlz /home/ec2-user/staging/ncdd/ ec2-user@web2:/var/www/ncdd
 
-#echo "sync web-d"
-#rsync --delete --exclude "logs" --exclude ".gitignore" --exclude ".git" -rlz /home/ec2-user/staging/ ec2-user@10.211.149.123:/var/www/saw
+echo "sync web3"
+rsync --delete --exclude "logs" --exclude ".gitignore" --exclude ".git" -rlz /home/ec2-user/staging/ncdd/ ec2-user@web3:/var/www/ncdd
 
 ### temp commented out ###
 #echo "discard minified and ssl files for a clean git repo.."
