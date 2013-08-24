@@ -421,6 +421,15 @@ class MongoWrapper
 			$collection_obj->setReadPreference(\MongoClient::RP_PRIMARY);
 		else
 			$collection_obj->setReadPreference(\MongoClient::RP_SECONDARY);
+
+
+		error_log('---------------------------------------------------------------------');
+		error_log('---------------------------------------------------------------------');
+		error_log('---------------------------------------------------------------------');
+		$conns = $this->mongo->getConnections();
+		error_log('getFileByCriteria connection: '.print_r($conns[0]['connection'],true));
+
+
 		$mongo_file_obj = $collection_obj->findOne($criteria);
 		if(is_object($mongo_file_obj)) // found
 			return $mongo_file_obj->getBytes();
