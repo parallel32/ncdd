@@ -4,7 +4,7 @@
 					echo <<< EOT
            	<div class="sloganBlock text-center ">
                 <div class="deansMessage">
-                    <h2>Dean's Message</h2>
+                    <h2></h2>
                 </div>
             </div>
 EOT;
@@ -28,10 +28,28 @@ EOT;
 EOT;
 					break;
 				case 'attorneys':
+                    echo <<< EOT
+            <div class="sloganBlock text-center ">
+                <div class="attorneySlogan">
+                    <h2></h2>
+                </div>
+            </div>
+EOT;
+                    break;
+                case 'founding-members':
+                    echo <<< EOT
+            <div class="sloganBlock text-center ">
+                <div class="foundingmembersSlogan">
+                    <h2></h2>
+                </div>
+            </div>
+EOT;
+                    break;
+                case 'regents-and-fellows':
 					echo <<< EOT
            	<div class="sloganBlock text-center ">
-                <div class="attorneySlogan">
-                    <h2>Attorneys</h2>
+                <div class="regentsandfellowsSlogan">
+                    <h2></h2>
                 </div>
             </div>
 EOT;

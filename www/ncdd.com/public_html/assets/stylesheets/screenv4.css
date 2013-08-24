@@ -919,7 +919,7 @@ input[type="checkbox"] {
 }
 /* line 880, ../sass/screen.scss */
 .sloganBlock .becomeAmemberSlogan h2 {
-  padding-top: 105px;
+  padding-top: 68px;
   line-height: 1em;
 }
 /* line 886, ../sass/screen.scss */
@@ -931,7 +931,27 @@ input[type="checkbox"] {
 }
 /* line 892, ../sass/screen.scss */
 .sloganBlock .attorneySlogan h2 {
-  padding-top: 105px;
+  padding-top: 68px;
+}
+.sloganBlock .foundingmembersSlogan {
+  background: url("../img/regentsAndFellowsBg.png") no-repeat center;
+  background-size: cover;
+  height: 247px;
+  border-bottom: 5px solid #cacaca;
+}
+/* line 892, ../sass/screen.scss */
+.sloganBlock .foundingmembersSlogan h2 {
+  padding-top: 68px;
+}
+.sloganBlock .regentsandfellowsSlogan {
+  background: url("../img/regentsAndFellowsBg.png") no-repeat center;
+  background-size: cover;
+  height: 247px;
+  border-bottom: 5px solid #cacaca;
+}
+/* line 892, ../sass/screen.scss */
+.sloganBlock .regentsandfellowsSlogan h2 {
+  padding-top: 68px;
 }
 /* line 897, ../sass/screen.scss */
 .sloganBlock .contactMap {
@@ -949,7 +969,7 @@ input[type="checkbox"] {
 }
 /* line 910, ../sass/screen.scss */
 .sloganBlock .deansMessage h2 {
-  padding-top: 110px;
+  padding-top: 68px;
 }
 /* line 915, ../sass/screen.scss */
 .sloganBlock .discoverSlogan {
@@ -960,7 +980,7 @@ input[type="checkbox"] {
 }
 /* line 921, ../sass/screen.scss */
 .sloganBlock .discoverSlogan h2 {
-  padding-top: 110px;
+  padding-top: 68px;
 }
 /* line 926, ../sass/screen.scss */
 .sloganBlock h2 {

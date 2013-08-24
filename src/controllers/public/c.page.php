@@ -175,7 +175,7 @@ $app->get('/find-an-attorney', function (Request $request) use ($app) {
 	$page = $page->findById('slug');
 
 	$view_vars = array('page'=>$page);
-	$view_vars['slogan_block'] = 'attorneys';
+	$view_vars['slogan_block'] = '';
 
 	$page_vars = $app['get_pages']($slug);
 	$view_vars = array_merge($page_vars,$view_vars);
@@ -199,7 +199,7 @@ $app->get('/find-an-attorney/{country}/{state}', function ($country, $state, Req
 	$member = new Model\Member(array(), $app);
 	$members = $member->searchByState($state);
 
-	$view_vars['slogan_block'] = 'attorneys';
+	$view_vars['slogan_block'] = '';
 	$view_vars['state'] = $state_reversed[$state];
 	$view_vars['members'] = $members;
 	$page_vars = $app['get_pages']($state);
@@ -279,7 +279,7 @@ $app->get('/founding-members', function (Request $request) use ($app) {
 	$page = $page->findById('slug');
 
 	$view_vars = array('page'=>$page);
-	$view_vars['slogan_block'] = 'attorneys';
+	$view_vars['slogan_block'] = 'founding-members';
 
 	$page_vars = $app['get_pages']($slug);
 	
@@ -308,7 +308,7 @@ $app->get('/founding-members/{country}/{state}', function ($country, $state, Req
 	$member = new Model\Member(array(), $app);
 	$members = $member->searchFoundingMembersByState($state);
 
-	$view_vars['slogan_block'] = 'attorneys';
+	$view_vars['slogan_block'] = 'founding-members';
 	$view_vars['state'] = $state_reversed[$state];
 	$view_vars['members'] = $members;
 	$page_vars = $app['get_pages']($state);
@@ -338,7 +338,7 @@ $app->get('/state-delegates', function (Request $request) use ($app) {
 	$page = $page->findById('slug');
 
 	$view_vars = array('page'=>$page);
-	$view_vars['slogan_block'] = 'attorneys';
+	$view_vars['slogan_block'] = 'founding-members';
 
 	$page_vars = $app['get_pages']($slug);
 	
@@ -367,7 +367,7 @@ $app->get('/state-delegates/{country}/{state}', function ($country, $state, Requ
 	$member = new Model\Member(array(), $app);
 	$members = $member->searchStateDelegatesByState($state);
 
-	$view_vars['slogan_block'] = 'attorneys';
+	$view_vars['slogan_block'] = 'founding-members';
 	$view_vars['state'] = $state_reversed[$state];
 	$view_vars['members'] = $members;
 	$page_vars = $app['get_pages']($state);
@@ -384,7 +384,7 @@ $app->get('/regents-and-fellows', function (Request $request) use ($app) {
 	$page = $page->findById('slug');
 
 	$view_vars = array('page'=>$page);
-	$view_vars['slogan_block'] = 'attorneys';
+	$view_vars['slogan_block'] = 'regents-and-fellows';
 
 	$page_vars = $app['get_pages']($slug);
 	
@@ -401,6 +401,7 @@ $app->get('/regents-and-fellows', function (Request $request) use ($app) {
 ////////////////////////
 // NON MANAGED ROUTES //
 ////////////////////////
+// this also contaings manaaged pages .. just means the catchall route for all pages whether managed or dynamic //
 $app->get('/{slug}', function ($slug, Request $request) use ($app) {
 	
 	$page_vars = $app['get_pages']($slug);
@@ -409,6 +410,9 @@ $app->get('/{slug}', function ($slug, Request $request) use ($app) {
 	switch ($slug) {
 		case 'deans-message':
 			$view_vars = array('slogan_block'=>'deansmessage');
+			break;
+		case 'erwin-taylor-award':
+			$view_vars = array('slogan_block'=>'');
 			break;
 		
 		default:
