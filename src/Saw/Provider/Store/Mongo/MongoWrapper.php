@@ -163,12 +163,11 @@ class MongoWrapper
 	public function find($collection, $query=array(), $fields=array(),$slaveOkay=false,$offset=0,$limit=20,$sort=array('_id'=>-1)){
 		$cursor = null;
 		$collection = $this->database->selectCollection($collection);
-		if(!$slaveOkay)
-			$collection->setReadPreference(\MongoClient::RP_PRIMARY);
-		else
+		if($slaveOkay)
 			$collection->setReadPreference(\MongoClient::RP_SECONDARY);
+		else
+			$collection->setReadPreference(\MongoClient::RP_PRIMARY);
 			
-		error_log('FIND read preference:'.print_r($collection->getReadPreference(),true));
 		$cursor = $collection->find($query, $fields);
 
 		if(!empty($sort))
@@ -389,7 +388,7 @@ class MongoWrapper
 	 * @param $slaveOkay 	bool 				whether or not to attempt retrieval from a secondary server
 	 * @return  			bytes 				returns the byte stream of the file
 	 */
-	public function getFile($fileId, $collection, $slaveOkay=false){
+	public function getFile($fileId, $collection, $slaveOkay=true){
 		$fileId = (!is_object($fileId)) ? new \MongoId($fileId) : $fileId;
 		$collection_obj = $this->database->getGridFS($collection);
 		if(!$slaveOkay)
@@ -402,7 +401,7 @@ class MongoWrapper
 		else // not found
 			return false;
 	}
-	public function getFileByCriteria($criteria, $collection, $slaveOkay=false){
+	public function getFileByCriteria($criteria, $collection, $slaveOkay=true){
 		$collection_obj = $this->database->getGridFS($collection);
 		if(!$slaveOkay)
 			$collection_obj->setReadPreference(\MongoClient::RP_PRIMARY);
@@ -422,25 +421,27 @@ class MongoWrapper
 	 * @param $slaveOkay 	bool 				whether or not to attempt retrieval from a secondary server
 	 * @return  			MongoGridFSFile		returns the object and you can still get the bytes out
 	 */
-	public function getFileObject($fileId, $collection, $slaveOkay=false){
+	public function getFileObject($fileId, $collection, $slaveOkay=true){
 		$fileId = (!is_object($fileId)) ? new \MongoId($fileId) : $fileId;
 		$collection_obj = $this->database->getGridFS($collection);
 		if(!$slaveOkay)
 			$collection_obj->setReadPreference(\MongoClient::RP_PRIMARY);
 		else
 			$collection_obj->setReadPreference(\MongoClient::RP_SECONDARY);
+
 		$mongo_file_obj = $collection_obj->get($fileId);
 		if(is_object($mongo_file_obj)) // found
 			return $mongo_file_obj;
 		else // not found
 			return false;
 	}
-	public function getFileObjectByCriteria($criteria, $collection, $slaveOkay=false){
+	public function getFileObjectByCriteria($criteria, $collection, $slaveOkay=true){
 		$collection_obj = $this->database->getGridFS($collection);
 		if(!$slaveOkay)
 			$collection_obj->setReadPreference(\MongoClient::RP_PRIMARY);
 		else
 			$collection_obj->setReadPreference(\MongoClient::RP_SECONDARY);
+		
 		$mongo_file_obj = $collection_obj->get($criteria);
 		if(is_object($mongo_file_obj)) // found
 			return $mongo_file_obj;
@@ -568,7 +569,7 @@ class MongoWrapper
 		return $grid->remove($criteria);
 		
 	}
-	public function gridfsfind($collection, $query, $fields=array(), $slaveOkay=false){
+	public function gridfsfind($collection, $query, $fields=array(), $slaveOkay=true){
 		$collection_obj = $this->database->getGridFS($collection);
 		if(!$slaveOkay)
 			$collection_obj->setReadPreference(\MongoClient::RP_PRIMARY);
@@ -581,7 +582,7 @@ class MongoWrapper
 			return false;
 		}
 	}
-	public function gridfsfindOne($collection, $query, $fields=array(), $slaveOkay=false){
+	public function gridfsfindOne($collection, $query, $fields=array(), $slaveOkay=true){
 		$collection_obj = $this->database->getGridFS($collection);
 		if(!$slaveOkay)
 			$collection_obj->setReadPreference(\MongoClient::RP_PRIMARY);
