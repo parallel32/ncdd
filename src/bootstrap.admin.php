@@ -28,7 +28,8 @@ $app['session.storage.options'] = array(
 	'cookie_secure'		=> SAW_SESSION_COOKIE_SECURE,
 	'cookie_httponly'	=> SAW_SESSION_COOKIE_HTTPONLY,
 	'gc_probability'	=> 1,
-	'gc_divisor'		=> 10000
+	'gc_divisor'		=> 10000,
+	'gc_maxlifetime'	=> 15552000 /*6 months in seconds*/
 );
 
 try {
