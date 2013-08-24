@@ -171,7 +171,8 @@ class MongoWrapper
 		error_log('---------------------------------------------------------------------');
 		error_log('---------------------------------------------------------------------');
 		error_log('---------------------------------------------------------------------');
-		error_log('connection: '.print_r($this->mongo->getConnections(),true));
+		$conns = $this->mongo->getConnections();
+		error_log('connection: '.print_r($conns[0]['connection'],true));
 		$cursor = $collection->find($query, $fields);
 
 		if(!empty($sort))
