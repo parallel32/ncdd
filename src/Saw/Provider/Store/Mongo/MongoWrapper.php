@@ -168,6 +168,7 @@ class MongoWrapper
 		else
 			$collection->setReadPreference(\MongoClient::RP_SECONDARY);
 			
+		error_log('FIND read preference:'.print_r($collection->getReadPreference(),true));
 		$cursor = $collection->find($query, $fields);
 
 		if(!empty($sort))
