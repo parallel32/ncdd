@@ -167,7 +167,11 @@ class MongoWrapper
 			$collection->setReadPreference(\MongoClient::RP_SECONDARY);
 		else
 			$collection->setReadPreference(\MongoClient::RP_PRIMARY);
-			
+		
+		error_log('---------------------------------------------------------------------');
+		error_log('---------------------------------------------------------------------');
+		error_log('---------------------------------------------------------------------');
+		error_log('connection: '.print_r($this->mongo->getConnections(),true));
 		$cursor = $collection->find($query, $fields);
 
 		if(!empty($sort))
@@ -441,7 +445,7 @@ class MongoWrapper
 			$collection_obj->setReadPreference(\MongoClient::RP_PRIMARY);
 		else
 			$collection_obj->setReadPreference(\MongoClient::RP_SECONDARY);
-		
+
 		$mongo_file_obj = $collection_obj->get($criteria);
 		if(is_object($mongo_file_obj)) // found
 			return $mongo_file_obj;
