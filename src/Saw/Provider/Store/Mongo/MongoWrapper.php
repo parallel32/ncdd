@@ -168,11 +168,6 @@ class MongoWrapper
 		else
 			$collection->setReadPreference(\MongoClient::RP_PRIMARY);
 		
-		error_log('---------------------------------------------------------------------');
-		error_log('---------------------------------------------------------------------');
-		error_log('---------------------------------------------------------------------');
-		$conns = $this->mongo->getConnections();
-		error_log('find connection: '.print_r($conns[0]['connection'],true));
 		$cursor = $collection->find($query, $fields);
 
 		if(!empty($sort))
@@ -401,14 +396,6 @@ class MongoWrapper
 		else
 			$collection_obj->setReadPreference(\MongoClient::RP_SECONDARY);
 
-
-		error_log('---------------------------------------------------------------------');
-		error_log('---------------------------------------------------------------------');
-		error_log('---------------------------------------------------------------------');
-		$conns = $this->mongo->getConnections();
-		error_log('getFile connection: '.print_r($conns[0]['connection'],true));
-
-
 		$mongo_file_obj = $collection_obj->get($fileId);
 		if(is_object($mongo_file_obj)) // found
 			return $mongo_file_obj->getBytes();
@@ -421,14 +408,6 @@ class MongoWrapper
 			$collection_obj->setReadPreference(\MongoClient::RP_PRIMARY);
 		else
 			$collection_obj->setReadPreference(\MongoClient::RP_SECONDARY);
-
-
-		error_log('---------------------------------------------------------------------');
-		error_log('---------------------------------------------------------------------');
-		error_log('---------------------------------------------------------------------');
-		$conns = $this->mongo->getConnections();
-		error_log('getFileByCriteria connection: '.print_r($conns[0]['connection'],true));
-
 
 		$mongo_file_obj = $collection_obj->findOne($criteria);
 		if(is_object($mongo_file_obj)) // found
