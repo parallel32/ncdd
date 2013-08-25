@@ -62,23 +62,23 @@
       </div>
       <div class="form-actions">
         <label class="checkbox">
-        <input type="checkbox" name="doc[remember]" value="1"/> Remember me
+              Your email <br>is your username.
+        <!-- <input type="checkbox" name="doc[remember]" value="1"/> Remember me -->
         </label>
-        <button type="button" class="btn blue pull-right submit">
+        <button type="button" id="login-btn" class="btn blue pull-right submit">
         Login <i class="m-icon-swapright m-icon-white"></i>
         </button>            
       </div>
       <div class="forget-password">
         <h4>Forgot your password ?</h4>
         <p>
-          no worries, click <a href="javascript:;" class="" id="forget-password">here</a>
-          to reset your password.
+          <a href="javascript:;" class="btn blue" id="forget-password">Click here to reset your password.</a>
         </p>
       </div>
       <div class="create-account">
+        <h4>Consider becoming a member ?</h4>
         <p>
-          Consider becoming a member ?&nbsp; 
-          <a href="javascript:;" id="register-btn" class="">Apply Online</a>
+          <a href="javascript:;" id="register-btn" class="btn blue">Apply on-line</a>
         </p>
       </div>
     </form>

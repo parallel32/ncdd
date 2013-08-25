@@ -2,13 +2,17 @@
 (function( Login, $, undefined ) {
     
 	function attemptLogin (){
+        $('#login-btn').html('Verifying...');
         io.saw.FormPost.activate({postUrl:'/login'
             ,formName:'.login-form'
             ,serializeSelector:':input'
-            ,postOnComplete:function(responseObj,responseStatus){}
+            ,postOnComplete:function(responseObj,responseStatus){
+                $('#login-btn').html('Login <i class="m-icon-swapright m-icon-white"></i>')
+            }
             ,postOnSuccess:function(responseObj){
                 document.location.href='/';
             }
+
         });     
     }
     function forgotPassword (){

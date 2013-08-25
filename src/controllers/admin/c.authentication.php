@@ -52,10 +52,11 @@ $app->post('/member/forgotpassword', function (Request $request) use ($app) {
 	$doc = $request->get('doc');
 	// get the member to embed
 	$member = new Model\Member($doc, $app);
+	$app['validateModel']($app,$member,$groups=array('forgot-password'));
 	$member = $member->findById('email');
 
 	if(!empty($member)){
-		$arr = array('_id'=>$member['_id'],'password'=>time());
+		$arr = array('_id'=>$member['_id'],'password'=>substr(time(),-4));
 
 		$member = new Model\Member($arr, $app);
 		$member->saveSafe();
