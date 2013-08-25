@@ -7,8 +7,10 @@
 		params = p; 
 		params.formName = params.formName || '#saw-form';
 	    params.postUrl = params.postUrl || '';
+	    params.serialized = params.serialized || '';
 	    params.serializeSelector = params.serializeSelector || ':input';
-	    params.serialize = params.formName+' '+params.serializeSelector;
+	    params.serialize = $(params.formName+' '+params.serializeSelector).serialize();
+	    params.serialize = params.serialized || params.serialize;
 	    params.postOnComplete = params.postOnComplete || function(){};
 		params.postOnSuccess = params.postOnSuccess || function(){};
 		params.postOnErrors = params.postOnErrors || function(){};
@@ -26,9 +28,9 @@
 			params.blockObj = io.saw.BlockUI.block(params.blockUIParams);	
 		}
 		return $.post(
-			params.postUrl,
-			$(params.serialize).serialize(),
-			"json"
+			params.postUrl
+			,params.serialize
+			,"json"
 		)
 		.done(function(response){
 			if(params.validate == 'yes'){

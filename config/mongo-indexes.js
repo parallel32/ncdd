@@ -1,4 +1,5 @@
 // INDEXES
+db.session.ensureIndex( { "time": 1 }, { expireAfterSeconds: 15552000 } ) /*6 months in seconds (and gc in the session handler is disabled. */
 db.location.ensureIndex({'point':'2d'});
 db.page.ensureIndex({slug:1});
 db.page.ensureIndex({currentType:1});

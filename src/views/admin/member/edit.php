@@ -742,7 +742,7 @@
                                     <div class="control-group">
                                        <label class="control-label" >Website Address</label>
                                        <div class="controls">
-                                          <input type="text" name="doc[website]" class="m-wrap span12 website">
+                                          <input type="text" id="modal-doc-website" name="doc[website]" class="m-wrap span12 website">
                                           <span class="help-block">Example: domain.com</span>
                                        </div>
                                     </div>

@@ -180,15 +180,24 @@ class Member extends User {
 		$this->saveSafe();
 		// update info in all the locations
 		$location = new Location(array('ownerId'=>$this->_id),self::$app);
-		$this->findById();
+		$this->findById($id='_id', $slaveOkay=false);
 		$location->updateMember($this->__toArray(false));
 
 	}
 	public function addWebSite($website){
+				
+		if(strpos($website['website'],'://') !== false){
+			$parts = parse_url($website['website']);
+			$website['website'] = $parts['host'];
+		}
+		
 		// mongo atomic push onto the array
 		$criteria = array('_id'=>$this->_id);
 		$update_spec = array('$addToSet'=>array('websites'=>$website));
-		return self::$app['mongo']->update($update_spec, $this->collection, $criteria, $multiple=false, $upsert=false,$options=array('safe'=>true,'fsync'=>true));
+		
+		self::$app['mongo']->update($update_spec, $this->collection, $criteria, $multiple=false, $upsert=false,$options=array('safe'=>true,'fsync'=>true));
+
+		return $website['website'];
 	}
 	public function removeWebsite($address){
 		// mongo atomic push onto the array
@@ -290,7 +299,7 @@ class Member extends User {
 					,'boardCertified'=>1
 					,'listed'=>1
 					,'websites'=>1
-					,'orderNum'
+					,'orderNum'=>1
 					);
 
 		switch ($string) {
@@ -300,6 +309,36 @@ class Member extends User {
 				break;
 			case 'state':
 				$result = $this->find($query=array('location.state'=>$state,'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				/*
+				$m_fields = array();
+				foreach ($fields as $key => $value) {
+					$m_fields['member.'.$key]=$value;
+				}
+				$query=array('state'=>$state,'member.listed'=>1);
+				$m_result = self::$app['mongo']->find('location', $query,$m_fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.currentOrder'=>-1,'member.orderNum'=>1));
+				error_log('m_fields:'.print_r($m_fields,true));
+				error_log('query:'.print_r($query,true));
+				//error_log('result:'.print_r($m_result,true));
+				$i=0;
+				foreach ($m_result as $key => $value) {
+					$result[$i]['_id'] = $value['member']['_id'];
+					$result[$i]['firstName'] = $value['member']['firstName'];
+					$result[$i]['lastName'] = $value['member']['lastName'];
+					$result[$i]['slug'] = $value['member']['slug'];
+					$result[$i]['displayName'] = $value['member']['displayName'];
+					$result[$i]['primaryPhone'] = $value['member']['primaryPhone'];
+					$result[$i]['email'] = $value['member']['email'];
+					$result[$i]['image'] = $value['member']['image'];
+					$result[$i]['currentOrder'] = $value['member']['currentOrder'];
+					$result[$i]['currentMembership'] = $value['member']['currentMembership'];
+					$result[$i]['currentFacultyPosition'] = $value['member']['currentFacultyPosition'];
+					$result[$i]['boardCertified'] = $value['member']['boardCertified'];
+					$result[$i]['listed'] = $value['member']['listed'];
+					$result[$i]['websites'] = $value['member']['websites'];
+					$result[$i]['orderNum'] = $value['member']['orderNum'];
+					$i++;
+				}
+				//*/
 				break;
 			case 'Sustaining Members':
 				$result = $this->find($query=array('currentMembership'=>self::$membership['SUSTAINING MEMBER']),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		

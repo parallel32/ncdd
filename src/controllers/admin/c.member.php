@@ -195,13 +195,13 @@ $member->post('/{id}/website/add', function ($id, Request $request) use ($app) {
 	$doc = $request->get('doc');
 	// get the member to embed
 	$member = new Model\Member(array('_id'=>$id), $app);
-	$member->addWebsite($doc);
+	$website = $member->addWebsite($doc);
 	$member->getWebsites();
 	$member->saveEdit();    
-    return new Response(json_encode(array('name'=>$doc['website'], 'id'=>$id, 'message' => 'added successfully.')), 200,array('Content-Type' => 'application/json'));
+    return new Response(json_encode(array('name'=>$website, 'id'=>$id, 'message' => 'added successfully.')), 200,array('Content-Type' => 'application/json'));
 });
-$member->get('/{id}/website/{website}/delete', function ($id, $website, Request $request) use ($app) {
-    
+$member->post('/{id}/website/delete', function ($id, Request $request) use ($app) {
+    $website = $request->get('website');
 	$member = new Model\Member(array('_id'=>$id), $app);
 	$member->removeWebsite($website);
 	$member->getWebsites();

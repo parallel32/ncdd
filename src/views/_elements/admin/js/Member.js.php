@@ -87,10 +87,12 @@
 		$('#website-grid .add').click(function(e){
 			$('#add-website-modal :input').val('');//clear the modal
 			$('#add-website-modal').modal({keyboard: false});
+			setTimeout(function(){$('#modal-doc-website').focus()}, 1500);
 		});
 		$('#website-grid .delete').click(function(e){
 			var the_this = $(this);
-			io.saw.FormGet.activate({postUrl:'/member/'+$(this).attr('data-id')+'/website/'+$(this).attr('data-name')+'/delete'
+			io.saw.FormPost.activate({postUrl:'/member/'+$(this).attr('data-id')+'/website/delete'
+				,serialized:'website='+$(this).attr('data-name')
 				,postOnComplete:function(responseObj,responseStatus){}
 				,postOnSuccess:function(responseObj){
 					// remove the record from the grid
@@ -121,7 +123,8 @@
                    	// rebind click event to the records....
                    	$('#website-grid .delete').click(function(e){
 						var the_this = $(this);
-						io.saw.FormGet.activate({postUrl:'/member/'+$(this).attr('data-id')+'/website/'+$(this).attr('data-name')+'/delete'
+						io.saw.FormPost.activate({postUrl:'/member/'+$(this).attr('data-id')+'/website/delete'
+							,serialized:'website='+$(this).attr('data-name')
 							,postOnComplete:function(responseObj,responseStatus){}
 							,postOnSuccess:function(responseObj){
 								// remove the record from the grid
