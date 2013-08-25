@@ -155,7 +155,7 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                </a>
             </li>
             <li class="">
-               <a href="/logout" target="_blank">
+               <a href="/logout">
                <i class="icon-key"></i> 
                <span class="title">Log Out</span>
                </a>

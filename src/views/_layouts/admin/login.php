@@ -23,6 +23,25 @@
   <link href="/assets/css/pages/login-soft.css" rel="stylesheet" type="text/css"/>
   <!-- END PAGE LEVEL STYLES -->
   <link rel="shortcut icon" href="/assets/img/favicon.ico" />
+
+
+
+  <style>
+    body .buorg {font-size:20px}
+  </style>
+  <script type="text/javascript"> 
+    var $buoop = {vs:{i:9,f:20,o:11,s:5,n:9},reminder:0} 
+    $buoop.ol = window.onload; 
+    window.onload=function(){ 
+     try {if ($buoop.ol) $buoop.ol();}catch (e) {} 
+     var e = document.createElement("script"); 
+     e.setAttribute("type", "text/javascript"); 
+     e.setAttribute("src", "http://browser-update.org/update.js"); 
+     document.body.appendChild(e); 
+    } 
+  </script> 
+
+
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -199,6 +218,7 @@
       io.saw.Login.init();
     });
   </script>
+  
   <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
