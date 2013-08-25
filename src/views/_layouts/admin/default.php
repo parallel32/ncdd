@@ -37,7 +37,7 @@
 		body .buorg {font-size:20px}
   	</style>
   	<script type="text/javascript"> 
-		var $buoop = {vs:{i:8,f:15,s:4,n:9},reminder:0} 
+		var $buoop = {vs:{i:9,f:20,o:11,s:5,n:9},reminder:0} 
 		$buoop.ol = window.onload; 
 		window.onload=function(){ 
 		 try {if ($buoop.ol) $buoop.ol();}catch (e) {} 
