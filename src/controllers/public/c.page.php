@@ -88,6 +88,15 @@ $app->get('/', function (Request $request) use ($app) {
 	return new Response($app['view']->render('page/home', 'content',$view_vars), 200,array('Content-Type' => 'text/html', 'Expires'=>gmdate("D, d M Y H:i:s", time() -15552000) . " GMT"));
 });
 
+$app->get('/dui-news', function (Request $request) use ($app) {
+	$view_vars['slogan_block'] = '';
+	$page_vars = $app['get_pages']('dui-news');
+	$view_vars = array_merge($page_vars,$view_vars);
+
+	// forece the expiration of the home page in an attempt to refresh the twitter feed.  the expire time is 6 months ago in seconds
+	return new Response($app['view']->render('page/dui-news', 'content',$view_vars), 200,array('Content-Type' => 'text/html', 'Expires'=>gmdate("D, d M Y H:i:s", time() -15552000) . " GMT"));
+});
+
 // blog roll
 $app->get('/blog', function (Request $request) use ($app) {
 	$view_vars=array();
@@ -134,7 +143,7 @@ $app->get('/blog/tag/{tag}', function ($tag, Request $request) use ($app) {
 });
 
 
-// singl blog post
+// single blog post
 $app->get('/blog/{id}/{slug}', function ($id, $slug, Request $request) use ($app) {
 	$view_vars=array();
 	$page_vars = $app['get_pages']('blog');

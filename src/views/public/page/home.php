@@ -144,8 +144,8 @@
                             
                         </ul>
                         <div class="text-center">
-                            <a href="http://twitter.com/NCDDNews" class="btn">All News</a> <br><br><a href="https://twitter.com/NCDDNews" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @NCDDNews</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                            <a href="/dui-news" class="btn">More News</a> <br><br><a href="https://twitter.com/NCDDNews" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @NCDDNews</a>
+                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
                         </div>
                     </div>
                     <script>
