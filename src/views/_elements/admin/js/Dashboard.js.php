@@ -2,7 +2,15 @@
 (function( Dashboard, $, undefined ) {
 	
 	function init(){
-		
+		$('#page-view-all').click(function(e){
+			e.preventDefault();
+			document.location.href='/page/all';	
+		});
+		$('#pages .btn.blue.mini.view').click(function(e){
+			e.preventDefault();
+			document.location.href='/page/view/'+$(this).attr('data-id');	
+		});
+				
 	};
 	Dashboard.adminInit = function(){
 		init();
@@ -14,15 +22,15 @@
 			e.preventDefault();
 			document.location.href='/applications';
 		});
-		$('#approve-blogs .btn.view').click(function(e){
+		$('#blog .btn.view').click(function(e){
 			e.preventDefault();
 			document.location.href='/blog/all-posts';
 		});
-		$('#approve-blogs .btn.view-post').click(function(e){
+		$('#blogs .btn.view-post').click(function(e){
 			e.preventDefault();
 			document.location.href='/blog/'+$(this).attr('data-member-id')+'/edit/'+$(this).attr('data-blog-id');
 		});
-		
+
 	};
 	Dashboard.memberInit = function(saveMode){
 		init();
@@ -39,14 +47,14 @@
 			document.location.href="/application/view/<?=(array_key_exists('application',$this->vars)) ? $this->vars['application']['_id']: '';?>";	
 		});
 		
-		$('#approved-applications .pay').click(function(e){
+		$('#applications .pay').click(function(e){
 			document.location.href='/application/'+$(this).attr('data-id')+'/pay';	
 		});
 		
-		$('#recent-blogs .view').click(function(e){
+		$('#blogs .view').click(function(e){
 			document.location.href='/blog/'+$(this).attr('data-id')+'/view';	
 		});
-		$('#recent-blogs .draft-post').click(function(e){
+		$('#blog .draft-post').click(function(e){
 			e.preventDefault();
 			document.location.href='/blog/'+$(this).attr('data-id')+'/edit';	
 		});

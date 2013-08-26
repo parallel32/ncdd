@@ -16,25 +16,6 @@ use Cocur\Slugify\Slugify;
 $utilities = $app['controllers_factory'];
 $utilities->before($mustbeADMIN);
 
-/////////////////////////////////
-// LIVE ROUTE -- DO NOT DELETE //
-/////////////////////////////////
-$utilities->post('/member/delete', function (Request $request) use ($app) {
-    // retrieve document from request
-    $document = $request->get('doc');
-    $member = new Model\Member($document, $app);
-    // validate the model
-    $member->removeMember();
-    
-    return new Response(json_encode(array('message' => 'This Member has been deleted successfully.')), 200,array('Content-Type' => 'application/json'));
-});
-/////////////////////////////////
-// LIVE ROUTE -- DO NOT DELETE //
-/////////////////////////////////
-
-
-
-
 
 
 //////////////////////////////////////////////

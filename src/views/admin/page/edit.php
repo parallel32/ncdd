@@ -16,6 +16,9 @@
                         <input type="hidden" name="doc[currentType]" value="<?=$this->vars['currentType']?>">
                         <input type="hidden" name="doc[slug]" value="<?=$this->vars['slug']?>">
                         <input type="hidden" name="doc[add]" value="<?=$this->vars['add']?>">
+                        <? if(!empty($this->vars['page']) && array_key_exists('_id',$this->vars['page'])): ?>
+                           <input type="hidden" name="doc[_id]" value="<?=$this->vars['page']['_id']?>">
+                        <? endif; ?>
                         <? if($this->vars['currentType'] == $this->vars['type']['MANAGED']): ?>
                            <input type="hidden" name="doc[currentStatus]" value="<?=$this->vars['status']['PUBLISHED']?>">
                         <? endif; ?>
@@ -82,8 +85,7 @@
                                  <label class="control-label"></label>
                                  <div class="controls">
                                     <input type="text" name="doc[slug]" value="<?=(!empty($this->vars['page']) && array_key_exists('slug',$this->vars['page'])) ? $this->vars['page']['slug']: $this->vars['slug']?>" class="m-wrap span10 slug">
-                                    <span class="help-block">Here you can overwrite the url.  If this is a new page and you leave this blank the system will create one based on the Headline.</span>
-                                    <span class="help-block">Example urls: deans-message, dui-laws-in-your-state</span>
+                                    <span class="help-block">NOTE: The Page Url is auto-generated, which is created when you type in the Headline.  It can be overwritten here after you type in the Headline.</span>
                                     <span class="help-block">NOTE: changing this on "Managed" pages will cause the link to break on the public website.</span>
                                  </div>
                               </div>
@@ -163,15 +165,7 @@
                 ],
                          }
                ,snap: false
-               ,onSave: function (e) {
-                  var isSuccess = true;
-                  html = e.html;
-                  io.saw.Page.save();
-                  return isSuccess || "Error";
-               }
-               ,onUnsavedChanges: function (e) {
-                  e.api.execAction("save");
-              }
+               
             });
 
            

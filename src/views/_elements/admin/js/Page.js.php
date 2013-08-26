@@ -1,7 +1,24 @@
 <script type="text/javascript">
 (function( Page, $, undefined ) {
 
+	function slugify(str){
+		io.saw.FormPost.activate({postUrl:'/blog/slugify'
+		   ,blockUI:'no'
+		   ,serializeSelector:'.headline'
+		   ,postOnComplete:function(responseObj,responseStatus){}
+		   ,postOnSuccess:function(responseObj){
+		   		$('#saw-form .slug').val(responseObj.slug);
+		   }
+		});      
+	};
+
 	Page.init = function(){
+		$('#saw-form .headline').keyup(function(e) {
+			if (e.which != 13) {
+				slugify($(this).val());
+			}
+		});
+		
 		$('#saw-form input').keypress(function(e) {
 			if (e.which == 13) {
 				e.preventDefault();

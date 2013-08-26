@@ -342,6 +342,7 @@
                 ],
                          }
                ,snap: false
+               /*
                ,onSave: function (e) {
                   var isSuccess = true;
                   html = e.html;
@@ -350,7 +351,7 @@
                }
                ,onUnsavedChanges: function (e) {
                   e.api.execAction("save");
-              }
+              }*/
                
             });
           <? endif; ?>

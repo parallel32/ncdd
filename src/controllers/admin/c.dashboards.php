@@ -36,6 +36,10 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 			$blogs = $blog->fetchByStatus('REVIEW','no',0,5);
 			$view_vars['blogs']=$blogs;
 
+			$page = new Model\Page(array(), $app);
+    		$pages = $page->fetchByStatus('PRIVATE',0,5);
+			$view_vars['pages']=$pages;
+
 			array_push($view_vars['crumbs'],array('name'=>'Admin','href'=>'/'));
 			return $app['view']->render('dashboards/admin', 'default', $view_vars);
 			break;
@@ -51,6 +55,10 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 			$blog = new Model\Blog(array(),$app);
 			$blogs = $blog->fetchByStatus('PUBLISH','yes',0,5);
 			$view_vars['blogs']=$blogs;
+
+			$page = new Model\Page(array(), $app);
+    		$pages = $page->fetchByStatus('PRIVATE',0,5);
+			$view_vars['pages']=$pages;
 
 			array_push($view_vars['crumbs'],array('name'=>'Editor','href'=>'/'));
 			return $app['view']->render('dashboards/member', 'default', $view_vars);

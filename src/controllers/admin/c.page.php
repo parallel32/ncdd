@@ -18,7 +18,7 @@ $page->get('/', function (Request $request) use ($app) {
 	// retrieve from query string
     $query = $request->get('query');
 
-	$crumbs = array(array('name'=>'Page','href'=>'/page'));
+	$crumbs = array(array('name'=>'Page','href'=>'/page/'));
 	$view_vars = array(
 						 'active'=>'Pages'
 						,'page-plugin'=>'datatables'
@@ -53,6 +53,9 @@ $page->get('/managed', function (Request $request) use ($app) {
     return new Response(json_encode(array('results'=>$results,'message' => $message)), 200,array('Content-Type' => 'application/json'));
 	
 });
+
+
+
 $page->get('/{slug}/delete', function ($slug, Request $request) use ($app) {
 	// retrieve document from request
     $page = new Model\Page(array('slug'=>$slug), $app);
@@ -71,7 +74,7 @@ $page->get('/{slug}/{type}/edit/{headline}', function ($slug, $type, $headline, 
 	$page = $page->findById('slug');
 
 	
-	$crumbs = array(array('name'=>'Pages','href'=>'/page')
+	$crumbs = array(array('name'=>'Pages','href'=>'/page/')
 					,array('name'=>(!empty($page) && array_key_exists('headline',$page)) ? $page['headline'] : $headline ,'href'=>'/page/'.$slug.'/'.$type.'/edit')
 					,array('name'=>'Edit','href'=>'/page/'.$slug.'/'.$type.'/edit')
 					);

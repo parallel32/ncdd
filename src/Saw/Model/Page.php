@@ -43,6 +43,7 @@ class Page extends Model {
 	public function isValidSlug(ExecutionContext $context){
 		if($this->add == 'yes'){
 			$result = $this->findById('slug');
+			error_log('valid slug result:'.print_r($result,true));
 			if(!empty($result)){
 				$propertyPath = $context->getPropertyPath().'slug';
 	        	$context->addViolationAtPath($propertyPath,'This url already exists in the system.  Please define another variation and save again.', array(), null);
@@ -89,8 +90,13 @@ class Page extends Model {
 		}
 	}
 	public function saveEdit(){
-		$criteria = array('slug'=>$this->slug);
-		return $this->trueUpsert($criteria);
+		$result = $this->find(array('_id'=>$this->_id),array(),false);
+		//error_log('result:'.print_r($result,true));
+		if(empty($result)){
+			return $this->insert();
+		}else{
+			return $this->saveSafe();
+		}
 	}
 	public function publish(){
 		$this->publishedDate = new Date(self::$app,'now');
@@ -119,6 +125,7 @@ class Page extends Model {
 		$query = array('currentStatus'=>self::$status[$status]);
 		$fields = array();
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('_id'=>-1),(int)$offset,(int)$limit);
+		//error_log('query:'.print_r($query,true));
 		//error_log('fetch:'.print_r($result,true));
 		return $result;
 

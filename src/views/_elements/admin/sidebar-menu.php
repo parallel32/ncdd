@@ -73,9 +73,9 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                </ul>
             </li>
             <li class="<? echo ($this->vars['active'] == 'Pages') ? 'active':'';?>">
-               <a href="/page">
+               <a href="<?=($accessLevel == MEMBER) ? '/page/all' : '/page/';?>">
                <i class="icon-copy"></i> 
-               <span class="title">Website Pages</span>
+               <span class="title">Pages</span>
                <? echo ($this->vars['active'] == 'Pages') ? '<span class="selected"></span>':'';?>
                </a>
             </li>
