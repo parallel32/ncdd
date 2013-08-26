@@ -184,13 +184,16 @@ class Member extends User {
 		$location->updateMember($this->__toArray(false));
 
 	}
+	public static function parseWebsite($address){
+		if(strpos($address,'://') !== false){
+			$parts = parse_url($address);
+			$address = $parts['host'];
+		}
+		return $address;
+	}
 	public function addWebSite($website){
 				
-		if(strpos($website['website'],'://') !== false){
-			$parts = parse_url($website['website']);
-			$website['website'] = $parts['host'];
-		}
-		
+		$website['website'] = self::parseWebsite($website['website']);
 		// mongo atomic push onto the array
 		$criteria = array('_id'=>$this->_id);
 		$update_spec = array('$addToSet'=>array('websites'=>$website));

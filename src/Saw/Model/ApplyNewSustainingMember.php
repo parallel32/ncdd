@@ -195,6 +195,8 @@ class ApplyNewSustainingMember extends Apply {
 		$mem_doc['email'] = $this->email;
 		$mem_doc['primaryPhone'] = $this->phone;
 		$mem_doc['primaryFax'] = $this->fax;
+		$mem_doc['websites'] = array(array('websiteDesc'=>'','website'=>Member::parseWebsite($this->website)));
+
 		// prepare location record
 		$loc_doc['raw'] = $this->formattedAddress;
 		$loc_doc['name'] = 'primary';

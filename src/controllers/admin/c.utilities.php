@@ -47,7 +47,8 @@ $utilities->get('/migrate-locations', function () use ($app) {
 });
 
 
-$utilities->get('/importmembers', function () use ($app) {
+$utilities->get('/importmembersxcvxcvxcvxsdfse', function () use ($app) {
+    return 'disabled';
     ini_set('memory_limit','1024M');
     $stateMap = array();
     $stateMap['Alabama']='AL';

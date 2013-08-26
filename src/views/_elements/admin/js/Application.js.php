@@ -42,10 +42,12 @@
 			newMemberAdd();
 		});
 		$('#saw-form .cancel').click(function(e){
+			e.preventDefault();
 			document.location.href="http://<?=SAW_CONSUMER_WEBSITE?>";
 		});
-		$('#save-success .cancel').click(function(e){
-			document.location.href="http://<?=SAW_CONSUMER_WEBSITE?>";
+		$('#save-success .btn.continue').click(function(e){
+			e.preventDefault();
+			window.location.href="http://<?=SAW_CONSUMER_WEBSITE?>";
 		});
 
 		$.extend($.inputmask.defaults, {
@@ -68,9 +70,11 @@
 			newSustainingMemberAdd();
 		});
 		$('#saw-form .cancel').click(function(e){
+			e.preventDefault();
 			document.location.href="http://<?=SAW_CONSUMER_WEBSITE?>";
 		});
-		$('#save-success .cancel').click(function(e){
+		$('#save-success .btn.continue').click(function(e){
+			e.preventDefault();
 			document.location.href="http://<?=SAW_CONSUMER_WEBSITE?>";
 		});
 
