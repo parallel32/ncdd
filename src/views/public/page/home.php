@@ -16,7 +16,7 @@
                             </div>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="welcome">
-                                    <iframe class="pull-right" width="435" height="245" src="//www.youtube.com/embed/IgTzHmMDqng" frameborder="0" allowfullscreen></iframe>
+                                    <iframe class="pull-right" width="435" height="245" src="//www.youtube.com/embed/IgTzHmMDqng?rel=0" frameborder="0" allowfullscreen></iframe>
                                     
                                     <p>The National College for DUI Defense®, Inc. (NCDD) is a professional, non-profit corporation dedicated to the improvement of the criminal defense bar, and to the
                                         dissemination of information to the public about DUI Defense Law as a specialty area of law practice. The National College is headquartered in Montgomery, Alabama.It consists of a governing Board of Regents, a Founding Membership, a Sustaining Membership and a General Membership.</p>

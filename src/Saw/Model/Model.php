@@ -34,6 +34,11 @@ class Model {
 	public function __toArray($noid=true){
 		$doc = get_object_vars($this);
 		
+		foreach ($doc as $key => $value) {
+			if(is_numeric($value)){
+				$doc[$key] = (int)$value;
+			}
+		}
 		// remove the _id value otherwise save will fail because you can't update an _id
 		// some models want the _id removed because there's no need for it when they don't
 		// get saved to their own collection..meaning they are nested documents.

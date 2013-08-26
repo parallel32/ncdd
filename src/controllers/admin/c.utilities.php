@@ -37,9 +37,33 @@ $utilities->post('/member/delete', function (Request $request) use ($app) {
 
 
 
+//////////////////////////////////////////////
+// MIGRATE FROM MEMBER.LOCATION TO LOCATION //
+//////////////////////////////////////////////
+$utilities->get('/migrate-locations', function () use ($app) {
+    ini_set('memory_limit','1024M');
 
+    $member = new Model\Member(array(),$app);
+    $location = new Model\Location(array(),$app);
 
+    $locations = $location->find(array(),array('_id'=>true),true,array(),0,3000);
+    //echo " <pre>";print_r($locations);echo "</pre>";
+    if(!empty($locations)){
+        foreach ($locations as $_location) {
+            $location->removeByCriteria(array('_id'=>$_location['_id']));
+        }
+    }
 
+    $members = $member->find(array(),array('location'=>true),true,array(),0,3000);
+    echo " <pre>members";print_r($members);echo "</pre>";
+    /*
+    foreach ($members as $_member) {
+        $member->updateByCriteria(array('$unset'=>array('location'=>1)), array('_id'=>$_member['_id']));
+    }
+    //*/
+
+    return new Response('cool',200,array('Content-Type' => 'text/html')); 
+});
 
 
 $utilities->get('/importmembers', function () use ($app) {
