@@ -497,7 +497,7 @@ class Member extends User {
         }
         return false;
     }
-    // route for this is in c.utilities.php
+
     public function updateOrderNum(){
     	if(!empty($this->_id) && !empty($this->orderNum)){
     		$this->saveSafe();

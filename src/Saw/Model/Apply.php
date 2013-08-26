@@ -16,7 +16,7 @@ class Apply extends Model {
 	public $collection = 'application';
 	static public $status = array('DRAFT'=>0,'SUBMITTED'=>10, 'APPROVED'=>20, 'PAID'=>40);
 	static public $statusReversed = array(0=>'DRAFT',10=>'SUBMITTED', 20=>'APPROVED', 40=>'PAID');
-	public $currentStatus = 0;
+	public $currentStatus;
 	public $firstName;
 	public $lastName;
 	public $phone;

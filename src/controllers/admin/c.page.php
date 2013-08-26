@@ -54,6 +54,12 @@ $page->get('/managed', function (Request $request) use ($app) {
 	
 });
 
+$page->get('/order/{id}/{order}', function ($id, $order, Request $request) use ($app) {
+    $order = (empty($order)) ? '*' : $order ;
+	$page = new Model\Page(array('_id'=>$id,'orderNum'=>$order), $app);
+	$page->updateOrderNum();
+    return new Response(json_encode(array('message' => 'order updated successfully.')), 200,array('Content-Type' => 'application/json'));
+})->value('order','*');
 
 
 $page->get('/{slug}/delete', function ($slug, Request $request) use ($app) {

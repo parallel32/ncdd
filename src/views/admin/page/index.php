@@ -19,6 +19,7 @@
                   <table class="table table-striped table-hover">
                      <thead class="hide">
                         <tr>
+                           <th>#</th>
                            <th>Headline</th>
                            <th>URL Path</th>
                            <th>Section</th>
@@ -37,6 +38,7 @@
                   <table class="table table-striped table-hover">
                      <thead class="hide">
                         <tr>
+                           <th>#</th>
                            <th>Headline</th>
                            <th>URL Path</th>
                            <th class="hidden-phone">Section</th>
@@ -86,6 +88,7 @@ jQuery(document).ready(function() {
 
             $.each(responseObj.results,function(key,page){
                html = '<tr>'+
+                     '   <td class="" id="'+page._id.$id+'"><input type="text" class="m-wrap" style="width:32px;" value="'+page.orderNum+'"><a data-page-id="'+page._id.$id+'" href="#" class="btn green icn-only order-update"><i class="icon-check icon-white"></i></a></td>'+
                      '   <td class="">'+page.headline+'</td>'+
                      '   <td class="">'+page.slug+'</td>'+
                      '   <td class="">'+page.section+'</td>'+
@@ -116,9 +119,17 @@ jQuery(document).ready(function() {
             });   
             $('#save-modal .cancel').click(function(e){
                $('#save-modal').modal('hide');
-            });   
-            
+            });
 
+            $('#dynamic-pages tbody .order-update').click(function(e){
+               e.preventDefault();
+               io.saw.FormGet.activate({postUrl:'/page/order/'+$(this).attr('data-page-id')+'/'+($(this).prev().val() || '*')
+                  ,postOnComplete:function(responseObj,responseStatus){}
+                  ,postOnSuccess:function(responseObj){}
+                  ,blockUI:'yes'
+                  ,blockUIParams:{elementToBlock:'#'+$(this).parents('td').attr('id')}
+               });
+            });   
       }
    });   
 //*
@@ -133,6 +144,7 @@ jQuery(document).ready(function() {
 
                $.each(responseObj.results,function(key,page){
                   html = '<tr>'+
+                        '   <td class="" id="'+page._id.$id+'"><input type="text" class="m-wrap" style="width:32px;" value="'+page.orderNum+'"><a data-page-id="'+page._id.$id+'" href="#" class="btn green icn-only order-update"><i class="icon-check icon-white"></i></a></td>'+
                         '   <td class="">'+page.headline+'</td>'+
                         '   <td class="">'+page.slug+'</td>'+
                         '   <td class="">'+page.section+'</td>'+
@@ -147,6 +159,15 @@ jQuery(document).ready(function() {
                   document.location.href='/page/'+$(this).attr('data-slug')+'/'+$(this).attr('data-type')+'/edit/'+$(this).attr('data-headline');
                });   
 
+               $('#managed-pages tbody .order-update').click(function(e){
+                  e.preventDefault();
+                  io.saw.FormGet.activate({postUrl:'/page/order/'+$(this).attr('data-page-id')+'/'+($(this).prev().val() || '*')
+                     ,postOnComplete:function(responseObj,responseStatus){}
+                     ,postOnSuccess:function(responseObj){}
+                     ,blockUI:'yes'
+                     ,blockUIParams:{elementToBlock:'#'+$(this).parents('td').attr('id')}
+                  });
+               });   
          }
       });
       
