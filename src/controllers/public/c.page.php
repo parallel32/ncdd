@@ -84,8 +84,8 @@ $app->get('/', function (Request $request) use ($app) {
 	$posts = $blog->fetchByStatus('PUBLISH','yes',0,4);
 	$view_vars['posts'] = $posts;
 	
-
-	return $app['view']->render('page/home', 'content',$view_vars);
+	// forece the expiration of the home page in an attempt to refresh the twitter feed.  the expire time is 6 months ago in seconds
+	return new Response($app['view']->render('page/home', 'content',$view_vars), 200,array('Content-Type' => 'text/html', 'Expires'=>gmdate("D, d M Y H:i:s", time() -15552000) . " GMT"));
 });
 
 // blog roll
