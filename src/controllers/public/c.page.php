@@ -61,6 +61,22 @@ $app->get('/preview/{slug}', function ($slug, Request $request) use ($app) {
 $app->get('/', function (Request $request) use ($app) {
 	$view_vars['slogan_block'] = 'home';
 
+	$page = new Model\Page($doc=array('slug'=>'welcome'), $app);
+	$welcome = $page->findById('slug');
+	$view_vars['welcome'] = $welcome;
+
+	$page = new Model\Page($doc=array('slug'=>'notice-to-members'), $app);
+	$ntm = $page->findById('slug');
+	$view_vars['ntm'] = $ntm;
+
+	$page = new Model\Page($doc=array('slug'=>'mission-statement'), $app);
+	$ms = $page->findById('slug');
+	$view_vars['ms'] = $ms;
+	
+	$page = new Model\Page($doc=array('slug'=>'nationally-recognized'), $app);
+	$nr = $page->findById('slug');
+	$view_vars['nr'] = $nr;
+
 	$page_vars = $app['get_pages']();
 	$view_vars = array_merge($page_vars,$view_vars);
 

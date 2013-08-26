@@ -53,7 +53,7 @@
                      <!-- BEGIN EXAMPLE TABLE PORTLET-->
                      <div class="portlet box red">
                         <div class="portlet-title" id="application">
-                           <div class="caption"><i class="icon-user"></i>Applications To Approve</div>
+                           <div class="caption"><i class="icon-user"></i>Applications To Approve (most recent submissions)</div>
                            <div class="actions">
                               <a class="btn yellow view"><i class=" icon-eye-open"></i> View All</a>
                            </div>
@@ -101,7 +101,7 @@
                      <!-- BEGIN EXAMPLE TABLE PORTLET-->
                      <div class="portlet box red">
                         <div class="portlet-title" id="blog">
-                           <div class="caption"><i class="icon-edit"></i>DUI Blog Posts To Approve</div>
+                           <div class="caption"><i class="icon-edit"></i>DUI Blog Posts To Approve (most recent submissions)</div>
                            <div class="actions">
                               <a href="/blog" class="btn yellow view"><i class="icon-eye-open"></i> View All</a>
                            </div>

@@ -17,16 +17,11 @@
                             <div class="tab-content">
                                 <div class="tab-pane active" id="welcome">
                                     <iframe class="pull-right" width="435" height="245" src="//www.youtube.com/embed/IgTzHmMDqng?rel=0" frameborder="0" allowfullscreen></iframe>
-                                    
-                                    <p>The National College for DUI Defense®, Inc. (NCDD) is a professional, non-profit corporation dedicated to the improvement of the criminal defense bar, and to the
-                                        dissemination of information to the public about DUI Defense Law as a specialty area of law practice. The National College is headquartered in Montgomery, Alabama.It consists of a governing Board of Regents, a Founding Membership, a Sustaining Membership and a General Membership.</p>
-                                    <p>College members represent the most experienced DUI defense attorneys in the country. The original Founding Members funded the establishment of the college, and are among the top DUI practitioners in the United States. Since its founding, the College continues to recognize, as Sustaining Members, defense lawyers who have demonstrated the skill and experience of the original Founding Members, as well as the generosity to financially sustain the growth of the NCDD. General Members are the backbone of the college—capable, experienced attorneys who dedicate a portion of their practice to the defense of DUI cases throughout the country. </p>
-                                    <p>When the National College for DUI Defense® was founded, the Board of Regents envisioned a Board Certification program as the culmination of its program of education. In 1999, the Board instituted Board Certification as a means of recognizing lawyers within the college who exemplify the program's standards, and who meet the criteria established by the Board of Regents: extensive experience trying DUI cases and litigating pre-trial issues, a broad knowledge of the science involved in testing for intoxicants, and a command of the legal process on which DUI cases are framed. </p>
+                                    <?=$this->vars['welcome']['body']?>
                                 </div>
                                 <div class="tab-pane" id="nationallyRecognized">
                                     <img src="/assets/img/certificate.png" alt="" class="pull-right certificate">
-                                    <p>The American Bar Association, in 2003, recognized DUI Defense Law as a specialty area in the practice of law, and in 2004 the ABA awarded its "Certificate of Accreditation" to the Board Certification program of the National College for DUI Defense®. The NCDD is the only organization in the country accredited to certify lawyers in the DUI Defense Law specialty practice area. ABA accreditation is currently recognized in 20 states. Please check your own state's rules for certification.</p>
-                                    <p>The members of the College welcome you to our website. As it continues to grow, and provide additional information, we hope you will have the occasion to visit us again.</p>
+                                    <?=$this->vars['nr']['body']?>
                                     <ul class="nationallyRecognizedInfo clearfix">
                                         <li class="nationallyRecognizedInfoItem"></li>
                                         <li class="nationallyRecognizedInfoItem"></li>
@@ -34,22 +29,10 @@
                                 </div>
                                 <div class="tab-pane" id="missionStatement">
                                     <img src="/assets/img/missionStatementFoto.png" alt="" class="pull-right missionStatementFoto">
-                                    <p>Few offenses in America's criminal justice process call for greater attorney expertise than cases involving driving under the influence of drugs and alcohol. DUI cases are especially complex because they require defense counsel to understand scientific, as well as legal processes. The legal issues are wide-ranging, involving search and seizure, due process, illegal interrogation, denial of counsel, and evidentiary issues. These legal issues intersect in a DUI case with scientific areas of expertise, such as anatomy, biology, chemistry, physiology, and toxicology, as well as pseudo-scientific areas such as field sobriety testing. DUI defense counsel must also have a working understanding of the operation of breath test equipment, hospital testing equipment, and instruments utilized by forensic laboratories in the process of testing for intoxicants.</p>
-                                    <p>It is the mission of the National College for DUI Defense® to provide the finest advanced-level training available to the DUI Defense Law practitioner. The College offers, or co-sponsors, a minimum of four legal and scientific seminars each year. The Summer Session, conducted at the Harvard Law School in July, is the signature program to develop skills for trial, including methods for attacking field sobriety tests, breath and blood tests, for making opening statements and closing arguments, for learning techniques in cross-examining police officers and prosecution experts, and for developing and using defense expert witnesses. The Summer Session is limited in size, to preserve the lowest student/faculty ratio. Approximately one hundred and forty lawyers from around the country are accepted each year for the program conducted at Harvard. </p>
-                                    <p>The College also conducts a Winter Session in January of each year at varying locations, and co-sponsors, with the National Association of Criminal Defense Lawyers, a seminar each October in Las Vegas. The October seminar is believed to be the largest criminal defense seminar of its type, regularly attended by more than five hundred lawyers from all over the country. The College also co-sponsors "Mastering Scientific Evidence" an intensive advanced three day seminar dedicated to perfecting the latest trial skills and applying them to current issues in forensic toxicology and other DUI related scientific disciplines. If there is a need for possible financial assistance please contact our Executive Director. </p>
-                                    <p>In sum, the mission of the college is to vindicate the promise of the United States Constitution, that a citizen accused has the right to the effective assistance of his or her counsel.</p>
+                                    <?=$this->vars['ms']['body']?>
                                 </div>
                                 <div class="tab-pane" id="noticeToMembers">
-                                    <p>As of January 2006, a requirement of any continued membership status is that the member attends at least one seminar every two (2) years sponsored/co-sponsored by NCDD or a state seminar listed on the NCDD website. The application forms have already been revised to reflect this requirement and the membership rules are in the process of revision to reflect this requirement. The NCDD website is also being updated to list state seminars that will be considered for this requirement. Anyone seeking approval of a state seminar to be on this list should make such request in writing to the NCDD. </p>
-                                    <p class="text-center">If you have any questions as it relates to this new requirement, </p>
-                                    <p class="text-center">please contact </p>
-                                    <p class="text-center"><b>Rhea Kirk,</b><br>The NCDD Executive Director</p>
-                                    <p class="text-center"><a href="mailto:Rhea@ncdd.com">Rhea@ncdd.com</a></p>
-                                    <div class="text-center"><a href="http://<?=SAW_ADMIN_WEBSITE?>/application/new-member" class="btn">Click Here for General Membership Application Form</a></div>
-                                    <ul class="noticeToMembersInfo clearfix">
-                                        <li class="noticeToMembersInfoItem"></li>
-                                        <li class="noticeToMembersInfoItem"></li>
-                                    </ul>
+                                    <?=$this->vars['ntm']['body']?>
                                 </div>
                             </div>
                         </div>
