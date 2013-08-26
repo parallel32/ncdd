@@ -42,38 +42,79 @@
 			});
 			
 		});		
+		$('#location-grid .edit').click(function(e){
+			var the_this = $(this);
+			$('#add-location-modal-label').html('Save Location');
+			// clear the modal first
+			$('#add-location-modal :input').val('');
+			// set fields
+			$('#_id').val($(this).attr('data-id'));
+			$('#location-name').val($(this).attr('data-name'));
+			$('#location-hours').val($(this).attr('data-hours'));
+			$('#location-phone').val($(this).attr('data-phone'));
+			$('#location-fax').val($(this).attr('data-fax'));
+			$('#location-tollFree').val($(this).attr('data-tollFree'));
+			$('#address1').val($(this).attr('data-addressLineOne'));
+			$('#address2').val($(this).attr('data-addressLineTwo'));
+			$('#city').val($(this).attr('data-city'));
+			$('#state').val($(this).attr('data-state'));
+			$('#zip').val($(this).attr('data-zip'));
+			$('#country').val($(this).attr('data-country'));
+			$('#raw').val($(this).attr('data-raw'));
+			$('#geocodeaddress').val($(this).attr('data-raw'));
+			$('#mode').val($(this).attr('data-mode'));
+
+			$('#add-location-modal').modal({keyboard: false});
+		});		
 		
 
 		// add location modal buttons		
 		$('#add-location-modal .save').click(function(e){
-			io.saw.FormPost.activate({postUrl:'/member/'+$(this).attr('data-member-id')+'/location/add'
-			   ,serializeSelector:':input'
-			   ,formName:'#location-form'
-			   ,postOnComplete:function(responseObj,responseStatus){}
-			   ,postOnSuccess:function(responseObj){
-			   		$('#add-location-modal').modal('hide');   		
-			   		$('#location-norecords').remove();
-			   		// add the record to the grid.
-			   		html = '<tr class="gradeX odd">'+
-                    '  <td class=" ">'+$('#geocodeaddress').val()+'</td>'+
-                    '  <td class=" "><a data-id="'+responseObj.id.$id+'" class="btn red mini delete"></i> Delete</a></td>'+
-                   	'</tr>';
-                   	$('#location-grid tbody').append(html);
+			var full_address = $('#location-name').val()+' '+$('#address1').val()+' '+$('#address2').val()+' '+$('#city').val()+', '+$('#state').val()+' '+$('#zip').val()+', '+$('#country').val();
+			$('#raw').val(full_address);
+			
+			if($('#mode').val() == 'save'){
+				io.saw.FormPost.activate({postUrl:'/location/'+$('#_id').val()+'/edit'
+				   ,serializeSelector:':input'
+				   ,formName:'#location-form'
+				   ,postOnComplete:function(responseObj,responseStatus){}
+				   ,postOnSuccess:function(responseObj){
+				   		$('#'+$('#_id').val()).html($('#raw').val());
+				   		$('#add-location-modal').modal('hide');   		
+				   		$('#location-norecords').remove();
+				   }
+				});
+			}else{ //add
+				io.saw.FormPost.activate({postUrl:'/member/'+$(this).attr('data-member-id')+'/location/add'
+				   ,serializeSelector:':input'
+				   ,formName:'#location-form'
+				   ,postOnComplete:function(responseObj,responseStatus){}
+				   ,postOnSuccess:function(responseObj){
+				   		$('#add-location-modal').modal('hide');   		
+				   		$('#location-norecords').remove();
+				   		// add the record to the grid.
+				   		html = '<tr class="gradeX odd">'+
+	                    '  <td class=" ">'+full_address+ '</td>'+
+	                    '  <td class=" "><a data-id="'+responseObj.id.$id+'" class="btn red mini delete"></i> Delete</a></td>'+
+	                   	'</tr>';
+	                   	$('#location-grid tbody').append(html);
 
-                   	// rebind click event to the records....
-                   	$('#location-grid .delete').click(function(e){
-                   		var the_this = $(this);
-						io.saw.FormGet.activate({postUrl:'/member/location/'+$(this).attr('data-id')+'/delete'
-							,postOnComplete:function(responseObj,responseStatus){}
-							,postOnSuccess:function(responseObj){
-								// remove the record from the grid
-								$(the_this).parents('tr').remove();
-							}
-						});
-						
-					});	
-			   }
-			});
+	                   	// rebind click event to the records....
+	                   	$('#location-grid .delete').click(function(e){
+	                   		var the_this = $(this);
+							io.saw.FormGet.activate({postUrl:'/member/location/'+$(this).attr('data-id')+'/delete'
+								,postOnComplete:function(responseObj,responseStatus){}
+								,postOnSuccess:function(responseObj){
+									// remove the record from the grid
+									$(the_this).parents('tr').remove();
+								}
+							});
+							
+						});	
+				   }
+				});
+			}
+			
 		});		
 		$('#add-location-modal .cancel').click(function(e){
 			$('#add-location-modal').modal('hide');

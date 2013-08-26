@@ -13,30 +13,50 @@
 		});      
 	};
 	function geocode(address){
+		var rows = '';
 		var geocoder = new google.maps.Geocoder();
 		geocoder.geocode( { 'address': address}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
 				if(results.length == 1){
-					processAddress(results[0].address_components
+					rows = processAddress(results[0].address_components
 									,results[0].geometry.location.lat()
 									,results[0].geometry.location.lng()
 									,results[0].formatted_address);
 				}else{
 					$.each(results, function(key, value) { 
-						processAddress(value.address_components
+						rows += processAddress(value.address_components
 									,value.geometry.location.lat()
 									,value.geometry.location.lng()
 									,value.formatted_address);	
 					});
 				}
 			} else {
-				processAddress([],0,0,$('#geocodeaddress').val());
+				rows = processAddress([],0,0,$('#geocodeaddress').val());
 				//show the fields anyway .. just won't have lat and lon.  I'll have to add a reminder in the dashboard for them to 
 				// redo their address.
 			}
+
+			// apend the table row
+			$('#address_modal tbody').append(rows);
+			
+			// the click handler for the record on the modal to be chosen as the address
+			$('#address_modal tbody td a').click(function(e){
+				e.preventDefault();
+				$('#lat').val($(this).attr('data-lat'));
+				$('#lon').val($(this).attr('data-lon'));
+				$('#geocodeaddress').val($(this).attr('data-formattedaddress'));
+				
+				// set some visuals that it's done
+				$('.validateAddress .control-group').addClass('success');
+				$('.validateAddress .geocodeaddress').addClass('green').removeClass('blue');
+				$('.validateAddress .geocodeaddress').html('Done. <i class="icon-check"></i> (click to try again)');
+
+				// close modal
+				$('#address_modal').modal('hide');
+				
+			});
 		});
-		// show modal
-		$('#address_modal').modal({keyboard: false});
+		
 
 	}
 	function processAddress(addr, lat, lon, formatted_address){
@@ -112,42 +132,27 @@
 			'>SELECT</a></td>'+
 			'</tr>';	
 		}
-	    
-		// apend the table row
-		$('#address_modal tbody').append(tr_row);
-		
-		// the click handler for the record on the modal to be chosen as the address
-		$('#address_modal tbody td a').click(function(e){
-			e.preventDefault();
-			$('#address1').val($(this).attr('data-address'));
-			$('#address2').val($(this).attr('data-address2'));
-			$('#city').val($(this).attr('data-city'));
-			$('#state').val($(this).attr('data-state'));
-			$('#zip').val($(this).attr('data-zip'));
-			$('#country').val($(this).attr('data-country'));
-			$('#lat').val($(this).attr('data-lat'));
-			$('#lon').val($(this).attr('data-lon'));
-			$('#lon').val($(this).attr('data-lon'));
-			$('#geocodeaddress').val($(this).attr('data-formattedaddress'));
-			// close modal
-			$('#address_modal').modal('hide');
-			// show fields
-			$('.addr').show();
-		});
+	    return tr_row;
 
 	}
 	Address.init = function(formId){
 		$('#geocodeaddress').keypress(function (e) {
 		   if (e.which == 13) {
-		   	  geocode($('#geocodeaddress').val());
+		   	// show modal
+			$('#address_modal').modal({keyboard: false});
+			window.setTimeout(function(){geocode($('#geocodeaddress').val());},1000)
+		   	  
 		   }
 		});
 		$(formId+' .btn.geocodeaddress').click(function(e){
 			e.preventDefault();
-			geocode($('#geocodeaddress').val());
+			// show modal
+			$('#address_modal').modal({keyboard: false});
+			window.setTimeout(function(){geocode($('#geocodeaddress').val());},1000)
 		});
 		// modal cancel button
 		$('#address_modal .btn.cancel').click(function(e){
+			e.preventDefault();
 			$('#address_modal').modal('hide');
 		});
 		

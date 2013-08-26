@@ -173,14 +173,14 @@ $member->post('/{id}/location/add', function ($id, Request $request) use ($app) 
     $doc['point'] = array($doc['lon'],$doc['lat']);
     $doc['ownerId'] = $id;
     
+    // get the member to embed
+	$member = new Model\Member(array('_id'=>$id), $app);
+	$doc['member'] = $member->findById();
+	
     $location = new Model\Location($doc,$app);
     $app['validateModel']($app,$location);
 
     $insert_id = $location->insert();
-    
-    // get the member to embed
-	$member = new Model\Member(array('_id'=>$id,'location'=>$location), $app);
-	$member->saveEdit();
     
     return new Response(json_encode(array('id'=>$insert_id, 'message' => 'added successfully.')), 200,array('Content-Type' => 'application/json'));
 });

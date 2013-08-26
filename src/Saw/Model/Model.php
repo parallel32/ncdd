@@ -35,7 +35,9 @@ class Model {
 		$doc = get_object_vars($this);
 		
 		foreach ($doc as $key => $value) {
-			if(is_numeric($value)){
+			if(is_float($value)){
+				$doc[$key] = (float)$value;
+			}else if(is_numeric($value)){
 				$doc[$key] = (int)$value;
 			}
 		}

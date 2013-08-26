@@ -441,8 +441,23 @@
                                     <tbody role="alert" aria-live="polite" aria-relevant="all">
                                        <? if(!empty($this->vars['member']['locations'])): foreach($this->vars['member']['locations'] as $location): ?>
                                        <tr class="gradeX odd">
-                                          <td class=" "><?=$location['raw']?></td>
-                                          <td class=" "><a data-id="<?=$location['_id']?>" class="btn red mini delete"></i> Delete</a></td>
+                                          <td id="<?=$location['_id']?>" class=" "><?=$location['raw']?></td>
+                                          <td class=" "><a 
+                                             data-id="<?=$location['_id']?>" 
+                                             data-name="<?=$location['name']?>" 
+                                             data-hours="<?=$location['hours']?>" 
+                                             data-phone="<?=$location['phone']?>" 
+                                             data-fax="<?=$location['fax']?>" 
+                                             data-tollFree="<?=$location['tollFree']?>" 
+                                             data-addressLineOne="<?=$location['addressLine1']?>" 
+                                             data-addressLineTwo="<?=$location['addressLine2']?>" 
+                                             data-city="<?=$location['city']?>" 
+                                             data-state="<?=$location['state']?>" 
+                                             data-zip="<?=$location['zip']?>" 
+                                             data-country="<?=$location['country']?>" 
+                                             data-raw="<?=$location['raw']?>"
+                                             data-mode="save" 
+                                             class="btn blue mini edit"></i> Edit</a> <a data-id="<?=$location['_id']?>" class="btn red mini delete"></i> Delete</a></td>
                                        </tr>
                                        <? endforeach;?>
                                        <? else: ?>
@@ -475,13 +490,13 @@
                               <!--/ ERROR -->
                               
                               <!-- BEGIN ADDRESS -->
-                              <h3 class="form-section text-info"><strong>General Info</strong></h3>
+                              <h3 class="form-section text-info"><strong>General Info</strong> (optional, but useful for clients)</h3>
                               <div class="row-fluid">
                                  <div class="span12 ">
                                     <div class="control-group">
                                        <label class="control-label" >Location Name</label>
                                        <div class="controls">
-                                          <input type="text" name="doc[name]" class="m-wrap span12 name">
+                                          <input type="text" id="location-name" name="doc[name]" class="m-wrap span12 name">
                                           <span class="help-block">Example: The law office of .. OR .. Name and Name Firm, LLP</span>
                                        </div>
                                     </div>
@@ -492,7 +507,7 @@
                                     <div class="control-group">
                                        <label class="control-label" >Hours of operation</label>
                                        <div class="controls">
-                                          <input type="text" name="doc[hours]" class="m-wrap span12 hours">
+                                          <input type="text" id="location-hours" name="doc[hours]" class="m-wrap span12 hours">
                                           <span class="help-block">Example: M-F 9am to 5pm</span>
                                        </div>
                                     </div>
@@ -501,7 +516,7 @@
                                     <div class="control-group">
                                        <label class="control-label" >Office Phone</label>
                                        <div class="controls">
-                                          <input type="text" name="doc[phone]" class="m-wrap span12 phone">
+                                          <input type="text" id="location-phone" name="doc[phone]" class="m-wrap span12 phone">
                                        </div>
                                     </div>
                                  </div>
@@ -511,7 +526,7 @@
                                     <div class="control-group">
                                        <label class="control-label" >Office Fax</label>
                                        <div class="controls">
-                                          <input type="text" name="doc[fax]" class="m-wrap span12 fax">
+                                          <input type="text" id="location-fax" name="doc[fax]" class="m-wrap span12 fax">
                                           <span class="help-block">Example: M-F 9am to 5pm</span>
                                        </div>
                                     </div>
@@ -520,27 +535,13 @@
                                     <div class="control-group">
                                        <label class="control-label" >Toll Free</label>
                                        <div class="controls">
-                                          <input type="text" name="doc[tollFree]" class="m-wrap span12 tollFree">
+                                          <input type="text" id="location-tollFree" name="doc[tollFree]" class="m-wrap span12 tollFree">
                                        </div>
                                     </div>
                                  </div>
                               </div>
                               <h3 class="form-section text-info"><strong>Address</strong></h3>
-                              <div class="row-fluid validateAddress">
-                                 <div class="span12 ">
-                                    <div class="control-group">
-                                       <label class="control-label" >Business Address</label>
-                                       <span class="help-block">Type in your full address and then click Validate Address:</span>
-                                       <div class="controls">
-                                          <input type="text" id="geocodeaddress" class="m-wrap span12 raw" name="doc[raw]" >
-                                          <button type="button" class="btn geocodeaddress">Validate Address</button>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <input type="hidden" name="doc[lat]" id="lat">
-                              <input type="hidden" name="doc[lon]" id="lon">
-                              <div class="row-fluid addr hide">
+                              <div class="row-fluid addr ">
                                  <div class="span12 ">
                                     <div class="control-group">
                                        <label class="control-label" >Address 1</label>
@@ -550,7 +551,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <div class="row-fluid addr hide">
+                              <div class="row-fluid addr ">
                                  <div class="span12 ">
                                     <div class="control-group">
                                        <label class="control-label" >Address 2</label>
@@ -560,7 +561,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <div class="row-fluid addr hide">
+                              <div class="row-fluid addr ">
                                  <div class="span6 ">
                                     <div class="control-group">
                                        <label class="control-label" >City</label>
@@ -581,12 +582,12 @@
                                  <!--/span-->
                               </div>
                               <!--/row-->           
-                              <div class="row-fluid addr hide">
+                              <div class="row-fluid addr ">
                                  <div class="span6 ">
                                     <div class="control-group">
                                        <label class="control-label" >Postal Code</label>
                                        <div class="controls">
-                                          <input type="text" id="zip" name="doc[postalCode]" class="m-wrap span12 postalCode"> 
+                                          <input type="text" id="zip" name="doc[zip]" class="m-wrap span12 zip"> 
                                        </div>
                                     </div>
                                  </div>
@@ -601,6 +602,24 @@
                                  </div>
                                  <!--/span-->
                               </div>
+                              <h3 class="form-section text-info"><strong>Geocode Your Address</strong></h3>
+                              <p>We attempt to determine the Latitude and Longitude of your address for furture searches based on nearby a client's location</p>
+                              <div class="row-fluid validateAddress">
+                                 <div class="span12 ">
+                                    <div class="control-group">
+                                       <label class="control-label" >Type in your full address and then click Submit for Geocoding:</label>
+                                       <div class="controls">
+                                          <input type="text" id="geocodeaddress" class="m-wrap span12" >
+                                          <button type="button" class="btn blue geocodeaddress">Submit for Geocoding <i class="icon-globe"></i></button>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <input type="hidden" id="mode">
+                              <input type="hidden" id="_id">
+                              <input type="hidden" name="doc[raw]" id="raw">
+                              <input type="hidden" name="doc[lat]" id="lat">
+                              <input type="hidden" name="doc[lon]" id="lon">
                               <!-- BEGIN ADDRESS MODAL -->
                               <div id="address_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="address-modal-label" aria-hidden="true">
                                  <div class="modal-header">

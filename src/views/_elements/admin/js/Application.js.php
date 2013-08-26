@@ -1,6 +1,10 @@
 <script type="text/javascript">
 (function( Application, $, undefined ) {
 	function newSustainingMemberAdd (){
+		
+		var full_address = $('#address1').val()+' '+$('#address2').val()+' '+$('#city').val()+', '+$('#state').val()+' '+$('#zip').val()+', '+$('#country').val();
+		$('#raw').val(full_address);
+
 		io.saw.FormPost.activate({postUrl:'/application/new-sustaining-member'
 		   ,serializeSelector:':input'
 		   ,postOnComplete:function(responseObj,responseStatus){
@@ -16,6 +20,10 @@
 		});      
 	};
 	function newMemberAdd (){
+		
+		var full_address = $('#address1').val()+' '+$('#address2').val()+' '+$('#city').val()+', '+$('#state').val()+' '+$('#zip').val()+', '+$('#country').val();
+		$('#raw').val(full_address);
+			
 		io.saw.FormPost.activate({postUrl:'/application/new-member'
 		   ,serializeSelector:':input'
 		   ,postOnComplete:function(responseObj,responseStatus){
@@ -41,7 +49,7 @@
 			e.preventDefault();
 			newMemberAdd();
 		});
-		$('#saw-form .cancel').click(function(e){
+		$('#saw-form .cancel-go-back').click(function(e){
 			e.preventDefault();
 			document.location.href="http://<?=SAW_CONSUMER_WEBSITE?>";
 		});
@@ -69,7 +77,7 @@
 			e.preventDefault();
 			newSustainingMemberAdd();
 		});
-		$('#saw-form .cancel').click(function(e){
+		$('#saw-form .cancel-go-back').click(function(e){
 			e.preventDefault();
 			document.location.href="http://<?=SAW_CONSUMER_WEBSITE?>";
 		});
@@ -102,6 +110,7 @@
 			approve($(this).attr('data-id'),$(this).attr('data-type'));
 		});
 		$('#saw-form .btn.cancel').click(function(e){
+			e.preventDefault();
 			document.location.href='/application';			
 		});
 		$('#saw-form .btn.red').click(function(e){
@@ -113,6 +122,7 @@
 			remove($(this).attr('data-id'));
 		});		
 		$('#delete-modal .btn.cancel').click(function(e){
+			e.preventDefault();
 			$('#delete-modal').modal('hide');
 		});		
 

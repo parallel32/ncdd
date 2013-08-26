@@ -16,30 +16,45 @@ use Cocur\Slugify\Slugify;
 $utilities = $app['controllers_factory'];
 $utilities->before($mustbeADMIN);
 
-
-
 //////////////////////////////////////////////
 // MIGRATE FROM MEMBER.LOCATION TO LOCATION //
 //////////////////////////////////////////////
+/*
+
+in order to run this script this must be done:
+
+1. db.location.remove();
+2. run this script
+3. db.member.update({},{$unset:{location:1}},{multi:true});
+*/
 $utilities->get('/migrate-locations', function () use ($app) {
     ini_set('memory_limit','1024M');
 
-    $member = new Model\Member(array(),$app);
+    $l_member = new Model\Member(array(),$app);
     $location = new Model\Location(array(),$app);
 
-    $locations = $location->find(array(),array('_id'=>true),true,array(),0,3000);
-    //echo " <pre>";print_r($locations);echo "</pre>";
-    if(!empty($locations)){
-        foreach ($locations as $_location) {
-            $location->removeByCriteria(array('_id'=>$_location['_id']));
-        }
-    }
-
-    $members = $member->find(array(),array('location'=>true),true,array(),0,3000);
-    echo " <pre>members";print_r($members);echo "</pre>";
-    /*
+    $members = $l_member->find(array(),array('location'=>true),true,array(),0,3000);
+    //echo " <pre>members";print_r($members);echo "</pre>";
+    //*
+    $i=0;
     foreach ($members as $_member) {
-        $member->updateByCriteria(array('$unset'=>array('location'=>1)), array('_id'=>$_member['_id']));
+        
+        $member_obj = new Model\Member(array('_id'=>$_member['_id']),$app);
+        $_member['location']['member'] = $member_obj->findById();
+        //echo "<pre>";print_r($_member['location']['member']['listed']);echo "<pre>";
+        $_member['location']['ownerId'] = $_member['_id'];
+
+
+        $new_location = new Model\Location($_member['location'],$app);
+        $new_location->insert();
+            $temp = $new_location->__toArray();
+            if(!empty($temp['point'])){
+                echo "<pre>";print_r($temp['point']);echo "<pre>";    
+                echo "force to float: ".(float)$temp['point'][0].' id:'.$temp['ownerId'];
+            }
+            
+        $i++;
+        error_log(count($members).' - '.$i);
     }
     //*/
 

@@ -80,4 +80,21 @@ $app->get('/page/view/{slug}', function ($slug, Request $request) use ($app) {
 })->before($mustbeMEMBER)->value('slug','');
 
 
+$app->post('/location/{id}/edit', function ($id, Request $request) use ($app) {
+	
+    // retrieve document from request
+    $doc = $request->get('doc');
+    if(!empty($doc['lon']) && !empty($doc['lat'])){
+    	$doc['point'] = array($doc['lon'],$doc['lat']);	
+    }
+    $doc['_id'] = $id;
+    
+    $location = new Model\Location($doc,$app);
+    $app['validateModel']($app,$location);
+
+    $location->saveSafe();
+    
+    return new Response(json_encode(array('message' => 'saved successfully.')), 200,array('Content-Type' => 'application/json'));
+});
+
 return $app;

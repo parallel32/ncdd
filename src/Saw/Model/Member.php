@@ -311,16 +311,14 @@ class Member extends User {
 				$result = $this->find($query=array('email'=>$search),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
 				break;
 			case 'state':
-				$result = $this->find($query=array('location.state'=>$state,'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
-				/*
+				//$result = $this->find($query=array('location.state'=>$state,'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				//*
 				$m_fields = array();
 				foreach ($fields as $key => $value) {
 					$m_fields['member.'.$key]=$value;
 				}
 				$query=array('state'=>$state,'member.listed'=>1);
 				$m_result = self::$app['mongo']->find('location', $query,$m_fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.currentOrder'=>-1,'member.orderNum'=>1));
-				error_log('m_fields:'.print_r($m_fields,true));
-				error_log('query:'.print_r($query,true));
 				//error_log('result:'.print_r($m_result,true));
 				$i=0;
 				foreach ($m_result as $key => $value) {
@@ -402,21 +400,39 @@ class Member extends User {
 
 	public function searchByState($state){
 
-		$fields=array('_id'=>1
-					,'firstName'=>1
-					,'lastName'=>1
-					,'slug'=>1
-					,'primaryPhone'=>1
-					,'email'=>1
-					,'image'=>1
-					,'currentMembership'=>1
-					,'currentFacultyPosition'=>1
-					,'boardCertified'=>1
-					,'websites'=>1
-					,'location'=>1
+		$fields=array('member._id'=>1
+					,'member.firstName'=>1
+					,'member.lastName'=>1
+					,'member.slug'=>1
+					,'member.primaryPhone'=>1
+					,'member.email'=>1
+					,'member.image'=>1
+					,'member.currentMembership'=>1
+					,'member.currentFacultyPosition'=>1
+					,'member.boardCertified'=>1
+					,'member.websites'=>1
+					,'raw'=>1
 					);
-		$result = $this->find($query=array('location.state'=>$state,'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
-				
+		
+		$result = self::$app['mongo']->find('location',array('state'=>$state,'member.listed'=>1),$fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.currentOrder'=>-1,'member.orderNum'=>1));
+		
+		$i=0;
+		foreach ($result as $key => $value) {
+			$result[$i]['_id'] = $value['member']['_id'];
+			$result[$i]['firstName'] = $value['member']['firstName'];
+			$result[$i]['lastName'] = $value['member']['lastName'];
+			$result[$i]['slug'] = $value['member']['slug'];
+			$result[$i]['primaryPhone'] = $value['member']['primaryPhone'];
+			$result[$i]['email'] = $value['member']['email'];
+			$result[$i]['image'] = $value['member']['image'];
+			$result[$i]['currentMembership'] = $value['member']['currentMembership'];
+			$result[$i]['currentFacultyPosition'] = $value['member']['currentFacultyPosition'];
+			$result[$i]['boardCertified'] = $value['member']['boardCertified'];
+			$result[$i]['websites'] = $value['member']['websites'];
+			$result[$i]['location']['raw'] = $value['raw'];
+			$i++;
+		}
+
 		if(!empty($result)):
 			for ($i=0; $i < count($result); $i++) {
 				$result[$i]['image'] = (!empty($result[$i]['image'])) ? $result[$i]['image']['urls']['small']['CDN'] : '/noprofileimage';
@@ -431,21 +447,39 @@ class Member extends User {
 
 	public function searchFoundingMembersByState($state){
 
-		$fields=array('_id'=>1
-					,'firstName'=>1
-					,'lastName'=>1
-					,'slug'=>1
-					,'primaryPhone'=>1
-					,'email'=>1
-					,'image'=>1
-					,'currentMembership'=>1
-					,'currentFacultyPosition'=>1
-					,'boardCertified'=>1
-					,'websites'=>1
-					,'location'=>1
+		$fields=array('member._id'=>1
+					,'member.firstName'=>1
+					,'member.lastName'=>1
+					,'member.slug'=>1
+					,'member.primaryPhone'=>1
+					,'member.email'=>1
+					,'member.image'=>1
+					,'member.currentMembership'=>1
+					,'member.currentFacultyPosition'=>1
+					,'member.boardCertified'=>1
+					,'member.websites'=>1
+					,'raw'=>1
 					);
-		$result = $this->find($query=array('currentMembership'=>self::$membership['FOUNDING MEMBER'], 'location.state'=>$state,'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
-				
+		
+		$result = self::$app['mongo']->find('location',array('member.currentMembership'=>self::$membership['FOUNDING MEMBER'], 'state'=>$state,'member.listed'=>1),$fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.currentOrder'=>-1,'member.orderNum'=>1));
+		
+		$i=0;
+		foreach ($result as $key => $value) {
+			$result[$i]['_id'] = $value['member']['_id'];
+			$result[$i]['firstName'] = $value['member']['firstName'];
+			$result[$i]['lastName'] = $value['member']['lastName'];
+			$result[$i]['slug'] = $value['member']['slug'];
+			$result[$i]['primaryPhone'] = $value['member']['primaryPhone'];
+			$result[$i]['email'] = $value['member']['email'];
+			$result[$i]['image'] = $value['member']['image'];
+			$result[$i]['currentMembership'] = $value['member']['currentMembership'];
+			$result[$i]['currentFacultyPosition'] = $value['member']['currentFacultyPosition'];
+			$result[$i]['boardCertified'] = $value['member']['boardCertified'];
+			$result[$i]['websites'] = $value['member']['websites'];
+			$result[$i]['location']['raw'] = $value['raw'];
+			$i++;
+		}
+		
 		if(!empty($result)):
 			for ($i=0; $i < count($result); $i++) {
 				$result[$i]['image'] = (!empty($result[$i]['image'])) ? $result[$i]['image']['urls']['small']['CDN'] : '/noprofileimage';
@@ -460,20 +494,38 @@ class Member extends User {
 
 	public function searchStateDelegatesByState($state){
 
-		$fields=array('_id'=>1
-					,'firstName'=>1
-					,'lastName'=>1
-					,'slug'=>1
-					,'primaryPhone'=>1
-					,'email'=>1
-					,'image'=>1
-					,'currentMembership'=>1
-					,'currentFacultyPosition'=>1
-					,'boardCertified'=>1
-					,'websites'=>1
-					,'location'=>1
+		$fields=array('member._id'=>1
+					,'member.firstName'=>1
+					,'member.lastName'=>1
+					,'member.slug'=>1
+					,'member.primaryPhone'=>1
+					,'member.email'=>1
+					,'member.image'=>1
+					,'member.currentMembership'=>1
+					,'member.currentFacultyPosition'=>1
+					,'member.boardCertified'=>1
+					,'member.websites'=>1
+					,'raw'=>1
 					);
-		$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['DELEGATE'], 'location.state'=>$state,'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+		
+		$result = self::$app['mongo']->find('location',array('member.currentFacultyPosition'=>self::$facultyPosition['DELEGATE'], 'state'=>$state,'member.listed'=>1),$fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.currentOrder'=>-1,'member.orderNum'=>1));
+		
+		$i=0;
+		foreach ($result as $key => $value) {
+			$result[$i]['_id'] = $value['member']['_id'];
+			$result[$i]['firstName'] = $value['member']['firstName'];
+			$result[$i]['lastName'] = $value['member']['lastName'];
+			$result[$i]['slug'] = $value['member']['slug'];
+			$result[$i]['primaryPhone'] = $value['member']['primaryPhone'];
+			$result[$i]['email'] = $value['member']['email'];
+			$result[$i]['image'] = $value['member']['image'];
+			$result[$i]['currentMembership'] = $value['member']['currentMembership'];
+			$result[$i]['currentFacultyPosition'] = $value['member']['currentFacultyPosition'];
+			$result[$i]['boardCertified'] = $value['member']['boardCertified'];
+			$result[$i]['websites'] = $value['member']['websites'];
+			$result[$i]['location']['raw'] = $value['raw'];
+			$i++;
+		}
 				
 		if(!empty($result)):
 			for ($i=0; $i < count($result); $i++) {

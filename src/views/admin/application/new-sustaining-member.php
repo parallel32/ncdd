@@ -129,21 +129,7 @@
                   </div>
                   <!-- BEGIN ADDRESS -->
                   <h3 class="form-section">Address</h3>
-                  <div class="row-fluid validateAddress">
-                     <div class="span12 ">
-                        <div class="control-group">
-                           <label class="control-label" >Business Address</label>
-                           <span class="help-block">Type in your full address and then click Validate Address:</span>
-                           <div class="controls">
-                              <input type="text" id="geocodeaddress" class="m-wrap span12 formattedAddress" name="doc[formattedAddress]" >
-                              <button type="button" class="btn geocodeaddress">Validate Address</button>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <input type="hidden" name="doc[lat]" id="lat">
-                  <input type="hidden" name="doc[lon]" id="lon">
-                  <div class="row-fluid addr hide">
+                  <div class="row-fluid addr ">
                      <div class="span12 ">
                         <div class="control-group">
                            <label class="control-label" >Address 1</label>
@@ -153,7 +139,7 @@
                         </div>
                      </div>
                   </div>
-                  <div class="row-fluid addr hide">
+                  <div class="row-fluid addr ">
                      <div class="span12 ">
                         <div class="control-group">
                            <label class="control-label" >Address 2</label>
@@ -163,7 +149,7 @@
                         </div>
                      </div>
                   </div>
-                  <div class="row-fluid addr hide">
+                  <div class="row-fluid addr ">
                      <div class="span6 ">
                         <div class="control-group">
                            <label class="control-label" >City</label>
@@ -184,7 +170,7 @@
                      <!--/span-->
                   </div>
                   <!--/row-->           
-                  <div class="row-fluid addr hide">
+                  <div class="row-fluid addr ">
                      <div class="span6 ">
                         <div class="control-group">
                            <label class="control-label" >Postal Code</label>
@@ -204,6 +190,22 @@
                      </div>
                      <!--/span-->
                   </div>
+                  <h3 class="form-section text-info"><strong>Geocode Your Address</strong></h3>
+                  <p>We attempt to determine the Latitude and Longitude of your address for furture searches based on nearby a client's location</p>
+                  <div class="row-fluid validateAddress">
+                     <div class="span12 ">
+                        <div class="control-group">
+                           <label class="control-label" >Type in your full address and then click Submit for Geocoding:</label>
+                           <div class="controls">
+                              <input type="text" id="geocodeaddress" class="m-wrap span12" >
+                              <button type="button" class="btn blue geocodeaddress">Submit for Geocoding <i class="icon-globe"></i></button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <input type="hidden" name="doc[formattedAddress]" id="raw">
+                  <input type="hidden" name="doc[lat]" id="lat">
+                  <input type="hidden" name="doc[lon]" id="lon">
                   <!-- BEGIN ADDRESS MODAL -->
                   <div id="address_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="address-modal-label" aria-hidden="true">
                      <div class="modal-header">
@@ -603,7 +605,7 @@
                   
                   <div class="form-actions text-center">
                      <button type="button" class="btn green"><i class="icon-ok"></i> Submit Application</button>
-                     <button type="button" class="btn cancel">Cancel and Go Back</button>
+                     <button type="button" class="btn cancel-go-back">Cancel and Go Back</button>
                   </div>
                </form>
                <!-- END FORM--> 

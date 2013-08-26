@@ -29,11 +29,17 @@ class Location extends Model {
 	public $member;
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
-		$metadata->addPropertyConstraint('point', new Constraints\NotBlank(
+		/*$metadata->addPropertyConstraint('point', new Constraints\NotBlank(
             array('message'=>'Enter your full address and press enter.')
+        ));*/
+        $metadata->addPropertyConstraint('addressLine1', new Constraints\NotBlank(
+            array('message'=>'An address is required.')
         ));
-        $metadata->addPropertyConstraint('name', new Constraints\NotBlank(
-            array('message'=>'A location name is required.')
+        $metadata->addPropertyConstraint('city', new Constraints\NotBlank(
+            array('message'=>'A city is required.')
+        ));
+        $metadata->addPropertyConstraint('state', new Constraints\NotBlank(
+            array('message'=>'A state or province is required.')
         ));
 	}
 
@@ -48,7 +54,7 @@ class Location extends Model {
 		// logic here is that if the point array was passed in then force the numbers to float (required for mongo's 2D index) otherwise set to an array
 		// to maintain a consistent data type
 		$this->point = (is_array($doc['point']) && !empty($doc['point'][0])) ? array((float)$doc['point'][0], (float)$doc['point'][1]) : array();
-        $this->addressLine1 = $doc['addressLine1'];
+		$this->addressLine1 = $doc['addressLine1'];
         $this->addressLine2 = $doc['addressLine2'];
 		$this->city = $doc['city'];
 		$this->state = $doc['state'];
@@ -56,17 +62,17 @@ class Location extends Model {
         $this->country = $doc['country'];
 		$this->phone = $doc['phone'];
 		$this->fax = $doc['fax'];
-		$this->tollFree = $doc['phone'];
+		$this->tollFree = $doc['tollFree'];
 		$this->hours = $doc['hours'];
 		$this->ownerId = (!empty($doc['ownerId'])) ? (is_object($doc['ownerId'])) ? $doc['ownerId'] : new \MongoId($doc['ownerId']) : $doc['ownerId'];
-		$this->member = (is_object($member)) ? $member->__toArray(false) : $doc['member'];
+		$this->member = (is_object($member)) ? $member->__toArray() : $doc['member'];
 
 	}
 	protected function prepareInsert(){
 		$this->raw = $this->raw ?: '';
 		$this->name = $this->name?: '';
 		$this->neighborhood = $this->neighborhood?: '';
-		$this->point = $this->point ?: array(-0.0000001,0.0000001);
+		$this->point = (!empty($this->point)) ? $this->point : array() ;
 		$this->addressLine1 = $this->addressLine1 ?: '';
         $this->addressLine2 = $this->addressLine2 ?: '';
 		$this->city = $this->city ?: '';
