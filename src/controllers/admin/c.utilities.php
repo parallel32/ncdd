@@ -27,7 +27,8 @@ in order to run this script this must be done:
 2. run this script
 3. db.member.update({},{$unset:{location:1}},{multi:true});
 */
-$utilities->get('/migrate-locations', function () use ($app) {
+$utilities->get('/migrate-locationssdfafadfsadfasdfasdfaf', function () use ($app) {
+    return 'disabled';
     ini_set('memory_limit','1024M');
 
     $l_member = new Model\Member(array(),$app);
