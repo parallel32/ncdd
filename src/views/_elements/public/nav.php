@@ -30,6 +30,9 @@
                                     <li><a href="/deans-message">Dean’s Message</a></li>
                                     <li class="sep"></li>
                                     <li><a href="/dui-laws-in-your-state">DUI Laws in your State</a></li>
+                                    <li class="sep"></li>
+                                    <li><a href="/blog">Blog</a></li>
+
                                 </ul>
                                  <ul class="pull-right nav navbar-form">
                                     <li><a href="/contact">Contact</a></li>
