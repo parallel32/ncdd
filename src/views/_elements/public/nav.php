@@ -110,32 +110,40 @@
                                         
                                     });
                                 };
-                                
-                                $('#discoverTab .active').trigger('click');                               
-
-
-                                $('#learnTab .active').trigger('click');
-
-                                
-                                $('#boardCertificationMenu .active').trigger('click');
-
-                                $('#learnTab li').click(function(e){
-                                    e.preventDefault();
-                                    document.location.href='/'+$(this).attr('data-url')
-                                    
-                                });
                                 $('#discoverTab li').click(function(e){
                                     e.preventDefault();
-                                    document.location.href='/'+$(this).attr('data-url')
-                                    
-                                });
+                                    if( $(this).attr('data-url') == 'dui-laws-in-your-state' ||
+                                        $(this).attr('data-url') == 'regents-and-fellows' ||
+                                        $(this).attr('data-url') == 'deans-message' ||
+                                        $(this).attr('data-url') == 'dui-laws-in-your-state' ||
+                                        $(this).attr('data-url') == 'origins-of-the-national-college-for-dui-defense' ||
+                                        $(this).attr('data-url') == 'erwin-taylor-award' ||
+                                        $(this).attr('data-url') == 'ncdd-foundation' 
 
-                                $('#boardCertificationMenu li').click(function(e){
-                                    e.preventDefault();
-                                    document.location.href='/'+$(this).attr('data-url')
+                                    ){
+                                        document.location.href='/'+$(this).attr('data-url')
+                                    }
                                     saw_get_preview($(this).attr('data-url'));
                                     
                                 });
+                                $('#discoverTab .active').trigger('click');                               
+
+
+                                $('#learnTab li').click(function(e){
+                                    e.preventDefault();
+                                    $('#boardCertificationMenu li').removeClass('active');
+                                    $('.boardCertificationDescr .board-cert-preview-only').removeClass('active');
+                                    saw_get_preview($(this).attr('data-url'));
+                                    
+                                });
+                                $('#learnTab .active').trigger('click');
+
+                                $('#boardCertificationMenu li').click(function(e){
+                                    e.preventDefault();
+                                    saw_get_preview($(this).attr('data-url'));
+                                    
+                                });
+                                $('#boardCertificationMenu .active').trigger('click');
                             });  
                         </script>
                         <div class="dropdown-menu learn fullWidthDropDown" role="menu" aria-labelledby="learn">
@@ -280,7 +288,7 @@
 
                                                             <? if($page['slug'] == 'board-certification'): ?>
                                                                 <li class="dropDownMenuItem">
-                                                                <a href="#board-certification" class="dropDownMenuLink span2"><?=$page['headline']?> <span class="arrow pull-right"></span></a>
+                                                                <a data-url="board-certification" href="#board-certification" class="dropDownMenuLink span2"><?=$page['headline']?> <span class="arrow pull-right"></span></a>
                                                                  <ul class="span6 dropDownMenu nav nav-tabs pull-left" id="boardCertificationMenu">
                                                                     <li class="arrow"></li>
                                                                     <? foreach($this->vars['pages']['BOARD CERTIFICATION'] as $page): ?>        
