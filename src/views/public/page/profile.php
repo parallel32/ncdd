@@ -48,7 +48,7 @@
                                 </ul>
                             </li>
                             <li class="userProfileItem numbers">
-                                <h5 class="userProfileTitle">Additional Numders</h5>
+                                <h5 class="userProfileTitle">Additional Numbers</h5>
                                 <ul class="infoList">
                                     <? foreach($member['locations'] as $location): ?>
                                     <li class="infoListItem"><?=$location['phone']?></li>
