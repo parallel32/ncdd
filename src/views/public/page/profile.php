@@ -5,7 +5,7 @@
                             <div class="avatar pull-left"><img width="161" src="<?=$member['image']?>" alt=""></div>
                             <div class="pull-left">
                                 <h3 class="username"><?=$member['firstName']?> <?=$member['lastName']?></h3>
-                                <ul class="links inline">
+                                <ul class="links ">
                                     <li class="linksItem">Specialize in <a href="#"><?=$member['specializeIn']?></a></li>
                                     <li class="linksItem"><a href="//<?=(!empty($member['websites']) && is_array($member['websites'])) ? $member['websites'][0]['website'] : '#' ?>">Visit Member’s Website</a></li>
                                 </ul>
@@ -34,22 +34,6 @@
                         </div>
                         <ul class="userProfile">
                             <li class="userProfileItem">
-                                <h5 class="userProfileTitle">Additional Websites</h5>
-                                <ul class="infoList websites">
-                                    <? foreach($member['websites'] as $website): ?>
-                                    <li class="infoListItem"><a href="//<?=$website['website']?>" alt="<?=$website['websiteDesc']?>" title="<?=$website['websiteDesc']?>"><?=$website['website']?></a></li>
-                                    <? endforeach; ?>
-                                </ul>
-                            </li>
-                            <li class="userProfileItem numbers">
-                                <h5 class="userProfileTitle">Additional Numders</h5>
-                                <ul class="infoList">
-                                    <? foreach($member['locations'] as $location): ?>
-                                    <li class="infoListItem"><?=$location['phone']?></li>
-                                    <? endforeach; ?>
-                                </ul>
-                            </li>
-                            <li class="userProfileItem">
                                 <h5 class="userProfileTitle">Types of Membership</h5>
                                 <ul class="memberBadgeBlock inline">
 
@@ -63,6 +47,23 @@
                                     
                                 </ul>
                             </li>
+                            <li class="userProfileItem numbers">
+                                <h5 class="userProfileTitle">Additional Numders</h5>
+                                <ul class="infoList">
+                                    <? foreach($member['locations'] as $location): ?>
+                                    <li class="infoListItem"><?=$location['phone']?></li>
+                                    <? endforeach; ?>
+                                </ul>
+                            </li>
+                            <li class="userProfileItem">
+                                <h5 class="userProfileTitle">Additional Websites</h5>
+                                <ul class="infoList websites">
+                                    <? foreach($member['websites'] as $website): ?>
+                                    <li class="infoListItem"><a href="//<?=$website['website']?>" alt="<?=$website['websiteDesc']?>" title="<?=$website['websiteDesc']?>"><?=$website['website']?></a></li>
+                                    <? endforeach; ?>
+                                </ul>
+                            </li>
+                            
                         </ul>
                         <div class="aboutMe dottedSep">
                             <h4 class="memberProfileTitle">About Me:</h4>

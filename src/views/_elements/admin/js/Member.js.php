@@ -348,9 +348,9 @@
 			   		$('#pa-norecords').remove();
 			   		// add the record to the grid.
 			   		html = '<tr class="gradeX odd">'+
-                    '  <td class=" ">'+$('#add-pa-modal .pa').val()+'</td>'+
-                    '  <td class=" ">'+$('#add-pa-modal .percent').val()+'</td>'+
-                    '  <td class=" "><a data-name="'+responseObj.name+'" data-id="'+responseObj.id+'" class="btn red mini delete"></i> Delete</a></td>'+
+                    '  <td class=" ">'+responseObj.pa['pa']+'</td>'+
+                    '  <td class=" ">'+responseObj.pa['percent']+'</td>'+
+                    '  <td class=" "><a data-name="'+responseObj.pa['pa']+'" data-id="'+responseObj.id+'" class="btn red mini delete"></i> Delete</a></td>'+
                    	'</tr>';
                    	$('#pa-grid tbody').append(html);
 

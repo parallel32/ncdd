@@ -229,6 +229,7 @@ class Member extends User {
 		return $result['websites'];
 	}
 	public function addPracticeArea($pa){
+		$pa['percent'] = str_replace('%','',$pa['percent']);
 		// mongo atomic push onto the array
 		$criteria = array('_id'=>$this->_id);
 		$update_spec = array('$addToSet'=>array('practiceAreas'=>$pa));
@@ -241,7 +242,7 @@ class Member extends User {
 		return self::$app['mongo']->update($update_spec, $this->collection, $criteria, $multiple=false, $upsert=false,$options=array('safe'=>true,'fsync'=>true));
 	}
 	public function getPracticeAreas(){
-		$result = $this->findOne($query=array('_id'=>$this->_id),$fields=array('practiceAreas'=>1));
+		$result = $this->findOne($query=array('_id'=>$this->_id),$fields=array('practiceAreas'=>1),false);
 		$this->practiceAreas = $result['practiceAreas'];
 		return $result['practiceAreas'];
 	}

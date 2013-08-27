@@ -176,7 +176,7 @@ $member->post('/{id}/location/add', function ($id, Request $request) use ($app) 
     // get the member to embed
 	$member = new Model\Member(array('_id'=>$id), $app);
 	$doc['member'] = $member->findById();
-	
+
     $location = new Model\Location($doc,$app);
     $app['validateModel']($app,$location);
 
@@ -231,12 +231,13 @@ $member->get('/{id}/language/{language}/delete', function ($id, $language, Reque
 $member->post('/{id}/pa/add', function ($id, Request $request) use ($app) {
 	
 	$doc = $request->get('doc');
+	$doc['percent'] = str_replace('%','',$doc['percent']);
 	// get the member to embed
 	$member = new Model\Member(array('_id'=>$id), $app);
 	$member->addPracticeArea($doc);
 	$member->getPracticeAreas();
 	$member->saveEdit();    
-    return new Response(json_encode(array('name'=>$doc['pa'], 'id'=>$id, 'message' => 'added successfully.')), 200,array('Content-Type' => 'application/json'));
+    return new Response(json_encode(array('pa'=>$doc, 'id'=>$id, 'message' => 'added successfully.')), 200,array('Content-Type' => 'application/json'));
 });
 $member->get('/{id}/pa/{pa}/delete', function ($id, $pa, Request $request) use ($app) {
     
