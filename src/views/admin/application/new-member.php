@@ -251,7 +251,7 @@
                            </div>
                      </div>
                      <div class="modal-footer">
-                        <button class="btn cancel" aria-hidden="true">Cancel</button>
+                        <button class="btn address-cancel" aria-hidden="true">Cancel</button>
                      </div>
                   </div>
                   <!-- END ADDRESS MODAL -->

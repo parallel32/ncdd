@@ -151,7 +151,7 @@
 			window.setTimeout(function(){geocode($('#geocodeaddress').val());},1000)
 		});
 		// modal cancel button
-		$('#address_modal .btn.cancel').click(function(e){
+		$('#address_modal .address-cancel').click(function(e){
 			e.preventDefault();
 			$('#address_modal').modal('hide');
 		});

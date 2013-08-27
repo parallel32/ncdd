@@ -82,6 +82,21 @@
 				   		$('#'+$('#_id').val()).html($('#raw').val());
 				   		$('#add-location-modal').modal('hide');   		
 				   		$('#location-norecords').remove();
+
+				   		// reset the data attributes with the current values from the form
+				   		$('#edit-'+$('#_id').val()).attr('data-name',$('#location-name').val());
+				   		$('#edit-'+$('#_id').val()).attr('data-hours',$('#location-hours').val());
+				   		$('#edit-'+$('#_id').val()).attr('data-phone',$('#location-phone').val());
+				   		$('#edit-'+$('#_id').val()).attr('data-fax',$('#location-fax').val());
+				   		$('#edit-'+$('#_id').val()).attr('data-tollFree',$('#location-tollFree').val());
+				   		$('#edit-'+$('#_id').val()).attr('data-addressLineOne',$('#address1').val());
+				   		$('#edit-'+$('#_id').val()).attr('data-addressLineTwo',$('#address2').val());
+				   		$('#edit-'+$('#_id').val()).attr('data-city',$('#city').val());
+				   		$('#edit-'+$('#_id').val()).attr('data-state',$('#state').val());
+				   		$('#edit-'+$('#_id').val()).attr('data-zip',$('#zip').val());
+				   		$('#edit-'+$('#_id').val()).attr('data-country',$('#country').val());
+				   		$('#edit-'+$('#_id').val()).attr('data-raw',$('#raw').val());
+				   		$('#edit-'+$('#_id').val()).attr('data-mode',$('#mode').val());
 				   }
 				});
 			}else{ //add
@@ -94,8 +109,25 @@
 				   		$('#location-norecords').remove();
 				   		// add the record to the grid.
 				   		html = '<tr class="gradeX odd">'+
-	                    '  <td class=" ">'+full_address+ '</td>'+
-	                    '  <td class=" "><a data-id="'+responseObj.id.$id+'" class="btn red mini delete"></i> Delete</a></td>'+
+	                    '  <td id="'+responseObj.id.$id+'" class=" ">'+full_address+ '</td>'+
+	                    '  <td class=" "><a id="edit-'+responseObj.id.$id+'" '+
+	                    ' data-id="'+responseObj.id.$id+'" '+
+	                    ' data-name="'+$('#location-name').val()+'" '+
+	                    ' data-hours="'+$('#location-hours').val()+'" '+
+	                    ' data-phone="'+$('#location-phone').val()+'" '+
+	                    ' data-fax="'+$('#location-fax').val()+'" '+
+	                    ' data-tollFree="'+$('#location-tollFree').val()+'" '+
+	                    ' data-addressLineOne="'+$('#address1').val()+'" '+
+	                    ' data-addressLineTwo="'+$('#address2').val()+'" '+
+	                    ' data-city="'+$('#city').val()+'" '+
+	                    ' data-state="'+$('#state').val()+'" '+
+	                    ' data-zip="'+$('#zip').val()+'" '+
+	                    ' data-country="'+$('#country').val()+'" '+
+	                    ' data-raw="'+$('#raw').val()+'" '+
+	                    ' data-mode="save" '+
+
+	                    'class="btn blue mini edit"></i> Edit</a> '+
+	                    ' <a data-id="'+responseObj.id.$id+'" class="btn red mini delete"></i> Delete</a></td>'+
 	                   	'</tr>';
 	                   	$('#location-grid tbody').append(html);
 
@@ -111,6 +143,30 @@
 							});
 							
 						});	
+						$('#location-grid .edit').click(function(e){
+							var the_this = $(this);
+							$('#add-location-modal-label').html('Save Location');
+							// clear the modal first
+							$('#add-location-modal :input').val('');
+							// set fields
+							$('#_id').val($(this).attr('data-id'));
+							$('#location-name').val($(this).attr('data-name'));
+							$('#location-hours').val($(this).attr('data-hours'));
+							$('#location-phone').val($(this).attr('data-phone'));
+							$('#location-fax').val($(this).attr('data-fax'));
+							$('#location-tollFree').val($(this).attr('data-tollFree'));
+							$('#address1').val($(this).attr('data-addressLineOne'));
+							$('#address2').val($(this).attr('data-addressLineTwo'));
+							$('#city').val($(this).attr('data-city'));
+							$('#state').val($(this).attr('data-state'));
+							$('#zip').val($(this).attr('data-zip'));
+							$('#country').val($(this).attr('data-country'));
+							$('#raw').val($(this).attr('data-raw'));
+							$('#geocodeaddress').val($(this).attr('data-raw'));
+							$('#mode').val($(this).attr('data-mode'));
+
+							$('#add-location-modal').modal({keyboard: false});
+						});		
 				   }
 				});
 			}
@@ -119,6 +175,29 @@
 		$('#add-location-modal .cancel').click(function(e){
 			$('#add-location-modal').modal('hide');
 		});		
+		
+		// auto fill the geocde address field
+		$('#geocodeaddress').focus(function(e){
+			$('#geocodeaddress').val($('#address1').val()+' '+$('#address2').val()+' '+$('#city').val()+', '+$('#state').val()+' '+$('#zip').val()+', '+$('#country').val());
+		});
+		$('#address1').blur(function(e){
+			$('#geocodeaddress').val($('#address1').val()+' '+$('#address2').val()+' '+$('#city').val()+', '+$('#state').val()+' '+$('#zip').val()+', '+$('#country').val());
+		});
+		$('#address2').blur(function(e){
+			$('#geocodeaddress').val($('#address1').val()+' '+$('#address2').val()+' '+$('#city').val()+', '+$('#state').val()+' '+$('#zip').val()+', '+$('#country').val());
+		});
+		$('#city').blur(function(e){
+			$('#geocodeaddress').val($('#address1').val()+' '+$('#address2').val()+' '+$('#city').val()+', '+$('#state').val()+' '+$('#zip').val()+', '+$('#country').val());
+		});
+		$('#state').blur(function(e){
+			$('#geocodeaddress').val($('#address1').val()+' '+$('#address2').val()+' '+$('#city').val()+', '+$('#state').val()+' '+$('#zip').val()+', '+$('#country').val());
+		});
+		$('#zip').blur(function(e){
+			$('#geocodeaddress').val($('#address1').val()+' '+$('#address2').val()+' '+$('#city').val()+', '+$('#state').val()+' '+$('#zip').val()+', '+$('#country').val());
+		});
+		$('#country').blur(function(e){
+			$('#geocodeaddress').val($('#address1').val()+' '+$('#address2').val()+' '+$('#city').val()+', '+$('#state').val()+' '+$('#zip').val()+', '+$('#country').val());
+		});
 		
 
 		/////////////

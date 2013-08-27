@@ -442,7 +442,7 @@
                                        <? if(!empty($this->vars['member']['locations'])): foreach($this->vars['member']['locations'] as $location): ?>
                                        <tr class="gradeX odd">
                                           <td id="<?=$location['_id']?>" class=" "><?=$location['raw']?></td>
-                                          <td class=" "><a 
+                                          <td class=" "><a id="edit-<?=$location['_id']?>" 
                                              data-id="<?=$location['_id']?>" 
                                              data-name="<?=$location['name']?>" 
                                              data-hours="<?=$location['hours']?>" 
@@ -665,7 +665,7 @@
                                        </div>
                                  </div>
                                  <div class="modal-footer">
-                                    <button class="btn cancel" aria-hidden="true">Cancel</button>
+                                    <button class="btn address-cancel" aria-hidden="true">Cancel</button>
                                  </div>
                               </div>
                               <!-- END ADDRESS MODAL -->
