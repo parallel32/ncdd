@@ -63,7 +63,7 @@
 
 
                         <!-- COMMENTS -->
-                        <? if(true): ?>
+                        <? if(false): ?>
                         <div class="media">
                            <h3>Comments</h3>
                            <a href="#" class="pull-left">
