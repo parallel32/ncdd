@@ -119,9 +119,11 @@
       google.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          <? foreach($member['practiceAreas'] as $pa): ?>
-          ['<?=$pa['pa']?>',     <?=$pa['percent']?>],
+            ['Task', 'Hours per Day'],
+          <? foreach($member['practiceAreas'] as $pa): 
+          $paa = addslashes($pa['pa']);
+          ?>
+          ['<?=$paa?>',     <?=$pa['percent']?>],
           <? endforeach; ?>
         ]);
 
