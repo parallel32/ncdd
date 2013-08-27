@@ -110,29 +110,32 @@
                                         
                                     });
                                 };
-                                $('#discoverTab li').click(function(e){
-                                    e.preventDefault();
-                                    saw_get_preview($(this).attr('data-url'));
-                                    
-                                });
+                                
                                 $('#discoverTab .active').trigger('click');                               
 
 
+                                $('#learnTab .active').trigger('click');
+
+                                
+                                $('#boardCertificationMenu .active').trigger('click');
+
                                 $('#learnTab li').click(function(e){
                                     e.preventDefault();
-                                    $('#boardCertificationMenu li').removeClass('active');
-                                    $('.boardCertificationDescr .board-cert-preview-only').removeClass('active');
-                                    saw_get_preview($(this).attr('data-url'));
+                                    document.location.href='/'+$(this).attr('data-url')
                                     
                                 });
-                                $('#learnTab .active').trigger('click');
+                                $('#discoverTab li').click(function(e){
+                                    e.preventDefault();
+                                    document.location.href='/'+$(this).attr('data-url')
+                                    
+                                });
 
                                 $('#boardCertificationMenu li').click(function(e){
                                     e.preventDefault();
+                                    document.location.href='/'+$(this).attr('data-url')
                                     saw_get_preview($(this).attr('data-url'));
                                     
                                 });
-                                $('#boardCertificationMenu .active').trigger('click');
                             });  
                         </script>
                         <div class="dropdown-menu learn fullWidthDropDown" role="menu" aria-labelledby="learn">
