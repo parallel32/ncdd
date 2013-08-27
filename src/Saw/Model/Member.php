@@ -88,8 +88,23 @@ class Member extends User {
 		$this->barNumber = $doc['barNumber'];
 		$this->websites = $doc['websites'];
 		$this->listServEmail = $doc['listServEmail'];
-		$this->listed = (!empty($doc['listed'])) ? (strtolower($doc['listed'])=='yes') ? 1: 0 : '' ;
-		$this->boardCertified = (!empty($doc['boardCertified'])) ? (strtolower($doc['boardCertified'])=='yes') ? 1: 0 : '' ;
+		
+		if(strtolower($doc['listed']) == 'yes'){
+			$this->listed = 1;
+		}else if(strtolower($doc['listed']) == 'no'){
+			$this->listed = 0;
+		}else if(is_numeric($doc['listed'])){
+			$this->listed = (int)$doc['listed'];
+		}
+		
+        if(strtolower($doc['boardCertified']) == 'yes'){
+			$this->boardCertified = 1;
+		}else if(strtolower($doc['boardCertified']) == 'no'){
+			$this->boardCertified = 0;
+		}else if(is_numeric($doc['boardCertified'])){
+			$this->boardCertified = (int)$doc['boardCertified'];
+		}
+		
         $this->joinDate = (!empty($doc['joinDate'])) ? (is_object($doc['joinDate'])) ? $doc['joinDate']->__toArray() : new Date(self::$app,$doc['joinDate'], $this->timeZone)  : $doc['joinDate'];
         include_once __DIR__.'/../Provider/WordPress/ncdd-wp-includes.php';
 		$this->aboutMe = (!empty($doc['aboutMe'])) ? wptexturize(wpautop($doc['aboutMe'])) : '';

@@ -70,7 +70,18 @@ class User extends Model {
         $this->image = $doc['image'];
 		$this->profileImageUrl = $doc['profileImageUrl'];
 		$this->slug = $doc['slug'];
-		$this->status = (!empty($doc['status'])) ? ($doc['status']=='yes') ? USER_STATUS_ACTIVE: USER_STATUS_INACTIVE : '' ;
+		
+		//$this->status = (!empty($doc['status'])) ? ($doc['status']=='yes') ? USER_STATUS_ACTIVE: USER_STATUS_INACTIVE : '' ;
+
+		if(strtolower($doc['status']) == 'yes'){
+			$this->status = USER_STATUS_ACTIVE;
+		}else if(strtolower($doc['status']) == 'no'){
+			$this->status = USER_STATUS_INACTIVE;
+		}else if(is_numeric($doc['status'])){
+			$this->status = (int)$doc['status'];
+		}
+		
+
 		$this->accessLevel = $doc['accessLevel'];
 		$this->connections = $doc['connections'];
 		$this->location = (is_object($location)) ? $location->__toArray() : $doc['location'];

@@ -126,7 +126,7 @@
         ]);
 
         var options = {
-          title: 'My Daily Activities'
+          title: ''
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
