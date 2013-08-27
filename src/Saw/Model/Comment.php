@@ -12,38 +12,37 @@ class Comment extends Model {
 	
     public $collection = 'comment';
     public $comment;
-    public $replyTo; // the _id of the parent comment.
 	public $belongsTo; // the _id of either blog or forum
-	public $author;  // the member who posted it's not just an _id it's a nested member document
-	public $postedDate;
-	public $private; // yes / no
+	public $author;  // document with member._id, member.displayName, member.image
+	static public $type = array('PUBLIC'=>10,'PRIVATE'=>20);
+	static public $typeReversed = array(10=>'PUBLIC',20=>'PRIVATE');
+	public $currentType;
+	public $replies; // array of comment documents
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addPropertyConstraint('comment', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('belongsTo', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('author', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		$metadata->addPropertyConstraint('postedDate', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		
 	}
 
-	public function __construct($doc, Application $app, $author=array()){
+	public function __construct($doc, Application $app, $memberLite=array()){
 		parent::__construct($app);
 		$this->init($doc);
 		
 		if(!empty($doc['_id'])) $this->_id = (is_object($doc['_id'])) ? $doc['_id'] : new \MongoId($doc['_id']);
         $this->comment = $doc['comment'];
-        $this->private = $doc['private'];
-		$this->replyTo = (!empty($doc['replyTo'])) ? (is_object($doc['replyTo'])) ? $doc['replyTo'] : new \MongoId($doc['replyTo']) : $doc['replyTo'];
+        $this->currentType = $doc['currentType'];
+		$this->replies = $doc['replies'];
 		$this->belongsTo = (!empty($doc['belongsTo'])) ? (is_object($doc['belongsTo'])) ? $doc['belongsTo'] : new \MongoId($doc['belongsTo']) : $doc['belongsTo'];
-		$this->author = (is_object($author)) ? $author->__toArray(false) : $doc['author'];
+		$this->author = (is_object($memberLite)) ? $memberLite->__toArray(false) : $doc['memberLite'];
 
 	}
 	protected function prepareInsert(){
 		$this->comment = $this->comment ?: '';
-		$this->private = $this->private ?: 'yes';
-		$this->postedDate = $this->postedDate ?: new Date(self::$app,'now');
-		$this->replyTo = (!empty($this->replyTo)) ? (is_object($this->replyTo)) ? $this->replyTo : new \MongoId($this->replyTo) : new \stdClass();
-		$this->ownerId = (!empty($this->ownerId)) ? (is_object($this->ownerId)) ? $this->ownerId : new \MongoId($this->ownerId) : new \stdClass();
+		$this->currentType = $this->currentType ?: self::$type['PRIVATE'];
+		$THIS->replies = $this->replies ?: array();
+		$this->belongsTo = (!empty($this->belongsTo)) ? (is_object($this->belongsTo)) ? $this->belongsTo : new \MongoId($this->belongsTo) : new \stdClass();
 		$this->author = $this->author ?: new \StdClass();
 	}
 	public function insert(){
@@ -54,9 +53,40 @@ class Comment extends Model {
 			throw new Saw\Exceptions\SawException(new Saw\Model\Exceptions\DomainException(),"Adding failed.  Please try again.");
 		}
 	}
-	public function getByBelongsTo($offset=0,$limit=100){
+	public function reply($replyTo, $doc){
+		
+		$doc['_id'] = new \MongodId();
+		$comment = new Comment($doc,self::$app);
+
+		$criteria = array('_id'=>$replyTo);
+		$update_spec = array('$addToSet'=>array('replies'=>$comment));
+		self::$app['mongo']->update($update_spec, $this->collection, $criteria, $multiple=false, $upsert=false,$options=array('safe'=>true,'fsync'=>true));
+		return $comment->__toArray(false);
+
+	}
+	public function fetchByBelongsTo($offset=0,$limit=1000){
         $fields = array();
-		return $this->find($query=array('belongsTo'=>$this->belongsTo,'private'=>'yes'),$fields,$slaveOkay=true,$sort=array('_id'=>-1),$offset,$limit);
+		$comments = $this->find($query=array('belongsTo'=>$this->belongsTo),$fields,$slaveOkay=true,$sort=array('_id'=>-1),$offset,$limit);
+
+		$i=0;
+		foreach ($comments as $comment) {
+			// if older than 28 days show date instead of timeAgo
+			$comments[$i]['timeAgo'] = ($comment['_id']->getTimestamp() > 2419200) ? date('j M, Y',$comment['_id']->getTimestamp()) : self::$app['utility']->timeAgo($comment['_id']->getTimestamp());
+			if(is_array($comment['replies']) && !empty($comment['replies'])){
+				//re-organize replies as _id indexed array to use ksort
+				$replies = array();
+				foreach($comment['replies'] as $reply){
+					$replies[$reply['_id']] = $reply;
+					$replies['timeAgo'] = ($reply['_id']->getTimestamp() > 2419200) ? date('j M, Y',$reply['_id']->getTimestamp()) : self::$app['utility']->timeAgo($reply['_id']->getTimestamp());
+				}
+				ksort($replies);//should sort ascending
+				$comments[$i]['replies'] = $replies;
+			}
+			$i++;
+		}
+
+
+		return $comments;
 	}
 	public function updateAuthor($member){
 		$doc = array('$set'=>array('author'=>$member));

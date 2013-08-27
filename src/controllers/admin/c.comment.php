@@ -12,17 +12,33 @@ use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Saw\Model;
 
 
-$app->get('/', function (Request $request) use ($app) {
+$app->get('/comment/private/{belongsTo}', function ($belongsTo, Request $request) use ($app) {
 	
-	$crumbs = array(array('name'=>'DUI Blog','href'=>'/blog/'));
-	$view_vars = array(
-						 'active'=>'Blog'
-						,'page-plugin'=>'datatables'
-						,'headline'=>'DUI Blog'
-						,'description'=>"Participate in all blogs here."
-						,'crumbs'=>$crumbs
-						);
-	return $app['view']->render('blog/index', 'default', $view_vars);
-})->before($mustbeMEMBER);
+	$comment = new Model\Comment(array('belongsTo'=>$belongsTo),$app);
+	$comments = $comment->fetchByBelongsTo();
+
+	return new Response(json_encode(array('comments'=>$comments,'count'=>count($comments),'message' => 'success')), 200,array('Content-Type' => 'application/json'));
+
+})->before($mustbeMEMBER)->value('belongsTo','');
+
+$app->post('/comment/private/post/{belongsTo}', function ($belongsTo, Request $request) use ($app) {
+	// retrieve document from request
+    $doc = $request->get('doc');
+    $comment = new Model\Comment($doc,$app);
+    $comment->insert();
+
+    return new Response(json_encode(array('message' => 'successful operation.')), 200,array('Content-Type' => 'application/json'));
+
+})->before($mustbeMEMBER)->value('belongsTo','');
+
+$app->post('/comment/private/post/reply/{replyTo}', function ($replyTo, Request $request) use ($app) {
+	// retrieve document from request
+    $doc = $request->get('doc');
+    $comment = new Model\Comment(array(),$app);
+    $comment->replyTo($replyTo,$doc);
+    
+    return new Response(json_encode(array('message' => 'successful operation.')), 200,array('Content-Type' => 'application/json'));
+
+})->before($mustbeMEMBER)->value('replyTo','');
 
 return $app;
