@@ -322,7 +322,7 @@ class Blog extends Model {
 
 	}
 	public static function getAvailableTags(){
-		return array('Breath Testing', 'Blood Testing', 'Field Sobriety Tests', 'Drug Dui (DRE)', 'Constitutional Issues', 'Forensic Science', 'Evidence', 'Ethics', 'Recent Case Law');
+		return array('Breath Testing', 'Blood Testing', 'Boating Under the Influence','FAA Issues','Public Policy','Interstate Compact', 'Field Sobriety Tests', 'Drug Dui (DRE)', 'Constitutional Issues', 'Forensic Science', 'Evidence', 'Ethics', 'Recent Case Law');
 	}
 	public static function slugify($str){
 
