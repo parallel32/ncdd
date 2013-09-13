@@ -60,7 +60,7 @@
                                         <p><?=substr($post['body'],0,300)?>… <a href="/blog/<?=$post['_id']?><?=$post['slug']?>">read more</a></p>
                                         <div class="autor">
                                             <img src="<?=(!empty($post['author']['image'])) ? $post['author']['image']['urls']['small']['CDN'] : '/noprofileimage';?>" alt="" class="avatar pull-left">
-                                            <div class="pull-left"><span>Posted By:</span><br><a href="/member/<?=$post['author']['_id']?><?=$post['author']['slug']?>"><?=$post['author']['firstName'].' '.$post['author']['lastName']?> </a></div>
+                                            <div class="pull-left"><span>Posted By:</span><br><a href="/member/<?=$post['author']['_id']?>/<?=$post['author']['slug']?>"><?=$post['author']['firstName'].' '.$post['author']['lastName']?> </a></div>
                                         </div>
                                     </div>
                                 </div>
