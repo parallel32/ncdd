@@ -237,7 +237,7 @@
                             'map_22':{
                                 'namesId':'DE',
                                 'name': 'DELAWARE',
-                                'url':'/dui-laws-in-your-state/usa/deleware',
+                                'url':'/dui-laws-in-your-state/usa/delaware',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',

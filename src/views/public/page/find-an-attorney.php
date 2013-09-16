@@ -237,7 +237,7 @@
                             'map_22':{
                                 'namesId':'DE',
                                 'name': 'DELAWARE',
-                                'url':'/find-an-attorney/usa/deleware',
+                                'url':'/find-an-attorney/usa/delaware',
                                 'target':'_self',
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
