@@ -80,7 +80,7 @@
                                  <label class="control-label">Executive Position</label>
                                  <div class="controls">
                                     <select class="large m-wrap currentFacultyPosition" name="doc[currentFacultyPosition]">
-                                       <option value="">No Position</option>
+                                       <option value="0">No Position</option>
                                        <? foreach($this->vars['member']['facultyPositionReversed'] as $key=>$val): ?>
                                        <option value="<?=$key?>" <?=($this->vars['member']['currentFacultyPosition'] == $key) ?'selected':'';?>><?=$val?></option>
                                        <? endforeach; ?>
