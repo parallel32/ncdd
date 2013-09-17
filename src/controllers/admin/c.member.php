@@ -239,8 +239,8 @@ $member->post('/{id}/pa/add', function ($id, Request $request) use ($app) {
 	$member->saveEdit();    
     return new Response(json_encode(array('pa'=>$doc, 'id'=>$id, 'message' => 'added successfully.')), 200,array('Content-Type' => 'application/json'));
 });
-$member->get('/{id}/pa/{pa}/delete', function ($id, $pa, Request $request) use ($app) {
-    
+$member->post('/{id}/pa/delete', function ($id, Request $request) use ($app) {
+    $pa = $request->get('pa');
 	$member = new Model\Member(array('_id'=>$id), $app);
 	$member->removePracticeArea($pa);
 	$member->getPracticeAreas();

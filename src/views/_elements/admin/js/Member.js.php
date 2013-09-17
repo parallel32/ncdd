@@ -326,14 +326,14 @@
 		});
 		$('#pa-grid .delete').click(function(e){
 			var the_this = $(this);
-			io.saw.FormGet.activate({postUrl:'/member/'+$(this).attr('data-id')+'/pa/'+$(this).attr('data-name')+'/delete'
+			io.saw.FormPost.activate({postUrl:'/member/'+$(this).attr('data-id')+'/pa/delete'
+				,serialized:'pa='+$(this).attr('data-name')
 				,postOnComplete:function(responseObj,responseStatus){}
 				,postOnSuccess:function(responseObj){
 					// remove the record from the grid
 					$(the_this).parents('tr').remove();
 				}
 			});
-			
 		});		
 		
 
@@ -357,14 +357,14 @@
                    	// rebind click event to the records....
                    	$('#pa-grid .delete').click(function(e){
 						var the_this = $(this);
-						io.saw.FormGet.activate({postUrl:'/member/'+$(this).attr('data-id')+'/pa/'+$(this).attr('data-name')+'/delete'
+						io.saw.FormPost.activate({postUrl:'/member/'+$(this).attr('data-id')+'/pa/delete'
+							,serialized:'pa='+$(this).attr('data-name')
 							,postOnComplete:function(responseObj,responseStatus){}
 							,postOnSuccess:function(responseObj){
 								// remove the record from the grid
 								$(the_this).parents('tr').remove();
 							}
 						});
-						
 					});	
 			   }
 			});
