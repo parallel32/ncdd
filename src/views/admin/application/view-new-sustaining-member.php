@@ -479,7 +479,9 @@
                   </div>
                   
                   <div class="form-actions text-center">
+                     <? if($this->vars['application']['currentStatus'] < \Saw\Model\Apply::$status['APPROVED']): ?>
                      <button type="button" data-id="<?=$this->vars['application']['_id']?>" data-type="<?=$this->vars['application']['class']?>" class="btn green approve"><i class="icon-ok"></i> Approve Application</button>
+                     <? endif; ?>
                      <button type="button" class="btn cancel">Cancel and Go Back</button>
                      <button type="button" data-id="<?=$this->vars['application']['_id']?>" class="btn red delete">Delete Application</button>
                   </div>
