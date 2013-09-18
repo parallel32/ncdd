@@ -59,10 +59,15 @@ EOT;
 
 EOT;
          break;
-      case 'editor':
+      case 'editor1':
          echo <<< EOT
             <script type="text/javascript" src="/assets/snapeditor/snapeditor-1.9.0.js"></script>
-
+            
+EOT;
+         break;
+      case 'editor':
+         echo <<< EOT
+            <script type="text/javascript" src="/assets/snapeditor2/snapeditor.js"></script>
 
 EOT;
          break;
