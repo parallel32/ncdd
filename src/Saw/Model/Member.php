@@ -440,25 +440,25 @@ class Member extends User {
 			$result[$i]['slug'] = $value['member']['slug'];
 			$result[$i]['primaryPhone'] = $value['member']['primaryPhone'];
 			$result[$i]['email'] = $value['member']['email'];
-			$result[$i]['image'] = $value['member']['image'];
-			$result[$i]['currentMembership'] = $value['member']['currentMembership'];
-			$result[$i]['currentFacultyPosition'] = $value['member']['currentFacultyPosition'];
-			$result[$i]['boardCertified'] = $value['member']['boardCertified'];
+			// do some extra processing with the values here
+			$result[$i]['image'] = (!empty($value['member']['image'])) ? $value['member']['image']['urls']['small']['CDN'] : '/noprofileimage';
+			$result[$i]['currentMembership'] = (!empty($value['member']['currentMembership'])) ? self::$membershipReversed[$value['member']['currentMembership']] : '';;
+			$result[$i]['currentFacultyPosition'] = (!empty($value['member']['currentFacultyPosition'])) ? self::$facultyPositionReversed[$value['member']['currentFacultyPosition']] : '';
+			$result[$i]['boardCertified'] = ($value['member']['boardCertified']) ? "Yes" : "No";
+			$result[$i]['boardCertifiedBadge'] = self::$boardCertifiedBadge;
+			
 			$result[$i]['websites'] = $value['member']['websites'];
 			$result[$i]['location']['raw'] = $value['raw'];
 			$i++;
 		}
-
+		$_result = array();
 		if(!empty($result)):
 			for ($i=0; $i < count($result); $i++) {
-				$result[$i]['image'] = (!empty($result[$i]['image'])) ? $result[$i]['image']['urls']['small']['CDN'] : '/noprofileimage';
-				$result[$i]['currentMembership'] = (!empty($result[$i]['currentMembership'])) ? self::$membershipReversed[$result[$i]['currentMembership']] : '';
-				$result[$i]['currentFacultyPosition'] = (!empty($result[$i]['currentFacultyPosition'])) ? self::$facultyPositionReversed[$result[$i]['currentFacultyPosition']] : '';
-				$result[$i]['boardCertified'] = ($result[$i]['boardCertified']) ? "Yes" : "No";
-				$result[$i]['boardCertifiedBadge'] = self::$boardCertifiedBadge;
+				$_result[(string)$result[$i]['_id']] = $result[$i];
 			}
+
 		endif;
-		return $result;
+		return $_result;
 	}
 
 	public function searchFoundingMembersByState($state){
@@ -487,25 +487,25 @@ class Member extends User {
 			$result[$i]['slug'] = $value['member']['slug'];
 			$result[$i]['primaryPhone'] = $value['member']['primaryPhone'];
 			$result[$i]['email'] = $value['member']['email'];
-			$result[$i]['image'] = $value['member']['image'];
-			$result[$i]['currentMembership'] = $value['member']['currentMembership'];
-			$result[$i]['currentFacultyPosition'] = $value['member']['currentFacultyPosition'];
-			$result[$i]['boardCertified'] = $value['member']['boardCertified'];
+			// do some extra processing with the values here
+			$result[$i]['image'] = (!empty($value['member']['image'])) ? $value['member']['image']['urls']['small']['CDN'] : '/noprofileimage';
+			$result[$i]['currentMembership'] = (!empty($value['member']['currentMembership'])) ? self::$membershipReversed[$value['member']['currentMembership']] : '';;
+			$result[$i]['currentFacultyPosition'] = (!empty($value['member']['currentFacultyPosition'])) ? self::$facultyPositionReversed[$value['member']['currentFacultyPosition']] : '';
+			$result[$i]['boardCertified'] = ($value['member']['boardCertified']) ? "Yes" : "No";
+			$result[$i]['boardCertifiedBadge'] = self::$boardCertifiedBadge;
+			
 			$result[$i]['websites'] = $value['member']['websites'];
 			$result[$i]['location']['raw'] = $value['raw'];
 			$i++;
 		}
-		
+		$_result = array();
 		if(!empty($result)):
 			for ($i=0; $i < count($result); $i++) {
-				$result[$i]['image'] = (!empty($result[$i]['image'])) ? $result[$i]['image']['urls']['small']['CDN'] : '/noprofileimage';
-				$result[$i]['currentMembership'] = (!empty($result[$i]['currentMembership'])) ? self::$membershipReversed[$result[$i]['currentMembership']] : '';
-				$result[$i]['currentFacultyPosition'] = (!empty($result[$i]['currentFacultyPosition'])) ? self::$facultyPositionReversed[$result[$i]['currentFacultyPosition']] : '';
-				$result[$i]['boardCertified'] = ($result[$i]['boardCertified']) ? "Yes" : "No";
-				$result[$i]['boardCertifiedBadge'] = self::$boardCertifiedBadge;
+				$_result[(string)$result[$i]['_id']] = $result[$i];
 			}
+
 		endif;
-		return $result;
+		return $_result;
 	}
 
 	public function searchStateDelegatesByState($state){
@@ -534,25 +534,25 @@ class Member extends User {
 			$result[$i]['slug'] = $value['member']['slug'];
 			$result[$i]['primaryPhone'] = $value['member']['primaryPhone'];
 			$result[$i]['email'] = $value['member']['email'];
-			$result[$i]['image'] = $value['member']['image'];
-			$result[$i]['currentMembership'] = $value['member']['currentMembership'];
-			$result[$i]['currentFacultyPosition'] = $value['member']['currentFacultyPosition'];
-			$result[$i]['boardCertified'] = $value['member']['boardCertified'];
+			// do some extra processing with the values here
+			$result[$i]['image'] = (!empty($value['member']['image'])) ? $value['member']['image']['urls']['small']['CDN'] : '/noprofileimage';
+			$result[$i]['currentMembership'] = (!empty($value['member']['currentMembership'])) ? self::$membershipReversed[$value['member']['currentMembership']] : '';;
+			$result[$i]['currentFacultyPosition'] = (!empty($value['member']['currentFacultyPosition'])) ? self::$facultyPositionReversed[$value['member']['currentFacultyPosition']] : '';
+			$result[$i]['boardCertified'] = ($value['member']['boardCertified']) ? "Yes" : "No";
+			$result[$i]['boardCertifiedBadge'] = self::$boardCertifiedBadge;
+			
 			$result[$i]['websites'] = $value['member']['websites'];
 			$result[$i]['location']['raw'] = $value['raw'];
 			$i++;
 		}
-				
+		$_result = array();
 		if(!empty($result)):
 			for ($i=0; $i < count($result); $i++) {
-				$result[$i]['image'] = (!empty($result[$i]['image'])) ? $result[$i]['image']['urls']['small']['CDN'] : '/noprofileimage';
-				$result[$i]['currentMembership'] = (!empty($result[$i]['currentMembership'])) ? self::$membershipReversed[$result[$i]['currentMembership']] : '';
-				$result[$i]['currentFacultyPosition'] = (!empty($result[$i]['currentFacultyPosition'])) ? self::$facultyPositionReversed[$result[$i]['currentFacultyPosition']] : '';
-				$result[$i]['boardCertified'] = ($result[$i]['boardCertified']) ? "Yes" : "No";
-				$result[$i]['boardCertifiedBadge'] = self::$boardCertifiedBadge;
+				$_result[(string)$result[$i]['_id']] = $result[$i];
 			}
+
 		endif;
-		return $result;
+		return $_result;
 	}
 
 	// saves user_id into session

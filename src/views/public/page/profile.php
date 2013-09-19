@@ -48,7 +48,7 @@
                                 </ul>
                             </li>
                             <li class="userProfileItem numbers">
-                                <h5 class="userProfileTitle">Additional Numbers</h5>
+                                <h5 class="userProfileTitle"><?=(count($member['locations']) > 1) ? "Additional Numbers": "Phone Number";?></h5>
                                 <ul class="infoList">
                                     <? foreach($member['locations'] as $location): ?>
                                     <li class="infoListItem"><?=$location['phone']?></li>
@@ -56,7 +56,7 @@
                                 </ul>
                             </li>
                             <li class="userProfileItem">
-                                <h5 class="userProfileTitle">Additional Websites</h5>
+                                <h5 class="userProfileTitle"><?=(count($member['websites']) > 1) ? "Additional Websites": "Website";?></h5>
                                 <ul class="infoList websites">
                                     <? foreach($member['websites'] as $website): ?>
                                     <li class="infoListItem"><a href="//<?=$website['website']?>" alt="<?=$website['websiteDesc']?>" title="<?=$website['websiteDesc']?>"><?=$website['website']?></a></li>
