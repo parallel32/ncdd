@@ -111,7 +111,7 @@
 		});
 		$('#saw-form .btn.cancel').click(function(e){
 			e.preventDefault();
-			document.location.href='/application';			
+			document.location.href='/applications';			
 		});
 		$('#saw-form .btn.red').click(function(e){
 			// pop delete are you sure modal

@@ -144,7 +144,6 @@
          </div>
          <!-- END PAGE -->
          <?=$this->element('js/Page.js');?>
-         <script src="/assets/plugins/jquery.appear.js" type="text/javascript"></script> 
          <script>
          jQuery(document).ready(function() {    
             io.saw.Page.init();
@@ -167,10 +166,6 @@
                          }
                ,snap: false
                
-            });
-            $('#body').appear();
-            $('#body').on('appear', function(event, $all_appeared_elements) {
-               window.editor.api.activate();    
             });
             $('.show-editor').click(function(e){
                window.editor.api.activate();
