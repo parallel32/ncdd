@@ -76,7 +76,7 @@
                                     <td class="hidden-480 "><?=$application['city'].', '.$application['state']?></td>
                                     <td class="hidden-480 "><?=$application['approvedDate']['monthDay'].' '.$application['approvedDate']['shortTime']?></td>
                                     <td class="center hidden-480 "><?=$application['type']?></td>
-                                    <td class=" "><a data-id="<?=$application['_id']?>" class="btn blue mini pay"><i class=" icon-eye-open"></i> Pay Membership Dues</a></td>
+                                    <td class=" "><a data-id="<?=$application['_id']?>" class="btn blue mini pay"><i class=" "></i> Pay Membership Dues</a></td>
                                  </tr>
                                  <? endforeach;?>
                                  <? else: ?>
@@ -126,7 +126,7 @@
                                     <td class=" "><?=$blog['headline']?></td>
                                     <td class="hidden-480 "><?=$blog['publishDate']['shortTime'].' '.$blog['publishDate']['monthDay']?></td>
                                     <td class="hidden-480 "><?=$blog['author']['firstName'].' '.$blog['author']['lastName']?></td>
-                                    <td class=" "><a data-id="<?=$blog['_id']?>" class="btn blue mini view"><i class=" icon-eye-open"></i> View</a></td>
+                                    <td class=" "><a data-id="<?=$blog['_id']?>" class="btn blue mini view"><i class=" "></i> View</a></td>
                                  </tr>
                                  <? endforeach;?>
                                  <? else: ?>
@@ -171,7 +171,7 @@
                                  <tr class="gradeX odd">
                                     <td class=" "><?=$page['headline']?></td>
                                     <td class=" "><?=date('F j, Y',$page['_id']->getTimestamp())?></td>
-                                    <td class=" "><a data-id="<?=$page['slug']?>" class="btn blue mini view"><i class=" icon-eye-open"></i> View</a></td>
+                                    <td class=" "><a data-id="<?=$page['slug']?>" class="btn blue mini view"><i class=" "></i> View</a></td>
                                  </tr>
                                  <? endforeach;?>
                                  <? else: ?>

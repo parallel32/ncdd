@@ -36,7 +36,7 @@
                                  <tr class="gradeX odd">
                                     <td class=" "><?=$page['headline']?></td>
                                     <td class=" "><?=date('F j, Y',$page['_id']->getTimestamp())?></td>
-                                    <td class=" "><a data-id="<?=$page['slug']?>" class="btn blue mini view"><i class=" icon-eye-open"></i> View</a></td>
+                                    <td class=" "><a data-id="<?=$page['slug']?>" class="btn blue mini view"><i class=" "></i> View</a></td>
                                  </tr>
                                  <? endforeach;?>
                                  <? else: ?>

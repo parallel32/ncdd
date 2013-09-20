@@ -38,7 +38,7 @@
                                  <td class="hidden-480 "><?=$application['city'].', '.$application['state']?></td>
                                  <td class="hidden-480 "><?=$application['submittedDate']['monthDay'].' '.$application['submittedDate']['shortTime']?></td>
                                  <td class="center hidden-480 "><?=$application['type']?></td>
-                                 <td class=" "><a data-id="<?=$application['_id']?>" class="btn blue mini view"><i class=" icon-eye-open"></i> View Application</a></td>
+                                 <td class=" "><a data-id="<?=$application['_id']?>" class="btn blue mini view"><i class=" "></i> View</a></td>
                               </tr>
                               <? endforeach;?>
                               <? else: ?>
@@ -81,8 +81,8 @@
                                  <td class="hidden-480 "><?=$application['approvedDate']['monthDay'].' '.$application['approvedDate']['shortTime']?></td>
                                  <td class="center hidden-480 "><?=$application['type']?></td>
                                  <td class=" ">
-                                    <a data-id="<?=$application['_id']?>" class="btn blue mini view"><i class=" icon-eye-open"></i> View Application</a>
-                                    <a data-id="<?=$application['memberId']?>" class="btn blue mini view member"><i class=" icon-eye-open"></i> View Member</a>
+                                    <a data-id="<?=$application['_id']?>" class="btn blue mini view"><i class=" "></i> Application</a>
+                                    <a data-id="<?=$application['memberId']?>" class="btn blue mini view member"><i class=" "></i> Member</a>
                                  </td>
                               </tr>
                               <? endforeach;?>
@@ -126,8 +126,8 @@
                                  <td class="hidden-480 "><?=$application['paidDate']['monthDay'].' '.$application['paidDate']['shortTime']?></td>
                                  <td class="center hidden-480 "><?=$application['type']?></td>
                                  <td class=" ">
-                                    <a data-id="<?=$application['_id']?>" class="btn blue mini view"><i class=" icon-eye-open"></i> View Application</a>
-                                    <a data-id="<?=$application['paymentId']?>" class="btn blue mini view payment"><i class=" icon-eye-open"></i> View Payment</a>
+                                    <a data-id="<?=$application['_id']?>" class="btn blue mini view"><i class=" "></i> Application</a>
+                                    <a data-id="<?=$application['paymentId']?>" class="btn blue mini view payment"><i class=" "></i> Payment</a>
                                  </td>
                               </tr>
                               <? endforeach;?>
