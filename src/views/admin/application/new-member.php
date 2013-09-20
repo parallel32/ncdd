@@ -119,7 +119,7 @@
                      <!--/span-->
                      <div class="span6 ">
                         <div class="control-group">
-                           <label class="control-label">Listserv Email</label>
+                           <label class="control-label">Listserv Email (if different from above)</label>
                            <div class="controls">
                               <input type="text" name="doc[listServEmail]" class="m-wrap span12 listServEmail">
                            </div>

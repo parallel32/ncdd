@@ -61,14 +61,16 @@ class Apply extends Model {
 		$metadata->addPropertyConstraint('country', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('lat', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('lon', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		$metadata->addConstraint(new Callback(array('methods' => array('listServ'))));
+		//$metadata->addConstraint(new Callback(array('methods' => array('listServ'))));
 	}
+	/* --commented out because it's no longer necessary
 	public function listServ(ExecutionContext $context){
 		if($this->addToListServ == 'yes' && empty($this->listServEmail)){
 			$propertyPath = $context->getPropertyPath().'listServEmail';
 			$context->addViolationAtPath($propertyPath,'cannot be blank.', array(), null);
 		}
 	}
+	*/
 	public function __construct($doc, Application $app){
 		parent::__construct($app);
 		$this->init($doc);
