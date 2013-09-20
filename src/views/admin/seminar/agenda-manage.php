@@ -111,11 +111,11 @@
                                  
                               </div>
                            </div>
-                           <h3 class="form-section">Description</h3>
+                           <h3 class="form-section">Description</h3>&nbsp;<button type="button" class="btn blue show-editor">Click To Edit</button><br><br>
                            <div class="row-fluid">
                               <div class="span12 ">
                                  <div class="control-group">
-                                    <span id="description" class="help-block">Click here to add a description...</span>
+                                    <span id="description" class="help-block"></span>
                                     <input id="input-description" type="hidden" name="doc[description]" value="">
                                  </div>
                               </div>
@@ -188,6 +188,7 @@
 
       <?=$this->element('js/Agenda.js');?>
       <?=$this->element('js/FormClockFacePickerClass.js');?>
+
       <script>
       jQuery(document).ready(function() {    
          io.saw.FormClockFacePicker.init();
@@ -197,8 +198,8 @@
               Aloha.jQuery('.description').aloha();
          });
          //*/
-
-         var editor = new SnapEditor.InPlace("description", {
+         SnapEditor.zIndexBase = 12000;
+         window.editor = new SnapEditor.InPlace("description", {
                path: "/assets/snapeditor",
              toolbar: {
                items: [
@@ -209,29 +210,10 @@
                   "link", "table", "horizontalRule", "|"
                 ],
                }
-               ,snap: false
-               ,onSave: function (e) {
-                  var isSuccess = true;
-                  html = e.html;
-                  io.saw.Agenda.save();
-                  return isSuccess || "Error";
-               }
-               ,onUnsavedChanges: function (e) {
-                  e.api.execAction("save");
-              }
-            });
-         editor.on("snapeditor.ready", function (e) {
-            window.setTimeout(function(){
-               $('.snapeditor_toolbar_component').css('z-index',12000);   
-               
-               $('.snapeditor_toolbar_frame a').click(function(e){
-                  $('.snapeditor_toolbar_component').css('z-index',12000);
-                  $('.snapeditor_dialog').css('z-index',12000);
-                  
-               })
-            },200);
-            
+               ,snap: false      
          });
+         
+         
          /*
          $('#description').click(function(e){
             console.log('here.....');

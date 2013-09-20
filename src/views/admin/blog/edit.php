@@ -169,13 +169,13 @@
                            </div>
                            <!--/span-->
                         </div>
-                        <h3 class="form-section text-info"><strong>Content</strong></h3>
+                        <h3 class="form-section text-info"><strong>Content</strong></h3>&nbsp;<button type="button" class="btn blue show-editor">Click To Edit</button><br><br>
                         <div class="row-fluid">
                            <div class="span12 ">
                               <div class="control-group ">
                                  <label class="control-label"></label>
                                  <div class="controls">
-                                    <span id="body" class="help-block"><?=(!empty($this->vars['blog']) && array_key_exists('body',$this->vars['blog'])) ? $this->vars['blog']['body'] : 'Click Here To Add Content...<br><br><br>'?></span>
+                                    <span id="body" class="help-block"><?=(!empty($this->vars['blog']) && array_key_exists('body',$this->vars['blog'])) ? $this->vars['blog']['body'] : '<br>'?></span>
                                     <input id="input-body" type="hidden" name="doc[body]" value="">
                                  </div>
                               </div>
@@ -318,6 +318,7 @@
          </div>
          <!-- END PAGE -->
          <?=$this->element('js/Blog.js');?>
+         <script src="/assets/plugins/jquery.appear.js" type="text/javascript"></script> 
          <script>
          jQuery(document).ready(function() {    
             io.saw.Blog.init();
@@ -330,30 +331,36 @@
                   });
                }
                
-                var editor = new SnapEditor.InPlace("body", {
-               path: "/assets/snapeditor",
-             toolbar: {
-               items: [
-                  "styleBlock", "|",
-                  "bold", "italic", "underline", "|",
-                  "alignLeft", "alignCentre", "alignRight", "alignJustify", "|",
-                  "orderedList", "unorderedList", "indent", "outdent", "|",
-                  "link", "table", "horizontalRule", "|"
-                ],
-                         }
-               ,snap: false
-               /*
-               ,onSave: function (e) {
-                  var isSuccess = true;
-                  html = e.html;
-                  io.saw.Blog.save();
-                  return isSuccess || "Error";
-               }
-               ,onUnsavedChanges: function (e) {
-                  e.api.execAction("save");
-              }*/
-               
-            });
+               window.editor = new SnapEditor.InPlace("body", {
+                  path: "/assets/snapeditor",
+                  toolbar: {
+                     items: [
+                        "styleBlock", "|",
+                        "bold", "italic", "underline", "|",
+                        "alignLeft", "alignCentre", "alignRight", "alignJustify", "|",
+                        "orderedList", "unorderedList", "indent", "outdent", "|",
+                        "link", "table", "horizontalRule", "|"
+                      ],
+                               }
+                     ,snap: false
+                     /*
+                     ,onSave: function (e) {
+                        var isSuccess = true;
+                        html = e.html;
+                        io.saw.Blog.save();
+                        return isSuccess || "Error";
+                     }
+                     ,onUnsavedChanges: function (e) {
+                        e.api.execAction("save");
+                    }*/
+               });
+               $('#body').appear();
+               $('#body').on('appear', function(event, $all_appeared_elements) {
+                  window.editor.api.activate();    
+               });
+               $('.show-editor').click(function(e){
+                  window.editor.api.activate();
+               })
           <? endif; ?>
            
          });

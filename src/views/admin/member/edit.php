@@ -304,8 +304,7 @@
                            </div>
                            <!--/span-->
                         </div>
-                        <h3 class="form-section text-info"><strong>About Me</strong></h3>
-                        <h5 class="form-section text-info"><strong>click on the text to edit</strong></h5>
+                        <h3 class="form-section text-info"><strong>About Me</strong></h3>&nbsp;<button type="button" class="btn blue show-editor">Click To Edit</button><br><br>
                         <div class="row-fluid">
                            <div class="span12 ">
                               <div class="control-group ">
@@ -1021,34 +1020,43 @@
          <!-- END PAGE -->
          <?=$this->element('js/Member.js',array('accessLevel'=>$accessLevel));?>
          <?=$this->element('js/Address.js');?>
+         <script src="/assets/plugins/jquery.appear.js" type="text/javascript"></script>   
 
          <script>
          jQuery(document).ready(function() {    
             io.saw.Member.init();
             io.saw.Address.init('#location-form');
 
-            var editor = new SnapEditor.InPlace("aboutMe", {
-              path: "/assets/snapeditor",
-             toolbar: {
-               items: [
-                "styleBlock", "|",
-                "bold", "italic", "underline", "|",
-                "alignLeft", "alignCentre", "alignRight", "alignJustify", "|",
-                "orderedList", "unorderedList", "indent", "outdent", "|",
-                "link", "table", "horizontalRule", "|"
-              ],
-             }
-             ,snap: false
-             ,onSave: function (e) {
-                var isSuccess = true;
-                html = e.html;
-                io.saw.Member.save();
-                return isSuccess || "Error";
-             }
-             ,onUnsavedChanges: function (e) {
-                  e.api.execAction("save");
-              }
-          });
+            window.editor = new SnapEditor.InPlace("aboutMe", {
+                path: "/assets/snapeditor",
+                toolbar: {
+                  items: [
+                   "styleBlock", "|",
+                   "bold", "italic", "underline", "|",
+                   "alignLeft", "alignCentre", "alignRight", "alignJustify", "|",
+                   "orderedList", "unorderedList", "indent", "outdent", "|",
+                   "link", "table", "horizontalRule", "|"
+                 ],
+                }
+                ,snap: false
+                ,onSave: function (e) {
+                   var isSuccess = true;
+                   html = e.html;
+                   io.saw.Member.save();
+                   return isSuccess || "Error";
+                }
+                ,onUnsavedChanges: function (e) {
+                     e.api.execAction("save");
+                 }
+             });
+            
+            $('#aboutMe').appear(); // It supports optinal hash with "force_process" and "interval" keys. Check source code for details.
+            $('#aboutMe').on('appear', function(event, $all_appeared_elements) {
+               window.editor.api.activate();    
+            });
+            $('.show-editor').click(function(e){
+               window.editor.api.activate();
+            })
          });      
          </script>
 

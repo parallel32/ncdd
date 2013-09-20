@@ -67,7 +67,7 @@
 			}
 		});
 		$('#saw-form .cancel').click(function(e){
-			document.location.href="/seminar/view/<?=(array_key_exists('seminar',$this->vars)) ? $this->vars['seminar']['_id']: '';?>";	
+			<?=(array_key_exists('seminar',$this->vars)) ? 'document.location.href="/seminar/view/'.$this->vars['seminar']['_id'].'"': 'document.location.href="/seminar"';?>;	
 		});
 		$('#saw-form .manage').click(function(e){
 			document.location.href="/agenda/<?=(array_key_exists('seminar',$this->vars)) ? $this->vars['seminar']['_id']: '';?>/manage";	

@@ -156,6 +156,9 @@
 		$('#payment-form .btn.green').click(function(e){
 			createStripeToken();
 		});
+		$('#payment-form .btn.cancel').click(function(e){
+			document.location.href='/';
+		});
 		$('#save-success .continue.payment').click(function(e){
 			document.location.href='/payment/'+$(this).attr('data-insertid')+'/view';
 		});

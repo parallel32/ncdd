@@ -92,13 +92,13 @@
                            </div>
                            <!--/span-->
                         </div>
-                        <h3 class="form-section text-info"><strong>Body</strong></h3>
+                        <h3 class="form-section text-info"><strong>Body</strong></h3>&nbsp;<button type="button" class="btn blue show-editor">Click To Edit</button><br><br>
                         <div class="row-fluid">
                            <div class="span12 ">
                               <div class="control-group ">
                                  <label class="control-label"></label>
                                  <div class="controls">
-                                    <span id="body" class="help-block"><?=(!empty($this->vars['page']) && array_key_exists('body',$this->vars['page'])) ? $this->vars['page']['body'] : 'Click Here To Add Content...'?></span>
+                                    <span id="body" class="help-block"><?=(!empty($this->vars['page']) && array_key_exists('body',$this->vars['page'])) ? $this->vars['page']['body'] : '<br><br>'?></span>
                                     <input id="input-body" type="hidden" name="doc[body]" value="">
                                  </div>
                               </div>
@@ -144,6 +144,7 @@
          </div>
          <!-- END PAGE -->
          <?=$this->element('js/Page.js');?>
+         <script src="/assets/plugins/jquery.appear.js" type="text/javascript"></script> 
          <script>
          jQuery(document).ready(function() {    
             io.saw.Page.init();
@@ -153,7 +154,7 @@
             });
             //*/
 
-             var editor = new SnapEditor.InPlace("body", {
+             window.editor = new SnapEditor.InPlace("body", {
                path: "/assets/snapeditor",
              toolbar: {
                items: [
@@ -167,7 +168,13 @@
                ,snap: false
                
             });
-
+            $('#body').appear();
+            $('#body').on('appear', function(event, $all_appeared_elements) {
+               window.editor.api.activate();    
+            });
+            $('.show-editor').click(function(e){
+               window.editor.api.activate();
+            })
            
          });
             

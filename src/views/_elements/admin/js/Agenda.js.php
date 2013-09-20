@@ -34,7 +34,7 @@
 
 			// activate the modal
 			$('#timeslot-modal').modal({keyboard: false});	
-
+			
 		})
 		// show the time slot modal and prepare for editing a time slot
 		$('.edit-time-slot').click(function(e){
@@ -49,6 +49,7 @@
 			$('#description').html($('#'+$('#edit-id').val()+'-description').html());
 			// activate the modal
 			$('#timeslot-modal').modal({keyboard: false});	
+			
 		})
 		// show the time slot modal and prepare for editing a time slot
 		$('.delete-time-slot').click(function(e){
@@ -94,6 +95,10 @@
 			$('.error').removeClass('error');			
 			$('.alert-error').addClass('hide').html('');
 		});
+		// show the editor
+		$('.show-editor').click(function(e){
+			window.editor.api.activate();
+		})
 		
 	};
 	

@@ -65,11 +65,11 @@
                                  
                               </div>
                            </div>
-                           <h3 class="form-section">Description</h3>
+                           <h3 class="form-section">Description</h3>&nbsp;<button type="button" class="btn blue show-editor">Click To Edit</button><br><br>
                            <div class="row-fluid">
                               <div class="span12 ">
                                  <div class="control-group">
-                                    <span id="description" class="help-block">Description Goes Here</span>
+                                    <span id="description" class="help-block"></span>
                                     <input id="input-description" type="hidden" name="doc[description]" value="">
                                  </div>
                               </div>
@@ -116,6 +116,7 @@
       <!-- END PAGE -->
       <?=$this->element('js/Seminar.js');?>
       <?=$this->element('js/FormDatePickerClass.js');?>
+      <script src="/assets/plugins/jquery.appear.js" type="text/javascript"></script> 
       <script>
       jQuery(document).ready(function() {    
          io.saw.FormDatePicker.init('range');
@@ -126,7 +127,7 @@
             Aloha.jQuery('.description').aloha();
          });
          */
-         var editor = new SnapEditor.InPlace("description", {
+         window.editor = new SnapEditor.InPlace("description", {
                path: "/assets/snapeditor",
              toolbar: {
                items: [
@@ -139,7 +140,14 @@
                          }
                ,snap: false
                
-            });
+         });
+         $('#description').appear();
+         $('#description').on('appear', function(event, $all_appeared_elements) {
+            window.editor.api.activate();    
+         });
+         $('.show-editor').click(function(e){
+            window.editor.api.activate();
+         })
 
       });      
       </script>
