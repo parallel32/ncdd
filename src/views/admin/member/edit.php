@@ -1020,7 +1020,6 @@
          <!-- END PAGE -->
          <?=$this->element('js/Member.js',array('accessLevel'=>$accessLevel));?>
          <?=$this->element('js/Address.js');?>
-         <script src="/assets/plugins/jquery.appear.js" type="text/javascript"></script>   
 
          <script>
          jQuery(document).ready(function() {    
@@ -1039,6 +1038,7 @@
                  ],
                 }
                 ,snap: false
+                /*
                 ,onSave: function (e) {
                    var isSuccess = true;
                    html = e.html;
@@ -1048,12 +1048,9 @@
                 ,onUnsavedChanges: function (e) {
                      e.api.execAction("save");
                  }
+                 */
              });
             
-            $('#aboutMe').appear(); // It supports optinal hash with "force_process" and "interval" keys. Check source code for details.
-            $('#aboutMe').on('appear', function(event, $all_appeared_elements) {
-               window.editor.api.activate();    
-            });
             $('.show-editor').click(function(e){
                window.editor.api.activate();
             })
