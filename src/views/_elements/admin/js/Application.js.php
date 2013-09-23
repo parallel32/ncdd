@@ -1,5 +1,38 @@
 <script type="text/javascript">
 (function( Application, $, undefined ) {
+	function bindAddressFieldsBlur(){
+		$('#address1').keyup(function(e){
+			onBlur();
+		})
+		$('#address1').keyup(function(e){
+			onBlur();
+		})
+		$('#city').keyup(function(e){
+			onBlur();
+		})
+		$('#state').keyup(function(e){
+			onBlur();
+		})
+		$('#postalCode').keyup(function(e){
+			onBlur();
+		})
+		$('#country').keyup(function(e){
+			onBlur();
+		})
+		
+	};
+	function onBlur(){
+		formatted_addr = $('#address1').val();
+		if($('#address2').val().length > 0){
+			formatted_addr+= ' '+$('#address2').val();
+		}
+		formatted_addr+= ' '+$('#city').val();
+		formatted_addr+= ', '+$('#state').val();
+		formatted_addr+= ' '+$('#zip').val();
+		formatted_addr+= ', '+$('#country').val();
+
+		$('#geocodeaddress').val(formatted_addr);
+	}
 	function newSustainingMemberAdd (){
 		
 		var full_address = $('#address1').val()+' '+$('#address2').val()+' '+$('#city').val()+', '+$('#state').val()+' '+$('#zip').val()+', '+$('#country').val();
@@ -64,6 +97,8 @@
 
         $("#phone").inputmask("mask", {"mask": "(999) 999-9999"}); //specifying fn & options
         $("#fax").inputmask("mask", {"mask": "(999) 999-9999"}); //specifying fn & options
+
+        bindAddressFieldsBlur();
 		
 	};
 	Application.newSustainingMemberInit = function(){
@@ -93,6 +128,7 @@
         $("#phone").inputmask("mask", {"mask": "(999) 999-9999"}); //specifying fn & options
         $("#fax").inputmask("mask", {"mask": "(999) 999-9999"}); //specifying fn & options
 		
+		bindAddressFieldsBlur();
 	};
 	Application.init = function(){
 		$('.btn.blue.mini.view').click(function(e){

@@ -439,7 +439,7 @@
                   <div class="row-fluid">
                      <div class="span6 ">
                         <div class="control-group">
-                           <label class="control-label">Are you presently serving, in any capacity, (either part time or full time in law enforcement or prosecution agencies (Example, reserve duty or municipal prosecutor)? </label>
+                           <label class="control-label">Are you presently serving, in any capacity, either part time or full time in law enforcement or prosecution agencies (Example, reserve duty or municipal prosecutor)? </label>
                            <div class="controls">
                               <select class="small m-wrap everLawEnforcement" name="doc[everLawEnforcement]">
                                  <option value="no">No</option>
@@ -461,7 +461,7 @@
                   </div>
                   <h3 class="form-section">13.</h3>
                   <div class="row-fluid">
-                     <div class="span6 ">
+                     <div class="span12 ">
                         <div class="control-group">
                            <label class="control-label">I understand that any future service in any branch of law enforcement or prosecution of state, province, county district or municipal ordinances/statutes requires my immediate disclosure to NCDD and termination of my membership. </label>
                            <div class="controls">
@@ -473,6 +473,7 @@
                         </div>
                      </div>
                      <!--/span-->
+                     <!-- commented out by request from Rhea.
                      <div class="span6 ">
                         <div class="control-group">
                            <label class="control-label">If "Yes", please explain.</label>

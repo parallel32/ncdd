@@ -80,10 +80,11 @@ class ApplyNewSustainingMember extends Apply {
 			$propertyPath = $context->getPropertyPath().'everLawEnforcementExplain';
 			$context->addViolationAtPath($propertyPath,'Please explain your answer.', array(), null);
 		}
+		/* commented out by request from Rhea to make this question simply a yes or no answer.
 		if($this->futureLawEnforcement == 'yes' && empty($this->futureLawEnforcementExplain)){
 			$propertyPath = $context->getPropertyPath().'futureLawEnforcementExplain';
 			$context->addViolationAtPath($propertyPath,'Please explain your answer.', array(), null);
-		}
+		}*/
 		if($this->attendSeminar == 'yes' && empty($this->attendSeminarExplain)){
 			$propertyPath = $context->getPropertyPath().'attendSeminarExplain';
 			$context->addViolationAtPath($propertyPath,'Please explain your answer.', array(), null);
