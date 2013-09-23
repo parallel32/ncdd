@@ -134,6 +134,11 @@ class Apply extends Model {
 
 	}
 	
+	public function saveEdit(){
+		$this->saveSafe();
+		return $this->_id;
+	}
+	
 	public function findByEmail(){
 		$query = array('email'=>trim(strtolower($this->email)));
         $fields = array('_id'=>1);
@@ -142,6 +147,17 @@ class Apply extends Model {
 		if(!empty($result)):
 			$this->_id = $result['_id'];
 			return true;
+		else:
+			return false;
+		endif;
+	}
+	public function checkEmailExists(){
+		$query = array('email'=>trim(strtolower($this->email)));
+        $fields = array('_id'=>1);
+		$result = self::$app['mongo']->findOne($this->collection, $query, $fields, $slaveOkay=true);
+		
+		if(!empty($result)):
+			return $result['_id'];
 		else:
 			return false;
 		endif;

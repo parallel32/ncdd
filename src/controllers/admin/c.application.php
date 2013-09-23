@@ -124,8 +124,84 @@ $app->get('/application/{id}/view', function ($id, Request $request) use ($app) 
 })->value('id','')
 ->before($mustbeADMIN);
 
+$app->get('/application/{id}/edit', function ($id, Request $request) use ($app) {
+	
+	$application = new Model\Apply($doc=array('_id'=>$id), $app);
+	$application = $application->findById();
+	$crumbs = array(array('name'=>'Applications','href'=>'/applications')
+					,array('name'=>$application['firstName'].' '.$application['lastName'],'href'=>'/application/'.$id.'/view')
+					,array('name'=>$application['type'],'href'=>'/application/'.$id.'/view')
+					,array('name'=>'Edit','href'=>'/application/'.$id.'/edit')
+					);
+	$view_vars = array(
+						 'active'=>'Application'
+						,'page-plugin'=>'datatables'
+						,'headline'=>'Applications'
+						,'description'=>"Edit Application."
+						,'crumbs'=>$crumbs
+						,'application'=>$application);
+	switch ($application['class']) {
+		case 'NewMemberApplication': // old deprecated
+		case 'ApplyNewMember':
+			return $app['view']->render('application/edit-new-member', 'default', $view_vars);		
+			break;
+		case 'ApplyNewSustainingMember':
+			return $app['view']->render('application/edit-new-sustaining-member', 'default', $view_vars);		
+			break;
+		
+	}
+	
+})->value('id','')
+->before($mustbeADMIN);
+
+$app->post('/application/edit', function (Request $request) use ($app) {
+
+	// retrieve document from request
+    $doc = $request->get('doc');
+    
+	switch ($doc['class']) {
+		case 'NewMemberApplication': // old deprecated
+		case 'ApplyNewMember':
+			$application = new Model\ApplyNewMember($doc, $app);
+		    break;
+		case 'ApplyNewSustainingMember':
+			$application = new Model\ApplyNewSustainingMember($doc, $app);
+		    break;		
+		case 'UpdateMember':
+			$application = new Model\UpdateMember(array('_id'=>$id), $app);
+			break;
+		case 'UpdateFoundingMember':
+			$application = new Model\UpdateFoundingMember(array('_id'=>$id), $app);
+			break;
+		case 'UpdateSustainingMember':
+			$application = new Model\UpdateSustainingMember(array('_id'=>$id), $app);
+			break;
+		case 'ApplyNewSustainingMember':
+			$application = new Model\ApplyNewSustainingMember(array('_id'=>$id), $app);
+			break;		
+	}
+
+	// validate the model
+	$app['validateModel']($app,$application);
+	
+	$application_id = $application->checkEmailExists();
+	if(!empty($application_id) && $application_id != $application->_id){
+    	$label = 'Success, but...';
+    	$message = "The email address you're trying to update is already in use on another application.  Please use a different email and try again.";
+    	$response_status = 400;
+    }else{
+    	$member = $application->saveEdit();	
+    	$label = 'Application Saved';
+    	$message = 'Application Successfully Saved.';
+    	$response_status = 200;
+    }
+    return new Response(json_encode(array('message' => $message,'label'=>$label)), $response_status,array('Content-Type' => 'application/json'));
+
+})->before($mustbeADMIN);
+
 $app->get('/application/{id}/approve/{type}', function ($id,$type, Request $request) use ($app) {
 	switch ($type) {
+		case 'NewMemberApplication': // old deprecated
 		case 'ApplyNewMember':
 			$application = new Model\ApplyNewMember(array('_id'=>$id), $app);
 			$application->findById();

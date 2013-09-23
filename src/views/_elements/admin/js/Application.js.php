@@ -71,6 +71,25 @@
 		   ,postOnSuccess:function(responseObj){}
 		});      
 	};
+	function saveApplication (){
+		
+		var full_address = $('#address1').val()+' '+$('#address2').val()+' '+$('#city').val()+', '+$('#state').val()+' '+$('#zip').val()+', '+$('#country').val();
+		$('#raw').val(full_address);
+			
+		io.saw.FormPost.activate({postUrl:'/application/edit'
+		   ,serializeSelector:':input'
+		   ,postOnComplete:function(responseObj,responseStatus){
+			   	if(responseStatus == 'success'){
+					$('#save-success .modal-body p').html(responseObj.message);
+			      	$('#save-success-label').html(responseObj.label);
+			      	$('#save-success').modal({keyboard: false});   		
+			   	}else{
+			   		var responseObj = $.parseJSON(responseObj.responseText);
+			   	}
+		   }
+		   ,postOnSuccess:function(responseObj){}
+		});      
+	};
 	Application.newMemberInit = function(){
 		$('#saw-form input').keypress(function (e) {
 		   if (e.which == 13) {
@@ -130,6 +149,38 @@
 		
 		bindAddressFieldsBlur();
 	};
+	Application.editInit = function(){
+		$('#saw-form input').keypress(function (e) {
+		   if (e.which == 13) {
+		   	  e.preventDefault();
+		      saveApplication();
+		   }
+		});
+		$('#saw-form .btn.green').click(function(e){
+			e.preventDefault();
+			saveApplication();
+		});
+		$('#saw-form .cancel-go-back').click(function(e){
+			e.preventDefault();
+			document.location.href='/application/'+$(this).attr('data-id')+'/view';
+		});
+		$('#save-success .btn.continue-editing').click(function(e){
+			$('#save-success').modal('hide');
+		});
+		$('#save-success .btn.all-applications').click(function(e){
+			document.location.href='/application/'+$(this).attr('data-id')+'/view';
+		});
+		
+		$.extend($.inputmask.defaults, {
+            'autounmask': true
+        });
+
+        $("#phone").inputmask("mask", {"mask": "(999) 999-9999"}); //specifying fn & options
+        $("#fax").inputmask("mask", {"mask": "(999) 999-9999"}); //specifying fn & options
+
+        bindAddressFieldsBlur();
+		
+	};
 	Application.init = function(){
 		$('.btn.blue.mini.view').click(function(e){
 			document.location.href='/application/'+$(this).attr('data-id')+'/view';
@@ -161,7 +212,11 @@
 			e.preventDefault();
 			$('#delete-modal').modal('hide');
 		});		
-
+		$('#saw-form .btn.edit').click(function(e){
+			e.preventDefault();
+			document.location.href='/application/'+$(this).attr('data-id')+'/edit';
+		});
+		
 	};
 	
 	function remove (id){
