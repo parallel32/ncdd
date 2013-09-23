@@ -151,7 +151,7 @@ class Member extends User {
 	 * This method prepares defaults for empty attributes
 	*/
 	protected function prepareInsert(){
-		$this->accessLevel = MEMBER;		
+		$this->accessLevel = UNPAIDMEMBER;		
 		$this->location = $this->location ?: new \StdClass();
 		$this->barNumber = $this->barNumber ?: '';
 		$this->websites = $this->websites ?: new \StdClass();

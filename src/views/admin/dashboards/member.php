@@ -1,3 +1,6 @@
+<?
+$accessLevel = call_user_func(function($app){ $user = $app['session']->get('user'); return $user['accessLevel'];},$this->app); 
+?>
       <!-- BEGIN PAGE -->
       <div class="page-content">
          <!-- BEGIN PAGE CONTAINER-->
@@ -53,9 +56,9 @@
                <div id="approved-applications" class="row-fluid">
                   <div class="span12">
                      <!-- BEGIN EXAMPLE TABLE PORTLET-->
-                     <div class="portlet box yellow">
+                     <div class="portlet box red">
                         <div class="portlet-title" id="application">
-                           <div class="caption"><i class="icon-user"></i>Approved Applications</div>
+                           <div class="caption"><i class="icon-user"></i>Your membership dues can now be paid.  Please do this promptly.</div>
                         </div>
                         <div class="portlet-body">
                            <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
@@ -96,6 +99,7 @@
                <span><a data-id="<?=call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$this->app);?>" class="btn blue large edit-profile"><i class=" icon-pencil"></i> Edit Your Profile</a></span>
                <br><br>
 
+            <? if($accessLevel >= MEMBER):?>
                <!-- RECENT BLOG POSTS -->
                <? if(!empty($this->vars['blogs'])): ?>
                <div id="recent-blogs" class="row-fluid">
@@ -186,6 +190,7 @@
                </div>
                <div class="clearfix"></div>
                <!--/ PRIVATE PAGES (RECENT) -->
+            <? endif; ?>
             </div>
          </div>
          <!-- END PAGE CONTAINER-->    

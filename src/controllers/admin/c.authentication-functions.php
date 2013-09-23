@@ -43,7 +43,7 @@ $mustbeEDITOR = function (Request $request) use ($app, $checkPermissions){
     endif;
 };
 $mustbeMEMBER = function (Request $request) use ($app, $checkPermissions){
-    $response = $checkPermissions($request, MEMBER);
+    $response = $checkPermissions($request, UNPAIDMEMBER);
     if(!$response->isOk()):
         return $response;
     endif;

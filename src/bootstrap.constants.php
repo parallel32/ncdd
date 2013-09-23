@@ -43,7 +43,8 @@ define("USER_STATUS_INACTIVE", -1);
 define("ADMIN", 300);
 define("EDITOR",200); // top level users (account holder)
 define("MEMBER",100); // editors are made by clients or by admin but still with a client parent
-define("STRINGIFY_ACCESS_LEVELS", "ADMIN:300|EDITOR:200|MEMBER:100");
+define("UNPAIDMEMBER",50); // editors are made by clients or by admin but still with a client parent
+define("STRINGIFY_ACCESS_LEVELS", "ADMIN:300|EDITOR:200|MEMBER:100|UNPAIDMEMBER:50");
 $app['humanizeAccessLevels'] = $app->protect(function ($accessLevel) {
 	switch (floor($accessLevel)) {
 		case 300:
@@ -54,6 +55,9 @@ $app['humanizeAccessLevels'] = $app->protect(function ($accessLevel) {
 			break;
 		case 100:
 			return 'MEMBER';
+			break;
+		case 100:
+			return 'UNPAIDMEMBER';
 			break;
 	}
 });

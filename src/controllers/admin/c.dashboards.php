@@ -47,6 +47,7 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 			array_push($view_vars['crumbs'],array('name'=>'Client','href'=>'/'));
 			return $app['view']->render('dashboards/editor', 'default', $view_vars);
 			break;
+		case UNPAIDMEMBER:
 		case MEMBER:
 			$apply = new Model\Apply(array(),$app);
 			$applications = $apply->fetchByMember('APPROVED',0,5);

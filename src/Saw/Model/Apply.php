@@ -264,7 +264,11 @@ class Apply extends Model {
 
 		$this->paidDate = new Date(self::$app,'now', $this->timeZone);
 		$this->currentStatus = self::$status['PAID'];
-		$this->saveSafe();	
+		$this->saveSafe();
+
+		// set the member's accessLevel to MEMBER
+		$user = new User(array('_id'=>$this->memberId,'accessLevel'=>MEMBER));
+		$user->saveSafe();
 
 	}
 	

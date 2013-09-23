@@ -37,6 +37,8 @@ $app->get('/payment/{offset}/{limit}', function ($offset, $limit, Request $reque
 	$user = call_user_func(function($app){ $user = $app['session']->get('user'); return $user;},$app);
 	if($user['accessLevel'] == MEMBER){
 		$payment = new Model\Payment($doc=array('memberId'=>$user['user_id']), $app);
+	}elseif($user['accessLevel'] == UNPAIDMEMBER){
+		$payment = new Model\Payment($doc=array('memberId'=>$user['user_id']), $app);
 	}else{
 		$payment = new Model\Payment($doc=array(), $app);
 	}

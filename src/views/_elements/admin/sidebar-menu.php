@@ -28,6 +28,7 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                <? echo ($this->vars['active'] == 'Dashboard') ? '<span class="selected"></span>':'';?>
                </a>
             </li>
+         <? if($accessLevel >= MEMBER):?>
             <li class="<? echo (strpos($this->vars['active'], 'Members') !== false) ? 'active open':'';?>">
                <a href="javascript:;">
                <i class="icon-group"></i> 
@@ -72,6 +73,8 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                   </li>
                </ul>
             </li>
+         <? endif; ?>
+         <? if($accessLevel >= MEMBER):?>
             <li class="<? echo ($this->vars['active'] == 'Pages') ? 'active':'';?>">
                <a href="<?=($accessLevel == MEMBER) ? '/page/all' : '/page/';?>">
                <i class="icon-copy"></i> 
@@ -148,6 +151,7 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                <? echo ($this->vars['active'] == 'Payment') ? '<span class="selected"></span>':'';?>
                </a>
             </li>
+         <? endif; ?>
             <li class="">
                <a href="http://<?=SAW_CONSUMER_WEBSITE?>" target="_blank">
                <i class="icon-globe"></i> 
