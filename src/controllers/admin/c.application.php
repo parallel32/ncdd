@@ -198,6 +198,12 @@ $app->post('/application/edit', function (Request $request) use ($app) {
     return new Response(json_encode(array('message' => $message,'label'=>$label)), $response_status,array('Content-Type' => 'application/json'));
 
 })->before($mustbeADMIN);
+// REFERENCES SAVE
+$app->get('/application/{id}/references/{value}', function ($id,$value,Request $request) use ($app) {
+	$application = new Model\Apply(array('_id'=>$id,'references'=>$value), $app);
+	$application->saveEdit();
+	return new Response(json_encode(array('message' => 'success')), 200,array('Content-Type' => 'application/json'));
+})->before($mustbeADMIN);
 
 $app->get('/application/{id}/approve/{type}', function ($id,$type, Request $request) use ($app) {
 	switch ($type) {

@@ -17,13 +17,14 @@
                      <div class="portlet-title" id="application">
                         <div class="caption"><i class="icon-user"></i>Applications To Approve</div>
                      </div>
-                     <div class="portlet-body">
+                     <div id="applications-to-approve" class="portlet-body">
                         <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
                               <tr role="row">
                                  <th class="">Name</th>
-                                 <th class="">Email</th>
+                                 <th class="">Ref.</th>
+                                 <th class="hidden-phone">Email</th>
                                  <th class="hidden-480">Area</th>
                                  <th class="hidden-480">Date Submitted</th>
                                  <th class="hidden-480">Application Type</th>
@@ -34,7 +35,8 @@
                               <? if(!empty($this->vars['submitted'])): foreach($this->vars['submitted'] as $application): ?>
                               <tr class="gradeX odd">
                                  <td class=" "><?=$application['firstName'].' '.$application['lastName']?></td>
-                                 <td class=" "><?=$application['email']?></td>
+                                 <td class=" hidden-phone" id="<?=$application['_id']?>"><input type="text" class="m-wrap" style="width:32px;" value="<?=(array_key_exists('references',$application)) ? $application['references']:''; ?>"><a data-id="<?=$application['_id']?>" href="#" class="btn green icn-only ref-update"><i class="icon-check icon-white"></i></a></td>
+                                 <td class="hidden-phone"><?=$application['email']?></td>
                                  <td class="hidden-480 "><?=$application['city'].', '.$application['state']?></td>
                                  <td class="hidden-480 "><?=$application['submittedDate']['monthDay'].' '.$application['submittedDate']['shortTime']?></td>
                                  <td class="center hidden-480 "><?=$application['type']?></td>
@@ -65,7 +67,7 @@
                            <thead>
                               <tr role="row">
                                  <th class="">Name</th>
-                                 <th class="">Email</th>
+                                 <th class="hidden-phone">Email</th>
                                  <th class="hidden-480">Area</th>
                                  <th class="hidden-480">Date Approved</th>
                                  <th class="hidden-480">Application Type</th>
@@ -76,7 +78,7 @@
                               <? if(!empty($this->vars['approved'])): foreach($this->vars['approved'] as $application): ?>
                               <tr class="gradeX odd">
                                  <td class=" "><?=$application['firstName'].' '.$application['lastName']?></td>
-                                 <td class=" "><?=$application['email']?></td>
+                                 <td class="hidden-phone"><?=$application['email']?></td>
                                  <td class="hidden-480 "><?=$application['city'].', '.$application['state']?></td>
                                  <td class="hidden-480 "><?=$application['approvedDate']['monthDay'].' '.$application['approvedDate']['shortTime']?></td>
                                  <td class="center hidden-480 "><?=$application['type']?></td>
@@ -110,7 +112,7 @@
                            <thead>
                               <tr role="row">
                                  <th class="">Name</th>
-                                 <th class="">Email</th>
+                                 <th class="hidden-phone">Email</th>
                                  <th class="hidden-480">Area</th>
                                  <th class="hidden-480">Date Paid</th>
                                  <th class="hidden-480">Application Type</th>
@@ -121,7 +123,7 @@
                               <? if(!empty($this->vars['paid'])): foreach($this->vars['paid'] as $application): ?>
                               <tr class="gradeX odd">
                                  <td class=" "><?=$application['firstName'].' '.$application['lastName']?></td>
-                                 <td class=" "><?=$application['email']?></td>
+                                 <td class="hidden-phone "><?=$application['email']?></td>
                                  <td class="hidden-480 "><?=$application['city'].', '.$application['state']?></td>
                                  <td class="hidden-480 "><?=$application['paidDate']['monthDay'].' '.$application['paidDate']['shortTime']?></td>
                                  <td class="center hidden-480 "><?=$application['type']?></td>
@@ -151,5 +153,18 @@
 <script>
 jQuery(document).ready(function() {    
    io.saw.Application.init();
+
+
+   $('#applications-to-approve tbody .ref-update').click(function(e){
+      e.preventDefault();
+      io.saw.FormGet.activate({postUrl:'/application/'+$(this).attr('data-id')+'/references/'+($(this).prev().val() || '*')
+         ,postOnComplete:function(responseObj,responseStatus){}
+         ,postOnSuccess:function(responseObj){}
+         ,blockUI:'yes'
+         ,blockUIParams:{elementToBlock:'#'+$(this).parents('td').attr('id')}
+      });
+   });
+
+
 });      
 </script>

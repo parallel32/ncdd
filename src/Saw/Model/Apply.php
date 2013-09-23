@@ -40,6 +40,7 @@ class Apply extends Model {
 	public $submittedDate;
 	public $paidDate;
 	public $approvedDate;
+	public $references;
 	public $timeZone='America/New_York';
 
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
@@ -97,6 +98,7 @@ class Apply extends Model {
 		$this->lon = $doc['lon'];
 		$this->paidDate = $doc['paidDate'];
 		$this->approvedDate = $doc['approvedDate'];
+		$this->references = $doc['references'];
 		if(!empty($doc['memberId'])) $this->memberId = (is_object($doc['memberId'])) ? $doc['memberId'] : new \MongoId($doc['memberId']);
 		if(!empty($doc['paymentId'])) $this->paymentId = (is_object($doc['paymentId'])) ? $doc['paymentId'] : new \MongoId($doc['paymentId']);
 
@@ -131,6 +133,7 @@ class Apply extends Model {
 		$this->memberId = $this->memberId ?: new \stdClass();
 		$this->paymentId = $this->paymentId ?: new \stdClass();
 		$this->timeZone = $this->timeZone ?: 'America/New_York';
+		$this->references = $this->references ?: '';
 
 	}
 	
@@ -178,6 +181,7 @@ class Apply extends Model {
 						,'_id'=>true
 						,'memberId'=>true
 						,'paymentId'=>true
+						,'references'=>true
 						);
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('_id'=>-1),(int)$offset,(int)$limit);
 		//error_log('fetch:'.print_r($result,true));
@@ -199,6 +203,7 @@ class Apply extends Model {
 						,'_id'=>true
 						,'memberId'=>true
 						,'paymentId'=>true
+						,'references'=>true
 						);
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('_id'=>-1),(int)$offset,(int)$limit);
 		//error_log('fetch:'.print_r($result,true));
@@ -222,6 +227,7 @@ class Apply extends Model {
 						,'_id'=>true
 						,'memberId'=>true
 						,'paymentId'=>true
+						,'references'=>true
 						);
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('_id'=>-1),(int)$offset,(int)$limit);
 		//error_log('fetch:'.print_r($query,true));
@@ -246,6 +252,7 @@ class Apply extends Model {
 						,'_id'=>true
 						,'memberId'=>true
 						,'paymentId'=>true
+						,'references'=>true
 						);
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('_id'=>-1),(int)$offset,(int)$limit);
 		//error_log('fetch:'.print_r($query,true));
