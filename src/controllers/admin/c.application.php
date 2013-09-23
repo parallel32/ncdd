@@ -135,6 +135,8 @@ $app->get('/application/{id}/approve/{type}', function ($id,$type, Request $requ
 			$to = $member->email;
 			$view_vars = array('email'=>$member->email
 								,'password'=>$member->password
+								,'firstName'=>$member->firstName
+								,'lastName'=>$member->lastName
 			);
 			$body = $app['view']->render('email/new-member-welcome','email', $view_vars);
 			break;
@@ -147,6 +149,8 @@ $app->get('/application/{id}/approve/{type}', function ($id,$type, Request $requ
 			$to = $member->email;
 			$view_vars = array('email'=>$member->email
 								,'password'=>$member->password
+								,'firstName'=>$member->firstName
+								,'lastName'=>$member->lastName
 			);
 			$body = $app['view']->render('email/new-sustaining-member-welcome','email', $view_vars);
 			break;		

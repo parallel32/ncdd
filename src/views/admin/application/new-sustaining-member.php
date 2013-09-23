@@ -229,7 +229,7 @@
                                           <tbody>
                                              <tr>
                                                 <td class="highlight">
-                                                   585 WELLS STREET .. ETC.
+                                                   Loading Address...
                                                 </td>
                                                 <td><a class="btn mini purple" 
                                                    data-address=""

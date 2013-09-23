@@ -8,25 +8,31 @@
 									<table border="0" cellpadding="20" cellspacing="0" width="100%">
 										<tr>
 											<td valign="top">
-												<h2 class="h2">Welcome To NCDD.com</h2>
+												<h2 class="h2">Welcome To NCDD</h2>
 												<br />
 												<div class="textdark">
-													Your application for General Membership has been approved.
-													<br/> There are a few more steps to complete the process.
-													<br/> Below you'll find your login credentials.  Please use them to log in and do the following:
-													<br/> 1. Pay your membership dues.
-													<br/> 2. Add your profile details including a personal photo.
-													<br/> 
-													<br/>Username: <?=$this->vars['email']?>
-													<br/>Password: <?=$this->vars['password']?>
-													<br/>Login Page:<a href="http://<?=SAW_ADMIN_WEBSITE?>" target="_blank">http://<?=SAW_ADMIN_WEBSITE?></a>. 
-													<br/>
-													<br/>If you have any questions don't hesitate to contact us at: rhea@ncdd.com
-													<br>National College for DUI Defense, Inc. 
-													<br>445 S. Decatur St. 
-													<br>Montgomery, AL 36104 
-													<br>Tel: 334-264-1950 
-													<br>Fax: 334-264-1920
+
+<br>Dear <?=$this->vars['firstName']?> <?=$this->vars['lastName']?>;
+
+<br><br>On behalf of the Membership Committee, you have been approved as a General Member of the National College for DUI Defense, Inc. This designation, as an active member, recognizes your pursuits in the defense of those accused of alcohol and drug related charges.
+<br/><br>Congratulations! The Board of Regents welcomes you to your new endeavors through the association of your fellow defenders.  We look forward to your active participation in the College.
+<br/><br>As a General Member, you are now listed on the College Website at <a href="http://ncdd.com">ncdd.com</a> along with your address, telephone and fax number, e-mail address and website. There, you may also place your picture and biographical information. This should prove useful as a source for potential business from citizens visiting our site in their search for a qualified DUI defense attorney. You have also been invited to join our “members only” on-line listserver. This is your immediate communication link to post and receive legal information with your fellow members. <strong>Watch for an email from Yahoo with instructions on how to log on</strong>.
+<br/><br>Please take time to look at our website at <a href="http://ncdd.com">ncdd.com</a> and take advantage of our “Members Only” section which includes a Brief Bank, Blog and Virtual Library containing many scientific articles.  We feel this will be a great benefit to your practice. 
+
+<br><br>To access the "Members Only" area you may browse to <a href="http://ncdd.com">ncdd.com</a> and click "Member Sign in" on the top left.  Or you may browse directly to:
+<br><br>
+<a href="http://<?=SAW_ADMIN_WEBSITE?>/login" target="_blank">http://<?=SAW_ADMIN_WEBSITE?>/login</a>. 
+<br><br>
+Your User ID is: <?=$this->vars['email']?>
+<br>Your password is: <?=$this->vars['password']?>
+
+<br><br>We sincerely thank you for your interest in joining us. I assure you that your participation and contribution in the College will be rewarding on both a professional and personal level.  If I can answer any questions concerning your membership, please do not hesitate to contact me at 334-264-1950 or rhea@ncdd.com.  
+
+<br><br>Sincerely,
+
+<br><br>Rhea C. Kirk
+<br>Executive Director
+
 												</div>
 											</td>
 										</tr>
