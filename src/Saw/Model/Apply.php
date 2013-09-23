@@ -267,9 +267,21 @@ class Apply extends Model {
 		$this->saveSafe();
 
 		// set the member's accessLevel to MEMBER
-		$user = new User(array('_id'=>$this->memberId,'accessLevel'=>MEMBER));
-		$user->saveSafe();
+		$query = array('_id'=>$this->_id);
+        $fields = array('memberId'=>1);
+		$result = $this->findOne($query,$fields);
+		
+		if(!empty($result)):
+			$memberId = $result['memberId'];
+		else:
+			$memberId = 'notfound';
+		endif;
 
+		//error_log('memberId:'.$memberId);
+		$member = new Member(array('_id'=>$memberId,'accessLevel'=>MEMBER),self::$app);
+		$member->saveSafe();
+
+		$member->setUserSession();
 	}
 	
 }

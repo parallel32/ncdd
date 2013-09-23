@@ -84,7 +84,7 @@ class User extends Model {
 
 		$this->accessLevel = $doc['accessLevel'];
 		$this->connections = $doc['connections'];
-		$this->location = (is_object($location)) ? $location->__toArray() : $doc['location'];
+		$this->location = (is_object($location)) ? $location->__toArray() : (array_key_exists('location',$doc)) ? $doc['location']: '' ;
 		if(!empty($doc['timezone']['name'])){
 			$tz = new TimeZone($doc=array('name'=>$doc['timezone']['name']),$app);
 			$doc['timezone'] = $tz->getAttributes();
