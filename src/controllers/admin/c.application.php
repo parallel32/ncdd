@@ -199,7 +199,11 @@ $app->post('/application/edit', function (Request $request) use ($app) {
 
 })->before($mustbeADMIN);
 // REFERENCES SAVE
-$app->get('/application/{id}/references/{value}', function ($id,$value,Request $request) use ($app) {
+$app->post('/application/references', function (Request $request) use ($app) {
+
+	$id = $request->get('id');
+	$value = $request->get('value');
+	
 	$application = new Model\Apply(array('_id'=>$id,'references'=>$value), $app);
 	$application->saveEdit();
 	return new Response(json_encode(array('message' => 'success')), 200,array('Content-Type' => 'application/json'));

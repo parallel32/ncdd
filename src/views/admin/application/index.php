@@ -157,12 +157,14 @@ jQuery(document).ready(function() {
 
    $('#applications-to-approve tbody .ref-update').click(function(e){
       e.preventDefault();
-      io.saw.FormGet.activate({postUrl:'/application/'+$(this).attr('data-id')+'/references/'+($(this).prev().val() || '*')
+      io.saw.FormPost.activate({postUrl:'/application/references'
+         ,serialized:'id='+$(this).attr('data-id')+'&value='+($(this).prev().val() || '*')
          ,postOnComplete:function(responseObj,responseStatus){}
          ,postOnSuccess:function(responseObj){}
          ,blockUI:'yes'
          ,blockUIParams:{elementToBlock:'#'+$(this).parents('td').attr('id')}
       });
+      
    });
 
 
