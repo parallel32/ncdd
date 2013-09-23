@@ -280,7 +280,6 @@ class Apply extends Model {
 		//error_log('memberId:'.$memberId);
 		$member = new Member(array('_id'=>$memberId,'accessLevel'=>MEMBER),self::$app);
 		$member->saveSafe();
-
 		$member->setUserSession();
 	}
 	

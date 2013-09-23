@@ -174,7 +174,7 @@ class ApplyNewMember extends Apply {
 	public function approve(){
 		// prepare member record
 		$password = rand();
-		$mem_doc['password'] = $password;
+		$mem_doc['password'] = substr($password,0,4);
 		$mem_doc['firstName'] = $this->firstName;
 		$mem_doc['lastName'] = $this->lastName;
 		$mem_doc['barNumber'] = $this->barNumber;

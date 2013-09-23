@@ -203,7 +203,7 @@ $app->post('/application/references', function (Request $request) use ($app) {
 
 	$id = $request->get('id');
 	$value = $request->get('value');
-	
+
 	$application = new Model\Apply(array('_id'=>$id,'references'=>$value), $app);
 	$application->saveEdit();
 	return new Response(json_encode(array('message' => 'success')), 200,array('Content-Type' => 'application/json'));
@@ -292,6 +292,25 @@ $app->get('/application/{id}/delete', function ($id, Request $request) use ($app
     $application->remove();
     return new Response(json_encode(array('message' => 'Successfully Deleted')), 200,array('Content-Type' => 'application/json'));
 })->before($mustbeADMIN);
+
+$app->get('/applications/all/{offset}/{limit}', function ($offset, $limit, Request $request) use ($app) {
+	$application = new Model\Apply($doc=array(), $app);
+	$paid = $application->fetchByStatus('PAID', $offset=0,$limit=100);
+	$crumbs = array(array('name'=>'Applications','href'=>'/applications')
+					,array('name'=>'All Paid','href'=>'/applications/all')
+	);
+	$view_vars = array(
+						 'active'=>'Application'
+						,'page-plugin'=>'datatables'
+						,'headline'=>'Applications'
+						,'description'=>"View all PAID application here."
+						,'crumbs'=>$crumbs
+						,'paid'=>$paid);
+	return $app['view']->render('application/all-paid', 'default', $view_vars);
+})
+->value('offset','0')
+->value('limit','10000')
+->before($mustbeADMIN);
 
 $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $request) use ($app) {
 	$application = new Model\Apply($doc=array(), $app);

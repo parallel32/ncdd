@@ -99,12 +99,15 @@
                </div>
             </div>
 
-            <div class="row-fluid">
+            <div class="row-fluid" id="paid">
                <div class="span12">
                   <!-- BEGIN EXAMPLE TABLE PORTLET-->
                   <div class="portlet box green">
                      <div class="portlet-title" id="application">
                         <div class="caption"><i class="icon-user"></i>Applications Paid (90 days)</div>
+                        <div class="actions">
+                           <a class="btn yellow view"><i class=" icon-eye-open"></i> View All</a>
+                        </div>
                      </div>
                      <div class="portlet-body">
                         <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
@@ -167,6 +170,10 @@ jQuery(document).ready(function() {
       
    });
 
+   $('#paid .view').click(function(e){
+      e.preventDefault();
+      document.location.href='/applications/all';
+   });
 
 });      
 </script>
