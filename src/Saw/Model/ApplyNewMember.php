@@ -115,7 +115,7 @@ class ApplyNewMember extends Apply {
 		$this->everLawEnforcementExplain = $doc['everLawEnforcementExplain'];
 		$this->futureLawEnforcement = $doc['futureLawEnforcement'];
 		$this->futureLawEnforcementExplain = $doc['futureLawEnforcementExplain'];
-		$this->executed = (!empty($doc['executed']) && strpos($doc['executed'], 'Executed at') === false) ? $this->prepareExecuted($doc['executed']) : '.';
+		$this->executed = (!empty($doc['executed']) && strpos($doc['executed'], 'Executed at') === false) ? $this->prepareExecuted($doc['executed']) : $doc['executed'];
 		$this->executedPrintedName = $doc['executedPrintedName'];
 		$this->membershipDues = $doc['membershipDues'];
 		$this->authorizationReleasePrintedName = $doc['authorizationReleasePrintedName'];
