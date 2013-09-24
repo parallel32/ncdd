@@ -170,7 +170,7 @@ jQuery(document).ready(function() {
       
    });
 
-   $('#paid .view').click(function(e){
+   $('#paid .yellow.view').click(function(e){
       e.preventDefault();
       document.location.href='/applications/all';
    });
