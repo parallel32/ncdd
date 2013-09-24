@@ -205,7 +205,21 @@ class Apply extends Model {
 						,'paymentId'=>true
 						,'references'=>true
 						);
-		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('_id'=>-1),(int)$offset,(int)$limit);
+		switch ($status) {
+			case 'SUBMITTED':
+				$sort=array('submittedDate.date'=>-1);
+				break;
+			case 'APPROVED':
+				$sort=array('approvedDate.date'=>-1);
+				break;
+			case 'PAID':
+				$sort=array('paidDate.date'=>-1);
+				break;
+			default:
+				$sort=array('_id'=>-1);
+				break;
+		}
+		$result = $this->find($query,$fields,$slaveOkay=true,$sort,(int)$offset,(int)$limit);
 		//error_log('fetch:'.print_r($result,true));
 		return $result;
 
@@ -229,7 +243,21 @@ class Apply extends Model {
 						,'paymentId'=>true
 						,'references'=>true
 						);
-		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('_id'=>-1),(int)$offset,(int)$limit);
+		switch ($status) {
+			case 'SUBMITTED':
+				$sort=array('submittedDate.date'=>-1);
+				break;
+			case 'APPROVED':
+				$sort=array('approvedDate.date'=>-1);
+				break;
+			case 'PAID':
+				$sort=array('paidDate.date'=>-1);
+				break;
+			default:
+				$sort=array('_id'=>-1);
+				break;
+		}
+		$result = $this->find($query,$fields,$slaveOkay=true,$sort,(int)$offset,(int)$limit);
 		//error_log('fetch:'.print_r($query,true));
 		return $result;
 
@@ -254,7 +282,7 @@ class Apply extends Model {
 						,'paymentId'=>true
 						,'references'=>true
 						);
-		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('_id'=>-1),(int)$offset,(int)$limit);
+		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('paidDate.date'=>-1),(int)$offset,(int)$limit);
 		//error_log('fetch:'.print_r($query,true));
 		//error_log('result:'.print_r($result,true));
 		return $result;
