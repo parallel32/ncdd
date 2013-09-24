@@ -25,6 +25,9 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                      </div>
                   </form>
                </div>
+               <div class="alert alert-info">
+                  Search key words can be: <strong>email address</strong> OR <strong>name</strong> OR <strong>partial name</strong> OR <strong>state (Alabama, New York, Washington, etc.)</strong>
+               </div>
                <span id="result-message" class="help-block"></span>
                <div id="results" class="portlet-body">
                   <table class="table table-striped table-hover">

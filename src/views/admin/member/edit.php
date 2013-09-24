@@ -304,12 +304,12 @@
                            </div>
                            <!--/span-->
                         </div>
-                        <h3 class="form-section text-info"><strong>About Me</strong></h3>&nbsp;<button type="button" class="btn blue show-editor">Click To Edit</button><br><br>
+                        <h3 class="form-section text-info"><strong>About Me</strong></h3>&nbsp;<button type="button" class="btn blue show-editor">Click Here To Change or Add Your Bio</button><br><br>
                         <div class="row-fluid">
                            <div class="span12 ">
                               <div class="control-group ">
                                  <div class="controls">
-                                    <span id="aboutMe" class="help-block "><?=(empty($this->vars['member']['aboutMe'])) ? "<br><br>click here to edit...<br><br><br>" : $this->vars['member']['aboutMe'];?></span>
+                                    <span id="aboutMe" class="help-block "><?=(empty($this->vars['member']['aboutMe'])) ? "<br><br><br><br>" : $this->vars['member']['aboutMe'];?></span>
                                     <input id="input-aboutMe" type="hidden" name="doc[aboutMe]" value="">
                                  </div>
                               </div>
