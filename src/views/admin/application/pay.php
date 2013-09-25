@@ -24,7 +24,8 @@
                   <div class="span3">
                      <h4>Member:</h4>
                      <ul class="unstyled">
-                        <li><?=$this->vars['application']['firstName']?> <?=$this->vars['application']['lastName']?></li>
+                        <? $middleName = (!empty($this->vars['application']['middleName'])) ? ' '.$this->vars['application']['middleName'].' ':' '; ?>
+                        <li><?=$this->vars['application']['firstName']?><?=$middleName?><?=$this->vars['application']['lastName']?></li>
                         <li><?=$this->vars['application']['formattedAddress']?></li>
                         <li>email: <?=$this->vars['application']['email']?></li>
                         <li>phone: <?=$this->vars['application']['phone']?></li>

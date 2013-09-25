@@ -75,7 +75,8 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                               <tbody role="alert" aria-live="polite" aria-relevant="all">
                                  <? if(!empty($this->vars['applications'])): foreach($this->vars['applications'] as $application): ?>
                                  <tr class="gradeX odd">
-                                    <td class=" "><?=$application['firstName'].' '.$application['lastName']?></td>
+                                    <? $middleName = (!empty($application['middleName'])) ? ' '.$application['middleName'].' ':' '; ?>
+                                    <td class=" "><?=$application['firstName'].$middleName.$application['lastName']?></td>
                                     <td class="hidden-480 "><?=$application['city'].', '.$application['state']?></td>
                                     <td class="hidden-480 "><?=$application['approvedDate']['monthDay'].' '.$application['approvedDate']['shortTime']?></td>
                                     <td class="center hidden-480 "><?=$application['type']?></td>

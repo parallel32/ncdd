@@ -56,7 +56,8 @@
 
 
                                             <p class="postDescr"><?=$post['body']?></p>
-                                            <div class="postInfo"><span class="postAuthor">Posted by <a href="/member/<?=$post['author']['_id']?>/<?=$post['author']['slug']?>"><?=$post['author']['firstName'].' '.$post['author']['lastName']?> </a></span></div>
+                                            <? $middleName = (!empty($post['author']['middleName'])) ? ' '.$post['author']['middleName'].' ':' '; ?>
+                                            <div class="postInfo"><span class="postAuthor">Posted by <a href="/member/<?=$post['author']['_id']?>/<?=$post['author']['slug']?>"><?=$post['author']['firstName'].$middleName.$post['author']['lastName']?> </a></span></div>
                                         </div>
                                         <div class="postFooter">
                                             <ul class="postTags pull-left">

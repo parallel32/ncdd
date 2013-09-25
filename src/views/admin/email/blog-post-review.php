@@ -13,7 +13,8 @@
 												<div class="textdark">
 													Some information about the blog post and the author:
 													<br/>
-													<br/><?=$this->vars['firstName'].' '.$this->vars['lastName']?>
+													<? $middleName = (!empty($this->vars['middleName'])) ? ' '.$this->vars['middleName'].' ':' '; ?>
+													<br/><?=$this->vars['firstName'].$middleName.$this->vars['lastName']?>
 													<br/><?=$this->vars['email']?>
 													<br/>
 													<br/><?=$this->vars['headline']?>

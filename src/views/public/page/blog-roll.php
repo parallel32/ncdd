@@ -58,7 +58,8 @@
 
 
                                             <p class="postDescr"><?=substr($post['body'],0,500)?> … <a href="/blog/<?=$post['_id']?><?=$post['slug']?>">read more</a></p>
-                                            <div class="postInfo"><span class="postAuthor">Posted by <a href="/member/<?=$post['author']['_id']?><?=$post['author']['slug']?>"><?=$post['author']['firstName'].' '.$post['author']['lastName']?> </a></span></div>
+                                            <? $middleName = (!empty($post['author']['middleName'])) ? ' '.$post['author']['middleName'].' ':' '; ?>
+                                            <div class="postInfo"><span class="postAuthor">Posted by <a href="/member/<?=$post['author']['_id']?><?=$post['author']['slug']?>"><?=$post['author']['firstName'].$middleName.$post['author']['lastName']?> </a></span></div>
                                         </div>
                                         <div class="postFooter">
                                             <ul class="postTags pull-left">

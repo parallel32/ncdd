@@ -255,6 +255,7 @@ $app->post('/blog/{memberId}/edit', function ($memberId, Request $request) use (
 			    	$subject = 'Blog Post Submitted for Review';
 			    	$to = SAW_ADMIN_EMAIL;
 			    	$view_vars = array('firstName'=>$blog->author['firstName']
+			    						,'middleName'=>$blog->author['middleName']
 			    						,'lastName'=>$blog->author['lastName']
 			    						,'headline'=>$blog->headline
 			    						,'email'=>$blog->author['email']

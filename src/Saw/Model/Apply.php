@@ -18,6 +18,7 @@ class Apply extends Model {
 	static public $statusReversed = array(0=>'DRAFT',10=>'SUBMITTED', 20=>'APPROVED', 40=>'PAID');
 	public $currentStatus;
 	public $firstName;
+	public $middleName;
 	public $lastName;
 	public $phone;
 	public $fax;
@@ -78,6 +79,7 @@ class Apply extends Model {
 		if(!empty($doc['_id'])) $this->_id = (is_object($doc['_id'])) ? $doc['_id'] : new \MongoId($doc['_id']);
         $this->currentStatus = $doc['currentStatus'];
 		$this->firstName = $doc['firstName'];
+		$this->middleName = $doc['middleName'];
 		$this->lastName = $doc['lastName'];
 		$this->phone = $doc['phone'];
 		$this->fax = $doc['fax'];
@@ -112,6 +114,7 @@ class Apply extends Model {
 		$this->approvedDate = $this->approvedDate ?: new \stdClass();
 		$this->currentStatus = $this->currentStatus ?: self::$status['SUBMITTED'];
 		$this->firstName = $this->firstName ?: '';
+		$this->middleName = $this->middleName ?: '';
 		$this->lastName = $this->lastName ?: '';
 		$this->phone = $this->phone ?: '';
 		$this->fax = $this->fax ?: '';
@@ -168,6 +171,7 @@ class Apply extends Model {
 	public function fetch($offset=0,$limit=100){
 		$query = array();
 		$fields = array('firstName'=>true
+						,'middleName'=>true
 						,'lastName'=>true
 						,'email'=>true
 						,'city'=>true
@@ -190,6 +194,7 @@ class Apply extends Model {
 	public function fetchByStatus($status, $offset=0,$limit=100){
 		$query = array('currentStatus'=>self::$status[$status]);
 		$fields = array('firstName'=>true
+						,'middleName'=>true
 						,'lastName'=>true
 						,'email'=>true
 						,'city'=>true
@@ -228,6 +233,7 @@ class Apply extends Model {
 		$query = array('currentStatus'=>self::$status[$status]
 						,'memberId'=>$user['_id']);
 		$fields = array('firstName'=>true
+						,'middleName'=>true
 						,'lastName'=>true
 						,'email'=>true
 						,'city'=>true
@@ -267,6 +273,7 @@ class Apply extends Model {
 												,'$gte'=>new \MongoDate(strtotime('-'.$days.' day')))
 		);
 		$fields = array('firstName'=>true
+						,'middleName'=>true
 						,'lastName'=>true
 						,'email'=>true
 						,'city'=>true

@@ -11,8 +11,8 @@
 												<h2 class="h2">Welcome To NCDD</h2>
 												<br />
 												<div class="textdark">
-
-<br>Dear <?=$this->vars['firstName']?> <?=$this->vars['lastName']?>;
+<? $middleName = (!empty($this->vars['middleName'])) ? ' '.$this->vars['middleName'].' ':' '; ?>
+<br>Dear <?=$this->vars['firstName']?><?=$middleName?><?=$this->vars['lastName']?>;
 
 <br><br>On behalf of the Membership Committee, you have been approved as a Sustaining Member of the National College for DUI Defense, Inc. This designation, as an active member, recognizes your pursuits in the defense of those accused of alcohol and drug related charges.
 <br/><br>Congratulations! The Board of Regents welcomes you to your new endeavors through the association of your fellow defenders.  We look forward to your active participation in the College.

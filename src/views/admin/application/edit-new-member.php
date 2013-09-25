@@ -22,7 +22,7 @@
                   </div>                  
                   <h3 class="form-section">1.</h3>
                   <div class="row-fluid">
-                     <div class="span6 ">
+                     <div class="span4 ">
                         <div class="control-group">
                            <label class="control-label">First Name</label>
                            <div class="controls">
@@ -31,7 +31,16 @@
                         </div>
                      </div>
                      <!--/span-->
-                     <div class="span6 ">
+                     <div class="span4 ">
+                        <div class="control-group">
+                           <label class="control-label">Middle Name</label>
+                           <div class="controls">
+                              <input type="text" name="doc[middleName]" value="<?=(array_key_exists('middleName',$this->vars['application'])) ? $this->vars['application']['middleName']: '';?>" class="m-wrap span12 middleName">
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                     <div class="span4 ">
                         <div class="control-group ">
                            <label class="control-label">Last Name</label>
                            <div class="controls">

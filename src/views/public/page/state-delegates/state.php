@@ -82,11 +82,12 @@
                                 <img width="196" src="<?=$member['image']?>" alt="" class="avatar pull-left">
                                 <div class="info pull-right">
                                     <div class="nameBlock">
-                                        <h3 class="name text-center"><?=$member['firstName']?> <?=$member['lastName']?></h3>
+                                        <? $middleName = (!empty($member['middleName'])) ? ' '.$member['middleName'].' ':' '; ?>
+                                        <h3 class="name text-center"><?=$member['firstName']?><?=$middleName?><?=$member['lastName']?></h3>
                                         <h5 class="descr text-center"><?=$member['currentMembership']?></h5>
                                         <h5 class="descr text-center"><a class="text-error"><?=$member['currentFacultyPosition']?></a></h5>
                                         <? if(!empty($member['currentFacultyPosition'])): ?>
-                                            <div class="regentsFellowsLabel"><img src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/exec" alt="NCDD National College for DUI Defense: <?=$member['firstName']?> <?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?> <?=$member['lastName']?>" /></div>
+                                            <div class="regentsFellowsLabel"><img src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/exec" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" /></div>
                                     <? endif; ?>
                                     </div>
                                     <ul class="numbers">
@@ -99,9 +100,9 @@
                                         </li>
                                         <li>
                                             <div class="memberBadgeBlock">
-                                                <div class="memberBadge"><img width="140" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/member" alt="NCDD National College for DUI Defense: <?=$member['firstName']?> <?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?> <?=$member['lastName']?>" /></div>
+                                                <div class="memberBadge"><img width="140" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/member" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" /></div>
                                                 <? if($member['boardCertified'] =='Yes'): ?>
-                                                <div class="memberBadge"><img width="165" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/boardcertified" alt="NCDD National College for DUI Defense: <?=$member['firstName']?> <?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?> <?=$member['lastName']?>" /></div>
+                                                <div class="memberBadge"><img width="165" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/boardcertified" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" /></div>
                                                 <? endif; ?>
                                             </div>
                                         </li>

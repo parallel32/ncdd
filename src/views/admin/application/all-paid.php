@@ -33,7 +33,8 @@
                            <tbody role="alert" aria-live="polite" aria-relevant="all">
                               <? if(!empty($this->vars['paid'])): foreach($this->vars['paid'] as $application): ?>
                               <tr class="gradeX odd">
-                                 <td class=" "><?=$application['firstName'].' '.$application['lastName']?></td>
+                                 <? $middleName = (!empty($application['middleName'])) ? ' '.$application['middleName'].' ':' '; ?>
+                                 <td class=" "><?=$application['firstName'].$middleName.$application['lastName']?></td>
                                  <td class="hidden-phone "><?=$application['email']?></td>
                                  <td class="hidden-480 "><?=$application['city'].', '.$application['state']?></td>
                                  <td class="hidden-480 "><?=$application['paidDate']['monthDay'].' '.$application['paidDate']['shortTime']?></td>

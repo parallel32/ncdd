@@ -176,6 +176,7 @@ class ApplyNewMember extends Apply {
 		$password = substr(time(),-4);
 		$mem_doc['password'] = $password;
 		$mem_doc['firstName'] = $this->firstName;
+		$mem_doc['middleName'] = $this->middleName;
 		$mem_doc['lastName'] = $this->lastName;
 		$mem_doc['barNumber'] = $this->barNumber;
 		$mem_doc['email'] = $this->email;

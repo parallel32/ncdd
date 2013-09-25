@@ -42,6 +42,7 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 	    	$subject = 'General Member Application Form Submitted';
 	    	$to = SAW_ADMIN_EMAIL;
 	    	$view_vars = array('firstName'=>$doc['firstName']
+	    						,'middleName'=>$doc['middleName']
 	    						,'lastName'=>$doc['lastName']
 	    						,'city'=>$doc['city']
 	    						,'state'=>$doc['state']
@@ -82,6 +83,7 @@ $app->post('/application/new-sustaining-member', function (Request $request) use
 	    	$subject = 'Sustaining Member Application Form Submitted';
 	    	$to = SAW_ADMIN_EMAIL;
 	    	$view_vars = array('firstName'=>$doc['firstName']
+	    						,'middleName'=>$doc['middleName']
 	    						,'lastName'=>$doc['lastName']
 	    						,'city'=>$doc['city']
 	    						,'state'=>$doc['state']

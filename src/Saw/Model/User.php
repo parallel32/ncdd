@@ -17,6 +17,7 @@ class User extends Model {
 	public static $invalidFieldsMessage = "Invalid fields found.";
 	public $displayName;
 	public $firstName;
+	public $middleName;
 	public $lastName;
 	public $gender;
 	public $dob;
@@ -56,13 +57,18 @@ class User extends Model {
 		
 		if(!empty($doc['_id'])) $this->_id = (is_object($doc['_id'])) ? $doc['_id'] : new \MongoId($doc['_id']);
 		
-		if(!empty($doc['firstName']) && !empty($doc['lastName']) && empty($doc['displayName']))
-			$this->displayName = $doc['firstName'].' '.$doc['lastName'];
-		else
+		if(!empty($doc['firstName']) && !empty($doc['lastName']) && empty($doc['displayName'])){
+			if(!empty($doc['middleName'])){
+				$this->displayName = $doc['firstName'].' '.$doc['middleName'].' '.$doc['lastName'];
+			}else{
+				$this->displayName = $doc['firstName'].' '.$doc['lastName'];
+			}
+		}else
 			$this->displayName = $doc['displayName'];
         $this->email = trim(strtolower($doc['email'])); 
 		$this->password = (!empty($doc['password'])) ? self::sawPassword($doc['password']): '';
 		$this->firstName = $doc['firstName'];
+		$this->middleName = $doc['middleName'];
 		$this->lastName = $doc['lastName'];
 		$this->gender = $doc['gender'];
         $this->dob = (!empty($doc['dob'])) ? (is_object($doc['dob'])) ? $doc['dob']->__toArray() : new Date(self::$app,$doc['dob'])  : $doc['dob'];
@@ -106,6 +112,7 @@ class User extends Model {
 	*/
 	protected function prepareInsert(){
 		$this->firstName = $this->firstName ?: '';
+		$this->middleName = $this->middleName ?: '';
 		$this->lastName = $this->lastName ?: '';        		
 		$this->gender = $this->gender ?: '';
 		$this->dob = (!empty($this->dob)) ? (is_object($this->dob)) ? $this->dob->__toArray() : $this->dob  : new \stdClass();
@@ -123,6 +130,7 @@ class User extends Model {
         $this->accessLevel = $this->accessLevel ?: MEMBER;
         if($this->accessLevel <= ADMIN) {
             $this->displayName = $this->firstName;
+            if(!empty($this->middleName)) $this->displayName.=' '.$this->middleName;
             if(!empty($this->lastName)) $this->displayName.=' '.$this->lastName;
         }
         $this->displayName = $this->displayName ?: $this->firstName.' '.$this->lastName;             

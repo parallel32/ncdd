@@ -265,7 +265,7 @@ class Member extends User {
 	}
 	public static function getAccountBySession(Application $app, $fields=array(),$collection=''){
 		
-		$fields = array('_id','image','displayName','businessName','firstName','lastName','email','dob','gender',
+		$fields = array('_id','image','displayName','businessName','firstName','middleName','lastName','email','dob','gender',
 						'location.phone','location.addressLine1','location.addressLine2',
 						'location.city','location.state','location.zip',
 						'shareWithMerchant','connections');
@@ -275,7 +275,7 @@ class Member extends User {
 
 
 	public static function getAccountById($userId, Application $app, $fields=array(),$collection=''){
-		$fields = array('businessName','firstName','lastName','email','passwordOriginal');
+		$fields = array('businessName','firstName','middleName','lastName','email','passwordOriginal');
 		$user_doc = parent::getAccountById($userId,$app,$fields,'member');
 		return $user_doc;
 	}
@@ -306,6 +306,7 @@ class Member extends User {
 		}
 		$fields=array('_id'=>1
 					,'firstName'=>1
+					,'middleName'=>1
 					,'lastName'=>1
 					,'slug'=>1
 					,'displayName'=>1
@@ -340,6 +341,7 @@ class Member extends User {
 				foreach ($m_result as $key => $value) {
 					$result[$i]['_id'] = $value['member']['_id'];
 					$result[$i]['firstName'] = $value['member']['firstName'];
+					$result[$i]['middleName'] = $value['member']['middleName'];
 					$result[$i]['lastName'] = $value['member']['lastName'];
 					$result[$i]['slug'] = $value['member']['slug'];
 					$result[$i]['displayName'] = $value['member']['displayName'];
@@ -418,6 +420,7 @@ class Member extends User {
 
 		$fields=array('member._id'=>1
 					,'member.firstName'=>1
+					,'member.middleName'=>1
 					,'member.lastName'=>1
 					,'member.slug'=>1
 					,'member.primaryPhone'=>1
@@ -436,6 +439,7 @@ class Member extends User {
 		foreach ($result as $key => $value) {
 			$result[$i]['_id'] = $value['member']['_id'];
 			$result[$i]['firstName'] = $value['member']['firstName'];
+			$result[$i]['middleName'] = $value['member']['middleName'];
 			$result[$i]['lastName'] = $value['member']['lastName'];
 			$result[$i]['slug'] = $value['member']['slug'];
 			$result[$i]['primaryPhone'] = $value['member']['primaryPhone'];
@@ -465,6 +469,7 @@ class Member extends User {
 
 		$fields=array('member._id'=>1
 					,'member.firstName'=>1
+					,'member.middleName'=>1
 					,'member.lastName'=>1
 					,'member.slug'=>1
 					,'member.primaryPhone'=>1
@@ -483,6 +488,7 @@ class Member extends User {
 		foreach ($result as $key => $value) {
 			$result[$i]['_id'] = $value['member']['_id'];
 			$result[$i]['firstName'] = $value['member']['firstName'];
+			$result[$i]['middleName'] = $value['member']['middleName'];
 			$result[$i]['lastName'] = $value['member']['lastName'];
 			$result[$i]['slug'] = $value['member']['slug'];
 			$result[$i]['primaryPhone'] = $value['member']['primaryPhone'];
@@ -512,6 +518,7 @@ class Member extends User {
 
 		$fields=array('member._id'=>1
 					,'member.firstName'=>1
+					,'member.middleName'=>1
 					,'member.lastName'=>1
 					,'member.slug'=>1
 					,'member.primaryPhone'=>1
@@ -530,6 +537,7 @@ class Member extends User {
 		foreach ($result as $key => $value) {
 			$result[$i]['_id'] = $value['member']['_id'];
 			$result[$i]['firstName'] = $value['member']['firstName'];
+			$result[$i]['middleName'] = $value['member']['middleName'];
 			$result[$i]['lastName'] = $value['member']['lastName'];
 			$result[$i]['slug'] = $value['member']['slug'];
 			$result[$i]['primaryPhone'] = $value['member']['primaryPhone'];

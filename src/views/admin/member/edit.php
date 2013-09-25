@@ -231,7 +231,7 @@
                               <div class="control-group ">
                                  <label class="control-label">Membership Badge for your website:</label>
                                  <div class="controls">
-                                    <textarea rows="3" class="span8"><a target="_blank" href="http://<?=SAW_CONSUMER_WEBSITE?>/member/<?=$this->vars['member']['_id']?>/<?=$this->vars['member']['slug']?>"><img width="152" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/member" alt="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?> <?=$this->vars['member']['lastName']?>" title="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?> <?=$this->vars['member']['lastName']?>" /></a></textarea>
+                                    <textarea rows="3" class="span8"><a target="_blank" href="http://<?=SAW_CONSUMER_WEBSITE?>/member/<?=$this->vars['member']['_id']?>/<?=$this->vars['member']['slug']?>"><img width="152" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/member" alt="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" title="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" /></a></textarea>
                                  </div>
                               </div>
                            </div>
@@ -243,7 +243,7 @@
                               <div class="control-group ">
                                  <label class="control-label">Board Certified Badge for your website:</label>
                                  <div class="controls">
-                                    <textarea rows="3" class="span8"><a target="_blank" href="http://<?=SAW_CONSUMER_WEBSITE?>/member/<?=$this->vars['member']['_id']?>/<?=$this->vars['member']['slug']?>"><img width="200" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/boardcertified" alt="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?> <?=$this->vars['member']['lastName']?>" title="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?> <?=$this->vars['member']['lastName']?>" /></a></textarea>
+                                    <textarea rows="3" class="span8"><a target="_blank" href="http://<?=SAW_CONSUMER_WEBSITE?>/member/<?=$this->vars['member']['_id']?>/<?=$this->vars['member']['slug']?>"><img width="200" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/boardcertified" alt="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" title="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" /></a></textarea>
                                  </div>
                               </div>
                            </div>
@@ -253,7 +253,7 @@
                         
                         <h3 class="form-section text-info"><strong>General Information</strong></h3>
                         <div class="row-fluid">
-                           <div class="span6 ">
+                           <div class="span4 ">
                               <div class="control-group ">
                                  <label class="control-label">First Name</label>
                                  <div class="controls">
@@ -262,7 +262,16 @@
                               </div>
                            </div>
                            <!--/span-->
-                           <div class="span6 ">
+                           <div class="span4 ">
+                              <div class="control-group ">
+                                 <label class="control-label">Middle Name</label>
+                                 <div class="controls">
+                                    <input type="text" name="doc[middleName]" value="<?=(array_key_exists('middleName',$this->vars['member'])) ? $this->vars['member']['middleName']: '';?>" class="m-wrap span10 middleName">
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                           <div class="span4 ">
                               <div class="control-group ">
                                  <label class="control-label">Last Name</label>
                                  <div class="controls">
