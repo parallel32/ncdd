@@ -201,7 +201,7 @@
                             </div>
                         </div>
                         <div class="attorneyContent">
-                        <script src="/assets/js/theJava.js"></script>
+                        <link href='/assets/stylesheets/theCss_m.css?v=<?=time()?>' rel='stylesheet' type='text/css'>
                          <script>
                             var map_config = {
                             'default':{
@@ -868,6 +868,7 @@
                         }
 
                         </script>
+                        <script src="/assets/js/theJava.js"></script>
                         <script type="text/javascript">
                             $(function(){
                                 //*

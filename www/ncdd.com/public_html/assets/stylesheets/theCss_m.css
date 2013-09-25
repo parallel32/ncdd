@@ -153,7 +153,7 @@ svg {
 /* line 126, ../sass/theCss.scss */
 .tip {
   display: none;
-  padding: 5px;
+  padding: 1px;
   border: 1px solid #EBECED;
   color: #edeef0;
   font-weight: bold;
