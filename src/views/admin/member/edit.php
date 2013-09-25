@@ -264,7 +264,7 @@
                            <!--/span-->
                            <div class="span4 ">
                               <div class="control-group ">
-                                 <label class="control-label">Middle Name</label>
+                                 <label class="control-label">Middle Initial</label>
                                  <div class="controls">
                                     <input type="text" name="doc[middleName]" value="<?=(array_key_exists('middleName',$this->vars['member'])) ? $this->vars['member']['middleName']: '';?>" class="m-wrap span10 middleName">
                                  </div>

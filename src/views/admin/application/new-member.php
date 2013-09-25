@@ -44,7 +44,7 @@
                      <!--/span-->
                      <div class="span4 ">
                         <div class="control-group">
-                           <label class="control-label">Middle Name</label>
+                           <label class="control-label">Middle Initial</label>
                            <div class="controls">
                               <input type="text" name="doc[middleName]" class="m-wrap span12 middleName">
                            </div>
