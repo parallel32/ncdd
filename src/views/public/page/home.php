@@ -50,7 +50,7 @@
                             <li class="span3">
                                 <div class="thumbnail">
                                     <? if(!empty($post['image'])): ?>
-                                    <img src="<?=$post['image']['urls']['small']['CDN'] ?>" alt="">
+                                    <a href="/blog/<?=$post['_id']?><?=$post['slug']?>"><img src="<?=$post['image']['urls']['small']['CDN'] ?>" alt=""></a>
                                     <? endif; ?>
                                     <div class="caption">
                                         <h4><a href="/blog/<?=$post['_id']?><?=$post['slug']?>"><?=$post['headline']?></a></h4>

@@ -184,8 +184,10 @@ $app->get('/blog/{memberId}', function ($memberId, Request $request) use ($app) 
 // member add / edit a post
 $app->get('/blog/{memberId}/edit/{blogId}', function ($memberId, $blogId, Request $request) use ($app) {
 	
+	$user = call_user_func(function($app){ $user = $app['session']->get('user'); return $user;},$app);
+	$second_crumb = ($user['accessLevel'] >= EDITOR) ? array('name'=>'All Blog Posts','href'=>'/blog/all-posts'): array('name'=>'My Blog Posts','href'=>'/blog/'.$memberId);
 	$crumbs = array(array('name'=>'DUI Blog','href'=>'/blog')
-					,array('name'=>'My Blog Posts','href'=>'/blog/'.$memberId)
+					,$second_crumb
 	);
 	$view_vars = array(
 						 'active'=>'Blog/My'
@@ -291,8 +293,11 @@ $app->get('/blog/{memberId}/edit/{blogId}/edit-photo', function ($memberId, $blo
 	$blog = new Model\Blog($doc=array('_id'=>new MongoId($blogId)), $app);
 	$blog = $blog->findById();
 	
+	$user = call_user_func(function($app){ $user = $app['session']->get('user'); return $user;},$app);
+	$second_crumb = ($user['accessLevel'] >= EDITOR) ? array('name'=>'All Blog Posts','href'=>'/blog/all-posts'): array('name'=>'My Blog Posts','href'=>'/blog/'.$memberId);
+	
 	$crumbs = array(array('name'=>'DUI Blog','href'=>'/blog')
-					,array('name'=>'My Blog Posts','href'=>'/blog/'.$memberId)
+					,$second_crumb
 					,array('name'=>$blog['headline'],'href'=>'/blog/'.$memberId.'/edit/'.$blogId)
 					,array('name'=>'edit','href'=>'/blog/'.$memberId.'/edit/'.$blogId)
 					,array('name'=>'photo','href'=>'/blog/'.$memberId.'/edit/'.$blogId.'/edit-photo')
@@ -318,8 +323,11 @@ $app->get('/blog/{memberId}/edit/{blogId}/edit-photo-crop', function ($memberId,
 	$blog = new Model\Blog($doc=array('_id'=>new MongoId($blogId)), $app);
 	$blog = $blog->findById();
 	
+	$user = call_user_func(function($app){ $user = $app['session']->get('user'); return $user;},$app);
+	$second_crumb = ($user['accessLevel'] >= EDITOR) ? array('name'=>'All Blog Posts','href'=>'/blog/all-posts'): array('name'=>'My Blog Posts','href'=>'/blog/'.$memberId);
+	
 	$crumbs = array(array('name'=>'DUI Blog','href'=>'/blog')
-					,array('name'=>'My Blog Posts','href'=>'/blog/'.$memberId)
+					,$second_crumb
 					,array('name'=>$blog['headline'],'href'=>'/blog/'.$memberId.'/edit/'.$blogId)
 					,array('name'=>'edit','href'=>'/blog/'.$memberId.'/edit/'.$blogId)
 					,array('name'=>'photo','href'=>'/blog/'.$memberId.'/edit/'.$blogId.'/edit-photo')

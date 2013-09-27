@@ -188,16 +188,16 @@
       jQuery(document).ready(function() {   
 
         $('.yellow.image').click(function(e){
-            document.location.href='/blog/<?=call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$this->app);?>/edit/<?=$blog['_id']?>/edit-photo-crop';
+            document.location.href='/blog/<?=$blog['author']['_id']?>/edit/<?=$blog['_id']?>/edit-photo-crop';
         }); 
         $('.back.image').click(function(e){
-          document.location.href='/blog/<?=call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$this->app);?>/edit/<?=$blog['_id']?>';
+          document.location.href='/blog/<?=$blog['author']['_id']?>/edit/<?=$blog['_id']?>';
         }); 
         $('.red.image').click(function(e){
           io.saw.FormGet.activate({postUrl:"<?=(array_key_exists('imageDelete',$this->vars)) ? $this->vars['imageDelete']: '';?>"
             ,postOnComplete:function(responseObj,responseStatus){}
             ,postOnSuccess:function(responseObj){
-              document.location.href='/blog/<?=call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$this->app);?>/edit/<?=$blog['_id']?>/edit-photo';
+              document.location.href='/blog/<?=$blog['author']['_id']?>/edit/<?=$blog['_id']?>/edit-photo';
             }
           });
         }); 

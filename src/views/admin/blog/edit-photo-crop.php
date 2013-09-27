@@ -123,7 +123,7 @@
         });
         
         $('.back.image').click(function(e){
-          document.location.href='/blog/<?=call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$this->app);?>/edit/<?=$blog['_id']?>';
+          document.location.href='/blog/<?=$blog['author']['_id']?>/edit/<?=$blog['_id']?>';
         }); 
         $('.yellow.image').click(function(e){
           io.saw.FormPost.activate({postUrl:'/image/crop'

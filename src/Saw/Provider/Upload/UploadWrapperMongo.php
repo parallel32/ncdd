@@ -65,10 +65,17 @@ class UploadWrapperMongo
         $img->crop(new Point($x,$y),new Box($w,$h))->save($image->getFilePath());
         
         // store the file
+        $this->saveImage($image);
+        
+        /* oringally this was here to "store the file" but has been deprecated because it wasn't updating the thumbnail with the cropped image.
+
         $image->sizes[$size]['id'] = $this->app['mongo']->updateFile($fileId,$image->getFilePath(),$this->collection);
         $image->makeUrls();
         $modelObj = $image->instantiateParent($this->app);
         $modelObj->saveEdit();
+        //*/
+
+        
     }
 	/**
      * pulls an image out of mongo and returns the stream
