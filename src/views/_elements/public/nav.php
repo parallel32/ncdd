@@ -67,6 +67,7 @@
                                 </ul>
                             </div>
                         </div>
+                        <!-- DISCOVER BUTTON -->
                         <div class="dropdown-menu discover fullWidthDropDown" role="menu" aria-labelledby="discover">
                             <div class="container" role="menuitem">
                                 <div class="close"></div>
@@ -146,6 +147,9 @@
                                 $('#boardCertificationMenu .active').trigger('click');
                             });  
                         </script>
+                        <!--/ DISCOVER BUTTON -->
+
+                        <!-- LEARN BUTTON -->
                         <div class="dropdown-menu learn fullWidthDropDown" role="menu" aria-labelledby="learn">
                             <div class="container" role="menuitem">
                                 <div class="close"></div>
@@ -210,6 +214,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!--/ LEARN BUTTON -->
                     </div>
                 </div>
             </div>

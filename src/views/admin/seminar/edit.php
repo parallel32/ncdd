@@ -286,7 +286,6 @@
       <?=$this->element('js/Seminar.js');?>
       <?=$this->element('js/FileUploadClass.js');?>
       <?=$this->element('js/FormDatePickerClass.js');?>
-      <script src="/assets/plugins/jquery.appear.js" type="text/javascript"></script> 
       <script>
       jQuery(document).ready(function() {    
          io.saw.FormDatePicker.init('range');
@@ -310,6 +309,7 @@
               ],
              }
              ,snap: false
+             /*
              ,onSave: function (e) {
                 var isSuccess = true;
                 html = e.html;
@@ -318,12 +318,8 @@
              }
              ,onUnsavedChanges: function (e) {
                   e.api.execAction("save");
-              }
+              }*/
           });
-         $('#description').appear();
-         $('#description').on('appear', function(event, $all_appeared_elements) {
-            window.editor.api.activate();    
-         });
          $('.show-editor').click(function(e){
             window.editor.api.activate();
          })

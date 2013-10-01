@@ -65,7 +65,7 @@
                                  
                               </div>
                            </div>
-                           <h3 class="form-section">Description</h3>&nbsp;<button type="button" class="btn blue show-editor">Click To Edit</button><br><br>
+                           <h3 class="form-section">Description</h3>&nbsp;<button type="button" class="btn blue show-editor">Click To Add Description</button><br><br>
                            <div class="row-fluid">
                               <div class="span12 ">
                                  <div class="control-group">
@@ -116,7 +116,6 @@
       <!-- END PAGE -->
       <?=$this->element('js/Seminar.js');?>
       <?=$this->element('js/FormDatePickerClass.js');?>
-      <script src="/assets/plugins/jquery.appear.js" type="text/javascript"></script> 
       <script>
       jQuery(document).ready(function() {    
          io.saw.FormDatePicker.init('range');
@@ -140,10 +139,6 @@
                          }
                ,snap: false
                
-         });
-         $('#description').appear();
-         $('#description').on('appear', function(event, $all_appeared_elements) {
-            window.editor.api.activate();    
          });
          $('.show-editor').click(function(e){
             window.editor.api.activate();

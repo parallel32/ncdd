@@ -175,7 +175,7 @@
                               <div class="control-group ">
                                  <label class="control-label"></label>
                                  <div class="controls">
-                                    <span id="body" class="help-block"><?=(!empty($this->vars['blog']) && array_key_exists('body',$this->vars['blog'])) ? $this->vars['blog']['body'] : '<br>'?></span>
+                                    <span id="body" class=""><?=(!empty($this->vars['blog']) && array_key_exists('body',$this->vars['blog'])) ? $this->vars['blog']['body'] : '<br>'?></span>
                                     <input id="input-body" type="hidden" name="doc[body]" value="">
                                  </div>
                               </div>

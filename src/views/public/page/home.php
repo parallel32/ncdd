@@ -37,7 +37,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row-fluid postsList">
+
+                    <!-- LATEST DUI BLOG POSTS -->
+                    <div class="row-fluid bottomPadding postsList">
                         
                         <div class="title text-center">
                             <div class="bg">
@@ -68,15 +70,18 @@
                             </li>
                             <? endforeach; ?>
                         </ul>
+                        <div class="text-center">
+                            <a href="/blog" class="btn">All Posts</a>
+                        </div>
                         <? else: ?>
                         <div class="text-center">
                             We currently have not published any posts.  Please try back later.
                         </div>
                         <? endif; ?>
-                    <!-- -->
                     </div>
+                    <!--/ LATEST DUI BLOG POSTS -->
 
-                    <!--
+                    <!-- SESSIONS AND SEMINARS -->
                     <div class="row-fluid bottomPadding upcomingSeminars">
                         <div class="title text-center">
                             <div class="bg">
@@ -86,53 +91,31 @@
                             </div>
                         </div>
                         <ul class="thumbnails">
+
+                            <? foreach ($this->vars['seminars'] as $seminar): ?>
+
                             <li class="span3">
                                 <div class="thumbnail">
-                                    <img src="/assets/img/5.png" alt="">
+                                    <? if(!empty($seminar['image'])){?>
+                                    <img src="<?=$seminar['image']['urls']['small']['CDN'] ?>" alt="">
+                                    <? } ?>
                                     <div class="caption">
-                                        <h4 class="text-center"><a href="#">MSE <small>(Mastering Scientific Evidence)</small></a></h4>
-                                        <p class="data text-center">April 21, 2013</p>
-                                        <p class="descr text-center">NCDD co-sponsoring with TCDLA</p>
+                                        <h4 class="text-center"><a href="#"><?=$seminar['headline']?></a></h4>
+                                        <p class="data text-center"><?=$seminar['startDate']['monthDay']?> - <?=$seminar['endDate']['monthDay']?>, <?=$seminar['startDate']['year']?></p>
+                                        <p class="descr text-center"><?=$seminar['description']?></p>
                                     </div>
                                 </div>
                             </li>
-                            <li class="span3">
-                                <div class="thumbnail">
-                                    <img src="/assets/img/6.png" alt="">
-                                    <div class="caption">
-                                        <h4 class="text-center"><a href="#">2013 Summer<br>Session</a></h4>
-                                        <p class="data text-center">July 25, 2013</p>
-                                        <p class="descr text-center">NCDD co-sponsoring</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="span3">
-                                <div class="thumbnail">
-                                    <img src="/assets/img/6.png" alt="">
-                                    <div class="caption">
-                                        <h4 class="text-center"><a href="#">2013 Summer<br>Session</a></h4>
-                                        <p class="data text-center">July 25, 2013</p>
-                                        <p class="descr text-center">NCDD co-sponsoring</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="span3">
-                                <div class="thumbnail">
-                                    <img src="/assets/img/6.png" alt="">
-                                    <div class="caption">
-                                        <h4 class="text-center"><a href="#">2013 Summer<br>Session</a></h4>
-                                        <p class="data text-center">July 25, 2013</p>
-                                        <p class="descr text-center">NCDD co-sponsoring</p>
-                                    </div>
-                                </div>
-                            </li>
+                            
+                            <? endforeach; ?>
                         </ul>
                         <div class="text-center">
-                            <a href="#" class="btn">All Seminars</a>
+                            <!-- <a href="/seminars" class="btn">All Seminars</a> -->
                         </div>
                     </div>
 
-                    -->
+                    <!--/ SESSIONS AND SEMINARS -->
+
                     <!-- RECENT DUI NEWS -->
                     <div class="row-fluid bottomPadding recentNews">
                         <div class="title text-center">
