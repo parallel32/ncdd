@@ -86,8 +86,6 @@
                         <div class="title text-center">
                             <div class="bg">
                                 <h3>Upcoming Seminars</h3>
-                                <h3 class="stroke">Upcoming Seminars</h3>
-                                <h3 class="insetShadow">Upcoming Seminars</h3>
                             </div>
                         </div>
                         <ul class="thumbnails">
