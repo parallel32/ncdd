@@ -211,6 +211,9 @@ $app->post('/application/references', function (Request $request) use ($app) {
 	return new Response(json_encode(array('message' => 'success')), 200,array('Content-Type' => 'application/json'));
 })->before($mustbeADMIN);
 
+/////////////
+// APPROVE //
+/////////////
 $app->get('/application/{id}/approve/{type}', function ($id,$type, Request $request) use ($app) {
 	switch ($type) {
 		case 'NewMemberApplication': // old deprecated
@@ -261,6 +264,9 @@ $app->get('/application/{id}/approve/{type}', function ($id,$type, Request $requ
 
 })->before($mustbeADMIN);
 
+///////////////
+// MARK PAID //
+///////////////
 $app->get('/application/{id}/pay', function ($id, Request $request) use ($app) {
 	
 	$application = new Model\Apply($doc=array('_id'=>$id), $app);
@@ -280,6 +286,25 @@ $app->get('/application/{id}/pay', function ($id, Request $request) use ($app) {
 	return $app['view']->render('application/pay', 'default', $view_vars);
 })->value('id','')
 ->before($mustbeMEMBER);
+$app->get('/application/{id}/pay-other', function ($id, Request $request) use ($app) {
+	
+	$application = new Model\Apply($doc=array('_id'=>$id), $app);
+	$application = $application->findById();
+	$crumbs = array(array('name'=>'Applications','href'=>'/applications')
+					,array('name'=>$application['firstName'].' '.$application['lastName'],'href'=>'/application/'.$id.'/view')
+					,array('name'=>$application['type'],'href'=>'/application/'.$id.'/view')
+					,array('name'=>'Submit Another Form of Payment ','href'=>'/application/'.$id.'/pay')
+					);
+	$view_vars = array(
+						 'active'=>'Application'
+						,'page-plugin'=>'datatables,invoice'
+						,'headline'=>'Membership Application Payment'
+						,'description'=>"Pay membership Dues."
+						,'crumbs'=>$crumbs
+						,'application'=>$application);
+	return $app['view']->render('application/pay-other', 'default', $view_vars);
+})->value('id','')
+->before($mustbeADMIN);
 
 $app->get('/application/{paymentId}/pay/{applicationId}', function ($paymentId, $applicationId, Request $request) use ($app) {
     

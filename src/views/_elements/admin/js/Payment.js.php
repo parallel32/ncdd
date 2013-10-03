@@ -202,6 +202,15 @@
 		});	
 
 	}
+	Payment.otherInit = function(){
+		$('.btn.blue.mini.view').click(function(e){
+			document.location.href='/payment/'+$(this).attr('data-id')+'/view';
+		});	
+		$('.btn.cancel').click(function(e){
+			document.location.href='/payment';
+		});	
+
+	}
 	
 }( io.saw.Payment = io.saw.Payment || {}, io.saw.jQuery || jQuery ));
 </script>

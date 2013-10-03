@@ -216,6 +216,10 @@
 			e.preventDefault();
 			document.location.href='/application/'+$(this).attr('data-id')+'/edit';
 		});
+		$('#saw-form .btn.pay').click(function(e){
+			e.preventDefault();
+			document.location.href='/application/'+$(this).attr('data-id')+'/pay-other';
+		});
 		
 	};
 	

@@ -12,6 +12,19 @@
             <!-- BEGIN PAGE CONTENT-->
 
             <!-- INVOICE -->
+            <? 
+            $user = $this->app['session']->get('user');
+            $accessLevel = $user['accessLevel'];
+            $user_id = $user['user_id'];
+            ?>
+            <? if($accessLevel == ADMIN): ?>
+            <div class="row-fluid invoice alert">
+               <div class="span6">
+                  <p><h3>Pay without a credit card:</h3></p> <a class="btn blue" href="/application/<?=$this->vars['application']['_id']?>/pay-other"><i class="icon-money"></i> Goto Alternate Payment Form</a>
+               </div>
+            </div>
+            <hr />
+            <? endif; ?>
             <div class="row-fluid invoice">
                <div class="row-fluid invoice-logo">
                   <div class="span6 invoice-logo-space"><img src="/assets/img/ncdd-login2-logo.png" alt="" /> </div>

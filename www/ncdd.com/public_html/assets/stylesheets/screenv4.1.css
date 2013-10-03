@@ -1403,8 +1403,8 @@ input[type="checkbox"] {
 }
 /* line 1342, ../sass/screen.scss */
 .content .recentNews .thumbnails .thumbnail img {
-  max-width: 75px;
-  width: 10%;
+  /*max-width: 75px;
+  width: 10%;*/
   margin-right: 2%;
 }
 /* line 1348, ../sass/screen.scss */
