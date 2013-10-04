@@ -374,9 +374,19 @@ class Member extends User {
 				break;
 			case 'Regents and Fellows':
 				if($listedOnly){
-					$result = $this->find($query=array('currentFacultyPosition'=>array('$gte'=>self::$facultyPosition['REGENT']),'listed'=>1),$fields,true,$sort=array('currentOrder'=>1,'orderNum'=>1),$offset=0,$limit=3000);			
+					$regents = $this->find($query=array('currentFacultyPosition'=>array('$gt'=>self::$facultyPosition['DELEGATE'],'$lt'=>self::$facultyPosition['FELLOW']),'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);			
+					$fellows = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['FELLOW'],'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);			
+					foreach($fellows as $fellow):
+						array_push($regents,$fellow);
+					endforeach;
+					$result = $regents;
 				}else{
-					$result = $this->find($query=array('currentFacultyPosition'=>array('$gte'=>self::$facultyPosition['REGENT'])),$fields,true,$sort=array('currentOrder'=>1,'orderNum'=>1),$offset=0,$limit=3000);			
+					$regents = $this->find($query=array('currentFacultyPosition'=>array('$gt'=>self::$facultyPosition['DELEGATE'],'$lt'=>self::$facultyPosition['FELLOW'])),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);			
+					$fellows = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['FELLOW']),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);			
+					foreach($fellows as $fellow):
+						array_push($regents,$fellow);
+					endforeach;
+					$result = $regents;
 				}
 				
 				break;

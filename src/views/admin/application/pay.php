@@ -18,9 +18,10 @@
             $user_id = $user['user_id'];
             ?>
             <? if($accessLevel == ADMIN): ?>
-            <div class="row-fluid invoice alert">
-               <div class="span6">
-                  <p><h3>Pay without a credit card:</h3></p> <a class="btn blue" href="/application/<?=$this->vars['application']['_id']?>/pay-other"><i class="icon-money"></i> Goto Alternate Payment Form</a>
+            <div class="row-fluid invoice">
+               <div class="span12 alert">
+                  <p><h3>You are now in the: pay with a credit card screen</h3></p>
+                  <p><h3>To pay without a credit card:</h3></p> <a class="btn blue" href="/application/<?=$this->vars['application']['_id']?>/pay-other"><i class="icon-money"></i> Goto Alternate Payment Form</a>
                </div>
             </div>
             <hr />

@@ -12,9 +12,10 @@
             <!-- BEGIN PAGE CONTENT-->
 
             <!-- INVOICE -->
-            <div class="row-fluid invoice alert">
-               <div class="span6">
-                  <p><h3>Pay by credit card on behalf of the member:</h3></p> <a class="btn blue" href="/application/<?=$this->vars['application']['_id']?>/pay"><i class="icon-money"></i> Goto CC Form</a>
+            <div class="row-fluid invoice">
+               <div class="span12 alert">
+                  <p><h3>You are now in the: alternat payment method screen</h3></p>
+                  <p><h3>To pay by credit card on behalf of the member:</h3></p> <a class="btn blue" href="/application/<?=$this->vars['application']['_id']?>/pay"><i class="icon-money"></i> Goto CC Form</a>
                </div>
             </div>
             <hr />
