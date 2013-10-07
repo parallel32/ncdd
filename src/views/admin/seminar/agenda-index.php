@@ -21,7 +21,7 @@
                      <? foreach($agenda['timeSlots'] as $timeSlot): ?>
                      <li class="timeline-<?=$timeSlot['color']?>">
                         <div class="timeline-time">
-                           <span class="date"><?=$timeSlot['date']['monthDay']?></span>
+                           <span class="date"><?=$agenda['date']['monthDay']?></span>
                            <span class="time"><?=$timeSlot['date']['shortTimeSlim']?></span>
                         </div>
                         <div class="timeline-icon"><i class="icon-time"></i></div>
