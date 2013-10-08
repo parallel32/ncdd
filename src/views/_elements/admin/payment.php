@@ -216,6 +216,10 @@
                      <div class="modal-footer">
                         <button class="btn blue continue payment" data-insertid="">View Receipt</button>
                         <button class="btn blue continue dashboard">Go To Dashboard</button>
+                        <? $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user'); return $user['accessLevel'];},$this->app); ?>
+                        <? if($accessLevel >= EDITOR):?>
+                        <button class="btn yellow continue applications">Go To Applications</button>
+                        <? endif; ?>
                      </div>
                   </div>
                   <!--/ SUCCESSFUL SAVE MODAL -->
@@ -225,6 +229,12 @@
                   <script>
                   jQuery(document).ready(function() {    
                      io.saw.Payment.init(<?=$chargeOnSuccess?>);
+
+                     <? if($accessLevel >= EDITOR):?>
+                     $('#save-success .continue.applications').click(function(e){
+                        document.location.href='/applications';
+                     });   
+                     <? endif; ?>
                   });      
                   </script>
                   <!--/ PAYMENT ELEMENT -->

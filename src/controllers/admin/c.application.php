@@ -286,6 +286,7 @@ $app->get('/application/{id}/pay', function ($id, Request $request) use ($app) {
 	return $app['view']->render('application/pay', 'default', $view_vars);
 })->value('id','')
 ->before($mustbeMEMBER);
+
 $app->get('/application/{id}/pay-other', function ($id, Request $request) use ($app) {
 	
 	$application = new Model\Apply($doc=array('_id'=>$id), $app);
@@ -306,13 +307,28 @@ $app->get('/application/{id}/pay-other', function ($id, Request $request) use ($
 })->value('id','')
 ->before($mustbeADMIN);
 
-$app->get('/application/{paymentId}/pay/{applicationId}', function ($paymentId, $applicationId, Request $request) use ($app) {
+// mark the application paid and create a payment record, which is the receipt
+$app->post('/application/payment', function (Request $request) use ($app) {
+	// retrieve document from request
+	$doc = $request->get('doc');
+	$payment = new Model\Payment($doc,$app);
+	$app['validateModel']($app, $payment,$groups=array('manual'));
+	$paymentId = $payment->manualCharge();
+	
+	return new Response(json_encode(array('paymentId'=>$paymentId,'message'=>"success")), 200,array('Content-Type' => 'application/json'));
+})->before($mustbeADMIN);
+
+
+$app->get('/application/{paymentId}/pay/{applicationId}/{resetSession}', function ($paymentId, $applicationId, $resetSession, Request $request) use ($app) {
     
     $application = new Model\Apply(array('_id'=>$applicationId, 'paymentId'=>$paymentId), $app);
-    $application->markPaid();
+    if($resetSession=='no')
+    	$application->markPaid(false);
+    else
+    	$application->markPaid(false);
 
     return new Response(json_encode(array('message' => 'Successfully Paid')), 200,array('Content-Type' => 'application/json'));
-})->before($mustbeMEMBER);
+})->value('resetSession','no')->before($mustbeMEMBER);
 
 $app->get('/application/{id}/delete', function ($id, Request $request) use ($app) {
     $application = new Model\Apply(array('_id'=>$id), $app);

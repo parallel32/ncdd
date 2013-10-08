@@ -108,9 +108,7 @@
 		   ,formName:'#payment-form'
 		   ,serializeSelector:':input'
 		   ,postOnComplete:function(responseObj,responseStatus){
-		   		$('#payment-form .btn.green').removeAttr("disabled");
-				$('#payment-form .btn.green').html('<i class="icon-ok"></i> Submit Payment - try again');
-				$('#payment-form .number').val(io.saw.Payment.hold_card);
+		   		$('#payment-form .number').val(io.saw.Payment.hold_card);
 			   	if(responseStatus == 'success'){
 				
 				}else{
@@ -119,12 +117,14 @@
 		   }
 		   ,postOnSuccess:function(responseObj){
 		   		$('#save-success').modal({keyboard: false});   		
-		   		$('#payment-form .btn.green').removeAttr("disabled");
-	            $('#payment-form .btn.green').html('<i class="icon-ok"></i> Payment Successful');
+		   		$('#payment-form .btn.green').prop("disabled",true);
+		   		$('#payment-form .btn.green').html('<i class="icon-ok"></i> Payment Successful');
 	            params.chargeOnSuccess(responseObj,responseObj.paymentId.$id);
 		   }
 		   ,postOnErrors:function(responseObj){
-		   		$('#payment-form .number').val(io.saw.Payment.hold_card);
+		   		$('#payment-form .btn.green').removeAttr("disabled");
+				$('#payment-form .btn.green').html('<i class="icon-ok"></i> Submit Payment - try again');
+				
 		   }
 		});      
 	};
@@ -194,15 +194,6 @@
 			
 	};
 	Payment.indexInit = function(){
-		$('.btn.blue.mini.view').click(function(e){
-			document.location.href='/payment/'+$(this).attr('data-id')+'/view';
-		});	
-		$('.btn.cancel').click(function(e){
-			document.location.href='/payment';
-		});	
-
-	}
-	Payment.otherInit = function(){
 		$('.btn.blue.mini.view').click(function(e){
 			document.location.href='/payment/'+$(this).attr('data-id')+'/view';
 		});	

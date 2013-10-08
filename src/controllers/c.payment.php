@@ -15,7 +15,7 @@ $app->post('/payment/charge', function (Request $request) use ($app) {
 	// retrieve document from request
 	$doc = $request->get('doc');
 	$payment = new Model\Payment($doc,$app);
-	$app['validateModel']($app, $payment);
+	$app['validateModel']($app, $payment,$groups=array('cc'));
 	$paymentId = $payment->charge();
 	
 	return new Response(json_encode(array('paymentId'=>$paymentId,'message'=>"success")), 200,array('Content-Type' => 'application/json'));

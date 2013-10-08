@@ -14,8 +14,8 @@
             <!-- INVOICE -->
             <div class="row-fluid invoice">
                <div class="span12 alert">
-                  <p><h3>You are now in the: alternat payment method screen</h3></p>
-                  <p><h3>To pay by credit card on behalf of the member:</h3></p> <a class="btn blue" href="/application/<?=$this->vars['application']['_id']?>/pay"><i class="icon-money"></i> Goto CC Form</a>
+                  <p><h3><b>Alternate payment method screen</b></h3></p>
+                  <p><h3>To pay by credit card on behalf of the member:</h3></p> <a class="btn blue" href="/application/<?=$this->vars['application']['_id']?>/pay"><i class="icon-money"></i> Goto the Credit Card Form</a>
                </div>
             </div>
             <hr />
@@ -112,72 +112,43 @@
                         You have some form errors. Please check below.
                      </div>
                      <!--/ ERROR -->
+                     <?
+                     $memberId = $this->vars['application']['memberId'];
+                     $ownerId = $this->vars['application']['_id'];
+                     $ownerClass = $this->vars['application']['class'];
+                     $description = 'INV-'.time();
+                     $title = $this->vars['application']['type'];
+                     $amount = $this->vars['application']['membershipDues'];
+                     $firstName = $this->vars['application']['firstName'];
+                     $lastName = $this->vars['application']['lastName'];
+                     $email = $this->vars['application']['email'];
+                     $phone = $this->vars['application']['phone'];
+                     $address1 = $this->vars['application']['address1'];
+                     $address2 = $this->vars['application']['address2'];
+                     $city = $this->vars['application']['city'];
+                     $state = $this->vars['application']['state'];
+                     $postalCode = $this->vars['application']['postalCode'];
+                     $country = $this->vars['application']['country'];
+                     ?>
+                     <input type="hidden" class="name" name="doc[name]" value="<?=$firstName.' '.$lastName?>">
                      <input type="hidden" class="memberId" name="doc[memberId]" value="<?=$memberId?>">
                      <input type="hidden" class="ownerId" name="doc[ownerId]" value="<?=$ownerId?>">
                      <input type="hidden" class="ownerClass" name="doc[ownerClass]" value="<?=$ownerClass?>">
                      <input type="hidden" class="description" name="doc[description]" value="<?=$description?>">
                      <input type="hidden" class="title" name="doc[title]" value="<?=$title?>">
-                     <input type="hidden" class="amount" name="doc[amount]" value="<?=$amount?>">
-                     <input type="hidden" class="cardType" name="doc[cardType]" value="">
-                     <input type="hidden" class="token" name="doc[token]" value="">
+                     <input type="hidden" class="type" name="doc[type]" value="check">
                      <h3 class="form-section">Payment Information</h3>
                      <div class="row-fluid">
-                        <div class="span12 ">
-                           <div class="control-group">
-                              <label class="control-label" for="type">We Accept</label>
-                              <div class="controls">
-                                 <span class="card visa" title="Visa">Visa</span>
-                                 <span class="card master" title="Mastercard">Mastercard</span>
-                                 <span class="card amex" title="American Express">American Express</span>
-                                 <span class="card discover" title="Discover">Discover</span>
-                              </div>
-                           </div>
-                        </div>
-                        <!--/span-->
-                     </div>
-                     <div class="row-fluid">
-                        <div class="span12 "><span class="cardType"></span></div>
-                     </div>
-                     <div class="row-fluid">
                         <div class="span8 ">
                            <div class="control-group ">
-                              <label class="control-label">Your name as it appears on the card</label>
+                              <label class="control-label">Amount To Pay</label>
                               <div class="controls">
-                                 <input type="text" name="doc[name]" class="m-wrap span8 name" value="<?=$firstName?> <?=$lastName?>">
-                              </div>
-                           </div>
-                        </div>
-                        <!--/span-->
-                     </div>
-                     <div class="row-fluid">
-                        <div class="span8 ">
-                           <div class="control-group ">
-                              <label class="control-label">Credit Card Number</label>
-                              <div class="controls">
-                                 <input type="text" name="doc[number]" class="m-wrap span8 number">
-                              </div>
-                           </div>
-                        </div>
-                        <!--/span-->
-                     </div>
-                     <div class="row-fluid">
-                        <div class="span8 ">
-                           <div class="control-group ">
-                              <label class="control-label">CVC Code</label>
-                              <div class="controls">
-                                 <input type="text" name="doc[cvc]" class="m-wrap span8 cvc">
-                              </div>
-                           </div>
-                        </div>
-                        <!--/span-->
-                     </div>
-                     <div class="row-fluid">
-                        <div class="span8 ">
-                           <div class="control-group ">
-                              <label class="control-label">Expiration Date</label>
-                              <div class="controls">
-                                 <select class="span4 expMonth" name="doc[expMonth]"></select>
-                                 <select class="span4 expYear" name="doc[expYear]"></select>
+                                 <div class="input-prepend input-append">
+                                    <span class="add-on">$ </span>
+                                       <input type="text" name="doc[amount]" class="m-wrap span8 amount" value="<?=$amount?>">
+                                    <span class="add-on">.00</span>
+                                 </div>
+                                 <span class="help-block">A receipt with this amount will be created.</span>
                               </div>
                            </div>
                         </div>
@@ -280,8 +251,8 @@
                      </div>
                      <!--/ ERROR -->
                      <div class="form-actions text-center">
-                        <button type="button" class="btn green"><i class="icon-ok"></i> Submit Payment</button>
-                        <button type="button" class="btn cancel">Cancel and Go Back</button>
+                        <button data-application-id="<?=$this->vars['application']['_id']?>" type="button" class="btn green submit-payment"><i class="icon-ok"></i> Submit Payment</button>
+                        <button data-id="<?=$this->vars['application']['_id']?>" type="button" class="btn cancel">Cancel and Go Back</button>
                      </div>
                   </form>
                   <!-- SUCCESSFUL SAVE MODAL -->
@@ -296,13 +267,14 @@
                      <div class="modal-footer">
                         <button class="btn blue continue payment" data-insertid="">View Receipt</button>
                         <button class="btn blue continue dashboard">Go To Dashboard</button>
+                        <button class="btn yellow continue applications">Go To Applications</button>
                      </div>
                   </div>
                   <!--/ SUCCESSFUL SAVE MODAL -->
-                  <?=$this->element('js/Payment.js');?>
+                  <?=$this->element('js/Application.js');?>
                   <script>
                   jQuery(document).ready(function() {    
-                     io.saw.Payment.otherInit();
+                     io.saw.Application.paymentInit();
                   });      
                   </script>
                   <!--/ PAYMENT ELEMENT -->

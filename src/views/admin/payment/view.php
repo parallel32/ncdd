@@ -73,7 +73,11 @@
                      <div class="row-fluid">
                         <div class="span8 ">
                            <div class="control-group ">
+                              <? if($this->vars['payment']['type'] == 'check'): ?>
+                              <label class="control-label">Name</label>
+                              <? else: ?>
                               <label class="control-label">Your name as it appears on the card</label>
+                              <? endif; ?>
                               <div class="controls">
                                  <input type="text" value="<?=$this->vars['payment']['name']?>" readonly class="m-wrap span8 name">
                               </div>
@@ -81,6 +85,9 @@
                         </div>
                         <!--/span-->
                      </div>
+                     <? if($this->vars['payment']['type'] == 'check'): ?>
+
+                     <? else: ?>
                      <div class="row-fluid">
                         <div class="span8 ">
                            <div class="control-group ">
@@ -126,6 +133,8 @@
                         </div>
                         <!--/span-->
                      </div>
+                     <? endif; ?>
+                     
                      <h3 class="form-section">Billing Address</h3>
                      <div class="row-fluid">
                         <div class="span8 ">

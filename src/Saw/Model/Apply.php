@@ -294,7 +294,7 @@ class Apply extends Model {
 		return $result;
 
 	}
-	public function markPaid(){
+	public function markPaid($resetSession=true){
 
 		$this->paidDate = new Date(self::$app,'now', $this->timeZone);
 		$this->currentStatus = self::$status['PAID'];
@@ -311,10 +311,11 @@ class Apply extends Model {
 			$memberId = 'notfound';
 		endif;
 
-		//error_log('memberId:'.$memberId);
-		$member = new Member(array('_id'=>$memberId,'accessLevel'=>MEMBER),self::$app);
-		$member->saveSafe();
-		$member->setUserSession();
+		if($resetSession){
+			$member = new Member(array('_id'=>$memberId,'accessLevel'=>MEMBER),self::$app);
+			$member->saveSafe();
+			$member->setUserSession();
+		}
 	}
 	
 }

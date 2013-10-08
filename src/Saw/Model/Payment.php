@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints;
 class Payment extends Model {
 	
 	public $collection = 'payment';
-    public $type='cc';
+    public $type;
 	public $name;
 	public $token;
 	public $expMonth;
@@ -42,22 +42,22 @@ class Payment extends Model {
 	private $secretKey = SAW_STRIPE_SECRET_KEY;
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
-		$metadata->addPropertyConstraint('name', new Constraints\NotBlank());
-		$metadata->addPropertyConstraint('number', new Constraints\NotBlank());
-		$metadata->addPropertyConstraint('cvc', new Constraints\NotBlank());
-		$metadata->addPropertyConstraint('addressLine1', new Constraints\NotBlank());
-		$metadata->addPropertyConstraint('city', new Constraints\NotBlank());
-		$metadata->addPropertyConstraint('stateProvinceRegion', new Constraints\NotBlank());
-		$metadata->addPropertyConstraint('zipPostalCode', new Constraints\NotBlank());
-		$metadata->addPropertyConstraint('country', new Constraints\NotBlank());
-		$metadata->addPropertyConstraint('phone', new Constraints\NotBlank());
-		$metadata->addPropertyConstraint('email', new Constraints\NotBlank());
-		$metadata->addPropertyConstraint('email', new Constraints\Email(array('message'=>'invalid email')));
-		$metadata->addPropertyConstraint('ownerId', new Constraints\NotBlank());
-		$metadata->addPropertyConstraint('ownerClass', new Constraints\NotBlank());
-		$metadata->addPropertyConstraint('description', new Constraints\NotBlank());
-		$metadata->addPropertyConstraint('title', new Constraints\NotBlank());
-		$metadata->addPropertyConstraint('amount', new Constraints\NotBlank());
+		$metadata->addPropertyConstraint('name', new Constraints\NotBlank(array('groups' => array('cc'))));
+		$metadata->addPropertyConstraint('number', new Constraints\NotBlank(array('groups' => array('cc'))));
+		$metadata->addPropertyConstraint('cvc', new Constraints\NotBlank(array('groups' => array('cc'))));
+		$metadata->addPropertyConstraint('addressLine1', new Constraints\NotBlank(array('groups' => array('cc','manual'))));
+		$metadata->addPropertyConstraint('city', new Constraints\NotBlank(array('groups' => array('cc','manual'))));
+		$metadata->addPropertyConstraint('stateProvinceRegion', new Constraints\NotBlank(array('groups' => array('cc','manual'))));
+		$metadata->addPropertyConstraint('zipPostalCode', new Constraints\NotBlank(array('groups' => array('cc','manual'))));
+		$metadata->addPropertyConstraint('country', new Constraints\NotBlank(array('groups' => array('cc','manual'))));
+		$metadata->addPropertyConstraint('phone', new Constraints\NotBlank(array('groups' => array('cc','manual'))));
+		$metadata->addPropertyConstraint('email', new Constraints\NotBlank(array('groups' => array('cc','manual'))));
+		$metadata->addPropertyConstraint('email', new Constraints\Email(array('message'=>'invalid email','groups' => array('cc','manual'))));
+		$metadata->addPropertyConstraint('ownerId', new Constraints\NotBlank(array('groups' => array('cc','manual'))));
+		$metadata->addPropertyConstraint('ownerClass', new Constraints\NotBlank(array('groups' => array('cc','manual'))));
+		$metadata->addPropertyConstraint('description', new Constraints\NotBlank(array('groups' => array('cc','manual'))));
+		$metadata->addPropertyConstraint('title', new Constraints\NotBlank(array('groups' => array('cc','manual'))));
+		$metadata->addPropertyConstraint('amount', new Constraints\NotBlank(array('groups' => array('cc','manual'))));
 	
 	}
 
@@ -66,6 +66,7 @@ class Payment extends Model {
 		$this->init($doc);
 
 		if(!empty($doc['_id'])) $this->_id = (is_object($doc['_id'])) ? $doc['_id'] : new \MongoId($doc['_id']);
+		$this->type = $doc['type'];        
 		$this->name = $doc['name'];        
 		$this->token = $doc['token'];        
 		$this->expMonth = $doc['expMonth'];        
@@ -93,6 +94,7 @@ class Payment extends Model {
 	}
 	
 	protected function prepareInsert(){
+		$this->type = $this->type ?: 'cc';
 		$this->name = $this->name ?: '';
 		$this->token = $this->token ?: '';
 		$this->expMonth = $this->expMonth ?: '';        
@@ -150,7 +152,7 @@ class Payment extends Model {
 		
 	}
 	/**
-	 * Issue a refund on a previous charge
+	 * Issue a credit card refund on a previous charge
 	 */
 	public function refund($transactionId, $amount){
 		// prepare refund request here
@@ -165,18 +167,45 @@ class Payment extends Model {
 		}
 		error_log('REFUND response:'.print_r($response,true));
 	}
+	/**
+	 * do a manual charge usually for check payemnts
+	 */
+	public function manualCharge(){
+		try {
+			$this->transactionId = new \MongoId();
+			$paymentId = $this->insert();			
+			$this->markOwnerClassPaid($paymentId);
+			return $paymentId;
+		} catch (\Exception $e) {
+			throw new \Saw\Exceptions\SawException(new Exceptions\DomainException(),"The transaction failed.  Please try again. Processing Message: ".$e->getMessage()." Code:".$e->getCode());
+		}
+		
+	}
 	public function ownerClassObj(){
 		switch ($this->ownerClass) {
-			case 'ApplyNewMemeber':
-				$obj = new ApplyNewMemeber(array('_id'=>$this->ownerId),self::$app);
+			case 'ApplyNewMember':
+				$obj = new ApplyNewMember(array('_id'=>$this->ownerId),self::$app);
+				return $obj;
+				break;
+			case 'ApplyNewSustainingMember':
+				$obj = new ApplyNewSustainingMember(array('_id'=>$this->ownerId),self::$app);
 				return $obj;
 				break;
 		}
 	}
 	public function markOwnerClassPaid($paymentId){
 		switch ($this->ownerClass) {
-			case 'ApplyNewMemeber':
-				$obj = new ApplyNewMemeber(array('_id'=>$this->ownerId
+			case 'ApplyNewMember':
+				$obj = new ApplyNewMember(array('_id'=>$this->ownerId
+														,'currentStatus'=>Apply::$status['PAID']
+														,'paidDate'=> new Date(self::$app, 'now')
+														,'paymentId'=> $paymentId
+												),self::$app);
+
+				return $obj->saveSafe();
+				break;
+			case 'ApplyNewSustainingMember':
+				$obj = new ApplyNewSustainingMember(array('_id'=>$this->ownerId
 														,'currentStatus'=>Apply::$status['PAID']
 														,'paidDate'=> new Date(self::$app, 'now')
 														,'paymentId'=> $paymentId

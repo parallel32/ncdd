@@ -20,8 +20,8 @@
             <? if($accessLevel == ADMIN): ?>
             <div class="row-fluid invoice">
                <div class="span12 alert">
-                  <p><h3>You are now in the: pay with a credit card screen</h3></p>
-                  <p><h3>To pay without a credit card:</h3></p> <a class="btn blue" href="/application/<?=$this->vars['application']['_id']?>/pay-other"><i class="icon-money"></i> Goto Alternate Payment Form</a>
+                  <p><h3><b>Credit card payment screen</b></h3></p>
+                  <p><h3>To pay without a credit card:</h3></p> <a class="btn blue" href="/application/<?=$this->vars['application']['_id']?>/pay-other"><i class="icon-money"></i> Goto the Alternate Payment Form</a>
                </div>
             </div>
             <hr />
@@ -111,7 +111,7 @@
             <div class="row-fluid">
                <div class="span12">
                   <?
-                     $payment_vars['memberId'] = call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$this->app);
+                     $payment_vars['memberId'] = $this->vars['application']['memberId'];
                      $payment_vars['ownerId'] = $this->vars['application']['_id'];
                      $payment_vars['ownerClass'] = $this->vars['application']['class'];
                      $payment_vars['description'] = 'INV-'.time();
