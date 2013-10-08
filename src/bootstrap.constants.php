@@ -56,7 +56,7 @@ $app['humanizeAccessLevels'] = $app->protect(function ($accessLevel) {
 		case 100:
 			return 'MEMBER';
 			break;
-		case 100:
+		case 50:
 			return 'UNPAIDMEMBER';
 			break;
 	}
