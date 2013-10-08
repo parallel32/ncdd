@@ -325,7 +325,7 @@ $app->get('/application/{paymentId}/pay/{applicationId}/{resetSession}', functio
     if($resetSession=='no')
     	$application->markPaid(false);
     else
-    	$application->markPaid(false);
+    	$application->markPaid();
 
     return new Response(json_encode(array('message' => 'Successfully Paid')), 200,array('Content-Type' => 'application/json'));
 })->value('resetSession','no')->before($mustbeMEMBER);
