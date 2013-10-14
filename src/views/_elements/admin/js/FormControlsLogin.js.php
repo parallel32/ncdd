@@ -10,6 +10,7 @@
                 $('#login-btn').html('Login <i class="m-icon-swapright m-icon-white"></i>')
             }
             ,postOnSuccess:function(responseObj){
+                
                 document.location.href='/';
             }
 
