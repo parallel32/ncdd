@@ -7,7 +7,6 @@
             <h3>Method Not Allowed.</h3>
                <p><?=$this->vars['error']->message?><br>
                resolve message: <?=$this->vars['error']->resolveMessage?><br>                           
-               resolve action: <?=$this->vars['error']->resolveAction?><br />
                <a href="/">Return home</a> or try the search bar below.
             </p>
             <form action="#">

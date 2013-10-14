@@ -75,4 +75,11 @@ $app->post('/member/forgotpassword', function (Request $request) use ($app) {
 	return new Response(json_encode(array('message' => 'We could not find this email address. Please try again.')), 400,array('Content-Type' => 'application/json'));
 });
 
+// sets the flash message and redirect if an access denied happens.
+$app->post('/flash/set', function (Request $request) use ($app) {
+	$doc = $request->get('doc');
+	Model\User::setFlash($doc['message'],$doc['redirect']);
+	return new Response(json_encode(array('message' => '')), 200,array('Content-Type' => 'application/json'));
+});
+
 return $app;

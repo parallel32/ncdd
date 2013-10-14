@@ -250,6 +250,17 @@ class User extends Model {
 		endif;
 	}
     
+  	// saves session flash
+	public static function setFlash($message,$redirect) {
+		$flash['message'] 	= $message;
+		$flash['redirect']	= $redirect;
+		self::$app['session']->set('flash',$flash);
+		return true;
+    }
+    // gets the flash
+    public static function getFlash(){
+    	return self::$app['session']->get('flash');
+    }
 	// logs user out
 	public function deauthenticate(){
 		

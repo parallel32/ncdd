@@ -6,7 +6,6 @@
          <div class="details">
             <h3><?=$this->vars['error']->message?></h3>
             <p>resolve message: <?=$this->vars['error']->resolveMessage?><br>                           
-               resolve action: <?=$this->vars['error']->resolveAction?>
             </p>
          </div>
       </div>

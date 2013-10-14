@@ -7,7 +7,6 @@
             <h3>System Overload. Please try again later.</h3>
                <p><?=$this->vars['error']->message?><br>
                resolve message: <?=$this->vars['error']->resolveMessage?><br>                           
-               resolve action: <?=$this->vars['error']->resolveAction?>
             </p>
          </div>
       </div>
