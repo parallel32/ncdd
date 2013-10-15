@@ -7,11 +7,19 @@
             ,formName:'.login-form'
             ,serializeSelector:':input'
             ,postOnComplete:function(responseObj,responseStatus){
+            }
+            ,postOnErrors:function(responseObj){
                 $('#login-btn').html('Login <i class="m-icon-swapright m-icon-white"></i>')
             }
             ,postOnSuccess:function(responseObj){
-                
+                //*
+                if(responseObj.hasOwnProperty('flash') && typeof responseObj.flash =='object' && responseObj.flash != null && responseObj.flash.hasOwnProperty('redirect') && responseObj.flash.redirect.length > 0){
+                    if(responseObj.flash.hasOwnProperty('redirect') && responseObj.flash.redirect.length > 0){
+                        document.location.href = responseObj.flash.redirect;
+                    }
+                }
                 document.location.href='/';
+                //*/
             }
 
         });     

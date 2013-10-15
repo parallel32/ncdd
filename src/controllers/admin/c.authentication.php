@@ -15,7 +15,8 @@ use Saw\Model;
 
 // login view
 $app->get('/login', function (Request $request) use ($app) {
-	return $app['view']->render('','login');	
+	$view_vars = array('flash'=>Model\User::getFlash($app));
+	return $app['view']->render('','login',$view_vars);	
 });
 // login post
 $app->post('/login', function (Request $request) use ($app) {
@@ -78,7 +79,7 @@ $app->post('/member/forgotpassword', function (Request $request) use ($app) {
 // sets the flash message and redirect if an access denied happens.
 $app->post('/flash/set', function (Request $request) use ($app) {
 	$doc = $request->get('doc');
-	Model\User::setFlash($doc['message'],$doc['redirect']);
+	Model\User::setFlash($app,$doc['message'],$doc['redirect']);
 	return new Response(json_encode(array('message' => '')), 200,array('Content-Type' => 'application/json'));
 });
 

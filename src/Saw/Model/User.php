@@ -251,15 +251,15 @@ class User extends Model {
 	}
     
   	// saves session flash
-	public static function setFlash($message,$redirect) {
+	public static function setFlash($app, $message,$redirect) {
 		$flash['message'] 	= $message;
 		$flash['redirect']	= $redirect;
-		self::$app['session']->set('flash',$flash);
+		$app['session']->set('flash',$flash);
 		return true;
     }
     // gets the flash
-    public static function getFlash(){
-    	return self::$app['session']->get('flash');
+    public static function getFlash($app){
+    	return $app['session']->get('flash');
     }
 	// logs user out
 	public function deauthenticate(){

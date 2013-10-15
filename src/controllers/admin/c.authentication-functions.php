@@ -59,7 +59,7 @@ $app['clientLogin'] = $app->protect(function ($app,$request) {
         
         if($user->findByEmailPassword()):
             $user->authenticate();
-            return new Response(json_encode(array('message' => 'login successful')), 200,array('Content-Type' => 'application/json'));
+            return new Response(json_encode(array('message' => 'login successful','flash'=>Model\User::getFlash($app))), 200,array('Content-Type' => 'application/json'));
         else:
             $response_arr = array('message'=>"Login failed<br>Email and password combination could not be found.",
                                   "invalidFields"=>array(array('name'=>'password','message'=>''),array('name'=>'email','message'=>'')));
@@ -87,7 +87,7 @@ $app['adminLogin'] = $app->protect(function ($app,$request) {
             $sess_user['status']        = USER_STATUS_ACTIVE;
             $app['session']->set('user',$sess_user);
 
-            return new Response(json_encode(array('message' => 'login successful')), 200,array('Content-Type' => 'application/json'));
+            return new Response(json_encode(array('message' => 'login successful','flash'=>Model\User::getFlash($app))), 200,array('Content-Type' => 'application/json'));
         else:
             $response_arr = array('message'=>"Login failed<br>Email and password combination could not validate.",
                                   "invalidFields"=>array(array('name'=>'password','message'=>''),array('name'=>'email','message'=>'')));

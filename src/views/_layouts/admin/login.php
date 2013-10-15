@@ -60,6 +60,16 @@
         <button class="close" data-dismiss="alert"></button>
         <span>Enter any username and password.</span>
       </div>
+      <? if(!empty($this->vars['flash']) && array_key_exists('message',$this->vars['flash'])): ?>
+        <div class="alert alert-info">
+          <button class="close" data-dismiss="alert"></button>
+          <span><?=$this->vars['flash']['message']?></span>
+        </div>
+        <div class="alert alert-info">
+          <button class="close" data-dismiss="alert"></button>
+          <span><?=$this->vars['flash']['redirect']?></span>
+        </div>
+      <? endif; ?>
       <div class="control-group">
         <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
         <label class="control-label visible-ie8 visible-ie9">Username</label>
