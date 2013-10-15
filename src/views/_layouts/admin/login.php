@@ -60,7 +60,7 @@
         <button class="close" data-dismiss="alert"></button>
         <span>Enter any username and password.</span>
       </div>
-      <? if(!empty($this->vars['flash']) && array_key_exists('message',$this->vars['flash'])): ?>
+      <? if(!empty($this->vars['flash']) && array_key_exists('message',$this->vars['flash']) && !empty($this->vars['flash']['message'])): ?>
         <div class="alert alert-info">
           <button class="close" data-dismiss="alert"></button>
           <span><?=$this->vars['flash']['message']?></span>

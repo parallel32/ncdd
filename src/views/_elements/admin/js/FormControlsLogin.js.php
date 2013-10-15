@@ -14,11 +14,11 @@
             ,postOnSuccess:function(responseObj){
                 //*
                 if(responseObj.hasOwnProperty('flash') && typeof responseObj.flash =='object' && responseObj.flash != null && responseObj.flash.hasOwnProperty('redirect') && responseObj.flash.redirect.length > 0){
-                    if(responseObj.flash.hasOwnProperty('redirect') && responseObj.flash.redirect.length > 0){
-                        document.location.href = responseObj.flash.redirect;
-                    }
+                    
+                    document.location.href = responseObj.flash.redirect;
+                }else{
+                    document.location.href='/';
                 }
-                document.location.href='/';
                 //*/
             }
 

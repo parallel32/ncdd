@@ -120,7 +120,12 @@ $app->get('/application/{id}/view', function ($id, Request $request) use ($app) 
 		case 'ApplyNewSustainingMember':
 			return $app['view']->render('application/view-new-sustaining-member', 'default', $view_vars);		
 			break;
-		
+		default:
+			$msg = new \stdClass();
+			$msg->message = 'This Application cannot be found.';
+			$msg->resolveMessage = 'Please go back and try again or contact the Administrator if this problem persists.';
+			return $app['view']->render('errors/404','error', array('error'=>$msg));
+			break;
 	}
 	
 })->value('id','')
