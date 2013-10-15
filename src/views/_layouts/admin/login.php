@@ -65,10 +65,6 @@
           <button class="close" data-dismiss="alert"></button>
           <span><?=$this->vars['flash']['message']?></span>
         </div>
-        <div class="alert alert-info">
-          <button class="close" data-dismiss="alert"></button>
-          <span><?=$this->vars['flash']['redirect']?></span>
-        </div>
       <? endif; ?>
       <div class="control-group">
         <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
