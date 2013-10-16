@@ -14,8 +14,9 @@
 Your application for General Membership has been approved.
 <br/> However, there are a few more steps to complete the process.
 <br/> Below you'll find your login credentials.  Please use them to log in and do the following:
-<br/> 1. Pay your membership dues.
-<br/> 2. Add your profile details including a personal photo.
+<br/> 1. Please make sure your 2 references send their forms ASAP to the contact information below via fax, email, or U.S. mail.
+<br/> 2. Pay your membership dues.
+<br/> 3. Add your profile details including a personal photo.
 <br/> 
 <br><br>To access the "Members Only" area you may browse to <a href="http://ncdd.com">ncdd.com</a> and click "Member Sign in" on the top left.  Or you may browse directly to:
 <br><br>
@@ -24,7 +25,7 @@ Your application for General Membership has been approved.
 Your User ID is: <?=$this->vars['email']?>
 <br>Your password is: <?=$this->vars['password']?>
 <br/>
-<br/>If you have any questions don't hesitate to contact us at: rhea@ncdd.com or hunter@ncdd.com
+<br/>If you have any questions don't hesitate to contact us at: rhea@ncdd.com
 <br>National College for DUI Defense, Inc. 
 <br>445 S. Decatur St. 
 <br>Montgomery, AL 36104 
