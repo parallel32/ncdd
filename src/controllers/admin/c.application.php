@@ -11,6 +11,105 @@ use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Saw\Model;
 
+
+
+$app['applicationEmails'] = $app->protect(function ($app,$applicationId,$context) {
+
+	$apply = new Model\Apply(array('_id'=>$applicationId), $app);
+	$apply_arr = $apply->findById();
+
+	if($context == 'new-member-welcome'){
+		switch ($apply_arr['class']) {
+			case 'NewMemberApplication': // old deprecated
+			case 'ApplyNewMember':
+				$application = new Model\ApplyNewMember(array('_id'=>$applicationId), $app);
+				$application->findById();
+			    $member = $application->approve();
+			    // email welcome message
+				$subject = 'Welcome To NCDD';
+				$to = $member->email;
+				$view_vars = array('email'=>$member->email
+									,'password'=>$member->password
+									,'firstName'=>$member->firstName
+									,'lastName'=>$member->lastName
+				);
+				$body = $app['view']->render('email/new-member-welcome','email', $view_vars);
+				break;
+			case 'ApplyNewSustainingMember':
+				$application = new Model\ApplyNewSustainingMember(array('_id'=>$applicationId), $app);
+				$application->findById();
+			    $member = $application->approve();
+			    // email welcome message
+				$subject = 'Welcome To NCDD';
+				$to = $member->email;
+				$view_vars = array('email'=>$member->email
+									,'password'=>$member->password
+									,'firstName'=>$member->firstName
+									,'lastName'=>$member->lastName
+				);
+				$body = $app['view']->render('email/new-sustaining-member-welcome','email', $view_vars);
+				break;		
+			case 'UpdateMember':
+				$application = new Model\UpdateMember(array('_id'=>$applicationId), $app);
+				break;
+			case 'UpdateFoundingMember':
+				$application = new Model\UpdateFoundingMember(array('_id'=>$applicationId), $app);
+				break;
+			case 'UpdateSustainingMember':
+				$application = new Model\UpdateSustainingMember(array('_id'=>$applicationId), $app);
+				break;
+			case 'ApplyNewSustainingMember':
+				$application = new Model\ApplyNewSustainingMember(array('_id'=>$applicationId), $app);
+				break;		
+		}
+		
+		$app['sendMail']($subject, $body, $to);
+	    return new Response(json_encode(array('message' => 'Approved successfully')), 200,array('Content-Type' => 'application/json'));
+	}
+	if($context == 'new-member-complete'){
+		$member = new Model\Member(array('_id'=>$apply_arr['memberId']), $app);
+	    $member->findById();
+	    
+		switch ($apply_arr['class']) {
+			case 'NewMemberApplication': // old deprecated
+			case 'ApplyNewMember':
+				// email welcome message
+				$subject = 'Welcome To NCDD';
+				$to = $member->email;
+				$view_vars = array('email'=>$member->email
+									,'firstName'=>$member->firstName
+									,'lastName'=>$member->lastName
+				);
+				$body = $app['view']->render('email/new-member-welcome-complete','email', $view_vars);
+				break;
+			case 'ApplyNewSustainingMember':
+			    // email welcome message
+				$subject = 'Welcome To NCDD';
+				$to = $member->email;
+				$view_vars = array('email'=>$member->email
+									,'firstName'=>$member->firstName
+									,'lastName'=>$member->lastName
+				);
+				$body = $app['view']->render('email/new-sustaining-member-welcome-complete','email', $view_vars);
+				break;		
+			case 'UpdateMember':
+				$application = new Model\UpdateMember(array('_id'=>$id), $app);
+				break;
+			case 'UpdateFoundingMember':
+				$application = new Model\UpdateFoundingMember(array('_id'=>$id), $app);
+				break;
+			case 'UpdateSustainingMember':
+				$application = new Model\UpdateSustainingMember(array('_id'=>$id), $app);
+				break;
+			case 'ApplyNewSustainingMember':
+				$application = new Model\ApplyNewSustainingMember(array('_id'=>$id), $app);
+				break;		
+		}
+		
+		$app['sendMail']($subject, $body, $to);
+	    return new Response(json_encode(array('message' => 'Approved successfully')), 200,array('Content-Type' => 'application/json'));
+	}
+});
 ////////////////////////////
 // NEW MEMBER APPLICATION //
 ////////////////////////////
@@ -220,53 +319,7 @@ $app->post('/application/references', function (Request $request) use ($app) {
 // APPROVE //
 /////////////
 $app->get('/application/{id}/approve/{type}', function ($id,$type, Request $request) use ($app) {
-	switch ($type) {
-		case 'NewMemberApplication': // old deprecated
-		case 'ApplyNewMember':
-			$application = new Model\ApplyNewMember(array('_id'=>$id), $app);
-			$application->findById();
-		    $member = $application->approve();
-		    // email welcome message
-			$subject = 'Welcome To NCDD';
-			$to = $member->email;
-			$view_vars = array('email'=>$member->email
-								,'password'=>$member->password
-								,'firstName'=>$member->firstName
-								,'lastName'=>$member->lastName
-			);
-			$body = $app['view']->render('email/new-member-welcome','email', $view_vars);
-			break;
-		case 'ApplyNewSustainingMember':
-			$application = new Model\ApplyNewSustainingMember(array('_id'=>$id), $app);
-			$application->findById();
-		    $member = $application->approve();
-		    // email welcome message
-			$subject = 'Welcome To NCDD';
-			$to = $member->email;
-			$view_vars = array('email'=>$member->email
-								,'password'=>$member->password
-								,'firstName'=>$member->firstName
-								,'lastName'=>$member->lastName
-			);
-			$body = $app['view']->render('email/new-sustaining-member-welcome','email', $view_vars);
-			break;		
-		case 'UpdateMember':
-			$application = new Model\UpdateMember(array('_id'=>$id), $app);
-			break;
-		case 'UpdateFoundingMember':
-			$application = new Model\UpdateFoundingMember(array('_id'=>$id), $app);
-			break;
-		case 'UpdateSustainingMember':
-			$application = new Model\UpdateSustainingMember(array('_id'=>$id), $app);
-			break;
-		case 'ApplyNewSustainingMember':
-			$application = new Model\ApplyNewSustainingMember(array('_id'=>$id), $app);
-			break;		
-	}
-	
-	$app['sendMail']($subject, $body, $to);
-    return new Response(json_encode(array('message' => 'Approved successfully')), 200,array('Content-Type' => 'application/json'));
-
+	return $app['applicationEmails']($app,$id,$context='new-member-welcome');
 })->before($mustbeADMIN);
 
 ///////////////
@@ -312,7 +365,9 @@ $app->get('/application/{id}/pay-other', function ($id, Request $request) use ($
 })->value('id','')
 ->before($mustbeADMIN);
 
+// this is posted to by the applications/pay-other.php view
 // mark the application paid and create a payment record, which is the receipt
+// the credit card charging view has it's routes stored in the Payment.js.php file
 $app->post('/application/payment', function (Request $request) use ($app) {
 	// retrieve document from request
 	$doc = $request->get('doc');
@@ -323,7 +378,9 @@ $app->post('/application/payment', function (Request $request) use ($app) {
 	return new Response(json_encode(array('paymentId'=>$paymentId,'message'=>"success")), 200,array('Content-Type' => 'application/json'));
 })->before($mustbeADMIN);
 
-
+// both credit card and pay by check XHR call this route to mark the application as paid.
+// resetSession is passed in when the member is using the credit card payment screen and not used when the admin 
+// is making a payment on behalf of the member using the same credit card screen
 $app->get('/application/{paymentId}/pay/{applicationId}/{resetSession}', function ($paymentId, $applicationId, $resetSession, Request $request) use ($app) {
     
     $application = new Model\Apply(array('_id'=>$applicationId, 'paymentId'=>$paymentId), $app);
@@ -332,8 +389,9 @@ $app->get('/application/{paymentId}/pay/{applicationId}/{resetSession}', functio
     else
     	$application->markPaid();
 
-    return new Response(json_encode(array('message' => 'Successfully Paid')), 200,array('Content-Type' => 'application/json'));
+    return $app['applicationEmails']($app,$applicationId,$context='new-member-complete');
 })->value('resetSession','no')->before($mustbeMEMBER);
+
 
 $app->get('/application/{id}/delete', function ($id, Request $request) use ($app) {
     $application = new Model\Apply(array('_id'=>$id), $app);
