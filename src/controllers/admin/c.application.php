@@ -69,7 +69,7 @@ $app['applicationEmails'] = $app->protect(function ($app,$applicationId,$context
 	if($context == 'new-member-complete'){
 		$member = new Model\Member(array('_id'=>$apply_arr['memberId']), $app);
 	    $member->findById();
-	    
+
 		switch ($apply_arr['class']) {
 			case 'NewMemberApplication': // old deprecated
 			case 'ApplyNewMember':
@@ -110,6 +110,19 @@ $app['applicationEmails'] = $app->protect(function ($app,$applicationId,$context
 	    return new Response(json_encode(array('message' => 'Approved successfully')), 200,array('Content-Type' => 'application/json'));
 	}
 });
+
+///////////////////////
+// APPLICATION FILES //
+///////////////////////
+
+$app->get('/application/downloads/{file}', function ($file, Request $request) use ($app) {
+
+	$file = './../../../www/admin.ncdd.com/public_html/assets/membership-forms/'.$file;
+    $file_contents = file_get_contents($file);
+	return new Response($file_contents, 200, array('Content-Type' => 'application/pdf'));
+});
+
+
 ////////////////////////////
 // NEW MEMBER APPLICATION //
 ////////////////////////////

@@ -578,7 +578,7 @@
                      <div class="span12">
                         <div class="control-group">
                            <label class="control-label">Please download this reference form and confirm you did so by selecting "Yes": <br>
-                              <a href="http://<?=SAW_ADMIN_WEBSITE?>/assets/membership-forms/ncdd-general-membership-reference-form.pdf">New Member Application Reference Form - click to download the PDF document.</a>
+                              <a href="http://<?=SAW_ADMIN_WEBSITE?>/application/downloads/ncdd-general-membership-reference-form.pdf">New Member Application Reference Form - click to download the PDF document.</a>
                            </label>
                            <div class="controls">
                               <select class="large m-wrap referenceFormDownload" name="doc[referenceFormDownload]">
