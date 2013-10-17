@@ -14,6 +14,7 @@
 Your application for Sustaining Membership has been approved.
 <br/> However, there are a few more steps to complete the process.
 <br/> Below you'll find your login credentials.  Please use them to log in and do the following:
+<br/><br/>
 <br/> 1. Please make sure your 2 references send their forms ASAP to the contact information below via fax, email, or U.S. mail.
 <br/> 2. Pay your membership dues.
 <br/> 3. Add your profile details including a personal photo.
