@@ -496,7 +496,7 @@
                      <div class="span12">
                         <div class="control-group">
                            <label class="control-label">Please download this reference form and confirm you did so by selecting "Yes": <br>
-                              <a href="http://<?=SAW_ADMIN_WEBSITE?>/application/downloads/ncdd-general-membership-reference-form.pdf">New Member Application Reference Form - click to download the PDF document.</a>
+                              <a target="_blank" href="http://<?=SAW_ADMIN_WEBSITE?>/application/downloads/ncdd-general-membership-reference-form.pdf">New Member Application Reference Form - click to download the PDF document.</a>
                            </label>
                            <div class="controls">
                               <input disabled type="text" value="<?=$this->vars['application']['referenceFormDownload']?>" class="m-wrap span12 referenceFormDownload">
