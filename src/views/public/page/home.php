@@ -675,7 +675,7 @@
                                 'upcolor':'#EBECED',
                                 'overcolor':'#99CC00',
                                 'downcolor':'#993366',
-                                'enable':false,
+                                'enable':true,
                             },
                             'map_49':{
                                 'namesId':'OH',

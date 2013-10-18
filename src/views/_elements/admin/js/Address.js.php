@@ -1,6 +1,39 @@
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDb_erg__9LjU-MMn5wmu-kqlmZbKxCBA&sensor=true"/></script>
 <script type="text/javascript">
 (function( Address, $, undefined ) {
+	function bindAddressFieldsBlur(){
+		$('#address1').keyup(function(e){
+			onBlur();
+		});
+		$('#address1').keyup(function(e){
+			onBlur();
+		});
+		$('#city').keyup(function(e){
+			onBlur();
+		});
+		$('#state').keyup(function(e){
+			onBlur();
+		});
+		$('#postalCode').keyup(function(e){
+			onBlur();
+		});
+		$('#country').keyup(function(e){
+			onBlur();
+		});
+		
+	};
+	function onBlur(){
+		formatted_addr = $('#address1').val();
+		if($('#address2').val().length > 0){
+			formatted_addr+= ' '+$('#address2').val();
+		}
+		formatted_addr+= ' '+$('#city').val();
+		formatted_addr+= ', '+$('#state').val();
+		formatted_addr+= ' '+$('#zip').val();
+		formatted_addr+= ', '+$('#country').val();
+
+		$('#geocodeaddress').val(formatted_addr);
+	}
 	function add (){
 		io.saw.FormPost.activate({postUrl:'/application/add'
 		   ,serializeSelector:':input'
@@ -32,7 +65,7 @@
 				}
 			} else {
 				rows = processAddress([],0,0,$('#geocodeaddress').val());
-				//show the fields anyway .. just won't have lat and lon.  I'll have to add a reminder in the dashboard for them to 
+				//TODO: show the fields anyway .. just won't have lat and lon.  I'll have to add a reminder in the dashboard for them to 
 				// redo their address.
 			}
 
@@ -42,6 +75,9 @@
 			// the click handler for the record on the modal to be chosen as the address
 			$('#address_modal tbody td a').click(function(e){
 				e.preventDefault();
+				$('#state').val($(this).attr('data-state'));
+				$('#country').val($(this).attr('data-country'));
+				$('#zip').val($(this).attr('data-zip'));
 				$('#lat').val($(this).attr('data-lat'));
 				$('#lon').val($(this).attr('data-lon'));
 				$('#geocodeaddress').val($(this).attr('data-formattedaddress'));
@@ -155,7 +191,8 @@
 			e.preventDefault();
 			$('#address_modal').modal('hide');
 		});
-		
+
+		bindAddressFieldsBlur();
 	};
 	
 }( io.saw.Address = io.saw.Address || {}, io.saw.jQuery || jQuery ));

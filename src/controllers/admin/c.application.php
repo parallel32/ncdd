@@ -162,6 +162,19 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 	    	);
 	    	$body = $app['view']->render('email/new-member','email', $view_vars);
 	    	$app['sendMail']($subject, $body, $to);
+
+	    	// send applicant the email notification
+	    	$subject = 'Your Application for NCDD Membership has been Received';
+	    	$to = $doc['email'];
+	    	$view_vars = array('firstName'=>$doc['firstName']
+	    						,'middleName'=>$doc['middleName']
+	    						,'lastName'=>$doc['lastName']
+	    						,'city'=>$doc['city']
+	    						,'state'=>$doc['state']
+	    						,'email'=>$doc['email']
+	    	);
+	    	$body = $app['view']->render('email/new-member-applicant-submission','email', $view_vars);
+	    	$app['sendMail']($subject, $body, $to);
 	    endif;
 });
 ///////////////////////////////////////
@@ -202,6 +215,19 @@ $app->post('/application/new-sustaining-member', function (Request $request) use
 	    						,'email'=>$doc['email']
 	    	);
 	    	$body = $app['view']->render('email/new-sustaining-member','email', $view_vars);
+	    	$app['sendMail']($subject, $body, $to);
+
+	    	// send applicant the email notification
+	    	$subject = 'Your Application for NCDD Membership has been Received';
+	    	$to = $doc['email'];
+	    	$view_vars = array('firstName'=>$doc['firstName']
+	    						,'middleName'=>$doc['middleName']
+	    						,'lastName'=>$doc['lastName']
+	    						,'city'=>$doc['city']
+	    						,'state'=>$doc['state']
+	    						,'email'=>$doc['email']
+	    	);
+	    	$body = $app['view']->render('email/new-sustaining-member-applicant-submission','email', $view_vars);
 	    	$app['sendMail']($subject, $body, $to);
 	    endif;
 });
