@@ -75,15 +75,27 @@
                            <td class="hidden-480">$<?=$this->vars['application']['membershipDues']?></td>
                            <td>$<?=$this->vars['application']['membershipDues']?></td>
                         </tr>
-                        
+                        <? if($this->vars['pro_rated_membership_dues']['q'] > 1): 
+                           $amount = $this->vars['pro_rated_membership_dues']['a'];
+                        ?>
+                        <tr>
+                           <td>2</td>
+                           <td>Discount</td>
+                           <td class="hidden-480">Pro-rated Discount</td>
+                           <td class="hidden-480">1</td>
+                           <td class="hidden-480">-$<?=$this->vars['application']['membershipDues']-$this->vars['pro_rated_membership_dues']['a']?></td>
+                           <td>-$<?=$this->vars['application']['membershipDues']-$this->vars['pro_rated_membership_dues']['a']?></td>
+                        </tr>
+                        <? else: ?>
+                           $amount = $this->vars['application']['membershipDues'];
+                        <? endif; ?>
                      </tbody>
                   </table>
                </div>
                <div class="row-fluid">
                   <div class="span12 invoice-block">
                      <ul class="unstyled amounts">
-                        <li><strong>Sub - Total amount:</strong> $<?=$this->vars['application']['membershipDues']?></li>
-                        <li><strong>Grand Total:</strong> $<?=$this->vars['application']['membershipDues']?></li>
+                        <li><strong>Total:</strong> $<?=$this->vars['pro_rated_membership_dues']['a']?></li>
                      </ul>
                   </div>
                </div>
@@ -118,7 +130,6 @@
                      $ownerClass = $this->vars['application']['class'];
                      $description = 'INV-'.time();
                      $title = $this->vars['application']['type'];
-                     $amount = $this->vars['application']['membershipDues'];
                      $firstName = $this->vars['application']['firstName'];
                      $lastName = $this->vars['application']['lastName'];
                      $email = $this->vars['application']['email'];

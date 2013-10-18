@@ -35,7 +35,6 @@ class ApplyNewSustainingMember extends Apply {
 	public $attendSeminarExplain;
 	public $executed;
 	public $executedPrintedName;
-	public $membershipDues;
 	public $authorizationReleasePrintedName;
 	public $referenceFormDownload;
 
@@ -123,7 +122,6 @@ class ApplyNewSustainingMember extends Apply {
 		$this->attendSeminarExplain = $doc['attendSeminarExplain'];
 		$this->executed = (!empty($doc['executed']) && strpos($doc['executed'], 'Executed at') === false) ? $this->prepareExecuted($doc['executed']) : $doc['executed'];
 		$this->executedPrintedName = $doc['executedPrintedName'];
-		$this->membershipDues = $doc['membershipDues'];
 		$this->authorizationReleasePrintedName = $doc['authorizationReleasePrintedName'];
 		$this->authorizationRelease = (!empty($doc['authorizationReleasePrintedName'])) ? $this->preparePrintedName($doc['authorizationReleasePrintedName']) : '';
 		$this->referenceFormDownload = $doc['referenceFormDownload'];
@@ -159,7 +157,6 @@ class ApplyNewSustainingMember extends Apply {
 		$this->attendSeminarExplain = $this->attendSeminarExplain ?: '';
 		$this->executed = $this->executed ?: '';
 		$this->executedPrintedName = $this->executedPrintedName ?: '';
-		$this->membershipDues = $this->membershipDues ?: '';
 		$this->authorizationReleasePrintedName = $this->authorizationReleasePrintedName ?: '';
 		$this->referenceFormDownload = $this->referenceFormDownload ?: '';
 	}

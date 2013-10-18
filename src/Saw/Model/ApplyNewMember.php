@@ -34,7 +34,6 @@ class ApplyNewMember extends Apply {
 	public $futureLawEnforcementExplain;
 	public $executed;
 	public $executedPrintedName;
-	public $membershipDues;
 	public $authorizationReleasePrintedName;
 	public $referenceFormDownload;
 
@@ -117,7 +116,6 @@ class ApplyNewMember extends Apply {
 		$this->futureLawEnforcementExplain = $doc['futureLawEnforcementExplain'];
 		$this->executed = (!empty($doc['executed']) && strpos($doc['executed'], 'Executed at') === false) ? $this->prepareExecuted($doc['executed']) : $doc['executed'];
 		$this->executedPrintedName = $doc['executedPrintedName'];
-		$this->membershipDues = $doc['membershipDues'];
 		$this->authorizationReleasePrintedName = $doc['authorizationReleasePrintedName'];
 		$this->referenceFormDownload = $doc['referenceFormDownload'];
 
@@ -151,7 +149,6 @@ class ApplyNewMember extends Apply {
 		$this->futureLawEnforcementExplain = $this->futureLawEnforcementExplain ?: '';
 		$this->executed = $this->executed ?: '';
 		$this->executedPrintedName = $this->executedPrintedName ?: '';
-		$this->membershipDues = $this->membershipDues ?: '';
 		$this->authorizationReleasePrintedName = $this->authorizationReleasePrintedName ?: '';
 		$this->referenceFormDownload = $this->referenceFormDownload ?: '';
 	}

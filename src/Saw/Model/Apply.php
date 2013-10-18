@@ -43,6 +43,7 @@ class Apply extends Model {
 	public $approvedDate;
 	public $references;
 	public $timeZone='America/New_York';
+	public $membershipDues;
 
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addPropertyConstraint('firstName', new Constraints\NotBlank(array('message'=>'cannot be blank')));
@@ -102,6 +103,7 @@ class Apply extends Model {
 		$this->references = $doc['references'];
 		if(!empty($doc['memberId'])) $this->memberId = (is_object($doc['memberId'])) ? $doc['memberId'] : new \MongoId($doc['memberId']);
 		if(!empty($doc['paymentId'])) $this->paymentId = (is_object($doc['paymentId'])) ? $doc['paymentId'] : new \MongoId($doc['paymentId']);
+		$this->membershipDues = $doc['membershipDues'];
 
 	}
 	
@@ -136,6 +138,7 @@ class Apply extends Model {
 		$this->paymentId = $this->paymentId ?: new \stdClass();
 		$this->timeZone = $this->timeZone ?: 'America/New_York';
 		$this->references = $this->references ?: '';
+		$this->membershipDues = $this->membershipDues ?: '';
 
 	}
 	
@@ -318,4 +321,68 @@ class Apply extends Model {
 		}
 	}
 	
+	public function proRate(){
+		
+		$date = new \DateTime($this->approvedDate['iso']);
+		$curMonth = date("m", $date->getTimeStamp());
+		$curQuarter = ceil($curMonth/3);
+		
+		switch ($curQuarter) {
+			case 1:
+				switch ($this->membershipDues) {
+					case 175:
+						return array('q'=>1,'a'=>175);
+						break;
+					case 225:
+						return array('q'=>1,'a'=>225);
+						break;
+					case 50:
+						return array('q'=>1,'a'=>50);
+						break;
+				}
+				break;
+			case 2:
+				switch ($this->membershipDues) {
+					case 175:
+						return array('q'=>2,'a'=>150);
+						break;
+					case 225:
+						return array('q'=>2,'a'=>175);
+						break;
+					case 50:
+						return array('q'=>2,'a'=>50);
+						break;
+				}
+				break;
+			case 3:
+				switch ($this->membershipDues) {
+					case 175:
+						return array('q'=>3,'a'=>100);
+						break;
+					case 225:
+						return array('q'=>3,'a'=>125);
+						break;
+					case 50:
+						return array('q'=>3,'a'=>25);
+						break;
+				}
+				break;
+			case 4:
+				switch ($this->membershipDues) {
+					case 175:
+						return array('q'=>4,'a'=>50);
+						break;
+					case 225:
+						return array('q'=>4,'a'=>75);
+						break;
+					case 50:
+						return array('q'=>4,'a'=>25);
+						break;
+				}
+				break;
+			
+		}
+		
+
+	}	
 }
