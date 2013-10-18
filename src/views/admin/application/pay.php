@@ -81,20 +81,32 @@
                            <td class="hidden-480">$<?=$this->vars['application']['membershipDues']?></td>
                            <td>$<?=$this->vars['application']['membershipDues']?></td>
                         </tr>
-                        
+                        <? if($this->vars['pro_rated_membership_dues']['q'] > 1): 
+                           $amount = $this->vars['pro_rated_membership_dues']['a'];
+                        ?>
+                        <tr>
+                           <td>2</td>
+                           <td>Discount</td>
+                           <td class="hidden-480">Pro-rated Discount</td>
+                           <td class="hidden-480">1</td>
+                           <td class="hidden-480">-$<?=$this->vars['application']['membershipDues']-$this->vars['pro_rated_membership_dues']['a']?></td>
+                           <td>-$<?=$this->vars['application']['membershipDues']-$this->vars['pro_rated_membership_dues']['a']?></td>
+                        </tr>
+                        <? else: 
+                           $amount = $this->vars['application']['membershipDues'];
+                         endif; ?>
                      </tbody>
                   </table>
                </div>
                <div class="row-fluid">
                   <div class="span12 invoice-block">
                      <ul class="unstyled amounts">
-                        <li><strong>Sub - Total amount:</strong> $<?=$this->vars['application']['membershipDues']?></li>
-                        <li><strong>Grand Total:</strong> $<?=$this->vars['application']['membershipDues']?></li>
+                        <li><strong>Total:</strong> $<?=$amount?></li>
                      </ul>
                   </div>
                </div>
             </div>
-
+            <? if(false): ?>
             <!--/ INVOICE -->
 
             <!-- ADMIN payment by check .. or reduce the payment amount by adding a discount to the invoice -->
@@ -108,6 +120,7 @@
 
 
             <!-- PAYMENT  only show for members -->
+            <? endif; ?>
             <div class="row-fluid">
                <div class="span12">
                   <?
@@ -116,7 +129,7 @@
                      $payment_vars['ownerClass'] = $this->vars['application']['class'];
                      $payment_vars['description'] = 'INV-'.time();
                      $payment_vars['title'] = $this->vars['application']['type'];
-                     $payment_vars['amount'] = $this->vars['application']['membershipDues'];
+                     $payment_vars['amount'] = $amount;
                      $payment_vars['firstName'] = $this->vars['application']['firstName'];
                      $payment_vars['lastName'] = $this->vars['application']['lastName'];
                      $payment_vars['email'] = $this->vars['application']['email'];
