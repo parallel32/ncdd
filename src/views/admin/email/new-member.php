@@ -12,8 +12,7 @@
 												<br />
 												<div class="textdark">
 													The general member application form has been submitted:
-													<br/>
-													<? $middleName = (!empty($this->vars['middleName'])) ? ' '.$this->vars['middleName'].' ':' '; ?>
+													<br/><? $middleName = (!empty($this->vars['middleName'])) ? ' '.$this->vars['middleName'].' ':' '; ?>
 													<br/><?=$this->vars['firstName'].$middleName.$this->vars['lastName']?>
 													<br/><?=$this->vars['city'].', '.$this->vars['state']?>
 													<br/><?=$this->vars['email']?>

@@ -15,11 +15,11 @@
 <br>Dear <?=$this->vars['firstName']?><?=$middleName?><?=$this->vars['lastName']?>;
 <br/>
 <br/>Your application for Sustaining Membership has been received.
-<br/><br/>
+<br/>
 <br/> Please make sure your 2 references send their forms as soon as they can to the contact information below via fax, email, or U.S. mail.
-<br/><br/>
-<a href="http://<?=SAW_ADMIN_WEBSITE?>/application/downloads/ncdd-sustaining-membership-reference-form.pdf" target="_blank">Click here to download the reference form</a>. 
-<br><br>
+<br/>
+<br/><a href="http://<?=SAW_ADMIN_WEBSITE?>/application/downloads/ncdd-sustaining-membership-reference-form.pdf" target="_blank">Click here to download the reference form</a>. 
+<br>
 <br/>When your application is approved, you will receive an email with instructions.
 <br/>
 <br>National College for DUI Defense, Inc. 
