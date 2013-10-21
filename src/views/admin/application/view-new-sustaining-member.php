@@ -476,12 +476,27 @@
                            </label>
                            <div class="controls">
                               <input disabled type="text" value="<?=$this->vars['application']['referenceFormDownload']?>" class="m-wrap span12 referenceFormDownload">
-                              <span class="help-block">Please submit this reference form to the address at the top of this application.</span>
+                              <span class="help-block"></span>
+                              <h4><strong>Please make sure your 4 references send their forms ASAP to the address at the top of the reference form via fax, email, or U.S. mail.</strong></h4>
                            </div>
                         </div>
                      </div>
                      <!--/span-->
                   </div>
+
+                  <div class="row-fluid">
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">Your Sponsor:</label>
+                           <div class="controls">
+                              <input disabled type="text" name="doc[sponsor]" value="<?=$this->vars['application']['sponsor']?>" class="m-wrap span12 sponsor">
+                              <span class="help-block">Please type in the name of the Fellow or Regent who is sponsoring your application.</span>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  
                   <div class="alert alert-error hide">
                      <button class="close" data-dismiss="alert"></button>
                      You have some form errors. Please check below.

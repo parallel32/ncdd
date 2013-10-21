@@ -588,12 +588,25 @@
                                  <option value="yes">Yes, I have downloaded the reference form.</option>
                               </select>
                               <span class="help-block"></span>
-                              <h4><strong>Please make sure your 2 references send their forms ASAP to the address at the top of the reference form via fax, email, or U.S. mail.</strong></h4>
+                              <h4><strong>Please make sure your 4 references send their forms ASAP to the address at the top of the reference form via fax, email, or U.S. mail.</strong></h4>
                            </div>
                         </div>
                      </div>
                      <!--/span-->
                   </div>
+                  <div class="row-fluid">
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">Your Sponsor:</label>
+                           <div class="controls">
+                              <input type="text" name="doc[sponsor]" class="m-wrap span12 sponsor">
+                              <span class="help-block">Please type in the name of the Fellow or Regent who is sponsoring your application.</span>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  
                   
                   <!-- SUCCESSFUL SAVE MODAL -->
                   <div id="save-success" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="save-success-label" aria-hidden="true">

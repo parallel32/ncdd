@@ -37,6 +37,7 @@ class ApplyNewSustainingMember extends Apply {
 	public $executedPrintedName;
 	public $authorizationReleasePrintedName;
 	public $referenceFormDownload;
+	public $sponsor;
 
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addPropertyConstraint('yearsInLawPractice', new Constraints\NotBlank(array('message'=>'cannot be blank')));
@@ -53,6 +54,7 @@ class ApplyNewSustainingMember extends Apply {
 		$metadata->addPropertyConstraint('executed', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('executedPrintedName', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('membershipDues', new Constraints\NotBlank(array('message'=>'cannot be blank')));
+		$metadata->addPropertyConstraint('sponsor', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('authorizationReleasePrintedName', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addConstraint(new Callback(array('methods' => array('explain'))));
 		$metadata->addConstraint(new Callback(array('methods' => array('referenceFormDownload'))));
@@ -125,6 +127,7 @@ class ApplyNewSustainingMember extends Apply {
 		$this->authorizationReleasePrintedName = $doc['authorizationReleasePrintedName'];
 		$this->authorizationRelease = (!empty($doc['authorizationReleasePrintedName'])) ? $this->preparePrintedName($doc['authorizationReleasePrintedName']) : '';
 		$this->referenceFormDownload = $doc['referenceFormDownload'];
+		$this->sponsor = $doc['sponsor'];
 
 
 	}
@@ -159,6 +162,7 @@ class ApplyNewSustainingMember extends Apply {
 		$this->executedPrintedName = $this->executedPrintedName ?: '';
 		$this->authorizationReleasePrintedName = $this->authorizationReleasePrintedName ?: '';
 		$this->referenceFormDownload = $this->referenceFormDownload ?: '';
+		$this->sponsor = $this->sponsor ?: '';
 	}
 	public function insert(){
 		$this->prepareInsert();
