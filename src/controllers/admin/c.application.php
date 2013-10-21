@@ -366,8 +366,9 @@ $app->get('/application/{id}/approve/{type}', function ($id,$type, Request $requ
 ///////////////
 $app->get('/application/{id}/pay', function ($id, Request $request) use ($app) {
 	
-	$application = new Model\Apply($doc=array('_id'=>$id), $app);
-	$application = $application->findById();
+	$apply = new Model\Apply($doc=array('_id'=>$id), $app);
+	$application = $apply->findById();
+	
 	$crumbs = array(array('name'=>'Applications','href'=>'/applications')
 					,array('name'=>$application['firstName'].' '.$application['lastName'],'href'=>'/application/'.$id.'/view')
 					,array('name'=>$application['type'],'href'=>'/application/'.$id.'/view')
@@ -379,7 +380,8 @@ $app->get('/application/{id}/pay', function ($id, Request $request) use ($app) {
 						,'headline'=>'Membership Application Payment'
 						,'description'=>"Pay membership Dues."
 						,'crumbs'=>$crumbs
-						,'application'=>$application);
+						,'application'=>$application
+						,'pro_rated_membership_dues'=>$apply->proRate());
 	return $app['view']->render('application/pay', 'default', $view_vars);
 })->value('id','')
 ->before($mustbeMEMBER);

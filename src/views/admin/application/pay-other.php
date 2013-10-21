@@ -86,21 +86,21 @@
                            <td class="hidden-480">-$<?=$this->vars['application']['membershipDues']-$this->vars['pro_rated_membership_dues']['a']?></td>
                            <td>-$<?=$this->vars['application']['membershipDues']-$this->vars['pro_rated_membership_dues']['a']?></td>
                         </tr>
-                        <? else: ?>
+                        <? else: 
                            $amount = $this->vars['application']['membershipDues'];
-                        <? endif; ?>
+                         endif; ?>
                      </tbody>
                   </table>
                </div>
                <div class="row-fluid">
                   <div class="span12 invoice-block">
                      <ul class="unstyled amounts">
-                        <li><strong>Total:</strong> $<?=$this->vars['pro_rated_membership_dues']['a']?></li>
+                        <li><strong>Total:</strong> $<?=$amount?></li>
                      </ul>
                   </div>
                </div>
             </div>
-
+            <?if(false):?>
             <!--/ INVOICE -->
 
             <!-- ADMIN payment by check .. or reduce the payment amount by adding a discount to the invoice -->
@@ -114,6 +114,7 @@
 
 
             <!-- PAYMENT  only show for ADMIN -->
+            <?endif;?>
             <div class="row-fluid">
                <div class="span12">
                   <!-- PAYMENT ELEMENT -->
