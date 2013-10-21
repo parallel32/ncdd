@@ -16,7 +16,8 @@
 <br/>
 <br/>Your application for Sustaining Membership has been received.
 <br/>
-<br/> Please make sure your 2 references send their forms as soon as they can to the contact information below via fax, email, or U.S. mail.
+<br/> Please make sure your 4 references send their forms as soon as they can to the contact information below via fax, email, or U.S. mail.
+<br/> Once we have your 4 references, your application will be presented to the board at the next meeting.
 <br/>
 <br/><a href="http://<?=SAW_ADMIN_WEBSITE?>/application/downloads/ncdd-sustaining-membership-reference-form.pdf" target="_blank">Click here to download the reference form</a>. 
 <br>
