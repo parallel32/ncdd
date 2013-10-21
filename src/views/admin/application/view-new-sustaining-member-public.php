@@ -18,19 +18,6 @@
                      <button class="close" data-dismiss="alert"></button>
                      You have some form errors. Please check below.
                   </div>                  
-                  
-                  <h3 class="form-section">Private URL for sharing this application.</h3>
-                  <div class="row-fluid">
-                     <div class="span12 ">
-                        <div class="control-group">
-                           <div class="controls">
-                              <input type="text" value="http://<?=SAW_ADMIN_WEBSITE?>/application/<?=$this->vars['application']['_id']?>/view-public" class="m-wrap span12">
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                  </div>
-
                   <h3 class="form-section">1.</h3>
                   <div class="row-fluid">
                      <div class="span4 ">
@@ -510,54 +497,11 @@
                      <!--/span-->
                   </div>
                   
-                  <div class="alert alert-error hide">
-                     <button class="close" data-dismiss="alert"></button>
-                     You have some form errors. Please check below.
-                  </div>
                   
-                  <div class="form-actions text-center">
-                     <? if($this->vars['application']['currentStatus'] >= \Saw\Model\Apply::$status['APPROVED'] && $this->vars['application']['currentStatus'] < \Saw\Model\Apply::$status['PAID']): ?>
-                     <button type="button" data-id="<?=$this->vars['application']['_id']?>" class="btn green pay"><i class="icon-money"></i> Pay Application</button>
-                     <? endif; ?>                     
-                     <button type="button" data-id="<?=$this->vars['application']['_id']?>" class="btn blue edit"><i class="icon-pencil"></i> Edit Application</button>
-                     <? if($this->vars['application']['currentStatus'] < \Saw\Model\Apply::$status['APPROVED']): ?>
-                     <button type="button" data-id="<?=$this->vars['application']['_id']?>" data-type="<?=$this->vars['application']['class']?>" class="btn green approve"><i class="icon-ok"></i> Approve Application</button>
-                     <? endif; ?>
-                     <button type="button" class="btn cancel">Cancel and Go Back</button>
-                     <button type="button" data-id="<?=$this->vars['application']['_id']?>" class="btn red delete">Delete Application</button>
-                  </div>
                </form>
                <!-- END FORM--> 
 
-               <!-- SUCCESSFUL SAVE MODAL -->
-               <div id="save-success" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="save-success-label" aria-hidden="true">
-                  <div class="modal-header">
-                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                     <h3 id="save-success-label">Successful Operation</h3>
-                  </div>
-                  <div class="modal-body">
-                     <p></p>
-                  </div>
-                  <div class="modal-footer">
-                     <button class="btn blue continue" data-insertid="">Return to NCDD.com</button>
-                  </div>
-               </div>
-               <!--/ SUCCESSFUL SAVE MODAL -->
-               <!-- DELETE MODAL -->
-               <div id="delete-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="delete-modal-label" aria-hidden="true">
-                  <div class="modal-header">
-                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                     <h3 id="delete-modal-label">Are you sure you want to delete this?</h3>
-                  </div>
-                  <div class="modal-body">
-                     <p>This delete action cannot be undone.</p>
-                  </div>
-                  <div class="modal-footer">
-                     <button class="btn red continue" data-id="<?=$this->vars['application']['_id']?>">Yes, Delete it.</button>
-                     <button class="btn cancel">Cancel</button>
-                  </div>
-               </div>
-               <!--/ DELETE MODAL -->
+               
 
             </div>
          </div>
@@ -566,9 +510,4 @@
          <!-- END PAGE CONTAINER-->    
       </div>
       <!-- END PAGE -->
-      <?=$this->element('js/Application.js');?>
-      <script>
-      jQuery(document).ready(function() {    
-         io.saw.Application.approveInit();
-      });      
-      </script>
+      

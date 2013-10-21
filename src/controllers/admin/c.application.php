@@ -235,6 +235,39 @@ $app->post('/application/new-sustaining-member', function (Request $request) use
 ///////////////////////
 // GENERAL FUNCTIONS //
 ///////////////////////
+$app->get('/application/{id}/view-public', function ($id, Request $request) use ($app) {
+	
+	$application = new Model\Apply($doc=array('_id'=>$id), $app);
+	$application = $application->findById();
+	$crumbs = array(array('name'=>'Applications','href'=>'#')
+					,array('name'=>$application['firstName'].' '.$application['lastName'],'href'=>'#')
+					,array('name'=>$application['type'],'href'=>'#')
+					);
+	$view_vars = array(
+						 'active'=>'Application'
+						,'page-plugin'=>'datatables'
+						,'headline'=>'Private Application View'
+						,'description'=>""
+						,'crumbs'=>$crumbs
+						,'application'=>$application);
+	switch ($application['class']) {
+		case 'NewMemberApplication': // old deprecated
+		case 'ApplyNewMember':
+			return $app['view']->render('application/view-new-member-public', 'blank', $view_vars);		
+			break;
+		case 'ApplyNewSustainingMember':
+			return $app['view']->render('application/view-new-sustaining-member-public', 'blank', $view_vars);		
+			break;
+		default:
+			$msg = new \stdClass();
+			$msg->message = 'This Application cannot be found.';
+			$msg->resolveMessage = 'Please go back and try again or contact the Administrator if this problem persists.';
+			return $app['view']->render('errors/404','error', array('error'=>$msg));
+			break;
+	}
+	
+})->value('id','');
+
 $app->get('/application/{id}/view', function ($id, Request $request) use ($app) {
 	
 	$application = new Model\Apply($doc=array('_id'=>$id), $app);

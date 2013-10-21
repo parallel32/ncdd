@@ -18,6 +18,19 @@
                      <button class="close" data-dismiss="alert"></button>
                      You have some form errors. Please check below.
                   </div>                  
+                  
+                  <h3 class="form-section">Private URL for sharing this application.</h3>
+                  <div class="row-fluid">
+                     <div class="span12 ">
+                        <div class="control-group">
+                           <div class="controls">
+                              <input type="text" value="http://<?=SAW_ADMIN_WEBSITE?>/application/<?=$this->vars['application']['_id']?>/view-public" class="m-wrap span12">
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+
                   <h3 class="form-section">1.</h3>
                   <div class="row-fluid">
                      <div class="span4 ">

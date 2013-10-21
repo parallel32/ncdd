@@ -18,19 +18,6 @@
                      <button class="close" data-dismiss="alert"></button>
                      You have some form errors. Please check below.
                   </div>                  
-                  
-                  <h3 class="form-section">Private URL for sharing this application.</h3>
-                  <div class="row-fluid">
-                     <div class="span12 ">
-                        <div class="control-group">
-                           <div class="controls">
-                              <input type="text" value="http://<?=SAW_ADMIN_WEBSITE?>/application/<?=$this->vars['application']['_id']?>/view-public" class="m-wrap span12">
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                  </div>
-
                   <h3 class="form-section">1.</h3>
                   <div class="row-fluid">
                      <div class="span4 ">
@@ -211,6 +198,18 @@
                   <div class="row-fluid">
                      <div class="span12">
                         <div class="control-group">
+                           <label class="control-label">How did you hear about the NCDD?</label>
+                           <div class="controls">
+                              <input disabled type="text" value="<?=$this->vars['application']['hearAboutNCDD']?>" class="m-wrap span12 hearAboutNCDD">
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <h3 class="form-section">3.</h3>
+                  <div class="row-fluid">
+                     <div class="span12">
+                        <div class="control-group">
                            <label class="control-label">Number of years in law practice:</label>
                            <div class="controls">
                               <input disabled type="text" value="<?=$this->vars['application']['yearsInLawPractice']?>" class="m-wrap span12 yearsInLawPractice">
@@ -219,7 +218,7 @@
                      </div>
                      <!--/span-->
                   </div>
-                  <h3 class="form-section">3.</h3>
+                  <h3 class="form-section">4.</h3>
                   <div class="row-fluid">
                      <div class="span12">
                         <div class="control-group">
@@ -231,7 +230,7 @@
                      </div>
                      <!--/span-->
                   </div>
-                  <h3 class="form-section">4.</h3>
+                  <h3 class="form-section">5.</h3>
                   <div class="row-fluid">
                      <div class="span12">
                         <div class="control-group">
@@ -243,7 +242,7 @@
                      </div>
                      <!--/span-->
                   </div>
-                  <h3 class="form-section">5.</h3>
+                  <h3 class="form-section">6.</h3>
                   <div class="row-fluid">
                      <div class="span12">
                         <div class="control-group">
@@ -255,7 +254,7 @@
                      </div>
                      <!--/span-->
                   </div>
-                  <h3 class="form-section">6.</h3>
+                  <h3 class="form-section">7.</h3>
                   <div class="row-fluid">
                      <div class="span12">
                         <div class="control-group">
@@ -267,7 +266,7 @@
                      </div>
                      <!--/span-->
                   </div>
-                  <h3 class="form-section">7.</h3>
+                  <h3 class="form-section">8.</h3>
                   <div class="row-fluid">
                      <div class="span6 ">
                         <div class="control-group">
@@ -288,7 +287,7 @@
                      </div>
                      <!--/span-->
                   </div>
-                  <h3 class="form-section">8.</h3>
+                  <h3 class="form-section">9.</h3>
                   <div class="row-fluid">
                      <div class="span6 ">
                         <div class="control-group">
@@ -309,7 +308,7 @@
                      </div>
                      <!--/span-->
                   </div>
-                  <h3 class="form-section">9.</h3>
+                  <h3 class="form-section">10.</h3>
                   <div class="row-fluid">
                      <div class="span6 ">
                         <div class="control-group">
@@ -330,7 +329,7 @@
                      </div>
                      <!--/span-->
                   </div>
-                  <h3 class="form-section">10.</h3>
+                  <h3 class="form-section">11.</h3>
                   <div class="row-fluid">
                      <div class="span6 ">
                         <div class="control-group">
@@ -351,7 +350,7 @@
                      </div>
                      <!--/span-->
                   </div>
-                  <h3 class="form-section">11.</h3>
+                  <h3 class="form-section">12.</h3>
                   <div class="row-fluid">
                      <div class="span6 ">
                         <div class="control-group">
@@ -372,7 +371,7 @@
                      </div>
                      <!--/span-->
                   </div>
-                  <h3 class="form-section">12.</h3>
+                  <h3 class="form-section">13.</h3>
                   <div class="row-fluid">
                      <div class="span6 ">
                         <div class="control-group">
@@ -393,32 +392,11 @@
                      </div>
                      <!--/span-->
                   </div>
-                  <h3 class="form-section">13.</h3>
-                  <div class="row-fluid">
-                     <div class="span6 ">
-                        <div class="control-group">
-                           <label class="control-label">I understand that as a condition of continued membership I must attend at least one seminar every two (2) years sponsored/co-sponsored by NCDD or a State seminar listed on the NCDD website.</label>
-                           <div class="controls">
-                              <input disabled type="text" value="<?=$this->vars['application']['attendSeminar']?>" class="m-wrap span12 attendSeminar">
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                     <div class="span6 ">
-                        <div class="control-group">
-                           <label class="control-label">If "Yes", please explain.</label>
-                           <div class="controls">
-                              <textarea disabled class="span12 attendSeminarExplain" ><?=$this->vars['application']['attendSeminarExplain']?></textarea>
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                  </div>
                   <h3 class="form-section">14.</h3>
                   <div class="row-fluid">
                      <div class="span12 ">
                         <div class="control-group">
-                           <label class="control-label">
+                           <label class="control-label">I understand that as a condition of continued membership I must attend at least one seminar every two (2) years sponsored/co-sponsored by NCDD or a State seminar listed on the NCDD website.
                            </br></br>
                            I have read the general membership rules, and I understand and agree to be bound by them. I declare under penalty of perjury that the foregoing two (2) pages are true and correct to the best of my knowledge.
                            </br>
@@ -446,25 +424,55 @@
                      <!--/span-->
                   </div>
 
-                  <h3 class="form-section">Annual Membership dues in the amount of $2500 are payable upon application approval.</h3>
+                  <h3 class="form-section">Check which applies to your membership:</h3>
                   <div class="row-fluid">
                      <div class="span12 ">
                         <div class="control-group">
                            <label class="control-label"></label>
                            <div class="controls">
-                              <input disabled class="m-wrap span12 executedPrintedName" name="doc[membershipDues]" value="<?=$this->vars['application']['membershipDues']?>" class="membershipDues" type="text">
+                              <input disabled type="text" value="<?
+                              if($this->vars['application']['membershipDues'] == 175){
+                                 echo "1-5 years in law practice ($175 annual dues)";
+                              }
+                              if($this->vars['application']['membershipDues'] == 225){
+                                 echo "6 or more years in law practice ($225 annual dues)";
+                              }
+                              if($this->vars['application']['membershipDues'] == 50){
+                                 echo "Public Defender ($50 annual dues)";
+                              }
+                              ?>" class="m-wrap span12 membershipDues">
                            </div>
                         </div>
                      </div>
                      <!--/span-->
                   </div>
-
                   <h3 class="form-section text-center">THE NATIONAL COLLEGE FOR DUI DEFENSE, INC.</br> AUTHORIZATION AND RELEASE</h3>
                   <div class="row-fluid">
                      <div class="span12">
+                        <h3 class="text-center"><u>PARTIES</u></h3>
                         <p>
-                           I, <input disabled class="m-wrap span3 authorizationReleasePrintedName" type="text" value="<?=$this->vars['application']['authorizationReleasePrintedName']?>" placeholder=""> 
-                           having filed an application for a <strong>SUSTAINING MEMBERSHIP</strong> hereby authorize and give my consent to The National College for DUI Defense, Inc., hereby including its Membership Committee, (hereinafter collectively referred to as the “National College”), to conduct an investigation as to my moral character and fitness and to make inquiries and request such information from third parties as, in the sole discretion of the National College is necessary to such investigation. I further authorize the use of any such information in the course of the National College’s, investigation and evaluation of my application for <strong>SUSTAINING MEMBERSHIP</strong>. I authorize and request every person, firm, company, corporation, school, employer (past or present), governmental agency, court, association, institution, or other third party having opinions about me or knowledge or control of any information, documents, records (including, but not limited to, criminal history, and record information), or data pertaining to me, to reveal, furnish and release to the National College, or any of its agents or representatives, and such opinions, knowledge, information, documents, records or other data. Without limiting the previously described authority, I specifically authorize the release of files of any professional association regarding all undergraduate, graduate or professional school records relating to my admission to, and conduct during my enrollment in such schools. I hereby authorized all such persons as set out above to answer any inquiries, questions, or interrogatories concerning me, which may be submitted to them by or on my behalf of the National College. I further waive absolutely any privileges I may have which re applicable to any documents or information sought from you pursuant to this authorization and release. Notwithstanding any statement herein to the contrary, this Authorization and Release shall not operate to release any medical or mental health records relating to alcohol, drug or chemical dependency. I hereby release, discharge and hold harmless the National College, its agents or representatives and any person, firm, company, corporation, school, employer (past or present), governmental agency, court, association, institution, or other third party, and their agents, from any and all liability of every nature and kind arising out of the furnishing, inspection, and the use of such options, knowledge, documents, records or other data. A photocopy of this authorization shall be accepted with the same validity as the original.
+                           <u>APPLICANT</u> - person applying for initial membership status or a present member applying for renewal of his or her membership status. </br><u>NCDD</u> - The National College for DUI Defense, Inc.
+                        </p>
+                        <h3 class="text-center"><u>ACKNOWLEDGEMENT</u></h3>
+                        <p>
+                           APPLICANT herein acknowledges that initial membership or renewal of membership is not automatically bestowed with payment of membership fees; (2) that the College endeavors to maintain among its membership attorneys of high ethical and moral character; and, (3) the entire membership benefits when each member maintains standards of reasonable conduct and character within his or her community and professional associations.
+                        </p>
+                        <h3 class="text-center"><u>AUTHORIZE AND RELEASE</u></h3>
+                        <p>
+                           Applicant does by this document give consent for the NCDD to conduct an investigation into my character and fitness to be a member, and to make inquiries and request such information from third parties as, in the sole discretion of NCDD, may be necessary for such investigation. I further authorize the use of any and all such information in the course of the NCDD’s investigation and evaluation of my application for general membership and annual renewal.
+                        </p>
+                        <h3 class="text-center"><u>INITIAL MEMBERSHIP AND/OR RENEWAL</u></h3>
+                        <p>
+                           I authorize and request every person or entity, governmental or private, having opinions or knowledge about me, or control of any documents, information, or data pertaining to me, to furnish to the NCDD or its representative such opinions, knowledge, documents or data. Without limiting the previously described authority, I specifically authorize the release of records pertaining to my criminal history, files of any state or professional association regarding disciplinary proceedings and complaints against me, and records of educational institutions concerning me.
+                           </br></br>
+                           I hereby authorize all persons set out above to answer any inquiries from the NCDD concerning me, and I waive absolutely any privileges or privacy rights I may have which are applicable to any documents or information referred to above and sought pursuant to this authorization and release.
+                           </br></br>
+                           Notwithstanding any statement herein to the contrary, this Authorization and Release shall not operate to release any medical or mental health records relating to alcohol, drug or chemical dependency.
+                           </br></br>
+                           I hereby release, discharge and hold harmless the NCDD, its agents or representatives, and any person or entity and its agents or representatives, from any and all liability arising out of the furnishing or use of the opinions, knowledge, documents, records or other data released pursuant to this Authorization and Release.
+                           </br></br>
+                           A photocopy of this authorization shall be accepted with the same validity as the original.
+                           </br></br>
                         </p>
                      </div>
                      <!--/span-->
@@ -474,7 +482,10 @@
                         <div class="control-group">
                            <label class="control-label">By printing your name you acknowledge this Authorization and Release.</label>
                            <div class="controls">
-                              <input disabled class="m-wrap span12 authorizationRelease" type="text" value="<?=$this->vars['application']['authorizationRelease']?>" placeholder="">
+                              <div class="input-prepend">
+                                 <span class="add-on">Printed Name: </span>
+                                 <input disabled class="m-wrap span12 authorizationReleasePrintedName" type="text" value="<?=$this->vars['application']['authorizationReleasePrintedName']?>" placeholder="">
+                              </div>
                            </div>
                            
                         </div>
@@ -485,79 +496,21 @@
                      <div class="span12">
                         <div class="control-group">
                            <label class="control-label">Please download this reference form and confirm you did so by selecting "Yes": <br>
-                              <a target="_blank" href="http://<?=SAW_ADMIN_WEBSITE?>/application/downloads/ncdd-sustaining-membership-reference-form.pdf">Sustaining Member Application Reference Form - click to download the PDF document.</a>
+                              <a target="_blank" href="http://<?=SAW_ADMIN_WEBSITE?>/application/downloads/ncdd-general-membership-reference-form.pdf">New Member Application Reference Form - click to download the PDF document.</a>
                            </label>
                            <div class="controls">
                               <input disabled type="text" value="<?=$this->vars['application']['referenceFormDownload']?>" class="m-wrap span12 referenceFormDownload">
-                              <span class="help-block"></span>
-                              <h4><strong>Please make sure your 4 references send their forms ASAP to the address at the top of the reference form via fax, email, or U.S. mail.</strong></h4>
+                              <span class="help-block">Please submit this reference form to the address at the top of this application.</span>
                            </div>
                         </div>
                      </div>
                      <!--/span-->
                   </div>
 
-                  <div class="row-fluid">
-                     <div class="span6 ">
-                        <div class="control-group">
-                           <label class="control-label">Your Sponsor:</label>
-                           <div class="controls">
-                              <input disabled type="text" name="doc[sponsor]" value="<?=(array_key_exists('sponsor',$this->vars['application'])) ? $this->vars['application']['sponsor']: '';?>" class="m-wrap span12 sponsor">
-                              <span class="help-block">Please type in the name of the Fellow or Regent who is sponsoring your application.</span>
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                  </div>
-                  
-                  <div class="alert alert-error hide">
-                     <button class="close" data-dismiss="alert"></button>
-                     You have some form errors. Please check below.
-                  </div>
-                  
-                  <div class="form-actions text-center">
-                     <? if($this->vars['application']['currentStatus'] >= \Saw\Model\Apply::$status['APPROVED'] && $this->vars['application']['currentStatus'] < \Saw\Model\Apply::$status['PAID']): ?>
-                     <button type="button" data-id="<?=$this->vars['application']['_id']?>" class="btn green pay"><i class="icon-money"></i> Pay Application</button>
-                     <? endif; ?>                     
-                     <button type="button" data-id="<?=$this->vars['application']['_id']?>" class="btn blue edit"><i class="icon-pencil"></i> Edit Application</button>
-                     <? if($this->vars['application']['currentStatus'] < \Saw\Model\Apply::$status['APPROVED']): ?>
-                     <button type="button" data-id="<?=$this->vars['application']['_id']?>" data-type="<?=$this->vars['application']['class']?>" class="btn green approve"><i class="icon-ok"></i> Approve Application</button>
-                     <? endif; ?>
-                     <button type="button" class="btn cancel">Cancel and Go Back</button>
-                     <button type="button" data-id="<?=$this->vars['application']['_id']?>" class="btn red delete">Delete Application</button>
-                  </div>
                </form>
                <!-- END FORM--> 
 
-               <!-- SUCCESSFUL SAVE MODAL -->
-               <div id="save-success" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="save-success-label" aria-hidden="true">
-                  <div class="modal-header">
-                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                     <h3 id="save-success-label">Successful Operation</h3>
-                  </div>
-                  <div class="modal-body">
-                     <p></p>
-                  </div>
-                  <div class="modal-footer">
-                     <button class="btn blue continue" data-insertid="">Return to NCDD.com</button>
-                  </div>
-               </div>
-               <!--/ SUCCESSFUL SAVE MODAL -->
-               <!-- DELETE MODAL -->
-               <div id="delete-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="delete-modal-label" aria-hidden="true">
-                  <div class="modal-header">
-                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                     <h3 id="delete-modal-label">Are you sure you want to delete this?</h3>
-                  </div>
-                  <div class="modal-body">
-                     <p>This delete action cannot be undone.</p>
-                  </div>
-                  <div class="modal-footer">
-                     <button class="btn red continue" data-id="<?=$this->vars['application']['_id']?>">Yes, Delete it.</button>
-                     <button class="btn cancel">Cancel</button>
-                  </div>
-               </div>
-               <!--/ DELETE MODAL -->
+               
 
             </div>
          </div>
@@ -566,9 +519,3 @@
          <!-- END PAGE CONTAINER-->    
       </div>
       <!-- END PAGE -->
-      <?=$this->element('js/Application.js');?>
-      <script>
-      jQuery(document).ready(function() {    
-         io.saw.Application.approveInit();
-      });      
-      </script>

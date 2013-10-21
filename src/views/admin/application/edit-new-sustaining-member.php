@@ -585,7 +585,7 @@
                         <div class="control-group">
                            <label class="control-label">Your Sponsor:</label>
                            <div class="controls">
-                              <input type="text" name="doc[sponsor]" value="<?=$this->vars['application']['sponsor']?>" class="m-wrap span12 sponsor">
+                              <input type="text" name="doc[sponsor]" value="<?=(array_key_exists('sponsor',$this->vars['application'])) ? $this->vars['application']['sponsor']: '';?>" class="m-wrap span12 sponsor">
                               <span class="help-block">Please type in the name of the Fellow or Regent who is sponsoring your application.</span>
                            </div>
                         </div>
