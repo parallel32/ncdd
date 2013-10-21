@@ -488,8 +488,8 @@
                            <label class="control-label">I understand that as a condition of continued membership I must attend at least one seminar every two (2) years sponsored/co-sponsored by NCDD or a State seminar listed on the NCDD website.</label>
                            <div class="controls">
                               <select class="small m-wrap attendSeminar" name="doc[attendSeminar]">
-                                 <option value="no">No</option>
                                  <option value="yes">Yes</option>
+                                 <option value="no">No</option>
                               </select>
                            </div>
                         </div>
