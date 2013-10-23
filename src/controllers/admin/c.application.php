@@ -466,7 +466,7 @@ $app->get('/application/{paymentId}/pay/{applicationId}/{resetSession}', functio
     	$application->markPaid();
 
     return $app['applicationEmails']($app,$applicationId,$context='new-member-complete');
-})->value('resetSession','no')->before($mustbeMEMBER);
+})->value('resetSession','yes')->before($mustbeMEMBER);
 
 
 $app->get('/application/{id}/delete', function ($id, Request $request) use ($app) {

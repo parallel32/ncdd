@@ -314,9 +314,9 @@ class Apply extends Model {
 			$memberId = 'notfound';
 		endif;
 
+		$member = new Member(array('_id'=>$memberId,'accessLevel'=>MEMBER),self::$app);
+		$member->saveSafe();
 		if($resetSession){
-			$member = new Member(array('_id'=>$memberId,'accessLevel'=>MEMBER),self::$app);
-			$member->saveSafe();
 			$member->setUserSession();
 		}
 	}
