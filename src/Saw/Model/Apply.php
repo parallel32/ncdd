@@ -44,6 +44,7 @@ class Apply extends Model {
 	public $references;
 	public $timeZone='America/New_York';
 	public $membershipDues;
+	public $trial;
 
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addPropertyConstraint('firstName', new Constraints\NotBlank(array('message'=>'cannot be blank')));
