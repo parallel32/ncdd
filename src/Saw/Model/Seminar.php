@@ -173,7 +173,6 @@ class Seminar extends Model {
 		// use this to check the timezone bug
 			//error_log('start:'.print_r($start,true));
      		//error_log('end:'.print_r($end,true));
-     		error_log('');
 			$days = $start->diffInDays($end);
 			for ($i=0; $i <= $days; $i++) { 
 				$start = Carbon::createFromTimeStamp(strtotime($startDate['fullMonth']), $this->timeZone);

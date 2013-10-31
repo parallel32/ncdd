@@ -151,7 +151,7 @@ class Member extends User {
 	 * This method prepares defaults for empty attributes
 	*/
 	protected function prepareInsert(){
-		$this->accessLevel = UNPAIDMEMBER;		
+		$this->accessLevel = $this->accessLevel ?: UNPAIDMEMBER;		
 		$this->location = $this->location ?: new \StdClass();
 		$this->barNumber = $this->barNumber ?: '';
 		$this->websites = $this->websites ?: new \StdClass();
@@ -183,11 +183,15 @@ class Member extends User {
 		parent::prepareInsert();
 	}
 	public function insert(){
-		$this->prepareInsert();
-		if(parent::insert()){
-        	return $this->_id;
-        }else{
-			throw new Saw\Exceptions\SawException(new Saw\Model\Exceptions\DomainException(),"Adding failed.  Please try again.");
+		if($this->findByEmail()){
+			$this->saveEdit();
+		}else{
+			$this->prepareInsert();
+			if(parent::insert()){
+	        	return $this->_id;
+	        }else{
+				throw new Saw\Exceptions\SawException(new Saw\Model\Exceptions\DomainException(),"Adding failed.  Please try again.");
+			}
 		}
 	}
 	public function saveEdit(){

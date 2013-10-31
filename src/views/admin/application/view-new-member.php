@@ -386,7 +386,7 @@
                   </div>
                   <h3 class="form-section">13.</h3>
                   <div class="row-fluid">
-                     <div class="span6 ">
+                     <div class="span12 ">
                         <div class="control-group">
                            <label class="control-label">I understand that any future service in any branch of law enforcement or prosecution of state, province, county district or municipal ordinances/statutes requires my immediate disclosure to NCDD and termination of my membership. </label>
                            <div class="controls">
@@ -395,6 +395,7 @@
                         </div>
                      </div>
                      <!--/span-->
+                     <!-- commented out by request from Rhea.
                      <div class="span6 ">
                         <div class="control-group">
                            <label class="control-label">If "Yes", please explain.</label>
@@ -519,6 +520,44 @@
                      </div>
                      <!--/span-->
                   </div>
+                  <div class="row-fluid">
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">Referred By:</label>
+                           <div class="controls">
+                              <input disabled type="text" name="doc[referredBy]" value="<?=(array_key_exists('trial',$this->vars['application'])) ? (array_key_exists('referredBy',$this->vars['application']['trial'])) ? $this->vars['application']['trial']['referredBy'] : (array_key_exists('referredBy',$this->vars['application'])) ? $this->vars['application']['referredBy'] : '' : (array_key_exists('referredBy',$this->vars['application'])) ? $this->vars['application']['referredBy'] : '';?>" class="m-wrap span12 referredBy">
+                              <span class="help-block">If someone referred you, who is already a member, please type in their name here.</span>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <?if($this->vars['application']['currentStatus'] == \Saw\Model\Apply::$status['TRIAL'] && array_key_exists('trial',$this->vars['application'])):?>
+                  <div class="row-fluid">
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">Trial Started:</label>
+                           <div class="controls">
+                              <input id="startTrial" disabled type="text" value="<?=$this->vars['application']['trial']['startDate']['fullMonth']?>" class="m-wrap span12 trial">
+                              <?$start = \Carbon\Carbon::createFromTimeStamp(strtotime($this->vars['application']['trial']['startDate']['fullMonth']), $this->vars['application']['trial']['timeZone']);?>
+                              <span class="help-block"><?=$start->diffForHumans();?></span>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">Trial Ends:</label>
+                           <div class="controls">
+                              <input id="startTrial" disabled type="text" value="<?=$this->vars['application']['trial']['endDate']['fullMonth']?>" class="m-wrap span12 trial">
+                              <?$end = \Carbon\Carbon::createFromTimeStamp(strtotime($this->vars['application']['trial']['endDate']['fullMonth']), $this->vars['application']['trial']['timeZone']);?>
+                              <span class="help-block"><?=$end->diffForHumans();?></span>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <? endif; ?>
                   <div class="alert alert-error hide">
                      <button class="close" data-dismiss="alert"></button>
                      You have some form errors. Please check below.
@@ -533,6 +572,9 @@
                      <button type="button" data-id="<?=$this->vars['application']['_id']?>" data-type="<?=$this->vars['application']['class']?>" class="btn green approve"><i class="icon-ok"></i> Approve Application</button>
                      <? endif; ?>
                      <button type="button" class="btn cancel">Cancel and Go Back</button>
+                     <? if($this->vars['application']['currentStatus'] < \Saw\Model\Apply::$status['TRIAL']): ?>
+                     <button type="button" data-id="<?=$this->vars['application']['_id']?>" class="btn yellow trial"><i class="icon-ok"></i> Approve as Trial</button>
+                     <? endif; ?>
                      <button type="button" data-id="<?=$this->vars['application']['_id']?>" class="btn red delete">Delete Application</button>
                   </div>
                </form>
@@ -567,7 +609,65 @@
                   </div>
                </div>
                <!--/ DELETE MODAL -->
-
+               <!-- TRIAL MODAL -->
+               <div id="trial-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="trial-modal-label" aria-hidden="true">
+                  <div class="modal-header">
+                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                     <h3 id="trial-modal-label">Set the length of the trial.</h3>
+                  </div>
+                  <div class="modal-body">
+                     <form id="trial-form" class="horizontal-form portlet">
+                        <div class="alert alert-error hide">
+                           <button class="close" data-dismiss="alert"></button>
+                           You have some form errors. Please check below.
+                        </div>                  
+                        <div class="row-fluid">
+                           <div class="span6 ">
+                              <div class="control-group">
+                                 <label class="control-label">Referred By</label>
+                                 <div class="controls">
+                                    <input type="text" name="doc[referredBy]" value="<?=(array_key_exists('trial',$this->vars['application'])) ? (array_key_exists('referredBy',$this->vars['application']['trial'])) ? $this->vars['application']['trial']['referredBy'] : (array_key_exists('referredBy',$this->vars['application'])) ? $this->vars['application']['referredBy'] : '' : (array_key_exists('referredBy',$this->vars['application'])) ? $this->vars['application']['referredBy'] : '';?>" class="m-wrap span12 referredBy">
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        <div class="row-fluid">
+                           <div class="span6 ">
+                              <div class="control-group">
+                                 <label class="control-label">Trial Length</label>
+                                 <div class="controls">
+                                    <select class="small m-wrap endDate" name="doc[endDate]">
+                                       <option value="1 Month">1 Month</option>
+                                       <option value="2 Months">2 Months</option>
+                                       <option value="3 Months">3 Months</option>
+                                       <option value="4 Months">4 Months</option>
+                                       <option value="5 Months">5 Months</option>
+                                       <option value="6 Months">6 Months</option>
+                                       <option value="7 Months">7 Months</option>
+                                       <option value="8 Months">8 Months</option>
+                                       <option value="9 Months">9 Months</option>
+                                       <option value="10 Months">10 Months</option>
+                                       <option value="11 Months">11 Months</option>
+                                       <option value="12 Months">12 Months</option>
+                                    </select>
+                                    <span class="help-block">An email will be sent to the applicant and admin when the trial period expires.</span>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        <div class="alert alert-warning">
+                           Note: the system will email the applicant with their access credentials when confirm is clicked.
+                        </div> 
+                     </form>
+                  </div>
+                  <div class="modal-footer">
+                     <button class="btn green continue" data-id="<?=$this->vars['application']['_id']?>">Confirm and Begin Trial.</button>
+                     <button class="btn cancel">Cancel</button>
+                  </div>
+               </div>
+               <!--/ TRIAL MODAL -->
             </div>
          </div>
          <!-- END PAGE CONTENT-->

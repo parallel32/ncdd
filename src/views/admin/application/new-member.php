@@ -475,8 +475,8 @@
                            <label class="control-label">I understand that any future service in any branch of law enforcement or prosecution of state, province, county district or municipal ordinances/statutes requires my immediate disclosure to NCDD and termination of my membership. </label>
                            <div class="controls">
                               <select class="small m-wrap futureLawEnforcement" name="doc[futureLawEnforcement]">
-                                 <option value="no">No</option>
                                  <option value="yes">Yes</option>
+                                 <option value="no">No</option>
                               </select>
                            </div>
                         </div>
@@ -602,6 +602,18 @@
                               </select>
                               <span class="help-block"></span>
                               <h4><strong>Please make sure your 2 references send their forms ASAP to the address at the top of the reference form via fax, email, or U.S. mail.</strong></h4>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <div class="row-fluid">
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">Referred By:</label>
+                           <div class="controls">
+                              <input type="text" name="doc[referredBy]" class="m-wrap span12 referredBy">
+                              <span class="help-block">If someone referred you, who is already a member, please type their name here.</span>
                            </div>
                         </div>
                      </div>

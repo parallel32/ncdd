@@ -205,6 +205,20 @@
 		$('#saw-form .btn.green.approve').click(function(e){
 			approve($(this).attr('data-id'),$(this).attr('data-type'));
 		});
+
+		$('#saw-form .btn.yellow.trial').click(function(e){
+			// pop trial modal to set the end date
+			$('#trial-modal').modal({keyboard: false});
+		});
+		$('#trial-modal .btn.green.continue').click(function(e){
+			approveTrial($(this).attr('data-id'));
+		});
+		$('#trial-modal .btn.cancel').click(function(e){
+			e.preventDefault();
+			$('#trial-modal').modal('hide');
+		});		
+		
+		
 		$('#saw-form .btn.cancel').click(function(e){
 			e.preventDefault();
 			document.location.href='/applications';			
@@ -248,5 +262,29 @@
 			}
 		});
 	};
+	function approveTrial (id){
+		io.saw.FormPost.activate({postUrl:'/application/'+id+'/trial'
+		   ,formName:'#trial-form'
+		   ,serializeSelector:':input'
+		   ,postOnComplete:function(responseObj,responseStatus){
+			   	if(responseStatus == 'success'){
+			   		$('#trial-modal').modal('hide');
+					$('#save-success .modal-body p').html(responseObj.message);
+			      	$('#save-success-label').html(responseObj.label);
+			      	$('#save-success').modal({keyboard: false});   		
+			      	console.log('document.location.href')
+			      	/*
+			      	window.setTimeout(function(){
+			      		document.location.href='/applications';
+			      	},2000);
+					//*/
+			   	}else{
+			   		var responseObj = $.parseJSON(responseObj.responseText);
+			   	}
+		   }
+		   ,postOnSuccess:function(responseObj){}
+		});      
+	};
+
 }( io.saw.Application = io.saw.Application || {}, io.saw.jQuery || jQuery ));
 </script>

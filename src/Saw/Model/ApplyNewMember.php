@@ -168,7 +168,7 @@ class ApplyNewMember extends Apply {
 		 return "Executed at ".$executed.', this '.$day.' day of '.$month.', 20'.$year;
 	}
 
-	public function approve(){
+	public function approve($trial=false){
 		// prepare member record
 		$password = substr(time(),-4);
 		$mem_doc['password'] = $password;
@@ -180,6 +180,11 @@ class ApplyNewMember extends Apply {
 		$mem_doc['primaryPhone'] = $this->phone;
 		$mem_doc['primaryFax'] = $this->fax;
 		$mem_doc['websites'] = array(array('websiteDesc'=>'','website'=>Member::parseWebsite($this->website)));
+		if($trial){
+			$mem_doc['listed'] = 1;
+			$mem_doc['accessLevel'] = MEMBER;
+		}
+
 		// prepare location record
 		$loc_doc['raw'] = $this->formattedAddress;
 		$loc_doc['name'] = 'primary';
@@ -203,11 +208,21 @@ class ApplyNewMember extends Apply {
 		$location->insert();
 
 		// update record to approved status
-		$this->currentStatus = self::$status['APPROVED'];
-		$this->approvedDate = new Date(self::$app,'now', $this->timeZone);
+		if($trial){
+			$this->currentStatus = self::$status['TRIAL'];
+		}else{
+			$this->currentStatus = self::$status['APPROVED'];
+			$this->approvedDate = new Date(self::$app,'now', $this->timeZone);
+		}
+		
 		$this->memberId = $mem_id;
 		$this->saveSafe();
 
 		return $member;
 	}
+
+	public function trial(){
+		return $this->approve($trial=true);
+	}
+
 }

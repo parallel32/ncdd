@@ -373,7 +373,7 @@
                   </div>
                   <h3 class="form-section">13.</h3>
                   <div class="row-fluid">
-                     <div class="span6 ">
+                     <div class="span12 ">
                         <div class="control-group">
                            <label class="control-label">I understand that any future service in any branch of law enforcement or prosecution of state, province, county district or municipal ordinances/statutes requires my immediate disclosure to NCDD and termination of my membership. </label>
                            <div class="controls">
@@ -382,6 +382,7 @@
                         </div>
                      </div>
                      <!--/span-->
+                     <!-- commented out by request from Rhea.
                      <div class="span6 ">
                         <div class="control-group">
                            <label class="control-label">If "Yes", please explain.</label>
@@ -506,7 +507,18 @@
                      </div>
                      <!--/span-->
                   </div>
-
+                  <div class="row-fluid">
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">Referred By:</label>
+                           <div class="controls">
+                              <input disabled type="text" name="doc[referredBy]" value="<?=(array_key_exists('trial',$this->vars['application'])) ? (array_key_exists('referredBy',$this->vars['application']['trial'])) ? $this->vars['application']['trial']['referredBy'] : (array_key_exists('referredBy',$this->vars['application'])) ? $this->vars['application']['referredBy'] : '' : (array_key_exists('referredBy',$this->vars['application'])) ? $this->vars['application']['referredBy'] : '';?>" class="m-wrap span12 referredBy">
+                              <span class="help-block">If someone referred you, who is already a member, please type their name here.</span>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
                </form>
                <!-- END FORM--> 
 

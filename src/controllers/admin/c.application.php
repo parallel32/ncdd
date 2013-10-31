@@ -66,6 +66,58 @@ $app['applicationEmails'] = $app->protect(function ($app,$applicationId,$context
 		$app['sendMail']($subject, $body, $to);
 	    return new Response(json_encode(array('message' => 'Approved successfully')), 200,array('Content-Type' => 'application/json'));
 	}
+	if($context == 'new-member-trial'){
+		switch ($apply_arr['class']) {
+			case 'NewMemberApplication': // old deprecated
+			case 'ApplyNewMember':
+				$application = new Model\ApplyNewMember(array('_id'=>$applicationId), $app);
+				$application->findById();
+			    $member = $application->trial();
+			    // email welcome message
+				$subject = 'Welcome To NCDD';
+				$to = $member->email;
+				$view_vars = array('email'=>$member->email
+									,'password'=>$member->password
+									,'firstName'=>$member->firstName
+									,'lastName'=>$member->lastName
+									,'startDate'=>$application->trial['startDate']['fullMonth']
+									,'endDate'=>$application->trial['endDate']['fullMonth']
+				);
+				$body = $app['view']->render('email/new-member-trial','email', $view_vars);
+				break;
+			case 'ApplyNewSustainingMember':
+				$application = new Model\ApplyNewSustainingMember(array('_id'=>$applicationId), $app);
+				$application->findById();
+			    $member = $application->trial();
+			    // email welcome message
+				$subject = 'Welcome To NCDD';
+				$to = $member->email;
+				$view_vars = array('email'=>$member->email
+									,'password'=>$member->password
+									,'firstName'=>$member->firstName
+									,'lastName'=>$member->lastName
+									,'startDate'=>$application->trial['startDate']['fullMonth']
+									,'endDate'=>$application->trial['endDate']['fullMonth']
+				);
+				$body = $app['view']->render('email/new-sustaining-member-trial','email', $view_vars);
+				break;		
+			case 'UpdateMember':
+				$application = new Model\UpdateMember(array('_id'=>$applicationId), $app);
+				break;
+			case 'UpdateFoundingMember':
+				$application = new Model\UpdateFoundingMember(array('_id'=>$applicationId), $app);
+				break;
+			case 'UpdateSustainingMember':
+				$application = new Model\UpdateSustainingMember(array('_id'=>$applicationId), $app);
+				break;
+			case 'ApplyNewSustainingMember':
+				$application = new Model\ApplyNewSustainingMember(array('_id'=>$applicationId), $app);
+				break;		
+		}
+		
+		$app['sendMail']($subject, $body, $to);
+	    return new Response(json_encode(array('message' => 'Approved successfully')), 200,array('Content-Type' => 'application/json'));
+	}
 	if($context == 'new-member-complete'){
 		$member = new Model\Member(array('_id'=>$apply_arr['memberId']), $app);
 	    $member->findById();
@@ -306,6 +358,7 @@ $app->get('/application/{id}/edit', function ($id, Request $request) use ($app) 
 	
 	$application = new Model\Apply($doc=array('_id'=>$id), $app);
 	$application = $application->findById();
+
 	$crumbs = array(array('name'=>'Applications','href'=>'/applications')
 					,array('name'=>$application['firstName'].' '.$application['lastName'],'href'=>'/application/'.$id.'/view')
 					,array('name'=>$application['type'],'href'=>'/application/'.$id.'/view')
@@ -336,6 +389,7 @@ $app->post('/application/edit', function (Request $request) use ($app) {
 
 	// retrieve document from request
     $doc = $request->get('doc');
+    $endTrial = $request->get('endTrial');
     
 	switch ($doc['class']) {
 		case 'NewMemberApplication': // old deprecated
@@ -346,25 +400,34 @@ $app->post('/application/edit', function (Request $request) use ($app) {
 			$application = new Model\ApplyNewSustainingMember($doc, $app);
 		    break;		
 		case 'UpdateMember':
-			$application = new Model\UpdateMember(array('_id'=>$id), $app);
+			$application = new Model\UpdateMember($doc, $app);
 			break;
 		case 'UpdateFoundingMember':
-			$application = new Model\UpdateFoundingMember(array('_id'=>$id), $app);
+			$application = new Model\UpdateFoundingMember($doc, $app);
 			break;
 		case 'UpdateSustainingMember':
-			$application = new Model\UpdateSustainingMember(array('_id'=>$id), $app);
+			$application = new Model\UpdateSustainingMember($doc, $app);
 			break;
-		case 'ApplyNewSustainingMember':
-			$application = new Model\ApplyNewSustainingMember(array('_id'=>$id), $app);
-			break;		
 	}
+	if(!empty($endTrial)){
+		$appArr = $application->findOne($query=array('_id'=>new \MongoId($doc['_id'])),$fields=array('trial'=>true));
+		$newEndDate = new Model\Date($app,$endTrial, $appArr['trial']['timeZone']);
+		
+		$appArr['trial']['startDate'] = $appArr['trial']['startDate']['fullMonth'];
+		$appArr['trial']['endDate'] = $newEndDate;
+		$new_trial = new Model\Trial($appArr['trial'],$app);
+		$app['validateModel']($app,$new_trial);
 
+		$application->trial = $new_trial->__toArray();
+		$application->trial['endDate'] = $newEndDate;
+	}
+	
 	// validate the model
 	$app['validateModel']($app,$application);
 	
 	$application_id = $application->checkEmailExists();
 	if(!empty($application_id) && $application_id != $application->_id){
-    	$label = 'Success, but...';
+    	$label = 'Warning:';
     	$message = "The email address you're trying to update is already in use on another application.  Please use a different email and try again.";
     	$response_status = 400;
     }else{
@@ -385,6 +448,60 @@ $app->post('/application/references', function (Request $request) use ($app) {
 	$application = new Model\Apply(array('_id'=>$id,'references'=>$value), $app);
 	$application->saveEdit();
 	return new Response(json_encode(array('message' => 'success')), 200,array('Content-Type' => 'application/json'));
+})->before($mustbeADMIN);
+
+//////////////////
+// EXPIRE TRIAL //
+//////////////////
+$app->get('/application/expire-trial', function (Request $request) use ($app) {
+	
+	$appl = new Model\Apply($doc=array(), $app);
+	$applications = $appl->fetchByStatus('TRIAL');
+	
+	$total = count($applications);
+	$count = 0;	
+	foreach($applications as $application):
+		$appArr = $appl->findOne($query=array('_id'=>new \MongoId($application['_id'])),$fields=array('trial'=>true));
+
+		$start = \Carbon\Carbon::createFromTimeStamp(strtotime($appArr['trial']['startDate']['fullMonth']), $appArr['trial']['timeZone']);
+		$end = \Carbon\Carbon::createFromTimeStamp(strtotime($appArr['trial']['endDate']['fullMonth']), $appArr['trial']['timeZone']);
+		$days = $start->diffInDays($end);
+		if($days <= 0){
+
+			// set the trial to expired
+			$appArr['trial']['startDate'] = $appArr['trial']['startDate']['fullMonth'];
+			$appArr['trial']['endDate'] = $appArr['trial']['endDate']['fullMonth'];
+			$appArr['trial']['currentStatus'] = Model\Trial::$status['EXPIRED'];
+			$new_trial = new Model\Trial($appArr['trial'],$app);
+
+			$appObj = new Model\Apply(array('_id'=>$application['_id'],'trial'=>$new_trial->__toArray()), $app);
+			$appObj->saveEdit();
+
+			// update the member access level to UNPAIDMEMBER
+			$member = new Model\Member(array('_id'=>$application['memberId'],'accessLevel'=>UNPAIDMEMBER),$app);
+			$member->saveEdit();
+			$count++;
+		}
+		
+	endforeach;
+	return new Response("Expired ".$count." out of ".$total." applications in Trial Mode", 200,array('Content-Type' => 'text/html'));
+});
+///////////////
+// SET TRIAL //
+///////////////
+$app->post('/application/{id}/trial', function ($id, Request $request) use ($app) {
+	
+	// retrieve document from request
+	$doc = $request->get('doc');
+	$doc['startDate'] = 'now';
+	
+	$trial = new Model\Trial($doc,$app);
+	$app['validateModel']($app, $trial);
+
+	$application = new Model\Apply(array('_id'=>$id,'referredBy'=>$doc['referredBy'],'trial'=>$trial->__toArray()), $app);
+	$application->saveEdit();
+
+	return $app['applicationEmails']($app,$id,$context='new-member-trial');
 })->before($mustbeADMIN);
 
 /////////////
@@ -498,6 +615,7 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 	$application = new Model\Apply($doc=array(), $app);
 	$submitted = $application->fetchByStatus('SUBMITTED',$offset, $limit);
 	$approved = $application->fetchByStatus('APPROVED',$offset, $limit);
+	$trial = $application->fetchByStatus('TRIAL',$offset, $limit);
 	$paid = $application->fetchByDatePaid(90, $offset, $limit);
 	$crumbs = array(array('name'=>'Applications','href'=>'/applications'));
 	$view_vars = array(
@@ -508,6 +626,7 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 						,'crumbs'=>$crumbs
 						,'submitted'=>$submitted
 						,'approved'=>$approved
+						,'trial'=>$trial
 						,'paid'=>$paid);
 	return $app['view']->render('application/index', 'default', $view_vars);
 })

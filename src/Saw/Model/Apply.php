@@ -14,8 +14,8 @@ use Symfony\Component\Validator\ExecutionContext;
 class Apply extends Model {
 	
 	public $collection = 'application';
-	static public $status = array('DRAFT'=>0,'SUBMITTED'=>10, 'APPROVED'=>20, 'PAID'=>40);
-	static public $statusReversed = array(0=>'DRAFT',10=>'SUBMITTED', 20=>'APPROVED', 40=>'PAID');
+	static public $status = array('DRAFT'=>0,'SUBMITTED'=>10, 'TRIAL'=>15, 'APPROVED'=>20, 'PAID'=>40);
+	static public $statusReversed = array(0=>'DRAFT',10=>'SUBMITTED',15=>'TRIAL',20=>'APPROVED',40=>'PAID');
 	public $currentStatus;
 	public $firstName;
 	public $middleName;
@@ -45,6 +45,7 @@ class Apply extends Model {
 	public $timeZone='America/New_York';
 	public $membershipDues;
 	public $trial;
+	public $referredBy;
 
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addPropertyConstraint('firstName', new Constraints\NotBlank(array('message'=>'cannot be blank')));
@@ -105,6 +106,8 @@ class Apply extends Model {
 		if(!empty($doc['memberId'])) $this->memberId = (is_object($doc['memberId'])) ? $doc['memberId'] : new \MongoId($doc['memberId']);
 		if(!empty($doc['paymentId'])) $this->paymentId = (is_object($doc['paymentId'])) ? $doc['paymentId'] : new \MongoId($doc['paymentId']);
 		$this->membershipDues = $doc['membershipDues'];
+		$this->referredBy = $doc['referredBy'];
+		$this->trial = (is_object($doc['trial'])) ? $doc['trial']->__toArray(false) : $doc['trial'];
 
 	}
 	
@@ -140,6 +143,8 @@ class Apply extends Model {
 		$this->timeZone = $this->timeZone ?: 'America/New_York';
 		$this->references = $this->references ?: '';
 		$this->membershipDues = $this->membershipDues ?: '';
+		$this->referredBy = $this->referredBy ?: '';
+		$this->trial = $this->trial ?: new \stdClass();
 
 	}
 	
@@ -171,7 +176,6 @@ class Apply extends Model {
 			return false;
 		endif;
 	}
-
 	public function fetch($offset=0,$limit=100){
 		$query = array();
 		$fields = array('firstName'=>true
@@ -212,6 +216,8 @@ class Apply extends Model {
 						,'memberId'=>true
 						,'paymentId'=>true
 						,'references'=>true
+						,'trial'=>true
+						,'timeZone'=>true
 						);
 		switch ($status) {
 			case 'SUBMITTED':
@@ -222,6 +228,9 @@ class Apply extends Model {
 				break;
 			case 'PAID':
 				$sort=array('paidDate.date'=>-1);
+				break;
+			case 'TRIAL':
+				$sort=array('trial.startDate.date'=>-1);
 				break;
 			default:
 				$sort=array('_id'=>-1);
@@ -315,7 +324,7 @@ class Apply extends Model {
 			$memberId = 'notfound';
 		endif;
 
-		$member = new Member(array('_id'=>$memberId,'accessLevel'=>MEMBER),self::$app);
+		$member = new Member(array('_id'=>$memberId,'accessLevel'=>MEMBER,'listed'=>1),self::$app);
 		$member->saveSafe();
 		if($resetSession){
 			$member->setUserSession();

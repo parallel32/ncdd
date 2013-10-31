@@ -28,6 +28,15 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                <? echo ($this->vars['active'] == 'Dashboard') ? '<span class="selected"></span>':'';?>
                </a>
             </li>
+         <? if($accessLevel >= EDITOR):?>
+            <li class="<? echo ($this->vars['active'] == 'Application') ? 'active':'';?>">
+               <a href="/applications">
+               <i class="icon-copy"></i> 
+               <span class="title">Applications</span>
+               <? echo ($this->vars['active'] == 'Application') ? '<span class="selected"></span>':'';?>
+               </a>
+            </li>
+         <? endif; ?>
          <? if($accessLevel >= MEMBER):?>
             <li class="<? echo (strpos($this->vars['active'], 'Members') !== false) ? 'active open':'';?>">
                <a href="javascript:;">
@@ -135,13 +144,6 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                <i class="icon-shopping-cart"></i> 
                <span class="title">NCDD Store</span>
                <? echo ($this->vars['active'] == 'Store') ? '<span class="selected"></span>':'';?>
-               </a>
-            </li>
-            <li class="<? echo ($this->vars['active'] == 'Application') ? 'active':'';?>">
-               <a href="/applications">
-               <i class="icon-copy"></i> 
-               <span class="title">Applications</span>
-               <? echo ($this->vars['active'] == 'Application') ? '<span class="selected"></span>':'';?>
                </a>
             </li>
             <li class="<? echo ($this->vars['active'] == 'Payment') ? 'active':'';?>">
