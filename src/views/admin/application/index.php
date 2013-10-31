@@ -46,7 +46,7 @@
                               </tr>
                               <? endforeach;?>
                               <? else: ?>
-                                 <td colspan="5">Nothing to approve.</td>
+                                 <td colspan="7">Nothing to approve.</td>
                               <? endif;?>
                            </tbody>
                         </table>
@@ -101,7 +101,7 @@
                               </tr>
                               <? endforeach;?>
                               <? else: ?>
-                                 <td colspan="5">None.</td>
+                                 <td colspan="7">None.</td>
                               <? endif;?>
                            </tbody>
                         </table>
@@ -148,7 +148,7 @@
                               </tr>
                               <? endforeach;?>
                               <? else: ?>
-                                 <td colspan="5">None.</td>
+                                 <td colspan="6">None.</td>
                               <? endif;?>
                            </tbody>
                         </table>
@@ -197,7 +197,7 @@
                               </tr>
                               <? endforeach;?>
                               <? else: ?>
-                                 <td colspan="5">None.</td>
+                                 <td colspan="6">None.</td>
                               <? endif;?>
                            </tbody>
                         </table>
