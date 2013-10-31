@@ -72,11 +72,20 @@ EOT;
 EOT;
 					break;
 				case 'home':
-					echo <<< EOT
-           	<div class="sloganBlock text-center">
+                    echo <<< EOT
+            <div class="sloganBlock text-center">
                 <div class="indexPageSlogan">
                     <h2>JUSTICE THROUGH KNOWLEDGE</h2>
                     <h5>EST. 1995</h5>
+                </div>
+            </div>
+EOT;
+                    break;
+                case 'board-certification':
+					echo <<< EOT
+           	<div class="sloganBlock text-center">
+                <div class="discoverSlogan">
+                    <h2>BOARD CERTIFICATION</h2>
                 </div>
             </div>
 EOT;

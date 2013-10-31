@@ -443,6 +443,44 @@ $app->get('/regents-and-fellows', function (Request $request) use ($app) {
 	return $app['view']->render('page/founding-members', 'content', $view_vars);
 });
 
+// Board Certification
+$app->get('/board-certification', function (Request $request) use ($app) {
+	$slug = 'board-certification';
+	$page = new Model\Page($doc=array('slug'=>$slug), $app);
+	$page = $page->findById('slug');
+
+	$view_vars = array('page'=>$page);
+	$view_vars['slogan_block'] = 'board-certification';
+
+	$page_vars = $app['get_pages']($slug);
+	$view_vars = array_merge($page_vars,$view_vars);
+	return $app['view']->render('page/board-certification', 'content', $view_vars);
+});
+$app->get('/apply-for-board-certification', function (Request $request) use ($app) {
+	$slug = 'apply-for-board-certification';
+	$page = new Model\Page($doc=array('slug'=>$slug), $app);
+	$page = $page->findById('slug');
+
+	$view_vars = array('page'=>$page);
+	$view_vars['slogan_block'] = 'board-certification';
+
+	$page_vars = $app['get_pages']($slug);
+	$view_vars = array_merge($page_vars,$view_vars);
+	return $app['view']->render('page/board-certification-apply', 'content', $view_vars);
+});
+$app->get('/apply-for-re-certification', function (Request $request) use ($app) {
+	$slug = 'apply-for-re-certification';
+	$page = new Model\Page($doc=array('slug'=>$slug), $app);
+	$page = $page->findById('slug');
+
+	$view_vars = array('page'=>$page);
+	$view_vars['slogan_block'] = 'board-certification';
+
+	$page_vars = $app['get_pages']($slug);
+	$view_vars = array_merge($page_vars,$view_vars);
+	return $app['view']->render('page/board-certification-apply', 'content', $view_vars);
+});
+
 
 ////////////////////////
 // NON MANAGED ROUTES //
