@@ -539,7 +539,7 @@
                            <label class="control-label">Trial Started:</label>
                            <div class="controls">
                               <input id="startTrial" disabled type="text" value="<?=$this->vars['application']['trial']['startDate']['fullMonth']?>" class="m-wrap span12 trial">
-                              <?$start = \Carbon\Carbon::createFromTimeStamp(strtotime($this->vars['application']['trial']['startDate']['fullMonth']), $this->vars['application']['trial']['timeZone']);?>
+                              <?$start = \Carbon\Carbon::createFromTimeStamp(strtotime($this->vars['application']['trial']['startDate']['fullDateTime']), $this->vars['application']['trial']['timeZone']);?>
                               <span class="help-block"><?=$start->diffForHumans();?></span>
                            </div>
                         </div>
