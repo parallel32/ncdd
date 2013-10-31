@@ -206,7 +206,7 @@
 			approve($(this).attr('data-id'),$(this).attr('data-type'));
 		});
 
-		$('#saw-form .btn.yellow.trial').click(function(e){
+		$('#saw-form .btn.purple.trial').click(function(e){
 			// pop trial modal to set the end date
 			$('#trial-modal').modal({keyboard: false});
 		});
