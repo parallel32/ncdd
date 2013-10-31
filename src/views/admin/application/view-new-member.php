@@ -573,7 +573,7 @@
                      <? endif; ?>
                      <button type="button" class="btn cancel">Cancel and Go Back</button>
                      <? if($this->vars['application']['currentStatus'] < \Saw\Model\Apply::$status['TRIAL']): ?>
-                     <button type="button" data-id="<?=$this->vars['application']['_id']?>" class="btn yellow trial"><i class="icon-ok"></i> Approve as Trial</button>
+                     <button type="button" data-id="<?=$this->vars['application']['_id']?>" class="btn purple trial"><i class="icon-ok"></i> Approve as Trial</button>
                      <? endif; ?>
                      <button type="button" data-id="<?=$this->vars['application']['_id']?>" class="btn red delete">Delete Application</button>
                   </div>
