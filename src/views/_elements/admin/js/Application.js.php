@@ -272,8 +272,7 @@
 					$('#save-success .modal-body p').html(responseObj.message);
 			      	$('#save-success-label').html(responseObj.label);
 			      	$('#save-success').modal({keyboard: false});   		
-			      	console.log('document.location.href')
-			      	/*
+			      	//*
 			      	window.setTimeout(function(){
 			      		document.location.href='/applications';
 			      	},2000);
