@@ -275,7 +275,7 @@
 			      	//*
 			      	window.setTimeout(function(){
 			      		document.location.href='/applications';
-			      	},2000);
+			      	},100);
 					//*/
 			   	}else{
 			   		var responseObj = $.parseJSON(responseObj.responseText);
