@@ -87,7 +87,7 @@
 
                                  <?
                                     // humanize dates
-                                    $start = \Carbon\Carbon::createFromTimeStamp(strtotime($application['trial']['startDate']['fullMonth']), $application['trial']['timeZone']);
+                                    $start = \Carbon\Carbon::createFromTimeStamp(strtotime($application['trial']['startDate']['fullDateTime']), $application['trial']['timeZone']);
                                     $end = \Carbon\Carbon::createFromTimeStamp(strtotime($application['trial']['endDate']['fullMonth']), $application['trial']['timeZone']);
                                  ?>
 
