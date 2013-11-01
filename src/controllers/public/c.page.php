@@ -22,7 +22,6 @@ $app['get_pages'] = $app->protect(function ($slug='') use($app) {
     
     $pages['DISCOVER'] = $page->fetchBySectionPublishedOnly('DISCOVER');
 	$pages['LEARN'] = $page->fetchBySectionPublishedOnly('LEARN');
-	$pages['BOARD CERTIFICATION'] = $page->fetchBySectionPublishedOnly('BOARD CERTIFICATION');
 	$view_vars = array('page'=>$result
 						,'pages'=>$pages
 	);
