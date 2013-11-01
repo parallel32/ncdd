@@ -203,11 +203,7 @@
                                                                 <a data-url="board-certification" href="#board-certification" class="dropDownMenuLink span2"><?=$page['headline']?> <span class="arrow pull-right"></span></a>
                                                                  <ul class="span6 dropDownMenu nav nav-tabs pull-left" id="boardCertificationMenu">
                                                                     <li class="arrow"></li>
-                                                                    <? foreach($this->vars['pages']['BOARD CERTIFICATION'] as $page): ?>        
                                                                     
-                                                                    <li><a data-url="<?=$page['slug']?>" href="#<?=$page['slug']?>"><?=$page['headline']?></a></li>
-                                                                    
-                                                                    <? endforeach; ?>
                                                                 </ul>
                                                             </li>
                                                             
