@@ -390,6 +390,7 @@ $app->post('/application/edit', function (Request $request) use ($app) {
 	// retrieve document from request
     $doc = $request->get('doc');
     $endTrial = $request->get('endTrial');
+    $startTrial = $request->get('startTrial');
     
 	switch ($doc['class']) {
 		case 'NewMemberApplication': // old deprecated
@@ -412,14 +413,16 @@ $app->post('/application/edit', function (Request $request) use ($app) {
 	if(!empty($endTrial)){
 		$appArr = $application->findOne($query=array('_id'=>new \MongoId($doc['_id'])),$fields=array('trial'=>true));
 		$newEndDate = new Model\Date($app,$endTrial, $appArr['trial']['timeZone']);
+		$newStartDate = new Model\Date($app,$startTrial, $appArr['trial']['timeZone']);
 		
-		$appArr['trial']['startDate'] = $appArr['trial']['startDate']['fullMonth'];
+		$appArr['trial']['startDate'] = $newStartDate;
 		$appArr['trial']['endDate'] = $newEndDate;
 		$new_trial = new Model\Trial($appArr['trial'],$app);
 		$app['validateModel']($app,$new_trial);
 
 		$application->trial = $new_trial->__toArray();
 		$application->trial['endDate'] = $newEndDate;
+		$application->trial['startDate'] = $newStartDate;
 	}
 	
 	// validate the model

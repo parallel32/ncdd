@@ -610,10 +610,10 @@
                         <div class="control-group">
                            <label class="control-label">Trial Started:</label>
                            <div class="controls">
-                              <input id="startTrial" disabled type="text" value="<?=$this->vars['application']['trial']['startDate']['fullMonth']?>" class="m-wrap span12 startDate">
+                              <input id="startTrial" name="startTrial" type="text" value="<?=$this->vars['application']['trial']['startDate']['fullMonth']?>" class="m-wrap span12 startDate">
                               <?$start = \Carbon\Carbon::createFromTimeStamp(strtotime($this->vars['application']['trial']['startDate']['fullMonth']), $this->vars['application']['trial']['timeZone']);?>
                               <span class="help-block"><?=$start->diffForHumans();?></span>
-                              <span class="help-block">This date cannot be changed.</span>
+                              <span class="help-block">To Change: simply type in a new date to change when the trial ends. E.g.: February 15, 2014</span>
                            </div>
                         </div>
                      </div>
@@ -625,7 +625,7 @@
                               <input id="endTrial" name="endTrial"  type="text" value="<?=$this->vars['application']['trial']['endDate']['fullMonth']?>" class="m-wrap span12 endDate">
                               <?$end = \Carbon\Carbon::createFromTimeStamp(strtotime($this->vars['application']['trial']['endDate']['fullMonth']), $this->vars['application']['trial']['timeZone']);?>
                               <span class="help-block"><?=$end->diffForHumans();?></span>
-                              <span class="help-block">Simply type in a new date to change when the trial ends. E.g.: February 15, 2014</span>
+                              <span class="help-block">To Change: simply type in a new date to change when the trial ends. E.g.: February 15, 2014</span>
                            </div>
                         </div>
                      </div>
