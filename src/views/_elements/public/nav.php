@@ -69,150 +69,55 @@
                                 </ul>
                             </div>
                         </div>
+                        <script>
+                            jQuery(document).ready(function() {
+                                $('#learnTab li a').click(function(e){
+                                    e.preventDefault();
+                                    document.location.href='/'+$(this).attr('data-url')
+                                    
+                                });
+                                $('#discoverTab li a').click(function(e){
+                                    e.preventDefault();
+                                    document.location.href='/'+$(this).attr('data-url')
+                                    
+                                });
+                            });  
+                        </script>
+                        
                         <!-- DISCOVER BUTTON -->
-                        <div class="dropdown-menu discover fullWidthDropDown" role="menu" aria-labelledby="discover">
+                        <div class="dropdown-menu discover fullWidthDropDown specialwidthsetting" role="menu" aria-labelledby="discover">
                             <div class="container" role="menuitem">
-                                <div class="close"></div>
+                                <!--<div class="close"></div>-->
                                 <div class="tabbable tabs-left">
                                     <ul class="dropDownMenu nav nav-tabs" id="discoverTab">
                                         <?
                                         $i=0;
                                         foreach($this->vars['pages']['DISCOVER'] as $page):?>
-                                        <li data-url="<?=$page['slug']?>" class="dropDownMenuItem <?=($i==0)?'active':'';?>"><a href="#<?=$page['slug']?>" class="dropDownMenuLink span2"><?=$page['headline']?></a></li>
+                                        <li class="dropDownMenuItem <?=($i==0)?'active':'';?>"><a data-url="<?=$page['slug']?>" href="#<?=$page['slug']?>" class="dropDownMenuLink span2"><?=$page['headline']?></a></li>
                                         <?
                                         $i++;
                                         endforeach;?>
                                     </ul>
-                                    <div class="tab-content">
-                                        <? 
-                                        $i=0;
-                                        foreach($this->vars['pages']['DISCOVER'] as $page): ?>
-                                        <div class="tab-pane text-center <?=($i==0)?'active':'';?>" id="<?=$page['slug']?>">
-                                             
-                                        </div>
-                                        <? 
-                                        $i++;
-                                        endforeach; ?>
-                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <script>
-                            jQuery(document).ready(function() {
-                                function saw_get_preview(page_url){
-                                    $.get('/preview/'+page_url)
-                                    .done(function(response){
-                                        if(page_url == 'board-certification'){
-                                            $('#board-certification').addClass('active');
-                                        }
-                                        $('#'+page_url).html(response);
-                                    })
-                                    .fail(function(response){
-                                    })
-                                    .always(function(response){
-                                        
-                                    });
-                                };
-                                $('#discoverTab li').click(function(e){
-                                    e.preventDefault();
-                                    if( $(this).attr('data-url') == 'dui-laws-in-your-state' ||
-                                        $(this).attr('data-url') == 'regents-and-fellows' ||
-                                        $(this).attr('data-url') == 'deans-message' ||
-                                        $(this).attr('data-url') == 'dui-laws-in-your-state' ||
-                                        $(this).attr('data-url') == 'origins-of-the-national-college-for-dui-defense' ||
-                                        $(this).attr('data-url') == 'erwin-taylor-award' ||
-                                        $(this).attr('data-url') == 'ncdd-foundation' 
-
-                                    ){
-                                        document.location.href='/'+$(this).attr('data-url')
-                                    }
-                                    saw_get_preview($(this).attr('data-url'));
-                                    
-                                });
-                                $('#discoverTab .active').trigger('click');                               
-
-
-                                $('#learnTab li').click(function(e){
-                                    e.preventDefault();
-                                    $('#boardCertificationMenu li').removeClass('active');
-                                    $('.boardCertificationDescr .board-cert-preview-only').removeClass('active');
-                                    saw_get_preview($(this).attr('data-url'));
-                                    
-                                });
-                                $('#learnTab .active').trigger('click');
-
-                                $('#boardCertificationMenu li').click(function(e){
-                                    e.preventDefault();
-                                    saw_get_preview($(this).attr('data-url'));
-                                    
-                                });
-                                $('#boardCertificationMenu .active').trigger('click');
-                            });  
-                        </script>
+                        
                         <!--/ DISCOVER BUTTON -->
 
                         <!-- LEARN BUTTON -->
-                        <div class="dropdown-menu learn fullWidthDropDown" role="menu" aria-labelledby="learn">
+                        <div class="dropdown-menu learn fullWidthDropDown specialwidthsetting" role="menu" aria-labelledby="learn">
                             <div class="container" role="menuitem">
-                                <div class="close"></div>
+                                <!--<div class="close"></div>-->
                                 <div class="tabbable tabs-left">
                                     <ul class="dropDownMenu nav nav-tabs" id="learnTab">
                                         <?
                                         $i=0;
                                         foreach($this->vars['pages']['LEARN'] as $page):?>
-                                        <li data-url="<?=$page['slug']?>" class="dropDownMenuItem <?=($i==0)?'active':'';?>"><a href="#<?=($page['slug']=='board-certification') ? 'boardCertification': $page['slug'] ?>" class="dropDownMenuLink span2"><?=$page['headline']?><?=($page['slug'] == 'board-certification') ? '<span class="arrow pull-right"></span>': ''?></a></li>
+                                        <li class="dropDownMenuItem <?=($i==0)?'active':'';?>"><a data-url="<?=$page['slug']?>" href="#<?=$page['slug']?>" class="dropDownMenuLink span2"><?=$page['headline']?></a></li>
                                         <?
                                         $i++;
                                         endforeach;?>
                                     </ul>
-                                    <div class="tab-content">
-                                        
-                                        <? 
-                                        $i=0;
-                                        foreach($this->vars['pages']['LEARN'] as $page): 
-                                            
-                                            if($page['slug'] == 'board-certification'):
-                                        ?>
-                                        
-                                                <div class="tab-pane tabbable tabs-left row-fluid <?=($i==0)?'active':'';?>" id="boardCertification">
-                                                    <ul class="span6 dropDownMenu nav nav-tabs pull-left" id="boardCertificationMenu">
-                                                        <li class="arrow"></li>
-                                                        <? foreach($this->vars['pages']['BOARD CERTIFICATION'] as $page):?>
-                                                            <li data-url="<?=$page['slug']?>" class=" <?=($i==0)?'active':'';?>"><a href="#<?=$page['slug']?>" class=""><?=$page['headline']?></a></li>
-                                                        <? endforeach;?>
-                                                    </ul>
-                                                    <div class="span6 boardCertificationDescr tab-content pull-right">
-                                                        <div class="tab-pane active text-center" id="board-certification">
-                                                            
-                                                        </div>
-                                                        <? foreach($this->vars['pages']['BOARD CERTIFICATION'] as $page):?>
-                                                            <div class="tab-pane text-center board-cert-preview-only" id="<?=$page['slug'] ?>">
-                                                                
-                                                            </div>
-                                                        <? endforeach; ?>
-                                                    </div>
-
-                                                </div>
-
-
-
-                                            <? else: ?>
-
-
-                                                <div class="tab-pane text-center <?=($i==0)?'active':'';?>" id="<?=$page['slug']?>">
-
-
-                                                </div>
-
-
-                                            <? endif; ?>
-
-                                        <? 
-                                        $i++;
-                                        endforeach; ?>
-
-                                        
-                                    </div>
                                 </div>
                             </div>
                         </div>
