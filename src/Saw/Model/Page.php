@@ -19,8 +19,8 @@ class Page extends Model {
 	static public $status = array('DRAFT'=>0,'PRIVATE'=>10, 'PUBLISHED'=>20);
 	static public $statusReversed = array(0=>'DRAFT',10=>'PRIVATE', 20=>'PUBLISHED');
 	public $currentStatus;
-	static public $type = array('MANAGED'=>0,'DYNAMIC'=>10);
-	static public $typeReversed = array(0=>'MANAGED',10=>'DYNAMIC');
+	static public $type = array('MANAGED'=>5,'DYNAMIC'=>10);
+	static public $typeReversed = array(5=>'MANAGED',10=>'DYNAMIC');
 	public $currentType;
 	static public $sections = array('DISCOVER','LEARN','BOARD CERTIFICATION','DUI-LAWS-USA');
 	public $slug;

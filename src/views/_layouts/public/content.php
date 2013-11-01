@@ -12,6 +12,7 @@
         <script src="/assets/js/bootstrap.min.js"></script>
         <script src="/assets/js/custom.js"></script>
         <link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+        
     </head>
     <body>
         <div class="wrapper">
