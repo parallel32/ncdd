@@ -93,7 +93,7 @@
                                         <?
                                         $i=0;
                                         foreach($this->vars['pages']['DISCOVER'] as $page):?>
-                                        <li class="dropDownMenuItem <?=($i==0)?'active':'';?>"><a data-url="<?=$page['slug']?>" href="#<?=$page['slug']?>" class="dropDownMenuLink span2"><?=$page['headline']?></a></li>
+                                        <li class="dropDownMenuItem "><a data-url="<?=$page['slug']?>" href="#<?=$page['slug']?>" class="dropDownMenuLink span2"><?=$page['headline']?></a></li>
                                         <?
                                         $i++;
                                         endforeach;?>
@@ -113,7 +113,7 @@
                                         <?
                                         $i=0;
                                         foreach($this->vars['pages']['LEARN'] as $page):?>
-                                        <li class="dropDownMenuItem <?=($i==0)?'active':'';?>"><a data-url="<?=$page['slug']?>" href="#<?=$page['slug']?>" class="dropDownMenuLink span2"><?=$page['headline']?></a></li>
+                                        <li class="dropDownMenuItem "><a data-url="<?=$page['slug']?>" href="#<?=$page['slug']?>" class="dropDownMenuLink span2"><?=$page['headline']?></a></li>
                                         <?
                                         $i++;
                                         endforeach;?>
@@ -197,21 +197,7 @@
                                                             <?
                                                             $i=0;
                                                             foreach($this->vars['pages']['LEARN'] as $page):?>
-
-                                                            <? if($page['slug'] == 'board-certification'): ?>
-                                                                <li class="dropDownMenuItem">
-                                                                <a data-url="board-certification" href="#board-certification" class="dropDownMenuLink span2"><?=$page['headline']?> <span class="arrow pull-right"></span></a>
-                                                                 <ul class="span6 dropDownMenu nav nav-tabs pull-left" id="boardCertificationMenu">
-                                                                    <li class="arrow"></li>
-                                                                    
-                                                                </ul>
-                                                            </li>
-                                                            
-                                                            <? else: ?>
-
                                                             <li class="dropDownMenuItem"><a data-url="<?=$page['slug']?>"  href="#<?=$page['slug']?>" class="dropDownMenuLink span2 <?=($i==0)?'active':'';?>"><?=$page['headline']?></a></li>
-                                                            
-                                                            <? endif; ?>
                                                             <?
                                                             $i++;
                                                             endforeach;?>
