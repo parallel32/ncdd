@@ -10,6 +10,76 @@
             </div>
             <!-- END PAGE HEADER-->
             
+
+            <div class="row-fluid">
+                  <div class="responsive span6" data-tablet="span6" data-desktop="span3">
+                     <div class="dashboard-stat red">
+                        <div class="visual">
+                           <i class="icon-hideme"><?=count($this->vars['submitted']);?></i>
+                        </div>
+                        <div class="details">
+                           <div class="number"><font><font>
+                              To Approve
+                           </font></font></div>
+                           <div class="desc"><font><font>                           
+                              
+                           </font></font></div>
+                        </div>
+                        <a class="more" href="#approve"><font><font>
+                        Click To Scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
+                        </a>                 
+                     </div>
+                  </div>
+                  <div class="responsive span6" data-tablet="span6" data-desktop="span3">
+                     <div class="dashboard-stat purple">
+                        <div class="visual">
+                           <i class="icon-hide-me"><span class="number"><?=count($this->vars['trial']);?></span></i>
+                        </div>
+                        <div class="details">
+                           <div class="number"><font><font></font>Trial Mode</font></div>
+                           <div class="desc"><font><font></font></font></div>
+                        </div>
+                        <a class="more" href="#trial"><font><font>
+                        Click To Scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
+                        </a>                 
+                     </div>
+                  </div>
+                  <div class="responsive span6 fix-offset" data-tablet="span6  fix-offset" data-desktop="span3">
+                     <div class="dashboard-stat yellow">
+                        <div class="visual">
+                           <i class="icon-hideme"><?=count($this->vars['approved']);?></i>
+                        </div>
+                        <div class="details">
+                           <div class="number"><font><font></font>Unpaid</font></div>
+                           <div class="desc"><font><font>
+                              
+                           </font></font></div>
+                        </div>
+                        <a class="more" href="#unpaid"><font><font>
+                        Click to scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
+                        </a>                 
+                     </div>
+                  </div>
+                  <div class="responsive span6" data-tablet="span6" data-desktop="span3">
+                     <a name="approve"></a>
+                     <div class="dashboard-stat green">
+                        <div class="visual">
+                           <i class="icon-hideme"><?=count($this->vars['paid']);?></i>
+                        </div>
+                        <div class="details">
+                           <div class="number"><font><font>Paid (90 days)</font></font></div>
+                           <div class="desc"><font><font>
+                              
+                           </font></font></div>
+                        </div>
+                        <a class="more" href="#paid90"><font><font>
+                        click to scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
+                        </a>                 
+                     </div>
+                  </div>
+                  
+               </div>
+            
             <div class="row-fluid">
                <div class="span12">
                   <!-- BEGIN EXAMPLE TABLE PORTLET-->
@@ -51,7 +121,7 @@
                            </tbody>
                         </table>
                      </div>
-                  </div>
+                  </div><a name="trial"></a>
                   <!-- END EXAMPLE TABLE PORTLET-->
                </div>
             </div>
@@ -106,7 +176,7 @@
                            </tbody>
                         </table>
                      </div>
-                  </div>
+                  </div><a name="unpaid"></a>
                   <!-- END EXAMPLE TABLE PORTLET-->
                </div>
             </div>
@@ -153,7 +223,7 @@
                            </tbody>
                         </table>
                      </div>
-                  </div>
+                  </div><a name="paid90"></a>
                   <!-- END EXAMPLE TABLE PORTLET-->
                </div>
             </div>
