@@ -136,17 +136,18 @@ class Seminar extends Model {
 		if(parent::insert()){
 			
 			// prepare the Agenda Objects
+			$tz = new \DateTimeZone($this->timeZone);
 			$startDate = (is_object($this->startDate)) ? $this->startDate->__toArray() : $this->startDate;
 			$endDate = (is_object($this->endDate)) ? $this->endDate->__toArray() : $this->endDate;
-			$start = Carbon::createFromTimeStamp(strtotime($startDate['fullMonth']), $this->timeZone);
-			$end = Carbon::createFromTimeStamp(strtotime($endDate['fullMonth']), $this->timeZone);
-			$days = $start->diffInDays($end);
-			for ($i=0; $i <= $days; $i++) { 
-				$start = Carbon::createFromTimeStamp(strtotime($startDate['fullMonth']), $this->timeZone);
+			$start = Carbon::createFromTimeStamp(strtotime($startDate['fullMonth']), $tz);
+			$end = Carbon::createFromTimeStamp(strtotime($endDate['fullMonth']), $tz);
+			$days = $start->diffInDays($end)+1;
+			for ($i=1; $i <= $days; $i++) { 
+				$start = Carbon::createFromTimeStamp(strtotime($startDate['fullMonth']), $tz);
 				$date = new Date(self::$app,$start->addDays($i)->toATOMString(), $this->timeZone);
 	     		$agenda = new Agenda(array(
 	     			'seminarId'=>$this->_id,
-	     			'name'=>'Agenda Day '.($i+1),
+	     			'name'=>'Agenda Day '.($i),
 	     			'timeZone'=>$this->timeZone,
 	     			'date'=> $date
 	     		),self::$app);
@@ -165,19 +166,20 @@ class Seminar extends Model {
 		if($this->saveSafe()){
 			// update the agendas
 			// prepare the Agenda Objects
+			$tz = new \DateTimeZone($this->timeZone);
 			$startDate = (is_object($this->startDate)) ? $this->startDate->__toArray() : $this->startDate;
 			$endDate = (is_object($this->endDate)) ? $this->endDate->__toArray() : $this->endDate;
 
-			$start = Carbon::createFromTimeStamp(strtotime($startDate['fullMonth']), $this->timeZone);
-			$end = Carbon::createFromTimeStamp(strtotime($endDate['fullMonth']), $this->timeZone);
+			$start = Carbon::createFromTimeStamp(strtotime($startDate['fullMonth']), $tz);
+			$end = Carbon::createFromTimeStamp(strtotime($endDate['fullMonth']), $tz);
 		// use this to check the timezone bug
 			//error_log('start:'.print_r($start,true));
      		//error_log('end:'.print_r($end,true));
-			$days = $start->diffInDays($end);
-			for ($i=0; $i <= $days; $i++) { 
-				$start = Carbon::createFromTimeStamp(strtotime($startDate['fullMonth']), $this->timeZone);
+			$days = $start->diffInDays($end)+1;
+			for ($i=1; $i <= $days; $i++) { 
+				$start = Carbon::createFromTimeStamp(strtotime($startDate['fullMonth']), $tz);
 				$date = new Date(self::$app,$start->addDays($i)->toATOMString(), $this->timeZone);
-				$agenda_name = 'Agenda Day '.($i+1);
+				$agenda_name = 'Agenda Day '.($i);
 	     		$agenda = new Agenda(array(
 	     			'seminarId'=>$this->_id,
 	     			'name'=>$agenda_name,
