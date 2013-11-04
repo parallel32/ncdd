@@ -10,10 +10,10 @@ use Symfony\Component\Validator\ExecutionContext;
 /**
  * Extends Apply Model.  Used to facilitate the new member application and does not represent a mongo collection
  */
-class ApplyNewMember extends Apply {
+class UpdateMember extends Apply {
 	
-	public $type = 'NEW MEMBER APPLICATION';
-	public $class = 'ApplyNewMember';
+	public $type = 'UPDATE MEMBER APPLICATION';
+	public $class = 'UpdateMember';
 	public $hearAboutNCDD;
 	public $yearsInLawPractice;
 	public $percentDUIDefense;
@@ -168,61 +168,13 @@ class ApplyNewMember extends Apply {
 		 return "Executed at ".$executed.', this '.$day.' day of '.$month.', 20'.$year;
 	}
 
-	public function approve($trial=false){
-		// prepare member record
-		$password = substr(time(),-4);
-		$mem_doc['password'] = $password;
-		$mem_doc['firstName'] = $this->firstName;
-		$mem_doc['middleName'] = $this->middleName;
-		$mem_doc['lastName'] = $this->lastName;
-		$mem_doc['barNumber'] = $this->barNumber;
-		$mem_doc['email'] = $this->email;
-		$mem_doc['primaryPhone'] = $this->phone;
-		$mem_doc['primaryFax'] = $this->fax;
-		$mem_doc['websites'] = array(array('websiteDesc'=>'','website'=>Member::parseWebsite($this->website)));
-		if($trial){
-			$mem_doc['listed'] = 1;
-			$mem_doc['accessLevel'] = MEMBER;
-		}
-
-		// prepare location record
-		$loc_doc['raw'] = $this->formattedAddress;
-		$loc_doc['name'] = 'primary';
-		$loc_doc['point'] = array($this->lon, $this->lat);
-		$loc_doc['addressLine1'] = $this->address1;
-		$loc_doc['addressLine2'] = $this->address2;
-		$loc_doc['city'] = $this->city;
-		$loc_doc['state'] = $this->state;
-		$loc_doc['zip'] = $this->postalCode;
-		$loc_doc['country'] = $this->country;
-		$loc_doc['phone'] = $this->phone;
-		$loc_doc['fax'] = $this->fax;
-		$location = new Location($loc_doc, self::$app);
-
-		$member = new Member($mem_doc, self::$app, $location);
-		$mem_id = $member->insert();
-		$member->password = $password;
-
-		$location->member = $member->__toArray(false);
-		$location->ownerId = $mem_id;
-		$location->insert();
-
-		// update record to approved status
-		if($trial){
-			$this->currentStatus = self::$status['TRIAL'];
-		}else{
-			$this->currentStatus = self::$status['APPROVED'];
-			$this->approvedDate = new Date(self::$app,'now', $this->timeZone);
-		}
+	public function approve(){
 		
-		$this->memberId = $mem_id;
+		$this->currentStatus = self::$status['APPROVED'];
+		$this->approvedDate = new Date(self::$app,'now', $this->timeZone);
 		$this->saveSafe();
 
-		return $member;
-	}
-
-	public function trial(){
-		return $this->approve($trial=true);
+		return true;
 	}
 
 }

@@ -58,9 +58,7 @@ $app['applicationEmails'] = $app->protect(function ($app,$applicationId,$context
 			case 'UpdateSustainingMember':
 				$application = new Model\UpdateSustainingMember(array('_id'=>$applicationId), $app);
 				break;
-			case 'ApplyNewSustainingMember':
-				$application = new Model\ApplyNewSustainingMember(array('_id'=>$applicationId), $app);
-				break;		
+			
 		}
 		
 		$app['sendMail']($subject, $body, $to);
@@ -101,18 +99,7 @@ $app['applicationEmails'] = $app->protect(function ($app,$applicationId,$context
 				);
 				$body = $app['view']->render('email/new-sustaining-member-trial','email', $view_vars);
 				break;		
-			case 'UpdateMember':
-				$application = new Model\UpdateMember(array('_id'=>$applicationId), $app);
-				break;
-			case 'UpdateFoundingMember':
-				$application = new Model\UpdateFoundingMember(array('_id'=>$applicationId), $app);
-				break;
-			case 'UpdateSustainingMember':
-				$application = new Model\UpdateSustainingMember(array('_id'=>$applicationId), $app);
-				break;
-			case 'ApplyNewSustainingMember':
-				$application = new Model\ApplyNewSustainingMember(array('_id'=>$applicationId), $app);
-				break;		
+			
 		}
 		
 		$app['sendMail']($subject, $body, $to);
@@ -153,9 +140,7 @@ $app['applicationEmails'] = $app->protect(function ($app,$applicationId,$context
 			case 'UpdateSustainingMember':
 				$application = new Model\UpdateSustainingMember(array('_id'=>$id), $app);
 				break;
-			case 'ApplyNewSustainingMember':
-				$application = new Model\ApplyNewSustainingMember(array('_id'=>$id), $app);
-				break;		
+			
 		}
 		
 		$app['sendMail']($subject, $body, $to);
@@ -622,7 +607,7 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 	$paid = $application->fetchByDatePaid(90, $offset, $limit);
 	$crumbs = array(array('name'=>'Applications','href'=>'/applications'));
 	$view_vars = array(
-						 'active'=>'Application'
+						 'active'=>'Applications/New'
 						,'page-plugin'=>'datatables'
 						,'headline'=>'Applications'
 						,'description'=>"View all application here."
@@ -632,6 +617,31 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 						,'trial'=>$trial
 						,'paid'=>$paid);
 	return $app['view']->render('application/index', 'default', $view_vars);
+})
+->value('offset','0')
+->value('limit','100')
+->before($mustbeADMIN);
+//////////////
+// RENEWALS //
+//////////////
+$app->get('/renewals/{offset}/{limit}', function ($offset, $limit, Request $request) use ($app) {
+	$application = new Model\Apply($doc=array(), $app);
+	$submitted = $application->fetchByStatus('SUBMITTED',$offset, $limit);
+	$approved = $application->fetchByStatus('APPROVED',$offset, $limit);
+	$trial = $application->fetchByStatus('TRIAL',$offset, $limit);
+	$paid = $application->fetchByDatePaid(90, $offset, $limit);
+	$crumbs = array(array('name'=>'Renewals','href'=>'/renewals'));
+	$view_vars = array(
+						 'active'=>'Applications/Renewal'
+						,'page-plugin'=>'datatables'
+						,'headline'=>'Renewals - In Development'
+						,'description'=>"View all member application renewals here."
+						,'crumbs'=>$crumbs
+						,'submitted'=>$submitted
+						,'approved'=>$approved
+						,'trial'=>$trial
+						,'paid'=>$paid);
+	return $app['view']->render('application/blank', 'default', $view_vars);
 })
 ->value('offset','0')
 ->value('limit','100')

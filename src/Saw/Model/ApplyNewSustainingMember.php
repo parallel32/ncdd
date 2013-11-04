@@ -218,7 +218,7 @@ class ApplyNewSustainingMember extends Apply {
 		$mem_id = $member->insert();
 		$member->password = $password;
 
-		$location->member = $member->__toArray();
+		$location->member = $member->__toArray(false);
 		$location->ownerId = $mem_id;
 		$location->insert();
 

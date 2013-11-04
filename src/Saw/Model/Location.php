@@ -65,7 +65,7 @@ class Location extends Model {
 		$this->tollFree = $doc['tollFree'];
 		$this->hours = $doc['hours'];
 		$this->ownerId = (!empty($doc['ownerId'])) ? (is_object($doc['ownerId'])) ? $doc['ownerId'] : new \MongoId($doc['ownerId']) : $doc['ownerId'];
-		$this->member = (is_object($member)) ? $member->__toArray() : $doc['member'];
+		$this->member = (is_object($member)) ? $member->__toArray(false) : $doc['member'];
 
 	}
 	protected function prepareInsert(){

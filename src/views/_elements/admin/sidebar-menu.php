@@ -29,12 +29,20 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                </a>
             </li>
          <? if($accessLevel >= EDITOR):?>
-            <li class="<? echo ($this->vars['active'] == 'Application') ? 'active':'';?>">
-               <a href="/applications">
+            <li class="<? echo (strpos($this->vars['active'], 'Application') !== false) ? 'active open':'';?>">
+               <a href="javascript:;">
                <i class="icon-copy"></i> 
                <span class="title">Applications</span>
-               <? echo ($this->vars['active'] == 'Application') ? '<span class="selected"></span>':'';?>
+               <? echo (strpos($this->vars['active'], 'Application') !== false) ? '<span class="selected"></span><span class="arrow open"></span>':'<span class="arrow"></span>';?>
                </a>
+               <ul class="sub-menu">
+                  <li class="<? echo ($this->vars['active'] == 'Applications/New') ? 'active':'';?>">
+                     <a href="/applications"><i class="icon-file"></i> New Applications</a>
+                  </li>
+                  <li class="<? echo ($this->vars['active'] == 'Applications/Renewal') ? 'active':'';?>">
+                     <a href="/renewals"><i class="icon-file-text"></i> Renewals</a>
+                  </li>
+               </ul>
             </li>
          <? endif; ?>
          <? if($accessLevel >= MEMBER):?>
