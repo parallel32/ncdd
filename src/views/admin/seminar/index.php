@@ -33,6 +33,7 @@
                               <? } ?>
                               <h2><a href="/seminar/view/<?=$seminar['_id']?>"><?=$seminar['headline']?></a></h2>
                               <h4><a href="/seminar/view/<?=$seminar['_id']?>"><?=$seminar['startDate']['monthDay']?> - <?=$seminar['endDate']['monthDay']?>, <?=$seminar['startDate']['year']?></a></h4>
+                              <h5><a href="/seminar/view/<?=$seminar['_id']?>"><?=(array_key_exists('location',$seminar)) ? $seminar['location']: '';?></a></h5>
                               <p><?=$seminar['description']?></p>
                               <? if(!empty($seminar['agendas'])): ?>
                               <? foreach($seminar['agendas'] as $agenda): ?>

@@ -1841,7 +1841,7 @@ input[type="checkbox"] {
 .content .blog .postBody .postHeader li a {
   font-family: ubuntu_condensedregular;
   color: #afafaf;
-  font-size: 14.5px;
+  font-size: 24.5px;
   line-height: 25px;
   background: url("../img/postHeaderIcons.png") no-repeat;
   height: 25px;
@@ -1944,7 +1944,7 @@ input[type="checkbox"] {
 .content .blog .postBody .postContent .postTitle {
   font-family: 'Bree Serif', serif;
   color: #90908e;
-  font-size: 20px;
+  /*font-size: 20px;*/
   line-height: 1.2em;
   margin: 20px 0 15px;
 }
@@ -2050,7 +2050,7 @@ input[type="checkbox"] {
 .content .blog .postBody .postFooter .btn {
   margin-top: 5px;
   color: #878684;
-  font-size: 12px;
+  font-size: 17px;
   font-family: 'Bree Serif', serif;
   padding: 5px 15px 6px;
   line-height: 1em;

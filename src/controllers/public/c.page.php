@@ -480,6 +480,45 @@ $app->get('/apply-for-re-certification', function (Request $request) use ($app) 
 	return $app['view']->render('page/board-certification-apply', 'content', $view_vars);
 });
 
+// seminar roll
+$app->get('/sessions-and-seminars', function (Request $request) use ($app) {
+	
+	$seminar = new Model\Seminar($doc=array(), $app);
+	$seminars = $seminar->find($query=array(),$fields=array(),true,$sort=array('startDate.date'=>1));
+	if(!empty($seminars)):
+		for ($i=0; $i < count($seminars); $i++) {
+			$agenda = new Model\Agenda(array('seminarId'=>$seminars[$i]['_id']),$app);
+			$agendas = $agenda->findBySeminarId();
+			$seminars[$i]['agendas'] = $agendas;
+		}
+	endif;
+	$view_vars['seminars'] = $seminars;
+	$view_vars['slogan_block'] = 'learn';
+	$page_vars = $app['get_pages']('sessions-and-seminars');
+	$view_vars = array_merge($page_vars,$view_vars);
+
+
+	return $app['view']->render('page/seminar-index', 'content',$view_vars);
+});
+
+// single seminar post
+$app->get('/sessions-and-seminars/{id}/{slug}', function ($id, $slug, Request $request) use ($app) {
+	$view_vars=array();
+	$view_vars['slogan_block'] = 'learn';
+	$page_vars = $app['get_pages']('sessions-and-seminars');
+	$view_vars = array_merge($page_vars,$view_vars);
+
+	$seminar = new Model\Seminar(array('_id'=>$id),$app);
+	$seminar = $seminar->findById();
+
+	$agenda = new Model\Agenda(array('seminarId'=>$seminar['_id']),$app);
+	$agendas = $agenda->findBySeminarId();
+	$seminar['agendas'] = $agendas;
+	
+	$view_vars['seminar'] = $seminar;
+	
+	return $app['view']->render('page/seminar-post', 'content',$view_vars);
+});
 
 ////////////////////////
 // NON MANAGED ROUTES //

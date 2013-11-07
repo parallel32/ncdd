@@ -91,14 +91,16 @@
                         <ul class="thumbnails">
 
                             <? foreach ($this->vars['seminars'] as $seminar): ?>
+                            <? $slug = (array_key_exists('slug',$seminar)) ? '/'.$seminar['slug'] : ''; ?>
 
                             <li class="span3">
                                 <div class="thumbnail">
                                     <? if(!empty($seminar['image'])){?>
-                                    <img src="<?=$seminar['image']['urls']['small']['CDN'] ?>" alt="">
+                                    <a href="/sessions-and-seminars/<?=$seminar['_id']?><?=$slug?>"><img src="<?=$seminar['image']['urls']['small']['CDN'] ?>" alt=""></a>
                                     <? } ?>
                                     <div class="caption">
-                                        <h4 class="text-center"><a href="#"><?=$seminar['headline']?></a></h4>
+                                        <h4 class="text-center"><a href="/sessions-and-seminars/<?=$seminar['_id']?><?=$slug?>"><?=$seminar['headline']?></a></h4>
+                                        <h5 class="text-center"><a href="/sessions-and-seminars/<?=$seminar['_id']?><?=$slug?>"><?=(array_key_exists('location',$seminar)) ? $seminar['location']: '';?></a></h5>
                                         <p class="data text-center"><?=$seminar['startDate']['monthDay']?> - <?=$seminar['endDate']['monthDay']?>, <?=$seminar['startDate']['year']?></p>
                                         <p class="descr text-center"><?=$seminar['description']?></p>
                                     </div>
@@ -108,7 +110,7 @@
                             <? endforeach; ?>
                         </ul>
                         <div class="text-center">
-                            <!-- <a href="/seminars" class="btn">All Seminars</a> -->
+                            <a href="/sessions-and-seminars" class="btn">All Seminars</a>
                         </div>
                     </div>
 

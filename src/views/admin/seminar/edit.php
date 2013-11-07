@@ -34,7 +34,14 @@
                                     <label class="control-label">Headline<span class="required">*</span></label>
                                     <div class="controls">
                                        <input type="text" name="doc[headline]" value="<?=$seminar['headline']?>" data-required="1" class="span6 m-wrap headline">
-                                       <span class="help-block" id="headline-slug"></span>
+                                       <span class="help-block" id="headline-slug"><?=(array_key_exists('slug',$seminar)) ? '/seminar/'.$seminar['slug']: '';?></span>
+                                    </div>
+                                 </div>
+                                 <div class="control-group">
+                                    <label class="control-label">Location<span class="required">*</span></label>
+                                    <div class="controls">
+                                       <input type="text" name="doc[location]" value="<?=(array_key_exists('location',$seminar)) ? $seminar['location']: '';?>" data-required="1" class="span6 m-wrap location">
+                                       <span class="help-block">Enter the place where the seminar will be held.</span>
                                     </div>
                                  </div>
                                  <div class="control-group">

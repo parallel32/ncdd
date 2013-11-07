@@ -20,11 +20,14 @@ class Seminar extends Model {
 	public $timeZone;
 	public $startDate;
 	public $endDate;
+	public $location;
+	public $slug;
 	public $description;
 	public $files; // array containing any files to be attached via upload.
 	public $image; // image object
 
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
+		$metadata->addPropertyConstraint('location', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('headline', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('description', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('timeZone', new Constraints\NotBlank(array('message'=>'cannot be blank')));
@@ -109,8 +112,10 @@ class Seminar extends Model {
 		$this->init($doc);
 		
 		if(!empty($doc['_id'])) $this->_id = (is_object($doc['_id'])) ? $doc['_id'] : new \MongoId($doc['_id']);
+		$this->location = $doc['location'];
 		$this->headline = $doc['headline'];
-        $this->timeZone = $doc['timeZone'];
+        $this->slug = (empty($doc['slug'])) ? self::slugify($this->headline): $doc['slug'];
+		$this->timeZone = $doc['timeZone'];
         $this->startDate = (!empty($doc['startDate'])) ? (is_object($doc['startDate'])) ? $doc['startDate']->__toArray() : new Date(self::$app,$doc['startDate'], $this->timeZone)  : $doc['startDate'];
 		$this->endDate = (!empty($doc['endDate'])) ? (is_object($doc['endDate'])) ? $doc['endDate']->__toArray() : new Date(self::$app,$doc['endDate'], $this->timeZone)  : $doc['endDate'];
 		include_once __DIR__.'/../Provider/WordPress/ncdd-wp-includes.php';
@@ -123,7 +128,9 @@ class Seminar extends Model {
 	 * This method prepares defaults for empty attributes
 	*/
 	protected function prepareInsert(){
+		$this->location = $this->location ?: '';
 		$this->headline = $this->headline ?: '';
+		$this->slug = self::slugify($this->headline);
 		$this->timeZone = $this->timeZone ?: 'America/New_York';
 		$this->startDate = (!empty($this->startDate)) ? (is_object($this->startDate)) ? $this->startDate->__toArray() : $this->startDate  : new Date(self::$app,'now', $this->timeZone);
 		$this->endDate = (!empty($this->endDate)) ? (is_object($this->endDate)) ? $this->endDate->__toArray() : $this->endDate  : new Date(self::$app,'now', $this->timeZone);
