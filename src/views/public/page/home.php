@@ -96,7 +96,7 @@
                             <li class="span3">
                                 <div class="thumbnail">
                                     <? if(!empty($seminar['image'])){?>
-                                    <a href="/sessions-and-seminars/<?=$seminar['_id']?><?=$slug?>"><img src="<?=$seminar['image']['urls']['small']['CDN'] ?>" alt=""></a>
+                                    <a href="/sessions-and-seminars/<?=$seminar['_id']?><?=$slug?>"><img src="<?=$seminar['image']['urls']['small']['CDN'] ?>" alt="" width="100%"></a>
                                     <? } ?>
                                     <div class="caption">
                                         <h4 class="text-center"><a href="/sessions-and-seminars/<?=$seminar['_id']?><?=$slug?>"><?=$seminar['headline']?></a></h4>
