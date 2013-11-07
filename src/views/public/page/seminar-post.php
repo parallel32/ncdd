@@ -26,7 +26,7 @@
                                                     <img src="<?=$seminar['image']['urls']['large']['CDN'] ?>" alt="" style="width:60%"><!-- class="bigPostMainImg" -->
                                                     <? } ?>
                                                 </div>
-                                                <p class="postDescr"><?=substr($seminar['description'],0,500)?> … <a href="/seminar/<?=$seminar['_id']?><?=$slug?>">read more</a></p>
+                                                <p class="postDescr"><?=$seminar['description']?></p>
                                             </div>
                                             <div class="postFooter">
                                                 <a href="#" class="btn readMore pull-left">Register Online + (coming soon)</a>
