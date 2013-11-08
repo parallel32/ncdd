@@ -102,11 +102,20 @@ $seminar->get('/edit/{id}', function ($id, Request $request) use ($app, $common_
 $seminar->post('/edit', function (Request $request) use ($app, $common_view_vars) {
 	// retrieve document from request
     $document = $request->get('doc');
-    $seminar = new Model\Seminar($document, $app);
-    // validate the model
-    $app['validateModel']($app,$seminar);
+    if(array_key_exists('register',$document)){
+    	$register = new Model\SeminarRegister($document['register'], $app);
+	    // validate the model
+	    $app['validateModel']($app,$register);
+	    $document['register']=$register->__toArray();
+	    $seminar = new Model\Seminar($document, $app);
+	    $seminar->saveEdit();
+    }else{
+    	$seminar = new Model\Seminar($document, $app);
+	    // validate the model
+	    $app['validateModel']($app,$seminar);
+	    $seminar->edit();	
+    }
     
-    $seminar->edit();
     return new Response(json_encode(array('message' => 'Saved successfully')), 200,array('Content-Type' => 'application/json'));
 });
 

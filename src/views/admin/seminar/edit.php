@@ -125,6 +125,103 @@
                </div>
             </div>
             <!-- END PAGE CONTENT-->
+
+            <!-- BEGIN REGISTRATION -->
+            <div class="row-fluid">
+               <div class="span12">
+                  <!-- BEGIN PORTLET -->
+                  <div class="portlet box blue">
+                     <div class="portlet-title">
+                        <h4><i class="icon-facetime-video"></i> Edit Seminar Registration</h4>
+                     </div>
+                     <div class="portlet-body form">
+                        <!-- BEGIN FORM-->
+                        <form id="register-form" class="form-horizontal" novalidate="novalidate">
+                           <input type="hidden" name="doc[_id]" value="<?=$seminar['_id']?>">
+                           <div class="row-fluid">
+                              <div class="span12 ">
+                                 
+                                 <div class="alert alert-error hide">
+                                    <button class="close" data-dismiss="alert"></button>
+                                    You have some form errors. Please check below.
+                                 </div>
+                                 <div class="control-group">
+                                    <label class="control-label">Activate Registration</label>
+                                    <div class="controls">
+                                       <select name="doc[register][currentStatus]" class="span6 m-wrap currentStatus" data-placeholder="Choose a Category" tabindex="1">
+                                          <option value="<?=\Saw\Model\SeminarRegister::$status['OFF']?>" <?=(array_key_exists('register',$seminar)) ? (\Saw\Model\SeminarRegister::$status['OFF'] == $seminar['register']['currentStatus']) ? "selected" : "" : '';?>><?=\Saw\Model\SeminarRegister::$statusReversed[\Saw\Model\SeminarRegister::$status['OFF']]?></option>
+                                          <option value="<?=\Saw\Model\SeminarRegister::$status['ON']?>" <?=(array_key_exists('register',$seminar)) ? (\Saw\Model\SeminarRegister::$status['ON'] == $seminar['register']['currentStatus']) ? "selected" : "" : '';?>><?=\Saw\Model\SeminarRegister::$statusReversed[\Saw\Model\SeminarRegister::$status['ON']]?></option>
+                                       </select>
+                                       <span class="help-block">Turn online registration ON / OFF</span>
+                                    </div>
+                                 </div>
+                                 <div class="control-group">
+                                    <label class="control-label">Member Price</label>
+                                    <div class="controls">
+                                      <div class="input-prepend input-append">
+                                        <span class="add-on">$ </span>
+                                           <input type="text" name="doc[register][memberPrice]" value="<?=(array_key_exists('register',$seminar)) ? $seminar['register']['memberPrice'] : '';?>" data-required="1" class="span6 m-wrap memberPrice">
+                                        <span class="add-on">.00</span>
+                                      </div>
+                                      <span class="help-block">Enter the dollar amount to charge for members.  <br>If you leave blank then it will not show up on the registration form.</span>
+                                    </div>
+                                 </div>
+                                 <div class="control-group">
+                                    <label class="control-label">Non-Member Price</label>
+                                    <div class="controls">
+                                      <div class="input-prepend input-append">
+                                        <span class="add-on">$ </span>
+                                           <input type="text" name="doc[register][nonMemberPrice]" value="<?=(array_key_exists('register',$seminar)) ? $seminar['register']['nonMemberPrice'] : '';?>" data-required="1" class="span6 m-wrap nonMemberPrice">
+                                        <span class="add-on">.00</span>
+                                      </div>
+                                      <span class="help-block">Enter the dollar amount to charge for non-members.  <br>If you leave blank then it will not show up on the registration form.</span>
+                                    </div>
+                                 </div>
+                                 <div class="control-group">
+                                    <label class="control-label">Hard Copy Price</label>
+                                    <div class="controls">
+                                      <div class="input-prepend input-append">
+                                        <span class="add-on">$ </span>
+                                           <input type="text" name="doc[register][hardCopyPrice]" value="<?=(array_key_exists('register',$seminar)) ? $seminar['register']['hardCopyPrice'] : '';?>" data-required="1" class="span6 m-wrap hardCopyPrice">
+                                        <span class="add-on">.00</span>
+                                      </div>
+                                      <span class="help-block">Enter the dollar amount to charge for the materials hard copy.  <br>If you leave blank then it will not show up on the registration form.</span>
+                                    </div>
+                                 </div>
+                                 
+                              </div>
+                           </div>
+                           
+
+                           <div class="form-actions">
+                              <button type="button" class="btn green">Save</button>
+                              <button type="button" class="btn cancel">Cancel</button>
+                           </div>
+                        </form>
+                        <!-- END FORM-->
+
+                        <div id="register-save-success" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="save-success-label" aria-hidden="true">
+                           <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                              <h3 id="save-success-label">Successful Operation</h3>
+                           </div>
+                           <div class="modal-body">
+                              <p></p>
+                           </div>
+                           <div class="modal-footer">
+                              <button class="btn finished" aria-hidden="true">Finished</button>
+                              <button class="btn blue continue" data-insertid="">Edit Again</button>
+                           </div>
+                        </div>
+
+                     </div>
+                  </div>
+                  <!-- END PORTAL-->
+               </div>
+            </div>
+            <!-- END REGISTRATION -->
+
+
             <? if(true): ?>
             <!-- BEGIN FILEUPLOAD PAGE CONTENT-->
             <div class="row-fluid uploadView">

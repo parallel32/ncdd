@@ -28,6 +28,7 @@ $app = require __DIR__.'/controllers/admin/c.payment-manage.php';
 $app = require __DIR__.'/controllers/admin/c.vfl.php';
 $app = require __DIR__.'/controllers/admin/c.blog.php';
 $app = require __DIR__.'/controllers/admin/c.comment.php';
+$app = require __DIR__.'/controllers/admin/c.register.php';
 
 /**
  * Before Filter

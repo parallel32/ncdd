@@ -23,6 +23,17 @@
 		   }
 		});      
 	};
+	Seminar.registerEdit = function (){
+		io.saw.FormPost.activate({postUrl:'/seminar/edit'
+		   ,formName:'#register-form'
+		   ,serializeSelector:':input'
+		   ,postOnComplete:function(responseObj,responseStatus){}
+		   ,postOnSuccess:function(responseObj){
+		      $('#register-save-success .modal-body p').html(responseObj.message);
+		      $('#register-save-success').modal({keyboard: false});
+		   }
+		});      
+	};
 	Seminar.indexInit = function (){
 		// prepare the edit seminar and edit agenda buttons
 		$('.edit-seminar').click(function(e){
@@ -98,6 +109,29 @@
 			$('#save-success .yellow.continue').click(function(e){
 				document.location.href='/seminar/edit/'+$(this).attr('data-insertid');
 			});
+		}
+		// register actions and buttons
+		if(saveMode == 'edit'){
+			$('#register-form input').keypress(function (e) {
+			   if (e.which == 13) {
+			      Seminar.registerEdit();
+			   }
+			});
+			$('#register-form .btn.green').click(function(e){
+				e.preventDefault();
+				Seminar.registerEdit();
+			});
+			$('#register-form .cancel').click(function(e){
+				<?=(array_key_exists('seminar',$this->vars)) ? 'document.location.href="/seminar/view/'.$this->vars['seminar']['_id'].'"': 'document.location.href="/seminar"';?>;	
+			});
+			// modal buttons
+			$('#register-save-success .finished').click(function(e){
+				document.location.href='/seminar/';
+			});
+			$('#register-save-success .blue.continue').click(function(e){
+				document.location.href="/seminar/edit/<?=(array_key_exists('seminar',$this->vars)) ? $this->vars['seminar']['_id']: '';?>";	
+			});
+			
 		}
 	};
 	Seminar.delete = function(id){
