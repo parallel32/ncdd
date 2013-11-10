@@ -38,7 +38,7 @@ $app['registrationEmails'] = $app->protect(function ($app,$registrationId,$conte
 		}
 		
 		$app['sendMail']($subject, $body, $to);
-	    return new Response(json_encode(array('message' => 'Approved successfully')), 200,array('Content-Type' => 'registration/json'));
+	    return new Response(json_encode(array('message' => 'Approved successfully')), 200,array('Content-Type' => 'application/json'));
 	}
 });
 
@@ -69,70 +69,95 @@ $app->get('/registration/seminar/{seminarId}/{slug}', function ($seminarId, $slu
 });
 $app->post('/registration/seminar', function (Request $request) use ($app) {
 	// retrieve document from request
-    $doc = $request->get('doc');
-    $registration = new Model\RegistrationSeminar($doc, $app);
-    // validate the model
-    $app['validateModel']($app,$registration);
+	$doc = $request->get('doc');
+	if($doc['hardCopy'] == 'NO'){
+		$doc['hardCopyFee'] = 0;
+	}
+	$doc['total'] = (int)$doc['hardCopyFee']+(int)$doc['registrationFee'];
 
-    if($registration->findByEmail()){
-    	$label = 'Success, but...';
-    	$message = 'Our records indicate you have already submitted an registration.  Please Log-in if you are looking for another Registration or contact NCDD directly.';
-    	$response_status = 400;
-    }else{
-    	$registration->insert();
-    	$label = 'Your seminar registration was received.  Thank you.';
-    	$message = 'Thank you for your interest in NCDD.  Your registration has been submitted.  You will be notified by the College when it is approved or if there are any questions.';
-    	$response_status = 200;
-    }
-    return new Response(json_encode(array('message' => $message,'label'=>$label)), $response_status,array('Content-Type' => 'registration/json'));
-})->after(function (Request $request, Response $response, Silex\Registration $app) {
+	$paymentId = new \stdClass();	
+	$rs = new Model\RegistrationSeminar($doc,$app);
+	$app['validateModel']($app, $rs);
+	$rs_id = $rs->insert();
+			
+	if ($doc['currentPaymentType'] == Model\Registration::$paymentType['CREDIT']) {
+		
+		$doc['payment']['ownerId'] = $rs_id;
+		$doc['payment']['ownerClass'] = 'RegistrationSeminar';
+
+		$payment = new Model\Payment($doc['payment'],$app);
+		$app['validateModel']($app, $payment,$groups=array('cc'));
+		$paymentId = $payment->charge();
+		
+		$rs = new Model\RegistrationSeminar(array('_id'=>$rs_id,'paymentId'=>$paymentId),$app);
+	}
+	
+	return new Response(json_encode(array(
+		'paymentId'=>$paymentId,
+		'label'=>'Successful Registration',
+		'message'=>"Thank you, your Registration is complete.  You will receive an confirmation and receipt in the email address you provided.")), 200,array('Content-Type' => 'application/json')
+	);
+
+})->after(function (Request $request, Response $response, Silex\Application $app) {
+		//*
 		if((int)$response->getStatusCode() == 200):
 	    	$doc = $request->get('doc');
+
+	    	// get the seminar information
+	    	$seminar = new Model\Seminar(array('_id'=>$doc['seminarId']),$app);
+	    	$seminar = $seminar->findById();
+
+	    	// calculate the total and what is in the line item.
+	    	if($doc['hardCopy'] == 'NO'){
+				$doc['hardCopyFee'] = 0;
+			}
+			$doc['total'] = (int)$doc['hardCopyFee']+(int)$doc['registrationFee'];
+			
+			// need the rsvp text
+			$rsvp = $doc['rsvp'];
+
+			// need the payment type and details
+			$paymentType = ($doc['currentPaymentType'] == Model\Registration::$paymentType['CREDIT']) ? 'credit' : 'check' ;
+			$cardType = ($doc['currentPaymentType'] == Model\Registration::$paymentType['CREDIT']) ? $doc['payment']['cardType'] : '' ;
+			$cardNumber = ($doc['currentPaymentType'] == Model\Registration::$paymentType['CREDIT']) ? $doc['payment']['number'] : '' ;
+
 	    	// send admin the email notification
 	    	$subject = 'Seminar Registration Submitted';
 	    	$to = SAW_ADMIN_EMAIL;
-	    	$view_vars = array('firstName'=>$doc['firstName']
-	    						,'middleName'=>$doc['middleName']
-	    						,'lastName'=>$doc['lastName']
-	    						,'city'=>$doc['city']
-	    						,'state'=>$doc['state']
-	    						,'email'=>$doc['email']
+	    	$view_vars = array('seminar'=>$seminar
+	    						,'rsvp'=>$rsvp
+	    						,'total'=>$doc['total']
+	    						,'hardCopy'=>$doc['hardCopy']
+	    						,'hardCopyFee'=>$doc['hardCopyFee']
+	    						,'registrationFee'=>$doc['registrationFee']
+	    						,'registrantName'=>$doc['name']
+	    						,'paymentType'=>$paymentType
+	    						,'cardType'=>$cardType
+	    						,'cardNumber'=>$cardNumber
 	    	);
 	    	$body = $app['view']->render('email/registration-seminar-admin','email', $view_vars);
 	    	$app['sendMail']($subject, $body, $to);
 
 	    	// send applicant the email notification
-	    	$subject = 'Your Registration for an NCDD Seminar has been Received';
+	    	$subject = 'NCDD Seminar Registration Receipt';
 	    	$to = $doc['email'];
-	    	$view_vars = array('firstName'=>$doc['firstName']
-	    						,'middleName'=>$doc['middleName']
-	    						,'lastName'=>$doc['lastName']
-	    						,'city'=>$doc['city']
-	    						,'state'=>$doc['state']
-	    						,'email'=>$doc['email']
+	    	$view_vars = array('seminar'=>$seminar
+	    						,'rsvp'=>$rsvp
+	    						,'total'=>$doc['total']
+	    						,'hardCopy'=>$doc['hardCopy']
+	    						,'hardCopyFee'=>$doc['hardCopyFee']
+	    						,'registrationFee'=>$doc['registrationFee']
+	    						,'registrantName'=>$doc['name']
+	    						,'paymentType'=>$paymentType
+	    						,'cardType'=>$cardType
+	    						,'cardNumber'=>$cardNumber
 	    	);
 	    	$body = $app['view']->render('email/registration-seminar-customer','email', $view_vars);
 	    	$app['sendMail']($subject, $body, $to);
 	    endif;
+	    //*/
 });
 
-
-///////////////////////
-// PAYMENT FUNCTIONS //
-///////////////////////
-// the credit card charging view has it's routes stored in the Payment.js.php file
-$app->post('/registration/seminar/payment', function (Request $request) use ($app) {
-	// retrieve document from request
-	$doc = $request->get('doc');
-
-
-
-	$payment = new Model\Payment($doc['payment'],$app);
-	$app['validateModel']($app, $payment,$groups=array('manual'));
-	$paymentId = $payment->manualCharge();
-	
-	return new Response(json_encode(array('paymentId'=>$paymentId,'message'=>"success")), 200,array('Content-Type' => 'application/json'));
-})->before($mustbeADMIN);
 
 
 ///////////////////////
@@ -237,7 +262,7 @@ $app->post('/registration/edit', function (Request $request) use ($app) {
     	$message = 'Registration Successfully Saved.';
     	$response_status = 200;
     }
-    return new Response(json_encode(array('message' => $message,'label'=>$label)), $response_status,array('Content-Type' => 'registration/json'));
+    return new Response(json_encode(array('message' => $message,'label'=>$label)), $response_status,array('Content-Type' => 'application/json'));
 
 })->before($mustbeADMIN);
 

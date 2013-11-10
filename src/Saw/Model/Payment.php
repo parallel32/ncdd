@@ -72,7 +72,7 @@ class Payment extends Model {
 		$this->expMonth = $doc['expMonth'];        
 		$this->expYear = $doc['expYear'];        
 		$this->cardType = $doc['cardType'];        
-		$this->number = $doc['number'];        
+		$this->number = (string)$doc['number'];        
 		$this->cvc = $doc['cvc'];        
         $this->addressLine1 = $doc['addressLine1'];
         $this->addressLine2 = $doc['addressLine2'];
@@ -183,6 +183,10 @@ class Payment extends Model {
 	}
 	public function ownerClassObj(){
 		switch ($this->ownerClass) {
+			case 'RegistrationSeminar':
+				$obj = new RegistrationSeminar(array('_id'=>$this->ownerId),self::$app);
+				return $obj;
+				break;
 			case 'ApplyNewMember':
 				$obj = new ApplyNewMember(array('_id'=>$this->ownerId),self::$app);
 				return $obj;
@@ -195,6 +199,15 @@ class Payment extends Model {
 	}
 	public function markOwnerClassPaid($paymentId){
 		switch ($this->ownerClass) {
+			case 'RegistrationSeminar':
+				$obj = new RegistrationSeminar(array('_id'=>$this->ownerId
+														,'currentStatus'=>Registration::$status['PAID']
+														,'paidDate'=> new Date(self::$app, 'now')
+														,'paymentId'=> $paymentId
+												),self::$app);
+
+				return $obj->saveSafe();
+				break;
 			case 'ApplyNewMember':
 				$obj = new ApplyNewMember(array('_id'=>$this->ownerId
 														,'currentStatus'=>Apply::$status['PAID']

@@ -43,7 +43,11 @@ endif; ?>
                </form>
                
                <form id="saw-form" class="horizontal-form portlet">
-                  <div class="alert alert-error hide">
+                  <input type="hidden" class="seminarId" name="doc[seminarId]" value="<?=$this->vars['seminar']['_id']?>">
+                  <input type="hidden" class="memberId" name="doc[memberId]" value="<?=($signed_in) ? $this->vars['member']['_id']: '';?>">
+                  <input id="currentPaymentType" type="hidden" name="doc[currentPaymentType]" value="<?=\Saw\Model\Registration::$paymentType['CREDIT']?>">
+                  <input id="paymentId" type="hidden" name="doc[paymentId]" value="">
+                  <div id="top-error" class="alert alert-error hide">
                      <button class="close" data-dismiss="alert"></button>
                      You have some form errors. Please check below.
                   </div>         
@@ -75,7 +79,7 @@ endif; ?>
                            <label class="control-label">Name</label>
                            <div class="controls">
                               <? $middleName = (!empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' '; ?>
-                              <input type="text" name="doc[name]" value="<?=($signed_in) ? $this->vars['member']['firstName'].$middleName.$this->vars['member']['lastName'] :'' ?>" class="m-wrap span12 firstName">
+                              <input type="text" name="doc[name]" value="<?=($signed_in) ? $this->vars['member']['firstName'].$middleName.$this->vars['member']['lastName'] :'' ?>" class="m-wrap span12 name">
                            </div>
                         </div>
                      </div>
@@ -205,7 +209,7 @@ endif; ?>
                         <div class="control-group">
                            <label class="control-label" >Attendees Dinner RSVP</label>
                            <div class="controls">
-                              <input type="text" name="doc[dinnerRSVP]" class="m-wrap span12 dinnerRSVP"> 
+                              <input type="text" name="doc[rsvp]" class="m-wrap span12 rsvp"> 
                               <span class="help-block">Please enter how many people you would like to RSVP for the dinner (2 maximum).</span>
                            </div>
                         </div>
@@ -225,7 +229,7 @@ endif; ?>
                            <div class="controls">
                               <div class="input-prepend input-append">
                                  <span class="add-on">Printed Name </span>
-                                 <input name="doc[executedPrintedName]" class="m-wrap span12 executedPrintedName" type="text" placeholder="">
+                                 <input name="doc[attendanceCertificationStatement]" class="m-wrap span12 attendanceCertificationStatement" type="text" placeholder="">
                                  <span class="add-on">, on this <? $date = new \DateTime(); echo $date->format('dS');?> day of <?echo $date->format('F');?>, 20<?echo $date->format('y');?></span>
                               </div>
                            </div>
@@ -243,7 +247,8 @@ endif; ?>
                            <div class="controls">
                               <div class="input-prepend input-append">
                                   <span class="add-on">$ </span>
-                                     <input type="text" disabled value="<?=($signed_in) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>" class="m-wrap span12"> 
+                                     <input id="registration_fee" type="text" disabled value="<?=($signed_in) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>" class="m-wrap span12"> 
+                                     <input name="doc[registrationFee]" type="hidden" value="<?=($signed_in) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>" class="m-wrap span12"> 
                                   <span class="add-on">.00</span>
                               </div>
                               <span class="help-block">**CD of materials will be included in the registration fee.**</span>
@@ -255,11 +260,12 @@ endif; ?>
                         <div class="control-group">
                            <label class="control-label" >Would you like to pre-order a hard copy of the materials?</label>
                            <div class="controls">
-                              <select name="doc[hardCopyYesNo]" class="span6 m-wrap hardcopyYesNo">
+                              <select name="doc[hardCopy]" class="span6 m-wrap hardcopyYesNo">
                                  <option value="NO">NO</option>
                                  <option value="YES">YES</option>
                               </select>
                               <span class="help-block">If yes, an additional charge of $<?=$this->vars['seminar']['register']['hardCopyPrice']?> will be added.</span>
+                              <input name="doc[hardCopyFee]" type="hidden" value="<?=$this->vars['seminar']['register']['hardCopyPrice']?>"> 
                            </div>
                         </div>
                      </div>
@@ -272,7 +278,7 @@ endif; ?>
                            <div class="controls">
                               <div class="input-prepend input-append">
                                   <span class="add-on">$ </span>
-                                     <input type="text" disabled value="<?=($signed_in) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>" class="m-wrap span12"> 
+                                     <input name="doc[total]" id="total" type="text" disabled value="<?=($signed_in) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>" class="m-wrap span12"> 
                                   <span class="add-on">.00</span>
                               </div>
                            </div>
@@ -280,26 +286,13 @@ endif; ?>
                      </div>
                      <!--/span-->
                   </div>
-                  <div class="row-fluid">
-                     <div class="span12 ">
-                        <div class="pull-left">
-                           <h4>Click to: </h4>
-                           <button type="button" class="btn blue check">Pay By Check</button>&nbsp;&nbsp;OR&nbsp;&nbsp; 
-                           <button type="button" class="btn blue credit">Pay by Credit Card</button>
-                        </div>
-                     </div>
-                     <!--/span-->
-                  </div>
-                  </br>
-                  </br>
-                  </br>
                   </br>
                   
                   <!-- SUCCESSFUL SAVE MODAL -->
                   <div id="save-success" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="save-success-label" aria-hidden="true">
                      <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                        <h3 id="save-success-label">Thank you, your Registration is complete.  You will receive an email confirmation in the email you provided.</h3>
+                        <h3 id="save-success-label">Successful Registration</h3>
                      </div>
                      <div class="modal-body">
                         <p></p>
@@ -309,13 +302,11 @@ endif; ?>
                      </div>
                   </div>
                   <!--/ SUCCESSFUL SAVE MODAL -->
-                  <div class="alert alert-error hide">
+                  <div id="bottom-error" class="alert alert-error hide">
                      <button class="close" data-dismiss="alert"></button>
                      You have some form errors. Please check below.
                   </div>
                   
-               </form>
-               <!-- END FORM--> 
 
 
 
@@ -324,12 +315,7 @@ endif; ?>
 
 
 
-
-
-
-
-
-               <!-- PAYMENT ELEMENT -->
+                  <!-- PAYMENT ELEMENT -->
                   <style>
                   .card {
                   float: left;
@@ -354,22 +340,16 @@ endif; ?>
                   background-image: url('/assets/img/card-discover.gif');
                   }
                   </style>
-                  <form id="payment-form" class="horizontal-form portlet">
-                     <!-- ERROR -->
-                     <div class="alert alert-error hide">
-                        <button class="close" data-dismiss="alert"></button>
-                        You have some form errors. Please check below.
-                     </div>
-                     <!--/ ERROR -->
-                     <input type="hidden" class="memberId" name="doc['payment'][memberId]" value="<?=($signed_in) ? $this->vars['member']['_id']: '';?>">
-                     <input type="hidden" class="ownerId" name="doc['payment'][ownerId]" value="<?=$this->vars['seminar']['_id']?>">
-                     <input type="hidden" class="ownerClass" name="doc['payment'][ownerClass]" value="RegistrationSeminar">
-                     <input type="hidden" class="description" name="doc['payment'][description]" value="<?='INV-'.time();?>">
-                     <input type="hidden" class="title" name="doc['payment'][title]" value="<?=$this->vars['seminar']['headline'].' '.$this->vars['seminar']['location'].' '.$this->vars['seminar']['startDate']['monthDay'].' - '.$this->vars['seminar']['endDate']['monthDay'].', '.$this->vars['seminar']['startDate']['year']?>">
-                     <input type="hidden" class="amount" name="doc['payment'][amount]" value="<?=($signed_in) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>">
-                     <input type="hidden" class="cardType" name="doc['payment'][cardType]" value="">
-                     <input type="hidden" class="token" name="doc['payment'][token]" value="">
-                     <h3 class="form-section">Pay By Credit Card</h3>
+                  <div id="payment-form">
+                     
+                     <input type="hidden" class="memberId" name="doc[payment][memberId]" value="<?=($signed_in) ? $this->vars['member']['_id']: '';?>">
+                     <input type="hidden" class="description" name="doc[payment][description]" value="<?='INV-'.time();?>">
+                     <input type="hidden" class="title" name="doc[payment][title]" value="<?=$this->vars['seminar']['headline'].' '.$this->vars['seminar']['location'].' '.$this->vars['seminar']['startDate']['monthDay'].' - '.$this->vars['seminar']['endDate']['monthDay'].', '.$this->vars['seminar']['startDate']['year']?>">
+                     <input type="hidden" class="amount" name="doc[payment][amount]" value="<?=($signed_in) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>">
+                     <input type="hidden" class="cardType" name="doc[payment][cardType]" value="">
+                     <input type="hidden" class="token" name="doc[payment][token]" value="">
+                     <h3 class="form-section">6. Pay By Credit Card</h3>
+                     <p>To pay by check, please scroll to the end of the form and click the blue button.</p>
                      <div class="row-fluid">
                         <div class="span12 ">
                            <div class="control-group">
@@ -392,7 +372,7 @@ endif; ?>
                            <div class="control-group ">
                               <label class="control-label">Your name as it appears on the card</label>
                               <div class="controls">
-                                 <input type="text" name="doc['payment'][name]" class="m-wrap span8 name" value="<?=($signed_in) ? $this->vars['member']['firstName'].$middleName.$this->vars['member']['lastName']: ''?>">
+                                 <input id="card-name" type="text" name="doc[payment][name]" class="m-wrap span8 name" value="<?=($signed_in) ? $this->vars['member']['firstName'].$middleName.$this->vars['member']['lastName']: ''?>">
                               </div>
                            </div>
                         </div>
@@ -403,7 +383,7 @@ endif; ?>
                            <div class="control-group ">
                               <label class="control-label">Credit Card Number</label>
                               <div class="controls">
-                                 <input type="text" name="doc['payment'][number]" class="m-wrap span8 number">
+                                 <input id="card-number" type="text" name="doc[payment][number]" class="m-wrap span8 number">
                               </div>
                            </div>
                         </div>
@@ -414,7 +394,7 @@ endif; ?>
                            <div class="control-group ">
                               <label class="control-label">CVC Code</label>
                               <div class="controls">
-                                 <input type="text" name="doc['payment'][cvc]" class="m-wrap span8 cvc">
+                                 <input id="card-cvc" type="text" name="doc[payment][cvc]" class="m-wrap span8 cvc">
                               </div>
                            </div>
                         </div>
@@ -425,8 +405,8 @@ endif; ?>
                            <div class="control-group ">
                               <label class="control-label">Expiration Date</label>
                               <div class="controls">
-                                 <select class="span4 expMonth" name="doc['payment'][expMonth]"></select>
-                                 <select class="span4 expYear" name="doc['payment'][expYear]"></select>
+                                 <select id="card-expMonth" class="span4 expMonth" name="doc[payment][expMonth]"></select>
+                                 <select id="card-expYear" class="span4 expYear" name="doc[payment][expYear]"></select>
                               </div>
                            </div>
                         </div>
@@ -439,7 +419,7 @@ endif; ?>
                            <div class="control-group ">
                               <label class="control-label">Address Line 1</label>
                               <div class="controls">
-                                 <input type="text" name="doc['payment'][addressLine1]" class="m-wrap span8 addressLine1" value="<?=($signed_in) ? $this->vars['location']['addressLine1']: ''?>">
+                                 <input id="card-addressLine1" type="text" name="doc[payment][addressLine1]" class="m-wrap span8 addressLine1" value="<?=($signed_in) ? $this->vars['location']['addressLine1']: ''?>">
                               </div>
                            </div>
                         </div>
@@ -450,7 +430,7 @@ endif; ?>
                            <div class="control-group ">
                               <label class="control-label">Address Line 2</label>
                               <div class="controls">
-                                 <input type="text" name="doc['payment'][addressLine2]" class="m-wrap span8 addressLine2" value="<?=($signed_in) ? $this->vars['location']['addressLine2']: ''?>">
+                                 <input id="card-addressLine2" type="text" name="doc[payment][addressLine2]" class="m-wrap span8 addressLine2" value="<?=($signed_in) ? $this->vars['location']['addressLine2']: ''?>">
                               </div>
                            </div>
                         </div>
@@ -461,7 +441,7 @@ endif; ?>
                            <div class="control-group ">
                               <label class="control-label">City</label>
                               <div class="controls">
-                                 <input type="text" name="doc['payment'][city]" class="m-wrap span8 city" value="<?=($signed_in) ? $this->vars['location']['city']: ''?>">
+                                 <input id="card-city" type="text" name="doc[payment][city]" class="m-wrap span8 city" value="<?=($signed_in) ? $this->vars['location']['city']: ''?>">
                               </div>
                            </div>
                         </div>
@@ -472,7 +452,7 @@ endif; ?>
                            <div class="control-group ">
                               <label class="control-label">State/Province/Region</label>
                               <div class="controls">
-                                 <input type="text" name="doc['payment'][stateProvinceRegion]" class="m-wrap span8 stateProvinceRegion" value="<?=($signed_in) ? $this->vars['location']['state']: ''?>">
+                                 <input id="card-stateProvinceRegion" type="text" name="doc[payment][stateProvinceRegion]" class="m-wrap span8 stateProvinceRegion" value="<?=($signed_in) ? $this->vars['location']['state']: ''?>">
                               </div>
                            </div>
                         </div>
@@ -483,7 +463,7 @@ endif; ?>
                            <div class="control-group ">
                               <label class="control-label">Zip/PostalCode</label>
                               <div class="controls">
-                                 <input type="text" name="doc['payment'][zipPostalCode]" class="m-wrap span8 zipPostalCode" value="<?=($signed_in) ? $this->vars['location']['zip']: ''?>">
+                                 <input id="card-zipPostalCode" type="text" name="doc[payment][zipPostalCode]" class="m-wrap span8 zipPostalCode" value="<?=($signed_in) ? $this->vars['location']['zip']: ''?>">
                               </div>
                            </div>
                         </div>
@@ -494,7 +474,7 @@ endif; ?>
                            <div class="control-group ">
                               <label class="control-label">Country</label>
                               <div class="controls">
-                                 <input type="text" name="doc['payment'][country]" class="m-wrap span8 country" value="<?=($signed_in) ? $this->vars['location']['country']: ''?>">
+                                 <input id="card-country" type="text" name="doc[payment][country]" class="m-wrap span8 country" value="<?=($signed_in) ? $this->vars['location']['country']: ''?>">
                               </div>
                            </div>
                         </div>
@@ -506,7 +486,7 @@ endif; ?>
                            <div class="control-group ">
                               <label class="control-label">Email</label>
                               <div class="controls">
-                                 <input type="text" name="doc['payment'][email]" class="m-wrap span8 email" value="<?=($signed_in) ? $this->vars['member']['email']: ''?>">
+                                 <input id="card-email" type="text" name="doc[payment][email]" class="m-wrap span8 email" value="<?=($signed_in) ? $this->vars['member']['email']: ''?>">
                               </div>
                            </div>
                         </div>
@@ -517,25 +497,50 @@ endif; ?>
                            <div class="control-group ">
                               <label class="control-label">Phone</label>
                               <div class="controls">
-                                 <input type="text" name="doc['payment'][phone]" class="m-wrap span8 phone" value="<?=($signed_in) ? $this->vars['member']['primaryPhone']: ''?>">
+                                 <input id="card-phone" type="text" name="doc[payment][phone]" class="m-wrap span8 phone" value="<?=($signed_in) ? $this->vars['member']['primaryPhone']: ''?>">
                               </div>
                            </div>
                         </div>
                         <!--/span-->
                      </div>
-                  <!-- ERROR -->
+                     <!-- ERROR -->
                      <div class="alert alert-error hide">
                         <button class="close" data-dismiss="alert"></button>
                         You have some form errors. Please check below.
                      </div>
                      <!--/ ERROR -->
-                     <div class="form-actions text-center">
-                        <button type="button" class="btn green"><i class="icon-ok"></i> Submit Registration</button>
-                        <button type="button" class="btn cancel">Cancel and Go Back</button>
-                     </div>
-                  </form>
+                     
+                  </div>
                   <!--/ PAYMENT ELEMENT -->
+               </form>
+               <!-- END FORM--> 
+                  <div  id="payment-form-check" class="hide">
+                     <h3 class="form-section">6. Pay By Check</h3>
+                     <div class="row-fluid">
+                        <div class="span12 ">
+                           <h4 class="form-section">Please, send a payment to the address at the top of this form and make it payable to NCDD.</h4>
+                        </div>
+                        <!--/span-->
+                     </div>
+                  </div>
 
+
+
+
+
+
+
+
+
+
+
+               
+                     <div id="submit-registration-buttons" class="form-actions text-center">
+                        <button type="button" class="btn blue check">Pay By Check</button>
+                        <button type="button" class="btn blue credit hide">Pay by Credit Card</button>
+                        <button type="button" class="btn green submit-registration"><i class="icon-ok"></i> Submit Registration</button>
+                        <button type="button" class="btn cancel-registration">Cancel and Go Back</button>
+                     </div>
 
 
 
@@ -568,7 +573,7 @@ endif; ?>
       if(Stripe.validateCVC(cvc.val())){
          cvc.parents('.control-group').removeClass('error');// remove the red highlight
          cvc.next('.help-inline').remove(); // remove the error text
-         $('#payment-form .control-group').find('.help-block.error').remove(); // remove help blocks too
+         $('#saw-form .control-group').find('.help-block.error').remove(); // remove help blocks too
       }else{
          // bootstrap field to red with error message
          cvc.parents('.control-group').addClass('error');
@@ -581,23 +586,23 @@ endif; ?>
       if(Stripe.validateCardNumber(card.val())){
             card.parents('.control-group').removeClass('error');// remove the red highlight
             card.next().remove(); // remove the error text
-            $('#payment-form .control-group').find('.help-block.error').remove(); // remove help blocks too
-            $('#payment-form .card').css('backgroundPosition','0 -25px');
+            $('#saw-form .control-group').find('.help-block.error').remove(); // remove help blocks too
+            $('#saw-form .card').css('backgroundPosition','0 -25px');
             switch (Stripe.cardType(card.val())){
                case 'Visa':
-                  $('#payment-form .card.visa').css('backgroundPosition','0 0px');
+                  $('#saw-form .card.visa').css('backgroundPosition','0 0px');
                   break;
                case 'MasterCard':
-                  $('#payment-form .card.master').css('backgroundPosition','0 0px');
+                  $('#saw-form .card.master').css('backgroundPosition','0 0px');
                   break;
                case 'American Express':
-                  $('#payment-form .card.amex').css('backgroundPosition','0 0px');
+                  $('#saw-form .card.amex').css('backgroundPosition','0 0px');
                   break;
                case 'Discover':
-                  $('#payment-form .card.discover').css('backgroundPosition','0 0px');
+                  $('#saw-form .card.discover').css('backgroundPosition','0 0px');
                   break;         
             }
-            $('#payment-form .cardType').html(Stripe.cardType(card.val()));
+            $('#saw-form .cardType').html(Stripe.cardType(card.val()));
          }else{
             // bootstrap field to red with error message
             card.parents('.control-group').addClass('error');
@@ -606,182 +611,143 @@ endif; ?>
             }
          }
    }
-   function createStripeToken(){
-
+   Payment.createStripeToken = function (){
       Stripe.setPublishableKey("<?=SAW_STRIPE_PUBLIC_KEY?>");
-      $('#payment-form .btn.green').html('<i class="icon-time"></i> Validating Your Card..');
-      $('#payment-form .btn.green').attr("disabled", "disabled");
+      $('.submit-registration').html('<i class="icon-time"></i> Validating Your Card..');
+      $('.submit-registration').attr("disabled", "disabled");
 
       Stripe.createToken({
-         name: $('#payment-form .name').val(),
-         number: $('#payment-form .number').val(),
-         cvc: $('#payment-form .cvc').val(),
-         exp_month: $('#payment-form .expMonth').val(), 
-         exp_year: $('#payment-form .expYear').val(),
-         address_line1:$('#payment-form .addressLine1').val(),
-         address_line2:$('#payment-form .addressLine2').val(),
-         address_state:$('#payment-form .stateProvinceRegion').val(),
-         address_zip:$('#payment-form .zipPostalCode').val(),
-         address_country:$('#payment-form .country').val()
+         name: $('#card-name').val(),
+         number: $('#card-number').val(),
+         cvc: $('#card-cvc').val(),
+         exp_month: $('#card-expMonth').val(), 
+         exp_year: $('#card-expYear').val(),
+         address_line1:$('#card-addressLine1').val(),
+         address_line2:$('#card-addressLine2').val(),
+         address_state:$('#card-stateProvinceRegion').val(),
+         address_zip:$('#card-zipPostalCode').val(),
+         address_country:$('#card-country').val()
       },function(status, response) {
          if (status >= 400) { // we have an error
             // re-enable the submit button
-            $('#payment-form .btn.green').removeAttr("disabled");
-            $('#payment-form .btn.green').html('<i class="icon-ok"></i> Submit Payment');
+            $('.submit-registration').removeAttr("disabled");
+            $('.submit-registration').html('<i class="icon-ok"></i> Submit Payment');
 
             // process the error
             if(response.hasOwnProperty('error')){
-               $('#payment-form .control-group.'+response.error.param).addClass('error');
-               $('#payment-form .control-group.'+response.error.param+' :input').after('<span class="help-inline">'+response.error.message+'</span>');            
+               $('#saw-form .control-group.'+response.error.param).addClass('error');
+               $('#saw-form .control-group.'+response.error.param+' :input').after('<span class="help-inline">'+response.error.message+'</span>');            
             }
             // set response message
-            $('#payment-form .alert-error').removeClass('hide').html('<span>'+response.error.message+'</span>');
-            $('#payment-form .control-group :input.'+response.error.param).parents('.control-group').addClass('error');
-            $('#payment-form .control-group :input.'+response.error.param).parents('.controls').append(
+            $('#saw-form .alert-error').removeClass('hide').html('<span>'+response.error.message+'</span>');
+            $('#saw-form .control-group :input.'+response.error.param).parents('.control-group').addClass('error');
+            $('#saw-form .control-group :input.'+response.error.param).parents('.controls').append(
             '<span for="'+response.error.param+'" class="help-block error pulsate" style="">'+response.error.message+'</span>'
             );
 
             // finally re-set the token field to blank
-            $('#payment-form .token').val('');
+            $('#saw-form .token').val('');
          } else {
             // payment button text
-            $('#payment-form .btn.green').html('<i class="icon-time"></i> Processing Your Payment..');
+            $('.submit-registration').html('<i class="icon-time"></i> Processing Your Registration..');
             // remove errors
-            $('#payment-form .control-group').find('.help-block.error').remove();
-            $('#payment-form .error').removeClass('error');
-            $('#payment-form .alert-error').addClass('hide')
+            $('#saw-form .control-group').find('.help-block.error').remove();
+            $('#saw-form .error').removeClass('error');
+            $('#saw-form .alert-error').addClass('hide')
 
             // set returned values to the form
-            $('#payment-form .token').val(response.id);
+            $('#saw-form .token').val(response.id);
             // in case of a form validation error we need to save the credit card number because on the next save stripe will have to re-process
-            Payment.hold_card = $('#payment-form .number').val();
-            $('#payment-form .number').val(response.card.last4);
-            $('#payment-form .cardType').val(response.card.type);
-
-            // and submit
-            io.saw.Payment.charge();
+            Payment.hold_card = $('#saw-form .number').val();
+            $('#saw-form .number').val(response.card.last4);
+            $('#saw-form .cardType').val(response.card.type);
+            io.saw.Registration.doRegistration();
          }
       });// end Stripe.createToken
    }
    Payment.hold_card = '';
-   Payment.charge = function (){
-      io.saw.FormPost.activate({postUrl:'/payment/charge'
-         ,formName:'#payment-form'
-         ,serializeSelector:':input'
-         ,postOnComplete:function(responseObj,responseStatus){
-               $('#payment-form .number').val(io.saw.Payment.hold_card);
-               if(responseStatus == 'success'){
-            
-            }else{
-                  var responseObj = $.parseJSON(responseObj.responseText);
-               }
-         }
-         ,postOnSuccess:function(responseObj){
-               $('#save-success').modal({keyboard: false});       
-               $('#payment-form .btn.green').prop("disabled",true);
-               $('#payment-form .btn.green').html('<i class="icon-ok"></i> Payment Successful');
-               params.chargeOnSuccess(responseObj,responseObj.paymentId.$id);
-         }
-         ,postOnErrors:function(responseObj){
-               $('#payment-form .btn.green').removeAttr("disabled");
-            $('#payment-form .btn.green').html('<i class="icon-ok"></i> Submit Payment - try again');
-            
-         }
-      });      
-   };
-   Payment.refund = function (){
-      io.saw.FormPost.activate({postUrl:'/payment/refund'
-         ,formName:'#payment-form'
-         ,serializeSelector:':input'
-         ,postOnComplete:function(responseObj,responseStatus){
-               if(responseStatus == 'success'){
-               
-               }else{
-                  var responseObj = $.parseJSON(responseObj.responseText);
-               }
-         }
-         ,postOnSuccess:function(responseObj){}
-      });      
-   }; 
-   Payment.init = function(p){
-      params = p;
-      params.chargeOnSuccess = params.chargeOnSuccess || function(){};
+   Payment.init = function(){
       
-      $('#payment-form input').keypress(function (e) {
-         if (e.which == 13) {
-            validateCardNumber($('#payment-form .number'));
-            validateCVC($('#payment-form .cvc'));
-            createStripeToken();
-         }
-      });
-      $('#payment-form .btn.green').click(function(e){
-         createStripeToken();
-      });
-      $('#payment-form .btn.cancel').click(function(e){
-         document.location.href='/';
-      });
-      $('#save-success .continue.payment').click(function(e){
-         document.location.href='/payment/'+$(this).attr('data-insertid')+'/view';
-      });
-      $('#save-success .continue.dashboard').click(function(e){
-         document.location.href='/';
-      });
-      
-
-
-      // prepare the month dropdown
-      var select = $("#payment-form .expMonth"),
-      month = new Date().getMonth() + 1;
-      for (var i = 1; i <= 12; i++) {
-         select.append($("<option value='"+i+"' "+(month === i ? "selected" : "")+">"+i+"</option>"))
-      }
-
-      // prepare the year dropdown
-      var select = $("#payment-form .expYear"),
-      year = new Date().getFullYear();
-
-      for (var i = 0; i < 12; i++) {
-         select.append($("<option value='"+(i + year)+"' "+(i === 0 ? "selected" : "")+">"+(i + year)+"</option>"))
-      }
-
       // validate card number
-      $('#payment-form .number').blur(function(){
+      $('#saw-form .number').blur(function(){
          validateCardNumber($(this));
       });
       // validate cvc check
-      $('#payment-form .cvc').blur(function(){
+      $('#saw-form .cvc').blur(function(){
          validateCVC($(this));
       });
          
    };
-   Payment.indexInit = function(){
-      $('.btn.blue.mini.view').click(function(e){
-         document.location.href='/payment/'+$(this).attr('data-id')+'/view';
-      });   
-      $('.btn.cancel').click(function(e){
-         document.location.href='/payment';
-      });   
-
-   }
+   
    
 }( io.saw.Payment = io.saw.Payment || {}, io.saw.jQuery || jQuery ));
 </script>
 <script>
 jQuery(document).ready(function() {    
    io.saw.Registration.init();
-   io.saw.Payment.init({chargeOnSuccess:function(responseObj,paymentId){
-      $('#save-success .continue.payment').attr('data-insertid',paymentId);
-      io.saw.FormGet.activate({postUrl:'/registration/seminar/register/'+paymentId
-         ,postOnComplete:function(responseObj,responseStatus){}
-         ,postOnSuccess:function(responseObj){
-            //document.location.href='/applications';
-         }
-      });
-   }});
+
+   // init the credit card fields
+   io.saw.Payment.init()
+   // prepare the month dropdown
+   var select = $("#card-expMonth"),
+   month = new Date().getMonth() + 1;
+   for (var i = 1; i <= 12; i++) {
+      select.append($("<option value='"+i+"' "+(month === i ? "selected" : "")+">"+i+"</option>"))
+   }
+
+   // prepare the year dropdown
+   var select = $("#card-expYear"),
+   year = new Date().getFullYear();
+
+   for (var i = 0; i < 12; i++) {
+      select.append($("<option value='"+(i + year)+"' "+(i === 0 ? "selected" : "")+">"+(i + year)+"</option>"))
+   }
+   // end - init the credit card fields
    
    $('#saw-form .hardcopyYesNo').change(function(e){
-      console.log($('#saw-form .hardcopyYesNo options:selected').val());
+      var hard_copy_fee = <?=$this->vars['seminar']['register']['hardCopyPrice']?>;
+      if($(this).val() == 'YES'){
+         $('#total').val(parseInt($('#registration_fee').val())+hard_copy_fee);
+      }else{
+         $('#total').val($('#registration_fee').val());
+      }
+      $('#saw-form .amount').val($('#total').val());
    });
-   
+
+   io.saw.Payment.findPos = function(obj) {
+       var curtop = 0;
+       if (obj.offsetParent) {
+          do {
+               curtop += obj.offsetTop;
+          } while (obj = obj.offsetParent);
+
+          return [curtop];
+      }
+   }
+   // pay by check button clicked
+   $('.btn.check').click(function(e){
+      $('#currentPaymentType').val(<?=\Saw\Model\Registration::$paymentType['CHECK']?>);
+      $('#payment-form-check').show();
+      $('#payment-form').hide();
+      $(this).hide();
+      $('.btn.credit').show();
+      var targetElement = document.getElementById('payment-form-check');
+      window.setTimeout(function() {
+        window.scroll(0, io.saw.Payment.findPos(targetElement));
+      }, 5);
+   });
+   // pay by credit card button clicked
+   $('.btn.credit').click(function(e){
+      $('#currentPaymentType').val(<?=\Saw\Model\Registration::$paymentType['CREDIT']?>);
+      $('#payment-form').show();
+      $('#payment-form-check').hide();
+      $(this).hide();
+      $('.btn.check').show();
+      var targetElement = document.getElementById('payment-form');
+      window.setTimeout(function() {
+        window.scroll(0, io.saw.Payment.findPos(targetElement));
+      }, 5);
+   });
+
 });      
 </script>

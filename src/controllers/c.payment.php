@@ -14,6 +14,10 @@ use Saw\Model;
 $app->post('/payment/charge', function (Request $request) use ($app) {
 	// retrieve document from request
 	$doc = $request->get('doc');
+	// check if the payment is coming up from within another <form> and coming up as a nested document
+	if(array_key_exists('payment',$doc) && is_array($doc['payment'])){
+		$doc = $doc['payment'];
+	}
 	$payment = new Model\Payment($doc,$app);
 	$app['validateModel']($app, $payment,$groups=array('cc'));
 	$paymentId = $payment->charge();
