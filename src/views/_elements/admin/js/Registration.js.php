@@ -22,10 +22,6 @@
 			   		$('#payment-form .number').val(io.saw.Payment.hold_card);
 			   		$('.submit-registration').removeAttr("disabled");
 					$('.submit-registration').html('<i class="icon-ok"></i> Oops, Registration Failed - try again');
-					var targetElement = document.getElementById('top-error');
-				    window.setTimeout(function() {
-				      window.scroll(0, io.saw.Payment.findPos(targetElement));
-				    }, 5);
 			   }
 			});      	
 	}

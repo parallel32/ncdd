@@ -29,7 +29,7 @@
                                                 <p class="postDescr"><?=$seminar['description']?></p>
                                             </div>
                                             <div class="postFooter">
-                                                <a href="#" class="btn readMore pull-left">Register Online + (coming soon)</a>
+                                                <a href="http://<?=SAW_ADMIN_WEBSITE?>/registration/seminar/<?=$seminar['_id']?><?=$slug?>" class="btn readMore pull-left">Register Online</a>
                                             </div>
                                         </div>
                                     

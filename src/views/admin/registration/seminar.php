@@ -47,10 +47,6 @@ endif; ?>
                   <input type="hidden" class="memberId" name="doc[memberId]" value="<?=($signed_in) ? $this->vars['member']['_id']: '';?>">
                   <input id="currentPaymentType" type="hidden" name="doc[currentPaymentType]" value="<?=\Saw\Model\Registration::$paymentType['CREDIT']?>">
                   <input id="paymentId" type="hidden" name="doc[paymentId]" value="">
-                  <div id="top-error" class="alert alert-error hide">
-                     <button class="close" data-dismiss="alert"></button>
-                     You have some form errors. Please check below.
-                  </div>         
                   
                   <? if(!$signed_in):?>
                   <h3 class="form-section">If you're a member please sign in.</h3>
@@ -302,16 +298,7 @@ endif; ?>
                      </div>
                   </div>
                   <!--/ SUCCESSFUL SAVE MODAL -->
-                  <div id="bottom-error" class="alert alert-error hide">
-                     <button class="close" data-dismiss="alert"></button>
-                     You have some form errors. Please check below.
-                  </div>
                   
-
-
-
-
-
 
 
 
