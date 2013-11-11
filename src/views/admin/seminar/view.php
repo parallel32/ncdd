@@ -20,6 +20,9 @@
                               <? $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user'); return $user['accessLevel'];},$this->app);
                                   if($accessLevel >= EDITOR){
                                ?>
+                              <a class="btn green manage-registration" data-id="<?=$seminar['_id']?>">
+                                Registrations <i class="icon-money"></i>
+                              </a>
                               <a class="btn yellow edit-seminar" data-id="<?=$seminar['_id']?>">
                                 Edit Seminar <i class="icon-pencil"></i>
                               </a>
@@ -31,16 +34,6 @@
                               </a>
                               <? } ?>
                               
-                              <? $slug = (array_key_exists('slug',$seminar)) ? '/'.$seminar['slug'] : ''; ?>
-                              <?if(array_key_exists('register',$seminar) && $seminar['register']['currentStatus'] == \Saw\Model\SeminarRegister::$status['ON']): ?>
-                              <a class="btn green register-seminar" data-name="<?=$slug?>" data-id="<?=$seminar['_id']?>">
-                                Register <i class="icon-plus"></i>
-                              </a>
-                              <? else: ?>
-                              <a class="btn grey disabled" data-name="<?=$slug?>" data-id="<?=$seminar['_id']?>">
-                                Registration Not Available
-                              </a>
-                              <? endif; ?>
                               <h2><a href="/seminar/view/<?=$seminar['_id']?>"><?=$seminar['headline']?></a></h2>
                               <h4><a href="/seminar/view/<?=$seminar['_id']?>"><?=(array_key_exists('location',$seminar)) ? $seminar['location']: '';?></a></h4>
                               <h4><a href="/seminar/view/<?=$seminar['_id']?>"><?=$seminar['startDate']['monthDay']?> - <?=$seminar['endDate']['monthDay']?>, <?=$seminar['startDate']['year']?></a></h4>
@@ -53,6 +46,17 @@
                                  </a>
                               <? endforeach; ?>
                               <? endif; ?>
+                              <? $slug = (array_key_exists('slug',$seminar)) ? '/'.$seminar['slug'] : ''; ?>
+                              <?if(array_key_exists('register',$seminar) && $seminar['register']['currentStatus'] == \Saw\Model\SeminarRegister::$status['ON']): ?>
+                              <a class="btn green register-seminar" data-name="<?=$slug?>" data-id="<?=$seminar['_id']?>">
+                                Register <i class="icon-plus"></i>
+                              </a>
+                              <? else: ?>
+                              <a class="btn grey disabled" data-name="<?=$slug?>" data-id="<?=$seminar['_id']?>">
+                                Registration Not Available
+                              </a>
+                              <? endif; ?>
+                              
                            </div>
                            <div class="span4 blog-img blog-tag-data">
                               <?if(!empty($this->vars['image'])) {?>
