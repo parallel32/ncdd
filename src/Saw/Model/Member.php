@@ -345,7 +345,7 @@ class Member extends User {
 				foreach ($m_result as $key => $value) {
 					$result[$i]['_id'] = $value['member']['_id'];
 					$result[$i]['firstName'] = $value['member']['firstName'];
-					$result[$i]['middleName'] = $value['member']['middleName'];
+					$result[$i]['middleName'] = (array_key_exists('middleName',$value['member'])) ? $value['member']['middleName'] : '';
 					$result[$i]['lastName'] = $value['member']['lastName'];
 					$result[$i]['slug'] = $value['member']['slug'];
 					$result[$i]['displayName'] = $value['member']['displayName'];
