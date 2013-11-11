@@ -30,6 +30,17 @@
                                 Remove Seminar <i class="icon-pencil"></i>
                               </a>
                               <? } ?>
+                              
+                              <? $slug = (array_key_exists('slug',$seminar)) ? '/'.$seminar['slug'] : ''; ?>
+                              <?if(array_key_exists('register',$seminar) && $seminar['register']['currentStatus'] == \Saw\Model\SeminarRegister::$status['ON']): ?>
+                              <a class="btn green register-seminar" data-name="<?=$slug?>" data-id="<?=$seminar['_id']?>">
+                                Register <i class="icon-plus"></i>
+                              </a>
+                              <? else: ?>
+                              <a class="btn grey disabled" data-name="<?=$slug?>" data-id="<?=$seminar['_id']?>">
+                                Registration Not Available
+                              </a>
+                              <? endif; ?>
                               <h2><a href="/seminar/view/<?=$seminar['_id']?>"><?=$seminar['headline']?></a></h2>
                               <h4><a href="/seminar/view/<?=$seminar['_id']?>"><?=(array_key_exists('location',$seminar)) ? $seminar['location']: '';?></a></h4>
                               <h4><a href="/seminar/view/<?=$seminar['_id']?>"><?=$seminar['startDate']['monthDay']?> - <?=$seminar['endDate']['monthDay']?>, <?=$seminar['startDate']['year']?></a></h4>

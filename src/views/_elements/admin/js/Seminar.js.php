@@ -35,6 +35,11 @@
 		});      
 	};
 	Seminar.indexInit = function (){
+		// prepare the registration button
+		$('.register-seminar').click(function(e){
+			e.preventDefault();
+			document.location.href='/registration/seminar/'+$(this).attr('data-id')+$(this).attr('data-name');
+		});
 		// prepare the edit seminar and edit agenda buttons
 		$('.edit-seminar').click(function(e){
 			e.preventDefault();
