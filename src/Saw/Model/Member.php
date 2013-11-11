@@ -126,8 +126,13 @@ class Member extends User {
 		// for import only $this->orderNum = $doc['orderNum'];
 
 		$this->currentMembership = (!empty($doc['currentMembership'])) ? (int)$doc['currentMembership']: null;
-		$this->currentFacultyPosition = (!empty($doc['currentFacultyPosition']) || $doc['currentFacultyPosition'] === 0) ? (int)$doc['currentFacultyPosition'] : null;
-
+		if((int)$doc['currentFacultyPosition'] === 0){
+			$this->currentFacultyPosition = (int)$doc['currentFacultyPosition'];	
+		}elseif(!empty($doc['currentFacultyPosition'])){
+			$this->currentFacultyPosition = $doc['currentFacultyPosition'];
+		}elseif(empty($doc['currentFacultyPosition'])){
+			$this->currentFacultyPosition = null;
+		}
 		$order_arr = array();
 		if(!empty($this->currentMembership)){
 			array_push($order_arr, self::$order[self::$membershipReversed[$this->currentMembership]]);
