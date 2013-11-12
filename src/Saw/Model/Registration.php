@@ -112,18 +112,7 @@ class Registration extends Model {
 	
 	public function fetch($offset=0,$limit=100){
 		$query = array();
-		$fields = array('name'=>true
-						,'email'=>true
-						,'city'=>true
-						,'state'=>true
-						,'type'=>true
-						,'class'=>true
-						,'submittedDate'=>true
-						,'paidDate'=>true
-						,'_id'=>true
-						,'memberId'=>true
-						,'paymentId'=>true
-						);
+		$fields = array();// get all fields
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('_id'=>-1),(int)$offset,(int)$limit);
 		//error_log('fetch:'.print_r($result,true));
 		return $result;
@@ -133,9 +122,9 @@ class Registration extends Model {
 		$query = array('currentStatus'=>self::$status[$status]);
 		$fields = array('name'=>true
 						,'email'=>true
-						,'city'=>true
-						,'state'=>true
-						,'type'=>true
+						,'phone'=>true
+						,'currentStatus'=>true
+						,'currentPaymentType'=>true
 						,'class'=>true
 						,'submittedDate'=>true
 						,'paidDate'=>true
@@ -165,9 +154,9 @@ class Registration extends Model {
 						,'memberId'=>$user['_id']);
 		$fields = array('name'=>true
 						,'email'=>true
-						,'city'=>true
-						,'state'=>true
-						,'type'=>true
+						,'phone'=>true
+						,'currentStatus'=>true
+						,'currentPaymentType'=>true
 						,'class'=>true
 						,'submittedDate'=>true
 						,'paidDate'=>true
@@ -198,9 +187,9 @@ class Registration extends Model {
 		);
 		$fields = array('name'=>true
 						,'email'=>true
-						,'city'=>true
-						,'state'=>true
-						,'type'=>true
+						,'phone'=>true
+						,'currentStatus'=>true
+						,'currentPaymentType'=>true
 						,'class'=>true
 						,'submittedDate'=>true
 						,'paidDate'=>true

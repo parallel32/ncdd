@@ -74,6 +74,18 @@
 			e.preventDefault();
 			document.location.href='/registrations/seminar/'+$(this).attr('data-id');
 		});
+		$('.view.registration').click(function(e){
+			e.preventDefault();
+			document.location.href='/payment/'+$(this).attr('data-id')+'/view';
+		});
+		$('.view.payment').click(function(e){
+			e.preventDefault();
+			document.location.href='/payment/'+$(this).attr('data-id')+'/view';
+		});
+		$('.view.member').click(function(e){
+			e.preventDefault();
+			document.location.href='/member/'+$(this).attr('data-id')+'/edit';
+		});
 				
 	};
 	

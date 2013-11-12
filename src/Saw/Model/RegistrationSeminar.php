@@ -80,5 +80,39 @@ class RegistrationSeminar extends Registration {
 
 	}
 	
+
+	public function fetchByStatus($seminarId, $status, $offset=0,$limit=100){
+		$seminarId = (is_object($seminarId)) ? $seminarId : new \MongoId($seminarId);
+		$query = array('seminarId'=>$seminarId,'currentStatus'=>self::$status[$status]);
+		$fields = array('name'=>true
+						,'email'=>true
+						,'phone'=>true
+						,'currentStatus'=>true
+						,'currentPaymentType'=>true
+						,'class'=>true
+						,'submittedDate'=>true
+						,'paidDate'=>true
+						,'_id'=>true
+						,'memberId'=>true
+						,'paymentId'=>true
+						,'seminarId'=>true
+						);
+		switch ($status) {
+			case 'SUBMITTED':
+				$sort=array('submittedDate.date'=>-1);
+				break;
+			case 'PAID':
+				$sort=array('paidDate.date'=>-1);
+				break;
+			default:
+				$sort=array('_id'=>-1);
+				break;
+		}
+		$result = $this->find($query,$fields,$slaveOkay=true,$sort,(int)$offset,(int)$limit);
+		//error_log('fetch:'.print_r($result,true));
+		return $result;
+
+	}
+	
 		
 }

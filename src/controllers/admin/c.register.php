@@ -144,7 +144,7 @@ $app->get('/registration/{id}/view', function ($id, Request $request) use ($app)
 					,array('name'=>$registration['type'],'href'=>'/registration/'.$id.'/view')
 					);
 	$view_vars = array(
-						 'active'=>'Registration'
+						 'active'=>'Seminar'
 						,'page-plugin'=>'datatables'
 						,'headline'=>'Registrations'
 						,'description'=>"View all registration here."
@@ -176,7 +176,7 @@ $app->get('/registration/{id}/edit', function ($id, Request $request) use ($app)
 					,array('name'=>'Edit','href'=>'/registration/'.$id.'/edit')
 					);
 	$view_vars = array(
-						 'active'=>'Registration'
+						 'active'=>'Seminar'
 						,'page-plugin'=>'datatables'
 						,'headline'=>'Registrations'
 						,'description'=>"Edit Registration."
@@ -238,19 +238,19 @@ $app->post('/registration/edit', function (Request $request) use ($app) {
 })->before($mustbeADMIN);
 
 $app->get('/registrations/seminar/{seminarId}/{offset}/{limit}', function ($seminarId, $offset, $limit, Request $request) use ($app) {
-	$registration = new Model\Registration($doc=array(), $app);
-	$submitted = $registration->fetchByStatus('SUBMITTED',$offset, $limit);
-	$paid = $registration->fetchByDatePaid(90, $offset, $limit);
+	$seminar = new Model\Seminar($doc=array('_id'=>$seminarId), $app);
+	$seminar = $seminar->findById();
+	$registration = new Model\RegistrationSeminar($doc=array(), $app);
+	$submitted = $registration->fetchByStatus($seminarId,'SUBMITTED',$offset, $limit);
+	$paid = $registration->fetchByStatus($seminarId,'PAID',$offset, $limit);
 	$crumbs = array(array('name'=>'Registrations','href'=>'/registrations'));
 	$view_vars = array(
-						 'active'=>'Registrations/New'
+						 'active'=>'Seminar'
 						,'page-plugin'=>'datatables'
-						,'headline'=>'Registrations'
-						,'description'=>"View all registration here."
+						,'headline'=>'Registrations for - '.$seminar['headline']
+						,'description'=>''
 						,'crumbs'=>$crumbs
 						,'submitted'=>$submitted
-						,'approved'=>$approved
-						,'trial'=>$trial
 						,'paid'=>$paid);
 	return $app['view']->render('registration/index', 'default', $view_vars);
 })
