@@ -13,35 +13,6 @@ use Saw\Model;
 
 
 
-$app['registrationEmails'] = $app->protect(function ($app,$registrationId,$context) {
-
-	$apply = new Model\Apply(array('_id'=>$registrationId), $app);
-	$apply_arr = $apply->findById();
-
-	if($context == 'seminar'){
-		switch ($apply_arr['class']) {
-			case 'RegistrationSeminar':
-				$registration = new Model\RegistrationSeminar(array('_id'=>$registrationId), $app);
-				$registration->findById();
-			    $member = $registration->approve();
-			    // email welcome message
-				$subject = 'Welcome To NCDD';
-				$to = $member->email;
-				$view_vars = array('email'=>$member->email
-									,'password'=>$member->password
-									,'firstName'=>$member->firstName
-									,'lastName'=>$member->lastName
-				);
-				$body = $app['view']->render('email/new-member-welcome','email', $view_vars);
-				break;
-			
-		}
-		
-		$app['sendMail']($subject, $body, $to);
-	    return new Response(json_encode(array('message' => 'Approved successfully')), 200,array('Content-Type' => 'application/json'));
-	}
-});
-
 //////////////////////////////
 // NEW SEMINAR REGISTRATION //
 //////////////////////////////
@@ -160,9 +131,9 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 
 
 
-///////////////////////
-// GENERAL FUNCTIONS //
-///////////////////////
+/////////////////////////////
+// GENERAL ADMIN FUNCTIONS //
+/////////////////////////////
 
 $app->get('/registration/{id}/view', function ($id, Request $request) use ($app) {
 	

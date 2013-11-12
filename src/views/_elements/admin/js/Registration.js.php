@@ -69,6 +69,13 @@
 		// $(this).attr('data-insertid')
 		
 	};
+	Registration.manageInit = function(){
+		$('.manage-registration').click(function(e){
+			e.preventDefault();
+			document.location.href='/registrations/seminar/'+$(this).attr('data-id');
+		});
+				
+	};
 	
 }( io.saw.Registration = io.saw.Registration || {}, io.saw.jQuery || jQuery ));
 </script>

@@ -13,7 +13,7 @@
             <div class="row-fluid">
                <div class="span12 blog-page">
                   <div class="row-fluid">
-                     <div class="span9 article-block">
+                     <div class="span12 article-block">
                         <? $seminar = $this->vars['seminar']; ?>
                         <div class="row-fluid">
                            <div class="span8 blog-article">
@@ -94,7 +94,7 @@
                               <p></p>
                            </div>
                            <div class="modal-footer">
-                              <button type="button" class="btn green" data-id="">Confirm Delete</button>
+                              <button type="button" class="btn red" data-id="">Confirm Delete</button>
                               <button type="button" class="btn cancel">Cancel</button>
                            </div>
                         </div>
