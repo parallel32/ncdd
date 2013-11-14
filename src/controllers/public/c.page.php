@@ -439,7 +439,7 @@ $app->get('/regents-and-fellows', function (Request $request) use ($app) {
 	$view_vars['members'] = $members;
 	$view_vars = array_merge($page_vars,$view_vars);
 	
-	return $app['view']->render('page/founding-members', 'content', $view_vars);
+	return $app['view']->render('page/regents-and-fellows', 'content', $view_vars);
 });
 
 // Board Certification
