@@ -126,12 +126,10 @@ class Member extends User {
 		// for import only $this->orderNum = $doc['orderNum'];
 
 		$this->currentMembership = (!empty($doc['currentMembership'])) ? (int)$doc['currentMembership']: null;
-		if((int)$doc['currentFacultyPosition'] === 0){
+		if($doc['currentFacultyPosition'] === 0){
 			$this->currentFacultyPosition = (int)$doc['currentFacultyPosition'];	
 		}elseif(!empty($doc['currentFacultyPosition'])){
 			$this->currentFacultyPosition = $doc['currentFacultyPosition'];
-		}elseif(empty($doc['currentFacultyPosition'])){
-			$this->currentFacultyPosition = null;
 		}
 		$order_arr = array();
 		if(!empty($this->currentMembership)){
