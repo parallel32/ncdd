@@ -24,6 +24,7 @@
 		});      
 	};
 	Seminar.registerEdit = function (){
+		$('#input-confirmationLetter').val($('#confirmationLetter').html());
 		io.saw.FormPost.activate({postUrl:'/seminar/edit'
 		   ,formName:'#register-form'
 		   ,serializeSelector:':input'

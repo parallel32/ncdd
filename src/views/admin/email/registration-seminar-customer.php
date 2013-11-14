@@ -8,7 +8,11 @@
 									<table border="0" cellpadding="20" cellspacing="0" width="100%">
 										<tr>
 											<td valign="top">
-												<h2 class="h2">NCDD Seminar Registration Details and Reciept</h2>
+												<? if($this->vars['paymentType'] == 'credit'):?>
+												<h2 class="h2">NCDD Seminar Registration Details and Receipt</h2>
+												<? else: ?>
+												<h2 class="h2">NCDD Seminar Registration - This is not a receipt</h2>
+												<? endif; ?>
 												<br />
 												<div class="textdark">
 <h4 class="h4">Seminar Details:</h4>
@@ -40,6 +44,7 @@
 <br/>Tel: 334-264-1950 
 <br/>Fax: 334-264-1920
 <? endif; ?>
+
 <br/>
 <br/>If you have any questions don't hesitate to contact us at: rhea@ncdd.com
 <br/>

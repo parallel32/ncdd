@@ -12,6 +12,76 @@ use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Saw\Model;
 
 
+$app['seminarConfirmationEmail'] = $app->protect(function ($app,$registrationId) {
+
+	$registration = new Model\Registration(array('_id'=>$registrationId), $app);
+	$registration = $registration->findById();
+	$seminar = new Model\Seminar(array('_id'=>$registration['seminarId']),$app);
+	$seminar = $seminar->findById();
+	
+    // email welcome message
+	$subject = 'NCDD Seminar Confirmation';
+	$to = $registration['email'];
+	$view_vars = array('seminar'=>$seminar
+						,'registration'=>$registration
+	);
+	$body = $app['view']->render('email/registration-seminar-customer-confirmation','email', $view_vars);
+
+	
+	$app['sendMail']($subject, $body, $to);
+
+});
+///////////////////////
+// PAYMENT FUNCTIONS //
+///////////////////////
+$app->get('/registration/seminar/{id}/pay-other', function ($id, Request $request) use ($app) {
+	
+	$registration = new Model\Registration($doc=array('_id'=>$id), $app);
+	$registration = $registration->findById();
+	$seminar = new Model\Seminar(array('_id'=>$registration['seminarId']),$app);
+	$seminar = $seminar->findById();
+
+	$crumbs = array(array('name'=>'Registrations','href'=>'/registrations/seminar/'.$seminar['_id'])
+					,array('name'=>$registration['name'],'href'=>'/registration/'.$id.'/view')
+					,array('name'=>$registration['type'],'href'=>'/registration/'.$id.'/view')
+					,array('name'=>'Submit Another Form of Payment ','href'=>'/registration/'.$id.'/pay')
+					);
+	$view_vars = array(
+						 'active'=>'Registration'
+						,'page-plugin'=>'datatables,invoice'
+						,'headline'=>'Seminar Registration Payment'
+						,'description'=>"Pay seminar registration."
+						,'crumbs'=>$crumbs
+						,'registration'=>$registration
+						,'seminar'=>$seminar
+						);
+	return $app['view']->render('registration/seminar-pay-other', 'default', $view_vars);
+})->value('id','')
+->before($mustbeADMIN);
+
+// this is posted to by the registrations/pay-other.php view
+// mark the registration paid and create a payment record, which is the receipt
+$app->post('/registration/payment', function (Request $request) use ($app) {
+	// retrieve document from request
+	$doc = $request->get('doc');
+	$payment = new Model\Payment($doc,$app);
+	$app['validateModel']($app, $payment,$groups=array('manual'));
+	$paymentId = $payment->manualCharge();
+	
+	return new Response(json_encode(array('paymentId'=>$paymentId,'message'=>"success")), 200,array('Content-Type' => 'application/json'));
+})->before($mustbeADMIN);
+
+// both credit card and pay by check XHR call this route to mark the registration as paid.
+// resetSession is passed in when the member is using the credit card payment screen and not used when the admin 
+// is making a payment on behalf of the member using the same credit card screen
+$app->get('/registration/{paymentId}/pay/{registrationId}', function ($paymentId, $registrationId, Request $request) use ($app) {
+    
+    $registration = new Model\Registration(array('_id'=>$registrationId, 'paymentId'=>$paymentId), $app);
+    $registration->markPaid();
+    $app['seminarConfirmationEmail']($app,$registrationId);
+    return new Response(json_encode(array('message' => 'Paid successfully')), 200,array('Content-Type' => 'application/json'));
+})->before($mustbeMEMBER);
+
 
 //////////////////////////////
 // NEW SEMINAR REGISTRATION //
@@ -31,7 +101,7 @@ $app->get('/registration/seminar/{seminarId}/{slug}', function ($seminarId, $slu
 
 	$seminar = new Model\Seminar(array('_id'=>$seminarId),$app);
 	$seminar = $seminar->findById();
-	$view_vars = array('seminar'=>$seminar, 
+	$view_vars = array('seminar'=>$seminar,
 						'member'=>$member,
 						'location'=>$location,
 						'layout_title'=>'Registration for '.$seminar['headline']
@@ -59,14 +129,14 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 		$payment = new Model\Payment($doc['payment'],$app);
 		$app['validateModel']($app, $payment,$groups=array('cc'));
 		$paymentId = $payment->charge();
-		
-		$rs = new Model\RegistrationSeminar(array('_id'=>$rs_id,'paymentId'=>$paymentId),$app);
+
+		$app['seminarConfirmationEmail']($app,$rs_id);
 	}
 	
 	return new Response(json_encode(array(
 		'paymentId'=>$paymentId,
 		'label'=>'Successful Registration',
-		'message'=>"Thank you, your Registration is complete.  You will receive an confirmation and receipt in the email address you provided.")), 200,array('Content-Type' => 'application/json')
+		'message'=>"Thank you, your Registration is complete.  You will receive an confirmation and receipt in the email address you provided.")), 200,array('Content-Type' => 'registration/json')
 	);
 
 })->after(function (Request $request, Response $response, Silex\Application $app) {
@@ -125,6 +195,7 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 	    	);
 	    	$body = $app['view']->render('email/registration-seminar-customer','email', $view_vars);
 	    	$app['sendMail']($subject, $body, $to);
+
 	    endif;
 	    //*/
 });
@@ -142,7 +213,7 @@ $app->get('/registration/{id}/view', function ($id, Request $request) use ($app)
 	$seminar = new Model\Seminar(array('_id'=>$registration['seminarId']),$app);
 	$seminar = $seminar->findById();
 
-	$crumbs = array(array('name'=>'Registrations','href'=>'/registrations')
+	$crumbs = array(array('name'=>'Registrations','href'=>'/registrations/seminar/'.$seminar['_id'])
 					,array('name'=>$registration['name'],'href'=>'/registration/'.$id.'/view')
 					,array('name'=>$registration['type'],'href'=>'/registration/'.$id.'/view')
 					);
@@ -172,11 +243,13 @@ $app->get('/registration/{id}/view', function ($id, Request $request) use ($app)
 
 $app->get('/registration/{id}/edit', function ($id, Request $request) use ($app) {
 	
-	$registration = new Model\Apply($doc=array('_id'=>$id), $app);
+	$registration = new Model\Registration($doc=array('_id'=>$id), $app);
 	$registration = $registration->findById();
+	$seminar = new Model\Seminar(array('_id'=>$registration['seminarId']),$app);
+	$seminar = $seminar->findById();
 
-	$crumbs = array(array('name'=>'Registrations','href'=>'/registrations')
-					,array('name'=>$registration['firstName'].' '.$registration['lastName'],'href'=>'/registration/'.$id.'/view')
+	$crumbs = array(array('name'=>'Registrations','href'=>'/registrations/seminar/'.$seminar['_id'])
+					,array('name'=>$registration['name'],'href'=>'/registration/'.$id.'/view')
 					,array('name'=>$registration['type'],'href'=>'/registration/'.$id.'/view')
 					,array('name'=>'Edit','href'=>'/registration/'.$id.'/edit')
 					);
@@ -186,10 +259,12 @@ $app->get('/registration/{id}/edit', function ($id, Request $request) use ($app)
 						,'headline'=>'Registrations'
 						,'description'=>"Edit Registration."
 						,'crumbs'=>$crumbs
-						,'registration'=>$registration);
+						,'registration'=>$registration
+						,'seminar'=>$seminar
+						);
 	switch ($registration['class']) {
 		case 'RegistrationSeminar':
-			return $app['view']->render('registration/edit-seminar', 'default', $view_vars);		
+			return $app['view']->render('registration/seminar-edit', 'default', $view_vars);		
 			break;
 		
 	}
@@ -201,44 +276,22 @@ $app->post('/registration/edit', function (Request $request) use ($app) {
 
 	// retrieve document from request
     $doc = $request->get('doc');
-    $endTrial = $request->get('endTrial');
-    $startTrial = $request->get('startTrial');
     
 	switch ($doc['class']) {
 		case 'RegistrationSeminar':
 			$registration = new Model\RegistrationSeminar($doc, $app);
 		    break;
 	}
-	if(!empty($endTrial)){
-		$appArr = $registration->findOne($query=array('_id'=>new \MongoId($doc['_id'])),$fields=array('trial'=>true));
-		$newEndDate = new Model\Date($app,$endTrial, $appArr['trial']['timeZone']);
-		$newStartDate = new Model\Date($app,$startTrial, $appArr['trial']['timeZone']);
-		
-		$appArr['trial']['startDate'] = $newStartDate;
-		$appArr['trial']['endDate'] = $newEndDate;
-		$new_trial = new Model\Trial($appArr['trial'],$app);
-		$app['validateModel']($app,$new_trial);
-
-		$registration->trial = $new_trial->__toArray();
-		$registration->trial['endDate'] = $newEndDate;
-		$registration->trial['startDate'] = $newStartDate;
-	}
 	
 	// validate the model
 	$app['validateModel']($app,$registration);
 	
-	$registration_id = $registration->checkEmailExists();
-	if(!empty($registration_id) && $registration_id != $registration->_id){
-    	$label = 'Warning:';
-    	$message = "The email address you're trying to update is already in use on another registration.  Please use a different email and try again.";
-    	$response_status = 400;
-    }else{
-    	$member = $registration->saveEdit();	
-    	$label = 'Registration Saved';
-    	$message = 'Registration Successfully Saved.';
-    	$response_status = 200;
-    }
-    return new Response(json_encode(array('message' => $message,'label'=>$label)), $response_status,array('Content-Type' => 'application/json'));
+	$registration->saveEdit();	
+    $label = 'Registration Saved';
+    $message = 'Registration Successfully Saved.';
+    $response_status = 200;
+    
+    return new Response(json_encode(array('message' => $message,'label'=>$label)), $response_status,array('Content-Type' => 'registration/json'));
 
 })->before($mustbeADMIN);
 
@@ -283,14 +336,14 @@ $app->post('/registration/markpaid', function (Request $request) use ($app) {
     	$message = 'Registration Successfully Saved.';
     	$response_status = 200;
     }
-    return new Response(json_encode(array('message' => $message,'label'=>$label)), $response_status,array('Content-Type' => 'application/json'));
+    return new Response(json_encode(array('message' => $message,'label'=>$label)), $response_status,array('Content-Type' => 'registration/json'));
 
 })->before($mustbeADMIN);
 
 $app->get('/registration/{id}/delete', function ($id, Request $request) use ($app) {
     $registration = new Model\Registration(array('_id'=>$id), $app);
     $registration->remove();
-    return new Response(json_encode(array('message' => 'Successfully Deleted')), 200,array('Content-Type' => 'application/json'));
+    return new Response(json_encode(array('message' => 'Successfully Deleted')), 200,array('Content-Type' => 'registration/json'));
 })->before($mustbeADMIN);
 
 $app->get('/registrations/seminar/{seminarId}/{offset}/{limit}', function ($seminarId, $offset, $limit, Request $request) use ($app) {

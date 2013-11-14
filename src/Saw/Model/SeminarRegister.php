@@ -19,6 +19,7 @@ class SeminarRegister extends Model {
 	public $memberPrice;
 	public $nonMemberPrice;
 	public $hardCopyPrice;
+	public $confirmationLetter;
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addConstraint(new Callback(array(
@@ -50,6 +51,7 @@ class SeminarRegister extends Model {
 		$this->memberPrice = (!empty($doc['memberPrice'])) ? (int)$doc['memberPrice']: '';
 		$this->nonMemberPrice = (!empty($doc['nonMemberPrice'])) ? (int)$doc['nonMemberPrice']: '';
 		$this->hardCopyPrice = (!empty($doc['hardCopyPrice'])) ? (int)$doc['hardCopyPrice']: '';
+		$this->confirmationLetter = $doc['confirmationLetter'];
 		
 	}
 	
@@ -61,6 +63,7 @@ class SeminarRegister extends Model {
 		$this->memberPrice = $this->memberPrice ?: '';
 		$this->nonMemberPrice = $this->nonMemberPrice ?: '';
 		$this->hardCopyPrice = $this->hardCopyPrice ?: '';
+		$this->confirmationLetter = $this->confirmationLetter ?: '';
 	}
 	
 	public function saveEdit(){

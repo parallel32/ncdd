@@ -40,7 +40,11 @@ class RegistrationSeminar extends Registration {
 		$this->rsvp = (string)$doc['rsvp'];
 		$date = new \DateTime();
 		$acs_text = ', on this '.$date->format('dS').' day of '.$date->format('F').', 20'.$date->format('y');
-		$this->attendanceCertificationStatement = (!empty($doc['attendanceCertificationStatement']))  ? $doc['attendanceCertificationStatement'].$acs_text : '';
+		if(!empty($doc['attendanceCertificationStatement']) && strpos($doc['attendanceCertificationStatement'],'day of') === false){
+			$this->attendanceCertificationStatement = $doc['attendanceCertificationStatement'].$acs_text;
+		}else{
+			$this->attendanceCertificationStatement = $doc['attendanceCertificationStatement'];
+		}
 		$this->hardCopy = $doc['hardCopy'];
 		$this->registrationFee = $doc['registrationFee'];
 		$this->hardCopyFee = $doc['hardCopyFee'];

@@ -203,5 +203,14 @@ class Registration extends Model {
 		return $result;
 
 	}
-		
+	
+	public function markPaid(){
+
+		// mark the record as paid
+		$this->paidDate = new Date(self::$app,'now', 'America/New_York');
+		$this->currentStatus = self::$status['PAID'];
+		$this->saveSafe();
+
+	}
+			
 }

@@ -14,7 +14,8 @@
             <div class="span12">
                <!-- BEGIN FORM-->
                <form id="saw-form" class="horizontal-form portlet">
-                  <input type="hidden" class="registrationId" name="doc[registrationId]" value="<?=$this->vars['registration']['_id']?>">
+                  <input type="hidden" name="doc[_id]" value="<?=$this->vars['registration']['_id']?>">
+                  <input type="hidden" name="doc[class]" value="<?=$this->vars['registration']['class']?>">
                   
                   <h3 class="form-section">1. Your Information</h3>
                   <div class="row-fluid">
@@ -22,7 +23,7 @@
                         <div class="control-group">
                            <label class="control-label">Name</label>
                            <div class="controls">
-                              <input type="text" disabled name="doc[name]" value="<?=$this->vars['registration']['name']?>" class="m-wrap span12 name">
+                              <input type="text" name="doc[name]" value="<?=$this->vars['registration']['name']?>" class="m-wrap span12 name">
                            </div>
                         </div>
                      </div>
@@ -33,7 +34,7 @@
                         <div class="control-group">
                            <label class="control-label">Telephone</label>
                            <div class="controls">
-                              <input id="phone" type="text" disabled name="doc[phone]" value="<?=$this->vars['registration']['phone']?>" class="m-wrap span12 phone">
+                              <input id="phone" type="text" name="doc[phone]" value="<?=$this->vars['registration']['phone']?>" class="m-wrap span12 phone">
                            </div>
                         </div>
                      </div>
@@ -42,7 +43,7 @@
                         <div class="control-group ">
                            <label class="control-label">Facsimile</label>
                            <div class="controls">
-                              <input id="fax" type="text" disabled name="doc[fax]" value="<?=$this->vars['registration']['fax']?>" class="m-wrap span12 fax">
+                              <input id="fax" type="text" name="doc[fax]" value="<?=$this->vars['registration']['fax']?>" class="m-wrap span12 fax">
                            </div>
                         </div>
                      </div>
@@ -53,7 +54,7 @@
                         <div class="control-group">
                            <label class="control-label">Bar Number / State</label>
                            <div class="controls">
-                              <input type="text" disabled name="doc[barNumber]" value="<?=$this->vars['registration']['barNumber']?>" class="m-wrap span12 barNumber">
+                              <input type="text" name="doc[barNumber]" value="<?=$this->vars['registration']['barNumber']?>" class="m-wrap span12 barNumber">
                            </div>
                         </div>
                      </div>
@@ -64,7 +65,7 @@
                         <div class="control-group">
                            <label class="control-label">Email</label>
                            <div class="controls">
-                              <input type="text" disabled name="doc[email]" value="<?=$this->vars['registration']['email']?>" class="m-wrap span12 email">
+                              <input type="text" name="doc[email]" value="<?=$this->vars['registration']['email']?>" class="m-wrap span12 email">
                            </div>
                         </div>
                      </div>
@@ -78,7 +79,7 @@
                         <div class="control-group">
                            <label class="control-label" >Address 1</label>
                            <div class="controls">
-                              <input type="text" disabled id="address1" name="doc[address1]" value="address1" class="m-wrap span12 address1">
+                              <input type="text" id="address1" name="doc[address1]" value="address1" class="m-wrap span12 address1">
                            </div>
                         </div>
                      </div>
@@ -88,7 +89,7 @@
                         <div class="control-group">
                            <label class="control-label" >Address 2</label>
                            <div class="controls">
-                              <input type="text" disabled id="address2" name="doc[address2]" value="<?=$this->vars['registration']['address2']?>" class="m-wrap span12 address2">
+                              <input type="text" id="address2" name="doc[address2]" value="<?=$this->vars['registration']['address2']?>" class="m-wrap span12 address2">
                            </div>
                         </div>
                      </div>
@@ -98,7 +99,7 @@
                         <div class="control-group">
                            <label class="control-label" >City</label>
                            <div class="controls">
-                              <input type="text" disabled id="city" name="doc[city]" value="<?=$this->vars['registration']['city']?>" class="m-wrap span12 city"> 
+                              <input type="text" id="city" name="doc[city]" value="<?=$this->vars['registration']['city']?>" class="m-wrap span12 city"> 
                            </div>
                         </div>
                      </div>
@@ -107,7 +108,7 @@
                         <div class="control-group">
                            <label class="control-label" >State / Province</label>
                            <div class="controls">
-                              <input type="text" disabled id="state" name="doc[state]" value="<?=$this->vars['registration']['state']?>" class="m-wrap span12 state"> 
+                              <input type="text" id="state" name="doc[state]" value="<?=$this->vars['registration']['state']?>" class="m-wrap span12 state"> 
                            </div>
                         </div>
                      </div>
@@ -119,7 +120,7 @@
                         <div class="control-group">
                            <label class="control-label" >Postal Code</label>
                            <div class="controls">
-                              <input type="text" disabled id="zip" name="doc[postalCode]" value="<?=$this->vars['registration']['postalCode']?>" class="m-wrap span12 postalCode"> 
+                              <input type="text" id="zip" name="doc[postalCode]" value="<?=$this->vars['registration']['postalCode']?>" class="m-wrap span12 postalCode"> 
                            </div>
                         </div>
                      </div>
@@ -128,7 +129,7 @@
                         <div class="control-group">
                            <label class="control-label" >Country</label>
                            <div class="controls">
-                              <input type="text" disabled id="country" name="doc[country]" value="<?=$this->vars['registration']['country']?>" class="m-wrap span12 country"> 
+                              <input type="text" id="country" name="doc[country]" value="<?=$this->vars['registration']['country']?>" class="m-wrap span12 country"> 
                            </div>
                         </div>
                      </div>
@@ -141,7 +142,7 @@
                         <div class="control-group">
                            <label class="control-label" >Name for Name Tag</label>
                            <div class="controls">
-                              <input type="text" disabled name="doc[nameTag]" value="<?=$this->vars['registration']['nameTag']?>" class="m-wrap span12 nameTag"> 
+                              <input type="text" name="doc[nameTag]" value="<?=$this->vars['registration']['nameTag']?>" class="m-wrap span12 nameTag"> 
                            </div>
                         </div>
                      </div>
@@ -152,7 +153,10 @@
                         <div class="control-group">
                            <label class="control-label" >Attendees Dinner RSVP</label>
                            <div class="controls">
-                              <input type="text" disabled name="doc[rsvp]" value="<?=$this->vars['registration']['rsvp']?>" class="m-wrap span12 rsvp"> 
+                              <select name="doc[rsvp]" class="span6 m-wrap rsvp">
+                                 <option <?=($this->vars['registration']['rsvp'] == 1) ? 'selected': ''?> value="1">1</option>
+                                 <option <?=($this->vars['registration']['rsvp'] == 2) ? 'selected': ''?> value="2">2</option>
+                              </select>
                               <span class="help-block">Please enter how many people you would like to RSVP for the dinner (2 maximum).</span>
                            </div>
                         </div>
@@ -170,7 +174,7 @@
                            </br>
                            <label class="control-label">By printing your name you acknowledge the above statements.</label>
                            <div class="controls">
-                              <input disabled name="doc[attendanceCertificationStatement]" value="<?=$this->vars['registration']['attendanceCertificationStatement']?>" class="m-wrap span12 attendanceCertificationStatement" type="text" placeholder="">
+                              <input name="doc[attendanceCertificationStatement]" value="<?=$this->vars['registration']['attendanceCertificationStatement']?>" class="m-wrap span12 attendanceCertificationStatement" type="text" placeholder="">
                            </div>
                            
                         </div>
@@ -226,14 +230,8 @@
                      </div>
                      
                      <div class="form-actions text-center">
-                        <? if($this->vars['registration']['currentStatus'] < \Saw\Model\Registration::$status['PAID']): ?>
-                        <button type="button" data-id="<?=$this->vars['registration']['_id']?>" class="btn green pay"><i class="icon-money"></i> Mark Paid</button>
-                        <? endif; ?>
-                        <button type="button" data-id="<?=$this->vars['registration']['_id']?>" class="btn blue edit"><i class="icon-pencil"></i> Edit</button>
-                        <button type="button" data-id="<?=$this->vars['seminar']['_id']?>" class="btn view cancel">Cancel and Go Back</button>
-                        <? if($this->vars['registration']['currentStatus'] < \Saw\Model\Registration::$status['PAID']): ?>
-                        <button type="button" data-id="<?=$this->vars['registration']['_id']?>" class="btn red delete">Delete</button>
-                        <? endif; ?>
+                        <button type="button" data-id="<?=$this->vars['registration']['_id']?>" class="btn green save"><i class="icon-pencil"></i> Save Changes</button>
+                        <button type="button" data-id="<?=$this->vars['registration']['_id']?>" class="btn edit cancel">Cancel and Go Back</button>
                      </div>
                </form>
                   <!-- END FORM--> 
@@ -248,37 +246,11 @@
                         <p></p>
                      </div>
                      <div class="modal-footer">
-                        <button class="btn blue continue" data-insertid="">Continue</button>
-                        <button class="btn cancel" data-insertid="">Cancel</button>
+                        <button class="btn blue continue">Edit Again</button>
+                        <button class="btn continue finished" data-seminar-id="<?=$this->vars['seminar']['_id']?>">Back To Registrations</button>
                      </div>
                   </div>
                   <!--/ SUCCESSFUL SAVE MODAL -->
-                  <!-- DELETE MODAL -->
-                  <div id="delete-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="delete-modal-label" aria-hidden="true">
-                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                        <h3 id="delete-modal-label">Are you sure you want to delete this?</h3>
-                     </div>
-                     <div class="modal-body">
-                        <p>This delete action cannot be undone.</p>
-                     </div>
-                     <div class="modal-footer">
-                        <button class="btn red delete" data-seminar-id="<?=$this->vars['seminar']['_id']?>" data-id="<?=$this->vars['registration']['_id']?>">Yes, Delete it.</button>
-                        <button class="btn cancel">Cancel</button>
-                     </div>
-                  </div>
-                  <!--/ DELETE MODAL -->   
-
-
-
-
-
-
-
-
-
-
-
 
             </div>
          </div>

@@ -191,7 +191,16 @@
                                  
                               </div>
                            </div>
-                           
+                           <h3 class="form-section">Registration Confirmation Letter</h3>&nbsp;<button type="button" class="btn blue confirmationLettershow-editor">Click To Edit</button><br><br>
+                           <div class="row-fluid">
+                              <div class="span12 ">
+                                 <div class="control-group">
+                                    <span id="confirmationLetter" class="help-block "><?=(array_key_exists('register',$seminar)) ? (array_key_exists('confirmationLetter',$seminar['register'])) ? $seminar['register']['confirmationLetter'] : '' : '';?></span>
+                                    <input id="input-confirmationLetter" type="hidden" name="doc[register][confirmationLetter]" value="">
+                                 </div>
+                              </div>
+                           </div>
+
 
                            <div class="form-actions">
                               <button type="button" class="btn green">Save</button>
@@ -426,6 +435,32 @@
           });
          $('.show-editor').click(function(e){
             window.editor.api.activate();
+         })
+         window.confirmationeditor = new SnapEditor.InPlace("confirmationLetter", {
+              path: "/assets/snapeditor",
+             toolbar: {
+               items: [
+                "styleBlock", "|",
+                "bold", "italic", "underline", "|",
+                "alignLeft", "alignCentre", "alignRight", "alignJustify", "|",
+                "orderedList", "unorderedList", "indent", "outdent", "|",
+                "link", "table", "horizontalRule", "|"
+              ],
+             }
+             ,snap: false
+             /*
+             ,onSave: function (e) {
+                var isSuccess = true;
+                html = e.html;
+                io.saw.Seminar.edit();
+                return isSuccess || "Error";
+             }
+             ,onUnsavedChanges: function (e) {
+                  e.api.execAction("save");
+              }*/
+          });
+         $('.confirmationLettershow-editor').click(function(e){
+            window.confirmationeditor.api.activate();
          })
             
          io.saw.FileUpload.init({
