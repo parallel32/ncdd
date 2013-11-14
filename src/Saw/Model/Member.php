@@ -596,7 +596,7 @@ class Member extends User {
 
     public function updateOrderNum(){
     	if(!empty($this->_id) && !empty($this->orderNum)){
-    		$this->saveSafe();
+    		$this->saveEdit();
     	}
     	return true;
     }
