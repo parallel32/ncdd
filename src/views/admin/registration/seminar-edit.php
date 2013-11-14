@@ -79,7 +79,7 @@
                         <div class="control-group">
                            <label class="control-label" >Address 1</label>
                            <div class="controls">
-                              <input type="text" id="address1" name="doc[address1]" value="address1" class="m-wrap span12 address1">
+                              <input type="text" id="address1" name="doc[address1]" value="<?=$this->vars['registration']['address1']?>" class="m-wrap span12 address1">
                            </div>
                         </div>
                      </div>
