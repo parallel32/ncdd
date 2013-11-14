@@ -139,8 +139,11 @@ $app->get('/registration/{id}/view', function ($id, Request $request) use ($app)
 	
 	$registration = new Model\Registration($doc=array('_id'=>$id), $app);
 	$registration = $registration->findById();
+	$seminar = new Model\Seminar(array('_id'=>$registration['seminarId']),$app);
+	$seminar = $seminar->findById();
+
 	$crumbs = array(array('name'=>'Registrations','href'=>'/registrations')
-					,array('name'=>$registration['firstName'].' '.$registration['lastName'],'href'=>'/registration/'.$id.'/view')
+					,array('name'=>$registration['name'],'href'=>'/registration/'.$id.'/view')
 					,array('name'=>$registration['type'],'href'=>'/registration/'.$id.'/view')
 					);
 	$view_vars = array(
@@ -149,10 +152,12 @@ $app->get('/registration/{id}/view', function ($id, Request $request) use ($app)
 						,'headline'=>'Registrations'
 						,'description'=>"View all registration here."
 						,'crumbs'=>$crumbs
-						,'registration'=>$registration);
+						,'registration'=>$registration
+						,'seminar'=>$seminar
+						);
 	switch ($registration['class']) {
 		case 'RegistrationSeminar':
-			return $app['view']->render('registration/view-seminar', 'default', $view_vars);		
+			return $app['view']->render('registration/seminar-view', 'default', $view_vars);		
 			break;
 		default:
 			$msg = new \stdClass();
@@ -237,13 +242,66 @@ $app->post('/registration/edit', function (Request $request) use ($app) {
 
 })->before($mustbeADMIN);
 
+$app->post('/registration/markpaid', function (Request $request) use ($app) {
+
+	// retrieve document from request
+    $doc = $request->get('doc');
+    $endTrial = $request->get('endTrial');
+    $startTrial = $request->get('startTrial');
+    
+	switch ($doc['class']) {
+		case 'RegistrationSeminar':
+			$registration = new Model\RegistrationSeminar($doc, $app);
+		    break;
+	}
+	if(!empty($endTrial)){
+		$appArr = $registration->findOne($query=array('_id'=>new \MongoId($doc['_id'])),$fields=array('trial'=>true));
+		$newEndDate = new Model\Date($app,$endTrial, $appArr['trial']['timeZone']);
+		$newStartDate = new Model\Date($app,$startTrial, $appArr['trial']['timeZone']);
+		
+		$appArr['trial']['startDate'] = $newStartDate;
+		$appArr['trial']['endDate'] = $newEndDate;
+		$new_trial = new Model\Trial($appArr['trial'],$app);
+		$app['validateModel']($app,$new_trial);
+
+		$registration->trial = $new_trial->__toArray();
+		$registration->trial['endDate'] = $newEndDate;
+		$registration->trial['startDate'] = $newStartDate;
+	}
+	
+	// validate the model
+	$app['validateModel']($app,$registration);
+	
+	$registration_id = $registration->checkEmailExists();
+	if(!empty($registration_id) && $registration_id != $registration->_id){
+    	$label = 'Warning:';
+    	$message = "The email address you're trying to update is already in use on another registration.  Please use a different email and try again.";
+    	$response_status = 400;
+    }else{
+    	$member = $registration->saveEdit();	
+    	$label = 'Registration Saved';
+    	$message = 'Registration Successfully Saved.';
+    	$response_status = 200;
+    }
+    return new Response(json_encode(array('message' => $message,'label'=>$label)), $response_status,array('Content-Type' => 'application/json'));
+
+})->before($mustbeADMIN);
+
+$app->get('/registration/{id}/delete', function ($id, Request $request) use ($app) {
+    $registration = new Model\Registration(array('_id'=>$id), $app);
+    $registration->remove();
+    return new Response(json_encode(array('message' => 'Successfully Deleted')), 200,array('Content-Type' => 'application/json'));
+})->before($mustbeADMIN);
+
 $app->get('/registrations/seminar/{seminarId}/{offset}/{limit}', function ($seminarId, $offset, $limit, Request $request) use ($app) {
 	$seminar = new Model\Seminar($doc=array('_id'=>$seminarId), $app);
 	$seminar = $seminar->findById();
 	$registration = new Model\RegistrationSeminar($doc=array(), $app);
 	$submitted = $registration->fetchByStatus($seminarId,'SUBMITTED',$offset, $limit);
 	$paid = $registration->fetchByStatus($seminarId,'PAID',$offset, $limit);
-	$crumbs = array(array('name'=>'Registrations','href'=>'/registrations'));
+	$crumbs = array(array('name'=>'Seminars','href'=>'/seminar')
+					,array('name'=>$seminar['headline'],'href'=>'/seminar/view/'.$seminar['_id'])
+					,array('name'=>'Registrations','href'=>'/registrations/seminar/'.$seminar['_id']));
 	$view_vars = array(
 						 'active'=>'Seminar'
 						,'page-plugin'=>'datatables'
@@ -252,7 +310,7 @@ $app->get('/registrations/seminar/{seminarId}/{offset}/{limit}', function ($semi
 						,'crumbs'=>$crumbs
 						,'submitted'=>$submitted
 						,'paid'=>$paid);
-	return $app['view']->render('registration/index', 'default', $view_vars);
+	return $app['view']->render('registration/seminar-index', 'default', $view_vars);
 })
 ->value('offset','0')
 ->value('limit','100')

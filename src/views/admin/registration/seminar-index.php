@@ -25,13 +25,13 @@
                               
                            </font></font></div>
                         </div>
-                        <a class="more" href="#approve"><font><font>
+                        <a class="more" href="#submitted"><font><font>
                         Click To Scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
                         </a>                 
                      </div>
                   </div>
                   <div class="responsive span6" data-tablet="span6" data-desktop="span3">
-                     <a name="approve"></a>
+                     <a name="submitted"></a>
                      <div class="dashboard-stat green">
                         <div class="visual">
                            <i class="icon-hideme"><?=(!empty($this->vars['paid'])) ? count($this->vars['paid']) : 0;?></i>
@@ -42,7 +42,7 @@
                               
                            </font></font></div>
                         </div>
-                        <a class="more" href="#paid90"><font><font>
+                        <a class="more" href="#paid"><font><font>
                         click to scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
                         </a>                 
                      </div>
@@ -93,7 +93,7 @@
                            </tbody>
                         </table>
                      </div>
-                  </div><a name="paid90"></a>
+                  </div><a name="paid"></a>
                   <!-- END EXAMPLE TABLE PORTLET-->
                </div>
             </div>

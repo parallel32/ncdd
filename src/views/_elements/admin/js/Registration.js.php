@@ -76,7 +76,7 @@
 		});
 		$('.view.registration').click(function(e){
 			e.preventDefault();
-			document.location.href='/payment/'+$(this).attr('data-id')+'/view';
+			document.location.href='/registration/'+$(this).attr('data-id')+'/view';
 		});
 		$('.view.payment').click(function(e){
 			e.preventDefault();
@@ -86,7 +86,39 @@
 			e.preventDefault();
 			document.location.href='/member/'+$(this).attr('data-id')+'/edit';
 		});
-				
+		
+		// view screen buttons
+		$('#saw-form .pay').click(function(e){
+			e.preventDefault();
+			
+		});
+		$('#saw-form .edit').click(function(e){
+			e.preventDefault();
+			document.location.href='/registration/'+$(this).attr('data-id')+'/edit';
+		});
+		//launch delete modal
+		$('#saw-form .delete').click(function(e){
+			e.preventDefault();
+			$('#delete-modal').modal({keyboard: false});
+		});
+		//do delete actoin
+		$('#delete-modal .delete').click(function(e){
+			var theThis = $(this);
+			$('#delete-modal').modal('hide');
+			io.saw.FormGet.activate({postUrl:'/registration/'+$(this).attr('data-id')+'/delete'
+				,postOnComplete:function(responseObj,responseStatus){}
+				,postOnSuccess:function(responseObj){
+					document.location.href='/registrations/seminar/'+theThis.attr('data-seminar-id');
+				}
+			}); 	
+		});
+		
+
+		$('#saw-form .view.cancel').click(function(e){
+			e.preventDefault();
+			document.location.href='/registrations/seminar/'+$(this).attr('data-id');
+		});
+					
 	};
 	
 }( io.saw.Registration = io.saw.Registration || {}, io.saw.jQuery || jQuery ));
