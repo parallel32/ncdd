@@ -59,6 +59,16 @@ $app['clientLogin'] = $app->protect(function ($app,$request) {
         
         if($user->findByEmailPassword()):
             $user->authenticate();
+            
+            // process changeAccessLevelTo
+            $calt = Model\Member::getChangeAccessLevelTo($user->_id,$app);
+            if(!empty($calt)){
+                if($calt != $user->accessLevel){
+                    $user->changeMemberAccessLevel($calt);
+                }
+            }
+
+            //process the redirect if exists
             $flash = Model\User::getFlash($app);
             Model\User::setFlash($app,'','');
             return new Response(json_encode(array('message' => 'login successful','flash'=>$flash)), 200,array('Content-Type' => 'application/json'));

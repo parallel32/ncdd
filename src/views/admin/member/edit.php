@@ -146,6 +146,22 @@
                               </div>
                            </div>
                            <!--/span-->
+                           <div class="span6 ">
+                              <div class="control-group ">
+                                 <label class="control-label">Change Access Level To</label>
+                                 <div class="controls">
+                                    <select class="large m-wrap status" name="doc[changeAccessLevelTo]">
+                                       <option value="<?=MEMBER?>" <?=(array_key_exists('changeAccessLevelTo',$this->vars['member'])) ? ($this->vars['member']['changeAccessLevelTo'] == MEMBER) ?'selected':'': '';?>>MEMBER</option>
+                                       <option value="<?=UNPAIDMEMBER?>" <?=(array_key_exists('changeAccessLevelTo',$this->vars['member'])) ? ($this->vars['member']['changeAccessLevelTo'] == UNPAIDMEMBER) ?'selected':'': '';?>>UNPAID MEMBER</option>                                       
+                                    </select>
+                                    <span class="help-block">The purpose of this field is to change the access level of a member.  For example, if you want to reduce their access privileges because of non-payment you can change their Access Level to UNPAID MEMBER.  After payment is received you can change it back to MEMBER.</span>
+                                    <div class="alert">
+                                       <strong>Notice!</strong> the current accessLevel is: <strong><?=$this->app['humanizeAccessLevels']($this->vars['member']['accessLevel'])?></strong>.  Their accessLevel will not change to the above value until the next time they log in.
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
                         </div>
                         <div class="form-actions text-center">
                            <button type="button" class="btn green save"><i class="icon-ok"></i> Save</button>

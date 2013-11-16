@@ -73,6 +73,7 @@ class Member extends User {
 	public $joinDate;
 	public $timeZone='America/New_York';
 	public $yearsinpractice;
+	public $changeAccessLevelTo;
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		
@@ -121,6 +122,7 @@ class Member extends User {
 		$this->financialPayment = $doc['financialPayment'];
 		$this->practiceAreas = $doc['practiceAreas'];
 		$this->yearsinpractice = $doc['yearsinpractice'];
+		$this->changeAccessLevelTo = $doc['changeAccessLevelTo'];
 		// * means no order number present. use this because can't use zero, they'll shoot strait to the top
 		$this->orderNum = (!empty($doc['orderNum'])) ? ( $doc['orderNum'] == '*') ? $doc['orderNum']: (int)$doc['orderNum'] : ''; 
 		// for import only $this->orderNum = $doc['orderNum'];
@@ -181,6 +183,7 @@ class Member extends User {
 		$this->practiceAreas = $this->practiceAreas ?: array();
 		$this->yearsinpractice = $this->yearsinpractice ?: '';
 		$this->orderNum = $this->orderNum ?: '*';
+		$this->changeAccessLevelTo = $this->changeAccessLevelTo ?: '*';
 		
 
 		parent::prepareInsert();
@@ -581,11 +584,11 @@ class Member extends User {
 	}
 
 	// saves user_id into session
-	public function setUserSession() {
-        $user = $this->findById();
+	public function setUserSession($accessLevel=false) {
+        $user = $this->findOne($query=array('_id'=>$this->_id),$fields=array('_id'=>1,'accessLevel'=>1,'displayName'=>1,'status'=>1,));
         if(!empty($user)) {
 			$sess_user['user_id'] 		= $user['_id'];
-			$sess_user['accessLevel'] 	= $user['accessLevel'];
+			$sess_user['accessLevel'] 	= (empty($accessLevel)) ? $user['accessLevel'] : $accessLevel;
 			$sess_user['displayName'] 	= $user['displayName'];
 			$sess_user['status']	 	= $user['status'];
 			self::$app['session']->set('user',$sess_user);
@@ -593,7 +596,17 @@ class Member extends User {
         }
         return false;
     }
-
+    public static function getChangeAccessLevelTo($_id,$app){
+    	if(!empty($_id)) $_id = (is_object($_id)) ? $_id : new \MongoId($_id);
+    	$result = $app['mongo']->findOne('member',$query=array('_id'=>$_id),$fields=array('changeAccessLevelTo'=>1));
+		return (array_key_exists('changeAccessLevelTo',$result)) ? $result['changeAccessLevelTo']: '';
+		
+    }
+    public function changeMemberAccessLevel($changeTo){
+    	$this->accessLevel = $changeTo;
+		$this->saveSafe();
+		$this->setUserSession($changeTo);
+    }
     public function updateOrderNum(){
     	if(!empty($this->_id) && !empty($this->orderNum)){
     		$this->saveEdit();
@@ -617,6 +630,9 @@ class Member extends User {
 
     	// purge payments
     	self::$app['mongo']->remove(array('memberId'=>$this->_id), 'payment', $justOne=false, $options=array('fsync'=>true));
+    	
+    	// purge registrations
+    	self::$app['mongo']->remove(array('memberId'=>$this->_id), 'registration', $justOne=false, $options=array('fsync'=>true));
 
     }
  	

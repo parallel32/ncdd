@@ -352,10 +352,11 @@ class User extends Model {
 	public function findByEmailPassword(){
         
 		$query = array('email'=>trim(strtolower($this->email)));
-		$fields = array('_id','password','status');
+		$fields = array('_id','password','status','accessLevel');
 		$result = self::$app['mongo']->findOne($this->collection, $query, $fields, $slaveOkay=true);
         if(!empty($result) && $result['status'] === USER_STATUS_ACTIVE):
             $this->_id = $result['_id'];
+            $this->accessLevel = $result['accessLevel'];
             if($this->password === $result['password']) {
                 $this->password = '';                
                 return $result;
