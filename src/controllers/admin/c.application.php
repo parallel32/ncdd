@@ -797,7 +797,7 @@ $app->get('/application/{id}/pay-other', function ($id, Request $request) use ($
 	$apply = new Model\Apply($doc=array('_id'=>$id), $app);
 	$application = $apply->findById();
 	
-	$location = new Model\Location($doc=array('member'=>array('_id'=>$user['user_id'])), $app);
+	$location = new Model\Location($doc=array('member'=>array('_id'=>$application['memberId'])), $app);
 	$location = $location->getByMemberId();
 	$member = $location['member'];
 
