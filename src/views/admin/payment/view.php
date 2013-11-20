@@ -16,6 +16,14 @@
                   <form id="payment-form" class="horizontal-form portlet">
                      <h3 class="form-section">Payment Information</h3>
                      <div class="row-fluid">
+                        <div class="span12 ">
+                           <h4>
+                              <?=$this->vars['payment']['title']?>
+                           </h4></br>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
                         <div class="span8 ">
                            <div class="control-group ">
                               <label class="control-label">Date Paid</label>
@@ -32,17 +40,6 @@
                               <label class="control-label">Transaction ID</label>
                               <div class="controls">
                                  <input type="text" value="<?=$this->vars['payment']['transactionId']?>" readonly class="m-wrap span8 name">
-                              </div>
-                           </div>
-                        </div>
-                        <!--/span-->
-                     </div>
-                     <div class="row-fluid">
-                        <div class="span8 ">
-                           <div class="control-group ">
-                              <label class="control-label">Title</label>
-                              <div class="controls">
-                                 <input type="text" value="<?=$this->vars['payment']['title']?>" readonly class="m-wrap span8 name">
                               </div>
                            </div>
                         </div>

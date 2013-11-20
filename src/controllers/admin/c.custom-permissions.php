@@ -91,7 +91,6 @@ $app->post('/location/{id}/edit', function ($id, Request $request) use ($app) {
     
     $location = new Model\Location($doc,$app);
     $app['validateModel']($app,$location);
-
     $location->saveSafe();
     
     return new Response(json_encode(array('message' => 'saved successfully.')), 200,array('Content-Type' => 'application/json'));

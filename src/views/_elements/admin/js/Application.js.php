@@ -246,6 +246,29 @@
 		
 	};
 	
+	Application.updateMemberInit = function(){
+		$('#saw-form .form-actions .btn.green').click(function(e){
+			e.preventDefault();
+			initiateSubmit();
+		});
+		$('#saw-form input').keypress(function (e) {
+		   if (e.which == 13) {
+		   	  e.preventDefault();
+		      initiateSubmit();
+		   }
+		});
+		
+		$('#saw-form .form-actions .btn.cancel-go-back').click(function(e){
+			e.preventDefault();
+			document.location.href='/';
+		});
+		$('#save-success .finished').click(function(e){
+			e.preventDefault();
+			document.location.href='/';
+		});
+
+		
+	};
 	function remove (id){
 		io.saw.FormGet.activate({postUrl:'/application/'+id+'/delete'
 			,postOnComplete:function(responseObj,responseStatus){}

@@ -42,8 +42,8 @@
                         <li><?=$this->vars['application']['firstName']?><?=$middleName?><?=$this->vars['application']['lastName']?></li>
                         <li><?=$this->vars['application']['formattedAddress']?></li>
                         <li>email: <?=$this->vars['application']['email']?></li>
-                        <li>phone: <?=$this->vars['application']['phone']?></li>
-                        <li>fax: <?=$this->vars['application']['fax']?></li>
+                        <li>phone: <?=(!empty($this->vars['application']['phone'])) ? $this->vars['application']['phone']: $this->vars['location']['phone']?></li>
+                        <li>fax: <?=(!empty($this->vars['application']['fax'])) ? $this->vars['application']['fax']: $this->vars['location']['fax']?></li>
                      </ul>
                   </div>
                   <div class="span4">
@@ -133,13 +133,13 @@
                      $payment_vars['firstName'] = $this->vars['application']['firstName'];
                      $payment_vars['lastName'] = $this->vars['application']['lastName'];
                      $payment_vars['email'] = $this->vars['application']['email'];
-                     $payment_vars['phone'] = $this->vars['application']['phone'];
-                     $payment_vars['address1'] = $this->vars['application']['address1'];
-                     $payment_vars['address2'] = $this->vars['application']['address2'];
-                     $payment_vars['city'] = $this->vars['application']['city'];
-                     $payment_vars['state'] = $this->vars['application']['state'];
-                     $payment_vars['postalCode'] = $this->vars['application']['postalCode'];
-                     $payment_vars['country'] = $this->vars['application']['country'];
+                     $payment_vars['phone'] = (!empty($this->vars['application']['phone'])) ? $this->vars['application']['phone']: $this->vars['location']['phone'];
+                     $payment_vars['address1'] = (!empty($this->vars['application']['address1'])) ? $this->vars['application']['address1']: $this->vars['location']['addressLine1'];
+                     $payment_vars['address2'] = (!empty($this->vars['application']['address2'])) ? $this->vars['application']['address2']: $this->vars['location']['addressLine2'];
+                     $payment_vars['city'] = (!empty($this->vars['application']['city'])) ? $this->vars['application']['city']: $this->vars['location']['city'];
+                     $payment_vars['state'] = (!empty($this->vars['application']['state'])) ? $this->vars['application']['state']: $this->vars['location']['state'];
+                     $payment_vars['postalCode'] = (!empty($this->vars['application']['postalCode'])) ? $this->vars['application']['postalCode']: $this->vars['location']['zip'];
+                     $payment_vars['country'] = (!empty($this->vars['application']['country'])) ? $this->vars['application']['country']: $this->vars['location']['country'];
                      $payment_vars['chargeOnSuccess'] = <<< EOT
 {chargeOnSuccess:function(responseObj,paymentId){
    $('#save-success .continue.payment').attr('data-insertid',paymentId);

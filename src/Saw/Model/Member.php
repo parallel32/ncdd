@@ -74,6 +74,7 @@ class Member extends User {
 	public $timeZone='America/New_York';
 	public $yearsinpractice;
 	public $changeAccessLevelTo;
+	public $renewal;
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		
@@ -123,6 +124,8 @@ class Member extends User {
 		$this->practiceAreas = $doc['practiceAreas'];
 		$this->yearsinpractice = $doc['yearsinpractice'];
 		$this->changeAccessLevelTo = $doc['changeAccessLevelTo'];
+		$this->renewal = (is_object($doc['renewal'])) ? $doc['renewal']->__toArray(): $doc['renewal'];
+
 		// * means no order number present. use this because can't use zero, they'll shoot strait to the top
 		$this->orderNum = (!empty($doc['orderNum'])) ? ( $doc['orderNum'] == '*') ? $doc['orderNum']: (int)$doc['orderNum'] : ''; 
 		// for import only $this->orderNum = $doc['orderNum'];
@@ -148,7 +151,17 @@ class Member extends User {
 			$this->currentOrder = $order_arr[0];
 		}
 		
-
+		if(!empty($doc['renewalStatus'])){
+			if($doc['renewalStatus'] == 'ACTIVATE'){
+				$renewal = new Renewal(array(),$app);
+				$renewal->prepareInsert();
+				$this->renewal = $renewal->__toArray();
+			}elseif($doc['renewalStatus'] == 'DEACTIVATE'){
+				$this->renewal = new \StdClass();
+			}
+		}else{
+			$this->renewal = $doc['renewal'];
+		}
 		
 	}
 	
@@ -184,7 +197,7 @@ class Member extends User {
 		$this->yearsinpractice = $this->yearsinpractice ?: '';
 		$this->orderNum = $this->orderNum ?: '*';
 		$this->changeAccessLevelTo = $this->changeAccessLevelTo ?: '*';
-		
+		$this->renewal = $this->renewal ?: new \StdClass();
 
 		parent::prepareInsert();
 	}
@@ -614,6 +627,50 @@ class Member extends User {
     	return true;
     }
 
+    public function fetchByRenewalStatus($status, $membership=array(), $offset=0,$limit=100,$filter=array()){
+		$query = array('renewal.currentStatus'=>Renewal::$status[$status],
+						'currentMembership'=>array('$in'=>$membership));
+		if(!empty($filter)){
+			$query = array_merge($filter, $query);
+		}
+		$fields = array('displayName'=>true
+						,'email'=>true
+						,'timeZone'=>true
+						,'_id'=>true
+						,'renewal'=>true
+						);
+		switch ($status) {
+			case 'SUBMITTED':
+				$sort=array('renewal.submittedDate.date'=>-1);
+				break;
+			case 'APPROVED':
+				$sort=array('renewal.approvedDate.date'=>-1);
+				break;
+			default:
+				$sort=array('lastName'=>1);
+				break;
+		}
+		$result = $this->find($query,$fields,$slaveOkay=true,$sort,(int)$offset,(int)$limit);
+		
+		return $result;
+
+	}
+    public function fetchByRenewalDonations($offset=0,$limit=100){
+		$query = array('renewal'=>array('$exists'=>true),
+						'renewal.contributionPaymentId'=>array('$ne'=>null));
+		
+		$fields = array('displayName'=>true
+						,'email'=>true
+						,'timeZone'=>true
+						,'_id'=>true
+						,'renewal'=>true
+						);
+		$sort=array('renewal.contributionPaymentId'=>-1);
+		$result = $this->find($query,$fields,$slaveOkay=true,$sort,(int)$offset,(int)$limit);
+		//error_log('fetch:'.print_r($result,true));
+		return $result;
+
+	}
     // route for this is in c.utilities.php
     public function removeMember(){
     	// delete member

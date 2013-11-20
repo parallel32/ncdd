@@ -53,12 +53,12 @@ class Location extends Model {
 		$this->neighborhood = $doc['neighborhood'];
 		// logic here is that if the point array was passed in then force the numbers to float (required for mongo's 2D index) otherwise set to an array
 		// to maintain a consistent data type
-		$this->point = (is_array($doc['point']) && !empty($doc['point'][0])) ? array((float)$doc['point'][0], (float)$doc['point'][1]) : array();
+		$this->point = (is_array($doc['point']) && !empty($doc['point'][0])) ? array((float)$doc['point'][0], (float)$doc['point'][1]) : '';
 		$this->addressLine1 = $doc['addressLine1'];
         $this->addressLine2 = $doc['addressLine2'];
 		$this->city = $doc['city'];
 		$this->state = $doc['state'];
-        $this->zip = $doc['zip'];
+        $this->zip = (string)$doc['zip'];
         $this->country = $doc['country'];
 		$this->phone = $doc['phone'];
 		$this->fax = $doc['fax'];
@@ -97,6 +97,11 @@ class Location extends Model {
 	public function getByOwner($offset=0,$limit=100){
         $fields = array(); /* Need all fields for locations list table */
 		return $this->find($query=array('ownerId'=>$this->ownerId),$fields,$slaveOkay=true,$sort=array('_id'=>-1),$offset,$limit);
+	}
+	public function getByMemberId($offset=0,$limit=100){
+		if(!empty($this->member['_id'])) $this->member['_id'] = (is_object($this->member['_id'])) ? $this->member['_id'] : new \MongoId($this->member['_id']);
+        $fields = array(); /* Need all fields for locations list table */
+		return $this->findOne($query=array('member._id'=>$this->member['_id']),$fields,$slaveOkay=true,$sort=array('_id'=>-1),$offset,$limit);
 	}
 	public function updateMember($member){
 		$doc = array('$set'=>array('member'=>$member));

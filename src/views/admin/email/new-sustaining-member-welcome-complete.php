@@ -12,7 +12,7 @@
 												<br />
 												<div class="textdark">
 <? $middleName = (!empty($this->vars['middleName'])) ? ' '.$this->vars['middleName'].' ':' '; ?>
-<br>Dear <?=$this->vars['firstName']?><?=$middleName?><?=$this->vars['lastName']?>;
+<br>Dear <?=$this->vars['firstName']?><?=$middleName?><?=$this->vars['lastName']?>,
 <br>
 <br>On behalf of the Membership Committee, you have been approved as a Sustaining Member of the National College for DUI Defense, Inc. This designation, as an active member, recognizes your pursuits in the defense of those accused of alcohol and drug related charges.
 <br/>

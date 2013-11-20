@@ -36,8 +36,8 @@
                         <li><?=$this->vars['application']['firstName']?><?=$middleName?><?=$this->vars['application']['lastName']?></li>
                         <li><?=$this->vars['application']['formattedAddress']?></li>
                         <li>email: <?=$this->vars['application']['email']?></li>
-                        <li>phone: <?=$this->vars['application']['phone']?></li>
-                        <li>fax: <?=$this->vars['application']['fax']?></li>
+                        <li>phone: <?=(!empty($this->vars['application']['phone'])) ? $this->vars['application']['phone']: $this->vars['location']['phone']?></li>
+                        <li>fax: <?=(!empty($this->vars['application']['fax'])) ? $this->vars['application']['fax']: $this->vars['location']['fax']?></li>
                      </ul>
                   </div>
                   <div class="span4">
@@ -134,13 +134,14 @@
                      $firstName = $this->vars['application']['firstName'];
                      $lastName = $this->vars['application']['lastName'];
                      $email = $this->vars['application']['email'];
-                     $phone = $this->vars['application']['phone'];
-                     $address1 = $this->vars['application']['address1'];
-                     $address2 = $this->vars['application']['address2'];
-                     $city = $this->vars['application']['city'];
-                     $state = $this->vars['application']['state'];
-                     $postalCode = $this->vars['application']['postalCode'];
-                     $country = $this->vars['application']['country'];
+                     $phone = (!empty($this->vars['application']['phone'])) ? $this->vars['application']['phone']: $this->vars['location']['phone'];
+                     $address1 = (!empty($this->vars['application']['address1'])) ? $this->vars['application']['address1']: $this->vars['location']['addressLine1'];
+                     $address2 = (!empty($this->vars['application']['address2'])) ? $this->vars['application']['address2']: $this->vars['location']['addressLine2'];
+                     $city = (!empty($this->vars['application']['city'])) ? $this->vars['application']['city']: $this->vars['location']['city'];
+                     $state = (!empty($this->vars['application']['state'])) ? $this->vars['application']['state']: $this->vars['location']['state'];
+                     $postalCode = (!empty($this->vars['application']['postalCode'])) ? $this->vars['application']['postalCode']: $this->vars['location']['zip'];
+                     $country = (!empty($this->vars['application']['country'])) ? $this->vars['application']['country']: $this->vars['location']['country'];
+                     
                      ?>
                      <input type="hidden" class="name" name="doc[name]" value="<?=$firstName.' '.$lastName?>">
                      <input type="hidden" class="memberId" name="doc[memberId]" value="<?=$memberId?>">

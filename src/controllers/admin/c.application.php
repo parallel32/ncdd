@@ -51,6 +51,16 @@ $app['applicationEmails'] = $app->protect(function ($app,$applicationId,$context
 				break;		
 			case 'UpdateMember':
 				$application = new Model\UpdateMember(array('_id'=>$applicationId), $app);
+				$application->findById();
+			    $member = $application->approve();
+			    // email welcome message
+				$subject = 'NCDD Membership Renewal Approved';
+				$to = $member['email'];
+				$view_vars = array('email'=>$member['email']
+									,'firstName'=>$member['firstName']
+									,'lastName'=>$member['lastName']
+				);
+				$body = $app['view']->render('email/update-member-approved','email', $view_vars);
 				break;
 			case 'UpdateFoundingMember':
 				$application = new Model\UpdateFoundingMember(array('_id'=>$applicationId), $app);
@@ -132,7 +142,15 @@ $app['applicationEmails'] = $app->protect(function ($app,$applicationId,$context
 				$body = $app['view']->render('email/new-sustaining-member-welcome-complete','email', $view_vars);
 				break;		
 			case 'UpdateMember':
-				$application = new Model\UpdateMember(array('_id'=>$id), $app);
+				// email welcome message
+				$subject = 'NCDD Membership Renewal Paid';
+				$to = $member->email;
+				$view_vars = array('email'=>$member->email
+									,'firstName'=>$member->firstName
+									,'middleName'=>$member->middleName
+									,'lastName'=>$member->lastName
+				);
+				$body = $app['view']->render('email/update-member-paid','email', $view_vars);
 				break;
 			case 'UpdateFoundingMember':
 				$application = new Model\UpdateFoundingMember(array('_id'=>$id), $app);
@@ -269,6 +287,107 @@ $app->post('/application/new-sustaining-member', function (Request $request) use
 	    endif;
 });
 
+///////////////////////////////
+// UPDATE MEMBER APPLICATION //
+///////////////////////////////
+$app->get('/application/update-member', function (Request $request) use ($app) {
+
+	//get the user logged in
+	$user = $app['session']->get('user');
+
+	$location = new Model\Location($doc=array('member'=>array('_id'=>$user['user_id'])), $app);
+	$location = $location->getByMemberId();
+	$member = $location['member'];
+
+	$crumbs = array(array('name'=>'Dashboard','href'=>'/')
+					,array('name'=>'Membership Renewal','href'=>'/application/update-member')
+					);
+	$view_vars = array(
+						 'active'=>'Dashboard'
+						,'page-plugin'=>'datatables'
+						,'headline'=>'Membership Renewal Form'
+						,'description'=>"Fill in and submit this application to begin your membership renewal process."
+						,'crumbs'=>$crumbs
+						,'member'=>$member
+						,'location'=>$location);
+		
+	return $app['view']->render('application/update-member', 'default', $view_vars);
+});
+$app->post('/application/update-member', function (Request $request) use ($app) {
+
+	//get the user logged in
+	$user = $app['session']->get('user');
+	$location = new Model\Location($doc=array('member'=>array('_id'=>$user['user_id'])), $app);
+	$location = $location->getByMemberId();
+	$member = $location['member'];
+
+
+    // retrieve document from request
+	$doc = $request->get('doc');
+	// add name, email and area to the application for identification
+	$doc['memberId'] = new \MongoId($user['user_id']);
+	$doc['firstName'] = $member['firstName'];
+	$doc['middleName'] = (array_key_exists('middleName',$member)) ? $member['middleName']: '';
+	$doc['lastName'] = $member['lastName'];
+	$doc['email'] = $member['email'];
+	$doc['city'] = $location['city'];
+	$doc['state'] = $location['state'];
+
+	$paymentId = new \stdClass();	
+	$app_id = new \stdClass();	
+
+    $application = new Model\UpdateMember($doc, $app);
+    // validate the model
+    $app['validateModel']($app,$application,$groups=array('update_member'));
+	
+			
+	if ($doc['contributionCheck'] == 'yes') {
+		
+		$doc['payment']['ownerId'] = $app_id;
+		$doc['payment']['ownerClass'] = 'UpdateMember';
+
+		$payment = new Model\Payment($doc['payment'],$app);
+		$app['validateModel']($app, $payment,$groups=array('cc'));
+		$paymentId = $payment->charge();
+
+		// thank you receipt message
+		$subject = 'NCDD Payment Received';
+		$to = $payment->email;
+		$view_vars = array('payment'=>$payment->__toArray()
+							,'paymentId'=>$paymentId
+							,'email'=>$member['email']
+		);
+		$body = $app['view']->render('email/payment-thankyou','email', $view_vars);
+			
+		$app['sendMail']($subject, $body, $to);
+
+	}
+	
+	$app_id = $application->insert();
+	$payment = new Model\Payment(array('_id'=>$paymentId,'ownerId'=>$app_id),$app);
+	$payment->saveSafe();
+
+	$member['renewal']['currentStatus'] = Model\Renewal::$status['SUBMITTED'];
+	$member['renewal']['submittedDate'] = new Model\Date($app, 'now'); 
+	$member['renewal']['applicationId'] = $app_id; 
+	$member['renewal']['contributionPaymentId'] = $paymentId; 
+
+	$renewal = new Model\Renewal($member['renewal'],$app);
+	$renewal->setRenewalByMember($member['_id']);
+	
+
+	
+
+	return new Response(json_encode(array(
+		'label'=>'Your application was received.  Thank you.',
+		'message'=>'Thank you for your interest in NCDD.  Your application has been submitted.  You will be notified by the College when it is approved or if there are any questions.')), 200,array('Content-Type' => 'registration/json')
+	);
+
+
+})->after(function (Request $request, Response $response, Silex\Application $app) {
+		
+});
+
 ///////////////////////
 // GENERAL FUNCTIONS //
 ///////////////////////
@@ -294,6 +413,9 @@ $app->get('/application/{id}/view-public', function ($id, Request $request) use 
 			break;
 		case 'ApplyNewSustainingMember':
 			return $app['view']->render('application/view-new-sustaining-member-public', 'blank', $view_vars);		
+			break;
+		case 'UpdateMember':
+			return $app['view']->render('application/view-update-member-public', 'blank', $view_vars);		
 			break;
 		default:
 			$msg = new \stdClass();
@@ -327,6 +449,9 @@ $app->get('/application/{id}/view', function ($id, Request $request) use ($app) 
 			break;
 		case 'ApplyNewSustainingMember':
 			return $app['view']->render('application/view-new-sustaining-member', 'default', $view_vars);		
+			break;
+		case 'UpdateMember':
+			return $app['view']->render('application/view-update-member', 'default', $view_vars);		
 			break;
 		default:
 			$msg = new \stdClass();
@@ -363,6 +488,9 @@ $app->get('/application/{id}/edit', function ($id, Request $request) use ($app) 
 			break;
 		case 'ApplyNewSustainingMember':
 			return $app['view']->render('application/edit-new-sustaining-member', 'default', $view_vars);		
+			break;
+		case 'UpdateMember':
+			return $app['view']->render('application/edit-update-member', 'default', $view_vars);		
 			break;
 		
 	}
@@ -410,20 +538,40 @@ $app->post('/application/edit', function (Request $request) use ($app) {
 		$application->trial['startDate'] = $newStartDate;
 	}
 	
-	// validate the model
-	$app['validateModel']($app,$application);
 	
-	$application_id = $application->checkEmailExists();
-	if(!empty($application_id) && $application_id != $application->_id){
-    	$label = 'Warning:';
-    	$message = "The email address you're trying to update is already in use on another application.  Please use a different email and try again.";
-    	$response_status = 400;
-    }else{
-    	$member = $application->saveEdit();	
-    	$label = 'Application Saved';
-    	$message = 'Application Successfully Saved.';
-    	$response_status = 200;
-    }
+
+	switch ($doc['class']) {
+		case 'NewMemberApplication': // old deprecated
+		case 'ApplyNewMember':
+		case 'ApplyNewSustainingMember':
+			// validate the model
+			$app['validateModel']($app,$application);
+	
+			$application_id = $application->checkEmailExists();
+			if(!empty($application_id) && $application_id != $application->_id){
+		    	$label = 'Warning:';
+		    	$message = "The email address you're trying to update is already in use on another application.  Please use a different email and try again.";
+		    	$response_status = 400;
+		    }else{
+		    	$member = $application->saveEdit();	
+		    	$label = 'Application Saved';
+		    	$message = 'Application Successfully Saved.';
+		    	$response_status = 200;
+		    }
+		    break;		
+		case 'UpdateMember':
+		case 'UpdateFoundingMember':
+		case 'UpdateSustainingMember':
+			// validate the model
+			$app['validateModel']($app,$application,$groups=array('update_member'));
+	
+			$member = $application->saveEdit();	
+	    	$label = 'Application Saved';
+	    	$message = 'Application Successfully Saved.';
+	    	$response_status = 200;
+			break;
+	}
+	
     return new Response(json_encode(array('message' => $message,'label'=>$label)), $response_status,array('Content-Type' => 'application/json'));
 
 })->before($mustbeADMIN);
@@ -444,7 +592,7 @@ $app->post('/application/references', function (Request $request) use ($app) {
 $app->get('/application/expire-trial', function (Request $request) use ($app) {
 	
 	$appl = new Model\Apply($doc=array(), $app);
-	$applications = $appl->fetchByStatus('TRIAL');
+	$applications = $appl->fetchByStatus('TRIAL',0,100,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
 	
 	$total = count($applications);
 	$count = 0;	
@@ -496,6 +644,7 @@ $app->post('/application/{id}/trial', function ($id, Request $request) use ($app
 // APPROVE //
 /////////////
 $app->get('/application/{id}/approve/{type}', function ($id,$type, Request $request) use ($app) {
+	error_log('type:'.$type);
 	return $app['applicationEmails']($app,$id,$context='new-member-welcome');
 })->before($mustbeADMIN);
 
@@ -506,6 +655,23 @@ $app->get('/application/{id}/pay', function ($id, Request $request) use ($app) {
 	
 	$apply = new Model\Apply($doc=array('_id'=>$id), $app);
 	$application = $apply->findById();
+	
+	$location = new Model\Location($doc=array('member'=>array('_id'=>$application['memberId'])), $app);
+	$location = $location->getByMemberId();
+	$member = $location['member'];
+
+	switch ($application['class']) {
+		case 'NewMemberApplication': // old deprecated
+		case 'ApplyNewMember':
+		case 'ApplyNewSustainingMember':
+			$pro_rate = $apply->proRate();
+		    break;		
+		case 'UpdateMember':
+		case 'UpdateFoundingMember':
+		case 'UpdateSustainingMember':
+			$pro_rate = array('q'=>0,'a'=>0);
+			break;
+	}
 	
 	$crumbs = array(array('name'=>'Applications','href'=>'/applications')
 					,array('name'=>$application['firstName'].' '.$application['lastName'],'href'=>'/application/'.$id.'/view')
@@ -519,7 +685,9 @@ $app->get('/application/{id}/pay', function ($id, Request $request) use ($app) {
 						,'description'=>"Pay membership Dues."
 						,'crumbs'=>$crumbs
 						,'application'=>$application
-						,'pro_rated_membership_dues'=>$apply->proRate());
+						,'location'=>$location
+						,'member'=>$member
+						,'pro_rated_membership_dues'=>$pro_rate);
 	return $app['view']->render('application/pay', 'default', $view_vars);
 })->value('id','')
 ->before($mustbeMEMBER);
@@ -528,6 +696,23 @@ $app->get('/application/{id}/pay-other', function ($id, Request $request) use ($
 	
 	$apply = new Model\Apply($doc=array('_id'=>$id), $app);
 	$application = $apply->findById();
+	
+	$location = new Model\Location($doc=array('member'=>array('_id'=>$user['user_id'])), $app);
+	$location = $location->getByMemberId();
+	$member = $location['member'];
+
+	switch ($application['class']) {
+		case 'NewMemberApplication': // old deprecated
+		case 'ApplyNewMember':
+		case 'ApplyNewSustainingMember':
+			$pro_rate = $apply->proRate();
+		    break;		
+		case 'UpdateMember':
+		case 'UpdateFoundingMember':
+		case 'UpdateSustainingMember':
+			$pro_rate = array('q'=>0,'a'=>0);
+			break;
+	}
 	
 	$crumbs = array(array('name'=>'Applications','href'=>'/applications')
 					,array('name'=>$application['firstName'].' '.$application['lastName'],'href'=>'/application/'.$id.'/view')
@@ -541,7 +726,9 @@ $app->get('/application/{id}/pay-other', function ($id, Request $request) use ($
 						,'description'=>"Pay membership Dues."
 						,'crumbs'=>$crumbs
 						,'application'=>$application
-						,'pro_rated_membership_dues'=>$apply->proRate());
+						,'location'=>$location
+						,'member'=>$member
+						,'pro_rated_membership_dues'=>$pro_rate);
 	return $app['view']->render('application/pay-other', 'default', $view_vars);
 })->value('id','')
 ->before($mustbeADMIN);
@@ -564,7 +751,27 @@ $app->post('/application/payment', function (Request $request) use ($app) {
 // is making a payment on behalf of the member using the same credit card screen
 $app->get('/application/{paymentId}/pay/{applicationId}/{resetSession}', function ($paymentId, $applicationId, $resetSession, Request $request) use ($app) {
     
-    $application = new Model\Apply(array('_id'=>$applicationId, 'paymentId'=>$paymentId), $app);
+
+    $apply = new Model\Apply($doc=array('_id'=>$applicationId), $app);
+	$application = $apply->findById();
+	
+	switch ($application['class']) {
+		case 'NewMemberApplication': // old deprecated
+		case 'ApplyNewMember':
+		case 'ApplyNewSustainingMember':
+			$application = new Model\Apply(array('_id'=>$applicationId, 'paymentId'=>$paymentId), $app);
+		    break;		
+		case 'UpdateMember':
+			$application = new Model\UpdateMember(array('_id'=>$applicationId, 'paymentId'=>$paymentId,'memberId'=>$application['memberId']), $app);
+			break;
+		case 'UpdateFoundingMember':
+			$application = new Model\UpdateFoundingMember(array('_id'=>$applicationId, 'paymentId'=>$paymentId,'memberId'=>$application['memberId']), $app);
+			break;
+		case 'UpdateSustainingMember':
+			$application = new Model\UpdateSustainingMember(array('_id'=>$applicationId, 'paymentId'=>$paymentId,'memberId'=>$application['memberId']), $app);
+			break;
+	}
+    
     if($resetSession=='no')
     	$application->markPaid(false);
     else
@@ -582,7 +789,7 @@ $app->get('/application/{id}/delete', function ($id, Request $request) use ($app
 
 $app->get('/applications/all/{offset}/{limit}', function ($offset, $limit, Request $request) use ($app) {
 	$application = new Model\Apply($doc=array(), $app);
-	$paid = $application->fetchByStatus('PAID', $offset=0,$limit=100);
+	$paid = $application->fetchByStatus('PAID', $offset=0,$limit=100,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
 	$crumbs = array(array('name'=>'Applications','href'=>'/applications')
 					,array('name'=>'All Paid','href'=>'/applications/all')
 	);
@@ -601,10 +808,10 @@ $app->get('/applications/all/{offset}/{limit}', function ($offset, $limit, Reque
 
 $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $request) use ($app) {
 	$application = new Model\Apply($doc=array(), $app);
-	$submitted = $application->fetchByStatus('SUBMITTED',$offset, $limit);
-	$approved = $application->fetchByStatus('APPROVED',$offset, $limit);
-	$trial = $application->fetchByStatus('TRIAL',$offset, $limit);
-	$paid = $application->fetchByDatePaid(90, $offset, $limit);
+	$submitted = $application->fetchByStatus('SUBMITTED',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
+	$approved = $application->fetchByStatus('APPROVED',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
+	$trial = $application->fetchByStatus('TRIAL',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
+	$paid = $application->fetchByDatePaid(90, $offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
 	$crumbs = array(array('name'=>'Applications','href'=>'/applications'));
 	$view_vars = array(
 						 'active'=>'Applications/New'
@@ -625,23 +832,30 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 // RENEWALS //
 //////////////
 $app->get('/renewals/{offset}/{limit}', function ($offset, $limit, Request $request) use ($app) {
-	$application = new Model\Apply($doc=array(), $app);
-	$submitted = $application->fetchByStatus('SUBMITTED',$offset, $limit);
-	$approved = $application->fetchByStatus('APPROVED',$offset, $limit);
-	$trial = $application->fetchByStatus('TRIAL',$offset, $limit);
-	$paid = $application->fetchByDatePaid(90, $offset, $limit);
+	$member = new Model\Member($doc=array(), $app);
+	$renewals = array(
+		'unsubmitted'=>$member->fetchByRenewalStatus('UNSUBMITTED',array(Model\Member::$membership['GENERAL MEMBER']),$offset, $limit)
+		,'submitted'=>$member->fetchByRenewalStatus('SUBMITTED',array(Model\Member::$membership['GENERAL MEMBER']),$offset, $limit)
+		,'approved'=>$member->fetchByRenewalStatus('APPROVED',array(Model\Member::$membership['GENERAL MEMBER']),$offset, $limit)
+		,'paid'=>$member->fetchByRenewalStatus('PAID',array(Model\Member::$membership['GENERAL MEMBER']), $offset, $limit)
+	);
+	$updates = array(
+		'unsubmitted'=>$member->fetchByRenewalStatus('UNSUBMITTED',array(Model\Member::$membership['FOUNDING MEMBER'],Model\Member::$membership['SUSTAINING MEMBER']),$offset, $limit)
+		,'submitted'=>$member->fetchByRenewalStatus('SUBMITTED',array(Model\Member::$membership['FOUNDING MEMBER'],Model\Member::$membership['SUSTAINING MEMBER']),$offset, $limit)
+		,'approved'=>$member->fetchByRenewalStatus('APPROVED',array(Model\Member::$membership['FOUNDING MEMBER'],Model\Member::$membership['SUSTAINING MEMBER']),$offset, $limit)
+	);
+	$donations = $member->fetchByRenewalDonations($offset, $limit);
 	$crumbs = array(array('name'=>'Renewals','href'=>'/renewals'));
 	$view_vars = array(
 						 'active'=>'Applications/Renewal'
 						,'page-plugin'=>'datatables'
-						,'headline'=>'Renewals - In Development'
-						,'description'=>"View all member application renewals here."
+						,'headline'=>'Renewals'
+						,'description'=>"View all renewal applications here."
 						,'crumbs'=>$crumbs
-						,'submitted'=>$submitted
-						,'approved'=>$approved
-						,'trial'=>$trial
-						,'paid'=>$paid);
-	return $app['view']->render('application/blank', 'default', $view_vars);
+						,'donations'=>$donations
+						,'renewals'=>$renewals
+						,'updates'=>$updates);
+	return $app['view']->render('application/index-renewals', 'default', $view_vars);
 })
 ->value('offset','0')
 ->value('limit','100')

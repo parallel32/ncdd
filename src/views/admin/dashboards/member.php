@@ -65,8 +65,6 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                            <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                               <thead>
                                  <tr role="row">
-                                    <th class="">Name</th>
-                                    <th class="hidden-480">Area</th>
                                     <th class="hidden-480">Date Approved</th>
                                     <th class="hidden-480">Application Type</th>
                                     <th class=""></th>
@@ -75,9 +73,6 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                               <tbody role="alert" aria-live="polite" aria-relevant="all">
                                  <? if(!empty($this->vars['applications'])): foreach($this->vars['applications'] as $application): ?>
                                  <tr class="gradeX odd">
-                                    <? $middleName = (!empty($application['middleName'])) ? ' '.$application['middleName'].' ':' '; ?>
-                                    <td class=" "><?=$application['firstName'].$middleName.$application['lastName']?></td>
-                                    <td class="hidden-480 "><?=$application['city'].', '.$application['state']?></td>
                                     <td class="hidden-480 "><?=$application['approvedDate']['monthDay'].' '.$application['approvedDate']['shortTime']?></td>
                                     <td class="center hidden-480 "><?=$application['type']?></td>
                                     <td class=" "><a data-id="<?=$application['_id']?>" class="btn blue mini pay"><i class=" "></i> Pay Membership Dues</a></td>
@@ -96,10 +91,86 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                <? endif; ?>
                <!--/ APPROVED APPLICATIONS -->
 
+               <? if(!empty($this->vars['renewal']) && $this->vars['renewal']['currentStatus'] < \Saw\Model\Renewal::$status['SUBMITTED']): ?>
+                  <h3 class="form-section">Prepare your membership <?=(\Saw\Model\Member::$membership['GENERAL MEMBER'] == $this->vars['currentMembership']) ? 'renewal form': 'update form';?></h3>
+                  <?
+                     switch ($this->vars['currentMembership']) {
+                        case \Saw\Model\Member::$membership['GENERAL MEMBER']:
+                           $apptype = 'update-member';
+                           break;
+                        case \Saw\Model\Member::$membership['SUSTAINING MEMBER']:
+                           $apptype = 'update-sustaining-member';
+                           break;
+                        case \Saw\Model\Member::$membership['FOUNDING MEMBER']:
+                           $apptype = 'update-founding-member';
+                           break;                        
+                        default:
+                           $apptype = 'update-member';
+                           break;
+                     }
+                  ?>
+                  <span><a data-apptype="<?=$apptype?>" data-id="<?=call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$this->app);?>" class="btn green large renewal"><i class=" icon-pencil"></i> Begin</a></span>
+                  <br><br>
+
+               <? elseif ($this->vars['renewal']['currentStatus'] == \Saw\Model\Renewal::$status['SUBMITTED']): ?>
+                  <h3 class="form-section">Your membership <?=(\Saw\Model\Member::$membership['GENERAL MEMBER'] == $this->vars['currentMembership']) ? 'renewal form': 'update form';?> has been submitted and is awaiting approval.</h3>
+                  <br><br>
+               <? endif; ?>
+
+
                <h3 class="form-section">Profile Information</h3>
                <span><a data-id="<?=call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$this->app);?>" class="btn blue large edit-profile"><i class=" icon-pencil"></i> Edit Your Profile</a></span>
                <br><br>
-
+               <h3 class="form-section">Website Badges</h3>
+               <div class="row-fluid">
+                  <div class="span6 ">
+                     <div class="control-group ">
+                        <label class="control-label">Member Status</label>
+                        <div class="controls">
+                           <img width="152" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/member">
+                           <? if($this->vars['member']['boardCertified']): ?>
+                              &nbsp;&nbsp;<img width="200" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/boardcertified">
+                           <? endif; ?>
+                        </div>
+                     </div>
+                  </div>
+                  <!--/span-->
+                  <? if($this->vars['member']['currentFacultyPosition'] > 0): ?>
+                  <div class="span6 ">
+                     <div class="control-group ">
+                        <label class="control-label">Executive Status</label>
+                        <div class="controls">
+                           <img src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/exec">
+                        </div>
+                     </div>
+                  </div>
+                  <!--/span-->
+                  <? endif; ?>
+               </div>
+               <div class="row-fluid">
+                  <div class="span6 ">
+                     <div class="control-group ">
+                        <label class="control-label">Membership Badge for your website:</label>
+                        <div class="controls">
+                           <textarea rows="3" class="span8"><a target="_blank" href="http://<?=SAW_CONSUMER_WEBSITE?>/member/<?=$this->vars['member']['_id']?>/<?=$this->vars['member']['slug']?>"><img width="152" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/member" alt="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" title="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" /></a></textarea>
+                        </div>
+                     </div>
+                  </div>
+                  <!--/span-->
+               </div>
+               <? if($this->vars['member']['boardCertified']): ?>
+               <div class="row-fluid">
+                  <div class="span6 ">
+                     <div class="control-group ">
+                        <label class="control-label">Board Certified Badge for your website:</label>
+                        <div class="controls">
+                           <textarea rows="3" class="span8"><a target="_blank" href="http://<?=SAW_CONSUMER_WEBSITE?>/member/<?=$this->vars['member']['_id']?>/<?=$this->vars['member']['slug']?>"><img width="200" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/boardcertified" alt="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" title="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" /></a></textarea>
+                        </div>
+                     </div>
+                  </div>
+                  <!--/span-->
+               </div>
+               <? endif; ?>
             <? if($accessLevel >= MEMBER):?>
                <!-- RECENT BLOG POSTS -->
                <? if(!empty($this->vars['blogs'])): ?>

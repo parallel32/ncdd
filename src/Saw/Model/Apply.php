@@ -52,11 +52,11 @@ class Apply extends Model {
 		$metadata->addPropertyConstraint('lastName', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('phone', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('fax', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		$metadata->addPropertyConstraint('barNumber', new Constraints\NotBlank(array('message'=>'cannot be blank')));
+		$metadata->addPropertyConstraint('barNumber', new Constraints\NotBlank(array('message'=>'cannot be blank','groups' => array('update_member'))));
 		$metadata->addPropertyConstraint('email', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('email', new Constraints\Email(array('message'=>'invalid email')));
-		$metadata->addPropertyConstraint('listServEmail', new Constraints\Email(array('message'=>'invalid email')));
-		$metadata->addPropertyConstraint('addToListServ', new Constraints\NotBlank(array('message'=>'cannot be blank')));
+		$metadata->addPropertyConstraint('listServEmail', new Constraints\Email(array('message'=>'invalid email','groups' => array('update_member'))));
+		$metadata->addPropertyConstraint('addToListServ', new Constraints\NotBlank(array('message'=>'cannot be blank','groups' => array('update_member'))));
 		$metadata->addPropertyConstraint('formattedAddress', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('address1', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('city', new Constraints\NotBlank(array('message'=>'cannot be blank')));
@@ -86,7 +86,7 @@ class Apply extends Model {
 		$this->lastName = $doc['lastName'];
 		$this->phone = $doc['phone'];
 		$this->fax = $doc['fax'];
-		$this->barNumber = $doc['barNumber'];
+		$this->barNumber = (string)$doc['barNumber'];
 		$this->email = $doc['email'];
 		$this->website = $doc['website'];
 		$this->addToListServ = $doc['addToListServ'];
@@ -176,8 +176,11 @@ class Apply extends Model {
 			return false;
 		endif;
 	}
-	public function fetch($offset=0,$limit=100){
+	public function fetch($offset=0,$limit=100,$filter=array()){
 		$query = array();
+		if(!empty($filter)){
+			$query = array_merge($filter, $query);
+		}
 		$fields = array('firstName'=>true
 						,'middleName'=>true
 						,'lastName'=>true
@@ -199,8 +202,12 @@ class Apply extends Model {
 		return $result;
 
 	}
-	public function fetchByStatus($status, $offset=0,$limit=100){
+	public function fetchByStatus($status, $offset=0,$limit=100,$filter=array()){
 		$query = array('currentStatus'=>self::$status[$status]);
+		if(!empty($filter)){
+			$query = array_merge($filter, $query);
+		}
+		//error_log('query fetchByStatus:'.print_r($query,true));
 		$fields = array('firstName'=>true
 						,'middleName'=>true
 						,'lastName'=>true
@@ -280,11 +287,14 @@ class Apply extends Model {
 		return $result;
 
 	}
-	public function fetchByDatePaid($days=90, $offset=0,$limit=100){
+	public function fetchByDatePaid($days=90, $offset=0,$limit=100,$filter=array()){
 		$query = array('currentStatus'=>self::$status['PAID']
 						,'paidDate.date'=>array('$lte'=>new \MongoDate(strtotime('now'))
 												,'$gte'=>new \MongoDate(strtotime('-'.$days.' day')))
 		);
+		if(!empty($filter)){
+			$query = array_merge($filter, $query);
+		}
 		$fields = array('firstName'=>true
 						,'middleName'=>true
 						,'lastName'=>true

@@ -154,9 +154,43 @@
                                        <option value="<?=MEMBER?>" <?=(array_key_exists('changeAccessLevelTo',$this->vars['member'])) ? ($this->vars['member']['changeAccessLevelTo'] == MEMBER) ?'selected':'': '';?>>MEMBER</option>
                                        <option value="<?=UNPAIDMEMBER?>" <?=(array_key_exists('changeAccessLevelTo',$this->vars['member'])) ? ($this->vars['member']['changeAccessLevelTo'] == UNPAIDMEMBER) ?'selected':'': '';?>>UNPAID MEMBER</option>                                       
                                     </select>
-                                    <span class="help-block">The purpose of this field is to change the access level of a member.  For example, if you want to reduce their access privileges because of non-payment you can change their Access Level to UNPAID MEMBER.  After payment is received you can change it back to MEMBER.</span>
+                                    <span class="help-block">The purpose of this field is to change the access level of a member.  For example, if you want to reduce their access privileges because of non-payment you can change their Access Level to UNPAID MEMBER.  Then, after payment is received, you can change it back to MEMBER.</span>
                                     <div class="alert">
                                        <strong>Notice!</strong> the current accessLevel is: <strong><?=$this->app['humanizeAccessLevels']($this->vars['member']['accessLevel'])?></strong>.  Their accessLevel will not change to the above value until the next time they log in.
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        <div class="row-fluid">
+                           <div class="span6 ">
+                              <div class="control-group ">
+                                 
+                              </div>
+                           </div>
+                           <!--/span-->
+                           <div class="span6 ">
+                              <div class="control-group ">
+                                 <label class="control-label">Renewal Process</label>
+                                 <div class="controls">
+                                    <? 
+                                    if(array_key_exists('renewal',$this->vars['member']) && !empty($this->vars['member']['renewal'])){ 
+                                       $active = true;
+                                    }else{
+                                       $active = false;
+                                    }
+                                    ?>
+                                    <select class="large m-wrap status" name="doc[renewalStatus]">
+                                       <option value="<?=($active) ? 'ACTIVE' : 'ACTIVATE'?>" <?=($active) ? 'selected' :'' ?>><?=($active) ? 'ACTIVE' : 'ACTIVATE RENEWAL' ?></option>
+                                       <option value="<?=(!$active) ? 'INACTIVE' : 'DEACTIVATE'?>" <?=(!$active) ? 'selected':'' ?>><?=(!$active) ? 'INACTIVE' : 'DEACTIVATE RENEWAL' ?></option>
+                                    </select>
+                                    <span class="help-block">The purpose of this field is to manually activate / deactivate this member's renewal application workflow.</span>
+                                    <div class="alert">
+                                       <strong>Notice!</strong> 
+                                       <br>The renewal process is: <strong><?=($active) ?'ACTIVE' : 'INACTIVE';?></strong>.  
+                                       <br>The current status is: <strong><?=($active) ? \Saw\Model\Renewal::$statusReversed[$this->vars['member']['renewal']['currentStatus']] : 'INACTIVE';?></strong>.  
+                                       <br>The current renewal year: <strong><?=($active) ? $this->vars['member']['renewal']['year'] : '';?></strong>.  
                                     </div>
                                  </div>
                               </div>

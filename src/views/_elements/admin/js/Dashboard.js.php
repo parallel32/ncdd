@@ -62,6 +62,9 @@
 		$('.btn.edit-profile').click(function(e){
 			document.location.href='/member/'+$(this).attr('data-id')+'/edit';	
 		});
+		$('.btn.renewal').click(function(e){
+			document.location.href='/application/'+$(this).attr('data-apptype');	
+		});
 
 	};
 	Dashboard.editorInit = function(saveMode){
