@@ -15,7 +15,7 @@
                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                <h3 class="page-title text-center">
                   <img src="/assets/img/ncdd-login2-logo.png">
-                  <br/>Member Renewal Form
+                  <br/>Sustaining Member Update Form
                </h3>
                <p class="text-center">
                   
@@ -277,39 +277,7 @@
                      <!--/span-->
                   </div>
 
-                  <h3 class="form-section">Check which applies to your membership:</h3>
-                  <div class="row-fluid">
-                     <div class="span12 ">
-                        <div class="control-group">
-                           <label class="control-label"></label>
-                           <div class="controls">
-                              <select class=" m-wrap span12 membershipDues" name="doc[membershipDues]">
-                                 <option value="175">1-5 years in law practice ($175 annual dues) </option>
-                                 <option value="225">6 or more years in law practice ($225 annual dues)</option>
-                                 <option value="50"> Public Defender ($50 annual dues)</option>
-                              </select>
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                  </div>
                   
-
-                  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

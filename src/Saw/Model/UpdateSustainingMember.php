@@ -10,10 +10,10 @@ use Symfony\Component\Validator\ExecutionContext;
 /**
  * Extends Apply Model.  Used to facilitate the new member application and does not represent a mongo collection
  */
-class UpdateMember extends Apply {
+class UpdateSustainingMember extends Apply {
 	
-	public $type = 'UPDATE MEMBER APPLICATION';
-	public $class = 'UpdateMember';
+	public $type = 'UPDATE SUSTAINING MEMBER APPLICATION';
+	public $class = 'UpdateSustainingMember';
 	public $everBeenArrested;
 	public $everBeenArrestedExplain;
 	public $everChargedByBar;
@@ -42,7 +42,6 @@ class UpdateMember extends Apply {
 		$metadata->addPropertyConstraint('seminarAttendance', new Constraints\NotBlank(array('message'=>'cannot be blank','groups' => array('update_member'))));
 		$metadata->addPropertyConstraint('executed', new Constraints\NotBlank(array('message'=>'cannot be blank','groups' => array('update_member'))));
 		$metadata->addPropertyConstraint('executedPrintedName', new Constraints\NotBlank(array('message'=>'cannot be blank','groups' => array('update_member'))));
-		$metadata->addPropertyConstraint('membershipDues', new Constraints\NotBlank(array('message'=>'cannot be blank','groups' => array('update_member'))));
 		$metadata->addConstraint(new Callback(array('methods' => array('explain'),'groups' => array('update_member'))));
 	}
 	public function explain(ExecutionContext $context){
@@ -108,8 +107,8 @@ class UpdateMember extends Apply {
 	*/
 	protected function prepareInsert(){
 		parent::prepareInsert();
-		$this->type = $this->type ?: 'UPDATE MEMBER APPLICATION';
-		$this->class = $this->class ?: 'UpdateMember';
+		$this->type = $this->type ?: 'UPDATE SUSTAINGIN MEMBER APPLICATION';
+		$this->class = $this->class ?: 'UpdateSustainingMember';
 		$this->everBeenArrested = $this->everBeenArrested ?: '';
 		$this->everBeenArrestedExplain = $this->everBeenArrestedExplain ?: '';
 		$this->everChargedByBar = $this->everChargedByBar ?: '';
@@ -162,23 +161,6 @@ class UpdateMember extends Apply {
 
 		
 		return $member;
-	}
-	
-	public function markPaid($resetSession=true){
-		parent::markPaid($resetSession);
-
-		$member = new Member(array('_id'=>$this->memberId), self::$app);
-		$member = $member->findById();
-
-		$member['renewal']['currentStatus'] = Renewal::$status['PAID'];
-		$member['renewal']['paidDate'] = new Date(self::$app, 'now', $this->timeZone); 
-		$member['renewal']['paymentId'] = $this->paymentId; 
-		
-		$renewal = new Renewal($member['renewal'],self::$app);
-		$renewal->setRenewalByMember($member['_id']);
-
-		
-
 	}
 	
 	public function remove(){

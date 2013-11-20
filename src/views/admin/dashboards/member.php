@@ -52,7 +52,18 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
 
 
                <!-- APPROVED APPLICATIONS -->
-               <? if(!empty($this->vars['applications'])): ?>
+               <? 
+                  $allow = false;
+                  if(!empty($this->vars['applications'])): 
+                     $allow = true;
+                     if(count($this->vars['applications']) == 1){
+                        if($this->vars['applications'][0]['class'] == 'UpdateFoundingMember' || $this->vars['applications'][0]['class'] == 'UpdateSustainingMember'){
+                           $allow = false;
+                        }
+                     }
+                  endif;
+               ?>
+               <? if(!empty($this->vars['applications']) && $allow): ?>
                <div id="approved-applications" class="row-fluid">
                   <div class="span12">
                      <!-- BEGIN EXAMPLE TABLE PORTLET-->

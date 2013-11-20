@@ -15,7 +15,7 @@
                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                <h3 class="page-title text-center">
                   <img src="/assets/img/ncdd-login2-logo.png">
-                  <br/>Member Renewal Form
+                  <br/>Founding Member Update Form
                </h3>
                <p class="text-center">
                   
@@ -30,7 +30,7 @@
          </div>
          <!-- END PAGE HEADER-->
             <!-- BEGIN PAGE CONTENT-->
-         <div class="row-fluid">
+         <div class="row-fluid"> 
             <div class="span12">
                <!-- BEGIN FORM-->
                <form id="saw-form" class="horizontal-form portlet">
@@ -45,21 +45,60 @@
                            <label class="control-label">Bar Number / State</label>
                            <div class="controls">
                               <input type="text" name="doc[barNumber]" value="" class="m-wrap span12 barNumber">
+                           </div> 
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <h3 class="form-section">2.</h3>
+                  <div class="row-fluid">
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">Are you actively licensed by and in good standing with your State Bar Association or other licensing authority?</label>
+                           <div class="controls">
+                              <select class="small m-wrap inGoodStanding" name="doc[inGoodStanding]">
+                                 <option value="yes">Yes</option>
+                                 <option value="no">No</option>
+                              </select>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">If "No", please explain.</label>
+                           <div class="controls">
+                              <textarea class="span12 inGoodStandingExplain" name="doc[inGoodStandingExplain]"></textarea>
                            </div>
                         </div>
                      </div>
                      <!--/span-->
                   </div>
+                  <h3 class="form-section">3.</h3>
+                  <div class="row-fluid">
+                     <div class="span12 ">
+                        <div class="control-group">
+                           <label class="control-label">Do you want to be listed on the NCDD Website?</label>
+                           <div class="controls">
+                              <select class="small m-wrap listedOnWebsite" name="doc[listedOnWebsite]">
+                                 <option value="yes">Yes</option>
+                                 <option value="no">No</option>
+                              </select>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <h3 class="form-section">4.</h3>
                   <div class="row-fluid">
                      <div class="span6 ">
                         <div class="control-group">
-                           <label class="control-label">Would you like to be added to the NCDD List Server?</label>
+                           <label class="control-label">Do you want to participate in the NCDD email listserver?</label>
                            <div class="controls">
                               <select class="small m-wrap addToListServ" name="doc[addToListServ]">
                                  <option value="yes">Yes</option>
                                  <option value="no">No</option>
                               </select>
-                              <span class="help-block">Highly recommended.</span>
                            </div>
                         </div>
                      </div>
@@ -74,174 +113,16 @@
                      </div>
                      <!--/span-->
                   </div>
-                  
-                  <h3 class="form-section">2.</h3>
-                  <div class="row-fluid">
-                     <div class="span6 ">
-                        <div class="control-group">
-                           <label class="control-label">Since your last application, have you been arrested, prosecuted, convicted or received a ‘deferred’ or ‘diverted’ disposition on any charge involving drug/substance/alcohol use or abuse?</label>
-                           <div class="controls">
-                              <select class="small m-wrap everBeenArrested" name="doc[everBeenArrested]">
-                                 <option value="no">No</option>
-                                 <option value="yes">Yes</option>
-                              </select>
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                     <div class="span6 ">
-                        <div class="control-group">
-                           <label class="control-label">If "Yes", please explain.</label>
-                           <div class="controls">
-                              <textarea class="span12 everBeenArrestedExplain" name="doc[everBeenArrestedExplain]"></textarea>
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                  </div>
-                  <h3 class="form-section">3.</h3>
-                  <div class="row-fluid">
-                     <div class="span6 ">
-                        <div class="control-group">
-                           <label class="control-label">Since your last application, have you had a complaint/charge made against you by your State Bar Association or licensing authority arising from drug/substance/alcohol use or abuse?</label>
-                           <div class="controls">
-                              <select class="small m-wrap everChargedByBar" name="doc[everChargedByBar]">
-                                 <option value="no">No</option>
-                                 <option value="yes">Yes</option>
-                              </select>
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                     <div class="span6 ">
-                        <div class="control-group">
-                           <label class="control-label">If "Yes", please explain.</label>
-                           <div class="controls">
-                              <textarea class="span12 everChargedByBarExplain" name="doc[everChargedByBarExplain]"></textarea>
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                  </div>
-                  <h3 class="form-section">4.</h3>
-                  <div class="row-fluid">
-                     <div class="span6 ">
-                        <div class="control-group">
-                           <label class="control-label">Since your last application, have you been convicted or received a ‘deferred’ or ‘diverted’ disposition of any crime involving moral turpitude?</label>
-                           <div class="controls">
-                              <select class="small m-wrap everConvictedCrime" name="doc[everConvictedCrime]">
-                                 <option value="no">No</option>
-                                 <option value="yes">Yes</option>
-                              </select>
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                     <div class="span6 ">
-                        <div class="control-group">
-                           <label class="control-label">If "Yes", please explain.</label>
-                           <div class="controls">
-                              <textarea class="span12 everConvictedCrimeExplain" name="doc[everConvictedCrimeExplain]"></textarea>
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                  </div>
                   <h3 class="form-section">5.</h3>
-                  <div class="row-fluid">
-                     <div class="span6 ">
-                        <div class="control-group">
-                           <label class="control-label">Since your last application, has your Bar Association or licensing authority conducted any investigation or inquiry based upon complaints, have you been subject to disciplinary action by your bar association, or has your license been suspended for any period of time?</label>
-                           <div class="controls">
-                              <select class="small m-wrap everInvestigation" name="doc[everInvestigation]">
-                                 <option value="no">No</option>
-                                 <option value="yes">Yes</option>
-                              </select>
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                     <div class="span6 ">
-                        <div class="control-group">
-                           <label class="control-label">If "Yes", please explain.</label>
-                           <div class="controls">
-                              <textarea class="span12 everInvestigationExplain" name="doc[everInvestigationExplain]"></textarea>
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                  </div>
-                  <h3 class="form-section">6.</h3>
-                  <div class="row-fluid">
-                     <div class="span6 ">
-                        <div class="control-group">
-                           <label class="control-label">Are you presently serving in any capacity (either part time or full time) in a law enforcement or prosecution agency (Example: reserve duty or municipal prosecutor)?</label>
-                           <div class="controls">
-                              <select class="small m-wrap everLawEnforcement" name="doc[everLawEnforcement]">
-                                 <option value="no">No</option>
-                                 <option value="yes">Yes</option>
-                              </select>
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                     <div class="span6 ">
-                        <div class="control-group">
-                           <label class="control-label">If "Yes", please explain.</label>
-                           <div class="controls">
-                              <textarea class="span12 everLawEnforcementExplain" name="doc[everLawEnforcementExplain]"></textarea>
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                  </div>
-                  <h3 class="form-section">7.</h3>
                   <div class="row-fluid">
                      <div class="span12 ">
                         <div class="control-group">
-                           <label class="control-label">I understand that any future service in any branch of law enforcement or as a prosecutor of state, county, district or municipal ordinances or statutes requires my immediate disclosure to NCDD and termination of my membership.</label>
+                           <label class="control-label">Do you want to receive future mailings of seminar brochures and newsletters from the NCDD?</label>
                            <div class="controls">
-                              <select class="small m-wrap futureLawEnforcement" name="doc[futureLawEnforcement]">
-                                 <option value="no">No</option>
+                              <select class="small m-wrap futureMailings" name="doc[futureMailings]">
                                  <option value="yes">Yes</option>
-                              </select>
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                     <!-- commented out by request from Rhea.
-                     <div class="span6 ">
-                        <div class="control-group">
-                           <label class="control-label">If "Yes", please explain.</label>
-                           <div class="controls">
-                              <textarea class="span12 futureLawEnforcementExplain" name="doc[futureLawEnforcementExplain]"></textarea>
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                  </div>
-                  <h3 class="form-section">8.</h3>
-                  <div class="row-fluid">
-                     <div class="span6 ">
-                        <div class="control-group">
-                           <label class="control-label">I certify that I have attended the following NCDD sponsored or co-sponsored seminar(s) 
-                              </br><b>OR</b></br> 
-                              State seminar (s) approved by NCDD and listed on the NCDD website in the last two (2) years.
-                           </label>
-                           <div class="controls">
-                              <select class="small m-wrap seminarAttendance" name="doc[seminarAttendance]">
                                  <option value="no">No</option>
-                                 <option value="yes">Yes</option>
                               </select>
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                     <div class="span6 ">
-                        <div class="control-group">
-                           <label class="control-label">If "Yes", you must provide the NAME and DATE of the approved seminar(s) attended in order to maintain your membership. Contact the NCDD office with questions.</label>
-                           <div class="controls">
-                              <textarea class="span12 seminarAttendanceExplain" name="doc[seminarAttendanceExplain]"></textarea>
                            </div>
                         </div>
                      </div>
@@ -252,8 +133,6 @@
                      <div class="span12 ">
                         <div class="control-group">
                            <label class="control-label">
-                              I have read the general membership rules, and I understand and agree to be bound by them. I declare under penalty of perjury that the foregoing application are true and correct to the best of my knowledge.
-                           </br>
                            </label>
                            <div class="input-append">
                               <span class="add-on">Executed At </span>
@@ -277,49 +156,9 @@
                      <!--/span-->
                   </div>
 
-                  <h3 class="form-section">Check which applies to your membership:</h3>
-                  <div class="row-fluid">
-                     <div class="span12 ">
-                        <div class="control-group">
-                           <label class="control-label"></label>
-                           <div class="controls">
-                              <select class=" m-wrap span12 membershipDues" name="doc[membershipDues]">
-                                 <option value="175">1-5 years in law practice ($175 annual dues) </option>
-                                 <option value="225">6 or more years in law practice ($225 annual dues)</option>
-                                 <option value="50"> Public Defender ($50 annual dues)</option>
-                              </select>
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                  </div>
                   
 
-                  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                  <h3 class="form-section">9. Voluntary Contribution to the NCDD Foundation.</h3>
+                  <h3 class="form-section">6. Voluntary Contribution to the NCDD Foundation.</h3>
                   <div class="row-fluid">
                      <div class="span12 ">
                         <input id="contributionPaymentId" name="doc[contributionPaymentId]" type="hidden" value="" class="m-wrap span12 contributionPaymentId"> 

@@ -67,6 +67,17 @@ $app->post('/registration/payment', function (Request $request) use ($app) {
 	$payment = new Model\Payment($doc,$app);
 	$app['validateModel']($app, $payment,$groups=array('manual'));
 	$paymentId = $payment->manualCharge();
+
+	// thank you receipt message
+	$subject = 'NCDD Payment Received';
+	$to = $payment->email;
+	$view_vars = array('payment'=>$payment->__toArray()
+						,'paymentId'=>$paymentId
+						,'email'=>$payment->email
+	);
+	$body = $app['view']->render('email/payment-thankyou','email', $view_vars);
+		
+	$app['sendMail']($subject, $body, $to);
 	
 	return new Response(json_encode(array('paymentId'=>$paymentId,'message'=>"success")), 200,array('Content-Type' => 'application/json'));
 })->before($mustbeADMIN);

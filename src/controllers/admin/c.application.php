@@ -64,9 +64,27 @@ $app['applicationEmails'] = $app->protect(function ($app,$applicationId,$context
 				break;
 			case 'UpdateFoundingMember':
 				$application = new Model\UpdateFoundingMember(array('_id'=>$applicationId), $app);
+				$application->findById();
+			    $member = $application->approve();
+			    // email welcome message
+				$subject = 'NCDD Founding Membership Update Approved';
+				$to = $member['email'];
+				$view_vars = array('email'=>$member['email']
+									,'name'=>$member['displayName']
+				);
+				$body = $app['view']->render('email/update-founding-member-approved','email', $view_vars);
 				break;
 			case 'UpdateSustainingMember':
 				$application = new Model\UpdateSustainingMember(array('_id'=>$applicationId), $app);
+				$application->findById();
+			    $member = $application->approve();
+			    // email welcome message
+				$subject = 'NCDD Sustaining Membership Update Approved';
+				$to = $member['email'];
+				$view_vars = array('email'=>$member['email']
+									,'name'=>$member['displayName']
+				);
+				$body = $app['view']->render('email/update-sustaining-member-approved','email', $view_vars);
 				break;
 			
 		}
@@ -151,12 +169,6 @@ $app['applicationEmails'] = $app->protect(function ($app,$applicationId,$context
 									,'lastName'=>$member->lastName
 				);
 				$body = $app['view']->render('email/update-member-paid','email', $view_vars);
-				break;
-			case 'UpdateFoundingMember':
-				$application = new Model\UpdateFoundingMember(array('_id'=>$id), $app);
-				break;
-			case 'UpdateSustainingMember':
-				$application = new Model\UpdateSustainingMember(array('_id'=>$id), $app);
 				break;
 			
 		}
@@ -333,14 +345,26 @@ $app->post('/application/update-member', function (Request $request) use ($app) 
 	$doc['city'] = $location['city'];
 	$doc['state'] = $location['state'];
 
-	$paymentId = new \stdClass();	
+	$paymentId = null;	
 	$app_id = new \stdClass();	
 
-    $application = new Model\UpdateMember($doc, $app);
+	switch ($member['currentMembership']) {
+		case Model\Member::$membership['GENERAL MEMBER']:
+			$application = new Model\UpdateMember($doc, $app);
+			break;
+		case Model\Member::$membership['FOUNDING MEMBER']:
+			$application = new Model\UpdateFoundingMember($doc, $app);
+			break;
+		case Model\Member::$membership['SUSTAINING MEMBER']:
+			$application = new Model\UpdateSustainingMember($doc, $app);
+			break;
+		
+	}
+    
     // validate the model
     $app['validateModel']($app,$application,$groups=array('update_member'));
-	
-			
+	$app_id = $application->insert();		
+
 	if ($doc['contributionCheck'] == 'yes') {
 		
 		$doc['payment']['ownerId'] = $app_id;
@@ -349,6 +373,9 @@ $app->post('/application/update-member', function (Request $request) use ($app) 
 		$payment = new Model\Payment($doc['payment'],$app);
 		$app['validateModel']($app, $payment,$groups=array('cc'));
 		$paymentId = $payment->charge();
+
+		$payment = new Model\Payment(array('_id'=>$paymentId,'ownerId'=>$app_id),$app);
+		$payment->saveSafe();
 
 		// thank you receipt message
 		$subject = 'NCDD Payment Received';
@@ -363,10 +390,8 @@ $app->post('/application/update-member', function (Request $request) use ($app) 
 
 	}
 	
-	$app_id = $application->insert();
-	$payment = new Model\Payment(array('_id'=>$paymentId,'ownerId'=>$app_id),$app);
-	$payment->saveSafe();
-
+	
+	
 	$member['renewal']['currentStatus'] = Model\Renewal::$status['SUBMITTED'];
 	$member['renewal']['submittedDate'] = new Model\Date($app, 'now'); 
 	$member['renewal']['applicationId'] = $app_id; 
@@ -387,6 +412,60 @@ $app->post('/application/update-member', function (Request $request) use ($app) 
 })->after(function (Request $request, Response $response, Silex\Application $app) {
 		
 });
+////////////////////////////////////////
+// UPDATE FOUNDING MEMBER APPLICATION //
+////////////////////////////////////////
+$app->get('/application/update-founding-member', function (Request $request) use ($app) {
+
+	//get the user logged in
+	$user = $app['session']->get('user');
+
+	$location = new Model\Location($doc=array('member'=>array('_id'=>$user['user_id'])), $app);
+	$location = $location->getByMemberId();
+	$member = $location['member'];
+
+	$crumbs = array(array('name'=>'Dashboard','href'=>'/')
+					,array('name'=>'Founding Member Update','href'=>'/application/update-founding-member')
+					);
+	$view_vars = array(
+						 'active'=>'Dashboard'
+						,'page-plugin'=>'datatables'
+						,'headline'=>'Membership Update Form'
+						,'description'=>"Fill in and submit this application to begin your membership update process."
+						,'crumbs'=>$crumbs
+						,'member'=>$member
+						,'location'=>$location);
+		
+	return $app['view']->render('application/update-founding-member', 'default', $view_vars);
+});
+
+//////////////////////////////////////////
+// UPDATE SUSTAINING MEMBER APPLICATION //
+//////////////////////////////////////////
+$app->get('/application/update-sustaining-member', function (Request $request) use ($app) {
+
+	//get the user logged in
+	$user = $app['session']->get('user');
+
+	$location = new Model\Location($doc=array('member'=>array('_id'=>$user['user_id'])), $app);
+	$location = $location->getByMemberId();
+	$member = $location['member'];
+
+	$crumbs = array(array('name'=>'Dashboard','href'=>'/')
+					,array('name'=>'Sustaining Membership Update','href'=>'/application/update-sustaining-member')
+					);
+	$view_vars = array(
+						 'active'=>'Dashboard'
+						,'page-plugin'=>'datatables'
+						,'headline'=>'Membership Update Form'
+						,'description'=>"Fill in and submit this application to begin your membership update process."
+						,'crumbs'=>$crumbs
+						,'member'=>$member
+						,'location'=>$location);
+		
+	return $app['view']->render('application/update-sustaining-member', 'default', $view_vars);
+});
+
 
 ///////////////////////
 // GENERAL FUNCTIONS //
@@ -416,6 +495,12 @@ $app->get('/application/{id}/view-public', function ($id, Request $request) use 
 			break;
 		case 'UpdateMember':
 			return $app['view']->render('application/view-update-member-public', 'blank', $view_vars);		
+			break;
+		case 'UpdateFoundingMember':
+			return $app['view']->render('application/view-update-founding-member-public', 'blank', $view_vars);		
+			break;
+		case 'UpdateSustainingMember':
+			return $app['view']->render('application/view-update-sustaining-member-public', 'blank', $view_vars);		
 			break;
 		default:
 			$msg = new \stdClass();
@@ -452,6 +537,12 @@ $app->get('/application/{id}/view', function ($id, Request $request) use ($app) 
 			break;
 		case 'UpdateMember':
 			return $app['view']->render('application/view-update-member', 'default', $view_vars);		
+			break;
+		case 'UpdateFoundingMember':
+			return $app['view']->render('application/view-update-founding-member', 'default', $view_vars);		
+			break;
+		case 'UpdateSustainingMember':
+			return $app['view']->render('application/view-update-sustaining-member', 'default', $view_vars);		
 			break;
 		default:
 			$msg = new \stdClass();
@@ -491,6 +582,12 @@ $app->get('/application/{id}/edit', function ($id, Request $request) use ($app) 
 			break;
 		case 'UpdateMember':
 			return $app['view']->render('application/edit-update-member', 'default', $view_vars);		
+			break;
+		case 'UpdateFoundingMember':
+			return $app['view']->render('application/edit-update-founding-member', 'default', $view_vars);		
+			break;
+		case 'UpdateSustainingMember':
+			return $app['view']->render('application/edit-update-sustaining-member', 'default', $view_vars);		
 			break;
 		
 	}
@@ -644,7 +741,7 @@ $app->post('/application/{id}/trial', function ($id, Request $request) use ($app
 // APPROVE //
 /////////////
 $app->get('/application/{id}/approve/{type}', function ($id,$type, Request $request) use ($app) {
-	error_log('type:'.$type);
+	//error_log('type:'.$type);
 	return $app['applicationEmails']($app,$id,$context='new-member-welcome');
 })->before($mustbeADMIN);
 
@@ -742,6 +839,17 @@ $app->post('/application/payment', function (Request $request) use ($app) {
 	$payment = new Model\Payment($doc,$app);
 	$app['validateModel']($app, $payment,$groups=array('manual'));
 	$paymentId = $payment->manualCharge();
+
+	// thank you receipt message
+	$subject = 'NCDD Payment Received';
+	$to = $payment->email;
+	$view_vars = array('payment'=>$payment->__toArray()
+						,'paymentId'=>$paymentId
+						,'email'=>$payment->email
+	);
+	$body = $app['view']->render('email/payment-thankyou','email', $view_vars);
+		
+	$app['sendMail']($subject, $body, $to);
 	
 	return new Response(json_encode(array('paymentId'=>$paymentId,'message'=>"success")), 200,array('Content-Type' => 'application/json'));
 })->before($mustbeADMIN);
@@ -783,6 +891,20 @@ $app->get('/application/{paymentId}/pay/{applicationId}/{resetSession}', functio
 
 $app->get('/application/{id}/delete', function ($id, Request $request) use ($app) {
     $application = new Model\Apply(array('_id'=>$id), $app);
+    $application = $application->findById();
+	switch ($application['class']) {
+		case 'UpdateMember':
+			$application = new Model\UpdateMember(array('_id'=>$application['_id'],'memberId'=>$application['memberId']), $app);
+			break;
+		case 'UpdateFoundingMember':
+			$application = new Model\UpdateFoundingMember(array('_id'=>$application['_id'],'memberId'=>$application['memberId']), $app);
+			break;
+		case 'UpdateSustainingMember':
+			$application = new Model\UpdateSustainingMember(array('_id'=>$application['_id'],'memberId'=>$application['memberId']), $app);
+			break;
+	}
+    
+
     $application->remove();
     return new Response(json_encode(array('message' => 'Successfully Deleted')), 200,array('Content-Type' => 'application/json'));
 })->before($mustbeADMIN);
