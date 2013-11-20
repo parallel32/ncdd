@@ -374,12 +374,10 @@ $app->post('/application/update-member', function (Request $request) use ($app) 
 		$app['validateModel']($app, $payment,$groups=array('cc'));
 		$paymentId = $payment->charge();
 
-		$payment = new Model\Payment(array('_id'=>$paymentId,'ownerId'=>$app_id),$app);
-		$payment->saveSafe();
-
 		// thank you receipt message
 		$subject = 'NCDD Payment Received';
 		$to = $payment->email;
+
 		$view_vars = array('payment'=>$payment->__toArray()
 							,'paymentId'=>$paymentId
 							,'email'=>$member['email']
@@ -387,6 +385,11 @@ $app->post('/application/update-member', function (Request $request) use ($app) 
 		$body = $app['view']->render('email/payment-thankyou','email', $view_vars);
 			
 		$app['sendMail']($subject, $body, $to);
+
+		// update the newly created payment record
+		$payment = new Model\Payment(array('_id'=>$paymentId,'ownerId'=>$app_id),$app);
+		$payment->saveSafe();
+
 
 	}
 	
