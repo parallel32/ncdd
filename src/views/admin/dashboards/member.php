@@ -101,7 +101,7 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                </div>
                <? endif; ?>
                <!--/ APPROVED APPLICATIONS -->
-
+               <? if(array_key_exists('renewal',$this->vars)): ?>
                <? if(!empty($this->vars['renewal']) && $this->vars['renewal']['currentStatus'] < \Saw\Model\Renewal::$status['SUBMITTED']): ?>
                   <h3 class="form-section">Prepare your membership <?=(\Saw\Model\Member::$membership['GENERAL MEMBER'] == $this->vars['currentMembership']) ? 'renewal form': 'update form';?></h3>
                   <?
@@ -123,11 +123,11 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                   <span><a data-apptype="<?=$apptype?>" data-id="<?=call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$this->app);?>" class="btn green large renewal"><i class=" icon-pencil"></i> Begin</a></span>
                   <br><br>
 
-               <? elseif ($this->vars['renewal']['currentStatus'] == \Saw\Model\Renewal::$status['SUBMITTED']): ?>
+               <? elseif (!empty($this->vars['renewal']) && $this->vars['renewal']['currentStatus'] == \Saw\Model\Renewal::$status['SUBMITTED']): ?>
                   <h3 class="form-section">Your membership <?=(\Saw\Model\Member::$membership['GENERAL MEMBER'] == $this->vars['currentMembership']) ? 'renewal form': 'update form';?> has been submitted and is awaiting approval.</h3>
                   <br><br>
                <? endif; ?>
-
+               <? endif; ?>
 
                <h3 class="form-section">Profile Information</h3>
                <span><a data-id="<?=call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$this->app);?>" class="btn blue large edit-profile"><i class=" icon-pencil"></i> Edit Your Profile</a></span>

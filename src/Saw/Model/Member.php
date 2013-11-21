@@ -197,7 +197,7 @@ class Member extends User {
 		$this->yearsinpractice = $this->yearsinpractice ?: '';
 		$this->orderNum = $this->orderNum ?: '*';
 		$this->changeAccessLevelTo = $this->changeAccessLevelTo ?: '*';
-		$this->renewal = $this->renewal ?: new \StdClass();
+		$this->renewal = $this->renewal ?: null;
 
 		parent::prepareInsert();
 	}
@@ -594,6 +594,30 @@ class Member extends User {
 
 		endif;
 		return $_result;
+	}
+
+	public function fetchByMembership($membership,$filter=array()){
+
+		$fields=array('_id'=>1
+					,'renewal'=>1
+		);
+
+		switch ($membership) {
+			case self::$membersip['SUSTAINING MEMBER']:
+				$query = array('currentMembership'=>self::$membership['SUSTAINING MEMBER']);
+				$query = array_merge($filter, $query);
+				break;
+			case self::$membersip['GENERAL MEMBER']:
+				$query = array('currentMembership'=>self::$membership['GENERAL MEMBER']);
+				$query = array_merge($filter, $query);
+				break;
+			case self::$membersip['FOUNDING MEMBER']:
+				$query = array('currentMembership'=>self::$membership['FOUNDING MEMBER']);
+				$query = array_merge($filter, $query);
+				break;
+		}
+		$result = $this->find($query,$fields,true,$sort=array(),$offset=0,$limit=3000);					
+		return $result;
 	}
 
 	// saves user_id into session

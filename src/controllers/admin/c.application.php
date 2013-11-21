@@ -986,5 +986,36 @@ $app->get('/renewals/{offset}/{limit}', function ($offset, $limit, Request $requ
 ->value('limit','100')
 ->before($mustbeADMIN);
 
+
+$app->get('/applications/activate/renewals/{activate}', function ($activate, Request $request) use ($app) {
+	$member = new Model\Member($doc=array(), $app);
+	
+	if($activate == 'yes'){
+		// find all the active members who aren't already active and create the renewal attribute
+		$renewal = new Renewal(array(),$app);
+		$renewal->prepareInsert();
+		$renewal = $renewal->__toArray();
+
+		$gm = $member->fetchByMembership(Model\Member::$membership['GENERAL MEMBER'],$fiter=array('status'=>USER_STATUS_ACTIVE));
+		$sm = $member->fetchByMembership(Model\Member::$membership['SUSTAINING MEMBER'],$fiter=array('status'=>USER_STATUS_ACTIVE));
+		$fm = $member->fetchByMembership(Model\Member::$membership['FOUNDING MEMBER'],$fiter=array('status'=>USER_STATUS_ACTIVE));
+
+
+
+		$label = 'Your application was received.  Thank you.';
+    	$message = 'Thank you for your interest in NCDD.  Your application has been submitted.  You will be notified by the College when it is approved or if there are any questions.';
+    	$response_status = 200;
+	}elseif($activate == 'clear'){
+		// clear all active members' renewal attribute
+		$this->renewal = null;
+	}
+
+    return new Response(json_encode(array('message' => $message,'label'=>$label)), $response_status,array('Content-Type' => 'application/json'));
+
+})->value('acitvate','')
+->before($mustbeADMIN);
+
+
+
 return $app;
 //echo"<pre>";print_r($submitted);echo "</pre>";
