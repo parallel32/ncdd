@@ -193,7 +193,7 @@
                         <div class="control-group">
                            <label class="control-label">Law Firm Name / Name of your practice</label>
                            <div class="controls">
-                              <input disabled type="text" name="doc[firmName]" value="<?=$this->vars['application']['firmName']?>" class="m-wrap span12 firmName">
+                              <input disabled type="text" name="doc[firmName]" value="<?=(array_key_exists('firmName',$this->vars['application'])) ? $this->vars['application']['firmName']: '';?>" class="m-wrap span12 firmName">
                            </div>
                         </div>
                      </div>
