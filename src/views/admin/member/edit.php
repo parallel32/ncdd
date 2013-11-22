@@ -192,6 +192,29 @@
                                        <br>The current status is: <strong><?=($active) ? \Saw\Model\Renewal::$statusReversed[$this->vars['member']['renewal']['currentStatus']] : 'INACTIVE';?></strong>.  
                                        <br>The current renewal year: <strong><?=($active) ? $this->vars['member']['renewal']['year'] : '';?></strong>.  
                                     </div>
+                                    <? 
+                                       if($active){ 
+                                          switch ($this->vars['member']['currentMembership']) {
+                                             case \Saw\Model\Member::$membership['GENERAL MEMBER']:
+                                                $apptype = 'update-member';
+                                                break;
+                                             case \Saw\Model\Member::$membership['SUSTAINING MEMBER']:
+                                                $apptype = 'update-sustaining-member';
+                                                break;
+                                             case \Saw\Model\Member::$membership['FOUNDING MEMBER']:
+                                                $apptype = 'update-founding-member';
+                                                break;                        
+                                             default:
+                                                $apptype = 'update-member';
+                                                break;
+                                          }
+
+                                    ?>
+
+                                    <div>
+                                       <a href="/application/<?=$apptype?>/<?=$this->vars['member']['_id']?>" class="btn yellow"> GoTo Application</a>
+                                    </div>
+                                    <? } ?>
                                  </div>
                               </div>
                            </div>

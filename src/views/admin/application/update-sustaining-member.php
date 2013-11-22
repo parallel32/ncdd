@@ -746,7 +746,7 @@
 
 
          submitApp = function(){
-            io.saw.FormPost.activate({postUrl:'/application/update-member'
+            io.saw.FormPost.activate({postUrl:'/application/update-member/<?=$this->vars["member"]["_id"]?>'
                ,serializeSelector:':input'
                ,postOnComplete:function(responseObj,responseStatus){
                      if(responseStatus == 'success'){

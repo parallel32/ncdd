@@ -94,6 +94,7 @@
                               <tr role="row">
                                  <th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
+                                 <th class="hidden-phone">Phone</th>
                                  <th class="hidden-480">Date</th>
                                  <th class=""></th>
                               </tr>
@@ -103,6 +104,7 @@
                               <tr class="gradeX odd ">
                                  <td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><?=$member['email']?></td>
+                                 <td class="hidden-phone"><?=$member['primaryPhone']?></td>
                                  <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($member['renewal']['submittedDate']['fullDateTime']), $member['timeZone']); ?>
                                  <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$member['renewal']['submittedDate']['monthDay'].' '.$member['renewal']['submittedDate']['shortTime']?></td><td class=" ">
                                     <a data-id="<?=$member['renewal']['applicationId']?>" class="btn blue mini view"><i class=" "></i> Application</a>
@@ -135,6 +137,7 @@
                               <tr role="row">
                                  <th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
+                                 <th class="hidden-phone">Phone</th>
                                  <th class="hidden-480">Date Approved</th>
                                  <th class=""></th>
                               </tr>
@@ -143,7 +146,8 @@
                               <? if(!empty($this->vars['renewals']['approved'])): foreach($this->vars['renewals']['approved'] as $member): ?>
                               <tr class="gradeX odd">
                                  <td class=" "><?=$member['displayName']?></td>
-                                 <td class="hidden-phone"><?=$member['email']?></td>
+                                 <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
+                                 <td class="hidden-phone"><?=$member['primaryPhone']?></td>
                                  <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($member['renewal']['approvedDate']['fullDateTime']), $member['timeZone']); ?>
                                  <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$member['renewal']['approvedDate']['monthDay'].' '.$member['renewal']['approvedDate']['shortTime']?></td><td class=" ">
                                     <a data-id="<?=$member['renewal']['applicationId']?>" class="btn blue mini view"><i class=" "></i> Application</a>
@@ -179,6 +183,7 @@
                               <tr role="row">
                                  <th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
+                                 <th class="hidden-phone">Phone</th>
                                  <th class="hidden-480">Date Paid</th>
                                  <th class=""></th>
                               </tr>
@@ -187,7 +192,8 @@
                               <? if(!empty($this->vars['renewals']['paid'])): foreach($this->vars['renewals']['paid'] as $member): ?>
                               <tr class="gradeX odd">
                                  <td class=" "><?=$member['displayName']?></td>
-                                 <td class="hidden-phone"><?=$member['email']?></td>
+                                 <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
+                                 <td class="hidden-phone"><?=$member['primaryPhone']?></td>
                                  <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($member['renewal']['paidDate']['fullDateTime']), $member['timeZone']); ?>
                                  <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$member['renewal']['paidDate']['monthDay'].' '.$member['renewal']['paidDate']['shortTime']?></td><td class=" ">
                                     <a data-id="<?=$member['renewal']['paymentId']?>" class="btn blue mini view payment"><i class=" "></i> Payment</a>
@@ -221,6 +227,7 @@
                               <tr role="row">
                                  <th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
+                                 <th class="hidden-phone">Phone</th>
                                  <th class=""></th>
                               </tr>
                            </thead>
@@ -228,7 +235,8 @@
                               <? if(!empty($this->vars['renewals']['unsubmitted'])): foreach($this->vars['renewals']['unsubmitted'] as $member): ?>
                               <tr class="gradeX odd">
                                  <td class=" "><?=$member['displayName']?></td>
-                                 <td class="hidden-phone"><?=$member['email']?></td>
+                                 <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
+                                 <td class="hidden-phone"><?=$member['primaryPhone']?></td>
                                  <td class=" "><a data-id="<?=$member['_id']?>" class="btn blue mini view"><i class=" "></i> View</a></td>
                               </tr>
                               <? endforeach;?>
@@ -338,6 +346,7 @@
                               <tr role="row">
                                  <th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
+                                 <th class="hidden-phone">Phone</th>
                                  <th class="hidden-480">Date</th>
                                  <th class=""></th>
                               </tr>
@@ -346,7 +355,8 @@
                               <? if(!empty($this->vars['updates']['submitted'])): foreach($this->vars['updates']['submitted'] as $member): ?>
                               <tr class="gradeX odd">
                                  <td class=" "><?=$member['displayName']?></td>
-                                 <td class="hidden-phone"><?=$member['email']?></td>
+                                 <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
+                                 <td class="hidden-phone"><?=$member['primaryPhone']?></td>
                                  <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($member['renewal']['submittedDate']['fullDateTime']), $member['timeZone']); ?>
                                  <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$member['renewal']['submittedDate']['monthDay'].' '.$member['renewal']['submittedDate']['shortTime']?></td><td class=" ">
                                     <a data-id="<?=$member['renewal']['applicationId']?>" class="btn blue mini view"><i class=" "></i> Application</a>
@@ -379,6 +389,7 @@
                               <tr role="row">
                                  <th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
+                                 <th class="hidden-phone">Phone</th>
                                  <th class="hidden-480">Date Approved</th>
                                  <th class=""></th>
                               </tr>
@@ -387,7 +398,8 @@
                               <? if(!empty($this->vars['updates']['approved'])): foreach($this->vars['updates']['approved'] as $member): ?>
                               <tr class="gradeX odd">
                                  <td class=" "><?=$member['displayName']?></td>
-                                 <td class="hidden-phone"><?=$member['email']?></td>
+                                 <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
+                                 <td class="hidden-phone"><?=$member['primaryPhone']?></td>
                                  <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($member['renewal']['approvedDate']['fullDateTime']), $member['timeZone']); ?>
                                  <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$member['renewal']['approvedDate']['monthDay'].' '.$member['renewal']['approvedDate']['shortTime']?></td><td class=" ">
                                     <a data-id="<?=$member['renewal']['applicationId']?>" class="btn blue mini view"><i class=" "></i> Application</a>
@@ -420,6 +432,7 @@
                               <tr role="row">
                                  <th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
+                                 <th class="hidden-phone">Phone</th>
                                  <th class=""></th>
                               </tr>
                            </thead>
@@ -427,7 +440,8 @@
                               <? if(!empty($this->vars['updates']['unsubmitted'])): foreach($this->vars['updates']['unsubmitted'] as $member): ?>
                               <tr class="gradeX odd">
                                  <td class=" "><?=$member['displayName']?></td>
-                                 <td class="hidden-phone"><?=$member['email']?></td>
+                                 <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
+                                 <td class="hidden-phone"><?=$member['primaryPhone']?></td>
                                  <td class=" "><a data-id="<?=$member['_id']?>" class="btn blue mini view"><i class=" "></i> View</a></td>
                               </tr>
                               <? endforeach;?>
@@ -482,6 +496,7 @@
                               <tr role="row">
                                  <th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
+                                 <th class="hidden-phone">Phone</th>
                                  <th class="hidden-480">Date </th>
                                  <th class=""></th>
                               </tr>
@@ -490,7 +505,8 @@
                               <? if(!empty($this->vars['donations'])): foreach($this->vars['donations'] as $member): ?>
                               <tr class="gradeX odd">
                                  <td class=" "><?=$member['displayName']?></td>
-                                 <td class="hidden-phone"><?=$member['email']?></td>
+                                 <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
+                                 <td class="hidden-phone"><?=$member['primaryPhone']?></td>
                                  <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($member['renewal']['submittedDate']['fullDateTime']), $member['timeZone']); ?>
                                  <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$member['renewal']['submittedDate']['monthDay'].' '.$member['renewal']['submittedDate']['shortTime']?></td><td class=" ">
                                     <a data-id="<?=$member['renewal']['contributionPaymentId']?>" class="btn blue mini view payment"><i class=" "></i> Payment</a>

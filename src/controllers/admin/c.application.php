@@ -302,12 +302,16 @@ $app->post('/application/new-sustaining-member', function (Request $request) use
 ///////////////////////////////
 // UPDATE MEMBER APPLICATION //
 ///////////////////////////////
-$app->get('/application/update-member', function (Request $request) use ($app) {
+$app->get('/application/update-member/{memberId}', function ($memberId, Request $request) use ($app) {
 
 	//get the user logged in
-	$user = $app['session']->get('user');
+	if(empty($memberId)){
+		$user = $app['session']->get('user');
+		$memberId = $user['user_id'];
+	}
+	
 
-	$location = new Model\Location($doc=array('member'=>array('_id'=>$user['user_id'])), $app);
+	$location = new Model\Location($doc=array('member'=>array('_id'=>$memberId)), $app);
 	$location = $location->getByMemberId();
 	$member = $location['member'];
 
@@ -324,12 +328,16 @@ $app->get('/application/update-member', function (Request $request) use ($app) {
 						,'location'=>$location);
 		
 	return $app['view']->render('application/update-member', 'default', $view_vars);
-});
-$app->post('/application/update-member', function (Request $request) use ($app) {
+})->value('memberId','');
+$app->post('/application/update-member/{memberId}', function ($memberId, Request $request) use ($app) {
 
 	//get the user logged in
-	$user = $app['session']->get('user');
-	$location = new Model\Location($doc=array('member'=>array('_id'=>$user['user_id'])), $app);
+	if(empty($memberId)){
+		$user = $app['session']->get('user');
+		$memberId = $user['user_id'];
+	}
+	
+	$location = new Model\Location($doc=array('member'=>array('_id'=>$memberId)), $app);
 	$location = $location->getByMemberId();
 	$member = $location['member'];
 
@@ -337,7 +345,7 @@ $app->post('/application/update-member', function (Request $request) use ($app) 
     // retrieve document from request
 	$doc = $request->get('doc');
 	// add name, email and area to the application for identification
-	$doc['memberId'] = new \MongoId($user['user_id']);
+	$doc['memberId'] = new \MongoId($memberId);
 	$doc['firstName'] = $member['firstName'];
 	$doc['middleName'] = (array_key_exists('middleName',$member)) ? $member['middleName']: '';
 	$doc['lastName'] = $member['lastName'];
@@ -412,18 +420,22 @@ $app->post('/application/update-member', function (Request $request) use ($app) 
 	);
 
 
-})->after(function (Request $request, Response $response, Silex\Application $app) {
+})->value('memberId','')
+->after(function (Request $request, Response $response, Silex\Application $app) {
 		
 });
 ////////////////////////////////////////
 // UPDATE FOUNDING MEMBER APPLICATION //
 ////////////////////////////////////////
-$app->get('/application/update-founding-member', function (Request $request) use ($app) {
+$app->get('/application/update-founding-member/{memberId}', function ($memberId, Request $request) use ($app) {
 
 	//get the user logged in
-	$user = $app['session']->get('user');
+	if(empty($memberId)){
+		$user = $app['session']->get('user');
+		$memberId = $user['user_id'];
+	}
 
-	$location = new Model\Location($doc=array('member'=>array('_id'=>$user['user_id'])), $app);
+	$location = new Model\Location($doc=array('member'=>array('_id'=>$memberId)), $app);
 	$location = $location->getByMemberId();
 	$member = $location['member'];
 
@@ -440,17 +452,20 @@ $app->get('/application/update-founding-member', function (Request $request) use
 						,'location'=>$location);
 		
 	return $app['view']->render('application/update-founding-member', 'default', $view_vars);
-});
+})->value('memberId','');
 
 //////////////////////////////////////////
 // UPDATE SUSTAINING MEMBER APPLICATION //
 //////////////////////////////////////////
-$app->get('/application/update-sustaining-member', function (Request $request) use ($app) {
+$app->get('/application/update-sustaining-member/{memberId}', function ($memberId, Request $request) use ($app) {
 
 	//get the user logged in
-	$user = $app['session']->get('user');
+	if(empty($memberId)){
+		$user = $app['session']->get('user');
+		$memberId = $user['user_id'];
+	}
 
-	$location = new Model\Location($doc=array('member'=>array('_id'=>$user['user_id'])), $app);
+	$location = new Model\Location($doc=array('member'=>array('_id'=>$memberId)), $app);
 	$location = $location->getByMemberId();
 	$member = $location['member'];
 
@@ -467,7 +482,7 @@ $app->get('/application/update-sustaining-member', function (Request $request) u
 						,'location'=>$location);
 		
 	return $app['view']->render('application/update-sustaining-member', 'default', $view_vars);
-});
+})->value('memberId','');
 
 
 ///////////////////////

@@ -202,8 +202,8 @@
                            <label class="control-label">I understand that any future service in any branch of law enforcement or as a prosecutor of state, county, district or municipal ordinances or statutes requires my immediate disclosure to NCDD and termination of my membership.</label>
                            <div class="controls">
                               <select class="small m-wrap futureLawEnforcement" name="doc[futureLawEnforcement]">
-                                 <option value="no">No</option>
                                  <option value="yes">Yes</option>
+                                 <option value="no">No</option>
                               </select>
                            </div>
                         </div>
@@ -778,7 +778,7 @@
 
 
          submitApp = function(){
-            io.saw.FormPost.activate({postUrl:'/application/update-member'
+            io.saw.FormPost.activate({postUrl:'/application/update-member/<?=$this->vars["member"]["_id"]?>'
                ,serializeSelector:':input'
                ,postOnComplete:function(responseObj,responseStatus){
                      if(responseStatus == 'success'){

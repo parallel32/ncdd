@@ -658,6 +658,7 @@ class Member extends User {
 			$query = array_merge($filter, $query);
 		}
 		$fields = array('displayName'=>true
+						,'primaryPhone'=>true
 						,'email'=>true
 						,'timeZone'=>true
 						,'_id'=>true
