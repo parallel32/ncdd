@@ -39,7 +39,134 @@
 
 
 
-                  <h3 class="form-section">1.</h3>
+                  <h3 class="form-section">1.  If your information below has changed please update it, otherwise, skip to step 2.</h3>
+                  <div class="row-fluid">
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label"><b>Name</b></label>
+                           <div class="controls">
+                              <?=$this->vars['member']['displayName']?>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label"><b>Firm Name</b></label>
+                           <div class="controls">
+                              <?=$this->vars['location']['name']?>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <div class="row-fluid">
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label"><b>Address 1</b></label>
+                           <div class="controls">
+                              <?=$this->vars['location']['addressLine1']?>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label"><b>Address 2</b></label>
+                           <div class="controls">
+                              <?=$this->vars['location']['addressLine2']?>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <div class="row-fluid">
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label"><b>City</b></label>
+                           <div class="controls">
+                              <?=$this->vars['location']['city']?>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label"><b>State / Province</b></label>
+                           <div class="controls">
+                              <?=$this->vars['location']['state']?>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <div class="row-fluid">
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label"><b>Zip</b></label>
+                           <div class="controls">
+                              <?=$this->vars['location']['zip']?>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label"><b>Country</b></label>
+                           <div class="controls">
+                              <?=$this->vars['location']['country']?>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <div class="row-fluid">
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label"><b>Phone</b></label>
+                           <div class="controls">
+                              <?=$this->vars['location']['phone']?>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label"><b>Fax</b></label>
+                           <div class="controls">
+                              <?=$this->vars['location']['fax']?>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  
+                  <div class="row-fluid">
+                     <!--/span-->
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label"><b>Email Address</b></label>
+                           <div class="controls">
+                              <?=$this->vars['member']['email']?>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label"><b>Bar Number / State</b></label>
+                           <div class="controls">
+                              <?=$this->vars['member']['barNumber']?>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+
+
+                  </br><hr></br>
+
+
                   <div class="row-fluid">
                      <div class="span4 ">
                         <div class="control-group">
@@ -52,15 +179,15 @@
                      <!--/span-->
                      <div class="span4 ">
                         <div class="control-group">
-                           <label class="control-label">Middle Initial</label>
+                           <label class="control-label">Middle Name</label>
                            <div class="controls">
-                              <input type="text" name="doc[middleName]" value="<?=(array_key_exists('middleName',$this->vars['application'])) ? $this->vars['application']['middleName']: '';?>" class="m-wrap span12 middleName">
+                              <input type="text" name="doc[middleName]" value="<?=$this->vars['application']['middleName']?>" class="m-wrap span12 middleName">
                            </div>
                         </div>
                      </div>
                      <!--/span-->
                      <div class="span4 ">
-                        <div class="control-group ">
+                        <div class="control-group">
                            <label class="control-label">Last Name</label>
                            <div class="controls">
                               <input type="text" name="doc[lastName]" value="<?=$this->vars['application']['lastName']?>" class="m-wrap span12 lastName">
@@ -69,9 +196,110 @@
                      </div>
                      <!--/span-->
                   </div>
-                  
                   <div class="row-fluid">
                      <div class="span12 ">
+                        <div class="control-group">
+                           <label class="control-label">Law Firm Name / Name of your practice</label>
+                           <div class="controls">
+                              <input type="text" name="doc[firmName]" value="<?=$this->vars['application']['firmName']?>" class="m-wrap span12 firmName">
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <div class="row-fluid">
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">Address 1</label>
+                           <div class="controls">
+                              <input type="text" name="doc[address1]" value="<?=$this->vars['application']['address1']?>" class="m-wrap span12 address1">
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">Address 2</label>
+                           <div class="controls">
+                              <input type="text" name="doc[address2]" value="<?=$this->vars['application']['address2']?>" class="m-wrap span12 address2">
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <div class="row-fluid">
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">City</label>
+                           <div class="controls">
+                              <input type="text" name="doc[city]" value="<?=$this->vars['application']['city']?>" class="m-wrap span12 city">
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">State / Province</label>
+                           <div class="controls">
+                              <input type="text" name="doc[state]" value="<?=$this->vars['application']['state']?>" class="m-wrap span12 state">
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <div class="row-fluid">
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">Zip</label>
+                           <div class="controls">
+                              <input type="text" name="doc[postalCode]" value="<?=$this->vars['application']['postalCode']?>" class="m-wrap span12 postalCode">
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">Country</label>
+                           <div class="controls">
+                              <input type="text" name="doc[country]" value="<?=$this->vars['application']['country']?>" class="m-wrap span12 country">
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <div class="row-fluid">
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">Phone</label>
+                           <div class="controls">
+                              <input type="text" name="doc[phone]" value="<?=$this->vars['application']['phone']?>" class="m-wrap span12 phone">
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">Fax</label>
+                           <div class="controls">
+                              <input type="text" name="doc[fax]" value="<?=$this->vars['application']['fax']?>" class="m-wrap span12 fax">
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  
+                  <div class="row-fluid">
+                     <!--/span-->
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">Email Address</label>
+                           <div class="controls">
+                              <input type="text" name="doc[email]" value="<?=$this->vars['application']['email']?>" class="m-wrap span12 email">
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                     <div class="span6 ">
                         <div class="control-group">
                            <label class="control-label">Bar Number / State</label>
                            <div class="controls">
@@ -81,42 +309,6 @@
                      </div>
                      <!--/span-->
                   </div>
-                  <div class="row-fluid">
-                     <div class="span6 ">
-                        <div class="control-group">
-                           <label class="control-label">Email</label>
-                           <div class="controls">
-                              <input type="text" name="doc[email]" value="<?=$this->vars['application']['email']?>" class="m-wrap span12 email">
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                  </div>
-                  
-                  <!-- BEGIN ADDRESS -->
-                  <h3 class="form-section">Address</h3>
-                  <div class="row-fluid addr ">
-                     <div class="span6 ">
-                        <div class="control-group">
-                           <label class="control-label" >City</label>
-                           <div class="controls">
-                              <input type="text" id="city" name="doc[city]" value="<?=$this->vars['application']['city']?>" class="m-wrap span12 city"> 
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                     <div class="span6 ">
-                        <div class="control-group">
-                           <label class="control-label" >State / Province</label>
-                           <div class="controls">
-                              <input type="text" id="state" name="doc[state]" value="<?=$this->vars['application']['state']?>" class="m-wrap span12 state"> 
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                  </div>
-                  <!--/row-->           
-                  <!-- END ADDRESS -->
                   <h3 class="form-section">2.</h3>
                   <div class="row-fluid">
                      <div class="span6 ">

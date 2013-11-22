@@ -21,6 +21,7 @@ class UpdateFoundingMember extends Apply {
 	public $executed;
 	public $executedPrintedName;
 	public $contributionAmount;
+	public $firmName;
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addPropertyConstraint('inGoodStanding', new Constraints\NotBlank(array('message'=>'cannot be blank','groups' => array('update_member'))));
@@ -55,6 +56,7 @@ class UpdateFoundingMember extends Apply {
 		$this->executed = (!empty($doc['executed']) && strpos($doc['executed'], 'Executed at') === false) ? $this->prepareExecuted($doc['executed']) : $doc['executed'];
 		$this->executedPrintedName = $doc['executedPrintedName'];
 		$this->contributionAmount = $doc['contributionAmount'];
+		$this->firmName = $doc['firmName'];
 		
 
 	}
@@ -73,6 +75,7 @@ class UpdateFoundingMember extends Apply {
 		$this->executed = $this->executed ?: '';
 		$this->executedPrintedName = $this->executedPrintedName ?: '';
 		$this->contributionAmount = $this->contributionAmount ?: 0;
+		$this->firmName = $this->firmName ?: '';
 	}
 	public function insert(){
 		$this->prepareInsert();

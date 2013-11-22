@@ -346,13 +346,7 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 	$doc = $request->get('doc');
 	// add name, email and area to the application for identification
 	$doc['memberId'] = new \MongoId($memberId);
-	$doc['firstName'] = $member['firstName'];
-	$doc['middleName'] = (array_key_exists('middleName',$member)) ? $member['middleName']: '';
-	$doc['lastName'] = $member['lastName'];
-	$doc['email'] = $member['email'];
-	$doc['city'] = $location['city'];
-	$doc['state'] = $location['state'];
-
+	
 	$paymentId = null;	
 	$app_id = new \stdClass();	
 
@@ -492,6 +486,11 @@ $app->get('/application/{id}/view-public', function ($id, Request $request) use 
 	
 	$application = new Model\Apply($doc=array('_id'=>$id), $app);
 	$application = $application->findById();
+
+	$location = new Model\Location($doc=array('member'=>array('_id'=>$application['memberId'])), $app);
+	$location = $location->getByMemberId();
+	$member = $location['member'];
+	
 	$crumbs = array(array('name'=>'Applications','href'=>'#')
 					,array('name'=>$application['firstName'].' '.$application['lastName'],'href'=>'#')
 					,array('name'=>$application['type'],'href'=>'#')
@@ -502,7 +501,10 @@ $app->get('/application/{id}/view-public', function ($id, Request $request) use 
 						,'headline'=>'Private Application View'
 						,'description'=>""
 						,'crumbs'=>$crumbs
-						,'application'=>$application);
+						,'application'=>$application
+						,'location'=>$location
+						,'member'=>$member
+						);
 	switch ($application['class']) {
 		case 'NewMemberApplication': // old deprecated
 		case 'ApplyNewMember':
@@ -534,6 +536,11 @@ $app->get('/application/{id}/view', function ($id, Request $request) use ($app) 
 	
 	$application = new Model\Apply($doc=array('_id'=>$id), $app);
 	$application = $application->findById();
+
+	$location = new Model\Location($doc=array('member'=>array('_id'=>$application['memberId'])), $app);
+	$location = $location->getByMemberId();
+	$member = $location['member'];
+	
 	$crumbs = array(array('name'=>'Applications','href'=>'/applications')
 					,array('name'=>$application['firstName'].' '.$application['lastName'],'href'=>'/application/'.$id.'/view')
 					,array('name'=>$application['type'],'href'=>'/application/'.$id.'/view')
@@ -544,7 +551,10 @@ $app->get('/application/{id}/view', function ($id, Request $request) use ($app) 
 						,'headline'=>'Applications'
 						,'description'=>"View all application here."
 						,'crumbs'=>$crumbs
-						,'application'=>$application);
+						,'application'=>$application
+						,'location'=>$location
+						,'member'=>$member
+						);
 	switch ($application['class']) {
 		case 'NewMemberApplication': // old deprecated
 		case 'ApplyNewMember':
@@ -578,6 +588,10 @@ $app->get('/application/{id}/edit', function ($id, Request $request) use ($app) 
 	$application = new Model\Apply($doc=array('_id'=>$id), $app);
 	$application = $application->findById();
 
+	$location = new Model\Location($doc=array('member'=>array('_id'=>$application['memberId'])), $app);
+	$location = $location->getByMemberId();
+	$member = $location['member'];
+
 	$crumbs = array(array('name'=>'Applications','href'=>'/applications')
 					,array('name'=>$application['firstName'].' '.$application['lastName'],'href'=>'/application/'.$id.'/view')
 					,array('name'=>$application['type'],'href'=>'/application/'.$id.'/view')
@@ -589,7 +603,10 @@ $app->get('/application/{id}/edit', function ($id, Request $request) use ($app) 
 						,'headline'=>'Applications'
 						,'description'=>"Edit Application."
 						,'crumbs'=>$crumbs
-						,'application'=>$application);
+						,'application'=>$application
+						,'location'=>$location
+						,'member'=>$member
+						);
 	switch ($application['class']) {
 		case 'NewMemberApplication': // old deprecated
 		case 'ApplyNewMember':
