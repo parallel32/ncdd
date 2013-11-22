@@ -983,7 +983,7 @@ $app->get('/renewals/{offset}/{limit}', function ($offset, $limit, Request $requ
 	return $app['view']->render('application/index-renewals', 'default', $view_vars);
 })
 ->value('offset','0')
-->value('limit','100')
+->value('limit','2000')
 ->before($mustbeADMIN);
 
 
@@ -992,25 +992,53 @@ $app->get('/applications/activate/renewals/{activate}', function ($activate, Req
 	
 	if($activate == 'yes'){
 		// find all the active members who aren't already active and create the renewal attribute
-		$renewal = new Renewal(array(),$app);
+		$renewal = new Model\Renewal(array(),$app);
 		$renewal->prepareInsert();
 		$renewal = $renewal->__toArray();
 
-		$gm = $member->fetchByMembership(Model\Member::$membership['GENERAL MEMBER'],$fiter=array('status'=>USER_STATUS_ACTIVE));
-		$sm = $member->fetchByMembership(Model\Member::$membership['SUSTAINING MEMBER'],$fiter=array('status'=>USER_STATUS_ACTIVE));
-		$fm = $member->fetchByMembership(Model\Member::$membership['FOUNDING MEMBER'],$fiter=array('status'=>USER_STATUS_ACTIVE));
+		// get the count of the updates to occur
+		// actuall query db.member.find({$or:[{renewal:{$exists:false}},{renewal:{$exists:true,$type:10}}],status:2,currentMembership:10}).count();
+		$common_query = array('$or'=>array(array('renewal'=>array('$exists'=>false)),array('renewal'=>array('$exists'=>true,'$type'=>10))));		
+		
+		$gm_query = array('currentMembership'=>Model\Member::$membership['GENERAL MEMBER'],'status'=>USER_STATUS_ACTIVE);
+		$sm_query = array('currentMembership'=>Model\Member::$membership['SUSTAINING MEMBER'],'status'=>USER_STATUS_ACTIVE);
+		$fm_query = array('currentMembership'=>Model\Member::$membership['FOUNDING MEMBER'],'status'=>USER_STATUS_ACTIVE);
+		$gm_query = array_merge($common_query, $gm_query);
+		$sm_query = array_merge($common_query, $sm_query);
+		$fm_query = array_merge($common_query, $fm_query);
+		
+		$gm_count = $member->count($gm_query);
+		$sm_count = $member->count($sm_query);
+		$fm_count = $member->count($fm_query);
+		
+		$gm_update = $member->updateByCriteria(array('$set'=>array('renewal'=>$renewal)), $gm_query);
+		$sm_update = $member->updateByCriteria(array('$set'=>array('renewal'=>$renewal)), $sm_query);
+		$fm_update = $member->updateByCriteria(array('$set'=>array('renewal'=>$renewal)), $fm_query);
 
 
-
-		$label = 'Your application was received.  Thank you.';
-    	$message = 'Thank you for your interest in NCDD.  Your application has been submitted.  You will be notified by the College when it is approved or if there are any questions.';
-    	$response_status = 200;
+		$label = 'Renewal Activation Successful.';
+    	$message = $gm_count.' General Members were activated<br><br>'.$sm_count.' Sustaining Members were activated<br><br>'.$fm_count.' Founding Members were activated<br><br>Note: only active members were updated.  Non-active members who are activated during the renewal process will have to be manually activated.';
+    	
 	}elseif($activate == 'clear'){
 		// clear all active members' renewal attribute
-		$this->renewal = null;
+		$gm_query = array('currentMembership'=>Model\Member::$membership['GENERAL MEMBER'],'status'=>USER_STATUS_ACTIVE);
+		$sm_query = array('currentMembership'=>Model\Member::$membership['SUSTAINING MEMBER'],'status'=>USER_STATUS_ACTIVE);
+		$fm_query = array('currentMembership'=>Model\Member::$membership['FOUNDING MEMBER'],'status'=>USER_STATUS_ACTIVE);
+		
+		$gm_count = $member->count($gm_query);
+		$sm_count = $member->count($sm_query);
+		$fm_count = $member->count($fm_query);
+		
+		$gm_update = $member->updateByCriteria(array('$set'=>array('renewal'=>null)), $gm_query);
+		$sm_update = $member->updateByCriteria(array('$set'=>array('renewal'=>null)), $sm_query);
+		$fm_update = $member->updateByCriteria(array('$set'=>array('renewal'=>null)), $fm_query);
+
+		$label = 'Renewal Clear Successful.';
+    	$message = $gm_count.' General Members were cleared<br><br>'.$sm_count.' Sustaining Members were cleared<br><br>'.$fm_count.' Founding Members were cleared<br><br>Note: only active members were updated.  Non-active members who are activated during the renewal process will have to be manually cleared.';
+    	
 	}
 
-    return new Response(json_encode(array('message' => $message,'label'=>$label)), $response_status,array('Content-Type' => 'application/json'));
+    return new Response(json_encode(array('message' => $message,'label'=>$label)),200,array('Content-Type' => 'application/json'));
 
 })->value('acitvate','')
 ->before($mustbeADMIN);

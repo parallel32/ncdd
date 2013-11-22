@@ -270,8 +270,8 @@
 
 
 
-
-            <h1>2. Updates</h1>
+            
+            <h1 id="2updates">2. Updates</h1>
             <div class="row-fluid">
                   <div class="responsive span6" data-tablet="span6" data-desktop="span3">
                      <div class="dashboard-stat red">
@@ -443,7 +443,7 @@
             </div>
             
 
-
+            <a name="3donations"></a>
             <h1>3. Donations</h1>
             <div class="row-fluid">
                <div class="responsive span6" data-tablet="span6" data-desktop="span3">
@@ -510,7 +510,128 @@
                </div>
             </div>
 
+            </br>            
+            <div class="row-fluid">
+               <h1>4. Manage Renewal Activation</h1>
+               <a id="activate-renewals" class="btn green "><i class=" "></i> Activate Renewals</a>
+               <a id="clear-renewals" class="btn yellow "><i class=" "></i> Clear Renewals</a>
+            </div>
+            <div class="row-fluid">
+               <div class="span12 alert">
+                  <p>Note: Use these buttons to batch activate or clear all active members.</p>
+                  <p>You should only use the Activate Renewals button in November.</p>
+                  <p>You should only use the Clear Renewals button just before November to clear this screen for the new renewals.</p>
+               </div>
+            </div>
+            <!-- MODAL -->
+            <div id="activate-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="activate-modal-label" aria-hidden="true">
+               <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                  <h3 id="activate-modal-label">Activate Renewals?</h3>
+               </div>
+               <div class="modal-body">
+                  <p>Are you sure you want to activate renewals for all General, Sustaining, and Founding Members, who are active?</p>
+               </div>
+               <div class="modal-footer">
+                  <button class="btn green continue">Yes, Activate Renewals</button>
+                  <button class="btn cancel">Cancel</button>
+               </div>
+            </div>
+            <!--/ MODAL -->
+            <!-- MODAL -->
+            <div id="clear-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="clear-modal-label" aria-hidden="true">
+               <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                  <h3 id="clear-modal-label">Clear Renewals?</h3>
+               </div>
+               <div class="modal-body">
+                  <p>Are you sure you want to clear renewals and prepare for another year?</p>
+               </div>
+               <div class="modal-footer">
+                  <button class="btn yellow continue">Yes, Clear Renewals</button>
+                  <button class="btn cancel">Cancel</button>
+               </div>
+            </div>
+            <!--/ MODAL -->
+            <!-- MODAL -->
+            <div id="save-success" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="save-success-label" aria-hidden="true">
+               <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                  <h3 id="save-success-label"></h3>
+               </div>
+               <div class="modal-body">
+                  <p></p>
+               </div>
+               <div class="modal-footer">
+                  <button class="btn blue continue">Continue</button>
+               </div>
+            </div>
+            <!--/ MODAL -->
+            <script>
+            jQuery(document).ready(function() {    
+               io.saw.Application.init();
 
+               $('#save-success .continue').click(function(e){
+                  e.preventDefault();
+                  document.location.href = '/renewals';
+               });
+               $('#activate-renewals').click(function(e){
+                  e.preventDefault();
+                  $('#activate-modal').modal({keyboard: false});
+               });
+               $('#activate-modal .cancel').click(function(e){
+                  e.preventDefault();
+                  $('#activate-modal').modal('hide');
+               });
+               $('#activate-modal .continue').click(function(e){
+                  e.preventDefault();
+                  io.saw.FormGet.activate({postUrl:'/applications/activate/renewals/yes'
+                     ,postOnComplete:function(responseObj,responseStatus){
+                        $('#activate-modal').modal('hide');
+                     }
+                     ,postOnSuccess:function(responseObj){
+                        $('#save-success .modal-body p').html(responseObj.message);
+                        $('#save-success-label').html(responseObj.label);
+                        $('#save-success').modal({keyboard: false});       
+                     }
+                     ,postOnErrors:function(responseObj){
+                        var responseObj = $.parseJSON(responseObj.responseText);
+                        $('#save-success .modal-body p').html(responseObj.message);
+                        $('#save-success').modal({keyboard: false});       
+                     }
+                  });   
+               });
+               
+
+               $('#clear-renewals').click(function(e){
+                  e.preventDefault();
+                  $('#clear-modal').modal({keyboard: false});
+               });
+               $('#clear-modal .cancel').click(function(e){
+                  e.preventDefault();
+                  $('#clear-modal').modal('hide');
+               });
+               $('#clear-modal .continue').click(function(e){
+                  e.preventDefault();
+                  io.saw.FormGet.activate({postUrl:'/applications/activate/renewals/clear'
+                     ,postOnComplete:function(responseObj,responseStatus){
+                        $('#clear-modal').modal('hide');
+                     }
+                     ,postOnSuccess:function(responseObj){
+                        $('#save-success .modal-body p').html(responseObj.message);
+                        $('#save-success-label').html(responseObj.label);
+                        $('#save-success').modal({keyboard: false});       
+                     }
+                     ,postOnErrors:function(responseObj){
+                        var responseObj = $.parseJSON(responseObj.responseText);
+                        $('#save-success .modal-body p').html(responseObj.message);
+                        $('#save-success').modal({keyboard: false});       
+                     }
+                  });   
+               });
+            
+            });      
+            </script>
 
 
 
