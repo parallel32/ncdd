@@ -543,57 +543,12 @@
                      </div>
                      <!--/span-->
                   </div>
-                  <h3 class="form-section text-center">THE NATIONAL COLLEGE FOR DUI DEFENSE, INC.</br> AUTHORIZATION AND RELEASE</h3>
-                  <div class="row-fluid">
-                     <div class="span12">
-                        <h3 class="text-center"><u>PARTIES</u></h3>
-                        <p>
-                           <u>APPLICANT</u> - person applying for initial membership status or a present member applying for renewal of his or her membership status. </br><u>NCDD</u> - The National College for DUI Defense, Inc.
-                        </p>
-                        <h3 class="text-center"><u>ACKNOWLEDGEMENT</u></h3>
-                        <p>
-                           APPLICANT herein acknowledges that initial membership or renewal of membership is not automatically bestowed with payment of membership fees; (2) that the College endeavors to maintain among its membership attorneys of high ethical and moral character; and, (3) the entire membership benefits when each member maintains standards of reasonable conduct and character within his or her community and professional associations.
-                        </p>
-                        <h3 class="text-center"><u>AUTHORIZE AND RELEASE</u></h3>
-                        <p>
-                           Applicant does by this document give consent for the NCDD to conduct an investigation into my character and fitness to be a member, and to make inquiries and request such information from third parties as, in the sole discretion of NCDD, may be necessary for such investigation. I further authorize the use of any and all such information in the course of the NCDD’s investigation and evaluation of my application for general membership and annual renewal.
-                        </p>
-                        <h3 class="text-center"><u>INITIAL MEMBERSHIP AND/OR RENEWAL</u></h3>
-                        <p>
-                           I authorize and request every person or entity, governmental or private, having opinions or knowledge about me, or control of any documents, information, or data pertaining to me, to furnish to the NCDD or its representative such opinions, knowledge, documents or data. Without limiting the previously described authority, I specifically authorize the release of records pertaining to my criminal history, files of any state or professional association regarding disciplinary proceedings and complaints against me, and records of educational institutions concerning me.
-                           </br></br>
-                           I hereby authorize all persons set out above to answer any inquiries from the NCDD concerning me, and I waive absolutely any privileges or privacy rights I may have which are applicable to any documents or information referred to above and sought pursuant to this authorization and release.
-                           </br></br>
-                           Notwithstanding any statement herein to the contrary, this Authorization and Release shall not operate to release any medical or mental health records relating to alcohol, drug or chemical dependency.
-                           </br></br>
-                           I hereby release, discharge and hold harmless the NCDD, its agents or representatives, and any person or entity and its agents or representatives, from any and all liability arising out of the furnishing or use of the opinions, knowledge, documents, records or other data released pursuant to this Authorization and Release.
-                           </br></br>
-                           A photocopy of this authorization shall be accepted with the same validity as the original.
-                           </br></br>
-                        </p>
-                     </div>
-                     <!--/span-->
-                  </div>
-                  <div class="row-fluid">
-                     <div class="span12 ">
-                        <div class="control-group">
-                           <label class="control-label">By printing your name you acknowledge this Authorization and Release.</label>
-                           <div class="controls">
-                              <div class="input-prepend">
-                                 <span class="add-on">Printed Name: </span>
-                                 <input name="doc[authorizationReleasePrintedName]" class="m-wrap span12 authorizationReleasePrintedName" type="text" placeholder="">
-                              </div>
-                           </div>
-                           
-                        </div>
-                     </div>
-                     <!--/span-->
-                  </div>
+                  
                   <div class="row-fluid">
                      <div class="span12">
                         <div class="control-group">
-                           <label class="control-label">Please download this reference form and confirm you did so by selecting "Yes": <br>
-                              <a target="_blank" href="http://<?=SAW_ADMIN_WEBSITE?>/application/downloads/ncdd-general-membership-reference-form.pdf">New Member Application Reference Form - click to download the PDF document.</a>
+                           <label class="control-label">Please download this zip file containing the reference form along with the authorization and release form and confirm you did so by selecting "Yes": <br>
+                              <a target="_blank" href="http://<?=SAW_ADMIN_WEBSITE?>/application/downloads/ncdd-general-membership-reference-form-auhtorization-release.zip">New Member Application Reference Form & Authoriztion and Release Form - click to download the ZIP file.</a>
                            </label>
                            <div class="controls">
                               <select class="large m-wrap referenceFormDownload" name="doc[referenceFormDownload]">

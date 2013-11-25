@@ -53,7 +53,9 @@ class ApplyNewMember extends Apply {
 		$metadata->addPropertyConstraint('executed', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('executedPrintedName', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('membershipDues', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		$metadata->addPropertyConstraint('authorizationReleasePrintedName', new Constraints\NotBlank(array('message'=>'cannot be blank')));
+		/* commented out per Rhea's request
+		//$metadata->addPropertyConstraint('authorizationReleasePrintedName', new Constraints\NotBlank(array('message'=>'cannot be blank')));
+		//*/
 		$metadata->addConstraint(new Callback(array('methods' => array('explain'))));
 		$metadata->addConstraint(new Callback(array('methods' => array('referenceFormDownload'))));
 	}

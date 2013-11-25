@@ -186,7 +186,7 @@ $app->get('/application/downloads/{file}', function ($file, Request $request) us
 
 	$file = './../../../www/admin.ncdd.com/public_html/assets/membership-forms/'.$file;
     $file_contents = file_get_contents($file);
-	return new Response($file_contents, 200, array('Content-Type' => 'application/pdf'));
+	return new Response($file_contents, 200, array('Content-Type' => 'application/octet-stream'));
 });
 
 
