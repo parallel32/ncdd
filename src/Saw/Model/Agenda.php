@@ -99,6 +99,19 @@ class Agenda extends Model {
 		endif;
 		return $results;
 	}
+	public function findById(){
+		$results = $this->findOne($query=array('_id'=>$this->_id),$fields=array(),$slaveOkay=true,$sort=array('date.date'=>1),$offset=0,$limit=100);
+		if(!empty($results)):
+			$t_arr = array();
+			foreach ($results['timeSlots'] as $timeSlot){
+				$t_arr[$timeSlot['date']['date']->sec] = $timeSlot;
+			}
+			ksort($t_arr,SORT_NUMERIC);
+			$results['timeSlots'] = $t_arr;
+		endif;
+
+		return $results;
+	}
 	public function removeBySeminarId(){
 		return $this->removeByCriteria(array('seminarId'=>$this->seminarId));
 	}
