@@ -14,6 +14,7 @@ use Silex\Application;
 class Model {
 	
 	public $_id;
+	public $clearFields;
 	public static $invalidFieldsMessage = "Some fields were invalid. Please correct and re-try.";
 	static $app;
 	
@@ -24,10 +25,10 @@ class Model {
 		}else{
 			self::$app['mongo'] = new \Saw\Provider\Store\Mongo\MongoWrapper();
 		}
-		
 	}
 	
 	public function init(&$doc){
+		$this->clearFields = (array_key_exists('clearFields',$doc)) ? $doc['clearFields'] : '';
 		$properties = get_object_vars($this);
 		$doc = array_merge($properties,$doc);
 	}
@@ -122,10 +123,31 @@ class Model {
         if(!$this->save($options)){
         	throw new \Saw\Model\Exceptions\DomainException("Saving failed.  Please try again.");
         }
+        if(!empty($this->clearFields)){
+			$this->clear($this->clearFields);
+		}
         return true;
 	}       
     
 	/**
+	 * Model::_id must be set in order for this 
+	 * to clear the fields
+	 */
+	public function clear($fields, $options=array()){
+		if(!empty($this->_id)):
+			
+			$document = array('$set' => $fields);
+		error_log('clear::document:'.print_r($document,true));
+			$criteria = array('_id'=>$this->_id);
+			//error_log('document:'.print_r($document,true));
+			//error_log('criteria:'.print_r($criteria,true));
+			$result = self::$app['mongo']->update($document, $this->collection, $criteria, $multiple=false, $upsert=false, $options);
+		    return $result;
+		else:
+			return false;
+		endif;
+	} 
+    /**
 	 * Model::_id must be set in order for this 
 	 * to attempt an atomic save on all non empty 
 	 * properties

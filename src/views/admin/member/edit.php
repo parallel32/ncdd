@@ -1102,11 +1102,13 @@
          <!-- END PAGE -->
          <?=$this->element('js/Member.js',array('accessLevel'=>$accessLevel));?>
          <?=$this->element('js/Address.js');?>
+         <?=$this->element('js/ClearField.js');?>
 
          <script>
          jQuery(document).ready(function() {    
             io.saw.Member.init();
             io.saw.Address.init('#location-form');
+            io.saw.ClearField.init({formArr:['#location-form','#saw-form','#website-form','#language-form','#pa-form']});
 
             window.editor = new SnapEditor.InPlace("aboutMe", {
                 path: "/assets/snapeditor",
