@@ -533,7 +533,7 @@
                <a id="clear-renewals" class="btn yellow "><i class=" "></i> Clear Renewals</a>
             </div>
             <div class="row-fluid">
-               <div class="span12 alert">
+               <div class="span12 alert alert-info">
                   <p>Note: Use these buttons to batch activate or clear all active members.</p>
                   <p>You should only use the Activate Renewals button in November.</p>
                   <p>You should only use the Clear Renewals button just before November to clear this screen for the new renewals.</p>
