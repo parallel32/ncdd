@@ -137,7 +137,6 @@ class Model {
 		if(!empty($this->_id)):
 			
 			$document = array('$set' => $fields);
-		error_log('clear::document:'.print_r($document,true));
 			$criteria = array('_id'=>$this->_id);
 			//error_log('document:'.print_r($document,true));
 			//error_log('criteria:'.print_r($criteria,true));
