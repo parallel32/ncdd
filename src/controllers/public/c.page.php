@@ -548,4 +548,15 @@ $app->get('/{slug}', function ($slug, Request $request) use ($app) {
 	return $app['view']->render('page/content', 'content', $view_vars);
 });
 
+
+///////////////////
+// SEMINAR FILES //
+///////////////////
+$app->get('/seminar/downloads/{file}', function ($file, Request $request) use ($app) {
+
+	$file = './../../../www/admin.ncdd.com/public_html/assets/seminar-forms/'.$file;
+    $file_contents = file_get_contents($file);
+	return new Response($file_contents, 200, array('Content-Type' => 'application/octet-stream'));
+});
+
 return $app;
