@@ -196,7 +196,7 @@ class Member extends User {
 		$this->practiceAreas = $this->practiceAreas ?: array();
 		$this->yearsinpractice = $this->yearsinpractice ?: '';
 		$this->orderNum = $this->orderNum ?: '*';
-		$this->changeAccessLevelTo = $this->changeAccessLevelTo ?: '*';
+		$this->changeAccessLevelTo = $this->changeAccessLevelTo ?: $this->accessLevel;
 		$this->renewal = $this->renewal ?: null;
 
 		parent::prepareInsert();
