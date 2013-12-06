@@ -237,7 +237,7 @@
                                  <td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
-                                 <td class=" "><a data-id="<?=$member['_id']?>" class="btn blue mini view"><i class=" "></i> View</a></td>
+                                 <td class=" "><!--<a data-id="<?=$member['_id']?>" class="btn blue mini view"><i class=" "></i> View</a>--></td>
                               </tr>
                               <? endforeach;?>
                               <? else: ?>
@@ -442,7 +442,7 @@
                                  <td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
-                                 <td class=" "><a data-id="<?=$member['_id']?>" class="btn blue mini view"><i class=" "></i> View</a></td>
+                                 <td class=" "><!--<a data-id="<?=$member['_id']?>" class="btn blue mini view"><i class=" "></i> View</a>--></td>
                               </tr>
                               <? endforeach;?>
                               <? else: ?>
