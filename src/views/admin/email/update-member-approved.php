@@ -16,22 +16,26 @@ Your application for General Membership Renewal has been approved.
 <br/> Please log in and do the following:
 <br/>
 <br/>
-<br/> 1. Pay your membership dues.
-<br/> 2. Update your profile details so that we have current information.
+<br/> 1. <strong>Pay your membership dues</strong>, which you can pay with a credit card online from within the member portal.
+<br/> If you choose to pay by check please remit payment to the address below.
+<br/>
+<br/> 2. <strong>Update your public profile details</strong> so that you are displaying to the public your current contact information.
 <br/> 
-<br>
-<br>To access the "Members Only" area you may browse to <a href="http://ncdd.com">ncdd.com</a> and click "Member Sign in" on the top left.  Or you may browse directly to:
-<br>
-<br><a href="http://<?=SAW_ADMIN_WEBSITE?>/login" target="_blank">http://<?=SAW_ADMIN_WEBSITE?>/login</a>. 
-<br>
-<br>Your User ID is: <?=$this->vars['email']?>
+<br/>
+<br/>To access the "Members Only" area you may browse to <a href="http://ncdd.com">ncdd.com</a> and click "Member Sign in" on the top left.  Or you may browse directly to:
+<br/>
+<br/><a href="http://<?=SAW_ADMIN_WEBSITE?>/login" target="_blank">http://<?=SAW_ADMIN_WEBSITE?>/login</a>. 
+<br/>
+<br/>Your User ID is: <?=$this->vars['email']?>
 <br/>
 <br/>If you have any questions don't hesitate to contact us at: rhea@ncdd.com
-<br>National College for DUI Defense, Inc. 
-<br>445 S. Decatur St. 
-<br>Montgomery, AL 36104 
-<br>Tel: 334-264-1950 
-<br>Fax: 334-264-1920
+<br/>
+<br/>Please make checks payable to:
+<br/>National College for DUI Defense, Inc. 
+<br/>445 S. Decatur St. 
+<br/>Montgomery, AL 36104 
+<br/>Tel: 334-264-1950 
+<br/>Fax: 334-264-1920
 
 												</div>
 											</td>

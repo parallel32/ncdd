@@ -25,6 +25,7 @@ class Renewal extends Model {
 	public $paidDate;
 	public $paymentId;
 	public $contributionPaymentId;
+	public $payByCheck;
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		
@@ -41,6 +42,7 @@ class Renewal extends Model {
 		$this->paidDate = $doc['paidDate'];
 		$this->paymentId = $doc['paymentId'];
 		$this->contributionPaymentId = $doc['contributionPaymentId'];
+		$this->payByCheck = $doc['payByCheck'];
 
 	}
 	/**
@@ -55,6 +57,7 @@ class Renewal extends Model {
 		$this->paidDate = $this->paidDate ?: new \stdClass();
 		$this->paymentId = $this->paymentId ?: new \stdClass();
 		$this->contributionPaymentId = $this->contributionPaymentId ?: null;
+		$this->payByCheck = $this->payByCheck ?: '';
 	
 	}
 	

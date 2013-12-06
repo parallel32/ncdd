@@ -32,6 +32,7 @@ class UpdateMember extends Apply {
 	public $executedPrintedName;
 	public $contributionAmount;
 	public $firmName;
+	public $payByCheck;
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addPropertyConstraint('everBeenArrested', new Constraints\NotBlank(array('message'=>'cannot be blank','groups' => array('update_member'))));
@@ -101,6 +102,7 @@ class UpdateMember extends Apply {
 		$this->executedPrintedName = $doc['executedPrintedName'];
 		$this->contributionAmount = $doc['contributionAmount'];
 		$this->firmName = $doc['firmName'];
+		$this->payByCheck = $doc['payByCheck'];
 		
 
 	}
@@ -130,6 +132,7 @@ class UpdateMember extends Apply {
 		$this->executedPrintedName = $this->executedPrintedName ?: '';
 		$this->contributionAmount = $this->contributionAmount ?: 0;
 		$this->firmName = $this->firmName ?: '';
+		$this->payByCheck = $this->payByCheck ?: '';
 	}
 	public function insert(){
 		$this->prepareInsert();
@@ -155,6 +158,7 @@ class UpdateMember extends Apply {
 
 		$member['renewal']['currentStatus'] = Renewal::$status['APPROVED'];
 		$member['renewal']['approvedDate'] = new Date(self::$app, 'now', $this->timeZone); 
+		$member['renewal']['payByCheck'] = $this->payByCheck; 
 		
 		$renewal = new Renewal($member['renewal'],self::$app);
 		$renewal->setRenewalByMember($member['_id']);

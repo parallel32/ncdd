@@ -553,6 +553,20 @@
                      </div>
                      <!--/span-->
                   </div>
+                  <h3 class="form-section">Please confirm if you intend to pay by check:</h3>
+                  <div class="row-fluid">
+                     <div class="span12 ">
+                        <div class="control-group">
+                           <label class="control-label"></label>
+                           <div class="controls">
+                              <input style="margin-left:1px;" type="radio" name="doc[payByCheck]" value="yes">&nbsp;&nbsp;Yes, I intend to pay by check.<br/><br/>
+                              <input style="margin-left:1px;" type="radio" name="doc[payByCheck]" value="no">&nbsp;&nbsp;No, I intend to pay my membership dues online with my credit card.<br/><br/>
+                              Upon submission of this form and subsequent approval of your renewal, you will receive an email with instructions on how to pay your dues.
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
                   
 
                   
