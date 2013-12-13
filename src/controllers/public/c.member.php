@@ -24,6 +24,7 @@ $app->get('/badge/{id}/member', function ($id, Request $request) use ($app, $img
 	$member = $member->findById();
 	$badge_path = '';
 	if(!empty($member)){
+		error_log('/badge/id/member::currentMembership:'.$member['currentMembership']);
 		$badge_path = Model\Member::$membershipBadge[$member['currentMembership']];
 	}
 
@@ -79,6 +80,25 @@ $app->get('/badge/{id}/boardcertified', function ($id, Request $request) use ($a
 	return new Response($file_contents, 200, array('Content-Type' => 'image/jpeg'));
 		
 });
+$app->get('/badge/{id}/staff', function ($id, Request $request) use ($app, $imgUnavailable) {
+	
+	// return the badge
+	$member = new Model\Member(array('_id'=>$id),$app);
+	$member = $member->findById();
+	$badge_path = '';
+	if(!empty($member) && array_key_exists('staff',$member) && $member['staff'])
+		$badge_path = Model\Member::$staffBadge;
+
+	if (!file_exists($badge_path)) {
+        $img_path = $imgUnavailable;
+    }else{
+    	$img_path = $badge_path;
+    }
+	
+	$file_contents = file_get_contents($img_path);
+	return new Response($file_contents, 200, array('Content-Type' => 'image/jpeg'));
+		
+});
 $app->get('/member/{id}/{slug}', function ($id, $slug, Request $request) use ($app) {
 	
 	// return the badge
@@ -90,6 +110,8 @@ $app->get('/member/{id}/{slug}', function ($id, $slug, Request $request) use ($a
 	$member['currentFacultyPosition'] = (!empty($member['currentFacultyPosition'])) ? Model\Member::$facultyPositionReversed[$member['currentFacultyPosition']] : '';
 	$member['boardCertified'] = ($member['boardCertified']) ? "Yes" : "No";
 	$member['boardCertifiedBadge'] = Model\Member::$boardCertifiedBadge;
+	$member['staff'] = ((array_key_exists('staff',$member)) ? $member['staff']: '') ? "Yes" : "No";
+	$member['staffBadge'] = Model\Member::$staffBadge;
 
 	$location = new Model\Location(array('ownerId'=>$member['_id']),$app);
 	$locations = $location->getByOwner();

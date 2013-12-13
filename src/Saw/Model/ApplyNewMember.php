@@ -186,7 +186,14 @@ class ApplyNewMember extends Apply {
 			$mem_doc['listed'] = 1;
 			$mem_doc['accessLevel'] = MEMBER;
 		}
-
+error_log('ApplyNewMember::approve::membershipDues:'.$this->membershipDues);
+		if(intval($this->membershipDues) == 50){
+error_log('here');
+			$mem_doc['currentMembership'] = Member::$membership['PUBLIC DEFENDER'];
+			$mem_doc['currentOrder'] = Member::$order['PUBLIC DEFENDER'];	
+		}
+		
+		
 		// prepare location record
 		$loc_doc['raw'] = $this->formattedAddress;
 		$loc_doc['name'] = 'primary';

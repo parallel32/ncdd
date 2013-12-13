@@ -40,17 +40,18 @@ class Member extends User {
 	public $orderNum;
 
 	// order not relevant
-	static public $membership = array('GENERAL MEMBER'=>10,'FACULTY'=>20,'SUSTAINING MEMBER'=>30,'FOUNDING MEMBER'=>40);
-	static public $membershipReversed = array(10=>'GENERAL MEMBER',20=>'FACULTY',30=>'SUSTAINING MEMBER', 40=>'FOUNDING MEMBER');
+	static public $membership = array('PUBLIC DEFENDER'=>5,'GENERAL MEMBER'=>10,'FACULTY'=>20,'SUSTAINING MEMBER'=>30,'FOUNDING MEMBER'=>40);
+	static public $membershipReversed = array(5=>'PUBLIC DEFENDER',10=>'GENERAL MEMBER',20=>'FACULTY',30=>'SUSTAINING MEMBER', 40=>'FOUNDING MEMBER');
 	public $currentMembership;
-	static public $membershipBadge = array(10=>'./../../../www/ncdd.com/public_html/assets/img/badges/general.png'
+	static public $membershipBadge = array(5=>'./../../../www/ncdd.com/public_html/assets/img/badges/public-defender.png'
+											,10=>'./../../../www/ncdd.com/public_html/assets/img/badges/general.png'
 											,20=>'./../../../www/ncdd.com/public_html/assets/img/badges/faculty.png'
 											,40=>'./../../../www/ncdd.com/public_html/assets/img/badges/founding.png'
 											,30=>'./../../../www/ncdd.com/public_html/assets/img/badges/sustaining.png'
 											);
 	// order descending
-	static public $order = array('DEAN'=>65,'FELLOW'=>60,'DEAN EMERITUS'=>58,'ASSISTANT DEAN'=>57,'SECRETARY'=>56,'TREASURER'=>55,'REGENT'=>50,'BOARD CERTIFIED'=>45,'FOUNDING MEMBER'=>40,'SUSTAINING MEMBER'=>35,'DELEGATE'=>20,'FORMER REGENT'=>15,'FACULTY'=>10,'GENERAL MEMBER'=>5);
-	static public $orderReversed = array(65=>'DEAN',60=>'FELLOW',58=>'DEAN EMERITUS',57=>'ASSISTANT DEAN',56=>'SECRETARY',55=>'TREASURER',50=>'REGENT',45=>'BOARD CERTIFIED',40=>'FOUNDING MEMBER',35=>'SUSTAINING MEMBER',20=>'DELEGATE',15=>'FORMER REGENT',10=>'FACULTY',5=>'GENERAL MEMBER');
+	static public $order = array('DEAN'=>65,'FELLOW'=>60,'DEAN EMERITUS'=>58,'ASSISTANT DEAN'=>57,'SECRETARY'=>56,'TREASURER'=>55,'REGENT'=>50,'BOARD CERTIFIED'=>45,'FOUNDING MEMBER'=>40,'SUSTAINING MEMBER'=>35,'DELEGATE'=>20,'FORMER REGENT'=>15,'FACULTY'=>10,'GENERAL MEMBER'=>5,'PUBLIC DEFENDER'=>3);
+	static public $orderReversed = array(65=>'DEAN',60=>'FELLOW',58=>'DEAN EMERITUS',57=>'ASSISTANT DEAN',56=>'SECRETARY',55=>'TREASURER',50=>'REGENT',45=>'BOARD CERTIFIED',40=>'FOUNDING MEMBER',35=>'SUSTAINING MEMBER',20=>'DELEGATE',15=>'FORMER REGENT',10=>'FACULTY',5=>'GENERAL MEMBER',3=>'PUBLIC DEFENDER');
 	public $currentOrder;
 	
 	// order descending
@@ -67,6 +68,8 @@ class Member extends User {
 										,20=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/delegate.png'
 										,10=>'./../../../www/ncdd.com/public_html/assets/img/badges-exec/former_regent.png');
 	
+	public $staff; // yes | no
+	public static $staffBadge = './../../../www/ncdd.com/public_html/assets/img/badges/faculty.png';
 	public $boardCertified; // yes | no
 	public static $boardCertifiedBadge = './../../../www/ncdd.com/public_html/assets/img/badges/boardcertified.png';
 	public $listed;
@@ -105,6 +108,14 @@ class Member extends User {
 			$this->boardCertified = 0;
 		}else if(is_numeric($doc['boardCertified'])){
 			$this->boardCertified = (int)$doc['boardCertified'];
+		}
+		
+		if(strtolower($doc['staff']) == 'yes'){
+			$this->staff = 1;
+		}else if(strtolower($doc['staff']) == 'no'){
+			$this->staff = 0;
+		}else if(is_numeric($doc['staff'])){
+			$this->staff = (int)$doc['staff'];
 		}
 		
         $this->joinDate = (!empty($doc['joinDate'])) ? (is_object($doc['joinDate'])) ? $doc['joinDate']->__toArray() : new Date(self::$app,$doc['joinDate'], $this->timeZone)  : $doc['joinDate'];
@@ -179,6 +190,7 @@ class Member extends User {
 		$this->currentOrder = $this->currentOrder ?: self::$order['GENERAL MEMBER'];
 		$this->currentFacultyPosition = $this->currentFacultyPosition ?: 0;
 		$this->boardCertified = $this->boardCertified ?: 0;
+		$this->staff = $this->staff ?: 0;
 		$this->joinDate = (!empty($this->joinDate)) ? (is_object($this->joinDate)) ? $this->joinDate->__toArray() : $this->joinDate  : new Date(self::$app,'now', $this->timeZone);
 		$this->timeZone = $this->timeZone ?: 'America/New_York';
 
@@ -340,6 +352,7 @@ class Member extends User {
 					,'currentMembership'=>1
 					,'currentFacultyPosition'=>1
 					,'boardCertified'=>1
+					,'staff'=>1
 					,'listed'=>1
 					,'websites'=>1
 					,'orderNum'=>1
@@ -375,6 +388,7 @@ class Member extends User {
 					$result[$i]['currentMembership'] = $value['member']['currentMembership'];
 					$result[$i]['currentFacultyPosition'] = $value['member']['currentFacultyPosition'];
 					$result[$i]['boardCertified'] = $value['member']['boardCertified'];
+					$result[$i]['staff'] = (array_key_exists('staff',$value['member'])) ? $value['member']['staff']: '';
 					$result[$i]['listed'] = $value['member']['listed'];
 					$result[$i]['websites'] = $value['member']['websites'];
 					$result[$i]['orderNum'] = $value['member']['orderNum'];
@@ -428,6 +442,9 @@ class Member extends User {
 			case 'Board Certified':
 				$result = $this->find($query=array('boardCertified'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
 				break;
+			case 'Staff':
+				$result = $this->find($query=array('staff'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				break;
 			
 			default:
 				$search = new \MongoRegex("/".$string."/i");
@@ -442,8 +459,10 @@ class Member extends User {
 				$result[$i]['currentMembership'] = (!empty($result[$i]['currentMembership'])) ? self::$membershipReversed[$result[$i]['currentMembership']] : '';
 				$result[$i]['currentFacultyPosition'] = (!empty($result[$i]['currentFacultyPosition'])) ? self::$facultyPositionReversed[$result[$i]['currentFacultyPosition']] : '';
 				$result[$i]['boardCertified'] = ($result[$i]['boardCertified']) ? "Yes" : "No";
+				$result[$i]['staff'] = ((array_key_exists('staff',$result[$i])) ? $result[$i]['staff']: '') ? "Yes" : "No";
 				$result[$i]['listed'] = ($result[$i]['listed']) ? "Yes" : "No";
 				$result[$i]['boardCertifiedBadge'] = self::$boardCertifiedBadge;
+				$result[$i]['staffBadge'] = self::$staffBadge;
 			}
 		endif;
 		return $result;
@@ -462,6 +481,7 @@ class Member extends User {
 					,'member.currentMembership'=>1
 					,'member.currentFacultyPosition'=>1
 					,'member.boardCertified'=>1
+					,'member.staff'=>1
 					,'member.websites'=>1
 					,'raw'=>1
 					);
@@ -483,6 +503,8 @@ class Member extends User {
 			$result[$i]['currentFacultyPosition'] = (!empty($value['member']['currentFacultyPosition'])) ? self::$facultyPositionReversed[$value['member']['currentFacultyPosition']] : '';
 			$result[$i]['boardCertified'] = ($value['member']['boardCertified']) ? "Yes" : "No";
 			$result[$i]['boardCertifiedBadge'] = self::$boardCertifiedBadge;
+			$result[$i]['staff'] = ((array_key_exists('staff',$value['member'])) ? $value['member']['staff']: '') ? "Yes" : "No";
+			$result[$i]['staffBadge'] = self::$staffBadge;
 			
 			$result[$i]['websites'] = $value['member']['websites'];
 			$result[$i]['location']['raw'] = $value['raw'];
@@ -511,6 +533,7 @@ class Member extends User {
 					,'member.currentMembership'=>1
 					,'member.currentFacultyPosition'=>1
 					,'member.boardCertified'=>1
+					,'member.staff'=>1
 					,'member.websites'=>1
 					,'raw'=>1
 					);
@@ -521,7 +544,7 @@ class Member extends User {
 		foreach ($result as $key => $value) {
 			$result[$i]['_id'] = $value['member']['_id'];
 			$result[$i]['firstName'] = $value['member']['firstName'];
-			$result[$i]['middleName'] = $value['member']['middleName'];
+			$result[$i]['middleName'] = (array_key_exists('middleName',$value['member'])) ? $value['member']['middleName']: '';
 			$result[$i]['lastName'] = $value['member']['lastName'];
 			$result[$i]['slug'] = $value['member']['slug'];
 			$result[$i]['primaryPhone'] = $value['member']['primaryPhone'];
@@ -532,6 +555,8 @@ class Member extends User {
 			$result[$i]['currentFacultyPosition'] = (!empty($value['member']['currentFacultyPosition'])) ? self::$facultyPositionReversed[$value['member']['currentFacultyPosition']] : '';
 			$result[$i]['boardCertified'] = ($value['member']['boardCertified']) ? "Yes" : "No";
 			$result[$i]['boardCertifiedBadge'] = self::$boardCertifiedBadge;
+			$result[$i]['staff'] = ((array_key_exists('staff',$value['member'])) ? $value['member']['staff']: '') ? "Yes" : "No";
+			$result[$i]['staffBadge'] = self::$staffBadge;
 			
 			$result[$i]['websites'] = $value['member']['websites'];
 			$result[$i]['location']['raw'] = $value['raw'];
@@ -560,6 +585,7 @@ class Member extends User {
 					,'member.currentMembership'=>1
 					,'member.currentFacultyPosition'=>1
 					,'member.boardCertified'=>1
+					,'member.staff'=>1
 					,'member.websites'=>1
 					,'raw'=>1
 					);
@@ -581,6 +607,8 @@ class Member extends User {
 			$result[$i]['currentFacultyPosition'] = (!empty($value['member']['currentFacultyPosition'])) ? self::$facultyPositionReversed[$value['member']['currentFacultyPosition']] : '';
 			$result[$i]['boardCertified'] = ($value['member']['boardCertified']) ? "Yes" : "No";
 			$result[$i]['boardCertifiedBadge'] = self::$boardCertifiedBadge;
+			$result[$i]['staff'] = ((array_key_exists('staff',$value['member'])) ? $value['member']['staff']: '') ? "Yes" : "No";
+			$result[$i]['staffBadge'] = self::$staffBadge;
 			
 			$result[$i]['websites'] = $value['member']['websites'];
 			$result[$i]['location']['raw'] = $value['raw'];

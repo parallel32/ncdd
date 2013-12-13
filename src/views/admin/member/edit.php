@@ -116,6 +116,15 @@
                                     </select>
                                  </div>
                               </div>
+                              <div class="control-group ">
+                                 <label class="control-label">Faculty/Staff?</label>
+                                 <div class="controls">
+                                    <select class="small m-wrap staff" name="doc[staff]">
+                                       <option value="no">No</option>
+                                       <option value="yes" <?=(array_key_exists('staff',$this->vars['member'])) ? ($this->vars['member']['staff'] == 1) ?'selected':'': '';?>>Yes</option>
+                                    </select>
+                                 </div>
+                              </div>
                            </div>
                            <!--/span-->
                            <div class="span6 ">
@@ -283,6 +292,9 @@
                                     <? if($this->vars['member']['boardCertified']): ?>
                                        &nbsp;&nbsp;<img width="200" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/boardcertified">
                                     <? endif; ?>
+                                    <? if(array_key_exists('staff',$this->vars['member']) && $this->vars['member']['staff']): ?>
+                                       &nbsp;&nbsp;<img width="152" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/staff">
+                                    <? endif; ?>
                                  </div>
                               </div>
                            </div>
@@ -317,6 +329,19 @@
                                  <label class="control-label">Board Certified Badge for your website:</label>
                                  <div class="controls">
                                     <textarea rows="3" class="span8"><a target="_blank" href="http://<?=SAW_CONSUMER_WEBSITE?>/member/<?=$this->vars['member']['_id']?>/<?=$this->vars['member']['slug']?>"><img width="200" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/boardcertified" alt="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" title="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" /></a></textarea>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        <? endif; ?>
+                        <? if(array_key_exists('staff',$this->vars['member']) && $this->vars['member']['staff']): ?>
+                        <div class="row-fluid">
+                           <div class="span6 ">
+                              <div class="control-group ">
+                                 <label class="control-label">Faculty Badge for your website:</label>
+                                 <div class="controls">
+                                    <textarea rows="3" class="span8"><a target="_blank" href="http://<?=SAW_CONSUMER_WEBSITE?>/member/<?=$this->vars['member']['_id']?>/<?=$this->vars['member']['slug']?>"><img width="152" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/staff" alt="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" title="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" /></a></textarea>
                                  </div>
                               </div>
                            </div>
