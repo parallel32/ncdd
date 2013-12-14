@@ -40,8 +40,8 @@ class Member extends User {
 	public $orderNum;
 
 	// order not relevant
-	static public $membership = array('PUBLIC DEFENDER'=>5,'GENERAL MEMBER'=>10,'FACULTY'=>20,'SUSTAINING MEMBER'=>30,'FOUNDING MEMBER'=>40);
-	static public $membershipReversed = array(5=>'PUBLIC DEFENDER',10=>'GENERAL MEMBER',20=>'FACULTY',30=>'SUSTAINING MEMBER', 40=>'FOUNDING MEMBER');
+	static public $membership = array('PUBLIC DEFENDER'=>5,'GENERAL MEMBER'=>10,'SUSTAINING MEMBER'=>30,'FOUNDING MEMBER'=>40);
+	static public $membershipReversed = array(5=>'PUBLIC DEFENDER',10=>'GENERAL MEMBER',30=>'SUSTAINING MEMBER', 40=>'FOUNDING MEMBER');
 	public $currentMembership;
 	static public $membershipBadge = array(5=>'./../../../www/ncdd.com/public_html/assets/img/badges/public-defender.png'
 											,10=>'./../../../www/ncdd.com/public_html/assets/img/badges/general.png'
@@ -50,8 +50,8 @@ class Member extends User {
 											,30=>'./../../../www/ncdd.com/public_html/assets/img/badges/sustaining.png'
 											);
 	// order descending
-	static public $order = array('DEAN'=>65,'FELLOW'=>60,'DEAN EMERITUS'=>58,'ASSISTANT DEAN'=>57,'SECRETARY'=>56,'TREASURER'=>55,'REGENT'=>50,'BOARD CERTIFIED'=>45,'FOUNDING MEMBER'=>40,'SUSTAINING MEMBER'=>35,'DELEGATE'=>20,'FORMER REGENT'=>15,'FACULTY'=>10,'GENERAL MEMBER'=>5,'PUBLIC DEFENDER'=>3);
-	static public $orderReversed = array(65=>'DEAN',60=>'FELLOW',58=>'DEAN EMERITUS',57=>'ASSISTANT DEAN',56=>'SECRETARY',55=>'TREASURER',50=>'REGENT',45=>'BOARD CERTIFIED',40=>'FOUNDING MEMBER',35=>'SUSTAINING MEMBER',20=>'DELEGATE',15=>'FORMER REGENT',10=>'FACULTY',5=>'GENERAL MEMBER',3=>'PUBLIC DEFENDER');
+	static public $order = array('DEAN'=>65,'FELLOW'=>60,'DEAN EMERITUS'=>58,'ASSISTANT DEAN'=>57,'SECRETARY'=>56,'TREASURER'=>55,'REGENT'=>50,'BOARD CERTIFIED'=>45,'FOUNDING MEMBER'=>40,'SUSTAINING MEMBER'=>35,'DELEGATE'=>20,'FORMER REGENT'=>15,'GENERAL MEMBER'=>5,'PUBLIC DEFENDER'=>3);
+	static public $orderReversed = array(65=>'DEAN',60=>'FELLOW',58=>'DEAN EMERITUS',57=>'ASSISTANT DEAN',56=>'SECRETARY',55=>'TREASURER',50=>'REGENT',45=>'BOARD CERTIFIED',40=>'FOUNDING MEMBER',35=>'SUSTAINING MEMBER',20=>'DELEGATE',15=>'FORMER REGENT',5=>'GENERAL MEMBER',3=>'PUBLIC DEFENDER');
 	public $currentOrder;
 	
 	// order descending

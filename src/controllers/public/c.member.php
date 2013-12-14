@@ -24,7 +24,6 @@ $app->get('/badge/{id}/member', function ($id, Request $request) use ($app, $img
 	$member = $member->findById();
 	$badge_path = '';
 	if(!empty($member)){
-		error_log('/badge/id/member::currentMembership:'.$member['currentMembership']);
 		$badge_path = Model\Member::$membershipBadge[$member['currentMembership']];
 	}
 
