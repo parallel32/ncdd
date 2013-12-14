@@ -402,6 +402,9 @@ class Member extends User {
 			case 'General Members':
 				$result = $this->find($query=array('currentMembership'=>self::$membership['GENERAL MEMBER']),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
 				break;
+			case 'Public Defenders':
+				$result = $this->find($query=array('currentMembership'=>self::$membership['PUBLIC DEFENDER']),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				break;
 			case 'Founding Members':
 				if($listedOnly){
 					$result = $this->find($query=array('currentMembership'=>self::$membership['FOUNDING MEMBER'],'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
