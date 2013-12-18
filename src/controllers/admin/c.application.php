@@ -897,7 +897,7 @@ $app->get('/application/{paymentId}/pay/{applicationId}/{resetSession}', functio
 
     $apply = new Model\Apply($doc=array('_id'=>$applicationId), $app);
 	$application = $apply->findById();
-	
+
 	switch ($application['class']) {
 		case 'NewMemberApplication': // old deprecated
 		case 'ApplyNewMember':

@@ -140,10 +140,11 @@
                      $payment_vars['state'] = (!empty($this->vars['application']['state'])) ? $this->vars['application']['state']: $this->vars['location']['state'];
                      $payment_vars['postalCode'] = (!empty($this->vars['application']['postalCode'])) ? $this->vars['application']['postalCode']: $this->vars['location']['zip'];
                      $payment_vars['country'] = (!empty($this->vars['application']['country'])) ? $this->vars['application']['country']: $this->vars['location']['country'];
+                     $resetSession = ($accessLevel == ADMIN) ? 'no' : 'yes';
                      $payment_vars['chargeOnSuccess'] = <<< EOT
 {chargeOnSuccess:function(responseObj,paymentId){
    $('#save-success .continue.payment').attr('data-insertid',paymentId);
-   io.saw.FormGet.activate({postUrl:'/application/'+paymentId+'/pay/{$this->vars['application']['_id']}'
+   io.saw.FormGet.activate({postUrl:'/application/'+paymentId+'/pay/{$this->vars['application']['_id']}/{$resetSession}'
       ,postOnComplete:function(responseObj,responseStatus){}
       ,postOnSuccess:function(responseObj){
          //document.location.href='/applications';
