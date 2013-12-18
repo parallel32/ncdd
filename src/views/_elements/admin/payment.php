@@ -37,9 +37,35 @@
                      <input type="hidden" class="ownerClass" name="doc[ownerClass]" value="<?=$ownerClass?>">
                      <input type="hidden" class="description" name="doc[description]" value="<?=$description?>">
                      <input type="hidden" class="title" name="doc[title]" value="<?=$title?>">
-                     <input type="hidden" class="amount" name="doc[amount]" value="<?=$amount?>">
                      <input type="hidden" class="cardType" name="doc[cardType]" value="">
                      <input type="hidden" class="token" name="doc[token]" value="">
+                     <? 
+                     $user = $this->app['session']->get('user');
+                     $accessLevel = $user['accessLevel'];
+                     $user_id = $user['user_id'];
+                     ?>
+                     <? if($accessLevel == ADMIN): ?>
+                     <h3 class="form-section">Payment Adjustment (admin only)</h3>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Amount To Pay</label>
+                              <div class="controls">
+                                 <div class="input-prepend input-append">
+                                    <span class="add-on">$ </span>
+                                       <input type="text" name="doc[amount]" class="m-wrap span8 amount" value="<?=$amount?>">
+                                    <span class="add-on">.00</span>
+                                 </div>
+                                 <span class="help-block">A receipt with this amount will be created.</span>
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <? else: ?>
+                        <input type="hidden" class="amount" name="doc[amount]" value="<?=$amount?>">
+                     <? endif; ?>
+
                      <h3 class="form-section">Payment Information</h3>
                      <div class="row-fluid">
                         <div class="span12 ">
