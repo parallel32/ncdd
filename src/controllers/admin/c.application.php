@@ -346,7 +346,14 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 	$doc = $request->get('doc');
 	// add name, email and area to the application for identification
 	$doc['memberId'] = new \MongoId($memberId);
-	
+
+	$doc['firstName'] = (empty($doc['firstName'])) ? $member['firstName'] : $doc['firstName'];
+	$doc['middleName'] = (empty($doc['middleName'])) ? $member['middleName'] : $doc['middleName'];
+	$doc['lastName'] = (empty($doc['lastName'])) ? $member['lastName'] : $doc['lastName'];
+	$doc['email'] = (empty($doc['email'])) ? $member['email'] : $doc['email'];
+	$doc['city'] = (empty($doc['city'])) ? $location['city'] : $doc['city'];
+	$doc['state'] = (empty($doc['state'])) ? $location['state'] : $doc['state'];
+
 	$paymentId = null;	
 	$app_id = new \stdClass();	
 
