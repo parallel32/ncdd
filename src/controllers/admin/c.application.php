@@ -348,7 +348,7 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 	$doc['memberId'] = new \MongoId($memberId);
 
 	$doc['firstName'] = (empty($doc['firstName'])) ? $member['firstName'] : $doc['firstName'];
-	$doc['middleName'] = (empty($doc['middleName'])) ? $member['middleName'] : $doc['middleName'];
+	$doc['middleName'] = (empty($doc['middleName'])) ? (array_key_exists('middleName',$member)) ? $member['middleName']: '' : $doc['middleName'];
 	$doc['lastName'] = (empty($doc['lastName'])) ? $member['lastName'] : $doc['lastName'];
 	$doc['email'] = (empty($doc['email'])) ? $member['email'] : $doc['email'];
 	$doc['city'] = (empty($doc['city'])) ? $location['city'] : $doc['city'];
