@@ -998,10 +998,10 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 $app->get('/renewals/{offset}/{limit}', function ($offset, $limit, Request $request) use ($app) {
 	$member = new Model\Member($doc=array(), $app);
 	$renewals = array(
-		'unsubmitted'=>$member->fetchByRenewalStatus('UNSUBMITTED',array(Model\Member::$membership['GENERAL MEMBER']),$offset, $limit)
-		,'submitted'=>$member->fetchByRenewalStatus('SUBMITTED',array(Model\Member::$membership['GENERAL MEMBER']),$offset, $limit)
-		,'approved'=>$member->fetchByRenewalStatus('APPROVED',array(Model\Member::$membership['GENERAL MEMBER']),$offset, $limit)
-		,'paid'=>$member->fetchByRenewalStatus('PAID',array(Model\Member::$membership['GENERAL MEMBER']), $offset, $limit)
+		'unsubmitted'=>$member->fetchByRenewalStatus('UNSUBMITTED',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']),$offset, $limit)
+		,'submitted'=>$member->fetchByRenewalStatus('SUBMITTED',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']),$offset, $limit)
+		,'approved'=>$member->fetchByRenewalStatus('APPROVED',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']),$offset, $limit)
+		,'paid'=>$member->fetchByRenewalStatus('PAID',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']), $offset, $limit)
 	);
 	$updates = array(
 		'unsubmitted'=>$member->fetchByRenewalStatus('UNSUBMITTED',array(Model\Member::$membership['FOUNDING MEMBER'],Model\Member::$membership['SUSTAINING MEMBER']),$offset, $limit)
@@ -1035,45 +1035,52 @@ $app->get('/applications/activate/renewals/{activate}', function ($activate, Req
 		$renewal->prepareInsert();
 		$renewal = $renewal->__toArray();
 
-		// get the count of the updates to occur
-		// actuall query db.member.find({$or:[{renewal:{$exists:false}},{renewal:{$exists:true,$type:10}}],status:2,currentMembership:10}).count();
-		$common_query = array('$or'=>array(array('renewal'=>array('$exists'=>false)),array('renewal'=>array('$exists'=>true,'$type'=>10))));		
+		// get the count of the updates to occur  /// $type 10 means a null type value
+		// actuall query db.member.find({$or:[{renewal:{$exists:false}},{renewal:{$exists:true,$type:10}},{renewal:{}}],status:2,currentMembership:10}).count();
+		$common_query = array('$or'=>array(array('renewal'=>array('$exists'=>false)),array('renewal'=>array('$exists'=>true,'$type'=>10)),array('renewal'=>new \stdClass())));		
 		
 		$gm_query = array('currentMembership'=>Model\Member::$membership['GENERAL MEMBER'],'status'=>USER_STATUS_ACTIVE);
 		$sm_query = array('currentMembership'=>Model\Member::$membership['SUSTAINING MEMBER'],'status'=>USER_STATUS_ACTIVE);
 		$fm_query = array('currentMembership'=>Model\Member::$membership['FOUNDING MEMBER'],'status'=>USER_STATUS_ACTIVE);
+		$pd_query = array('currentMembership'=>Model\Member::$membership['PUBLIC DEFENDER'],'status'=>USER_STATUS_ACTIVE);
 		$gm_query = array_merge($common_query, $gm_query);
 		$sm_query = array_merge($common_query, $sm_query);
 		$fm_query = array_merge($common_query, $fm_query);
+		$pd_query = array_merge($common_query, $pd_query);
 		
 		$gm_count = $member->count($gm_query);
 		$sm_count = $member->count($sm_query);
 		$fm_count = $member->count($fm_query);
+		$pd_count = $member->count($pd_query);
 		
 		$gm_update = $member->updateByCriteria(array('$set'=>array('renewal'=>$renewal)), $gm_query);
 		$sm_update = $member->updateByCriteria(array('$set'=>array('renewal'=>$renewal)), $sm_query);
 		$fm_update = $member->updateByCriteria(array('$set'=>array('renewal'=>$renewal)), $fm_query);
+		$pd_update = $member->updateByCriteria(array('$set'=>array('renewal'=>$renewal)), $pd_query);
 
 
 		$label = 'Renewal Activation Successful.';
-    	$message = $gm_count.' General Members were activated<br><br>'.$sm_count.' Sustaining Members were activated<br><br>'.$fm_count.' Founding Members were activated<br><br>Note: only active members were updated.  Non-active members who are activated during the renewal process will have to be manually activated.';
+    	$message = $gm_count.' General Members were activated<br><br>'.$sm_count.' Sustaining Members were activated<br><br>'.$fm_count.' Founding Members were activated<br><br>'.$pd_count.' Public Defenders were activated<br><br>Note: only active members were updated.  Non-active members who are activated during the renewal process will have to be manually activated.';
     	
 	}elseif($activate == 'clear'){
 		// clear all active members' renewal attribute
 		$gm_query = array('currentMembership'=>Model\Member::$membership['GENERAL MEMBER'],'status'=>USER_STATUS_ACTIVE);
 		$sm_query = array('currentMembership'=>Model\Member::$membership['SUSTAINING MEMBER'],'status'=>USER_STATUS_ACTIVE);
 		$fm_query = array('currentMembership'=>Model\Member::$membership['FOUNDING MEMBER'],'status'=>USER_STATUS_ACTIVE);
+		$pd_query = array('currentMembership'=>Model\Member::$membership['PUBLIC DEFENDER'],'status'=>USER_STATUS_ACTIVE);
 		
 		$gm_count = $member->count($gm_query);
 		$sm_count = $member->count($sm_query);
 		$fm_count = $member->count($fm_query);
+		$pd_count = $member->count($pd_query);
 		
 		$gm_update = $member->updateByCriteria(array('$set'=>array('renewal'=>null)), $gm_query);
 		$sm_update = $member->updateByCriteria(array('$set'=>array('renewal'=>null)), $sm_query);
 		$fm_update = $member->updateByCriteria(array('$set'=>array('renewal'=>null)), $fm_query);
+		$pd_update = $member->updateByCriteria(array('$set'=>array('renewal'=>null)), $pd_query);
 
 		$label = 'Renewal Clear Successful.';
-    	$message = $gm_count.' General Members were cleared<br><br>'.$sm_count.' Sustaining Members were cleared<br><br>'.$fm_count.' Founding Members were cleared<br><br>Note: only active members were updated.  Non-active members who are activated during the renewal process will have to be manually cleared.';
+    	$message = $gm_count.' General Members were cleared<br><br>'.$sm_count.' Sustaining Members were cleared<br><br>'.$fm_count.' Founding Members were cleared<br><br>'.$pd_count.' Public Defenders were cleared<br><br>Note: only active members were updated.  Non-active members who are activated during the renewal process will have to be manually cleared.';
     	
 	}
 
