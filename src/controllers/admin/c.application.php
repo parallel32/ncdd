@@ -358,6 +358,7 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 	$app_id = new \stdClass();	
 
 	switch ($member['currentMembership']) {
+		case Model\Member::$membership['PUBLIC DEFENDER']:
 		case Model\Member::$membership['GENERAL MEMBER']:
 			$application = new Model\UpdateMember($doc, $app);
 			break;
