@@ -9,7 +9,9 @@
                </div>
             </div>
             <!-- END PAGE HEADER-->
-            
+            <a class="btn blue" href="#updates">
+               Click to Scroll to Updates
+            </a> 
             <h1>1. Renewals</h1>
             <div class="row-fluid">
                   <div class="responsive span6" data-tablet="span6" data-desktop="span3">
@@ -282,7 +284,9 @@
 
             
             <h1 id="2updates">2. Updates</h1>
+            <a name="updates"></a>
             <div class="row-fluid">
+
                   <div class="responsive span6" data-tablet="span6" data-desktop="span3">
                      <div class="dashboard-stat red">
                         <div class="visual">
