@@ -717,6 +717,7 @@ class Member extends User {
 		
 		$fields = array('displayName'=>true
 						,'email'=>true
+						,'primaryPhone'=>true
 						,'timeZone'=>true
 						,'_id'=>true
 						,'renewal'=>true
