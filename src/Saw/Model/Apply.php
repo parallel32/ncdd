@@ -343,7 +343,7 @@ class Apply extends Model {
 	public function proRate(){
 		
 		$date = new \DateTime($this->approvedDate['iso']);
-		$curMonth = date("m", $date->getTimeStamp());
+		$curMonth = date("n", $date->getTimeStamp());
 		$curDay = date("j", $date->getTimeStamp());
 		$curQuarter = ceil($curMonth/3);
 		
