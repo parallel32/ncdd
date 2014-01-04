@@ -344,6 +344,7 @@ class Apply extends Model {
 		
 		$date = new \DateTime($this->approvedDate['iso']);
 		$curMonth = date("m", $date->getTimeStamp());
+		$curDay = date("j", $date->getTimeStamp());
 		$curQuarter = ceil($curMonth/3);
 		
 		switch ($curQuarter) {
@@ -387,17 +388,32 @@ class Apply extends Model {
 				}
 				break;
 			case 4:
-				switch ($this->membershipDues) {
-					case 175:
-						return array('q'=>4,'a'=>50);
-						break;
-					case 225:
-						return array('q'=>4,'a'=>75);
-						break;
-					case 50:
-						return array('q'=>4,'a'=>25);
-						break;
+				if($curMonth == 12 && $curDay >= 10){
+					switch ($this->membershipDues) {
+						case 175:
+							return array('q'=>1,'a'=>175);
+							break;
+						case 225:
+							return array('q'=>1,'a'=>225);
+							break;
+						case 50:
+							return array('q'=>1,'a'=>50);
+							break;
+					}
+				}else{
+					switch ($this->membershipDues) {
+						case 175:
+							return array('q'=>4,'a'=>50);
+							break;
+						case 225:
+							return array('q'=>4,'a'=>75);
+							break;
+						case 50:
+							return array('q'=>4,'a'=>25);
+							break;
+					}	
 				}
+				
 				break;
 			
 		}

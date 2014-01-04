@@ -525,7 +525,7 @@
                         <div class="control-group">
                            <label class="control-label">Referred By:</label>
                            <div class="controls">
-                              <input disabled type="text" name="doc[referredBy]" value="<?=(array_key_exists('trial',$this->vars['application'])) ? (array_key_exists('referredBy',$this->vars['application']['trial'])) ? $this->vars['application']['trial']['referredBy'] : (array_key_exists('referredBy',$this->vars['application'])) ? $this->vars['application']['referredBy'] : '' : (array_key_exists('referredBy',$this->vars['application'])) ? $this->vars['application']['referredBy'] : '';?>" class="m-wrap span12 referredBy">
+                              <input disabled type="text" name="doc[referredBy]" value="<?=(array_key_exists('trial',$this->vars['application']) && !empty($this->vars['application']['trial'])) ? (array_key_exists('referredBy',$this->vars['application']['trial'])) ? $this->vars['application']['trial']['referredBy'] : (array_key_exists('referredBy',$this->vars['application'])) ? $this->vars['application']['referredBy'] : '' : (array_key_exists('referredBy',$this->vars['application'])) ? $this->vars['application']['referredBy'] : '';?>" class="m-wrap span12 referredBy">
                               <span class="help-block">If someone referred you, who is already a member, please type in their name here.</span>
                            </div>
                         </div>
@@ -626,7 +626,7 @@
                               <div class="control-group">
                                  <label class="control-label">Referred By</label>
                                  <div class="controls">
-                                    <input type="text" name="doc[referredBy]" value="<?=(array_key_exists('trial',$this->vars['application'])) ? (array_key_exists('referredBy',$this->vars['application']['trial'])) ? $this->vars['application']['trial']['referredBy'] : (array_key_exists('referredBy',$this->vars['application'])) ? $this->vars['application']['referredBy'] : '' : (array_key_exists('referredBy',$this->vars['application'])) ? $this->vars['application']['referredBy'] : '';?>" class="m-wrap span12 referredBy">
+                                    <input type="text" name="doc[referredBy]" value="<?=(array_key_exists('trial',$this->vars['application']) && !empty($this->vars['application']['trial'])) ? (array_key_exists('referredBy',$this->vars['application']['trial'])) ? $this->vars['application']['trial']['referredBy'] : (array_key_exists('referredBy',$this->vars['application'])) ? $this->vars['application']['referredBy'] : '' : (array_key_exists('referredBy',$this->vars['application'])) ? $this->vars['application']['referredBy'] : '';?>" class="m-wrap span12 referredBy">
                                  </div>
                               </div>
                            </div>
