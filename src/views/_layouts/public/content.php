@@ -4,7 +4,7 @@
         <title></title>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="/assets/stylesheets/bootstrap.css" rel="stylesheet" media="screen">
+        <link href="/assets/stylesheets/bootstrap.css?v=2" rel="stylesheet" media="screen">
         <link href="/assets/stylesheets/bootstrap-responsive.css" rel="stylesheet">
         <link href="/assets/stylesheets/screenv4.2.css?v=22222222" rel="stylesheet">  <!--4522, 3364-->
         <link href="/assets/stylesheets/responsive.css" rel="stylesheet">

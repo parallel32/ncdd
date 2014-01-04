@@ -595,11 +595,12 @@ class Member extends User {
 		
 		$result = self::$app['mongo']->find('location',array('member.currentFacultyPosition'=>self::$facultyPosition['DELEGATE'], 'state'=>$state,'member.listed'=>1),$fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.currentOrder'=>-1,'member.orderNum'=>1));
 		
+		if(!empty($result)):
 		$i=0;
 		foreach ($result as $key => $value) {
 			$result[$i]['_id'] = $value['member']['_id'];
 			$result[$i]['firstName'] = $value['member']['firstName'];
-			$result[$i]['middleName'] = $value['member']['middleName'];
+			$result[$i]['middleName'] = (array_key_exists('middleName',$value['member'])) ? $value['member']['middleName']: '';
 			$result[$i]['lastName'] = $value['member']['lastName'];
 			$result[$i]['slug'] = $value['member']['slug'];
 			$result[$i]['primaryPhone'] = $value['member']['primaryPhone'];
@@ -617,6 +618,7 @@ class Member extends User {
 			$result[$i]['location']['raw'] = $value['raw'];
 			$i++;
 		}
+		endif;
 		$_result = array();
 		if(!empty($result)):
 			for ($i=0; $i < count($result); $i++) {

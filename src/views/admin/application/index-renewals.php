@@ -170,7 +170,7 @@
                </div>
             </div>
 
-            <div class="row-fluid" id="paid">
+            <div class="row-fluid" id="paid-renewals">
                <div class="span12">
                   <!-- BEGIN EXAMPLE TABLE PORTLET-->
                   <div class="portlet box green">
@@ -485,15 +485,15 @@
                   </div>
             </div><a name="submitted"></a>
             
-            <div class="row-fluid" id="paid">
+            <div class="row-fluid">
                <div class="span12">
                   <!-- BEGIN EXAMPLE TABLE PORTLET-->
                   <div class="portlet box green">
                      <div class="portlet-title" id="application">
                         <div class="caption"><i class="icon-user"></i>Applications with Donations</div>
-                        <div class="actions">
+                        <!--<div class="actions">
                            <a class="btn yellow view"><i class=" icon-eye-open"></i> View All</a>
-                        </div>
+                        </div>-->
                      </div>
                      <div class="portlet-body">
                         <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
@@ -672,7 +672,7 @@
 jQuery(document).ready(function() {    
    io.saw.Application.init();
 
-   $('#paid .yellow.view').click(function(e){
+   $('#paid-renewals .yellow.view').click(function(e){
       e.preventDefault();
       document.location.href='/applications/all';
    });

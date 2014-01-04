@@ -119,7 +119,7 @@ ul.sidebarlist li {
 
 
 <div class="container-fluid pagecontent" id="learn">
-                      <div class="row-fluid">
+                    <div class="row-fluid">
                         <div class="center span12 bc">
                             <div class="dropdown visible-phone mapsPhone">
                                 <a class="dropdown-toggle btn" href="javascript:void(0)">
@@ -185,190 +185,14 @@ ul.sidebarlist li {
                                     <li><a href="http://ncdd.com/find-an-attorney/cananda/quebec">Quebec </a></li>
                                 </ul>
                             </div>
-                           <h1>New York Attorneys</h1>
+                           <h1><?=$this->vars['state']?> Attorneys</h1>
                        </div> 
-                       <div class="pagecontent ">
+                    <div class="pagecontent ">
                         <div class="span2 hidden-phone">
                           <div class="selectstate center bc">SELECT ANOTHER STATE</div>
                           <div class="country bc">USA</div>
                           <ul class="sidebarlist bc">
-                            <li><a href="#">Alabama</a></li>
-                            <li><a href="#">Alaska</a></li>
-                            <li><a href="#">Arizona</a></li>
-                            <li><a href="#">Arkansas</a></li>
-                            <li><a href="#">California</a></li>
-                            <li><a href="#">Colorado</a></li>
-                            <li><a href="#">Connecticut</a></li>
-                            <li><a href="#">Delaware</a></li>
-                            <li><a href="#">Florida</a></li>
-                            <li><a href="#">Georgia</a></li>
-                            <li><a href="#">Hawaii</a></li>
-                            <li><a href="#">Idaho</a></li>
-                            <li><a href="#">Illinois</a></li>
-                            <li><a href="#">Indiana</a></li>
-                            <li><a href="#">Iowa</a></li>
-                            <li><a href="#">Kansas</a></li>
-                            <li><a href="#">Kentucky</a></li>
-                            <li><a href="#">Louisiana</a></li>
-                            <li><a href="#">Maine</a></li>
-                            <li><a href="#">Maryland</a></li>
-                            <li><a href="#">Massachusetts</a></li>
-                            <li><a href="#">Michigan</a></li>
-                            <li><a href="#">Minnesota</a></li>
-                            <li><a href="#">Mississippi</a></li>
-                            <li><a href="#">Missouri</a></li>
-                            <li><a href="#">Montana</a></li>
-                            <li><a href="#">Nebraska</a></li>
-                            <li><a href="#">Nevada</a></li>
-                            <li><a href="#">New Hampshire</a></li>
-                            <li><a href="#">New Jersey</a></li>
-                            <li><a href="#">New Mexico</a></li>
-                            <li><a href="#">New York</a></li>
-                            <li><a href="#">North Carolina</a></li>
-                            <li><a href="#">North Dakota</a></li>
-                            <li><a href="#">Ohio</a></li>
-                            <li><a href="#">Oklahoma</a></li>
-                            <li><a href="#">Oregon</a></li>
-                            <li><a href="#">Pennsylvania</a></li>
-                            <li><a href="#">Rhode Island</a></li>
-                            <li><a href="#">South Carolina</a></li>
-                            <li><a href="#">South Dakota</a></li>
-                            <li><a href="#">Tennessee</a></li>
-                            <li><a href="#">Texas</a></li>
-                            <li><a href="#">Utah</a></li>
-                            <li><a href="#">Vermont</a></li>
-                            <li><a href="#">Virginia</a></li>
-                            <li><a href="#">Washington</a></li>
-                            <li><a href="#">West Virginia</a></li>
-                            <li><a href="#">Wisconsin</a></li>
-                            <li><a href="#">Wyoming</a></li>
-                            <li><a href="#">*</a></li>
-                            <li><a href="#">District of Columbia</a></li>
-                            <li><a href="#">Puerto Rico</a></li>
-                            <li><a href="#">Guam</a></li>
-                            <li><a href="#">American Samoa</a></li>
-                            <li><a href="#">U.S. Virgin Islands</a></li>
-                            <li><a href="#">Northern Mariana Islands</a></li>
-                        </ul>
-                        <div class="country bc">Canada</div>
-                        <ul class="sidebarlist bc">
-                            <li><a href="#">Ontario</a></li>
-                            <li><a href="#">Quebec</a></li>
-                        </ul>
-                    </div>
-                    <div class="span10">
-                      <div class=" tc searchresultswrap">
-                        <img src="http://placehold.it/130x175" class="searchlayerimg"  alt="placehlder" />  
-                        <div class="row-fluid searchmeta">
-                          <span class="meta muted"></span>
-                          <div class="span4 tc">
-                            <strong class="bc laywername">ABRAM LINCON</strong><br>
-                            <span class="orange meta">Founding member</span><br>
-                            <img src="img/l1.png" class="shield" alt="label"> <img src="img/l2.png" class="shield" alt="label">
-                        </div>
-                        <div class="span5 bc">
-                            <a href="#"><img src="img/contactme.png"></a>
-                            <br><br><br> <span class="phone">Call Now : 1-23333-3444</span>
-                            <div class="clear"></div>
-                            <img class="delegation" src="img/delegation.png" />
-                            <img class="delegationone"  src="img/delegation.png" />                        
-                        </div>
-                    </div>
-                    <div class="row-fluid searchmetafooter">
-                      <div class="span4 tl">
-                        <a href="#"><i class="icon-share"></i> www.defensedu.com</a>
-                    </div>
-                    <div class="span4 tl">
-                        <a href="#"><i class="icon-map-marker"></i> Great Oak woods, Alabama</a>
-                    </div>
-                    <div class="span3 tr">
-                        <a href="#"><img src="img/fullprofile.png"> </a>
-                    </div>
-                </div>
-            </div>
-            <div class="clear"></div>
-            <br>
-            <div class=" tc searchresultswrap">
-                <img src="http://placehold.it/130x175" class="searchlayerimg"  alt="placehlder" />  
-                <div class="row-fluid searchmeta">
-                  <span class="meta muted"></span>
-                  <div class="span4 tc">
-                    <strong class="bc laywername">ABRAM LINCON</strong><br>
-                    <span class="orange meta">Founding member</span><br>
-                    <img src="img/l1.png" alt="label"> <img src="img/l2.png" alt="label">
-                </div>
-                <div class="span5 bc">
-                    <a href="#"><img src="img/contactme.png"></a>
-                    <br><br><br> <span class="phone">Call Now : 1-23333-3444</span>
-                    <div class="clear"></div>                        
-                    <img class="delegation" src="img/delegation.png" />
-                    <img class="delegationone"  src="img/delegation.png" />                        
-                </div>
-            </div>
-            <div class="row-fluid searchmetafooter">
-              <div class="span4 tl">
-                <a href="#"><i class="icon-share"></i> www.defensedu.com</a>
-            </div>
-            <div class="span4 tl">
-                <a href="#"><i class="icon-map-marker"></i> Great Oak woods, Alabama</a>
-            </div>
-            <div class="span3 tr">
-                <a href="#"><img src="img/fullprofile.png"> </a>
-            </div>
-        </div>
-    </div>
-    <div class="clear"></div>
-    <div class="pagination tc">
-        <ul>
-          <li><a href="#">Prev</a></li>
-          <li><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li><a href="#">5</a></li>
-          <li><a href="#">Next</a></li>
-      </ul>
-  </div>
-</div>
-<div class="clear"></div>
-</div>
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    <!-- old stuff
-                    <div class="row-fluid becomeAmember">
-                        <div class="title text-center">
-                            <div class="bg">
-                                <h3><?=$this->vars['state']?> Attorneys</h3>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    
-                    <div class="attorneyContent">
-                        <div class="dropdown mapsPhone">
-                                <a class="dropdown-toggle btn"href="javascript:void(0)">
-                                    Select Another State
-                                    <b class="caret"></b>
-                                </a>
-                                <ul class="mapsPhoneDropdown">
-                                    <li class="titleMap">USA</li>
-                                    <li><a href="/find-an-attorney/usa/alabama">Alabama</a></li>
+                            <li><a href="/find-an-attorney/usa/alabama">Alabama</a></li>
                                     <li><a href="/find-an-attorney/usa/alaska">Alaska</a></li>
                                     <li><a href="/find-an-attorney/usa/arizona">Arizona</a></li>
                                     <li><a href="/find-an-attorney/usa/arkansas">Arkansas</a></li>
@@ -419,79 +243,86 @@ ul.sidebarlist li {
                                     <li><a href="/find-an-attorney/usa/west-virginia">West Virginia</a></li>
                                     <li><a href="/find-an-attorney/usa/wisconsin">Wisconsin</a></li>
                                     <li><a href="/find-an-attorney/usa/wyoming">Wyoming </a></li>
-                                    
-                                    <li class="titleMap">Canada</li>
-                                    <li><a href="/find-an-attorney/canada/ontario">Ontario </a></li>
-                                    <li><a href="/find-an-attorney/canada/quebec">Quebec </a></li>
-                                    <!-- <li><a href="/find-an-attorney/canada/saskatchewan">Saskatchewan </a></li> --
-                                </ul>
-                            </div>
-
-
-                            <div class="cityNameBlock">
-                                <h5 class="cityName pull-left"></h5>
-                                <span class="result pull-right"><?=count($this->vars['members'])?> Results</span>
-                            </div>
-
-
-
-
-                            <ul class="membersList">
-                            <? foreach($this->vars['members'] as $member): ?>
-                                <li class="membersListItem">
-                                    <img width="196" src="<?=$member['image']?>" alt="" class="avatar pull-left">
-                                    <div class="info pull-right">
-                                        <div class="nameBlock">
-                                            <? $middleName = (!empty($member['middleName'])) ? ' '.$member['middleName'].' ':' '; ?>
-                                            <h3 class="name text-center"><?=$member['firstName']?><?=$middleName?><?=$member['lastName']?></h3>
-                                            <h5 class="descr text-center"><?=$member['currentMembership']?></h5>
-                                            <h5 class="descr text-center"><a class="text-error"><?=$member['currentFacultyPosition']?></a></h5>
-                                            <? if(!empty($member['currentFacultyPosition'])): ?>
-                                                <div class="regentsFellowsLabel"><img src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/exec" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" /></div>
-                                        <? endif; ?>
-                                        </div>
-                                        <ul class="numbers">
-                                            <li>
-                                                <div class="text-center"><a href="mailto:<?=$member['email']?>"><img src="/assets/img/envelopeBg.png"></a></div>
-                                            </li>
-                                            <li>
-                                                <h6 class="nemberTitle"><?=$member['primaryPhone']?></h6>
-                                                <p>Call Now</p>
-                                            </li>
-                                            <li>
-                                                <div class="memberBadgeBlock">
-                                                    <div class="memberBadge"><img width="140" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/member" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" /></div>
-                                                    <? if($member['staff'] =='Yes'): ?>
-                                                    <div class="memberBadge"><img width="140" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/staff" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" /></div>
-                                                    <? endif; ?>
-                                                    <? if($member['boardCertified'] =='Yes'): ?>
-                                                    <div class="memberBadge"><img width="165" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/boardcertified" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" /></div>
-                                                    <? endif; ?>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <div class="address">
-                                            <p class="pull-left">
-                                                <? if(!empty($member['websites'])): ?>
-                                                <a style="font-size:24px" href="//<?=$member['websites'][0]['website']?>"><?=$member['websites'][0]['website']?></a>
-                                                <? endif; ?>
-                                            </p>
-                                            <a href="/member/<?=$member['_id']?>/<?=$member['slug']?>" class="btn pull-right">Full Profile</a>
-                                        </div>
-                                        <? if(!empty($member['location']['raw'])): ?>
-                                        <div class="address">
-                                            <p class="pull-left">
-                                                <a style="font-size:20px"><?=$member['location']['raw']?></a>
-                                            </p>
-                                            <a href="/member/<?=$member['_id']?>/<?=$member['slug']?>" class=" hide btn pull-right"></a>
-                                        </div>
-                                        <? endif; ?>
-                                        
-                                    </div>
-                                </li>
-                            <? endforeach; ?>
-                                
-                            </ul>
+                        </ul>
+                        <div class="country bc">Canada</div>
+                        <ul class="sidebarlist bc">
+                           <li><a href="/find-an-attorney/canada/ontario">Ontario </a></li>
+                            <li><a href="/find-an-attorney/canada/quebec">Quebec </a></li>
+                        </ul>
                     </div>
+                    <div class="cityNameBlock">
+                        <h5 class="cityName pull-left"></h5>
+                        <span class="result pull-right"><?=count($this->vars['members'])?> Members</span>
+                    </div>
+                    <div class="span10">
 
-                    old stuff -->
+                        <? foreach($this->vars['members'] as $member): ?>
+                            <div class=" tc searchresultswrap">
+                                <img width="130" src="<?=$member['image']?>" alt="" class="searchlayerimg"> 
+                                <div class="row-fluid searchmeta">
+                                    <span class="meta muted"></span>
+                                    <div class="span4 tc">
+                                        <? $middleName = (!empty($member['middleName'])) ? ' '.$member['middleName'].' ':' '; ?>
+                                        <strong class="bc laywername"><?=$member['firstName']?><?=$middleName?><?=$member['lastName']?></strong><br>
+                                        <!--
+                                        <span class="orange meta"><?=$member['currentMembership']?></span><br>
+                                        <?if(!empty($member['currentFacultyPosition'])):?>
+                                            <span class="orange meta"><?=$member['currentFacultyPosition']?></span><br>
+                                        <?endif;?>
+                                        -->
+                                        
+                                        <img class="sheild" width="140" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/member" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
+                                        <? if($member['staff'] =='Yes'): ?>
+                                        <img class="sheild" width="140" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/staff" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
+                                        <? endif; ?>
+                                        <? if($member['boardCertified'] =='Yes'): ?>
+                                        <img class="sheild" width="165" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/boardcertified" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
+                                        <? endif; ?>
+                                    </div>
+                                    <div class="span5 bc">
+                                        <a href="mailto:<?=$member['email']?>"><img src="/assets/img/contactme.png"></a>
+                                        <br><br><br> <span class="phone">Call Now : <?=$member['primaryPhone']?></span>
+                                        <div class="clear"></div>
+                                        <? if(!empty($member['currentFacultyPosition'])): ?>
+                                            <img class="delegation" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/exec" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
+                                        <? endif; ?>
+                                    </div>
+                                </div>
+                                <div class="row-fluid searchmetafooter">
+                                    <div class="span4 tl">
+                                        <? if(!empty($member['websites'])): ?>
+                                            <a href="//<?=$member['websites'][0]['website']?>"><i class="icon-share"></i> <?=$member['websites'][0]['website']?></a>
+                                        <? endif; ?>
+                                    </div>
+                                    
+                                    <? if(!empty($member['location']['raw'])): ?>
+                                    <div class="span4 tl">
+                                        <a href="/member/<?=$member['_id']?>/<?=$member['slug']?>"><i class="icon-map-marker"></i> <?=$member['location']['raw']?></a>
+                                    </div>
+                                    <? endif; ?>
+                                    
+                                    <div class="span3 tr">
+                                        <a href="/member/<?=$member['_id']?>/<?=$member['slug']?>"><img src="/assets/img/fullprofile.png"> </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                            <br>
+                        <? endforeach; ?>
+                        <!--
+                        <div class="pagination tc">
+                            <ul>
+                              <li><a href="#">Prev</a></li>
+                              <li><a href="#">1</a></li>
+                              <li><a href="#">2</a></li>
+                              <li><a href="#">3</a></li>
+                              <li><a href="#">4</a></li>
+                              <li><a href="#">5</a></li>
+                              <li><a href="#">Next</a></li>
+                          </ul>
+                      </div>-->
+                    </div>
+                    <div class="clear"></div>
+                    </div>
+                </div>
+</div>
