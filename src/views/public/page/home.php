@@ -1,4 +1,18 @@
-
+<style>
+.videoWrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 0px;
+    height: 0;
+}
+.videoWrapper iframe {
+    padding-left: 10px;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+}
+</style>
                     <div class="row-fluid welcome">
                         <div class="title text-center bigTitle">
                             <div class="bg">
@@ -15,8 +29,8 @@
                                 </ul>
                             </div>
                             <div class="tab-content">
-                                <div class="tab-pane active" id="welcome">
-                                    <iframe class="pull-right" width="435" height="245" src="//www.youtube.com/embed/IgTzHmMDqng?rel=0" frameborder="0" allowfullscreen></iframe>
+                                <div class="tab-pane active " id="welcome">
+                                    <iframe class="pull-right" height="70%" src="//www.youtube.com/embed/IgTzHmMDqng?rel=0" frameborder="0" allowfullscreen></iframe>
                                     <?=$this->vars['welcome']['body']?>
                                 </div>
                                 <div class="tab-pane" id="nationallyRecognized">
