@@ -296,7 +296,7 @@ ul.sidebarlist li {
                                     </div>
                                     <div class="span5 bc">
                                         <a href="mailto:<?=$member['email']?>"><img src="/assets/img/contactme.png"></a>
-                                        <br><br><br> <span class="phone">Call Now : <?=$member['primaryPhone']?></span>
+                                        <br><br><br> <span class="phone">Call Now : <a href="tel:<?=$member['primaryPhone']?>"><?=$member['primaryPhone']?></a></span>
                                         <div class="clear"></div>
                                         <? if(!empty($member['currentFacultyPosition'])): ?>
                                             <img class="delegation" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/exec" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
