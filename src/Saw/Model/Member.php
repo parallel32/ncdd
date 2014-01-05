@@ -356,6 +356,7 @@ class Member extends User {
 					,'listed'=>1
 					,'websites'=>1
 					,'orderNum'=>1
+					,'location'=>1
 					);
 
 		switch ($string) {
@@ -411,6 +412,12 @@ class Member extends User {
 				}else{
 					$result = $this->find($query=array('currentMembership'=>self::$membership['FOUNDING MEMBER']),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
 				}
+				$i=0;
+				foreach ($result as $key => $value) {
+					$location_result = self::$app['mongo']->findOne('location', $query=array('member._id'=>$value['_id']),array('raw'=>true),$slaveOkay=true);
+					$result[$i]['location'] = array('raw'=>$location_result['raw']);
+					$i++;
+				}
 				break;
 			case 'Regents and Fellows':
 				if($listedOnly){
@@ -428,7 +435,12 @@ class Member extends User {
 					endforeach;
 					$result = $regents;
 				}
-				
+				$i=0;
+				foreach ($result as $key => $value) {
+					$location_result = self::$app['mongo']->findOne('location', $query=array('member._id'=>$value['_id']),array('raw'=>true),$slaveOkay=true);
+					$result[$i]['location'] = array('raw'=>$location_result['raw']);
+					$i++;
+				}
 				break;
 			case 'Regents':
 				$result = $this->find($query=array('currentFacultyPosition'=>array('$gt'=>self::$facultyPosition['DELEGATE'],'$lt'=>self::$facultyPosition['FELLOW'])),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
@@ -441,6 +453,12 @@ class Member extends User {
 				break;
 			case 'State Delegates':
 				$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['DELEGATE']),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				$i=0;
+				foreach ($result as $key => $value) {
+					$location_result = self::$app['mongo']->findOne('location', $query=array('member._id'=>$value['_id']),array('raw'=>true),$slaveOkay=true);
+					$result[$i]['location'] = array('raw'=>$location_result['raw']);
+					$i++;
+				}
 				break;
 			case 'Board Certified':
 				$result = $this->find($query=array('boardCertified'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
