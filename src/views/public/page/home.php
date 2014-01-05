@@ -36,10 +36,11 @@
                                 <div class="tab-pane" id="nationallyRecognized">
                                     <img src="/assets/img/certificate.png" alt="" class="pull-right certificate">
                                     <?=$this->vars['nr']['body']?>
+                                    <!--
                                     <ul class="nationallyRecognizedInfo clearfix">
                                         <li class="nationallyRecognizedInfoItem"></li>
                                         <li class="nationallyRecognizedInfoItem"></li>
-                                    </ul>
+                                    </ul> -->
                                 </div>
                                 <div class="tab-pane" id="missionStatement">
                                     <img src="/assets/img/missionStatementFoto.png" alt="" class="pull-right missionStatementFoto">
