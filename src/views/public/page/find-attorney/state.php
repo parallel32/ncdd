@@ -262,7 +262,9 @@ ul.sidebarlist li {
 
                         <? foreach($this->vars['members'] as $member): ?>
                             <div class=" tc searchresultswrap">
+                                <div style="overflow-y: hidden;width: 130px;height: 150px;float: left;">
                                 <img width="130" src="<?=$member['image']?>" alt="" class="searchlayerimg"> 
+                            </div>
                                 <div class="row-fluid searchmeta">
                                     <span class="meta muted"></span>
                                     <div class="span5 tc">

@@ -37,7 +37,7 @@ ul.inline li{ display: inline;}
 span.phone{font-weight: bold;
   font-size: 25px;
   color: #2f91e4;}
-  .profilewrap{ border:thin solid #ccc; display: block; min-height: 250px; padding: 10px; margin-top: 40px;}
+  .profilewrap{ border:thin solid #ccc; display: block; min-height: 250px; padding: 10px; margin-top: 40px; overflow-y: hidden;}
   .hrdotted{ margin-top: 0px; }
   ul.socialicons li {
 display: inline;
@@ -97,7 +97,9 @@ img.thumbnail{ max-width: 100%;}
                         <div class="pagecontent">
                           <div class="profilewrap">
                             <div class="span2">
+                              <div style="overflow-y: hidden;width: 160px;height: 250px;float: left;">
                               <img width="160" src="<?=$member['image']?>" class="thumbnail" alt="profilepic"/>
+                              </div>
                             </div>
                             <div class="span4 tc">
                                 <? $middleName = (!empty($member['middleName'])) ? ' '.$member['middleName'].' ':' '; ?>
