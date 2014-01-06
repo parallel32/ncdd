@@ -935,6 +935,7 @@ $app->get('/application/{paymentId}/pay/{applicationId}/{resetSession}', functio
 $app->get('/application/{id}/delete', function ($id, Request $request) use ($app) {
     $application = new Model\Apply(array('_id'=>$id), $app);
     $application = $application->findById();
+    
 	switch ($application['class']) {
 		case 'UpdateMember':
 			$application = new Model\UpdateMember(array('_id'=>$application['_id'],'memberId'=>$application['memberId']), $app);
@@ -945,8 +946,14 @@ $app->get('/application/{id}/delete', function ($id, Request $request) use ($app
 		case 'UpdateSustainingMember':
 			$application = new Model\UpdateSustainingMember(array('_id'=>$application['_id'],'memberId'=>$application['memberId']), $app);
 			break;
+		case 'ApplyNewMember':
+				$application = new Model\ApplyNewMember(array('_id'=>$application['_id'],'memberId'=>$application['memberId']), $app);
+				break;
+		case 'ApplyNewSustainingMember':
+			$application = new Model\ApplyNewSustainingMember(array('_id'=>$application['_id'],'memberId'=>$application['memberId']), $app);
+			break;		
+		
 	}
-    
 
     $application->remove();
     return new Response(json_encode(array('message' => 'Successfully Deleted')), 200,array('Content-Type' => 'application/json'));

@@ -107,7 +107,7 @@ $app->get('/member/{id}/{slug}', function ($id, $slug, Request $request) use ($a
 	$member['image'] = (!empty($member['image'])) ? $member['image']['urls']['small']['CDN'] : '/noprofileimage';
 	$member['currentMembership'] = (!empty($member['currentMembership'])) ? Model\Member::$membershipReversed[$member['currentMembership']] : '';
 	$member['currentFacultyPosition'] = (!empty($member['currentFacultyPosition'])) ? Model\Member::$facultyPositionReversed[$member['currentFacultyPosition']] : '';
-	$member['boardCertified'] = ($member['boardCertified']) ? "Yes" : "No";
+	$member['boardCertified'] = (array_key_exists('boardCertified',$member) && $member['boardCertified']) ? "Yes" : "No";
 	$member['boardCertifiedBadge'] = Model\Member::$boardCertifiedBadge;
 	$member['staff'] = ((array_key_exists('staff',$member)) ? $member['staff']: '') ? "Yes" : "No";
 	$member['staffBadge'] = Model\Member::$staffBadge;
