@@ -193,7 +193,7 @@ ul.sidebarlist li {
                                     <h1><?=$this->vars['page']['headline']?></h1>
                                 
                             </div>
-                            <div class="text-left">
+                            <div class="text-left becomeAmember">
                                 <p>
                                 <?=$this->vars['page']['body']?>
                             </p>
