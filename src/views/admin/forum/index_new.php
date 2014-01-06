@@ -141,7 +141,7 @@ text-align: center;
                   <!-- end recent topics -->
 
                   <div class="space20"></div>
-                  <h2>Threads</h2>
+                  <h2>Forums <a href="#" class="pull-right btn green">+ new forum</a></h2>
                   <div class="row-fluid">
                      <div class="span3">
                         <div class="news-blocks">

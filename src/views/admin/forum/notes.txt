@@ -1,0 +1,29 @@
+
+Member
+can create new forums, which puts their name as the author of the forum.  Only they can create topics to it.
+can comment on any topic
+
+Admin 
+can delete any comment, topic, or forum as well as edit
+can create a new forum, which will not have the author of the forum labeled
+
+
+Forum
+has an owner, and along with their permission level
+if admin -> anyone can post a topic
+if member -> only owner can post a topic
+
+Post
+has an owner; only owner, forum owner, or Admin can edit / delete a post
+Anyone can post to a forum owned by admin
+
+Comment
+has an owner; only owner, forum owner, or Admin can edit / delete a post
+can create new comment or reply to existing comment.  Reply does not create a new thread
+
+
+Email
+A weekly abridged email will go to the listserv 
+forum owner is emailed (if not admin) when someone comments
+Admin is emailed when someone posts to a forum owned by admin
+member is emailed when someone replys to their comment.  They have the option to be emailed and then turn off their emails on the thread later
