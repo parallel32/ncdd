@@ -145,7 +145,7 @@ img.thumbnail{ max-width: 100%;}
                                   <? endif; ?>
                                 </ul>
                                   <br>
-                                  <span class="phone bc"><a href="tel:<?=$member['primaryPhone']?>"><?=$member['primaryPhone']?></a></span>
+                                  <span class="phone bc pull-left"><a href="tel:<?=$member['primaryPhone']?>"><?=$member['primaryPhone']?></a></span>
                               </div>
                               <div class="span12 urls">
                                 <br>
@@ -154,7 +154,7 @@ img.thumbnail{ max-width: 100%;}
                                   <a href="#" class="orange"><i class="icon-map-marker"></i> Specialize in <?=$member['specializeIn']?></a>
                                   <? endif; ?>
                                 </div>
-                                <div class="span6">
+                                <div class="span6" style="margin-left:0px;">
                                   <? if(!empty($member['websites'])): ?>
                                       <a class="orange" href="//<?=$member['websites'][0]['website']?>"><i class="icon-share orange"></i> <?=$member['websites'][0]['website']?></a>
                                   <? endif; ?>
