@@ -117,7 +117,11 @@ ul.sidebarlist li {
 
 
 
-
+<div class="container"><div class="title text-center">
+<div class="bg">
+<h3><?=$this->vars['page']['headline']?></h3>
+</div>
+</div></div>
 <div class="container-fluid pagecontent" id="learn">
                     <div class="row-fluid">
                         <div class="center span12 ">
@@ -188,11 +192,7 @@ ul.sidebarlist li {
                             </div>
                            
 
-                            <div class="title text-center ">
-                                
-                                    <h1><?=$this->vars['page']['headline']?></h1>
-                                
-                            </div>
+                            
                             <div class="text-left becomeAmember">
                                 <p>
                                 <?=$this->vars['page']['body']?>
