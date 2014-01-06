@@ -103,7 +103,7 @@ ul.sidebarlist li {
     }
     @media(width: 800px){
     .searchmetafooter div.span3,.searchmetafooter div.span8{width: 100%; margin-left: 0px;}
-    .searchmetafooter div.span1{ float: left; margin-left: 0px;}
+    .searchmetafooter div.span1{ float: left; margin-left: 0px;width: 100%;}
     }
     @media(min-width: 786px){               
      .searchmeta{ padding: 10px}
