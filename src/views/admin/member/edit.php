@@ -85,7 +85,7 @@
                                        <option value="<?=$key?>" <?=($this->vars['member']['currentFacultyPosition'] == $key) ?'selected':'';?>><?=$val?></option>
                                        <? endforeach; ?>
                                     </select>
-                                    <span class="help-block">If this member does not hold a position then leave this field selected to "No Position held"</span>
+                                    <span class="help-block">If this member does not hold a position then leave this field selected to "No Position"</span>
                                  </div>
                               </div>
                            </div>
@@ -99,7 +99,7 @@
                                        <option value="<?=$key?>" <?=($this->vars['member']['currentMembership'] == $key) ?'selected':'';?>><?=$val?></option>
                                        <? endforeach; ?>
                                     </select>
-                                    <span class="help-block">If this member does not hold a position then leave this field selected to "no position held"</span>
+                                    <span class="help-block">If this member does not hold a position then leave this field selected to "No Position"</span>
                                  </div>
                               </div>
                            </div>
