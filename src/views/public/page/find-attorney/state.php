@@ -256,7 +256,6 @@ ul.sidebarlist li {
                     </div>
                     <div class="cityNameBlock">
                         <h5 class="cityName pull-left"></h5>
-                        <span class="result pull-right"><?=count($this->vars['members'])?> Members</span>
                     </div>
                     <div class="span10">
 
@@ -287,7 +286,7 @@ ul.sidebarlist li {
                                     </div>
                                     <div class="span4 bc">
                                         <a href="mailto:<?=$member['email']?>"><img src="/assets/img/contactme.png"></a>
-                                        <br><br><br> <span class="phone">Call Now : <a href="tel:<?=$member['primaryPhone']?>"><?=$member['primaryPhone']?></a></span>
+                                        <br><br><br> <span class="phone"><a href="tel:<?=$member['primaryPhone']?>"><?=$member['primaryPhone']?></a></span>
                                         <div class="clear"></div>
                                         <? if(!empty($member['currentFacultyPosition'])): ?>
                                             <img class="delegation" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/exec" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />

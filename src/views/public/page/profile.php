@@ -145,7 +145,7 @@ img.thumbnail{ max-width: 100%;}
                                   <? endif; ?>
                                 </ul>
                                   <br>
-                                  <span class="phone bc">Call Now: <a href="tel:<?=$member['primaryPhone']?>"><?=$member['primaryPhone']?></a></span>
+                                  <span class="phone bc"><a href="tel:<?=$member['primaryPhone']?>"><?=$member['primaryPhone']?></a></span>
                               </div>
                               <div class="span12 urls">
                                 <br>
@@ -163,7 +163,7 @@ img.thumbnail{ max-width: 100%;}
                             </div>
                             <div class="row-fluid duplicate">
                                 <div class="span12">
-                                    <span class="phone span12 bc">Call Now: <a href="tel:<?=$member['primaryPhone']?>"><?=$member['primaryPhone']?></a></span>
+                                    <span class="phone span12 bc"><a href="tel:<?=$member['primaryPhone']?>"><?=$member['primaryPhone']?></a></span>
                                     <div class="span12">                 
                                       <? if(!empty($member['specializeIn'])): ?>
                                       <a href="#" class="orange"><i class="icon-map-marker"></i> Specialize in <?=$member['specializeIn']?></a>

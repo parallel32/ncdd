@@ -1,4 +1,3 @@
-
 <style>
 @font-face {
   font-family: 'Bree Serif';
@@ -52,9 +51,9 @@ ul.sidebarlist li {
   .laywername{ font-size: 24px;color:#47769e; }
   .orange.meta{ font-weight: 200; font-size: 12px;  text-transform: uppercase;}
   .searchresultswrap.tc{ margin-left: 0px; background: #f1f1f2 right top no-repeat;}
-  .delegation{top: -115px;
-      position: relative;
-      right: -383px;}
+  .delegation{top: -114px;
+    position: relative;
+    right: -275px;}
   .delegationone {
     right: -225px;
     margin-top: -230px;
@@ -101,6 +100,10 @@ ul.sidebarlist li {
 
 
     }
+    @media(width: 800px){
+    .searchmetafooter div.span3,.searchmetafooter div.span8{width: 100%; margin-left: 0px;}
+    .searchmetafooter div.span1{ float: left; margin-left: 0px;width: 100%;}
+    }
     @media(min-width: 786px){               
      .searchmeta{ padding: 10px}
     }
@@ -113,14 +116,18 @@ ul.sidebarlist li {
         .delegationone,.delegation{ top: auto; margin-top: 0px; right: auto;}
     }
 
-            </style>
+</style>
 
 
 
-
+<div class="container"><div class="title text-center">
+<div class="bg">
+<h3><?=$this->vars['page']['headline']?></h3>
+</div>
+</div></div>
 <div class="container-fluid pagecontent" id="learn">
                     <div class="row-fluid">
-                        <div class="center span12 bc">
+                        <div class="center span12">
                             <div class="dropdown visible-phone mapsPhone">
                                 <a class="dropdown-toggle btn" href="javascript:void(0)">
                                     Select A State
@@ -186,22 +193,16 @@ ul.sidebarlist li {
                             </div>
                            
 
-                            <div class="title text-center">
-                                
-                                    <h1><?=$this->vars['page']['headline']?></h1>
-                                
-                            </div>
-                            <div class="text-left">
+                            
+                            <div class="text-left becomeAmember">
                                 <p>
                                 <?=$this->vars['page']['body']?>
                             </p>
                             </div>
-                        
-                        
                        </div> 
                     <div class="pagecontent ">
                         <div class="span2 hidden-phone">
-                          <div class="selectstate center bc">SELECT A STATE</div>
+                          <div class="selectstate center bc">SELECT ANOTHER STATE</div>
                           <div class="country bc">USA</div>
                           <ul class="sidebarlist bc">
                             <li><a href="/state-delegates/usa/alabama">Alabama</a></li>
@@ -267,12 +268,15 @@ ul.sidebarlist li {
                         <span class="result pull-right"><?=count($this->vars['members'])?> Members</span>
                     </div>
                     <div class="span10">
+
                         <? foreach($this->vars['members'] as $member): ?>
                             <div class=" tc searchresultswrap">
+                                <div style="overflow-y: hidden;width: 130px;height: 150px;float: left;">
                                 <img width="130" src="<?=$member['image']?>" alt="" class="searchlayerimg"> 
+                            </div>
                                 <div class="row-fluid searchmeta">
                                     <span class="meta muted"></span>
-                                    <div class="span4 tc">
+                                    <div class="span5 tc">
                                         <? $middleName = (!empty($member['middleName'])) ? ' '.$member['middleName'].' ':' '; ?>
                                         <strong class="bc laywername"><?=$member['firstName']?><?=$middleName?><?=$member['lastName']?></strong><br>
                                         <!--
@@ -282,17 +286,17 @@ ul.sidebarlist li {
                                         <?endif;?>
                                         -->
                                         
-                                        <img class="sheild" width="140" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/member" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
+                                        <img class="sheild" width="100" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/member" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
                                         <? if($member['staff'] =='Yes'): ?>
-                                        <img class="sheild" width="140" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/staff" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
+                                        <img class="sheild" width="100" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/staff" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
                                         <? endif; ?>
                                         <? if($member['boardCertified'] =='Yes'): ?>
-                                        <img class="sheild" width="165" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/boardcertified" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
+                                        <img class="sheild" width="120" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/boardcertified" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
                                         <? endif; ?>
                                     </div>
-                                    <div class="span5 bc">
+                                    <div class="span4 bc">
                                         <a href="mailto:<?=$member['email']?>"><img src="/assets/img/contactme.png"></a>
-                                        <br><br><br> <span class="phone">Call Now : <a href="tel:<?=$member['primaryPhone']?>"><?=$member['primaryPhone']?></a></span>
+                                        <br><br><br> <span class="phone"><a href="tel:<?=$member['primaryPhone']?>"><?=$member['primaryPhone']?></a></span>
                                         <div class="clear"></div>
                                         <? if(!empty($member['currentFacultyPosition'])): ?>
                                             <img class="delegation" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/exec" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
@@ -300,20 +304,20 @@ ul.sidebarlist li {
                                     </div>
                                 </div>
                                 <div class="row-fluid searchmetafooter">
-                                    <div class="span4 tl">
+                                    <div class="span3 tl">
                                         <? if(!empty($member['websites'])): ?>
                                             <a href="//<?=$member['websites'][0]['website']?>"><i class="icon-share"></i> <?=$member['websites'][0]['website']?></a>
                                         <? endif; ?>
                                     </div>
                                     
                                     <? if(!empty($member['location']['raw'])): ?>
-                                    <div class="span4 tl">
+                                    <div class="span8 tl">
                                         <a href="/member/<?=$member['_id']?>/<?=$member['slug']?>"><i class="icon-map-marker"></i> <?=$member['location']['raw']?></a>
                                     </div>
                                     <? endif; ?>
                                     
-                                    <div class="span3 tr">
-                                        <a href="/member/<?=$member['_id']?>/<?=$member['slug']?>"><img src="/assets/img/fullprofile.png"> </a>
+                                    <div class="span1 tr">
+                                        <a href="/member/<?=$member['_id']?>/<?=$member['slug']?>"><img src="/assets/img/fullprofile.png" class="pull-right"> </a>
                                     </div>
                                 </div>
                             </div>
@@ -337,3 +341,4 @@ ul.sidebarlist li {
                     </div>
                 </div>
 </div>
+
