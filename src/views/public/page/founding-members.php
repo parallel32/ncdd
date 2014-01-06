@@ -190,7 +190,7 @@ ul.sidebarlist li {
 
                             <div class="title text-center">
                                 
-                                    <h1><?=$this->vars['page']['headline']?></h1>
+                                    <h1>Founding Members</h1>
                                 
                             </div>
                             <div class="text-left">
