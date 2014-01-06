@@ -265,7 +265,6 @@ ul.sidebarlist li {
                     </div>
                     <div class="cityNameBlock">
                         <h5 class="cityName pull-left"></h5>
-                        <span class="result pull-right"><?=count($this->vars['members'])?> Members</span>
                     </div>
                     <div class="span10">
 
