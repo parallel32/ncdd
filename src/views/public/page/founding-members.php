@@ -120,7 +120,7 @@ ul.sidebarlist li {
 
 <div class="container-fluid pagecontent" id="learn">
                     <div class="row-fluid">
-                        <div class="center span12 bc">
+                        <div class="center span12 ">
                             <div class="dropdown visible-phone mapsPhone">
                                 <a class="dropdown-toggle btn" href="javascript:void(0)">
                                     Select A State
@@ -190,7 +190,7 @@ ul.sidebarlist li {
 
                             <div class="title text-center">
                                 
-                                    <h1>Foundingg Members</h1>
+                                    <h1><?=$this->vars['page']['headline']?></h1>
                                 
                             </div>
                             <div class="text-left">
