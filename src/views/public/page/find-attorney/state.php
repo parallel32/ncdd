@@ -121,7 +121,11 @@ ul.sidebarlist li {
 
 
 
-
+<div class="container"><div class="title text-center">
+<div class="bg">
+<h3><?=$this->vars['state']?> Attorneys</h3>
+</div>
+</div></div>
 <div class="container-fluid pagecontent" id="learn">
                     <div class="row-fluid">
                         <div class="center span12 bc">
@@ -189,7 +193,6 @@ ul.sidebarlist li {
                                     <li><a href="http://ncdd.com/find-an-attorney/cananda/quebec">Quebec </a></li>
                                 </ul>
                             </div>
-                           <h1><?=$this->vars['state']?> Attorneys</h1>
                        </div> 
                     <div class="pagecontent ">
                         <div class="span2 hidden-phone">
