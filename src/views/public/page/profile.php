@@ -37,7 +37,7 @@ ul.inline li{ display: inline;}
 span.phone{font-weight: bold;
   font-size: 25px;
   color: #2f91e4;}
-  .profilewrap{ border:thin solid #ccc; display: block; min-height: 230px; padding: 10px; margin-top: 40px;}
+  .profilewrap{ border:thin solid #ccc; display: block; min-height: 250px; padding: 10px; margin-top: 40px;}
   .hrdotted{ margin-top: 0px; }
   ul.socialicons li {
 display: inline;
@@ -110,12 +110,12 @@ img.thumbnail{ max-width: 100%;}
                                 -->
                                 <div class="clear"></div>
                                 <br>
-                                <img width="140" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/member" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
+                                <img width="100" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/member" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
                                 <? if($member['staff'] =='Yes'): ?>
-                                <img width="140" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/staff" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
+                                <img width="100" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/staff" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
                                 <? endif; ?>
                                 <? if($member['boardCertified'] =='Yes'): ?>
-                                <img width="165" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/boardcertified" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
+                                <img width="120" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/boardcertified" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
                                 <? endif; ?>
                             </div>
                             <div class="span6 contact">
@@ -180,11 +180,15 @@ img.thumbnail{ max-width: 100%;}
             <div class="container-fluid">
               <div class="row-fluid">
                 <? if(!empty($member['locations'])): ?>
-                <div class="span4"><i class="icon-map-marker"></i>  <a href="/member/<?=$member['_id']?>/<?=$member['slug']?>"><?=$member['locations'][0]['raw']?></a></div>
+                <div class="span6"><i class="icon-map-marker"></i>  <a href="/member/<?=$member['_id']?>/<?=$member['slug']?>"><?=$member['locations'][0]['raw']?></a></div>
                 <? endif; ?>
-                <? foreach($member['websites'] as $website): ?>
-                <div class="span4"><i class="icon-share orange"></i>  <a href="//<?=$website['website']?>" alt="<?=$website['websiteDesc']?>" title="<?=$website['websiteDesc']?>"><?=$website['website']?></a></div>
-                <? endforeach; ?>
+                <div class="span3">
+                <? $i=0; foreach($member['websites'] as $website): ?>
+                <i class="icon-share orange"></i>  <a href="//<?=$website['website']?>" alt="<?=$website['websiteDesc']?>" title="<?=$website['websiteDesc']?>"><?=$website['website']?></a>
+                <? $i++; if($i == count($member['websites']) - 1){ echo "<br>";} ?>
+                <?
+                endforeach; ?>
+                </div>
               </div>
             </div>
         <hr class="hrdotted"> 
