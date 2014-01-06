@@ -101,6 +101,9 @@ ul.sidebarlist li {
 
 
     }
+    @media(width: 800px){
+    .searchmetafooter div [class*="span"]{width: 100%;}}
+    }
     @media(min-width: 786px){               
      .searchmeta{ padding: 10px}
     }
