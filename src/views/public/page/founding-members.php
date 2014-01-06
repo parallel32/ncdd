@@ -188,7 +188,7 @@ ul.sidebarlist li {
                             </div>
                            
 
-                            <div class="title text-center">
+                            <div class="title text-center ">
                                 
                                     <h1><?=$this->vars['page']['headline']?></h1>
                                 

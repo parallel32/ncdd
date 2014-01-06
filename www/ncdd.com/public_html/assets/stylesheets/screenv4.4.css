@@ -1000,10 +1000,10 @@ input[type="checkbox"] {
 }
 /* line 941, ../sass/screen.scss */
 .content p {
-  font-family: ubuntumedium;
-  font-size: 13px;
-  color: #717171;
-  line-height: 1.3em;
+  font-family: ubuntumedium !important;
+  font-size: 13px !important;
+  color: #717171 !important;
+  line-height: 1.3em !important;
 }
 /* line 947, ../sass/screen.scss */
 .content p b {
@@ -1491,10 +1491,10 @@ input[type="checkbox"] {
 }
 /* line 1438, ../sass/screen.scss */
 .content .becomeAmember p {
-  font-size: 13px;
+  font-size: 13px !important;
   font-family: ubunturegular !important;
-  line-height: 1.5em;
-  margin-bottom: 20px;
+  line-height: 1.5em !important;
+  margin-bottom: 20px !important;
 }
 /* line 1444, ../sass/screen.scss */
 .content .becomeAmember p b {
