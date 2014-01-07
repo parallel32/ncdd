@@ -70,7 +70,7 @@ $agenda->post('/saveTimeSlot', function (Request $request) use ($app, $common_vi
     	$agenda = new Model\Agenda(array('_id'=>$_id), $app);
     	$agenda->findById();
     	$doc['timeZone'] = $agenda->timeZone;
-
+    	
     	$agendaTimeNew = new Model\AgendaTime($doc,$app);
 	    $app['validateModel']($app,$agendaTimeNew);
 

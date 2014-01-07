@@ -32,7 +32,7 @@ class Agenda extends Model {
 		if(!empty($doc['_id'])) $this->_id = (is_object($doc['_id'])) ? $doc['_id'] : new \MongoId($doc['_id']);
         if(!empty($doc['seminarId'])) $this->seminarId = (is_object($doc['seminarId'])) ? $doc['seminarId'] : new \MongoId($doc['seminarId']);
 		$this->name = $doc['name'];
-		$this->timeZone = $doc['timeZone'];
+		$this->timeZone = $doc['timeZone'] ?: 'America/New_York';
 		$this->date = (!empty($doc['date'])) ? (is_object($doc['date'])) ? $doc['date']->__toArray() : new Date(self::$app,$doc['date'], $this->timeZone)  : $doc['date'];
 		$this->timeSlots = $doc['timeSlots'];
 	}
