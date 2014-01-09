@@ -190,7 +190,7 @@
                            <div class="controls">
                               <div class="input-prepend input-append">
                                   <span class="add-on">$ </span>
-                                     <input disabled id="registration_fee" value="<?=$this->vars['registration']['registrationFee']?>" type="text" disabled value="" class="m-wrap span12"> 
+                                     <input id="registration_fee" name="doc[registrationFee]" value="<?=$this->vars['registration']['registrationFee']?>" type="text" class="m-wrap span12"> 
                                   <span class="add-on">.00</span>
                               </div>
                               <span class="help-block">**CD of materials will be included in the registration fee.**</span>
@@ -202,7 +202,7 @@
                         <div class="control-group">
                            <label class="control-label" >Would you like to pre-order a hard copy of the materials?</label>
                            <div class="controls">
-                              <input id="registration_fee" value="<?=$this->vars['registration']['hardCopy']?>" type="text" disabled value="" class="m-wrap span12"> 
+                              <input id="hardcopy_fee" name="doc[hardCopyFee]" value="<?=$this->vars['registration']['hardCopy']?>" type="text" class="m-wrap span12"> 
                               <span class="help-block">If yes, an additional charge of $<?=$this->vars['seminar']['register']['hardCopyPrice']?> will be added.</span>
                            </div>
                         </div>
@@ -216,7 +216,7 @@
                            <div class="controls">
                               <div class="input-prepend input-append">
                                   <span class="add-on">$ </span>
-                                     <input name="doc[total]" id="total" type="text" disabled value="<?=$this->vars['registration']['total']?>" class="m-wrap span12"> 
+                                     <input name="doc[total]" id="total" type="text" value="<?=$this->vars['registration']['total']?>" class="m-wrap span12"> 
                                   <span class="add-on">.00</span>
                               </div>
                            </div>
