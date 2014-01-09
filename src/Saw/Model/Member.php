@@ -723,6 +723,9 @@ class Member extends User {
 			case 'APPROVED':
 				$sort=array('renewal.approvedDate.date'=>-1);
 				break;
+			case 'PAID':
+				$sort=array('renewal.paidDate.date'=>-1);
+				break;
 			default:
 				$sort=array('lastName'=>1);
 				break;
