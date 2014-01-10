@@ -149,8 +149,8 @@
                                     <label class="control-label">Activate Registration</label>
                                     <div class="controls">
                                        <select name="doc[register][currentStatus]" class="span6 m-wrap currentStatus" data-placeholder="Choose a Category" tabindex="1">
-                                          <option value="<?=\Saw\Model\SeminarRegister::$status['OFF']?>" <?=(array_key_exists('register',$seminar)) ? (\Saw\Model\SeminarRegister::$status['OFF'] == $seminar['register']['currentStatus']) ? "selected" : "" : '';?>><?=\Saw\Model\SeminarRegister::$statusReversed[\Saw\Model\SeminarRegister::$status['OFF']]?></option>
-                                          <option value="<?=\Saw\Model\SeminarRegister::$status['ON']?>" <?=(array_key_exists('register',$seminar)) ? (\Saw\Model\SeminarRegister::$status['ON'] == $seminar['register']['currentStatus']) ? "selected" : "" : '';?>><?=\Saw\Model\SeminarRegister::$statusReversed[\Saw\Model\SeminarRegister::$status['ON']]?></option>
+                                          <option value="<?=\Saw\Model\SeminarRegister::$status['OFF']?>" <?=(array_key_exists('register',$seminar) && array_key_exists('currentStatus',$seminar['register'])) ? (\Saw\Model\SeminarRegister::$status['OFF'] == $seminar['register']['currentStatus']) ? "selected" : "" : '';?>><?=\Saw\Model\SeminarRegister::$statusReversed[\Saw\Model\SeminarRegister::$status['OFF']]?></option>
+                                          <option value="<?=\Saw\Model\SeminarRegister::$status['ON']?>" <?=(array_key_exists('register',$seminar) && array_key_exists('currentStatus',$seminar['register'])) ? (\Saw\Model\SeminarRegister::$status['ON'] == $seminar['register']['currentStatus']) ? "selected" : "" : '';?>><?=\Saw\Model\SeminarRegister::$statusReversed[\Saw\Model\SeminarRegister::$status['ON']]?></option>
                                        </select>
                                        <span class="help-block">Turn online registration ON / OFF</span>
                                     </div>
