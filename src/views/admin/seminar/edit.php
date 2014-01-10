@@ -160,7 +160,7 @@
                                     <div class="controls">
                                       <div class="input-prepend input-append">
                                         <span class="add-on">$ </span>
-                                           <input type="text" name="doc[register][memberPrice]" value="<?=(array_key_exists('register',$seminar)) ? $seminar['register']['memberPrice'] : '';?>" data-required="1" class="span6 m-wrap memberPrice">
+                                           <input type="text" name="doc[register][memberPrice]" value="<?=(array_key_exists('register',$seminar)&& array_key_exists('memberPrice',$seminar['register'])) ? $seminar['register']['memberPrice'] : '';?>" data-required="1" class="span6 m-wrap memberPrice">
                                         <span class="add-on">.00</span>
                                       </div>
                                       <span class="help-block">Enter the dollar amount to charge for members.  <br>If you leave blank then it will not show up on the registration form.</span>
@@ -171,7 +171,7 @@
                                     <div class="controls">
                                       <div class="input-prepend input-append">
                                         <span class="add-on">$ </span>
-                                           <input type="text" name="doc[register][nonMemberPrice]" value="<?=(array_key_exists('register',$seminar)) ? $seminar['register']['nonMemberPrice'] : '';?>" data-required="1" class="span6 m-wrap nonMemberPrice">
+                                           <input type="text" name="doc[register][nonMemberPrice]" value="<?=(array_key_exists('register',$seminar)&& array_key_exists('nonMemberPrice',$seminar['register'])) ? $seminar['register']['nonMemberPrice'] : '';?>" data-required="1" class="span6 m-wrap nonMemberPrice">
                                         <span class="add-on">.00</span>
                                       </div>
                                       <span class="help-block">Enter the dollar amount to charge for non-members.  <br>If you leave blank then it will not show up on the registration form.</span>
@@ -182,7 +182,7 @@
                                     <div class="controls">
                                       <div class="input-prepend input-append">
                                         <span class="add-on">$ </span>
-                                           <input type="text" name="doc[register][hardCopyPrice]" value="<?=(array_key_exists('register',$seminar)) ? $seminar['register']['hardCopyPrice'] : '';?>" data-required="1" class="span6 m-wrap hardCopyPrice">
+                                           <input type="text" name="doc[register][hardCopyPrice]" value="<?=(array_key_exists('register',$seminar) && array_key_exists('hardCopyPrice',$seminar['register'])) ? $seminar['register']['hardCopyPrice'] : '';?>" data-required="1" class="span6 m-wrap hardCopyPrice">
                                         <span class="add-on">.00</span>
                                       </div>
                                       <span class="help-block">Enter the dollar amount to charge for the materials hard copy.  <br>If you leave blank then it will not show up on the registration form.</span>
