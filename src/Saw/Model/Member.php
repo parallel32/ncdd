@@ -110,13 +110,6 @@ class Member extends User {
 			$this->boardCertified = (int)$doc['boardCertified'];
 		}
 		
-		if(strtolower($doc['staff']) == 'yes'){
-			$this->staff = 1;
-		}else if(strtolower($doc['staff']) == 'no'){
-			$this->staff = 0;
-		}else if(is_numeric($doc['staff'])){
-			$this->staff = (int)$doc['staff'];
-		}
 		
         $this->joinDate = (!empty($doc['joinDate'])) ? (is_object($doc['joinDate'])) ? $doc['joinDate']->__toArray() : new Date(self::$app,$doc['joinDate'], $this->timeZone)  : $doc['joinDate'];
         include_once __DIR__.'/../Provider/WordPress/ncdd-wp-includes.php';
@@ -174,6 +167,15 @@ class Member extends User {
 		}else{
 			$this->renewal = $doc['renewal'];
 		}
+
+		if(strtolower($doc['staff']) == 'yes'){
+			$this->staff = 1;
+		}else if(strtolower($doc['staff']) == 'no'){
+			$this->staff = 0;
+		}else if(is_numeric($doc['staff'])){
+			$this->staff = (int)$doc['staff'];
+		}
+		
 		
 	}
 	

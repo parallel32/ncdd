@@ -22,7 +22,7 @@
                   <p><a class="btn green" type="button" href="/forum/add-topic"><i class="icon-plus"></i> Create a Topic</a></p>
                   <div class="row-fluid">
                      <div class="span12 article-block">
-                        <div class="row-fluid">
+                        <div class="row-fluid" style="background: #faf6ea;padding: 5px;">
                            <div class="span12 blog-article">
                               <h2><a href="/forum/post/state-cannot-suspend">State Cannot Suspend DUI Driver for Conduct on Indian Land</a></h2>
                               <ul class="unstyled inline">

@@ -23,7 +23,7 @@
                      <div class="span9 article-block">
                         <h1>State Cannot Suspend DUI Driver for Conduct on Indian Land</h1>
                         <div class="blog-tag-data">
-                           <div class="row-fluid">
+                           <div class="row-fluid" style="background: #faf6ea;padding: 5px;">
                               <div class="span6">
                                  <ul class="unstyled inline blog-tags">
                                     <li>
