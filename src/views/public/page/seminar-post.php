@@ -29,7 +29,7 @@
                                                 <p class="postDescr"><?=$seminar['description']?></p>
                                             </div>
                                             <div class="postFooter">
-                                                <?if(array_key_exists('register',$seminar) && $seminar['register']['currentStatus'] == \Saw\Model\SeminarRegister::$status['ON']): ?>
+                                                <?if(array_key_exists('register',$seminar) && array_key_exists('currentStatus',$seminar['register']) && $seminar['register']['currentStatus'] == \Saw\Model\SeminarRegister::$status['ON']): ?>
                                                 <a href="http://<?=SAW_ADMIN_WEBSITE?>/registration/seminar/<?=$seminar['_id']?><?=$slug?>" class="btn readMore pull-left">Register Online +</a>
                                                 <? else: ?>
                                                 <ul class="postTags pull-left">
