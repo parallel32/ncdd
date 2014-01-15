@@ -138,7 +138,6 @@
                                     </select>
                                     <span class="help-block">This is the current position in which this member appears in the "Find an Attorney" search results</span>
                                     <span class="help-block">This field is driven by Executive Position and Membership Status and cannot be changed on its own.</span>
-                                    <span class="help-block">If you want to push someone up or down in the order change their Join Date below..</span>
                                  </div>
                               </div>
                            </div>
