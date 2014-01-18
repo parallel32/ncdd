@@ -16,20 +16,13 @@ use Cocur\Slugify\Slugify;
 class Topic extends Model {
 	
 	public $collection = 'topic';
-	static public $status = array('DRAFT'=>10,'REVIEW'=>20,'UNPUBLISH'=>30,'SCHEDULE'=>40, 'PUBLISH'=>50);
-	static public $statusReversed = array(10=>'DRAFT',20=>'REVIEW', 30=>'UNPUBLISH', 40=>'SCHEDULE', 50=>'PUBLISH');
+	static public $status = array('DRAFT'=>10,'REVIEW'=>20,'UNPUBLISH'=>30,'SCHEDULE'=>40, 'PUBLISH'=>50, 'REQUEST_DELETE'=>60);
+	static public $statusReversed = array(10=>'DRAFT',20=>'REVIEW', 30=>'UNPUBLISH', 40=>'SCHEDULE', 50=>'PUBLISH', 60=>'REQUEST_DELETE');
 	public $currentStatus;
-	static public $type = array('EDITORIAL'=>10,'PICTURE'=>20,'LINK'=>30,'VIDEO'=>40);
-	static public $typeReversed = array(10=>'EDITORIAL',20=>'PICTURE',30=>'LINK',40=>'VIDEO');
-	public $currentType;
-	public $forumId; // _id of the forum to which this topic belongs
-	public $slug;
+	public $forum; // the forum to which this topic belongs
 	public $headline;
 	public $body;
-	public $tags;
 	public $image;
-	public $video;
-	public $link;
 	public $commentCount;
 	public $author;
 	// dates
@@ -46,15 +39,11 @@ class Topic extends Model {
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addPropertyConstraint('headline', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('body', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		$metadata->addPropertyConstraint('slug', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		$metadata->addPropertyConstraint('tags', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		$metadata->addConstraint(new Callback(array(
-            'methods' => array('isValidSlug'),
-        )));
         $metadata->addConstraint(new Callback(array('methods' => array('checkDate'))));
 	}
 	public function checkDate(ExecutionContext $context){
-		if(!empty($this->currentStatus)){
+		error_log('this->currentStatus'.$this->currentStatus);
+		//if(!empty($this->currentStatus)){
 			if($this->currentStatus == self::$status['SCHEDULE']){
 				$date = '';
 				if(is_object($this->scheduleDate)){
@@ -72,19 +61,8 @@ class Topic extends Model {
 		        	$context->addViolationAtPath($propertyPath,'cannot be blank', array(), null);
 				}
 			}
-		}
+		//}
 		
-	}
-	/**
-	 * validator helper function
-	*/
-	public function isValidSlug(ExecutionContext $context){
-	
-		$result = $this->findOne($query=array('slug'=>$this->slug),$fields=array(),$slaveOkay=true);
-		if(!empty($result) && $result['_id'] != $this->_id){
-			$propertyPath = $context->getPropertyPath().'slug';
-        	$context->addViolationAtPath($propertyPath,'This URL already exists in the system.  Please change your Headline slightly to produce a more unique URL.', array(), null);
-        }
 	}
 	public function __construct($doc, Application $app, $author=array()){
 		parent::__construct($app);
@@ -92,16 +70,11 @@ class Topic extends Model {
 
 		if(!empty($doc['_id'])) $this->_id = (is_object($doc['_id'])) ? $doc['_id'] : new \MongoId($doc['_id']);
       
-        $this->currentType = (!empty($doc['currentType'])) ? self::$typeReversed[$doc['currentType']] : $doc['currentType'];
 		$this->headline = $doc['headline'];
-		$this->slug = (empty($doc['slug']) && !empty($doc['headline'])) ? self::slugify($doc['headline']): $doc['slug'];
 		include_once __DIR__.'/../Provider/WordPress/ncdd-wp-includes.php';
 		$this->body = (!empty($doc['body'])) ? wptexturize(wpautop($doc['body'])) : '';
 		
-		$this->tags = $doc['tags'];
 		$this->image = $doc['image'];
-		$this->video = $doc['video'];
-		$this->link = $doc['link'];
 		$this->commentCount = $doc['commentCount'];
 		$this->author = (is_object($author)) ? $author->__toArray(false) : $doc['author'];
 		$this->currentStatus = (!empty($doc['currentStatus'])) ? (int)$doc['currentStatus']: $doc['currentStatus'];
@@ -112,9 +85,9 @@ class Topic extends Model {
 		$this->unpublishDate = $doc['unpublishDate'];
 
 		$this->setCurrentStatus();
-		$this->setCurrentType();
 
 		$this->add = $doc['add'];
+		$this->forum = $doc['forum'];
 		
 	}
 	
@@ -123,16 +96,11 @@ class Topic extends Model {
 	*/
 	protected function prepareInsert(){
 		$this->currentStatus = $this->currentStatus ?: self::$status['DRAFT'];
-		$this->currentType = $this->currentType ?: self::$type['EDITORIAL'];
 		
 		$this->headline = $this->headline ?: '';
-		$this->slug = $this->slug ?: '';
 		$this->body = $this->body ?: '';
-		$this->tags = $this->tags ?: '';
 		
 		$this->image = $this->image ?: new \stdClass();
-		$this->video = $this->video ?: '';
-		$this->link = $this->link ?: '';
 		$this->commentCount = $this->commentCount ?: 0;
 		$this->author = $this->author ?: new \stdClass();
 		
@@ -144,9 +112,14 @@ class Topic extends Model {
 		$this->scheduleDate = $this->scheduleDate ?: new \stdClass();
 
 		$this->add = $this->add ?: 'yes';
+		$this->forum = $this->forum ?: new \stdClass();
 
 	}
 	public function saveEdit(){
+		if(!empty($this->forum)){
+			$forum = new Forum(array('_id'=>$this->forum),self::$app);
+			$this->forum = $forum->findById();
+		}
 		if($this->add == 'yes'){
 			$this->prepareInsert();
 			if(parent::insert()){
@@ -158,25 +131,6 @@ class Topic extends Model {
 			$this->saveSafe();
 			return $this->_id;
 		}
-	}
-	public function setCurrentType($typeString=''){
-		if(empty($typeString)){
-			if(!empty($this->image)){
-				$this->currentType = self::$type['PICTURE'];
-			}
-			elseif(!empty($this->link)){
-				$this->currentType = self::$type['LINK'];
-			}
-			elseif(!empty($this->video)){
-				$this->currentType = self::$type['VIDEO'];
-			}
-			else{
-				$this->currentType = self::$type['EDITORIAL'];	
-			}
-		}else{
-			$this->currentType = self::$type[$typeString];	
-		}
-		
 	}
 	private function setCurrentStatus(){
 		if(!empty($this->currentStatus)){
@@ -207,7 +161,10 @@ class Topic extends Model {
 		}
 	}
 	public function fetchByStatus($status, $published='yes', $offset=0,$limit=100){
-		$query = array('currentStatus'=>self::$status[$status]);
+		$user = call_user_func(function($app){ $user = $app['session']->get('user'); return $user;},self::$app);
+		$memberId = new \MongoId((string)$user['user_id']);
+		
+		$query = array('currentStatus'=>self::$status[$status],'forum.owner._id'=>$memberId);
 		if(!empty($published)){
 			$query['published'] = $published;
 		}
@@ -216,7 +173,6 @@ class Topic extends Model {
 		if(!empty($result)):
 			for ($i=0; $i < count($result); $i++) { 
 				$result[$i]['currentStatus'] = self::$statusReversed[$result[$i]['currentStatus']];
-				$result[$i]['currentType'] = self::$typeReversed[$result[$i]['currentType']];
 			}
 		endif;
 		return $result;
@@ -230,68 +186,49 @@ class Topic extends Model {
 		if(!empty($result)):
 			for ($i=0; $i < count($result); $i++) { 
 				$result[$i]['currentStatus'] = self::$statusReversed[$result[$i]['currentStatus']];
-				$result[$i]['currentType'] = self::$typeReversed[$result[$i]['currentType']];
 			}
 		endif;
 		return $result;
 
 	}
-	public function fetchTag($tag, $offset=0,$limit=100){
-		$tag = (strpos($tag,'(') !== false) ? str_replace('(','\(',str_replace(')','\)',$tag)) : $tag;
-		$search = new \MongoRegex("/".$tag."/i");
-		$query = array('tags'=>$search,'currentStatus'=>self::$status['PUBLISH'],'published'=>'yes');
-		$fields = array();
-		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('publishDate.date'=>-1),(int)$offset,(int)$limit);
+	public function fetchByAuthorByDraft($offset=0,$limit=100){
 
-		//error_log('query'.print_r($query,true));
-		//error_log('result'.print_r($result,true));
-
-		if(!empty($result)):
-			for ($i=0; $i < count($result); $i++) { 
-				$result[$i]['currentStatus'] = self::$statusReversed[$result[$i]['currentStatus']];
-				$result[$i]['currentType'] = self::$typeReversed[$result[$i]['currentType']];
-			}
-		endif;
-		return $result;
-
-	}
-	public function fetchByAuthorByDraft($memberId, $offset=0,$limit=100){
-		$memberId = (is_object($memberId)) ? $memberId : new \MongoId($memberId);
+		$user = call_user_func(function($app){ $user = $app['session']->get('user'); return $user;},self::$app);
+		$memberId = new \MongoId((string)$user['user_id']);
 		$query = array('currentStatus'=>self::$status['DRAFT'],'author._id'=>$memberId);
 		$fields = array();
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('draftDate.date'=>-1),(int)$offset,(int)$limit);
 		if(!empty($result)):
 			for ($i=0; $i < count($result); $i++) { 
 				$result[$i]['currentStatus'] = self::$statusReversed[$result[$i]['currentStatus']];
-				$result[$i]['currentType'] = self::$typeReversed[$result[$i]['currentType']];
 			}
 		endif;
 		return $result;
 
 	}
-	public function fetchByAuthorByReview($memberId, $offset=0,$limit=100){
-		$memberId = (is_object($memberId)) ? $memberId : new \MongoId($memberId);
-		$query = array('currentStatus'=>self::$status['REVIEW'],'author._id'=>$memberId);
+	public function fetchByAuthorByReview($offset=0,$limit=100){
+		$user = call_user_func(function($app){ $user = $app['session']->get('user'); return $user;},self::$app);
+		$memberId = new \MongoId((string)$user['user_id']);
+		$query = array('currentStatus'=>self::$status['REVIEW'],'forum.owner._id'=>$memberId);
 		$fields = array();
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('reviewDate.date'=>-1),(int)$offset,(int)$limit);
 		if(!empty($result)):
 			for ($i=0; $i < count($result); $i++) { 
 				$result[$i]['currentStatus'] = self::$statusReversed[$result[$i]['currentStatus']];
-				$result[$i]['currentType'] = self::$typeReversed[$result[$i]['currentType']];
 			}
 		endif;
 		return $result;
 
 	}
-	public function fetchByAuthorByApproved($memberId, $offset=0,$limit=100){
-		$memberId = (is_object($memberId)) ? $memberId : new \MongoId($memberId);
-		$query = array('author._id'=>$memberId, 'currentStatus'=>array('$gte'=>self::$status['SCHEDULE']));
+	public function fetchByAuthorByApproved($offset=0,$limit=100){
+		$user = call_user_func(function($app){ $user = $app['session']->get('user'); return $user;},self::$app);
+		$memberId = new \MongoId((string)$user['user_id']);
+		$query = array('forum.owner._id'=>$memberId, 'currentStatus'=>array('$gte'=>self::$status['SCHEDULE']));
 		$fields = array();
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('scheduleDate.date'=>-1,'publishDate.date'=>-1),(int)$offset,(int)$limit);
 		if(!empty($result)):
 			for ($i=0; $i < count($result); $i++) { 
 				$result[$i]['currentStatus'] = self::$statusReversed[$result[$i]['currentStatus']];
-				$result[$i]['currentType'] = self::$typeReversed[$result[$i]['currentType']];
 			}
 		endif;
 		return $result;
@@ -301,7 +238,7 @@ class Topic extends Model {
 		$query = array('currentStatus'=>self::$status['SCHEDULE']
 						,'scheduleDate.date'=>array('$lte'=>new \MongoDate(strtotime('now')))
 		);
-		$fields = array('slug'=>true,'currentStatus'=>true);
+		$fields = array('currentStatus'=>true);
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('_id'=>-1),(int)$offset,(int)$limit);
 
 		//error_log('fetch:'.print_r($query,true));
@@ -312,7 +249,7 @@ class Topic extends Model {
 	}
 	public function delete(){
 
-		// delete blog
+		// delete topic
     	$this->remove();
 
     	// purge comments
@@ -322,20 +259,5 @@ class Topic extends Model {
 		self::$app['upload-mongo']->deleteByCriteria(array('belongsTo'=>$this->_id));
 
 	}
-	public static function getAvailableTags(){
-		return array('Breath Testing', 'Blood Testing', 'Boating Under the Influence','FAA Issues','Public Policy','Interstate Compact', 'Field Sobriety Tests', 'Drug Dui (DRE)', 'Constitutional Issues', 'Forensic Science', 'Evidence', 'Ethics', 'Recent Case Law');
-	}
-	public static function slugify($str){
-
-		$slugify = new \Cocur\Slugify\Slugify();//for iconv translit
-		
-		$arr = explode('/',$str);
-		for ($i=0; $i < count($arr); $i++) { 
-			$slug = $slugify->slugify($arr[$i]);
-			$arr[$i] = ($slug == 'n-a') ? '':$slug;
-		}
-		$slug = implode('/',$arr);
-		
-		return $slug;
-	}
+	
 }

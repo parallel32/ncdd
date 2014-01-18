@@ -172,6 +172,12 @@ $app['imageFactory'] = $app->protect(function ($context,$belongsTo) {
 		case 'blog':
 			return new Model\ImageBlog($belongsTo);
 			break;
+		case 'forum':
+			return new Model\ImageForum($belongsTo);
+			break;
+		case 'topic':
+			return new Model\ImageTopic($belongsTo);
+			break;
 
 	}
 });
@@ -186,6 +192,14 @@ $app['imageParentFactory'] = $app->protect(function ($context,$belongsTo) use ($
 		case 'blog':
 			return new Model\Blog(array('_id'=>$belongsTo),$app);
 			break;
+		case 'forum':
+			return new Model\Forum(array('_id'=>$belongsTo),$app);
+			break;
+		case 'topic':
+			return new Model\Topic(array('_id'=>$belongsTo),$app);
+			break;
+
+
 
 	}
 });

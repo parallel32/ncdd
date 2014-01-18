@@ -13,6 +13,9 @@ class MemberLite extends Model {
 
 	public $_id;
 	public $displayName;
+	public $firstName;
+	public $middleName;
+	public $lastName;
 	public $email;
 	public $image;
 	
@@ -25,6 +28,9 @@ class MemberLite extends Model {
 		
 		$this->_id = (!is_object($doc['_id'])) ? new \MongoId($doc['_id']) : $doc['_id'];
 		$this->displayName = $doc['displayName'];
+		$this->firstName = $doc['firstName'];
+		$this->middleName = $doc['middleName'];
+		$this->lastName = $doc['lastName'];
 		$this->email = $doc['email'];
 		$this->image = $doc['image'];
 	}

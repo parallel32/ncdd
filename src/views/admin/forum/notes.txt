@@ -1,29 +1,70 @@
 
 Member
-can create new forums, which puts their name as the author of the forum.  Only they can create topics to it.
+can create new forums, which puts their name as the author of the forum.  They moderate topics.
 can comment on any topic
 
 Admin 
 can delete any comment, topic, or forum as well as edit
 can create a new forum, which will not have the author of the forum labeled
 
-
 Forum
-has an owner, and along with their permission level
-if admin -> anyone can post a topic
-if member -> only owner can post a topic
+has an owner
+anyone can post
+if admin -> admin is emailed
+if member -> owner is emailed when someone posts
 
-Post
-has an owner; only owner, forum owner, or Admin can edit / delete a post
-Anyone can post to a forum owned by admin
+
+Topics
+has an author; only author, forum owner, or Admin can edit / delete a topic
+If forum has an owner only the owner can post topics
+Anyone can post a topic to a forum owned by admin
 
 Comment
-has an owner; only owner, forum owner, or Admin can edit / delete a post
-can create new comment or reply to existing comment.  Reply does not create a new thread
-
+has an author; only author, forum owner, or Admin can edit / delete a comment
+can create new comment or reply to existing comment.  
+Reply does not create a new thread, instead just posts there 
 
 Email
 A weekly abridged email will go to the listserv 
 forum owner is emailed (if not admin) when someone comments
 Admin is emailed when someone posts to a forum owned by admin
 member is emailed when someone replys to their comment.  They have the option to be emailed and then turn off their emails on the thread later
+
+
+Collections
+
+Forums
+-owner (memberLite or blank for admin)
+-1 picture 
+
+Topics
+-forum (forumLite)
+-author (memberLite)
+-many pictures (no cropping just resizing and lightbox)
+-VFL docs
+
+Comments
+-topicId
+-author (memberLite)
+
+
+Dashboards
+
+Admin
+-all forums .. here you add new
+-forums to approve (they're in full edit mode here)
+-topics to approve (they're in full edit mode here)
+-recent comments (can delete here if needed)
+-scheduled for publishing
+-unpublished
+-published .. need to paginate
+
+My
+-my forums .. here you add new forums
+-my topics drafts .. here you add new topics ..select a forum first
+-my topics recent comments (last 20) in the grid a forum column .. with link to topic
+-my topics awaiting approval by Admin
+-my topics scheduled for publishing
+-my topics unpublished
+-my topics published .. need to paginate
+

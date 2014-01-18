@@ -136,13 +136,37 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                </ul>
                <? endif; ?>
             </li>
-            <li class="<? echo ($this->vars['active'] == 'Forum') ? 'active':'';?>">
-               <a href="/forum">
+            
+
+            <li class="<? echo (strpos($this->vars['active'], 'Forum') !== false) ? 'active open':'';?>">
+               <a id="dui-forum" href="/forum">
                <i class="icon-comments"></i> 
                <span class="title">DUI Forum</span>
-               <? echo ($this->vars['active'] == 'Forum') ? '<span class="selected"></span>':'';?>
+               <? 
+                  if($accessLevel == MEMBER){
+                     echo (strpos($this->vars['active'], 'Forum') !== false) ? '<span class="selected"></span><span class="arrow open"></span>':'<span class="arrow"></span>';
+                  } else {
+                     echo (strpos($this->vars['active'], 'Forum') !== false) ? '<span class="selected"></span>':'';
+                  }
+               ?>
                </a>
+               <? if($accessLevel == MEMBER):?>
+               <ul class="sub-menu">
+                  <li class="<? echo ($this->vars['active'] == 'Forum/My') ? 'active':'';?>">
+                     <a href="/forum/my-admin"><i class="icon-pencil"></i> Manage My Forums</a>
+                  </li>
+               </ul>
+               <? endif; ?>
+               <? if($accessLevel >= EDITOR):?>
+               <ul class="sub-menu">
+                  <li class="<? echo ($this->vars['active'] == 'Forum/Admin') ? 'active':'';?>">
+                     <a href="/forum/admin"><i class="icon-pencil"></i> Manage Forum</a>
+                  </li>
+               </ul>
+               <? endif; ?>
             </li>
+
+
             <li class="<? echo ($this->vars['active'] == 'VFL') ? 'active':'';?>">
                <a href="/vfl">
                <i class="icon-legal"></i> 
@@ -190,4 +214,10 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                document.location.href="/blog";
             });
          });
-         </script>
+         jQuery(document).ready(function() {    
+            $('#dui-forum').click(function(e){
+               e.preventDefault();
+               document.location.href="/forum";
+            });
+         });
+   </script>

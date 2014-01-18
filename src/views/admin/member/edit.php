@@ -23,7 +23,7 @@
                         <? $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user'); return $user['accessLevel'];},$this->app); 
                         if($accessLevel == ADMIN): ?>
 
-                        <h3 class="form-section text-info"><strong>Aministration Section (ADMIN ONLY)</strong></h3>
+                        <h3 class="form-section text-info"><strong>Administration Section (ADMIN ONLY)</strong></h3>
                         <p>This section is not accessible to members.</p>
                         <div class="row-fluid">
                            <div class="span6 ">
