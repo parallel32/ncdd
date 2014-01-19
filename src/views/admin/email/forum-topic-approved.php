@@ -11,7 +11,7 @@
 												<h2 class="h2">Forum Topic Approved for Publishing</h2>
 												<br />
 												<div class="textdark">
-													Your blog post:
+													Your forum topic:
 													<br/>
 													<br/><?=$this->vars['headline']?>
 													<br/>

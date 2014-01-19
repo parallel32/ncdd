@@ -135,7 +135,7 @@ $isOwner =  ( array_key_exists('topic',$this->vars) && array_key_exists('forum',
                            <!--/span-->
                         </div>
                         
-                        <? if($accessLevel >= EDITOR || $isOwner): ?>
+                        <? if($accessLevel >= EDITOR || $isOwner && (array_key_exists('topic',$this->vars) && array_key_exists('currentStatus',$this->vars['topic']) && $this->vars['topic']['currentStatus'] <=  \Saw\Model\Topic::$status['SCHEDULE'])): ?>
                            <h3 class="form-section text-info"><strong>Schedule for Publishing</strong></h3>
                            <p>This is optional.  You can go ahead and publish it now by clicking the "Publish Now" button below.</p>
                            <div class="row-fluid">
@@ -199,7 +199,7 @@ $isOwner =  ( array_key_exists('topic',$this->vars) && array_key_exists('forum',
                                           $buttons = '';
                                        }
                                     case 'PUBLISH':
-                                       if ($accessLevel >= EDITOR){
+                                       if ($accessLevel >= EDITOR || $isOwner){
                                           $buttons = "<button type='button' class='btn green save'><i class='icon-pencil'></i> Save.</button>
                                                       <button type='button' class='btn yellow unpublish'><i class='icon-ok'></i> Save and un-publish.</button>
                                                       <button type='button' class='btn cancel'>Cancel</button>

@@ -61,9 +61,14 @@ $topic->post('/edit', function (Request $request) use ($app) {
 	// retrieve document from request
     $document = $request->get('doc');
     
-    $member = new Model\Member(array('_id'=>$user['user_id']),$app);
-    $member_doc = $member->findById();
-    $member = new Model\MemberLite($member_doc,$app);
+    if($user['accessLevel'] >= EDITOR){
+    	$member = array();
+    } else {
+    	$member = new Model\Member(array('_id'=>$user['user_id']),$app);
+	    $member_doc = $member->findById();
+	    $member = new Model\MemberLite($member_doc,$app);
+    }
+    
 
     $topic = new Model\Topic($document, $app, $member);
     // validate the model
@@ -90,7 +95,7 @@ $topic->post('/edit', function (Request $request) use ($app) {
 	    		if($accessLevel == MEMBER){
 	    			// send out the email to the admin notifying to review the topic post
 			    	$topic = new Model\Topic(array('_id'=>$_POST['current_id']),$app);
-		    		$topic = $topic->findById();
+		    		$topic->findById();
 			    	$forum = new Model\Forum(array('_id'=>$_POST['forum_id']),$app);
 		    		$forum = $forum->findById();
 			    	//error_log('send ADMIN email......for:'.$topic->headline);
@@ -115,25 +120,21 @@ $topic->post('/edit', function (Request $request) use ($app) {
 	    	if((int)$doc['currentStatus'] >= (int)Model\Topic::$status['SCHEDULE']){
 	    		$accessLevel = call_user_func(function($app){ $user = $app['session']->get('user'); return $user['accessLevel'];},$app);
 	    		if($accessLevel >= EDITOR){
+
 	    			// send out the email to topic author notifying that the topic posted
 			    	$topic = new Model\Topic(array('_id'=>$_POST['current_id']),$app);
-		    		$topic = $topic->findById();
-			    	$forum = new Model\Forum(array('_id'=>$_POST['forum_id']),$app);
-		    		$forum = $forum->findById();
-			    	//error_log('send ADMIN email......for:'.$topic->headline);
+		    		$topic->findById();
+			    	//error_log('send ADMIN email......for:'.$topic->author);
 			    	//*
-			    	// send admin the email notification if the owner of forum is not the same as the author of the topic
-			    	if(array_key_exists('_id',$topic['author']) && (string)$topic['author']['_id'] != (string)$user_id){
-				    	//error_log('send Author email......for:'.$topic->headline);
-				    	//*
-				    	// send admin the email notification
-				    	$subject = 'Topic Approved';
-				    	$to = $topic->author['email'];
-				    	$view_vars = array('headline'=>$topic->headline);
-				    	$body = $app['view']->render('email/forum-topic-approved','email', $view_vars);
-				    	$app['sendMail']($subject, $body, $to);
-				    }
-			    	//*/
+		    		//error_log('send Author email......for:'.$topic->headline);
+			    	//*
+			    	// send admin the email notification
+			    	$subject = 'Topic Approved';
+			    	$to = $topic->author['email'];
+			    	$view_vars = array('headline'=>$topic->headline);
+			    	$body = $app['view']->render('email/forum-topic-approved','email', $view_vars);
+			    	$app['sendMail']($subject, $body, $to);
+					//*/
 	    		}
 		    }
 	    endif;

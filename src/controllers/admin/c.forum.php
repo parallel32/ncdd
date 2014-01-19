@@ -40,11 +40,13 @@ $forum->get('/', function (Request $request) use ($app) {
 $forum->get('/admin', function (Request $request) use ($app) {
 	
 	$forum = new Model\Forum(array(),$app);
+	$topic = new Model\Topic(array(),$app);
 	$forums = $forum->fetchOrderBy();
-	$drafts = array();//$forum->fetchByAuthorByDraft($memberId);
-	$scheduled = array();//$forum->fetchByStatus('SCHEDULE','no');
-	$published = array();//$forum->fetchByStatus('PUBLISH','yes');
-	$unpublished = array();//$forum->fetchByStatus('UNPUBLISH','no');
+	$reviews = $topic->fetchByAuthorByReview();
+	$approved = $topic->fetchByAuthorByApproved();
+	$scheduled = $topic->fetchByStatus('SCHEDULE','no');
+	$published = $topic->fetchByStatus('PUBLISH','yes');
+	$unpublished = $topic->fetchByStatus('UNPUBLISH','no');
 
 	$crumbs = array(array('name'=>'DUI Forum','href'=>'/forum')
 					,array('name'=>'Manage the DUI Forum','href'=>'/forum/admin')
@@ -56,7 +58,8 @@ $forum->get('/admin', function (Request $request) use ($app) {
 						,'description'=>"All forums, their topics and comments"
 						,'crumbs'=>$crumbs
 						,'forums'=>$forums
-						,'drafts'=>$drafts
+						,'reviews'=>$reviews
+						,'approved'=>$approved
 						,'scheduled'=>$scheduled
 						,'published'=>$published
 						,'unpublished'=>$unpublished
@@ -78,8 +81,8 @@ $forum->get('/my-admin', function (Request $request) use ($app) {
 	$reviews = $topic->fetchByAuthorByReview();
 	$approved = $topic->fetchByAuthorByApproved();
 	$scheduled = $topic->fetchByStatus('SCHEDULE','no');
-	$published = array();//$forum->fetchByStatus('PUBLISH','yes');
-	$unpublished = array();//$forum->fetchByStatus('UNPUBLISH','no');
+	$published = $topic->fetchByStatus('PUBLISH','yes');
+	$unpublished = $topic->fetchByStatus('UNPUBLISH','no');
 
 	$crumbs = array(array('name'=>'DUI Forum','href'=>'/forum')
 					,array('name'=>'Manage My Forums','href'=>'/forum/my-admin')

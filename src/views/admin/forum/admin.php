@@ -15,8 +15,8 @@
             <div class="row-fluid">
                <div class="span12">
                   <!-- FORUMS -->
-                  <div id="forums" class="row-fluid">
-                     <div class="span12">
+                  <div class="row-fluid">
+                     <div id="forums" class="span12">
                         <!-- BEGIN EXAMPLE TABLE PORTLET-->
                         <div class="portlet box blue">
                            <div class="portlet-title" id="draft">
@@ -77,8 +77,9 @@
                   </div>
                   <br><br>
                   <!--/ FORUMS -->
+                  
                   <!-- REVIEW TOPIC POSTS -->
-                  <div id="recent-review" class="row-fluid">
+                  <div id="recent-reviews" class="row-fluid">
                      <div class="span12">
                         <!-- BEGIN EXAMPLE TABLE PORTLET-->
                         <div class="portlet box red">
@@ -90,8 +91,8 @@
                               <table class="table table-striped table-bordered table-hover dataTable" id="reviews" aria-describedby="sample_1_info">
                                  <thead>
                                     <tr role="row">
-                                       <th class="">Forum</th>
                                        <th class="">Topic</th>
+                                       <th class="">Forum</th>
                                        <th class="">Author</th>
                                        <th class="hidden-480">Submitted for Review On</th>
                                        <th class="hidden-480">Status</th>
@@ -99,14 +100,14 @@
                                     </tr>
                                  </thead>
                                  <tbody role="alert" aria-live="polite" aria-relevant="all">
-                                    <? if(!empty($this->vars['reviews'])): foreach($this->vars['reviews'] as $forum): ?>
+                                    <? if(!empty($this->vars['reviews'])): foreach($this->vars['reviews'] as $topic): ?>
                                     <tr class="gradeX odd">
-                                       <td class=" "><?=$forum['headline']?></td>
-                                       <td class=" "><?=$forum['author']['displayName']?></td>
-                                       <td class="hidden-480 "><?=$forum['reviewDate']['shortTime'].'  '.$forum['reviewDate']['monthDay']?></td>
-                                       <td class="hidden-480 "><?=$forum['currentType']?></td>
-                                       <td class="hidden-480 "><?=$forum['currentStatus']?></td>
-                                       <td class=" "><a data-forum-id="<?=$forum['_id']?>" data-member-id="<?=$forum['author']['_id']?>" class="btn blue mini edit"><i class=" icon-pencil"></i> Edit</a></td>
+                                       <td class=" "><?=$topic['headline']?></td>
+                                       <td class=" "><?=$topic['forum']['name']?></td>
+                                       <td class=" "><?=$topic['author']['displayName']?></td>
+                                       <td class="hidden-480 "><?=$topic['reviewDate']['shortTime'].'  '.$topic['reviewDate']['monthDay']?></td>
+                                       <td class="hidden-480 "><?=$topic['currentStatus']?></td>
+                                       <td class=" "><a data-id="<?=$topic['_id']?>" class="btn blue mini edit"><i class=" icon-pencil"></i> Edit</a></td>
                                     </tr>
                                     <? endforeach;?>
                                     <? else: ?>
@@ -135,23 +136,23 @@
                               <table class="table table-striped table-bordered table-hover dataTable" id="scheduleds" aria-describedby="sample_1_info">
                                  <thead>
                                     <tr role="row">
-                                       <th class="">Headline</th>
+                                       <th class="">Topic</th>
+                                       <th class="">Forum</th>
                                        <th class="">Author</th>
                                        <th class="hidden-480">Scheduled to Post On</th>
-                                       <th class="hidden-480">Type</th>
                                        <th class="hidden-480">Status</th>
                                        <th class=""></th>
                                     </tr>
                                  </thead>
                                  <tbody role="alert" aria-live="polite" aria-relevant="all">
-                                    <? if(!empty($this->vars['scheduled'])): foreach($this->vars['scheduled'] as $forum): ?>
+                                    <? if(!empty($this->vars['scheduled'])): foreach($this->vars['scheduled'] as $topic): ?>
                                     <tr class="gradeX odd">
-                                       <td class=" "><?=$forum['headline']?></td>
-                                       <td class=" "><?=$forum['author']['displayName']?></td>
-                                       <td class="hidden-480 "><?=$forum['scheduleDate']['monthDay']?></td>
-                                       <td class="hidden-480 "><?=$forum['currentType']?></td>
-                                       <td class="hidden-480 "><?=$forum['currentStatus']?></td>
-                                       <td class=" "><a data-forum-id="<?=$forum['_id']?>" data-member-id="<?=$forum['author']['_id']?>" class="btn blue mini edit"><i class=" icon-pencil"></i> Edit</a></td>
+                                       <td class=" "><?=$topic['headline']?></td>
+                                       <td class=" "><?=$topic['forum']['name']?></td>
+                                       <td class=" "><?=$topic['author']['displayName']?></td>
+                                       <td class="hidden-480 "><?=$topic['scheduleDate']['shortTime'].'  '.$topic['scheduleDate']['monthDay']?></td>
+                                       <td class="hidden-480 "><?=$topic['currentStatus']?></td>
+                                       <td class=" "><a data-id="<?=$topic['_id']?>" class="btn blue mini edit"><i class=" icon-pencil"></i> Edit</a></td>
                                     </tr>
                                     <? endforeach;?>
                                     <? else: ?>
@@ -180,23 +181,23 @@
                               <table class="table table-striped table-bordered table-hover dataTable" id="publisheds" aria-describedby="sample_1_info">
                                  <thead>
                                     <tr role="row">
-                                       <th class="">Headline</th>
+                                       <th class="">Topic</th>
+                                       <th class="">Forum</th>
                                        <th class="">Author</th>
                                        <th class="hidden-480">Published On</th>
-                                       <th class="hidden-480">Type</th>
                                        <th class="hidden-480">Status</th>
                                        <th class=""></th>
                                     </tr>
                                  </thead>
                                  <tbody role="alert" aria-live="polite" aria-relevant="all">
-                                    <? if(!empty($this->vars['published'])): foreach($this->vars['published'] as $forum): ?>
+                                    <? if(!empty($this->vars['published'])): foreach($this->vars['published'] as $topic): ?>
                                     <tr class="gradeX odd">
-                                       <td class=" "><?=$forum['headline']?></td>
-                                       <td class=" "><?=$forum['author']['displayName']?></td>
-                                       <td class="hidden-480 "><?=$forum['publishDate']['shortTime'].'  '.$forum['publishDate']['monthDay'];?></td>
-                                       <td class="hidden-480 "><?=$forum['currentType']?></td>
-                                       <td class="hidden-480 "><?=$forum['currentStatus']?></td>
-                                       <td class=" "><a data-forum-id="<?=$forum['_id']?>" data-member-id="<?=$forum['author']['_id']?>" class="btn blue mini edit"><i class=" "></i> Edit</a> <a href="/forum/<?=$forum['_id']?>/view" data-id="" class="btn blue mini view"><i class=" "></i> View</a></td>
+                                       <td class=" "><?=$topic['headline']?></td>
+                                       <td class=" "><?=$topic['forum']['name']?></td>
+                                       <td class=" "><?=$topic['author']['displayName']?></td>
+                                       <td class="hidden-480 "><?=$topic['publishDate']['shortTime'].'  '.$topic['publishDate']['monthDay'];?></td>
+                                       <td class="hidden-480 "><?=$topic['currentStatus']?></td>
+                                       <td class=" "><a data-id="<?=$topic['_id']?>" class="btn blue mini edit"><i class=" "></i> Edit</a> <a href="/forum/<?=$topic['_id']?>/view" data-id="" class="btn blue mini view"><i class=" "></i> View</a></td>
                                     </tr>
                                     <? endforeach;?>
                                     <? else: ?>
@@ -225,23 +226,23 @@
                               <table class="table table-striped table-bordered table-hover dataTable" id="unpublisheds" aria-describedby="sample_1_info">
                                  <thead>
                                     <tr role="row">
-                                       <th class="">Headline</th>
+                                       <th class="">Topic</th>
+                                       <th class="">Forum</th>
                                        <th class="">Author</th>
                                        <th class="hidden-480">Published On</th>
-                                       <th class="hidden-480">Type</th>
                                        <th class="hidden-480">Status</th>
                                        <th class=""></th>
                                     </tr>
                                  </thead>
                                  <tbody role="alert" aria-live="polite" aria-relevant="all">
-                                    <? if(!empty($this->vars['unpublished'])): foreach($this->vars['unpublished'] as $forum): ?>
+                                    <? if(!empty($this->vars['unpublished'])): foreach($this->vars['unpublished'] as $topic): ?>
                                     <tr class="gradeX odd">
-                                       <td class=" "><?=$forum['headline']?></td>
-                                       <td class=" "><?=$forum['author']['displayName']?></td>
-                                       <td class="hidden-480 "><?=$forum['unpublishDate']['shortTime'].'  '.$forum['unpublishDate']['monthDay'];?></td>
-                                       <td class="hidden-480 "><?=$forum['currentType']?></td>
-                                       <td class="hidden-480 "><?=$forum['currentStatus']?></td>
-                                       <td class=" "><a data-forum-id="<?=$forum['_id']?>" data-member-id="<?=$forum['author']['_id']?>" class="btn blue mini edit"><i class=" icon-pencil"></i> Edit</a></td>
+                                       <td class=" "><?=$topic['headline']?></td>
+                                       <td class=" "><?=$topic['forum']['name']?></td>
+                                       <td class=" "><?=$topic['author']['displayName']?></td>
+                                       <td class="hidden-480 "><?=$topic['unpublishDate']['shortTime'].'  '.$topic['unpublishDate']['monthDay'];?></td>
+                                       <td class="hidden-480 "><?=$topic['currentStatus']?></td>
+                                       <td class=" "><a data-id="<?=$topic['_id']?>" class="btn blue mini edit"><i class=" icon-pencil"></i> Edit</a></td>
                                     </tr>
                                     <? endforeach;?>
                                     <? else: ?>
@@ -269,6 +270,25 @@
          jQuery(document).ready(function() {    
             $('.add-forum').click(function(e){
                document.location.href='/forum/edit';  
+            });
+            $('#recent-drafts .draft-post').click(function(e){
+               e.preventDefault();
+               document.location.href='/topic/edit';    
+            });
+            $('#recent-drafts .edit').click(function(e){
+               document.location.href='/topic/edit/'+$(this).attr('data-id');
+            });
+            $('#recent-reviews .edit').click(function(e){
+               document.location.href='/topic/edit/'+$(this).attr('data-id');
+            });
+            $('#recent-scheduled .edit').click(function(e){
+               document.location.href='/topic/edit/'+$(this).attr('data-id');
+            });
+            $('#recent-published .edit').click(function(e){
+               document.location.href='/topic/edit/'+$(this).attr('data-id');
+            });
+            $('#recent-unpublished .edit').click(function(e){
+               document.location.href='/topic/edit/'+$(this).attr('data-id');
             });
             $('#forums .edit').click(function(e){
                document.location.href='/forum/edit/'+$(this).attr('data-forum-id');  

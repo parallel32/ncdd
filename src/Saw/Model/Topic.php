@@ -42,7 +42,6 @@ class Topic extends Model {
         $metadata->addConstraint(new Callback(array('methods' => array('checkDate'))));
 	}
 	public function checkDate(ExecutionContext $context){
-		error_log('this->currentStatus'.$this->currentStatus);
 		//if(!empty($this->currentStatus)){
 			if($this->currentStatus == self::$status['SCHEDULE']){
 				$date = '';
@@ -162,9 +161,14 @@ class Topic extends Model {
 	}
 	public function fetchByStatus($status, $published='yes', $offset=0,$limit=100){
 		$user = call_user_func(function($app){ $user = $app['session']->get('user'); return $user;},self::$app);
-		$memberId = new \MongoId((string)$user['user_id']);
 		
-		$query = array('currentStatus'=>self::$status[$status],'forum.owner._id'=>$memberId);
+		if($user['accessLevel'] >= EDITOR){
+			$query = array('currentStatus'=>self::$status[$status],'forum.owner'=>array());
+		}else{
+			$memberId = new \MongoId((string)$user['user_id']);
+			$query = array('currentStatus'=>self::$status[$status],'forum.owner._id'=>$memberId);
+		}
+		
 		if(!empty($published)){
 			$query['published'] = $published;
 		}
@@ -195,7 +199,7 @@ class Topic extends Model {
 
 		$user = call_user_func(function($app){ $user = $app['session']->get('user'); return $user;},self::$app);
 		$memberId = new \MongoId((string)$user['user_id']);
-		$query = array('currentStatus'=>self::$status['DRAFT'],'author._id'=>$memberId);
+		$query = array('currentStatus'=>array('$lt'=>self::$status['PUBLISH']),'author._id'=>$memberId);
 		$fields = array();
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('draftDate.date'=>-1),(int)$offset,(int)$limit);
 		if(!empty($result)):
@@ -208,8 +212,15 @@ class Topic extends Model {
 	}
 	public function fetchByAuthorByReview($offset=0,$limit=100){
 		$user = call_user_func(function($app){ $user = $app['session']->get('user'); return $user;},self::$app);
-		$memberId = new \MongoId((string)$user['user_id']);
-		$query = array('currentStatus'=>self::$status['REVIEW'],'forum.owner._id'=>$memberId);
+		
+		if($user['accessLevel'] >= EDITOR){
+			$query = array('currentStatus'=>self::$status['REVIEW'],'forum.owner'=>array());
+		}else{
+			$memberId = new \MongoId((string)$user['user_id']);
+			$query = array('currentStatus'=>self::$status['REVIEW'],'forum.owner._id'=>$memberId);	
+		}
+
+		
 		$fields = array();
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('reviewDate.date'=>-1),(int)$offset,(int)$limit);
 		if(!empty($result)):
@@ -222,8 +233,14 @@ class Topic extends Model {
 	}
 	public function fetchByAuthorByApproved($offset=0,$limit=100){
 		$user = call_user_func(function($app){ $user = $app['session']->get('user'); return $user;},self::$app);
-		$memberId = new \MongoId((string)$user['user_id']);
-		$query = array('forum.owner._id'=>$memberId, 'currentStatus'=>array('$gte'=>self::$status['SCHEDULE']));
+		
+		if($user['accessLevel'] >= EDITOR){
+			$query = array('forum.owner'=>array(), 'currentStatus'=>array('$gte'=>self::$status['SCHEDULE']));
+		}else{
+			$memberId = new \MongoId((string)$user['user_id']);
+			$query = array('forum.owner._id'=>$memberId, 'currentStatus'=>array('$gte'=>self::$status['SCHEDULE']));
+		}
+		
 		$fields = array();
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('scheduleDate.date'=>-1,'publishDate.date'=>-1),(int)$offset,(int)$limit);
 		if(!empty($result)):
