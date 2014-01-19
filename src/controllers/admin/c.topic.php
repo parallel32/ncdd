@@ -11,12 +11,8 @@ use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Saw\Model;
 
-$topic = $app['controllers_factory'];
-$topic->before($mustbeMEMBER);
-
-
 // member add / edit a post
-$topic->get('/edit/{topicId}', function ($topicId, Request $request) use ($app) {
+$app->get('/topic/edit/{topicId}', function ($topicId, Request $request) use ($app) {
 	
 	$user = call_user_func(function($app){ $user = $app['session']->get('user'); return $user;},$app);
 	
@@ -53,10 +49,10 @@ $topic->get('/edit/{topicId}', function ($topicId, Request $request) use ($app) 
 
 	
 	return $app['view']->render('forum/edit', 'default', $view_vars);
-})->value('topicId','');
+})->value('topicId','')->before($mustbeMEMBER);
 
 // add / save topic post
-$topic->post('/edit', function (Request $request) use ($app) {
+$app->post('/topic/edit', function (Request $request) use ($app) {
 	$user = call_user_func(function($app){ $user = $app['session']->get('user'); return $user;},$app);
 	// retrieve document from request
     $document = $request->get('doc');
@@ -138,10 +134,10 @@ $topic->post('/edit', function (Request $request) use ($app) {
 	    		}
 		    }
 	    endif;
-});
+})->before($mustbeMEMBER);
 
 // edit the photo
-$topic->get('/edit/{topicId}/edit-photo', function ($topicId, Request $request) use ($app) {
+$app->get('/topic/edit/{topicId}/edit-photo', function ($topicId, Request $request) use ($app) {
 
 	$user = call_user_func(function($app){ $user = $app['session']->get('user'); return $user;},$app);
 
@@ -168,9 +164,9 @@ $topic->get('/edit/{topicId}/edit-photo', function ($topicId, Request $request) 
 						,'image'=>(!empty($topic['image'])) ? $app['getImageURL']($topic['image'],'large') : '/placeholder'
 						,'imageDelete'=>(!empty($topic['image'])) ? '/image/delete/'.$topic['image']['context'].'/'.$topic['image']['belongsTo'] : '');
 	return $app['view']->render('forum/edit-photo', 'default', $view_vars);
-})->value('topicId','');
+})->value('topicId','')->before($mustbeMEMBER);
 
-$topic->get('/edit/{topicId}/edit-photo-crop', function ($topicId, Request $request) use ($app) {
+$app->get('/topic/edit/{topicId}/edit-photo-crop', function ($topicId, Request $request) use ($app) {
 
 	$user = call_user_func(function($app){ $user = $app['session']->get('user'); return $user;},$app);
 
@@ -198,7 +194,7 @@ $topic->get('/edit/{topicId}/edit-photo-crop', function ($topicId, Request $requ
 						,'image'=>(!empty($topic['image'])) ? $app['getImageURL']($topic['image'],'large') : '/placeholder'
 						);
 	return $app['view']->render('forum/edit-photo-crop', 'default', $view_vars);
-})->value('topicId','');
+})->value('topicId','')->before($mustbeMEMBER);
 
 
 
@@ -206,7 +202,7 @@ $topic->get('/edit/{topicId}/edit-photo-crop', function ($topicId, Request $requ
 
 
 // remove a topic completely
-$topic->get('/{topicId}/remove', function ($topicId, Request $request) use ($app) {
+$app->get('/topic/{topicId}/remove', function ($topicId, Request $request) use ($app) {
 	$user = $app['session']->get('user');
 	$accessLevel = $user['accessLevel'];
 	$user_id = $user['user_id'];
@@ -221,11 +217,11 @@ $topic->get('/{topicId}/remove', function ($topicId, Request $request) use ($app
 	}
     
 
-});
+})->before($mustbeMEMBER);
 
 
 // publish the scheduled topics //
-$topic->get('/publish-schedule', function (Request $request) use ($app) {
+$app->get('/topic/publish-schedule', function (Request $request) use ($app) {
 	
 	$topic = new Model\Topic(array(),$app);
 	$posts = $topic->fetchToPublish();
@@ -243,4 +239,4 @@ $topic->get('/publish-schedule', function (Request $request) use ($app) {
 });
 
 
-return $topic;
+return $app;

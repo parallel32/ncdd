@@ -219,30 +219,6 @@ $forum->post('/edit', function (Request $request) use ($app) {
 });
 
 
-
-
-// view a forum post
-$forum->get('/{forumId}/view', function ($forumId, Request $request) use ($app) {
-	
-	$forum = new Model\Forum(array('_id'=>$forumId),$app);
-	$post = $forum->findById();
-
-	$crumbs = array(array('name'=>'DUI Forum','href'=>'/forum')
-					,array('name'=>'view','href'=>'/forum/'.$forumId.'/view')
-		);
-	$view_vars = array(
-						 'active'=>'Forum'
-						,'page-plugin'=>'datatables'
-						,'headline'=>'DUI Forum'
-						,'description'=>"Participate in all forums here."
-						,'crumbs'=>$crumbs
-						,'post'=>$post
-						,'tags'=>Model\Forum::getAvailableTags()
-						);
-	return $app['view']->render('forum/view', 'default', $view_vars);
-});
-
-
 // remove a forum completely
 $forum->get('/{forumId}/remove', function ($forumId, Request $request) use ($app) {
 	$user = $app['session']->get('user');

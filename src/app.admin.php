@@ -19,7 +19,6 @@ $app->mount('/seminar', 	include __DIR__.'/controllers/admin/c.seminar.php');
 $app->mount('/agenda', 		include __DIR__.'/controllers/admin/c.agenda.php');
 $app->mount('/page', 		include __DIR__.'/controllers/admin/c.page.php');
 $app->mount('/forum', 		include __DIR__.'/controllers/admin/c.forum.php');
-$app->mount('/topic', 		include __DIR__.'/controllers/admin/c.topic.php');
 $app->mount('/store', 		include __DIR__.'/controllers/admin/c.store.php');
 
 // unmounted controllers usually have several levels of access defined in the routes. 
@@ -30,6 +29,7 @@ $app = require __DIR__.'/controllers/admin/c.vfl.php';
 $app = require __DIR__.'/controllers/admin/c.blog.php';
 $app = require __DIR__.'/controllers/admin/c.comment.php';
 $app = require __DIR__.'/controllers/admin/c.register.php';
+$app = require __DIR__.'/controllers/admin/c.topic.php';
 
 /**
  * Before Filter
