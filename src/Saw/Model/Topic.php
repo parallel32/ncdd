@@ -297,6 +297,20 @@ class Topic extends Model {
 		return $result;
 
 	}
+	public function fetchByForum($forumId, $fields=array(), $offset=0,$limit=500000){
+
+		$fields = $fields ?: array('headline'=>1,'_id'=>1);
+		if(!empty($forumId)){
+
+			$forumId = (is_object($forumId)) ? $forumId : new \MongoId($forumId);
+			$query = array('forum._id'=>$forumId);
+			$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('_id'=>-1),(int)$offset,(int)$limit);
+		}else{
+			$result = array();
+		}
+		return $result;
+
+	}
 	public function delete(){
 
 		// delete topic

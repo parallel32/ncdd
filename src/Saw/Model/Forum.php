@@ -102,11 +102,13 @@ class Forum extends Model {
     	$this->remove();
 
     	// purge topics
-    	self::$app['mongo']->remove(array('forumId'=>$this->_id), 'topic', $justOne=false, $options=array('fsync'=>true));
-    	// TODO: purge topic photos
-    	// TODO: purge topic comments
-    	// TODO: purge anything else for topics
-
+    	$topic = new Topic(array(), self::$app);
+    	$topics = $topic->fetchByForum($this->_id);
+    	foreach($topics as $topic){
+    		$tObj = new Topic(array('_id'=>$topic['_id']), self::$app);
+    		$tObj->delete();
+    	}
+    	
     	// delete images
 		self::$app['upload-mongo']->deleteByCriteria(array('belongsTo'=>$this->_id));
 

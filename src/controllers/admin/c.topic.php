@@ -199,7 +199,7 @@ $app->get('/topic/{topicId}/remove', function ($topicId, Request $request) use (
 	$topic = new Model\Topic(array('_id'=>$topicId), $app);
     $topic->findById();
 	if(($accessLevel == MEMBER && $topic->author['_id'] == $user_id) || $accessLevel >= EDITOR){
-		$topic->remove();
+		$topic->delete();
 		return new Response(json_encode(array('message' => 'Topic details have saved successfully.')), 200,array('Content-Type' => 'application/json'));
 	}else{
 		return new Response(json_encode(array('message' => 'Permission Denied.  Insufficient Privileges.')), 400,array('Content-Type' => 'application/json'));

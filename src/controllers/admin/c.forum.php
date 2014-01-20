@@ -256,7 +256,7 @@ $forum->get('/{forumId}/remove', function ($forumId, Request $request) use ($app
 	$forum = new Model\Forum(array('_id'=>$forumId), $app);
     $forum->findById();
 	if(($accessLevel == MEMBER && $forum->author['_id'] == $user_id) || $accessLevel >= EDITOR){
-		$forum->remove();
+		$forum->delete();
 		return new Response(json_encode(array('message' => 'Forum details have saved successfully.')), 200,array('Content-Type' => 'application/json'));
 	}else{
 		return new Response(json_encode(array('message' => 'Permission Denied.  Insufficient Privileges.')), 400,array('Content-Type' => 'application/json'));
