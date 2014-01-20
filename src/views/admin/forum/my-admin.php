@@ -128,7 +128,7 @@
                                           }
                                        ?>
                                        <td class="hidden-480 "><?=$currentStatus?></td>
-                                       <td class=" "><a data-forum-id="<?=$forum['_id']?>" data-member-id="" class="btn blue mini edit"><i class=" icon-pencil"></i> Edit</a> <a href="/forum/<?=$forum['_id']?>/view" data-id="" class="btn blue mini view"><i class=" "></i> View</a></td>
+                                       <td class=" "><a data-forum-id="<?=$forum['_id']?>" data-member-id="" class="btn blue mini edit"><i class=" icon-pencil"></i> Edit</a> <a href="/forum/view/<?=$forum['_id']?>" data-id="" class="btn blue mini view"><i class=" "></i> View</a></td>
                                     </tr>
                                     <? endforeach;?>
                                     <? else: ?>
@@ -264,7 +264,7 @@
                                        <td class=" "><?=$topic['author']['displayName']?></td>
                                        <td class="hidden-480 "><?=$topic['publishDate']['shortTime'].'  '.$topic['publishDate']['monthDay'];?></td>
                                        <td class="hidden-480 "><?=$topic['currentStatus']?></td>
-                                       <td class=" "><a data-id="<?=$topic['_id']?>" class="btn blue mini edit"><i class=" "></i> Edit</a> <a href="/forum/<?=$topic['_id']?>/view" data-id="" class="btn blue mini view"><i class=" "></i> View</a></td>
+                                       <td class=" "><a data-id="<?=$topic['_id']?>" class="btn blue mini edit"><i class=" "></i> Edit</a> <a href="/topic/<?=$topic['_id']?>/view" data-id="" class="btn blue mini view"><i class=" "></i> View</a></td>
                                     </tr>
                                     <? endforeach;?>
                                     <? else: ?>
@@ -293,9 +293,9 @@
                               <table class="table table-striped table-bordered table-hover dataTable" id="unpublisheds" aria-describedby="sample_1_info">
                                  <thead>
                                     <tr role="row">
-                                       <td class=" "><?=$topic['headline']?></td>
-                                       <td class=" "><?=$topic['forum']['name']?></td>
-                                       <td class=" "><?=$topic['author']['displayName']?></td>
+                                       <th class="">Topic</th>
+                                       <th class="">Forum</th>
+                                       <th class="">Author</th>
                                        <th class="hidden-480">Published On</th>
                                        <th class="hidden-480">Status</th>
                                        <th class=""></th>
@@ -309,7 +309,7 @@
                                        <td class=" "><?=$topic['author']['displayName']?></td>
                                        <td class="hidden-480 "><?=$topic['unpublishDate']['shortTime'].'  '.$topic['unpublishDate']['monthDay'];?></td>
                                        <td class="hidden-480 "><?=$topic['currentStatus']?></td>
-                                       <td class=" "><a data-id="<?=$topic['_id']?>" class="btn blue mini edit"><i class=" icon-pencil"></i> Edit</a></td>
+                                       <td class=" "><a data-id="<?=$topic['_id']?>" class="btn blue mini edit"><i class=" icon-pencil"></i> Edit</a> <a href="/topic/<?=$topic['_id']?>/view" data-id="" class="btn blue mini view"><i class=" "></i> View</a></td>
                                     </tr>
                                     <? endforeach;?>
                                     <? else: ?>

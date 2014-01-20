@@ -21,10 +21,11 @@ $app->get('/comment/private/{belongsTo}', function ($belongsTo, Request $request
 
 })->before($mustbeMEMBER)->value('belongsTo','');
 
-$app->post('/comment/private/post/{belongsTo}', function ($belongsTo, Request $request) use ($app) {
+$app->post('/comment/private/post', function (Request $request) use ($app) {
 	// retrieve document from request
     $doc = $request->get('doc');
     $comment = new Model\Comment($doc,$app);
+    $app['validateModel']($app,$comment);
     $comment->insert();
 
     return new Response(json_encode(array('message' => 'successful operation.')), 200,array('Content-Type' => 'application/json'));

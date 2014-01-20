@@ -79,7 +79,7 @@ $isOwner =  ( array_key_exists('topic',$this->vars) && array_key_exists('forum',
                                  <div class="controls">
                                     <select name="doc[forum]" <?=($show=='no') ? 'readonly=""' : ''?> class="span10 m-wrap forum" data-placeholder="Choose a Forum" tabindex="1">
                                        <? foreach($this->vars['forums'] as $forum):
-                                       $selected = (!empty($this->vars['topic']) && array_key_exists('forum',$this->vars['topic']) && array_key_exists('_id',$this->vars['topic']['forum']) && (string)$this->vars['topic']['forum']['_id'] == (string)$forum['_id']) ? 'selected' : '';
+                                       $selected = ((!empty($this->vars['topic']) && array_key_exists('forum',$this->vars['topic']) && array_key_exists('_id',$this->vars['topic']['forum']) && (string)$this->vars['topic']['forum']['_id'] == (string)$forum['_id']) || (!empty($this->vars['forumId']) &&  $this->vars['forumId'] == (string)$forum['_id']) ) ? 'selected' : '';
                                        ?>
                                        <option <?=$selected?> value="<?=$forum['_id']?>"><?=$forum['name']?></option>
                                        <? endforeach; ?>

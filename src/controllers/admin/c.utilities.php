@@ -16,6 +16,154 @@ use Cocur\Slugify\Slugify;
 $utilities = $app['controllers_factory'];
 $utilities->before($mustbeADMIN);
 
+
+$utilities->get('/importforums', function () use ($app) {
+    
+    ini_set('memory_limit','1024M');
+    
+    $author_map = array();
+    $author_map['BarrySimons'] = '5208d6159afe0b53323e9032';
+    $author_map['simons'] = '5208d6159afe0b53323e9032';
+    $author_map['pmcglone'] = '5208d6409afe0b53323e9333';
+    $author_map['admin'] = '';
+    $author_map['wkirk'] = '5208d5ee9afe0b53323e8d7d';
+    $author_map['DRamsell'] = '5208d5fc9afe0b53323e8e76';
+    $author_map['lstamm'] = '5208d6119afe0b53323e8fef';
+    $author_map['KStewart'] = '5208d5be9afe0b53323e8a22';
+    $author_map['pquinn'] = '5208d64f9afe0b53323e9441';
+    $author_map['Tiftickjian'] = '5208d6539afe0b53323e9484';
+    $author_map['justinthemcshanelawfirmc'] = '5208d5c29afe0b53323e8a6e';
+    $author_map['mjnichols'] = '5208d6309afe0b53323e921c';
+    $author_map['cowan'] = '5208d6149afe0b53323e9026';
+    $author_map['KRiffel'] = '5208d6149afe0b53323e901d';
+    $author_map['apalacios'] = '5208d66a9afe0b53323e9618';
+    $author_map['pbarone'] = '5208d6019afe0b53323e8ed5';
+    $author_map['CJohnson'] = '5208d5e79afe0b53323e8d04';
+    $author_map['SCurtis'] = '5208d61a9afe0b53323e9097';
+    $author_map['TVosk'] = '5208d61a9afe0b53323e9097';
+    $author_map['JFox'] = '5208d6039afe0b53323e8efc';
+    $author_map['jrichey'] = '';
+    $author_map['mhawkm'] = '5208d6109afe0b53323e8fda';
+    $author_map['JRuane'] = '5208d5dc9afe0b53323e8c3e';
+    $author_map['rlapier'] = '5208d67b9afe0b53323e9738';
+    $author_map['JMeadows'] = '5208d5e79afe0b53323e8d00';
+    $author_map['MFoster'] = '5208d60c9afe0b53323e8f90';
+    $author_map['garywilson'] = '5208d5f59afe0b53323e8dfb';
+    $author_map['jsemenoff'] = '5208d66a9afe0b53323e9621';
+    $author_map['McShane'] = '5208d5c29afe0b53323e8a6e';
+    $author_map['jhilliard'] = '5208d65f9afe0b53323e955d';
+    $author_map['VLandry'] = '5208d5d89afe0b53323e8c00';
+    $author_map['jcosta'] = '5208d5d99afe0b53323e8c15';
+    $author_map['jvalentine'] = '5208d6719afe0b53323e968e';
+
+    $forums = array();
+    $forums['Don Ramsell'] = '5208d5fc9afe0b53323e8e76';
+    $forums['Cleve Johnsons Persuasion is Key'] = '5208d5e79afe0b53323e8d04';
+    $forums['BAC Datamaster'] = '';
+    $forums['Don Ramsells Appeal of the Day'] = '5208d5fc9afe0b53323e8e76';
+    $forums['DUI Seminars and Training'] = '';
+    $forums['ECIR II'] = '';
+    $forums['Source Code Litigation'] = '';
+    $forums['Interstate Drivers License Issues'] = '';
+    $forums['Alcosenor V'] = '';
+    $forums['Confrontation and the 6th Amendment'] = '';
+    $forums['Uncertainty and Metrology'] = '';
+    $forums['Closers Club'] = '';
+    $forums['Gas ChromatographyMassSpectrometry GC MS'] = '';
+    $forums['State Delegate Forum'] = '';
+    $forums['Ethics'] = '';
+    $forums['Checkpoints and Roadblocks'] = '';
+    $forums['DRE  Drug Recognition Expert'] = '';
+    $forums['Blood Collection and Storage'] = '';
+    $forums['Alcohol Absorption  Elimination'] = '';
+    $forums['PowerPoint Library Trial'] = '';
+    $forums['PowerPoint Library Presentation'] = '';
+    $forums['Field Sobriety Testing'] = '';
+    $forums['Trial Skills and Techniques'] = '';
+    $forums['Breath Testing General'] = '';
+    $forums['Boating Under the Influence'] = '';
+    $forums['Intoxilyzer'] = '';
+    $forums['The McShane Blog'] = '5208d5c29afe0b53323e8a6e';
+    
+    $fields = array();
+    $fields[]='section_title';
+    $fields[]='post_author';
+    $fields[]='thread_title';
+    $fields[]='post_body';
+
+    //*
+    // create the fourums
+    foreach ($forums as $forum_title => $owner) {
+        
+        if(!empty($owner)){
+            $owner = new Model\Member(array('_id'=>$owner),$app);
+            $owner->findById();
+        }else{
+            $owner = array();
+        }
+
+        $forum_doc = array('add'=>'yes','name'=>$forum_title,'currentStatus'=>Model\Forum::$status['PUBLISH']);
+        $forum = new Model\Forum($forum_doc, $app, $owner);
+        $forum_id = $forum->saveEdit();
+
+        $forum_map[$forum_title] = (string)$forum_id;
+    }
+    
+    
+    $cnt = 1;
+    $row = 1;
+    if (($handle = fopen("/var/www/upload/forum-posts.csv", "r")) !== FALSE) {
+        while (($data = fgetcsv($handle)) !== FALSE) {
+            $num = count($data);
+            //echo "<p> $num fields in line $row: <br /></p>\n";
+            $row++;
+            for ($c=0; $c < $num; $c++) {
+                $output[$row][$fields[$c]] = trim($data[$c]);
+                //echo $data[$c] . "<br />\n";
+            }
+        }
+        fclose($handle);
+    }
+    //echo "<pre>";print_r($output);echo "</pre>";
+    //*
+
+    //*
+    // create the topics
+    $cnt = 1;
+    $total = count($output);
+    foreach ($output as $record):
+        
+        if(array_key_exists($record['section_title'],$forum_map)){
+            $topic_doc = array();
+            $topic_doc['headline'] = $record['thread_title'];
+            $topic_doc['body'] = $record['post_body'];
+            $topic_doc['currentStatus'] = Model\Topic::$status['PUBLISH'];
+            $forum = new Model\Forum(array('_id'=>$forum_map[$record['section_title']]),$app);
+            $forum->findById();
+            $topic_doc['forum'] = $forum->_id;
+            $topic_doc['add'] = 'yes';
+            $topic_doc['published'] = 'yes';
+            $topic_doc['publishDate'] = new Model\Date($app,'now');
+            $topic_doc['reviewDate'] = new Model\Date($app,'now');
+            $topic_doc['draftDate'] = new Model\Date($app,'now');
+
+            if(!empty($author_map[$record['post_author']])){
+                $author = new Model\Member(array('_id'=>$author_map[$record['post_author']]),$app);
+                $author->findById();
+            }else{
+                $author = array();
+            }
+
+            $topic = new Model\Topic($topic_doc,$app,$author);
+            $topic->saveEdit();
+
+            $cnt++;
+        }
+    endforeach;
+    //*/
+    return new Response('cool: '.$cnt.' topics created',200,array('Content-Type' => 'text/html')); 
+});
+
 //////////////////////////////////////////////
 // MIGRATE FROM MEMBER.LOCATION TO LOCATION //
 //////////////////////////////////////////////

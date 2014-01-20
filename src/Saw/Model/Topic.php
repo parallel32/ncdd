@@ -122,12 +122,18 @@ class Topic extends Model {
 		if($this->add == 'yes'){
 			$this->prepareInsert();
 			if(parent::insert()){
+				if(!empty($this->forum) || $this->currentStatus == sef::$status['PUBLISH']){
+					$forum->incTopicCount(); 
+				}
 	        	return $this->_id;
 	        }else{
 				throw new Saw\Exceptions\SawException(new Saw\Model\Exceptions\DomainException(),"Adding failed.  Please try again.");
 			}
 		}else{
 			$this->saveSafe();
+			if(!empty($this->forum) || $this->currentStatus == self::$status['PUBLISH']){
+				$forum->incTopicCount(); 
+			}
 			return $this->_id;
 		}
 	}
@@ -159,7 +165,7 @@ class Topic extends Model {
 			}
 		}
 	}
-	public function fetchByStatus($status, $published='yes', $offset=0,$limit=100){
+	public function fetchByStatus($status, $published='', $offset=0,$limit=10000){
 		$user = call_user_func(function($app){ $user = $app['session']->get('user'); return $user;},self::$app);
 		
 		if($user['accessLevel'] >= EDITOR){
@@ -179,6 +185,14 @@ class Topic extends Model {
 				$result[$i]['currentStatus'] = self::$statusReversed[$result[$i]['currentStatus']];
 			}
 		endif;
+		return $result;
+
+	}
+	public function fetchRecentPublished($offset=0,$limit=10){
+		
+		$query = array('currentStatus'=>self::$status['PUBLISH']);
+		$fields = array('headline'=>1,'forum.name'=>1,'forum.owner.displayName'=>1,'author.displayName'=>1,'publishDate'=>1,'body'=>1);
+		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('publishDate.date'=>-1),(int)$offset,(int)$limit);
 		return $result;
 
 	}
@@ -261,6 +275,25 @@ class Topic extends Model {
 		//error_log('fetch:'.print_r($query,true));
 		//error_log('result:'.print_r($result,true));
 
+		return $result;
+
+	}
+	public function fetchByForumByStatus($forumId, $status, $fields=array(), $offset=0,$limit=500){
+
+		$fields = $fields ?: array('currentStatus'=>1,'headline'=>1);
+		if(!empty($forumId)){
+
+			$forumId = (is_object($forumId)) ? $forumId : new \MongoId($forumId);
+			$query = array('forum._id'=>$forumId, 'currentStatus'=>(int)$status);
+			$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('_id'=>-1),(int)$offset,(int)$limit);
+			if(!empty($result) && array_key_exists('currentStatus',$fields)):
+				for ($i=0; $i < count($result); $i++) { 
+					$result[$i]['currentStatus'] = self::$statusReversed[$result[$i]['currentStatus']];
+				}
+			endif;
+		}else{
+			$result = array();
+		}
 		return $result;
 
 	}

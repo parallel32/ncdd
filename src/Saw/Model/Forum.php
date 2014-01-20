@@ -79,11 +79,23 @@ class Forum extends Model {
 				if(array_key_exists('currentStatus',$result[$i])){
 					$result[$i]['currentStatus'] = self::$statusReversed[$result[$i]['currentStatus']];
 				}
+				$result[$i]['image'] = (!empty($result[$i]['image'])) ? $result[$i]['image']['urls']['small']['CDN'] : '';
 			}
 		endif;
 		return $result;
 	}
 
+	public function incTopicCount(){
+
+		// find topics that are published and update the topic count
+		$topic = new Topic(array('forum'=>array('_id'=>(string)$this->_id)),self::$app);
+		$topics = $topic->fetchByForumByStatus((string)$this->_id,Topic::$status['PUBLISH']);
+		$this->topicCount = count($topics);
+		$this->saveSafe();
+
+		return true;	
+	}
+	
 	public function delete(){
 
 		// delete forum

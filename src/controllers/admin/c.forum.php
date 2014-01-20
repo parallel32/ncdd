@@ -14,14 +14,16 @@ use Saw\Model;
 $forum = $app['controllers_factory'];
 $forum->before($mustbeMEMBER);
 
-/////////////
-//  INDEX  //
-/////////////
+////////////
+//  HOME  //
+////////////
 $forum->get('/', function (Request $request) use ($app) {
 	
 	$forum = new Model\Forum(array(),$app);
-	$forums = $forum->fetchOrderBy();
-
+	$topic = new Model\Topic(array(),$app);
+	$forums = $forum->fetchOrderBy(array(),array(),'name',1); // order forums by Name ASC
+	$topics = $topic->fetchRecentPublished();
+	
 	$crumbs = array(array('name'=>'DUI Forum','href'=>'/forum'));
 	$view_vars = array(
 						 'active'=>'Forum'
@@ -30,8 +32,34 @@ $forum->get('/', function (Request $request) use ($app) {
 						,'description'=>"Here you can participate in all topics by commenting or create your own topics for conversation."
 						,'crumbs'=>$crumbs
 						,'forums'=>$forums
+						,'topics'=>$topics
 						);
-	return $app['view']->render('forum/index_new', 'default', $view_vars);
+	return $app['view']->render('forum/home', 'default', $view_vars);
+});
+
+/////////////
+//  INDEX  //
+/////////////
+$forum->get('/view/{forumId}', function ($forumId, Request $request) use ($app) {
+	
+	$forum = new Model\Forum(array('_id'=>$forumId),$app);
+	$forum = $forum->findById();
+	$topic = new Model\Topic(array('forum'=>array('_id'=>$forumId)),$app);
+	$fields = array('image'=>1,'publishDate'=>1,'author.displayName'=>1,'commentCount'=>1,'headline'=>1,'body'=>1);
+	$topics = $topic->fetchByForumByStatus($forumId,Model\Topic::$status['PUBLISH'],$fields);
+	$crumbs = array(array('name'=>'DUI Forum','href'=>'/forum')
+					,array('name'=>$forum['name'],'href'=>'/forum/view'.$forumId)
+	);
+	$view_vars = array(
+						 'active'=>'Forum'
+						,'page-plugin'=>'datatables'
+						,'headline'=>'Welcome to the DUI Forum'
+						,'description'=>"Here you can participate in all topics by commenting or create your own topics for conversation."
+						,'crumbs'=>$crumbs
+						,'forum'=>$forum
+						,'topics'=>$topics
+						);
+	return $app['view']->render('forum/index', 'default', $view_vars);
 });
 
 /////////////
@@ -41,12 +69,12 @@ $forum->get('/admin', function (Request $request) use ($app) {
 	
 	$forum = new Model\Forum(array(),$app);
 	$topic = new Model\Topic(array(),$app);
-	$forums = $forum->fetchOrderBy();
+	$forums = $forum->fetchOrderBy(array(),array(),'name',1);
 	$reviews = $topic->fetchByAuthorByReview();
 	$approved = $topic->fetchByAuthorByApproved();
-	$scheduled = $topic->fetchByStatus('SCHEDULE','no');
-	$published = $topic->fetchByStatus('PUBLISH','yes');
-	$unpublished = $topic->fetchByStatus('UNPUBLISH','no');
+	$scheduled = $topic->fetchByStatus('SCHEDULE');
+	$published = $topic->fetchByStatus('PUBLISH');
+	$unpublished = $topic->fetchByStatus('UNPUBLISH');
 
 	$crumbs = array(array('name'=>'DUI Forum','href'=>'/forum')
 					,array('name'=>'Manage the DUI Forum','href'=>'/forum/admin')
@@ -80,9 +108,9 @@ $forum->get('/my-admin', function (Request $request) use ($app) {
 	$drafts = $topic->fetchByAuthorByDraft();
 	$reviews = $topic->fetchByAuthorByReview();
 	$approved = $topic->fetchByAuthorByApproved();
-	$scheduled = $topic->fetchByStatus('SCHEDULE','no');
-	$published = $topic->fetchByStatus('PUBLISH','yes');
-	$unpublished = $topic->fetchByStatus('UNPUBLISH','no');
+	$scheduled = $topic->fetchByStatus('SCHEDULE');
+	$published = $topic->fetchByStatus('PUBLISH');
+	$unpublished = $topic->fetchByStatus('UNPUBLISH');
 
 	$crumbs = array(array('name'=>'DUI Forum','href'=>'/forum')
 					,array('name'=>'Manage My Forums','href'=>'/forum/my-admin')

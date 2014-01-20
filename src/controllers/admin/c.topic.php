@@ -11,45 +11,34 @@ use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Saw\Model;
 
-// member add / edit a post
-$app->get('/topic/edit/{topicId}', function ($topicId, Request $request) use ($app) {
+
+// view a topic post
+$app->get('/topic/{topicId}/view', function ($topicId, Request $request) use ($app) {
 	
-	$user = call_user_func(function($app){ $user = $app['session']->get('user'); return $user;},$app);
-	
+	$topic = new Model\Topic(array('_id'=>$topicId),$app);
+	$topic = $topic->findById();
+
+	$comment = new Model\Comment(array('belongsTo'=>$topic['_id']),$app);
+	$comments = $comment->fetchByBelongsTo();
+
+
 	$crumbs = array(array('name'=>'DUI Forum','href'=>'/forum')
-					,array('name'=>'Manage My Forums','href'=>'/forum/my-admin')
-	);
-	
-	$forum = new Model\Forum(array(),$app);
-	$forums = $forum->fetchOrderBy(array('currentStatus'=>Model\Forum::$status['PUBLISH']));
+				,array('name'=>$topic['forum']['name'],'href'=>'/forum/view/'.$topic['forum']['_id'])
+				,array('name'=>$topic['headline'],'href'=>'/topic/'.$topicId.'/view')
+		);
 	$view_vars = array(
 						 'active'=>'Forum/My'
-						,'page-plugin'=>'editor'
-						,'headline'=>(empty($topicId)) ? 'Add a new topic' : 'Edit your topic' 
-						,'description'=>"Edit your topic and submit it for review when finished."
+						,'page-plugin'=>'datatables'
+						,'headline'=>'DUI Forum'
+						,'description'=>"forum topic."
 						,'crumbs'=>$crumbs
-						,'forums'=>$forums
+						,'topic'=>$topic
+						,'comments'=>$comments
 						);
-	
-	if(!empty($topicId)){	
-		$topic = new Model\Topic(array('_id'=>$topicId),$app);
-		$topic = $topic->findById();
+	return $app['view']->render('forum/view', 'default', $view_vars);
+})->before($mustbeMEMBER);
 
-		$view_vars['crumbs'][] = array('name'=>$topic['headline'],'href'=>'/topic/edit/'.$topicId);
-		$view_vars['crumbs'][] = array('name'=>'edit','href'=>'/topic/edit/'.$topicId);
 
-		$view_vars['topic'] = $topic;
-		$view_vars['add'] = 'no';
-		$view_vars['image'] = (!empty($topic['image'])) ? $app['getImageURL']($topic['image'],'large') : '/placeholder';
-	}else{
-		$view_vars['crumbs'][] = array('name'=>'add','href'=>'/topic/edit');
-		$view_vars['add'] = 'yes';
-		$view_vars['image'] = '/placeholder';
-	}
-
-	
-	return $app['view']->render('forum/edit', 'default', $view_vars);
-})->value('topicId','')->before($mustbeMEMBER);
 
 // add / save topic post
 $app->post('/topic/edit', function (Request $request) use ($app) {
@@ -97,7 +86,7 @@ $app->post('/topic/edit', function (Request $request) use ($app) {
 			    	//error_log('send ADMIN email......for:'.$topic->headline);
 			    	//*
 			    	// send admin the email notification if the owner of forum is not the same as the author of the topic
-			    	if(array_key_exists('_id',$topic['author']) && (string)$topic['author']['_id'] != (string)$user_id){
+			    	if(array_key_exists('_id',$topic->author) && (string)$topic->author['_id'] != (string)$user_id){
 				    	$subject = 'Topic Submitted for Review';
 				    	// logic for the sender:  if the forum has an owner, then send it to him otherwise send it to the admin
 				    	$to = (!empty($forum) && array_key_exists('owner',$forum) && array_key_exists('_id',$forum['owner']) ) ? $forum['owner']['email']: SAW_ADMIN_EMAIL;
@@ -238,5 +227,48 @@ $app->get('/topic/publish-schedule', function (Request $request) use ($app) {
 	return "posts affected: ".$count;
 });
 
+// member add / edit a post
+$app->get('/topic/edit/{topicId}/{forumId}', function ($topicId, $forumId, Request $request) use ($app) {
+	
+	$user = call_user_func(function($app){ $user = $app['session']->get('user'); return $user;},$app);
+	
+	$crumbs = array(array('name'=>'DUI Forum','href'=>'/forum')
+					,array('name'=>'Manage My Forums','href'=>'/forum/my-admin')
+	);
+	
+	$forum = new Model\Forum(array(),$app);
+	$forums = $forum->fetchOrderBy(array('currentStatus'=>Model\Forum::$status['PUBLISH']));
+	$view_vars = array(
+						 'active'=>'Forum/My'
+						,'page-plugin'=>'editor'
+						,'headline'=>(empty($topicId)) ? 'Add a new topic' : 'Edit your topic' 
+						,'description'=>"Edit your topic and submit it for review when finished."
+						,'crumbs'=>$crumbs
+						,'forums'=>$forums
+						,'forumId'=>$forumId
+						);
+	
+	if(!empty($topicId) && $topicId != 'null'){	
+		$topic = new Model\Topic(array('_id'=>$topicId),$app);
+		$topic = $topic->findById();
+
+		$view_vars['crumbs'][] = array('name'=>$topic['headline'],'href'=>'/topic/edit/'.$topicId);
+		$view_vars['crumbs'][] = array('name'=>'edit','href'=>'/topic/edit/'.$topicId);
+
+		$view_vars['topic'] = $topic;
+		$view_vars['add'] = 'no';
+		$view_vars['image'] = (!empty($topic['image'])) ? $app['getImageURL']($topic['image'],'large') : '/placeholder';
+	}else{
+		$view_vars['crumbs'][] = array('name'=>'add','href'=>'/topic/edit');
+		$view_vars['add'] = 'yes';
+		$view_vars['image'] = '/placeholder';
+	}
+
+	
+	return $app['view']->render('forum/edit', 'default', $view_vars);
+})
+->value('topicId','')
+->value('forumId','')
+->before($mustbeMEMBER);
 
 return $app;

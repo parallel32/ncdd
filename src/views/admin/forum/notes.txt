@@ -68,3 +68,19 @@ My
 -my topics unpublished
 -my topics published .. need to paginate
 
+
+Tasks:
+do import
+do front end
+do comments
+do vfl integration
+do emails (like route for topics scheduled for publishing)
+
+deploy tasks:
+-------------
+move the csv file to all 3 servers
+run the utility script
+add the photos to all the forums
+
+
+SELECT section_title, post_author, thread_title, post_body INTO OUTFILE '/tmp/forum-posts.csv' FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' ESCAPED BY ‘\\’ LINES TERMINATED BY '\n' FROM forum_posts;
