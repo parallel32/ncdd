@@ -48,6 +48,7 @@
                         <div class="media">
                            <h2>Comments</h2>
                            <hr>
+                           <? if(!empty($this->vars['comments'])): ?>
                            <? foreach($this->vars['comments'] as $comment): ?>
                            <a href="#" class="pull-left">
                            <? if(!empty($comment['author'])){ ?>
@@ -60,6 +61,9 @@
                               <hr>
                            </div>
                            <? endforeach; ?>
+                           <? else: ?>
+                           No comments.
+                           <? endif; ?>
                         </div>
                         <!--end media-->
                         <hr>
@@ -70,7 +74,7 @@
                               <div class="row-fluid">
                                  <div class="span12 ">
                                     <div class="control-group">
-                                       <label class="control-label">Message.</label>
+                                       <label class="control-label">Type your comment here:</label>
                                        <div class="controls">
                                           <textarea id="comment-message" class="span12 comment" name="doc[comment]"></textarea>
                                        </div>

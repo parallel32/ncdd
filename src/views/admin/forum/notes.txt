@@ -70,9 +70,6 @@ My
 
 
 Tasks:
-do import
-do front end
-do comments
 do vfl integration
 do emails (like route for topics scheduled for publishing)
 

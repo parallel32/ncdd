@@ -17,8 +17,8 @@ $utilities = $app['controllers_factory'];
 $utilities->before($mustbeADMIN);
 
 
-$utilities->get('/importforums', function () use ($app) {
-    
+$utilities->get('/importforumssdfsdfsdfsdfds', function () use ($app) {
+    return 'disabled';
     ini_set('memory_limit','1024M');
     
     $author_map = array();
