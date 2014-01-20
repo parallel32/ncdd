@@ -87,7 +87,7 @@
                      </div>
                      <!--end span9-->
 
-
+                     <? if(false): ?>
                      <div class="span3 blog-sidebar">
                         <h2>Files</h2>
                         <div class="top-news">
@@ -102,7 +102,7 @@
                         
                      </div>
                      <!--end span3-->
-
+                     <? endif; ?>
                   </div>
                </div>
             </div>
