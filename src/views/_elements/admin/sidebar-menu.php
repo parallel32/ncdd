@@ -175,7 +175,11 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                </a>
             </li>
             <li class="<? echo ($this->vars['active'] == 'Store') ? 'active':'';?>">
+               <? if($accessLevel >= EDITOR):?>
                <a href="/store">
+               <? else: ?>
+               <a href="http://<?=SAW_CONSUMER_WEBSITE?>/store">
+               <? endif; ?>
                <i class="icon-shopping-cart"></i> 
                <span class="title">NCDD Store</span>
                <? echo ($this->vars['active'] == 'Store') ? '<span class="selected"></span>':'';?>
