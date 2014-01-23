@@ -21,8 +21,8 @@ $utilities->before($mustbeADMIN);
 // migrate products //
 //////////////////////
 
-$utilities->get('/importproducts', function () use ($app) {
-    
+$utilities->get('/importproductsssdfsdfsdf', function () use ($app) {
+    return 'disabled';
     ini_set('memory_limit','1024M');
     
     $fields = array();
