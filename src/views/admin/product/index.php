@@ -239,7 +239,7 @@ jQuery(document).ready(function() {
       document.location.href='/product/edit/'+$(this).attr('data-id');
    });
    $('#product .view').click(function(e){
-      document.location.href='http://<?=SAW_CONSUMER_WEBSITE?>/store/'+$(this).attr('data-id')+'/'+$(this).attr('data-slug');
+      document.location.href='http://<?=SAW_CONSUMER_WEBSITE?>/store/'+$(this).attr('data-id')+$(this).attr('data-slug');
    });
    
 });      
