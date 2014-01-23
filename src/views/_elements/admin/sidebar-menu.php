@@ -176,7 +176,7 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
             </li>
             <li class="<? echo ($this->vars['active'] == 'Store') ? 'active':'';?>">
                <? if($accessLevel >= EDITOR):?>
-               <a href="/store">
+               <a href="/product">
                <? else: ?>
                <a href="http://<?=SAW_CONSUMER_WEBSITE?>/store">
                <? endif; ?>

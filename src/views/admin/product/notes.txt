@@ -1,0 +1,37 @@
+Collections:
+Product
+ShoppingCart
+Order (has shopping card records as the invoice list data) includes shipping, billing and totals
+- first linked to the sessionId and on purchase additionally to the memberId if exists
+
+the purchase action will clear the shopping cart for that session and link the order to the member if signed in.
+
+
+Workflow:
+catalog management -> admin can one photo and add a field for purchase notes like what size and color shirt to order.
+purchase -> email admin to fulfill order -> email customer a receipt -> if member create the payment record.
+
+need categories (hardcoded for now)
+
+NCDD Store will redirect to the catalog on public site for members and management for admin
+
+Grids:
+new orders
+products
+fulfilled orders
+currently active shopping carts (if i have time)
+
+deployment notes
+----------------
+upload the prodcuts.csv to all /var/www/uploads
+run utilities import
+upload all the photos
+update the pages record from NCDD Store to just Store and add the following content:
+-------------------------------------------------------------------------------------
+How Do I Return &amp; Exchange Items?
+
+If You Are Dissatisfied With Your Order For Any Reason, You Can Return Your Items WITHIN 14 DAYS With The Original Packaging For A Prompt Refund Or Exchange. Refunds For Items Returned Within 14 Days Of The Purchase Date Will Be Credited In The Same Form As The Original Payment Type.
+
+The Original Shipping and Handling Charges Are Not Refundable. Repack Your Item(S) In Its Original Packaging, With The Original Receipt. Please Mail Your Package In A Prepaid, Insured, Traceable Method To The Address Of The SENDER Of The Item You Are Returning.
+
+Log In To Receive Member Discounts

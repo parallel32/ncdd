@@ -14,7 +14,7 @@
             </a> 
             <h1>1. Renewals</h1>
             <div class="row-fluid">
-                  <div class="responsive span6" data-tablet="span6" data-desktop="span3">
+                  <div class="responsive span6" data-tablet="span6" data-desktop="span6">
                      <div class="dashboard-stat red">
                         <div class="visual">
                            <i class="icon-hideme"><?=(is_array($this->vars['renewals']['unsubmitted'])) ? count($this->vars['renewals']['unsubmitted']) : 0;?></i>
@@ -32,7 +32,7 @@
                         </a>                 
                      </div>
                   </div>
-                  <div class="responsive span6" data-tablet="span6" data-desktop="span3">
+                  <div class="responsive span6" data-tablet="span6" data-desktop="span6">
                      <div class="dashboard-stat blue">
                         <div class="visual">
                            <i class="icon-hide-me"><span class="number"><?=(is_array($this->vars['renewals']['submitted'])) ? count($this->vars['renewals']['submitted']) : 0;?></span></i>
@@ -46,7 +46,9 @@
                         </a>                 
                      </div>
                   </div>
-                  <div class="responsive span6 fix-offset" data-tablet="span6  fix-offset" data-desktop="span3">
+            </div>
+            <div class="row-fluid">
+                  <div class="responsive span6" data-tablet="span6" data-desktop="span6">
                      <div class="dashboard-stat yellow">
                         <div class="visual">
                            <i class="icon-hideme"><?=(is_array($this->vars['renewals']['approved'])) ? count($this->vars['renewals']['approved']) : 0;?></i>
@@ -62,7 +64,7 @@
                         </a>                 
                      </div>
                   </div>
-                  <div class="responsive span6" data-tablet="span6" data-desktop="span3">
+                  <div class="responsive span6" data-tablet="span6" data-desktop="span6">
                      <a name="submitted"></a>
                      <div class="dashboard-stat green">
                         <div class="visual">

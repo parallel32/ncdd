@@ -1,4 +1,4 @@
-<? $topic = $this->vars['topic']; ?>
+<? $product = $this->vars['product']; ?>
 <!-- BEGIN PAGE -->
       <div class="page-content">         
          <!-- BEGIN PAGE CONTAINER-->        
@@ -19,7 +19,7 @@
                   <!-- BEGIN VALIDATION STATES-->
                   <div class="portlet box blue">
                      <div class="portlet-title">
-                        <div class="caption"><i class="icon-picture"></i>Edit Topic Image</div>
+                        <div class="caption"><i class="icon-picture"></i>Edit Product Image</div>
                        <div class="actions">
                           <a class="btn red image <?=($this->vars['image'] == '/placeholder') ? 'hide' :'' ?>"> Delete This Image</a>
                           <a class="btn yellow image <?=($this->vars['image'] == '/placeholder') ? 'hide' :'' ?>"> Crop This Image</a>
@@ -34,8 +34,8 @@
                        <br>
                        <!-- The file upload form used as target for the file upload widget -->
                        <form id="fileupload" action="#" method="POST" enctype="multipart/form-data">
-                          <input type="hidden" name="doc[belongsTo]" value="<?=$topic['_id']?>">
-                          <input type="hidden" name="doc[context]" value="topic">
+                          <input type="hidden" name="doc[belongsTo]" value="<?=$product['_id']?>">
+                          <input type="hidden" name="doc[context]" value="product">
                           <!-- Redirect browsers with JavaScript disabled to the origin page -->
                           <noscript><input type="hidden" name="redirect" value="/image/upload/nojavascript"></noscript>
                           <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
@@ -187,16 +187,16 @@
       jQuery(document).ready(function() {   
 
         $('.yellow.image').click(function(e){
-            document.location.href='/topic/edit/<?=$topic['_id']?>/edit-photo-crop';
+            document.location.href='/product/edit/<?=$product['_id']?>/edit-photo-crop';
         }); 
         $('.back.image').click(function(e){
-          document.location.href='/topic/edit/<?=$topic['_id']?>';
+          document.location.href='/product/edit/<?=$product['_id']?>';
         }); 
         $('.red.image').click(function(e){
           io.saw.FormGet.activate({postUrl:"<?=(array_key_exists('imageDelete',$this->vars)) ? $this->vars['imageDelete']: '';?>"
             ,postOnComplete:function(responseObj,responseStatus){}
             ,postOnSuccess:function(responseObj){
-              document.location.href='/topic/edit/<?=$topic['_id']?>/edit-photo';
+              document.location.href='/product/edit/<?=$product['_id']?>/edit-photo';
             }
           });
         }); 

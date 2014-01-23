@@ -17,6 +17,71 @@ $utilities = $app['controllers_factory'];
 $utilities->before($mustbeADMIN);
 
 
+//////////////////////
+// migrate products //
+//////////////////////
+
+$utilities->get('/importproducts', function () use ($app) {
+    
+    ini_set('memory_limit','1024M');
+    
+    $fields = array();
+    $fields[]='name';
+    $fields[]='type';
+    $fields[]='description';
+    $fields[]='price';
+    $fields[]='memberprice';
+    $fields[]='shipping';
+
+    //*
+    $cnt = 1;
+    $row = 1;
+    if (($handle = fopen("/var/www/upload/prodcuts.csv", "r")) !== FALSE) {
+        while (($data = fgetcsv($handle)) !== FALSE) {
+            $num = count($data);
+            //echo "<p> $num fields in line $row: <br /></p>\n";
+            $row++;
+            for ($c=0; $c < $num; $c++) {
+                $output[$row][$fields[$c]] = trim($data[$c]);
+                //echo $data[$c] . "<br />\n";
+            }
+            echo "<pre>";print_r($output[$row]);echo "</pre>";
+        }
+        fclose($handle);
+    }
+    //echo "<pre>";print_r($output);echo "</pre>";
+    //*
+
+    //*
+    // create the topics
+    $cnt = 1;
+    $total = count($output);
+    foreach ($output as $record):
+        if(array_key_exists('price',$record) && array_key_exists('name',$record) && array_key_exists('description',$record) && array_key_exists('type',$record) && array_key_exists('memberprice',$record) && array_key_exists('shipping',$record)){
+            
+            $doc = array();
+            $doc['name'] = $record['name'];
+            $doc['description'] = (array_key_exists('price',$record)) ? $record['description'] : 0;
+            $doc['category'] = $record['type'];
+            $doc['price'] = (array_key_exists('price',$record)) ? $record['price'] : 0;
+            $doc['memberPrice'] = (array_key_exists('memberprice',$record)) ? $record['memberprice'] : 0;
+            $doc['shippingPrice'] = (array_key_exists('shipping',$record)) ? $record['shipping'] : 0;
+            $doc['currentStatus'] = Model\Product::$status['PUBLISH'];
+            $doc['add'] = 'yes';
+            $product = new Model\Product($doc,$app);
+            $product->saveEdit();
+            $cnt++;        
+        }
+        
+    endforeach;
+    //*/
+    return new Response('cool: '.$cnt.' products created',200,array('Content-Type' => 'text/html')); 
+});
+
+
+/////////////////////////
+// migrate forum posts // 
+/////////////////////////
 $utilities->get('/importforumssdfsdfsdfsdfds', function () use ($app) {
     return 'disabled';
     ini_set('memory_limit','1024M');

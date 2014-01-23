@@ -520,6 +520,35 @@ $app->get('/sessions-and-seminars/{id}/{slug}', function ($id, $slug, Request $r
 	return $app['view']->render('page/seminar-post', 'content',$view_vars);
 });
 
+// product roll
+$app->get('/store', function (Request $request) use ($app) {
+	
+	$product = new Model\Product($doc=array(), $app);
+	$products = $product->fetchByStatus('PUBLISH');
+	
+	$view_vars['products'] = $products;
+	$page_vars = $app['get_pages']('store');
+	$view_vars = array_merge($page_vars,$view_vars);
+
+
+	return $app['view']->render('page/store-index', 'content',$view_vars);
+});
+
+// single product
+$app->get('/store/{id}/{slug}', function ($id, $slug, Request $request) use ($app) {
+	$view_vars=array();
+	$page_vars = $app['get_pages']('store');
+	$view_vars = array_merge($page_vars,$view_vars);
+
+	$product = new Model\Product(array('_id'=>$id),$app);
+	$product = $product->findById();
+
+	$view_vars['product'] = $product;
+	
+	return $app['view']->render('page/store-product', 'content',$view_vars);
+});
+
+
 ////////////////////////
 // NON MANAGED ROUTES //
 ////////////////////////

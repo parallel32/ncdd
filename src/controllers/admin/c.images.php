@@ -178,6 +178,9 @@ $app['imageFactory'] = $app->protect(function ($context,$belongsTo) {
 		case 'topic':
 			return new Model\ImageTopic($belongsTo);
 			break;
+		case 'product':
+			return new Model\ImageProduct($belongsTo);
+			break;
 
 	}
 });
@@ -197,6 +200,9 @@ $app['imageParentFactory'] = $app->protect(function ($context,$belongsTo) use ($
 			break;
 		case 'topic':
 			return new Model\Topic(array('_id'=>$belongsTo),$app);
+			break;
+		case 'product':
+			return new Model\Product(array('_id'=>$belongsTo),$app);
 			break;
 
 
