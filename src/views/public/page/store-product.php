@@ -26,7 +26,7 @@
                                                 <div class="productImg">
                                                     <div id="wrap" style="top:0px;z-index:9999;position:relative;"><a href="<?=$product['image']['urls']['large']['CDN'] ?>" class="cloud-zoom" id="zoom1" rel="adjustX: 20, adjustY:-4, zoomWidth:500, zoomHeight:500" style="position: relative; display: block;">
                                                      <img src="<?=$product['image']['urls']['large']['CDN'] ?>" width="242" height="302" alt="" title="" style="display: block;">
-                                                    </a><div class="mousetrap" style="background-image: url(<?=$product['image']['urls']['large']['CDN'] ?>); z-index: 999; position: absolute; width: 242px; height: 302px; left: 0px; top: 0px; cursor: auto;"></div></div>
+                                                    </a></div>
                                                 </div>
                                                 <p class="rollover">Roll over image to zoom in</p>
                                             </div>
