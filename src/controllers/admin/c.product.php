@@ -151,6 +151,13 @@ $product->post('/slugify', function (Request $request) use ($app) {
     return new Response(json_encode(array('slug'=>$slug, 'message' => 'successful operation.')), 200,array('Content-Type' => 'application/json'));
 });
 
-
+// remove a product completely
+$product->get('/{productId}/remove', function ($productId, Request $request) use ($app) {
+	$product = new Model\Product(array('_id'=>$productId), $app);
+    $product->findById();
+	$product->remove();
+	return new Response(json_encode(array('message' => 'Product has been removed successfully.')), 200,array('Content-Type' => 'application/json'));
+	
+});
 
 return $product;

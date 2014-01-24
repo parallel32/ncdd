@@ -176,6 +176,7 @@
                         <div class="form-actions text-center">
                            <button type='button' class='btn green save-publish'><i class='icon-ok'></i>Save and Publish.</button>
                            <button type='button' class='btn yellow save'><i class='icon-pencil'></i>Save and don't Publish.</button>
+                           <button type='button' class='btn red delete'>Delete</button>
                            <button type='button' class='btn cancel'>Cancel</button>
                         </div>
                      </form>
