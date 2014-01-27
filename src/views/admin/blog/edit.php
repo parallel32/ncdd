@@ -318,9 +318,12 @@
          </div>
          <!-- END PAGE -->
          <?=$this->element('js/Blog.js');?>
+         <?=$this->element('js/ClearField.js');?>
+
          <script>
          jQuery(document).ready(function() {    
             io.saw.Blog.init();
+            io.saw.ClearField.init({formArr:['#saw-form']});
 
             <? if ($show == 'yes'): ?>
                $('#tags').multiSelect();

@@ -124,6 +124,7 @@ class Model {
         	throw new \Saw\Model\Exceptions\DomainException("Saving failed.  Please try again.");
         }
         if(!empty($this->clearFields)){
+        	error_log('clearFields:'.print_r($this->clearFields,true));
 			$this->clear($this->clearFields);
 		}
         return true;
