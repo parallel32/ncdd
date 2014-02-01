@@ -1,14 +1,19 @@
-                    <div class="row-fluid blog">
+<? 
+$published = (!empty($this->vars['post'])) ? true: false; 
+
+?>
+            <div class="row-fluid blog">
                         <div class="title text-center">
                             <div class="bg">
                                 <h3><?=$this->vars['page']['headline']?></h3>
                             </div>
                         </div>
                         <div class="blogContent">
-                            
+                            <? if($published): ?>
                             <p class="blogDescr"><?=$this->vars['page']['body']?></p>
                             <div class="row-fluid">
                                 <div class="span8 pull-left">
+
                                     <? $post = $this->vars['post'];?>
                                     <?
                                         switch (\Saw\Model\Blog::$typeReversed[$post['currentType']]) {
@@ -119,6 +124,11 @@
                                     </aside>
                                 </div>
                             </div>
+
+                            <? else:  ?>
+                            Sorry for the inconvenience, but this post is no longer available.
+
+                            <? endif; ?>
                             <!-- -->
                         </div>
                     </div>

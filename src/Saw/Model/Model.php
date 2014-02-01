@@ -10,6 +10,30 @@ use Silex\Application;
  * Base model which all models extend.
  * Primarily handles the sleep and wake-up magic for storing
  * and retrieving objects from the mongo store
+ A NOTE ABOUT EMPTY FIELDS:
+ --------------------------
+ when a field comes up from a POST and it's empty the following evaluate to TRUE:
+
+if($doc['currentFacultyPosition'] == 0){
+	TRUE
+}
+if($doc['currentFacultyPosition'] == ""){
+	TRUE
+}
+if($doc['currentFacultyPosition'] === 0){
+	FALSE
+}
+if(is_string($doc['currentFacultyPosition'])){
+	FALSE
+}
+if($doc['currentFacultyPosition'] == "0"){
+	FALSE
+}
+if(is_string($doc['currentFacultyPosition'])){
+	FALSE
+}
+
+Also, when you force an empty set variable to (int) it becomes 0.
  */
 class Model {
 	
@@ -124,7 +148,7 @@ class Model {
         	throw new \Saw\Model\Exceptions\DomainException("Saving failed.  Please try again.");
         }
         if(!empty($this->clearFields)){
-        	error_log('clearFields:'.print_r($this->clearFields,true));
+        	//error_log('clearFields:'.print_r($this->clearFields,true));
 			$this->clear($this->clearFields);
 		}
         return true;
