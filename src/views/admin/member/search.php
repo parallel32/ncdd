@@ -90,10 +90,10 @@ jQuery(document).ready(function() {
 
                $.each(responseObj.results,function(key,member){
                   if(window.saw_stateOrderNum == 'yes' && member.hasOwnProperty('orderNumState')){
-                     console.log(member.displayName+' A '+ member.orderNumState.toString());
+                     //console.log(member.displayName+' A '+ member.orderNumState.toString());
                      orderNum = member.orderNumState.toString();
                   }else{
-                     console.log('B'+ member.orderNum.toString());
+                     //console.log('B'+ member.orderNum.toString());
                      orderNum = member.orderNum.toString();
                   }
                   html = '<tr>'+

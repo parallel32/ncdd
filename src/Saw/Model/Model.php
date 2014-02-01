@@ -29,9 +29,6 @@ if(is_string($doc['currentFacultyPosition'])){
 if($doc['currentFacultyPosition'] == "0"){
 	FALSE
 }
-if(is_string($doc['currentFacultyPosition'])){
-	FALSE
-}
 
 Also, when you force an empty set variable to (int) it becomes 0.
  */
