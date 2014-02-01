@@ -73,7 +73,8 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
       <!-- END PAGE -->
 <script>
 jQuery(document).ready(function() {  
-   search = function(){
+   window.saw_stateOrderNum = '';
+   window.saw_search = function(){
       io.saw.FormPost.activate({postUrl:'/member/search'
          ,serializeSelector:':input'
          ,formName:'#saw-form'
@@ -81,16 +82,25 @@ jQuery(document).ready(function() {
          ,postOnComplete:function(responseObj,responseStatus){}
          ,postOnSuccess:function(responseObj){
                
+               // set the state global variable
+               window.saw_stateOrderNum = responseObj.state;
                //clear all records
                $('#results tbody').html('');
                $('#result-message').html(responseObj.message);
 
                $.each(responseObj.results,function(key,member){
+                  if(window.saw_stateOrderNum == 'yes' && member.hasOwnProperty('orderNumState')){
+                     console.log(member.displayName+' A '+ member.orderNumState.toString());
+                     orderNum = member.orderNumState.toString();
+                  }else{
+                     console.log('B'+ member.orderNum.toString());
+                     orderNum = member.orderNum.toString();
+                  }
                   html = '<tr>'+
                         '   <td><img width="159" src="'+member.image+'" alt=""></td>'+
                         '   <td class="">'+member.displayName+'</td>'+
                         <? if($accessLevel >= EDITOR): ?>
-                        '   <td class=" hidden-phone" id="'+member._id.$id+'"><input type="text" class="m-wrap" style="width:32px;" value="'+member.orderNum+'"><a data-member-id="'+member._id.$id+'" href="#" class="btn green icn-only order-update"><i class="icon-check icon-white"></i></a></td>'+
+                        '   <td class=" hidden-phone" id="'+member._id.$id+'"><input type="text" class="m-wrap" style="width:32px;" value="'+orderNum+'"><a data-member-id="'+member._id.$id+'" href="#" class="btn green icn-only order-update"><i class="icon-check icon-white"></i></a></td>'+
                         <? endif; ?>
                         '   <td class=" hidden-phone"><span class="label">'+member.currentOrder+'</span></td>'+
                         '   <td class=" hidden-phone"><span class="label">'+member.currentMembership+'</span></td>'+
@@ -113,7 +123,7 @@ jQuery(document).ready(function() {
 
                $('#results tbody .order-update').click(function(e){
                   e.preventDefault();
-                  io.saw.FormGet.activate({postUrl:'/member/order/'+$(this).attr('data-member-id')+'/'+($(this).prev().val() || '*')
+                  io.saw.FormGet.activate({postUrl:'/member/order/'+$(this).attr('data-member-id')+'/'+($(this).prev().val() || '*')+'/'+window.saw_stateOrderNum
                      ,postOnComplete:function(responseObj,responseStatus){}
                      ,postOnSuccess:function(responseObj){}
                      ,blockUI:'yes'
@@ -126,15 +136,15 @@ jQuery(document).ready(function() {
    $('#saw-form input').keypress(function(e) {
       if (e.which == 13) {
          e.preventDefault();
-         search();
+         window.saw_search();
       }
    });  
    $('#saw-form .btn.green').click(function(e){
       e.preventDefault();
-      search();
+      window.saw_search();
    });
    <? if(!empty($this->vars['query'])){ ?>
-      search();
+      window.saw_search();
    <? } ?>
    
 });      

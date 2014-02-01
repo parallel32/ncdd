@@ -39,7 +39,9 @@ $member->post('/search', function (Request $request) use ($app) {
     }else{
     	$message = 'No members matched that name.';
     }
-    return new Response(json_encode(array('results'=>$results,'message' => $message)), 200,array('Content-Type' => 'application/json'));
+    
+    $state = (Model\Member::isState($doc['search'])) ? 'yes' : 'no';
+    return new Response(json_encode(array('state'=>$state,'results'=>$results,'message' => $message)), 200,array('Content-Type' => 'application/json'));
 	
 });
 
@@ -73,12 +75,17 @@ $member->post('/add', function (Request $request) use ($app) {
 });
 
 // change the member order number
-$member->get('/order/{id}/{order}', function ($id, $order, Request $request) use ($app) {
+$member->get('/order/{id}/{order}/{state}', function ($id, $order, $state, Request $request) use ($app) {
     $order = (empty($order)) ? '*' : $order ;
-	$member = new Model\Member(array('_id'=>$id,'orderNum'=>$order), $app);
-	$member->updateOrderNum();
-    return new Response(json_encode(array('message' => 'order updated successfully.')), 200,array('Content-Type' => 'application/json'));
-})->value('order','*');
+	if(!empty($state) && $state == 'yes'){
+		$member = new Model\Member(array('_id'=>$id,'orderNumState'=>$order), $app);
+		$member->updateOrderNumState();
+	}else{
+		$member = new Model\Member(array('_id'=>$id,'orderNum'=>$order), $app);
+		$member->updateOrderNum();
+	}
+	return new Response(json_encode(array('message' => 'order updated successfully.')), 200,array('Content-Type' => 'application/json'));
+})->value('order','*')->value('state','');
 
 $member->get('/{userId}/edit', function ($userId, Request $request) use ($app) {
 

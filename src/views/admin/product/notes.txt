@@ -1,7 +1,7 @@
 Collections:
 Product
 ShoppingCart
-Order (has shopping card records as the invoice list data) includes shipping, billing and totals
+Order (has shopping cart records as the invoice list data) includes shipping, billing and totals
 - first linked to the sessionId and on purchase additionally to the memberId if exists
 
 the purchase action will clear the shopping cart for that session and link the order to the member if signed in.
@@ -21,17 +21,19 @@ products
 fulfilled orders
 currently active shopping carts (if i have time)
 
-deployment notes
-----------------
-upload the prodcuts.csv to all /var/www/uploads
-run utilities import
-upload all the photos
-update the pages record from NCDD Store to just Store and add the following content:
--------------------------------------------------------------------------------------
-How Do I Return &amp; Exchange Items?
 
-If You Are Dissatisfied With Your Order For Any Reason, You Can Return Your Items WITHIN 14 DAYS With The Original Packaging For A Prompt Refund Or Exchange. Refunds For Items Returned Within 14 Days Of The Purchase Date Will Be Credited In The Same Form As The Original Payment Type.
 
-The Original Shipping and Handling Charges Are Not Refundable. Repack Your Item(S) In Its Original Packaging, With The Original Receipt. Please Mail Your Package In A Prepaid, Insured, Traceable Method To The Address Of The SENDER Of The Item You Are Returning.
+----------------------
+Publishing an update for the state attorney listings to properly sort the attorneys independent of the other attorney listings.  The ordering that is set now for the state pages lists them by most recently attained fellow first, which is incorrect.  The update will allow us to sort them properly within their states.
 
-Log In To Receive Member Discounts
+I'll be buying and installing the SSL certificate for the ncdd.com domain so I can deploy the store shopping cart and checkout process.  I'll also add the first page to the store that will categorize the products rather than just listing them out.
+
+I'll also be working out the permission details of the virtual forensic library so that I can publish the integration of the library to the forum.
+
+Next up will be to do the public website's search feature.
+
+Finally, I'm going to be updating the editor in the blog and everywhere else to include embedding of all types of media within the content.
+
+So, that's what's on my top priority list.  I'm going to be working as quickly as I can to get these things finished so that we can finally be firing on all cylinders.
+
+Aside from issues that arise, I'd like to finish these items before we re-examine things to see if there's anything else that needs attention.

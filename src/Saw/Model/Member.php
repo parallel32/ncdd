@@ -38,6 +38,7 @@ class Member extends User {
 	public $financialPayment;
 	public $practiceAreas; //array('95'=>'DUI 22 years, 400 cases') // array indexes should add up to 100
 	public $orderNum;
+	public $orderNumState;
 
 	// order not relevant
 	static public $membership = array('PUBLIC DEFENDER'=>5,'GENERAL MEMBER'=>10,'SUSTAINING MEMBER'=>30,'FOUNDING MEMBER'=>40);
@@ -132,7 +133,9 @@ class Member extends User {
 
 		// * means no order number present. use this because can't use zero, they'll shoot strait to the top
 		$this->orderNum = (!empty($doc['orderNum'])) ? ( $doc['orderNum'] == '*') ? $doc['orderNum']: (int)$doc['orderNum'] : ''; 
-		// for import only $this->orderNum = $doc['orderNum'];
+		// * means no order number present. use this because can't use zero, they'll shoot strait to the top
+		$this->orderNumState = (!empty($doc['orderNumState'])) ? ( $doc['orderNumState'] == '*') ? $doc['orderNumState']: (int)$doc['orderNumState'] : ''; 
+		
 
 		$this->currentMembership = (!empty($doc['currentMembership'])) ? (int)$doc['currentMembership']: null;
 		if((int)$doc['currentFacultyPosition'] === 0){
@@ -211,6 +214,7 @@ class Member extends User {
 		$this->practiceAreas = $this->practiceAreas ?: array();
 		$this->yearsinpractice = $this->yearsinpractice ?: '';
 		$this->orderNum = $this->orderNum ?: '*';
+		$this->orderNumState = $this->orderNumState ?: '*';
 		$this->changeAccessLevelTo = $this->changeAccessLevelTo ?: $this->accessLevel;
 		$this->renewal = $this->renewal ?: null;
 
@@ -332,10 +336,21 @@ class Member extends User {
 		return $this->distinct('location.state');
 	}
 
-	public function search($string,$listedOnly=false){
+	public static function isState($string){
+		$res=false;
 		$states = array('alabama'=>'AL','alaska'=>'AK','arizona'=>'AZ','arkansas'=>'AR','california'=>'CA','colorado'=>'CO','connecticut'=>'CT','delaware'=>'DE','washington dc'=>'DC','florida'=>'FL','georgia'=>'GA','hawaii'=>'HI','idaho'=>'ID','illinois'=>'IL','indiana'=>'IN','iowa'=>'IA','kansas'=>'KS','kentucky'=>'KY','louisiana'=>'LA','maine'=>'ME','maryland'=>'MD','massachusetts'=>'MA','michigan'=>'MI','minnesota'=>'MN','mississippi'=>'MS','missouri'=>'MO','montana'=>'MT','nebraska'=>'NE','nevada'=>'NV','new hampshire'=>'NH','new jersey'=>'NJ','new mexico'=>'NM','new york'=>'NY','north carolina'=>'NC','north dakota'=>'ND','ohio'=>'OH','oklahoma'=>'OK','oregon'=>'OR','pennsylvania'=>'PA','rhode island'=>'RI','south carolina'=>'SC','south dakota'=>'SD','tennessee'=>'TN','texas'=>'TX','utah'=>'UT','vermont'=>'VT','virginia'=>'VA','washington'=>'WA','west virginia'=>'WV','wisconsin'=>'WI','wyoming'=>'WY','ontario'=>'ON','quebec'=>'QC','saskatchewan'=>'SK');
 		if(array_key_exists(strtolower($string),$states)){
-			$state = $states[strtolower($string)];
+			$res = $states[strtolower($string)];
+		}
+		if(array_search(strtolower($string),$states)!== false){
+			$res = $string;
+		}
+
+		return $res;
+	}
+	public function search($string,$listedOnly=false){
+		if(self::isState($string) !== false){
+			$state = self::isState($string);
 			$string = "state";
 		}
 		if(strpos($string,'@')!== false){
@@ -359,6 +374,7 @@ class Member extends User {
 					,'listed'=>1
 					,'websites'=>1
 					,'orderNum'=>1
+					,'orderNumState'=>1
 					,'location'=>1
 					);
 
@@ -375,7 +391,7 @@ class Member extends User {
 					$m_fields['member.'.$key]=$value;
 				}
 				$query=array('state'=>$state,'member.listed'=>1);
-				$m_result = self::$app['mongo']->find('location', $query,$m_fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.currentOrder'=>-1,'member.orderNum'=>1));
+				$m_result = self::$app['mongo']->find('location', $query,$m_fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.currentOrder'=>-1,'member.orderNumState'=>1));
 				//error_log('result:'.print_r($m_result,true));
 				$i=0;
 				foreach ($m_result as $key => $value) {
@@ -396,6 +412,7 @@ class Member extends User {
 					$result[$i]['listed'] = $value['member']['listed'];
 					$result[$i]['websites'] = $value['member']['websites'];
 					$result[$i]['orderNum'] = $value['member']['orderNum'];
+					$result[$i]['orderNumState'] = (array_key_exists('orderNumState',$value['member'])) ? $value['member']['orderNumState']: '';
 					$i++;
 				}
 				//*/
@@ -510,7 +527,7 @@ class Member extends User {
 					,'raw'=>1
 					);
 		
-		$result = self::$app['mongo']->find('location',array('state'=>$state,'member.listed'=>1),$fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.currentOrder'=>-1,'member.orderNum'=>1));
+		$result = self::$app['mongo']->find('location',array('state'=>$state,'member.listed'=>1),$fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.currentOrder'=>-1,'member.orderNumState'=>1));
 		
 		$i=0;
 		foreach ($result as $key => $value) {
@@ -562,7 +579,7 @@ class Member extends User {
 					,'raw'=>1
 					);
 		
-		$result = self::$app['mongo']->find('location',array('member.currentMembership'=>self::$membership['FOUNDING MEMBER'], 'state'=>$state,'member.listed'=>1),$fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.currentOrder'=>-1,'member.orderNum'=>1));
+		$result = self::$app['mongo']->find('location',array('member.currentMembership'=>self::$membership['FOUNDING MEMBER'], 'state'=>$state,'member.listed'=>1),$fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.currentOrder'=>-1,'member.orderNumState'=>1));
 		
 		$i=0;
 		foreach ($result as $key => $value) {
@@ -700,6 +717,12 @@ class Member extends User {
     }
     public function updateOrderNum(){
     	if(!empty($this->_id) && !empty($this->orderNum)){
+    		$this->saveEdit();
+    	}
+    	return true;
+    }
+	public function updateOrderNumState(){
+    	if(!empty($this->_id) && !empty($this->orderNumState)){
     		$this->saveEdit();
     	}
     	return true;
