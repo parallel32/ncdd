@@ -24,8 +24,6 @@ currently active shopping carts (if i have time)
 
 
 ----------------------
-Publishing an update for the state attorney listings to properly sort the attorneys independent of the other attorney listings.  The ordering that is set now for the state pages lists them by most recently attained fellow first, which is incorrect.  The update will allow us to sort them properly within their states.
-
 I'll be buying and installing the SSL certificate for the ncdd.com domain so I can deploy the store shopping cart and checkout process.  I'll also add the first page to the store that will categorize the products rather than just listing them out.
 
 I'll also be working out the permission details of the virtual forensic library so that I can publish the integration of the library to the forum.

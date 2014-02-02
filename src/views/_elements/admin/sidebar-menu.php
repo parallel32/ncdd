@@ -165,8 +165,15 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                </ul>
                <? endif; ?>
             </li>
-
-
+            <? if($accessLevel >= EDITOR):?>
+            <li class="<? echo ($this->vars['active'] == 'Category') ? 'active':'';?>">
+               <a href="/category">
+               <i class="icon-tags"></i> 
+               <span class="title">Categories & Tags</span>
+               <? echo ($this->vars['active'] == 'Category') ? '<span class="selected"></span>':'';?>
+               </a>
+            </li>
+            <? endif; ?>
             <li class="<? echo ($this->vars['active'] == 'VFL') ? 'active':'';?>">
                <a href="/vfl">
                <i class="icon-legal"></i> 
