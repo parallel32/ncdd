@@ -1,6 +1,17 @@
 <script type="text/javascript">
 (function( Category, $, undefined ) {
 
+	function slugify(str){
+		io.saw.FormPost.activate({postUrl:'/category/slugify'
+		   ,blockUI:'no'
+		   ,serializeSelector:'.name'
+		   ,postOnComplete:function(responseObj,responseStatus){}
+		   ,postOnSuccess:function(responseObj){
+		   		$('#saw-form .slug').val('/'+responseObj.slug);
+		   }
+		});      
+	};
+	
 	function remove(){
 		io.saw.FormGet.activate({postUrl:'/category/'+$('#_id').val()+'/remove'
 			,postOnComplete:function(responseObj,responseStatus){
@@ -13,6 +24,13 @@
 	};
 	Category.init = function(){
 		
+		// SAVE buttons and publish workflow buttons
+		$('#saw-form .name').keyup(function(e) {
+			if (e.which != 13) {
+				slugify($(this).val());
+			}
+		});
+				
 
 		// SAVE buttons and publish workflow buttons
 		$('#saw-form input').keypress(function(e) {

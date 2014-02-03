@@ -151,6 +151,15 @@ $category->get('/edit/{categoryId}/edit-photo-crop', function ($categoryId, Requ
 })
 ->value('categoryId','');
 
+// slugify
+$category->post('/slugify', function (Request $request) use ($app) {
+	// retrieve document from request
+    $doc = $request->get('doc');
+    $slug = Model\Category::slugify($doc['name']);
+    
+    return new Response(json_encode(array('slug'=>$slug, 'message' => 'successful operation.')), 200,array('Content-Type' => 'application/json'));
+});
+
 
 
 return $category;

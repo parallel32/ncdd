@@ -520,18 +520,35 @@ $app->get('/sessions-and-seminars/{id}/{slug}', function ($id, $slug, Request $r
 	return $app['view']->render('page/seminar-post', 'content',$view_vars);
 });
 
-// product roll
+// product categories
 $app->get('/store', function (Request $request) use ($app) {
 	
+	$category = new Model\Category(array('currentType'=>Model\Category::$type['STORE']),$app);
+	$categories = $category->fetchByType();
+	
+	$view_vars['categories'] = $categories;
+	$page_vars = $app['get_pages']('store');
+	$view_vars = array_merge($page_vars,$view_vars);
+
+	return $app['view']->render('page/store-index', 'content',$view_vars);
+});
+
+// product roll
+$app->get('/store/{category}', function ($category, Request $request) use ($app) {
+	
+	$category = new Model\Category(array('slug'=>'/'.$category),$app);
+	$category = $category->findById('slug');
+	
 	$product = new Model\Product($doc=array(), $app);
-	$products = $product->fetchByStatus('PUBLISH');
+	$products = $product->fetchByCategory($category['_id']);
+	
 	
 	$view_vars['products'] = $products;
 	$page_vars = $app['get_pages']('store');
 	$view_vars = array_merge($page_vars,$view_vars);
+	$view_vars['page']['headline'] = (is_array($category)) ? $category['name']: '';
 
-
-	return $app['view']->render('page/store-index', 'content',$view_vars);
+	return $app['view']->render('page/store-category-index', 'content',$view_vars);
 });
 
 // single product

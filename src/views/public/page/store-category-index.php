@@ -16,13 +16,13 @@
                             <div class="pull-right span12 tab-content">
                                 <div class="tab-pane active" id="ncddStorePage">
                                     <ul class="productList">
-                                        <? foreach($this->vars['categories'] as $category): ?>
+                                        <? foreach($this->vars['products'] as $product): ?>
                                         <li class="productListItem">
-                                            <? if (!empty($category['image'])): ?>
+                                            <? if (!empty($product['image'])): ?>
                                             <div class="pull-left text-center">
-                                                <div class="categoryImg">
-                                                    <div id="wrap" style="top:0px;z-index:9999;position:relative;"><a href="<?=$category['image']['urls']['large']['CDN'] ?>" class="cloud-zoom" id="zoom1" rel="adjustX: 20, adjustY:-4, zoomWidth:500, zoomHeight:500" style="position: relative; display: block;">
-                                                     <img src="<?=$category['image']['urls']['large']['CDN'] ?>" width="400" alt="" title="" style="display: block;">
+                                                <div class="productImg">
+                                                    <div id="wrap" style="top:0px;z-index:9999;position:relative;"><a href="<?=$product['image']['urls']['large']['CDN'] ?>" class="cloud-zoom" id="zoom1" rel="adjustX: 20, adjustY:-4, zoomWidth:500, zoomHeight:500" style="position: relative; display: block;">
+                                                     <img src="<?=$product['image']['urls']['large']['CDN'] ?>" width="242" height="302" alt="" title="" style="display: block;">
                                                     </a></div>
                                                 </div>
                                                 <p class="rollover">Roll over image to zoom in</p>
@@ -30,9 +30,17 @@
                                             <? endif; ?>
                                             <div class="pull-right productInfo">
                                                 <div class="productTitleBlock">
-                                                    <a href="/store<?=$category['slug']?>" class="productTitle pull-left"><?=$category['name']?></a>
+                                                    <a href="/store/<?=$product['_id']?><?=$product['slug']?>" class="productTitle pull-left"><?=$product['name']?></a>
+                                                    <? 
+                                                    $user = call_user_func(function($app){ $user = $app['session']->get('user'); return $user;},$this->app);
+                                                    if(is_array($user) && array_key_exists('accessLevel',$user) && $product['price'] != $product['memberPrice']): ?>
+                                                        <div class="price pull-right"><span class="oldPrice">$<?=$product['price']?></span><span class="newPrice">$<?=$product['memberPrice']?></span></div>
+                                                    <? else: ?>
+                                                        <div class="price pull-right"><span class="newPrice">$<?=$product['price']?></span></div>
+                                                    <? endif; ?>
+                                                    
                                                 </div>
-                                                
+                                                <p class="descr"><?=$product['description']?></p>
                                                 <!--
                                                 <div class="productInfoBlock">
                                                     <form action="get" class="pull-left">

@@ -126,12 +126,18 @@
                                        foreach($this->vars['availableCategories'] as $k=>$v): 
                                           $selected = false;
                                           if(!empty($this->vars['product']) && array_key_exists('category',$this->vars['product'])){
-                                             if(strpos($this->vars['product']['category'],$v) !== false){
-                                                $selected = true;
+                                             if(is_array($this->vars['product']['category'])) {
+                                                if(strpos($this->vars['product']['category']['name'],$v) !== false){
+                                                   $selected = true;   
+                                                }
+                                             }elseif (is_string($this->vars['product']['category'])){
+                                                if(strpos($this->vars['product']['category'],$v) !== false){
+                                                   $selected = true;
+                                                }
                                              }
                                           }
                                     ?>
-                                    <option <?=($selected) ? ' selected' :'' ?>><?=$v?></option>
+                                    <option <?=($selected) ? ' selected' :'' ?> value="<?=$k?>"><?=$v?></option>
                                     <? endforeach; ?>
                                  </select>
                               </div>

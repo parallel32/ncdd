@@ -102,16 +102,26 @@
                                  <? if($show=='yes'):?>
                                     <select class="tags" multiple="multiple" id="tags" name="doc[tags][]" style="position: absolute; left: -9999px;">
                                        <? 
-                                          foreach($this->vars['availableTags'] as $k=>$v): 
-                                             $selected = false;
-                                             if(!empty($this->vars['blog']) && array_key_exists('tags',$this->vars['blog'])){
+                                       foreach($this->vars['availableTags'] as $k=>$v): 
+                                          
+                                          $selected = false;
+                                          if(!empty($this->vars['blog']) && array_key_exists('tags',$this->vars['blog'])){
+                                             if(is_array($this->vars['blog']['tags'])) {
+                                                foreach($this->vars['blog']['tags'] as $tag):
+                                                   
+                                                   if(strpos($tag['name'],$v) !== false){
+
+                                                      $selected = true;   
+                                                   }
+                                                endforeach;
+                                             }elseif (is_string($this->vars['blog']['tags'])){
                                                 if(strpos($this->vars['blog']['tags'],$v) !== false){
                                                    $selected = true;
                                                 }
                                              }
+                                          }
                                        ?>
-
-                                       <option <?=($selected) ? ' selected' :'' ?>><?=$v?></option>
+                                       <option <?=($selected) ? ' selected' :'' ?> value="<?=$k?>"><?=$v?></option>
                                        <? endforeach; ?>
                                     </select>
                                  <? else: ?>

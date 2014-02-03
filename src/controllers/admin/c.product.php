@@ -49,16 +49,15 @@ $product->get('/edit/{productId}', function ($productId, Request $request) use (
 	$view_vars = array(
 						 'active'=>'Store'
 						,'page-plugin'=>'editor'
-						,'headline'=>(empty($productId)) ? 'Add a new productpost' : 'Edit your productposts' 
+						,'headline'=>(empty($productId)) ? 'Add a new product' : 'Edit your product' 
 						,'description'=>"Edit your post and submit it for review when finished."
 						,'crumbs'=>$crumbs
-						,'availableCategories'=>Model\Product::getAvailableCategories()
+						,'availableCategories'=>Model\Product::getAvailableCategories($app)
 						);
 	
 	if(!empty($productId)){	
 		$product= new Model\Product(array('_id'=>$productId),$app);
 		$product= $product->findById();
-
 		$view_vars['crumbs'][] = array('name'=>$product['name'],'href'=>'/product/edit/'.$productId);
 		$view_vars['crumbs'][] = array('name'=>'edit','href'=>'/product/edit/'.$productId);
 

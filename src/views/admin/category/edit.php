@@ -59,6 +59,19 @@
                            </div>
                            <!--/span-->
                         </div>
+                        <h3 class="form-section text-info"><strong>Url</strong></h3>
+                        <p>The product name will automatically produce a clean SEO friendly URL.  But, you can always change it here after you finish typing the Name.</p>
+                        <div class="row-fluid">
+                           <div class="span12 ">
+                              <div class="control-group ">
+                                 <label class="control-label"></label>
+                                 <div class="controls">
+                                    <input type="text" name="doc[slug]" value="<?=(!empty($this->vars['category']) && array_key_exists('slug',$this->vars['category'])) ? $this->vars['category']['slug']: ''?>" class="m-wrap span10 slug">
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
                         
                         <h3 class="form-section text-info"><strong>Picture (optional)</strong></h3>
                         <p>You can upload a picture to make your category more appealing.  From an SEO perspective, categorys with a picture are much better received by search engines.</p>

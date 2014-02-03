@@ -39,7 +39,6 @@ class Product extends Model {
 		$metadata->addPropertyConstraint('additionalNotes', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('description', new Constraints\NotBlank(array('message'=>'cannot be blank')));
     	$metadata->addPropertyConstraint('slug', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		$metadata->addPropertyConstraint('category', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addConstraint(new Callback(array(
             'methods' => array('isValidSlug'),
         )));
@@ -109,7 +108,23 @@ class Product extends Model {
 		$this->additionalNotes = $doc['additionalNotes'];
 		$this->image = $doc['image'];
 		$this->currentStatus = (!empty($doc['currentStatus'])) ? (int)$doc['currentStatus']: $doc['currentStatus'];
-		$this->category = $doc['category'];
+		
+		if(!empty($doc['category'])){
+			if (is_object($doc['category'])){
+				$this->category = $doc['category']->__toArray();
+			}
+			if (is_array($doc['category'])){
+				$this->category = $doc['category'];
+			}
+			if (is_string($doc['category']) && preg_match('/^[0-9a-z]{24}$/',$doc['category'])){
+				$category = new Category(array('_id'=>$doc['category']),$app);
+				$category->findById();
+				$this->category = $category;	
+			}
+			
+		}else{
+			$this->category = $doc['category'];
+		}
 		$this->add = $doc['add'];
 		$this->slug = (empty($doc['slug']) && !empty($doc['name'])) ? self::slugify($doc['name']): $doc['slug'];
 	}
@@ -159,8 +174,18 @@ class Product extends Model {
 		return $result;
 
 	}
-	public static function getAvailableCategories(){
-		return array('NCDD Bookstore', 'Trial Graphics', 'NCDD Logo Merchandise');
+	public function fetchByCategory($category='', $offset=0,$limit=100){
+		$query = (!empty($category)) ? array('category._id'=>new \MongoId($category),'currentStatus'=>self::$status['PUBLISH']): array();
+		$fields = array();
+		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('name'=>1),(int)$offset,(int)$limit);
+		return $result;
+
+	}
+	public static function getAvailableCategories(Application $app){
+		$category = new Category(array('currentType'=>Category::$type['STORE']),$app);
+		$categories = $category->fetchByTypeFormatted();
+		return $categories;
+		//return array('NCDD Bookstore', 'Trial Graphics', 'NCDD Logo Merchandise');
 	}
 	public static function slugify($str){
 

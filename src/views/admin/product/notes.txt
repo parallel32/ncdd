@@ -35,3 +35,23 @@ Finally, I'm going to be updating the editor in the blog and everywhere else to 
 So, that's what's on my top priority list.  I'm going to be working as quickly as I can to get these things finished so that we can finally be firing on all cylinders.
 
 Aside from issues that arise, I'd like to finish these items before we re-examine things to see if there's anything else that needs attention.
+
+
+
+
+Deployment notes:
+==================
+
+Store:
+------
+Need to create the categories
+Need to edit each product to set the category
+
+Blog:
+-----
+Need to create the blogs
+Need to edit each blog to re-set the tags.
+
+SSL:
+---- 
+install on load balancer & test resources

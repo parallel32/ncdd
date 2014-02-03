@@ -25,7 +25,7 @@ $app->get('/blog', function (Request $request) use ($app) {
 						,'description'=>"Participate in all blogs here."
 						,'crumbs'=>$crumbs
 						,'posts'=>$posts
-						,'tags'=>Model\Blog::getAvailableTags()
+						,'tags'=>Model\Blog::getAvailableTags($app)
 						);
 	return $app['view']->render('blog/index', 'default', $view_vars);
 })->before($mustbeMEMBER);
@@ -47,7 +47,7 @@ $app->get('/blog/archives/{month}/{year}', function ($month, $year, Request $req
 						,'posts'=>$posts
 						,'month'=>$month
 						,'year'=>$year
-						,'tags'=>Model\Blog::getAvailableTags()
+						,'tags'=>Model\Blog::getAvailableTags($app)
 						);
 	return $app['view']->render('blog/index', 'default', $view_vars);
 })->before($mustbeMEMBER);
@@ -68,7 +68,7 @@ $app->get('/blog/tag/{tag}', function ($tag, Request $request) use ($app) {
 						,'crumbs'=>$crumbs
 						,'posts'=>$posts
 						,'tag'=>$tag
-						,'tags'=>Model\Blog::getAvailableTags()
+						,'tags'=>Model\Blog::getAvailableTags($app)
 						);
 	return $app['view']->render('blog/index', 'default', $view_vars);
 })->before($mustbeMEMBER);
@@ -134,7 +134,7 @@ $app->get('/blog/{blogId}/view', function ($blogId, Request $request) use ($app)
 						,'description'=>"Participate in all blogs here."
 						,'crumbs'=>$crumbs
 						,'post'=>$post
-						,'tags'=>Model\Blog::getAvailableTags()
+						,'tags'=>Model\Blog::getAvailableTags($app)
 						);
 	return $app['view']->render('blog/view', 'default', $view_vars);
 })->before($mustbeMEMBER);
@@ -195,7 +195,7 @@ $app->get('/blog/{memberId}/edit/{blogId}', function ($memberId, $blogId, Reques
 						,'headline'=>(empty($blogId)) ? 'Add a new blog post' : 'Edit your blog posts' 
 						,'description'=>"Edit your post and submit it for review when finished."
 						,'crumbs'=>$crumbs
-						,'availableTags'=>Model\Blog::getAvailableTags()
+						,'availableTags'=>Model\Blog::getAvailableTags($app)
 						,'memberId'=>$memberId
 						);
 	

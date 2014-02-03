@@ -4199,6 +4199,11 @@ input[type="checkbox"] {
   padding: 10px;
   width: 242px;
 }
+.content .NCDDListDetailPage .productList .productListItem .categoryImg {
+  border: 1px solid #e0e0e0;
+  padding: 10px;
+  width: 242px;
+}
 /* line 4215, ../sass/screen.scss */
 .content .NCDDListDetailPage .productList .productListItem .rollover {
   font-size: 12px;

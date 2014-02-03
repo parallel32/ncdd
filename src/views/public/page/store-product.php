@@ -47,7 +47,7 @@
                                                         <div class="pull-left productDescrleft">
                                                             <dl class="dl-horizontal">
                                                               <dt>Category:</dt>
-                                                              <dd><?=$product['category']?></dd>
+                                                              <dd><?=$product['category']['name']?></dd>
                                                               <dt>Availability:</dt>
                                                               <dd>In Stock</dd>
                                                             </dl>

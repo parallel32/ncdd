@@ -97,7 +97,36 @@ class Blog extends Model {
 		include_once __DIR__.'/../Provider/WordPress/ncdd-wp-includes.php';
 		$this->body = (!empty($doc['body'])) ? wptexturize(wpautop($doc['body'])) : '';
 		
+		if(is_string($doc['tags']) && strpos($doc['tags'],',') !== false){
+			$doc['tags'] = explode(',', $doc['tags']);
+			
+		}
+		if(!is_array($doc['tags'])){
+			$doc['tags'] = array($doc['tags']);
+		}
+		if(!empty($doc['tags']) && is_array($doc['tags'])){
+			for ($i=0; $i < count($doc['tags']); $i++) { 
+
+				if (is_object($doc['tags'][$i])){
+					$doc['tags'][$i] = $doc['tags'][$i]->__toArray();
+				}
+				if (is_array($doc['tags'][$i])){
+					$doc['tags'][$i] = $doc['tags'][$i];
+				}
+				if (is_string($doc['tags'][$i]) && preg_match('/^[0-9a-z]{24}$/',$doc['tags'][$i])){
+					$category = new Category(array('_id'=>$doc['tags'][$i]),$app);
+					$category->findById();
+					$doc['tags'][$i] = $category;	
+				}
+			}
+			
+			
+		}
 		$this->tags = $doc['tags'];
+		
+
+
+
 		$this->image = $doc['image'];
 		$this->video = $doc['video'];
 		$this->link = $doc['link'];
@@ -127,7 +156,7 @@ class Blog extends Model {
 		$this->headline = $this->headline ?: '';
 		$this->slug = $this->slug ?: '';
 		$this->body = $this->body ?: '';
-		$this->tags = $this->tags ?: '';
+		$this->tags = $this->tags ?: array();
 		
 		$this->image = $this->image ?: new \stdClass();
 		$this->video = $this->video ?: '';
@@ -321,8 +350,12 @@ class Blog extends Model {
 		self::$app['upload-mongo']->deleteByCriteria(array('belongsTo'=>$this->_id));
 
 	}
-	public static function getAvailableTags(){
-		return array('Breath Testing', 'Blood Testing', 'Boating Under the Influence','FAA Issues','Public Policy','Interstate Compact', 'Field Sobriety Tests', 'Drug Dui (DRE)', 'Constitutional Issues', 'Forensic Science', 'Evidence', 'Ethics', 'Recent Case Law');
+	public static function getAvailableTags(Application $app){
+		$category = new Category(array('currentType'=>Category::$type['BLOG']),$app);
+		$tags = $category->fetchByTypeFormatted();
+		return $tags;
+		
+		//return array('Breath Testing', 'Blood Testing', 'Boating Under the Influence','FAA Issues','Public Policy','Interstate Compact', 'Field Sobriety Tests', 'Drug Dui (DRE)', 'Constitutional Issues', 'Forensic Science', 'Evidence', 'Ethics', 'Recent Case Law');
 	}
 	public static function slugify($str){
 

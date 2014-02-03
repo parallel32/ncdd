@@ -157,7 +157,7 @@
                                  ?>
                                  <td class="hidden-480 "><?=$currentStatus?></td>
                                  <td class="center hidden-480 "><?=$product['additionalNotes']?></td>
-                                 <td class="center hidden-480 "><?=$product['category']?></td>
+                                 <td class="center hidden-480 "><?=(is_array($product['category'])) ? $product['category']['name']: $product['category'];?></td>
                                  <td class=" ">
                                     <a data-id="<?=$product['_id']?>" class="btn blue mini edit"><i class=" "></i> Edit</a>
                                     <? if ($product['currentStatus'] == 'PUBLISH') { ?>
