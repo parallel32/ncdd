@@ -21,8 +21,8 @@ $utilities->before($mustbeADMIN);
 // update blogs with new db driven tags //
 //////////////////////////////////////////
 
-$utilities->get('/update-blogs', function () use ($app) {
-
+$utilities->get('/update-blogssdfsdfsdfsdf', function () use ($app) {
+    return 'disabled';
     // FIRST CREATE THE CATEGORIES
     $cat_cnt=0;
     if(true):
