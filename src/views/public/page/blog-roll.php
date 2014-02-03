@@ -106,19 +106,25 @@
                                         <div class="asideItem archive">
                                             <h4 class="asideTitle">Archive</h4>
                                             <ul class="archiveAccordion accordion" id="archiveAccordion">
-                                                <li class="archiveItem accordion-group">
+                                                
+                                                <? foreach ($this->vars['archives'] as $year=>$months): ?>
+                                               <li class="archiveItem accordion-group">
                                                     <div class="accordion-heading">
-                                                        <a class="archiveLink accordion-toggle collapsed" data-toggle="collapse" data-parent="#archiveAccordion" href="#year2013">2013 (5)</a>
+                                                        <a class="archiveLink accordion-toggle collapsed" data-toggle="collapse" data-parent="#archiveAccordion" href="#year<?=$year?>"><?=$year?></a>
                                                     </div>
-                                                    <div id="year2013" class="accordion-body collapse">
+                                                    <div id="year<?=$year?>" class="accordion-body collapse">
                                                         <div class="accordion-inner">
                                                             <ul class="collapseLink">
-                                                                <li><a href="/blog/archives/August/2013">August (5)</a></li>
+                                                                <? foreach ($months as $month=>$count): ?>
+                                                                <li><a href="/blog/archives/<?=$month?>/<?=$year?>"><?=$month?> (<?=$count?>)</a></li>
+                                                                <? endforeach; ?>
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                </li>
                                                 
+                                               </li>
+                                               <? endforeach; ?>
+
                                             </ul>
                                         </div>
                                         

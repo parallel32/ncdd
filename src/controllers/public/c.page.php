@@ -125,8 +125,10 @@ $app->get('/blog', function (Request $request) use ($app) {
 
 	$blog = new Model\Blog(array(),$app);
 	$posts = $blog->fetchByStatus('PUBLISH','yes');
-	
+	$archives = $blog->fetchArchiveCounts();
+
 	$view_vars['posts'] = $posts;
+	$view_vars['archives'] = $archives;
 	$view_vars['tags'] = Model\Blog::getAvailableTags($app);
 
 	return $app['view']->render('page/blog-roll', 'content',$view_vars);
@@ -140,9 +142,13 @@ $app->get('/blog/archives/{month}/{year}', function ($month, $year, Request $req
 
 	$blog = new Model\Blog(array(),$app);
 	$posts = $blog->fetchArchives($month,$year);
-	
+	$archives = $blog->fetchArchiveCounts();
+
 	$view_vars['posts'] = $posts;
+	$view_vars['archives'] = $archives;
 	$view_vars['tags'] = Model\Blog::getAvailableTags($app);
+
+	$view_vars['page']['headline'] = 'Blog - '.$month.' '.$year;
 
 	return $app['view']->render('page/blog-roll', 'content',$view_vars);
 });
@@ -155,8 +161,10 @@ $app->get('/blog/tag/{tag}', function ($tag, Request $request) use ($app) {
 
 	$blog = new Model\Blog(array(),$app);
 	$posts = $blog->fetchTag($tag);
-		
+	$archives = $blog->fetchArchiveCounts();
+
 	$view_vars['posts'] = $posts;
+	$view_vars['archives'] = $archives;
 	$view_vars['tags'] = Model\Blog::getAvailableTags($app);
 
 	$cat = new Model\Category(array('slug'=>'/'.$tag),$app);
@@ -175,8 +183,10 @@ $app->get('/blog/{id}/{slug}', function ($id, $slug, Request $request) use ($app
 
 	$blog = new Model\Blog(array('_id'=>$id),$app);
 	$post = $blog->findById();
-	
+	$archives = $blog->fetchArchiveCounts();
+
 	$view_vars['post'] = $post;
+	$view_vars['archives'] = $archives;
 	$view_vars['tags'] = Model\Blog::getAvailableTags($app);
 	
 	return $app['view']->render('page/blog-post', 'content',$view_vars);

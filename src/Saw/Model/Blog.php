@@ -234,7 +234,7 @@ class Blog extends Model {
 			}
 		}
 	}
-	public function fetchByStatus($status, $published='yes', $offset=0,$limit=100){
+	public function fetchByStatus($status, $published='yes', $offset=0,$limit=10000){
 		$query = array('currentStatus'=>self::$status[$status]);
 		if(!empty($published)){
 			$query['published'] = $published;
@@ -250,7 +250,7 @@ class Blog extends Model {
 		return $result;
 
 	}
-	public function fetchArchives($month,$year, $offset=0,$limit=100){
+	public function fetchArchives($month,$year, $offset=0,$limit=10000){
 		
 		$query = array('currentStatus'=>self::$status['PUBLISH'],'published'=>'yes','publishDate.month'=>$month, 'publishDate.year'=>$year);
 		$fields = array();
@@ -264,7 +264,29 @@ class Blog extends Model {
 		return $result;
 
 	}
-	public function fetchTag($tag, $offset=0,$limit=100){
+	public function fetchArchiveCounts($offset=0,$limit=1000000){
+		$archives = array();
+		$query = array('currentStatus'=>self::$status['PUBLISH'],'published'=>'yes');
+		$fields = array();
+		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('publishDate.date'=>-1),(int)$offset,(int)$limit);
+		if(!empty($result)):
+			foreach($result as $blog){
+				if(!array_key_exists($blog['publishDate']['year'], $archives)){
+					$archives[$blog['publishDate']['year']] = array();
+				}
+				//error_log(print_r($archives,true));		
+				if(array_key_exists($blog['publishDate']['month'], $archives[$blog['publishDate']['year']])){
+					$archives[$blog['publishDate']['year']][$blog['publishDate']['month']]++;
+				}else{
+					$archives[$blog['publishDate']['year']][$blog['publishDate']['month']] = 1;
+				}
+			}
+		endif;
+		//error_log(print_r($archives,true));
+		return $archives;
+
+	}
+	public function fetchTag($tag, $offset=0,$limit=10000){
 
 		$query = array('tags.slug'=>'/'.$tag,'currentStatus'=>self::$status['PUBLISH'],'published'=>'yes');
 		//error_log('query'.print_r($query,true));
@@ -283,7 +305,7 @@ class Blog extends Model {
 		return $result;
 
 	}
-	public function fetchByAuthorByDraft($memberId, $offset=0,$limit=100){
+	public function fetchByAuthorByDraft($memberId, $offset=0,$limit=10000){
 		$memberId = (is_object($memberId)) ? $memberId : new \MongoId($memberId);
 		$query = array('currentStatus'=>self::$status['DRAFT'],'author._id'=>$memberId);
 		$fields = array();
@@ -297,7 +319,7 @@ class Blog extends Model {
 		return $result;
 
 	}
-	public function fetchByAuthorByReview($memberId, $offset=0,$limit=100){
+	public function fetchByAuthorByReview($memberId, $offset=0,$limit=10000){
 		$memberId = (is_object($memberId)) ? $memberId : new \MongoId($memberId);
 		$query = array('currentStatus'=>self::$status['REVIEW'],'author._id'=>$memberId);
 		$fields = array();
@@ -311,7 +333,7 @@ class Blog extends Model {
 		return $result;
 
 	}
-	public function fetchByAuthorByApproved($memberId, $offset=0,$limit=100){
+	public function fetchByAuthorByApproved($memberId, $offset=0,$limit=10000){
 		$memberId = (is_object($memberId)) ? $memberId : new \MongoId($memberId);
 		$query = array('author._id'=>$memberId, 'currentStatus'=>array('$gte'=>self::$status['SCHEDULE']));
 		$fields = array();
@@ -325,7 +347,7 @@ class Blog extends Model {
 		return $result;
 
 	}
-	public function fetchToPublish($offset=0,$limit=10000){
+	public function fetchToPublish($offset=0,$limit=1000000){
 		$query = array('currentStatus'=>self::$status['SCHEDULE']
 						,'scheduleDate.date'=>array('$lte'=>new \MongoDate(strtotime('now')))
 		);

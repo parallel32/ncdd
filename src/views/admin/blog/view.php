@@ -137,12 +137,15 @@
                         <h2>Archives</h2>
                         <div class="top-news">
                            
-                           <a href="/blog/archives/August/2013" class="btn blue">
-                           <span>August 2013</span>
-                           <em>12 posts<em>
+                           <? foreach ($this->vars['archives'] as $year=>$months): ?>
+                           <? foreach ($months as $month=>$count): ?>
+                           <a href="/blog/archives/<?=$month?>/<?=$year?>" class="btn blue">
+                           <span><?=$month?> <?=$year?></span>
+                           <em><?=$count?> posts<em>
                            <i class="icon-archive top-news-icon"></i>
                            </a>
-
+                           <? endforeach; ?>
+                           <? endforeach; ?>
                         </div>
                         
                      </div>

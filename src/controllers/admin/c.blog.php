@@ -16,6 +16,7 @@ $app->get('/blog', function (Request $request) use ($app) {
 	
 	$blog = new Model\Blog(array(),$app);
 	$posts = $blog->fetchByStatus('PUBLISH','yes');
+	$archives = $blog->fetchArchiveCounts();
 
 	$crumbs = array(array('name'=>'DUI Blog','href'=>'/blog'));
 	$view_vars = array(
@@ -25,6 +26,7 @@ $app->get('/blog', function (Request $request) use ($app) {
 						,'description'=>"Participate in all blogs here."
 						,'crumbs'=>$crumbs
 						,'posts'=>$posts
+						,'archives'=>$archives
 						,'tags'=>Model\Blog::getAvailableTags($app)
 						);
 	return $app['view']->render('blog/index', 'default', $view_vars);
@@ -34,6 +36,7 @@ $app->get('/blog/archives/{month}/{year}', function ($month, $year, Request $req
 	
 	$blog = new Model\Blog(array(),$app);
 	$posts = $blog->fetchArchives($month,$year);
+	$archives = $blog->fetchArchiveCounts();
 
 	$crumbs = array(array('name'=>'DUI Blog','href'=>'/blog')
 					,array('name'=>'Archives for '.$month.', '.$year,'href'=>'/blog/archives/'.$month.'/'.$year)
@@ -47,6 +50,7 @@ $app->get('/blog/archives/{month}/{year}', function ($month, $year, Request $req
 						,'posts'=>$posts
 						,'month'=>$month
 						,'year'=>$year
+						,'archives'=>$archives
 						,'tags'=>Model\Blog::getAvailableTags($app)
 						);
 	return $app['view']->render('blog/index', 'default', $view_vars);
@@ -56,6 +60,7 @@ $app->get('/blog/tag/{tag}', function ($tag, Request $request) use ($app) {
 	
 	$blog = new Model\Blog(array(),$app);
 	$posts = $blog->fetchTag($tag);
+	$archives = $blog->fetchArchiveCounts();
 
 	$cat = new Model\Category(array('slug'=>'/'.$tag),$app);
 	$tagArr = $cat->findById('slug');
@@ -70,6 +75,7 @@ $app->get('/blog/tag/{tag}', function ($tag, Request $request) use ($app) {
 						,'description'=>"Participate in all blogs here."
 						,'crumbs'=>$crumbs
 						,'posts'=>$posts
+						,'archives'=>$archives
 						,'tag'=>(is_array($tagArr)) ? $tagArr['name']: 'This tag does not exist'
 						,'tags'=>Model\Blog::getAvailableTags($app)
 						);
@@ -126,6 +132,7 @@ $app->get('/blog/{blogId}/view', function ($blogId, Request $request) use ($app)
 	
 	$blog = new Model\Blog(array('_id'=>$blogId),$app);
 	$post = $blog->findById();
+	$archives = $blog->fetchArchiveCounts();
 
 	$crumbs = array(array('name'=>'DUI Blog','href'=>'/blog')
 					,array('name'=>'view','href'=>'/blog/'.$blogId.'/view')
@@ -137,6 +144,7 @@ $app->get('/blog/{blogId}/view', function ($blogId, Request $request) use ($app)
 						,'description'=>"Participate in all blogs here."
 						,'crumbs'=>$crumbs
 						,'post'=>$post
+						,'archives'=>$archives
 						,'tags'=>Model\Blog::getAvailableTags($app)
 						);
 	return $app['view']->render('blog/view', 'default', $view_vars);
