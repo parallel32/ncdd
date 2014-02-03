@@ -25,7 +25,7 @@ $utilities->get('/update-blogs', function () use ($app) {
 
     // FIRST CREATE THE CATEGORIES
     $cat_cnt=0;
-    if(false):
+    if(true):
         $oldtags = array('Breath Testing', 'Blood Testing', 'Boating Under the Influence','FAA Issues','Public Policy','Interstate Compact', 'Field Sobriety Tests', 'Drug Dui (DRE)', 'Constitutional Issues', 'Forensic Science', 'Evidence', 'Ethics', 'Recent Case Law');
         foreach ($oldtags as $oldtag):
             $doc = array(
@@ -48,14 +48,14 @@ $utilities->get('/update-blogs', function () use ($app) {
     foreach ($blogs as $blog):
         $new_blog_tags = array();
         if(is_string($blog['tags'])){
-            foreach ($availableTags as $id => $name):
+            foreach ($availableTags as $id => $tag):
                 $blog_tags_arr = explode(',', $blog['tags']);
                 if(is_string($blog_tags_arr)){
                     $blog_tags_arr = array($blog_tags_arr);
                 }
                 
                 for ($i=0; $i < count($blog_tags_arr); $i++) { 
-                    if(strpos($blog_tags_arr[$i],$name) !== false){
+                    if(strpos($blog_tags_arr[$i],$tag['name']) !== false){
                         //error_log('blog:'.$blog['headline'].'  '.$id.' name:'.$name);
                         $catObj = new Model\Category(array('_id'=>$id),$app);
                         $catObj->findById();
