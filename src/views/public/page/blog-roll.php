@@ -66,10 +66,9 @@
                                                 <li><h5>TAGS:</h5></li>
                                                 
                                                 <? if(!empty($post['tags'])):
-                                                      $tags = explode(',',$post['tags']);
-                                                      foreach($tags as $tag):
+                                                      foreach($post['tags'] as $tag):
                                                 ?>
-                                                <li><a href="/blog/tag/<?=$tag?>">#<?=$tag?></a> </li>
+                                                <li><a href="/blog/tag<?=$tag['slug']?>">#<?=$tag['name']?></a> </li>
                                                 <?    endforeach;
                                                    endif;
                                                 ?>
@@ -100,7 +99,7 @@
                                             <h4 class="asideTitle">Tags</h4>
                                             <ul class="tagList inline">
                                                 <? foreach($this->vars['tags'] as $tag): ?>
-                                                <li class="tagListItem"><a href="/blog/tag/<?=$tag?>" class="tagListLink"><?=$tag?></a></li>
+                                                <li class="tagListItem"><a href="/blog/tag<?=$tag['slug']?>" class="tagListLink"><?=$tag['name']?></a></li>
                                                 <? endforeach; ?>
                                             </ul>
                                         </div>

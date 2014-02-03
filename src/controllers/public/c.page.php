@@ -127,7 +127,7 @@ $app->get('/blog', function (Request $request) use ($app) {
 	$posts = $blog->fetchByStatus('PUBLISH','yes');
 	
 	$view_vars['posts'] = $posts;
-	$view_vars['tags'] = Model\Blog::getAvailableTags();
+	$view_vars['tags'] = Model\Blog::getAvailableTags($app);
 
 	return $app['view']->render('page/blog-roll', 'content',$view_vars);
 });
@@ -142,7 +142,7 @@ $app->get('/blog/archives/{month}/{year}', function ($month, $year, Request $req
 	$posts = $blog->fetchArchives($month,$year);
 	
 	$view_vars['posts'] = $posts;
-	$view_vars['tags'] = Model\Blog::getAvailableTags();
+	$view_vars['tags'] = Model\Blog::getAvailableTags($app);
 
 	return $app['view']->render('page/blog-roll', 'content',$view_vars);
 });
@@ -155,9 +155,13 @@ $app->get('/blog/tag/{tag}', function ($tag, Request $request) use ($app) {
 
 	$blog = new Model\Blog(array(),$app);
 	$posts = $blog->fetchTag($tag);
-	
+		
 	$view_vars['posts'] = $posts;
-	$view_vars['tags'] = Model\Blog::getAvailableTags();
+	$view_vars['tags'] = Model\Blog::getAvailableTags($app);
+
+	$cat = new Model\Category(array('slug'=>'/'.$tag),$app);
+	$tagArr = $cat->findById('slug');
+	$view_vars['page']['headline'] = (is_array($tagArr)) ? 'Blog - '.$tagArr['name']: 'Blog - This tag does not exist';
 
 	return $app['view']->render('page/blog-roll', 'content',$view_vars);
 });
@@ -173,7 +177,7 @@ $app->get('/blog/{id}/{slug}', function ($id, $slug, Request $request) use ($app
 	$post = $blog->findById();
 	
 	$view_vars['post'] = $post;
-	$view_vars['tags'] = Model\Blog::getAvailableTags();
+	$view_vars['tags'] = Model\Blog::getAvailableTags($app);
 	
 	return $app['view']->render('page/blog-post', 'content',$view_vars);
 });

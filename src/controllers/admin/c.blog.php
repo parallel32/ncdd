@@ -57,6 +57,9 @@ $app->get('/blog/tag/{tag}', function ($tag, Request $request) use ($app) {
 	$blog = new Model\Blog(array(),$app);
 	$posts = $blog->fetchTag($tag);
 
+	$cat = new Model\Category(array('slug'=>'/'.$tag),$app);
+	$tagArr = $cat->findById('slug');
+
 	$crumbs = array(array('name'=>'DUI Blog','href'=>'/blog')
 					,array('name'=>'Tag: '.$tag, 'href'=>'/blog/tag/'.$tag)
 	);
@@ -67,7 +70,7 @@ $app->get('/blog/tag/{tag}', function ($tag, Request $request) use ($app) {
 						,'description'=>"Participate in all blogs here."
 						,'crumbs'=>$crumbs
 						,'posts'=>$posts
-						,'tag'=>$tag
+						,'tag'=>(is_array($tagArr)) ? $tagArr['name']: 'This tag does not exist'
 						,'tags'=>Model\Blog::getAvailableTags($app)
 						);
 	return $app['view']->render('blog/index', 'default', $view_vars);

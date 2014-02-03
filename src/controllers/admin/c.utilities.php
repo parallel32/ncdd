@@ -17,6 +17,66 @@ $utilities = $app['controllers_factory'];
 $utilities->before($mustbeADMIN);
 
 
+//////////////////////////////////////////
+// update blogs with new db driven tags //
+//////////////////////////////////////////
+
+$utilities->get('/update-blogs', function () use ($app) {
+
+    // FIRST CREATE THE CATEGORIES
+    $cat_cnt=0;
+    if(false):
+        $oldtags = array('Breath Testing', 'Blood Testing', 'Boating Under the Influence','FAA Issues','Public Policy','Interstate Compact', 'Field Sobriety Tests', 'Drug Dui (DRE)', 'Constitutional Issues', 'Forensic Science', 'Evidence', 'Ethics', 'Recent Case Law');
+        foreach ($oldtags as $oldtag):
+            $doc = array(
+                'currentType'=>Model\Category::$type['BLOG']
+                ,'name'=>$oldtag
+                ,'slug'=>'/'.Model\Category::slugify($oldtag)
+            );
+        
+            $category = new Model\Category($doc,$app);
+            $category->insert();
+            
+            $cat_cnt++;
+        endforeach;
+    endif;    
+    // SECOND UPDATE THE BLOGS
+    $blog = new Model\Blog(array(),$app);
+    $blogs = $blog->find();
+    $blog_cnt = 0;
+    $availableTags = Model\Blog::getAvailableTags($app);
+    foreach ($blogs as $blog):
+        $new_blog_tags = array();
+        if(is_string($blog['tags'])){
+            foreach ($availableTags as $id => $name):
+                $blog_tags_arr = explode(',', $blog['tags']);
+                if(is_string($blog_tags_arr)){
+                    $blog_tags_arr = array($blog_tags_arr);
+                }
+                
+                for ($i=0; $i < count($blog_tags_arr); $i++) { 
+                    if(strpos($blog_tags_arr[$i],$name) !== false){
+                        //error_log('blog:'.$blog['headline'].'  '.$id.' name:'.$name);
+                        $catObj = new Model\Category(array('_id'=>$id),$app);
+                        $catObj->findById();
+
+                        $new_blog_tags[] = $catObj;
+                    }
+                }
+            endforeach;
+            
+            $blogObj = new Model\Blog(array('_id'=>$blog['_id'],'tags'=>$new_blog_tags),$app);
+            //echo "<pre>";print_r($blogObj->__toArray(false));echo "</pre>";
+            $blogObj->saveSafe();
+
+            $blog_cnt++;
+        }
+    endforeach;
+
+
+
+    return new Response('categories made: '.$cat_cnt.' blogs updated: '.$blog_cnt,200,array('Content-Type' => 'text/html')); 
+});
 //////////////////////
 // migrate products //
 //////////////////////

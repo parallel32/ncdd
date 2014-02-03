@@ -99,7 +99,7 @@ class Blog extends Model {
 		
 		if(is_string($doc['tags']) && strpos($doc['tags'],',') !== false){
 			$doc['tags'] = explode(',', $doc['tags']);
-			
+
 		}
 		if(!is_array($doc['tags'])){
 			$doc['tags'] = array($doc['tags']);
@@ -265,9 +265,9 @@ class Blog extends Model {
 
 	}
 	public function fetchTag($tag, $offset=0,$limit=100){
-		$tag = (strpos($tag,'(') !== false) ? str_replace('(','\(',str_replace(')','\)',$tag)) : $tag;
-		$search = new \MongoRegex("/".$tag."/i");
-		$query = array('tags'=>$search,'currentStatus'=>self::$status['PUBLISH'],'published'=>'yes');
+
+		$query = array('tags.slug'=>'/'.$tag,'currentStatus'=>self::$status['PUBLISH'],'published'=>'yes');
+		//error_log('query'.print_r($query,true));
 		$fields = array();
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('publishDate.date'=>-1),(int)$offset,(int)$limit);
 
@@ -352,7 +352,7 @@ class Blog extends Model {
 	}
 	public static function getAvailableTags(Application $app){
 		$category = new Category(array('currentType'=>Category::$type['BLOG']),$app);
-		$tags = $category->fetchByTypeFormatted();
+		$tags = $category->fetchByTypeFormattedSlug();
 		return $tags;
 		
 		//return array('Breath Testing', 'Blood Testing', 'Boating Under the Influence','FAA Issues','Public Policy','Interstate Compact', 'Field Sobriety Tests', 'Drug Dui (DRE)', 'Constitutional Issues', 'Forensic Science', 'Evidence', 'Ethics', 'Recent Case Law');

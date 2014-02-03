@@ -49,8 +49,8 @@ Need to edit each product to set the category
 
 Blog:
 -----
-Need to create the blogs
-Need to edit each blog to re-set the tags.
+need to create the blog tags
+run script to fix all blog tags
 
 SSL:
 ---- 

@@ -94,6 +94,19 @@ class Category extends Model {
 			return array();
 		}
 	}
+	public function fetchByTypeFormattedSlug($offset=0,$limit=1000){
+        $fields = array();
+        $cat = array();
+		$categories = $this->find($query=array('currentType'=>$this->currentType),$fields,$slaveOkay=true,$sort=array('name'=>1),$offset,$limit);
+		if(!empty($categories)){
+			foreach($categories as $category):
+				$cat[$category['_id']->__toString()] = array('name'=>$category['name'],'slug'=>$category['slug']);
+			endforeach;
+			return $cat;
+		}else{
+			return array();
+		}
+	}
 	public static function slugify($str){
 
 		$slugify = new \Cocur\Slugify\Slugify();//for iconv translit

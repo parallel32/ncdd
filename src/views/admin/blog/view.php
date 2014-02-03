@@ -29,10 +29,9 @@
                                     <li>
                                        <i class="icon-tags"></i> 
                                        <? if(!empty($post['tags'])):
-                                          $tags = explode(',',$post['tags']);
-                                          foreach($tags as $tag):
+                                          foreach($post['tags'] as $tag):
                                     ?>
-                                    <a href="/blog/tag/<?=$tag?>"><?=$tag?></a> 
+                                    <a href="/blog/tag<?=$tag['slug']?>"><?=$tag['name']?></a> 
                                     <?    endforeach;
                                        endif;
                                     ?>
@@ -131,7 +130,7 @@
                            <? 
                               foreach($this->vars['tags'] as $tag):
                            ?>
-                              <li><a href="/blog/tag/<?=$tag?>"><i class="icon-tags"></i> <?=$tag?></a></li>
+                              <li><a href="/blog/tag<?=$tag['slug']?>"><i class="icon-tags"></i> <?=$tag['name']?></a></li>
                            <? endforeach;?>
                         </ul>
                         <div class="space20"></div>
