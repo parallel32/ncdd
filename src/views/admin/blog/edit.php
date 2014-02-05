@@ -103,13 +103,13 @@
                                     <select class="tags" multiple="multiple" id="tags" name="doc[tags][]" style="position: absolute; left: -9999px;">
                                        <? 
                                        foreach($this->vars['availableTags'] as $k=>$v): 
-                                          
                                           $selected = false;
                                           if(!empty($this->vars['blog']) && array_key_exists('tags',$this->vars['blog'])){
                                              if(is_array($this->vars['blog']['tags'])) {
+                                                
                                                 foreach($this->vars['blog']['tags'] as $tag):
                                                    
-                                                   if(strpos($tag['name'],$v) !== false){
+                                                   if(strpos($tag['name'],$v['name']) !== false){
 
                                                       $selected = true;   
                                                    }
@@ -121,7 +121,7 @@
                                              }
                                           }
                                        ?>
-                                       <option <?=($selected) ? ' selected' :'' ?> value="<?=$k?>"><?=$v?></option>
+                                       <option <?=($selected) ? ' selected' :'' ?> value="<?=$k?>"><?=$v['name']?></option>
                                        <? endforeach; ?>
                                     </select>
                                  <? else: ?>
