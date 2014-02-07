@@ -9,7 +9,7 @@
                                 <?=$this->vars['page']['body']?>
                             </p>
                             <div class="row-fluid sessionSeminarsDetailPage">
-                                <div class="span8 pull-left">
+                                <div class="span12 pull-left">
                                     <? if(!empty($this->vars['seminar'])):?>
                                     <? $seminar = $this->vars['seminar']; ?>
                                     <? $slug = (array_key_exists('slug',$seminar)) ? '/'.$seminar['slug'] : ''; ?>
@@ -26,6 +26,7 @@
                                                     <img src="<?=$seminar['image']['urls']['large']['CDN'] ?>" alt="" style="width:60%"><!-- class="bigPostMainImg" -->
                                                     <? } ?>
                                                 </div>
+                                                <br>
                                                 <p class="postDescr"><?=$seminar['description']?></p>
                                             </div>
                                             <div class="postFooter">
@@ -44,7 +45,10 @@
                                     <? endif; ?>
                                     
                                 </div>
-                                <div class="pull-right span4 tab-content">
+                                                            
+                            </div>
+                            <div class="row-fluid sessionSeminarsDetailPage">
+                                <div class="pull-left span12 tab-content">
                                     <div class="tab-pane active" id="sessionsSeminarsPage">
                                         <? foreach($seminar['agendas'] as $agenda): ?>
                                         <? if(!empty($agenda['timeSlots'])): ?>
@@ -75,34 +79,8 @@
                                         <? endforeach; ?>
                                     </div>
                                 </div>
-                                
-
-
-
-                                
-
-
-
-
                             </div>
+                                
                             <!-- -->
                         </div>
                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                            

@@ -58,11 +58,11 @@
 		$('.remove-seminar').click(function(e){
 			e.preventDefault();
 			$('#save-success .modal-body p').html($(this).attr('data-name'));
-			$('#save-success .green').attr('data-id',$(this).attr('data-id'));
+			$('#save-success .red').attr('data-id',$(this).attr('data-id'));
 		    $('#save-success').modal({keyboard: false});
 		});
 		// modal buttons
-		$('#save-success .green').click(function(e){
+		$('#save-success .btn.red').click(function(e){
 			Seminar.delete($(this).attr('data-id'));
 		});
 		$('#save-success .cancel').click(function(e){

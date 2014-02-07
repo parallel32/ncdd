@@ -117,7 +117,13 @@
                                         <h4 class="text-center"><a href="/sessions-and-seminars/<?=$seminar['_id']?><?=$slug?>"><?=$seminar['headline']?></a></h4>
                                         <h5 class="text-center"><a href="/sessions-and-seminars/<?=$seminar['_id']?><?=$slug?>"><?=(array_key_exists('location',$seminar)) ? $seminar['location']: '';?></a></h5>
                                         <p class="data text-center"><?=$seminar['startDate']['monthDay']?> - <?=$seminar['endDate']['monthDay']?>, <?=$seminar['startDate']['year']?></p>
+                                        <? if (strlen($seminar['description']) > 500){ ?>
+                                        <p class="descr text-center"><?=substr($seminar['description'],0,strpos($seminar['description'], ' ',500))?> ...</p>
+                                        <p><a href="/sessions-and-seminars/<?=$seminar['_id']?><?=$slug?>">Read More</a></p>
+                                        <? }else{ ?>
                                         <p class="descr text-center"><?=$seminar['description']?></p>
+                                        <p><a href="/sessions-and-seminars/<?=$seminar['_id']?><?=$slug?>">Read More</a></p>
+                                        <? } ?>
                                     </div>
                                 </div>
                             </li>

@@ -9,7 +9,7 @@
                                 <?=$this->vars['page']['body']?>
                             </p>
                             <div class="row-fluid">
-                                <div class="span8 pull-left">
+                                <div class="span12 pull-left">
                                     <? if(!empty($this->vars['seminars'])):?>
                                     <? foreach($this->vars['seminars'] as $seminar): ?>
                                     <? $slug = (array_key_exists('slug',$seminar)) ? '/'.$seminar['slug'] : ''; ?>
@@ -26,6 +26,7 @@
                                                     <img src="<?=$seminar['image']['urls']['large']['CDN'] ?>" alt="" style="width:60%"><!-- class="bigPostMainImg" -->
                                                     <? } ?>
                                                 </div>
+                                                <br>
                                                 <p class="postDescr"><?=substr($seminar['description'],0,500)?> … <a href="/sessions-and-seminars/<?=$seminar['_id']?><?=$slug?>">read more</a></p>
                                             </div>
 
