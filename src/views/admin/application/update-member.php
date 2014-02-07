@@ -544,8 +544,8 @@
                            <label class="control-label"></label>
                            <div class="controls">
                               <select class=" m-wrap span12 membershipDues" name="doc[membershipDues]">
-                                 <option value="175">1-5 years in law practice ($175 annual dues) </option>
                                  <option value="225">6 or more years in law practice ($225 annual dues)</option>
+                                 <option value="175">1-5 years in law practice ($175 annual dues) </option>
                                  <option value="50"> Public Defender ($50 annual dues)</option>
                               </select>
                            </div>
