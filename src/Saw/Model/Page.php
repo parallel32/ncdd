@@ -22,7 +22,7 @@ class Page extends Model {
 	static public $type = array('MANAGED'=>5,'DYNAMIC'=>10);
 	static public $typeReversed = array(5=>'MANAGED',10=>'DYNAMIC');
 	public $currentType;
-	static public $sections = array('DISCOVER','LEARN','DUI-LAWS-USA');
+	static public $sections = array('DISCOVER','LEARN','DUI-LAWS-USA','NO-SECTION');
 	public $slug;
 	public $headline;
 	public $body;

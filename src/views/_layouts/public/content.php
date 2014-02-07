@@ -6,13 +6,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="/assets/stylesheets/bootstrap.css?v=2" rel="stylesheet" media="screen">
         <link href="/assets/stylesheets/bootstrap-responsive.css" rel="stylesheet">
-        <link href="/assets/stylesheets/screenv4.5.css?v=22222222" rel="stylesheet">  <!--4522, 3364-->
+        <link href="/assets/stylesheets/screenv4.7.css?v=22222222" rel="stylesheet">  <!--4522, 3364-->
         <link href="/assets/stylesheets/responsive.css" rel="stylesheet">
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script src="/assets/js/jquery-1.10.1.min.js"></script>
+        <script src="/assets/js/jquery.blockui.min.js"></script>
         <script src="/assets/js/bootstrap.min.js"></script>
         <script src="/assets/js/custom.js"></script>
-        <link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
         <style>
+        @font-face {
+  font-family: 'Bree Serif';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Bree Serif'), local('BreeSerif-Regular'), url(/assets/fonts/LQ7WLTaITDg4OSRuOZCps73hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
             .mainMenu .tab-content .tab-pane{display:none}
 
 .mainMenu .fullWidthDropDown.dropdown-menu .close{replace right:0px with left:220px}
@@ -30,6 +36,8 @@
 .dropdown-menu.discover.fullWidthDropDown.specialwidthsetting { padding:0 0 0 20px; width:30%;}
 .dropdown-menu.learn.fullWidthDropDown.specialwidthsetting { padding:0 0 0 20px; width:30%;}
         </style>
+            <link href="/assets/stylesheets/bootstrap-modal.css" rel="stylesheet" type="text/css"/>
+
     </head>
     <body>
         <div class="wrapper">

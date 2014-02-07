@@ -21,14 +21,14 @@
                                             <? if (!empty($product['image'])): ?>
                                             <div class="pull-left text-center">
                                                 <div class="productImg">
-                                                    <div id="wrap" style="top:0px;z-index:9999;position:relative;"><a href="<?=$product['image']['urls']['large']['CDN'] ?>" class="cloud-zoom" id="zoom1" rel="adjustX: 20, adjustY:-4, zoomWidth:500, zoomHeight:500" style="position: relative; display: block;">
+                                                    <div id="wrap" style="top:0px;z-index:99;position:relative;"><a href="<?=$product['image']['urls']['large']['CDN'] ?>" class="cloud-zoom" id="zoom1" rel="adjustX: 20, adjustY:-4, zoomWidth:500, zoomHeight:500" style="position: relative; display: block;">
                                                      <img src="<?=$product['image']['urls']['large']['CDN'] ?>" width="242" height="302" alt="" title="" style="display: block;">
                                                     </a></div>
                                                 </div>
                                                 <p class="rollover">Roll over image to zoom in</p>
                                             </div>
                                             <? endif; ?>
-                                            <div class="pull-right productInfo">
+                                            <div class="pull-right productInfo productDescr">
                                                 <div class="productTitleBlock">
                                                     <a href="/store/<?=$product['_id']?><?=$product['slug']?>" class="productTitle pull-left"><?=$product['name']?></a>
                                                     <? 
@@ -40,58 +40,37 @@
                                                     <? endif; ?>
                                                     
                                                 </div>
-                                                <p class="descr"><?=$product['description']?></p>
-                                                <!--
-                                                <div class="productInfoBlock">
-                                                    <form action="get" class="pull-left">
-                                                        <div class="quantity pull-left"><label for="qauntity">quantity</label><input type="text" value="1"></div>
-                                                        <input type="submit" value="" class="pull-left">
+                                                <div class="productInfoBlock pull-right">
+                                                    <form class="pull-left">
+                                                        <div class="quantity pull-left"><label for="qauntity">quantity</label><input class="quantity-input" type="text" value="1"></div>
+                                                        <input data-id="<?=$product['_id']?>" type="button" value="" class="addToCardBtn pull-left">
                                                     </form>
                                                 </div>
-                                                -->
+                                                <p class="descr"><?=$product['description']?></p>
+                                                
+                                                
+                                                
                                             </div>
                                         </li>
                                         <? endforeach; ?>
                                         
                                     </ul>
                                     <p class="subtitle"><?=$this->vars['page']['body']?></p>
-                                    <!--
-                                    <h3 class="relatedSubtitle">RELATED PRODUCTS</h3>
-                                    <ul class="thumbnails">
-                                        <li class="span4">
-                                            <div class="thumbnail text-center">
-                                                <div class="thumbnailBd">
-                                                    <h3>NCDD Logo Polartec Fleece Pullover Zip</h3>
-                                                    <p class="price">$25.00</p>
-                                                    <a href="#" class="addToCardBtn"></a>
-                                                    <a href="#" class="more">more info  &gt;</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="span4">
-                                            <div class="thumbnail text-center">
-                                                <div class="thumbnailBd">
-                                                    <h3>NCDD Logo Polartec Fleece Pullover Zip</h3>
-                                                    <p class="price">$25.00</p>
-                                                    <a href="#" class="addToCardBtn"></a>
-                                                    <a href="#" class="more">more info  &gt;</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="span4">
-                                            <div class="thumbnail text-center">
-                                                <div class="thumbnailBd">
-                                                    <h3>NCDD Logo Polartec Fleece Pullover Zip</h3>
-                                                    <p class="price">$25.00</p>
-                                                    <a href="#" class="addToCardBtn"></a>
-                                                    <a href="#" class="more">more info  &gt;</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    -->
+
                                 </div>
                             </div>
                         </div>
                     </div>
             </div>
+
+<?=$this->element('js/Namespace.js');?>
+<?=$this->element('js/BlockUI.Class.js');?>
+<?=$this->element('js/FormGetClass.js');?>
+<?=$this->element('js/FormPostClass.js');?>
+<?=$this->element('js/ShoppingCart.js');?>
+<script>
+jQuery(document).ready(function() {
+    io.saw.ShoppingCart.init();
+       
+});      
+</script>

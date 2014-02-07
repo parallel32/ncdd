@@ -4304,7 +4304,7 @@ input[type="checkbox"] {
   margin: 0 auto;
 }
 /* line 4312, ../sass/screen.scss */
-.content .NCDDListDetailPage .productList .productListItem .productInfo .productDescr .quantityBox form input[type="submit"] {
+.content .NCDDListDetailPage .productList .productListItem .productInfo .productDescr .quantityBox form input[type="button"] {
   width: 60px;
   height: 60px;
   margin: 10px 0 0 15px;
@@ -4419,7 +4419,7 @@ input[type="checkbox"] {
   text-align: center;
 }
 /* line 4437, ../sass/screen.scss */
-.content .NCDDListDetailPage .productList .productListItem .productInfoBlock form input[type="submit"] {
+.content .NCDDListDetailPage .productList .productListItem .productInfoBlock form input[type="button"] {
   width: 52px;
   height: 52px;
   margin: 10px 0 0 15px;

@@ -24,7 +24,7 @@ class Product extends Model {
 	public $price;
 	public $memberPrice;
 	public $shippingPrice;
-	public $additionalNotes;
+	public $purchaseInstructions;
 	public $image;
 	public $category;
 	public $slug;
@@ -36,7 +36,6 @@ class Product extends Model {
 		$metadata->addPropertyConstraint('price', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('memberPrice', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('shippingPrice', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		$metadata->addPropertyConstraint('additionalNotes', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('description', new Constraints\NotBlank(array('message'=>'cannot be blank')));
     	$metadata->addPropertyConstraint('slug', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addConstraint(new Callback(array(
@@ -105,7 +104,7 @@ class Product extends Model {
 		$this->price = $doc['price'];
 		$this->shippingPrice = $doc['shippingPrice'];
 		$this->memberPrice = $doc['memberPrice'];
-		$this->additionalNotes = $doc['additionalNotes'];
+		$this->purchaseInstructions = $doc['purchaseInstructions'];
 		$this->image = $doc['image'];
 		$this->currentStatus = (!empty($doc['currentStatus'])) ? (int)$doc['currentStatus']: $doc['currentStatus'];
 		
@@ -141,7 +140,7 @@ class Product extends Model {
 		$this->price = $this->price ?: 0;
 		$this->memberPrice= $this->memberPrice ?: 0;
 		$this->shippingPrice = $this->shippingPrice ?: 0;
-		$this->additionalNotes = $this->additionalNotes ?: '';
+		$this->purchaseInstructions = $this->purchaseInstructions ?: '';
 		$this->add = $this->add ?: 'yes';
 		$this->category = $this->category ?: new \stdClass();
 
@@ -175,7 +174,8 @@ class Product extends Model {
 
 	}
 	public function fetchByCategory($category='', $offset=0,$limit=100){
-		$query = (!empty($category)) ? array('category._id'=>new \MongoId($category),'currentStatus'=>self::$status['PUBLISH']): array();
+		if(!empty($category)) $category = (is_object($category)) ? $category : new \MongoId($category);
+		$query = (!empty($category)) ? array('category._id'=>$category,'currentStatus'=>self::$status['PUBLISH']): array();
 		$fields = array();
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('name'=>1),(int)$offset,(int)$limit);
 		return $result;

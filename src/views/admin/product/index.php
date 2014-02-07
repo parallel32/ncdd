@@ -132,7 +132,7 @@
                                  <th class="hidden-phone">Member $</th>
                                  <th class="hidden-phone">Shipping $</th>
                                  <th class="hidden-480">Status</th>
-                                 <th class="hidden-480">Add'l Notes</th>
+                                 <th class="hidden-480">Purchase Instructions</th>
                                  <th class="hidden-480">Category</th>
                                  <th class=""></th>
                               </tr>
@@ -156,7 +156,7 @@
                                     }
                                  ?>
                                  <td class="hidden-480 "><?=$currentStatus?></td>
-                                 <td class="center hidden-480 "><?=$product['additionalNotes']?></td>
+                                 <td class="center hidden-480 "><?=(array_key_exists('purchaseInstructions', $product)) ? $product['purchaseInstructions'] : '';?></td>
                                  <td class="center hidden-480 "><?=(is_array($product['category'])) ? $product['category']['name']: $product['category'];?></td>
                                  <td class=" ">
                                     <a data-id="<?=$product['_id']?>" class="btn blue mini edit"><i class=" "></i> Edit</a>

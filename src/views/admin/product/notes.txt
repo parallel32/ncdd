@@ -11,15 +11,11 @@ Workflow:
 catalog management -> admin can one photo and add a field for purchase notes like what size and color shirt to order.
 purchase -> email admin to fulfill order -> email customer a receipt -> if member create the payment record.
 
-need categories (hardcoded for now)
-
-NCDD Store will redirect to the catalog on public site for members and management for admin
 
 Grids:
 new orders
 products
 fulfilled orders
-currently active shopping carts (if i have time)
 
 
 
@@ -42,15 +38,10 @@ Aside from issues that arise, I'd like to finish these items before we re-examin
 Deployment notes:
 ==================
 
-Store:
-------
-Need to create the categories
-Need to edit each product to set the category
-
-Blog:
------
-need to create the blog tags
-run script to fix all blog tags
+Create Managed Pages:
+---------------------
+Create shopping-cart (slug) page on the pages manager 
+Create the checkout pages as well.
 
 SSL:
 ---- 

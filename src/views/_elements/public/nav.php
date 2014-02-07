@@ -10,17 +10,18 @@
                             <div class="nav-collapse collapse nav-collapse-top">
                                 <ul class="pull-left nav">
                                     <li class="dropdown signIn">
-                                        <a href="http://<?=SAW_ADMIN_WEBSITE ?>" class="" >Member <b>Sign in</b></a>
+                                        <? $user = $this->app['session']->get('user');?>
+                                        <? if(is_array($user) && array_key_exists('accessLevel', $user)){ ?>
+                                        <a href="http://<?=SAW_ADMIN_WEBSITE ?>" class="dropdown-toggle" data-toggle="dropdown" id="memberDropDown">Welcome, <?=$user['displayName']?></a>
+                                        <? } else { ?>
+                                        <a href="http://<?=SAW_ADMIN_WEBSITE ?>" >Member <b>Sign in</b></a>
+                                        <? } ?>
                                         <ul class="dropdown-menu" role="menu" aria-labelledby="memberDropDown">
                                             <li role="menuitem">
-                                                <form action="get">
-                                                    <input type="text" placeholder="username" class="username">
-                                                    <input type="text" placeholder="password" class="password">
-                                                    <div class="clearfix">
-                                                        <label for="checkbox1" class="checkbox pull-left"><input type="checkbox" id="checkbox1" checked>Remember me</label>
-                                                        <a href="#" class="pull-right">Forgot Password?</a>
-                                                    </div>
-                                                    <input type="submit" class="btn" value="Sign in">
+                                                <form>
+                                                    <p>Welcome, <?=$user['displayName']?> </p>
+                                                    <a class="btn" href="http://<?=SAW_ADMIN_WEBSITE ?>" class="pull-right">Go To Member Portal</a>
+                                                    <a class="btn" href="http://<?=SAW_ADMIN_WEBSITE ?>/logout" class="pull-right">Log Out</a>
                                                 </form>
                                             </li>
                                         </ul>
@@ -41,7 +42,7 @@
                                  <ul class="pull-right nav navbar-form">
                                     <li><a href="/contact">Contact</a></li>
                                     <li class="sep"></li>
-                                    <li class="cart"><a href="/coming-soon"><img src="/assets/img/cart.png" alt=""><!--<sup>3</sup>--></a></li>
+                                    <li class="cart"><a href="/shopping-cart"><img src="/assets/img/cart.png" alt=""><sup id="sup-cart"><?=call_user_func(function($app){ $cart = $app['session']->get('shoppingcart'); return (is_array($cart) && !empty($cart) && count($cart) > 0) ? count($cart): '';},$this->app)?></sup></a></li>
                                     <li class="sep"></li>
                                     <li>
                                         <form action="/coming-soon"><input type="text" class="search span2" placeholder="search"><input type="submit" class="searchBtn" value=""></form>

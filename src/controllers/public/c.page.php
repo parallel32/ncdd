@@ -574,10 +574,87 @@ $app->get('/store/{id}/{slug}', function ($id, $slug, Request $request) use ($ap
 	$product = new Model\Product(array('_id'=>$id),$app);
 	$product = $product->findById();
 
+	$categoryProd = new Model\Product($doc=array(), $app);
+	$catprods = $categoryProd->fetchByCategory($product['category']['_id']);
+	$related_products = array();
+	for ($i=0; $i < 3; $i++) { 
+		array_push($related_products, $catprods[mt_rand(0,count($catprods)-1)]);
+	}
 	$view_vars['product'] = $product;
+	$view_vars['related_products'] = $related_products;
 	
 	return $app['view']->render('page/store-product', 'content',$view_vars);
 });
+
+////////////////////
+// 	SHOPPING CART //
+////////////////////
+$app['updateShoppingCart'] = $app->protect(function ($doc) use ($app) {
+	
+	$productObj = new Model\Product(array('_id'=>$doc['productId']),$app);
+	$product = $productObj->findById();
+
+	if(array_key_exists('preference', $doc) && !empty($product['purchaseInstructions']) && empty($doc['preference'])){
+		
+		$fields[] = array('name'=>'preference',
+						  'message'=>'Please specify your preference',
+						  'invalid_value'=>'');
+		throw new Saw\Model\Exceptions\DomainException($productObj::$invalidFieldsMessage, $fields);
+	} 
+
+	$product['quantity'] = $doc['quantity'];
+	$product['preference'] = (array_key_exists('preference', $doc)) ? $doc['preference']: '';
+
+	$product_order = new Model\ProductOrder($product,$app);
+	$product_order = $product_order->__toArray(false);
+
+	$product_arr = array($product_order['_id']->__toString()=>$product_order);
+	$shoppingcart = $app['session']->get('shoppingcart');
+
+	if(empty($shoppingcart)){
+		$app['session']->set('shoppingcart',$product_arr);
+	}else{
+		$cart = array_merge($shoppingcart,$product_arr);
+		$app['session']->set('shoppingcart',$cart);		
+	}
+	
+});
+// get shopping cart
+$app->get('/shopping-cart', function (Request $request) use ($app) {
+	$view_vars=array();
+	$page_vars = $app['get_pages']('shopping-cart');
+	$view_vars = array_merge($page_vars,$view_vars);
+
+	$view_vars['cart_items'] = $app['session']->get('shoppingcart');
+	
+	return $app['view']->render('page/shopping-cart', 'content',$view_vars);
+});
+// add to shopping cart
+$app->post('/shopping-cart/add', function (Request $request) use ($app) {
+	$doc = $request->get('doc');
+
+	$app['updateShoppingCart']($doc);
+
+	return new Response(json_encode(array('message' =>'success')), 200,array('Content-Type' => 'application/json'));
+});
+$app->get('/shopping-cart/add/{productId}/{quantity}', function ($productId, $quantity, Request $request) use ($app) {
+	$doc['productId'] = $productId;
+	$doc['quantity'] = (!empty($quantity)) ? $quantity: 1;
+
+	$app['updateShoppingCart']($doc);
+
+	return new Response(json_encode(array('message' =>'success')), 200,array('Content-Type' => 'application/json'));
+})->value('productId','')
+->value('quantity',1);
+
+// remove from shopping cart
+$app->get('/shopping-cart/remove/{productId}', function ($productId, Request $request) use ($app) {
+	$cart = $app['session']->get('shoppingcart');
+	unset($cart[$productId]);
+	$app['session']->set('shoppingcart',$cart);
+	return new Response(json_encode(array('message' =>'success')), 200,array('Content-Type' => 'application/json'));
+})->value('productId','');
+
 
 
 ////////////////////////

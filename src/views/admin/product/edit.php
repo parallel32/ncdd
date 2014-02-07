@@ -97,18 +97,14 @@
                            </div>
                            <!--/span-->
                         </div>
-                        <h3 class="form-section text-info"><strong>Additional Notes</strong></h3>
-                        <p>Does the customer need to add their preference when purchasing this product?  For example, if this product is a T-shirt the answer is "yes" the customer would need to enter the T-shirt size and color.</p>
-                        <p>If the answer is "yes" then these instructions should be added to the end of the description like this:  (at the end of description) "Please select your size and by entering it below.  We have Small, Medium, and Large sizes and our colors are Red or Blue.</p>
+                        <h3 class="form-section text-info"><strong>Purchase Instructions</strong></h3>
+                        <p>Enter the purchase instructions here.  <br><br><strong>For example:</strong><br> "We have Small, Medium, and Large sizes.  We also have Red, Blue, Black and Pink colors.  Please tell us what you'd like.  If you select a quantity of more than one, please note what you would like for each item."</p>
                         <div class="row-fluid">
                            <div class="span12 ">
                               <div class="control-group">
-                              <label class="control-label">Additional Notes</label>
+                              <label class="control-label">Purchase Instructions (if none, leave blank)</label>
                               <div class="controls">
-                                 <select class="span6 additionalNotes" id="additionalNotes" name="doc[additionalNotes]" style="">
-                                    <option <?=(!empty($this->vars['additionalNotes']) && array_key_exists('additionalNotes',$this->vars['product']) && $this->vars['additionalNotes'] == 'no') ? ' selected' :'' ?> value="no">No</option>
-                                    <option <?=(!empty($this->vars['additionalNotes']) && array_key_exists('additionalNotes',$this->vars['product']) && $this->vars['additionalNotes'] == 'yes') ? ' selected' :'' ?> value="yes">Yes</option>
-                                 </select>
+                                 <textarea rows="4" class="span6 purchaseInstructions" id="purchaseInstructions" name="doc[purchaseInstructions]"><?=(!empty($this->vars['product']['purchaseInstructions']) && array_key_exists('purchaseInstructions',$this->vars['product'])) ? $this->vars['product']['purchaseInstructions'] :'' ?></textarea>
                               </div>
                            </div>
                            </div>
@@ -228,9 +224,11 @@
          </div>
          <!-- END PAGE -->
          <?=$this->element('js/Product.js');?>
+         <?=$this->element('js/ClearField.js');?>
          <script>
          jQuery(document).ready(function() {    
             io.saw.Product.init();
+            io.saw.ClearField.init({formArr:['#saw-form']});
 
             window.editor = new SnapEditor.InPlace("description", {
                path: "/assets/snapeditor",

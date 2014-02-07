@@ -24,7 +24,7 @@
                                             <? if (!empty($product['image'])): ?>
                                             <div class="pull-left text-center">
                                                 <div class="productImg">
-                                                    <div id="wrap" style="top:0px;z-index:9999;position:relative;"><a href="<?=$product['image']['urls']['large']['CDN'] ?>" class="cloud-zoom" id="zoom1" rel="adjustX: 20, adjustY:-4, zoomWidth:500, zoomHeight:500" style="position: relative; display: block;">
+                                                    <div id="wrap" style="top:0px;z-index:99;position:relative;"><a href="<?=$product['image']['urls']['large']['CDN'] ?>" class="cloud-zoom" id="zoom1" rel="adjustX: 20, adjustY:-4, zoomWidth:500, zoomHeight:500" style="position: relative; display: block;">
                                                      <img src="<?=$product['image']['urls']['large']['CDN'] ?>" width="242" height="302" alt="" title="" style="display: block;">
                                                     </a></div>
                                                 </div>
@@ -51,31 +51,28 @@
                                                               <dt>Availability:</dt>
                                                               <dd>In Stock</dd>
                                                             </dl>
-                                                            <!--
-                                                            <form action="get">
+                                                            
+                                                            <form id="saw-form">
+                                                                <input id="doc-quantity" type="hidden" name="doc[quantity]" value="1">
+                                                                <input id="" type="hidden" name="doc[productId]" value="<?=$product['_id']?>">
+                                                                <? if(array_key_exists('purchaseInstructions', $product) && !empty($product['purchaseInstructions'])){ ?>
                                                                 <div class="control-group">
-                                                                    <label for="colour">Colour</label>
-                                                                    <select name="colour" id="colour" style="position: absolute; left: -9999px;">
-                                                                        <option value="">-- Please selected --</option>
-                                                                        <option value="">Red</option>
-                                                                        <option value="">Blue</option>
-                                                                    </select><span id="colour-styler" class="jq-selectbox jqselect" style="display: inline-block; position: relative; z-index:100"><div class="jq-selectbox__select"><div class="jq-selectbox__select-text">-- Please selected --</div><div class="jq-selectbox__trigger"><div class="jq-selectbox__trigger-arrow"></div></div></div><div class="jq-selectbox__dropdown" style="position: absolute; overflow-y: auto; overflow-x: hidden; left: 0px; display: none;"><ul style="list-style: none"><li class="selected sel">-- Please selected --</li><li class="">Red</li><li class="">Blue</li></ul></div></span>
+                                                                    <label for="colour">Purchase Instructions</label>
+                                                                    <p><?=$product['purchaseInstructions']?></p>
                                                                 </div>
+                                                                
                                                                 <div class="control-group">
-                                                                    <label for="size">Size</label>
-                                                                    <select name="size" id="size" style="position: absolute; left: -9999px;">
-                                                                        <option value="">--Please select --</option>
-                                                                        <option value="">S</option>
-                                                                        <option value="">M</option>
-                                                                    </select><span id="size-styler" class="jq-selectbox jqselect" style="display: inline-block; position: relative; z-index:100"><div class="jq-selectbox__select"><div class="jq-selectbox__select-text">--Please select --</div><div class="jq-selectbox__trigger"><div class="jq-selectbox__trigger-arrow"></div></div></div><div class="jq-selectbox__dropdown" style="position: absolute; overflow-y: auto; overflow-x: hidden; left: 0px; display: none;"><ul style="list-style: none"><li class="selected sel">--Please select --</li><li class="">S</li><li class="">M</li></ul></div></span>
+                                                                    <label for="size">Preference</label>
+                                                                    <textarea class="span10" name="doc[preference]"></textarea>
                                                                 </div>
+                                                                <? } ?>
                                                             </form>
-                                                            -->
+                                                            
                                                         </div>
                                                         <div class="quantityBox pull-right">
-                                                        <form action="get" class="text-center">
-                                                            <div class="quantity"><label for="qauntity">quantity</label><input type="text" value="1" id="qauntity"></div>
-                                                            <input type="submit" value="">
+                                                        <form id="saw-form2" action="get" class="text-center">
+                                                            <div class="quantity"><label for="quantity">quantity</label><input type="text" value="1" id="quantity"></div>
+                                                            <input id="add-to-cart" type="button" value="">
                                                         </form>
                                                         </div>
                                                     </div>
@@ -88,42 +85,27 @@
                                             </div>
                                         </li>
                                     </ul>
-                                    <p class="subtitle"><?=$this->vars['page']['body']?></p>
-                                    <!--
+                                    
+                                    <!-- RELATED PRODUCTS-->
                                     <h3 class="relatedSubtitle">RELATED PRODUCTS</h3>
                                     <ul class="thumbnails">
-                                        <li class="span4">
+                                        <? foreach($this->vars['related_products'] as $product): ?>
+                                        <li class="span4 productDescr">
                                             <div class="thumbnail text-center">
                                                 <div class="thumbnailBd">
-                                                    <h3>NCDD Logo Polartec Fleece Pullover Zip</h3>
-                                                    <p class="price">$25.00</p>
-                                                    <a href="#" class="addToCardBtn"></a>
-                                                    <a href="#" class="more">more info  &gt;</a>
+                                                    <h3><?=$product['name']?></h3>
+                                                    <p class="price">$<?=$product['price']?></p>
+                                                    <a href="" data-id="<?=$product['_id']?>" class="addToCardBtn"></a>
+                                                    <a href="/store/<?=$product['_id']?><?=$product['slug']?>" class="more">more info  &gt;</a>
                                                 </div>
                                             </div>
                                         </li>
-                                        <li class="span4">
-                                            <div class="thumbnail text-center">
-                                                <div class="thumbnailBd">
-                                                    <h3>NCDD Logo Polartec Fleece Pullover Zip</h3>
-                                                    <p class="price">$25.00</p>
-                                                    <a href="#" class="addToCardBtn"></a>
-                                                    <a href="#" class="more">more info  &gt;</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="span4">
-                                            <div class="thumbnail text-center">
-                                                <div class="thumbnailBd">
-                                                    <h3>NCDD Logo Polartec Fleece Pullover Zip</h3>
-                                                    <p class="price">$25.00</p>
-                                                    <a href="#" class="addToCardBtn"></a>
-                                                    <a href="#" class="more">more info  &gt;</a>
-                                                </div>
-                                            </div>
-                                        </li>
+                                        <? endforeach; ?>
                                     </ul>
-                                    -->
+                                    <!--/ RELATED PRODUCTS-->
+
+                                    <p class="subtitle"><?=$this->vars['page']['body']?></p>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -134,25 +116,16 @@
 
 
                     </div>
+
+
+<?=$this->element('js/Namespace.js');?>
+<?=$this->element('js/BlockUI.Class.js');?>
+<?=$this->element('js/FormGetClass.js');?>
+<?=$this->element('js/FormPostClass.js');?>
+<?=$this->element('js/ShoppingCart.js');?>
 <script>
-            $(function() {
-                $('select').styler();
-            });
-        </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                            
+jQuery(document).ready(function() {
+    io.saw.ShoppingCart.init();
+       
+});      
+</script>
