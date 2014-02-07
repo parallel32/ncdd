@@ -38,10 +38,12 @@ Aside from issues that arise, I'd like to finish these items before we re-examin
 Deployment notes:
 ==================
 
+Update the products to include purhcase instructions
+
 Create Managed Pages:
 ---------------------
 Create shopping-cart (slug) page on the pages manager 
-Create the checkout pages as well.
+
 
 SSL:
 ---- 

@@ -590,56 +590,79 @@ $app->get('/store/{id}/{slug}', function ($id, $slug, Request $request) use ($ap
 // 	SHOPPING CART //
 ////////////////////
 $app['updateShoppingCart'] = $app->protect(function ($doc) use ($app) {
-	
-	$productObj = new Model\Product(array('_id'=>$doc['productId']),$app);
-	$product = $productObj->findById();
-
-	if(array_key_exists('preference', $doc) && !empty($product['purchaseInstructions']) && empty($doc['preference'])){
+	$product_arr = array();
+	$fields = array();
+	foreach($doc as $productId => $item):
+		$productObj = new Model\Product(array('_id'=>$productId),$app);
+		$product = $productObj->findById();
 		
-		$fields[] = array('name'=>'preference',
-						  'message'=>'Please specify your preference based on the Purchase Instructions',
-						  'invalid_value'=>'');
+		if(array_key_exists('preference', $item) && !empty($product['purchaseInstructions']) && empty($item['preference'])){
+			
+			$fields[] = array('name'=>'preference-'.$productId,
+							  'message'=>'Please specify your preference based on the Purchase Instructions',
+							  'invalid_value'=>'');
+		}
+		if(array_key_exists('quantity', $item) && $item['quantity'] <= 0){
+			$fields[] = array('name'=>'quantity-'.$productId,
+							  'message'=>'Must be atleast 1',
+							  'invalid_value'=>'');	
+		}
+	endforeach;
+	if(!empty($fields)){
 		throw new Saw\Model\Exceptions\DomainException($productObj::$invalidFieldsMessage, $fields);
-	} 
+	}
+	//*
+	foreach($doc as $productId => $item):
+		error_log(print_r($item,true));
+		$product = array();
 
-	$product['quantity'] = $doc['quantity'];
-	$product['preference'] = (array_key_exists('preference', $doc)) ? $doc['preference']: '';
+		$productObj = new Model\Product(array('_id'=>$productId),$app);
+		$product = $productObj->findById();
+		
+		$product['quantity'] = $item['quantity'];
+		$product['preference'] = (array_key_exists('preference', $item)) ? $item['preference']: '';
 
-	$product_order = new Model\ProductOrder($product,$app);
-	$product_order = $product_order->__toArray(false);
+		$product_order = new Model\ProductOrder($product,$app);
+		$product_order = $product_order->__toArray(false);
 
-	$product_arr = array($product_order['_id']->__toString()=>$product_order);
+		$product_arr[$product_order['_id']->__toString()] = $product_order;
+		
+	endforeach;
 	$shoppingcart = $app['session']->get('shoppingcart');
-
 	if(empty($shoppingcart)){
 		$app['session']->set('shoppingcart',$product_arr);
 	}else{
 		$cart = array_merge($shoppingcart,$product_arr);
 		$app['session']->set('shoppingcart',$cart);		
 	}
-	
+	//*/
 });
 // get shopping cart
 $app->get('/shopping-cart', function (Request $request) use ($app) {
+
 	$view_vars=array();
 	$page_vars = $app['get_pages']('shopping-cart');
 	$view_vars = array_merge($page_vars,$view_vars);
 
 	$view_vars['cart_items'] = $app['session']->get('shoppingcart');
-	
+	//echo "<pre>";print_r($view_vars['cart_items']);echo "</pre>";
 	return $app['view']->render('page/shopping-cart', 'content',$view_vars);
 });
 // add to shopping cart
 $app->post('/shopping-cart/add', function (Request $request) use ($app) {
 	$doc = $request->get('doc');
-
+	if(array_key_exists('productId', $doc)){
+		$arr[$doc['productId']]['quantity'] = $doc['quantity'];
+		$arr[$doc['productId']]['preference'] = $doc['preference'];
+		$doc = $arr;
+	}
 	$app['updateShoppingCart']($doc);
 
 	return new Response(json_encode(array('message' =>'success')), 200,array('Content-Type' => 'application/json'));
 });
 $app->get('/shopping-cart/add/{productId}/{quantity}', function ($productId, $quantity, Request $request) use ($app) {
-	$doc['productId'] = $productId;
-	$doc['quantity'] = (!empty($quantity)) ? $quantity: 1;
+	
+	$doc[$productId]['quantity'] = (!empty($quantity)) ? $quantity: 1;
 
 	$app['updateShoppingCart']($doc);
 

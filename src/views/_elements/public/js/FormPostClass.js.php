@@ -17,6 +17,7 @@
 		params.blockUI = params.blockUI || 'yes';
 		params.blockUIParams = params.blockUIParams || {};
 		params.validate = params.validate || 'yes';
+		params.attachInvalidFieldsToMessage = params.attachInvalidFieldsToMessage || 'yes';
 		params.blockObj = undefined;
 	};
 	FormPost.getParams = function(){
@@ -64,7 +65,11 @@
 						}
 						invalid_fields_str+='<li>'+fieldObj.name+'</li>';
 					});
-					$(params.formName+' .alert-error').removeClass('hide').html('<span>'+responseObj.message+'</span>'+invalid_fields_str);
+					if(params.attachInvalidFieldsToMessage == 'yes'){
+						$(params.formName+' .alert-error').removeClass('hide').html('<span>'+responseObj.message+'</span>'+invalid_fields_str);
+					}else{
+						$(params.formName+' .alert-error').removeClass('hide').html('<span>'+responseObj.message+'</span>');
+					}					
 				}else if(responseObj.hasOwnProperty('message') && responseObj.message.length > 0){
 					$(params.formName+' .alert-error').removeClass('hide').html('<span>'+responseObj.message+'</span>');
 				}

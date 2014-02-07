@@ -3917,7 +3917,7 @@ input[type="checkbox"] {
   font-family: ubuntubold;
 }
 /* line 3911, ../sass/screen.scss */
-.content .shoppingCart .shoppingCartBody table tr td form input[type="text"] {
+.content .shoppingCart .shoppingCartBody table tr td span input[type="text"] {
   width: 90%;
   height: 34px;
   padding: 0;
@@ -3936,13 +3936,13 @@ input[type="checkbox"] {
   text-align: center;
 }
 /* line 3926, ../sass/screen.scss */
-.content .shoppingCart .shoppingCartBody table tr td form input[type="submit"] {
+.content .shoppingCart .shoppingCartBody table tr td span input[type="submit"] {
   margin: 0 auto 10px;
   display: inline-block;
   text-align: center;
 }
 /* line 3932, ../sass/screen.scss */
-.content .shoppingCart .shoppingCartBody table tr td form .remove {
+.content .shoppingCart .shoppingCartBody table tr td span .remove {
   display: block;
   font-family: ubuntu_condensedregular;
   color: #944737;

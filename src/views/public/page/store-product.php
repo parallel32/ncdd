@@ -61,7 +61,7 @@
                                                                     <p><?=$product['purchaseInstructions']?></p>
                                                                     <label class="control-label">Preference:</label>
                                                                     <div class="controls">
-                                                                        <textarea class="span10 preference" name="doc[preference]"></textarea>
+                                                                        <textarea class="span10 preference-<?=$product['_id']?>" name="doc[preference]"></textarea>
                                                                     </div>
                                                                 </div>
                                                                 <? } ?>
@@ -70,7 +70,12 @@
                                                         </div>
                                                         <div class="quantityBox pull-right">
                                                         <form id="saw-form2" action="get" class="text-center">
-                                                            <div class="quantity"><label for="quantity">quantity</label><input type="text" value="1" id="quantity"></div>
+                                                            <div class="quantity control-group">
+                                                                <label for="quantity">quantity</label>
+                                                                <div class="controls">
+                                                                    <input class="quantity-<?=$product['_id']?>" type="text" value="1" id="quantity">
+                                                                </div>
+                                                            </div>
                                                             <input id="add-to-cart" type="button" value="">
                                                         </form>
                                                         </div>

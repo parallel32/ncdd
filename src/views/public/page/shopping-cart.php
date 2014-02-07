@@ -11,7 +11,7 @@ $user = $this->app['session']->get('user');
 
                             if(is_array($this->vars['cart_items']) && !empty($this->vars['cart_items'])){
                             ?>
-
+                            <form id="saw-form">
                             <table class="table-bordered">
                                 <thead>
                                     <tr>
@@ -28,6 +28,7 @@ $user = $this->app['session']->get('user');
                                 $fullprice = 0;
                                 
                                 foreach($this->vars['cart_items'] as $item): ?>
+                                
                                 <tr id="row-<?=$item['_id']?>">
                                     <td><img style="width:50%" src="<?=$item['image']['urls']['small']['CDN'] ?>" alt=""></td>
                                     <td>
@@ -35,31 +36,34 @@ $user = $this->app['session']->get('user');
                                             <b><a href="/store/<?=$item['_id']?><?=$item['slug']?>"><?=$item['name'] ?> </a></b>
                                         </div>
                                         <? if(!empty($item['purchaseInstructions'])){?>
-                                        <form id="saw-form-<?=$item['_id']?>">
-                                            <input type="hidden" name="doc[productId]" value="<?=$item['_id']?>">
-                                            <input id="preference-hidden-<?=$item['_id']?>" type="hidden" name="doc[preference]" value="">
-                                            <input id="quantity-hidden-<?=$item['_id']?>" type="hidden" name="doc[quantity]" value="<?=$item['quantity']?>">
+                                        
                                         <div class="row-fluid">
                                             <div class="span10 ">
                                               <div class="control-group ">
                                                 <span class="help-block"><?=$item['purchaseInstructions']?></span>
                                                  <label class="control-label">Preference:</label>
                                                  <div class="controls">
-                                                    <textarea id="preference-<?=$item['_id']?>" rows="3" class="span10 preference"><?=$item['preference']?></textarea>
+                                                    <textarea name="doc[<?=$item['_id']?>][preference]" id="preference-<?=$item['_id']?>" rows="3" class="span10 preference-<?=$item['_id']?>"><?=$item['preference']?></textarea>
                                                     
                                                  </div>
                                               </div>
                                            </div>
                                         </div>
-                                        </form>
+                                        
                                         <? } ?>
                                     </td>
                                     <td id="cell-<?=$item['_id']?>">
-                                        <form>
-                                            <input id="quantity-<?=$item['_id']?>" type="text" name="doc[quantity]" value="<?=$item['quantity']?>">
+                                        <span>
+                                            <div class="control-group ">
+                                                 <label class="control-label"></label>
+                                                 <div class="controls">
+                                                    <input id="quantity-<?=$item['_id']?>" type="text" name="doc[<?=$item['_id']?>][quantity]" value="<?=$item['quantity']?>" class="quantity-<?=$item['_id']?>">
+                                                 </div>
+                                              </div>
+                                            
                                             <input type="button" value="Update" data-id="<?=$item['_id']?>" class="btn update">
                                             <a href="" data-id="<?=$item['_id']?>" class="remove">Remove</a>
-                                        </form>
+                                        </span>
                                     </td>
                                     <td>$<?=number_format($item['price'],2);?></td>
                                     <td>$<?=number_format($item['price']*$item['quantity'],2)?></td>
@@ -69,6 +73,7 @@ $user = $this->app['session']->get('user');
                                 $discount = $discount + (($item['price']-$item['memberPrice']) * $item['quantity']);
                                 endforeach; 
                                 ?>
+                                
                                 <tr>
                                     <td></td>
                                     <td></td>
@@ -104,6 +109,13 @@ $user = $this->app['session']->get('user');
                                     <? endif; ?>
                                 </tr>
                             </table>
+                            <!-- ERROR -->
+                             <div class="alert alert-error hide">
+                                <button class="close" data-dismiss="alert"></button>
+                                You have some form errors. Please check below.
+                             </div>
+                             <!--/ ERROR -->
+                            </form>
                             <? } else { ?>
 
                             <? } ?>

@@ -44,8 +44,11 @@
 		});
 		$('.btn.update').click(function(e){
 			e.preventDefault();
-			var theThis = $(this);
-			ShoppingCart.saveFromCart(theThis);
+			ShoppingCart.saveFromCart();
+		});
+		$('.checkoutBtn').click(function(e){
+			e.preventDefault();
+			ShoppingCart.saveFromCart();
 		});
 		
 		$('.remove').click(function(e){
@@ -55,17 +58,17 @@
 			
 
 	};
-	ShoppingCart.saveFromCart = function (theThis){
-		$('#preference-hidden-'+theThis.attr('data-id')).val($('#preference-'+theThis.attr('data-id')).val())
-		$('#quantity-hidden-'+theThis.attr('data-id')).val($('#quantity-'+theThis.attr('data-id')).val())
+	ShoppingCart.saveFromCart = function (){
 		var postSuccess = postSuccess || function(responseObj){
 	   		document.location.href='/shopping-cart';
 		};
 		io.saw.FormPost.activate({
 			blockUIParams:{
-				elementToBlock:'#cell-'+theThis.attr('data-id')
+				elementToBlock:'.shoppingCartBody'
+				,loadingImg:'/assets/img/add_to_cart.png'
 			}
-			,formName:'#saw-form-'+theThis.attr('data-id')
+			,attachInvalidFieldsToMessage:'no'
+			,formName:'#saw-form'
 			,postUrl:'/shopping-cart/add'
 			,serializeSelector:':input'
 		 	,postOnComplete:function(responseObj,responseStatus){
@@ -78,7 +81,12 @@
 		});      
 	};
 	ShoppingCart.save = function (postSuccess){
-		$('#doc-quantity').val($('#quantity').val());
+		if($('#quantity').val() <= 0){
+			var quantity = 1;
+		}else{
+			var quantity = $('#quantity').val();
+		}
+		$('#doc-quantity').val(quantity);
 		var postSuccess = postSuccess || function(responseObj){
 	   		//console.log(responseObj.message);
 		};
