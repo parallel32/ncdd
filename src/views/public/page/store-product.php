@@ -57,13 +57,12 @@
                                                                 <input id="" type="hidden" name="doc[productId]" value="<?=$product['_id']?>">
                                                                 <? if(array_key_exists('purchaseInstructions', $product) && !empty($product['purchaseInstructions'])){ ?>
                                                                 <div class="control-group">
-                                                                    <label for="colour">Purchase Instructions</label>
+                                                                    <label  class="control-label">Purchase Instructions</label>
                                                                     <p><?=$product['purchaseInstructions']?></p>
-                                                                </div>
-                                                                
-                                                                <div class="control-group">
-                                                                    <label for="size">Preference</label>
-                                                                    <textarea class="span10" name="doc[preference]"></textarea>
+                                                                    <label class="control-label">Preference:</label>
+                                                                    <div class="controls">
+                                                                        <textarea class="span10 preference" name="doc[preference]"></textarea>
+                                                                    </div>
                                                                 </div>
                                                                 <? } ?>
                                                             </form>

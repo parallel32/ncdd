@@ -539,13 +539,13 @@
                      <!--/span-->
                   </div>
 
-                  <h3 class="form-section">Annual Membership dues in the amount of $2500 are payable upon application approval.</h3>
+                  <h3 class="form-section">Annual Membership dues in the amount of $3500 are payable upon application approval.</h3>
                   <div class="row-fluid">
                      <div class="span12 ">
                         <div class="control-group">
                            <label class="control-label"></label>
                            <div class="controls">
-                              <input name="doc[membershipDues]" value="2500" class="membershipDues" type="hidden">
+                              <input name="doc[membershipDues]" value="3500" class="membershipDues" type="hidden">
                            </div>
                         </div>
                      </div>

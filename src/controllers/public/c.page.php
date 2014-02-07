@@ -597,7 +597,7 @@ $app['updateShoppingCart'] = $app->protect(function ($doc) use ($app) {
 	if(array_key_exists('preference', $doc) && !empty($product['purchaseInstructions']) && empty($doc['preference'])){
 		
 		$fields[] = array('name'=>'preference',
-						  'message'=>'Please specify your preference',
+						  'message'=>'Please specify your preference based on the Purchase Instructions',
 						  'invalid_value'=>'');
 		throw new Saw\Model\Exceptions\DomainException($productObj::$invalidFieldsMessage, $fields);
 	} 

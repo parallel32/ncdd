@@ -446,7 +446,7 @@
                      <!--/span-->
                   </div>
 
-                  <h3 class="form-section">Annual Membership dues in the amount of $2500 are payable upon application approval.</h3>
+                  <h3 class="form-section">Annual Membership dues in the amount of $3500 are payable upon application approval.</h3>
                   <div class="row-fluid">
                      <div class="span12 ">
                         <div class="control-group">

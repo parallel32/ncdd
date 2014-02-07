@@ -107,7 +107,7 @@ $user = $this->app['session']->get('user');
                             <? } else { ?>
 
                             <? } ?>
-                            <? if(is_array($this->vars['cart_items']) && !empty($this->vars['cart_items'])){ ?>
+                            <? if(is_array($this->vars['cart_items']) && !empty($this->vars['cart_items']) && $total > 0){ ?>
                             <a href="#" class="checkoutBtn  pull-right">Checkout</a>
                             <? } ?>
                             <a href="/store" class="btn pull-right">Continue Shopping</a>
