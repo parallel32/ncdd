@@ -27,7 +27,8 @@
                                                     <? } ?>
                                                 </div>
                                                 <br>
-                                                <p class="postDescr"><?=substr($seminar['description'],0,500)?> … <a href="/sessions-and-seminars/<?=$seminar['_id']?><?=$slug?>">read more</a></p>
+                                                <p class="postDescr"><?=$seminar['description']?></p>
+                                               
                                             </div>
 
                                             <div class="postFooter">
