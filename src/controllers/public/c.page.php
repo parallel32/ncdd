@@ -595,7 +595,7 @@ $app['updateShoppingCart'] = $app->protect(function ($doc) use ($app) {
 	foreach($doc as $productId => $item):
 		$productObj = new Model\Product(array('_id'=>$productId),$app);
 		$product = $productObj->findById();
-		
+
 		if(array_key_exists('preference', $item) && !empty($product['purchaseInstructions']) && empty($item['preference'])){
 			
 			$fields[] = array('name'=>'preference-'.$productId,
@@ -613,7 +613,6 @@ $app['updateShoppingCart'] = $app->protect(function ($doc) use ($app) {
 	}
 	//*
 	foreach($doc as $productId => $item):
-		error_log(print_r($item,true));
 		$product = array();
 
 		$productObj = new Model\Product(array('_id'=>$productId),$app);
