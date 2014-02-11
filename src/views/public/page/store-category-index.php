@@ -10,6 +10,13 @@
 
                         <script src="/assets/js/cloud-zoom.1.0.2.js"></script>
 
+                        <div class="row-fluid checkout">
+                        <ul class="breadcrumb">
+                            <li ><a href="/store">Store</a></li>
+                            <li class="active"><?=$this->vars['category']['name']?></li>
+                            <li><a href="/shopping-cart">Shopping Cart</a></li>
+                        </ul>
+                        </div>
 
                         <div class="row-fluid discoverLearnPage NCDDListDetailPage">
                         <div class="discoverContent">

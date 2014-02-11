@@ -4645,6 +4645,7 @@ input[type="checkbox"] {
 }
 /* line 4671, ../sass/screen.scss */
 .content .breadcrumb {
+  font-size: 16px;
   background: none;
   height: 57px;
   padding: 0;
@@ -4657,26 +4658,31 @@ input[type="checkbox"] {
 }
 /* line 4678, ../sass/screen.scss */
 .content .breadcrumb li {
+  font-size: 16px;
   padding: 19px 40px 18px 25px;
   background: url("../img/breadcrumbsArrow.png") no-repeat center right;
   margin-top: -1px;
 }
 /* line 4683, ../sass/screen.scss */
 .content .breadcrumb li a {
+  font-size: 16px;
   font-family: ubunturegular;
   color: #c7c7c7;
 }
 /* line 4687, ../sass/screen.scss */
 .content .breadcrumb li a:hover {
+  font-size: 16px;
   text-decoration: none;
   color: #47769e;
 }
 /* line 4693, ../sass/screen.scss */
 .content .breadcrumb li:last-child {
+  font-size: 16px;
   background: none;
 }
 /* line 4698, ../sass/screen.scss */
 .content .breadcrumb .active {
+  font-size: 16px;
   font-family: ubuntubold;
   color: #47769e;
 }

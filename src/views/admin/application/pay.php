@@ -109,16 +109,6 @@
             <? if(false): ?>
             <!--/ INVOICE -->
 
-            <!-- ADMIN payment by check .. or reduce the payment amount by adding a discount to the invoice -->
-            <!-- an invoice must have a corresponding payment (whether it's a credit card or a record created by the admin when marking an invoice paid) -->
-            <!-- on this screen you have to mark something paid in order to de-activate it -->
-            
-            <!-- concept of renewals and trial memberships -->
-            <!-- include refunds on already made credit card payments.  refunds on anything else will be used as credits towards future bills or the money will be sent back -->
-
-
-
-
             <!-- PAYMENT  only show for members -->
             <? endif; ?>
             <div class="row-fluid">

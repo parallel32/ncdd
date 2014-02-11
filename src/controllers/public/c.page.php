@@ -557,6 +557,7 @@ $app->get('/store/{category}', function ($category, Request $request) use ($app)
 	$products = $product->fetchByCategory($category['_id']);
 	
 	
+	$view_vars['category'] = $category;
 	$view_vars['products'] = $products;
 	$page_vars = $app['get_pages']('store');
 	$view_vars = array_merge($page_vars,$view_vars);
@@ -677,6 +678,26 @@ $app->get('/shopping-cart/remove/{productId}', function ($productId, Request $re
 	return new Response(json_encode(array('message' =>'success')), 200,array('Content-Type' => 'application/json'));
 })->value('productId','');
 
+
+/////////////////////////////
+// 	SHOPPING CART CHECKOUT //
+/////////////////////////////
+// get shopping cart
+$app->get('/shopping-cart/checkout', function (Request $request) use ($app) {
+
+	$view_vars=array();
+	$page_vars = $app['get_pages']('checkout');
+	$view_vars = array_merge($page_vars,$view_vars);
+
+	return $app['view']->render('page/shopping-cart-checkout', 'content',$view_vars);
+});
+$app->post('/shopping-cart/checkout', function (Request $request) use ($app) {
+	$doc = $request->get('doc');
+	
+
+
+	return new Response(json_encode(array('message' =>'success')), 200,array('Content-Type' => 'application/json'));
+});
 
 
 ////////////////////////

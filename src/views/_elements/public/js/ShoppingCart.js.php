@@ -1,25 +1,46 @@
 <script type="text/javascript">
 (function( ShoppingCart, $, undefined ) {
 	
-	// remove a product
-	function remove(theThis){
+	ShoppingCart.checkoutInit = function(){
+		
+		// SAVE buttons and publish workflow buttons
+		$('#quantity').keyup(function(e) {
+			$('#doc-quantity').val($(this).val());
+		});
+		// SAVE buttons and publish workflow buttons
+		$('#saw-form2 input').keypress(function(e) {
+			if (e.which == 13) {
+				e.preventDefault();
+				ShoppingCart.save();
+			}
+		});
+		$('#add-to-cart').click(function(e){
+			e.preventDefault();
+			ShoppingCart.save();
+		});
+		$('.addToCardBtn').click(function(e){
+			e.preventDefault();
+			var theThis = $(this);
+			ShoppingCart.saveByGet(theThis);
+		});
+		$('.btn.update').click(function(e){
+			e.preventDefault();
+			ShoppingCart.saveFromCart();
+		});
+		$('.checkoutBtn').click(function(e){
+			e.preventDefault();
+			ShoppingCart.saveFromCart();
+		});
+		
+		$('.remove').click(function(e){
+			e.preventDefault();
+	      	remove($(this));
+		});
+			
 
-		io.saw.FormGet.activate({
-			blockUIParams:{
-				elementToBlock:'.productDescrrr'
-				,loadingImg:'/assets/img/subtract_from_cart.png'
-			}
-			,postUrl:'/shopping-cart/remove/'+theThis.attr('data-id')
-			,postOnComplete:function(responseObj,responseStatus){
-				
-			}
-			,postOnSuccess:function(responseObj){
-				//$('#sup-cart').html($('#sup-cart').html()-1);
-				//theThis.parents('tr').remove();
-				document.location.href='/shopping-cart';
-			}
-		});    
 	};
+	
+
 	ShoppingCart.init = function(){
 		
 		// SAVE buttons and publish workflow buttons
@@ -121,6 +142,25 @@
 	   	});
 	};
 	
+	// remove a product
+	function remove(theThis){
+
+		io.saw.FormGet.activate({
+			blockUIParams:{
+				elementToBlock:'.productDescrrr'
+				,loadingImg:'/assets/img/subtract_from_cart.png'
+			}
+			,postUrl:'/shopping-cart/remove/'+theThis.attr('data-id')
+			,postOnComplete:function(responseObj,responseStatus){
+				
+			}
+			,postOnSuccess:function(responseObj){
+				//$('#sup-cart').html($('#sup-cart').html()-1);
+				//theThis.parents('tr').remove();
+				document.location.href='/shopping-cart';
+			}
+		});    
+	};
 	
 }( io.saw.ShoppingCart = io.saw.ShoppingCart || {}, io.saw.jQuery || jQuery ));
 </script>

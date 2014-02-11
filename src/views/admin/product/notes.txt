@@ -38,11 +38,14 @@ Aside from issues that arise, I'd like to finish these items before we re-examin
 Deployment notes:
 ==================
 
-Update the products to include purhcase instructions
+add pages:
+----------
+Checkout Billing
+Checkout Shipping
+Checkout Payment
+Checkout Confirmation
 
-Create Managed Pages:
----------------------
-Create shopping-cart (slug) page on the pages manager 
+Tell Hunter and Rhea to update the products to include purhcase instructions
 
 
 SSL:
