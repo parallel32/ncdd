@@ -81,7 +81,7 @@
 	};
 	ShoppingCart.saveFromCart = function (){
 		var postSuccess = postSuccess || function(responseObj){
-	   		document.location.href='/shopping-cart/checkout';
+	   		document.location.href='/shopping-cart';
 		};
 		io.saw.FormPost.activate({
 			blockUIParams:{
