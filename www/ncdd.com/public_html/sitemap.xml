@@ -29,11 +29,6 @@
         <loc>http://ncdd.com/find-an-attorney</loc>
     </url>
     <url>
-        <loc>http://ncdd.com/founding-members</loc>
-        <changefreq>monthly</changefreq>
-        <priority>1.0</priority>
-    </url>
-    <url>
         <loc>http://ncdd.com/ncdd-gallery</loc>
     </url>
     <url>
@@ -41,18 +36,12 @@
     </url>
     <url>
         <loc>http://ncdd.com/regents-and-fellows</loc>
-        <changefreq>monthly</changefreq>
-        <priority>1.0</priority>
     </url>
     <url>
         <loc>http://ncdd.com/founding-members</loc>
-        <changefreq>monthly</changefreq>
-        <priority>1.0</priority>
     </url>
     <url>
         <loc>http://ncdd.com/state-delegates</loc>
-        <changefreq>monthly</changefreq>
-        <priority>1.0</priority>
     </url>
     <url>
         <loc>http://ncdd.com/board-certification</loc>
