@@ -654,7 +654,7 @@ $app->post('/shopping-cart/add', function (Request $request) use ($app) {
 	$doc = $request->get('doc');
 	if(array_key_exists('productId', $doc)){
 		$arr[$doc['productId']]['quantity'] = $doc['quantity'];
-		$arr[$doc['productId']]['preference'] = $doc['preference'];
+		$arr[$doc['productId']]['preference'] = (array_key_exists('preference', $doc)) ? $doc['preference'] : '';
 		$doc = $arr;
 	}
 	$app['updateShoppingCart']($doc);
