@@ -209,7 +209,7 @@
                                    <div class="control-group ">
                                       <label class="control-label">Same as Billing?</label>
                                       <div class="controls">
-                                         <input type="checkbox" name="sameasbilling" id="sameasbilling" class="m-wrap span8 " value="">
+                                         <input type="checkbox" name="sameasbilling" id="sameasbilling" class="m-wrap span2 " value="">
                                       </div>
                                    </div>
                                 </div>
