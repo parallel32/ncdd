@@ -1,590 +1,336 @@
-                    <div class="row-fluid checkout">
+                    <div class="row-fluid shoppingCart" style="padding-bottom:0px;">
                         <div class="obliqueLineTitle text-center"><h2><?=$this->vars['page']['headline']?></h2></div>
-                        <!-- BEGIN FORM-->
-                       <form id="saw-form" class="horizontal-form portlet">
-                          <div class="alert alert-error hide">
-                             <button class="close" data-dismiss="alert"></button>
-                             You have some form errors. Please check below.
-                          </div>                  
-                          <h3 class="form-section text-info">1. Please enter your billing information.</h3>
-                          <div class="row-fluid">
-                             <div class="span4 ">
-                                <div class="control-group">
-                                   <label class="control-label">First Name</label>
-                                   <div class="controls">
-                                      <input type="text" name="doc[firstName]" class="m-wrap span12 firstName">
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                             <div class="span4 ">
-                                <div class="control-group">
-                                   <label class="control-label">Middle Initial</label>
-                                   <div class="controls">
-                                      <input type="text" name="doc[middleName]" class="m-wrap span12 middleName">
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                             <div class="span4 ">
-                                <div class="control-group ">
-                                   <label class="control-label">Last Name</label>
-                                   <div class="controls">
-                                      <input type="text" name="doc[lastName]" class="m-wrap span12 lastName">
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
+                        <div class="shoppingCartBody productDescrrr">
+                            <form>
+                          <?=$this->element('shopping-cart-items',array('cart_items'=>$this->vars['cart_items'],'readonly'=>'yes','user'=>$this->vars['user']));?>
+                            </form>
+                            <a href="/shopping-cart" class="checkoutBtn pull-right">Edit Shopping Cart</a>
                           </div>
-                          <div class="row-fluid">
-                             <div class="span6 ">
-                                <div class="control-group">
-                                   <label class="control-label">Telephone</label>
-                                   <div class="controls">
-                                      <input id="phone" type="text" name="doc[phone]" class="m-wrap span12 phone">
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                             <div class="span6 ">
-                                <div class="control-group ">
-                                   <label class="control-label">Facsimile</label>
-                                   <div class="controls">
-                                      <input id="fax" type="text" name="doc[fax]" class="m-wrap span12 fax">
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                          </div>
-                          <div class="row-fluid">
-                             <div class="span12 ">
-                                <div class="control-group">
-                                   <label class="control-label">Bar Number / State</label>
-                                   <div class="controls">
-                                      <input type="text" name="doc[barNumber]" class="m-wrap span12 barNumber">
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                          </div>
-                          <div class="row-fluid">
-                             <div class="span6 ">
-                                <div class="control-group">
-                                   <label class="control-label">Email</label>
-                                   <div class="controls">
-                                      <input type="text" name="doc[email]" class="m-wrap span12 email">
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                             <div class="span6 ">
-                                <div class="control-group ">
-                                   <label class="control-label">Website</label>
-                                   <div class="controls">
-                                      <input type="text" name="doc[website]" class="m-wrap span12 website">
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                          </div>
-                          <div class="row-fluid">
-                             <div class="span6 ">
-                                <div class="control-group">
-                                   <label class="control-label">Would you like to be added to the NCDD List Server?</label>
-                                   <div class="controls">
-                                      <select class="small m-wrap addToListServ" name="doc[addToListServ]">
-                                         <option value="yes">Yes</option>
-                                         <option value="no">No</option>
-                                      </select>
-                                      <span class="help-block">Highly recommended.</span>
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                             <div class="span6 ">
-                                <div class="control-group">
-                                   <label class="control-label">Listserv Email (if different from above)</label>
-                                   <div class="controls">
-                                      <input type="text" name="doc[listServEmail]" class="m-wrap span12 listServEmail">
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                          </div>
-                          <!-- BEGIN ADDRESS -->
-                          <h3 class="form-section">Address</h3>
-                          <div class="row-fluid addr ">
-                             <div class="span12 ">
-                                <div class="control-group">
-                                   <label class="control-label" >Address 1</label>
-                                   <div class="controls">
-                                      <input type="text" id="address1" name="doc[address1]" class="m-wrap span12 address1">
-                                   </div>
-                                </div>
-                             </div>
-                          </div>
-                          <div class="row-fluid addr ">
-                             <div class="span12 ">
-                                <div class="control-group">
-                                   <label class="control-label" >Address 2</label>
-                                   <div class="controls">
-                                      <input type="text" id="address2" name="doc[address2]" class="m-wrap span12 address2">
-                                   </div>
-                                </div>
-                             </div>
-                          </div>
-                          <div class="row-fluid addr ">
-                             <div class="span6 ">
-                                <div class="control-group">
-                                   <label class="control-label" >City</label>
-                                   <div class="controls">
-                                      <input type="text" id="city" name="doc[city]" class="m-wrap span12 city"> 
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                             <div class="span6 ">
-                                <div class="control-group">
-                                   <label class="control-label" >State / Province</label>
-                                   <div class="controls">
-                                      <input type="text" id="state" name="doc[state]" class="m-wrap span12 state"> 
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                          </div>
-                          <!--/row-->           
-                          <div class="row-fluid addr ">
-                             <div class="span6 ">
-                                <div class="control-group">
-                                   <label class="control-label" >Postal Code</label>
-                                   <div class="controls">
-                                      <input type="text" id="zip" name="doc[postalCode]" class="m-wrap span12 postalCode"> 
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                             <div class="span6 ">
-                                <div class="control-group">
-                                   <label class="control-label" >Country</label>
-                                   <div class="controls">
-                                      <input type="text" id="country" name="doc[country]" class="m-wrap span12 country"> 
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                          </div>
-                          <h3 class="form-section text-info"><strong>Geocode Your Address</strong></h3>
-                          <p>We attempt to determine the Latitude and Longitude of your address for furture searches based on nearby a client's location</p>
-                          <div class="row-fluid validateAddress">
-                             <div class="span12 ">
-                                <div class="control-group">
-                                   <label class="control-label" >Type in your full address and then click Submit for Geocoding:</label>
-                                   <div class="controls">
-                                      <input type="text" id="geocodeaddress" class="m-wrap span12" >
-                                      <button type="button" class="btn blue geocodeaddress">Submit for Geocoding <i class="icon-globe"></i></button>
-                                   </div>
-                                </div>
-                             </div>
-                          </div>
-                          <input type="hidden" name="doc[formattedAddress]" id="raw">
-                          <input type="hidden" name="doc[lat]" id="lat">
-                          <input type="hidden" name="doc[lon]" id="lon">
-                          <!-- BEGIN ADDRESS MODAL -->
-                          <div id="address_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="address-modal-label" aria-hidden="true">
-                             <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                                <h3 id="address-modal-label">Select the Address</h3>
-                                <p>Select the address which you intend to use.</p>
-                             </div>
-                             <div class="modal-body">
-                                <div class="row-fluid">
-                                      <div class="span12">
-                                         <!-- BEGIN SAMPLE TABLE PORTLET-->
-                                         <div class="portlet">
-                                            <div class="portlet-body">
-                                               <table class="table table-striped table-bordered table-advance table-hover">
-                                                  <thead>
-                                                     <tr>
-                                                        <th> Address</th>
-                                                        <th> </th>
-                                                     </tr>
-                                                  </thead>
-                                                  <tbody>
-                                                     <tr>
-                                                        <td class="highlight">
-                                                           Loading Address...
-                                                        </td>
-                                                        <td><a class="btn mini purple" 
-                                                           data-address=""
-                                                           data-city=""
-                                                           data-state=""
-                                                           data-zip=""
-                                                           data-country=""
-                                                           data-lat=""
-                                                           data-lon=""
-                                                           data-formattedaddress=""
-                                                           >SELECT</a></td>
-                                                     </tr>
-                                                  </tbody>
-                                               </table>
-                                            </div>
-                                         </div>
-                                         <!-- END SAMPLE TABLE PORTLET-->
-                                      </div>
-                                   </div>
-                             </div>
-                             <div class="modal-footer">
-                                <button class="btn address-cancel" aria-hidden="true">Cancel</button>
-                             </div>
-                          </div>
-                          <!-- END ADDRESS MODAL -->
-                          <!-- END ADDRESS -->
-                          <h3 class="form-section">2.</h3>
-                          <div class="row-fluid">
-                             <div class="span12">
-                                <div class="control-group">
-                                   <label class="control-label">How did you hear about the NCDD?</label>
-                                   <div class="controls">
-                                      <input type="text" name="doc[hearAboutNCDD]" class="m-wrap span12 hearAboutNCDD">
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                          </div>
-                          <h3 class="form-section">3.</h3>
-                          <div class="row-fluid">
-                             <div class="span12">
-                                <div class="control-group">
-                                   <label class="control-label">Number of years in law practice:</label>
-                                   <div class="controls">
-                                      <input type="text" name="doc[yearsInLawPractice]" class="m-wrap span12 yearsInLawPractice">
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                          </div>
-                          <h3 class="form-section">4.</h3>
-                          <div class="row-fluid">
-                             <div class="span12">
-                                <div class="control-group">
-                                   <label class="control-label">% of business in DUI defense:</label>
-                                   <div class="controls">
-                                      <input type="text" name="doc[percentDUIDefense]" class="m-wrap span12 percentDUIDefense">
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                          </div>
-                          <h3 class="form-section">5.</h3>
-                          <div class="row-fluid">
-                             <div class="span12">
-                                <div class="control-group">
-                                   <label class="control-label">Are jury trials available in your state?</label>
-                                   <div class="controls">
-                                      <select class="small m-wrap juryTrialsAvailableInYourState" name="doc[juryTrialsAvailableInYourState]">
-                                         <option value="yes">Yes</option>
-                                         <option value="no">No</option>
-                                      </select>
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                          </div>
-                          <h3 class="form-section">6.</h3>
-                          <div class="row-fluid">
-                             <div class="span12">
-                                <div class="control-group">
-                                   <label class="control-label">Approximate number of DUI/DWI jury trials you have handled:</label>
-                                   <div class="controls">
-                                      <select class="small m-wrap numberDUITrialsHandeled" name="doc[numberDUITrialsHandeled]">
-                                         <option value="10">Fewer than 10</option>
-                                         <option value="11">11 to 30</option>
-                                         <option value="31">31 or more</option>
-                                      </select>
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                          </div>
-                          <h3 class="form-section">7.</h3>
-                          <div class="row-fluid">
-                             <div class="span12">
-                                <div class="control-group">
-                                   <label class="control-label">Approximate number of DUI/DWI non-jury trials you have handled: </label>
-                                   <div class="controls">
-                                      <select class="small m-wrap numberNonDUITrialsHandeled" name="doc[numberNonDUITrialsHandeled]">
-                                         <option value="10">Fewer than 10</option>
-                                         <option value="11">11 to 30</option>
-                                         <option value="31">31 or more</option>
-                                      </select>
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                          </div>
-                          <h3 class="form-section">8.</h3>
-                          <div class="row-fluid">
-                             <div class="span6 ">
-                                <div class="control-group">
-                                   <label class="control-label">Have you ever been arrested, prosecuted, convicted or received a “deferred” or “diverted” disposition on any criminal offense other than a minor traffic offense?</label>
-                                   <div class="controls">
-                                      <select class="small m-wrap everBeenArrested" name="doc[everBeenArrested]">
-                                         <option value="no">No</option>
-                                         <option value="yes">Yes</option>
-                                      </select>
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                             <div class="span6 ">
-                                <div class="control-group">
-                                   <label class="control-label">If "Yes", please explain.</label>
-                                   <div class="controls">
-                                      <textarea class="span12 everBeenArrestedExplain" name="doc[everBeenArrestedExplain]"></textarea>
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                          </div>
-                          <h3 class="form-section">9.</h3>
-                          <div class="row-fluid">
-                             <div class="span6 ">
-                                <div class="control-group">
-                                   <label class="control-label">Have you ever had a complaint/charge made against you by your State Bar Association or licensing authority arising from drug/substance/alcohol use or abuse?</label>
-                                   <div class="controls">
-                                      <select class="small m-wrap everChargedByBar" name="doc[everChargedByBar]">
-                                         <option value="no">No</option>
-                                         <option value="yes">Yes</option>
-                                      </select>
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                             <div class="span6 ">
-                                <div class="control-group">
-                                   <label class="control-label">If "Yes", please explain.</label>
-                                   <div class="controls">
-                                      <textarea class="span12 everChargedByBarExplain" name="doc[everChargedByBarExplain]"></textarea>
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                          </div>
-                          <h3 class="form-section">10.</h3>
-                          <div class="row-fluid">
-                             <div class="span6 ">
-                                <div class="control-group">
-                                   <label class="control-label">Have you ever been convicted or received a “deferred” or “diverted” disposition of any crime involving moral turpitude?</label>
-                                   <div class="controls">
-                                      <select class="small m-wrap everConvictedCrime" name="doc[everConvictedCrime]">
-                                         <option value="no">No</option>
-                                         <option value="yes">Yes</option>
-                                      </select>
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                             <div class="span6 ">
-                                <div class="control-group">
-                                   <label class="control-label">If "Yes", please explain.</label>
-                                   <div class="controls">
-                                      <textarea class="span12 everConvictedCrimeExplain" name="doc[everConvictedCrimeExplain]"></textarea>
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                          </div>
-                          <h3 class="form-section">11.</h3>
-                          <div class="row-fluid">
-                             <div class="span6 ">
-                                <div class="control-group">
-                                   <label class="control-label">Has your Bar Association or licensing authority conducted any investigation or inquiry based upon complaints, have you ever been subject to disciplinary action by your bar association or licensing authority; has your license to practice law ever been suspended for any period of time? </label>
-                                   <div class="controls">
-                                      <select class="small m-wrap everInvestigation" name="doc[everInvestigation]">
-                                         <option value="no">No</option>
-                                         <option value="yes">Yes</option>
-                                      </select>
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                             <div class="span6 ">
-                                <div class="control-group">
-                                   <label class="control-label">If "Yes", please explain.</label>
-                                   <div class="controls">
-                                      <textarea class="span12 everInvestigationExplain" name="doc[everInvestigationExplain]"></textarea>
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                          </div>
-                          <h3 class="form-section">12.</h3>
-                          <div class="row-fluid">
-                             <div class="span6 ">
-                                <div class="control-group">
-                                   <label class="control-label">Are you presently serving, in any capacity, either part time or full time in law enforcement or prosecution agencies (Example, reserve duty or municipal prosecutor)? </label>
-                                   <div class="controls">
-                                      <select class="small m-wrap everLawEnforcement" name="doc[everLawEnforcement]">
-                                         <option value="no">No</option>
-                                         <option value="yes">Yes</option>
-                                      </select>
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                             <div class="span6 ">
-                                <div class="control-group">
-                                   <label class="control-label">If "Yes", please explain.</label>
-                                   <div class="controls">
-                                      <textarea class="span12 everLawEnforcementExplain" name="doc[everLawEnforcementExplain]"></textarea>
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                          </div>
-                          <h3 class="form-section">13.</h3>
-                          <div class="row-fluid">
-                             <div class="span12 ">
-                                <div class="control-group">
-                                   <label class="control-label">I understand that any future service in any branch of law enforcement or prosecution of state, province, county district or municipal ordinances/statutes requires my immediate disclosure to NCDD and termination of my membership. </label>
-                                   <div class="controls">
-                                      <select class="small m-wrap futureLawEnforcement" name="doc[futureLawEnforcement]">
-                                         <option value="yes">Yes</option>
-                                         <option value="no">No</option>
-                                      </select>
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                             <!-- commented out by request from Rhea.
-                             <div class="span6 ">
-                                <div class="control-group">
-                                   <label class="control-label">If "Yes", please explain.</label>
-                                   <div class="controls">
-                                      <textarea class="span12 futureLawEnforcementExplain" name="doc[futureLawEnforcementExplain]"></textarea>
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                          </div>
-                          <h3 class="form-section">14.</h3>
-                          <div class="row-fluid">
-                             <div class="span12 ">
-                                <div class="control-group">
-                                   <label class="control-label">I understand that as a condition of continued membership I must attend at least one seminar every two (2) years sponsored/co-sponsored by NCDD or a State seminar listed on the NCDD website.
-                                   </br></br>
-                                   I have read the general membership rules, and I understand and agree to be bound by them. I declare under penalty of perjury that the foregoing application are true and correct to the best of my knowledge.
-                                   </br>
-                                   </label>
-                                   <div class="controls">
-                                      <div class="input-prepend input-append">
-                                         <span class="add-on">Executed at </span>
-                                         <input name="doc[executed]" class="m-wrap span12 executed" type="text" placeholder="city, state/province">
-                                         <span class="add-on">, this <? $date = new \DateTime(); echo $date->format('dS');?> day of <?echo $date->format('F');?>, 20<?echo $date->format('y');?></span>
-                                      </div>
-                                   </div>
-                                   
-                                </div>
-                             </div>
-                             <!--/span-->
-                          </div>
-                          <div class="row-fluid">
-                             <div class="span12 ">
-                                <div class="control-group">
-                                   <label class="control-label">Printed Name</label>
-                                   <div class="controls">
-                                         <input name="doc[executedPrintedName]" class="m-wrap span12 executedPrintedName" type="text">
-                                   </div>
-                                   
-                                </div>
-                             </div>
-                             <!--/span-->
-                          </div>
-
-                          <h3 class="form-section">Check which applies to your membership:</h3>
-                          <div class="row-fluid">
-                             <div class="span12 ">
-                                <div class="control-group">
-                                   <label class="control-label"></label>
-                                   <div class="controls">
-                                      <select class=" m-wrap span12 membershipDues" name="doc[membershipDues]">
-                                         <option value="175">1-5 years in law practice ($175 annual dues) </option>
-                                         <option value="225">6 or more years in law practice ($225 annual dues)</option>
-                                         <option value="50"> Public Defender ($50 annual dues)</option>
-                                      </select>
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                          </div>
-                          
-                          <div class="row-fluid">
-                             <div class="span12">
-                                <div class="control-group">
-                                   <label class="control-label">Please download this zip file containing the reference form along with the authorization and release form and confirm you did so by selecting "Yes": <br>
-                                      <a target="_blank" href="http://<?=SAW_ADMIN_WEBSITE?>/application/downloads/ncdd-general-membership-reference-form-auhtorization-release.zip">New Member Application Reference Form & Authoriztion and Release Form - click to download the ZIP file.</a>
-                                   </label>
-                                   <div class="controls">
-                                      <select class="large m-wrap referenceFormDownload" name="doc[referenceFormDownload]">
-                                         <option value="no">No, I have not downloaded the reference form.</option>
-                                         <option value="yes">Yes, I have downloaded the reference form.</option>
-                                      </select>
-                                      <span class="help-block"></span>
-                                      <h4><strong>Please make sure your 2 references send their forms ASAP to the address at the top of the reference form via fax, email, or U.S. mail.</strong></h4>
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                          </div>
-                          <div class="row-fluid">
-                             <div class="span6 ">
-                                <div class="control-group">
-                                   <label class="control-label">Referred By:</label>
-                                   <div class="controls">
-                                      <input type="text" name="doc[referredBy]" class="m-wrap span12 referredBy">
-                                      <span class="help-block">If someone referred you, who is already a member, please type their name here.</span>
-                                   </div>
-                                </div>
-                             </div>
-                             <!--/span-->
-                          </div>
-                          
-                          <!-- SUCCESSFUL SAVE MODAL -->
-                          <div id="save-success" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="save-success-label" aria-hidden="true">
-                             <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                                <h3 id="save-success-label">Successful Operation</h3>
-                             </div>
-                             <div class="modal-body">
-                                <p></p>
-                             </div>
-                             <div class="modal-footer">
-                                <button class="btn blue continue" data-insertid="">Return to NCDD.com</button>
-                             </div>
-                          </div>
-                          <!--/ SUCCESSFUL SAVE MODAL -->
-                          <div class="alert alert-error hide">
-                             <button class="close" data-dismiss="alert"></button>
-                             You have some form errors. Please check below.
-                          </div>
-                          
-                          <div class="form-actions text-center">
-                             <button type="button" class="btn green"><i class="icon-ok"></i> Submit Application</button>
-                             <button type="button" class="btn cancel-go-back">Cancel and Go Back</button>
-                          </div>
-                       </form>
-                       <!-- END FORM--> 
                     </div>
+                    <div class="row-fluid checkout" style="padding-top:5px;">
+                        
+                        <!-- BEGIN FORM-->
+                        <!-- PAYMENT ELEMENT -->
+                          <style>
+                          .card {
+                          float: left;
+                          width: 39px;
+                          height: 25px;
+                          text-indent: -9999px;
+                          background-position: 0 0;
+                          background-repeat: no-repeat;
+                          padding-right: 2px;
+                          }
+                          
+                          .card.visa {
+                          background-image: url('/assets/img/card-visa.gif');
+                          }
+                          .card.master {
+                          background-image: url('/assets/img/card-mastercard.gif');
+                          }
+                          .card.amex {
+                          background-image: url('/assets/img/card-amex.gif');
+                          }
+                          .card.discover {
+                          background-image: url('/assets/img/card-discover.gif');
+                          }
+                          </style>
+                          <form id="payment-form" class="horizontal-form portlet">
+                             <!-- ERROR -->
+                             <div class="alert alert-error hide">
+                                <button class="close" data-dismiss="alert"></button>
+                                You have some form errors. Please check below.
+                             </div>
+                             <!--/ ERROR -->
+                             <input id="description" type="hidden" class="description" name="doc[description]" value="">
+                             <input id="title" type="hidden" class="title" name="doc[title]" value="">
+                             <input type="hidden" class="cardType" name="doc[cardType]" value="">
+                             <input type="hidden" class="token" name="doc[token]" value="">
+                             <input type="hidden" class="orderId" name="doc[orderId]" value="">
+                             <input type="hidden" class="memberId" name="doc[memberId]" value="<?=(array_key_exists('_id', $this->vars['user'])) ? $this->vars['user']['_id']: ''?>">
+                             <input type="hidden" class="amount" name="doc[amount]" value="<?=$this->vars['shoppingCartTotal']?>">
+                             
+                             <div class="obliqueLineTitle"><h2 style="padding:0 25px 0px 0px">Payment Information</h2></div>
+                             <div class="row-fluid">
+                                <div class="span12 ">
+                                   <div class="control-group">
+                                      <label class="control-label" for="type">We Accept</label>
+                                      <div class="controls">
+                                         <span class="card visa" title="Visa">Visa</span>
+                                         <span class="card master" title="Mastercard">Mastercard</span>
+                                         <span class="card amex" title="American Express">American Express</span>
+                                         <span class="card discover" title="Discover">Discover</span>
+                                      </div>
+                                   </div>
+                                </div>
+                                <!--/span-->
+                             </div>
+                             <div class="row-fluid">
+                                <div class="span12 "><span class="cardType"></span></div>
+                             </div>
+                             <div class="row-fluid">
+                                <div class="span8 ">
+                                   <div class="control-group ">
+                                      <label class="control-label">Your name as it appears on the card</label>
+                                      <div class="controls">
+                                         <input type="text" name="doc[name]" class="m-wrap span8 name" value="<?=(!empty($this->vars['user']) && array_key_exists('displayName', $this->vars['user']) ) ? $this->vars['user']['displayName']: '';?>">
+                                      </div>
+                                   </div>
+                                </div>
+                                <!--/span-->
+                             </div>
+                             <div class="row-fluid">
+                                <div class="span8 ">
+                                   <div class="control-group ">
+                                      <label class="control-label">Credit Card Number</label>
+                                      <div class="controls">
+                                         <input type="text" name="doc[number]" class="m-wrap span8 number">
+                                      </div>
+                                   </div>
+                                </div>
+                                <!--/span-->
+                             </div>
+                             <div class="row-fluid">
+                                <div class="span8 ">
+                                   <div class="control-group ">
+                                      <label class="control-label">CVC or Security Code</label>
+                                      <div class="controls">
+                                         <input type="text" name="doc[cvc]" class="m-wrap span8 cvc">
+                                      </div>
+                                   </div>
+                                </div>
+                                <!--/span-->
+                             </div>
+                             <div class="row-fluid">
+                                <div class="span8 ">
+                                   <div class="control-group ">
+                                      <label class="control-label">Expiration Date</label>
+                                      <div class="controls">
+                                         <select class="span4 expMonth" name="doc[expMonth]"></select>
+                                         <select class="span4 expYear" name="doc[expYear]"></select>
+                                      </div>
+                                   </div>
+                                </div>
+                                <!--/span-->
+                             </div>
+                             <div class="row-fluid">
+                                <div class="span8 ">
+                                   <div class="control-group ">
+                                      <label class="control-label">Email</label>
+                                      <div class="controls">
+                                         <input type="text" name="doc[email]" class="m-wrap span8 email" value="<?=(!empty($this->vars['user']) && array_key_exists('email', $this->vars['user']) ) ? $this->vars['user']['email']: '';?>">
+                                      </div>
+                                   </div>
+                                </div>
+                                <!--/span-->
+                             </div>
+                             <div class="row-fluid">
+                                <div class="span8 ">
+                                   <div class="control-group ">
+                                      <label class="control-label">Phone</label>
+                                      <div class="controls">
+                                         <input type="text" name="doc[phone]" class="m-wrap span8 phone" value="<?=(!empty($this->vars['user']) && array_key_exists('phone', $this->vars['user']) ) ? $this->vars['user']['phone']: '';?>">
+                                      </div>
+                                   </div>
+                                </div>
+                                <!--/span-->
+                             </div>
+                             
+                             <div class="obliqueLineTitle"><h2 style="padding:0 25px 0px 0px">Billing Address</h2></div>
+                             <div class="row-fluid">
+                                <div class="span8 ">
+                                   <div class="control-group ">
+                                      <label class="control-label">Address Line 1</label>
+                                      <div class="controls">
+                                         <input type="text" name="doc[addressLine1]" class="m-wrap span8 addressLine1" value="<?=(array_key_exists('location', $this->vars) ) ? $this->vars['location']['addressLine1']: '';?>">
+                                      </div>
+                                   </div>
+                                </div>
+                                <!--/span-->
+                             </div>
+                             <div class="row-fluid">
+                                <div class="span8 ">
+                                   <div class="control-group ">
+                                      <label class="control-label">Address Line 2</label>
+                                      <div class="controls">
+                                         <input type="text" name="doc[addressLine2]" class="m-wrap span8 addressLine2" value="<?=(array_key_exists('location', $this->vars) ) ? $this->vars['location']['addressLine2']: '';?>">
+                                      </div>
+                                   </div>
+                                </div>
+                                <!--/span-->
+                             </div>
+                             <div class="row-fluid">
+                                <div class="span8 ">
+                                   <div class="control-group ">
+                                      <label class="control-label">City</label>
+                                      <div class="controls">
+                                         <input type="text" name="doc[city]" class="m-wrap span8 city" value="<?=(array_key_exists('location', $this->vars) ) ? $this->vars['location']['city']: '';?>">
+                                      </div>
+                                   </div>
+                                </div>
+                                <!--/span-->
+                             </div>
+                             <div class="row-fluid">
+                                <div class="span8 ">
+                                   <div class="control-group ">
+                                      <label class="control-label">State/Province/Region</label>
+                                      <div class="controls">
+                                         <input type="text" name="doc[stateProvinceRegion]" class="m-wrap span8 stateProvinceRegion" value="<?=(array_key_exists('location', $this->vars) ) ? $this->vars['location']['state']: '';?>">
+                                      </div>
+                                   </div>
+                                </div>
+                                <!--/span-->
+                             </div>
+                             <div class="row-fluid">
+                                <div class="span8 ">
+                                   <div class="control-group ">
+                                      <label class="control-label">Zip/PostalCode</label>
+                                      <div class="controls">
+                                         <input type="text" name="doc[zipPostalCode]" class="m-wrap span8 zipPostalCode" value="<?=(array_key_exists('location', $this->vars) ) ? $this->vars['location']['zip']: '';?>">
+                                      </div>
+                                   </div>
+                                </div>
+                                <!--/span-->
+                             </div>
+                             <div class="row-fluid">
+                                <div class="span8 ">
+                                   <div class="control-group ">
+                                      <label class="control-label">Country</label>
+                                      <div class="controls">
+                                         <input type="text" name="doc[country]" class="m-wrap span8 country" value="<?=(array_key_exists('location', $this->vars) ) ? $this->vars['location']['country']: '';?>">
+                                      </div>
+                                   </div>
+                                </div>
+                                <!--/span-->
+                             </div>
+                             <div class="obliqueLineTitle"><h2 style="padding:0 25px 0px 0px">Shipping Address</h2></div>
+                             <div class="row-fluid">
+                                <div class="span8 ">
+                                   <div class="control-group ">
+                                      <label class="control-label">Same as Billing?</label>
+                                      <div class="controls">
+                                         <input type="checkbox" name="sameasbilling" id="sameasbilling" class="m-wrap span8 " value="">
+                                      </div>
+                                   </div>
+                                </div>
+                                <!--/span-->
+                             </div>
+                             <div class="row-fluid">
+                                <div class="span8 ">
+                                   <div class="control-group ">
+                                      <label class="control-label">Address Line 1</label>
+                                      <div class="controls">
+                                         <input type="text" name="doc[addressLine1Shipping]" class="m-wrap span8 addressLine1Shipping" value="">
+                                      </div>
+                                   </div>
+                                </div>
+                                <!--/span-->
+                             </div>
+                             <div class="row-fluid">
+                                <div class="span8 ">
+                                   <div class="control-group ">
+                                      <label class="control-label">Address Line 2</label>
+                                      <div class="controls">
+                                         <input type="text" name="doc[addressLine2Shipping]" class="m-wrap span8 addressLine2Shipping" value="">
+                                      </div>
+                                   </div>
+                                </div>
+                                <!--/span-->
+                             </div>
+                             <div class="row-fluid">
+                                <div class="span8 ">
+                                   <div class="control-group ">
+                                      <label class="control-label">City</label>
+                                      <div class="controls">
+                                         <input type="text" name="doc[cityShipping]" class="m-wrap span8 cityShipping" value="">
+                                      </div>
+                                   </div>
+                                </div>
+                                <!--/span-->
+                             </div>
+                             <div class="row-fluid">
+                                <div class="span8 ">
+                                   <div class="control-group ">
+                                      <label class="control-label">State/Province/Region</label>
+                                      <div class="controls">
+                                         <input type="text" name="doc[stateProvinceRegionShipping]" class="m-wrap span8 stateProvinceRegionShipping" value="">
+                                      </div>
+                                   </div>
+                                </div>
+                                <!--/span-->
+                             </div>
+                             <div class="row-fluid">
+                                <div class="span8 ">
+                                   <div class="control-group ">
+                                      <label class="control-label">Zip/PostalCode</label>
+                                      <div class="controls">
+                                         <input type="text" name="doc[zipPostalCodeShipping]" class="m-wrap span8 zipPostalCodeShipping" value="">
+                                      </div>
+                                   </div>
+                                </div>
+                                <!--/span-->
+                             </div>
+                             <div class="row-fluid">
+                                <div class="span8 ">
+                                   <div class="control-group ">
+                                      <label class="control-label">Country</label>
+                                      <div class="controls">
+                                         <input type="text" name="doc[countryShipping]" class="m-wrap span8 countryShipping" value="">
+                                      </div>
+                                   </div>
+                                </div>
+                                <!--/span-->
+                             </div>
+                             <!-- ERROR -->
+                             <div class="alert alert-error hide">
+                                <button class="close" data-dismiss="alert"></button>
+                                You have some form errors. Please check below.
+                             </div>
+                             <!--/ ERROR -->
+                             <!-- SUCCESS -->
+                             <div id="payment-success-alert" class="alert alert-success hide" style="margin-bottom:-20px">
+                                <button class="close" data-dismiss="alert"></button>
+                                Your payment has been successfully processed.  We have sent a receipt to the email address provided.
+                                <br>Also, click below for a printer friendly page.
+                             </div>
+                             <!--/ SUCCESS -->
+                             <div class="shoppingCart" style="padding-left:0px">
+                             <div class="shoppingCartBody pull-left">
+                                <button id="payment-button" type="button" class="checkoutBtn" style="margin-left:0px">Submit Payment</button>
+                                <button id="print-button" type="button" class="checkoutBtn hide" style="margin-left:0px">Printer Friendly Receipt</button>
+                             </div>
+                          </form>
+                          
+                          <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+                            <?=$this->element('js/Namespace.js');?>
+                            <?=$this->element('js/BlockUI.Class.js');?>
+                            <?=$this->element('js/FormPostClass.js');?>
+                            <?=$this->element('js/Payment.js');?>
+                          <script>
+                          jQuery(document).ready(function() {    
+                            io.saw.Payment.init();
+
+                            $('#sameasbilling').mousedown(function() {
+                                if (!$(this).is(':checked')) {
+                                    $('.addressLine1Shipping').val($('.addressLine1').val());
+                                    $('.addressLine2Shipping').val($('.addressLine2').val());
+                                    $('.cityShipping').val($('.city').val());
+                                    $('.stateProvinceRegionShipping').val($('.stateProvinceRegion').val());
+                                    $('.zipPostalCodeShipping').val($('.zipPostalCode').val());
+                                    $('.countryShipping').val($('.country').val());
+                                }else{
+                                    $('.addressLine1Shipping').val('');
+                                    $('.addressLine2Shipping').val('');
+                                    $('.cityShipping').val('');
+                                    $('.stateProvinceRegionShipping').val('');
+                                    $('.zipPostalCodeShipping').val('');
+                                    $('.countryShipping').val('');
+                                }
+                            });
 
 
-<?=$this->element('js/Namespace.js');?>
-<?=$this->element('js/BlockUI.Class.js');?>
-<?=$this->element('js/FormPostClass.js');?>
-<?=$this->element('js/ShoppingCart.js');?>
-<script>
-jQuery(document).ready(function() {
-    io.saw.ShoppingCart.checkoutInit();
-       
-});      
-</script>
+                          });      
+                          </script>
+                          <!--/ PAYMENT ELEMENT -->
+                        <!-- END FORM--> 
+                    </div>

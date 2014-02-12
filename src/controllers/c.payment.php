@@ -37,32 +37,6 @@ $app->post('/payment/charge', function (Request $request) use ($app) {
 		
 });
 
-$app->post('/shopping-cart/payment/charge', function (Request $request) use ($app) {
-	// retrieve document from request
-	$doc = $request->get('doc');
-	// check if the payment is coming up from within another <form> and coming up as a nested document
-	if(array_key_exists('payment',$doc) && is_array($doc['payment'])){
-		$doc = $doc['payment'];
-	}
-	$payment = new Model\Payment($doc,$app);
-	$app['validateModel']($app, $payment,$groups=array('cc'));
-	$paymentId = $payment->charge();
-
-    // thank you receipt message
-	$subject = 'NCDD Payment Received';
-	$to = $payment->email;
-	$view_vars = array('payment'=>$payment->__toArray()
-						,'paymentId'=>$paymentId
-						,'email'=>$payment->email
-	);
-	$body = $app['view']->render('email/payment-thankyou','email', $view_vars);
-		
-	$app['sendMail']($subject, $body, $to);
-	
-	return new Response(json_encode(array('paymentId'=>$paymentId,'message'=>"success")), 200,array('Content-Type' => 'application/json'));
-		
-});
-
 $app->post('/payment/refund', function (Request $request) use ($app) {
 	// retrieve document from request
 	$doc = $request->get('doc');

@@ -20,12 +20,21 @@ class Payment extends Model {
 	public $cardType;
 	public $number;
 	public $cvc;
+	
 	public $addressLine1;
 	public $addressLine2;
 	public $city;
 	public $stateProvinceRegion;
 	public $zipPostalCode;
 	public $country;
+	
+	public $addressLine1Shipping;
+	public $addressLine2Shipping;
+	public $cityShipping;
+	public $stateProvinceRegionShipping;
+	public $zipPostalCodeShipping;
+	public $countryShipping;
+	
 	public $phone;
 	public $email;
 	public $amount;
@@ -42,25 +51,36 @@ class Payment extends Model {
 	private $secretKey = SAW_STRIPE_SECRET_KEY;
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
-		$metadata->addPropertyConstraint('name', new Constraints\NotBlank(array('groups' => array('cc'))));
-		$metadata->addPropertyConstraint('number', new Constraints\NotBlank(array('groups' => array('cc'))));
-		$metadata->addPropertyConstraint('cvc', new Constraints\NotBlank(array('groups' => array('cc'))));
-		$metadata->addPropertyConstraint('addressLine1', new Constraints\NotBlank(array('groups' => array('cc','manual'))));
-		$metadata->addPropertyConstraint('city', new Constraints\NotBlank(array('groups' => array('cc','manual'))));
-		$metadata->addPropertyConstraint('stateProvinceRegion', new Constraints\NotBlank(array('groups' => array('cc','manual'))));
-		$metadata->addPropertyConstraint('zipPostalCode', new Constraints\NotBlank(array('groups' => array('cc','manual'))));
-		$metadata->addPropertyConstraint('country', new Constraints\NotBlank(array('groups' => array('cc','manual'))));
-		$metadata->addPropertyConstraint('phone', new Constraints\NotBlank(array('groups' => array('cc','manual'))));
-		$metadata->addPropertyConstraint('email', new Constraints\NotBlank(array('groups' => array('cc','manual'))));
-		$metadata->addPropertyConstraint('email', new Constraints\Email(array('message'=>'invalid email','groups' => array('cc','manual'))));
-		$metadata->addPropertyConstraint('ownerId', new Constraints\NotBlank(array('groups' => array('cc','manual'))));
+		$metadata->addPropertyConstraint('name', new Constraints\NotBlank(array('groups' => array('cc','product-purchase'))));
+		$metadata->addPropertyConstraint('number', new Constraints\NotBlank(array('groups' => array('cc','product-purchase'))));
+		$metadata->addPropertyConstraint('cvc', new Constraints\NotBlank(array('groups' => array('cc','product-purchase'))));
+		
+		$metadata->addPropertyConstraint('addressLine1', new Constraints\NotBlank(array('groups' => array('cc','manual','product-purchase'))));
+		$metadata->addPropertyConstraint('city', new Constraints\NotBlank(array('groups' => array('cc','manual','product-purchase'))));
+		$metadata->addPropertyConstraint('stateProvinceRegion', new Constraints\NotBlank(array('groups' => array('cc','manual','product-purchase'))));
+		$metadata->addPropertyConstraint('zipPostalCode', new Constraints\NotBlank(array('groups' => array('cc','manual','product-purchase'))));
+		$metadata->addPropertyConstraint('country', new Constraints\NotBlank(array('groups' => array('cc','manual','product-purchase'))));
+		
+		$metadata->addPropertyConstraint('addressLine1Shipping', new Constraints\NotBlank(array('groups' => array('product-purchase'))));
+		$metadata->addPropertyConstraint('cityShipping', new Constraints\NotBlank(array('groups' => array('product-purchase'))));
+		$metadata->addPropertyConstraint('stateProvinceRegionShipping', new Constraints\NotBlank(array('groups' => array('product-purchase'))));
+		$metadata->addPropertyConstraint('zipPostalCodeShipping', new Constraints\NotBlank(array('groups' => array('product-purchase'))));
+		$metadata->addPropertyConstraint('countryShipping', new Constraints\NotBlank(array('groups' => array('product-purchase'))));
+		
+		$metadata->addPropertyConstraint('phone', new Constraints\NotBlank(array('groups' => array('cc','manual','product-purchase'))));
+		$metadata->addPropertyConstraint('email', new Constraints\NotBlank(array('groups' => array('cc','manual','product-purchase'))));
+		$metadata->addPropertyConstraint('email', new Constraints\Email(array('message'=>'invalid email','groups' => array('cc','manual','product-purchase'))));
+		
+		// product-purchase group isn't required here because the payment must validate before an Order record can be created
+		$metadata->addPropertyConstraint('ownerId', new Constraints\NotBlank(array('groups' => array('cc','manual')))); 
 		$metadata->addPropertyConstraint('ownerClass', new Constraints\NotBlank(array('groups' => array('cc','manual'))));
-		$metadata->addPropertyConstraint('description', new Constraints\NotBlank(array('groups' => array('cc','manual'))));
-		$metadata->addPropertyConstraint('title', new Constraints\NotBlank(array('groups' => array('cc','manual'))));
-		$metadata->addPropertyConstraint('amount', new Constraints\NotBlank(array('groups' => array('cc','manual'))));
-	
+		
+		$metadata->addPropertyConstraint('description', new Constraints\NotBlank(array('groups' => array('cc','manual','product-purchase'))));
+		$metadata->addPropertyConstraint('title', new Constraints\NotBlank(array('groups' => array('cc','manual','product-purchase'))));
+		$metadata->addPropertyConstraint('amount', new Constraints\NotBlank(array('groups' => array('cc','manual','product-purchase'))));
+		
 	}
-
+	
 	public function __construct($doc, Application $app){
 		parent::__construct($app);
 		$this->init($doc);
@@ -72,7 +92,7 @@ class Payment extends Model {
 		$this->expMonth = $doc['expMonth'];        
 		$this->expYear = $doc['expYear'];        
 		$this->cardType = $doc['cardType'];        
-		$this->number = (string)$doc['number'];        
+		$this->number = '...'.$doc['number'];        
 		$this->cvc = $doc['cvc'];        
         $this->addressLine1 = $doc['addressLine1'];
         $this->addressLine2 = $doc['addressLine2'];
@@ -80,6 +100,12 @@ class Payment extends Model {
 		$this->stateProvinceRegion = $doc['stateProvinceRegion'];    	
         $this->zipPostalCode = $doc['zipPostalCode'];
         $this->country = $doc['country'];
+		$this->addressLine1Shipping = $doc['addressLine1Shipping'];
+        $this->addressLine2Shipping = $doc['addressLine2Shipping'];
+		$this->cityShipping = $doc['cityShipping'];
+		$this->stateProvinceRegionShipping = $doc['stateProvinceRegionShipping'];    	
+        $this->zipPostalCodeShipping = $doc['zipPostalCodeShipping'];
+        $this->countryShipping = $doc['countryShipping'];
 		$this->phone = $doc['phone'];
 		$this->email = $doc['email'];
 		$this->amount = $doc['amount'];

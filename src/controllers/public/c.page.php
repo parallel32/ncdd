@@ -645,6 +645,7 @@ $app->get('/shopping-cart', function (Request $request) use ($app) {
 	$view_vars = array_merge($page_vars,$view_vars);
 
 	$view_vars['cart_items'] = $app['session']->get('shoppingcart');
+	$view_vars['user'] = $app['session']->get('user');
 	//echo "<pre>";print_r($view_vars['cart_items']);echo "</pre>";
 	return $app['view']->render('page/shopping-cart', 'content',$view_vars);
 });
@@ -688,17 +689,96 @@ $app->get('/shopping-cart/checkout', function (Request $request) use ($app) {
 	$view_vars=array();
 	$page_vars = $app['get_pages']('checkout');
 	$view_vars = array_merge($page_vars,$view_vars);
-
+	$view_vars['cart_items'] = $app['session']->get('shoppingcart');
+	$user = $app['session']->get('user');
+	if(is_object($user['user_id'])){
+		$member = new Model\Member(array('_id'=>$user['user_id']),$app);
+		$location = new Model\Location(array(),$app,$member);
+		$user = $member->findById();
+		$location = $location->getByMemberId();
+		$view_vars['location'] = $location;
+	}elseif(!is_array($user)){
+		$user = array();
+	}
+	$view_vars['user'] = $user;
 	return $app['view']->render('page/shopping-cart-checkout', 'content',$view_vars);
 });
 $app->post('/shopping-cart/checkout', function (Request $request) use ($app) {
+	// retrieve document from request
 	$doc = $request->get('doc');
+	if(!empty($doc['orderId'])){
+		$order = new Model\Order(array('_id'=>$doc['orderId']),$app);
+		$order->delete();
+	}
 	
+	$payment = new Model\Payment($doc,$app);
+	$app['validateModel']($app, $payment,$groups=array('product-purchase'));
 
+	// once the payment has been validated, create the order object and re-create the payment object, finally charge the payment and return the orderId
+	$order_doc['add'] = 'yes';
+	$order_doc['shoppingCart'] = $app['session']->get('shoppingcart');
+	$order_doc['payment'] = $payment->__toArray();
+	$order = new Model\Order($order_doc,$app);
+	$orderId = $order->saveEdit();
+	$doc['ownerId'] = $orderId;
+	$doc['ownerClass'] = "Order";
+	$doc['items'] = $order_doc['shoppingCart'];
+	$payment = new Model\Payment($doc,$app);
+	$paymentId = $payment->charge();
 
-	return new Response(json_encode(array('message' =>'success')), 200,array('Content-Type' => 'application/json'));
+	$payment = new Model\Payment(array('_id'=>$paymentId),$app);
+	$payment = $payment->findById();
+
+	$order = new Model\Order(array('_id'=>$orderId,'payment'=>$payment),$app);
+	$order->saveSafe();
+	$order = $order->findById();
+
+	// set the global parameter manually to use the _id in the after() handler below
+    $_POST['order'] = $order;
+
+    //$app['session']->set('shoppingcart',array());
+
+    return new Response(json_encode(array('orderId'=>$orderId,'message'=>"success")), 200,array('Content-Type' => 'application/json'));
+})->after(function (Request $request, Response $response, Silex\Application $app) {
+		if((int)$response->getStatusCode() == 200):
+	    	
+	    	$order = $_POST['order'];
+	    	if(!empty($order['payment']['memberId'])){
+				$member = new Model\Member(array('_id'=>$order['payment']['memberId']),$app);
+				$user = $member->findById();
+			}else{
+				$user = array();
+			}		
+	    	$view_vars = array('order'=>$order,'user'=>$user);
+
+	    	// send admin the email notification
+	    	$subject = 'New Order from the NCDD Store Submitted';
+	    	$to = SAW_ADMIN_EMAIL;
+	    	$body = $app['view']->render('email/new-order','email', $view_vars);
+	    	$app['sendMail']($subject, $body, $to);
+
+	    	// send customer the email receipt
+	    	$subject = 'Your recent purchase on NCDD.com';
+	    	$to = $order['payment']['email'];
+	    	$body = $app['view']->render('email/new-order-receipt','email', $view_vars);
+	    	$app['sendMail']($subject, $body, $to);
+	    	
+	    endif;
 });
+$app->get('/shopping-cart/checkout/receipt/{orderId}', function ($orderId, Request $request) use ($app) {
+	$order = new Model\Order(array('_id'=>$orderId),$app);
+	$order = $order->findById();
 
+	if(!empty($order['payment']['memberId'])){
+		$member = new Model\Member(array('_id'=>$order['payment']['memberId']),$app);
+		$user = $member->findById();
+	}else{
+		$user = array();
+	}		
+
+	$view_vars = array('order'=>$order,'user'=>$user);
+	return $app['view']->render('page/shopping-cart-checkout-receipt', 'empty',$view_vars);
+});
 
 ////////////////////////
 // NON MANAGED ROUTES //

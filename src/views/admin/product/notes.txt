@@ -40,10 +40,7 @@ Deployment notes:
 
 add pages:
 ----------
-Checkout Billing
-Checkout Shipping
-Checkout Payment
-Checkout Confirmation
+Checkout
 
 Tell Hunter and Rhea to update the products to include purhcase instructions
 
