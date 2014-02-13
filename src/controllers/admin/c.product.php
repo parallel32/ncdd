@@ -16,13 +16,16 @@ $product->before($mustbeADMIN);
 
 $product->get('/', function (Request $request) use ($app) {
 	
-	//$order = new Model\Order(array(),$app);
-	//$new_orders = $order->fetchByStatus();
-	//$fulfilled_orders = $order->fetchByStatus();
+	$order = new Model\Order(array(),$app);
+	$new_orders = $order->fetchByStatus('NEW');
+	$new_orders_cnt = (is_array($new_orders) && !empty($new_orders)) ? count($new_orders): 0;
+	$fulfilled_orders = $order->fetchByStatus('SHIPPED');
+	$fulfilled_orders_cnt = (is_array($fulfilled_orders) && !empty($fulfilled_orders)) ? count($fulfilled_orders): 0;
 
 	$product= new Model\Product(array(),$app);
 	$products = $product->fetchByStatus();
-	
+	$products_cnt = (is_array($products) && !empty($products)) ? count($products): 0;
+
 	$crumbs = array(array('name'=>'NCDD Store','href'=>'/product'));
 	$view_vars = array(
 						 'active'=>'Store'
@@ -31,12 +34,11 @@ $product->get('/', function (Request $request) use ($app) {
 						,'description'=>"Manage products and fulfill orders here."
 						,'crumbs'=>$crumbs
 						,'products'=>$products
-						,'newCnt'=>0
-						,'productsCnt'=>count($products)
-						,'fulfilledCnt'=>0
-						,'newOrders'=>array()
-						,'allProducts'=>array()
-						,'fulfilledOrders'=>array()
+						,'productsCnt'=>$products_cnt
+						,'fulfilledCnt'=>$fulfilled_orders_cnt
+						,'newOrdersCnt'=>$new_orders_cnt
+						,'newOrders'=>$new_orders
+						,'fulfilledOrders'=>$fulfilled_orders
 						);
 	return $app['view']->render('product/index', 'default', $view_vars);
 });
@@ -75,7 +77,7 @@ $product->get('/edit/{productId}', function ($productId, Request $request) use (
 })->value('productId','');
 
 // add / save productpost
-$app->post('/product/edit', function (Request $request) use ($app) {
+$product->post('/edit', function (Request $request) use ($app) {
 	// retrieve document from request
     $document = $request->get('doc');
     $product= new Model\Product($document, $app);
@@ -141,6 +143,8 @@ $product->get('/edit/{productId}/edit-photo-crop', function ($productId, Request
 ->value('productId','');
 
 
+
+
 // slugify
 $product->post('/slugify', function (Request $request) use ($app) {
 	// retrieve document from request
@@ -155,6 +159,62 @@ $product->get('/{productId}/remove', function ($productId, Request $request) use
 	$product = new Model\Product(array('_id'=>$productId), $app);
     $product->findById();
 	$product->remove();
+	return new Response(json_encode(array('message' => 'Product has been removed successfully.')), 200,array('Content-Type' => 'application/json'));
+	
+});
+
+
+///////////////////
+// ORDER EDITING //
+///////////////////
+$product->get('/order/edit/{orderId}', function ($orderId, Request $request) use ($app) {
+	
+	$crumbs = array(array('name'=>'NCDD Store','href'=>'/product'));
+	$view_vars = array(
+						 'active'=>'Store'
+						,'page-plugin'=>'editor'
+						,'headline'=>'Order Edit' 
+						,'description'=>"Fulfill or view the order."
+						,'crumbs'=>$crumbs
+						,'availableCategories'=>Model\Product::getAvailableCategories($app)
+						);
+	
+	$order= new Model\Order(array('_id'=>$orderId),$app);
+	$order= $order->findById();
+	$view_vars['crumbs'][] = array('name'=>$order['payment']['name'],'href'=>'/product/order-edit/'.$orderId);
+	$view_vars['crumbs'][] = array('name'=>'edit','href'=>'/product/order-edit/'.$orderId);
+
+	$view_vars['order'] = $order;
+	$view_vars['add'] = 'no';
+
+	if(!empty($order['payment']['memberId'])){
+		$member = new Model\Member(array('_id'=>$order['payment']['memberId']),$app);
+		$user = $member->findById();
+	}else{
+		$user = array();
+	}		
+
+	$view_vars['order'] = $order;
+	$view_vars['user'] = $user;
+
+	return $app['view']->render('product/order-edit', 'default', $view_vars);
+})->value('orderId','');
+
+// save order
+$product->post('/order/edit', function (Request $request) use ($app) {
+	// retrieve document from request
+    $document = $request->get('doc');
+    $order= new Model\Order($document, $app);
+    $order->saveSafe();
+    
+    return new Response(json_encode(array('orderId'=>$order->_id->__toString(), 'message' => 'Product details have saved successfully.')), 200,array('Content-Type' => 'application/json'));
+})->before($mustbeMEMBER);
+
+// remove a order completely
+$product->get('/{orderId}/remove/order', function ($orderId, Request $request) use ($app) {
+	$order = new Model\Order(array('_id'=>$orderId), $app);
+    $order->findById();
+	$order->remove();
 	return new Response(json_encode(array('message' => 'Product has been removed successfully.')), 200,array('Content-Type' => 'application/json'));
 	
 });

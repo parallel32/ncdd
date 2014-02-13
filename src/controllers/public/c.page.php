@@ -716,6 +716,9 @@ $app->post('/shopping-cart/checkout', function (Request $request) use ($app) {
 
 	// once the payment has been validated, create the order object and re-create the payment object, finally charge the payment and return the orderId
 	$order_doc['add'] = 'yes';
+	$order_doc['orderTotal'] = $doc['orderTotal'];
+	$order_doc['shippingTotal'] = $doc['shippingTotal'];
+	$order_doc['discountTotal'] = $doc['discountTotal'];
 	$order_doc['shoppingCart'] = $app['session']->get('shoppingcart');
 	$order_doc['payment'] = $payment->__toArray();
 	$order = new Model\Order($order_doc,$app);
@@ -736,7 +739,8 @@ $app->post('/shopping-cart/checkout', function (Request $request) use ($app) {
 	// set the global parameter manually to use the _id in the after() handler below
     $_POST['order'] = $order;
 
-    //$app['session']->set('shoppingcart',array());
+    // empty the shopping cart
+    $app['session']->set('shoppingcart',array());
 
     return new Response(json_encode(array('orderId'=>$orderId,'message'=>"success")), 200,array('Content-Type' => 'application/json'));
 })->after(function (Request $request, Response $response, Silex\Application $app) {

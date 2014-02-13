@@ -49,6 +49,9 @@
                              <input type="hidden" class="orderId" name="doc[orderId]" value="">
                              <input type="hidden" class="memberId" name="doc[memberId]" value="<?=(array_key_exists('_id', $this->vars['user'])) ? $this->vars['user']['_id']: ''?>">
                              <input type="hidden" class="amount" name="doc[amount]" value="<?=$this->vars['shoppingCartTotal']?>">
+                             <input type="hidden" class="amount" name="doc[orderTotal]" value="<?=$this->vars['orderTotal']?>">
+                             <input type="hidden" class="amount" name="doc[shippingTotal]" value="<?=$this->vars['shippingTotal']?>">
+                             <input type="hidden" class="amount" name="doc[discountTotal]" value="<?=$this->vars['discountTotal']?>">
                              
                              <div class="obliqueLineTitle"><h2 style="padding:0 25px 0px 0px">Payment Information</h2></div>
                              <div class="row-fluid">
@@ -93,10 +96,11 @@
                              <div class="row-fluid">
                                 <div class="span8 ">
                                    <div class="control-group ">
-                                      <label class="control-label">CVC or Security Code</label>
+                                      <label class="control-label">Card Security Code <a id="cvv-dialog-btn" href="#">(what is this?)</a></label>
                                       <div class="controls">
                                          <input type="text" name="doc[cvc]" class="m-wrap span8 cvc">
                                       </div>
+                                      <span>What is this?</span>
                                    </div>
                                 </div>
                                 <!--/span-->
@@ -300,6 +304,25 @@
                                 <button id="print-button" type="button" class="checkoutBtn hide" style="margin-left:0px">Printer Friendly Receipt</button>
                              </div>
                           </form>
+                          <!-- SUCCESSFUL SAVE MODAL -->
+                          <div id="cvv-dialog" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="cvv-dialog-label" aria-hidden="true">
+                             <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                <h3 id="cvv-dialog-label">Credit Card Security Code</h3>
+                             </div>
+                             <div class="modal-body">
+                                <p>The card verification value is an important security feature for credit card transactions on the internet.
+<br><br>
+MasterCard, Visa and Discover credit cards have a 3 digit code printed on the back of the card while American Express cards have a 4 digit code printed on the front side of the card above the card number.</p>
+<br>
+<img src="/assets/img/cv_card.gif"><br><br>
+<img src="/assets/img/cv_amex_card.gif">
+                             </div>
+                             <div class="modal-footer">
+                                <button class="btn blue ok">Ok, close.</button>
+                             </div>
+                          </div>
+                          <!--/ SUCCESSFUL SAVE MODAL -->
                           
                           <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
                             <?=$this->element('js/Namespace.js');?>
@@ -328,6 +351,14 @@
                                 }
                             });
 
+                            $('#cvv-dialog-btn').click(function(e) {
+                                e.preventDefault();
+                                $('#cvv-dialog').modal(); 
+                            });
+                            $('#cvv-dialog .ok').click(function(e) {
+                                e.preventDefault();
+                                $('#cvv-dialog').modal('hide');
+                            });
 
                           });      
                           </script>

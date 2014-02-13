@@ -15,7 +15,7 @@
                   <div class="responsive span6" data-tablet="span6" data-desktop="span6">
                      <div class="dashboard-stat red">
                         <div class="visual">
-                           <i class="icon-hideme"><?=$this->vars['newCnt'];?></i>
+                           <i class="icon-hideme"><?=$this->vars['newOrdersCnt'];?></i>
                         </div>
                         <div class="details">
                            <div class="number"><font><font>
@@ -78,27 +78,27 @@
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
                               <tr role="row">
-                                 <th class="">Name</th>
-                                 <th class="">Ref.</th>
-                                 <th class="hidden-phone">Email</th>
-                                 <th class="hidden-480">Area</th>
-                                 <th class="hidden-480">Date Submitted</th>
-                                 <th class="hidden-480">Application Type</th>
+                                 <th class="">Ordered By</th>
+                                 <th class="">Date</th>
+                                 <th class="hidden-phone">Subtotal</th>
+                                 <th class="hidden-480">Shipping</th>
+                                 <th class="hidden-480">Discount</th>
+                                 <th class="hidden-480">Total</th>
                                  <th class=""></th>
                               </tr>
                            </thead>
                            <tbody role="alert" aria-live="polite" aria-relevant="all">
-                              <? if(!empty($this->vars['newOrders'])): foreach($this->vars['newOrders'] as $application): ?>
+                              <? if(!empty($this->vars['newOrders'])): 
+                                 foreach($this->vars['newOrders'] as $order): ?>
                               <tr class="gradeX odd">
-                                 <? $middleName = (!empty($application['middleName'])) ? ' '.$application['middleName'].' ':' '; ?>
-                                 <td class=" "><?=$application['firstName'].$middleName.$application['lastName']?></td>
-                                 <td class=" hidden-phone" id="<?=$application['_id']?>"><input type="text" class="m-wrap" style="width:32px;" value="<?=(array_key_exists('references',$application)) ? $application['references']:''; ?>"><a data-id="<?=$application['_id']?>" href="#" class="btn green icn-only ref-update"><i class="icon-check icon-white"></i></a></td>
-                                 <td class="hidden-phone"><?=$application['email']?></td>
-                                 <td class="hidden-480 "><?=$application['city'].', '.$application['state']?></td>
-                                 <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($application['submittedDate']['fullDateTime']), $application['timeZone']); ?>
-                                 <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$application['submittedDate']['monthDay'].' '.$application['submittedDate']['shortTime']?></td>
-                                 <td class="center hidden-480 "><?=$application['type']?></td>
-                                 <td class=" "><a data-id="<?=$application['_id']?>" class="btn blue mini view"><i class=" "></i> View</a></td>
+                                 <td class=" "><?=$order['payment']['name']?></td>
+                                 <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($order['orderDate']['fullDateTime']), $order['timeZone']); ?>
+                                 <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$order['orderDate']['monthDay'].' '.$order['orderDate']['shortTime']?></td>
+                                 <td class=" hidden-phone"><?='$'.number_format($order['orderTotal'],2)?></td>
+                                 <td class="hidden-phone"><?='$'.number_format($order['shippingTotal'],2)?></td>
+                                 <td class="hidden-480 "><?=(array_key_exists('discountTotal',$order)) ? '$'.number_format($order['discountTotal'],2): ''?></td>
+                                 <td class="center hidden-480 "><?='$'.number_format($order['payment']['amount'],2)?></td>
+                                 <td class=" "><a data-id="<?=$order['_id']?>" class="btn blue mini order-edit"><i class=" "></i> View + Fulfill</a></td>
                               </tr>
                               <? endforeach;?>
                               <? else: ?>
@@ -110,6 +110,7 @@
                   </div><a name="products"></a>
                   <!-- END EXAMPLE TABLE PORTLET-->
                </div>
+            </div>
             </div>
 
             <div class="row-fluid" id="product">
@@ -176,6 +177,7 @@
                   <!-- END EXAMPLE TABLE PORTLET-->
                </div>
             </div>
+            </div>
 
             <div class="row-fluid">
                <div class="span12">
@@ -189,31 +191,31 @@
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
                               <tr role="row">
-                                 <th class="">Name</th>
-                                 <th class="hidden-phone">Email</th>
-                                 <th class="hidden-480">Area</th>
-                                 <th class="hidden-480">Date Paid</th>
-                                 <th class="hidden-480">Application Type</th>
+                                 <th class="">Ordered By</th>
+                                 <th class="">Shipped</th>
+                                 <th class="hidden-phone">Subtotal</th>
+                                 <th class="hidden-480">Shipping</th>
+                                 <th class="hidden-480">Discount</th>
+                                 <th class="hidden-480">Total</th>
                                  <th class=""></th>
                               </tr>
                            </thead>
                            <tbody role="alert" aria-live="polite" aria-relevant="all">
-                              <? if(!empty($this->vars['fulfilledOrders'])): foreach($this->vars['fulfilledOrders'] as $application): ?>
+                              <? if(!empty($this->vars['fulfilledOrders'])): 
+                                 foreach($this->vars['fulfilledOrders'] as $order): ?>
                               <tr class="gradeX odd">
-                                 <? $middleName = (!empty($application['middleName'])) ? ' '.$application['middleName'].' ':' '; ?>
-                                 <td class=" "><?=$application['firstName'].$middleName.$application['lastName']?></td>
-                                 <td class="hidden-phone "><?=$application['email']?></td>
-                                 <td class="hidden-480 "><?=$application['city'].', '.$application['state']?></td>
-                                 <td class="hidden-480 "><?=$application['paidDate']['monthDay'].' '.$application['paidDate']['shortTime']?></td>
-                                 <td class="center hidden-480 "><?=$application['type']?></td>
-                                 <td class=" ">
-                                    <a data-id="<?=$application['_id']?>" class="btn blue mini view"><i class=" "></i> Application</a>
-                                    <a data-id="<?=$application['paymentId']?>" class="btn blue mini view payment"><i class=" "></i> Payment</a>
-                                 </td>
+                                 <td class=" "><?=$order['payment']['name']?></td>
+                                 <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($order['shipDate']['fullDateTime']), $order['timeZone']); ?>
+                                 <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$order['shipDate']['monthDay'].' '.$order['shipDate']['shortTime']?></td>
+                                 <td class=" hidden-phone"><?='$'.number_format($order['orderTotal'],2)?></td>
+                                 <td class="hidden-phone"><?='$'.number_format($order['shippingTotal'],2)?></td>
+                                 <td class="hidden-480 "><?=(array_key_exists('discountTotal',$order)) ? '$'.number_format($order['discountTotal'],2): ''?></td>
+                                 <td class="center hidden-480 "><?='$'.number_format($order['payment']['amount'],2)?></td>
+                                 <td class=" "><a data-id="<?=$order['_id']?>" class="btn blue mini order-edit"><i class=" "></i> View</a></td>
                               </tr>
                               <? endforeach;?>
                               <? else: ?>
-                                 <td colspan="6">None.</td>
+                                 <td colspan="7">No new orders.</td>
                               <? endif;?>
                            </tbody>
                         </table>
@@ -221,6 +223,7 @@
                   </div>
                   <!-- END EXAMPLE TABLE PORTLET-->
                </div>
+            </div>
             </div>
 
 
@@ -240,6 +243,9 @@ jQuery(document).ready(function() {
    });
    $('#product .view').click(function(e){
       document.location.href='http://<?=SAW_CONSUMER_WEBSITE?>/store/'+$(this).attr('data-id')+$(this).attr('data-slug');
+   });
+   $('.order-edit').click(function(e){
+      document.location.href='/product/order/edit/'+$(this).attr('data-id');
    });
    
 });      

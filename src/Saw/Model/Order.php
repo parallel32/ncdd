@@ -23,6 +23,9 @@ class Order extends Model {
 	public $shoppingCart; // the shopping cart array from the session detailing the products and totals
 	public $shippingCompany;
 	public $trackingNumber;
+	public $orderTotal;
+	public $shippingTotal;
+	public $discountTotal;
 	// dates
 	public $orderDate;
 	public $shipDate;
@@ -47,6 +50,9 @@ class Order extends Model {
 		$this->shoppingCart = $doc['shoppingCart'];
 		$this->shippingCompany = $doc['shippingCompany'];
 		$this->trackingNumber = $doc['trackingNumber'];
+		$this->orderTotal = $doc['orderTotal'];
+		$this->shippingTotal = $doc['shippingTotal'];
+		$this->discountTotal = $doc['discountTotal'];
 		
 		$this->setCurrentStatus();
 
@@ -64,6 +70,9 @@ class Order extends Model {
 		$this->shipDate = $this->shipDate ?: new \stdClass();
 		$this->refundDate = $this->refundDate ?: new \stdClass();
 		$this->add = $this->add ?: 'yes';
+		$this->orderTotal = $this->orderTotal ?: 0;
+		$this->shippingTotal = $this->shippingTotal ?: 0;
+		$this->discountTotal = $this->discountTotal ?: 0;
 	}
 	public function saveEdit(){
 		if($this->add == 'yes'){

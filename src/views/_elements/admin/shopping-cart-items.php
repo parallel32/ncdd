@@ -1,4 +1,5 @@
-                            <table class="table-bordered">
+                            <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                            <table class="table table-striped table-bordered table-hover dataTable">
                                 <thead>
                                     <tr>
                                         <th>Product</th>
@@ -125,3 +126,4 @@
                                     ?>
                                 </tr>
                             </table>
+                            </div>
