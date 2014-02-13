@@ -86,7 +86,7 @@ $product->post('/edit', function (Request $request) use ($app) {
     $product->saveEdit();
     
     return new Response(json_encode(array('productId'=>$product->_id->__toString(), 'message' => 'Product details have saved successfully.')), 200,array('Content-Type' => 'application/json'));
-})->before($mustbeMEMBER);
+});
 
 
 ///////////////////
@@ -181,8 +181,8 @@ $product->get('/order/edit/{orderId}', function ($orderId, Request $request) use
 	
 	$order= new Model\Order(array('_id'=>$orderId),$app);
 	$order= $order->findById();
-	$view_vars['crumbs'][] = array('name'=>$order['payment']['name'],'href'=>'/product/order-edit/'.$orderId);
-	$view_vars['crumbs'][] = array('name'=>'edit','href'=>'/product/order-edit/'.$orderId);
+	$view_vars['crumbs'][] = array('name'=>$order['payment']['name'],'href'=>'/product/order/edit/'.$orderId);
+	$view_vars['crumbs'][] = array('name'=>'edit','href'=>'/product/order/edit/'.$orderId);
 
 	$view_vars['order'] = $order;
 	$view_vars['add'] = 'no';
@@ -205,10 +205,26 @@ $product->post('/order/edit', function (Request $request) use ($app) {
 	// retrieve document from request
     $document = $request->get('doc');
     $order= new Model\Order($document, $app);
+    // validate the model
+   	$app['validateModel']($app,$order);
     $order->saveSafe();
-    
-    return new Response(json_encode(array('orderId'=>$order->_id->__toString(), 'message' => 'Product details have saved successfully.')), 200,array('Content-Type' => 'application/json'));
-})->before($mustbeMEMBER);
+    $_POST['order'] = $order->findById();
+
+    return new Response(json_encode(array('orderId'=>$order->_id->__toString(), 'message' => 'Order details have saved successfully.  Email with shipping details has been sent to the customer.')), 200,array('Content-Type' => 'application/json'));
+})->after(function (Request $request, Response $response, Silex\Application $app) {
+		if((int)$response->getStatusCode() == 200):
+	    	
+	    	$order = $_POST['order'];
+	    	$view_vars = array('order'=>$order);
+
+	    	// send customer the email receipt
+	    	$subject = 'Your recent purchase on NCDD.com has been shipped';
+	    	$to = $order['payment']['email'];
+	    	$body = $app['view']->render('email/new-order-shipped','email', $view_vars);
+	    	$app['sendMail']($subject, $body, $to);
+	    	
+	    endif;
+});
 
 // remove a order completely
 $product->get('/{orderId}/remove/order', function ($orderId, Request $request) use ($app) {

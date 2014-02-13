@@ -1,10 +1,4 @@
-<? $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user'); return $user['accessLevel'];},$this->app); ?>
-<?
-   if(!empty($this->vars['product']) && array_key_exists('currentStatus',$this->vars['product'])): 
-      $status = \Saw\Model\Blog::$statusReversed[$this->vars['product']['currentStatus']];
-   endif;
-?>
-         <!-- BEGIN PAGE -->
+        <!-- BEGIN PAGE -->
          <div class="page-content">
             <!-- BEGIN PAGE CONTAINER-->
             <div class="container-fluid">

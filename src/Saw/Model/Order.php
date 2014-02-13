@@ -34,7 +34,8 @@ class Order extends Model {
 	public $timeZone = 'America/New_York';
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
-		
+		$metadata->addPropertyConstraint('shippingCompany', new Constraints\NotBlank(array('message'=>'cannot be blank')));
+		$metadata->addPropertyConstraint('trackingNumber', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 	}
 	public function __construct($doc, Application $app){
 		parent::__construct($app);

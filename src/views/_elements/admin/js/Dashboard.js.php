@@ -22,6 +22,10 @@
 			e.preventDefault();
 			document.location.href='/applications';
 		});
+		$('#orders .btn.view').click(function(e){
+			e.preventDefault();
+			document.location.href='/product';
+		});
 		$('#blog .btn.view').click(function(e){
 			e.preventDefault();
 			document.location.href='/blog/all-posts';

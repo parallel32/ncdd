@@ -47,6 +47,57 @@
                </div>
                <!-- END DASHBOARD STATS -->
 
+               <!-- NEW ORDERS -->
+               <div class="row-fluid">
+                  <div class="span12">
+                     <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                     <div class="portlet box red">
+                        <div class="portlet-title" id="orders">
+                           <div class="caption"><i class="icon-barcode"></i>New Orders</div>
+                           <div class="actions">
+                              <a class="btn yellow view"><i class=" icon-eye-open"></i> View All</a>
+                           </div>
+                        </div>
+                        <div id="applications-to-approve" class="portlet-body">
+                           <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                           <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
+                              <thead>
+                                 <tr role="row">
+                                    <th class="">Ordered By</th>
+                                    <th class="">Date</th>
+                                    <th class="hidden-phone">Subtotal</th>
+                                    <th class="hidden-480">Shipping</th>
+                                    <th class="hidden-480">Discount</th>
+                                    <th class="hidden-480">Total</th>
+                                    <th class=""></th>
+                                 </tr>
+                              </thead>
+                              <tbody role="alert" aria-live="polite" aria-relevant="all">
+                                 <? if(!empty($this->vars['newOrders'])): 
+                                    foreach($this->vars['newOrders'] as $order): ?>
+                                 <tr class="gradeX odd">
+                                    <td class=" "><?=$order['payment']['name']?></td>
+                                    <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($order['orderDate']['fullDateTime']), $order['timeZone']); ?>
+                                    <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$order['orderDate']['monthDay'].' '.$order['orderDate']['shortTime']?></td>
+                                    <td class=" hidden-phone"><?='$'.number_format($order['orderTotal'],2)?></td>
+                                    <td class="hidden-phone"><?='$'.number_format($order['shippingTotal'],2)?></td>
+                                    <td class="hidden-480 "><?=(array_key_exists('discountTotal',$order)) ? '$'.number_format($order['discountTotal'],2): ''?></td>
+                                    <td class="center hidden-480 "><?='$'.number_format($order['payment']['amount'],2)?></td>
+                                    <td class=" "><a data-id="<?=$order['_id']?>" class="btn blue mini order-edit"><i class=" "></i> View + Fulfill</a></td>
+                                 </tr>
+                                 <? endforeach;?>
+                                 <? else: ?>
+                                    <td colspan="7">No new orders.</td>
+                                 <? endif;?>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div><a name="products"></a>
+                     <!-- END EXAMPLE TABLE PORTLET-->
+                  </div>
+               </div>
+               </div>
+               <!--/ NEW ORDERS -->
                <!-- APPLICATIONS TO APPROVE -->
                <div class="row-fluid">
                   <div class="span12">

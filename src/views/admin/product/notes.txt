@@ -38,10 +38,6 @@ Aside from issues that arise, I'd like to finish these items before we re-examin
 Deployment notes:
 ==================
 
-add pages:
-----------
-Checkout
-
 Tell Hunter and Rhea to update the products to include purhcase instructions
 
 

@@ -1,3 +1,9 @@
+<?
+   $status = null;
+   if(!empty($this->vars['order']) && array_key_exists('currentStatus',$this->vars['order'])): 
+      $status = \Saw\Model\Order::$statusReversed[$this->vars['order']['currentStatus']];
+   endif;
+?>
          <!-- BEGIN PAGE -->
          <div class="page-content">
             <!-- BEGIN PAGE CONTAINER-->
@@ -44,7 +50,7 @@
                               <div class="control-group ">
                                  <label class="control-label"></label>
                                  <div class="controls">
-                                    <span class=""><?=$this->vars['order']['payment']['transactionId']?></span>
+                                    <span class="text-info"><?=$this->vars['order']['payment']['transactionId']?></span>
                                  </div>
                               </div>
                            </div>
@@ -57,7 +63,11 @@
                               <div class="control-group ">
                                  <label class="control-label"></label>
                                  <div class="controls">
+                                    <? if($status == 'NEW'): ?>
                                     <input type="text" name="doc[shippingCompany]" value="<?=(!empty($this->vars['order']) && array_key_exists('shippingCompany',$this->vars['order'])) ? $this->vars['order']['shippingCompany']: ''?>" class="m-wrap span10 shippingCompany">
+                                    <? else: ?>
+                                    <span  class="text-info"><?=(!empty($this->vars['order']) && array_key_exists('shippingCompany',$this->vars['order'])) ? $this->vars['order']['shippingCompany']: ''?></span>
+                                    <? endif; ?>
                                  </div>
                               </div>
                            </div>
@@ -70,7 +80,11 @@
                               <div class="control-group">
                               <label class="control-label"></label>
                               <div class="controls">
+                                 <? if($status == 'NEW'): ?>
                                  <input type="text" name="doc[trackingNumber]" value="<?=(!empty($this->vars['order']) && array_key_exists('trackingNumber',$this->vars['order'])) ? $this->vars['order']['trackingNumber']: ''?>" class="m-wrap span10 trackingNumber">
+                                 <? else: ?>
+                                 <span  class="text-info"><?=(!empty($this->vars['order']) && array_key_exists('trackingNumber',$this->vars['order'])) ? $this->vars['order']['trackingNumber']: ''?></span>
+                                 <? endif; ?>
                               </div>
                            </div>
                            </div>
@@ -84,7 +98,9 @@
                         </div>
                         <!--/ ERROR -->
                         <div class="form-actions text-center">
+                           <? if($status == 'NEW'): ?>
                            <button type='button' class='btn green save-order'><i class='icon-ok'></i>Save and Mark Fulfilled.</button>
+                           <? endif; ?>
                            <button type='button' class='btn red delete'>Delete</button>
                            <button type='button' class='btn cancel'>Cancel</button>
                         </div>
