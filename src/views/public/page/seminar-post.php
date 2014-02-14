@@ -23,7 +23,7 @@
                                                 <h5 class="postTitle"><?=(array_key_exists('location',$seminar)) ? $seminar['location']: '';?></h5>
                                                 <div class="postMainImg">
                                                     <? if(!empty($seminar['image'])){?>
-                                                    <img src="<?=$seminar['image']['urls']['large']['CDN'] ?>" alt="" style="width:60%"><!-- class="bigPostMainImg" -->
+                                                    <img src="<?=$seminar['image']['urls']['large']['SSLCDN'] ?>" alt="" style="width:60%"><!-- class="bigPostMainImg" -->
                                                     <? } ?>
                                                 </div>
                                                 <br>
@@ -31,7 +31,7 @@
                                             </div>
                                             <div class="postFooter">
                                                 <?if(array_key_exists('register',$seminar) && array_key_exists('currentStatus',$seminar['register']) && $seminar['register']['currentStatus'] == \Saw\Model\SeminarRegister::$status['ON']): ?>
-                                                <a href="http://<?=SAW_ADMIN_WEBSITE?>/registration/seminar/<?=$seminar['_id']?><?=$slug?>" class="btn readMore pull-left">Register Online +</a>
+                                                <a href="https://<?=SAW_ADMIN_WEBSITE?>/registration/seminar/<?=$seminar['_id']?><?=$slug?>" class="btn readMore pull-left">Register Online +</a>
                                                 <? else: ?>
                                                 <ul class="postTags pull-left">
                                                     <li><h5>Registration Not Available</h5></li>

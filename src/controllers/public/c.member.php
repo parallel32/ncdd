@@ -104,7 +104,7 @@ $app->get('/member/{id}/{slug}', function ($id, $slug, Request $request) use ($a
 	$member = new Model\Member(array('_id'=>$id),$app);
 	$member = $member->findById();
 	
-	$member['image'] = (!empty($member['image'])) ? $member['image']['urls']['small']['CDN'] : '/noprofileimage';
+	$member['image'] = (!empty($member['image'])) ? $member['image']['urls']['small']['SSLCDN'] : '/noprofileimage';
 	$member['currentMembership'] = (!empty($member['currentMembership'])) ? Model\Member::$membershipReversed[$member['currentMembership']] : '';
 	$member['currentFacultyPosition'] = (!empty($member['currentFacultyPosition'])) ? Model\Member::$facultyPositionReversed[$member['currentFacultyPosition']] : '';
 	$member['boardCertified'] = (array_key_exists('boardCertified',$member) && $member['boardCertified']) ? "Yes" : "No";

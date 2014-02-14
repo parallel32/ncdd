@@ -21,8 +21,8 @@
                                             <? if (!empty($category['image'])): ?>
                                             <div class="pull-left text-center">
                                                 <div class="categoryImg">
-                                                    <div id="wrap" style="top:0px;z-index:9999;position:relative;"><a href="<?=$category['image']['urls']['large']['CDN'] ?>" class="cloud-zoom" id="zoom1" rel="adjustX: 20, adjustY:-4, zoomWidth:500, zoomHeight:500" style="position: relative; display: block;">
-                                                     <img src="<?=$category['image']['urls']['large']['CDN'] ?>" width="400" alt="" title="" style="display: block;">
+                                                    <div id="wrap" style="top:0px;z-index:9999;position:relative;"><a href="<?=$category['image']['urls']['large']['SSLCDN'] ?>" class="cloud-zoom" id="zoom1" rel="adjustX: 20, adjustY:-4, zoomWidth:500, zoomHeight:500" style="position: relative; display: block;">
+                                                     <img src="<?=$category['image']['urls']['large']['SSLCDN'] ?>" width="400" alt="" title="" style="display: block;">
                                                     </a></div>
                                                 </div>
                                                 <p class="rollover">Roll over image to zoom in</p>

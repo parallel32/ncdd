@@ -4,7 +4,7 @@
   font-family: 'Bree Serif';
   font-style: normal;
   font-weight: 400;
-  src: local('Bree Serif'), local('BreeSerif-Regular'), url(http://themes.googleusercontent.com/static/fonts/breeserif/v2/LQ7WLTaITDg4OSRuOZCps73hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+  src: local('Bree Serif'), local('BreeSerif-Regular'), url(/assets/fonts/LQ7WLTaITDg4OSRuOZCps73hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
 }
 .mainMenu .tab-content .tab-pane{display:none}
 
@@ -24,15 +24,6 @@
 .dropdown-menu.learn.fullWidthDropDown.specialwidthsetting { padding:0 0 0 20px; width:30%;}
 </style>
 
-<script src="http://cdnjs.cloudflare.com/ajax/libs/cufon/1.09i/cufon-yui.js" type="text/javascript"></script>
-<script src="/assets/js/Bebas_Neue_400.font.js" type="text/javascript"></script>
-<script src="/assets/js/Ubuntu_Condensed_400.font.js" type="text/javascript"></script>
-<script src="/assets/js/Bree_Serif_400.font.js" type="text/javascript"></script>
-<script type="text/javascript">
-Cufon.replace('.bc,#mainnav a,.pagetitle,h2', { fontFamily: 'Bebas Neue' });
-Cufon.replace('.uc', { fontFamily: 'Ubuntu Condensed' });
-Cufon.replace('.bs', { fontFamily: 'Bree Serif' });
-</script>
 <style type="text/css">
 .pagecontent{ background-color: #fff;}
 #learn{ padding-bottom: 20px;}
@@ -279,12 +270,12 @@ ul.sidebarlist li {
                                         <?endif;?>
                                         -->
                                         
-                                        <img class="sheild" width="100" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/member" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
+                                        <img class="sheild" width="100" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/member" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
                                         <? if($member['staff'] =='Yes'): ?>
-                                        <img class="sheild" width="100" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/staff" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
+                                        <img class="sheild" width="100" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/staff" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
                                         <? endif; ?>
                                         <? if($member['boardCertified'] =='Yes'): ?>
-                                        <img class="sheild" width="120" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/boardcertified" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
+                                        <img class="sheild" width="120" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/boardcertified" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
                                         <? endif; ?>
                                     </div>
                                     <div class="span4 bc">
@@ -292,7 +283,7 @@ ul.sidebarlist li {
                                         <br><br><br> <span class="phone"><a href="tel:<?=$member['primaryPhone']?>"><?=$member['primaryPhone']?></a></span>
                                         <div class="clear"></div>
                                         <? if(!empty($member['currentFacultyPosition'])): ?>
-                                            <img class="delegation" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/exec" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
+                                            <img class="delegation" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/exec" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
                                         <? endif; ?>
                                     </div>
                                 </div>

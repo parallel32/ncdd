@@ -31,8 +31,8 @@
                                             <? if (!empty($product['image'])): ?>
                                             <div class="pull-left text-center">
                                                 <div class="productImg">
-                                                    <div id="wrap" style="top:0px;z-index:99;position:relative;"><a href="<?=$product['image']['urls']['large']['CDN'] ?>" class="cloud-zoom" id="zoom1" rel="adjustX: 20, adjustY:-4, zoomWidth:500, zoomHeight:500" style="position: relative; display: block;">
-                                                     <img src="<?=$product['image']['urls']['large']['CDN'] ?>" width="242" height="302" alt="" title="" style="display: block;">
+                                                    <div id="wrap" style="top:0px;z-index:99;position:relative;"><a href="<?=$product['image']['urls']['large']['SSLCDN'] ?>" class="cloud-zoom" id="zoom1" rel="adjustX: 20, adjustY:-4, zoomWidth:500, zoomHeight:500" style="position: relative; display: block;">
+                                                     <img src="<?=$product['image']['urls']['large']['SSLCDN'] ?>" width="242" height="302" alt="" title="" style="display: block;">
                                                     </a></div>
                                                 </div>
                                                 <p class="rollover">Roll over image to zoom in</p>

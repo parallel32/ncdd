@@ -67,7 +67,7 @@
                             <li class="span3">
                                 <div class="thumbnail">
                                     <? if(!empty($post['image'])): ?>
-                                    <a href="/blog/<?=$post['_id']?><?=$post['slug']?>"><img src="<?=$post['image']['urls']['small']['CDN'] ?>" alt=""></a>
+                                    <a href="/blog/<?=$post['_id']?><?=$post['slug']?>"><img src="<?=$post['image']['urls']['small']['SSLCDN'] ?>" alt=""></a>
                                     <? endif; ?>
                                     <div class="caption">
                                         <h4><a href="/blog/<?=$post['_id']?><?=$post['slug']?>"><?=$post['headline']?></a></h4>
@@ -76,7 +76,7 @@
                                         </ul>
                                         <p><?=substr($post['body'],0,300)?>… <a href="/blog/<?=$post['_id']?><?=$post['slug']?>">read more</a></p>
                                         <div class="autor">
-                                            <img src="<?=(!empty($post['author']['image'])) ? $post['author']['image']['urls']['small']['CDN'] : '/noprofileimage';?>" alt="" class="avatar pull-left">
+                                            <img src="<?=(!empty($post['author']['image'])) ? $post['author']['image']['urls']['small']['SSLCDN'] : '/noprofileimage';?>" alt="" class="avatar pull-left">
                                             <? $middleName = (!empty($post['author']['middleName'])) ? ' '.$post['author']['middleName'].' ':' '; ?>
                                             <div class="pull-left"><span>Posted By:</span><br><a href="/member/<?=$post['author']['_id']?>/<?=$post['author']['slug']?>"><?=$post['author']['firstName'].$middleName.$post['author']['lastName']?> </a></div>
                                         </div>
@@ -111,7 +111,7 @@
                             <li class="span3">
                                 <div class="thumbnail">
                                     <? if(!empty($seminar['image'])){?>
-                                    <a href="/sessions-and-seminars/<?=$seminar['_id']?><?=$slug?>"><img src="<?=$seminar['image']['urls']['small']['CDN'] ?>" alt="" width="100%"></a>
+                                    <a href="/sessions-and-seminars/<?=$seminar['_id']?><?=$slug?>"><img src="<?=$seminar['image']['urls']['small']['SSLCDN'] ?>" alt="" width="100%"></a>
                                     <? } ?>
                                     <div class="caption">
                                         <h4 class="text-center"><a href="/sessions-and-seminars/<?=$seminar['_id']?><?=$slug?>"><?=$seminar['headline']?></a></h4>

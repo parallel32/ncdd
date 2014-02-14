@@ -496,7 +496,7 @@ class Member extends User {
 		
 		if(!empty($result)):
 			for ($i=0; $i < count($result); $i++) {
-				$result[$i]['image'] = (!empty($result[$i]['image'])) ? $result[$i]['image']['urls']['small']['CDN'] : '/noprofileimage';
+				$result[$i]['image'] = (!empty($result[$i]['image'])) ? $result[$i]['image']['urls']['small']['SSLCDN'] : '/noprofileimage';
 				$result[$i]['currentOrder'] = (!empty($result[$i]['currentOrder'])) ? self::$orderReversed[$result[$i]['currentOrder']] : '';
 				$result[$i]['currentMembership'] = (!empty($result[$i]['currentMembership'])) ? self::$membershipReversed[$result[$i]['currentMembership']] : '';
 				$result[$i]['currentFacultyPosition'] = (!empty($result[$i]['currentFacultyPosition'])) ? self::$facultyPositionReversed[$result[$i]['currentFacultyPosition']] : '';
@@ -540,7 +540,7 @@ class Member extends User {
 			$result[$i]['primaryPhone'] = $value['member']['primaryPhone'];
 			$result[$i]['email'] = $value['member']['email'];
 			// do some extra processing with the values here
-			$result[$i]['image'] = (!empty($value['member']['image'])) ? $value['member']['image']['urls']['small']['CDN'] : '/noprofileimage';
+			$result[$i]['image'] = (!empty($value['member']['image'])) ? $value['member']['image']['urls']['small']['SSLCDN'] : '/noprofileimage';
 			$result[$i]['currentMembership'] = (!empty($value['member']['currentMembership'])) ? self::$membershipReversed[$value['member']['currentMembership']] : '';;
 			$result[$i]['currentFacultyPosition'] = (!empty($value['member']['currentFacultyPosition'])) ? self::$facultyPositionReversed[$value['member']['currentFacultyPosition']] : '';
 			$result[$i]['boardCertified'] = ($value['member']['boardCertified']) ? "Yes" : "No";
@@ -592,7 +592,7 @@ class Member extends User {
 			$result[$i]['primaryPhone'] = $value['member']['primaryPhone'];
 			$result[$i]['email'] = $value['member']['email'];
 			// do some extra processing with the values here
-			$result[$i]['image'] = (!empty($value['member']['image'])) ? $value['member']['image']['urls']['small']['CDN'] : '/noprofileimage';
+			$result[$i]['image'] = (!empty($value['member']['image'])) ? $value['member']['image']['urls']['small']['SSLCDN'] : '/noprofileimage';
 			$result[$i]['currentMembership'] = (!empty($value['member']['currentMembership'])) ? self::$membershipReversed[$value['member']['currentMembership']] : '';;
 			$result[$i]['currentFacultyPosition'] = (!empty($value['member']['currentFacultyPosition'])) ? self::$facultyPositionReversed[$value['member']['currentFacultyPosition']] : '';
 			$result[$i]['boardCertified'] = ($value['member']['boardCertified']) ? "Yes" : "No";
@@ -645,7 +645,7 @@ class Member extends User {
 			$result[$i]['primaryPhone'] = $value['member']['primaryPhone'];
 			$result[$i]['email'] = $value['member']['email'];
 			// do some extra processing with the values here
-			$result[$i]['image'] = (!empty($value['member']['image'])) ? $value['member']['image']['urls']['small']['CDN'] : '/noprofileimage';
+			$result[$i]['image'] = (!empty($value['member']['image'])) ? $value['member']['image']['urls']['small']['SSLCDN'] : '/noprofileimage';
 			$result[$i]['currentMembership'] = (!empty($value['member']['currentMembership'])) ? self::$membershipReversed[$value['member']['currentMembership']] : '';;
 			$result[$i]['currentFacultyPosition'] = (!empty($value['member']['currentFacultyPosition'])) ? self::$facultyPositionReversed[$value['member']['currentFacultyPosition']] : '';
 			$result[$i]['boardCertified'] = ($value['member']['boardCertified']) ? "Yes" : "No";

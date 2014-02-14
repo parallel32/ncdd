@@ -12,7 +12,7 @@
 			img{border:0; height:auto; line-height:100%; outline:none; text-decoration:none;}
 			table td{border-collapse:collapse;}
 			#backgroundTable{height:100% !important; margin:0; padding:0; width:100% !important;}
-			@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700); /* Loading Open Sans Google font */ 
+			@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700); /* Loading Open Sans Google font */ 
 			body, #backgroundTable{ background-color:#FFF; }
 			.TopbarLogo{
 			padding:10px;

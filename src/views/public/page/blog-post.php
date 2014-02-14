@@ -44,7 +44,7 @@ $published = (!empty($this->vars['post'])) ? true: false;
                                         <div class="postContent">
                                             <div class="postMainImg">
                                                 <? if(!empty($post['image'])){ ?>
-                                                <img src="<?=$post['image']['urls']['large']['CDN'] ?>" alt="" class="bigPostMainImg">
+                                                <img src="<?=$post['image']['urls']['large']['SSLCDN'] ?>" alt="" class="bigPostMainImg">
                                                 <? } ?>
                                                 <? if(!empty($post['video'])){ ?>
                                                 <br>
