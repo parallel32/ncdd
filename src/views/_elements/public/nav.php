@@ -42,7 +42,7 @@
                                  <ul class="pull-right nav navbar-form">
                                     <li><a href="/contact">Contact</a></li>
                                     <li class="sep"></li>
-                                    <li class="cart"><a href="/shopping-cart"><img src="/assets/img/cart.png" alt=""><sup id="sup-cart"><?=call_user_func(function($app){ $cart = $app['session']->get('shoppingcart'); return (is_array($cart) && !empty($cart) && count($cart) > 0) ? count($cart): '';},$this->app)?></sup></a></li>
+                                    <li class="cart"><a href="https://<?=SAW_CONSUMER_WEBSITE?>/shopping-cart"><img src="/assets/img/cart.png" alt=""><sup id="sup-cart"><?=call_user_func(function($app){ $cart = $app['session']->get('shoppingcart'); return (is_array($cart) && !empty($cart) && count($cart) > 0) ? count($cart): '';},$this->app)?></sup></a></li>
                                     <li class="sep"></li>
                                     <li>
                                         <form action="/coming-soon"><input type="text" class="search span2" placeholder="search"><input type="submit" class="searchBtn" value=""></form>

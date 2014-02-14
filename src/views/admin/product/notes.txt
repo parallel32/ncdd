@@ -39,8 +39,3 @@ Deployment notes:
 ==================
 
 Tell Hunter and Rhea to update the products to include purhcase instructions
-
-
-SSL:
----- 
-install on load balancer & test resources
