@@ -34,7 +34,7 @@
                                     <li class="sep"></li>
                                     <li><a href="/blog">Blog</a></li>
                                     <li class="sep"></li>
-                                    <li><a href="/store">Store</a></li>
+                                    <li><a href="https://<?=SAW_CONSUMER_WEBSITE?>/store">Store</a></li>
                                     <li class="sep"></li>
                                     <li><a href="/dui-laws-in-your-state">DUI Laws in your State</a></li>
 
