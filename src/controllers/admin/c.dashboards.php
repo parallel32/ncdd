@@ -41,7 +41,7 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 			$view_vars['pages']=$pages;
 
 			$order = new Model\Order(array(),$app);
-			$new_orders = $order->fetchByStatus('NEW');
+			$new_orders = $order->fetchByStatus('NEW',0,5);
 			$view_vars['newOrders']=$new_orders;
 
 			array_push($view_vars['crumbs'],array('name'=>'Admin','href'=>'/'));
