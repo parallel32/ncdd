@@ -8,7 +8,7 @@
                         </div>
                         <!--/span-->
                         </form>
-                        <h3 class="subtitle text-center"><strong><?=count($this->vars['results'])?><strong> matches</h3>
+                        <h3 class="subtitle text-center"><strong><?=count($this->vars['results'])?><strong> <?=(count($this->vars['results']) == 1) ? 'match' : 'matches'?></h3>
                         <ul class="searchResultList">
                             <? foreach ($this->vars['results'] as $result): ?>
                             <li class="searchResultListItem" style="padding:30px 0 142px">
