@@ -343,13 +343,14 @@ class Member extends User {
 		if(array_key_exists(strtolower($string),$states)){
 			$res = $states[strtolower($string)];
 		}
-		if(array_search(strtolower($string),$states)!== false){
-			$res = $string;
+		if(in_array(strtoupper($string),$states)){
+			$res = strtoupper($string);
 		}
 
 		return $res;
 	}
 	public function search($string,$listedOnly=false){
+		$result = array();
 		if(self::isState($string) !== false){
 			$state = self::isState($string);
 			$string = "state";
@@ -377,12 +378,17 @@ class Member extends User {
 					,'orderNum'=>1
 					,'orderNumState'=>1
 					,'location'=>1
+					,'aboutMe'=>1
 					);
 
 		switch ($string) {
 			case 'email':
 				$search = new \MongoRegex("/".$email."/i");
-				$result = $this->find($query=array('email'=>$search),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				if($listedOnly){
+					$result = $this->find($query=array('email'=>$search,'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				}else{
+					$result = $this->find($query=array('email'=>$search),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				}
 				break;
 			case 'state':
 				//$result = $this->find($query=array('location.state'=>$state,'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
@@ -391,12 +397,18 @@ class Member extends User {
 				foreach ($fields as $key => $value) {
 					$m_fields['member.'.$key]=$value;
 				}
-				$query=array('state'=>$state,'member.listed'=>1);
+				if($listedOnly){
+					$query=array('state'=>$state,'member.listed'=>1);
+				}else{
+					$query=array('state'=>$state);
+				}
 				$m_result = self::$app['mongo']->find('location', $query,$m_fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.currentOrder'=>-1,'member.orderNumState'=>1));
+				//error_log('query:'.print_r($query,true));
 				//error_log('result:'.print_r($m_result,true));
+				//echo "<pre>".print_r($m_result);echo "</pre>";
 				$i=0;
 				foreach ($m_result as $key => $value) {
-					$result[$i]['_id'] = $value['member']['_id'];
+					$result[$i]['_id'] = (array_key_exists('_id',$value['member'])) ? $value['member']['_id'] : '';
 					$result[$i]['firstName'] = $value['member']['firstName'];
 					$result[$i]['middleName'] = (array_key_exists('middleName',$value['member'])) ? $value['member']['middleName'] : '';
 					$result[$i]['lastName'] = $value['member']['lastName'];
@@ -414,18 +426,31 @@ class Member extends User {
 					$result[$i]['websites'] = $value['member']['websites'];
 					$result[$i]['orderNum'] = $value['member']['orderNum'];
 					$result[$i]['orderNumState'] = (array_key_exists('orderNumState',$value['member'])) ? $value['member']['orderNumState']: '';
+					$result[$i]['aboutMe'] = $value['member']['aboutMe'];
 					$i++;
 				}
 				//*/
 				break;
 			case 'Sustaining Members':
-				$result = $this->find($query=array('currentMembership'=>self::$membership['SUSTAINING MEMBER']),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				if($listedOnly){
+					$result = $this->find($query=array('currentMembership'=>self::$membership['SUSTAINING MEMBER'],'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				}else{
+					$result = $this->find($query=array('currentMembership'=>self::$membership['SUSTAINING MEMBER']),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				}
 				break;
 			case 'General Members':
-				$result = $this->find($query=array('currentMembership'=>self::$membership['GENERAL MEMBER']),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				if($listedOnly){
+					$result = $this->find($query=array('currentMembership'=>self::$membership['GENERAL MEMBER'],'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				}else{
+					$result = $this->find($query=array('currentMembership'=>self::$membership['GENERAL MEMBER']),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				}
 				break;
 			case 'Public Defenders':
-				$result = $this->find($query=array('currentMembership'=>self::$membership['PUBLIC DEFENDER']),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				if($listedOnly){
+					$result = $this->find($query=array('currentMembership'=>self::$membership['PUBLIC DEFENDER'],'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				}else{
+					$result = $this->find($query=array('currentMembership'=>self::$membership['PUBLIC DEFENDER']),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				}
 				break;
 			case 'Founding Members':
 				if($listedOnly){
@@ -464,16 +489,32 @@ class Member extends User {
 				}
 				break;
 			case 'Regents':
-				$result = $this->find($query=array('currentFacultyPosition'=>array('$gt'=>self::$facultyPosition['DELEGATE'],'$lt'=>self::$facultyPosition['FELLOW'])),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				if($listedOnly){
+					$result = $this->find($query=array('currentFacultyPosition'=>array('$gt'=>self::$facultyPosition['DELEGATE'],'$lt'=>self::$facultyPosition['FELLOW']),'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				}else{
+					$result = $this->find($query=array('currentFacultyPosition'=>array('$gt'=>self::$facultyPosition['DELEGATE'],'$lt'=>self::$facultyPosition['FELLOW'])),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				}
 				break;
 			case 'Fellows':
-				$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['FELLOW']),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				if($listedOnly){
+					$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['FELLOW'],'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				}else{
+					$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['FELLOW']),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				}
 				break;
 			case 'Former Regents':
-				$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['FORMER REGENT']),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				if($listedOnly){
+					$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['FORMER REGENT'],'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				}else{
+					$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['FORMER REGENT']),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				}
 				break;
 			case 'State Delegates':
-				$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['DELEGATE']),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				if($listedOnly){
+					$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['DELEGATE'],'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				}else{
+					$result = $this->find($query=array('currentFacultyPosition'=>self::$facultyPosition['DELEGATE']),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				}
 				$i=0;
 				foreach ($result as $key => $value) {
 					$location_result = self::$app['mongo']->findOne('location', $query=array('member._id'=>$value['_id']),array('raw'=>true),$slaveOkay=true);
@@ -482,15 +523,50 @@ class Member extends User {
 				}
 				break;
 			case 'Board Certified':
-				$result = $this->find($query=array('boardCertified'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				if($listedOnly){
+					$result = $this->find($query=array('boardCertified'=>1,'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				}else{
+					$result = $this->find($query=array('boardCertified'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				}
 				break;
 			case 'Staff':
-				$result = $this->find($query=array('staff'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				if($listedOnly){
+					$result = $this->find($query=array('staff'=>1,'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				}else{
+					$result = $this->find($query=array('staff'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				}
 				break;
 			
 			default:
-				$search = new \MongoRegex("/".$string."/i");
-				$result = $this->find($query=array('displayName'=>$search),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=3000);		
+			/* regex parts
+
+			/^  --> the first part
+
+			.*?\bkeyword1\b
+			.*?\bkeyword2\b
+			.*?\bkeyword3\b
+
+			.*?$/im --> the last part
+
+			ref: http://stackoverflow.com/questions/2219830/regular-expression-to-find-two-strings-anywhere-in-input
+
+			//*/
+				$result = array();
+				$search_arr = explode(' ', $string);
+				if(is_array($search_arr)){
+					$regex = '/^';
+					foreach ($search_arr as $key) {
+						$regex .= '.*?\b'.addslashes($key).'\b';
+					}
+					$regex.= '.*?$/im';
+
+					$regex = new \MongoRegex($regex);
+					if($listedOnly){
+						$result = $this->find($query=array('displayName'=>$regex,'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=3000);		
+					}else{
+						$result = $this->find($query=array('displayName'=>$regex),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=3000);		
+					}
+				}
 				break;
 		}
 		

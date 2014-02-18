@@ -74,7 +74,7 @@
                                         <ul class="info">
                                             <li><?=$post['publishDate']['fullMonth']?></li>
                                         </ul>
-                                        <p><?=substr($post['body'],0,300)?>… <a href="/blog/<?=$post['_id']?><?=$post['slug']?>">read more</a></p>
+                                        <p><?=substr($post['body'],0,strpos($post['body'], ' ',300))?> ...<a href="/blog/<?=$post['_id']?><?=$post['slug']?>">read more</a></p>
                                         <div class="autor">
                                             <img src="<?=(!empty($post['author']['image'])) ? $post['author']['image']['urls']['small']['SSLCDN'] : '/noprofileimage';?>" alt="" class="avatar pull-left">
                                             <? $middleName = (!empty($post['author']['middleName'])) ? ' '.$post['author']['middleName'].' ':' '; ?>

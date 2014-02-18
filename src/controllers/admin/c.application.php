@@ -961,7 +961,7 @@ $app->get('/application/{id}/delete', function ($id, Request $request) use ($app
 
 $app->get('/applications/all/{offset}/{limit}', function ($offset, $limit, Request $request) use ($app) {
 	$application = new Model\Apply($doc=array(), $app);
-	$paid = $application->fetchByStatus('PAID', $offset=0,$limit=100,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
+	$paid = $application->fetchByStatus('PAID', $offset=0,$limit=$limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
 	$crumbs = array(array('name'=>'Applications','href'=>'/applications')
 					,array('name'=>'All Paid','href'=>'/applications/all')
 	);
@@ -998,7 +998,7 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 	return $app['view']->render('application/index', 'default', $view_vars);
 })
 ->value('offset','0')
-->value('limit','100')
+->value('limit','10000')
 ->before($mustbeADMIN);
 //////////////
 // RENEWALS //
@@ -1030,7 +1030,7 @@ $app->get('/renewals/{offset}/{limit}', function ($offset, $limit, Request $requ
 	return $app['view']->render('application/index-renewals', 'default', $view_vars);
 })
 ->value('offset','0')
-->value('limit','2000')
+->value('limit','20000')
 ->before($mustbeADMIN);
 
 

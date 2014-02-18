@@ -20,7 +20,6 @@ fulfilled orders
 
 
 ----------------------
-I'll be buying and installing the SSL certificate for the ncdd.com domain so I can deploy the store shopping cart and checkout process.  I'll also add the first page to the store that will categorize the products rather than just listing them out.
 
 I'll also be working out the permission details of the virtual forensic library so that I can publish the integration of the library to the forum.
 
@@ -38,4 +37,7 @@ Aside from issues that arise, I'd like to finish these items before we re-examin
 Deployment notes:
 ==================
 
-Tell Hunter and Rhea to update the products to include purhcase instructions
+Create a Search Page
+
+Godaddy Site Seal
+<span id="siteseal"><script type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=LGuEYlXQkUS4WD2iodHgQVfEd4QiaKligcqtG3KtcNTf1gWRNCDIIq"></script></span>

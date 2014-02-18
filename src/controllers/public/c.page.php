@@ -784,6 +784,64 @@ $app->get('/shopping-cart/checkout/receipt/{orderId}', function ($orderId, Reque
 	return $app['view']->render('page/shopping-cart-checkout-receipt', 'empty',$view_vars);
 });
 
+/////////////
+// 	SEARCH //
+/////////////
+
+// this route expects the "q" query string parameter to be there like this:
+//  /search?q=key words go here
+// must always check that it's present
+$app->get('/search', function (Request $request) use ($app) {
+	
+	$query = $request->get('q');
+	$results = array();
+	if(!empty($query)){
+
+		// members first
+		$member = new Model\Member(array(),$app);
+		$members = $member->search($query,true);
+
+		if(!empty($members) && is_array($members)){
+			//echo "<pre>".print_r($members);echo "</pre>";
+			foreach ($members as $member) {
+				$middleName = (!empty($member['middleName'])) ? ' '.$member['middleName'].' ':' ';
+				$bio = (strlen($member['aboutMe']) > 200) ? substr($member['aboutMe'],0,strpos($member['aboutMe'], ' ',200)).'...': $member['aboutMe'];
+				$website = (!empty($member['websites'])) ? '<a href="http://'.$member['websites'][0]['website'].'"> '.$member['websites'][0]['website'].'</a>' : '';
+
+				$staff = ($member['staff'] =='Yes') ? '<a href="/member/'.$member['_id'].'/'.$member['slug'].'"><img class="sheild" width="100" src="https://'.SAW_CONSUMER_WEBSITE.'/badge/'.$member['_id'].'/staff" alt="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" title="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" /></a>':'';
+                $boardCertified = ($member['boardCertified'] =='Yes') ? '<a href="/member/'.$member['_id'].'/'.$member['slug'].'"><img class="sheild" width="120" src="https://'.SAW_CONSUMER_WEBSITE.'/badge/'.$member['_id'].'/boardcertified" alt="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" title="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" /></a>':'';
+                
+				$results[] = array(
+					'title'=>'<a href="/member/'.$member['_id'].'/'.$member['slug'].'">'.$member['firstName'].$middleName.$member['lastName'].'</a>'
+					,'image'=>'<div class="span2">
+                                    <div style="overflow-y: hidden;width: 130px;height: 150px;float: left; padding-right:20px">
+                                        <img src="'.$member['image'].'" width="130" alt="">
+                                    </div>
+                                </div>'
+					,'subtext'=>'<b>'.'<a href="tel:'.$member['primaryPhone'].'">'.$member['primaryPhone'].'</a>'.'</b>&nbsp;&nbsp;&nbsp;<b>'.$website.'</b> '
+					//,'body'=> '<img class="sheild" width="100" src="https://'.SAW_CONSUMER_WEBSITE.'/badge/'.$member['_id'].'/member" alt="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" title="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" /> '.$bio
+					,'body'=>strip_tags($bio).'&nbsp;&nbsp;&nbsp; </div><div class="span5"><a href="/member/'.$member['_id'].'/'.$member['slug'].'"><img class="sheild" width="100" src="https://'.SAW_CONSUMER_WEBSITE.'/badge/'.$member['_id'].'/member" alt="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" title="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" /></a>'.$boardCertified.''.$staff.' </div>'
+				);
+			}  
+		}
+
+		// blog
+
+		// pages
+
+		// seminars
+
+		// store
+
+	}
+	$view_vars = array('results'=>$results, 'query'=>$query);
+	$page_vars = $app['get_pages']('search');
+	$view_vars = array_merge($page_vars,$view_vars);
+
+	return $app['view']->render('page/search', 'content', $view_vars);
+		
+});
+
 ////////////////////////
 // NON MANAGED ROUTES //
 ////////////////////////

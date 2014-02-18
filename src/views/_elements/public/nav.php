@@ -45,7 +45,7 @@
                                     <li class="cart"><a href="https://<?=SAW_CONSUMER_WEBSITE?>/shopping-cart"><img src="/assets/img/cart.png" alt=""><sup id="sup-cart"><?=call_user_func(function($app){ $cart = $app['session']->get('shoppingcart'); return (is_array($cart) && !empty($cart) && count($cart) > 0) ? count($cart): '';},$this->app)?></sup></a></li>
                                     <li class="sep"></li>
                                     <li>
-                                        <form action="/coming-soon"><input type="text" class="search span2" placeholder="search"><input type="submit" class="searchBtn" value=""></form>
+                                        <form ><input id="search-query" type="text" class="search span2" placeholder="search"><input id="search-button" type="submit" class="searchBtn" value=""></form>
                                     </li>
                                 </ul>
                             </div>
@@ -268,3 +268,32 @@
                     <h1 class="logo"><a href="/">NCDD</a></h1>
                 </div>
             </div> 
+<script>
+jQuery(document).ready(function() {    
+
+    $('#search-button').click(function(e) {
+        e.preventDefault();
+        document.location.href='/search?q='+$('#search-query').val();
+    });
+    $('#search-query').keypress(function (e) {
+        if (e.which == 13) {
+            e.preventDefault();
+            document.location.href='/search?q='+$(this).val();     
+        }
+    });
+    
+});      
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
