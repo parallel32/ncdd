@@ -815,7 +815,7 @@ $app->get('/search', function (Request $request) use ($app) {
 					'title'=>'<a href="/member/'.$member['_id'].'/'.$member['slug'].'">'.$member['firstName'].$middleName.$member['lastName'].'</a>'
 					,'image'=>'<div class="span2">
                                     <div style="overflow-y: hidden;width: 130px;height: 150px;float: left; padding-right:20px">
-                                        <img src="'.$member['image'].'" width="130" alt="">
+                                        <a href="/member/'.$member['_id'].'/'.$member['slug'].'"><img src="'.$member['image'].'" width="130" alt=""></a>
                                     </div>
                                 </div>'
 					,'subtext'=>'<b>'.'<a href="tel:'.$member['primaryPhone'].'">'.$member['primaryPhone'].'</a>'.'</b>&nbsp;&nbsp;&nbsp;<b>'.$website.'</b> '
