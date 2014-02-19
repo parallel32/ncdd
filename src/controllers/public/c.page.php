@@ -993,10 +993,10 @@ EOT;
 			foreach ($pages as $page) {
 				$subtext = '';
 				$image = '';
-				$title = '<a href="/page/'.$page['_id'].$page['slug'].'">'.strip_tags($page['headline']).'</a>';
+				$title = '<a href="/'.$page['slug'].'">'.strip_tags($page['headline']).'</a>';
 				
 				if(!empty($page['image'])){
-                	$image = '<a href="/page/'.$page['_id'].$page['slug'].'"><img src="'.$page['image']['urls']['small']['SSLCDN'].'" width="130" alt=""></a>';
+                	$image = '<a href="/'.$page['slug'].'"><img src="'.$page['image']['urls']['small']['SSLCDN'].'" width="130" alt=""></a>';
                 }
                 $page['body'] = strip_tags($page['body']);
                 $body = (strlen($page['body']) > 300) ? substr($page['body'],0,strpos($page['body'], ' ',300)).'...': $page['body'];
@@ -1038,10 +1038,10 @@ EOT;
 			foreach ($pages as $page) {
 				$subtext = '';
 				$image = '';
-				$title = '<a href="/page/'.$page['_id'].$page['slug'].'">'.strip_tags($page['headline']).'</a>';
+				$title = '<a href="/'.$page['slug'].'">'.strip_tags($page['headline']).'</a>';
 				
 				if(!empty($page['image'])){
-                	$image = '<a href="/page/'.$page['_id'].$page['slug'].'"><img src="'.$page['image']['urls']['small']['SSLCDN'].'" width="130" alt=""></a>';
+                	$image = '<a href="/'.$page['slug'].'"><img src="'.$page['image']['urls']['small']['SSLCDN'].'" width="130" alt=""></a>';
                 }
                 $page['body'] = strip_tags($page['body']);
                 $body = (strlen($page['body']) > 300) ? substr($page['body'],0,strpos($page['body'], ' ',300)).'...': $page['body'];
