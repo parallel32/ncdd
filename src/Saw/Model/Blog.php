@@ -234,6 +234,24 @@ class Blog extends Model {
 			}
 		}
 	}
+	public function search($string){
+
+		$fields = array();// get all fields
+		$result = array();
+		$search_arr = explode(' ', $string);
+		if(is_array($search_arr)){
+			$regex = '/^';
+			foreach ($search_arr as $key) {
+				$regex .= '.*?\b'.addslashes($key).'\b';
+			}
+			$regex.= '.*?$/im';
+
+			$regex = new \MongoRegex($regex);
+			$result = $this->find($query=array('body'=>$regex,'currentStatus'=>self::$status['PUBLISH']),$fields,true,$sort=array('publishDate.date'=>-1),$offset=0,$limit=3000);		
+			
+		}
+		return $result;
+	}
 	public function fetchByStatus($status, $published='yes', $offset=0,$limit=10000){
 		$query = array('currentStatus'=>self::$status[$status]);
 		if(!empty($published)){

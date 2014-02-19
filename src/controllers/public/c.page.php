@@ -798,24 +798,99 @@ $app->get('/search', function (Request $request) use ($app) {
 	if(!empty($query)){
 
 		// members first
-		$member = new Model\Member(array(),$app);
-		$members = $member->search($query,true);
-
+		$memberObj = new Model\Member(array(),$app);
+		$members = $memberObj->search($query,true);
+		
 		if(!empty($members) && is_array($members)){
 			//echo "<pre>".print_r($members);echo "</pre>";
 			foreach ($members as $member) {
 				$middleName = (!empty($member['middleName'])) ? ' '.$member['middleName'].' ':' ';
-				$bio = (strlen($member['aboutMe']) > 200) ? substr($member['aboutMe'],0,strpos($member['aboutMe'], ' ',200)).'...': $member['aboutMe'];
 				$website = (!empty($member['websites'])) ? '<a href="http://'.$member['websites'][0]['website'].'"> '.$member['websites'][0]['website'].'</a>' : '';
-
 				$staff = ($member['staff'] =='Yes') ? '<a href="/member/'.$member['_id'].'/'.$member['slug'].'"><img class="sheild" width="100" src="https://'.SAW_CONSUMER_WEBSITE.'/badge/'.$member['_id'].'/staff" alt="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" title="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" /></a>':'';
                 $boardCertified = ($member['boardCertified'] =='Yes') ? '<a href="/member/'.$member['_id'].'/'.$member['slug'].'"><img class="sheild" width="120" src="https://'.SAW_CONSUMER_WEBSITE.'/badge/'.$member['_id'].'/boardcertified" alt="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" title="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" /></a>':'';
                 
+                $title = '<a href="/member/'.$member['_id'].'/'.$member['slug'].'">'.$member['firstName'].$middleName.$member['lastName'].'</a>';
+                $image = '<a href="/member/'.$member['_id'].'/'.$member['slug'].'"><img src="'.$member['image'].'" width="130" alt=""></a>';
+                $subtext = '<b>'.'<a href="tel:'.$member['primaryPhone'].'">'.$member['primaryPhone'].'</a>'.'</b>&nbsp;&nbsp;&nbsp;<b>'.$website.'</b> ';
+                $member['aboutMe'] = strip_tags($member['aboutMe']);
+                $body = (strlen($member['aboutMe']) > 200) ? substr($member['aboutMe'],0,strpos($member['aboutMe'], ' ',200)).'...': $member['aboutMe'];
+				$saw_consumer_website = SAW_CONSUMER_WEBSITE;
+
+$html = <<<EOT
+<li class="searchResultListItem" style="padding:30px 0 142px">
+	<div class="span2">
+        <div style="overflow-y: hidden;width: 130px;height: 150px;float: left; padding-right:20px">
+    		{$image}        
+        </div>
+    </div>
+	<div class="span5">
+		<h4 class="searchResultTitle">{$title}</h4>
+		<p>{$subtext}</p>
+		<p>{$body}</p>
+	</div>
+	<div class="span5">
+		<a href="/member/{$member['_id']}/{$member['slug']}"><img class="sheild" width="100" src="https://{$saw_consumer_website}/badge/{$member['_id']}/member" alt="NCDD National College for DUI Defense: {$member['firstName']}{$middleName}{$member['lastName']}" title="NCDD National College for DUI Defense: {$member['firstName']}{$middleName}{$member['lastName']}" /></a>{$boardCertified}{$staff} 
+	</div>		
+</li>
+EOT;
+				$results[(string)$member['_id']] = array('html'=>$html);
+			}  
+		}
+
+		$membersBio = $memberObj->searchBio($query,true);
+		$resultsBio = array();
+
+		if(!empty($membersBio) && is_array($membersBio)){
+			//echo "<pre>".print_r($members);echo "</pre>";
+			foreach ($membersBio as $member) {
+				$middleName = (!empty($member['middleName'])) ? ' '.$member['middleName'].' ':' ';
+				$website = (!empty($member['websites'])) ? '<a href="http://'.$member['websites'][0]['website'].'"> '.$member['websites'][0]['website'].'</a>' : '';
+				$staff = ($member['staff'] =='Yes') ? '<a href="/member/'.$member['_id'].'/'.$member['slug'].'"><img class="sheild" width="100" src="https://'.SAW_CONSUMER_WEBSITE.'/badge/'.$member['_id'].'/staff" alt="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" title="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" /></a>':'';
+                $boardCertified = ($member['boardCertified'] =='Yes') ? '<a href="/member/'.$member['_id'].'/'.$member['slug'].'"><img class="sheild" width="120" src="https://'.SAW_CONSUMER_WEBSITE.'/badge/'.$member['_id'].'/boardcertified" alt="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" title="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" /></a>':'';
+                
+                $title = '<a href="/member/'.$member['_id'].'/'.$member['slug'].'">'.$member['firstName'].$middleName.$member['lastName'].'</a>';
+                $image = '<a href="/member/'.$member['_id'].'/'.$member['slug'].'"><img src="'.$member['image'].'" width="130" alt=""></a>';
+                $subtext = '<b>'.'<a href="tel:'.$member['primaryPhone'].'">'.$member['primaryPhone'].'</a>'.'</b>&nbsp;&nbsp;&nbsp;<b>'.$website.'</b> ';
+                $member['aboutMe'] = strip_tags($member['aboutMe']);
+                $body = (strlen($member['aboutMe']) > 200) ? substr($member['aboutMe'],0,strpos($member['aboutMe'], ' ',200)).'...': $member['aboutMe'];
+				$saw_consumer_website = SAW_CONSUMER_WEBSITE;
+
+$html = <<<EOT
+<li class="searchResultListItem" style="padding:30px 0 142px">
+	<div class="span2">
+        <div style="overflow-y: hidden;width: 130px;height: 150px;float: left; padding-right:20px">
+    		{$image}        
+        </div>
+    </div>
+	<div class="span5">
+		<h4 class="searchResultTitle">{$title}</h4>
+		<p>{$subtext}</p>
+		<p>{$body}</p>
+	</div>
+	<div class="span5">
+		<a href="/member/{$member['_id']}/{$member['slug']}"><img class="sheild" width="100" src="https://{$saw_consumer_website}/badge/{$member['_id']}/member" alt="NCDD National College for DUI Defense: {$member['firstName']}{$middleName}{$member['lastName']}" title="NCDD National College for DUI Defense: {$member['firstName']}{$middleName}{$member['lastName']}" /></a>{$boardCertified}{$staff} 
+	</div>		
+</li>
+EOT;
+				$resultsBio[(string)$member['_id']] = array('html'=>$html);
+			}  
+		}
+
+		$results = array_merge($results, $resultsBio);
+
+		// blog
+		$blog = new Model\Blog(array(),$app);
+		$blogs = $blog->search($query,true);
+		/*
+		if(!empty($blogs) && is_array($blogs)){
+			//echo "<pre>".print_r($members);echo "</pre>";
+			foreach ($blogs as $blog) {
+				$blog['image'] = (!empty($blog['image'])) ? $blog['image']['urls']['small']['SSLCDN'] : '';
 				$results[] = array(
-					'title'=>'<a href="/member/'.$member['_id'].'/'.$member['slug'].'">'.$member['firstName'].$middleName.$member['lastName'].'</a>'
+					'title'=>'<a href="/blog/'.$blog['_id'].'/'.$blog['slug'].'">'.$blog['headline'].'</a>'
 					,'image'=>'<div class="span2">
                                     <div style="overflow-y: hidden;width: 130px;height: 150px;float: left; padding-right:20px">
-                                        <a href="/member/'.$member['_id'].'/'.$member['slug'].'"><img src="'.$member['image'].'" width="130" alt=""></a>
+                                        <a href="/blog/'.$blog['_id'].'/'.$blog['slug'].'"><img src="'.$blog['image'].'" width="130" alt=""></a>
                                     </div>
                                 </div>'
 					,'subtext'=>'<b>'.'<a href="tel:'.$member['primaryPhone'].'">'.$member['primaryPhone'].'</a>'.'</b>&nbsp;&nbsp;&nbsp;<b>'.$website.'</b> '
@@ -824,9 +899,7 @@ $app->get('/search', function (Request $request) use ($app) {
 				);
 			}  
 		}
-
-		// blog
-
+		//*/
 		// pages
 
 		// seminars

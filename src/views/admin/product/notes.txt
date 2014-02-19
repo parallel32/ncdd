@@ -37,7 +37,5 @@ Aside from issues that arise, I'd like to finish these items before we re-examin
 Deployment notes:
 ==================
 
-Create a Search Page
-
 Godaddy Site Seal
 <span id="siteseal"><script type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=LGuEYlXQkUS4WD2iodHgQVfEd4QiaKligcqtG3KtcNTf1gWRNCDIIq"></script></span>

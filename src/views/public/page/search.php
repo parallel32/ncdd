@@ -11,13 +11,7 @@
                         <h3 class="subtitle text-center"><strong><?=count($this->vars['results'])?><strong> <?=(count($this->vars['results']) == 1) ? 'match' : 'matches'?></h3>
                         <ul class="searchResultList">
                             <? foreach ($this->vars['results'] as $result): ?>
-                            <li class="searchResultListItem" style="padding:30px 0 142px">
-                                <?=$result['image']?>
-                                <div class="span5">
-                                <h4 class="searchResultTitle"><?=$result['title']?></h4>
-                                <p><?=$result['subtext']?></p>
-                                <p><?=$result['body']?></p>
-                            </li>
+                            <?=$result['html']?>
                             <? endforeach; ?>                            
                         </ul>
 

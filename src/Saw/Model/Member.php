@@ -586,6 +586,74 @@ class Member extends User {
 		return $result;
 	}
 
+	public function searchBio($string,$listedOnly=false){
+		$result = array();
+		$fields=array('_id'=>1
+					,'firstName'=>1
+					,'middleName'=>1
+					,'lastName'=>1
+					,'slug'=>1
+					,'displayName'=>1
+					,'primaryPhone'=>1
+					,'email'=>1
+					,'image'=>1
+					,'currentOrder'=>1
+					,'currentMembership'=>1
+					,'currentFacultyPosition'=>1
+					,'boardCertified'=>1
+					,'staff'=>1
+					,'listed'=>1
+					,'websites'=>1
+					,'orderNum'=>1
+					,'orderNumState'=>1
+					,'location'=>1
+					,'aboutMe'=>1
+					);
+		/* regex parts
+
+		/^  --> the first part
+
+		.*?\bkeyword1\b
+		.*?\bkeyword2\b
+		.*?\bkeyword3\b
+
+		.*?$/im --> the last part
+
+		ref: http://stackoverflow.com/questions/2219830/regular-expression-to-find-two-strings-anywhere-in-input
+
+		//*/
+		$result = array();
+		$search_arr = explode(' ', $string);
+		if(is_array($search_arr)){
+			$regex = '/^';
+			foreach ($search_arr as $key) {
+				$regex .= '.*?\b'.addslashes($key).'\b';
+			}
+			$regex.= '.*?$/im';
+
+			$regex = new \MongoRegex($regex);
+			if($listedOnly){
+				$result = $this->find($query=array('aboutMe'=>$regex,'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=3000);		
+			}else{
+				$result = $this->find($query=array('aboutMe'=>$regex),$fields,true,$sort=array('currentOrder'=>-1),$offset=0,$limit=3000);		
+			}
+		}
+		if(!empty($result)):
+			for ($i=0; $i < count($result); $i++) {
+				$result[$i]['image'] = (!empty($result[$i]['image'])) ? $result[$i]['image']['urls']['small']['SSLCDN'] : '/noprofileimage';
+				$result[$i]['currentOrder'] = (!empty($result[$i]['currentOrder'])) ? self::$orderReversed[$result[$i]['currentOrder']] : '';
+				$result[$i]['currentMembership'] = (!empty($result[$i]['currentMembership'])) ? self::$membershipReversed[$result[$i]['currentMembership']] : '';
+				$result[$i]['currentFacultyPosition'] = (!empty($result[$i]['currentFacultyPosition'])) ? self::$facultyPositionReversed[$result[$i]['currentFacultyPosition']] : '';
+				$result[$i]['boardCertified'] = ($result[$i]['boardCertified']) ? "Yes" : "No";
+				$result[$i]['staff'] = ((array_key_exists('staff',$result[$i])) ? $result[$i]['staff']: '') ? "Yes" : "No";
+				$result[$i]['listed'] = ($result[$i]['listed']) ? "Yes" : "No";
+				$result[$i]['boardCertifiedBadge'] = self::$boardCertifiedBadge;
+				$result[$i]['staffBadge'] = self::$staffBadge;
+			}
+		endif;
+		
+		return $result;
+	}
 	public function searchByState($state){
 
 		$fields=array('member._id'=>1
