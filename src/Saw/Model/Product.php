@@ -187,6 +187,44 @@ class Product extends Model {
 		return $categories;
 		//return array('NCDD Bookstore', 'Trial Graphics', 'NCDD Logo Merchandise');
 	}
+
+	public function search($string){
+
+		$fields = array();// get all fields
+		$result = array();
+		$search_arr = explode(' ', $string);
+		if(is_array($search_arr)){
+			$regex = '/^';
+			foreach ($search_arr as $key) {
+				$regex .= '.*?\b'.addslashes($key).'\b';
+			}
+			$regex.= '.*?$/im';
+
+			$regex = new \MongoRegex($regex);
+			$result = $this->find($query=array('description'=>$regex),$fields,true,$sort=array('name'=>1),$offset=0,$limit=3000);		
+			
+		}
+		return $result;
+	}
+	public function searchName($string){
+
+		$fields = array();// get all fields
+		$result = array();
+		$search_arr = explode(' ', $string);
+		if(is_array($search_arr)){
+			$regex = '/^';
+			foreach ($search_arr as $key) {
+				$regex .= '.*?\b'.addslashes($key).'\b';
+			}
+			$regex.= '.*?$/im';
+
+			$regex = new \MongoRegex($regex);
+			$result = $this->find($query=array('name'=>$regex),$fields,true,$sort=array('name'=>1),$offset=0,$limit=3000);		
+			
+		}
+		return $result;
+	}
+	
 	public static function slugify($str){
 
 		$slugify = new \Cocur\Slugify\Slugify();//for iconv translit

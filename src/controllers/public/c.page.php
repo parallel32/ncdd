@@ -1164,7 +1164,96 @@ EOT;
 
 		$results = array_merge($results, $results_seminar_headline);
 
-		// store
+		///////////////
+		// 	PRODUCTS //
+		///////////////	
+		$productObj = new Model\Product(array(),$app);
+		$products = $productObj->search($query,true);
+		$results_product = array();
+		//*
+		if(!empty($products) && is_array($products)){
+			foreach ($products as $product) {
+				$image = '';
+				$title = '<a href="/store/'.$product['_id'].$product['slug'].'">'.strip_tags($product['name']).'</a>';
+				$subtext = '<b>'.'<a href="/store'.$product['category']['slug'].'">'.$product['category']['name'].'</a>'.'</b>&nbsp;&nbsp;&nbsp;';				
+				$subtext.= '<b>'.'<a href="/store/'.$product['_id'].$product['slug'].'">$'.$product['price'].'</a>'.'</b>&nbsp;&nbsp;&nbsp;';				
+				if(!empty($product['image'])){
+                	$image = '<a href="/store/'.$product['_id'].$product['slug'].'"><img src="'.$product['image']['urls']['small']['SSLCDN'].'" width="130" alt=""></a>';
+                }
+                $product['description'] = strip_tags($product['description']);
+                $body = (strlen($product['description']) > 300) ? substr($product['description'],0,strpos($product['description'], ' ',300)).'...': $product['description'];
+				$saw_consumer_website = SAW_CONSUMER_WEBSITE;
+
+$image_html = '';
+if(!empty($image)){
+$image_html = <<<EOT
+	<div class="span2">
+        <div style="overflow-y: hidden;width: 130px;height: 135px;float: left; padding-right:20px">
+    		{$image}        
+        </div>
+    </div>
+EOT;
+}
+$html = <<<EOT
+<li class="searchResultListItem" style="padding:30px 0 142px">
+	{$image_html}
+	<div class="span10">
+		<h4 class="searchResultTitle">{$title}</h4>
+		<p>{$subtext}</p>
+		<p>{$body}</p>
+	</div>
+</li>
+EOT;
+				$results_product[(string)$product['_id']] = array('html'=>$html);
+			}  
+		}
+
+		$results = array_merge($results, $results_product);
+
+
+		
+		$products = $productObj->searchName($query,true);
+		$results_product_name = array();
+		
+		//*
+		if(!empty($products) && is_array($products)){
+			foreach ($products as $product) {
+				$image = '';
+				$title = '<a href="/store/'.$product['_id'].$product['slug'].'">'.strip_tags($product['name']).'</a>';
+				$subtext = '<b>'.'<a href="/store'.$product['category']['slug'].'">'.$product['category']['name'].'</a>'.'</b>&nbsp;&nbsp;&nbsp;';				
+				$subtext.= '<b>'.'<a href="/store/'.$product['_id'].$product['slug'].'">$'.$product['price'].'</a>'.'</b>&nbsp;&nbsp;&nbsp;';				
+				if(!empty($product['image'])){
+                	$image = '<a href="/store/'.$product['_id'].$product['slug'].'"><img src="'.$product['image']['urls']['small']['SSLCDN'].'" width="130" alt=""></a>';
+                }
+                $product['description'] = strip_tags($product['description']);
+                $body = (strlen($product['description']) > 300) ? substr($product['description'],0,strpos($product['description'], ' ',300)).'...': $product['description'];
+				$saw_consumer_website = SAW_CONSUMER_WEBSITE;
+
+$image_html = '';
+if(!empty($image)){
+$image_html = <<<EOT
+	<div class="span2">
+        <div style="overflow-y: hidden;width: 130px;height: 135px;float: left; padding-right:20px">
+    		{$image}        
+        </div>
+    </div>
+EOT;
+}
+$html = <<<EOT
+<li class="searchResultListItem" style="padding:30px 0 142px">
+	{$image_html}
+	<div class="span10">
+		<h4 class="searchResultTitle">{$title}</h4>
+		<p>{$subtext}</p>
+		<p>{$body}</p>
+	</div>
+</li>
+EOT;
+				$results_product_name[(string)$product['_id']] = array('html'=>$html);
+			}  
+		}
+
+		$results = array_merge($results, $results_product_name);
 
 	}
 	$view_vars = array('results'=>$results, 'query'=>$query);
