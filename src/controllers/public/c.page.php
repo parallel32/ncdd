@@ -223,7 +223,7 @@ $app->post('/contact', function (Request $request) use ($app) {
 
 	    return new Response(json_encode(array('message' =>'We received your message.  Thank you for contacting us.  We will get back to you as soon as we can.')), 200,array('Content-Type' => 'application/json'));
 	}else{
-		return new Response(json_encode(array('message' =>'<strong>Oops!</strong> looks we have some errors:<br>'.$errors)), 400,array('Content-Type' => 'application/json'));
+		return new Response(json_encode(array('message' =>'<strong>Looks like we have some errors:</strong><br>'.$errors)), 400,array('Content-Type' => 'application/json'));
 	}
 });
 
