@@ -226,6 +226,44 @@ class Seminar extends Model {
 			throw new \Saw\Model\Exceptions\DomainException("Editing failed.  Please try again.");
 		}
 	}
+
+	public function search($string){
+
+		$fields = array();// get all fields
+		$result = array();
+		$search_arr = explode(' ', $string);
+		if(is_array($search_arr)){
+			$regex = '/^';
+			foreach ($search_arr as $key) {
+				$regex .= '.*?\b'.addslashes($key).'\b';
+			}
+			$regex.= '.*?$/im';
+
+			$regex = new \MongoRegex($regex);
+			$result = $this->find($query=array('description'=>$regex),$fields,true,$sort=array('startDate.date'=>-1),$offset=0,$limit=3000);		
+			
+		}
+		return $result;
+	}
+	public function searchHeadline($string){
+
+		$fields = array();// get all fields
+		$result = array();
+		$search_arr = explode(' ', $string);
+		if(is_array($search_arr)){
+			$regex = '/^';
+			foreach ($search_arr as $key) {
+				$regex .= '.*?\b'.addslashes($key).'\b';
+			}
+			$regex.= '.*?$/im';
+
+			$regex = new \MongoRegex($regex);
+			$result = $this->find($query=array('headline'=>$regex),$fields,true,$sort=array('startDate.date'=>-1),$offset=0,$limit=3000);		
+			
+		}
+		return $result;
+	}
+	
 	public function delete(){
 		try {
 			$this->remove();

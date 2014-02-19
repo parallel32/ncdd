@@ -797,7 +797,9 @@ $app->get('/search', function (Request $request) use ($app) {
 	$results = array();
 	if(!empty($query)){
 
-		// members first
+		/////////////
+		// MEMBERS //
+		/////////////		
 		$memberObj = new Model\Member(array(),$app);
 		$members = $memberObj->search($query,true);
 		
@@ -819,7 +821,7 @@ $app->get('/search', function (Request $request) use ($app) {
 $html = <<<EOT
 <li class="searchResultListItem" style="padding:30px 0 142px">
 	<div class="span2">
-        <div style="overflow-y: hidden;width: 130px;height: 150px;float: left; padding-right:20px">
+        <div style="overflow-y: hidden;width: 130px;height: 135px;float: left; padding-right:20px">
     		{$image}        
         </div>
     </div>
@@ -837,12 +839,12 @@ EOT;
 			}  
 		}
 
-		$membersBio = $memberObj->searchBio($query,true);
-		$resultsBio = array();
+		$members_bio = $memberObj->searchBio($query,true);
+		$results_bio = array();
 
-		if(!empty($membersBio) && is_array($membersBio)){
+		if(!empty($members_bio) && is_array($members_bio)){
 			//echo "<pre>".print_r($members);echo "</pre>";
-			foreach ($membersBio as $member) {
+			foreach ($members_bio as $member) {
 				$middleName = (!empty($member['middleName'])) ? ' '.$member['middleName'].' ':' ';
 				$website = (!empty($member['websites'])) ? '<a href="http://'.$member['websites'][0]['website'].'"> '.$member['websites'][0]['website'].'</a>' : '';
 				$staff = ($member['staff'] =='Yes') ? '<a href="/member/'.$member['_id'].'/'.$member['slug'].'"><img class="sheild" width="100" src="https://'.SAW_CONSUMER_WEBSITE.'/badge/'.$member['_id'].'/staff" alt="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" title="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" /></a>':'';
@@ -858,7 +860,7 @@ EOT;
 $html = <<<EOT
 <li class="searchResultListItem" style="padding:30px 0 142px">
 	<div class="span2">
-        <div style="overflow-y: hidden;width: 130px;height: 150px;float: left; padding-right:20px">
+        <div style="overflow-y: hidden;width: 130px;height: 135px;float: left; padding-right:20px">
     		{$image}        
         </div>
     </div>
@@ -872,37 +874,295 @@ $html = <<<EOT
 	</div>		
 </li>
 EOT;
-				$resultsBio[(string)$member['_id']] = array('html'=>$html);
+				$results_bio[(string)$member['_id']] = array('html'=>$html);
 			}  
 		}
 
-		$results = array_merge($results, $resultsBio);
+		$results = array_merge($results, $results_bio);
 
-		// blog
-		$blog = new Model\Blog(array(),$app);
-		$blogs = $blog->search($query,true);
-		/*
+		///////////
+		// 	BLOG //
+		///////////		
+		$blogObj = new Model\Blog(array(),$app);
+		$blogs = $blogObj->search($query,true);
+		$results_blog = array();
+		//*
 		if(!empty($blogs) && is_array($blogs)){
-			//echo "<pre>".print_r($members);echo "</pre>";
 			foreach ($blogs as $blog) {
-				$blog['image'] = (!empty($blog['image'])) ? $blog['image']['urls']['small']['SSLCDN'] : '';
-				$results[] = array(
-					'title'=>'<a href="/blog/'.$blog['_id'].'/'.$blog['slug'].'">'.$blog['headline'].'</a>'
-					,'image'=>'<div class="span2">
-                                    <div style="overflow-y: hidden;width: 130px;height: 150px;float: left; padding-right:20px">
-                                        <a href="/blog/'.$blog['_id'].'/'.$blog['slug'].'"><img src="'.$blog['image'].'" width="130" alt=""></a>
-                                    </div>
-                                </div>'
-					,'subtext'=>'<b>'.'<a href="tel:'.$member['primaryPhone'].'">'.$member['primaryPhone'].'</a>'.'</b>&nbsp;&nbsp;&nbsp;<b>'.$website.'</b> '
-					//,'body'=> '<img class="sheild" width="100" src="https://'.SAW_CONSUMER_WEBSITE.'/badge/'.$member['_id'].'/member" alt="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" title="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" /> '.$bio
-					,'body'=>strip_tags($bio).'&nbsp;&nbsp;&nbsp; </div><div class="span5"><a href="/member/'.$member['_id'].'/'.$member['slug'].'"><img class="sheild" width="100" src="https://'.SAW_CONSUMER_WEBSITE.'/badge/'.$member['_id'].'/member" alt="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" title="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" /></a>'.$boardCertified.''.$staff.' </div>'
-				);
+				$subtext = '';
+				$image = '';
+				$title = '<a href="/blog/'.$blog['_id'].$blog['slug'].'">'.strip_tags($blog['headline']).'</a>';
+				
+				if(!empty($blog['image'])){
+                	$image = '<a href="/blog/'.$blog['_id'].$blog['slug'].'"><img src="'.$blog['image']['urls']['small']['SSLCDN'].'" width="130" alt=""></a>';
+                }
+                if(!empty($blog['tags']) && is_array($blog['tags'])){
+	                foreach($blog['tags'] as $tag){
+	                	$subtext.= '<b>'.'<a href="/blog/tag'.$tag['slug'].'">'.$tag['name'].'</a>'.'</b>&nbsp;&nbsp;&nbsp;';
+	            	}
+	            }
+                $blog['body'] = strip_tags($blog['body']);
+                $body = (strlen($blog['body']) > 200) ? substr($blog['body'],0,strpos($blog['body'], ' ',200)).'...': $blog['body'];
+				$saw_consumer_website = SAW_CONSUMER_WEBSITE;
+$image_html = '';
+if(!empty($image)){
+$image_html = <<<EOT
+	<div class="span2">
+        <div style="overflow-y: hidden;width: 130px;height: 135px;float: left; padding-right:20px">
+    		{$image}        
+        </div>
+    </div>
+EOT;
+}
+$html = <<<EOT
+<li class="searchResultListItem" style="padding:30px 0 142px">
+	{$image_html}
+	<div class="span10">
+		<h4 class="searchResultTitle">{$title}</h4>
+		<p>{$subtext}</p>
+		<p>{$body}</p>
+	</div>
+</li>
+EOT;
+				$results_blog[(string)$blog['_id']] = array('html'=>$html);
 			}  
 		}
-		//*/
-		// pages
 
-		// seminars
+		$results = array_merge($results, $results_blog);
+
+
+
+		$blogs = $blogObj->searchHeadline($query,true);
+		$results_blog_headline = array();
+		
+		//*
+		if(!empty($blogs) && is_array($blogs)){
+			foreach ($blogs as $blog) {
+				$subtext = '';
+				$image = '';
+				$title = '<a href="/blog/'.$blog['_id'].$blog['slug'].'">'.strip_tags($blog['headline']).'</a>';
+				
+				if(!empty($blog['image'])){
+                	$image = '<a href="/blog/'.$blog['_id'].$blog['slug'].'"><img src="'.$blog['image']['urls']['small']['SSLCDN'].'" width="130" alt=""></a>';
+                }
+                if(!empty($blog['tags']) && is_array($blog['tags'])){
+	                foreach($blog['tags'] as $tag){
+	                	$subtext.= '<b>'.'<a href="/blog/tag'.$tag['slug'].'">'.$tag['name'].'</a>'.'</b>&nbsp;&nbsp;&nbsp;';
+	            	}
+	            }
+	            $blog['body'] = strip_tags($blog['body']);
+                $body = (strlen($blog['body']) > 200) ? substr($blog['body'],0,strpos($blog['body'], ' ',200)).'...': $blog['body'];
+				$saw_consumer_website = SAW_CONSUMER_WEBSITE;
+
+$image_html = '';
+if(!empty($image)){
+$image_html = <<<EOT
+	<div class="span2">
+        <div style="overflow-y: hidden;width: 130px;height: 135px;float: left; padding-right:20px">
+    		{$image}        
+        </div>
+    </div>
+EOT;
+}
+$html = <<<EOT
+<li class="searchResultListItem" style="padding:30px 0 142px">
+	{$image_html}
+	<div class="span10">
+		<h4 class="searchResultTitle">{$title}</h4>
+		<p>{$subtext}</p>
+		<p>{$body}</p>
+	</div>
+</li>
+EOT;
+
+				$results_blog_headline[(string)$blog['_id']] = array('html'=>$html);
+			}  
+		}
+
+		$results = array_merge($results, $results_blog_headline);
+		
+//*/
+		////////////
+		// 	PAGES //
+		////////////		
+		$pageObj = new Model\Page(array(),$app);
+		$pages = $pageObj->search($query,true);
+		$results_page = array();
+		//*
+		if(!empty($pages) && is_array($pages)){
+			foreach ($pages as $page) {
+				$subtext = '';
+				$image = '';
+				$title = '<a href="/page/'.$page['_id'].$page['slug'].'">'.strip_tags($page['headline']).'</a>';
+				
+				if(!empty($page['image'])){
+                	$image = '<a href="/page/'.$page['_id'].$page['slug'].'"><img src="'.$page['image']['urls']['small']['SSLCDN'].'" width="130" alt=""></a>';
+                }
+                $page['body'] = strip_tags($page['body']);
+                $body = (strlen($page['body']) > 300) ? substr($page['body'],0,strpos($page['body'], ' ',300)).'...': $page['body'];
+				$saw_consumer_website = SAW_CONSUMER_WEBSITE;
+
+$image_html = '';
+if(!empty($image)){
+$image_html = <<<EOT
+	<div class="span2">
+        <div style="overflow-y: hidden;width: 130px;height: 135px;float: left; padding-right:20px">
+    		{$image}        
+        </div>
+    </div>
+EOT;
+}
+$html = <<<EOT
+<li class="searchResultListItem" style="padding:30px 0 142px">
+	{$image_html}
+	<div class="span10">
+		<h4 class="searchResultTitle">{$title}</h4>
+		<p>{$subtext}</p>
+		<p>{$body}</p>
+	</div>
+</li>
+EOT;
+				$results_page[(string)$page['_id']] = array('html'=>$html);
+			}  
+		}
+
+		$results = array_merge($results, $results_page);
+
+
+		
+		$pages = $pageObj->searchHeadline($query,true);
+		$results_page_headline = array();
+		
+		//*
+		if(!empty($pages) && is_array($pages)){
+			foreach ($pages as $page) {
+				$subtext = '';
+				$image = '';
+				$title = '<a href="/page/'.$page['_id'].$page['slug'].'">'.strip_tags($page['headline']).'</a>';
+				
+				if(!empty($page['image'])){
+                	$image = '<a href="/page/'.$page['_id'].$page['slug'].'"><img src="'.$page['image']['urls']['small']['SSLCDN'].'" width="130" alt=""></a>';
+                }
+                $page['body'] = strip_tags($page['body']);
+                $body = (strlen($page['body']) > 300) ? substr($page['body'],0,strpos($page['body'], ' ',300)).'...': $page['body'];
+				$saw_consumer_website = SAW_CONSUMER_WEBSITE;
+
+$image_html = '';
+if(!empty($image)){
+$image_html = <<<EOT
+	<div class="span2">
+        <div style="overflow-y: hidden;width: 130px;height: 135px;float: left; padding-right:20px">
+    		{$image}        
+        </div>
+    </div>
+EOT;
+}
+$html = <<<EOT
+<li class="searchResultListItem" style="padding:30px 0 142px">
+	{$image_html}
+	<div class="span10">
+		<h4 class="searchResultTitle">{$title}</h4>
+		<p>{$subtext}</p>
+		<p>{$body}</p>
+	</div>
+</li>
+EOT;
+				$results_page_headline[(string)$page['_id']] = array('html'=>$html);
+			}  
+		}
+
+		$results = array_merge($results, $results_page_headline);
+
+		///////////////
+		// 	SEMINARS //
+		///////////////	
+		$seminarObj = new Model\Seminar(array(),$app);
+		$seminars = $seminarObj->search($query,true);
+		$results_seminar = array();
+		//*
+		if(!empty($seminars) && is_array($seminars)){
+			foreach ($seminars as $seminar) {
+				$subtext = '';
+				$image = '';
+				$title = '<a href="/seminar/'.$seminar['_id'].$seminar['slug'].'">'.strip_tags($seminar['headline']).'</a>';
+				
+				if(!empty($seminar['image'])){
+                	$image = '<a href="/seminar/'.$seminar['_id'].$seminar['slug'].'"><img src="'.$seminar['image']['urls']['small']['SSLCDN'].'" width="130" alt=""></a>';
+                }
+                $seminar['description'] = strip_tags($seminar['description']);
+                $body = (strlen($seminar['description']) > 300) ? substr($seminar['description'],0,strpos($seminar['description'], ' ',300)).'...': $seminar['description'];
+				$saw_consumer_website = SAW_CONSUMER_WEBSITE;
+
+$image_html = '';
+if(!empty($image)){
+$image_html = <<<EOT
+	<div class="span2">
+        <div style="overflow-y: hidden;width: 130px;height: 135px;float: left; padding-right:20px">
+    		{$image}        
+        </div>
+    </div>
+EOT;
+}
+$html = <<<EOT
+<li class="searchResultListItem" style="padding:30px 0 142px">
+	{$image_html}
+	<div class="span10">
+		<h4 class="searchResultTitle">{$title}</h4>
+		<p>{$subtext}</p>
+		<p>{$body}</p>
+	</div>
+</li>
+EOT;
+				$results_seminar[(string)$seminar['_id']] = array('html'=>$html);
+			}  
+		}
+
+		$results = array_merge($results, $results_seminar);
+
+
+		
+		$seminars = $seminarObj->searchHeadline($query,true);
+		$results_seminar_headline = array();
+		
+		//*
+		if(!empty($seminars) && is_array($seminars)){
+			foreach ($seminars as $seminar) {
+				$subtext = '';
+				$image = '';
+				$title = '<a href="/seminar/'.$seminar['_id'].$seminar['slug'].'">'.strip_tags($seminar['headline']).'</a>';
+				
+				if(!empty($seminar['image'])){
+                	$image = '<a href="/seminar/'.$seminar['_id'].$seminar['slug'].'"><img src="'.$seminar['image']['urls']['small']['SSLCDN'].'" width="130" alt=""></a>';
+                }
+                $seminar['description'] = strip_tags($seminar['description']);
+                $body = (strlen($seminar['description']) > 300) ? substr($seminar['description'],0,strpos($seminar['description'], ' ',300)).'...': $seminar['description'];
+				$saw_consumer_website = SAW_CONSUMER_WEBSITE;
+
+$image_html = '';
+if(!empty($image)){
+$image_html = <<<EOT
+	<div class="span2">
+        <div style="overflow-y: hidden;width: 130px;height: 135px;float: left; padding-right:20px">
+    		{$image}        
+        </div>
+    </div>
+EOT;
+}
+$html = <<<EOT
+<li class="searchResultListItem" style="padding:30px 0 142px">
+	{$image_html}
+	<div class="span10">
+		<h4 class="searchResultTitle">{$title}</h4>
+		<p>{$subtext}</p>
+		<p>{$body}</p>
+	</div>
+</li>
+EOT;
+				$results_seminar_headline[(string)$seminar['_id']] = array('html'=>$html);
+			}  
+		}
+
+		$results = array_merge($results, $results_seminar_headline);
 
 		// store
 

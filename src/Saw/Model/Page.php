@@ -174,6 +174,43 @@ class Page extends Model {
 		return $result;
 
 	}
+	public function search($string){
+
+		$fields = array();// get all fields
+		$result = array();
+		$search_arr = explode(' ', $string);
+		if(is_array($search_arr)){
+			$regex = '/^';
+			foreach ($search_arr as $key) {
+				$regex .= '.*?\b'.addslashes($key).'\b';
+			}
+			$regex.= '.*?$/im';
+
+			$regex = new \MongoRegex($regex);
+			$result = $this->find($query=array('body'=>$regex,'currentStatus'=>self::$status['PUBLISHED']),$fields,true,$sort=array('orderNum'=>1,'headline'=>1),$offset=0,$limit=3000);		
+			
+		}
+		return $result;
+	}
+	public function searchHeadline($string){
+
+		$fields = array();// get all fields
+		$result = array();
+		$search_arr = explode(' ', $string);
+		if(is_array($search_arr)){
+			$regex = '/^';
+			foreach ($search_arr as $key) {
+				$regex .= '.*?\b'.addslashes($key).'\b';
+			}
+			$regex.= '.*?$/im';
+
+			$regex = new \MongoRegex($regex);
+			$result = $this->find($query=array('headline'=>$regex,'currentStatus'=>self::$status['PUBLISHED']),$fields,true,$sort=array('orderNum'=>1,'headline'=>1),$offset=0,$limit=3000);		
+			
+		}
+		return $result;
+	}
+	
 	public function delete(){
 
 		return $this->removeByCriteria(array('slug'=>$this->slug));
