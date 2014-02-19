@@ -44,7 +44,7 @@
                                                 <img src="<?=$post['image']['urls']['large']['SSLCDN'] ?>" alt="" class="bigPostMainImg">
                                                 <? } ?>
                                                 <? if(!empty($post['video'])){ ?>
-                                                <br>
+                                                <br><br><br>
                                                 <?=$post['video']?>
                                                 <br>
                                                 <? } ?>
