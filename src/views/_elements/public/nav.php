@@ -12,16 +12,16 @@
                                     <li class="dropdown signIn">
                                         <? $user = $this->app['session']->get('user');?>
                                         <? if(is_array($user) && array_key_exists('accessLevel', $user)){ ?>
-                                        <a href="http://<?=SAW_ADMIN_WEBSITE ?>" class="dropdown-toggle" data-toggle="dropdown" id="memberDropDown">Welcome, <?=$user['displayName']?></a>
+                                        <a href="https://<?=SAW_ADMIN_WEBSITE ?>" class="dropdown-toggle" data-toggle="dropdown" id="memberDropDown">Welcome, <?=$user['displayName']?></a>
                                         <? } else { ?>
-                                        <a href="http://<?=SAW_ADMIN_WEBSITE ?>" >Member <b>Sign in</b></a>
+                                        <a href="https://<?=SAW_ADMIN_WEBSITE ?>" >Member <b>Sign in</b></a>
                                         <? } ?>
                                         <ul class="dropdown-menu" role="menu" aria-labelledby="memberDropDown">
                                             <li role="menuitem">
                                                 <form>
                                                     <p>Welcome, <?=$user['displayName']?> </p>
-                                                    <a class="btn" href="http://<?=SAW_ADMIN_WEBSITE ?>" class="pull-right">Go To Member Portal</a>
-                                                    <a class="btn" href="http://<?=SAW_ADMIN_WEBSITE ?>/logout" class="pull-right">Log Out</a>
+                                                    <a class="btn" href="https://<?=SAW_ADMIN_WEBSITE ?>" class="pull-right">Go To Member Portal</a>
+                                                    <a class="btn" href="https://<?=SAW_ADMIN_WEBSITE ?>/logout" class="pull-right">Log Out</a>
                                                 </form>
                                             </li>
                                         </ul>
