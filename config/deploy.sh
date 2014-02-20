@@ -2,11 +2,11 @@
 
 #### temp commented out ###
 #echo "making ssl files......"
-#/home/ec2-user/staging/config/ssl_maker.sh
+#/home/ec2-user/staging/ncdd/config/ssl_maker.sh
 
 echo "minifying......"
-#/home/ec2-user/staging/config/minify_css.sh
-/home/ec2-user/staging/config/minify_js.sh
+#/home/ec2-user/staging/ncdd/config/minify_css.sh
+/home/ec2-user/staging/ncdd/config/minify_js.sh
 ### temp commented out ###
 
 
