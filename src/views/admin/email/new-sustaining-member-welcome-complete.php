@@ -18,13 +18,13 @@
 <br/>
 <br>Congratulations! The Board of Regents welcomes you to your new endeavors through the association of your fellow defenders.  We look forward to your active participation in the College.
 <br/>
-<br>As a Sustaining Member, you are now listed on the College Website at <a href="http://ncdd.com">ncdd.com</a> along with your address, telephone and fax number, e-mail address and website. There, you may also place your picture and biographical information. This should prove useful as a source for potential business from citizens visiting our site in their search for a qualified DUI defense attorney. You have also been invited to join our “members only” on-line listserver. This is your immediate communication link to post and receive legal information with your fellow members. <strong>Watch for an email from Yahoo with instructions on how to log on</strong>.
+<br>As a Sustaining Member, you are now listed on the College Website at <a href="https://ncdd.com">ncdd.com</a> along with your address, telephone and fax number, e-mail address and website. There, you may also place your picture and biographical information. This should prove useful as a source for potential business from citizens visiting our site in their search for a qualified DUI defense attorney. You have also been invited to join our “members only” on-line listserver. This is your immediate communication link to post and receive legal information with your fellow members. <strong>Watch for an email from Yahoo with instructions on how to log on</strong>.
 <br/>
-<br>Please take time to look at our website at <a href="http://ncdd.com">ncdd.com</a> and take advantage of our “Members Only” section which includes a Brief Bank, Blog and Virtual Library containing many scientific articles.  We feel this will be a great benefit to your practice. 
+<br>Please take time to look at our website at <a href="https://ncdd.com">ncdd.com</a> and take advantage of our “Members Only” section which includes a Brief Bank, Blog and Virtual Library containing many scientific articles.  We feel this will be a great benefit to your practice. 
 <br>
-<br>To access the "Members Only" area you may browse to <a href="http://ncdd.com">ncdd.com</a> and click "Member Sign in" on the top left.  Or you may browse directly to:
+<br>To access the "Members Only" area you may browse to <a href="https://ncdd.com">ncdd.com</a> and click "Member Sign in" on the top left.  Or you may browse directly to:
 <br>
-<br><a href="http://<?=SAW_ADMIN_WEBSITE?>/login" target="_blank">http://<?=SAW_ADMIN_WEBSITE?>/login</a>. 
+<br><a href="https://<?=SAW_ADMIN_WEBSITE?>/login" target="_blank">https://<?=SAW_ADMIN_WEBSITE?>/login</a>. 
 <br>
 <br>Your User ID is: <?=$this->vars['email']?>
 <br>Please remember, your User ID is your email address: <?=$this->vars['email']?>

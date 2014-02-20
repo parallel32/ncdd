@@ -42,7 +42,7 @@
 <br/>
 <br/>
 <br/>
-View this in the Admin Dashboard:<a href="http://<?=SAW_ADMIN_WEBSITE?>/seminar" target="_blank"> http://<?=SAW_ADMIN_WEBSITE?>/seminar</a>. 
+View this in the Admin Dashboard:<a href="https://<?=SAW_ADMIN_WEBSITE?>/seminar" target="_blank"> https://<?=SAW_ADMIN_WEBSITE?>/seminar</a>. 
 												</div>
 											</td>
 										</tr>

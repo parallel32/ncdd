@@ -16,9 +16,9 @@
 													<br/>Shipping Company: <?=$this->vars['order']['shippingCompany']?><br/>
 													<br/>Tracking Number: <?=$this->vars['order']['trackingNumber']?><br/>
 													<br/>
-               										You can view your full receipt details online by clicking <a href="http://<?=SAW_CONSUMER_WEBSITE?>/shopping-cart/checkout/receipt/<?=$this->vars['order']['_id']?>" target="_blank">here</a> </a> <br>
+               										You can view your full receipt details online by clicking <a href="https://<?=SAW_CONSUMER_WEBSITE?>/shopping-cart/checkout/receipt/<?=$this->vars['order']['_id']?>" target="_blank">here</a> </a> <br>
 									               <br>
-									               Or browsing to here: http://<?=SAW_CONSUMER_WEBSITE?>/shopping-cart/checkout/receipt/<?=$this->vars['order']['_id']?>
+									               Or browsing to here: https://<?=SAW_CONSUMER_WEBSITE?>/shopping-cart/checkout/receipt/<?=$this->vars['order']['_id']?>
          										</div>
 											</td>
 										</tr>

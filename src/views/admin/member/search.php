@@ -107,7 +107,7 @@ jQuery(document).ready(function() {
                         '   <td class=" hidden-phone hidden-tablet"><span class="label">'+member.currentFacultyPosition+'</span></td>'+
                         '   <td class=" hidden-phone hidden-tablet"><span class="label">'+member.boardCertified+'</span></td>'+
                         '   <td class=" hidden-phone hidden-tablet"><span class="label">'+member.listed+'</span></td>'+
-                        '   <td><a target="_blank" class="btn mini green-stripe" href="http://<?=SAW_CONSUMER_WEBSITE?>/member/'+member._id.$id+'/'+member.slug+'">View</a></td>'+
+                        '   <td><a target="_blank" class="btn mini green-stripe" href="https://<?=SAW_CONSUMER_WEBSITE?>/member/'+member._id.$id+'/'+member.slug+'">View</a></td>'+
                         <? if($accessLevel >= EDITOR): ?>
                         '   <td><a class="btn mini blue-stripe edit" data-id="'+member._id.$id+'">Edit</a></td>'+
                         <? endif; ?>

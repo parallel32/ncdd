@@ -24,7 +24,7 @@
                      <div class="span12 ">
                         <div class="control-group">
                            <div class="controls">
-                              <input type="text" value="http://<?=SAW_ADMIN_WEBSITE?>/application/<?=$this->vars['application']['_id']?>/view-public" class="m-wrap span12">
+                              <input type="text" value="https://<?=SAW_ADMIN_WEBSITE?>/application/<?=$this->vars['application']['_id']?>/view-public" class="m-wrap span12">
                            </div>
                         </div>
                      </div>

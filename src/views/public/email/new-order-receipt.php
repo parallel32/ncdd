@@ -7,7 +7,7 @@
             <div class="span12">
                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                <h3 class="page-title text-center">
-                  <img src="http://<?=SAW_CONSUMER_WEBSITE?>/assets/img/ncdd-login2-logo.png">
+                  <img src="https://<?=SAW_CONSUMER_WEBSITE?>/assets/img/ncdd-login2-logo.png">
                   <br/>Store Purchase Receipt
                </h3>
                <p class="text-center">
@@ -21,9 +21,9 @@
             </div>
          <div class="row-fluid">
             <div class="span12">
-               You can view your full receipt details online by clicking <a href="http://<?=SAW_CONSUMER_WEBSITE?>/shopping-cart/checkout/receipt/<?=$this->vars['order']['_id']?>" target="_blank">here</a> </a> <br>
+               You can view your full receipt details online by clicking <a href="https://<?=SAW_CONSUMER_WEBSITE?>/shopping-cart/checkout/receipt/<?=$this->vars['order']['_id']?>" target="_blank">here</a> </a> <br>
                <br>
-               Or browsing to here: http://<?=SAW_CONSUMER_WEBSITE?>/shopping-cart/checkout/receipt/<?=$this->vars['order']['_id']?>
+               Or browsing to here: https://<?=SAW_CONSUMER_WEBSITE?>/shopping-cart/checkout/receipt/<?=$this->vars['order']['_id']?>
             </div>
          </div>
          <!-- END PAGE HEADER-->

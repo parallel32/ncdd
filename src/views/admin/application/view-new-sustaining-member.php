@@ -24,7 +24,7 @@
                      <div class="span12 ">
                         <div class="control-group">
                            <div class="controls">
-                              <input type="text" value="http://<?=SAW_ADMIN_WEBSITE?>/application/<?=$this->vars['application']['_id']?>/view-public" class="m-wrap span12">
+                              <input type="text" value="https://<?=SAW_ADMIN_WEBSITE?>/application/<?=$this->vars['application']['_id']?>/view-public" class="m-wrap span12">
                            </div>
                         </div>
                      </div>
@@ -485,7 +485,7 @@
                      <div class="span12">
                         <div class="control-group">
                            <label class="control-label">Please download this reference form and confirm you did so by selecting "Yes": <br>
-                              <a target="_blank" href="http://<?=SAW_ADMIN_WEBSITE?>/application/downloads/ncdd-sustaining-membership-reference-form.pdf">Sustaining Member Application Reference Form - click to download the PDF document.</a>
+                              <a target="_blank" href="https://<?=SAW_ADMIN_WEBSITE?>/application/downloads/ncdd-sustaining-membership-reference-form.pdf">Sustaining Member Application Reference Form - click to download the PDF document.</a>
                            </label>
                            <div class="controls">
                               <input disabled type="text" value="<?=$this->vars['application']['referenceFormDownload']?>" class="m-wrap span12 referenceFormDownload">

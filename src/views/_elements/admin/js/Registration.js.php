@@ -50,11 +50,11 @@
 		});
 		$('.cancel-registration').click(function(e){
 			e.preventDefault();
-			document.location.href="http://<?=SAW_CONSUMER_WEBSITE?>";
+			document.location.href="https://<?=SAW_CONSUMER_WEBSITE?>";
 		});
 		$('#save-success .btn.continue').click(function(e){
 			e.preventDefault();
-			window.location.href="http://<?=SAW_CONSUMER_WEBSITE?>";
+			window.location.href="https://<?=SAW_CONSUMER_WEBSITE?>";
 		});
 
 		$.extend($.inputmask.defaults, {

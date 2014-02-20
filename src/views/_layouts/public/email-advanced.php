@@ -4,16 +4,16 @@
         <title></title>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="http://<?=SAW_CONSUMER_WEBSITE?>/assets/stylesheets/bootstrap.css?v=2" rel="stylesheet" media="screen">
-        <link href="http://<?=SAW_CONSUMER_WEBSITE?>/assets/stylesheets/bootstrap-responsive.css" rel="stylesheet">
-        <link href="http://<?=SAW_CONSUMER_WEBSITE?>/assets/stylesheets/screenv5.1-full.css?v=22222222" rel="stylesheet">  <!--4522, 3364-->
-        <link href="http://<?=SAW_CONSUMER_WEBSITE?>/assets/stylesheets/responsive.css" rel="stylesheet">
+        <link href="https://<?=SAW_CONSUMER_WEBSITE?>/assets/stylesheets/bootstrap.css?v=2" rel="stylesheet" media="screen">
+        <link href="https://<?=SAW_CONSUMER_WEBSITE?>/assets/stylesheets/bootstrap-responsive.css" rel="stylesheet">
+        <link href="https://<?=SAW_CONSUMER_WEBSITE?>/assets/stylesheets/screenv5.1-full.css?v=22222222" rel="stylesheet">  <!--4522, 3364-->
+        <link href="https://<?=SAW_CONSUMER_WEBSITE?>/assets/stylesheets/responsive.css" rel="stylesheet">
         <style>
         @font-face {
   font-family: 'Bree Serif';
   font-style: normal;
   font-weight: 400;
-  src: local('Bree Serif'), local('BreeSerif-Regular'), url(http://<?=SAW_CONSUMER_WEBSITE?>/assets/fonts/LQ7WLTaITDg4OSRuOZCps73hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+  src: local('Bree Serif'), local('BreeSerif-Regular'), url(https://<?=SAW_CONSUMER_WEBSITE?>/assets/fonts/LQ7WLTaITDg4OSRuOZCps73hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
 }
             .mainMenu .tab-content .tab-pane{display:none}
 
@@ -32,7 +32,7 @@
 .dropdown-menu.discover.fullWidthDropDown.specialwidthsetting { padding:0 0 0 20px; width:30%;}
 .dropdown-menu.learn.fullWidthDropDown.specialwidthsetting { padding:0 0 0 20px; width:30%;}
         </style>
-            <link href="http://<?=SAW_CONSUMER_WEBSITE?>/assets/stylesheets/bootstrap-modal.css" rel="stylesheet" type="text/css"/>
+            <link href="https://<?=SAW_CONSUMER_WEBSITE?>/assets/stylesheets/bootstrap-modal.css" rel="stylesheet" type="text/css"/>
 
     </head>
     <body>
@@ -52,7 +52,7 @@
 
   (function() {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'https://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 

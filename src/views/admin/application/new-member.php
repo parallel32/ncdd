@@ -548,7 +548,7 @@
                      <div class="span12">
                         <div class="control-group">
                            <label class="control-label">Please download this zip file containing the reference form along with the authorization and release form and confirm you did so by selecting "Yes": <br>
-                              <a target="_blank" href="http://<?=SAW_ADMIN_WEBSITE?>/application/downloads/ncdd-general-membership-reference-form-auhtorization-release.zip">New Member Application Reference Form & Authoriztion and Release Form - click to download the ZIP file.</a>
+                              <a target="_blank" href="https://<?=SAW_ADMIN_WEBSITE?>/application/downloads/ncdd-general-membership-reference-form-auhtorization-release.zip">New Member Application Reference Form & Authoriztion and Release Form - click to download the ZIP file.</a>
                            </label>
                            <div class="controls">
                               <select class="large m-wrap referenceFormDownload" name="doc[referenceFormDownload]">

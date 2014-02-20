@@ -17,7 +17,7 @@
 													<br/>Your Username: <?=$this->vars['email']?> (your username is your email address)
 													<br/>Your Password: <?=$this->vars['password']?>
 													<br/>
-													<br/>Login Page:<a href="http://<?=SAW_ADMIN_WEBSITE?>/login" target="_blank">http://<?=SAW_ADMIN_WEBSITE?>/login</a>. 
+													<br/>Login Page:<a href="https://<?=SAW_ADMIN_WEBSITE?>/login" target="_blank">https://<?=SAW_ADMIN_WEBSITE?>/login</a>. 
 													<br/>
 													<br/>If you have any questions don't hesitate to contact us at: rhea@ncdd.com
 													<br>National College for DUI Defense, Inc. 

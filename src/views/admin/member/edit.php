@@ -250,7 +250,7 @@
                                  <label class="control-label"></label>
                                  <div class="controls">
                                     <button type="button" data-id="<?=$this->vars['member']['_id']?>" class="btn blue edit-photo">Edit My Photo</button>
-                                    <a target="_blank" class="btn green" href="http://<?=SAW_CONSUMER_WEBSITE?>/member/<?=$this->vars['member']['_id']?>/<?=$this->vars['member']['slug']?>">View My Profile</a>
+                                    <a target="_blank" class="btn green" href="https://<?=SAW_CONSUMER_WEBSITE?>/member/<?=$this->vars['member']['_id']?>/<?=$this->vars['member']['slug']?>">View My Profile</a>
                                  </div>
                               </div>
                            </div>
@@ -287,12 +287,12 @@
                               <div class="control-group ">
                                  <label class="control-label">Member Status</label>
                                  <div class="controls">
-                                    <img width="152" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/member">
+                                    <img width="152" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/member">
                                     <? if($this->vars['member']['boardCertified']): ?>
-                                       &nbsp;&nbsp;<img width="200" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/boardcertified">
+                                       &nbsp;&nbsp;<img width="200" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/boardcertified">
                                     <? endif; ?>
                                     <? if(array_key_exists('staff',$this->vars['member']) && $this->vars['member']['staff']): ?>
-                                       &nbsp;&nbsp;<img width="152" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/staff">
+                                       &nbsp;&nbsp;<img width="152" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/staff">
                                     <? endif; ?>
                                  </div>
                               </div>
@@ -303,7 +303,7 @@
                               <div class="control-group ">
                                  <label class="control-label">Executive Status</label>
                                  <div class="controls">
-                                    <img src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/exec">
+                                    <img src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/exec">
                                  </div>
                               </div>
                            </div>
@@ -315,7 +315,7 @@
                               <div class="control-group ">
                                  <label class="control-label">Membership Badge for your website:</label>
                                  <div class="controls">
-                                    <textarea rows="3" class="span8"><a target="_blank" href="http://<?=SAW_CONSUMER_WEBSITE?>/member/<?=$this->vars['member']['_id']?>/<?=$this->vars['member']['slug']?>"><img width="152" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/member" alt="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" title="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" /></a></textarea>
+                                    <textarea rows="3" class="span8"><a target="_blank" href="https://<?=SAW_CONSUMER_WEBSITE?>/member/<?=$this->vars['member']['_id']?>/<?=$this->vars['member']['slug']?>"><img width="152" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/member" alt="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" title="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" /></a></textarea>
                                  </div>
                               </div>
                            </div>
@@ -327,7 +327,7 @@
                               <div class="control-group ">
                                  <label class="control-label">Board Certified Badge for your website:</label>
                                  <div class="controls">
-                                    <textarea rows="3" class="span8"><a target="_blank" href="http://<?=SAW_CONSUMER_WEBSITE?>/member/<?=$this->vars['member']['_id']?>/<?=$this->vars['member']['slug']?>"><img width="200" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/boardcertified" alt="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" title="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" /></a></textarea>
+                                    <textarea rows="3" class="span8"><a target="_blank" href="https://<?=SAW_CONSUMER_WEBSITE?>/member/<?=$this->vars['member']['_id']?>/<?=$this->vars['member']['slug']?>"><img width="200" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/boardcertified" alt="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" title="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" /></a></textarea>
                                  </div>
                               </div>
                            </div>
@@ -340,7 +340,7 @@
                               <div class="control-group ">
                                  <label class="control-label">Faculty Badge for your website:</label>
                                  <div class="controls">
-                                    <textarea rows="3" class="span8"><a target="_blank" href="http://<?=SAW_CONSUMER_WEBSITE?>/member/<?=$this->vars['member']['_id']?>/<?=$this->vars['member']['slug']?>"><img width="152" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/staff" alt="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" title="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" /></a></textarea>
+                                    <textarea rows="3" class="span8"><a target="_blank" href="https://<?=SAW_CONSUMER_WEBSITE?>/member/<?=$this->vars['member']['_id']?>/<?=$this->vars['member']['slug']?>"><img width="152" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/staff" alt="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" title="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" /></a></textarea>
                                  </div>
                               </div>
                            </div>
@@ -454,7 +454,7 @@
                                  <div class="controls">
                                     <input type="text" name="doc[facebookUrl]" value="<?=$this->vars['member']['facebookUrl']?>" class="m-wrap span10 facebookUrl">
                                     <span class="help-block">Will not appear if left blank</span>
-                                    <span class="help-block">Use the full url: e.g. http://domain.com/name/uniqueid .. etc.</span>
+                                    <span class="help-block">Use the full url: e.g. https://domain.com/name/uniqueid .. etc.</span>
                                  </div>
                               </div>
                            </div>
@@ -465,7 +465,7 @@
                                  <div class="controls">
                                     <input type="text" name="doc[twitterUrl]" value="<?=$this->vars['member']['twitterUrl']?>" class="m-wrap span10 twitterUrl">
                                     <span class="help-block">Will not appear if left blank</span>
-                                    <span class="help-block">Use the full url: e.g. http://domain.com/name/uniqueid .. etc.</span>
+                                    <span class="help-block">Use the full url: e.g. https://domain.com/name/uniqueid .. etc.</span>
                                  </div>
                               </div>
                            </div>
@@ -478,7 +478,7 @@
                                  <div class="controls">
                                     <input type="text" name="doc[googlePlusUrl]" value="<?=$this->vars['member']['googlePlusUrl']?>" class="m-wrap span10 googlePlusUrl">
                                     <span class="help-block">Will not appear if left blank</span>
-                                    <span class="help-block">Use the full url: e.g. http://domain.com/name/uniqueid .. etc.</span>
+                                    <span class="help-block">Use the full url: e.g. https://domain.com/name/uniqueid .. etc.</span>
                                  </div>
                               </div>
                            </div>
@@ -489,7 +489,7 @@
                                  <div class="controls">
                                     <input type="text" name="doc[linkedInUrl]" value="<?=$this->vars['member']['linkedInUrl']?>" class="m-wrap span10 linkedInUrl">
                                     <span class="help-block">Will not appear if left blank</span>
-                                    <span class="help-block">Use the full url: e.g. http://domain.com/name/uniqueid .. etc.</span>
+                                    <span class="help-block">Use the full url: e.g. https://domain.com/name/uniqueid .. etc.</span>
                                  </div>
                               </div>
                            </div>

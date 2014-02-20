@@ -19,11 +19,11 @@
 <br>
 <br>To view the full details of your payment you may browse to the link below:
 <br>
-<br><a href="http://<?=SAW_ADMIN_WEBSITE?>/payment/<?=$this->vars['paymentId']?>/view" target="_blank">http://<?=SAW_ADMIN_WEBSITE?>/payment/<?=$this->vars['paymentId']?>/view</a>. 
+<br><a href="https://<?=SAW_ADMIN_WEBSITE?>/payment/<?=$this->vars['paymentId']?>/view" target="_blank">https://<?=SAW_ADMIN_WEBSITE?>/payment/<?=$this->vars['paymentId']?>/view</a>. 
 <br>
-<br>To access the "Members Only" area you may browse to <a href="http://ncdd.com">ncdd.com</a> and click "Member Sign in" on the top left.  Or you may browse directly to:
+<br>To access the "Members Only" area you may browse to <a href="https://ncdd.com">ncdd.com</a> and click "Member Sign in" on the top left.  Or you may browse directly to:
 <br>
-<br><a href="http://<?=SAW_ADMIN_WEBSITE?>/login" target="_blank">http://<?=SAW_ADMIN_WEBSITE?>/login</a>. 
+<br><a href="https://<?=SAW_ADMIN_WEBSITE?>/login" target="_blank">https://<?=SAW_ADMIN_WEBSITE?>/login</a>. 
 <br>
 <br>Please remember, your User ID is your email address: <?=$this->vars['email']?>
 <br>

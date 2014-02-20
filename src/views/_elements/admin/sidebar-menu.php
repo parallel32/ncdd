@@ -185,7 +185,7 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                <? if($accessLevel >= EDITOR):?>
                <a href="/product">
                <? else: ?>
-               <a href="http://<?=SAW_CONSUMER_WEBSITE?>/store">
+               <a href="https://<?=SAW_CONSUMER_WEBSITE?>/store">
                <? endif; ?>
                <i class="icon-shopping-cart"></i> 
                <span class="title">NCDD Store</span>
@@ -201,7 +201,7 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
             </li>
          <? endif; ?>
             <li class="">
-               <a href="http://<?=SAW_CONSUMER_WEBSITE?>" target="_blank">
+               <a href="https://<?=SAW_CONSUMER_WEBSITE?>" target="_blank">
                <i class="icon-globe"></i> 
                <span class="title">ncdd.com</span>
                </a>

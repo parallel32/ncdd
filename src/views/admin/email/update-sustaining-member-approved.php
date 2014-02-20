@@ -15,9 +15,9 @@ Dear <?=$this->vars['name']?>, your application to update your membership as a S
 <br/>
 <br/> Please be sure your information stays current by updating it in the member portal.
 <br>
-<br>To access the "Members Only" area you may browse to <a href="http://ncdd.com">ncdd.com</a> and click "Member Sign in" on the top left.  Or you may browse directly to:
+<br>To access the "Members Only" area you may browse to <a href="https://ncdd.com">ncdd.com</a> and click "Member Sign in" on the top left.  Or you may browse directly to:
 <br>
-<br><a href="http://<?=SAW_ADMIN_WEBSITE?>/login" target="_blank">http://<?=SAW_ADMIN_WEBSITE?>/login</a>. 
+<br><a href="https://<?=SAW_ADMIN_WEBSITE?>/login" target="_blank">https://<?=SAW_ADMIN_WEBSITE?>/login</a>. 
 <br>
 <br>Your User ID is: <?=$this->vars['email']?>
 <br/>

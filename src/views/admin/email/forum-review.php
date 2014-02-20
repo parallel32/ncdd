@@ -21,7 +21,7 @@
 													<br/>
 													<br/>
 													<br/>
-													<a href="http://<?=SAW_ADMIN_WEBSITE?>" target="_blank">Go to the Admin Dashboard to view this and other Forums. http://<?=SAW_ADMIN_WEBSITE?></a>. 
+													<a href="https://<?=SAW_ADMIN_WEBSITE?>" target="_blank">Go to the Admin Dashboard to view this and other Forums. https://<?=SAW_ADMIN_WEBSITE?></a>. 
 												</div>
 											</td>
 										</tr>

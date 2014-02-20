@@ -21,7 +21,7 @@
                                     <td><img style="width:50%" src="<?=$item['image']['urls']['small']['CDN'] ?>" alt=""></td>
                                     <td>
                                         <div class="row-fluid">
-                                            <b><a href="http://<?=SAW_CONSUMER_WEBSITE?>/store/<?=$item['_id']?><?=$item['slug']?>"><?=$item['name'] ?> </a></b>
+                                            <b><a href="https://<?=SAW_CONSUMER_WEBSITE?>/store/<?=$item['_id']?><?=$item['slug']?>"><?=$item['name'] ?> </a></b>
                                         </div>
                                         <? if(!empty($item['purchaseInstructions'])){?>
                                         

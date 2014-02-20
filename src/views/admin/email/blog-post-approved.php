@@ -18,7 +18,7 @@
 													<br/>Has been approved for publishing on the NCDD DUI Blog.
 													<br/>
 													<br/>
-													<a href="http://<?=SAW_ADMIN_WEBSITE?>" target="_blank">Sign-in to the member portal for more information: http://<?=SAW_ADMIN_WEBSITE?></a>. 
+													<a href="https://<?=SAW_ADMIN_WEBSITE?>" target="_blank">Sign-in to the member portal for more information: https://<?=SAW_ADMIN_WEBSITE?></a>. 
 												</div>
 											</td>
 										</tr>

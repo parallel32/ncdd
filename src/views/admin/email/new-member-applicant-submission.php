@@ -18,7 +18,7 @@
 <br/><br/>
 <br/> Please make sure your 2 references send their forms as soon as they can to the contact information below via fax, email, or U.S. mail.
 <br/>
-<br/><a href="http://<?=SAW_ADMIN_WEBSITE?>/application/downloads/ncdd-general-membership-reference-form.pdf" target="_blank">Click here to download the reference form</a>. 
+<br/><a href="https://<?=SAW_ADMIN_WEBSITE?>/application/downloads/ncdd-general-membership-reference-form.pdf" target="_blank">Click here to download the reference form</a>. 
 <br><br>
 <br/>When your application is approved, you will receive an email with instructions.
 <br/>

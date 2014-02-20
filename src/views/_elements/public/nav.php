@@ -221,7 +221,7 @@
                     </div>
                     <ul class="pull-left nav">
                         <li class="dropdown signIn">
-                            <a href="http://<?=SAW_ADMIN_WEBSITE ?>" class="" >Member <b>Sign in</b></a>
+                            <a href="https://<?=SAW_ADMIN_WEBSITE ?>" class="" >Member <b>Sign in</b></a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="memberDropDown">
                                 <li role="menuitem">
                                     <form action="get">

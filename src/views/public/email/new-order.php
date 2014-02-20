@@ -17,7 +17,7 @@
 													<br/>Email: <?=$this->vars['order']['payment']['email']?><br/>
 													<br/>Phone: <?=$this->vars['order']['payment']['phone']?><br/>
 													<br/>
-													<a href="http://<?=SAW_ADMIN_WEBSITE?>/product" target="_blank">Go to the Admin Dashboard to view this and other orders. http://<?=SAW_ADMIN_WEBSITE?></a>. 
+													<a href="https://<?=SAW_ADMIN_WEBSITE?>/product" target="_blank">Go to the Admin Dashboard to view this and other orders. https://<?=SAW_ADMIN_WEBSITE?></a>. 
 												</div>
 											</td>
 										</tr>

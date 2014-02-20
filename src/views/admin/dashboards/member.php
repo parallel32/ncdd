@@ -138,9 +138,9 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                      <div class="control-group ">
                         <label class="control-label">Member Status</label>
                         <div class="controls">
-                           <img width="152" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/member">
+                           <img width="152" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/member">
                            <? if($this->vars['member']['boardCertified']): ?>
-                              &nbsp;&nbsp;<img width="200" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/boardcertified">
+                              &nbsp;&nbsp;<img width="200" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/boardcertified">
                            <? endif; ?>
                         </div>
                      </div>
@@ -151,7 +151,7 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                      <div class="control-group ">
                         <label class="control-label">Executive Status</label>
                         <div class="controls">
-                           <img src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/exec">
+                           <img src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/exec">
                         </div>
                      </div>
                   </div>
@@ -163,7 +163,7 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                      <div class="control-group ">
                         <label class="control-label">Membership Badge for your website:</label>
                         <div class="controls">
-                           <textarea rows="3" class="span8"><a target="_blank" href="http://<?=SAW_CONSUMER_WEBSITE?>/member/<?=$this->vars['member']['_id']?>/<?=$this->vars['member']['slug']?>"><img width="152" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/member" alt="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" title="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" /></a></textarea>
+                           <textarea rows="3" class="span8"><a target="_blank" href="https://<?=SAW_CONSUMER_WEBSITE?>/member/<?=$this->vars['member']['_id']?>/<?=$this->vars['member']['slug']?>"><img width="152" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/member" alt="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" title="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" /></a></textarea>
                         </div>
                      </div>
                   </div>
@@ -175,7 +175,7 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                      <div class="control-group ">
                         <label class="control-label">Board Certified Badge for your website:</label>
                         <div class="controls">
-                           <textarea rows="3" class="span8"><a target="_blank" href="http://<?=SAW_CONSUMER_WEBSITE?>/member/<?=$this->vars['member']['_id']?>/<?=$this->vars['member']['slug']?>"><img width="200" src="http://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/boardcertified" alt="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" title="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" /></a></textarea>
+                           <textarea rows="3" class="span8"><a target="_blank" href="https://<?=SAW_CONSUMER_WEBSITE?>/member/<?=$this->vars['member']['_id']?>/<?=$this->vars['member']['slug']?>"><img width="200" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/boardcertified" alt="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" title="NCDD National College for DUI Defense: <?=$this->vars['member']['firstName']?><?=(array_key_exists('middleName',$this->vars['member']) && !empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' ';?><?=$this->vars['member']['lastName']?>" /></a></textarea>
                         </div>
                      </div>
                   </div>
