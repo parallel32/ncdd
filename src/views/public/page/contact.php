@@ -14,6 +14,9 @@
                                 <input type="text" name="doc[name]" placeholder="Your Name" class="span12">
                                 <input type="text" name="doc[email]" placeholder="Your E-mail" class="span12">
                                 <textarea  name="doc[message]" cols="30" rows="10" placeholder="Message" class="span12"></textarea>
+                                <img id="challenge" src="<? $captcha = $this->app['session']->get('captcha'); echo $captcha['image_src'];?>" style="padding-bottom:10px;">
+                                <input type="text" name="doc[challenge]" placeholder="Type Image Text Here" class="span12">
+                                <span class="help-block">You can type in upper case or lower case letters.</span>
                                 <input id="send-contact" type="button" class="btn pull-right" value="Send">
                             </form>
                             <div class="address pull-right span6">

@@ -194,6 +194,9 @@ $app->get('/blog/{id}/{slug}', function ($id, $slug, Request $request) use ($app
 
 // contact
 $app->get('/contact', function (Request $request) use ($app) {
+	include_once __DIR__.'/../../Saw/Provider/Captcha/captcha.php';
+	$app['session']->set('captcha',captcha());
+	
 	$view_vars['slogan_block'] = 'contact';
 	$page_vars = $app['get_pages']('contact');
 	$view_vars = array_merge($page_vars,$view_vars);
@@ -202,7 +205,14 @@ $app->get('/contact', function (Request $request) use ($app) {
 });
 $app->post('/contact', function (Request $request) use ($app) {
 	$doc = $request->get('doc');
+	$captcha = $app['session']->get('captcha');
+	
 	$errors = '';
+	if(empty($doc['challenge'])){
+		$errors.= 'Please enter the image text.<br>';
+	}else if(strtolower($doc['challenge']) != strtolower($captcha['code'])){
+		$errors.= 'Please try the challenge again.  Your answer did not match the image.<br>';
+	}
 	if(empty($doc['name']))
 		$errors.= 'Please enter your name.<br>';
 	if(empty($doc['email']))
