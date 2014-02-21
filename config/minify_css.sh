@@ -1,5 +1,5 @@
 #!/bin/bash
-FILES=./src/views/_elements/css/*
+FILES=./www/ncdd.com/public_html/assets/stylesheets/*.css
 for fullfile in $FILES
 do
   echo "Processing $fullfile file..."
@@ -7,6 +7,6 @@ do
         extension=${filename##*.}
         filename=${filename%.*}
   #echo "filename: $filename extension: $extension"
-java -jar /usr/share/yui-compressor/yui-compressor.jar $fullfile --type css -o "./src/views/_elements/css/$filename.min.php"
-mv "./src/views/_elements/css/$filename.min.php" "./src/views/_elements/css/$filename.php"
+java -jar /usr/share/yui-compressor/yuicompressor-2.4.8.jar $fullfile --type css -o "./www/ncdd.com/public_html/assets/stylesheets/$filename.min.css"
+#mv "./www/ncdd.com/public_html/assets/stylesheets/$filename.min.php" "./www/ncdd.com/public_html/assets/stylesheets/$filename.php"
 done
