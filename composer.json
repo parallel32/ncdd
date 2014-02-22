@@ -27,7 +27,8 @@
         "jbroadway/urlify": "dev-master",
         "cocur/slugify": "dev-master",
         "nesbot/Carbon": "dev-master",
-        "imagine/imagine": "dev-master"
+        "imagine/imagine": "dev-master",
+        "google/apiclient": "dev-master"
     },
     "autoload": {
 		"psr-0": {"Saw":"src/"}

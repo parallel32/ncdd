@@ -62,7 +62,7 @@
                            </div>
                            <div class="span4 blog-img blog-tag-data">
                               <? if(!empty($seminar['image'])){?>
-                              <img src="<?=$this->app['getImageURL']($seminar['image'],'small')?>" alt="">
+                              <img src="<?=$this->app['getImageURL']($seminar['image'],'small')?>" alt="" style="padding-top:15px">
                               <? } ?>
                            </div>
                            

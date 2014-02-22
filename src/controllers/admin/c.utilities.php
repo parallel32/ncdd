@@ -17,6 +17,20 @@ $utilities = $app['controllers_factory'];
 $utilities->before($mustbeADMIN);
 
 
+///////////////////////////
+// google drive api test //
+///////////////////////////
+$utilities->get('/g-drive', function () use ($app) {
+    
+    
+    return new Response('cool',200,array('Content-Type' => 'text/html')); 
+});
+
+
+
+
+
+
 //////////////////////////////////////////
 // update blogs with new db driven tags //
 //////////////////////////////////////////

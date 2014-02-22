@@ -313,4 +313,3 @@ $isOwner =  ( array_key_exists('topic',$this->vars) && array_key_exists('forum',
          });
             
          </script>
-
