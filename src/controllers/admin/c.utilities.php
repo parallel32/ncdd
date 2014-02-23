@@ -21,9 +21,130 @@ $utilities->before($mustbeADMIN);
 // google drive api test //
 ///////////////////////////
 $utilities->get('/g-drive', function () use ($app) {
+    /*
+    $client = new Google_Client();
+    $client->setApplicationName("Google Search API Project");
+    $client->setDeveloperKey("AIzaSyDSPPIQdSKTwwVnzINjbaEFVK422DRxfnM"); // API Key
+    $service = new Google_Service_Drive($client);
+    $optParams = array('q' => 'gymnastics');
+    $results = $service->files->listFiles($optParams);
+    echo "<pre>";print_r($results);echo "</pre>";
+    foreach ($results as $item) {
+    //echo $item['volumeInfo']['title'], "<br /> \n";
+    }
+    //*/
+
+
+    /************************************************
+      ATTENTION: Fill in these values! You can get
+      them by creating a new Service Account in the
+      API console. Be sure to store the key file
+      somewhere you can get to it - though in real
+      operations you'd want to make sure it wasn't
+      accessible from the webserver!
+      The name is the email address value provided
+      as part of the service account (not your
+      address!)
+      Make sure the Books API is enabled on this
+      account as well, or the call will fail.
+     ************************************************/
+    $client_id = '947790988235-s2hrf1br8m3ug2gpohu744crltruqcmc.apps.googleusercontent.com';
+    $service_account_name = '947790988235-s2hrf1br8m3ug2gpohu744crltruqcmc@developer.gserviceaccount.com';
+    $key_file_location = '/var/www/ncdd/config/78c3d71f31e8d1d74bc713ee11e09bfa92978288-privatekey-kinollc-Drive-Porject.p12';
+
+//    echo pageHeader("Service Account Access");
+    /*if ($client_id == '969032818706-of08353gcintafrkaq5i33maghh342v8.apps.googleusercontent.com'
+        || !strlen($service_account_name)
+        || !strlen($key_file_location)) {
+      echo 'missingServiceAccountDetailsWarning';//echo missingServiceAccountDetailsWarning();
+    }*/
+
+    if(false):
+        unset($_SESSION['service_token']);
+        return 'disabled';
+    endif;
+
+    $client = new Google_Client();
+    $client->setApplicationName("Drive Project");
     
+
+    /************************************************
+      If we have an access token, we can carry on.
+      Otherwise, we'll get one with the help of an
+      assertion credential. In other examples the list
+      of scopes was managed by the Client, but here
+      we have to list them manually. We also supply
+      the service account
+     ************************************************/
+    if (isset($_SESSION['service_token'])) {
+      $client->setAccessToken($_SESSION['service_token']);
+    }
+    $key = file_get_contents($key_file_location);
+
+    $cred = new Google_Auth_AssertionCredentials(
+        $service_account_name,
+        array('https://www.googleapis.com/auth/drive'),
+        $key
+    );
+    $cred->sub = 'mike@kinollc.com';
+    $cred->prn = 'mike@kinollc.com';
+
+    $client->setAssertionCredentials($cred);
+    if($client->getAuth()->isAccessTokenExpired()) {
+      $client->getAuth()->refreshTokenWithAssertion($cred);
+    }
+    $token = $client->getAccessToken();
+    error_log('token:'.print_r($token,true));
+    $_SESSION['service_token'] = $token;
+    $access_token = json_decode($token);
+    $access_token = $access_token->access_token;
+
+    echo "service token is set:";echo $_SESSION['service_token'];echo "<br>";
+    /************************************************
+      We're just going to make the same call as in the
+      simple query as an example.
+     ************************************************/
+    $service = new Google_Service_Drive($client);
+    $parameters = array('q' => "fullText contains 'Hairetis Bos'"
+                      ,'fields' =>"items/originalFilename"
+                      ,'maxResults' =>"100"
+    );
+    //$files = $service->files->listFiles($parameters);
+
+    //echo "<pre>";print_r($files);echo "</pre>";
+    /*
+    $result = array();
+      $pageToken = NULL;
+
+      do {
+        try {
+          //$parameters = array();
+          if ($pageToken) {
+            $parameters['pageToken'] = $pageToken;
+          }
+          $files = $service->files->listFiles($parameters);
     
-    return new Response('cool',200,array('Content-Type' => 'text/html')); 
+          $result = array_merge($result, $files->getItems());
+          $pageToken = $files->getNextPageToken();
+        } catch (Exception $e) {
+          print "An error occurred: " . $e->getMessage();
+          $pageToken = NULL;
+        }
+      } while ($pageToken);
+      //*/
+
+      $view_vars = array(
+                         'active'=>'Members/search'
+                        ,'page-plugin'=>'datatables'
+                        ,'headline'=>'Members Search'
+                        ,'description'=>"Search for all members here."
+                        ,'crumbs'=>array()
+                        ,'access_token'=>$access_token
+                        ,'client_id'=>$client_id
+                        );
+
+
+   return $app['view']->render('utilities/g-drive', 'default',$view_vars);
 });
 
 

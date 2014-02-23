@@ -91,19 +91,20 @@
                      </div>
                      <!--end span9-->
 
-                     <? if(false): ?>
+                     <? if(array_key_exists('files', $post)): ?>
                      <div class="span3 blog-sidebar">
                         <h2>Files</h2>
+                        <? foreach($post['files'] as $file): ?>
                         <div class="top-news">
                            
-                           <a href="/blog/archives/August/2013" class="btn blue">
-                           <span>File Name Goes here</span>
+                           <a target="_blank" href="<?=$file['embedUrl']?>" class="btn blue">
+                           <span><?=$file['name']?></span>
                            <em>click to view<em>
                            <i class="icon-file-text top-news-icon"></i>
                            </a>
 
                         </div>
-                        
+                        <? endforeach; ?>
                      </div>
                      <!--end span3-->
                      <? endif; ?>

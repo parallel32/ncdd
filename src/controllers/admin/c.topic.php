@@ -227,7 +227,7 @@ $app->get('/topic/publish-schedule', function (Request $request) use ($app) {
 	return "posts affected: ".$count;
 });
 
-// member add / edit a post
+// topic add / edit a post
 $app->get('/topic/edit/{topicId}/{forumId}', function ($topicId, $forumId, Request $request) use ($app) {
 	
 	$user = call_user_func(function($app){ $user = $app['session']->get('user'); return $user;},$app);
@@ -264,7 +264,58 @@ $app->get('/topic/edit/{topicId}/{forumId}', function ($topicId, $forumId, Reque
 		$view_vars['image'] = '/placeholder';
 	}
 
+
+	////////////////////////////////////////////////
+	// PREPARE ACCESS TOKEN AND DRIVE CREDENTIALS //
+	////////////////////////////////////////////////
+	$client = new Google_Client();
+    $client->setApplicationName(GOOGLE_DRIVE_APPLICATION_NAME);
+    
+    $key = file_get_contents(GOOGLE_DRIVE_KEY_FILE_LOCATION);
+
+    $cred = new Google_Auth_AssertionCredentials(
+        GOOGLE_DRIVE_SERVICE_ACCOUNT_NAME,
+        array('https://www.googleapis.com/auth/drive'),
+        $key
+    );
+    $cred->sub = GOOGLE_DRIVE_PRN;
+    $cred->prn = GOOGLE_DRIVE_PRN;
+    $client->setAssertionCredentials($cred);
+
+    $session_service_token = $app['session']->get('service_token');
+    if (isset($session_service_token)) {
+		$client->setAccessToken($session_service_token);
+		if($client->getAuth()->isAccessTokenExpired()) {
+			$client->getAuth()->refreshTokenWithAssertion($cred);
+			$app['session']->set('service_token',$client->getAccessToken());
+		}
+    }else{
+    	$session_service_token = $client->getAccessToken();
+    	if(empty($session_service_token)){
+    		$client->getAuth()->refreshTokenWithAssertion($cred);
+    		$session_service_token = $client->getAccessToken();
+			$app['session']->set('service_token',$session_service_token);
+    	}
+    	$app['session']->set('service_token',$session_service_token);
+    }
+    
+    $access_token = json_decode($session_service_token);
+    $access_token = $access_token->access_token;
+
+    $picker_view_vars = array(
+                         'access_token'=>$access_token
+                        ,'client_id'=>GOOGLE_DRIVE_CLIENT_ID
+                        );
+
+    $view_vars = array_merge($view_vars,$picker_view_vars);
 	
+	////////////////////////////////////////////////
+	// PREPARE ACCESS TOKEN AND DRIVE CREDENTIALS //
+	////////////////////////////////////////////////
+	
+
+
+
 	return $app['view']->render('forum/edit', 'default', $view_vars);
 })
 ->value('topicId','')

@@ -121,6 +121,40 @@ $isOwner =  ( array_key_exists('topic',$this->vars) && array_key_exists('forum',
                            <!--/span-->
                         </div>
 
+                        <h3 class="form-section text-info"><strong>Files (optional)</strong></h3>
+                        <input type="hidden" name="doc[files]" value="" id="files">
+                        <p>Select files from the Virtual Forensic Library to attach to your topic for reference.</p>
+                        <div class="row-fluid">
+                           <div class="span12 ">
+                              <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                              <div class="portlet box grey">
+                                 <div class="portlet-title" id="draft">
+                                    <div class="caption"><i class="icon-legal"></i>Files attached to this Topic</div>
+                                    <div class="actions">
+                                       <a id="add-vfl" href="" class="btn green draft-post" data-id=""><i class="icon-plus"></i> Add Files from the Virtual Forensic Library.</a>
+                                    </div>
+                                 </div>
+                                 <div class="portlet-body">
+                                    <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                                    <table class="table table-striped table-bordered table-hover dataTable" id="drafts" aria-describedby="sample_1_info">
+                                       <thead>
+                                          <tr role="row">
+                                             <th class="">File Name</th>
+                                             <th class="">File Link</th>
+                                             <th class=""></th>
+                                          </tr>
+                                       </thead>
+                                       <tbody id="vfl-body" role="alert" aria-live="polite" aria-relevant="all">
+                                          <td colspan="5">No Files.</td>
+                                       </tbody>
+                                    </table>
+                                 </div>
+                              </div>
+                              <!-- END EXAMPLE TABLE PORTLET-->
+                           </div>
+                           <!--/span-->
+                        </div>
+
                         <h3 class="form-section text-info"><strong>Content</strong></h3>&nbsp;<button type="button" class="btn blue show-editor">Click To Edit</button><br><br>
                         <div class="row-fluid">
                            <div class="span12 ">
@@ -310,6 +344,75 @@ $isOwner =  ( array_key_exists('topic',$this->vars) && array_key_exists('forum',
                })
           <? endif; ?>
            
-         });
+         });            
+         
+         <? if(array_key_exists('topic', $this->vars) && array_key_exists('files', $this->vars['topic']) && !empty($this->vars['topic']['files'])): ?>
+               
+         var files = <?=json_encode($this->vars['topic']['files'])?>;
             
-         </script>
+         <? else: ?>
+         var files = [];
+         <? endif; ?>
+         
+         function render_files_grid(){
+           $('#vfl-body').html('');
+           $.each( files, function( key, file ) {
+               var newRow = '<tr class="gradeX odd"><td class=" ">'+file.name+'</td><td class=" "><a href="'+file.embedUrl+'" target="_blank">'+file.embedUrl+'</a></td><td data-id="'+file.id+'" class="minus"><a class="btn"><i class="icon-minus"></i></a></td></tr>';
+               $('#vfl-body').append(newRow);
+           });
+            $('#vfl-body .minus').click(function(e){
+               console.log($(this).attr('data-id'));
+               e.preventDefault();
+               for (var i = files.length - 1; i > -1; i--) {
+                      if (files[i].id === $(this).attr('data-id'))
+                          files.splice(i, 1);
+                  }
+               render_files_grid();
+            })
+         }
+
+          function loadPicker() {
+            gapi.load('picker', {'callback': createPicker});
+          }
+          function createPicker() {
+            var view = new google.picker.View(google.picker.ViewId.DOCS);
+            var picker = new google.picker.PickerBuilder()
+                .enableFeature(google.picker.Feature.NAV_HIDDEN)
+                .enableFeature(google.picker.Feature.MULTISELECT_ENABLED)
+                .setAppId('<?=$this->vars['client_id']?>')
+                .setOAuthToken('<?=$this->vars['access_token']?>')
+                .addView(view)
+                .addView(new google.picker.DocsUploadView())
+                .setCallback(pickerCallback)
+                .build();
+             picker.setVisible(true);
+          }
+
+          function pickerCallback(data) {
+            if (data.action == google.picker.Action.PICKED) {
+              $.each( data.docs, function( key, value ) {
+                  for (var i = files.length - 1; i > -1; i--) {
+                      if (files[i].id === value.id)
+                          files.splice(i, 1);
+                  }
+                  files.push({
+                     name:value.name
+                     ,embedUrl:value.embedUrl
+                     ,id:value.id
+                  });
+              });
+              render_files_grid();
+            }
+          }
+          jQuery(document).ready(function() {    
+             
+               $('#add-vfl').click(function(e){
+                  e.preventDefault();
+                  loadPicker();
+               });
+
+               render_files_grid();
+            });
+          </script>
+          <!-- The Google API Loader script. -->
+          <script type="text/javascript" src="https://apis.google.com/js/api.js"></script>

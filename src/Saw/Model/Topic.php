@@ -25,6 +25,7 @@ class Topic extends Model {
 	public $image;
 	public $commentCount;
 	public $author;
+	public $files;
 	// dates
 	public $published; // yes or no
 	public $publishDate;
@@ -82,6 +83,7 @@ class Topic extends Model {
 		$this->reviewDate = $doc['reviewDate'];
 		$this->draftDate = $doc['draftDate'];
 		$this->unpublishDate = $doc['unpublishDate'];
+		$this->files = (!empty($doc['files']) && is_string($doc['files'])) ? json_decode($doc['files']): $doc['files'];
 
 		$this->setCurrentStatus();
 
@@ -102,6 +104,7 @@ class Topic extends Model {
 		$this->image = $this->image ?: new \stdClass();
 		$this->commentCount = $this->commentCount ?: 0;
 		$this->author = $this->author ?: new \stdClass();
+		$this->files = $this->files ?: array();
 		
 		$this->published = $this->published ?: 'no';
 		$this->publishDate = ($this->currentStatus == self::$status['PUBLISH']) ? new Date(self::$app,'now') : new \stdClass();

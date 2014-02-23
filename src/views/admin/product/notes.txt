@@ -14,3 +14,35 @@ Aside from issues that arise, I'd like to finish these items before we re-examin
 
 Deployment notes:
 ==================
+
+notasecret
+
+personal app access grant / revoke screen:
+------------------------------------------
+https://accounts.google.com/b/0/IssuedAuthSubTokens?authsub_revoke_version_info=.1327440941&authsub_revoke_token=AAWk9lSwW_zk2daKGg1mTbfeQ8oXqjFRYIkFcGrRmoCd-WjwDr8kdpJkTXK_x8GoMnDLo1anDTmvxTbln86l_APxY_4TdH4rfausGbhbntvVv3E-kV4VQtPv14Gzxs4eUet8lf6oxOcU&timeStmp=1393039859&secTok=.AG5fkS9ffbmzXXKqGljO1BqjMsKoM0ccCw%3D%3D
+
+access token explaination:
+--------------------------
+https://developers.google.com/accounts/docs/OAuth2#serviceaccount
+
+check which scope you've requested with your access token:
+----------------------------------------------------------
+https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=TOKEN-GOES-HERE
+
+Oauth Playground:
+-----------------
+https://developers.google.com/oauthplayground
+
+API links
+
+https://developers.google.com/drive/web/search-parameters
+https://developers.google.com/drive/v2/reference/files#resource
+
+useful
+http://stackoverflow.com/questions/13484462/google-drive-sdk-empty-array-of-files-returned-from-drive/13484913
+
+delegate the service account to have access to specific user's drive ... need to create the service account on the kinollc google apps account.
+https://developers.google.com/drive/web/delegation
+
+handling errors and example of exponential backoff example:
+https://developers.google.com/drive/web/handle-errors

@@ -117,6 +117,7 @@ $user_id = $user['user_id'];
 	};
 	Topic.save = function (postSuccess){
 		
+		$('#files').val(JSON.stringify(files));
 		$('#input-body').val($('#body').html());
 
 		var postSuccess = postSuccess || function(responseObj){
