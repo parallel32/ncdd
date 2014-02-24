@@ -1,48 +1,19 @@
 ToDo's:
 ========
 
-I'll also be working out the permission details of the virtual forensic library so that I can publish the integration of the library to the forum.
+Need ncdd.com apps admin access
 
 Finally, I'm going to be updating the editor in the blog and everywhere else to include embedding of all types of media within the content.
 
-So, that's what's on my top priority list.  I'm going to be working as quickly as I can to get these things finished so that we can finally be firing on all cylinders.
+Chance probability logic to activate the wget request for the blog publishing and the forum publishing.
+http://stackoverflow.com/questions/9252671/how-do-i-execute-one-event-in-php-based-on-a-probability-for-the-event-to-happen
 
-Aside from issues that arise, I'd like to finish these items before we re-examine things to see if there's anything else that needs attention.
+Send final invoice, 
+create separate invoice for mcshane research
 
+prioritize new tasks and bugs
 
 
 
 Deployment notes:
 ==================
-
-notasecret
-
-personal app access grant / revoke screen:
-------------------------------------------
-https://accounts.google.com/b/0/IssuedAuthSubTokens?authsub_revoke_version_info=.1327440941&authsub_revoke_token=AAWk9lSwW_zk2daKGg1mTbfeQ8oXqjFRYIkFcGrRmoCd-WjwDr8kdpJkTXK_x8GoMnDLo1anDTmvxTbln86l_APxY_4TdH4rfausGbhbntvVv3E-kV4VQtPv14Gzxs4eUet8lf6oxOcU&timeStmp=1393039859&secTok=.AG5fkS9ffbmzXXKqGljO1BqjMsKoM0ccCw%3D%3D
-
-access token explaination:
---------------------------
-https://developers.google.com/accounts/docs/OAuth2#serviceaccount
-
-check which scope you've requested with your access token:
-----------------------------------------------------------
-https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=TOKEN-GOES-HERE
-
-Oauth Playground:
------------------
-https://developers.google.com/oauthplayground
-
-API links
-
-https://developers.google.com/drive/web/search-parameters
-https://developers.google.com/drive/v2/reference/files#resource
-
-useful
-http://stackoverflow.com/questions/13484462/google-drive-sdk-empty-array-of-files-returned-from-drive/13484913
-
-delegate the service account to have access to specific user's drive ... need to create the service account on the kinollc google apps account.
-https://developers.google.com/drive/web/delegation
-
-handling errors and example of exponential backoff example:
-https://developers.google.com/drive/web/handle-errors

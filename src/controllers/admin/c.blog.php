@@ -12,6 +12,34 @@ use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Saw\Model;
 
 
+// slugify
+$app->post('/blog/slugify', function (Request $request) use ($app) {
+	// retrieve document from request
+    $doc = $request->get('doc');
+    $slug = Model\Blog::slugify($doc['headline']);
+    
+    return new Response(json_encode(array('slug'=>$slug, 'message' => 'successful operation.')), 200,array('Content-Type' => 'application/json'));
+})->before($mustbeMEMBER);
+
+// call this method to publish the scheduled blogs
+$app->get('/blog/publish-schedule', function (Request $request) use ($app) {
+	
+	$blog = new Model\Blog(array(),$app);
+	$posts = $blog->fetchToPublish();
+	if(is_array($posts) && count($posts) > 0){
+		foreach($posts as $post):
+			$b = new Model\Blog(array('_id'=>$post['_id'],'currentStatus'=>Model\Blog::$status['PUBLISH']),$app);
+			$b->add = "no";
+			$b->saveEdit();
+		endforeach;
+		$count = count($posts);
+	}else{
+		$count = 0;
+	}
+	return "posts affected: ".$count;
+});
+
+
 $app->get('/blog', function (Request $request) use ($app) {
 	
 	$blog = new Model\Blog(array(),$app);
@@ -81,25 +109,6 @@ $app->get('/blog/tag/{tag}', function ($tag, Request $request) use ($app) {
 						);
 	return $app['view']->render('blog/index', 'default', $view_vars);
 })->before($mustbeMEMBER);
-
-// publish scheduled
-$app->get('/blog/publish-schedule', function (Request $request) use ($app) {
-	
-	$blog = new Model\Blog(array(),$app);
-	$posts = $blog->fetchToPublish();
-	if(is_array($posts) && count($posts) > 0){
-		foreach($posts as $post):
-			$b = new Model\Blog(array('_id'=>$post['_id'],'currentStatus'=>Model\Blog::$status['PUBLISH']),$app);
-			$b->add = "no";
-			$b->saveEdit();
-		endforeach;
-		$count = count($posts);
-	}else{
-		$count = 0;
-	}
-	return "posts affected: ".$count;
-});
-
 
 // member blog posts index page.. has drafts and posts approved and posted or scheduled to post.
 $app->get('/blog/all-posts', function (Request $request) use ($app) {
@@ -359,19 +368,5 @@ $app->get('/blog/{memberId}/edit/{blogId}/edit-photo-crop', function ($memberId,
 ->before($mustbeMEMBER)
 ->value('memberId','')
 ->value('blogId','');
-
-
-
-
-// slugify
-$app->post('/blog/slugify', function (Request $request) use ($app) {
-	// retrieve document from request
-    $doc = $request->get('doc');
-    $slug = Model\Blog::slugify($doc['headline']);
-    
-    return new Response(json_encode(array('slug'=>$slug, 'message' => 'successful operation.')), 200,array('Content-Type' => 'application/json'));
-})->before($mustbeMEMBER);
-
-
 
 return $app;

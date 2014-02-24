@@ -11,6 +11,23 @@ use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Saw\Model;
 
+// publish the scheduled topics //
+$app->get('/topic/publish-schedule', function (Request $request) use ($app) {
+	
+	$topic = new Model\Topic(array(),$app);
+	$posts = $topic->fetchToPublish();
+	if(is_array($posts) && count($posts) > 0){
+		foreach($posts as $post):
+			$b = new Model\Topic(array('_id'=>$post['_id'],'currentStatus'=>Model\Topic::$status['PUBLISH']),$app);
+			$b->add = "no";
+			$b->saveEdit();
+		endforeach;
+		$count = count($posts);
+	}else{
+		$count = 0;
+	}
+	return "posts affected: ".$count;
+});
 
 // view a topic post
 $app->get('/topic/{topicId}/view', function ($topicId, Request $request) use ($app) {
@@ -37,8 +54,6 @@ $app->get('/topic/{topicId}/view', function ($topicId, Request $request) use ($a
 						);
 	return $app['view']->render('forum/view', 'default', $view_vars);
 })->before($mustbeMEMBER);
-
-
 
 // add / save topic post
 $app->post('/topic/edit', function (Request $request) use ($app) {
@@ -209,24 +224,6 @@ $app->get('/topic/{topicId}/remove', function ($topicId, Request $request) use (
 })->before($mustbeMEMBER);
 
 
-// publish the scheduled topics //
-$app->get('/topic/publish-schedule', function (Request $request) use ($app) {
-	
-	$topic = new Model\Topic(array(),$app);
-	$posts = $topic->fetchToPublish();
-	if(is_array($posts) && count($posts) > 0){
-		foreach($posts as $post):
-			$b = new Model\Topic(array('_id'=>$post['_id'],'currentStatus'=>Model\Topic::$status['PUBLISH']),$app);
-			$b->add = "no";
-			$b->saveEdit();
-		endforeach;
-		$count = count($posts);
-	}else{
-		$count = 0;
-	}
-	return "posts affected: ".$count;
-});
-
 // topic add / edit a post
 $app->get('/topic/edit/{topicId}/{forumId}', function ($topicId, $forumId, Request $request) use ($app) {
 	
@@ -275,7 +272,7 @@ $app->get('/topic/edit/{topicId}/{forumId}', function ($topicId, $forumId, Reque
 
     $cred = new Google_Auth_AssertionCredentials(
         GOOGLE_DRIVE_SERVICE_ACCOUNT_NAME,
-        array('https://www.googleapis.com/auth/drive'),
+        array(GOOGLE_DRIVE_API_SCOPE),
         $key
     );
     $cred->sub = GOOGLE_DRIVE_PRN;

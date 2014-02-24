@@ -3,11 +3,27 @@
 // Define Constants //
 //////////////////////
 
+// the probability a service task will run
+define("CHANCE_SERVICE",20);
+
 define("GOOGLE_DRIVE_CLIENT_ID", '947790988235-s2hrf1br8m3ug2gpohu744crltruqcmc.apps.googleusercontent.com');
 define("GOOGLE_DRIVE_SERVICE_ACCOUNT_NAME", '947790988235-s2hrf1br8m3ug2gpohu744crltruqcmc@developer.gserviceaccount.com');
 define("GOOGLE_DRIVE_KEY_FILE_LOCATION", '/var/www/ncdd/config/78c3d71f31e8d1d74bc713ee11e09bfa92978288-privatekey-kinollc-Drive-Porject.p12');
 define("GOOGLE_DRIVE_APPLICATION_NAME", "Drive Project");
 define("GOOGLE_DRIVE_PRN", 'mike@kinollc.com');
+// this can be a csv (comma separated value)
+define("GOOGLE_DRIVE_API_SCOPE", 'https://www.googleapis.com/auth/drive ');
+
+/*
+// ncdd 
+define("GOOGLE_DRIVE_CLIENT_ID", '380737956111-vtjukrbm82jupiugdtn4ala978286j37.apps.googleusercontent.com');
+define("GOOGLE_DRIVE_SERVICE_ACCOUNT_NAME", '380737956111-vtjukrbm82jupiugdtn4ala978286j37@developer.gserviceaccount.com');
+define("GOOGLE_DRIVE_KEY_FILE_LOCATION", '/var/www/ncdd/config/a1c0558c261497fbaff083cf33d794ba3b624c25-privatekey-ncdd-VFL-Search-Files.p12');
+define("GOOGLE_DRIVE_APPLICATION_NAME", "VFL Search Files");
+define("GOOGLE_DRIVE_PRN", 'mikeh@ncdd.com');
+// this can be a csv (comma separated value)
+define("GOOGLE_DRIVE_API_SCOPE", 'https://www.googleapis.com/auth/drive ');
+//*/
 
 define("PAGE_STATUS_PUBLISHED", 30);
 define("PAGE_STATUS_PENDING_MODERATION", 20);

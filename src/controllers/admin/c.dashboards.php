@@ -75,6 +75,18 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 			return $app['view']->render('dashboards/member', 'default', $view_vars);
 			break;
 	}
-})->before($mustbeMEMBER);
+})->before($mustbeMEMBER)->after(function (Request $request, Response $response, Silex\Application $app) {
+	$user = Model\User::getUserAccessLevelBySession($app);
+	if($user['accessLevel'] == ADMIN){
+		$rand = rand(1,100);
+		error_log('rand:'.$rand);
+		if ($rand<=CHANCE_SERVICE){
+			// publish blogs
+			error_log('blogs published: '.file_get_contents('http://'.SAW_ADMIN_WEBSITE.'/blog/publish-schedule'));
+			// publish forum posts
+			error_log('forum topics published: '.file_get_contents('http://'.SAW_ADMIN_WEBSITE.'/topic/publish-schedule'));
+		}
+	}
+});
 
 return $app;
