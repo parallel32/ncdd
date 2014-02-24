@@ -20,6 +20,25 @@ $utilities->before($mustbeADMIN);
 ///////////////////////////
 // google drive api test //
 ///////////////////////////
+$utilities->get('/redactor', function () use ($app) {
+
+
+      $view_vars = array(
+                         'active'=>''
+                        ,'page-plugin'=>''
+                        ,'headline'=>'Redactor'
+                        ,'description'=>"Redactor wizzy testing"
+                        ,'crumbs'=>array()
+                        );
+
+
+   return $app['view']->render('utilities/redactor', 'default',$view_vars);
+});
+
+
+///////////////////////////
+// google drive api test //
+///////////////////////////
 $utilities->get('/g-drive', function () use ($app) {
     /*
     $client = new Google_Client();
