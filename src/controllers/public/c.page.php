@@ -90,7 +90,7 @@ $app->get('/', function (Request $request) use ($app) {
 	$view_vars = array_merge($page_vars,$view_vars);
 
 	$blog = new Model\Blog(array(),$app);
-	$posts = $blog->fetchByStatus('PUBLISH','yes',0,4);
+	$posts = $blog->fetchPublished(0,4);
 	$view_vars['posts'] = $posts;
 
 	$seminar = new Model\Seminar($doc=array(), $app);
@@ -124,7 +124,7 @@ $app->get('/blog', function (Request $request) use ($app) {
 	$view_vars = array_merge($page_vars,$view_vars);
 
 	$blog = new Model\Blog(array(),$app);
-	$posts = $blog->fetchByStatus('PUBLISH','yes');
+	$posts = $blog->fetchPublished(0,4);
 	$archives = $blog->fetchArchiveCounts();
 
 	$view_vars['posts'] = $posts;

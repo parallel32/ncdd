@@ -286,6 +286,19 @@ class Blog extends Model {
 		return $result;
 
 	}
+	public function fetchPublished($offset=0,$limit=10000){
+		$query = array('currentStatus'=>self::$status['PUBLISH']);
+		$fields = array();
+		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('publishDate.date'=>-1),(int)$offset,(int)$limit);
+		if(!empty($result)):
+			for ($i=0; $i < count($result); $i++) { 
+				$result[$i]['currentStatus'] = self::$statusReversed[$result[$i]['currentStatus']];
+				$result[$i]['currentType'] = self::$typeReversed[$result[$i]['currentType']];
+			}
+		endif;
+		return $result;
+
+	}
 	public function fetchArchives($month,$year, $offset=0,$limit=10000){
 		
 		$query = array('currentStatus'=>self::$status['PUBLISH'],'published'=>'yes','publishDate.month'=>$month, 'publishDate.year'=>$year);
