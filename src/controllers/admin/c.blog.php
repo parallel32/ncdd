@@ -43,7 +43,7 @@ $app->get('/blog/publish-schedule', function (Request $request) use ($app) {
 $app->get('/blog', function (Request $request) use ($app) {
 	
 	$blog = new Model\Blog(array(),$app);
-	$posts = $blog->fetchByStatus('PUBLISH','yes');
+	$posts = $blog->fetchPublished();
 	$archives = $blog->fetchArchiveCounts();
 
 	$crumbs = array(array('name'=>'DUI Blog','href'=>'/blog'));
@@ -116,7 +116,7 @@ $app->get('/blog/all-posts', function (Request $request) use ($app) {
 	$blog = new Model\Blog(array(),$app);
 	$reviews = $blog->fetchByStatus('REVIEW','no');
 	$scheduled = $blog->fetchByStatus('SCHEDULE','no');
-	$published = $blog->fetchByStatus('PUBLISH','yes');
+	$published = $blog->fetchPublished();
 	$unpublished = $blog->fetchByStatus('UNPUBLISH','no');
 
 	$crumbs = array(array('name'=>'DUI Blog','href'=>'/blog')
