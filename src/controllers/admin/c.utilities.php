@@ -17,12 +17,20 @@ $utilities = $app['controllers_factory'];
 $utilities->before($mustbeADMIN);
 
 
-///////////////////////////
-// google drive api test //
-///////////////////////////
+////////////////////
+// wizzywig tests //
+////////////////////
+$utilities->get('/tinymce', function () use ($app) {
+      $view_vars = array(
+                         'active'=>''
+                        ,'page-plugin'=>''
+                        ,'headline'=>'TinyMCE'
+                        ,'description'=>"TinyMCE wizzy testing"
+                        ,'crumbs'=>array()
+                        );
+   return $app['view']->render('utilities/tinymce', 'default',$view_vars);
+});
 $utilities->get('/redactor', function () use ($app) {
-
-
       $view_vars = array(
                          'active'=>''
                         ,'page-plugin'=>''
@@ -30,8 +38,6 @@ $utilities->get('/redactor', function () use ($app) {
                         ,'description'=>"Redactor wizzy testing"
                         ,'crumbs'=>array()
                         );
-
-
    return $app['view']->render('utilities/redactor', 'default',$view_vars);
 });
 
