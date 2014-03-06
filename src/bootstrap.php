@@ -16,6 +16,7 @@ require_once __DIR__.'/bootstrap.constants.php';
 //////////////////////////////
 // Register Mailing Service //
 //////////////////////////////
+/*
 $app->register(new Silex\Provider\SwiftmailerServiceProvider(), array(
 	'swiftmailer.options'	  => array(
 									'host'		=>SAW_MAILER_HOST,
@@ -25,6 +26,7 @@ $app->register(new Silex\Provider\SwiftmailerServiceProvider(), array(
 									'encryption'=>SAW_MAILER_ENCRYPTION
 								 )
 ));
+//*/
 
 ///////////////////////////////////
 // Register Facebook SDK Service //

@@ -3235,11 +3235,11 @@ Tiles(new in v1.1.1)
 }
 
 .tile:active, .tile.selected {
-  border-color: #ccc;
+  border-color: #F00;
 }
 
 .tile:hover {
-  border-color: #aaa;
+  border-color: #F00;
 }
 
 .tile.selected .corner:after {  
@@ -3247,7 +3247,7 @@ Tiles(new in v1.1.1)
   display: inline-block;
   border-left: 40px solid transparent;
   border-bottom: 40px solid transparent;
-  border-right: 40px solid #ccc;
+  border-right: 40px solid #F00;
   position: absolute;
   top: -3px;
   right: -3px;

@@ -21,12 +21,26 @@ $app['validateModel'] = $app->protect(function ($app,$model,$groups=array()) {
 	endif;	
 });
 $app['sendMail'] = $app->protect(function ($subject, $body, $to, $from=array(SAW_MAILER_FROM=>SAW_MAILER_FROM_NAME)) use ($app) {
+	
+	$sendgrid = new SendGrid(SAW_MAILER_USERNAME, SAW_MAILER_PASSWORD);
+	$email = new SendGrid\Email();
+	$email->addTo($to)->
+	       setFrom(SAW_MAILER_FROM)->
+	       setFromName(SAW_MAILER_FROM_NAME)->
+	       setReplyTo(SAW_MAILER_FROM)->
+	       setSubject($subject)->
+	       setHtml($body);
+
+	$sendgrid->send($email);
+
+	/*// replaced by SendGrid
 	$message = \Swift_Message::newInstance()
 		        ->setSubject($subject)
 		        ->setFrom($from)
 		        ->setTo($to)
 		        ->setBody($body,'text/html');
 	$app['mailer']->send($message);
+	//*/
 });
 
 ///////////////////////
@@ -104,6 +118,14 @@ $app->get('/captcha', function (Request $request) use ($app) {
 	imagettftext($captcha, $font_size, $angle, $text_pos_x, $text_pos_y, $color, $font, $captcha_config['code']);	
 	
 	return new Response(imagepng($captcha), 200, array('Content-Type' => 'image/png'));
+});
+
+$app->post('/content-formatter', function (Request $request) use ($app) {
+	$content = $request->get('content');
+	error_log('content:'.$content);
+	include_once __DIR__.'/../Saw/Provider/WordPress/ncdd-wp-includes.php';
+	$content = (!empty($content)) ? wptexturize(wpautop($content)) : '';
+	return new Response($content, 200,array('Content-Type' => 'text/html'));
 });
 
 return $app;

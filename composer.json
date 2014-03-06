@@ -28,7 +28,8 @@
         "cocur/slugify": "dev-master",
         "nesbot/Carbon": "dev-master",
         "imagine/imagine": "dev-master",
-        "google/apiclient": "dev-master"
+        "google/apiclient": "dev-master",
+        "sendgrid/sendgrid": "dev-master"
     },
     "autoload": {
 		"psr-0": {"Saw":"src/"}

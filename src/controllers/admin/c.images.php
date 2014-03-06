@@ -134,6 +134,7 @@ $app->get('/images/{imageId}', function ($imageId, Request $request) use ($app,$
 		return new Response($file_contents, 200, array('Content-Type' => 'image/jpeg'));
 	}
 });
+
 $app->get('/image/{context}/{belongsTo}/{size}', function ($context, $belongsTo, $size, Request $request) use ($app,$imgUnavailable) {
 	$belongsTo = new \MongoId($belongsTo);
 	$file_contents = $app['upload-mongo']->getImageByCriteria(array('belongsTo'=>$belongsTo, 'size'=>$size));
@@ -145,7 +146,6 @@ $app->get('/image/{context}/{belongsTo}/{size}', function ($context, $belongsTo,
 		return new Response($file_contents, 200, array('Content-Type' => 'image/jpeg'));
 	}
 });
-
 
 // prepares an image url 
 $app['getImageURL'] = $app->protect(function ($image,$size,$ssl=false) { 

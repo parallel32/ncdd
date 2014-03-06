@@ -51,9 +51,9 @@
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
-<body class="page-header-fixed">
+<body class="">
 	<!-- BEGIN HEADER -->
-	<div class="header navbar navbar-inverse navbar-fixed-top">
+	<div class="header navbar navbar-inverse navbar-static-top">
 		<!-- BEGIN TOP NAVIGATION BAR -->
 		<div class="navbar-inner">
 			<div class="container-fluid">

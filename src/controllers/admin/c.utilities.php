@@ -21,13 +21,66 @@ $utilities->before($mustbeADMIN);
 // wizzywig tests //
 ////////////////////
 $utilities->get('/tinymce', function () use ($app) {
-      $view_vars = array(
-                         'active'=>''
-                        ,'page-plugin'=>''
-                        ,'headline'=>'TinyMCE'
-                        ,'description'=>"TinyMCE wizzy testing"
-                        ,'crumbs'=>array()
+    $view_vars = array(
+                     'active'=>''
+                    ,'page-plugin'=>''
+                    ,'headline'=>'TinyMCE'
+                    ,'description'=>"TinyMCE wizzy testing"
+                    ,'crumbs'=>array()
+                    );
+
+    ////////////////////////////////////////////////
+    // PREPARE ACCESS TOKEN AND DRIVE CREDENTIALS //
+    ////////////////////////////////////////////////
+    try {
+            
+    $client = new Google_Client();
+    $client->setApplicationName(GOOGLE_DRIVE_APPLICATION_NAME);
+    
+    $key = file_get_contents(GOOGLE_DRIVE_KEY_FILE_LOCATION);
+
+    $cred = new Google_Auth_AssertionCredentials(
+        GOOGLE_DRIVE_SERVICE_ACCOUNT_NAME,
+        array(GOOGLE_DRIVE_API_SCOPE),
+        $key
+    );
+    $cred->sub = GOOGLE_DRIVE_PRN;
+    $cred->prn = GOOGLE_DRIVE_PRN;
+    $client->setAssertionCredentials($cred);
+
+    $session_service_token = $app['session']->get('service_token');
+    if (isset($session_service_token)) {
+        $client->setAccessToken($session_service_token);
+        if($client->getAuth()->isAccessTokenExpired()) {
+            $client->getAuth()->refreshTokenWithAssertion($cred);
+            $app['session']->set('service_token',$client->getAccessToken());
+        }
+    }else{
+        $session_service_token = $client->getAccessToken();
+        if(empty($session_service_token)){
+            $client->getAuth()->refreshTokenWithAssertion($cred);
+            $session_service_token = $client->getAccessToken();
+            $app['session']->set('service_token',$session_service_token);
+        }
+        $app['session']->set('service_token',$session_service_token);
+    }
+    
+    $access_token = json_decode($session_service_token);
+    $access_token = $access_token->access_token;
+
+    $picker_view_vars = array(
+                         'access_token'=>$access_token
+                        ,'client_id'=>GOOGLE_DRIVE_CLIENT_ID
                         );
+
+    $view_vars = array_merge($view_vars,$picker_view_vars);
+    } catch (Exception $e) {
+      // do nothing   
+    }
+    ////////////////////////////////////////////////
+    // PREPARE ACCESS TOKEN AND DRIVE CREDENTIALS //
+    ////////////////////////////////////////////////
+
    return $app['view']->render('utilities/tinymce', 'default',$view_vars);
 });
 $utilities->get('/redactor', function () use ($app) {
