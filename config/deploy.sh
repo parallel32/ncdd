@@ -11,13 +11,13 @@ echo "minifying......"
 
 
 echo "sync web1"
-rsync --delete --exclude "logs" --exclude ".gitignore" --exclude ".git" --exclude "vendor" -rlz /home/ec2-user/staging/ncdd/ ec2-user@web1:/var/www/ncdd
+rsync --delete --exclude "logs" --exclude ".gitignore" --exclude ".git" -rlz /home/ec2-user/staging/ncdd/ ec2-user@web1:/var/www/ncdd
 
 echo "sync web2"
-rsync --delete --exclude "logs" --exclude ".gitignore" --exclude ".git" --exclude "vendor" -rlz /home/ec2-user/staging/ncdd/ ec2-user@web2:/var/www/ncdd
+rsync --delete --exclude "logs" --exclude ".gitignore" --exclude ".git" -rlz /home/ec2-user/staging/ncdd/ ec2-user@web2:/var/www/ncdd
 
 echo "sync web3"
-rsync --delete --exclude "logs" --exclude ".gitignore" --exclude ".git" --exclude "vendor" -rlz /home/ec2-user/staging/ncdd/ ec2-user@web3:/var/www/ncdd
+rsync --delete --exclude "logs" --exclude ".gitignore" --exclude ".git" -rlz /home/ec2-user/staging/ncdd/ ec2-user@web3:/var/www/ncdd
 
 echo "discard minified and ssl files for a clean git repo.."
 git clean -f
