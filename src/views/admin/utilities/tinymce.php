@@ -311,7 +311,17 @@
                       $('#well-modal .btn.cancel').click(function(){
                         $('#well-modal').modal('hide');
                       });
+                      /////////////////////
+                      // ADD PHOTO MODAL //
+                      /////////////////////
                       
+                      $('#add-photo-modal .btn.cancel').click(function(){
+                        $('#add-photo-modal').modal('hide');
+                      });
+                      $("#add-photo-modal .embed").on("click", function() {
+                        tinymce.activeEditor.insertContent('<p><img id="resize-'+Math.random()+'" style="padding:20px" src="'+$("#add-photo-modal iframe").contents().find("#image-"+$("#add-photo-modal iframe")[0].contentWindow.selected_image).attr('src')+'"></p>');
+                        $('#add-photo-modal').modal('hide');
+                      });
                     });                    
                   </script>
 
@@ -417,11 +427,10 @@
                        <h3 id="add-photo-modal-label">Add Photo</h3>
                     </div>
                     <div class="modal-body">
-                      <iframe src="/drive/image" width="100%" height="" frameborder="0"></iframe>
+                      <iframe src="/drive/image/5319ee258a16320b346b7b56" width="100%" height="" frameborder="0"></iframe>
                     </div>
                     <div class="modal-footer">
-                       <button class="btn blue add">Upload Photo</button>
-                       <button class="btn green embed">Embed it.</button>
+                       <button class="btn green embed">Embed Selected Photo.</button>
                        <button class="btn cancel">Cancel</button>
                     </div>
                 </div>

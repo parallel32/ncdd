@@ -163,6 +163,9 @@ $app['getImageURL'] = $app->protect(function ($image,$size,$ssl=false) {
 
 $app['imageFactory'] = $app->protect(function ($context,$belongsTo) {
 	switch ($context) {
+		case 'drive':
+			return new Model\ImageDrive($belongsTo);
+			break;
 		case 'seminar':
 			return new Model\ImageSeminar($belongsTo);
 			break;
@@ -189,6 +192,9 @@ $app['imageFactory'] = $app->protect(function ($context,$belongsTo) {
 });
 $app['imageParentFactory'] = $app->protect(function ($context,$belongsTo) use ($app) {
 	switch ($context) {
+		case 'drive':
+			return new Model\Drive(array('_id'=>$belongsTo),$app);
+			break;
 		case 'seminar':
 			return new Model\Seminar(array('_id'=>$belongsTo),$app);
 			break;
