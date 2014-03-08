@@ -13,22 +13,22 @@
                   <!-- BEGIN VALIDATION STATES-->
                   <div class="portlet box blue">
                      <div class="portlet-title">
-                        <div class="caption"><i class="icon-picture"></i>Edit Image</div>
+                        <div class="caption"><i class="icon-file"></i>Manage File</div>
                        <div class="actions">
-                          <a class="btn yellow image <?=($this->vars['image'] == '/placeholder') ? 'hide' :'' ?>"> Crop This Image</a>
                           <a class="btn back image "> Save & Go Back</a>
                        </div>
                      </div>
 
                      <div class="portlet-body form">
                        <blockquote>
-                          <img id="image" src="<?=$this->vars['image']?>" width="500">
+                          <a id="image" href="<?=$this->vars['image']?>"></a>
                        </blockquote>
                        <br>
                        <!-- The file upload form used as target for the file upload widget -->
                        <form id="fileupload" action="#" method="POST" enctype="multipart/form-data">
                           <input type="hidden" name="doc[belongsTo]" value="<?=$drive['_id']?>">
-                          <input type="hidden" name="doc[context]" value="drive">
+                          <input type="hidden" name="doc[context]" value="drivefile">
+                          <input type="hidden" name="doc[filetype]" value="file">
                           <!-- Redirect browsers with JavaScript disabled to the origin page -->
                           <noscript><input type="hidden" name="redirect" value="/image/upload/nojavascript"></noscript>
                           <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
@@ -37,7 +37,7 @@
                                 <!-- The fileinput-button span is used to style the file input field as button -->
                                 <span class="btn green fileinput-button">
                                 <i class="icon-plus icon-white"></i>
-                                <span>Add an image for upload</span>
+                                <span>Add a file for upload</span>
                                 <input type="file" name="file" multiple>
                                 </span>
                                 <button type="submit" class="btn blue start hide">
@@ -77,7 +77,6 @@
                           <h3>Upload Information</h3>
                           <ul>
                              <li>The maximum file size for uploads is <strong>20 MB</strong>.</li>
-                             <li>Only images are allowed (<strong>JPG, PNG, GIF</strong>) are allowed.</li>
                              <li>You can also <strong>drag &amp; drop</strong> the file from your desktop on this webpage with Google Chrome, Mozilla Firefox and Apple Safari.</li>
                           </ul>
                        </div>
@@ -102,7 +101,6 @@
                        <script id="template-upload" type="text/x-tmpl">
                           {% for (var i=0, file; file=o.files[i]; i++) { %}
                               <tr class="template-upload fade">
-                                  <td class="preview"><span class="fade"></span></td>
                                   <td class="name"><span>{%=file.name%}</span></td>
                                   <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
                                   {% if (file.error) { %}
@@ -134,21 +132,14 @@
                           {% for (var i=0, file; file=o.files[i]; i++) { %}
                               <tr class="template-download fade">
                                   {% if (file.error) { %}
-                                      <td></td>
                                       <td class="name"><span>{%=file.name%}</span></td>
                                       <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
                                       <td class="error" colspan="2"><span class="label label-important">Error</span> {%=file.error%}</td>
                                   {% } else { %}
                                        <!--
-                                      <td class="preview">
-                                      {% if (file.thumbnail_url) { %}
-                                          <a class="fancybox-button" data-rel="fancybox-button" href="{%=file.url%}" title="{%=file.name%}">
-                                            <img src="{%=file.thumbnail_url%}">
-                                          </a>
-                                      {% } %}</td>
                                       <td class="name">
                                             <!-- removed from the <a tag below: href="{%=file.url%}" -->
-                                          <a title="{%=file.name%}" data-gallery="{%=file.thumbnail_url&&'gallery'%}" download="{%=file.name%}">{%=file.name%}</a>
+                                          <a title="{%=file.name%}" download="{%=file.name%}">{%=file.name%}</a>
                                       </td>
                                       <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
                                       <td colspan="2"></td>-->
@@ -178,17 +169,15 @@
       <script>
       jQuery(document).ready(function() {   
 
-        $('.yellow.image').click(function(e){
-            document.location.href='/drive/edit/<?=$drive['_id']?>/edit-photo-crop';
-        }); 
         $('.back.image').click(function(e){
-          document.location.href='/drive/image/<?=$drive['belongsTo']?>';
+          document.location.href='/drive/file/<?=$drive['belongsTo']?>';
         }); 
         
          io.saw.FileUpload.init({
             fileUploadLimit:1
             ,formId:'#fileupload'
             ,uploadURL:'/image/upload'
+            ,acceptFileTypes:'/(\.|\/)(gif|jpe?g|png|txt|docx|zip|rtf)$/i'
             ,onLoad:function(e,data){
                // nothing
             }
@@ -197,7 +186,8 @@
             }
             ,onDone:function(e,data){
                if(data.textStatus == 'success'){
-                  $('#image').attr('src',data.result.files[0].thumbnail_url);
+                  $('#image').attr('href',data.result.files[0].thumbnail_url);
+                  $('#image').html(data.result.files[0].thumbnail_url);
                   $('.red.image').removeClass('hide');
                   $('.yellow.image').removeClass('hide');
                }

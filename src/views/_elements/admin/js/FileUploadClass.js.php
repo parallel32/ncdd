@@ -13,12 +13,13 @@
 		params.onDone = params.onDone || function(){};
 		params.onFail = params.onFail || function(){};
         params.onAlways = params.onAlways || function(){};
-		params.onFileAddToQueue = params.onFileAddToQueue || function(){};
+        params.onFileAddToQueue = params.onFileAddToQueue || function(){};
+		params.acceptFileTypes = params.acceptFileTypes || '/(\.|\/)(gif|jpe?g|png)$/i';
 
 		// Initialize the jQuery File Upload widget:
         $(params.formId).fileupload({
             url: params.uploadURL
-            ,acceptFileTypes:'/(\.|\/)(gif|jpe?g|png)$/i'
+            ,acceptFileTypes:params.acceptFileTypes
             ,maxNumberOfFiles:params.maxNumberOfFiles
             ,previewMaxWidth:600
             ,previewMaxHeight:400

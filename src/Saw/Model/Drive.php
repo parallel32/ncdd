@@ -20,6 +20,7 @@ class Drive extends Model {
 	public $belongsTo;
 	public $add;
 	public $image;
+	public $file;
 
 
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
@@ -31,7 +32,8 @@ class Drive extends Model {
 
 		if(!empty($doc['_id'])) $this->_id = (is_object($doc['_id'])) ? $doc['_id'] : new \MongoId($doc['_id']);
 		$this->belongsTo = (!empty($doc['belongsTo'])) ? (is_object($doc['belongsTo'])) ? $doc['belongsTo'] : new \MongoId($doc['belongsTo']) : '';
-		$this->image = $doc['image'];
+		$this->image = (empty($doc['image'])) ? new \stdClass() : $doc['image']; // be sure to maintain an empty object in mongo
+		$this->file = (empty($doc['file'])) ? new \stdClass() : $doc['file']; // be sure to maintain an empty object in mongo
 		$this->add = $doc['add'];
 	}
 	
@@ -41,6 +43,7 @@ class Drive extends Model {
 	protected function prepareInsert(){
 		$this->belongsTo = $this->belongsTo ?: new \stdClass();
 		$this->image = $this->image ?: new \stdClass();
+		$this->file = $this->file ?: new \stdClass();
 		$this->add = $this->add ?: 'yes';
 	}
 	public function saveEdit(){
@@ -61,7 +64,9 @@ class Drive extends Model {
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array($column=>$direction),(int)$offset,(int)$limit);
 		if(!empty($result)):
 			for ($i=0; $i < count($result); $i++) { 
-				$result[$i]['image'] = (!empty($result[$i]['image'])) ? $result[$i]['image']['urls']['small']['CDN'] : '';
+				$result[$i]['image'] = (!empty($result[$i]['image'])) ? $result[$i]['image']['urls']['small']['SSLCDN'] : '';
+				$result[$i]['originalFileName'] = (!empty($result[$i]['file'])) ? $result[$i]['file']['originalFileName'] : '';
+				$result[$i]['file'] = (!empty($result[$i]['file'])) ? $result[$i]['file']['urls']['small']['SSLCDN'] : '';
 			}
 		endif;
 		return $result;

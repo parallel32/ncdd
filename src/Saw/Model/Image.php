@@ -40,7 +40,7 @@ class Image {
 	public static $uploadPath;
 	public static $request;
 	public static $file; // symfony File object: http://api.symfony.com/2.0/Symfony/Component/HttpFoundation/File/File.html
-	
+	public static $oringinalFileName;
 
 	public function __construct($cdn=true){
 		$this->context = '';

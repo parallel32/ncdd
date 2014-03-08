@@ -3,6 +3,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\StreamedResponse;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Saw\Model;
 ///////////////////////////////
 // RECEIVE THE UPLOADED FILE //
@@ -19,15 +20,19 @@ $app->match('/image/upload', function (Request $request) use ($app) {
 		$image = $app['imageFactory']($doc['context'],$doc['belongsTo']);
 		$image->setRequest($request);
 		$image->prepareFile();
-        // image sanity check
-        if(!empty($uri)) {
-            $image_type = exif_imagetype($image->getFilePath());
-            if($image_type != IMAGETYPE_GIF && $image_type != IMAGETYPE_JPEG && $image_type != IMAGETYPE_PNG){
-        		throw new Saw\Model\Exceptions\DomainException('Please choose an image with one of the following formats: JPG, GIF, or PNG.');
-			}		
-        }
-        $app['upload-mongo']->saveImage($image);
-		
+        
+        if(array_key_exists('filetype', $doc) && $doc['filetype'] = 'file'){
+        	$app['upload-mongo']->saveFile($image);
+		}else{
+			// image sanity check
+	        if(!empty($uri)) {
+	            $image_type = exif_imagetype($image->getFilePath());
+	            if($image_type != IMAGETYPE_GIF && $image_type != IMAGETYPE_JPEG && $image_type != IMAGETYPE_PNG){
+	        		throw new Saw\Model\Exceptions\DomainException('Please choose an image with one of the following formats: JPG, GIF, or PNG.');
+				}		
+	        }
+	        $app['upload-mongo']->saveImage($image);
+		}
 
 		$response_arr = array('files'=>array(0=>array('name'=>$image->getUploadedFileName()
 														,'size'=>$image->getUploadedFileSize()
@@ -96,7 +101,30 @@ $app->get('/image/delete/{context}/{belongsTo}', function ($context, $belongsTo,
 		$deleteQuery = array('belongsTo'=>$belongsTo);
 		$app['upload-mongo']->deleteByCriteria($deleteQuery);
 		$parentObj = $app['imageParentFactory']($context,$belongsTo);
-		$parentObj->image = array();
+		$parentObj->image = new \stdClass();
+		$parentObj->saveEdit();
+		return new Response('success', 200, array('Content-Type' => 'text/html'));	
+	} catch (Exception $e) {
+		$response_arr = array('files'=>array(0=>array('name'=>''
+													,'size'=>0
+													,'type'=>''
+													,'error'=>$e->getMessage()
+													)));	
+		// 200 response is needed for the javascript fileupload library so that it can display the error message.
+		//Otherwise if it's 500 it will display Internal Server Error by default
+		return new Response(json_encode($response_arr), 200,array('Content-Type' => 'application/json'));
+	}
+})->before($mustbeMEMBER);
+///////////////////
+// DELETE A FILE //
+///////////////////
+$app->get('/file/delete/{context}/{belongsTo}', function ($context, $belongsTo, Request $request) use ($app) {
+	try {
+		$belongsTo = new \MongoId($belongsTo);
+		$deleteQuery = array('belongsTo'=>$belongsTo);
+		$app['upload-mongo']->deleteByCriteria($deleteQuery);
+		$parentObj = $app['imageParentFactory']($context,$belongsTo);
+		$parentObj->file = new \stdClass();
 		$parentObj->saveEdit();
 		return new Response('success', 200, array('Content-Type' => 'text/html'));	
 	} catch (Exception $e) {
@@ -137,14 +165,34 @@ $app->get('/images/{imageId}', function ($imageId, Request $request) use ($app,$
 
 $app->get('/image/{context}/{belongsTo}/{size}', function ($context, $belongsTo, $size, Request $request) use ($app,$imgUnavailable) {
 	$belongsTo = new \MongoId($belongsTo);
-	$file_contents = $app['upload-mongo']->getImageByCriteria(array('belongsTo'=>$belongsTo, 'size'=>$size));
-    if(!empty($file_contents)){
-    	return new Response($file_contents, 200, array('Content-Type' => 'image/jpeg'));
-	}else{
+	if($context == 'drive'){
+		$drive = new Model\Drive(array('_id'=>$belongsTo),$app);
+		$drive = $drive->findById();
 
-		$file_contents = file_get_contents($imgUnavailable);
-		return new Response($file_contents, 200, array('Content-Type' => 'image/jpeg'));
+		$file_contents = $app['upload-mongo']->getImageByCriteria(array('belongsTo'=>$belongsTo, 'size'=>$size));
+	    if(!empty($file_contents)){
+	    	$response = new Response($file_contents, 200, array('Content-Type' => 'application/octet-stream'));
+	    	$d = $response->headers->makeDisposition(
+			    ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+			    $drive['file']['originalFileName']
+			);
+			$response->headers->set('Content-Disposition', $d);
+	    	return $response;
+		}else{
+			$file_contents = file_get_contents($imgUnavailable);
+			return new Response($file_contents, 200, array('Content-Type' => 'image/jpeg'));
+		}
+	}else{
+		$file_contents = $app['upload-mongo']->getImageByCriteria(array('belongsTo'=>$belongsTo, 'size'=>$size));
+	    if(!empty($file_contents)){
+	    	return new Response($file_contents, 200, array('Content-Type' => 'image/jpeg'));
+		}else{
+
+			$file_contents = file_get_contents($imgUnavailable);
+			return new Response($file_contents, 200, array('Content-Type' => 'image/jpeg'));
+		}	
 	}
+	
 });
 
 // prepares an image url 
@@ -165,6 +213,9 @@ $app['imageFactory'] = $app->protect(function ($context,$belongsTo) {
 	switch ($context) {
 		case 'drive':
 			return new Model\ImageDrive($belongsTo);
+			break;
+		case 'drivefile':
+			return new Model\ImageDriveFile($belongsTo);
 			break;
 		case 'seminar':
 			return new Model\ImageSeminar($belongsTo);
@@ -193,6 +244,7 @@ $app['imageFactory'] = $app->protect(function ($context,$belongsTo) {
 $app['imageParentFactory'] = $app->protect(function ($context,$belongsTo) use ($app) {
 	switch ($context) {
 		case 'drive':
+		case 'drivefile':
 			return new Model\Drive(array('_id'=>$belongsTo),$app);
 			break;
 		case 'seminar':
@@ -216,8 +268,6 @@ $app['imageParentFactory'] = $app->protect(function ($context,$belongsTo) use ($
 		case 'category':
 			return new Model\Category(array('_id'=>$belongsTo),$app);
 			break;
-
-
 
 	}
 });

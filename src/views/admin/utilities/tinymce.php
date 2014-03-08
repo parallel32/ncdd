@@ -105,6 +105,7 @@
                       image: '/assets/img/wysiwyg-toolbar/embed-file-25x25.png',
                       onclick: function() {
                          $('#add-file-modal').modal({keyboard: false});
+                        $('#add-file-modal iframe').attr('height',$(window).height()-200);
                       }
                     });
                   });
@@ -307,7 +308,7 @@
                             tinymce.activeEditor.insertContent('<div class="well well-large" style="margin: 10px 20px 10px 20px;"><h3>Large text here</h3>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet. Integer molestie lorem at massa Integer molestie lorem at massa  Integer molestie lorem at massa</div>')
                           }
                           $('#well-modal').modal('hide');
-                      })
+                      });
                       $('#well-modal .btn.cancel').click(function(){
                         $('#well-modal').modal('hide');
                       });
@@ -322,7 +323,19 @@
                         tinymce.activeEditor.insertContent('<p><img id="resize-'+Math.random()+'" style="padding:20px" src="'+$("#add-photo-modal iframe").contents().find("#image-"+$("#add-photo-modal iframe")[0].contentWindow.selected_image).attr('src')+'"></p>');
                         $('#add-photo-modal').modal('hide');
                       });
-                    });                    
+                      ////////////////////
+                      // ADD FILE MODAL //
+                      ////////////////////
+                      
+                      $('#add-file-modal .btn.cancel').click(function(){
+                        $('#add-file-modal').modal('hide');
+                      });
+                      $("#add-file-modal .embed").on("click", function() {
+                        tinymce.activeEditor.insertContent('<p><a id="resize-'+Math.random()+'" href="'+$("#add-file-modal iframe").contents().find("#file-"+$("#add-file-modal iframe")[0].contentWindow.selected_file).attr('href')+'">'+$("#add-file-modal iframe").contents().find("#file-"+$("#add-file-modal iframe")[0].contentWindow.selected_file).html()+'</a></p>');
+                        $('#add-file-modal').modal('hide');
+                      });
+
+                    });                   
                   </script>
 
                 <!-- PASTE PREPROCESS DIV -->
@@ -434,7 +447,22 @@
                        <button class="btn cancel">Cancel</button>
                     </div>
                 </div>
-                <!--/ ADD-PHOTO MODAL -->
+                <!--/ ADD PHOTO MODAL -->
+                <!-- ADD FILE MODAL -->
+                <div id="add-file-modal" class="modal hide fade container" tabindex="-1" role="dialog" aria-labelledby="add-file-modal-label" aria-hidden="true">
+                    <div class="modal-header">
+                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                       <h3 id="add-file-modal-label">Add File</h3>
+                    </div>
+                    <div class="modal-body">
+                      <iframe src="/drive/file/5319ee258a16320b346b7b56" width="100%" height="" frameborder="0"></iframe>
+                    </div>
+                    <div class="modal-footer">
+                       <button class="btn green embed">Embed Selected File.</button>
+                       <button class="btn cancel">Cancel</button>
+                    </div>
+                </div>
+                <!--/ ADD FILE MODAL -->
 
 
 
