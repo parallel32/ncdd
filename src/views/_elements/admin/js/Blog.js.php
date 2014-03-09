@@ -172,7 +172,6 @@ $user_id = $user['user_id'];
 	};
 	Blog.autosave = function(){
 		if(tinymce.activeEditor.isDirty()){
-			$('#currentStatus').val(<?=\Saw\Model\Blog::$status['DRAFT'];?>);
 			Blog.save(undefined,'/blog/<?=$this->vars['memberId']?>/autosave','no')
 		}
 		setTimeout(Blog.autosave, 5000);

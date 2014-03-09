@@ -91,6 +91,11 @@ $app->get('/', function (Request $request) use ($app) {
 
 	$blog = new Model\Blog(array(),$app);
 	$posts = $blog->fetchPublished(0,4);
+	if(!empty($posts)){
+		for ($i=0; $i < count($posts); $i++) { 
+		    $posts[$i]['body'] = preg_replace("/<img[^>]+\>/i", "", $posts[$i]['body']); 
+		}
+	}
 	$view_vars['posts'] = $posts;
 
 	$seminar = new Model\Seminar($doc=array(), $app);

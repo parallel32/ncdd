@@ -95,6 +95,7 @@
                       ,menubar : false
                       ,statusbar : false
                       ,object_resizing : true
+                      ,convert_urls: false
                       ,theme:"modern"
                       ,selector: "#_content"
                       ,content_css: "/assets/plugins/bootstrap/css/bootstrap.min.css,/assets/css/p.css"
@@ -234,7 +235,7 @@
                         $(this).html('Preview');
                       });
                       $('#media-modal .btn.embed').click(function(){
-                        tinymce.activeEditor.insertContent('<p><img id="resize-'+Math.random()+'" data-media-url="'+$('#media-url').val()+'" data-media-type="'+$('#media-placeholder-text').attr('data-img-type')+'" style="padding:20px" src="'+$('#media-placeholder-text').attr('data-img-src')+'"></p>');
+                        tinymce.activeEditor.insertContent('<p><img id="imageplaceholder" data-media-url="'+$('#media-url').val()+'" data-media-type="'+$('#media-placeholder-text').attr('data-img-type')+'" style="padding:20px" src="'+$('#media-placeholder-text').attr('data-img-src')+'"></p>');
                         // clear it and close it
                         $('#media-modal .media-embed').html('');
                         $('#media-url').val('');

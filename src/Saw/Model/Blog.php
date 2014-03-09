@@ -215,11 +215,13 @@ class Blog extends Model {
 				case 'REVIEW':
 					$this->reviewDate = new Date(self::$app,'now');
 					$this->scheduleDate = new \stdClass();// here because the editor/admin can un-schedule a post from the publishing queue
+					$this->published = 'no';
 					break;
 				case 'SCHEDULE':
 					if(!empty($this->scheduleDate)){
 						$this->scheduleDate = new Date(self::$app,$this->scheduleDate);
 					}
+					$this->published = 'no';
 					break;
 				case 'UNPUBLISH':
 					$this->unpublishDate = new Date(self::$app,'now');
@@ -386,7 +388,7 @@ class Blog extends Model {
 		$memberId = (is_object($memberId)) ? $memberId : new \MongoId($memberId);
 		$query = array('author._id'=>$memberId, 'currentStatus'=>array('$gte'=>self::$status['SCHEDULE']));
 		$fields = array();
-		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('scheduleDate.date'=>-1,'publishDate.date'=>-1),(int)$offset,(int)$limit);
+		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('_id'=>-1),(int)$offset,(int)$limit);
 		if(!empty($result)):
 			for ($i=0; $i < count($result); $i++) { 
 				$result[$i]['currentStatus'] = self::$statusReversed[$result[$i]['currentStatus']];
