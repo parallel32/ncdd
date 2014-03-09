@@ -31,7 +31,11 @@ $user_id = $user['user_id'];
 		});    
 	};
 	Blog.init = function(){
-		
+		<?/**
+		To Do
+		*/?>
+		//init autosave
+		setTimeout(io.saw.Blog.autosave, 5000);
 
 		// SAVE buttons and publish workflow buttons
 		$('#saw-form .headline').keyup(function(e) {
@@ -132,20 +136,31 @@ $user_id = $user['user_id'];
 				Blog.save();
 			};
 	<? endif; ?>
-	Blog.save = function (postSuccess){
-		
-		$('#input-body').val($('#body').html());
-
+	Blog.save = function (postSuccess,posturl,blockuiformpost){
+		<?/**
+        TODO
+     */?>
+		tinymce.activeEditor.save();
+		var posturl = posturl || '/blog/<?=$this->vars['memberId']?>/edit'
+		var blockuiformpost = blockuiformpost || 'yes'
 		var postSuccess = postSuccess || function(responseObj){
+			 <?/**
+	            TODO
+	         */?>
+		   		$('#editor-drive-file-iframe').attr('src','/drive/file/'+responseObj.blogId);
+		   		$('#editor-drive-image-iframe').attr('src','/drive/image/'+responseObj.blogId);
 		   		$('#_id').val(responseObj.blogId);
 		   		$('#add').val('no');
-		   		$('#save-modal .modal-body p').html(responseObj.message);
-		      	//$('#save-modal-label').html(responseObj.label);
-		      	$('#save-modal').modal({keyboard: false});   		
+		   		if(blockuiformpost == 'yes'){
+			   		$('#save-modal .modal-body p').html(responseObj.message);
+			      	//$('#save-modal-label').html(responseObj.label);
+			      	$('#save-modal').modal({keyboard: false});   		
+			      }
 		   };
 
-		io.saw.FormPost.activate({postUrl:'/blog/<?=$this->vars['memberId']?>/edit'
+		io.saw.FormPost.activate({postUrl:posturl
 		   ,serializeSelector:':input'
+		   ,blockUI:blockuiformpost
 		   ,postOnComplete:function(responseObj,responseStatus){
 			   	if(responseStatus == 'success'){
 			   	}else{
@@ -154,6 +169,13 @@ $user_id = $user['user_id'];
 		   }
 		   ,postOnSuccess:postSuccess
 		});      
+	};
+	Blog.autosave = function(){
+		if(tinymce.activeEditor.isDirty()){
+			$('#currentStatus').val(<?=\Saw\Model\Blog::$status['DRAFT'];?>);
+			Blog.save(undefined,'/blog/<?=$this->vars['memberId']?>/autosave','no')
+		}
+		setTimeout(Blog.autosave, 5000);
 	};
 	
 	

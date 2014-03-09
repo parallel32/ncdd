@@ -17,6 +17,9 @@ $drive->before($mustbeMEMBER);
 /////////////
 //  IMAGE  //
 /////////////
+$drive->get('/image/', function (Request $request) use ($app) {
+	return $app['view']->render('drive/savefirst', 'blank');
+});
 $drive->get('/image/{belongsTo}', function ($belongsTo, Request $request) use ($app) {
 	
 	$belongsTo = (!empty($belongsTo)) ? (is_object($belongsTo)) ? $belongsTo : new \MongoId($belongsTo) : '';
@@ -42,6 +45,9 @@ $drive->get('/image/{belongsTo}', function ($belongsTo, Request $request) use ($
 ////////////
 //  FILE  //
 ////////////
+$drive->get('/file/', function (Request $request) use ($app) {
+	return $app['view']->render('drive/savefirst', 'blank');
+});
 $drive->get('/file/{belongsTo}', function ($belongsTo, Request $request) use ($app) {
 	
 	$belongsTo = (!empty($belongsTo)) ? (is_object($belongsTo)) ? $belongsTo : new \MongoId($belongsTo) : '';

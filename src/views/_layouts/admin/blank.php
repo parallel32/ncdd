@@ -14,7 +14,7 @@
    <link href="/assets/plugins/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
    <link href="/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
    <link href="/assets/css/style-metro.min.css" rel="stylesheet" type="text/css"/>
-   <link href="/assets/css/style.css" rel="stylesheet" type="text/css"/>
+   <link href="/assets/css/style.min.css" rel="stylesheet" type="text/css"/>
    <link href="/assets/css/style-responsive.min.css" rel="stylesheet" type="text/css"/>
    <link href="/assets/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color"/>
    <link href="/assets/plugins/uniform/css/uniform.default.min.css" rel="stylesheet" type="text/css"/>

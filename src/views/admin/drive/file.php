@@ -7,7 +7,7 @@
 				<div class="row-fluid pull-left">
 					<p>Add a new file or delete the selected file.</p>
 	            	<div class="form-actions text-center">
-                        <button type='button' class='btn green add'><i class='icon-plus'></i> Add a File.</button>
+                        <button type='button' class='btn green add'><i class='icon-plus'></i> Upload a File.</button>
                         <button type='button' class='btn red delete'><i class='icon-trash'></i> Delete Selected.</button>
                 	</div>
 	               <!--/span-->
@@ -48,6 +48,7 @@
 
 					<? endif; ?>
 					<? endforeach; ?>
+
 					<? else: ?>
 					<p>No files to show.</p>
 					<? endif; ?>
@@ -102,3 +103,12 @@
 
 			});
 			</script>
+			<? if(!empty($this->vars['files'])){
+echo <<<EOD
+<script>
+jQuery(document).ready(function() {   
+	$('.tile').first().trigger('click');
+});	
+</script>
+EOD;
+					} ?>

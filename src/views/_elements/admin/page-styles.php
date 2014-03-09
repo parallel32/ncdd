@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="/assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.css"/>
 
 <? 
+if(array_key_exists('page-plugin', $this->vars)):
    $plugins = explode(',',$this->vars['page-plugin']);
       foreach($plugins as $plugin):
 
@@ -76,5 +77,6 @@ EOT;
          break;
       } 
       endforeach;
+endif;
       ?>
 <!-- END PAGE LEVEL STYLES -->

@@ -7,7 +7,7 @@
 				<div class="row-fluid pull-left">
 					<p>Add a new picture or delete the selected picture.</p>
 	            	<div class="form-actions text-center">
-                        <button type='button' class='btn green add'><i class='icon-plus'></i> Add a Picture.</button>
+                        <button type='button' class='btn green add'><i class='icon-plus'></i> Upload a Picture.</button>
                         <button type='button' class='btn red delete'><i class='icon-trash'></i> Delete Selected.</button>
                         <button type='button' class='btn yellow crop'> Crop Selected.</button>
                 	</div>
@@ -105,3 +105,12 @@
 
 			});
 			</script>
+			<? if(!empty($this->vars['images'])){
+echo <<<EOD
+<script>
+jQuery(document).ready(function() {   
+	$('.tile').first().trigger('click');
+});	
+</script>
+EOD;
+					} ?>

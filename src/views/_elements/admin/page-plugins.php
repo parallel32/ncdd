@@ -16,6 +16,7 @@
 
    <!-- BEGIN PAGE LEVEL PLUGINS -->
    <?
+  if(array_key_exists('page-plugin', $this->vars)):
       $plugins = explode(',',$this->vars['page-plugin']);
       foreach($plugins as $plugin):
 
@@ -219,6 +220,7 @@ EOT;
    
       } 
       endforeach;
+endif;
       ?>
 
    <script src="/assets/plugins/jquery.pulsate.min.js" type="text/javascript"></script>

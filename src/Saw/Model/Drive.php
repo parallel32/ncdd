@@ -73,13 +73,24 @@ class Drive extends Model {
 	}
 	
 	public function delete(){
-
 		// delete
     	$this->remove();
-
     	// delete binary files
 		self::$app['upload-mongo']->deleteByCriteria(array('belongsTo'=>$this->_id));
 
 	}
 	
+	public function deleteAll(){
+		
+		// find all first
+		$results = $this->find(array('belongsTo'=>$this->belongsTo),array('_id'=>true));
+		// delete
+    	$this->removeByCriteria(array('belongsTo'=>$this->belongsTo));
+    	
+    	// delete binary files
+    	foreach ($results as $file):
+			self::$app['upload-mongo']->deleteByCriteria(array('belongsTo'=>$file['_id']));
+		endforeach;
+
+	}
 }

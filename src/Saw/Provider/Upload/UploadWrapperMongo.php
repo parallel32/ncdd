@@ -62,14 +62,20 @@ class UploadWrapperMongo
         $this->deleteByCriteria(array('belongsTo'=>$file->belongsTo));
 
         foreach ($file->sizes as $key=>$size){
-
+            $file_name = '';
             $path = $file->getFile()->getPath();
             $ext = $file->getFile()->getExtension();
             $base_name = $file->getFile()->getBasename('.'.$ext);
             $new_name = $path.'/'.$base_name.'-'.$size['size'].'.'.$ext;
             copy($file->getFilePath(),$new_name);
             $tmp = explode('-', $base_name);
-            $file->originalFileName = $tmp[2].'.'.$ext;
+            for($i=2; $i < count($tmp); $i++){
+                if($i == 2)
+                    $file_name = $file_name.$tmp[$i];
+                else
+                    $file_name = $file_name.'-'.$tmp[$i];
+            }
+            $file->originalFileName = $file_name.'.'.$ext;
             $file->sizes[$key]['id'] = (string)$this->app['mongo']->storeFile($new_name
                                                         ,$this->collection
                                                         ,$doc=array('belongsTo'=>$file->belongsTo,'size'=>$key));
@@ -154,7 +160,8 @@ class UploadWrapperMongo
         return $response;
     }
 
-    public function deleteByCriteria($criteria=array()){
-        return $this->app['mongo']->removeFileByCriteria($criteria,$this->collection);
+    public function deleteByCriteria($criteria=array(),$collection=''){
+        $collection = (empty($collection)) ? $this->collection : $collection;
+        return $this->app['mongo']->removeFileByCriteria($criteria,$collection);
     }
 }

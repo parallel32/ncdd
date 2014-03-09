@@ -1,51 +1,4 @@
-<!-- BEGIN PAGE -->
-      <div class="page-content">
-         
-         <!-- BEGIN PAGE CONTAINER-->
-         <div class="container-fluid">
-            <!-- BEGIN PAGE HEADER-->
-            <div class="row-fluid">
-               <div class="span12">
-                  <?=$this->element('page-title-and-bread-crumb');?>
-               </div>
-            </div>
-            <!-- END PAGE HEADER-->
-            
-            <!-- BEGIN PAGE CONTENT-->
-            <div class="row-fluid">
-              <div class="span12">
-                         
-                <div id="page">
-                      <textarea id="_content" name="content" style="height: 200px;"></textarea>
-                </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                <!-- EDITOR -->
+<!-- EDITOR -->
                 <!-- EDITOR -->
                 <!-- EDITOR -->
                 <script src="/assets/tinymce2/js/tinymce/tinymce.min.js"></script>
@@ -140,14 +93,15 @@
                   theeditor = tinymce.init({
                       browser_spellcheck:true
                       ,menubar : false
+                      ,statusbar : false
                       ,object_resizing : true
                       ,theme:"modern"
-                      ,selector: "textarea"
+                      ,selector: "#_content"
                       ,content_css: "/assets/plugins/bootstrap/css/bootstrap.min.css,/assets/css/p.css"
                       ,plugins: "ncddcustom code link image textcolor charmap pagebreak fullscreen preview paste autoresize"
                       ,toolbar1: "bold italic strikethrough bullist numlist blockquote saw-blockquote saw-well alignleft aligncenter alignright link unlink code fullscreen preview"
                       ,toolbar2: "undo redo underline alignjustify textcolor removeformat charmap outdent indent formatselect fontsizeselect styleselect cut copy paste"
-                      ,toolbar3: "saw-vfl saw-embed-media saw-embed-website saw-embed-photo saw-embed-file"
+                      ,toolbar3: "<?=(!empty($access_token)) ? 'saw-vfl ':''?>saw-embed-media saw-embed-website saw-embed-photo saw-embed-file"
                       ,plugin_preview_width : $(window).width()-100
                       ,plugin_preview_height : $(window).height()-100
                       ,paste_data_images: false
@@ -218,8 +172,8 @@
                     var picker = new google.picker.PickerBuilder()
                         .enableFeature(google.picker.Feature.NAV_HIDDEN)
                         .enableFeature(google.picker.Feature.MULTISELECT_ENABLED)
-                        .setAppId('<?=$this->vars['client_id']?>')
-                        .setOAuthToken('<?=$this->vars['access_token']?>')
+                        .setAppId('<?=$client_id?>')
+                        .setOAuthToken('<?=$access_token?>')
                         .addView(view)
                         .addView(new google.picker.DocsUploadView())
                         .setCallback(pickerCallback)
@@ -404,7 +358,7 @@
                     </div>
                     <div class="modal-footer">
                        <button class="btn blue view">Preview</button>
-                       <button class="btn green embed">It's good. Embed it.</button>
+                       <button class="btn blue embed">It's good. Embed it.</button>
                        <button class="btn cancel">Cancel</button>
                     </div>
                 </div>
@@ -430,7 +384,7 @@
                       </form>
                     </div>
                     <div class="modal-footer">
-                       <button class="btn green embed">It's good. Embed it.</button>
+                       <button class="btn blue embed">It's good. Embed it.</button>
                        <button class="btn cancel">Cancel</button>
                     </div>
                 </div>
@@ -456,7 +410,7 @@
                       </form>
                     </div>
                     <div class="modal-footer">
-                       <button class="btn green embed">It's good. Embed it.</button>
+                       <button class="btn blue embed">It's good. Embed it.</button>
                        <button class="btn cancel">Cancel</button>
                     </div>
                 </div>
@@ -468,10 +422,10 @@
                        <h3 id="add-photo-modal-label">Add Photo</h3>
                     </div>
                     <div class="modal-body">
-                      <iframe src="/drive/image/<?=$this->vars['_id']?>" width="100%" height="" frameborder="0"></iframe>
+                      <iframe id="editor-drive-image-iframe" src="/drive/image/<?=$_id?>" width="100%" height="" frameborder="0"></iframe>
                     </div>
                     <div class="modal-footer">
-                       <button class="btn green embed">Embed Selected Photo.</button>
+                       <button class="btn blue embed">Embed Selected Photo.</button>
                        <button class="btn cancel">Cancel</button>
                     </div>
                 </div>
@@ -483,10 +437,10 @@
                        <h3 id="add-file-modal-label">Add File</h3>
                     </div>
                     <div class="modal-body">
-                      <iframe src="/drive/file/<?=$this->vars['_id']?>" width="100%" height="" frameborder="0"></iframe>
+                      <iframe id="editor-drive-file-iframe" src="/drive/file/<?=$_id?>" width="100%" height="" frameborder="0"></iframe>
                     </div>
                     <div class="modal-footer">
-                       <button class="btn green embed">Embed Selected File.</button>
+                       <button class="btn blue embed">Embed Selected File.</button>
                        <button class="btn cancel">Cancel</button>
                     </div>
                 </div>
@@ -495,30 +449,3 @@
                 <!--/ EDITOR -->
                 <!--/ EDITOR -->
                 <!--/ EDITOR -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-              </div>
-            </div>
-            <!-- END PAGE CONTENT-->
-
-
-         </div>
-         <!-- END PAGE CONTAINER-->    
-      </div>
-      <!-- END PAGE -->

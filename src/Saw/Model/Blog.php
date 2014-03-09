@@ -420,6 +420,12 @@ class Blog extends Model {
     	// delete images
 		self::$app['upload-mongo']->deleteByCriteria(array('belongsTo'=>$this->_id));
 
+		/**
+			To Do
+		*/
+		// delete drive files
+		$drive = new Drive(array('belongsTo'=>$this->_id),self::$app);
+		$drive->deleteAll();
 	}
 	public static function getAvailableTags(Application $app){
 		$category = new Category(array('currentType'=>Category::$type['BLOG']),$app);

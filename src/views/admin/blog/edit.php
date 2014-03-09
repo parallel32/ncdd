@@ -55,7 +55,7 @@
                   <div class="span12">
                      <form id="saw-form" class="horizontal-form portlet">
                         <input id="add" type="hidden" name="doc[add]" value="<?=$this->vars['add']?>">
-                        <input id="currentStatus" type="hidden" name="doc[currentStatus]" value="<?=$this->vars['blog']['currentStatus']?>">
+                        <input id="currentStatus" type="hidden" name="doc[currentStatus]" value="<?=(array_key_exists('blog',$this->vars)) ? $this->vars['blog']['currentStatus'] : ''?>">
                         <input id="_id" type="hidden" name="doc[_id]" value="<?=(array_key_exists('blog',$this->vars)) ? $this->vars['blog']['_id'] : '' ?>">
                         <!-- ERROR -->
                         <div class="alert alert-error hide">
@@ -179,14 +179,16 @@
                            </div>
                            <!--/span-->
                         </div>
-                        <h3 class="form-section text-info"><strong>Content</strong></h3>&nbsp;<button type="button" class="btn blue show-editor">Click To Edit</button><br><br>
+                        <h3 class="form-section text-info"><strong>Content</strong></h3>
                         <div class="row-fluid">
                            <div class="span12 ">
                               <div class="control-group ">
                                  <label class="control-label"></label>
                                  <div class="controls">
-                                    <span id="body" class=""><?=(!empty($this->vars['blog']) && array_key_exists('body',$this->vars['blog'])) ? $this->vars['blog']['body'] : '<br>'?></span>
-                                    <input id="input-body" type="hidden" name="doc[body]" value="">
+                                    <?/**
+                                       TODO
+                                    */?>
+                                    <textarea id="_content" name="doc[body]" style="height: 500px;"><?=(!empty($this->vars['blog']) && array_key_exists('body',$this->vars['blog'])) ? $this->vars['blog']['body'] : ''?></textarea>
                                  </div>
                               </div>
                            </div>
@@ -333,45 +335,17 @@
          <script>
          jQuery(document).ready(function() {    
             io.saw.Blog.init();
-            io.saw.ClearField.init({formArr:['#saw-form']});
-
-            <? if ($show == 'yes'): ?>
-               $('#tags').multiSelect();
-               if (jQuery().datepicker) {
-                  $('.date-picker').datepicker({
-                     rtl : App.isRTL()
-                  });
-               }
-               
-               window.editor = new SnapEditor.InPlace("body", {
-                  path: "/assets/snapeditor",
-                  toolbar: {
-                     items: [
-                        "styleBlock", "|",
-                        "bold", "italic", "underline", "|",
-                        "alignLeft", "alignCentre", "alignRight", "alignJustify", "|",
-                        "orderedList", "unorderedList", "indent", "outdent", "|",
-                        "link", "table", "horizontalRule", "|"
-                      ],
-                               }
-                     ,snap: false
-                     /*
-                     ,onSave: function (e) {
-                        var isSuccess = true;
-                        html = e.html;
-                        io.saw.Blog.save();
-                        return isSuccess || "Error";
-                     }
-                     ,onUnsavedChanges: function (e) {
-                        e.api.execAction("save");
-                    }*/
-               });
-               $('.show-editor').click(function(e){
-                  window.editor.api.activate();
-               })
-          <? endif; ?>
-           
+            io.saw.ClearField.init({formArr:['#saw-form']}); 
          });
             
          </script>
+         <? if ($show == 'yes'): ?>
+         <?/**
+            TODO
+         */?>
+         <? $id = (array_key_exists('blog',$this->vars)) ? $this->vars['blog']['_id'] : '' ?>
+         <?=$this->element('editor',array('_id'=>$id,'client_id'=>$this->vars['client_id'],'access_token'=>$this->vars['access_token']));?>
+         <? endif; ?>
+
+
 

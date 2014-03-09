@@ -177,7 +177,7 @@
             fileUploadLimit:1
             ,formId:'#fileupload'
             ,uploadURL:'/image/upload'
-            ,acceptFileTypes:'/(\.|\/)(gif|jpe?g|png|txt|docx|zip|rtf)$/i'
+            ,acceptFileTypes:'/(\.|\/)(gif|jpe?g|png|tiff|wav|wmv|mp3|mov|mv4|txt|docx|zip|rtf|pdf|dot|doc|docm|dotx|dotm|xls|xlt|xlm|xlsx|xlsm|xltx|xltm|xlsb|xla|xlam|xll|xlw|ppt|pot|pps|pptx|pptm|potx|potm|ppam|ppsx|ppsm|sldx|sldm|)$/i'
             ,onLoad:function(e,data){
                // nothing
             }

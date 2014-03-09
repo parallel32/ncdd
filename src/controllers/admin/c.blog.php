@@ -169,7 +169,7 @@ $app->get('/blog/{blogId}/remove', function ($blogId, Request $request) use ($ap
 	$blog = new Model\Blog(array('_id'=>$blogId), $app);
     $blog->findById();
 	if(($accessLevel == MEMBER && $blog->author['_id'] == $user_id) || $accessLevel >= EDITOR){
-		$blog->remove();
+		$blog->delete();
 		return new Response(json_encode(array('message' => 'Blog details have saved successfully.')), 200,array('Content-Type' => 'application/json'));
 	}else{
 		return new Response(json_encode(array('message' => 'Permission Denied.  Insufficient Privileges.')), 400,array('Content-Type' => 'application/json'));
@@ -219,6 +219,12 @@ $app->get('/blog/{memberId}/edit/{blogId}', function ($memberId, $blogId, Reques
 						,'memberId'=>$memberId
 						);
 	
+	/**
+		TODO
+	*/
+	// prepare the virtual forensic library modal
+	$app['prepare_vfl']($view_vars);
+
 	if(!empty($blogId)){	
 		$blog = new Model\Blog(array('_id'=>$blogId),$app);
 		$blog = $blog->findById();
@@ -239,6 +245,30 @@ $app->get('/blog/{memberId}/edit/{blogId}', function ($memberId, $blogId, Reques
 	return $app['view']->render('blog/edit', 'default', $view_vars);
 })->before($mustbeMEMBER)
 ->value('blogId','');
+
+// add / save blog post
+$app->post('/blog/{memberId}/autosave', function ($memberId, Request $request) use ($app) {
+	// retrieve document from request
+    $document = $request->get('doc');
+
+    $document['headline'] = (empty($document['headline'])) ? 'Draft' : $document['headline'];
+    $document['slug'] = (empty($document['slug'])) ? '/draft' : $document['slug'];
+
+    if(array_key_exists('tags',$document)){
+    	$document['tags'] = implode(',',$document['tags']);
+    }
+    $member = new Model\Member(array('_id'=>$memberId),$app);
+    $member->findById();
+    $blog = new Model\Blog($document, $app, $member);
+    // validate the model
+   	$blog->saveEdit();
+    
+    // set the global parameter manually to use the _id in the after() handler below
+    $_POST['current_id'] = $blog->_id->__toString();
+    
+    return new Response(json_encode(array('blogId'=>$blog->_id->__toString(), 'message' => 'Blog details have saved successfully.')), 200,array('Content-Type' => 'application/json'));
+});
+
 
 // add / save blog post
 $app->post('/blog/{memberId}/edit', function ($memberId, Request $request) use ($app) {

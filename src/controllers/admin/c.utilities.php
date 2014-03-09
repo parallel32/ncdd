@@ -20,13 +20,14 @@ $utilities->before($mustbeADMIN);
 ////////////////////
 // wizzywig tests //
 ////////////////////
-$utilities->get('/tinymce', function () use ($app) {
+$utilities->get('/tinymce/{id}', function ($id) use ($app) {
     $view_vars = array(
                      'active'=>''
                     ,'page-plugin'=>''
                     ,'headline'=>'TinyMCE'
                     ,'description'=>"TinyMCE wizzy testing"
                     ,'crumbs'=>array()
+                    ,'_id'=>$id
                     );
 
     ////////////////////////////////////////////////
@@ -75,7 +76,8 @@ $utilities->get('/tinymce', function () use ($app) {
 
     $view_vars = array_merge($view_vars,$picker_view_vars);
     } catch (Exception $e) {
-      // do nothing   
+      // do nothing so the page can keep loading the fall back is to not allow the 
+      // vfl button on the editor to appear  
     }
     ////////////////////////////////////////////////
     // PREPARE ACCESS TOKEN AND DRIVE CREDENTIALS //

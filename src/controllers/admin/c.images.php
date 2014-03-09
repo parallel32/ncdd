@@ -170,7 +170,7 @@ $app->get('/image/{context}/{belongsTo}/{size}', function ($context, $belongsTo,
 		$drive = $drive->findById();
 
 		$file_contents = $app['upload-mongo']->getImageByCriteria(array('belongsTo'=>$belongsTo, 'size'=>$size));
-	    if(!empty($file_contents)){
+	    if(!empty($file_contents) && !empty($drive['file'])){
 	    	$response = new Response($file_contents, 200, array('Content-Type' => 'application/octet-stream'));
 	    	$d = $response->headers->makeDisposition(
 			    ResponseHeaderBag::DISPOSITION_ATTACHMENT,
@@ -178,6 +178,8 @@ $app->get('/image/{context}/{belongsTo}/{size}', function ($context, $belongsTo,
 			);
 			$response->headers->set('Content-Disposition', $d);
 	    	return $response;
+		}if(!empty($file_contents) && !empty($drive['image'])){
+			return new Response($file_contents, 200, array('Content-Type' => 'image/jpeg'));
 		}else{
 			$file_contents = file_get_contents($imgUnavailable);
 			return new Response($file_contents, 200, array('Content-Type' => 'image/jpeg'));
