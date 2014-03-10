@@ -93,7 +93,7 @@ $app->get('/', function (Request $request) use ($app) {
 	$posts = $blog->fetchPublished(0,4);
 	if(!empty($posts)){
 		for ($i=0; $i < count($posts); $i++) { 
-		    $posts[$i]['body'] = preg_replace("/<img[^>]+\>/i", "", $posts[$i]['body']); 
+		    $posts[$i]['body'] = $app['prepare_content_remove_media']($posts[$i]['body']); 
 		}
 	}
 	$view_vars['posts'] = $posts;
@@ -188,6 +188,7 @@ $app->get('/blog/{id}/{slug}', function ($id, $slug, Request $request) use ($app
 
 	$blog = new Model\Blog(array('_id'=>$id),$app);
 	$post = $blog->findById();
+	$post['body'] = $app['prepare_content']($post['body']);
 	$archives = $blog->fetchArchiveCounts();
 
 	$view_vars['post'] = $post;

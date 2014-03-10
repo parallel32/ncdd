@@ -142,49 +142,10 @@ $app->get('/blog/{blogId}/view', function ($blogId, Request $request) use ($app)
 	$blog = new Model\Blog(array('_id'=>$blogId),$app);
 	$post = $blog->findById();
 
-    $post['body'] = preg_replace_callback("/<img[^>]+\>/i", function($matches){
-
-    	$doc = new \DOMDocument();
-		libxml_use_internal_errors(true);
-		$doc->loadHTML( $matches[0] );
-		$xpath = new DOMXPath($doc);
-		$imgs = $xpath->query("//img");
-		for ($i=0; $i < $imgs->length; $i++) {
-		    $img = $imgs->item($i);
-		    $id = $img->getAttribute("id");
-		    if($id == 'imageplaceholder'){
-		    	$url = $img->getAttribute('data-media-url');
-		    	$url_type = $img->getAttribute('data-media-type');
-		    	$style = $img->getAttribute('style');
-		    	error_log('style:'.$matches[0]);
-		    	return <<< EOD
-<p class="embedly" style="$style"><a class="embedly-card" data-card-image="0" href="$url">Loading Link..</a>
-<script>
-  var document = window.document;
-  (function(a){
-    var b="embedly-platform",c="script";
-    console.log(a.getElementById(b));
-    /*if(!a.getElementById(b)){*/
-      var d=a.createElement(c);
-      d.id=b;
-      d.async=true;
-      d.src=("https:"===document.location.protocol?"https":"http")+"://cdn.embedly.com/widgets/platform.js";
-      var e=a.getElementsByTagName(c)[0];
-      e.parentNode.insertBefore(d,e)
-    /*}*/
-  })(document);
-</script>
-</p>
-EOD;
-		    }else{
-		    	return $matches[0];
-		    }
-		    
-		}
-
-    }, $post['body']); 
-
-	//$myString = preg_replace('`\|\|\|\|(\d+)\|\|\|\|`', '<img src="$1.jpg"/>', $myString);
+	/**
+		todo
+	*/
+    $post['body'] = $app['prepare_content']($post['body']);
 
 
 	$archives = $blog->fetchArchiveCounts();

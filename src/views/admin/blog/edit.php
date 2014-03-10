@@ -181,16 +181,21 @@
                         </div>
                         <h3 class="form-section text-info"><strong>Content</strong></h3>
                         <div class="row-fluid">
-                           <div class="span12 ">
+                           <div class="span12 editable">
+                              <?=(!empty($this->vars['blog']) && array_key_exists('body',$this->vars['blog'])) ? $this->vars['blog']['body'] : ''?>
+                              <? if (false): ?>
                               <div class="control-group ">
                                  <label class="control-label"></label>
                                  <div class="controls">
+
                                     <?/**
                                        TODO
                                     */?>
                                     <textarea id="_content" name="doc[body]" style="height: 500px;"><?=(!empty($this->vars['blog']) && array_key_exists('body',$this->vars['blog'])) ? $this->vars['blog']['body'] : ''?></textarea>
+                                    
                                  </div>
                               </div>
+                              <? endif; ?>
                            </div>
                            <!--/span-->
                         </div>

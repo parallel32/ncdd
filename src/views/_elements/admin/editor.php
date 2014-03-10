@@ -96,9 +96,10 @@
                       ,statusbar : false
                       ,object_resizing : true
                       ,convert_urls: false
+                      ,inline: true
                       ,theme:"modern"
-                      ,selector: "#_content"
-                      ,content_css: "/assets/plugins/bootstrap/css/bootstrap.min.css,/assets/css/p.css"
+                      ,selector: "div.editable"
+                      /*,content_css: "/assets/plugins/bootstrap/css/bootstrap.min.css,/assets/css/p.css"*/
                       ,plugins: "ncddcustom code link image textcolor charmap pagebreak fullscreen preview paste autoresize"
                       ,toolbar1: "bold italic strikethrough bullist numlist blockquote saw-blockquote saw-well alignleft aligncenter alignright link unlink code fullscreen preview"
                       ,toolbar2: "undo redo underline alignjustify textcolor removeformat charmap outdent indent formatselect fontsizeselect styleselect cut copy paste"
