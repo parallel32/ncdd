@@ -75,13 +75,21 @@
                            
                            <h3 class="form-section text-info"><strong>Description</strong>&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.activeEditor.focus();">Click to Add a Description</a></h3>
                            <div class="row-fluid">
-                              <style>div.editable {margin: 0px 0px 0px 0px;padding: 5px 50px 5px 5px;} div.editable p {margin: 0px 0px 0px 0px;}</style>
-                              <div id="body" class="span12 editable">
+                              <div class="span12 ">
+                                 <div class="control-group ">
+                                    <label class="control-label"></label>
+                                    <div class="controls">
+                              <style>span.editable {margin: 0px 0px 0px 0px;padding: 5px 50px 5px 5px;} span.editable p {margin: 0px 0px 0px 0px;}</style>
+                              <span id="body" class="span12 editable" style="margin-left:0px;">
                                  <?=$seminar['description']?>
-                              </div>
+                              </span>
                               <input id="input-body" type="hidden" name="doc[description]" value="">
+                                    </div>
+                                 </div>
+                              </div>
                               <!--/span-->
                            </div>
+                           
 
                            <div class="form-actions">
                               <button type="button" class="btn green">Save & Continue</button>

@@ -116,13 +116,18 @@
                            <h3 class="form-section">Description&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.activeEditor.focus();">Click to Edit</a></h3>
                            <div class="row-fluid">
                               <div class="span12 ">
-                                 <div class="control-group">
-                                    <style>div.editable {margin: 0px 0px 0px 0px;padding: 5px 50px 5px 5px;} div.editable p {margin: 0px 0px 0px 0px;}</style>
-                                    <div id="description" class="help-block editable"></div>
-                                    <input id="input-description" type="hidden" name="doc[description]" value="">
+                                 <div class="control-group ">
+                                    <label class="control-label"></label>
+                                    <div class="controls">
+                              <style>span.editable {margin: 0px 0px 0px 0px;padding: 5px 50px 5px 5px;} span.editable p {margin: 0px 0px 0px 0px;}</style>
+                              <span id="description" class="help-block editable"></span>
+                              <input id="input-description" type="hidden" name="doc[description]" value="">
+                                    </div>
                                  </div>
                               </div>
+                              <!--/span-->
                            </div>
+                           
                            
                            <input type="hidden" id="edit-id" name="doc[_id]" value="">
 						</form>
