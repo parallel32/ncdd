@@ -117,7 +117,7 @@
                            <div class="row-fluid">
                               <div class="span12 ">
                                  <div class="control-group">
-                                    <style>div.editable {margin: 0px 0px 0px 0px;padding: 5px 5px 5px 5px;} div.editable p {margin: 0px 0px 0px 0px;}</style>
+                                    <style>div.editable {margin: 0px 0px 0px 0px;padding: 5px 50px 5px 5px;} div.editable p {margin: 0px 0px 0px 0px;}</style>
                                     <div id="description" class="help-block editable"></div>
                                     <input id="input-description" type="hidden" name="doc[description]" value="">
                                  </div>
