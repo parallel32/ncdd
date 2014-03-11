@@ -73,7 +73,6 @@ $app['prepare_content'] = $app->protect(function ($content) use ($app) {
   var document = window.document;
   (function(a){
     var b="embedly-platform",c="script";
-    console.log(a.getElementById(b));
     /*if(!a.getElementById(b)){*/
       var d=a.createElement(c);
       d.id=b;

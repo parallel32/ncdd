@@ -340,7 +340,6 @@ $isOwner =  ( array_key_exists('topic',$this->vars) && array_key_exists('forum',
                $('#vfl-body').append(newRow);
            });
             $('#vfl-body .minus').click(function(e){
-               console.log($(this).attr('data-id'));
                e.preventDefault();
                for (var i = files.length - 1; i > -1; i--) {
                       if (files[i].id === $(this).attr('data-id'))
