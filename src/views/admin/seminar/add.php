@@ -72,16 +72,16 @@
                                  
                               </div>
                            </div>
-                           <h3 class="form-section">Description</h3>&nbsp;<button type="button" class="btn blue show-editor">Click To Add Description</button><br><br>
+                           
+                           <h3 class="form-section text-info"><strong>Description</strong>&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.activeEditor.focus();">Click to Add a Description</a></h3>
                            <div class="row-fluid">
-                              <div class="span12 ">
-                                 <div class="control-group">
-                                    <span id="description" class="help-block"></span>
-                                    <input id="input-description" type="hidden" name="doc[description]" value="">
-                                 </div>
+                              <style>div.editable {margin: 0px 0px 0px 0px;padding: 5px 5px 5px 5px;} div.editable p {margin: 0px 0px 0px 0px;}</style>
+                              <div id="body" class="span12 editable">
+                                 <?=$seminar['description']?>
                               </div>
+                              <input id="input-body" type="hidden" name="doc[description]" value="">
+                              <!--/span-->
                            </div>
-
 
                            <div class="form-actions">
                               <button type="button" class="btn green">Save & Continue</button>
@@ -128,28 +128,6 @@
          io.saw.FormDatePicker.init('range');
          io.saw.Seminar.init('add');
          io.saw.Seminar.sluggify('headline','headline');
-         /*
-         Aloha.ready( function() {
-            Aloha.jQuery('.description').aloha();
-         });
-         */
-         window.editor = new SnapEditor.InPlace("description", {
-               path: "/assets/snapeditor",
-             toolbar: {
-               items: [
-                  "styleBlock", "|",
-                  "bold", "italic", "underline", "|",
-                  "alignLeft", "alignCentre", "alignRight", "alignJustify", "|",
-                  "orderedList", "unorderedList", "indent", "outdent", "|",
-                  "link", "table", "horizontalRule", "|"
-                ],
-                         }
-               ,snap: false
-               
-         });
-         $('.show-editor').click(function(e){
-            window.editor.api.activate();
-         })
-
       });      
       </script>
+      <?=$this->element('editor',array('_id'=>null));?>

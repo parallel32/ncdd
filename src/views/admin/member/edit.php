@@ -410,16 +410,14 @@
                            </div>
                            <!--/span-->
                         </div>
-                        <h3 class="form-section text-info"><strong>About Me</strong></h3>&nbsp;<button type="button" class="btn blue show-editor">Click Here To Change or Add Your Bio</button><br><br>
+
+                        <h3 class="form-section text-info"><strong>About Me</strong>&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.activeEditor.focus();">Click Here To Change or Add Your Bio</a></h3>
                         <div class="row-fluid">
-                           <div class="span12 ">
-                              <div class="control-group ">
-                                 <div class="controls">
-                                    <span id="aboutMe" class="help-block "><?=(empty($this->vars['member']['aboutMe'])) ? "<br><br><br><br>" : $this->vars['member']['aboutMe'];?></span>
-                                    <input id="input-aboutMe" type="hidden" name="doc[aboutMe]" value="">
-                                 </div>
-                              </div>
+                           <style>div.editable {margin: 0px 0px 0px 0px;padding: 5px 5px 5px 5px;} div.editable p {margin: 0px 0px 0px 0px;}</style>
+                           <div id="body" class="span12 editable">
+                              <?=(empty($this->vars['member']['aboutMe'])) ? "<br><br><br><br>" : $this->vars['member']['aboutMe'];?>
                            </div>
+                           <input id="input-body" type="hidden" name="doc[aboutMe]" value="">
                            <!--/span-->
                         </div>
                         
@@ -1133,35 +1131,8 @@
             io.saw.Member.init();
             io.saw.Address.init('#location-form');
             io.saw.ClearField.init({formArr:['#location-form','#saw-form','#website-form','#language-form','#pa-form']});
-
-            window.editor = new SnapEditor.InPlace("aboutMe", {
-                path: "/assets/snapeditor",
-                toolbar: {
-                  items: [
-                   "styleBlock", "|",
-                   "bold", "italic", "underline", "|",
-                   "alignLeft", "alignCentre", "alignRight", "alignJustify", "|",
-                   "orderedList", "unorderedList", "indent", "outdent", "|",
-                   "link", "table", "horizontalRule", "|"
-                 ],
-                }
-                ,snap: false
-                /*
-                ,onSave: function (e) {
-                   var isSuccess = true;
-                   html = e.html;
-                   io.saw.Member.save();
-                   return isSuccess || "Error";
-                }
-                ,onUnsavedChanges: function (e) {
-                     e.api.execAction("save");
-                 }
-                 */
-             });
-            
-            $('.show-editor').click(function(e){
-               window.editor.api.activate();
-            })
          });      
          </script>
+         <? $id = (array_key_exists('member',$this->vars)) ? $this->vars['member']['_id'] : '' ?>
+         <?=$this->element('editor',array('_id'=>$id,'client_id'=>null,'access_token'=>null));?>
 

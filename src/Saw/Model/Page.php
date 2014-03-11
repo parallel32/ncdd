@@ -214,6 +214,10 @@ class Page extends Model {
 	public function delete(){
 
 		return $this->removeByCriteria(array('slug'=>$this->slug));
+
+		// delete drive files
+		$drive = new Drive(array('belongsTo'=>$this->_id),self::$app);
+		$drive->deleteAll();
 	}
 	public static function slugify($str){
 

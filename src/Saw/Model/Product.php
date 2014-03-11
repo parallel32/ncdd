@@ -246,6 +246,9 @@ class Product extends Model {
     	// delete images
 		self::$app['upload-mongo']->deleteByCriteria(array('belongsTo'=>$this->_id));
 
+		// delete drive files
+		$drive = new Drive(array('belongsTo'=>$this->_id),self::$app);
+		$drive->deleteAll();
 	}
 	
 }

@@ -1,7 +1,8 @@
 <script type="text/javascript">
 (function( Seminar, $, undefined ) {
 	Seminar.add = function(){
-		$('#input-description').val($('#description').html());
+		tinymce.activeEditor.save();
+		$('#input-body').val($('#body').html());
 		io.saw.FormPost.activate({postUrl:'/seminar/add'
 		   ,serializeSelector:':input'
 		   ,postOnComplete:function(responseObj,responseStatus){}
@@ -13,7 +14,9 @@
 		});      
 	};
 	Seminar.edit = function (){
-		$('#input-description').val($('#description').html());
+		tinymce.activeEditor.save();
+		$('#input-body').val($('#body').html());
+
 		io.saw.FormPost.activate({postUrl:'/seminar/edit'
 		   ,serializeSelector:':input'
 		   ,postOnComplete:function(responseObj,responseStatus){}
@@ -24,7 +27,10 @@
 		});      
 	};
 	Seminar.registerEdit = function (){
-		$('#input-confirmationLetter').val($('#confirmationLetter').html());
+		
+		tinymce.activeEditor.save();
+		$('#input-body-confletter').val($('#body-confletter').html());
+		
 		io.saw.FormPost.activate({postUrl:'/seminar/edit'
 		   ,formName:'#register-form'
 		   ,serializeSelector:':input'

@@ -40,6 +40,7 @@
 
 	};
 	Page.save = function (){
+		tinymce.activeEditor.save();
 		$('#input-body').val($('#body').html());
 		io.saw.FormPost.activate({postUrl:'/page/edit'
 		   ,serializeSelector:':input'

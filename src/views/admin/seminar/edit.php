@@ -82,17 +82,17 @@
                                  
                               </div>
                            </div>
-                           <h3 class="form-section">Description</h3>&nbsp;<button type="button" class="btn blue show-editor">Click To Edit</button><br><br>
+
+                           <h3 class="form-section text-info"><strong>Description</strong>&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.activeEditor.focus();">Click to Edit</a></h3>
                            <div class="row-fluid">
-                              <div class="span12 ">
-                                 <div class="control-group">
-                                    <span id="description" class="help-block "><?=$seminar['description']?></span>
-                                    <input id="input-description" type="hidden" name="doc[description]" value="">
-                                 </div>
+                              <style>div.editable {margin: 0px 0px 0px 0px;padding: 5px 5px 5px 5px;} div.editable p {margin: 0px 0px 0px 0px;}</style>
+                              <div id="body" class="span12 editable">
+                                 <?=$seminar['description']?>
                               </div>
+                              <input id="input-body" type="hidden" name="doc[description]" value="">
+                              <!--/span-->
                            </div>
-
-
+                           
                            <div class="form-actions">
                               <button type="button" class="btn green">Save</button>
                               <button type="button" class="btn cancel">Cancel</button>
@@ -191,17 +191,17 @@
                                  
                               </div>
                            </div>
-                           <h3 class="form-section">Registration Confirmation Letter</h3>&nbsp;<button type="button" class="btn blue confirmationLettershow-editor">Click To Edit</button><br><br>
+
+                           <h3 class="form-section">Registration Confirmation Letter&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.activeEditor.focus();">Click to Edit</a></h3>
                            <div class="row-fluid">
-                              <div class="span12 ">
-                                 <div class="control-group">
-                                    <span id="confirmationLetter" class="help-block "><?=(array_key_exists('register',$seminar)) ? (array_key_exists('confirmationLetter',$seminar['register'])) ? $seminar['register']['confirmationLetter'] : '' : '';?></span>
-                                    <input id="input-confirmationLetter" type="hidden" name="doc[register][confirmationLetter]" value="">
-                                 </div>
+                              <style>div.editable {margin: 0px 0px 0px 0px;padding: 5px 5px 5px 5px;} div.editable p {margin: 0px 0px 0px 0px;}</style>
+                              <div id="body-confletter" class="span12 editable">
+                                 <?=(array_key_exists('register',$seminar)) ? (array_key_exists('confirmationLetter',$seminar['register'])) ? $seminar['register']['confirmationLetter'] : '' : '';?>
                               </div>
+                              <input id="input-body-confletter" type="hidden" name="doc[register][confirmationLetter]" value="">
+                              <!--/span-->
                            </div>
-
-
+                           
                            <div class="form-actions">
                               <button type="button" class="btn green">Save</button>
                               <button type="button" class="btn cancel">Cancel</button>
@@ -404,65 +404,6 @@
          io.saw.FormDatePicker.init('range');
          io.saw.Seminar.init('edit');
          io.saw.Seminar.sluggify('headline','headline');
-         /*
-         Aloha.ready( function() {
-            Aloha.jQuery('.description').aloha();
-         });
-         */
-
-         window.editor = new SnapEditor.InPlace("description", {
-              path: "/assets/snapeditor",
-             toolbar: {
-               items: [
-                "styleBlock", "|",
-                "bold", "italic", "underline", "|",
-                "alignLeft", "alignCentre", "alignRight", "alignJustify", "|",
-                "orderedList", "unorderedList", "indent", "outdent", "|",
-                "link", "table", "horizontalRule", "|"
-              ],
-             }
-             ,snap: false
-             /*
-             ,onSave: function (e) {
-                var isSuccess = true;
-                html = e.html;
-                io.saw.Seminar.edit();
-                return isSuccess || "Error";
-             }
-             ,onUnsavedChanges: function (e) {
-                  e.api.execAction("save");
-              }*/
-          });
-         $('.show-editor').click(function(e){
-            window.editor.api.activate();
-         })
-         window.confirmationeditor = new SnapEditor.InPlace("confirmationLetter", {
-              path: "/assets/snapeditor",
-             toolbar: {
-               items: [
-                "styleBlock", "|",
-                "bold", "italic", "underline", "|",
-                "alignLeft", "alignCentre", "alignRight", "alignJustify", "|",
-                "orderedList", "unorderedList", "indent", "outdent", "|",
-                "link", "table", "horizontalRule", "|"
-              ],
-             }
-             ,snap: false
-             /*
-             ,onSave: function (e) {
-                var isSuccess = true;
-                html = e.html;
-                io.saw.Seminar.edit();
-                return isSuccess || "Error";
-             }
-             ,onUnsavedChanges: function (e) {
-                  e.api.execAction("save");
-              }*/
-          });
-         $('.confirmationLettershow-editor').click(function(e){
-            window.confirmationeditor.api.activate();
-         })
-            
          io.saw.FileUpload.init({
             fileUploadLimit:1
             ,formId:'#fileupload'
@@ -498,3 +439,5 @@
 
       });
       </script>
+      <? $id = $seminar['_id'] ?>
+      <?=$this->element('editor',array('_id'=>$id,'client_id'=>null,'access_token'=>null));?>

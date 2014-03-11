@@ -12,7 +12,7 @@
             
 
             <div class="row-fluid">
-                  <div class="responsive span6" data-tablet="span6" data-desktop="span3">
+                  <div class="responsive span6" data-tablet="span6" data-desktop="span6">
                      <div class="dashboard-stat yellow">
                         <div class="visual">
                            <i class="icon-hideme"><?=(!empty($this->vars['submitted'])) ? count($this->vars['submitted']) : 0;?></i>
@@ -30,7 +30,7 @@
                         </a>                 
                      </div>
                   </div>
-                  <div class="responsive span6" data-tablet="span6" data-desktop="span3">
+                  <div class="responsive span6" data-tablet="span6" data-desktop="span6">
                      <a name="submitted"></a>
                      <div class="dashboard-stat green">
                         <div class="visual">

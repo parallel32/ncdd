@@ -149,17 +149,14 @@
                            </div>
                            <!--/span-->
                         </div>
-                        <h3 class="form-section text-info"><strong>Description</strong></h3>&nbsp;<button type="button" class="btn blue show-editor">Click To Edit</button><br><br>
+
+                        <h3 class="form-section text-info"><strong>Content</strong>&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.activeEditor.focus();">Click to Edit</a></h3>
                         <div class="row-fluid">
-                           <div class="span12 ">
-                              <div class="control-group ">
-                                 <label class="control-label"></label>
-                                 <div class="controls">
-                                    <span id="description" class="description"><?=(!empty($this->vars['product']) && array_key_exists('description',$this->vars['product'])) ? $this->vars['product']['description'] : ''?></span>
-                                    <input id="input-description" type="hidden" name="doc[description]" value="" class="description">
-                                 </div>
-                              </div>
+                           <style>div.editable {margin: 0px 0px 0px 0px;padding: 5px 5px 5px 5px;} div.editable p {margin: 0px 0px 0px 0px;}</style>
+                           <div id="body" class="span12 editable">
+                              <?=(!empty($this->vars['product']) && array_key_exists('description',$this->vars['product'])) ? $this->vars['product']['description'] : ''?>
                            </div>
+                           <input id="input-body" type="hidden" name="doc[description]" value="">
                            <!--/span-->
                         </div>
                         
@@ -223,36 +220,7 @@
          jQuery(document).ready(function() {    
             io.saw.Product.init();
             io.saw.ClearField.init({formArr:['#saw-form']});
-
-            window.editor = new SnapEditor.InPlace("description", {
-               path: "/assets/snapeditor",
-               toolbar: {
-                  items: [
-                     "styleBlock", "|",
-                     "bold", "italic", "underline", "|",
-                     "alignLeft", "alignCentre", "alignRight", "alignJustify", "|",
-                     "orderedList", "unorderedList", "indent", "outdent", "|",
-                     "link", "table", "horizontalRule", "|"
-                   ],
-                            }
-                  ,snap: false
-                  /*
-                  ,onSave: function (e) {
-                     var isSuccess = true;
-                     html = e.html;
-                     io.saw.Product.save();
-                     return isSuccess || "Error";
-                  }
-                  ,onUnsavedChanges: function (e) {
-                     e.api.execAction("save");
-                 }*/
-            });
-            $('.show-editor').click(function(e){
-               window.editor.api.activate();
-            })
-       
-           
          });
-            
          </script>
-
+         <? $id = (array_key_exists('product',$this->vars)) ? $this->vars['product']['_id'] : '' ?>
+         <?=$this->element('editor',array('_id'=>$id,'client_id'=>null,'access_token'=>null));?>

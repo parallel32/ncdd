@@ -411,7 +411,8 @@
 	}
 	<? endif; ?>
 	Member.save = function (){
-		$('#input-aboutMe').val($('#aboutMe').html());
+		tinymce.activeEditor.save();
+		$('#input-body').val($('#body').html());
 		io.saw.FormPost.activate({postUrl:'/member/edit'
 		   ,serializeSelector:':input'
 		   ,postOnComplete:function(responseObj,responseStatus){

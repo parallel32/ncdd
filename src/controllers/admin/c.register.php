@@ -18,6 +18,7 @@ $app['seminarConfirmationEmail'] = $app->protect(function ($app,$registrationId)
 	$registration = $registration->findById();
 	$seminar = new Model\Seminar(array('_id'=>$registration['seminarId']),$app);
 	$seminar = $seminar->findById();
+	$seminar['description'] = $app['prepare_content']($seminar['description']);
 	
     // email welcome message
 	$subject = 'NCDD Seminar Confirmation';
@@ -158,6 +159,7 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 	    	// get the seminar information
 	    	$seminar = new Model\Seminar(array('_id'=>$doc['seminarId']),$app);
 	    	$seminar = $seminar->findById();
+	    	$seminar['description'] = $app['prepare_content']($seminar['description']);
 
 	    	// calculate the total and what is in the line item.
 	    	if($doc['hardCopy'] == 'NO'){

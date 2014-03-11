@@ -124,7 +124,8 @@
 	
 	Product.save = function (postSuccess){
 		
-		$('#input-description').val($('#description').html());
+		tinymce.activeEditor.save();
+		$('#input-body').val($('#body').html());
 
 		var postSuccess = postSuccess || function(responseObj){
 		   		$('#_id').val(responseObj.productId);

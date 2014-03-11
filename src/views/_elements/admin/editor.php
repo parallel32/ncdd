@@ -100,10 +100,10 @@
                       ,theme:"modern"
                       ,selector: "div.editable"
                       /*,content_css: "/assets/plugins/bootstrap/css/bootstrap.min.css,/assets/css/p.css"*/
-                      ,plugins: "ncddcustom code link image textcolor charmap pagebreak fullscreen preview paste autoresize"
-                      ,toolbar1: "bold italic strikethrough bullist numlist blockquote saw-blockquote saw-well alignleft aligncenter alignright link unlink code fullscreen preview"
+                      ,plugins: "ncddcustom code link image textcolor charmap pagebreak fullscreen preview paste autoresize table fullscreen media image"
+                      ,toolbar1: "bold italic strikethrough bullist numlist blockquote saw-blockquote saw-well alignleft aligncenter alignright link unlink table code fullscreen preview"
                       ,toolbar2: "undo redo underline alignjustify textcolor removeformat charmap outdent indent formatselect fontsizeselect styleselect cut copy paste"
-                      ,toolbar3: "<?=(!empty($access_token)) ? 'saw-vfl ':''?>saw-embed-media saw-embed-website saw-embed-photo saw-embed-file"
+                      ,toolbar3: "<?=(!empty($access_token)) ? 'saw-vfl ':''?>saw-embed-media saw-embed-website saw-embed-photo saw-embed-file | media image"
                       ,plugin_preview_width : $(window).width()-100
                       ,plugin_preview_height : $(window).height()-100
                       ,paste_data_images: false

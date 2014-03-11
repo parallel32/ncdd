@@ -43,7 +43,10 @@ $agenda->get('/{seminarId}/{id}', function ($seminarId, $id, Request $request) u
 	$seminar->findById();
 	$agenda = new Model\Agenda($doc=array('_id'=>$id), $app);
 	$agenda = $agenda->findById();
-
+	foreach ($agenda['timeSlots'] as $key => $value) {
+		$agenda['timeSlots'][$key]['description'] = $app['prepare_content']($agenda['timeSlots'][$key]['description']);
+	}
+	
 	$crumbs = array(array('name'=>"Seminars",'href'=>'/seminar/')
 					,array('name'=>$seminar->headline,'href'=>'/seminar/view/'.$seminarId)
 					,array('name'=>$agenda['name'],'href'=>'/agenda/'.$seminarId.'/'.$id)

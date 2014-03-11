@@ -942,6 +942,10 @@ class Member extends User {
     	// purge registrations
     	self::$app['mongo']->remove(array('memberId'=>$this->_id), 'registration', $justOne=false, $options=array('fsync'=>true));
 
+    	// delete drive files
+		$drive = new Drive(array('belongsTo'=>$this->_id),self::$app);
+		$drive->deleteAll();
+
     }
  	
 }

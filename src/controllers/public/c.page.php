@@ -19,6 +19,7 @@ $app['get_pages'] = $app->protect(function ($slug='') use($app) {
 	
 	$page = new Model\Page($doc=array('slug'=>$slug), $app);
 	$result = $page->findById('slug');
+	$result['body'] = $app['prepare_content']($result['body']);
     
     $pages['DISCOVER'] = $page->fetchBySectionPublishedOnly('DISCOVER');
 	$pages['LEARN'] = $page->fetchBySectionPublishedOnly('LEARN');
@@ -66,24 +67,28 @@ $app->get('/preview/{slug}', function ($slug, Request $request) use ($app) {
 // MANAGED ROUTES //
 ////////////////////
 
-//home
+//home page
 $app->get('/', function (Request $request) use ($app) {
 	$view_vars['slogan_block'] = 'home';
 
 	$page = new Model\Page($doc=array('slug'=>'welcome'), $app);
 	$welcome = $page->findById('slug');
+	$welcome['body'] = $app['prepare_content']($welcome['body']);
 	$view_vars['welcome'] = $welcome;
 
 	$page = new Model\Page($doc=array('slug'=>'notice-to-members'), $app);
 	$ntm = $page->findById('slug');
+	$ntm['body'] = $app['prepare_content']($ntm['body']);
 	$view_vars['ntm'] = $ntm;
 
 	$page = new Model\Page($doc=array('slug'=>'mission-statement'), $app);
 	$ms = $page->findById('slug');
+	$ms['body'] = $app['prepare_content']($ms['body']);
 	$view_vars['ms'] = $ms;
 	
 	$page = new Model\Page($doc=array('slug'=>'nationally-recognized'), $app);
 	$nr = $page->findById('slug');
+	$nr['body'] = $app['prepare_content']($nr['body']);
 	$view_vars['nr'] = $nr;
 
 	$page_vars = $app['get_pages']();
@@ -108,6 +113,7 @@ $app->get('/', function (Request $request) use ($app) {
 			$agenda = new Model\Agenda(array('seminarId'=>$seminars[$i]['_id']),$app);
 			$agendas = $agenda->findBySeminarId();
 			$seminars[$i]['agendas'] = $agendas;
+			$seminars[$i]['description'] = $app['prepare_content_remove_media']($seminars[$i]['description']); 
 		}
 	endif;
 	$view_vars['seminars'] = $seminars;
@@ -254,6 +260,7 @@ $app->get('/find-an-attorney', function (Request $request) use ($app) {
 	$slug = 'find-an-attorney';
 	$page = new Model\Page($doc=array('slug'=>$slug), $app);
 	$page = $page->findById('slug');
+	$page['body'] = $app['prepare_content']($page['body']);
 
 	$view_vars = array('page'=>$page);
 	$view_vars['slogan_block'] = '';
@@ -310,6 +317,7 @@ $app->get('/dui-laws-in-your-state', function (Request $request) use ($app) {
 	$slug = 'dui-laws-in-your-state';
 	$page = new Model\Page($doc=array('slug'=>$slug), $app);
 	$page = $page->findById('slug');
+	$page['body'] = $app['prepare_content']($page['body']);
 
 	$view_vars = array('page'=>$page);
 	$view_vars['slogan_block'] = 'discover';
@@ -331,6 +339,7 @@ $app->get('/dui-laws-in-your-state/{country}/{state}', function ($country, $stat
 	}
 	$page = new Model\Page($doc=array('slug'=>$state,'section'=>$section), $app);
 	$page = $page->fetchBySectionSlugPublishedOnly();
+	$page['body'] = $app['prepare_content']($page['body']);
 	$view_vars = array('page'=>$page);
 	$view_vars['slogan_block'] = 'discover';
 	$page_vars = $app['get_pages']($state);
@@ -358,6 +367,7 @@ $app->get('/founding-members', function (Request $request) use ($app) {
 	$slug = 'founding-members';
 	$page = new Model\Page($doc=array('slug'=>$slug), $app);
 	$page = $page->findById('slug');
+	$page['body'] = $app['prepare_content']($page['body']);
 
 	$view_vars = array('page'=>$page);
 	$view_vars['slogan_block'] = 'founding-members';
@@ -417,6 +427,7 @@ $app->get('/state-delegates', function (Request $request) use ($app) {
 	$slug = 'state-delegates';
 	$page = new Model\Page($doc=array('slug'=>$slug), $app);
 	$page = $page->findById('slug');
+	$page['body'] = $app['prepare_content']($page['body']);
 
 	$view_vars = array('page'=>$page);
 	$view_vars['slogan_block'] = 'founding-members';
@@ -463,6 +474,7 @@ $app->get('/regents-and-fellows', function (Request $request) use ($app) {
 	$slug = 'regents-and-fellows';
 	$page = new Model\Page($doc=array('slug'=>$slug), $app);
 	$page = $page->findById('slug');
+	$page['body'] = $app['prepare_content']($page['body']);
 
 	$view_vars = array('page'=>$page);
 	$view_vars['slogan_block'] = 'regents-and-fellows';
@@ -483,6 +495,7 @@ $app->get('/board-certification', function (Request $request) use ($app) {
 	$slug = 'board-certification';
 	$page = new Model\Page($doc=array('slug'=>$slug), $app);
 	$page = $page->findById('slug');
+	$page['body'] = $app['prepare_content']($page['body']);
 
 	$view_vars = array('page'=>$page);
 	$view_vars['slogan_block'] = 'board-certification';
@@ -495,6 +508,7 @@ $app->get('/apply-for-board-certification', function (Request $request) use ($ap
 	$slug = 'apply-for-board-certification';
 	$page = new Model\Page($doc=array('slug'=>$slug), $app);
 	$page = $page->findById('slug');
+	$page['body'] = $app['prepare_content']($page['body']);
 
 	$view_vars = array('page'=>$page);
 	$view_vars['slogan_block'] = 'board-certification';
@@ -507,6 +521,7 @@ $app->get('/apply-for-re-certification', function (Request $request) use ($app) 
 	$slug = 'apply-for-re-certification';
 	$page = new Model\Page($doc=array('slug'=>$slug), $app);
 	$page = $page->findById('slug');
+	$page['body'] = $app['prepare_content']($page['body']);
 
 	$view_vars = array('page'=>$page);
 	$view_vars['slogan_block'] = 'board-certification';
@@ -526,6 +541,7 @@ $app->get('/sessions-and-seminars', function (Request $request) use ($app) {
 			$agenda = new Model\Agenda(array('seminarId'=>$seminars[$i]['_id']),$app);
 			$agendas = $agenda->findBySeminarId();
 			$seminars[$i]['agendas'] = $agendas;
+			$seminars[$i]['description'] = $app['prepare_content']($seminars[$i]['description']);
 		}
 	endif;
 	$view_vars['seminars'] = $seminars;
@@ -546,11 +562,16 @@ $app->get('/sessions-and-seminars/{id}/{slug}', function ($id, $slug, Request $r
 
 	$seminar = new Model\Seminar(array('_id'=>$id),$app);
 	$seminar = $seminar->findById();
+	$seminar['description'] = $app['prepare_content']($seminar['description']);
 
 	$agenda = new Model\Agenda(array('seminarId'=>$seminar['_id']),$app);
 	$agendas = $agenda->findBySeminarId();
 	$seminar['agendas'] = $agendas;
-	
+	for ($i=0; $i < count($seminar['agendas']); $i++) { 
+		foreach ($seminar['agendas'][$i]['timeSlots'] as $key => $value) {
+			$seminar['agendas'][$i]['timeSlots'][$key]['description'] = $app['prepare_content']($seminar['agendas'][$i]['timeSlots'][$key]['description']);
+		}
+	}
 	$view_vars['seminar'] = $seminar;
 	
 	return $app['view']->render('page/seminar-post', 'content',$view_vars);
@@ -577,7 +598,9 @@ $app->get('/store/{category}', function ($category, Request $request) use ($app)
 	
 	$product = new Model\Product($doc=array(), $app);
 	$products = $product->fetchByCategory($category['_id']);
-	
+	for ($i=0; $i < count($products); $i++) { 
+		$products[$i]['description'] = $app['prepare_content']($products[$i]['description']);
+	}	
 	
 	$view_vars['category'] = $category;
 	$view_vars['products'] = $products;
@@ -596,7 +619,8 @@ $app->get('/store/{id}/{slug}', function ($id, $slug, Request $request) use ($ap
 
 	$product = new Model\Product(array('_id'=>$id),$app);
 	$product = $product->findById();
-
+	$product['description'] = $app['prepare_content']($product['description']);
+	
 	$categoryProd = new Model\Product($doc=array(), $app);
 	$catprods = $categoryProd->fetchByCategory($product['category']['_id']);
 	$related_products = array();
@@ -836,6 +860,7 @@ $app->get('/search', function (Request $request) use ($app) {
                 $title = '<a href="/member/'.$member['_id'].'/'.$member['slug'].'">'.$member['firstName'].$middleName.$member['lastName'].'</a>';
                 $image = '<a href="/member/'.$member['_id'].'/'.$member['slug'].'"><img src="'.$member['image'].'" width="130" alt=""></a>';
                 $subtext = '<b>'.'<a href="tel:'.$member['primaryPhone'].'">'.$member['primaryPhone'].'</a>'.'</b>&nbsp;&nbsp;&nbsp;<b>'.$website.'</b> ';
+                $member['aboutMe'] = $app['prepare_content_remove_media']($member['aboutMe']);
                 $member['aboutMe'] = strip_tags($member['aboutMe']);
                 $body = (strlen($member['aboutMe']) > 200) ? substr($member['aboutMe'],0,strpos($member['aboutMe'], ' ',200)).'...': $member['aboutMe'];
 				$saw_consumer_website = SAW_CONSUMER_WEBSITE;
@@ -923,6 +948,7 @@ EOT;
 	                	$subtext.= '<b>'.'<a href="/blog/tag'.$tag['slug'].'">'.$tag['name'].'</a>'.'</b>&nbsp;&nbsp;&nbsp;';
 	            	}
 	            }
+	            $blog['body'] = $app['prepare_content_remove_media']($blog['body']);
                 $blog['body'] = strip_tags($blog['body']);
                 $body = (strlen($blog['body']) > 200) ? substr($blog['body'],0,strpos($blog['body'], ' ',200)).'...': $blog['body'];
 				$saw_consumer_website = SAW_CONSUMER_WEBSITE;
@@ -972,6 +998,7 @@ EOT;
 	                	$subtext.= '<b>'.'<a href="/blog/tag'.$tag['slug'].'">'.$tag['name'].'</a>'.'</b>&nbsp;&nbsp;&nbsp;';
 	            	}
 	            }
+	            $blog['body'] = $app['prepare_content_remove_media']($blog['body']);
 	            $blog['body'] = strip_tags($blog['body']);
                 $body = (strlen($blog['body']) > 200) ? substr($blog['body'],0,strpos($blog['body'], ' ',200)).'...': $blog['body'];
 				$saw_consumer_website = SAW_CONSUMER_WEBSITE;
@@ -1020,6 +1047,7 @@ EOT;
 				if(!empty($page['image'])){
                 	$image = '<a href="/'.$page['slug'].'"><img src="'.$page['image']['urls']['small']['SSLCDN'].'" width="130" alt=""></a>';
                 }
+                $page['body'] = $app['prepare_content_remove_media']($page['body']);
                 $page['body'] = strip_tags($page['body']);
                 $body = (strlen($page['body']) > 300) ? substr($page['body'],0,strpos($page['body'], ' ',300)).'...': $page['body'];
 				$saw_consumer_website = SAW_CONSUMER_WEBSITE;
@@ -1065,6 +1093,7 @@ EOT;
 				if(!empty($page['image'])){
                 	$image = '<a href="/'.$page['slug'].'"><img src="'.$page['image']['urls']['small']['SSLCDN'].'" width="130" alt=""></a>';
                 }
+                $page['body'] = $app['prepare_content_remove_media']($page['body']);
                 $page['body'] = strip_tags($page['body']);
                 $body = (strlen($page['body']) > 300) ? substr($page['body'],0,strpos($page['body'], ' ',300)).'...': $page['body'];
 				$saw_consumer_website = SAW_CONSUMER_WEBSITE;
@@ -1111,6 +1140,7 @@ EOT;
 				if(!empty($seminar['image'])){
                 	$image = '<a href="/seminar/'.$seminar['_id'].$seminar['slug'].'"><img src="'.$seminar['image']['urls']['small']['SSLCDN'].'" width="130" alt=""></a>';
                 }
+                $seminar['description'] = $app['prepare_content_remove_media']($seminar['description']);
                 $seminar['description'] = strip_tags($seminar['description']);
                 $body = (strlen($seminar['description']) > 300) ? substr($seminar['description'],0,strpos($seminar['description'], ' ',300)).'...': $seminar['description'];
 				$saw_consumer_website = SAW_CONSUMER_WEBSITE;
@@ -1156,6 +1186,7 @@ EOT;
 				if(!empty($seminar['image'])){
                 	$image = '<a href="/seminar/'.$seminar['_id'].$seminar['slug'].'"><img src="'.$seminar['image']['urls']['small']['SSLCDN'].'" width="130" alt=""></a>';
                 }
+                $seminar['description'] = $app['prepare_content_remove_media']($seminar['description']);
                 $seminar['description'] = strip_tags($seminar['description']);
                 $body = (strlen($seminar['description']) > 300) ? substr($seminar['description'],0,strpos($seminar['description'], ' ',300)).'...': $seminar['description'];
 				$saw_consumer_website = SAW_CONSUMER_WEBSITE;
@@ -1202,6 +1233,7 @@ EOT;
 				if(!empty($product['image'])){
                 	$image = '<a href="/store/'.$product['_id'].$product['slug'].'"><img src="'.$product['image']['urls']['small']['SSLCDN'].'" width="130" alt=""></a>';
                 }
+                $product['description'] = $app['prepare_content_remove_media']($product['description']);
                 $product['description'] = strip_tags($product['description']);
                 $body = (strlen($product['description']) > 300) ? substr($product['description'],0,strpos($product['description'], ' ',300)).'...': $product['description'];
 				$saw_consumer_website = SAW_CONSUMER_WEBSITE;
@@ -1247,6 +1279,7 @@ EOT;
 				if(!empty($product['image'])){
                 	$image = '<a href="/store/'.$product['_id'].$product['slug'].'"><img src="'.$product['image']['urls']['small']['SSLCDN'].'" width="130" alt=""></a>';
                 }
+                $product['description'] = $app['prepare_content_remove_media']($product['description']);
                 $product['description'] = strip_tags($product['description']);
                 $body = (strlen($product['description']) > 300) ? substr($product['description'],0,strpos($product['description'], ' ',300)).'...': $product['description'];
 				$saw_consumer_website = SAW_CONSUMER_WEBSITE;

@@ -39,7 +39,6 @@
                               <h2><a href="/seminar/view/<?=$seminar['_id']?>"><?=$seminar['headline']?></a></h2>
                               <h4><a href="/seminar/view/<?=$seminar['_id']?>"><?=$seminar['startDate']['monthDay']?> - <?=$seminar['endDate']['monthDay']?>, <?=$seminar['startDate']['year']?></a></h4>
                               <h5><a href="/seminar/view/<?=$seminar['_id']?>"><?=(array_key_exists('location',$seminar)) ? $seminar['location']: '';?></a></h5>
-                              <p><?=$seminar['description']?></p>
                               <? if(!empty($seminar['agendas'])): ?>
                               <? foreach($seminar['agendas'] as $agenda): ?>
                                  <a class="btn blue" href="/agenda/<?=$seminar['_id']?>/<?=$agenda['_id']?>">
@@ -58,13 +57,16 @@
                                 Registration Not Available
                               </a>
                               <? endif; ?>
-                              
-                           </div>
-                           <div class="span4 blog-img blog-tag-data">
+
                               <? if(!empty($seminar['image'])){?>
                               <img src="<?=$this->app['getImageURL']($seminar['image'],'small')?>" alt="" style="padding-top:15px">
                               <? } ?>
+                           
+                              <p><?=$seminar['description']?></p>
+                              
+                              
                            </div>
+                           
                            
                         </div>
                         <hr>

@@ -155,7 +155,7 @@ $isOwner =  ( array_key_exists('topic',$this->vars) && array_key_exists('forum',
                            <!--/span-->
                         </div>
 
-                        <h3 class="form-section text-info"><strong>Content</strong>&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.activeEditor.focus();return false;">Click to Edit</a></h3>
+                        <h3 class="form-section text-info"><strong>Content</strong>&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.activeEditor.focus();">Click to Edit</a></h3>
                         <div class="row-fluid">
                            <style>div.editable {margin: 0px 0px 0px 0px;padding: 5px 5px 5px 5px;} div.editable p {margin: 0px 0px 0px 0px;}</style>
                            <div id="body" class="span11 editable">

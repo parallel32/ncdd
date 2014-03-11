@@ -111,15 +111,19 @@
                                  
                               </div>
                            </div>
-                           <h3 class="form-section">Description</h3>&nbsp;<button type="button" class="btn blue show-editor">Click To Edit</button><br><br>
+                           
+
+                           <h3 class="form-section">Description&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.activeEditor.focus();">Click to Edit</a></h3>
                            <div class="row-fluid">
                               <div class="span12 ">
                                  <div class="control-group">
-                                    <span id="description" class="help-block"></span>
+                                    <style>div.editable {margin: 0px 0px 0px 0px;padding: 5px 5px 5px 5px;} div.editable p {margin: 0px 0px 0px 0px;}</style>
+                                    <div id="description" class="help-block editable"></div>
                                     <input id="input-description" type="hidden" name="doc[description]" value="">
                                  </div>
                               </div>
                            </div>
+                           
                            <input type="hidden" id="edit-id" name="doc[_id]" value="">
 						</form>
                         
@@ -193,36 +197,9 @@
       jQuery(document).ready(function() {    
          io.saw.FormClockFacePicker.init();
          io.saw.Agenda.init();
-         /*
-         Aloha.ready( function() {
-              Aloha.jQuery('.description').aloha();
-         });
-         //*/
-         SnapEditor.zIndexBase = 12000;
-         window.editor = new SnapEditor.InPlace("description", {
-               path: "/assets/snapeditor",
-             toolbar: {
-               items: [
-                  "styleBlock", "|",
-                  "bold", "italic", "underline", "|",
-                  "alignLeft", "alignCentre", "alignRight", "alignJustify", "|",
-                  "orderedList", "unorderedList", "indent", "outdent", "|",
-                  "link", "table", "horizontalRule", "|"
-                ],
-               }
-               ,snap: false      
-         });
-         
-         
-         /*
-         $('#description').click(function(e){
-            console.log('here.....');
-            window.setTimeout(function(){
-               
-               
-            },2000);
-         });
-         //*/
-      });
-      
+      });      
       </script>
+      <? $id = (string)$this->vars['seminar']->_id ?>
+      <?=$this->element('editor',array('_id'=>$id,'client_id'=>null,'access_token'=>null));?>
+
+

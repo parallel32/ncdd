@@ -27,6 +27,7 @@ $seminar->get('/', function (Request $request) use ($app, $common_view_vars) {
 			$agenda = new Model\Agenda(array('seminarId'=>$seminars[$i]['_id']),$app);
 			$agendas = $agenda->findBySeminarId();
 			$seminars[$i]['agendas'] = $agendas;
+			$seminars[$i]['description'] = $app['prepare_content']($seminars[$i]['description']);
 		}
 	endif;
 	$crumbs = array(array('name'=>'Sessions & Seminars','href'=>'/seminar'));
@@ -41,6 +42,7 @@ $seminar->get('/', function (Request $request) use ($app, $common_view_vars) {
 $seminar->get('/view/{id}', function ($id, Request $request) use ($app, $common_view_vars) {
 	$seminar = new Model\Seminar($doc=array('_id'=>$id), $app);
 	$seminar = $seminar->findById();
+	$seminar['description'] = $app['prepare_content']($seminar['description']);
 	
 	$agenda = new Model\Agenda(array('seminarId'=>$id),$app);
 	$agendas = $agenda->findBySeminarId();

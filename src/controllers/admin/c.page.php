@@ -99,6 +99,10 @@ $page->get('/{slug}/{type}/edit/{headline}', function ($slug, $type, $headline, 
 						,'status'=>Model\Page::$status
 						,'add'=>$add
 						);
+
+	// prepare the virtual forensic library modal
+	$app['prepare_vfl']($view_vars);
+
 	return $app['view']->render('page/edit', 'default', $view_vars);
 })->value('slug','')->value('headline','');
 $page->post('/edit', function (Request $request) use ($app) {
