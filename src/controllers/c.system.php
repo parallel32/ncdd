@@ -43,9 +43,9 @@ $app['sendMail'] = $app->protect(function ($subject, $body, $to, $from=array(SAW
 	//*/
 });
 
-//////////////////////////////////////////////////////////////////
-// PREPARE CONTENT BY REPLACING IMAGE PLACEHOLDERS WITH EMBEDLY //
-//////////////////////////////////////////////////////////////////
+////////////////////////////////////////////
+// PREPARE CONTENT BY REMOVING ALL IMAGES //
+////////////////////////////////////////////
 $app['prepare_content_remove_media'] = $app->protect(function ($content) use ($app) {
 	return preg_replace("/<img[^>]+\>/i", "", $content);
 });

@@ -42,7 +42,7 @@
                            </div>
                            <div class="span8 blog-article">
                               <h2><a href="/topic/<?=$topic['_id']?>/view"><?=$topic['headline']?></a></h2>
-                              <p><?=substr($topic['body'],0,500)?>...</p>
+                              <p><?if(strlen($topic['body']) >499){ echo substr($topic['body'],0,500).'...'; } else { echo $topic['body'] }?></p>
                               <a class="btn blue pull-right" href="/topic/<?=$topic['_id']?>/view">
                               Read more 
                               <i class="m-icon-swapright m-icon-white"></i>
@@ -56,7 +56,7 @@
                         <div class="row-fluid">
                            <div class="span12 blog-article blog-tag-data">
                               <h2><a href="/topic/<?=$topic['_id']?>/view"><?=$topic['headline']?></a></h2>
-                              <p><?=substr($topic['body'],0,500)?>...</p>
+                              <p><?if(strlen($topic['body']) >499){ echo substr($topic['body'],0,500).'...'; } else { echo $topic['body'] }?></p>
                               
                               <ul class="unstyled inline">
                                  <li><i class="icon-calendar"></i> <a href="#"><?=$topic['publishDate']['fullMonth']?></a></li>

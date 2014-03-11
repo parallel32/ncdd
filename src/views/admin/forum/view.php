@@ -17,7 +17,7 @@
             <div class="row-fluid">
                <div class="span12 blog-page">
                   <div class="row-fluid">
-                     <div class="span9 article-block">
+                     <div class="<?=(array_key_exists('files', $post) && count($post['files']) > 0) ? 'span9': 'span11';?> article-block">
                         <h1><?=$post['headline']?></h1>
                         <div class="blog-tag-data">
                            <div class="row-fluid">
@@ -92,6 +92,7 @@
                      <!--end span9-->
 
                      <? if(array_key_exists('files', $post)): ?>
+                     <? if(count($post['files']) > 0) { ?>
                      <div class="span3 blog-sidebar">
                         <h2>Files</h2>
                         <? foreach($post['files'] as $file): ?>
@@ -106,6 +107,7 @@
                         </div>
                         <? endforeach; ?>
                      </div>
+                     <? } ?>
                      <!--end span3-->
                      <? endif; ?>
                   </div>

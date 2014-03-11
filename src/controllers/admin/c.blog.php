@@ -44,6 +44,9 @@ $app->get('/blog', function (Request $request) use ($app) {
 	
 	$blog = new Model\Blog(array(),$app);
 	$posts = $blog->fetchPublished();
+	for ($i=0; $i < count($posts); $i++) { 
+		$posts[$i]['body'] = $app['prepare_content']($posts[$i]['body']);
+	}
 	$archives = $blog->fetchArchiveCounts();
 
 	$crumbs = array(array('name'=>'DUI Blog','href'=>'/blog'));
@@ -64,6 +67,9 @@ $app->get('/blog/archives/{month}/{year}', function ($month, $year, Request $req
 	
 	$blog = new Model\Blog(array(),$app);
 	$posts = $blog->fetchArchives($month,$year);
+	for ($i=0; $i < count($posts); $i++) { 
+		$posts[$i]['body'] = $app['prepare_content']($posts[$i]['body']);
+	}
 	$archives = $blog->fetchArchiveCounts();
 
 	$crumbs = array(array('name'=>'DUI Blog','href'=>'/blog')
@@ -88,6 +94,12 @@ $app->get('/blog/tag/{tag}', function ($tag, Request $request) use ($app) {
 	
 	$blog = new Model\Blog(array(),$app);
 	$posts = $blog->fetchTag($tag);
+	/**
+		todo
+	*/
+	for ($i=0; $i < count($posts); $i++) { 
+		$posts[$i]['body'] = $app['prepare_content']($posts[$i]['body']);
+	}
 	$archives = $blog->fetchArchiveCounts();
 
 	$cat = new Model\Category(array('slug'=>'/'.$tag),$app);

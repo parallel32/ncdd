@@ -34,6 +34,7 @@ $app->get('/topic/{topicId}/view', function ($topicId, Request $request) use ($a
 	
 	$topic = new Model\Topic(array('_id'=>$topicId),$app);
 	$topic = $topic->findById();
+	$topic['body'] = $app['prepare_content']($topic['body']);
 
 	$comment = new Model\Comment(array('belongsTo'=>$topic['_id']),$app);
 	$comments = $comment->fetchByBelongsTo();
@@ -52,8 +53,39 @@ $app->get('/topic/{topicId}/view', function ($topicId, Request $request) use ($a
 						,'topic'=>$topic
 						,'comments'=>$comments
 						);
+	// prepare the virtual forensic library modal
+	$app['prepare_vfl']($view_vars);
+
 	return $app['view']->render('forum/view', 'default', $view_vars);
 })->before($mustbeMEMBER);
+
+// auotsave
+$app->post('/topic/edit/autosave', function (Request $request) use ($app) {
+	$user = call_user_func(function($app){ $user = $app['session']->get('user'); return $user;},$app);
+	// retrieve document from request
+    $document = $request->get('doc');
+    $document['headline'] = (empty($document['headline'])) ? 'Draft' : $document['headline'];
+
+    if($user['accessLevel'] >= EDITOR){
+    	$member = array();
+    } else {
+    	$member = new Model\Member(array('_id'=>$user['user_id']),$app);
+	    $member_doc = $member->findById();
+	    $member = new Model\MemberLite($member_doc,$app);
+    }
+    
+
+    $topic = new Model\Topic($document, $app, $member);
+    // validate the model
+   	$app['validateModel']($app,$topic);
+    $topic->saveEdit();
+    
+    // set the global parameter manually to use the _id in the after() handler below
+    $_POST['current_id'] = $topic->_id->__toString();
+    $_POST['forum_id'] = $document['forum'];
+    
+    return new Response(json_encode(array('topicId'=>$topic->_id->__toString(), 'message' => 'Topic details have saved successfully.')), 200,array('Content-Type' => 'application/json'));
+});
 
 // add / save topic post
 $app->post('/topic/edit', function (Request $request) use ($app) {

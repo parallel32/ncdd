@@ -23,6 +23,10 @@ $forum->get('/', function (Request $request) use ($app) {
 	$topic = new Model\Topic(array(),$app);
 	$forums = $forum->fetchOrderBy(array(),array(),'name',1); // order forums by Name ASC
 	$topics = $topic->fetchRecentPublished();
+	for ($i=0; $i < count($topics); $i++) { 
+		$topics[$i]['body'] = $app['prepare_content_remove_media']($topics[$i]['body']);
+	}
+	
 	
 	$crumbs = array(array('name'=>'DUI Forum','href'=>'/forum'));
 	$view_vars = array(
@@ -47,6 +51,11 @@ $forum->get('/view/{forumId}', function ($forumId, Request $request) use ($app) 
 	$topic = new Model\Topic(array('forum'=>array('_id'=>$forumId)),$app);
 	$fields = array('image'=>1,'publishDate'=>1,'author.displayName'=>1,'commentCount'=>1,'headline'=>1,'body'=>1);
 	$topics = $topic->fetchByForumByStatus($forumId,Model\Topic::$status['PUBLISH'],$fields);
+
+	for ($i=0; $i < count($topics); $i++) { 
+		$topics[$i]['body'] = $app['prepare_content']($topics[$i]['body']);
+	}
+	
 	$crumbs = array(array('name'=>'DUI Forum','href'=>'/forum')
 					,array('name'=>$forum['name'],'href'=>'/forum/view'.$forumId)
 	);

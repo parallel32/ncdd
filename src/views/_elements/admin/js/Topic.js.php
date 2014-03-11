@@ -22,6 +22,8 @@ $user_id = $user['user_id'];
 	};
 	Topic.init = function(){
 		
+		//init autosave
+		setTimeout(io.saw.Topic.autosave, 5000);
 
 		// SAVE buttons and publish workflow buttons
 		$('#saw-form input').keypress(function(e) {
@@ -115,21 +117,30 @@ $user_id = $user['user_id'];
 		$('#currentStatus').val(<?=\Saw\Model\Topic::$status['UNPUBLISH'];?>);
 		Topic.save();
 	};
-	Topic.save = function (postSuccess){
+	Topic.save = function (postSuccess,posturl,blockuiformpost){
 		
 		$('#files').val(JSON.stringify(files));
+
+		tinymce.activeEditor.save();
 		$('#input-body').val($('#body').html());
 
+		var posturl = posturl || '/topic/edit'
+		var blockuiformpost = blockuiformpost || 'yes'
 		var postSuccess = postSuccess || function(responseObj){
+				$('#editor-drive-file-iframe').attr('src','/drive/file/'+responseObj.topicId);
+		   		$('#editor-drive-image-iframe').attr('src','/drive/image/'+responseObj.topicId);
 		   		$('#_id').val(responseObj.topicId);
 		   		$('#add').val('no');
-		   		$('#save-modal .modal-body p').html(responseObj.message);
-		      	//$('#save-modal-label').html(responseObj.label);
-		      	$('#save-modal').modal({keyboard: false});   		
+		      	if(blockuiformpost == 'yes'){
+			   		$('#save-modal .modal-body p').html(responseObj.message);
+			      	//$('#save-modal-label').html(responseObj.label);
+			    	$('#save-modal').modal({keyboard: false});   		
+			    }   		
 		   };
 
-		io.saw.FormPost.activate({postUrl:'/topic/edit'
+		io.saw.FormPost.activate({postUrl:posturl
 		   ,serializeSelector:':input'
+		   ,blockUI:blockuiformpost
 		   ,postOnComplete:function(responseObj,responseStatus){
 			   	if(responseStatus == 'success'){
 			   	}else{
@@ -138,6 +149,13 @@ $user_id = $user['user_id'];
 		   }
 		   ,postOnSuccess:postSuccess
 		});      
+	};
+	
+	Topic.autosave = function(){
+		if(tinymce.activeEditor.isDirty()){
+			Topic.save(undefined,'/topic/edit/autosave','no')
+		}
+		setTimeout(Topic.autosave, 5000);
 	};
 	
 	

@@ -141,6 +141,7 @@ $user_id = $user['user_id'];
         TODO
      */?>
 		tinymce.activeEditor.save();
+		$('#input-body').val($('#body').html());
 		var posturl = posturl || '/blog/<?=$this->vars['memberId']?>/edit'
 		var blockuiformpost = blockuiformpost || 'yes'
 		var postSuccess = postSuccess || function(responseObj){
@@ -154,8 +155,8 @@ $user_id = $user['user_id'];
 		   		if(blockuiformpost == 'yes'){
 			   		$('#save-modal .modal-body p').html(responseObj.message);
 			      	//$('#save-modal-label').html(responseObj.label);
-			      	$('#save-modal').modal({keyboard: false});   		
-			      }
+			    	$('#save-modal').modal({keyboard: false});   		
+			    }
 		   };
 
 		io.saw.FormPost.activate({postUrl:posturl
@@ -170,6 +171,9 @@ $user_id = $user['user_id'];
 		   ,postOnSuccess:postSuccess
 		});      
 	};
+	<?/**
+		todo
+	*/?>
 	Blog.autosave = function(){
 		if(tinymce.activeEditor.isDirty()){
 			Blog.save(undefined,'/blog/<?=$this->vars['memberId']?>/autosave','no')

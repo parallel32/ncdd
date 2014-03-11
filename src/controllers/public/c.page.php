@@ -93,6 +93,9 @@ $app->get('/', function (Request $request) use ($app) {
 	$posts = $blog->fetchPublished(0,4);
 	if(!empty($posts)){
 		for ($i=0; $i < count($posts); $i++) { 
+			/**
+				todo
+			*/
 		    $posts[$i]['body'] = $app['prepare_content_remove_media']($posts[$i]['body']); 
 		}
 	}
@@ -188,6 +191,9 @@ $app->get('/blog/{id}/{slug}', function ($id, $slug, Request $request) use ($app
 
 	$blog = new Model\Blog(array('_id'=>$id),$app);
 	$post = $blog->findById();
+	/**
+		todo
+	*/
 	$post['body'] = $app['prepare_content']($post['body']);
 	$archives = $blog->fetchArchiveCounts();
 

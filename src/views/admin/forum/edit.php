@@ -155,20 +155,16 @@ $isOwner =  ( array_key_exists('topic',$this->vars) && array_key_exists('forum',
                            <!--/span-->
                         </div>
 
-                        <h3 class="form-section text-info"><strong>Content</strong></h3>&nbsp;<button type="button" class="btn blue show-editor">Click To Edit</button><br><br>
+                        <h3 class="form-section text-info"><strong>Content</strong>&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.activeEditor.focus();return false;">Click to Edit</a></h3>
                         <div class="row-fluid">
-                           <div class="span12 ">
-                              <div class="control-group ">
-                                 <label class="control-label"></label>
-                                 <div class="controls">
-                                    <span id="body" class=""><?=(!empty($this->vars['topic']) && array_key_exists('body',$this->vars['topic'])) ? $this->vars['topic']['body'] : '<br>'?></span>
-                                    <input id="input-body" type="hidden" name="doc[body]" value="">
-                                 </div>
-                              </div>
+                           <style>div.editable {margin: 0px 0px 0px 0px;padding: 5px 5px 5px 5px;} div.editable p {margin: 0px 0px 0px 0px;}</style>
+                           <div id="body" class="span11 editable">
+                              <?=(!empty($this->vars['topic']) && array_key_exists('body',$this->vars['topic'])) ? $this->vars['topic']['body'] : '<br>'?>
                            </div>
+                           <input id="input-body" type="hidden" name="doc[body]" value="">
                            <!--/span-->
                         </div>
-                        
+
                         <? if($accessLevel >= EDITOR || $isOwner && (array_key_exists('topic',$this->vars) && array_key_exists('currentStatus',$this->vars['topic']) && $this->vars['topic']['currentStatus'] <=  \Saw\Model\Topic::$status['SCHEDULE'])): ?>
                            <h3 class="form-section text-info"><strong>Schedule for Publishing</strong></h3>
                            <p>This is optional.  You can go ahead and publish it now by clicking the "Publish Now" button below.</p>
@@ -315,33 +311,7 @@ $isOwner =  ( array_key_exists('topic',$this->vars) && array_key_exists('forum',
                      rtl : App.isRTL()
                   });
                }
-               
-               window.editor = new SnapEditor.InPlace("body", {
-                  path: "/assets/snapeditor",
-                  toolbar: {
-                     items: [
-                        "styleBlock", "|",
-                        "bold", "italic", "underline", "|",
-                        "alignLeft", "alignCentre", "alignRight", "alignJustify", "|",
-                        "orderedList", "unorderedList", "indent", "outdent", "|",
-                        "link", "table", "horizontalRule", "|"
-                      ],
-                               }
-                     ,snap: false
-                     /*
-                     ,onSave: function (e) {
-                        var isSuccess = true;
-                        html = e.html;
-                        io.saw.Topic.save();
-                        return isSuccess || "Error";
-                     }
-                     ,onUnsavedChanges: function (e) {
-                        e.api.execAction("save");
-                    }*/
-               });
-               $('.show-editor').click(function(e){
-                  window.editor.api.activate();
-               })
+
           <? endif; ?>
            
          });            
@@ -414,5 +384,9 @@ $isOwner =  ( array_key_exists('topic',$this->vars) && array_key_exists('forum',
                render_files_grid();
             });
           </script>
+
+         <? $id = (array_key_exists('topic',$this->vars)) ? $this->vars['topic']['_id'] : '' ?>
+         <?=$this->element('editor',array('_id'=>$id,'client_id'=>$this->vars['client_id'],'access_token'=>$this->vars['access_token']));?>
+
           <!-- The Google API Loader script. -->
           <script type="text/javascript" src="https://apis.google.com/js/api.js"></script>

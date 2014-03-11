@@ -148,55 +148,18 @@
                            </div>
                            <!--/span-->
                         </div>
-                        <h3 class="form-section text-info"><strong>Video (optional)</strong> recommended width is 640</h3>
-                        <p>If you'd like to write up a blog post about a video you found on the web or a video you published to the web.  It's a great idea for a blog post.
-                           <br>Add the embed code for the video here.
-                           <br>Be sure it's not just the link to the video, but the embedded video player instead.</p>
+                        <?
+                        /**
+                           todo 
+                        */
+                        ?>
+                        <h3 class="form-section text-info"><strong>Content</strong>&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.activeEditor.focus();return false;">Click to Edit</a></h3>
                         <div class="row-fluid">
-                           <div class="span12 ">
-                              <div class="control-group ">
-                                 <label class="control-label"></label>
-                                 <div class="controls">
-                                    <textarea <?=($show=='no') ? 'readonly=""' : ''?> name="doc[video]" class="span6 m-wrap video" rows="3"><?=(!empty($this->vars['blog']) && array_key_exists('video',$this->vars['blog'])) ? $this->vars['blog']['video']: ''?></textarea>
-                                 </div>
-                              </div>
-                           </div>
-                           <!--/span-->
-                        </div>
-                        <h3 class="form-section text-info"><strong>Link (optional)</strong></h3>
-                        <p>If you'd like to write up a blog post about an article you found on the web or one that you published.  It's a great idea for a blog post topic.
-                           <br>Add the link to the article here.  Be sure to add the full link including http:// and everything after.
-                           <br>By adding the link here it will receive prominent styling on the blog post and will be obvious and clickable.
-                           <br>You won't need to add it to the content of the blog post and give it special formatting.</p>
-                        <div class="row-fluid">
-                           <div class="span12 ">
-                              <div class="control-group ">
-                                 <label class="control-label"></label>
-                                 <div class="controls">
-                                    <input <?=($show=='no') ? 'readonly=""' : ''?> type="text" name="doc[link]" value="<?=(!empty($this->vars['blog']) && array_key_exists('link',$this->vars['blog'])) ? $this->vars['blog']['link']: ''?>" class="m-wrap span10 link">
-                                 </div>
-                              </div>
-                           </div>
-                           <!--/span-->
-                        </div>
-                        <h3 class="form-section text-info"><strong>Content</strong></h3>
-                        <div class="row-fluid">
-                           <div class="span12 editable">
+                           <style>div.editable {margin: 0px 0px 0px 0px;padding: 5px 5px 5px 5px;} div.editable p {margin: 0px 0px 0px 0px;}</style>
+                           <div id="body" class="span12 editable">
                               <?=(!empty($this->vars['blog']) && array_key_exists('body',$this->vars['blog'])) ? $this->vars['blog']['body'] : ''?>
-                              <? if (false): ?>
-                              <div class="control-group ">
-                                 <label class="control-label"></label>
-                                 <div class="controls">
-
-                                    <?/**
-                                       TODO
-                                    */?>
-                                    <textarea id="_content" name="doc[body]" style="height: 500px;"><?=(!empty($this->vars['blog']) && array_key_exists('body',$this->vars['blog'])) ? $this->vars['blog']['body'] : ''?></textarea>
-                                    
-                                 </div>
-                              </div>
-                              <? endif; ?>
                            </div>
+                           <input id="input-body" type="hidden" name="doc[body]" value="">
                            <!--/span-->
                         </div>
                         
