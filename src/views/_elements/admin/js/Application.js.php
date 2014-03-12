@@ -1,3 +1,6 @@
+<?
+	$return_to_app_index = (array_key_exists('_id', $this->vars['application']) && strpos(strtolower($this->vars['application']['class']),'update') !== false) ? "document.location.href='/renewals';": "document.location.href='/applications';";
+?>
 <script type="text/javascript">
 (function( Application, $, undefined ) {
 	function newSustainingMemberAdd (){
@@ -162,7 +165,7 @@
 			document.location.href='/';
 		});
 		$('#save-success .continue.applications').click(function(e){
-			document.location.href='/applications';
+			<?=$return_to_app_index?>
 		});
 		$('.btn.cancel').click(function(e){
 			document.location.href='/application/'+$(this).attr('data-id')+'/view';
@@ -189,7 +192,8 @@
 				   	io.saw.FormGet.activate({postUrl:'/application/'+responseObj.paymentId.$id+'/pay/'+theThis.attr('data-application-id')+'/no'
 				    	,postOnComplete:function(responseObj,responseStatus){}
 				      	,postOnSuccess:function(responseObj){
-				         //document.location.href='/applications';
+				          /*<?=$return_to_app_index?>*/
+				          
 				      	}
 				   	});
 			   }
@@ -221,7 +225,7 @@
 		
 		$('#saw-form .btn.cancel').click(function(e){
 			e.preventDefault();
-			document.location.href='/applications';			
+			<?=$return_to_app_index?>	
 		});
 		$('#saw-form .btn.red').click(function(e){
 			// pop delete are you sure modal
@@ -273,7 +277,7 @@
 		io.saw.FormGet.activate({postUrl:'/application/'+id+'/delete'
 			,postOnComplete:function(responseObj,responseStatus){}
 			,postOnSuccess:function(responseObj){
-				document.location.href='/applications';
+				<?=$return_to_app_index?>
 			}
 		});
 	};
@@ -281,7 +285,7 @@
 		io.saw.FormGet.activate({postUrl:'/application/'+id+'/approve/'+type
 			,postOnComplete:function(responseObj,responseStatus){}
 			,postOnSuccess:function(responseObj){
-				document.location.href='/applications';
+				<?=$return_to_app_index?>
 			}
 		});
 	};
@@ -297,7 +301,7 @@
 			      	$('#save-success').modal({keyboard: false});   		
 			      	//*
 			      	window.setTimeout(function(){
-			      		document.location.href='/applications';
+			      		<?=$return_to_app_index?>
 			      	},100);
 					//*/
 			   	}else{
