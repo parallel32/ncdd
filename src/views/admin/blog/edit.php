@@ -64,7 +64,13 @@
                         </div>
                         <!--/ ERROR -->
                         <h2>Draft a blog post here.  Save it as a draft or submit it for publishing.</h2>
-                        
+                        <div class="alert alert-info">
+                           <strong>Blog Tip:</strong> 
+                           <br>Try and use different pictures for the blog posts.  
+                           People will be less likely to read a blog post with the same picture.  
+                           In fact, they may think they already read it.  
+                           <br>Also, search engines have the ability to identify photos as duplicates.
+                        </div>
                         <h3 class="form-section text-info"><strong>Headline</strong></h3>
                         <p>Create a short yet descriptive headline for your post.</p>
                         <div class="row-fluid">
