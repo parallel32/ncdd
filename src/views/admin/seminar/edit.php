@@ -83,7 +83,7 @@
                               </div>
                            </div>
 
-                           <h3 class="form-section text-info"><strong>Description</strong>&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.activeEditor.focus();">Click to Edit</a></h3>
+                           <h3 class="form-section text-info"><strong>Description</strong>&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.get('body').execCommand('mcefocus',true);">Click to Edit</a></h3>
                            <div class="row-fluid">
                               <div class="span12 ">
                                  
@@ -197,7 +197,7 @@
                               </div>
                            </div>
 
-                           <h3 class="form-section">Registration Confirmation Letter&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.activeEditor.focus();">Click to Edit</a></h3>
+                           <h3 class="form-section">Registration Confirmation Letter&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.get('body-confletter').execCommand('mcefocus',true);">Click to Edit</a></h3>
                            <div class="row-fluid">
                               <div class="span12 ">
                                  

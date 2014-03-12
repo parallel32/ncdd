@@ -64,6 +64,7 @@
                         </div>
                         <!--/ ERROR -->
                         <h2>Draft a blog post here.  Save it as a draft or submit it for publishing.</h2>
+                        
                         <h3 class="form-section text-info"><strong>Headline</strong></h3>
                         <p>Create a short yet descriptive headline for your post.</p>
                         <div class="row-fluid">
