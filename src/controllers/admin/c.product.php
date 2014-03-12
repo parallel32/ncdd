@@ -168,7 +168,7 @@ $product->get('/{productId}/remove', function ($productId, Request $request) use
 // ORDER EDITING //
 ///////////////////
 $product->get('/order/edit/{orderId}', function ($orderId, Request $request) use ($app) {
-	
+		
 	$crumbs = array(array('name'=>'NCDD Store','href'=>'/product'));
 	$view_vars = array(
 						 'active'=>'Store'
@@ -180,7 +180,8 @@ $product->get('/order/edit/{orderId}', function ($orderId, Request $request) use
 						);
 	
 	$order= new Model\Order(array('_id'=>$orderId),$app);
-	$order= $order->findById();
+	$order = $order->findById();
+	
 	$view_vars['crumbs'][] = array('name'=>$order['payment']['name'],'href'=>'/product/order/edit/'.$orderId);
 	$view_vars['crumbs'][] = array('name'=>'edit','href'=>'/product/order/edit/'.$orderId);
 

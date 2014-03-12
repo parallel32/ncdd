@@ -48,7 +48,7 @@
                <!-- END DASHBOARD STATS -->
 
                <!-- NEW ORDERS -->
-               <div class="row-fluid">
+               <div id="orders" class="row-fluid">
                   <div class="span12">
                      <!-- BEGIN EXAMPLE TABLE PORTLET-->
                      <div class="portlet box red">
@@ -58,7 +58,7 @@
                               <a class="btn yellow view"><i class=" icon-eye-open"></i> View All</a>
                            </div>
                         </div>
-                        <div id="applications-to-approve" class="portlet-body">
+                        <div class="portlet-body">
                            <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
                            <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                               <thead>
@@ -83,7 +83,7 @@
                                     <td class="hidden-phone"><?='$'.number_format($order['shippingTotal'],2)?></td>
                                     <td class="hidden-480 "><?=(array_key_exists('discountTotal',$order)) ? '$'.number_format($order['discountTotal'],2): ''?></td>
                                     <td class="center hidden-480 "><?='$'.number_format($order['payment']['amount'],2)?></td>
-                                    <td class=" "><a data-id="<?=$order['_id']?>" class="btn blue mini order-edit"><i class=" "></i> View + Fulfill</a></td>
+                                    <td class=" "><a data-id="<?=$order['_id']?>" class="btn blue mini view"><i class=" "></i> View + Fulfill</a></td>
                                  </tr>
                                  <? endforeach;?>
                                  <? else: ?>

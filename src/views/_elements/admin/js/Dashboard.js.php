@@ -22,7 +22,11 @@
 			e.preventDefault();
 			document.location.href='/applications';
 		});
-		$('#orders .btn.view').click(function(e){
+		$('#orders .btn.blue.view').click(function(e){
+			e.preventDefault();
+			document.location.href='/product/order/edit/'+$(this).attr('data-id');
+		});
+		$('#orders .btn.yellow.view').click(function(e){
 			e.preventDefault();
 			document.location.href='/product';
 		});

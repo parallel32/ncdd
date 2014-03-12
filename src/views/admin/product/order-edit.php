@@ -23,9 +23,7 @@
                         <div class="caption">Order Items</div>
                      </div>
                   <div class="portlet-body">
-                      
-                    <?=$this->element('shopping-cart-items',array('cart_items'=>$this->vars['order']['payment']['items'],'readonly'=>'yes','user'=>$this->vars['user']));?>
-                      
+                    <?=$this->element('shopping-cart-items',array('cart_items'=>$this->vars['order']['shoppingCart'],'readonly'=>'yes','user'=>$this->vars['user']));?>
                     </div>
                </div>
               </div>
@@ -43,14 +41,112 @@
                            You have some form errors. Please check below.
                         </div>
                         <!--/ ERROR -->
-                        <h3 class="form-section text-info"><strong>Transaction ID</strong></h3>
-                        <p>Payment gateway transaction Id reference.</p>
+                        <h3 class="form-section text-info"><strong>Payment Reference</strong></h3>
                         <div class="row-fluid">
-                           <div class="span12 ">
+                           <div class="span3 ">
                               <div class="control-group ">
-                                 <label class="control-label"></label>
+                                 <label class="control-label">Stripe Transaction Id</label>
                                  <div class="controls">
-                                    <span class="text-info"><?=$this->vars['order']['payment']['transactionId']?></span>
+                                    <span class="text-info"><?=(!empty($this->vars['order']['payment']['transactionId'])) ? $this->vars['order']['payment']['transactionId']: 'no value'?></span>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                           <? if(array_key_exists('_id', $this->vars['order']['payment'])){ ?>
+                           <div class="span3 ">
+                              <div class="control-group ">
+                                 <label class="control-label">Payment Link</label>
+                                 <div class="controls">
+                                    <span class="text-info"><a class="btn blue" href="/payment/<?=$this->vars['order']['payment']['_id']?>/view">View Payment</a></span>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                           <? } ?>
+                        </div>
+                        <h3 class="form-section text-info"><strong>Ship To</strong></h3>
+                        <div class="row-fluid">
+                           <div class="span3 ">
+                              <div class="control-group ">
+                                 <label class="control-label">Name</label>
+                                 <div class="controls">
+                                    <span class="text-info"><?=$this->vars['order']['payment']['name']?></span>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                           <div class="span3 ">
+                              <div class="control-group ">
+                                 <label class="control-label">Phone</label>
+                                 <div class="controls">
+                                    <span class="text-info"><?=$this->vars['order']['payment']['phone']?></span>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                           <div class="span3 ">
+                              <div class="control-group ">
+                                 <label class="control-label">Email</label>
+                                 <div class="controls">
+                                    <span class="text-info"><?=$this->vars['order']['payment']['email']?></span>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        <div class="row-fluid">
+                           <div class="span3 ">
+                              <div class="control-group ">
+                                 <label class="control-label">Address Line 1</label>
+                                 <div class="controls">
+                                    <span class="text-info"><?=$this->vars['order']['payment']['addressLine1Shipping']?></span>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                           <div class="span3 ">
+                              <div class="control-group ">
+                                 <label class="control-label">Address Line 2</label>
+                                 <div class="controls">
+                                    <span class="text-info"><?=$this->vars['order']['payment']['addressLine2Shipping']?></span>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        <div class="row-fluid">
+                           <div class="span3 ">
+                              <div class="control-group ">
+                                 <label class="control-label">City</label>
+                                 <div class="controls">
+                                    <span class="text-info"><?=$this->vars['order']['payment']['cityShipping']?></span>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                           <div class="span3 ">
+                              <div class="control-group ">
+                                 <label class="control-label">State/Province</label>
+                                 <div class="controls">
+                                    <span class="text-info"><?=$this->vars['order']['payment']['stateProvinceRegionShipping']?></span>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                           <div class="span3 ">
+                              <div class="control-group ">
+                                 <label class="control-label">Zip/Postal Code</label>
+                                 <div class="controls">
+                                    <span class="text-info"><?=$this->vars['order']['payment']['zipPostalCodeShipping']?></span>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                           <div class="span3 ">
+                              <div class="control-group ">
+                                 <label class="control-label">Country</label>
+                                 <div class="controls">
+                                    <span class="text-info"><?=$this->vars['order']['payment']['countryShipping']?></span>
                                  </div>
                               </div>
                            </div>
