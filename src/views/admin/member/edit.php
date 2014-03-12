@@ -417,10 +417,10 @@
                               <div class="control-group ">
                                  <label class="control-label"></label>
                                  <div class="controls">
-                           <style>span.editable {margin: 0px 0px 0px 0px;padding: 5px 50px 5px 5px;} span.editable p {margin: 0px 0px 0px 0px;}</style>
-                           <span id="body" class="span12 editable" style="margin-left:0px;">
+                           <style>div.editable {margin: 0px 0px 0px 0px;padding: 5px 50px 5px 5px;} div.editable p {margin: 0px 0px 0px 0px;}</style>
+                           <div id="body" class="span12 editable" style="margin-left:0px;">
                               <?=(empty($this->vars['member']['aboutMe'])) ? "<br><br><br><br>" : $this->vars['member']['aboutMe'];?>
-                           </span>
+                           </div>
                            <input id="input-body" type="hidden" name="doc[aboutMe]" value="">
                                  </div>
                               </div>

@@ -119,8 +119,8 @@
                                  <div class="control-group ">
                                     <label class="control-label"></label>
                                     <div class="controls">
-                              <style>span.editable {margin: 0px 0px 0px 0px;padding: 5px 50px 5px 5px;} span.editable p {margin: 0px 0px 0px 0px;}</style>
-                              <span id="description" class="help-block editable"></span>
+                              <style>div.editable {margin: 0px 0px 0px 0px;padding: 5px 50px 5px 5px;} div.editable p {margin: 0px 0px 0px 0px;}</style>
+                              <div id="description" class="help-block editable"></div>
                               <input id="input-description" type="hidden" name="doc[description]" value="">
                                     </div>
                                  </div>
