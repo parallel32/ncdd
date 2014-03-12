@@ -202,7 +202,7 @@
                               <div class="span12 ">
                                  
                               <style>div.editable {margin: 0px 0px 0px 0px;padding: 5px 50px 5px 5px;} div.editable p {margin: 0px 0px 0px 0px;}</style>
-                              <div id="body" class="span12 editable" style="margin-left:0px;">
+                              <div id="body-confletter" class="span12 editable" style="margin-left:0px;">
                                  <?=(array_key_exists('register',$seminar)) ? (array_key_exists('confirmationLetter',$seminar['register'])) ? $seminar['register']['confirmationLetter'] : '' : '';?>
                               </div>
                               <input id="input-body-confletter" type="hidden" name="doc[register][confirmationLetter]" value="">
