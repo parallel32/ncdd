@@ -44,15 +44,15 @@ class SeminarRegister extends Model {
 			}			
 		}
 
-		if(!empty($this->memberPrice) && !is_int($this->memberPrice)){
+		if(!empty($this->memberPrice) && !is_numeric($this->memberPrice)){
             $propertyPath = $context->getPropertyPath().'memberPrice';
         	$context->addViolationAtPath($propertyPath,'Only integers are accepted.', array(), null);
 		}
-		if(!empty($this->nonMemberPrice) && !is_int($this->nonMemberPrice)){
+		if(!empty($this->nonMemberPrice) && !is_numeric($this->nonMemberPrice)){
             $propertyPath = $context->getPropertyPath().'nonMemberPrice';
         	$context->addViolationAtPath($propertyPath,'Only integers are accepted.', array(), null);
 		}
-		if(!empty($this->hardCopyPrice) && !is_int($this->hardCopyPrice)){
+		if(!empty($this->hardCopyPrice) && !is_numeric($this->hardCopyPrice)){
             $propertyPath = $context->getPropertyPath().'hardCopyPrice';
         	$context->addViolationAtPath($propertyPath,"If you don't want to leave it blank, then only integers are accepted.", array(), null);
 		}
