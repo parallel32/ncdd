@@ -48,7 +48,7 @@
                               <? endforeach; ?>
                               <? endif; ?>
                               <? $slug = (array_key_exists('slug',$seminar)) ? '/'.$seminar['slug'] : ''; ?>
-                              <?if(array_key_exists('register',$seminar) && array_key_exists('currentStatus',$seminar['register']) && $seminar['register']['currentStatus'] == \Saw\Model\SeminarRegister::$status['ON']): ?>
+                              <?if(array_key_exists('register',$seminar) && array_key_exists('currentStatus',$seminar['register']) && $seminar['register']['currentStatus'] < \Saw\Model\SeminarRegister::$status['OFF']): ?>
                               <a class="btn green register-seminar" data-name="<?=$slug?>" data-id="<?=$seminar['_id']?>">
                                 Register <i class="icon-plus"></i>
                               </a>

@@ -36,24 +36,20 @@ endif; ?>
          <!-- BEGIN PAGE CONTENT-->
          <div class="row-fluid">
             <div class="span12">
+               
+               <? if($this->vars['seminar']['register']['currentStatus'] < \Saw\Model\SeminarRegister::$status['OFF']):?>
+               
+               <? if(!$signed_in):?>
                <!-- BEGIN FORM-->
                <form id="signin-form" class="form-horizontal portlet" novalidate="novalidate">
                   <input type="hidden" name="doc[message]" value="You will be redirected back to the registration form after sign in.">
                   <input type="hidden" name="doc[redirect]" value="/registration/seminar/<?=$this->vars['seminar']['_id']?>/<?=$this->vars['seminar']['slug']?>">
-               </form>
-               
-               <form id="saw-form" class="horizontal-form portlet">
-                  <input type="hidden" class="seminarId" name="doc[seminarId]" value="<?=$this->vars['seminar']['_id']?>">
-                  <input type="hidden" class="memberId" name="doc[memberId]" value="<?=($signed_in) ? $this->vars['member']['_id']: '';?>">
-                  <input id="currentPaymentType" type="hidden" name="doc[currentPaymentType]" value="<?=\Saw\Model\Registration::$paymentType['CREDIT']?>">
-                  <input id="paymentId" type="hidden" name="doc[paymentId]" value="">
-                  
-                  <? if(!$signed_in):?>
-                  <h3 class="form-section">If you're a member please sign in.</h3>
+
+                  <h3 class="form-section">Members, please sign in to facilitate registration.</h3>
                   <button type="button" class="btn blue signin"><i class="icon-key"></i> Sign In</button>
                   <script>
                      jQuery(document).ready(function() {    
-                        $('#saw-form .signin').click(function(e){
+                        $('#signin-form .signin').click(function(e){
                            $(this).html('<i class="icon-key"></i> Please wait...');
                            io.saw.FormPost.activate({postUrl:'/flash/set'
                               ,formName:'#signin-form'
@@ -67,7 +63,19 @@ endif; ?>
                         });
                      });      
                   </script>
-                  <? endif; ?>
+               </form>
+                  
+               <? endif; ?>
+
+               <? if(!$signed_in && $this->vars['seminar']['register']['currentStatus'] == \Saw\Model\SeminarRegister::$status['MEMBERSONLY']):?>
+                  
+               <? else: ?>
+               <form id="saw-form" class="horizontal-form portlet">
+                  <input type="hidden" class="seminarId" name="doc[seminarId]" value="<?=$this->vars['seminar']['_id']?>">
+                  <input type="hidden" class="memberId" name="doc[memberId]" value="<?=($signed_in) ? $this->vars['member']['_id']: '';?>">
+                  <input id="currentPaymentType" type="hidden" name="doc[currentPaymentType]" value="<?=\Saw\Model\Registration::$paymentType['CREDIT']?>">
+                  <input id="paymentId" type="hidden" name="doc[paymentId]" value="">
+                  
                   <h3 class="form-section">1. Your Information</h3>
                   <div class="row-fluid">
                      <div class="span12 ">
@@ -508,23 +516,20 @@ endif; ?>
                      <h3 class="form-section">6. Pay By Check</h3>
                      <div class="row-fluid">
                         <div class="span12 ">
-                           <h4 class="form-section">Please, send a payment to the address at the top of this form and make it payable to NCDD.</h4>
+                           <h4 class="form-section">Please send a payment to the address below and make it payable to NCDD.</h4>
+                           <p class=""><h4>
+                              <br/>National College for DUI Defense, Inc. 
+                              <br/>445 S. Decatur St. 
+                              <br/>Montgomery, AL 36104
+                              <br><br/>Tel: 334-264-1950 
+                              <br/>Fax: 334-264-1920
+                              </h4>
+                           </p>
                         </div>
                         <!--/span-->
                      </div>
                   </div>
 
-
-
-
-
-
-
-
-
-
-
-               
                      <div id="submit-registration-buttons" class="form-actions text-center">
                         <button type="button" class="btn blue check">Pay By Check</button>
                         <button type="button" class="btn blue credit hide">Pay by Credit Card</button>
@@ -533,16 +538,10 @@ endif; ?>
                      </div>
 
 
-
-
-
-
-
-
-
-
-
-
+               <? endif; ?>
+            <? else: ?>
+            <br><h2 class="text-center">Registration for this seminar is no longer available.</h2>
+            <? endif; ?>
 
             </div>
          </div>
@@ -552,6 +551,8 @@ endif; ?>
    <!-- END PAGE CONTAINER -->
 </div>
 <!-- END CONTAINER -->
+<? if($this->vars['seminar']['register']['currentStatus'] < \Saw\Model\SeminarRegister::$status['OFF']):?>
+
 <?=$this->element('js/Registration.js');?>
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script type="text/javascript">
@@ -695,7 +696,7 @@ jQuery(document).ready(function() {
    // end - init the credit card fields
    
    $('#saw-form .hardcopyYesNo').change(function(e){
-      var hard_copy_fee = <?=$this->vars['seminar']['register']['hardCopyPrice']?>;
+      var hard_copy_fee = <?=($this->vars['seminar']['register']['hardCopyPrice'] > 0) ? $this->vars['seminar']['register']['hardCopyPrice'] : 0?>;
       if($(this).val() == 'YES'){
          $('#total').val(parseInt($('#registration_fee').val())+hard_copy_fee);
       }else{
@@ -741,3 +742,4 @@ jQuery(document).ready(function() {
 
 });      
 </script>
+<? endif; ?>

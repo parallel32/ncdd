@@ -31,8 +31,6 @@ class SeminarRegister extends Model {
 	*/
 	public function isValidPrice(ExecutionContext $context){
 
-error_log($this->currentStatus);
-error_log($this->nonMemberPrice);
 		if( $this->currentStatus < self::$status['OFF'] ){
 			if(empty($this->memberPrice)){
 	            $propertyPath = $context->getPropertyPath().'memberPrice';
@@ -56,7 +54,7 @@ error_log($this->nonMemberPrice);
 		}
 		if(!empty($this->hardCopyPrice) && !is_int($this->hardCopyPrice)){
             $propertyPath = $context->getPropertyPath().'hardCopyPrice';
-        	$context->addViolationAtPath($propertyPath,'Only integers are accepted.', array(), null);
+        	$context->addViolationAtPath($propertyPath,"If you don't want to leave it blank, then only integers are accepted.", array(), null);
 		}
 	}
 	public function __construct($doc, Application $app){
@@ -66,7 +64,7 @@ error_log($this->nonMemberPrice);
 		$this->currentStatus = (int)$doc['currentStatus'];
 		$this->memberPrice = (!empty($doc['memberPrice'])) ? (int)$doc['memberPrice']: '';
 		$this->nonMemberPrice = (!empty($doc['nonMemberPrice'])) ? (int)$doc['nonMemberPrice']: '';
-		$this->hardCopyPrice = (!empty($doc['hardCopyPrice'])) ? (int)$doc['hardCopyPrice']: '';
+		$this->hardCopyPrice = (!empty($doc['hardCopyPrice'])) ? $doc['hardCopyPrice']: '';
 		$this->confirmationLetter = $doc['confirmationLetter'];
 		
 	}
