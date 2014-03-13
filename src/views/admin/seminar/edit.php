@@ -155,6 +155,7 @@
                                     <div class="controls">
                                        <select name="doc[register][currentStatus]" class="span6 m-wrap currentStatus" data-placeholder="Choose a Category" tabindex="1">
                                           <option value="<?=\Saw\Model\SeminarRegister::$status['OFF']?>" <?=(array_key_exists('register',$seminar) && array_key_exists('currentStatus',$seminar['register'])) ? (\Saw\Model\SeminarRegister::$status['OFF'] == $seminar['register']['currentStatus']) ? "selected" : "" : '';?>><?=\Saw\Model\SeminarRegister::$statusReversed[\Saw\Model\SeminarRegister::$status['OFF']]?></option>
+                                          <option value="<?=\Saw\Model\SeminarRegister::$status['MEMBERSONLY']?>" <?=(array_key_exists('register',$seminar) && array_key_exists('currentStatus',$seminar['register'])) ? (\Saw\Model\SeminarRegister::$status['MEMBERSONLY'] == $seminar['register']['currentStatus']) ? "selected" : "" : '';?>><?=\Saw\Model\SeminarRegister::$statusReversed[\Saw\Model\SeminarRegister::$status['MEMBERSONLY']]?></option>
                                           <option value="<?=\Saw\Model\SeminarRegister::$status['ON']?>" <?=(array_key_exists('register',$seminar) && array_key_exists('currentStatus',$seminar['register'])) ? (\Saw\Model\SeminarRegister::$status['ON'] == $seminar['register']['currentStatus']) ? "selected" : "" : '';?>><?=\Saw\Model\SeminarRegister::$statusReversed[\Saw\Model\SeminarRegister::$status['ON']]?></option>
                                        </select>
                                        <span class="help-block">Turn online registration ON / OFF</span>
@@ -168,7 +169,7 @@
                                            <input type="text" name="doc[register][memberPrice]" value="<?=(array_key_exists('register',$seminar)&& array_key_exists('memberPrice',$seminar['register'])) ? $seminar['register']['memberPrice'] : '';?>" data-required="1" class="span6 m-wrap memberPrice">
                                         <span class="add-on">.00</span>
                                       </div>
-                                      <span class="help-block">Enter the dollar amount to charge for members.  <br>If you leave blank then it will not show up on the registration form.</span>
+                                      <span class="help-block">Enter the dollar amount to charge for members.</span>
                                     </div>
                                  </div>
                                  <div class="control-group">
@@ -179,7 +180,7 @@
                                            <input type="text" name="doc[register][nonMemberPrice]" value="<?=(array_key_exists('register',$seminar)&& array_key_exists('nonMemberPrice',$seminar['register'])) ? $seminar['register']['nonMemberPrice'] : '';?>" data-required="1" class="span6 m-wrap nonMemberPrice">
                                         <span class="add-on">.00</span>
                                       </div>
-                                      <span class="help-block">Enter the dollar amount to charge for non-members.  <br>If you leave blank then it will not show up on the registration form.</span>
+                                      <span class="help-block">Enter the dollar amount to charge for non-members.</span>
                                     </div>
                                  </div>
                                  <div class="control-group">

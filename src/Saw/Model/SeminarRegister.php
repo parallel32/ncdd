@@ -13,8 +13,8 @@ use Symfony\Component\Validator\ExecutionContext;
  */
 class SeminarRegister extends Model {
 	
-	static public $status = array('ON'=>10, 'OFF'=>15);
-	static public $statusReversed = array(10=>'ON',15=>'OFF');
+	static public $status = array('ON'=>10, 'MEMBERSONLY'=>13, 'OFF'=>15);
+	static public $statusReversed = array(10=>'ON', 13=>'MEMBERSONLY', 15=>'OFF');
 	public $currentStatus;
 	public $memberPrice;
 	public $nonMemberPrice;
@@ -24,21 +24,37 @@ class SeminarRegister extends Model {
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addConstraint(new Callback(array(
             'methods' => array('isValidPrice'),
-        )));   
+        )));
 	}
 	/**
 	 * validator helper function
 	*/
 	public function isValidPrice(ExecutionContext $context){
-		if(empty($this->memberPrice) && !is_int($this->memberPrice)){
+
+error_log($this->currentStatus);
+error_log($this->nonMemberPrice);
+		if( $this->currentStatus < self::$status['OFF'] ){
+			if(empty($this->memberPrice)){
+	            $propertyPath = $context->getPropertyPath().'memberPrice';
+	        	$context->addViolationAtPath($propertyPath,'Since you intend to activate registration you must include a Member Price.', array(), null);
+			}			
+		}
+		if( $this->currentStatus == self::$status['ON'] ){
+			if(empty($this->nonMemberPrice)){
+	            $propertyPath = $context->getPropertyPath().'nonMemberPrice';
+	        	$context->addViolationAtPath($propertyPath,'Setting Registration to ON requires a non member price.', array(), null);
+			}			
+		}
+
+		if(!empty($this->memberPrice) && !is_int($this->memberPrice)){
             $propertyPath = $context->getPropertyPath().'memberPrice';
         	$context->addViolationAtPath($propertyPath,'Only integers are accepted.', array(), null);
 		}
-		if(empty($this->nonMemberPrice) && !is_int($this->nonMemberPrice)){
+		if(!empty($this->nonMemberPrice) && !is_int($this->nonMemberPrice)){
             $propertyPath = $context->getPropertyPath().'nonMemberPrice';
         	$context->addViolationAtPath($propertyPath,'Only integers are accepted.', array(), null);
 		}
-		if(empty($this->hardCopyPrice) && !is_int($this->hardCopyPrice)){
+		if(!empty($this->hardCopyPrice) && !is_int($this->hardCopyPrice)){
             $propertyPath = $context->getPropertyPath().'hardCopyPrice';
         	$context->addViolationAtPath($propertyPath,'Only integers are accepted.', array(), null);
 		}
