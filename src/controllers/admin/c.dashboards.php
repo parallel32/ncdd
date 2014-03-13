@@ -79,7 +79,6 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 	$user = Model\User::getUserAccessLevelBySession($app);
 	if($user['accessLevel'] == ADMIN){
 		$rand = rand(1,100);
-		error_log('rand:'.$rand);
 		if ($rand<=CHANCE_SERVICE){
 			// publish blogs
 			error_log('blogs published: '.file_get_contents('http://'.SAW_ADMIN_WEBSITE.'/blog/publish-schedule'));

@@ -1,3 +1,11 @@
+<? 
+$user = call_user_func(function($app){ $user = $app['session']->get('user'); return $user;},$this->app);
+if(is_array($user) && array_key_exists('accessLevel',$user)): 
+   $signed_in = true;
+else: 
+   $signed_in = false;
+endif; 
+?>
                     <? $product = $this->vars['product']; ?>
                     <div class="row-fluid blog">
                         <div class="title text-center">
@@ -26,6 +34,7 @@
                             
                             <div class="pull-right span12 tab-content">
                                 <div class="tab-pane active" id="ncddStorePage">
+                                    <? if($product['currentStatus'] >= \Saw\Model\Product::$status['MEMBERSONLY']): ?>
                                     <ul class="productList">
                                         <li class="productListItem">
                                             <? if (!empty($product['image'])): ?>
@@ -41,9 +50,7 @@
                                             <div class="pull-right productInfo">
                                                 <div class="productTitleBlock">
                                                     <h3 class="productTitle pull-left"><?=$product['name']?></h3>
-                                                    <? 
-                                                    $user = call_user_func(function($app){ $user = $app['session']->get('user'); return $user;},$this->app);
-                                                    if(is_array($user) && array_key_exists('accessLevel',$user) && $product['price'] != $product['memberPrice']): ?>
+                                                    <? if($signed_in && $product['price'] != $product['memberPrice']): ?>
                                                         <div class="price pull-right"><span class="oldPrice">$<?=$product['price']?></span><span class="newPrice">$<?=$product['memberPrice']?></span></div>
                                                     <? else: ?>
                                                         <div class="price pull-right"><span class="newPrice">$<?=$product['price']?></span></div>
@@ -75,6 +82,15 @@
                                                             </form>
                                                             
                                                         </div>
+                                                        <? if(!$signed_in && $product['currentStatus'] == \Saw\Model\Product::$status['MEMBERSONLY']): ?> 
+                                                        <div class="quantityBox pull-right">
+                                                        <form id="saw-form2" action="get" class="text-center">
+                                                            <div class="quantity control-group">
+                                                                <label for="quantity" style=""><p style="padding-left:15px;padding-right:15px;">Purchase of this item is reserved for members only</p></label>
+                                                            </div>
+                                                        </form>
+                                                        </div>
+                                                        <? else: ?>
                                                         <div class="quantityBox pull-right">
                                                         <form id="saw-form2" action="get" class="text-center">
                                                             <div class="quantity control-group">
@@ -86,6 +102,7 @@
                                                             <input id="add-to-cart" type="button" value="">
                                                         </form>
                                                         </div>
+                                                        <? endif; ?>
                                                     </div>
                                                 </div>
                                                 
@@ -96,7 +113,9 @@
                                             </div>
                                         </li>
                                     </ul>
-                                    
+                                    <? else: ?>
+                                    <p> <h3 class="text-center">This product is currently not available for purchase</h3> </p>
+                                    <? endif; ?>
                                     <!-- RELATED PRODUCTS-->
                                     <h3 class="relatedSubtitle">RELATED PRODUCTS</h3>
                                     <ul class="thumbnails">
@@ -106,7 +125,11 @@
                                                 <div class="thumbnailBd">
                                                     <h3><?=$product['name']?></h3>
                                                     <p class="price">$<?=$product['price']?></p>
+                                                    <? if(!$signed_in && $product['currentStatus'] == \Saw\Model\Product::$status['MEMBERSONLY']): ?> 
+                                                    <p style="padding-left:50px;padding-right:50px;">Purchase of this item is reserved for members only</p>
+                                                    <? else: ?>
                                                     <a href="" data-id="<?=$product['_id']?>" class="addToCardBtn"></a>
+                                                    <? endif; ?>
                                                     <a href="/store/<?=$product['_id']?><?=$product['slug']?>" class="more">more info  &gt;</a>
                                                 </div>
                                             </div>

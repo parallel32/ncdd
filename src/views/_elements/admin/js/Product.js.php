@@ -47,13 +47,10 @@
 			}
 		});
 		$('#saw-form .btn.save').click(function(e){
-			Product.saveDraft();
+			Product.save();
 		});
 		$('#saw-form .btn.save-order').click(function(e){
 			Product.saveOrder();
-		});
-		$('#saw-form .btn.save-publish').click(function(e){
-			Product.savePublish();
 		});
 		$('#saw-form .btn.delete').click(function(e){
 	      	$('#delete-modal').modal({keyboard: false});   
@@ -89,14 +86,6 @@
 			
 		});	
 
-	};
-	Product.savePublish = function (){
-		$('#currentStatus').val(<?=\Saw\Model\Product::$status['PUBLISH'];?>);
-		Product.save();
-	};
-	Product.saveDraft = function (){
-		$('#currentStatus').val(<?=\Saw\Model\Product::$status['UNPUBLISH'];?>);
-		Product.save();
 	};
 	Product.saveOrder = function (postSuccess){
 		

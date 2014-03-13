@@ -14,7 +14,6 @@
                   <div class="span12">
                      <form id="saw-form" class="horizontal-form portlet">
                         <input id="add" type="hidden" name="doc[add]" value="<?=$this->vars['add']?>">
-                        <input id="currentStatus" type="hidden" name="doc[currentStatus]" value="">
                         <input id="_id" type="hidden" name="doc[_id]" value="<?=(array_key_exists('product',$this->vars)) ? $this->vars['product']['_id'] : '' ?>">
                         <!-- ERROR -->
                         <div class="alert alert-error hide">
@@ -44,6 +43,25 @@
                                  <label class="control-label"></label>
                                  <div class="controls">
                                     <input type="text" name="doc[slug]" value="<?=(!empty($this->vars['product']) && array_key_exists('slug',$this->vars['product'])) ? $this->vars['product']['slug']: ''?>" class="m-wrap span10 slug">
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        <h3 class="form-section text-info"><strong>Publish Status</strong></h3>
+                        <p>Selecting "MEMBERSONLY" will publish the product and not allow non-members to purchase.</p>
+                        <p>Selecting "PUBLISH" will publish the product and allow anyone to purchase.</p>
+                        <p>Selecting "UNPUBLISH" will remove this product from the online catalog but, not delete it.</p>
+                        <div class="row-fluid">
+                           <div class="span12 ">
+                              <div class="control-group ">
+                                 <label class="control-label"></label>
+                                 <div class="controls">
+                                    <select name="doc[currentStatus]" class="span6 m-wrap currentStatus" data-placeholder="Choose a Category" tabindex="1">
+                                       <option value="<?=\Saw\Model\Product::$status['PUBLISH']?>" <?=(array_key_exists('product',$this->vars) && array_key_exists('currentStatus',$this->vars['product'])) ? (\Saw\Model\Product::$status['PUBLISH'] == $this->vars['product']['currentStatus']) ? "selected" : "" : '';?>><?=\Saw\Model\Product::$statusReversed[\Saw\Model\Product::$status['PUBLISH']]?></option>
+                                       <option value="<?=\Saw\Model\Product::$status['MEMBERSONLY']?>" <?=(array_key_exists('product',$this->vars) && array_key_exists('currentStatus',$this->vars['product'])) ? (\Saw\Model\Product::$status['MEMBERSONLY'] == $this->vars['product']['currentStatus']) ? "selected" : "" : '';?>><?=\Saw\Model\Product::$statusReversed[\Saw\Model\Product::$status['MEMBERSONLY']]?></option>
+                                       <option value="<?=\Saw\Model\Product::$status['UNPUBLISH']?>" <?=(array_key_exists('product',$this->vars) && array_key_exists('currentStatus',$this->vars['product'])) ? (\Saw\Model\Product::$status['UNPUBLISH'] == $this->vars['product']['currentStatus']) ? "selected" : "" : '';?>><?=\Saw\Model\Product::$statusReversed[\Saw\Model\Product::$status['UNPUBLISH']]?></option>
+                                    </select>
                                  </div>
                               </div>
                            </div>
@@ -174,8 +192,7 @@
                         </div>
                         <!--/ ERROR -->
                         <div class="form-actions text-center">
-                           <button type='button' class='btn green save-publish'><i class='icon-ok'></i>Save and Publish.</button>
-                           <button type='button' class='btn yellow save'><i class='icon-pencil'></i>Save and don't Publish.</button>
+                           <button type='button' class='btn green save'><i class='icon-ok'></i>Save</button>
                            <button type='button' class='btn red delete'>Delete</button>
                            <button type='button' class='btn cancel'>Cancel</button>
                         </div>

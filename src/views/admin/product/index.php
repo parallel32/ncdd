@@ -149,6 +149,7 @@
                                  <?
                                     switch ($product['currentStatus']) {
                                        case 'PUBLISH':
+                                       case 'MEMBERSONLY':
                                           $currentStatus = '<span class="label label-success">'.$product['currentStatus'].'</span>';
                                           break;
                                        case 'UNPUBLISH':
@@ -161,7 +162,7 @@
                                  <td class="center hidden-480 "><?=(is_array($product['category'])) ? $product['category']['name']: $product['category'];?></td>
                                  <td class=" ">
                                     <a data-id="<?=$product['_id']?>" class="btn blue mini edit"><i class=" "></i> Edit</a>
-                                    <? if ($product['currentStatus'] == 'PUBLISH') { ?>
+                                    <? if ($product['currentStatus'] >= 'MEMBERSONLY') { ?>
                                     <a data-id="<?=$product['_id']?>" data-slug="<?=$product['slug']?>" class="btn blue mini view"><i class=" "></i> View</a>
                                     <? } ?>
                                  </td>

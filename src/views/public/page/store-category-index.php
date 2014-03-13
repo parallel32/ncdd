@@ -1,4 +1,11 @@
-
+<? 
+$user = call_user_func(function($app){ $user = $app['session']->get('user'); return $user;},$this->app);
+if(is_array($user) && array_key_exists('accessLevel',$user)): 
+   $signed_in = true;
+else: 
+   $signed_in = false;
+endif; 
+?>
                     <div class="row-fluid blog">
                         <div class="title text-center">
                             <div class="bg">
@@ -38,19 +45,22 @@
                                             <div class="pull-right productInfo productDescr">
                                                 <div class="productTitleBlock">
                                                     <a href="/store/<?=$product['_id']?><?=$product['slug']?>" class="productTitle pull-left"><?=$product['name']?></a>
-                                                    <? 
-                                                    $user = call_user_func(function($app){ $user = $app['session']->get('user'); return $user;},$this->app);
-                                                    if(is_array($user) && array_key_exists('accessLevel',$user) && $product['price'] != $product['memberPrice']): ?>
-                                                        <div class="price pull-right"><span class="oldPrice">$<?=$product['price']?></span><span class="newPrice">$<?=$product['memberPrice']?></span></div>
+                                                    <? if($signed_in && $product['price'] != $product['memberPrice']): ?>
+                                                        <div class="price pull-right"><span class="oldPrice">$<?=$product['price']?></span><span class="newPrice">$<?=$product['memberPrice']?> (member price)</span></div>
                                                     <? else: ?>
                                                         <div class="price pull-right"><span class="newPrice">$<?=$product['price']?></span></div>
                                                     <? endif; ?>
                                                     
                                                 </div>
+                                                
                                                 <div class="productInfoBlock pull-right">
                                                     <form class="pull-left">
-                                                        <div class="quantity pull-left"><label for="qauntity">quantity</label><input class="quantity-input" type="text" value="1"></div>
-                                                        <input data-id="<?=$product['_id']?>" type="button" value="" class="addToCardBtn pull-left">
+                                                        <? if(!$signed_in && $product['currentStatus'] == \Saw\Model\Product::$status['MEMBERSONLY']): ?> 
+                                                            <div class="quantity pull-left"><label for="qauntity">Purchase of this item is<br> reserved for members only</label></div>
+                                                        <? else: ?>
+                                                            <div class="quantity pull-left"><label for="qauntity">quantity</label><input class="quantity-input" type="text" value="1"></div>
+                                                            <input data-id="<?=$product['_id']?>" type="button" value="" class="addToCardBtn pull-left">
+                                                        <? endif; ?>
                                                     </form>
                                                 </div>
                                                 <p class="descr"><?=$product['description']?></p>

@@ -16,8 +16,8 @@ use Cocur\Slugify\Slugify;
 class Product extends Model {
 	
 	public $collection = 'product';
-	static public $status = array('UNPUBLISH'=>30,'PUBLISH'=>50,);
-	static public $statusReversed = array(30=>'UNPUBLISH', 50=>'PUBLISH');
+	static public $status = array('UNPUBLISH'=>30,'MEMBERSONLY'=>40,'PUBLISH'=>50);
+	static public $statusReversed = array(30=>'UNPUBLISH', 40=>'MEMBERSONLY', 50=>'PUBLISH');
 	public $currentStatus;
 	public $name;
 	public $description;
@@ -175,7 +175,7 @@ class Product extends Model {
 	}
 	public function fetchByCategory($category='', $offset=0,$limit=100){
 		if(!empty($category)) $category = (is_object($category)) ? $category : new \MongoId($category);
-		$query = (!empty($category)) ? array('category._id'=>$category,'currentStatus'=>self::$status['PUBLISH']): array();
+		$query = (!empty($category)) ? array('category._id'=>$category,'currentStatus'=>array('$gte'=>self::$status['MEMBERSONLY'])): array();
 		$fields = array();
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('name'=>1),(int)$offset,(int)$limit);
 		return $result;
