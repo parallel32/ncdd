@@ -226,6 +226,7 @@ endif;
    <script src="/assets/plugins/jquery.pulsate.min.js" type="text/javascript"></script>
    <script src="/assets/plugins/bootstrap-modal/js/bootstrap-modal.js" type="text/javascript" ></script>
   <script src="/assets/plugins/bootstrap-modal/js/bootstrap-modalmanager.js" type="text/javascript" ></script>
+  <script src="/assets/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js" type="text/javascript" ></script>
    <!-- END PAGE LEVEL PLUGINS -->
    <!-- BEGIN PAGE LEVEL SCRIPTS -->
    <script src="/assets/scripts/app.js" type="text/javascript"></script>

@@ -30,15 +30,15 @@ class SeminarRegister extends Model {
 	 * validator helper function
 	*/
 	public function isValidPrice(ExecutionContext $context){
-		if(!empty($this->memberPrice) && !is_int($this->memberPrice)){
+		if(empty($this->memberPrice) && !is_int($this->memberPrice)){
             $propertyPath = $context->getPropertyPath().'memberPrice';
         	$context->addViolationAtPath($propertyPath,'Only integers are accepted.', array(), null);
 		}
-		if(!empty($this->nonMemberPrice) && !is_int($this->nonMemberPrice)){
+		if(empty($this->nonMemberPrice) && !is_int($this->nonMemberPrice)){
             $propertyPath = $context->getPropertyPath().'nonMemberPrice';
         	$context->addViolationAtPath($propertyPath,'Only integers are accepted.', array(), null);
 		}
-		if(!empty($this->hardCopyPrice) && !is_int($this->hardCopyPrice)){
+		if(empty($this->hardCopyPrice) && !is_int($this->hardCopyPrice)){
             $propertyPath = $context->getPropertyPath().'hardCopyPrice';
         	$context->addViolationAtPath($propertyPath,'Only integers are accepted.', array(), null);
 		}
