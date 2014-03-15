@@ -126,6 +126,7 @@ class Product extends Model {
 		}
 		$this->add = $doc['add'];
 		$this->slug = (empty($doc['slug']) && !empty($doc['name'])) ? self::slugify($doc['name']): $doc['slug'];
+		$this->slug = ($this->slug[0] != '/') ? '/'.$this->slug: $this->slug;
 	}
 	
 	/**

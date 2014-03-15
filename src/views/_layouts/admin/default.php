@@ -34,6 +34,7 @@
 
 	<style>
 		body .buorg {font-size:20px}
+		.editable img{padding:20px;}
   	</style>
   	<script type="text/javascript"> 
 		var $buoop = {vs:{i:9,f:20,o:11,s:5,n:9},reminder:24} 

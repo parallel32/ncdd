@@ -14,8 +14,11 @@
         <script src="/assets/js/custom.js"></script>
         <link href="/assets/stylesheets/layout-content.min.css" rel="stylesheet" type="text/css"/>
         <link href="/assets/stylesheets/bootstrap-modal.min.css" rel="stylesheet" type="text/css"/>
-
     </head>
+    <style>
+        p img{padding:20px;}
+        p.embedly iframe {padding:20px;}
+    </style>
     <body>
         <div class="wrapper">
             <?=$this->element('nav')?>
