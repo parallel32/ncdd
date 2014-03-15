@@ -41,7 +41,6 @@ class ProductOrder extends Model {
 		$this->image = $doc['image'];
 		$this->category = $doc['category'];
 		$this->slug = $doc['slug'];
-		$this->slug = ($this->slug[0] != '/') ? '/'.$this->slug: $this->slug;
 		$this->quantity = $doc['quantity'];
 		$this->preference = $doc['preference'];	
 	}

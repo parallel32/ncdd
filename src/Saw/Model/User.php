@@ -76,7 +76,6 @@ class User extends Model {
         $this->image = $doc['image'];
 		$this->profileImageUrl = $doc['profileImageUrl'];
 		$this->slug = $doc['slug'];
-		$this->slug = ($this->slug[0] != '/') ? '/'.$this->slug: $this->slug;
 		
 		//$this->status = (!empty($doc['status'])) ? ($doc['status']=='yes') ? USER_STATUS_ACTIVE: USER_STATUS_INACTIVE : '' ;
 
