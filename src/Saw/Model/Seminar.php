@@ -116,7 +116,7 @@ class Seminar extends Model {
 		$this->location = $doc['location'];
 		$this->headline = $doc['headline'];
         $this->slug = (empty($doc['slug'])) ? self::slugify($this->headline): $doc['slug'];
-        $this->slug = ($this->slug[0] != '/') ? '/'.$this->slug: $this->slug;
+        //$this->slug = ($this->slug[0] != '/') ? '/'.$this->slug: $this->slug;
 		$this->timeZone = $doc['timeZone'];
         $this->startDate = (!empty($doc['startDate'])) ? (is_object($doc['startDate'])) ? $doc['startDate']->__toArray() : new Date(self::$app,$doc['startDate'], $this->timeZone)  : $doc['startDate'];
 		$this->endDate = (!empty($doc['endDate'])) ? (is_object($doc['endDate'])) ? $doc['endDate']->__toArray() : new Date(self::$app,$doc['endDate'], $this->timeZone)  : $doc['endDate'];

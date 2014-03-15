@@ -59,7 +59,7 @@ class Page extends Model {
         
 		$this->headline = $doc['headline'];
 		$this->slug = (empty($doc['slug']) && !empty($doc['headline'])) ? self::slugify($doc['headline']): $doc['slug'];
-		$this->slug = ($this->slug[0] != '/') ? '/'.$this->slug: $this->slug;
+		//$this->slug = ($this->slug[0] != '/') ? '/'.$this->slug: $this->slug;
 		include_once __DIR__.'/../Provider/WordPress/ncdd-wp-includes.php';
 		$this->body = (!empty($doc['body'])) ? wptexturize(wpautop($doc['body'])) : '';
 		$this->publishedDate = $doc['publishedDate'];
