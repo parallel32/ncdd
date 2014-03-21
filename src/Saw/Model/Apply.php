@@ -333,7 +333,7 @@ class Apply extends Model {
 			$memberId = 'notfound';
 		endif;
 
-		$member = new Member(array('_id'=>$memberId,'accessLevel'=>MEMBER,'listed'=>1),self::$app);
+		$member = new Member(array('_id'=>$memberId,'accessLevel'=>MEMBER,'changeAccessLevelTo'=>MEMBER,'listed'=>1),self::$app);
 		$member->saveSafe();
 		if($resetSession){
 			$member->setUserSession();
