@@ -1,5 +1,5 @@
 <?
-	$return_to_app_index = (array_key_exists('_id', $this->vars['application']) && strpos(strtolower($this->vars['application']['class']),'update') !== false) ? "document.location.href='/renewals';": "document.location.href='/applications';";
+	$return_to_app_index = (array_key_exists('application', $this->vars)) ? (array_key_exists('_id', $this->vars['application']) && strpos(strtolower($this->vars['application']['class']),'update') !== false) ? "document.location.href='/renewals';": "document.location.href='/applications';" : '';
 ?>
 <script type="text/javascript">
 (function( Application, $, undefined ) {

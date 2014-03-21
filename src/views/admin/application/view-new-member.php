@@ -460,6 +460,8 @@
                      </div>
                      <!--/span-->
                   </div>
+                  
+                  <!--
                   <h3 class="form-section text-center">THE NATIONAL COLLEGE FOR DUI DEFENSE, INC.</br> AUTHORIZATION AND RELEASE</h3>
                   <div class="row-fluid">
                      <div class="span12">
@@ -489,7 +491,7 @@
                            </br></br>
                         </p>
                      </div>
-                     <!--/span-->
+                     <!--/span--
                   </div>
                   <div class="row-fluid">
                      <div class="span12 ">
@@ -504,8 +506,9 @@
                            
                         </div>
                      </div>
-                     <!--/span-->
+                     <!--/span--
                   </div>
+                  -->
                   <div class="row-fluid">
                      <div class="span12">
                         <div class="control-group">

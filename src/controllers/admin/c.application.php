@@ -11,8 +11,6 @@ use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Saw\Model;
 
-
-
 $app['applicationEmails'] = $app->protect(function ($app,$applicationId,$context) {
 
 	$apply = new Model\Apply(array('_id'=>$applicationId), $app);
