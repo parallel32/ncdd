@@ -14,7 +14,7 @@
                                         <? if(is_array($user) && array_key_exists('accessLevel', $user)){ ?>
                                         <a href="https://<?=SAW_ADMIN_WEBSITE ?>" class="dropdown-toggle" data-toggle="dropdown" id="memberDropDown">Welcome, <?=$user['displayName']?></a>
                                         <? } else { ?>
-                                        <a href="https://<?=SAW_ADMIN_WEBSITE ?>" >Member <b>Sign in</b></a>
+                                        <a href="https://<?=SAW_ADMIN_WEBSITE ?>/login" >Member <b>Sign in</b></a>
                                         <? } ?>
                                         <ul class="dropdown-menu" role="menu" aria-labelledby="memberDropDown">
                                             <li role="menuitem">

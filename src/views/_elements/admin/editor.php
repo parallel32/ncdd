@@ -102,14 +102,15 @@
                       /*,content_css: "/assets/plugins/bootstrap/css/bootstrap.min.css,/assets/css/p.css"*/
                       ,plugins: "ncddcustom code link image textcolor charmap pagebreak fullscreen preview paste autoresize table fullscreen media image"
                       ,toolbar1: "bold italic strikethrough bullist numlist blockquote saw-blockquote saw-well alignleft aligncenter alignright link unlink table code fullscreen preview"
-                      ,toolbar2: "undo redo underline alignjustify textcolor removeformat charmap outdent indent formatselect fontsizeselect styleselect cut copy paste"
+                      ,toolbar2: "undo redo underline alignjustify textcolor removeformat charmap outdent indent formatselect fontsizeselect styleselect cut copy paste pasteword"
                       ,toolbar3: "<?=(!empty($access_token)) ? 'saw-vfl ':''?>saw-embed-media saw-embed-website saw-embed-photo saw-embed-file | media image"
                       ,plugin_preview_width : $(window).width()-100
                       ,plugin_preview_height : $(window).height()-100
                       ,paste_data_images: false
-                      ,paste_word_valid_elements: "b,strong,i,u,em,h1,h2,h3,h4,ul,ol,a,hr"
+                      /*,paste_word_valid_elements: "b,strong,i,u,em,h1,h2,h3,h4,ul,ol,a,hr"*/
+                      /*,extended_valid_elements : "span[!class]"*/
                       ,paste_preprocess: function(plugin, args) {
-                        /*  word processing isn't needed at the moment since it has no real effect 
+                        /*// word processing isn't needed at the moment since it has no real effect 
                           $('#paste-preprocess-datafield').val(args.content);
                           args.content = '';
                           io.saw.FormPost.activate({postUrl:'/content-formatter'
@@ -121,7 +122,7 @@
                                 }
                              }
                           }); 
-                        */
+                        //*/
                       }
                       ,paste_postprocess: function(plugin, args) {
                         /*nothing to do*/

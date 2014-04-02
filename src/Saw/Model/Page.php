@@ -62,6 +62,7 @@ class Page extends Model {
 		
 		include_once __DIR__.'/../Provider/WordPress/ncdd-wp-includes.php';
 		$this->body = (!empty($doc['body'])) ? wptexturize(wpautop($doc['body'])) : '';
+		$this->body = $doc['body'];
 		$this->publishedDate = $doc['publishedDate'];
 		$this->section = $doc['section'];
 		
