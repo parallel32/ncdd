@@ -22,7 +22,7 @@ $utilities->before($mustbeADMIN);
 ///////////////////////////////////
 
 $utilities->get('/importmembernamefix', function () use ($app) {
-    //return 'disabled';
+    return 'disabled';
     ini_set('memory_limit','1024M');
     
     $fields = array();
