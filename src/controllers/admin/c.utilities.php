@@ -17,6 +17,63 @@ $utilities = $app['controllers_factory'];
 $utilities->before($mustbeADMIN);
 
 
+////////////////////////////////////
+// import member name corrections //
+///////////////////////////////////
+
+$utilities->get('/importmembernamefix', function () use ($app) {
+    //return 'disabled';
+    ini_set('memory_limit','1024M');
+    
+    $fields = array();
+    $fields[]='lastName';
+    $fields[]='firstName';
+    $fields[]='middleName';
+    $fields[]='_id';
+    
+    //*
+    $cnt = 1;
+    $row = 1;
+    if (($handle = fopen("/var/www/upload/member-export-name-fix.csv", "r")) !== FALSE) {
+        while (($data = fgetcsv($handle)) !== FALSE) {
+            $num = count($data);
+            //echo "<p> $num fields in line $row: <br /></p>\n";
+            $row++;
+            for ($c=0; $c < $num; $c++) {
+                $output[$row][$fields[$c]] = trim($data[$c]);
+                //echo $data[$c] . "<br />\n";
+            }
+            echo "<pre>";print_r($output[$row]);echo "</pre>";
+        }
+        fclose($handle);
+    }
+    //echo "<pre>";print_r($output);echo "</pre>";
+    //*
+
+    //*
+    // create the topics
+    $cnt = 1;
+    $total = count($output);
+    foreach ($output as $record):
+        if(array_key_exists('lastName',$record) && array_key_exists('firstName',$record) && array_key_exists('middleName',$record) && array_key_exists('_id',$record) && $record['_id'] != '_id'){
+            
+            $doc = array();
+            $doc['lastName'] = $record['lastName'];
+            $doc['firstName'] = $record['firstName'];
+            $doc['middleName'] = $record['middleName'];
+            $doc['_id'] = trim($record['_id']);
+            $member = new Model\Member($doc,$app);
+            $member->saveEdit();
+            $cnt++;        
+        }
+        
+    endforeach;
+    //*/
+    return new Response('cool: '.$cnt.' members updated',200,array('Content-Type' => 'text/html')); 
+});
+
+
+
 ////////////////////
 // wizzywig tests //
 ////////////////////
