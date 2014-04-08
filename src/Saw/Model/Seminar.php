@@ -26,6 +26,7 @@ class Seminar extends Model {
 	public $files; // array containing any files to be attached via upload.
 	public $image; // image object
 	public $register; // register object
+	public $registerNotice; // registration notice
 
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addPropertyConstraint('location', new Constraints\NotBlank(array('message'=>'cannot be blank')));
@@ -124,6 +125,7 @@ class Seminar extends Model {
 		$this->files = $doc['files'];
         $this->image = (is_object($doc['image'])) ? $doc['image']->__toArray() : $doc['image'];
         $this->register = (is_object($doc['register'])) ? $doc['register']->__toArray() : $doc['register'];
+        $this->registerNotice = $doc['registerNotice'];
 	}
 	
 	/**
@@ -140,6 +142,7 @@ class Seminar extends Model {
 		$this->files = $this->files ?: array();
 		$this->image = (!empty($this->image)) ? (is_object($this->image)) ? $this->image->__toArray() : $this->image  : new \stdClass();
 		$this->register = (!empty($this->register)) ? (is_object($this->register)) ? $this->register->__toArray() : $this->register  : new \stdClass();
+		$this->registerNotice = $this->registerNotice ?: array();
 	}
 	public function insert(){
 		$this->prepareInsert();

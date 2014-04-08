@@ -151,6 +151,13 @@
                                     You have some form errors. Please check below.
                                  </div>
                                  <div class="control-group">
+                                    <label class="control-label">Registration Notice</label>
+                                    <div class="controls">
+                                      <input type="text" name="doc[registerNotice]" value="<?=(array_key_exists('registerNotice',$seminar)) ? $seminar['registerNotice'] : '';?>" data-required="1" class="span12 m-wrap registerNotice">
+                                      <span class="help-block">If filled in, this will place a large blue banner above the registration fields.</span>
+                                    </div>
+                                 </div>
+                                 <div class="control-group">
                                     <label class="control-label">Activate Registration</label>
                                     <div class="controls">
                                        <select name="doc[register][currentStatus]" class="span6 m-wrap currentStatus" data-placeholder="Choose a Category" tabindex="1">
@@ -410,8 +417,10 @@
       <?=$this->element('js/Seminar.js');?>
       <?=$this->element('js/FileUploadClass.js');?>
       <?=$this->element('js/FormDatePickerClass.js');?>
+      <?=$this->element('js/ClearField.js');?>
       <script>
-      jQuery(document).ready(function() {    
+      jQuery(document).ready(function() {   
+
          io.saw.FormDatePicker.init('range');
          io.saw.Seminar.init('edit');
          io.saw.Seminar.sluggify('headline','headline');
@@ -447,7 +456,7 @@
                $('.btn.blue.start').show();
             }
          });
-
+         io.saw.ClearField.init({formArr:['#register-form']});
       });
       </script>
       <? $id = $seminar['_id'] ?>
