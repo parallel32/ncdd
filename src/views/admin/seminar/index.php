@@ -54,7 +54,7 @@
                               </a>
                               <? else: ?>
                               <a class="btn grey disabled" data-name="<?=$slug?>" data-id="<?=$seminar['_id']?>">
-                                Registration Not Available
+                                Registration will be available soon.
                               </a>
                               <? endif; ?>
 
