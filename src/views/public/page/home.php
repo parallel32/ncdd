@@ -77,7 +77,7 @@
                                         <? /**
 
                                         */?>
-                                        <p><?if(strlen($post['body'])>299){echo substr($post['body'],0,strpos($post['body'], ' ',300));?> ...<a href="/blog/<?=$post['_id']?><?=$post['slug']?>">read more</a><?}else{ echo $post['body']; }?></p>
+                                        <p><?if(strlen($post['body'])>299){$post['body'] = strip_tags($post['body']); echo substr($post['body'],0,strpos($post['body'], ' ',300));?> ...<a href="/blog/<?=$post['_id']?><?=$post['slug']?>">read more</a><?}else{ echo $post['body']; }?></p>
                                         <div class="autor">
                                             <img src="<?=(!empty($post['author']['image'])) ? $post['author']['image']['urls']['small']['SSLCDN'] : '/noprofileimage';?>" alt="" class="avatar pull-left">
                                             <? $middleName = (!empty($post['author']['middleName'])) ? ' '.$post['author']['middleName'].' ':' '; ?>
@@ -120,12 +120,15 @@
                                         <h4 class="text-center"><a href="/sessions-and-seminars/<?=$seminar['_id']?><?=$slug?>"><?=$seminar['headline']?></a></h4>
                                         <h5 class="text-center"><a href="/sessions-and-seminars/<?=$seminar['_id']?><?=$slug?>"><?=(array_key_exists('location',$seminar)) ? $seminar['location']: '';?></a></h5>
                                         <p class="data text-center"><?=$seminar['startDate']['monthDay']?> - <?=$seminar['endDate']['monthDay']?>, <?=$seminar['startDate']['year']?></p><br>
-                                        <? if (strlen($seminar['description']) > 500){ ?>
+                                        <? $seminar['description'] = strip_tags($seminar['description']); 
+                                        if (strlen($seminar['description']) > 500){ ?>
                                         <p class="descr text-center"><?=substr($seminar['description'],0,strpos($seminar['description'], ' ',500))?> ...</p>
-                                        <p><a href="/sessions-and-seminars/<?=$seminar['_id']?><?=$slug?>">Read More</a></p>
+                                        <br>
+                                        <p class="text-center"><a href="/sessions-and-seminars/<?=$seminar['_id']?><?=$slug?>">Read More</a></p>
                                         <? }else{ ?>
                                         <p class="descr text-center"><?=$seminar['description']?></p>
-                                        <p><a href="/sessions-and-seminars/<?=$seminar['_id']?><?=$slug?>">Read More</a></p>
+                                        <br>
+                                        <p class="text-center"><a href="/sessions-and-seminars/<?=$seminar['_id']?><?=$slug?>">Read More</a></p>
                                         <? } ?>
                                     </div>
                                 </div>

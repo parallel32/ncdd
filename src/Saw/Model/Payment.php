@@ -256,7 +256,7 @@ class Payment extends Model {
 	}
 	public function fetchAll(){
 		if(!empty($this->memberId)){
-			$result = $this->find($query=array('memberId'=>$this->memberId),$fields=array(),true,$sort=array('_id'=>-1));
+			$result = $this->find($query=array('memberId'=>$this->memberId),$fields=array(),true,0,1000,$sort=array('_id'=>-1));
 		}else{
 			$result = $this->find($query=array(),$fields=array(),true,$sort=array('_id'=>-1));
 		}
