@@ -77,7 +77,7 @@
                                         <? /**
 
                                         */?>
-                                        <p><?if(strlen($post['body'])>299){$post['body'] = strip_tags($post['body']); echo substr($post['body'],0,strpos($post['body'], ' ',300));?> ...<a href="/blog/<?=$post['_id']?><?=$post['slug']?>">read more</a><?}else{ echo $post['body']; }?></p>
+                                        <p><?if(strlen($post['body'])>299){$post['body'] = strip_tags($post['body']); echo substr($post['body'],0,strpos($post['body'], ' ',300));?> ...<br><br><p class="text-center"><a href="/blog/<?=$post['_id']?><?=$post['slug']?>">Read More</a></p><?}else{ echo $post['body']; }?></p>
                                         <div class="autor">
                                             <img src="<?=(!empty($post['author']['image'])) ? $post['author']['image']['urls']['small']['SSLCDN'] : '/noprofileimage';?>" alt="" class="avatar pull-left">
                                             <? $middleName = (!empty($post['author']['middleName'])) ? ' '.$post['author']['middleName'].' ':' '; ?>
