@@ -77,6 +77,9 @@
 		
 	};
 	Seminar.init = function(saveMode){
+		$('#manage-picture .btn.manage-picture').click(function(e){
+			document.location.href='/seminar/edit/<?=$this->vars['seminar']['_id']?>/edit-photo';
+		});
 		$('#saw-form input').keypress(function (e) {
 		   if (e.which == 13) {
 		      if(saveMode == 'edit'){

@@ -128,6 +128,63 @@ $seminar->get('/delete/{id}', function ($id, Request $request) use ($app, $commo
     
 })->value('id','');
 
+///////////////////
+// PHOTO EDITING //
+///////////////////
+$seminar->get('/edit/{id}/edit-photo', function ($id, Request $request) use ($app) {
+
+	$seminar = new Model\Seminar($doc=array('_id'=>new MongoId($id)), $app);
+	$seminar = $seminar->findById();
+	
+	
+	$crumbs = array(array('name'=>'Sessions & Seminars','href'=>'/seminar')
+					,array('name'=>$seminar['headline'],'href'=>'/seminar/edit/'.$id)
+					,array('name'=>'edit','href'=>'/seminar/edit/'.$id)
+					,array('name'=>'photo','href'=>'/seminar/edit/'.$id.'/edit-photo')
+	);
+
+	$view_vars = array(
+						 'active'=>'Seminar'
+						,'headline'=>'Seminar'
+						,'add-link'=>'/seminar/add'
+						,'page-plugin'=>'fileupload'
+						,'headline'=>'Seminar'
+						,'description'=>"Edit seminar photo"
+						,'crumbs'=>$crumbs
+						,'seminar'=>$seminar
+						,'image'=>(!empty($seminar['image'])) ? $app['getImageURL']($seminar['image'],'large') : '/placeholder'
+						,'imageDelete'=>(!empty($seminar['image'])) ? '/image/delete/'.$seminar['image']['context'].'/'.$seminar['image']['belongsTo'] : '');
+	return $app['view']->render('seminar/edit-photo', 'default', $view_vars);
+})
+->value('id','');
+
+$seminar->get('/edit/{id}/edit-photo-crop', function ($id, Request $request) use ($app) {
+
+	$seminar = new Model\Seminar($doc=array('_id'=>new MongoId($id)), $app);
+	$seminar = $seminar->findById();
+	
+	$crumbs = array(array('name'=>'Sessions & Seminars','href'=>'/seminar')
+					,array('name'=>$seminar['headline'],'href'=>'/seminar/edit/'.$id)
+					,array('name'=>'edit','href'=>'/seminar/edit/'.$id)
+					,array('name'=>'photo','href'=>'/seminar/edit/'.$id.'/edit-photo')
+					,array('name'=>'crop','href'=>'/seminar/edit/'.$id.'/edit-photo-crop')
+	);
+	
+	$view_vars = array(
+						 'active'=>'Seminar'
+						,'headline'=>'Seminar'
+						,'add-link'=>'/seminar/add'
+						,'page-plugin'=>'crop'
+						,'headline'=>'Seminar'
+						,'description'=>"Crop seminar photo"
+						,'crumbs'=>$crumbs
+						,'seminar'=>$seminar
+						,'image'=>(!empty($seminar['image'])) ? $app['getImageURL']($seminar['image'],'large') : '/placeholder'
+						);
+	return $app['view']->render('seminar/edit-photo-crop', 'default', $view_vars);
+})
+->value('id','');
+
 ////////////////////////
 // REAL-TIME SLUGGIFY //
 ////////////////////////
