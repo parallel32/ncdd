@@ -347,8 +347,44 @@ class Apply extends Model {
 		$curDay = date("j", $date->getTimeStamp());
 		$curQuarter = ceil($curMonth/3);
 		
-		switch ($curQuarter) {
-			case 1:
+		if($curQuarter <= 1){
+			switch ($this->membershipDues) {
+				case 175:
+					return array('q'=>1,'a'=>175);
+					break;
+				case 225:
+					return array('q'=>1,'a'=>225);
+					break;
+				case 50:
+					return array('q'=>1,'a'=>50);
+					break;
+			}
+		} else if($curQuarter > 1 && $curQuarter <= 2){
+			switch ($this->membershipDues) {
+				case 175:
+					return array('q'=>2,'a'=>150);
+					break;
+				case 225:
+					return array('q'=>2,'a'=>175);
+					break;
+				case 50:
+					return array('q'=>2,'a'=>50);
+					break;
+			}
+		} else if($curQuarter > 2 && $curQuarter <= 3){
+			switch ($this->membershipDues) {
+				case 175:
+					return array('q'=>3,'a'=>100);
+					break;
+				case 225:
+					return array('q'=>3,'a'=>125);
+					break;
+				case 50:
+					return array('q'=>3,'a'=>25);
+					break;
+			}
+		} else if($curQuarter > 3 && $curQuarter <= 4){
+			if($curMonth == 12 && $curDay >= 10){
 				switch ($this->membershipDues) {
 					case 175:
 						return array('q'=>1,'a'=>175);
@@ -360,64 +396,19 @@ class Apply extends Model {
 						return array('q'=>1,'a'=>50);
 						break;
 				}
-				break;
-			case 2:
+			}else{
 				switch ($this->membershipDues) {
 					case 175:
-						return array('q'=>2,'a'=>150);
+						return array('q'=>4,'a'=>50);
 						break;
 					case 225:
-						return array('q'=>2,'a'=>175);
+						return array('q'=>4,'a'=>75);
 						break;
 					case 50:
-						return array('q'=>2,'a'=>50);
+						return array('q'=>4,'a'=>25);
 						break;
-				}
-				break;
-			case 3:
-				switch ($this->membershipDues) {
-					case 175:
-						return array('q'=>3,'a'=>100);
-						break;
-					case 225:
-						return array('q'=>3,'a'=>125);
-						break;
-					case 50:
-						return array('q'=>3,'a'=>25);
-						break;
-				}
-				break;
-			case 4:
-				if($curMonth == 12 && $curDay >= 10){
-					switch ($this->membershipDues) {
-						case 175:
-							return array('q'=>1,'a'=>175);
-							break;
-						case 225:
-							return array('q'=>1,'a'=>225);
-							break;
-						case 50:
-							return array('q'=>1,'a'=>50);
-							break;
-					}
-				}else{
-					switch ($this->membershipDues) {
-						case 175:
-							return array('q'=>4,'a'=>50);
-							break;
-						case 225:
-							return array('q'=>4,'a'=>75);
-							break;
-						case 50:
-							return array('q'=>4,'a'=>25);
-							break;
-					}	
-				}
-				
-				break;
-			
+				}	
+			}
 		}
-		
-
 	}	
 }
