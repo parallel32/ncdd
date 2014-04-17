@@ -640,7 +640,26 @@
                               <div class="control-group">
                                  <label class="control-label">Trial Length</label>
                                  <div class="controls">
-                                    <select class="small m-wrap endDate" name="doc[endDate]">
+                                    <select class=" m-wrap endDate" name="doc[endDate]">
+                                       <?
+                                          $ts = strtotime('now');
+                                          $option_a_ts = strtotime('June 30 '.date('Y'));
+                                          $option_b_ts = strtotime('December 30 '.date('Y'));
+                                          if($option_a_ts > $ts){
+                                             $year_a = date('Y');
+                                          }
+                                          if($option_a_ts < $ts){
+                                             $year_a = date('Y') + 1;
+                                          }
+                                          if($option_b_ts > $ts){
+                                             $year_b = date('Y');
+                                          }
+                                          if($option_b_ts < $ts){
+                                             $year_b = date('Y') + 1;
+                                          }
+                                       ?>
+                                       <option value="June 30 <?=$year_a?>">June 30 <?=$year_a?></option>
+                                       <option value="December 30 <?=$year_b?>">December 30 <?=$year_b?></option>
                                        <option value="1 Month">1 Month</option>
                                        <option value="2 Months">2 Months</option>
                                        <option value="3 Months">3 Months</option>
