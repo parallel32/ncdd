@@ -142,7 +142,7 @@ img.thumbnail{ max-width: 100%;}
                                 <br>
                                 <div class="span5">                 
                                   <? if(!empty($member['specializeIn'])): ?>
-                                  <a href="#" class="orange"><i class="icon-map-marker"></i> Specialize in <?=$member['specializeIn']?></a>
+                                  <a href="#" class="orange"><i class="icon-map-marker"></i> Focus On <?=$member['specializeIn']?></a>
                                   <? endif; ?>
                                 </div>
                                 <div class="span6" style="margin-left:0px;">
@@ -157,7 +157,7 @@ img.thumbnail{ max-width: 100%;}
                                     <span class="phone span12 bc"><a href="tel:<?=$member['primaryPhone']?>"><?=$member['primaryPhone']?></a></span>
                                     <div class="span12">                 
                                       <? if(!empty($member['specializeIn'])): ?>
-                                      <a href="#" class="orange"><i class="icon-map-marker"></i> Specialize in <?=$member['specializeIn']?></a>
+                                      <a href="#" class="orange"><i class="icon-map-marker"></i> Focus On <?=$member['specializeIn']?></a>
                                       <? endif; ?>
                                     </div>
                                     <div class="span12">

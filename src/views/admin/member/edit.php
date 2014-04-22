@@ -401,7 +401,7 @@
                         <div class="row-fluid">
                            <div class="span12 ">
                               <div class="control-group ">
-                                 <label class="control-label">Specialize In:</label>
+                                 <label class="control-label">Focus On:</label>
                                  <div class="controls">
                                     <input type="text" name="doc[specializeIn]" value="<?=$this->vars['member']['specializeIn']?>" class="m-wrap span11 specializeIn">
                                     <span class="help-block">Example:  DWI / DUI Defense</span>

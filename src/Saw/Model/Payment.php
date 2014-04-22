@@ -179,6 +179,7 @@ class Payment extends Model {
 	}
 	/**
 	 * Issue a credit card refund on a previous charge
+	 * NOTE: currently not in use.
 	 */
 	public function refund($transactionId, $amount){
 		// prepare refund request here
@@ -194,7 +195,47 @@ class Payment extends Model {
 		error_log('REFUND response:'.print_r($response,true));
 	}
 	/**
+	 * Initiate a credit card charge
+	 */
+	public function chargeStripe(){
+		try {
+			// prepare charge request here
+			$request['amount'] = $this->amount*100; // because Stripe treats a dollar amount as 100 pennies
+			$request['currency'] = $this->currency;
+			$request['description'] = $this->description;
+			$request['card'] = $this->token;
+			$response = \Stripe_Charge::create($request, $this->secretKey);
+
+			$this->transactionId = $response->id;
+			$paymentId = $this->insert();
+			$this->markOwnerClassPaid($paymentId);
+			return $paymentId;
+		} catch (\Exception $e) {
+			throw new \Saw\Exceptions\SawException(new Exceptions\DomainException(),"The transaction failed.  Please try again. Processing Message: ".$e->getMessage()." Code:".$e->getCode());
+		}
+		
+	}
+	/**
+	 * Issue a credit card refund on a previous charge
+	 * NOTE: currently not in use.
+	 */
+	public function refundStripe($transactionId, $amount){
+		// prepare refund request here
+		$request['id'] = $transactionId;
+		$request['amount'] = $amount;
+		
+		$ch = \Stripe_Charge::retrieve($request['id'], $this->secretKey);
+		if(empty($request['amount'])){ // if not amount specified full refund
+			$response = $ch->refund();
+		}else{
+			$response = $ch->refund(array("amount"=>$request['amount']));
+		}
+		error_log('REFUND response:'.print_r($response,true));
+	}
+	/**
 	 * do a manual charge usually for check payemnts
+	 * This manually marks an item as paid by creating this 
+	 * record and marking the owner class paid the the factory method.
 	 */
 	public function manualCharge(){
 		try {
