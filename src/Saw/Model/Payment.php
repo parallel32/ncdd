@@ -37,7 +37,12 @@ class Payment extends Model {
 	
 	public $phone;
 	public $email;
-	public $amount;
+
+	public $amount; // charge amount (the full total and includes tax and shipping)
+	public $orderTotal;
+	public $shippingTotal;
+	public $discountTotal;
+	
 	public $description;
 	public $title;
 	public $ownerId; // can be anything: application, seminar, product
@@ -46,6 +51,14 @@ class Payment extends Model {
 	public $paidDate;
 	public $items;
 	public $memberId; //either loggedin user or has no value because it's a public store purchase
+
+	// FDGG specific
+	public $transactionOrigin;
+	public $invoiceNumber;
+	public $orderId;
+	public $referenceNumber;
+	public $poNumber;
+
 	private $currency = 'usd';
 	private $publicKey = SAW_STRIPE_PUBLIC_KEY;
 	private $secretKey = SAW_STRIPE_SECRET_KEY;
@@ -92,7 +105,7 @@ class Payment extends Model {
 		$this->expMonth = $doc['expMonth'];        
 		$this->expYear = $doc['expYear'];        
 		$this->cardType = $doc['cardType'];        
-		$this->number = '...'.$doc['number'];        
+		$this->number = $doc['number'];        
 		$this->cvc = $doc['cvc'];        
         $this->addressLine1 = $doc['addressLine1'];
         $this->addressLine2 = $doc['addressLine2'];
@@ -109,6 +122,9 @@ class Payment extends Model {
 		$this->phone = $doc['phone'];
 		$this->email = $doc['email'];
 		$this->amount = $doc['amount'];
+		$this->orderTotal = $doc['orderTotal'];
+		$this->shippingTotal = $doc['shippingTotal'];
+		$this->discountTotal = $doc['discountTotal'];
 		$this->description = $doc['description'];
 		$this->title = $doc['title'];
 		$this->ownerId = $doc['ownerId'];
@@ -117,6 +133,12 @@ class Payment extends Model {
 		$this->paidDate = $doc['paidDate'];
 		$this->items = $doc['items'];
 		$this->memberId = $doc['memberId'];
+		$this->transactionOrigin = $doc['transactionOrigin'];
+		$this->invoiceNumber = $doc['invoiceNumber'];
+		$this->orderId = $doc['orderId'];
+		$this->referenceNumber = $doc['referenceNumber'];
+		$this->poNumber = $doc['poNumber'];
+
 	}
 	
 	protected function prepareInsert(){
@@ -137,6 +159,9 @@ class Payment extends Model {
 		$this->phone = $this->phone ?: '';
 		$this->email = $this->email ?: '';
 		$this->amount = $this->amount ?: '';
+		$this->orderTotal = $this->orderTotal ?: '';
+		$this->shippingTotal = $this->shippingTotal ?: '';
+		$this->discountTotal = $this->discountTotal ?: '';
 		$this->description = $this->description ?: '';
 		$this->title = $this->title ?: '';
 		$this->ownerClass = $this->ownerClass ?: '';
@@ -145,6 +170,12 @@ class Payment extends Model {
 		$this->paidDate = $this->paidDate ?: new Date(self::$app, 'now');
 		$this->items = $this->items ?: array();
 		$this->memberId = (!empty($this->memberId)) ? (is_object($this->memberId)) ? $this->memberId : new \MongoId($this->memberId) : null;
+		$this->transactionOrigin = $this->transactionOrigin ?: '';
+		$this->invoiceNumber = $this->invoiceNumber ?: '';
+		$this->orderId = $this->orderId ?: '';
+		$this->referenceNumber = $this->referenceNumber ?: '';
+		$this->poNumber = $this->poNumber ?: '';
+
 	}
 	
 	public function insert(){
@@ -156,11 +187,121 @@ class Payment extends Model {
 		}
 	}
 	
+
+	private function prepareCurl($body){
+
+		// initializing cURL with the FDGGWS API URL: 
+		$ch = curl_init(SAW_FDGG_URL); 
+		// setting the request type to POST: 
+		curl_setopt($ch, CURLOPT_POST, 1); 
+		// setting the content type: 
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: text/xml")); 
+		// setting the authorization method to BASIC: 
+		curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC); 
+		// supplying your credentials: 
+		curl_setopt($ch, CURLOPT_USERPWD, SAW_FDGG_USERPWD); 
+		// filling the request body with your SOAP message: 
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $body); 
+		// configuring cURL not to verify the server certificate: 
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0); 
+		// setting the path where cURL can find the client certificate: 
+		curl_setopt($ch, CURLOPT_SSLCERT, SAW_FDGG_SSLCERT); 
+		// setting the path where cURL can find the client certificate’s 
+		// private key: 
+		curl_setopt($ch, CURLOPT_SSLKEY, SAW_FDGG_SSLKEY);
+		// setting the key password: 
+		curl_setopt($ch, CURLOPT_SSLKEYPASSWD, SAW_FDGG_SSLKEYPASSWD);
+		// telling cURL to return the HTTP response body as operation result 
+		// value when calling curl_exec: 
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+		return $ch;
+	}
+	
+	private function sendCharge(){
+		$date = new Date(self::$app,'now');
+$body = <<< EOT
+<fdggwsapi:FDGGWSApiOrderRequest xmlns:v1="http://secure.linkpt.net/fdggwsapi/schemas_us/v1" First Data Corp. Web Service API v6.0 14 xmlns:fdggwsapi="http://secure.linkpt.net/fdggwsapi/schemas_us/fdggwsapi">
+<v1:Transaction>
+<v1:CreditCardTxType>
+<v1:Type>sale</v1:Type>
+</v1:CreditCardTxType>
+<v1:CreditCardData>
+<v1:CardNumber>{$this->number}</v1:CardNumber>
+<v1:ExpMonth>{$this->expMonth}</v1:ExpMonth>
+<v1:ExpYear>{$this->expYear}</v1:ExpYear>
+<v1:CardCodeValue>{$this->cvc}</v1:CardCodeValue>
+</v1:CreditCardData>
+<v1:Payment>
+<v1:SubTotal>{$this->orderTotal}</v1:SubTotal>
+<v1:VATTax>0.00</v1:VATTax>
+<v1:Shipping>{$this->shippingTotal}</v1:Shipping>
+<v1:ChargeTotal>{$this->amount}</v1:ChargeTotal>
+</v1:Payment>
+<v1:TransactionDetails>
+<v1:UserID>{$this->memberId}</v1:UserID>
+<v1:InvoiceNumber>{$this->invoiceNumber}</v1:InvoiceNumber>
+<v1:OrderId>{$this->orderId}</v1:OrderId>
+<v1:Ip></v1:Ip>
+<v1:ReferenceNumber>{$this->referenceNumber}</v1:ReferenceNumber>
+<v1:Date>{$date->detail}</v1:Date>
+<v1:Recurring>No</v1:Recurring>
+<v1:TrasactionOrigin>{$this->transactionOrigin}</v1:TransactionOrigin>
+<v1:PONumber>{$this->poNumber}</v1:PONumber>
+</v1:TransactionDetails>
+<v1:Billing>
+<v1:CustomerID>{$this->memberId}</v1:CustomerID>
+<v1:Name>{$this->name}</v1:Name>
+<v1:Address1>{$this->addressLine1}</v1:Address1>
+<v1:Address2>{$this->addressLine2}</v1:Address2>
+<v1:City>{$this->city}</v1:City>
+<v1:State>{$this->stateProvinceRegion}</v1:State>
+<v1:Zip>{$this->zipPostalCode}</v1:Zip>
+<v1:Country>{$this->country}</v1:Country>
+<v1:Phone>{$this->phone}</v1:Phone>
+<v1:Fax></v1:Fax>
+<v1:Email>{$this->email}</v1:Email>
+</v1:Billing>
+<v1:Shipping>
+<v1:Type></v1:Type>
+<v1:Name>{$this->name}</v1:Name>
+<v1:Address1>{$this->addressLine1Shipping}</v1:Address1>
+<v1:Address2>{$this->addressLine2Shipping}</v1:Address2>
+<v1:City>{$this->cityShipping}</v1:City>
+<v1:State>{$this->stateProvinceRegionShipping}</v1:State>
+<v1:Zip>{$this->zipPostalCodeShipping}</v1:Zip>
+<v1:Country>{$this->countryShipping}</v1:Country>
+</v1:Shipping>
+</v1:Transaction>
+</fdggwsapi:FDGGWSApiOrderRequest>
+EOT;
+		error_log('envelope:'.$body);
+		$ch = $this->prepareCurl($body);
+		// calling cURL and saving the SOAP response message in a variable which 
+		// contains a string like "<SOAP-ENV:Envelope ...>...</SOAP-ENV:Envelope>":
+		$result = curl_exec($ch); 
+		error_log('charge response:'.print_r($result,true));
+		// closing cURL: 
+		curl_close($ch);
+	}
 	/**
 	 * Initiate a credit card charge
 	 */
 	public function charge(){
 		try {
+			/*
+			// FDGG
+			$this->transactionOrigin = 'web';
+			$this->invoiceNumber = new \MongoId();
+			$this->orderId = new \MongoId();
+			$this->referenceNumber = new \MongoId();
+			$this->poNumber = new \MongoId();
+
+			$this->sendCharge();
+
+			return new \MongoId();
+			//*/
+
+			//*
 			// prepare charge request here
 			$request['amount'] = $this->amount*100; // because Stripe treats a dollar amount as 100 pennies
 			$request['currency'] = $this->currency;
@@ -169,9 +310,12 @@ class Payment extends Model {
 			$response = \Stripe_Charge::create($request, $this->secretKey);
 
 			$this->transactionId = $response->id;
+			$this->number = substr($this->number,-4);
 			$paymentId = $this->insert();
 			$this->markOwnerClassPaid($paymentId);
 			return $paymentId;
+			//*/
+			
 		} catch (\Exception $e) {
 			throw new \Saw\Exceptions\SawException(new Exceptions\DomainException(),"The transaction failed.  Please try again. Processing Message: ".$e->getMessage()." Code:".$e->getCode());
 		}

@@ -109,6 +109,12 @@ define("SAW_MAILER_FROM",apache_getenv('SAW_MAILER_FROM'));
 define("SAW_MAILER_FROM_NAME",apache_getenv('SAW_MAILER_FROM_NAME'));
 define("SAW_MAILER_BCC_TO",apache_getenv('SAW_MAILER_BCC_TO'));
 
+define("SAW_FDGG_URL",apache_getenv('SAW_FDGG_URL'));
+define("SAW_FDGG_USERPWD",apache_getenv('SAW_FDGG_USERPWD'));
+define("SAW_FDGG_SSLCERT",apache_getenv('SAW_FDGG_SSLCERT'));
+define("SAW_FDGG_SSLKEY",apache_getenv('SAW_FDGG_SSLKEY'));
+define("SAW_FDGG_SSLKEYPASSWD",apache_getenv('SAW_FDGG_SSLKEYPASSWD'));
+
 define("SAW_STRIPE_PUBLIC_KEY",apache_getenv('SAW_STRIPE_PUBLIC_KEY'));
 define("SAW_STRIPE_SECRET_KEY",apache_getenv('SAW_STRIPE_SECRET_KEY'));
 

@@ -22,6 +22,18 @@ $app['validateModel'] = $app->protect(function ($app,$model,$groups=array()) {
 });
 $app['sendMail'] = $app->protect(function ($subject, $body, $to, $from=array(SAW_MAILER_FROM=>SAW_MAILER_FROM_NAME)) use ($app) {
 	
+	// save it to the email Q
+	$doc['to'] = $to;
+	$doc['from'] = SAW_MAILER_FROM;
+	$doc['fromName'] = SAW_MAILER_FROM_NAME;
+	$doc['replyTo'] = SAW_MAILER_FROM;
+	$doc['subject'] = $subject;
+	$doc['body'] = $body;
+	$eq = new Saw\Model\EmailQ($doc,$app);
+	$eq_id = $eq->insert();
+	//error_log('eq id:::'.print_r($eq_id,true));
+	
+
 	$sendgrid = new SendGrid(SAW_MAILER_USERNAME, SAW_MAILER_PASSWORD);
 	$email = new SendGrid\Email();
 	$email->addTo($to)->
@@ -30,7 +42,7 @@ $app['sendMail'] = $app->protect(function ($subject, $body, $to, $from=array(SAW
 	       setReplyTo(SAW_MAILER_FROM)->
 	       setSubject($subject)->
 	       setHtml($body);
-
+	
 	$sendgrid->send($email);
 
 	/*// replaced by SendGrid
@@ -41,6 +53,11 @@ $app['sendMail'] = $app->protect(function ($subject, $body, $to, $from=array(SAW
 		        ->setBody($body,'text/html');
 	$app['mailer']->send($message);
 	//*/
+
+	// clean up mail Q
+	$eq = new Saw\Model\EmailQ(array('_id'=>$eq_id),$app);
+	$eq->delete();
+
 });
 
 ////////////////////////////////////////////
