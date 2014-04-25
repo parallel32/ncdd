@@ -86,8 +86,20 @@ $app['applicationEmails'] = $app->protect(function ($app,$applicationId,$context
 				break;
 			
 		}
+		// TODO no emails when ADMIN is approving -- temporary and should be removed after Hunter is done with the manual entry and payment of snail mailed renewals
+		$user = $app['session']->get('user');
+		if($user['accessLevel'] == ADMIN){
+			switch ($apply_arr['class']) {
+				case 'UpdateMember':
+				case 'UpdateFoundingMember':
+				case 'UpdateSustainingMember':
+					return new Response(json_encode(array('message' => 'Approved successfully AND No emails sent to members.')), 200,array('Content-Type' => 'application/json'));
+					break;
+			}
+		}else{
+			$app['sendMail']($subject, $body, $to);	
+		}
 		
-		$app['sendMail']($subject, $body, $to);
 	    return new Response(json_encode(array('message' => 'Approved successfully')), 200,array('Content-Type' => 'application/json'));
 	}
 	if($context == 'new-member-trial'){
@@ -170,8 +182,17 @@ $app['applicationEmails'] = $app->protect(function ($app,$applicationId,$context
 				break;
 			
 		}
-		
-		$app['sendMail']($subject, $body, $to);
+		// TODO no emails when ADMIN is approving -- temporary and should be removed after Hunter is done with the manual entry and payment of snail mailed renewals
+		$user = $app['session']->get('user');
+		if($user['accessLevel'] == ADMIN){
+			switch ($apply_arr['class']) {
+				case 'UpdateMember':
+					return new Response(json_encode(array('message' => 'Approved successfully AND No emails sent to members.')), 200,array('Content-Type' => 'application/json'));
+					break;
+			}
+		}else{
+			$app['sendMail']($subject, $body, $to);	
+		}
 	    return new Response(json_encode(array('message' => 'Approved successfully')), 200,array('Content-Type' => 'application/json'));
 	}
 });
@@ -391,8 +412,14 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 							,'email'=>$member['email']
 		);
 		$body = $app['view']->render('email/payment-thankyou','email', $view_vars);
-			
-		$app['sendMail']($subject, $body, $to);
+		
+		// TODO no emails when ADMIN is approving -- temporary and should be removed after Hunter is done with the manual entry and payment of snail mailed renewals
+		$user = $app['session']->get('user');
+		if($user['accessLevel'] == ADMIN){	
+			// do nothing
+		}else{
+			$app['sendMail']($subject, $body, $to);
+		}		
 
 		// update the newly created payment record
 		$payment = new Model\Payment(array('_id'=>$paymentId,'ownerId'=>$app_id),$app);
@@ -889,9 +916,14 @@ $app->post('/application/payment', function (Request $request) use ($app) {
 						,'email'=>$payment->email
 	);
 	$body = $app['view']->render('email/payment-thankyou','email', $view_vars);
-		
-	$app['sendMail']($subject, $body, $to);
 	
+	// TODO no emails when ADMIN is approving -- temporary and should be removed after Hunter is done with the manual entry and payment of snail mailed renewals
+	$user = $app['session']->get('user');
+	if($user['accessLevel'] == ADMIN){	
+		// do nothing
+	}else{
+		$app['sendMail']($subject, $body, $to);
+	}	
 	return new Response(json_encode(array('paymentId'=>$paymentId,'message'=>"success")), 200,array('Content-Type' => 'application/json'));
 })->before($mustbeADMIN);
 

@@ -60,6 +60,8 @@ class Date {
 		$this->shortTime = $date->format('g:i a');
 		$this->longTime = $date->format('h:i A');
 		$this->militaryTime = $date->format('H:i');
+		$this->leadingZeros = $date->format('m-d-y');
+		$this->paymentGateway = $date->format('Ymd');
 	}
 	public function __toArray(){
 		$doc = get_object_vars($this);

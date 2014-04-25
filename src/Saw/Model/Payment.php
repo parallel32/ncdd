@@ -220,7 +220,10 @@ class Payment extends Model {
 	private function sendCharge(){
 		$date = new Date(self::$app,'now');
 $body = <<< EOT
-<fdggwsapi:FDGGWSApiOrderRequest xmlns:v1="http://secure.linkpt.net/fdggwsapi/schemas_us/v1" First Data Corp. Web Service API v6.0 14 xmlns:fdggwsapi="http://secure.linkpt.net/fdggwsapi/schemas_us/fdggwsapi">
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+<SOAP-ENV:Header/>
+<SOAP-ENV:Body>
+<fdggwsapi:FDGGWSApiOrderRequest xmlns:v1="http://secure.linkpt.net/fdggwsapi/schemas_us/v1" xmlns:fdggwsapi="http://secure.linkpt.net/fdggwsapi/schemas_us/fdggwsapi">
 <v1:Transaction>
 <v1:CreditCardTxType>
 <v1:Type>sale</v1:Type>
@@ -233,20 +236,22 @@ $body = <<< EOT
 </v1:CreditCardData>
 <v1:Payment>
 <v1:SubTotal>{$this->orderTotal}</v1:SubTotal>
-<v1:VATTax>0.00</v1:VATTax>
+<v1:Tax>0.00</v1:Tax>
 <v1:Shipping>{$this->shippingTotal}</v1:Shipping>
 <v1:ChargeTotal>{$this->amount}</v1:ChargeTotal>
 </v1:Payment>
 <v1:TransactionDetails>
 <v1:UserID>{$this->memberId}</v1:UserID>
 <v1:InvoiceNumber>{$this->invoiceNumber}</v1:InvoiceNumber>
-<v1:OrderId>{$this->orderId}</v1:OrderId>
+<v1:OrderId></v1:OrderId>
 <v1:Ip></v1:Ip>
-<v1:ReferenceNumber>{$this->referenceNumber}</v1:ReferenceNumber>
-<v1:Date>{$date->detail}</v1:Date>
+<v1:TDate>{$date->paymentGateway}</v1:TDate>
 <v1:Recurring>No</v1:Recurring>
-<v1:TrasactionOrigin>{$this->transactionOrigin}</v1:TransactionOrigin>
+<v1:TransactionOrigin>{$this->transactionOrigin}</v1:TransactionOrigin>
 <v1:PONumber>{$this->poNumber}</v1:PONumber>
+<v1:TaxExempt>Yes</v1:TaxExempt>
+<v1:TerminalType>Unspecified</v1:TerminalType>
+<v1:DeviceID>Web Browser</v1:DeviceID>
 </v1:TransactionDetails>
 <v1:Billing>
 <v1:CustomerID>{$this->memberId}</v1:CustomerID>
@@ -273,12 +278,17 @@ $body = <<< EOT
 </v1:Shipping>
 </v1:Transaction>
 </fdggwsapi:FDGGWSApiOrderRequest>
+</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
 EOT;
 		error_log('envelope:'.$body);
 		$ch = $this->prepareCurl($body);
 		// calling cURL and saving the SOAP response message in a variable which 
 		// contains a string like "<SOAP-ENV:Envelope ...>...</SOAP-ENV:Envelope>":
 		$result = curl_exec($ch); 
+		error_log('---------------------------------------------------------');
+		error_log('---------------------------------------------------------');
+		error_log('---------------------------------------------------------');
 		error_log('charge response:'.print_r($result,true));
 		// closing cURL: 
 		curl_close($ch);
@@ -290,10 +300,13 @@ EOT;
 		try {
 			/*
 			// FDGG
-			$this->transactionOrigin = 'web';
+			$this->expMonth = str_pad($this->expMonth, 2, '0', STR_PAD_LEFT); 
+			$this->expYear = substr($this->expYear, -2);
+			$this->orderTotal = $this->orderTotal.'.00';
+			$this->shippingTotal = $this->shippingTotal.'.00';
+			$this->amount = '$'.$this->amount.'.00';
+			$this->transactionOrigin = 'ECI';
 			$this->invoiceNumber = new \MongoId();
-			$this->orderId = new \MongoId();
-			$this->referenceNumber = new \MongoId();
 			$this->poNumber = new \MongoId();
 
 			$this->sendCharge();

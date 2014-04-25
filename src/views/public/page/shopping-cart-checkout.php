@@ -323,7 +323,6 @@ MasterCard, Visa and Discover credit cards have a 3 digit code printed on the ba
                              </div>
                           </div>
                           <!--/ SUCCESSFUL SAVE MODAL -->
-                          
                           <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
                             <?=$this->element('js/Namespace.js');?>
                             <?=$this->element('js/BlockUI.Class.js');?>

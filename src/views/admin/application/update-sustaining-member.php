@@ -515,7 +515,7 @@
                            </label>
                            <div class="input-append">
                               <span class="add-on">Executed At </span>
-                              <input name="doc[executed]" class="m-wrap span12 executed" type="text" placeholder="">
+                              <input name="doc[executed]" class="m-wrap span12 executed" type="text" placeholder="City and State / Province">
                               <span class="add-on">, on this <? $date = new \DateTime(); echo $date->format('dS');?> day of <?echo $date->format('F');?>, 20<?echo $date->format('y');?></span>
                            </div>
                         </div>
