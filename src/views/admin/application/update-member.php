@@ -560,7 +560,7 @@
                            <label class="control-label"></label>
                            <div class="controls">
                               <input style="margin-left:1px;" type="radio" name="doc[payByCheck]" value="yes">&nbsp;&nbsp;Yes, I intend to pay by check.<br/><br/>
-                              <input style="margin-left:1px;" type="radio" name="doc[payByCheck]" value="no">&nbsp;&nbsp;No, I intend to pay my membership dues online with my credit card.<br/><br/>
+                              <input style="margin-left:1px;" type="radio" name="doc[payByCheck]" checked value="no">&nbsp;&nbsp;No, I intend to pay my membership dues online with my credit card.<br/><br/>
                               Upon submission of this form and subsequent approval of your renewal, you will receive an email with instructions on how to pay your dues.
                            </div>
                         </div>
@@ -853,6 +853,11 @@
                   </div>
                   
                   <div class="form-actions text-center">
+                     <? $user = $this->app['session']->get('user');
+                        if($user['accessLevel'] == ADMIN){  
+                     ?>
+                     <input type="checkbox" name="suppress_emails" <?=(array_key_exists('suppress_emails',$user) && !empty($user['suppress_emails']))?'checked':'';?> value="yes">Suppress Emails.
+                     <? } ?>
                      <button type="button" class="btn green"><i class="icon-check"></i> Submit</button>
                      <button type="button" class="btn cancel-go-back">Cancel and Go Back</button>
                   </div>

@@ -139,6 +139,17 @@
                   <div class="row-fluid ">
                      <div class="span12 ">
                         <div class="control-group">
+                           <label class="control-label" >How many times have you previously attended this Seminar?</label>
+                           <div class="controls">
+                              <input type="text" name="doc[previouslyAttended]" value="<?=(array_key_exists('previouslyAttended',$this->vars['registration'])) ? $this->vars['registration']['previouslyAttended']: '';?>" class="m-wrap span12 previouslyAttended"> 
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <div class="row-fluid ">
+                     <div class="span12 ">
+                        <div class="control-group">
                            <label class="control-label" >Name for Name Tag</label>
                            <div class="controls">
                               <input type="text" disabled name="doc[nameTag]" value="<?=$this->vars['registration']['nameTag']?>" class="m-wrap span12 nameTag"> 
@@ -194,6 +205,7 @@
                         </div>
                      </div>
                      <!--/span-->
+                     <? if(array_key_exists('hardCopyPrice',$this->vars['seminar']['register']) && !empty($this->vars['seminar']['register']['hardCopyPrice'])): ?>
                      <div class="span6 ">
                         <div class="control-group">
                            <label class="control-label" >Would you like to pre-order a hard copy of the materials?</label>
@@ -204,7 +216,26 @@
                         </div>
                      </div>
                      <!--/span-->
+                     <? endif; ?>
                   </div>
+                  <? if(array_key_exists('deposit',$this->vars['seminar']['register']) && !empty($this->vars['seminar']['register']['deposit'])): ?>
+                  <br><br>
+                  <div id="deposit-group" class="row-fluid addr ">
+                     <div class="span12 ">
+                        <div class="control-group">
+                           <label class="control-label" >Would you like to make a desposit and pay the remainder later?</label>
+                           <div class="controls">
+                              <input disabled style="margin-left:1px;" type="radio" name="doc[depositQuestion]" <?=(array_key_exists('depositQuestion',$this->vars['registration'])) ? ($this->vars['registration']['depositQuestion'] == 'yes') ?'checked' :'': '';?> value="yes">&nbsp;&nbsp;Yes, I would like to make a deposit now and pay the remainder <?=(array_key_exists('depositDueDate',$this->vars['seminar']['register'])) ? 'on '.$this->vars['seminar']['register']['depositDueDate'] :'later' ?>.<br/><br/>
+                              <input disabled style="margin-left:1px;" type="radio" name="doc[depositQuestion]" <?=(array_key_exists('depositQuestion',$this->vars['registration'])) ? ($this->vars['registration']['depositQuestion'] == 'no') ?'checked' :'': '';?> value="no">&nbsp;&nbsp;No thanks, I'll pay in full now.<br/><br/>
+
+                              <input name="doc[deposit]" id="deposit" type="hidden" value="<?=(array_key_exists('deposit',$this->vars['seminar']['register'])) ? $this->vars['seminar']['register']['deposit'] :'' ?>" class="m-wrap span12"> 
+                              <input name="doc[depositDueDate]" id="depositDueDate" type="hidden" value="<?=(array_key_exists('depositDueDate',$this->vars['seminar']['register'])) ? $this->vars['seminar']['register']['depositDueDate'] :'' ?>" class="m-wrap span12"> 
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <? endif; ?>
                   <div class="row-fluid addr ">
                      <div class="span12 ">
                         <div class="control-group">

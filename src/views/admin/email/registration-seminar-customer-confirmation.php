@@ -20,12 +20,30 @@
 <table>
 	<tr><td><strong>Registrant Name:</strong></td><td><?=$this->vars['registration']['name']?></td></tr>
 	<tr><td><strong>Attendees Dinner RSVP:</strong></td><td><?=$this->vars['registration']['rsvp']?></td></tr>
+	<? if(array_key_exists('hardCopy',$this->vars) && !empty($this->vars['hardCopy']) && $this->vars['hardCopy'] == 'YES'): ?>
 	<tr><td><strong>Material hard copy:</strong></td><td><?=$this->vars['registration']['hardCopy']?></td></tr>
+	<? endif; ?>
 </table>
 
 <br/><br/>Dear <?=$this->vars['registration']['name']?>,
 <br/>
-<?=$this->vars['seminar']['register']['confirmationLetter']?>
+<? 
+
+error_log('confirmation email current status:'.$this->vars['registration']['currentStatus']);
+
+switch ($this->vars['registration']['currentStatus']) {
+	case \Saw\Model\Registration::$status['DEPOSIT']:
+		echo $this->vars['seminar']['register']['depositConfirmationLetter'];
+		break;
+	case \Saw\Model\Registration::$status['PAID']:
+		echo $this->vars['seminar']['register']['confirmationLetter'];
+		break;
+	case \Saw\Model\Registration::$status['SCHOLARSHIP']:
+		echo $this->vars['seminar']['register']['scholarshipConfirmationLetter'];
+		break;
+}
+?>
+
 <br/>
 <br/>
 If you have any questions don't hesitate to contact us at: rhea@ncdd.com

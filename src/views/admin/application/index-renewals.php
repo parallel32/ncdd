@@ -1,3 +1,30 @@
+         <a name="renewals"></a>
+         <!-- BEGIN STICKY BAR -->
+         <div class="header navbar-inverse navbar-static-top">
+            <div class="navbar hor-menu hidden-phone hidden-tablet" style="position:fixed;left:41%;z-index:1000">
+               <div class="navbar-inner">
+                  <ul class="nav">
+                     <li class="visible-phone visible-tablet">
+                        <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+                        <form class="sidebar-search">
+                           <div class="input-box">
+                              <a href="javascript:;" class="remove"></a>
+                              <input type="text" placeholder="Search...">            
+                              <input type="button" class="submit" value=" ">
+                           </div>
+                        </form>
+                        <!-- END RESPONSIVE QUICK SEARCH FORM -->
+                     </li>
+                     <li class=""><a href="#renewals">1. Renewals</a></li>
+                     <li class=""><a href="#updates_sustaining">2. Updates-Sustaining</a></li>
+                     <li class=""><a href="#updates_founding">3. Updates-Founding</a></li>
+                     <li class=""><a href="#donations">4. Donations</a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+         <!-- END STICKY BAR -->
+
       <!-- BEGIN PAGE -->
       <div class="page-content">
          <!-- BEGIN PAGE CONTAINER-->
@@ -9,9 +36,6 @@
                </div>
             </div>
             <!-- END PAGE HEADER-->
-            <a class="btn blue" href="#updates">
-               Click to Scroll to Updates
-            </a> 
             <h1>1. Renewals</h1>
             <div class="row-fluid">
                   <div class="responsive span6" data-tablet="span6" data-desktop="span6">
@@ -243,7 +267,7 @@
                                  <td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
-                                 <td class=" "><!--<a data-id="<?=$member['_id']?>" class="btn blue mini view"><i class=" "></i> View</a>--></td>
+                                 <td class=" "><a class="btn blue mini" href="/application/update-member/<?=$member['_id']?>"><i class=" "></i> View</a></td>
                               </tr>
                               <? endforeach;?>
                               <? else: ?>
@@ -256,43 +280,15 @@
                   <!-- END EXAMPLE TABLE PORTLET-->
                </div>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             
-            <h1 id="2updates">2. Updates</h1>
-            <a name="updates"></a>
+            <h1 id="2updates_sustaining">2. Updates - Sustaining Members</h1>
+            <a name="updates_sustaining"></a>
             <div class="row-fluid">
 
-                  <div class="responsive span6" data-tablet="span6" data-desktop="span3">
+                  <div class="responsive span6" data-tablet="span6" data-desktop="span6">
                      <div class="dashboard-stat red">
                         <div class="visual">
-                           <i class="icon-hideme"><?=(is_array($this->vars['updates']['unsubmitted'])) ? count($this->vars['updates']['unsubmitted']) : 0;?></i>
+                           <i class="icon-hideme"><?=(is_array($this->vars['updates_sustaining']['unsubmitted'])) ? count($this->vars['updates_sustaining']['unsubmitted']) : 0;?></i>
                         </div>
                         <div class="details">
                            <div class="number"><font><font>
@@ -302,29 +298,32 @@
                               
                            </font></font></div>
                         </div>
-                        <a class="more" href="#updates-unsubmitted"><font><font>
+                        <a class="more" href="#updates_sustaining-unsubmitted"><font><font>
                         Click To Scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
                         </a>                 
                      </div>
                   </div>
-                  <div class="responsive span6" data-tablet="span6" data-desktop="span3">
+                  <div class="responsive span6" data-tablet="span6" data-desktop="span6">
                      <div class="dashboard-stat blue">
                         <div class="visual">
-                           <i class="icon-hide-me"><span class="number"><?=(is_array($this->vars['updates']['submitted'])) ? count($this->vars['updates']['submitted']) : 0;?></span></i>
+                           <i class="icon-hide-me"><span class="number"><?=(is_array($this->vars['updates_sustaining']['submitted'])) ? count($this->vars['updates_sustaining']['submitted']) : 0;?></span></i>
                         </div>
                         <div class="details">
                            <div class="number"><font><font></font>Submitted</font></div>
                            <div class="desc"><font><font></font></font></div>
                         </div>
-                        <a class="more" href="#updates-submitted"><font><font>
+                        <a class="more" href="#updates_sustaining-submitted"><font><font>
                         Click To Scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
                         </a>                 
                      </div>
                   </div>
-                  <div class="responsive span6 fix-offset" data-tablet="span6  fix-offset" data-desktop="span3">
+            </div>
+            <div class="row-fluid">
+
+                  <div class="responsive span6 fix-offset" data-tablet="span6  fix-offset" data-desktop="span6">
                      <div class="dashboard-stat yellow">
                         <div class="visual">
-                           <i class="icon-hideme"><?=(is_array($this->vars['updates']['approved'])) ? count($this->vars['updates']['approved']) : 0;?></i>
+                           <i class="icon-hideme"><?=(is_array($this->vars['updates_sustaining']['approved'])) ? count($this->vars['updates_sustaining']['approved']) : 0;?></i>
                         </div>
                         <div class="details">
                            <div class="number"><font><font></font>Approved</font></div>
@@ -332,12 +331,13 @@
                               
                            </font></font></div>
                         </div>
-                        <a class="more" href="#updates-approved"><font><font>
+                        <a class="more" href="#updates_sustaining-approved"><font><font>
                         Click to scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
                         </a>                 
                      </div>
-                  </div><a name="updates-submitted"></a>
+                  </div><a name="updates_sustaining-submitted"></a>
                </div>
+            </div>
             
 
             <div class="row-fluid">
@@ -360,7 +360,7 @@
                               </tr>
                            </thead>
                            <tbody role="alert" aria-live="polite" aria-relevant="all">
-                              <? if(!empty($this->vars['updates']['submitted'])): foreach($this->vars['updates']['submitted'] as $member): ?>
+                              <? if(!empty($this->vars['updates_sustaining']['submitted'])): foreach($this->vars['updates_sustaining']['submitted'] as $member): ?>
                               <tr class="gradeX odd">
                                  <td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
@@ -378,7 +378,7 @@
                            </tbody>
                         </table>
                      </div>
-                  </div><a name="updates-approved"></a>
+                  </div><a name="updates_sustaining-approved"></a>
                   <!-- END EXAMPLE TABLE PORTLET-->
                </div>
             </div>
@@ -403,7 +403,7 @@
                               </tr>
                            </thead>
                            <tbody role="alert" aria-live="polite" aria-relevant="all">
-                              <? if(!empty($this->vars['updates']['approved'])): foreach($this->vars['updates']['approved'] as $member): ?>
+                              <? if(!empty($this->vars['updates_sustaining']['approved'])): foreach($this->vars['updates_sustaining']['approved'] as $member): ?>
                               <tr class="gradeX odd">
                                  <td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
@@ -421,7 +421,7 @@
                            </tbody>
                         </table>
                      </div>
-                  </div><a name="updates-unsubmitted"></a>
+                  </div><a name="updates_sustaining-unsubmitted"></a>
                   <!-- END EXAMPLE TABLE PORTLET-->
                </div>
             </div>
@@ -445,12 +445,12 @@
                               </tr>
                            </thead>
                            <tbody role="alert" aria-live="polite" aria-relevant="all">
-                              <? if(!empty($this->vars['updates']['unsubmitted'])): foreach($this->vars['updates']['unsubmitted'] as $member): ?>
+                              <? if(!empty($this->vars['updates_sustaining']['unsubmitted'])): foreach($this->vars['updates_sustaining']['unsubmitted'] as $member): ?>
                               <tr class="gradeX odd">
                                  <td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
-                                 <td class=" "><!--<a data-id="<?=$member['_id']?>" class="btn blue mini view"><i class=" "></i> View</a>--></td>
+                                 <td class=" "><a class="btn blue mini" href="/application/update-sustaining-member/<?=$member['_id']?>"><i class=" "></i> View</a></td>
                               </tr>
                               <? endforeach;?>
                               <? else: ?>
@@ -464,11 +464,193 @@
                </div>
             </div>
             
-
-            <a name="3donations"></a>
-            <h1>3. Donations</h1>
+            <h1 id="2updates_founding">3. Updates - Founding Members</h1>
+            <a name="updates_founding"></a>
             <div class="row-fluid">
-               <div class="responsive span6" data-tablet="span6" data-desktop="span3">
+
+                  <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                     <div class="dashboard-stat red">
+                        <div class="visual">
+                           <i class="icon-hideme"><?=(is_array($this->vars['updates_founding']['unsubmitted'])) ? count($this->vars['updates_founding']['unsubmitted']) : 0;?></i>
+                        </div>
+                        <div class="details">
+                           <div class="number"><font><font>
+                              Unsubmitted
+                           </font></font></div>
+                           <div class="desc"><font><font>                           
+                              
+                           </font></font></div>
+                        </div>
+                        <a class="more" href="#updates_founding-unsubmitted"><font><font>
+                        Click To Scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
+                        </a>                 
+                     </div>
+                  </div>
+                  <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                     <div class="dashboard-stat blue">
+                        <div class="visual">
+                           <i class="icon-hide-me"><span class="number"><?=(is_array($this->vars['updates_founding']['submitted'])) ? count($this->vars['updates_founding']['submitted']) : 0;?></span></i>
+                        </div>
+                        <div class="details">
+                           <div class="number"><font><font></font>Submitted</font></div>
+                           <div class="desc"><font><font></font></font></div>
+                        </div>
+                        <a class="more" href="#updates_founding-submitted"><font><font>
+                        Click To Scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
+                        </a>                 
+                     </div>
+                  </div>
+            </div>
+            <div class="row-fluid">
+
+                  <div class="responsive span6 fix-offset" data-tablet="span6  fix-offset" data-desktop="span6">
+                     <div class="dashboard-stat yellow">
+                        <div class="visual">
+                           <i class="icon-hideme"><?=(is_array($this->vars['updates_founding']['approved'])) ? count($this->vars['updates_founding']['approved']) : 0;?></i>
+                        </div>
+                        <div class="details">
+                           <div class="number"><font><font></font>Approved</font></div>
+                           <div class="desc"><font><font>
+                              
+                           </font></font></div>
+                        </div>
+                        <a class="more" href="#updates_founding-approved"><font><font>
+                        Click to scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
+                        </a>                 
+                     </div>
+                  </div><a name="updates_founding-submitted"></a>
+               </div>
+            </div>
+            
+
+            <div class="row-fluid">
+               <div class="span12">
+                  <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                  <div class="portlet box blue">
+                     <div class="portlet-title" id="application">
+                        <div class="caption"><i class="icon-user"></i>Applications Submitted</div>
+                     </div>
+                     <div class="portlet-body">
+                        <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                        <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
+                           <thead>
+                              <tr role="row">
+                                 <th class="">Name</th>
+                                 <th class="hidden-phone">Email</th>
+                                 <th class="hidden-phone">Phone</th>
+                                 <th class="hidden-480">Date</th>
+                                 <th class=""></th>
+                              </tr>
+                           </thead>
+                           <tbody role="alert" aria-live="polite" aria-relevant="all">
+                              <? if(!empty($this->vars['updates_founding']['submitted'])): foreach($this->vars['updates_founding']['submitted'] as $member): ?>
+                              <tr class="gradeX odd">
+                                 <td class=" "><?=$member['displayName']?></td>
+                                 <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
+                                 <td class="hidden-phone"><?=$member['primaryPhone']?></td>
+                                 <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($member['renewal']['submittedDate']['fullDateTime']), $member['timeZone']); ?>
+                                 <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$member['renewal']['submittedDate']['monthDay'].' '.$member['renewal']['submittedDate']['shortTime']?></td><td class=" ">
+                                    <a data-id="<?=$member['renewal']['applicationId']?>" class="btn blue mini view"><i class=" "></i> Application</a>
+                                    <a data-id="<?=$member['_id']?>" class="btn blue mini view member"><i class=" "></i> Member</a>
+                                 </td>
+                              </tr>
+                              <? endforeach;?>
+                              <? else: ?>
+                                 <td colspan="7">None.</td>
+                              <? endif;?>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div><a name="updates_founding-approved"></a>
+                  <!-- END EXAMPLE TABLE PORTLET-->
+               </div>
+            </div>
+
+            <div class="row-fluid">
+               <div class="span12">
+                  <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                  <div class="portlet box yellow">
+                     <div class="portlet-title" id="application">
+                        <div class="caption"><i class="icon-user"></i>Applications Approved</div>
+                     </div>
+                     <div class="portlet-body">
+                        <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                        <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
+                           <thead>
+                              <tr role="row">
+                                 <th class="">Name</th>
+                                 <th class="hidden-phone">Email</th>
+                                 <th class="hidden-phone">Phone</th>
+                                 <th class="hidden-480">Date Approved</th>
+                                 <th class=""></th>
+                              </tr>
+                           </thead>
+                           <tbody role="alert" aria-live="polite" aria-relevant="all">
+                              <? if(!empty($this->vars['updates_founding']['approved'])): foreach($this->vars['updates_founding']['approved'] as $member): ?>
+                              <tr class="gradeX odd">
+                                 <td class=" "><?=$member['displayName']?></td>
+                                 <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
+                                 <td class="hidden-phone"><?=$member['primaryPhone']?></td>
+                                 <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($member['renewal']['approvedDate']['fullDateTime']), $member['timeZone']); ?>
+                                 <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$member['renewal']['approvedDate']['monthDay'].' '.$member['renewal']['approvedDate']['shortTime']?></td><td class=" ">
+                                    <a data-id="<?=$member['renewal']['applicationId']?>" class="btn blue mini view"><i class=" "></i> Application</a>
+                                    <a data-id="<?=$member['_id']?>" class="btn blue mini view member"><i class=" "></i> Member</a>
+                                 </td>
+                              </tr>
+                              <? endforeach;?>
+                              <? else: ?>
+                                 <td colspan="6">None.</td>
+                              <? endif;?>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div><a name="updates_founding-unsubmitted"></a>
+                  <!-- END EXAMPLE TABLE PORTLET-->
+               </div>
+            </div>
+
+            <div class="row-fluid">
+               <div class="span12">
+                  <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                  <div class="portlet box red">
+                     <div class="portlet-title" id="application">
+                        <div class="caption"><i class="icon-user"></i>Applications Unsubmitted</div>
+                     </div>
+                     <div id="applications-to-approve" class="portlet-body">
+                        <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                        <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
+                           <thead>
+                              <tr role="row">
+                                 <th class="">Name</th>
+                                 <th class="hidden-phone">Email</th>
+                                 <th class="hidden-phone">Phone</th>
+                                 <th class=""></th>
+                              </tr>
+                           </thead>
+                           <tbody role="alert" aria-live="polite" aria-relevant="all">
+                              <? if(!empty($this->vars['updates_founding']['unsubmitted'])): foreach($this->vars['updates_founding']['unsubmitted'] as $member): ?>
+                              <tr class="gradeX odd">
+                                 <td class=" "><?=$member['displayName']?></td>
+                                 <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
+                                 <td class="hidden-phone"><?=$member['primaryPhone']?></td>
+                                 <td class=" "><a class="btn blue mini" href="/application/update-founding-member/<?=$member['_id']?>"><i class=" "></i> View</a></td>
+                              </tr>
+                              <? endforeach;?>
+                              <? else: ?>
+                                 <td colspan="7">Nothing to show.</td>
+                              <? endif;?>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+                  <!-- END EXAMPLE TABLE PORTLET-->
+               </div>
+            </div>
+
+            <h1>4. Donations</h1>
+            <div class="row-fluid">
+               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                  <a name="donations"></a>
                      <a name="approve"></a>
                      <div class="dashboard-stat green">
                         <div class="visual">

@@ -189,7 +189,12 @@
 			   		$('#payment-form .btn.green').html('<i class="icon-ok"></i> Payment Successful');
 		            
 	               	$('#save-success .continue.payment').attr('data-insertid',responseObj.paymentId.$id);
-				   	io.saw.FormGet.activate({postUrl:'/application/'+responseObj.paymentId.$id+'/pay/'+theThis.attr('data-application-id')+'/no'
+	               	if($('input[name="suppress_emails"]:checked').length > 0){
+						var suppress_emails = '?suppress_emails=yes';
+					}else{
+						var suppress_emails = '';
+					}
+				   	io.saw.FormGet.activate({postUrl:'/application/'+responseObj.paymentId.$id+'/pay/'+theThis.attr('data-application-id')+'/no'+suppress_emails
 				    	,postOnComplete:function(responseObj,responseStatus){}
 				      	,postOnSuccess:function(responseObj){
 				          /*<?=$return_to_app_index?>*/
@@ -282,7 +287,12 @@
 		});
 	};
 	function approve (id,type){
-		io.saw.FormGet.activate({postUrl:'/application/'+id+'/approve/'+type
+		if($('input[name="suppress_emails"]:checked').length > 0){
+			var suppress_emails = '?suppress_emails=yes';
+		}else{
+			var suppress_emails = '';
+		}
+		io.saw.FormGet.activate({postUrl:'/application/'+id+'/approve/'+type+suppress_emails
 			,postOnComplete:function(responseObj,responseStatus){}
 			,postOnSuccess:function(responseObj){
 				<?=$return_to_app_index?>

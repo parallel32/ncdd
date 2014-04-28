@@ -15,7 +15,7 @@ use Saw\Model;
 $app['seminarConfirmationEmail'] = $app->protect(function ($app,$registrationId) {
 
 	$registration = new Model\Registration(array('_id'=>$registrationId), $app);
-	$registration = $registration->findById();
+	$registration = $registration->findById($id='_id', $slaveOkay=false);
 	$seminar = new Model\Seminar(array('_id'=>$registration['seminarId']),$app);
 	$seminar = $seminar->findById();
 	$seminar['description'] = $app['prepare_content']($seminar['description']);
@@ -27,11 +27,43 @@ $app['seminarConfirmationEmail'] = $app->protect(function ($app,$registrationId)
 						,'registration'=>$registration
 	);
 	$body = $app['view']->render('email/registration-seminar-customer-confirmation','email', $view_vars);
-
+	$body = str_replace("#total#", '$'.$registration['total'], $body);
+	if($registration['currentStatus'] == Model\Registration::$status['DEPOSIT']){
+		$body = str_replace("#balance_due#", '$'.((int)$registration['registrationFeeOriginal'] - (int)$registration['deposit']), $body);
+		$body = str_replace("#balance_due_date#", $registration['depositDueDate'], $body);
+		$body = str_replace("#payment_link#", 'https://'.SAW_ADMIN_WEBSITE.'/registration/seminar/deposit/'.$registrationId, $body);
+	}
 	
 	$app['sendMail']($subject, $body, $to);
 
 });
+////////////////////////////
+// DEPOSIT BLANCE PAYMENT //
+////////////////////////////
+$app->get('/registration/seminar/deposit/{registrationId}', function ($registrationId, Request $request) use ($app) {
+	
+	$registration = new Model\Registration($doc=array('_id'=>$registrationId), $app);
+	$registration = $registration->findById();
+	
+	$seminar = new Model\Seminar(array('_id'=>$registration['seminarId']),$app);
+	$seminar = $seminar->findById();
+
+	$crumbs = array(array('name'=>'Registrations','href'=>'/registrations/seminar/'.$seminar['_id'])
+					,array('name'=>$registration['name'],'href'=>'/registration/'.$id.'/view')
+					,array('name'=>$registration['type'],'href'=>'/registration/'.$id.'/view')
+					,array('name'=>'Submit payment for the balance','href'=>'/registration/'.$id.'/pay')
+					);
+	$view_vars = array(
+						 'active'=>'Registration'
+						,'page-plugin'=>'datatables,invoice'
+						,'headline'=>'Seminar Registration Payment'
+						,'description'=>"Pay seminar registration."
+						,'crumbs'=>$crumbs
+						,'registration'=>$registration
+						,'seminar'=>$seminar
+						);
+	return $app['view']->render('registration/seminar-pay-other', 'default', $view_vars);
+})->value('registrationId','');
 ///////////////////////
 // PAYMENT FUNCTIONS //
 ///////////////////////
@@ -39,6 +71,7 @@ $app->get('/registration/seminar/{id}/pay-other', function ($id, Request $reques
 	
 	$registration = new Model\Registration($doc=array('_id'=>$id), $app);
 	$registration = $registration->findById();
+	
 	$seminar = new Model\Seminar(array('_id'=>$registration['seminarId']),$app);
 	$seminar = $seminar->findById();
 
@@ -59,6 +92,30 @@ $app->get('/registration/seminar/{id}/pay-other', function ($id, Request $reques
 	return $app['view']->render('registration/seminar-pay-other', 'default', $view_vars);
 })->value('id','')
 ->before($mustbeADMIN);
+$app->get('/registration/seminar/{id}/pay', function ($id, Request $request) use ($app) {
+	
+	$registration = new Model\Registration($doc=array('_id'=>$id), $app);
+	$registration = $registration->findById();
+	
+	$seminar = new Model\Seminar(array('_id'=>$registration['seminarId']),$app);
+	$seminar = $seminar->findById();
+
+	$crumbs = array(array('name'=>'Registrations','href'=>'/registrations/seminar/'.$seminar['_id'])
+					,array('name'=>$registration['name'],'href'=>'/registration/'.$id.'/view')
+					,array('name'=>$registration['type'],'href'=>'/registration/'.$id.'/view')
+					,array('name'=>'Submit Another Form of Payment ','href'=>'/registration/'.$id.'/pay')
+					);
+	$view_vars = array(
+						 'active'=>'Registration'
+						,'page-plugin'=>'datatables,invoice'
+						,'headline'=>'Seminar Registration Payment'
+						,'description'=>"Pay seminar registration."
+						,'crumbs'=>$crumbs
+						,'registration'=>$registration
+						,'seminar'=>$seminar
+						);
+	return $app['view']->render('registration/seminar-pay', 'default', $view_vars);
+})->value('id','');
 
 // this is posted to by the registrations/pay-other.php view
 // mark the registration paid and create a payment record, which is the receipt
@@ -89,8 +146,9 @@ $app->post('/registration/payment', function (Request $request) use ($app) {
 $app->get('/registration/{paymentId}/pay/{registrationId}', function ($paymentId, $registrationId, Request $request) use ($app) {
     
     $registration = new Model\Registration(array('_id'=>$registrationId, 'paymentId'=>$paymentId), $app);
-    $registration->markPaid();
     $app['seminarConfirmationEmail']($app,$registrationId);
+    $registration->markPaid();
+    
     return new Response(json_encode(array('message' => 'Paid successfully')), 200,array('Content-Type' => 'application/json'));
 })->before($mustbeMEMBER);
 
@@ -122,17 +180,27 @@ $app->get('/registration/seminar/{seminarId}/{slug}', function ($seminarId, $slu
 });
 $app->post('/registration/seminar', function (Request $request) use ($app) {
 	// retrieve document from request
-	$doc = $request->get('doc');
-	if($doc['hardCopy'] == 'NO'){
-		$doc['hardCopyFee'] = 0;
+	$doc = $request->get('doc'); 
+	$registrationFee = $doc['registrationFee'];
+	$hardCopy = (array_key_exists('hardCopy',$doc)) ? $doc['hardCopy'] : '';
+	$hardCopyFee = (array_key_exists('hardCopyFee',$doc)) ? $doc['hardCopyFee'] : '';
+	if($hardCopy == 'NO'){
+		$hardCopyFee = 0;
 	}
-	$doc['total'] = (int)$doc['hardCopyFee']+(int)$doc['registrationFee'];
+	$depositQuestion = (array_key_exists('depositQuestion',$doc)) ? $doc['depositQuestion'] : '';
+	if($depositQuestion == 'yes'){
+		$registrationFee = $doc['deposit'];
+		$doc['currentStatus'] = Model\Registration::$status['DEPOSIT'];
+	}
 
+	$doc['total'] = (int)$hardCopyFee+(int)$registrationFee;
+	
+	//*
 	$paymentId = new \stdClass();	
 	$rs = new Model\RegistrationSeminar($doc,$app);
 	$app['validateModel']($app, $rs);
 	$rs_id = $rs->insert();
-			
+		
 	if ($doc['currentPaymentType'] == Model\Registration::$paymentType['CREDIT']) {
 		
 		$doc['payment']['ownerId'] = $rs_id;
@@ -140,11 +208,11 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 
 		$payment = new Model\Payment($doc['payment'],$app);
 		$app['validateModel']($app, $payment,$groups=array('cc'));
-		$paymentId = $payment->charge();
-
 		$app['seminarConfirmationEmail']($app,$rs_id);
+		$paymentId = $payment->charge();
+		
 	}
-	
+	//*/
 	return new Response(json_encode(array(
 		'paymentId'=>$paymentId,
 		'label'=>'Successful Registration',
@@ -162,10 +230,17 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 	    	$seminar['description'] = $app['prepare_content']($seminar['description']);
 
 	    	// calculate the total and what is in the line item.
-	    	if($doc['hardCopy'] == 'NO'){
-				$doc['hardCopyFee'] = 0;
+	    	$doc['registrationFee_orig'] = $doc['registrationFee'];
+	    	$hardCopy = (array_key_exists('hardCopy',$doc)) ? $doc['hardCopy'] : '';
+			$hardCopyFee = (array_key_exists('hardCopyFee',$doc)) ? $doc['hardCopyFee'] : '';
+	    	if($hardCopy == 'NO'){
+				$hardCopyFee = 0;
 			}
-			$doc['total'] = (int)$doc['hardCopyFee']+(int)$doc['registrationFee'];
+			$depositQuestion = (array_key_exists('depositQuestion',$doc)) ? $doc['depositQuestion'] : '';
+			if($depositQuestion == 'yes'){
+				$doc['registrationFee'] = $doc['deposit'];
+			}
+			$doc['total'] = (int)$hardCopyFee+(int)$doc['registrationFee'];
 			
 			// need the rsvp text
 			$rsvp = $doc['rsvp'];
@@ -181,8 +256,8 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 	    	$view_vars = array('seminar'=>$seminar
 	    						,'rsvp'=>$rsvp
 	    						,'total'=>$doc['total']
-	    						,'hardCopy'=>$doc['hardCopy']
-	    						,'hardCopyFee'=>$doc['hardCopyFee']
+	    						,'hardCopy'=>$hardCopy
+	    						,'hardCopyFee'=>$hardCopyFee
 	    						,'registrationFee'=>$doc['registrationFee']
 	    						,'registrantName'=>$doc['name']
 	    						,'paymentType'=>$paymentType
@@ -192,14 +267,14 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 	    	$body = $app['view']->render('email/registration-seminar-admin','email', $view_vars);
 	    	$app['sendMail']($subject, $body, $to);
 
-	    	// send applicant the email notification
-	    	$subject = 'NCDD Seminar Registration Receipt';
+	    	// send applicant the email notification (this is not the confirmation, which also includes the deposit)
+    		$subject = 'NCDD Seminar Registration Information';
 	    	$to = $doc['email'];
 	    	$view_vars = array('seminar'=>$seminar
 	    						,'rsvp'=>$rsvp
 	    						,'total'=>$doc['total']
-	    						,'hardCopy'=>$doc['hardCopy']
-	    						,'hardCopyFee'=>$doc['hardCopyFee']
+	    						,'hardCopy'=>$hardCopy
+	    						,'hardCopyFee'=>$hardCopyFee
 	    						,'registrationFee'=>$doc['registrationFee']
 	    						,'registrantName'=>$doc['name']
 	    						,'paymentType'=>$paymentType
@@ -223,6 +298,7 @@ $app->get('/registration/{id}/view', function ($id, Request $request) use ($app)
 	
 	$registration = new Model\Registration($doc=array('_id'=>$id), $app);
 	$registration = $registration->findById();
+	
 	$seminar = new Model\Seminar(array('_id'=>$registration['seminarId']),$app);
 	$seminar = $seminar->findById();
 
@@ -364,6 +440,10 @@ $app->get('/registrations/seminar/{seminarId}/{offset}/{limit}', function ($semi
 	$seminar = $seminar->findById();
 	$registration = new Model\RegistrationSeminar($doc=array(), $app);
 	$submitted = $registration->fetchByStatus($seminarId,'SUBMITTED',$offset, $limit);
+	$scholarship = $registration->fetchByStatus($seminarId,'SCHOLARSHIP',$offset, $limit);
+	$scholarshipapprove = $registration->fetchByStatus($seminarId,'SCHOLARSHIPAPPROVE',$offset, $limit);
+	$deposit = $registration->fetchByStatus($seminarId,'DEPOSIT',$offset, $limit);
+	$depositbalance = $registration->fetchByStatus($seminarId,'DEPOSITBALANCE',$offset, $limit);
 	$paid = $registration->fetchByStatus($seminarId,'PAID',$offset, $limit);
 	$crumbs = array(array('name'=>'Seminars','href'=>'/seminar')
 					,array('name'=>$seminar['headline'],'href'=>'/seminar/view/'.$seminar['_id'])
@@ -375,6 +455,10 @@ $app->get('/registrations/seminar/{seminarId}/{offset}/{limit}', function ($semi
 						,'description'=>''
 						,'crumbs'=>$crumbs
 						,'submitted'=>$submitted
+						,'deposit'=>$deposit
+						,'depositbalance'=>$depositbalance
+						,'scholarship'=>$scholarship
+						,'scholarshipapprove'=>$scholarshipapprove
 						,'paid'=>$paid);
 	return $app['view']->render('registration/seminar-index', 'default', $view_vars);
 })

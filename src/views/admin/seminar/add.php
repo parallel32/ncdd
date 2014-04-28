@@ -76,16 +76,11 @@
                            <h3 class="form-section text-info"><strong>Description</strong>&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.activeEditor.focus();">Click to Add a Description</a></h3>
                            <div class="row-fluid">
                               <div class="span12 ">
-                                 <div class="control-group ">
-                                    <label class="control-label"></label>
-                                    <div class="controls">
                               <style>div.editable {margin: 0px 0px 0px 0px;padding: 5px 50px 5px 5px;} div.editable p {margin: 0px 0px 0px 0px;}</style>
                               <div id="body" class="span12 editable" style="margin-left:0px;">
-                                 <?=$seminar['description']?>
+                                 
                               </div>
                               <input id="input-body" type="hidden" name="doc[description]" value="">
-                                    </div>
-                                 </div>
                               </div>
                               <!--/span-->
                            </div>
@@ -138,4 +133,4 @@
          io.saw.Seminar.sluggify('headline','headline');
       });      
       </script>
-      <?=$this->element('editor',array('_id'=>null));?>
+      <?=$this->element('editor',array('_id'=>null,'client_id'=>null,'access_token'=>null));?>

@@ -204,6 +204,17 @@ endif; ?>
                   <div class="row-fluid ">
                      <div class="span12 ">
                         <div class="control-group">
+                           <label class="control-label" >How many times have you previously attended this Seminar?</label>
+                           <div class="controls">
+                              <input type="text" name="doc[previouslyAttended]" value="" class="m-wrap span12 previouslyAttended"> 
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <div class="row-fluid ">
+                     <div class="span12 ">
+                        <div class="control-group">
                            <label class="control-label" >Name for Name Tag</label>
                            <div class="controls">
                               <input type="text" name="doc[nameTag]" value="<?=($signed_in) ? $this->vars['member']['firstName'].$middleName.$this->vars['member']['lastName'] :'' ?>" class="m-wrap span12 nameTag"> 
@@ -260,6 +271,7 @@ endif; ?>
                                   <span class="add-on">$ </span>
                                      <input id="registration_fee" type="text" disabled value="<?=($signed_in) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>" class="m-wrap span12"> 
                                      <input name="doc[registrationFee]" type="hidden" value="<?=($signed_in) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>" class="m-wrap span12"> 
+                                     <input name="doc[registrationFeeOriginal]" type="hidden" value="<?=($signed_in) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>" class="m-wrap span12"> 
                                   <span class="add-on">.00</span>
                               </div>
                               <span class="help-block">**CD of materials will be included in the registration fee.**</span>
@@ -267,6 +279,7 @@ endif; ?>
                         </div>
                      </div>
                      <!--/span-->
+                     <? if(array_key_exists('hardCopyPrice',$this->vars['seminar']['register']) && !empty($this->vars['seminar']['register']['hardCopyPrice'])): ?>
                      <div class="span6 ">
                         <div class="control-group">
                            <label class="control-label" >Would you like to pre-order a hard copy of the materials?</label>
@@ -276,12 +289,32 @@ endif; ?>
                                  <option value="YES">YES</option>
                               </select>
                               <span class="help-block">If yes, an additional charge of $<?=$this->vars['seminar']['register']['hardCopyPrice']?> will be added.</span>
-                              <input name="doc[hardCopyFee]" type="hidden" value="<?=$this->vars['seminar']['register']['hardCopyPrice']?>"> 
+                              <input id="hardcopyfee" name="doc[hardCopyFee]" type="hidden" value="<?=$this->vars['seminar']['register']['hardCopyPrice']?>"> 
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                     <? endif; ?>
+                  </div>
+                  <? if(array_key_exists('deposit',$this->vars['seminar']['register']) && !empty($this->vars['seminar']['register']['deposit'])): ?>
+                  <br><br>
+                  <div id="deposit-group" class="row-fluid addr ">
+                     <div class="span12 ">
+                        <div class="control-group">
+                           <label class="control-label" >Would you like to make a desposit and pay the remainder later?</label>
+                           <div class="controls">
+                              <input style="margin-left:1px;" type="radio" name="doc[depositQuestion]" value="yes">&nbsp;&nbsp;Yes, I would like to make a deposit now and pay the remainder <?=(array_key_exists('depositDueDate',$this->vars['seminar']['register'])) ? 'on '.$this->vars['seminar']['register']['depositDueDate'] :'later' ?>.<br/><br/>
+                              <input style="margin-left:1px;" type="radio" name="doc[depositQuestion]" checked value="no">&nbsp;&nbsp;No thanks, I'll pay in full now.<br/><br/>
+
+                              <input name="doc[deposit]" id="deposit" type="hidden" value="<?=(array_key_exists('deposit',$this->vars['seminar']['register'])) ? $this->vars['seminar']['register']['deposit'] :'' ?>" class="m-wrap span12"> 
+                              <input name="doc[depositDueDate]" id="depositDueDate" type="hidden" value="<?=(array_key_exists('depositDueDate',$this->vars['seminar']['register'])) ? $this->vars['seminar']['register']['depositDueDate'] :'' ?>" class="m-wrap span12"> 
                            </div>
                         </div>
                      </div>
                      <!--/span-->
                   </div>
+                  <? endif; ?>
+                  <br>
                   <div class="row-fluid addr ">
                      <div class="span12 ">
                         <div class="control-group">
@@ -290,6 +323,7 @@ endif; ?>
                               <div class="input-prepend input-append">
                                   <span class="add-on">$ </span>
                                      <input name="doc[total]" id="total" type="text" disabled value="<?=($signed_in) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>" class="m-wrap span12"> 
+                                     <input name="" id="total_orig" type="hidden" value="<?=($signed_in) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>" class="m-wrap span12"> 
                                   <span class="add-on">.00</span>
                               </div>
                            </div>
@@ -504,16 +538,15 @@ endif; ?>
                            </div>
                         </div>
                         <!--/span-->
-                     </div>
-                     <!-- ERROR -->
+                     </div>                     
+                  </div>
+                  <!--/ PAYMENT ELEMENT -->
+                  <!-- ERROR -->
                      <div class="alert alert-error hide">
                         <button class="close" data-dismiss="alert"></button>
                         You have some form errors. Please check below.
                      </div>
                      <!--/ ERROR -->
-                     
-                  </div>
-                  <!--/ PAYMENT ELEMENT -->
                </form>
                <!-- END FORM--> 
                   <div  id="payment-form-check" class="hide">
@@ -699,14 +732,45 @@ jQuery(document).ready(function() {
    }
    // end - init the credit card fields
    
+   // prepare the hard copy change handler to update the total
    $('#saw-form .hardcopyYesNo').change(function(e){
       var hard_copy_fee = <?=($this->vars['seminar']['register']['hardCopyPrice'] > 0) ? $this->vars['seminar']['register']['hardCopyPrice'] : 0?>;
       if($(this).val() == 'YES'){
-         $('#total').val(parseInt($('#registration_fee').val())+hard_copy_fee);
+         $('#total').val(parseInt($('#total').val())+parseInt(hard_copy_fee));
       }else{
-         $('#total').val($('#registration_fee').val());
+         var val = $('#deposit-group input[type=radio]:checked').val();
+         if(val=='yes'){
+            $('#total').val(parseInt($('#deposit').val()));   
+         }else{
+            $('#total').val(parseInt($('#total_orig').val()));
+         }
+         
       }
       $('#saw-form .amount').val($('#total').val());
+   });
+
+   // prepare the deposit change handler to update the total
+   $('#deposit-group input[type=radio]').change(function(e){
+      var val = $('#deposit-group input[type=radio]:checked').val();
+      var hard_copy_fee = $('#hardcopyfee').val();
+      var hard_copy_set = $('#saw-form .hardcopyYesNo').val();
+      
+      if(val=='yes'){
+         if(hard_copy_set == 'YES'){
+            $('#total').val(parseInt($('#deposit').val())+parseInt(hard_copy_fee));
+         }else{
+            $('#total').val(parseInt($('#deposit').val()));
+         }
+         
+      }
+      if(val=='no'){
+         if(hard_copy_set == 'YES'){
+            $('#total').val(parseInt($('#total_orig').val())+parseInt(hard_copy_fee));  
+         }else{
+            $('#total').val(parseInt($('#total_orig').val()));  
+         }
+         
+      }
    });
 
    io.saw.Payment.findPos = function(obj) {

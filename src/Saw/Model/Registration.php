@@ -14,8 +14,8 @@ use Symfony\Component\Validator\ExecutionContext;
 class Registration extends Model {
 	
 	public $collection = 'registration';
-	static public $status = array('SUBMITTED'=>10,'PAID'=>40);
-	static public $statusReversed = array(10=>'SUBMITTED',40=>'PAID');
+	static public $status = array('SUBMITTED'=>10,'DEPOSIT'=>20,'DEPOSITBALANCE'=>30,'PAID'=>40,'SCHOLARSHIP'=>50,'SCHOLARSHIPAPPROVE'=>60);
+	static public $statusReversed = array(10=>'SUBMITTED',20=>'DEPOSIT',30=>'DEPOSITBALANCE',40=>'PAID',50=>'SCHOLARSHIP',60=>'SCHOLARSHIPAPPROVE');
 	public $currentStatus;
 	static public $paymentType = array('CHECK'=>10,'CREDIT'=>40);
 	static public $paymentTypeReversed = array(10=>'CHECK',40=>'CREDIT');
@@ -206,10 +206,14 @@ class Registration extends Model {
 	
 	public function markPaid(){
 
+		$result = $this->findOne(array('_id'=>$this->_id),array('currentStatus'=>1));
+		error_log('RegistrationSeminar markPaid result:'.print_r($result,true));
 		// mark the record as paid
 		$this->paidDate = new Date(self::$app,'now', 'America/New_York');
-		$this->currentStatus = self::$status['PAID'];
-		$this->saveSafe();
+		if($result['currentStatus'] == self::$status['SUBMITTED']){
+			$this->currentStatus = self::$status['PAID'];
+			$this->saveSafe();	
+		}		
 
 	}
 			

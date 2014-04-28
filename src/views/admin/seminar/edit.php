@@ -201,11 +201,32 @@
                                       <span class="help-block">Enter the dollar amount to charge for the materials hard copy.  <br>If you leave blank then it will not show up on the registration form.</span>
                                     </div>
                                  </div>
+                                 <div class="control-group">
+                                    <label class="control-label">Deposit Price</label>
+                                    <div class="controls">
+                                      <div class="input-prepend input-append">
+                                        <span class="add-on">$ </span>
+                                           <input type="text" name="doc[register][deposit]" value="<?=(array_key_exists('register',$seminar) && array_key_exists('deposit',$seminar['register'])) ? $seminar['register']['deposit'] : '';?>" data-required="1" class="span6 m-wrap deposit">
+                                        <span class="add-on">.00</span>
+                                      </div>
+                                      <span class="help-block">Enter the dollar amount for the deposit minimum.  <br>If you leave blank then it will not show up on the registration form.</span>
+                                    </div>
+                                 </div>
+                                 <div class="control-group">
+                                    <label class="control-label">Deposit Remainder DueDate</label>
+                                    <div class="controls">
+                                       <input type="text" name="doc[register][depositDueDate]" value="<?=(array_key_exists('register',$seminar) && array_key_exists('depositDueDate',$seminar['register'])) ? $seminar['register']['depositDueDate'] : '';?>" data-required="1" class="span6 m-wrap depositDueDate">
+                                      <span class="help-block">Type in a date like: June 15.</span>
+                                    </div>
+                                 </div>
                                  
                               </div>
                            </div>
 
                            <h3 class="form-section">Registration Confirmation Letter&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.get('body-confletter').execCommand('mcefocus',true);">Click to Edit</a></h3>
+                           <div class="alert alert-info"><p><b>Notice:</b> To include the registration total in the confirmation letter, type <b>#total#</b> below.  Reason being, it will vary depending on the price feilds above.<br>Also,it will be formatted with the dollar sign so you don't have to include that.</p>
+                           </div>
+                           <hr>
                            <div class="row-fluid">
                               <div class="span12 ">
                                  
@@ -220,6 +241,30 @@
                            </div>
                            
                            
+                           <h3 class="form-section">Registration Confirmation Letter for Deposit&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.get('body-deposit-confletter').execCommand('mcefocus',true);">Click to Edit</a></h3>
+                           <div class="alert alert-info"><p><b>Notice:</b> To include the registration total in the confirmation letter, type <b>#total#</b> below.  Reason being, it will vary depending on the price feilds above.<br>Also,it will be formatted with the dollar sign so you don't have to include that.</p>
+                              <p>To include the depoosit specific information include these variables:
+                                 <br>Registration balance due: <b>#balance_due#</b> (this will be formatted with the dollar sign, so you don't have to include it)
+                                 <br>Registration balance due date: <b>#balance_due_date#</b>
+                                 <br>Registration payment link: <b>#payment_link#</b> (this will be made into a clickable link automatically)
+
+                              </p>
+                           </div>
+                           <hr>
+                           <div class="row-fluid">
+                              <div class="span12 ">
+                                 
+                              <style>div.editable {margin: 0px 0px 0px 0px;padding: 5px 50px 5px 5px;} div.editable p {margin: 0px 0px 0px 0px;}</style>
+                              <div id="body-deposit-confletter" class="span12 editable" style="margin-left:0px;">
+                                 <?=(array_key_exists('register',$seminar)) ? (array_key_exists('depositConfirmationLetter',$seminar['register'])) ? $seminar['register']['depositConfirmationLetter'] : '' : '';?>
+                              </div>
+                              <input id="input-body-deposit-confletter" type="hidden" name="doc[register][depositConfirmationLetter]" value="">
+                                 
+                              </div>
+                              <!--/span-->
+                           </div>
+                           
+
                            <div class="form-actions">
                               <button type="button" class="btn green">Save</button>
                               <button type="button" class="btn cancel">Cancel</button>

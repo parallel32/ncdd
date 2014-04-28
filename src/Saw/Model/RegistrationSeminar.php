@@ -12,7 +12,7 @@ use Symfony\Component\Validator\ExecutionContext;
  * This class is the seminar registration model to handle the specific attributes.
  */
 class RegistrationSeminar extends Registration {
-	
+	 
 	public $type = 'NEW SEMINAR REGISTRATION';
 	public $class = 'RegistrationSeminar';
 	public $nameTag;
@@ -21,16 +21,24 @@ class RegistrationSeminar extends Registration {
 	public $attendanceCertificationStatement;
 	public $hardCopy; // YES | NO
 	public $registrationFee;
+	public $registrationFeeOriginal;
 	public $hardCopyFee;
 	public $total;
 	public $seminarId;
+	public $previouslyAttended;
+	public $depositQuestion; // yes | no
+	public $deposit; // the amount for the initial deposit
+	public $depositDueDate; // the due date for payment of the remainer of the deposit
+
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addPropertyConstraint('nameTag', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('barNumber', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('rsvp', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('attendanceCertificationStatement', new Constraints\NotBlank(array('message'=>'cannot be blank')));
+		$metadata->addPropertyConstraint('previouslyAttended', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 	}
+	
 	public function __construct($doc, Application $app){
 		parent::__construct($doc,$app);
 		$this->init($doc);
@@ -47,9 +55,14 @@ class RegistrationSeminar extends Registration {
 		}
 		$this->hardCopy = $doc['hardCopy'];
 		$this->registrationFee = $doc['registrationFee'];
+		$this->registrationFeeOriginal = $doc['registrationFeeOriginal'];
 		$this->hardCopyFee = $doc['hardCopyFee'];
 		$this->total = $doc['total'];
+		$this->previouslyAttended = $doc['previouslyAttended'];
 		if(!empty($doc['seminarId'])) $this->seminarId = (is_object($doc['seminarId'])) ? $doc['seminarId'] : new \MongoId($doc['seminarId']);
+		$this->deposit = $doc['deposit'];
+        $this->depositDueDate = $doc['depositDueDate'];
+        $this->depositQuestion = $doc['depositQuestion'];
 	}
 	
 	/**
@@ -63,9 +76,14 @@ class RegistrationSeminar extends Registration {
 		$this->attendanceCertificationStatement = $this->attendanceCertificationStatement ?: '';
 		$this->hardCopy = $this->hardCopy ?: 'NO';
 		$this->registrationFee = $this->registrationFee ?: 0;
+		$this->registrationFeeOriginal = $this->registrationFeeOriginal ?: 0;
 		$this->hardCopyFee = $this->hardCopyFee ?: 0;
 		$this->total = $this->total ?: 0;
 		$this->seminarId = $this->seminarId ?: new \stdClass();
+		$this->previouslyAttended = $this->previouslyAttended ?: '';
+		$this->deposit = $this->deposit ?: 0;
+		$this->depositDueDate = $this->depositDueDate ?: new \stdClass();
+		$this->depositQuestion = $this->depositQuestion ?: 'no';
 	}
 	
 	public function insert(){

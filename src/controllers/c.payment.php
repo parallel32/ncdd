@@ -30,8 +30,17 @@ $app->post('/payment/charge', function (Request $request) use ($app) {
 						,'email'=>$payment->email
 	);
 	$body = $app['view']->render('email/payment-thankyou','email', $view_vars);
-		
-	$app['sendMail']($subject, $body, $to);
+	
+
+	// TODO no emails when ADMIN is approving -- temporary and should be removed after Hunter is done with the manual entry and payment of snail mailed renewals
+	$user = $app['session']->get('user');
+	$user['suppress_emails'] = $request->get('suppress_emails');
+	$app['session']->set('user',$user);
+	if($user['accessLevel'] == ADMIN && $user['suppress_emails'] == 'yes'){
+		// do nothing
+	}else{
+		$app['sendMail']($subject, $body, $to);
+	}	
 	
 	return new Response(json_encode(array('paymentId'=>$paymentId,'message'=>"success")), 200,array('Content-Type' => 'application/json'));
 		

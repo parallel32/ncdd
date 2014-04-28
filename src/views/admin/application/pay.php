@@ -130,6 +130,8 @@
                      $payment_vars['state'] = (!empty($this->vars['application']['state'])) ? $this->vars['application']['state']: $this->vars['location']['state'];
                      $payment_vars['postalCode'] = (!empty($this->vars['application']['postalCode'])) ? $this->vars['application']['postalCode']: $this->vars['location']['zip'];
                      $payment_vars['country'] = (!empty($this->vars['application']['country'])) ? $this->vars['application']['country']: $this->vars['location']['country'];
+                     $payment_vars['redirect_label'] = 'Go To Applications';
+                     $payment_vars['redirect_url'] = '/applications';
                      $resetSession = ($accessLevel == ADMIN) ? 'no' : 'yes';
                      $payment_vars['chargeOnSuccess'] = <<< EOT
 {chargeOnSuccess:function(responseObj,paymentId){

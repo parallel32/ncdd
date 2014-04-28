@@ -424,12 +424,42 @@ EOT;
 	public function markOwnerClassPaid($paymentId){
 		switch ($this->ownerClass) {
 			case 'RegistrationSeminar':
-				$obj = new RegistrationSeminar(array('_id'=>$this->ownerId
+				$registration = new RegistrationSeminar(array('_id'=>$this->ownerId),self::$app);
+				$registration = $registration->findById();
+error_log('Payment registration current_status:'.$registration['currentStatus']);
+				switch ($registration['currentStatus']) {
+					case Registration::$status['DEPOSIT']:
+error_log('here A');
+						$obj = new RegistrationSeminar(array('_id'=>$this->ownerId
+														,'currentStatus'=>Registration::$status['DEPOSITBALANCE']
+														,'paidDate'=> new Date(self::$app, 'now')
+														,'paymentId'=> $paymentId
+												),self::$app);
+						break;
+					case Registration::$status['DEPOSITBALANCE']:
+error_log('here B');
+						$obj = new RegistrationSeminar(array('_id'=>$this->ownerId
 														,'currentStatus'=>Registration::$status['PAID']
 														,'paidDate'=> new Date(self::$app, 'now')
 														,'paymentId'=> $paymentId
 												),self::$app);
-
+						break;
+					case Registration::$status['SCHOLARSHIP']:
+						$obj = new RegistrationSeminar(array('_id'=>$this->ownerId
+														,'currentStatus'=>Registration::$status['SCHOLARSHIPAPPROVE']
+														,'paidDate'=> new Date(self::$app, 'now')
+														,'paymentId'=> $paymentId
+												),self::$app);
+						break;
+					default:
+error_log('here C');
+						$obj = new RegistrationSeminar(array('_id'=>$this->ownerId
+														,'currentStatus'=>Registration::$status['PAID']
+														,'paidDate'=> new Date(self::$app, 'now')
+														,'paymentId'=> $paymentId
+												),self::$app);
+						break;
+				}
 				return $obj->saveSafe();
 				break;
 			case 'ApplyNewMember':

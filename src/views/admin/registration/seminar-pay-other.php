@@ -10,8 +10,15 @@
             </div>
             <!-- END PAGE HEADER-->
             <!-- BEGIN PAGE CONTENT-->
-
+ 
             <!-- INVOICE -->
+            <div class="row-fluid invoice">
+               <div class="span12 alert">
+                  <p><h3><b>Alternate payment method screen</b></h3></p>
+                  <p><h3>To pay by credit card on behalf of the member:</h3></p> <a class="btn blue" href="/registration/seminar/<?=$this->vars['registration']['_id']?>/pay"><i class="icon-money"></i> Goto the Credit Card Form</a>
+               </div>
+            </div>
+            <hr />
             
             <div class="row-fluid invoice">
                <div class="row-fluid invoice-logo">
@@ -62,16 +69,37 @@
                         </tr>
                      </thead>
                      <tbody>
+                        <? //echo "<pre>";print_r($this->vars['registration']);echo "</pre>";
+                           /*
+                           if(array_key_exists('deposit',$this->vars['seminar']['register'])
+                              && array_key_exists('depositQuestion',$this->vars['registration']) 
+                              && !empty($this->vars['registration']['deposit']) 
+                              && $this->vars['registration']['depositQuestion'] == 'yes'):
+                              //*/
+                           if($this->vars['registration']['currentStatus'] == \Saw\Model\Registration::$status['DEPOSIT']):
+                              
+                              $this->vars['registration']['registrationFee'] = $this->vars['registration']['deposit'];
+                              $label = 'Registration Deposit';
+
+                           elseif($this->vars['registration']['currentStatus'] == \Saw\Model\Registration::$status['DEPOSITBALANCE']):
+                              $this->vars['registration']['registrationFee'] = (int)$this->vars['registration']['registrationFeeOriginal'] - (int)$this->vars['registration']['deposit'];
+                              $label = 'Registration Balance Due';
+                           else:
+                              $label = "Registration Full Payment";
+                           endif;
+                        ?>
                         <tr>
                            <td>1</td>
-                           <td>Registration</td>
+                           <td><?=$label?></td>
                            <td class="hidden-480"><?=$this->vars['registration']['type']?></td>
                            <td class="hidden-480">1</td>
                            <td class="hidden-480">$<?=$this->vars['registration']['registrationFee']?></td>
                            <td>$<?=$this->vars['registration']['registrationFee']?></td>
                         </tr>
+                        
+                        <? $amount = $this->vars['registration']['registrationFee']; ?>
+                        <? if(array_key_exists('hardCopy',$this->vars['registration']) && !empty($this->vars['registration']['hardCopy'])): ?>
                         <? if($this->vars['registration']['hardCopy'] == 'YES'): 
-                           $amount = $this->vars['registration']['registrationFee']+$this->vars['registration']['hardCopyFee'];
                         ?>
                         <tr>
                            <td>2</td>
@@ -81,16 +109,18 @@
                            <td class="hidden-480">$<?=$this->vars['registration']['hardCopyFee']?></td>
                            <td>$<?=$this->vars['registration']['hardCopyFee']?></td>
                         </tr>
-                        <? else: 
-                           $amount = $this->vars['registration']['registrationFee'];
-                         endif; ?>
+                        <? endif; ?>
+                        <? endif; ?>
                      </tbody>
                   </table>
                </div>
                <div class="row-fluid">
                   <div class="span12 invoice-block">
                      <ul class="unstyled amounts">
-                        <li><strong>Total:</strong> $<?=$amount?></li>
+                        <? if($this->vars['registration']['currentStatus'] == \Saw\Model\Registration::$status['DEPOSITBALANCE']): 
+                           $this->vars['registration']['total'] = $this->vars['registration']['registrationFee'];
+                           endif; ?>
+                        <li><strong>Total:</strong> $<?=$this->vars['registration']['total']?></li>
                      </ul>
                   </div>
                </div>
@@ -125,7 +155,7 @@
                      $ownerId = $this->vars['registration']['_id'];
                      $ownerClass = $this->vars['registration']['class'];
                      $description = 'INV-'.time();
-                     $title = $this->vars['registration']['type'].' - '.$this->vars['seminar']['headline'].' - '.$this->vars['seminar']['location'].' - '.$this->vars['seminar']['startDate']['monthDay'].' - '.$this->vars['seminar']['endDate']['monthDay'].', '.$this->vars['seminar']['startDate']['year'];
+                     $title = $label.' - '.$this->vars['registration']['type'].' - '.$this->vars['seminar']['headline'].' - '.$this->vars['seminar']['location'].' - '.$this->vars['seminar']['startDate']['monthDay'].' - '.$this->vars['seminar']['endDate']['monthDay'].', '.$this->vars['seminar']['startDate']['year'];
                      $name = $this->vars['registration']['name'];
                      $email = $this->vars['registration']['email'];
                      $phone = $this->vars['registration']['phone'];
@@ -151,7 +181,7 @@
                               <div class="controls">
                                  <div class="input-prepend input-append">
                                     <span class="add-on">$ </span>
-                                       <input type="text" name="doc[amount]" class="m-wrap span8 amount" value="<?=$amount?>">
+                                       <input type="text" name="doc[amount]" class="m-wrap span8 amount" value="<?=$this->vars['registration']['total']?>">
                                     <span class="add-on">.00</span>
                                  </div>
                                  <span class="help-block">A receipt with this amount will be created.</span>

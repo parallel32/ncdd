@@ -226,6 +226,11 @@
                      </div>
                      <!--/ ERROR -->
                      <div class="form-actions text-center">
+                        <? $user = $this->app['session']->get('user');
+                           if($user['accessLevel'] == ADMIN){  
+                        ?>
+                        <input type="checkbox" name="suppress_emails" <?=(array_key_exists('suppress_emails',$user) && !empty($user['suppress_emails']))?'checked':'';?> value="yes">Suppress Emails.
+                        <? } ?>
                         <button type="button" class="btn green"><i class="icon-ok"></i> Submit Payment</button>
                         <button type="button" class="btn cancel">Cancel and Go Back</button>
                      </div>
@@ -244,7 +249,7 @@
                         <button class="btn blue continue dashboard">Go To Dashboard</button>
                         <? $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user'); return $user['accessLevel'];},$this->app); ?>
                         <? if($accessLevel >= EDITOR):?>
-                        <button class="btn yellow continue applications">Go To Applications</button>
+                        <button class="btn yellow continue applications"><?=$redirect_label?></button>
                         <? endif; ?>
                      </div>
                   </div>
@@ -258,7 +263,7 @@
 
                      <? if($accessLevel >= EDITOR):?>
                      $('#save-success .continue.applications').click(function(e){
-                        document.location.href='/applications';
+                        document.location.href='<?=$redirect_url?>';
                      });   
                      <? endif; ?>
                   });      

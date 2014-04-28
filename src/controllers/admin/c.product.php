@@ -23,9 +23,16 @@ $product->get('/', function (Request $request) use ($app) {
 	$fulfilled_orders_cnt = (is_array($fulfilled_orders) && !empty($fulfilled_orders)) ? count($fulfilled_orders): 0;
 
 	$product= new Model\Product(array(),$app);
-	$products = $product->fetchByStatus();
-	$products_cnt = (is_array($products) && !empty($products)) ? count($products): 0;
+	$products_cnt = $product->fetchByStatus();
+	$products_cnt = (is_array($products_cnt) && !empty($products_cnt)) ? count($products_cnt): 0;
 
+	$category = new Model\Category(array('currentType'=>Model\Category::$type['STORE']),$app);
+	$categories = $category->fetchByType();
+	$product = new Model\Product($doc=array(), $app);
+	foreach ($categories as $category) {
+		$products[$category['name']] = $product->fetchByCategory($category['_id']);	
+	}
+	
 	$crumbs = array(array('name'=>'NCDD Store','href'=>'/product'));
 	$view_vars = array(
 						 'active'=>'Store'

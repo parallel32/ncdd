@@ -11,7 +11,7 @@ use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Saw\Model;
 
-$app['applicationEmails'] = $app->protect(function ($app,$applicationId,$context) {
+$app['applicationEmails'] = $app->protect(function ($app,$applicationId,$context,$request) {
 
 	$apply = new Model\Apply(array('_id'=>$applicationId), $app);
 	$apply_arr = $apply->findById();
@@ -88,7 +88,9 @@ $app['applicationEmails'] = $app->protect(function ($app,$applicationId,$context
 		}
 		// TODO no emails when ADMIN is approving -- temporary and should be removed after Hunter is done with the manual entry and payment of snail mailed renewals
 		$user = $app['session']->get('user');
-		if($user['accessLevel'] == ADMIN){
+		$user['suppress_emails'] = $request->get('suppress_emails');
+		$app['session']->set('user',$user);
+		if($user['accessLevel'] == ADMIN && $user['suppress_emails'] == 'yes'){
 			switch ($apply_arr['class']) {
 				case 'UpdateMember':
 				case 'UpdateFoundingMember':
@@ -184,7 +186,9 @@ $app['applicationEmails'] = $app->protect(function ($app,$applicationId,$context
 		}
 		// TODO no emails when ADMIN is approving -- temporary and should be removed after Hunter is done with the manual entry and payment of snail mailed renewals
 		$user = $app['session']->get('user');
-		if($user['accessLevel'] == ADMIN){
+		$user['suppress_emails'] = $request->get('suppress_emails');
+		$app['session']->set('user',$user);
+		if($user['accessLevel'] == ADMIN && $user['suppress_emails'] == 'yes'){
 			switch ($apply_arr['class']) {
 				case 'UpdateMember':
 					return new Response(json_encode(array('message' => 'Approved successfully AND No emails sent to members.')), 200,array('Content-Type' => 'application/json'));
@@ -415,7 +419,9 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 		
 		// TODO no emails when ADMIN is approving -- temporary and should be removed after Hunter is done with the manual entry and payment of snail mailed renewals
 		$user = $app['session']->get('user');
-		if($user['accessLevel'] == ADMIN){	
+		$user['suppress_emails'] = $request->get('suppress_emails');
+		$app['session']->set('user',$user);
+		if($user['accessLevel'] == ADMIN && $user['suppress_emails'] == 'yes'){
 			// do nothing
 		}else{
 			$app['sendMail']($subject, $body, $to);
@@ -802,7 +808,7 @@ $app->post('/application/{id}/trial', function ($id, Request $request) use ($app
 	$application = new Model\Apply(array('_id'=>$id,'referredBy'=>$doc['referredBy'],'trial'=>$trial->__toArray()), $app);
 	$application->saveEdit();
 
-	return $app['applicationEmails']($app,$id,$context='new-member-trial');
+	return $app['applicationEmails']($app,$id,$context='new-member-trial',$request);
 })->before($mustbeADMIN);
 
 /////////////
@@ -810,7 +816,10 @@ $app->post('/application/{id}/trial', function ($id, Request $request) use ($app
 /////////////
 $app->get('/application/{id}/approve/{type}', function ($id,$type, Request $request) use ($app) {
 	//error_log('type:'.$type);
-	return $app['applicationEmails']($app,$id,$context='new-member-welcome');
+	$user = $app['session']->get('user');
+	$user['suppress_emails'] = $request->get('suppress_emails');
+	$app['session']->set('user',$user);
+	return $app['applicationEmails']($app,$id,$context='new-member-welcome',$request);
 })->before($mustbeADMIN);
 
 ///////////////
@@ -919,7 +928,9 @@ $app->post('/application/payment', function (Request $request) use ($app) {
 	
 	// TODO no emails when ADMIN is approving -- temporary and should be removed after Hunter is done with the manual entry and payment of snail mailed renewals
 	$user = $app['session']->get('user');
-	if($user['accessLevel'] == ADMIN){	
+	$user['suppress_emails'] = $request->get('suppress_emails');
+	$app['session']->set('user',$user);
+	if($user['accessLevel'] == ADMIN && $user['suppress_emails'] == 'yes'){
 		// do nothing
 	}else{
 		$app['sendMail']($subject, $body, $to);
@@ -958,7 +969,7 @@ $app->get('/application/{paymentId}/pay/{applicationId}/{resetSession}', functio
     else
     	$application->markPaid();
 
-    return $app['applicationEmails']($app,$applicationId,$context='new-member-complete');
+    return $app['applicationEmails']($app,$applicationId,$context='new-member-complete',$request);
 })->value('resetSession','yes')->before($mustbeMEMBER);
 
 
@@ -1041,10 +1052,15 @@ $app->get('/renewals/{offset}/{limit}', function ($offset, $limit, Request $requ
 		,'approved'=>$member->fetchByRenewalStatus('APPROVED',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']),$offset, $limit)
 		,'paid'=>$member->fetchByRenewalStatus('PAID',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']), $offset, $limit)
 	);
-	$updates = array(
-		'unsubmitted'=>$member->fetchByRenewalStatus('UNSUBMITTED',array(Model\Member::$membership['FOUNDING MEMBER'],Model\Member::$membership['SUSTAINING MEMBER']),$offset, $limit)
-		,'submitted'=>$member->fetchByRenewalStatus('SUBMITTED',array(Model\Member::$membership['FOUNDING MEMBER'],Model\Member::$membership['SUSTAINING MEMBER']),$offset, $limit)
-		,'approved'=>$member->fetchByRenewalStatus('APPROVED',array(Model\Member::$membership['FOUNDING MEMBER'],Model\Member::$membership['SUSTAINING MEMBER']),$offset, $limit)
+	$updates_founding = array(
+		'unsubmitted'=>$member->fetchByRenewalStatus('UNSUBMITTED',array(Model\Member::$membership['FOUNDING MEMBER']),$offset, $limit)
+		,'submitted'=>$member->fetchByRenewalStatus('SUBMITTED',array(Model\Member::$membership['FOUNDING MEMBER']),$offset, $limit)
+		,'approved'=>$member->fetchByRenewalStatus('APPROVED',array(Model\Member::$membership['FOUNDING MEMBER']),$offset, $limit)
+	);
+	$updates_sustaining = array(
+		'unsubmitted'=>$member->fetchByRenewalStatus('UNSUBMITTED',array(Model\Member::$membership['SUSTAINING MEMBER']),$offset, $limit)
+		,'submitted'=>$member->fetchByRenewalStatus('SUBMITTED',array(Model\Member::$membership['SUSTAINING MEMBER']),$offset, $limit)
+		,'approved'=>$member->fetchByRenewalStatus('APPROVED',array(Model\Member::$membership['SUSTAINING MEMBER']),$offset, $limit)
 	);
 	$donations = $member->fetchByRenewalDonations($offset, $limit);
 	$crumbs = array(array('name'=>'Renewals','href'=>'/renewals'));
@@ -1056,7 +1072,9 @@ $app->get('/renewals/{offset}/{limit}', function ($offset, $limit, Request $requ
 						,'crumbs'=>$crumbs
 						,'donations'=>$donations
 						,'renewals'=>$renewals
-						,'updates'=>$updates);
+						,'updates_founding'=>$updates_founding
+						,'updates_sustaining'=>$updates_sustaining
+						);
 	return $app['view']->render('application/index-renewals', 'default', $view_vars);
 })
 ->value('offset','0')

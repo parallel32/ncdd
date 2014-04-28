@@ -24,13 +24,17 @@
 <table>
 	<tr><td><strong>Registrant Name:</strong></td><td><?=$this->vars['registrantName']?></td></tr>
 	<tr><td><strong>Attendees Dinner RSVP:</strong></td><td><?=$this->vars['rsvp']?></td></tr>
+	<? if(array_key_exists('hardCopy',$this->vars) && !empty($this->vars['hardCopy']) && $this->vars['hardCopy'] == 'YES'): ?>
 	<tr><td><strong>Material hard copy:</strong></td><td><?=$this->vars['hardCopy']?></td></tr>
+	<?endif;?>
 </table>
 
 <br/><br/><h4 class="h4">Payment Details:</h4>
 <table>
 	<tr><td><strong>Registration fee:</strong></td><td>$<?=$this->vars['registrationFee']?></td></tr>
+	<? if(array_key_exists('hardCopy',$this->vars) && !empty($this->vars['hardCopy']) && $this->vars['hardCopy'] == 'YES'): ?>
 	<tr><td><strong>Hard copy fee:</strong></td><td>$<?=($this->vars['hardCopy'] == 'NO') ? 0 : $this->vars['hardCopyFee']?></td></tr>
+	<? endif; ?>
 	<tr><td><strong>Total:</strong></td><td>$<?=$this->vars['total']?></td></tr>
 </table>
 <? if($this->vars['paymentType'] == 'credit'):?>

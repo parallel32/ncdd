@@ -20,10 +20,16 @@ class SeminarRegister extends Model {
 	public $nonMemberPrice;
 	public $hardCopyPrice;
 	public $confirmationLetter;
-	
+	public $depositConfirmationLetter;
+	public $deposit; // the amount for the initial deposit
+	public $depositDueDate; // the due date for payment of the remainer of the deposit
+
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addConstraint(new Callback(array(
             'methods' => array('isValidPrice'),
+        )));
+        $metadata->addConstraint(new Callback(array(
+            'methods' => array('isValidDeposit'),
         )));
 	}
 	/**
@@ -56,6 +62,21 @@ class SeminarRegister extends Model {
             $propertyPath = $context->getPropertyPath().'hardCopyPrice';
         	$context->addViolationAtPath($propertyPath,"If you don't want to leave it blank, then only integers are accepted.", array(), null);
 		}
+		if(!empty($this->deposit) && !is_numeric($this->deposit)){
+            $propertyPath = $context->getPropertyPath().'deposit';
+        	$context->addViolationAtPath($propertyPath,"If you don't want to leave it blank, then only integers are accepted.", array(), null);
+		}
+	}
+	/**
+	 * validator helper function
+	*/
+	public function isValidDeposit(ExecutionContext $context){
+		
+		if(!empty($this->deposit) && empty($this->depositDueDate)){
+            $propertyPath = $context->getPropertyPath().'depositDueDate';
+        	$context->addViolationAtPath($propertyPath,'Need to have a due date for the deposit remainder.', array(), null);
+		}
+		
 	}
 	public function __construct($doc, Application $app){
 		parent::__construct($app);
@@ -66,7 +87,9 @@ class SeminarRegister extends Model {
 		$this->nonMemberPrice = (!empty($doc['nonMemberPrice'])) ? (int)$doc['nonMemberPrice']: '';
 		$this->hardCopyPrice = (!empty($doc['hardCopyPrice'])) ? $doc['hardCopyPrice']: '';
 		$this->confirmationLetter = $doc['confirmationLetter'];
-		
+		$this->depositConfirmationLetter = $doc['depositConfirmationLetter'];
+		$this->deposit = $doc['deposit'];
+        $this->depositDueDate = $doc['depositDueDate'];
 	}
 	
 	/**
@@ -78,6 +101,9 @@ class SeminarRegister extends Model {
 		$this->nonMemberPrice = $this->nonMemberPrice ?: '';
 		$this->hardCopyPrice = $this->hardCopyPrice ?: '';
 		$this->confirmationLetter = $this->confirmationLetter ?: '';
+		$this->depositConfirmationLetter = $this->depositConfirmationLetter ?: '';
+		$this->deposit = $this->deposit ?: '';
+		$this->depositDueDate = $this->depositDueDate ?: '';
 	}
 	
 	public function saveEdit(){

@@ -420,6 +420,11 @@
                   <div class="form-actions text-center">
                      <button type="button" data-id="<?=$this->vars['application']['_id']?>" class="btn blue edit"><i class="icon-pencil"></i> Edit Application</button>
                      <? if($this->vars['application']['currentStatus'] < \Saw\Model\Apply::$status['APPROVED']): ?>
+                     <? $user = $this->app['session']->get('user');
+                        if($user['accessLevel'] == ADMIN){  
+                     ?>
+                     <input type="checkbox" name="suppress_emails" <?=(array_key_exists('suppress_emails',$user) && !empty($user['suppress_emails']))?'checked':'';?> value="yes">Suppress Emails.
+                     <? } ?>
                      <button type="button" data-id="<?=$this->vars['application']['_id']?>" data-type="<?=$this->vars['application']['class']?>" class="btn green approve"><i class="icon-ok"></i> Approve Application</button>
                      <? endif; ?>
                      <button type="button" class="btn cancel">Cancel and Go Back</button>

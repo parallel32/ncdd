@@ -112,13 +112,13 @@
                </div>
             </div>
             </div>
-
+            <? foreach($this->vars['products'] as $category_name => $products): ?>
             <div class="row-fluid" id="product">
                <div class="span12">
                   <!-- BEGIN EXAMPLE TABLE PORTLET-->
                   <div class="portlet box purple">
                      <div class="portlet-title">
-                        <div class="caption"><i class="icon-barcode"></i>All Products</div>
+                        <div class="caption"><i class="icon-barcode"></i><?=$category_name?> (<?=count($products)?>)</div>
                         <div class="actions">
                            <a class="btn green add-product"><i class=" icon-plus"></i> Add a Product</a>
                         </div>
@@ -134,12 +134,11 @@
                                  <th class="hidden-phone">Shipping $</th>
                                  <th class="hidden-480">Status</th>
                                  <th class="hidden-480">Purchase Instructions</th>
-                                 <th class="hidden-480">Category</th>
                                  <th class=""></th>
                               </tr>
                            </thead>
                            <tbody role="alert" aria-live="polite" aria-relevant="all">
-                              <? if(!empty($this->vars['products'])): foreach($this->vars['products'] as $product): ?>
+                              <? if(!empty($products)): foreach($products as $product): ?>
                               <tr class="gradeX odd">
                                  <td class=" "><?=$product['name']?></td>
                                  <td class="hidden-phone">$<?=number_format($product['price'],2)?></td>
@@ -148,18 +147,17 @@
                                  
                                  <?
                                     switch ($product['currentStatus']) {
-                                       case 'PUBLISH':
-                                       case 'MEMBERSONLY':
-                                          $currentStatus = '<span class="label label-success">'.$product['currentStatus'].'</span>';
+                                       case \Saw\Model\Product::$status['PUBLISH']:
+                                       case \Saw\Model\Product::$status['MEMBERSONLY']:
+                                          $currentStatus = '<span class="label label-success">'.\Saw\Model\Product::$statusReversed[$product['currentStatus']].'</span>';
                                           break;
-                                       case 'UNPUBLISH':
-                                          $currentStatus = '<span class="label label-inverse">'.$product['currentStatus'].'</span>';
+                                       case \Saw\Model\Product::$status['UNPUBLISH']:
+                                          $currentStatus = '<span class="label label-inverse">'.\Saw\Model\Product::$statusReversed[$product['currentStatus']].'</span>';
                                           break;
                                     }
                                  ?>
                                  <td class="hidden-480 "><?=$currentStatus?></td>
                                  <td class="center hidden-480 "><?=(array_key_exists('purchaseInstructions', $product)) ? $product['purchaseInstructions'] : '';?></td>
-                                 <td class="center hidden-480 "><?=(is_array($product['category'])) ? $product['category']['name']: $product['category'];?></td>
                                  <td class=" ">
                                     <a data-id="<?=$product['_id']?>" class="btn blue mini edit"><i class=" "></i> Edit</a>
                                     <? if ($product['currentStatus'] >= 'MEMBERSONLY') { ?>
@@ -179,6 +177,8 @@
                </div>
             </div>
             </div>
+            <? endforeach ?>
+
 
             <div class="row-fluid">
                <div class="span12">

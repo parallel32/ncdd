@@ -30,6 +30,7 @@
 		
 		tinymce.activeEditor.save();
 		$('#input-body-confletter').val($('#body-confletter').html());
+		$('#input-body-deposit-confletter').val($('#body-deposit-confletter').html());
 		
 		io.saw.FormPost.activate({postUrl:'/seminar/edit'
 		   ,formName:'#register-form'
@@ -78,7 +79,7 @@
 	};
 	Seminar.init = function(saveMode){
 		$('#manage-picture .btn.manage-picture').click(function(e){
-			document.location.href='/seminar/edit/<?=$this->vars['seminar']['_id']?>/edit-photo';
+			document.location.href='/seminar/edit/<?=(array_key_exists('seminar',$this->vars)) ? $this->vars['seminar']['_id']: '';?>/edit-photo';
 		});
 		$('#saw-form input').keypress(function (e) {
 		   if (e.which == 13) {

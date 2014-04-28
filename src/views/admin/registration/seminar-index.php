@@ -12,48 +12,123 @@
             
 
             <div class="row-fluid">
-                  <div class="responsive span6" data-tablet="span6" data-desktop="span6">
-                     <div class="dashboard-stat yellow">
-                        <div class="visual">
-                           <i class="icon-hideme"><?=(!empty($this->vars['submitted'])) ? count($this->vars['submitted']) : 0;?></i>
-                        </div>
-                        <div class="details">
-                           <div class="number"><font><font>
-                              Submitted (unpaid)
-                           </font></font></div>
-                           <div class="desc"><font><font>                           
-                              
-                           </font></font></div>
-                        </div>
-                        <a class="more" href="#submitted"><font><font>
-                        Click To Scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
-                        </a>                 
+               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                  <div class="dashboard-stat red">
+                     <div class="visual">
+                        <i class="icon-hideme"><?=(!empty($this->vars['submitted'])) ? count($this->vars['submitted']) : 0;?></i>
                      </div>
-                  </div>
-                  <div class="responsive span6" data-tablet="span6" data-desktop="span6">
-                     <a name="submitted"></a>
-                     <div class="dashboard-stat green">
-                        <div class="visual">
-                           <i class="icon-hideme"><?=(!empty($this->vars['paid'])) ? count($this->vars['paid']) : 0;?></i>
-                        </div>
-                        <div class="details">
-                           <div class="number"><font><font>Paid</font></font></div>
-                           <div class="desc"><font><font>
-                              
-                           </font></font></div>
-                        </div>
-                        <a class="more" href="#paid"><font><font>
-                        click to scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
-                        </a>                 
+                     <div class="details">
+                        <div class="number"><font><font>
+                           Submitted (unpaid)
+                        </font></font></div>
+                        <div class="desc"><font><font>                           
+                           
+                        </font></font></div>
                      </div>
+                     <a class="more" href="#submitted"><font><font>
+                     Click To Scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
+                     </a>                 
                   </div>
-                  
                </div>
+               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                  <div class="dashboard-stat red">
+                     <div class="visual">
+                        <i class="icon-hideme"><?=(!empty($this->vars['deposit'])) ? count($this->vars['deposit']) : 0;?></i>
+                     </div>
+                     <div class="details">
+                        <div class="number"><font><font>
+                           Deposits (unpaid)
+                        </font></font></div>
+                        <div class="desc"><font><font>                           
+                           
+                        </font></font></div>
+                     </div>
+                     <a class="more" href="#deposits"><font><font>
+                     Click To Scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
+                     </a>                 
+                  </div>
+               </div>
+               
+            </div>
             
             <div class="row-fluid">
+               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                  <div class="dashboard-stat red">
+                     <div class="visual">
+                        <i class="icon-hideme"><?=(!empty($this->vars['scholarship'])) ? count($this->vars['scholarship']) : 0;?></i>
+                     </div>
+                     <div class="details">
+                        <div class="number"><font><font>Sholarships (need approval)</font></font></div>
+                        <div class="desc"><font><font>
+                           
+                        </font></font></div>
+                     </div>
+                     <a class="more" href="#scholarship"><font><font>
+                     click to scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
+                     </a>                 
+                  </div>
+               </div>
+               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                  <div class="dashboard-stat yellow">
+                     <div class="visual">
+                        <i class="icon-hideme"><?=(!empty($this->vars['depositbalance'])) ? count($this->vars['depositbalance']) : 0;?></i>
+                     </div>
+                     <div class="details">
+                        <div class="number"><font><font>Deposits (balance unpaid)</font></font></div>
+                        <div class="desc"><font><font>
+                           
+                        </font></font></div>
+                     </div>
+                     <a class="more" href="#depositbalance"><font><font>
+                     click to scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
+                     </a>                 
+                  </div>
+               </div>
+               
+            </div>
+
+            <div class="row-fluid">
+               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                  <div class="dashboard-stat purple">
+                     <div class="visual">
+                        <i class="icon-hideme"><?=(!empty($this->vars['scholarshipapprove'])) ? count($this->vars['scholarshipapprove']) : 0;?></i>
+                     </div>
+                     <div class="details">
+                        <div class="number"><font><font>Scholarships (approved)</font></font></div>
+                        <div class="desc"><font><font>
+                           
+                        </font></font></div>
+                     </div>
+                     <a class="more" href="#scholarshipapprove"><font><font>
+                     click to scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
+                     </a>                 
+                  </div>
+               </div>
+               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                  <div class="dashboard-stat green">
+                     <div class="visual">
+                        <i class="icon-hideme"><?=(!empty($this->vars['paid'])) ? count($this->vars['paid']) : 0;?></i>
+                     </div>
+                     <div class="details">
+                        <div class="number"><font><font>Paid</font></font></div>
+                        <div class="desc"><font><font>
+                           
+                        </font></font></div>
+                     </div>
+                     <a class="more" href="#paid"><font><font>
+                     click to scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
+                     </a>                 
+                  </div>
+               </div>
+               
+            </div>
+
+
+            <div class="row-fluid">
                <div class="span12">
+                  <a name="submitted"></a>
                   <!-- BEGIN EXAMPLE TABLE PORTLET-->
-                  <div class="portlet box yellow">
+                  <div class="portlet box red">
                      <div class="portlet-title" id="registration">
                         <div class="caption"><i class="icon-user"></i>Submitted and Unpaid</div>
                      </div>
@@ -93,13 +168,210 @@
                            </tbody>
                         </table>
                      </div>
-                  </div><a name="paid"></a>
+                  </div><a name="deposits"></a>
                   <!-- END EXAMPLE TABLE PORTLET-->
                </div>
             </div>
 
+
+
+            <div class="row-fluid">
+               <div class="span12">
+                  <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                  <div class="portlet box red">
+                     <div class="portlet-title" id="registration">
+                        <div class="caption"><i class="icon-user"></i>Deposits (unpaid)</div>
+                     </div>
+                     <div class="portlet-body">
+                        <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                        <table class="table table-striped table-bordered table-hover dataTable" id="registrations" aria-describedby="sample_1_info">
+                           <thead>
+                              <tr role="row">
+                                 <th class="">Name</th>
+                                 <th class="hidden-phone">Email</th>
+                                 <th class="hidden-480">Phone</th>
+                                 <th class="hidden-480">Date Submitted</th>
+                                 <th class="hidden-480">Payment Type</th>
+                                 <th class=""></th>
+                              </tr>
+                           </thead>
+                           <tbody role="alert" aria-live="polite" aria-relevant="all">
+                              <? if(!empty($this->vars['deposit'])): foreach($this->vars['deposit'] as $registration): ?>
+                              <tr class="gradeX odd">
+                                 <td class=" "><?=$registration['name']?></td>
+                                 <td class="hidden-phone"><?=$registration['email']?></td>
+                                 <td class="hidden-480 "><?=$registration['phone']?></td>
+                                 <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($registration['submittedDate']['fullDateTime'])); ?>
+                                 <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$registration['submittedDate']['monthDay'].' '.$registration['submittedDate']['shortTime']?></td>
+                                 <td class="center hidden-480 "><?=\Saw\Model\Registration::$paymentTypeReversed[$registration['currentPaymentType']];?></td>
+                                 <td class=" ">
+                                    <a data-id="<?=$registration['_id']?>" class="btn blue mini view registration"><i class=" "></i> Registration</a>
+                                    <? if(!empty($registration['memberId'])): ?>
+                                    <a data-id="<?=$registration['memberId']?>" class="btn blue mini view member"><i class=" "></i> Member</a>
+                                    <? endif; ?>
+                                 </td>
+                              </tr>
+                              <? endforeach;?>
+                              <? else: ?>
+                                 <td colspan="6">None.</td>
+                              <? endif;?>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div><a name="scholarship"></a>
+                  <!-- END EXAMPLE TABLE PORTLET-->
+               </div>
+            </div>
+            
+            <div class="row-fluid">
+               <div class="span12">
+                  <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                  <div class="portlet box red">
+                     <div class="portlet-title" id="registration">
+                        <div class="caption"><i class="icon-user"></i>Scholarships (need approval)</div>
+                     </div>
+                     <div class="portlet-body">
+                        <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                        <table class="table table-striped table-bordered table-hover dataTable" id="registrations" aria-describedby="sample_1_info">
+                           <thead>
+                              <tr role="row">
+                                 <th class="">Name</th>
+                                 <th class="hidden-phone">Email</th>
+                                 <th class="hidden-480">Phone</th>
+                                 <th class="hidden-480">Date Submitted</th>
+                                 <th class="hidden-480">Payment Type</th>
+                                 <th class=""></th>
+                              </tr>
+                           </thead>
+                           <tbody role="alert" aria-live="polite" aria-relevant="all">
+                              <? if(!empty($this->vars['scholarship'])): foreach($this->vars['scholarship'] as $registration): ?>
+                              <tr class="gradeX odd">
+                                 <td class=" "><?=$registration['name']?></td>
+                                 <td class="hidden-phone"><?=$registration['email']?></td>
+                                 <td class="hidden-480 "><?=$registration['phone']?></td>
+                                 <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($registration['submittedDate']['fullDateTime'])); ?>
+                                 <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$registration['submittedDate']['monthDay'].' '.$registration['submittedDate']['shortTime']?></td>
+                                 <td class="center hidden-480 "><?=\Saw\Model\Registration::$paymentTypeReversed[$registration['currentPaymentType']];?></td>
+                                 <td class=" ">
+                                    <a data-id="<?=$registration['_id']?>" class="btn blue mini view registration"><i class=" "></i> Registration</a>
+                                    <? if(!empty($registration['memberId'])): ?>
+                                    <a data-id="<?=$registration['memberId']?>" class="btn blue mini view member"><i class=" "></i> Member</a>
+                                    <? endif; ?>
+                                 </td>
+                              </tr>
+                              <? endforeach;?>
+                              <? else: ?>
+                                 <td colspan="6">None.</td>
+                              <? endif;?>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div><a name="depositbalance"></a>
+                  <!-- END EXAMPLE TABLE PORTLET-->
+               </div>
+            </div>
+
+            <div class="row-fluid">
+               <div class="span12">
+                  <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                  <div class="portlet box yellow">
+                     <div class="portlet-title" id="registration">
+                        <div class="caption"><i class="icon-user"></i>Deposits Balance (unpaid)</div>
+                     </div>
+                     <div class="portlet-body">
+                        <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                        <table class="table table-striped table-bordered table-hover dataTable" id="registrations" aria-describedby="sample_1_info">
+                           <thead>
+                              <tr role="row">
+                                 <th class="">Name</th>
+                                 <th class="hidden-phone">Email</th>
+                                 <th class="hidden-480">Phone</th>
+                                 <th class="hidden-480">Date Submitted</th>
+                                 <th class="hidden-480">Payment Type</th>
+                                 <th class=""></th>
+                              </tr>
+                           </thead>
+                           <tbody role="alert" aria-live="polite" aria-relevant="all">
+                              <? if(!empty($this->vars['depositbalance'])): foreach($this->vars['depositbalance'] as $registration): ?>
+                              <tr class="gradeX odd">
+                                 <td class=" "><?=$registration['name']?></td>
+                                 <td class="hidden-phone"><?=$registration['email']?></td>
+                                 <td class="hidden-480 "><?=$registration['phone']?></td>
+                                 <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($registration['submittedDate']['fullDateTime'])); ?>
+                                 <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$registration['submittedDate']['monthDay'].' '.$registration['submittedDate']['shortTime']?></td>
+                                 <td class="center hidden-480 "><?=\Saw\Model\Registration::$paymentTypeReversed[$registration['currentPaymentType']];?></td>
+                                 <td class=" ">
+                                    <a data-id="<?=$registration['_id']?>" class="btn blue mini view registration"><i class=" "></i> Registration</a>
+                                    <? if(!empty($registration['memberId'])): ?>
+                                    <a data-id="<?=$registration['memberId']?>" class="btn blue mini view member"><i class=" "></i> Member</a>
+                                    <? endif; ?>
+                                 </td>
+                              </tr>
+                              <? endforeach;?>
+                              <? else: ?>
+                                 <td colspan="6">None.</td>
+                              <? endif;?>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div><a name="scholarshipapprove"></a>
+                  <!-- END EXAMPLE TABLE PORTLET-->
+               </div>
+            </div>
+
+
+            <div class="row-fluid">
+               <div class="span12">
+                  <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                  <div class="portlet box purple">
+                     <div class="portlet-title" id="registration">
+                        <div class="caption"><i class="icon-user"></i>Scholarships (approved)</div>
+                     </div>
+                     <div class="portlet-body">
+                        <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                        <table class="table table-striped table-bordered table-hover dataTable" id="registrations" aria-describedby="sample_1_info">
+                           <thead>
+                              <tr role="row">
+                                 <th class="">Name</th>
+                                 <th class="hidden-phone">Email</th>
+                                 <th class="hidden-480">Phone</th>
+                                 <th class="hidden-480">Date Submitted</th>
+                                 <th class="hidden-480">Payment Type</th>
+                                 <th class=""></th>
+                              </tr>
+                           </thead>
+                           <tbody role="alert" aria-live="polite" aria-relevant="all">
+                              <? if(!empty($this->vars['scholarshipapprove'])): foreach($this->vars['scholarshipapprove'] as $registration): ?>
+                              <tr class="gradeX odd">
+                                 <td class=" "><?=$registration['name']?></td>
+                                 <td class="hidden-phone"><?=$registration['email']?></td>
+                                 <td class="hidden-480 "><?=$registration['phone']?></td>
+                                 <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($registration['submittedDate']['fullDateTime'])); ?>
+                                 <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$registration['submittedDate']['monthDay'].' '.$registration['submittedDate']['shortTime']?></td>
+                                 <td class="center hidden-480 "><?=\Saw\Model\Registration::$paymentTypeReversed[$registration['currentPaymentType']];?></td>
+                                 <td class=" ">
+                                    <a data-id="<?=$registration['_id']?>" class="btn blue mini view registration"><i class=" "></i> Registration</a>
+                                    <? if(!empty($registration['memberId'])): ?>
+                                    <a data-id="<?=$registration['memberId']?>" class="btn blue mini view member"><i class=" "></i> Member</a>
+                                    <? endif; ?>
+                                 </td>
+                              </tr>
+                              <? endforeach;?>
+                              <? else: ?>
+                                 <td colspan="6">None.</td>
+                              <? endif;?>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+                  <!-- END EXAMPLE TABLE PORTLET-->
+               </div>
+            </div>
+
+
             <div class="row-fluid" id="paid">
                <div class="span12">
+                  <a name="paid"></a>
                   <!-- BEGIN EXAMPLE TABLE PORTLET-->
                   <div class="portlet box green">
                      <div class="portlet-title" id="registration">
