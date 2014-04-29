@@ -50,7 +50,7 @@ class Renewal extends Model {
 	*/
 	public function prepareInsert(){
 		$this->currentStatus = $this->currentStatus ?: self::$status['UNSUBMITTED'];
-		$this->year = date('Y')+1;// when setting the renewal for the first time it should always be for the next year(that is current year +1)
+		$this->year = (date('n') < 11) ? date('Y'): date('Y')+1;// when setting the renewal, if it's after or on November it should be for the next year.  Otherwise, for the current year
 		$this->applicationId = $this->applicationId ?: new \stdClass();
 		$this->submittedDate = $this->submittedDate ?: new \stdClass();
 		$this->approvedDate = $this->approvedDate ?: new \stdClass();
