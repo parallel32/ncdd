@@ -17,6 +17,14 @@
 			      	$('#save-success').modal({keyboard: false});   		
 			      	//$('.submit-registration').prop("disabled",true);
 			   		$('.submit-registration').html('<i class="icon-ok"></i> Deposit Balance Payment Successful');
+			   		if(responseObj.hasOwnProperty('paymentId') && responseObj.paymentId.hasOwnProperty('$id')){
+			   			io.saw.FormGet.activate({postUrl:'/registration/'+responseObj.paymentId.$id+'/pay/'+responseObj.registrationId.$id
+					    	,postOnComplete:function(responseObj,responseStatus){}
+					      	,postOnSuccess:function(responseObj){
+					         //document.location.href='/registrations';
+					      	}
+					   	});
+					}
 			   }
 			   ,postOnErrors:function(responseObj){
 			   		$('#payment-form .number').val(io.saw.Payment.hold_card);
@@ -41,6 +49,14 @@
 			      	$('#save-success').modal({keyboard: false});   		
 			      	//$('.submit-registration').prop("disabled",true);
 			   		$('.submit-registration').html('<i class="icon-ok"></i> Registration Successful');
+			   		if(responseObj.hasOwnProperty('paymentId') && responseObj.paymentId.hasOwnProperty('$id')){
+			   			io.saw.FormGet.activate({postUrl:'/registration/'+responseObj.paymentId.$id+'/pay/'+responseObj.registrationId.$id
+					    	,postOnComplete:function(responseObj,responseStatus){}
+					      	,postOnSuccess:function(responseObj){
+					         //document.location.href='/registrations';
+					      	}
+					   	});
+					}
 			   }
 			   ,postOnErrors:function(responseObj){
 			   		$('#payment-form .number').val(io.saw.Payment.hold_card);

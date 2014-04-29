@@ -771,6 +771,7 @@ jQuery(document).ready(function() {
          }
          
       }
+      $('#saw-form .amount').val($('#total').val());
    });
 
    io.saw.Payment.findPos = function(obj) {

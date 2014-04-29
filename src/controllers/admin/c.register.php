@@ -84,6 +84,7 @@ $app->post('/registration/seminar/deposit', function (Request $request) use ($ap
 	//*/
 	return new Response(json_encode(array(
 		'paymentId'=>$paymentId,
+		'registrationId'=>$registration['_id'],
 		'label'=>'Successful Seminar Deposit Balance Payment',
 		'message'=>"Thank you, your deposit balance payment was recieved successfully.  You will receive a receipt in the email address you provided.")), 200,array('Content-Type' => 'registration/json')
 	);
@@ -151,6 +152,7 @@ $app->post('/registration/payment', function (Request $request) use ($app) {
 	$app['validateModel']($app, $payment,$groups=array('manual'));
 	$paymentId = $payment->manualCharge();
 
+	/*
 	// thank you receipt message
 	$subject = 'NCDD Payment Received';
 	$to = $payment->email;
@@ -161,7 +163,7 @@ $app->post('/registration/payment', function (Request $request) use ($app) {
 	$body = $app['view']->render('email/payment-thankyou','email', $view_vars);
 		
 	$app['sendMail']($subject, $body, $to);
-	
+	//*/
 	return new Response(json_encode(array('paymentId'=>$paymentId,'message'=>"success")), 200,array('Content-Type' => 'application/json'));
 })->before($mustbeADMIN);
 
@@ -171,9 +173,23 @@ $app->post('/registration/payment', function (Request $request) use ($app) {
 $app->get('/registration/{paymentId}/pay/{registrationId}', function ($paymentId, $registrationId, Request $request) use ($app) {
     
     $registration = new Model\Registration(array('_id'=>$registrationId, 'paymentId'=>$paymentId), $app);
-    $app['seminarConfirmationEmail']($app,$registrationId);
+    //$app['seminarConfirmationEmail']($app,$registrationId);
     $registration->markPaid();
     
+    $payment = new Model\Payment(array('_id'=>$paymentId),$app);
+	$payment->findById();
+
+	// thank you receipt message
+	$subject = 'NCDD Payment Received';
+	$to = $payment->email;
+	$view_vars = array('payment'=>$payment->__toArray()
+						,'paymentId'=>$paymentId
+						,'email'=>$payment->email
+	);
+	$body = $app['view']->render('email/payment-thankyou','email', $view_vars);
+		
+	$app['sendMail']($subject, $body, $to);
+
     return new Response(json_encode(array('message' => 'Paid successfully')), 200,array('Content-Type' => 'application/json'));
 })->before($mustbeMEMBER);
 
@@ -240,6 +256,7 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 	//*/
 	return new Response(json_encode(array(
 		'paymentId'=>$paymentId,
+		'registrationId'=>$rs_id,
 		'label'=>'Successful Registration',
 		'message'=>"Thank you, your Registration is complete.  You will receive an confirmation and receipt in the email address you provided.")), 200,array('Content-Type' => 'registration/json')
 	);

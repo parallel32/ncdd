@@ -158,7 +158,13 @@
                      $payment_vars['redirect_url'] = '/registrations/seminar/'.$this->vars['registration']['seminarId'];
                      $payment_vars['chargeOnSuccess'] = <<< EOT
 {chargeOnSuccess:function(responseObj,paymentId){
-   
+   $('#save-success .continue.payment').attr('data-insertid',paymentId);
+   io.saw.FormGet.activate({postUrl:'/registration/'+paymentId+'/pay/{$this->vars['registration']['_id']}'
+      ,postOnComplete:function(responseObj,responseStatus){}
+      ,postOnSuccess:function(responseObj){
+         //document.location.href='/applications';
+      }
+   });
 }}
 EOT;
                   ?>
