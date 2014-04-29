@@ -18,6 +18,7 @@ $app->post('/payment/charge', function (Request $request) use ($app) {
 	if(array_key_exists('payment',$doc) && is_array($doc['payment'])){
 		$doc = $doc['payment'];
 	}
+	error_log('/payment/charge:doc:'.print_r($doc,true));
 	$payment = new Model\Payment($doc,$app);
 	$app['validateModel']($app, $payment,$groups=array('cc'));
 	$paymentId = $payment->charge();

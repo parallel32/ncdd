@@ -426,10 +426,8 @@ EOT;
 			case 'RegistrationSeminar':
 				$registration = new RegistrationSeminar(array('_id'=>$this->ownerId),self::$app);
 				$registration = $registration->findById();
-error_log('Payment registration current_status:'.$registration['currentStatus']);
 				switch ($registration['currentStatus']) {
 					case Registration::$status['DEPOSIT']:
-error_log('here A');
 						$obj = new RegistrationSeminar(array('_id'=>$this->ownerId
 														,'currentStatus'=>Registration::$status['DEPOSITBALANCE']
 														,'paidDate'=> new Date(self::$app, 'now')
@@ -437,7 +435,6 @@ error_log('here A');
 												),self::$app);
 						break;
 					case Registration::$status['DEPOSITBALANCE']:
-error_log('here B');
 						$obj = new RegistrationSeminar(array('_id'=>$this->ownerId
 														,'currentStatus'=>Registration::$status['PAID']
 														,'paidDate'=> new Date(self::$app, 'now')
@@ -452,7 +449,6 @@ error_log('here B');
 												),self::$app);
 						break;
 					default:
-error_log('here C');
 						$obj = new RegistrationSeminar(array('_id'=>$this->ownerId
 														,'currentStatus'=>Registration::$status['PAID']
 														,'paidDate'=> new Date(self::$app, 'now')

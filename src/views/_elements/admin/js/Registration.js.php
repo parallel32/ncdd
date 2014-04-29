@@ -1,6 +1,30 @@
 <script type="text/javascript">
 (function( Registration, $, undefined ) {
 	
+	Registration.doDepositBalance = function(){
+		io.saw.FormPost.activate({postUrl:'/registration/seminar/deposit'
+			   ,serializeSelector:':input'
+			   ,postOnComplete:function(responseObj,responseStatus){
+			   		if(responseStatus == 'success'){
+					
+					}else{
+				   		var responseObj = $.parseJSON(responseObj.responseText);
+				   	}
+			   }
+			   ,postOnSuccess:function(responseObj){
+			   		$('#save-success .modal-body p').html(responseObj.message);
+			      	$('#save-success-label').html(responseObj.label);
+			      	$('#save-success').modal({keyboard: false});   		
+			      	//$('.submit-registration').prop("disabled",true);
+			   		$('.submit-registration').html('<i class="icon-ok"></i> Deposit Balance Payment Successful');
+			   }
+			   ,postOnErrors:function(responseObj){
+			   		$('#payment-form .number').val(io.saw.Payment.hold_card);
+			   		$('.submit-registration').removeAttr("disabled");
+					$('.submit-registration').html('<i class="icon-ok"></i> Oops, Payment Failed - try again');
+			   }
+			});      	
+	}
 	Registration.doRegistration = function(){
 		io.saw.FormPost.activate({postUrl:'/registration/seminar'
 			   ,serializeSelector:':input'

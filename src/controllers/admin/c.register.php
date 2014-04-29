@@ -28,7 +28,8 @@ $app['seminarConfirmationEmail'] = $app->protect(function ($app,$registrationId)
 	);
 	$body = $app['view']->render('email/registration-seminar-customer-confirmation','email', $view_vars);
 	$body = str_replace("#total#", '$'.$registration['total'], $body);
-	if($registration['currentStatus'] == Model\Registration::$status['DEPOSIT']){
+
+	if($registration['currentStatus'] == Model\Registration::$status['DEPOSIT'] || $registration['currentStatus'] == Model\Registration::$status['DEPOSITBALANCE']){
 		$body = str_replace("#balance_due#", '$'.((int)$registration['registrationFeeOriginal'] - (int)$registration['deposit']), $body);
 		$body = str_replace("#balance_due_date#", $registration['depositDueDate'], $body);
 		$body = str_replace("#payment_link#", 'https://'.SAW_ADMIN_WEBSITE.'/registration/seminar/deposit/'.$registrationId, $body);
@@ -48,22 +49,46 @@ $app->get('/registration/seminar/deposit/{registrationId}', function ($registrat
 	$seminar = new Model\Seminar(array('_id'=>$registration['seminarId']),$app);
 	$seminar = $seminar->findById();
 
-	$crumbs = array(array('name'=>'Registrations','href'=>'/registrations/seminar/'.$seminar['_id'])
-					,array('name'=>$registration['name'],'href'=>'/registration/'.$id.'/view')
-					,array('name'=>$registration['type'],'href'=>'/registration/'.$id.'/view')
-					,array('name'=>'Submit payment for the balance','href'=>'/registration/'.$id.'/pay')
-					);
-	$view_vars = array(
-						 'active'=>'Registration'
-						,'page-plugin'=>'datatables,invoice'
-						,'headline'=>'Seminar Registration Payment'
-						,'description'=>"Pay seminar registration."
-						,'crumbs'=>$crumbs
-						,'registration'=>$registration
-						,'seminar'=>$seminar
-						);
-	return $app['view']->render('registration/seminar-pay-other', 'default', $view_vars);
+	
+	// attempt to determine if the user is logged in
+	// admin will always return an empty set here because 
+	// his id is not stored in the database
+	$member = Model\User::getUserBySession($app,'member');
+	if(!empty($member)){
+		$location = new Model\Location(array('ownerId'=>$member['_id']),$app);
+		$location = $location->findById('ownerId');
+	}else{
+		$location = '';
+	}
+
+	$view_vars = array('seminar'=>$seminar,
+						'member'=>$member,
+						'location'=>$location,
+						'registration'=>$registration,
+						'layout_title'=>'Registration for '.$seminar['headline']
+	);
+	return $app['view']->render('registration/seminar-deposit-balance', 'blank',$view_vars);
 })->value('registrationId','');
+$app->post('/registration/seminar/deposit', function (Request $request) use ($app) {
+	// retrieve document from request
+	$doc = $request->get('doc'); 
+
+	$registration = new Model\Registration(array('_id'=>$doc['registrationId']), $app);
+	$registration = $registration->findById();
+	
+	//*
+	$payment = new Model\Payment($doc['payment'],$app);
+	$app['validateModel']($app, $payment,$groups=array('cc'));
+	$paymentId = $payment->charge();
+	
+	//*/
+	return new Response(json_encode(array(
+		'paymentId'=>$paymentId,
+		'label'=>'Successful Seminar Deposit Balance Payment',
+		'message'=>"Thank you, your deposit balance payment was recieved successfully.  You will receive a receipt in the email address you provided.")), 200,array('Content-Type' => 'registration/json')
+	);
+
+});
 ///////////////////////
 // PAYMENT FUNCTIONS //
 ///////////////////////

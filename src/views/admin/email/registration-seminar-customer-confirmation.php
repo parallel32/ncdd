@@ -29,10 +29,9 @@
 <br/>
 <? 
 
-error_log('confirmation email current status:'.$this->vars['registration']['currentStatus']);
-
 switch ($this->vars['registration']['currentStatus']) {
 	case \Saw\Model\Registration::$status['DEPOSIT']:
+	case \Saw\Model\Registration::$status['DEPOSITBALANCE']:
 		echo $this->vars['seminar']['register']['depositConfirmationLetter'];
 		break;
 	case \Saw\Model\Registration::$status['PAID']:

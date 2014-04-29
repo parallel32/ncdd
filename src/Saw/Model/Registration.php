@@ -207,7 +207,7 @@ class Registration extends Model {
 	public function markPaid(){
 
 		$result = $this->findOne(array('_id'=>$this->_id),array('currentStatus'=>1));
-		error_log('RegistrationSeminar markPaid result:'.print_r($result,true));
+		//error_log('RegistrationSeminar markPaid result:'.print_r($result,true));
 		// mark the record as paid
 		$this->paidDate = new Date(self::$app,'now', 'America/New_York');
 		if($result['currentStatus'] == self::$status['SUBMITTED']){
