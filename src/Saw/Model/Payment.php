@@ -441,13 +441,6 @@ EOT;
 														,'paymentId'=> $paymentId
 												),self::$app);
 						break;
-					case Registration::$status['SCHOLARSHIP']:
-						$obj = new RegistrationSeminar(array('_id'=>$this->ownerId
-														,'currentStatus'=>Registration::$status['SCHOLARSHIPAPPROVE']
-														,'paidDate'=> new Date(self::$app, 'now')
-														,'paymentId'=> $paymentId
-												),self::$app);
-						break;
 					default:
 						$obj = new RegistrationSeminar(array('_id'=>$this->ownerId
 														,'currentStatus'=>Registration::$status['PAID']

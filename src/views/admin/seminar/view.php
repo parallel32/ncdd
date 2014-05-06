@@ -47,6 +47,8 @@
                               <? endforeach; ?>
                               <? endif; ?>
                               <? $slug = (array_key_exists('slug',$seminar)) ? '/'.$seminar['slug'] : ''; ?>
+                              <br>
+                              <br>
                               <?if(array_key_exists('register',$seminar) && array_key_exists('currentStatus',$seminar['register']) && $seminar['register']['currentStatus'] < \Saw\Model\SeminarRegister::$status['OFF']): ?>
                               <a class="btn green register-seminar" data-name="<?=$slug?>" data-id="<?=$seminar['_id']?>">
                                 Register <i class="icon-plus"></i>
@@ -56,6 +58,14 @@
                                 Registration will be available soon.
                               </a>
                               <? endif; ?>
+                              <br>
+                              <br>
+                              <?if(array_key_exists('register',$seminar) && array_key_exists('scholarship',$seminar['register']) && $seminar['register']['scholarship'] == 'ON'): ?>
+                              <a class="btn green scholarship-apply" href="/scholarship/apply/<?=$seminar['headline']?>">
+                                Apply For a Scholarship <i class="icon-star"></i>
+                              </a>
+                              <? endif; ?>
+                              
                               
                            </div>
                            <div class="span4 blog-img blog-tag-data">

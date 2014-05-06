@@ -26,6 +26,7 @@ $app->mount('/drive',		include __DIR__.'/controllers/admin/c.drive.php');
 // unmounted controllers usually have several levels of access defined in the routes. 
 // i.e. some admin, some public, some member only.
 $app = require __DIR__.'/controllers/admin/c.application.php';
+$app = require __DIR__.'/controllers/admin/c.scholarship.php';
 $app = require __DIR__.'/controllers/admin/c.payment-manage.php';
 $app = require __DIR__.'/controllers/admin/c.vfl.php';
 $app = require __DIR__.'/controllers/admin/c.blog.php';

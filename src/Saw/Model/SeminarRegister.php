@@ -21,8 +21,10 @@ class SeminarRegister extends Model {
 	public $hardCopyPrice;
 	public $confirmationLetter;
 	public $depositConfirmationLetter;
+	public $scholarshipConfirmationLetter;
 	public $deposit; // the amount for the initial deposit
 	public $depositDueDate; // the due date for payment of the remainer of the deposit
+	public $scholarship;
 
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addConstraint(new Callback(array(
@@ -88,8 +90,10 @@ class SeminarRegister extends Model {
 		$this->hardCopyPrice = (!empty($doc['hardCopyPrice'])) ? $doc['hardCopyPrice']: '';
 		$this->confirmationLetter = $doc['confirmationLetter'];
 		$this->depositConfirmationLetter = $doc['depositConfirmationLetter'];
+		$this->scholarshipConfirmationLetter = $doc['scholarshipConfirmationLetter'];
 		$this->deposit = $doc['deposit'];
         $this->depositDueDate = $doc['depositDueDate'];
+        $this->scholarship = $doc['scholarship'];
 	}
 	
 	/**
@@ -102,8 +106,10 @@ class SeminarRegister extends Model {
 		$this->hardCopyPrice = $this->hardCopyPrice ?: '';
 		$this->confirmationLetter = $this->confirmationLetter ?: '';
 		$this->depositConfirmationLetter = $this->depositConfirmationLetter ?: '';
+		$this->scholarshipConfirmationLetter = $this->scholarshipConfirmationLetter ?: '';
 		$this->deposit = $this->deposit ?: '';
 		$this->depositDueDate = $this->depositDueDate ?: '';
+		$this->scholarship = $this->scholarship ?: '';
 	}
 	
 	public function saveEdit(){

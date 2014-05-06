@@ -219,6 +219,16 @@
                                       <span class="help-block">Type in a date like: June 15.</span>
                                     </div>
                                  </div>
+                                 <div class="control-group">
+                                    <label class="control-label">Activate Scholarships</label>
+                                    <div class="controls">
+                                       <select name="doc[register][scholarship]" class="span6 m-wrap currentStatus" data-placeholder="Choose a Category" tabindex="1">
+                                          <option value="OFF" <?=(array_key_exists('register',$seminar) && array_key_exists('scholarship',$seminar['register'])) ? ('OFF' == $seminar['register']['scholarship']) ? "selected" : "" : '';?>>OFF</option>
+                                          <option value="ON" <?=(array_key_exists('register',$seminar) && array_key_exists('scholarship',$seminar['register'])) ? ('ON' == $seminar['register']['scholarship']) ? "selected" : "" : '';?>>ON</option>
+                                       </select>
+                                       <span class="help-block">Turn ON / OFF; applying for scholarships and registering with scholarships</span>
+                                    </div>
+                                 </div>
                                  
                               </div>
                            </div>
@@ -259,6 +269,21 @@
                                  <?=(array_key_exists('register',$seminar)) ? (array_key_exists('depositConfirmationLetter',$seminar['register'])) ? $seminar['register']['depositConfirmationLetter'] : '' : '';?>
                               </div>
                               <input id="input-body-deposit-confletter" type="hidden" name="doc[register][depositConfirmationLetter]" value="">
+                                 
+                              </div>
+                              <!--/span-->
+                           </div>
+                           
+
+                           <h3 class="form-section">Registration Confirmation Letter for Scholarship&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.get('body-scholarship-confletter').execCommand('mcefocus',true);">Click to Edit</a></h3>
+                           <div class="row-fluid">
+                              <div class="span12 ">
+                                 
+                              <style>div.editable {margin: 0px 0px 0px 0px;padding: 5px 50px 5px 5px;} div.editable p {margin: 0px 0px 0px 0px;}</style>
+                              <div id="body-scholarship-confletter" class="span12 editable" style="margin-left:0px;">
+                                 <?=(array_key_exists('register',$seminar)) ? (array_key_exists('scholarshipConfirmationLetter',$seminar['register'])) ? $seminar['register']['scholarshipConfirmationLetter'] : '' : '';?>
+                              </div>
+                              <input id="input-body-scholarship-confletter" type="hidden" name="doc[register][scholarshipConfirmationLetter]" value="">
                                  
                               </div>
                               <!--/span-->

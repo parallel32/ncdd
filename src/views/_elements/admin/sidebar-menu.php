@@ -4,7 +4,7 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
    <!-- BEGIN SIDEBAR -->
       <div class="page-sidebar nav-collapse collapse">
          <!-- BEGIN SIDEBAR MENU -->         
-         <ul class="page-sidebar-menu">
+         <ul class="page-sidebar-menu" style="">
             <li>
                <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
                <div class="sidebar-toggler hidden-phone"></div>
@@ -45,6 +45,16 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                </ul>
             </li>
          <? endif; ?>
+         <? if($accessLevel >= EDITOR):?>
+         <li class="<? echo ($this->vars['active'] == 'Scholarship') ? 'active':'';?>">
+            <a href="/scholarships">
+            <i class="icon-star"></i> 
+            <span class="title">Scholarships</span>
+            <? echo ($this->vars['active'] == 'Scholarship') ? '<span class="selected"></span>':'';?>
+            </a>
+         </li>
+         <? endif; ?>
+         
          <? if($accessLevel >= MEMBER):?>
             <li class="<? echo (strpos($this->vars['active'], 'Members') !== false) ? 'active open':'';?>">
                <a href="javascript:;">
