@@ -234,6 +234,11 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 		$doc['currentStatus'] = Model\Registration::$status['DEPOSIT'];
 	}
 
+	if(Model\Scholarship::checkRegNum((int)$doc['registrationNumber'],$app)){
+		$registrationFee = 0;
+		$doc['currentStatus'] = Model\Registration::$status['SCHOLARSHIP'];
+	}
+
 	$doc['total'] = (int)$hardCopyFee+(int)$registrationFee;
 	
 	//*

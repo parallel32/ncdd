@@ -83,6 +83,13 @@ $app->post('/scholarship/apply', function (Request $request) use ($app) {
 	    	$app['sendMail']($subject, $body, $to);
 	    endif;
 });
+$app->get('/scholarship/check/regnum/{regnum}', function ($regnum, Request $request) use ($app) {
+	if(Model\Scholarship::checkRegNum((int)$regnum,$app)){
+		return new Response(json_encode(array('message' => 'We have validated your registration number.  Please proceed with registration.','label'=>'Found')), 200,array('Content-Type' => 'application/json'));
+	}else{
+		return new Response(json_encode(array('errors' => 'The registration number you entered is invalid')), 404,array('Content-Type' => 'application/json'));
+	}
+})->value('regnum','');
 
 
 ////////////////////////

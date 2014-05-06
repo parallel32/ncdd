@@ -67,10 +67,12 @@
 	}
 	Registration.register = function(){
 
-		if($('#currentPaymentType').val() == <?=\Saw\Model\Registration::$paymentType['CHECK']?>){
-			io.saw.Registration.doRegistration();
+		switch ($('#currentPaymentType').val()) {
+			case "<?=\Saw\Model\Registration::$paymentType['CHECK']?>":
+			case "<?=\Saw\Model\Registration::$paymentType['SCHOLARSHIP']?>":
+				io.saw.Registration.doRegistration();
+				break;
 		}
-
 		if($('#currentPaymentType').val() == <?=\Saw\Model\Registration::$paymentType['CREDIT']?>){
 			io.saw.Payment.createStripeToken();
 		}
@@ -79,7 +81,7 @@
 	
 	Registration.init = function(){
 		$('#saw-form input').keypress(function (e) {
-		   if (e.which == 13) {
+		   if (e.which == 13 && $(this).attr('id') != 'registrationNumber') {
 		   	  e.preventDefault();
 		      io.saw.Registration.register();
 		   }

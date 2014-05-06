@@ -262,6 +262,22 @@ endif; ?>
                   </div>
                   </br></br>
                   <h3 class="form-section">5. Payment</h3>
+                  <? if(array_key_exists('register',$this->vars['seminar']) && array_key_exists('scholarship',$this->vars['seminar']['register']) && $this->vars['seminar']['register']['scholarship'] == 'ON'): ?>
+                  <h4>Scholarship</h4>
+                  <div id="scholarship-group" class="row-fluid addr ">
+                     <div class="span12 ">
+                        <div class="control-group">
+                           <label class="control-label" >If you've applied for a scholarship, please enter your scholarship's registration number below:</label>
+                           <div class="controls">
+                              <input name="doc[registrationNumber]" id="registrationNumber" type="text" value="" class="m-wrap span4">
+                              <a id="verify-reg-num" class="btn blue">Verify Scholarship Registration Number</a>
+                              <span class="help-block"></span>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <? endif; ?>
                   <div class="row-fluid addr ">
                      <div class="span6 ">
                         <div class="control-group">
@@ -541,14 +557,6 @@ endif; ?>
                      </div>                     
                   </div>
                   <!--/ PAYMENT ELEMENT -->
-                  <!-- ERROR -->
-                     <div class="alert alert-error hide">
-                        <button class="close" data-dismiss="alert"></button>
-                        You have some form errors. Please check below.
-                     </div>
-                     <!--/ ERROR -->
-               </form>
-               <!-- END FORM--> 
                   <div  id="payment-form-check" class="hide">
                      <h3 class="form-section">6. Pay By Check</h3>
                      <div class="row-fluid">
@@ -566,7 +574,25 @@ endif; ?>
                         <!--/span-->
                      </div>
                   </div>
+                  <div  id="payment-form-scholarship" class="hide">
+                     <h3 class="form-section">6. Scholarship Registration</h3>
+                     <div class="row-fluid">
+                        <div class="span12 ">
+                           <h4 class="form-section">Your registration fee is taken care of by your scholarship.  You do not owe anything.</h4>
+                        </div>
+                        <!--/span-->
+                     </div>
+                  </div>
 
+                  <!-- ERROR -->
+                     <div class="alert alert-error hide">
+                        <button class="close" data-dismiss="alert"></button>
+                        You have some form errors. Please check below.
+                     </div>
+                     <!--/ ERROR -->
+               </form>
+               <!-- END FORM--> 
+                  
                      <div id="submit-registration-buttons" class="form-actions text-center">
                         <button type="button" class="btn blue check">Pay By Check</button>
                         <button type="button" class="btn blue credit hide">Pay by Credit Card</button>
@@ -784,9 +810,42 @@ jQuery(document).ready(function() {
           return [curtop];
       }
    }
+   verify_scholarship_reg_num = function (){
+      io.saw.FormGet.activate({postUrl:'/scholarship/check/regnum/'+$('#registrationNumber').val()
+         ,postOnComplete:function(responseObj,responseStatus){}
+         ,postOnErrors:function(responseObj){
+            $('#scholarship-group .controls span').show().html(responseObj.errors);
+            $('#scholarship-group .control-group').addClass('error');
+            $('#verify-reg-num').addClass('blue').removeClass('green').html('Verify Scholarship Registration Number');
+            $('#payment-form-scholarship').hide();
+            $('#payment-form').show();
+         }
+         ,postOnSuccess:function(responseObj){
+            $('#verify-reg-num').addClass('green').removeClass('blue').html('<i class="icon-ok"></i> Verified');
+            $('#currentPaymentType').val(<?=\Saw\Model\Registration::$paymentType['SCHOLARSHIP']?>);
+            $('#payment-form-scholarship').show();
+            $('#payment-form').hide();
+            $('#payment-form-check').hide();
+            $('.btn.credit').show();
+            $('.btn.check').show();            
+            $('#scholarship-group .control-group').removeClass('error');
+            $('#scholarship-group .controls span').hide().html('');
+         }
+      });
+   }
+   // verify scholarship button clicked
+   $('#verify-reg-num').click(function(e){
+      verify_scholarship_reg_num();
+   });
+   $('#registrationNumber').keypress(function (e) {
+         if (e.which == 13) {
+            verify_scholarship_reg_num();
+         }
+   });
    // pay by check button clicked
    $('.btn.check').click(function(e){
       $('#currentPaymentType').val(<?=\Saw\Model\Registration::$paymentType['CHECK']?>);
+      $('#payment-form-scholarship').hide();
       $('#payment-form-check').show();
       $('#payment-form').hide();
       $(this).hide();
@@ -799,6 +858,7 @@ jQuery(document).ready(function() {
    // pay by credit card button clicked
    $('.btn.credit').click(function(e){
       $('#currentPaymentType').val(<?=\Saw\Model\Registration::$paymentType['CREDIT']?>);
+      $('#payment-form-scholarship').hide();
       $('#payment-form').show();
       $('#payment-form-check').hide();
       $(this).hide();

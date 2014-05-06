@@ -71,7 +71,7 @@
                <div class="responsive span6" data-tablet="span6" data-desktop="span6">
                   <div class="dashboard-stat purple">
                      <div class="visual">
-                        <i class="icon-hideme"><?=(!empty($this->vars['scholarshipapprove'])) ? count($this->vars['scholarshipapprove']) : 0;?></i>
+                        <i class="icon-hideme"><?=(!empty($this->vars['scholarship'])) ? count($this->vars['scholarship']) : 0;?></i>
                      </div>
                      <div class="details">
                         <div class="number"><font><font>Scholarships</font></font></div>
@@ -79,7 +79,7 @@
                            
                         </font></font></div>
                      </div>
-                     <a class="more" href="#scholarshipapprove"><font><font>
+                     <a class="more" href="#scholarship"><font><font>
                      click to scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
                      </a>                 
                   </div>
@@ -100,7 +100,7 @@
                            
                         </font></font></div>
                      </div>
-                     <a class="more" href="#paid"><font><font>
+                     <a class="more" href="#registrationspaid"><font><font>
                      click to scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
                      </a>                 
                   </div>
@@ -203,7 +203,7 @@
                            </tbody>
                         </table>
                      </div>
-                  </div><a name="scholarship"></a>
+                  </div><a name="depositbalance"></a>
                   <!-- END EXAMPLE TABLE PORTLET-->
                </div>
             </div>
@@ -251,7 +251,7 @@
                            </tbody>
                         </table>
                      </div>
-                  </div><a name="scholarshipapprove"></a>
+                  </div><a name="scholarship"></a>
                   <!-- END EXAMPLE TABLE PORTLET-->
                </div>
             </div>
@@ -262,7 +262,7 @@
                   <!-- BEGIN EXAMPLE TABLE PORTLET-->
                   <div class="portlet box purple">
                      <div class="portlet-title" id="registration">
-                        <div class="caption"><i class="icon-user"></i>Scholarships (approved)</div>
+                        <div class="caption"><i class="icon-user"></i>Scholarships</div>
                      </div>
                      <div class="portlet-body">
                         <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
@@ -278,7 +278,7 @@
                               </tr>
                            </thead>
                            <tbody role="alert" aria-live="polite" aria-relevant="all">
-                              <? if(!empty($this->vars['scholarshipapprove'])): foreach($this->vars['scholarshipapprove'] as $registration): ?>
+                              <? if(!empty($this->vars['scholarship'])): foreach($this->vars['scholarship'] as $registration): ?>
                               <tr class="gradeX odd">
                                  <td class=" "><?=$registration['name']?></td>
                                  <td class="hidden-phone"><?=$registration['email']?></td>
@@ -300,7 +300,7 @@
                            </tbody>
                         </table>
                      </div>
-                  </div>
+                  </div><a name="registrationspaid"></a>
                   <!-- END EXAMPLE TABLE PORTLET-->
                </div>
             </div>
@@ -308,7 +308,6 @@
 
             <div class="row-fluid" id="paid">
                <div class="span12">
-                  <a name="paid"></a>
                   <!-- BEGIN EXAMPLE TABLE PORTLET-->
                   <div class="portlet box green">
                      <div class="portlet-title" id="registration">

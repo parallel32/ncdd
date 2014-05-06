@@ -190,6 +190,22 @@
                   </div>
                   </br></br>
                   <h3 class="form-section">5. Payment</h3>
+                  <? if(array_key_exists('register',$this->vars['seminar']) && array_key_exists('scholarship',$this->vars['seminar']['register']) && $this->vars['seminar']['register']['scholarship'] == 'ON'): ?>
+                  <h4>Scholarship</h4>
+                  <div id="scholarship-group" class="row-fluid addr ">
+                     <div class="span12 ">
+                        <div class="control-group">
+                           <label class="control-label" >If you've applied for a scholarship, please enter your scholarship's registration number below:</label>
+                           <div class="controls">
+                              <input name="doc[registrationNumber]" id="registrationNumber" type="text" disabled value="<?=$this->vars['registration']['registrationNumber']?>" class="m-wrap span4">
+                              
+                              <span class="help-block"></span>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <? endif; ?>
                   <div class="row-fluid addr ">
                      <div class="span6 ">
                         <div class="control-group">

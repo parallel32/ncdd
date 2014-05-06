@@ -185,6 +185,17 @@ class Scholarship extends Model {
 			return false;
 		endif;
 	}
+	static public function checkRegNum($regnum,$app){
+		$query = array('registrationNumber'=>$regnum);
+        $fields = array('_id'=>1);
+		$result = $app['mongo']->findOne('scholarship', $query, $fields, $slaveOkay=true);
+	
+		if(!empty($result)):
+			return $result['_id'];
+		else:
+			return false;
+		endif;
+	}
 	public function fetch($offset=0,$limit=100,$filter=array()){
 		$query = array();
 		if(!empty($filter)){
@@ -248,7 +259,7 @@ class Scholarship extends Model {
 
 		$this->currentStatus = self::$status['APPROVED'];
 		$this->approvedDate = new Date(self::$app,'now', $this->timeZone);
-		$this->registrationNumber = substr(time(),-4);
+		$this->registrationNumber = time();
 		$this->saveSafe();
 
 		return true;
