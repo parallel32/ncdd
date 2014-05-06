@@ -30,6 +30,9 @@
                                                 <p class="postDescr"><?=$seminar['description']?></p>
                                             </div>
                                             <div class="postFooter">
+                                                <?if(array_key_exists('register',$seminar) && array_key_exists('scholarship',$seminar['register']) && $seminar['register']['scholarship'] == 'ON'): ?>
+                                                <a class="btn green scholarship-apply" href="https://<?=SAW_ADMIN_WEBSITE?>/scholarship/apply/<?=$seminar['headline']?>">Apply For a Scholarship +</a>
+                                                <? endif; ?>
                                                 <?if(array_key_exists('register',$seminar) && array_key_exists('currentStatus',$seminar['register']) && $seminar['register']['currentStatus'] == \Saw\Model\SeminarRegister::$status['ON']): ?>
                                                 <a href="https://<?=SAW_ADMIN_WEBSITE?>/registration/seminar/<?=$seminar['_id']?><?=$slug?>" class="btn readMore pull-left">Register Online +</a>
                                                 <? elseif(array_key_exists('register',$seminar) && array_key_exists('currentStatus',$seminar['register']) && $seminar['register']['currentStatus'] == \Saw\Model\SeminarRegister::$status['MEMBERSONLY']): ?>

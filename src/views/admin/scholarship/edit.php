@@ -20,6 +20,19 @@
                      You have some form errors. Please check below.
                   </div>                  
                   <h3 class="form-section">1.</h3>
+                  <? if(!empty($this->vars['scholarship']['registrationNumber'])): ?>
+                  <div class="row-fluid">
+                     <div class="span12 ">
+                        <div class="control-group">
+                           <label class="control-label">Registration Number</label>
+                           <div class="controls">
+                              <input type="text" name="doc[registrationNumber]" class="m-wrap span12 for" value="<?=$this->vars['scholarship']['registrationNumber']?>">
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <? endif; ?>
                   <div class="row-fluid">
                      <div class="span12 ">
                         <div class="control-group">

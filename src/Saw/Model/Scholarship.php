@@ -246,8 +246,9 @@ class Scholarship extends Model {
 		
 	public function approve(){
 
+		$this->currentStatus = self::$status['APPROVED'];
 		$this->approvedDate = new Date(self::$app,'now', $this->timeZone);
-		$this->registrationNumber = $password = substr(time(),-4);
+		$this->registrationNumber = substr(time(),-4);
 		$this->saveSafe();
 
 		return true;

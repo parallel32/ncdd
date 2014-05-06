@@ -108,7 +108,7 @@
 	
 	Scholarship.approveInit = function(){
 		$('#saw-form .btn.green.approve').click(function(e){
-			approve($(this).attr('data-id'),$(this).attr('data-type'));
+			approve($(this).attr('data-id'));
 		});
 
 		$('#trial-modal .btn.green.continue').click(function(e){
@@ -160,7 +160,7 @@
 		}else{
 			var suppress_emails = '';
 		}
-		io.saw.FormGet.activate({postUrl:'/scholarship/'+id+'/approve/'+type+suppress_emails
+		io.saw.FormGet.activate({postUrl:'/scholarship/'+id+'/approve'+suppress_emails
 			,postOnComplete:function(responseObj,responseStatus){}
 			,postOnSuccess:function(responseObj){
 				document.location.href="/scholarships";

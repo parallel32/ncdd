@@ -32,6 +32,19 @@
                   </div>
 
                   <h3 class="form-section">1.</h3>
+                  <? if(!empty($this->vars['scholarship']['registrationNumber'])): ?>
+                  <div class="row-fluid">
+                     <div class="span12 ">
+                        <div class="control-group">
+                           <label class="control-label">Registration Number</label>
+                           <div class="controls">
+                              <input type="text" name="doc[registrationNumber]" class="m-wrap span12 for" value="<?=$this->vars['scholarship']['registrationNumber']?>" readonly>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <? endif; ?>
                   <div class="row-fluid">
                      <div class="span12 ">
                         <div class="control-group">
@@ -292,6 +305,11 @@
                   </div>
                   
                   <div class="form-actions text-center">
+                     <? $user = $this->app['session']->get('user');
+                        if($user['accessLevel'] == ADMIN){  
+                     ?>
+                     <input type="checkbox" name="suppress_emails" <?=(array_key_exists('suppress_emails',$user) && !empty($user['suppress_emails']))?'checked':'';?> value="yes">Suppress Emails.
+                     <? } ?>
                      <button type="button" data-id="<?=$this->vars['scholarship']['_id']?>" class="btn blue edit"><i class="icon-pencil"></i> Edit Scholarship</button>
                      <? if($this->vars['scholarship']['currentStatus'] < \Saw\Model\Scholarship::$status['APPROVED']): ?>
                      <button type="button" data-id="<?=$this->vars['scholarship']['_id']?>" data-type="" class="btn green approve"><i class="icon-ok"></i> Approve Scholarship</button>

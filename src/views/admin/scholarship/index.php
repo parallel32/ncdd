@@ -109,18 +109,20 @@
                                  <th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-480">Area</th>
-                                 <th class="hidden-480">Date Paid</th>
+                                 <th class="hidden-480">Date Approved</th>
+                                 <th class="hidden-480">Reg. Number</th>
                                  <th class=""></th>
                               </tr>
                            </thead>
                            <tbody role="alert" aria-live="polite" aria-relevant="all">
-                              <? if(!empty($this->vars['paid'])): foreach($this->vars['paid'] as $scholarship): ?>
+                              <? if(!empty($this->vars['approved'])): foreach($this->vars['approved'] as $scholarship): ?>
                               <tr class="gradeX odd">
                                  <td class=" "><?=$scholarship['for']?></td>
                                  <td class=" "><?=$scholarship['name']?></td>
                                  <td class="hidden-phone "><?=$scholarship['email']?></td>
                                  <td class="hidden-480 "><?=$scholarship['city'].', '.$scholarship['state']?></td>
-                                 <td class="hidden-480 "><?=$scholarship['paidDate']['monthDay'].' '.$scholarship['paidDate']['shortTime']?></td>
+                                 <td class="hidden-480 "><?=$scholarship['approvedDate']['monthDay'].' '.$scholarship['approvedDate']['shortTime']?></td>
+                                 <td class="hidden-480 "><?=$scholarship['registrationNumber']?></td>
                                  <td class=" ">
                                     <a data-id="<?=$scholarship['_id']?>" class="btn blue mini view"><i class=" "></i> View</a>
                                  </td>

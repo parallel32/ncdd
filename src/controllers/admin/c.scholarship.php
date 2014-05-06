@@ -325,11 +325,8 @@ $app->post('/scholarship/edit', function (Request $request) use ($app) {
 // APPROVE //
 /////////////
 $app->get('/scholarship/{id}/approve', function ($id,Request $request) use ($app) {
-	$user = $app['session']->get('user');
-	$user['suppress_emails'] = $request->get('suppress_emails');
-	$app['session']->set('user',$user);
 	
-	$scholarship = new Model\Scholarship(array('_id'=>$scholarshipId), $app);
+	$scholarship = new Model\Scholarship(array('_id'=>$id), $app);
 	$scholarship->approve();
 	$scholarship->findById();
     // email welcome message
@@ -341,10 +338,19 @@ $app->get('/scholarship/{id}/approve', function ($id,Request $request) use ($app
 	);
 	$body = $app['view']->render('email/new-scholarship-approved','email', $view_vars);
 
-	$app['sendMail']($subject, $body, $to);
+	$user = $app['session']->get('user');
+	$user['suppress_emails'] = $request->get('suppress_emails');
+	$app['session']->set('user',$user);
+	if($user['accessLevel'] == ADMIN && $user['suppress_emails'] == 'yes'){
+		// do nothing
+	}else{
+		$app['sendMail']($subject, $body, $to);
+	}
 	return new Response(json_encode(array('message' => 'Approved successfully')), 200,array('Content-Type' => 'application/json'));
 })->before($mustbeADMIN);
-
+////////////
+// DELETE //
+////////////
 $app->get('/scholarship/{id}/delete', function ($id, Request $request) use ($app) {
     $scholarship = new Model\Scholarship(array('_id'=>$id), $app);
     $scholarship = $scholarship->findById();
