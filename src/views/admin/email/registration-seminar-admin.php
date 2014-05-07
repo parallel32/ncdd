@@ -31,7 +31,7 @@
 	<? if(array_key_exists('hardCopy',$this->vars) && !empty($this->vars['hardCopy']) && $this->vars['hardCopy'] == 'YES'): ?>
 	<tr><td><strong>Hard copy fee:</strong></td><td>$<?=($this->vars['hardCopy'] == 'NO') ? 0 : $this->vars['hardCopyFee']?></td></tr>
 	<? endif; ?>
-	<tr><td><strong>Total:</strong></td><td>$<?=$this->vars['total']?></td></tr>
+	<tr><td><strong>Total:</strong></td><td>$<?=$this->vars['total']?> <?=(!empty($this->vars['total_reason'])) ? $this->vars['total_reason']:'' ?></td></tr>
 </table>
 <? if($this->vars['paymentType'] == 'credit'):?>
 <br/><strong>Paid with:</strong> <?=$this->vars['cardType'].' ending in: '.$this->vars['cardNumber']?>

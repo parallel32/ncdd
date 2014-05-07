@@ -1,3 +1,26 @@
+<?
+$user = $this->app['session']->get('user');
+$name = $phone = $fax = $email = $barNumber = $addr1 = $addr2 = $city = $state = $country = $postalCode = '';
+if($user['accessLevel'] != ADMIN){
+   $location = new \Saw\Model\Location(array('ownerId'=>$user['user_id']),$this->app);
+   $location = $location->findById('ownerId');
+   if(!empty($location)){
+      $member = $location['member'];
+      $middleName = (!empty($member['middleName'])) ? ' '.$member['middleName'].' ':' ';
+      $name = $member['firstName'].$middleName.$member['lastName'];
+      $phone = $member['primaryPhone'];
+      $fax = $member['primaryFax'];
+      $barNumber = $member['barNumber'];
+      $email = $member['email'];
+      $addr1 = $location['addressLine1'];
+      $addr2 = $location['addressLine2'];
+      $city = $location['city'];
+      $state = $location['state'];
+      $country = $location['country'];
+      $postalCode = $location['zip'];
+   }
+}
+?>
 <!-- BEGIN CONTAINER -->   
 <div class="page-container row-fluid">
    <!-- BEGIN PAGE CONTAINER-->
@@ -42,7 +65,7 @@
                         <div class="control-group">
                            <label class="control-label">Name</label>
                            <div class="controls">
-                              <input type="text" name="doc[name]" class="m-wrap span12 name">
+                              <input type="text" name="doc[name]" class="m-wrap span12 name" value="<?=$name?>">
                            </div>
                         </div>
                      </div>
@@ -53,7 +76,7 @@
                         <div class="control-group">
                            <label class="control-label">Telephone</label>
                            <div class="controls">
-                              <input id="phone" type="text" name="doc[phone]" class="m-wrap span12 phone">
+                              <input id="phone" type="text" name="doc[phone]" class="m-wrap span12 phone" value="<?=$phone?>">
                            </div>
                         </div>
                      </div>
@@ -62,7 +85,7 @@
                         <div class="control-group ">
                            <label class="control-label">Facsimile</label>
                            <div class="controls">
-                              <input id="fax" type="text" name="doc[fax]" class="m-wrap span12 fax">
+                              <input id="fax" type="text" name="doc[fax]" class="m-wrap span12 fax" value="<?=$fax?>">
                            </div>
                         </div>
                      </div>
@@ -73,7 +96,7 @@
                         <div class="control-group">
                            <label class="control-label">Bar Number / State</label>
                            <div class="controls">
-                              <input type="text" name="doc[barNumber]" class="m-wrap span12 barNumber">
+                              <input type="text" name="doc[barNumber]" class="m-wrap span12 barNumber" value="<?=$barNumber?>">
                            </div>
                         </div>
                      </div>
@@ -82,7 +105,7 @@
                         <div class="control-group">
                            <label class="control-label">Email</label>
                            <div class="controls">
-                              <input type="text" name="doc[email]" class="m-wrap span12 email">
+                              <input type="text" name="doc[email]" class="m-wrap span12 email" value="<?=$email?>">
                            </div>
                         </div>
                      </div>
@@ -95,7 +118,7 @@
                         <div class="control-group">
                            <label class="control-label" >Address 1</label>
                            <div class="controls">
-                              <input type="text" id="address1" name="doc[address1]" class="m-wrap span12 address1">
+                              <input type="text" id="address1" name="doc[address1]" class="m-wrap span12 address1" value="<?=$addr1?>">
                            </div>
                         </div>
                      </div>
@@ -105,7 +128,7 @@
                         <div class="control-group">
                            <label class="control-label" >Address 2</label>
                            <div class="controls">
-                              <input type="text" id="address2" name="doc[address2]" class="m-wrap span12 address2">
+                              <input type="text" id="address2" name="doc[address2]" class="m-wrap span12 address2" value="<?=$addr2?>">
                            </div>
                         </div>
                      </div>
@@ -115,7 +138,7 @@
                         <div class="control-group">
                            <label class="control-label" >City</label>
                            <div class="controls">
-                              <input type="text" id="city" name="doc[city]" class="m-wrap span12 city"> 
+                              <input type="text" id="city" name="doc[city]" class="m-wrap span12 city" value="<?=$city?>"> 
                            </div>
                         </div>
                      </div>
@@ -124,7 +147,7 @@
                         <div class="control-group">
                            <label class="control-label" >State / Province</label>
                            <div class="controls">
-                              <input type="text" id="state" name="doc[state]" class="m-wrap span12 state"> 
+                              <input type="text" id="state" name="doc[state]" class="m-wrap span12 state" value="<?=$state?>"> 
                            </div>
                         </div>
                      </div>
@@ -136,7 +159,7 @@
                         <div class="control-group">
                            <label class="control-label" >Postal Code</label>
                            <div class="controls">
-                              <input type="text" id="zip" name="doc[postalCode]" class="m-wrap span12 postalCode"> 
+                              <input type="text" id="zip" name="doc[postalCode]" class="m-wrap span12 postalCode" value="<?=$postalCode?>"> 
                            </div>
                         </div>
                      </div>
@@ -145,7 +168,7 @@
                         <div class="control-group">
                            <label class="control-label" >Country</label>
                            <div class="controls">
-                              <input type="text" id="country" name="doc[country]" class="m-wrap span12 country"> 
+                              <input type="text" id="country" name="doc[country]" class="m-wrap span12 country" value="<?=$country?>"> 
                            </div>
                         </div>
                      </div>

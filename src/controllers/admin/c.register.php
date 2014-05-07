@@ -258,6 +258,9 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 		$paymentId = $payment->charge();
 		
 	}
+	if($doc['currentStatus'] == Model\Registration::$status['SCHOLARSHIP']){
+		$app['seminarConfirmationEmail']($app,$rs_id);
+	}
 	//*/
 	return new Response(json_encode(array(
 		'paymentId'=>$paymentId,
@@ -289,6 +292,11 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 			}
 			$doc['total'] = (int)$hardCopyFee+(int)$doc['registrationFee'];
 			
+			if(Model\Scholarship::checkRegNum((int)$doc['registrationNumber'],$app)){
+				$doc['total'] = 0;
+				$doc['total_reason'] = "Scholarship Awarded";
+			}
+
 			// need the rsvp text
 			$rsvp = $doc['rsvp'];
 
@@ -303,6 +311,7 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 	    	$view_vars = array('seminar'=>$seminar
 	    						,'rsvp'=>$rsvp
 	    						,'total'=>$doc['total']
+	    						,'total_reason'=>(array_key_exists('total_reason', $doc)) ? $doc['total_reason']:'' 
 	    						,'hardCopy'=>$hardCopy
 	    						,'hardCopyFee'=>$hardCopyFee
 	    						,'registrationFee'=>$doc['registrationFee']
@@ -320,6 +329,7 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 	    	$view_vars = array('seminar'=>$seminar
 	    						,'rsvp'=>$rsvp
 	    						,'total'=>$doc['total']
+	    						,'total_reason'=>(array_key_exists('total_reason', $doc)) ? $doc['total_reason']:'' 
 	    						,'hardCopy'=>$hardCopy
 	    						,'hardCopyFee'=>$hardCopyFee
 	    						,'registrationFee'=>$doc['registrationFee']
