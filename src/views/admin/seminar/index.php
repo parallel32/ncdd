@@ -65,6 +65,7 @@
                               <a class="btn green scholarship-apply" href="/scholarship/apply/<?=$seminar['headline']?>">
                                 Apply For a Scholarship <i class="icon-star"></i>
                               </a>
+                              <br>
                               <? endif; ?>
                               
                               <? if(!empty($seminar['image'])){?>
