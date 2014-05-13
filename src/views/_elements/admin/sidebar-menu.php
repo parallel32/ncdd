@@ -112,12 +112,17 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                <? echo ($this->vars['active'] == 'Pages') ? '<span class="selected"></span>':'';?>
                </a>
             </li>
-            <li class="<? echo ($this->vars['active'] == 'Seminar') ? 'active':'';?>">
-               <a href="/seminar">
+            <li class="<? echo (strpos($this->vars['active'], 'Seminar') !== false) ? 'active open':'';?>">
+               <a id="seminar" href="/seminar">
                <i class="icon-facetime-video"></i> 
                <span class="title">Sessions &amp; Seminars</span>
                <? echo ($this->vars['active'] == 'Seminar') ? '<span class="selected"></span>':'';?>
                </a>
+               <ul class="sub-menu">
+                  <li class="<? echo ($this->vars['active'] == 'Seminar/State') ? 'active':'';?>">
+                     <a href="/stateseminar"><i class="icon-file"></i> State Approved</a>
+                  </li>
+               </ul>
             </li>
             <li class="<? echo (strpos($this->vars['active'], 'Blog') !== false) ? 'active open':'';?>">
                <a id="dui-blog" href="/blog">
@@ -210,13 +215,7 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                </a>
             </li>
          <? endif; ?>
-            <li class="">
-               <a href="https://<?=SAW_CONSUMER_WEBSITE?>" target="_blank">
-               <i class="icon-globe"></i> 
-               <span class="title">ncdd.com</span>
-               </a>
-            </li>
-            <? if($accessLevel >= EDITOR):?>
+         <? if($accessLevel >= EDITOR):?>
             <li class="<? echo ($this->vars['active'] == 'EmailSent') ? 'active':'';?>">
                <a href="/emailsent">
                <i class="icon-envelope"></i> 
@@ -224,8 +223,13 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                <? echo ($this->vars['active'] == 'EmailSent') ? '<span class="selected"></span>':'';?>
                </a>
             </li>
-            <? endif; ?>
-            
+         <? endif; ?>   
+            <li class="">
+               <a href="https://<?=SAW_CONSUMER_WEBSITE?>" target="_blank">
+               <i class="icon-globe"></i> 
+               <span class="title">ncdd.com</span>
+               </a>
+            </li>
             <li class="">
                <a href="/logout">
                <i class="icon-key"></i> 
@@ -244,11 +248,13 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                e.preventDefault();
                document.location.href="/blog";
             });
-         });
-         jQuery(document).ready(function() {    
             $('#dui-forum').click(function(e){
                e.preventDefault();
                document.location.href="/forum";
+            });
+            $('#seminar').click(function(e){
+               e.preventDefault();
+               document.location.href="/seminar";
             });
          });
    </script>

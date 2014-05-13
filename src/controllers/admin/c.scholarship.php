@@ -17,7 +17,7 @@ $app->get('/scholarships/{offset}/{limit}', function ($offset, $limit, Request $
 	$approved = $scholarship->fetchByStatus('APPROVED',$offset, $limit);
 	$crumbs = array(array('name'=>'Scholarships','href'=>'/scholarships'));
 	$view_vars = array(
-						 'active'=>'Scholarships/New'
+						 'active'=>'Scholarship'
 						,'page-plugin'=>'datatables'
 						,'headline'=>'Scholarships'
 						,'description'=>"View all scholarship here."
@@ -111,7 +111,7 @@ $app->get('/scholarship/update/{memberId}', function ($memberId, Request $reques
 					,array('name'=>'Membership Renewal','href'=>'/scholarship/update')
 					);
 	$view_vars = array(
-						 'active'=>'Dashboard'
+						 'active'=>'Scholarship'
 						,'page-plugin'=>'datatables'
 						,'headline'=>'Membership Renewal Form'
 						,'description'=>"Fill in and submit this scholarship to begin your membership renewal process."

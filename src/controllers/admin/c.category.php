@@ -12,7 +12,7 @@ use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Saw\Model;
 
 $category = $app['controllers_factory'];
-$category->before($mustbeMEMBER);
+$category->before($mustbeADMIN);
 
 ////////////
 //  HOME  //
