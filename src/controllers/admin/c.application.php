@@ -696,9 +696,11 @@ $app->post('/application/edit', function (Request $request) use ($app) {
 	}
 	if(!empty($endTrial)){
 		$appArr = $application->findOne($query=array('_id'=>new \MongoId($doc['_id'])),$fields=array('trial'=>true));
+
 		$newEndDate = new Model\Date($app,$endTrial, $appArr['trial']['timeZone']);
 		$newStartDate = new Model\Date($app,$startTrial, $appArr['trial']['timeZone']);
 		
+		$appArr['trial']['referredBy'] = $doc['referredBy'];
 		$appArr['trial']['startDate'] = $newStartDate;
 		$appArr['trial']['endDate'] = $newEndDate;
 		$new_trial = new Model\Trial($appArr['trial'],$app);
