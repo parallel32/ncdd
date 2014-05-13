@@ -760,7 +760,8 @@ $app->post('/shopping-cart/checkout', function (Request $request) use ($app) {
 	$payment = new Model\Payment($doc,$app);
 	$app['validateModel']($app, $payment,$groups=array('product-purchase'));
 
-	// once the payment has been validated, create the order object and re-create the payment object, finally charge the payment and return the orderId
+	// once the payment has been validated, create the order object and re-create the payment object, 
+	// finally charge the payment and return the orderId
 	$order_doc['add'] = 'yes';
 	$order_doc['orderTotal'] = $doc['orderTotal'];
 	$order_doc['shippingTotal'] = $doc['shippingTotal'];

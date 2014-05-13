@@ -58,6 +58,7 @@ class Payment extends Model {
 	public $orderId;
 	public $referenceNumber;
 	public $poNumber;
+	public $ipAddress;
 
 	private $currency = 'usd';
 	private $publicKey = SAW_STRIPE_PUBLIC_KEY;
@@ -138,6 +139,7 @@ class Payment extends Model {
 		$this->orderId = $doc['orderId'];
 		$this->referenceNumber = $doc['referenceNumber'];
 		$this->poNumber = $doc['poNumber'];
+		$this->ipAddress = $doc['ipAddress'];
 
 	}
 	
@@ -175,6 +177,7 @@ class Payment extends Model {
 		$this->orderId = $this->orderId ?: '';
 		$this->referenceNumber = $this->referenceNumber ?: '';
 		$this->poNumber = $this->poNumber ?: '';
+		$this->ipAddress = $this->ipAddress ?: '';
 
 	}
 	
@@ -220,65 +223,65 @@ class Payment extends Model {
 	private function sendCharge(){
 		$date = new Date(self::$app,'now');
 $body = <<< EOT
+<?xml version="1.0" encoding="UTF-8"?>
 <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
-<SOAP-ENV:Header/>
-<SOAP-ENV:Body>
-<fdggwsapi:FDGGWSApiOrderRequest xmlns:v1="http://secure.linkpt.net/fdggwsapi/schemas_us/v1" xmlns:fdggwsapi="http://secure.linkpt.net/fdggwsapi/schemas_us/fdggwsapi">
-<v1:Transaction>
-<v1:CreditCardTxType>
-<v1:Type>sale</v1:Type>
-</v1:CreditCardTxType>
-<v1:CreditCardData>
-<v1:CardNumber>{$this->number}</v1:CardNumber>
-<v1:ExpMonth>{$this->expMonth}</v1:ExpMonth>
-<v1:ExpYear>{$this->expYear}</v1:ExpYear>
-<v1:CardCodeValue>{$this->cvc}</v1:CardCodeValue>
-</v1:CreditCardData>
-<v1:Payment>
-<v1:SubTotal>{$this->orderTotal}</v1:SubTotal>
-<v1:Tax>0.00</v1:Tax>
-<v1:Shipping>{$this->shippingTotal}</v1:Shipping>
-<v1:ChargeTotal>{$this->amount}</v1:ChargeTotal>
-</v1:Payment>
-<v1:TransactionDetails>
-<v1:UserID>{$this->memberId}</v1:UserID>
-<v1:InvoiceNumber>{$this->invoiceNumber}</v1:InvoiceNumber>
-<v1:OrderId></v1:OrderId>
-<v1:Ip></v1:Ip>
-<v1:TDate>{$date->paymentGateway}</v1:TDate>
-<v1:Recurring>No</v1:Recurring>
-<v1:TransactionOrigin>{$this->transactionOrigin}</v1:TransactionOrigin>
-<v1:PONumber>{$this->poNumber}</v1:PONumber>
-<v1:TaxExempt>Yes</v1:TaxExempt>
-<v1:TerminalType>Unspecified</v1:TerminalType>
-<v1:DeviceID>Web Browser</v1:DeviceID>
-</v1:TransactionDetails>
-<v1:Billing>
-<v1:CustomerID>{$this->memberId}</v1:CustomerID>
-<v1:Name>{$this->name}</v1:Name>
-<v1:Address1>{$this->addressLine1}</v1:Address1>
-<v1:Address2>{$this->addressLine2}</v1:Address2>
-<v1:City>{$this->city}</v1:City>
-<v1:State>{$this->stateProvinceRegion}</v1:State>
-<v1:Zip>{$this->zipPostalCode}</v1:Zip>
-<v1:Country>{$this->country}</v1:Country>
-<v1:Phone>{$this->phone}</v1:Phone>
-<v1:Fax></v1:Fax>
-<v1:Email>{$this->email}</v1:Email>
-</v1:Billing>
-<v1:Shipping>
-<v1:Type></v1:Type>
-<v1:Name>{$this->name}</v1:Name>
-<v1:Address1>{$this->addressLine1Shipping}</v1:Address1>
-<v1:Address2>{$this->addressLine2Shipping}</v1:Address2>
-<v1:City>{$this->cityShipping}</v1:City>
-<v1:State>{$this->stateProvinceRegionShipping}</v1:State>
-<v1:Zip>{$this->zipPostalCodeShipping}</v1:Zip>
-<v1:Country>{$this->countryShipping}</v1:Country>
-</v1:Shipping>
-</v1:Transaction>
-</fdggwsapi:FDGGWSApiOrderRequest>
-</SOAP-ENV:Body>
+  <SOAP-ENV:Header> </SOAP-ENV:Header>
+  <SOAP-ENV:Body>
+    <fdggwsapi:FDGGWSApiOrderRequest xmlns:v1="http://secure.linkpt.net/fdggwsapi/schemas_us/v1" xmlns:fdggwsapi="http://secure.linkpt.net/fdggwsapi/schemas_us/fdggwsapi">
+      <v1:Transaction>
+        <v1:CreditCardTxType>
+          <v1:Type>sale</v1:Type>
+        </v1:CreditCardTxType>
+        <v1:CreditCardData>
+          <v1:CardNumber>{$this->number}</v1:CardNumber>
+          <v1:ExpMonth>{$this->expMonth}</v1:ExpMonth>
+          <v1:ExpYear>{$this->expYear}</v1:ExpYear>
+          <v1:CardCodeValue>{$this->cvc}</v1:CardCodeValue>
+        </v1:CreditCardData>
+        <v1:Payment>
+          <v1:ChargeTotal>{$this->amount}</v1:ChargeTotal>
+          <v1:SubTotal>{$this->orderTotal}</v1:SubTotal>
+          <v1:Tax>0.00</v1:Tax>
+          <v1:Shipping>{$this->shippingTotal}</v1:Shipping>
+        </v1:Payment>
+        <v1:TransactionDetails>
+          <v1:UserID>{$this->memberId}</v1:UserID>
+          <v1:InvoiceNumber>{$this->invoiceNumber}</v1:InvoiceNumber>
+          <v1:OrderId>{$this->orderId}</v1:OrderId>
+          <v1:Ip>{$this->ipAddress}</v1:Ip>
+          <v1:Recurring>No</v1:Recurring>
+          <v1:TransactionOrigin>{$this->transactionOrigin}</v1:TransactionOrigin>
+          <v1:PONumber>{$this->poNumber}</v1:PONumber>
+          <v1:TaxExempt>Yes</v1:TaxExempt>
+          <v1:TerminalType>Unspecified</v1:TerminalType>
+          <v1:DeviceID>Web Browser</v1:DeviceID>
+        </v1:TransactionDetails>
+        <v1:Billing>
+          <v1:CustomerID>{$this->memberId}</v1:CustomerID>
+          <v1:Name>{$this->name}</v1:Name>
+          <v1:Address1>{$this->addressLine1}</v1:Address1>
+          <v1:Address2>{$this->addressLine2}</v1:Address2>
+          <v1:City>{$this->city}</v1:City>
+  		  <v1:State>{$this->stateProvinceRegion}</v1:State>
+		  <v1:Zip>{$this->zipPostalCode}</v1:Zip>
+		  <v1:Country>{$this->country}</v1:Country>
+		  <v1:Phone>{$this->phone}</v1:Phone>
+		  <v1:Fax></v1:Fax>
+		  <v1:Email>{$this->email}</v1:Email>
+        </v1:Billing>
+        <v1:Shipping>
+          <v1:Type> </v1:Type>
+          <v1:Name>{$this->name}</v1:Name>
+          <v1:Address1>{$this->addressLine1}</v1:Address1>
+          <v1:Address2>{$this->addressLine2}</v1:Address2>
+          <v1:City>{$this->city}</v1:City>
+  		  <v1:State>{$this->stateProvinceRegion}</v1:State>
+		  <v1:Zip>{$this->zipPostalCode}</v1:Zip>
+		  <v1:Country>{$this->country}</v1:Country>
+        </v1:Shipping>
+      </v1:Transaction>
+    </fdggwsapi:FDGGWSApiOrderRequest>
+  </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>
 EOT;
 		error_log('envelope:'.$body);
@@ -304,10 +307,12 @@ EOT;
 			$this->expYear = substr($this->expYear, -2);
 			$this->orderTotal = $this->orderTotal.'.00';
 			$this->shippingTotal = $this->shippingTotal.'.00';
-			$this->amount = '$'.$this->amount.'.00';
+			$this->amount = $this->amount.'.00';
 			$this->transactionOrigin = 'ECI';
 			$this->invoiceNumber = new \MongoId();
 			$this->poNumber = new \MongoId();
+			$this->ipAddress = $_SERVER['REMOTE_ADDR'];
+			$this->orderId = new \MongoId();
 
 			$this->sendCharge();
 

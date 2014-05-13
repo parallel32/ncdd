@@ -11,9 +11,9 @@ use Symfony\Component\Validator\ExecutionContext;
  * Email Queue Model.
  * This is a concrete class.
  */
-class EmailQ extends Model {
+class EmailSent extends Model {
 	
-	public $collection = 'emailq';
+	public $collection = 'emailsent';
 	public $to;
 	public $from;
 	public $fromName;
@@ -54,7 +54,9 @@ class EmailQ extends Model {
 	}
 	public function insert(){
 		$this->prepareInsert();
-		$result = $this->find($query=array('to'=>$this->to,'subject'=>$this->subject),$fields=array('_id'),true);
+		// make sure it's not in the emailq first..
+		$eq = new EmailQ(array(),self::$app);
+		$result = $eq->find($query=array('to'=>$this->to,'subject'=>$this->subject),$fields=array('_id'),true);
 		if(empty($result)){
 			if(parent::insert()){
 	        	return $this->_id;
@@ -82,5 +84,45 @@ class EmailQ extends Model {
 		$result = $this->find($query=array(),$fields=array(),true,$sort=array('_id'=>-1));
 		return $result;
 	}
+
+	public function search($string){
+
+		$fields = array();// get all fields
+		$result = array();
+		$search_arr = explode(' ', $string);
+		if(is_array($search_arr)){
+			$regex = '/^';
+			foreach ($search_arr as $key) {
+				$regex .= '.*?\b'.addslashes($key).'\b';
+			}
+			$regex.= '.*?$/im';
+
+			$regex = new \MongoRegex($regex);
+			$resulta = $this->find($query=array('to'=>$regex),$fields,true,$sort=array('sentDate.date'=>-1),$offset=0,$limit=300000000);		
+			$resultb = $this->find($query=array('subject'=>$regex),$fields,true,$sort=array('sentDate.date'=>-1),$offset=0,$limit=300000000);		
+			$resultc = $this->find($query=array('body'=>$regex),$fields,true,$sort=array('sentDate.date'=>-1),$offset=0,$limit=300000000);		
+
+			if(is_array($resulta)){
+				foreach ($resulta as $key => $value) {
+					$_resulta[(string)$value['_id']] = $value;
+				}
+				$result = array_merge($result,$_resulta);
+			}
+			if(is_array($resultb)){
+				foreach ($resultb as $key => $value) {
+					$_resultb[(string)$value['_id']] = $value;
+				}
+				$result = array_merge($result,$_resultb);	
+			}
+			if(is_array($resultc)){
+				foreach ($resultc as $key => $value) {
+					$_resultc[(string)$value['_id']] = $value;
+				}
+				$result = array_merge($result,$_resultc);	
+			}
+		}
+		return $result;
+	}
+	
 	
 }

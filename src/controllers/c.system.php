@@ -33,7 +33,7 @@ $app['sendMail'] = $app->protect(function ($subject, $body, $to, $from=array(SAW
 	$eq_id = $eq->insert();
 	//error_log('eq id:::'.print_r($eq_id,true));
 	
-
+if(true):
 	$sendgrid = new SendGrid(SAW_MAILER_USERNAME, SAW_MAILER_PASSWORD);
 	$email = new SendGrid\Email();
 	$email->addTo($to)->
@@ -44,7 +44,7 @@ $app['sendMail'] = $app->protect(function ($subject, $body, $to, $from=array(SAW
 	       setHtml($body);
 	
 	$sendgrid->send($email);
-
+endif;
 	/*// replaced by SendGrid
 	$message = \Swift_Message::newInstance()
 		        ->setSubject($subject)
@@ -58,6 +58,16 @@ $app['sendMail'] = $app->protect(function ($subject, $body, $to, $from=array(SAW
 	$eq = new Saw\Model\EmailQ(array('_id'=>$eq_id),$app);
 	$eq->delete();
 
+	// save it to the email Sent Items
+	$doc['to'] = $to;
+	$doc['from'] = SAW_MAILER_FROM;
+	$doc['fromName'] = SAW_MAILER_FROM_NAME;
+	$doc['replyTo'] = SAW_MAILER_FROM;
+	$doc['subject'] = $subject;
+	$doc['body'] = $body;
+	$es = new Saw\Model\EmailSent($doc,$app);
+	$es_id = $es->insert();
+	
 });
 
 ////////////////////////////////////////////

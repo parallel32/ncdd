@@ -216,6 +216,16 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                <span class="title">ncdd.com</span>
                </a>
             </li>
+            <? if($accessLevel >= EDITOR):?>
+            <li class="<? echo ($this->vars['active'] == 'EmailSent') ? 'active':'';?>">
+               <a href="/emailsent">
+               <i class="icon-envelope"></i> 
+               <span class="title">Emails Sent</span>
+               <? echo ($this->vars['active'] == 'EmailSent') ? '<span class="selected"></span>':'';?>
+               </a>
+            </li>
+            <? endif; ?>
+            
             <li class="">
                <a href="/logout">
                <i class="icon-key"></i> 
