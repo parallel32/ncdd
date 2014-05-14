@@ -212,7 +212,7 @@ jQuery(document).ready(function() {
                         '   <td class="">'+email.to+'</td>'+
                         '   <td class=" hidden-phone">'+email.subject+'</td>'+
                         '   <td class=" hidden-phone">'+email.sentDate.fullDateTime+'</td>'+
-                        '   <td><a target="_blank" class="btn mini green-stripe" href="//emailsent/'+email._id.$id+'/view">View</a></td>'+
+                        '   <td><a class="btn mini green-stripe" href="/emailsent/'+email._id.$id+'/view">View</a></td>'+
                         '   <!--<td><a class="btn mini blue-stripe edit" data-id="'+email._id.$id+'">Re-Send</a></td>-->'+
                         '</tr>';
                   $('#results tbody').append(html);
