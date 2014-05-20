@@ -256,7 +256,12 @@
                   <!--/ SUCCESSFUL SAVE MODAL -->
                   
                   <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-                  <?=$this->element('js/Payment.js');?>
+                  <?
+                  ## stripe
+                  //echo $this->element('js/Payment.js');
+                  ## fdgg
+                  echo $this->element('js/PaymentFDGG.js');
+                  ?>      
                   <script>
                   jQuery(document).ready(function() {    
                      io.saw.Payment.init(<?=$chargeOnSuccess?>);

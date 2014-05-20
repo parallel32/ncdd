@@ -4,6 +4,9 @@ namespace Saw\Model;
 use Silex\Application;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Validator\Constraints;
+use Symfony\Component\Validator\Constraints\Callback;
+use Symfony\Component\Validator\ExecutionContext;
+
 
 /**
  * Payment model.  Belongs to Merchant and Merchant has many Payments.
@@ -59,6 +62,7 @@ class Payment extends Model {
 	public $referenceNumber;
 	public $poNumber;
 	public $ipAddress;
+	public $fullResponse;
 
 	private $currency = 'usd';
 	private $publicKey = SAW_STRIPE_PUBLIC_KEY;
@@ -92,9 +96,22 @@ class Payment extends Model {
 		$metadata->addPropertyConstraint('description', new Constraints\NotBlank(array('groups' => array('cc','manual','product-purchase'))));
 		$metadata->addPropertyConstraint('title', new Constraints\NotBlank(array('groups' => array('cc','manual','product-purchase'))));
 		$metadata->addPropertyConstraint('amount', new Constraints\NotBlank(array('groups' => array('cc','manual','product-purchase'))));
-		
+		$metadata->addConstraint(new Callback(array('methods' => array('checkAmount'),'groups' => array('cc','manual','product-purchase'))));
+
 	}
-	
+	public function checkAmount(ExecutionContext $context){
+		$validationException = false;
+		if(!is_numeric($this->amount)){
+            $validationException = true;
+		}
+		if(strpos($this->amount, '.') !== false){
+            $validationException = true;
+		}
+		if($validationException){
+			$propertyPath = $context->getPropertyPath().'amount';
+        	$context->addViolationAtPath($propertyPath,'Amount must be a whole number.', array(), null);
+		}
+	}	
 	public function __construct($doc, Application $app){
 		parent::__construct($app);
 		$this->init($doc);
@@ -140,6 +157,7 @@ class Payment extends Model {
 		$this->referenceNumber = $doc['referenceNumber'];
 		$this->poNumber = $doc['poNumber'];
 		$this->ipAddress = $doc['ipAddress'];
+		$this->fullResponse = $doc['fullResponse'];
 
 	}
 	
@@ -178,6 +196,7 @@ class Payment extends Model {
 		$this->referenceNumber = $this->referenceNumber ?: '';
 		$this->poNumber = $this->poNumber ?: '';
 		$this->ipAddress = $this->ipAddress ?: '';
+		$this->fullResponse = $this->fullResponse ?: new \stdClass();
 
 	}
 	
@@ -284,43 +303,241 @@ $body = <<< EOT
   </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>
 EOT;
-		error_log('envelope:'.$body);
 		$ch = $this->prepareCurl($body);
 		// calling cURL and saving the SOAP response message in a variable which 
 		// contains a string like "<SOAP-ENV:Envelope ...>...</SOAP-ENV:Envelope>":
 		$result = curl_exec($ch); 
-		error_log('---------------------------------------------------------');
-		error_log('---------------------------------------------------------');
-		error_log('---------------------------------------------------------');
-		error_log('charge response:'.print_r($result,true));
 		// closing cURL: 
 		curl_close($ch);
+
+		//////////////////////////////////////////////////////////////////////////
+		// XML TO ARRAY 														//
+		// src: http://stackoverflow.com/questions/3630866/php-parse-xml-string //
+		//////////////////////////////////////////////////////////////////////////
+		$xml_parser = xml_parser_create();
+	    xml_parse_into_struct($xml_parser, $result, $vals);
+	    xml_parser_free($xml_parser);
+	    
+	    $_tmp='';
+	    foreach ($vals as $xml_elem) {
+	        $x_tag=$xml_elem['tag'];
+	        $x_level=$xml_elem['level'];
+	        $x_type=$xml_elem['type'];
+	        if ($x_level!=1 && $x_type == 'close') {
+	            if (isset($multi_key[$x_tag][$x_level]))
+	                $multi_key[$x_tag][$x_level]=1;
+	            else
+	                $multi_key[$x_tag][$x_level]=0;
+	        }
+	        if ($x_level!=1 && $x_type == 'complete') {
+	            if ($_tmp==$x_tag)
+	                $multi_key[$x_tag][$x_level]=1;
+	            $_tmp=$x_tag;
+	        }
+	    }
+	    
+	    foreach ($vals as $xml_elem) {
+	        $x_tag=$xml_elem['tag'];
+	        $x_level=$xml_elem['level'];
+	        $x_type=$xml_elem['type'];
+	        if ($x_type == 'open')
+	            $level[$x_level] = $x_tag;
+	        $start_level = 1;
+	        $php_stmt = '$xml_array';
+	        if ($x_type=='close' && $x_level!=1)
+	            $multi_key[$x_tag][$x_level]++;
+	        while ($start_level < $x_level) {
+	            $php_stmt .= '[$level['.$start_level.']]';
+	            if (isset($multi_key[$level[$start_level]][$start_level]) && $multi_key[$level[$start_level]][$start_level])
+	                $php_stmt .= '['.($multi_key[$level[$start_level]][$start_level]-1).']';
+	            $start_level++;
+	        }
+	        $add='';
+	        if (isset($multi_key[$x_tag][$x_level]) && $multi_key[$x_tag][$x_level] && ($x_type=='open' || $x_type=='complete')) {
+	            if (!isset($multi_key2[$x_tag][$x_level]))
+	                $multi_key2[$x_tag][$x_level]=0;
+	            else
+	                $multi_key2[$x_tag][$x_level]++;
+	            $add='['.$multi_key2[$x_tag][$x_level].']';
+	        }
+	        if (isset($xml_elem['value']) && trim($xml_elem['value'])!='' && !array_key_exists('attributes', $xml_elem)) {
+	            if ($x_type == 'open')
+	                $php_stmt_main=$php_stmt.'[$x_type]'.$add.'[\'content\'] = $xml_elem[\'value\'];';
+	            else
+	                $php_stmt_main=$php_stmt.'[$x_tag]'.$add.' = $xml_elem[\'value\'];';
+	            eval($php_stmt_main);
+	        }
+	        if (array_key_exists('attributes', $xml_elem)) {
+	            if (isset($xml_elem['value'])) {
+	                $php_stmt_main=$php_stmt.'[$x_tag]'.$add.'[\'content\'] = $xml_elem[\'value\'];';
+	                eval($php_stmt_main);
+	            }
+	            foreach ($xml_elem['attributes'] as $key=>$value) {
+	                $php_stmt_att=$php_stmt.'[$x_tag]'.$add.'[$key] = $value;';
+	                eval($php_stmt_att);
+	            }
+	        }
+	    }
+	    //print_r($xml_array);  // for debugging and seeing the result well formatted in the ajax response
+	    //////////////////
+		// XML TO ARRAY //
+		//////////////////
+		
+		$response = $xml_array['SOAP-ENV:ENVELOPE']['SOAP-ENV:BODY']['FDGGWSAPI:FDGGWSAPIORDERRESPONSE'];
+		$default_msg = "An error has occured.  Please try again.  If it persists, please contact us.";
+		switch ($response['FDGGWSAPI:TRANSACTIONRESULT']) {
+			case 'APPROVED':
+				return $response;
+				break;
+			case 'FRAUD':
+				$message = (array_key_exists('FDGGWSAPI:ERRORMESSAGE', $response)) ? $response['FDGGWSAPI:ERRORMESSAGE']: $default_msg;
+				break;
+			case 'DECLINED':
+				$message = (array_key_exists('FDGGWSAPI:ERRORMESSAGE', $response)) ? $response['FDGGWSAPI:ERRORMESSAGE']: $default_msg;
+				break;
+			case 'DUPLICATE':
+				$message = (array_key_exists('FDGGWSAPI:ERRORMESSAGE', $response)) ? $response['FDGGWSAPI:ERRORMESSAGE']: $default_msg;
+				break;
+			case 'FAILED':
+				$message = (array_key_exists('FDGGWSAPI:ERRORMESSAGE', $response)) ? $response['FDGGWSAPI:ERRORMESSAGE']: $default_msg;
+				break;
+			
+		}
+		throw new \Exception($message);
+
+
+	    /**
+			SUCCESSFUL
+	    */
+
+		/*
+		Array
+		(
+		    [SOAP-ENV:ENVELOPE] => Array
+		        (
+		            [XMLNS:SOAP-ENV] => http://schemas.xmlsoap.org/soap/envelope/
+		            [SOAP-ENV:BODY] => Array
+		                (
+		                    [FDGGWSAPI:FDGGWSAPIORDERRESPONSE] => Array
+		                        (
+		                            [XMLNS:FDGGWSAPI] => http://secure.linkpt.net/fdggwsapi/schemas_us/fdggwsapi
+		                            [FDGGWSAPI:COMMERCIALSERVICEPROVIDER] => CSI
+		                            [FDGGWSAPI:TRANSACTIONTIME] => Sun May 18 14:20:48 2014
+		                            [FDGGWSAPI:TRANSACTIONID] => 18586087
+		                            [FDGGWSAPI:PROCESSORREFERENCENUMBER] => OK242C
+		                            [FDGGWSAPI:PROCESSORRESPONSEMESSAGE] => APPROVED
+		                            [FDGGWSAPI:ORDERID] => 5378f9fc8a163220196a2d2a
+		                            [FDGGWSAPI:APPROVALCODE] => OK242C0018586087:NYPP:
+		                            [FDGGWSAPI:AVSRESPONSE] => NYPP
+		                            [FDGGWSAPI:TDATE] => 1400437247
+		                            [FDGGWSAPI:TRANSACTIONRESULT] => APPROVED
+		                            [FDGGWSAPI:PROCESSORRESPONSECODE] => A
+		                            [FDGGWSAPI:TRANSACTIONSCORE] => 100
+		                            [FDGGWSAPI:FRAUDACTION] => ACCEPT
+		                            [FDGGWSAPI:AUTHENTICATIONRESPONSECODE] => P
+		                        )
+
+		                )
+
+		        )
+
+		)
+		//*/
+		/**
+			FAILURE FOR WHATEVER REASON
+		*/
+		/*
+		Array
+		(
+		    [SOAP-ENV:ENVELOPE] => Array
+		        (
+		            [XMLNS:SOAP-ENV] => http://schemas.xmlsoap.org/soap/envelope/
+		            [SOAP-ENV:BODY] => Array
+		                (
+		                    [FDGGWSAPI:FDGGWSAPIORDERRESPONSE] => Array
+		                        (
+		                            [XMLNS:FDGGWSAPI] => http://secure.linkpt.net/fdggwsapi/schemas_us/fdggwsapi
+		                            [FDGGWSAPI:TRANSACTIONTIME] => Sun May 18 14:24:09 2014
+		                            [FDGGWSAPI:ERRORMESSAGE] => SGS-005005: Duplicate transaction.
+		                            [FDGGWSAPI:ORDERID] => 5378fac68a16320d196a2d21
+		                            [FDGGWSAPI:TRANSACTIONRESULT] => FRAUD
+		                        )
+
+		                )
+
+		        )
+
+		)
+
+		Array
+		(
+		    [SOAP-ENV:ENVELOPE] => Array
+		        (
+		            [XMLNS:SOAP-ENV] => http://schemas.xmlsoap.org/soap/envelope/
+		            [SOAP-ENV:BODY] => Array
+		                (
+		                    [SOAP-ENV:FAULT] => Array
+		                        (
+		                            [FAULTCODE] => SOAP-ENV:Client
+		                            [FAULTSTRING] => Array
+		                                (
+		                                    [content] => MerchantException
+		                                    [XML:LANG] => en
+		                                )
+
+		                            [DETAIL] => 
+		                cvc-pattern-valid: Value '.00' is not facet-valid with respect to pattern '([1-9]([0-9]{0,3}))?[0-9](\.[0-9]{1,2})?' for type '#AnonType_SubTotalAmount'.
+		                cvc-type.3.1.3: The value '.00' of element 'v1:SubTotal' is not valid.
+		                cvc-pattern-valid: Value '.00' is not facet-valid with respect to pattern '([1-9]([0-9]{0,3}))?[0-9](\.[0-9]{1,2})?' for type '#AnonType_ShippingAmount'.
+		                cvc-type.3.1.3: The value '.00' of element 'v1:Shipping' is not valid.
+		            
+		                        )
+
+		                )
+
+		        )
+
+		)
+		*/
+
 	}
 	/**
 	 * Initiate a credit card charge
 	 */
 	public function charge(){
 		try {
-			/*
-			// FDGG
+			//*
+			// FDGG charge request AND response
 			$this->expMonth = str_pad($this->expMonth, 2, '0', STR_PAD_LEFT); 
 			$this->expYear = substr($this->expYear, -2);
-			$this->orderTotal = $this->orderTotal.'.00';
-			$this->shippingTotal = $this->shippingTotal.'.00';
+			$this->orderTotal = (!empty($this->orderTotal)) ? $this->orderTotal.'.00' : $this->amount.'.00';
+			$this->shippingTotal = (!empty($this->shippingTotal)) ? $this->shippingTotal.'.00' : '0.00';
 			$this->amount = $this->amount.'.00';
 			$this->transactionOrigin = 'ECI';
 			$this->invoiceNumber = new \MongoId();
 			$this->poNumber = new \MongoId();
 			$this->ipAddress = $_SERVER['REMOTE_ADDR'];
 			$this->orderId = new \MongoId();
+			// sanity check for payment formats
+			$this->orderTotal = (!empty($this->orderTotal)) ? $this->orderTotal : '0.00';
+			$this->shippingTotal = (!empty($this->shippingTotal)) ? $this->shippingTotal : '0.00';
+			$this->amount = (!empty($this->amount)) ? $this->amount : '0.00';
 
-			$this->sendCharge();
+			$response = $this->sendCharge();
+			
+			$this->referenceNumber = $response['FDGGWSAPI:PROCESSORREFERENCENUMBER'];
+			$this->fullResponse = $response;
+			$this->transactionId = $response['FDGGWSAPI:TRANSACTIONID'];
+			$this->number = substr($this->number,-4);
+			$paymentId = $this->insert();
+			$this->markOwnerClassPaid($paymentId);
 
-			return new \MongoId();
+			return $paymentId;
+			
 			//*/
 
-			//*
-			// prepare charge request here
+			/*
+			// STRIPE charge request AND response
 			$request['amount'] = $this->amount*100; // because Stripe treats a dollar amount as 100 pennies
 			$request['currency'] = $this->currency;
 			$request['description'] = $this->description;
@@ -478,7 +695,7 @@ EOT;
 	}
 	public function fetchAll(){
 		if(!empty($this->memberId)){
-			$result = $this->find($query=array('memberId'=>$this->memberId),$fields=array(),true,0,1000,$sort=array('_id'=>-1));
+			$result = $this->find($query=array('memberId'=>$this->memberId),$fields=array(),true,$sort=array('_id'=>-1),0,1000);
 		}else{
 			$result = $this->find($query=array(),$fields=array(),true,$sort=array('_id'=>-1));
 		}

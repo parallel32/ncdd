@@ -38,7 +38,7 @@
                      <button class="close" data-dismiss="alert"></button>
                      You have some form errors. Please check below.
                   </div>                  
-                  <h3 class="form-section">1.  If your information below has changed please update it, otherwise, skip to step 2.</h3>
+                  <h3 class="form-section">1.  If your information below has changed please update it otherwise, skip to step 2.</h3>
                   <div class="row-fluid">
                      <div class="span6 ">
                         <div class="control-group">

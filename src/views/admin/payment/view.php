@@ -1,3 +1,6 @@
+<?
+$user = call_user_func(function($app){ $user = $this->app['session']->get('user'); return $user;},$this->app);
+?>
       <!-- BEGIN PAGE -->
       <div class="page-content">
          <!-- BEGIN PAGE CONTAINER-->
@@ -222,6 +225,22 @@
                         </div>
                         <!--/span-->
                      </div>
+                     <? if($user['accessLevel'] >= EDITOR && array_key_exists('fullResponse',$this->vars['payment']) && !empty($this->vars['payment']['fullResponse'])){ ?>
+                     <h3 class="form-section">First Data Global Gateway - Full Response</h3>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">If needed for finding transactions: below is the full response from First Data</label>
+                              <div class="controls">
+                                 <pre>
+                                    <?print_r($this->vars['payment']['fullResponse'])?>
+                                 </pre>
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <? } ?>
                      <div class="form-actions text-center">
                         <button type="button" class="btn cancel">Go Back</button>
                      </div>
@@ -235,8 +254,12 @@
          <!-- END PAGE CONTAINER-->    
       </div>
       <!-- END PAGE -->
-      <?=$this->element('js/Payment.js');?>
-      <script>
+<?
+ ## stripe
+ //echo $this->element('js/Payment.js');
+ ## fdgg
+ echo $this->element('js/PaymentFDGG.js');
+ ?>      <script>
       jQuery(document).ready(function() {    
          io.saw.Payment.indexInit();
       });      

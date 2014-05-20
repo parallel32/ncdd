@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://<?=SAW_CONSUMER_WEBSITE?>/assets/stylesheets/bootstrap.css?v=2" rel="stylesheet" media="screen">
         <link href="https://<?=SAW_CONSUMER_WEBSITE?>/assets/stylesheets/bootstrap-responsive.css" rel="stylesheet">
-        <link href="https://<?=SAW_CONSUMER_WEBSITE?>/assets/stylesheets/screenv5.1-full.css?v=22222222" rel="stylesheet">  <!--4522, 3364-->
+        <link href="https://<?=SAW_CONSUMER_WEBSITE?>/assets/stylesheets/screenv5.2.min.css" rel="stylesheet">  <!--4522, 3364-->
         <link href="https://<?=SAW_CONSUMER_WEBSITE?>/assets/stylesheets/responsive.css" rel="stylesheet">
         <style>
         @font-face {

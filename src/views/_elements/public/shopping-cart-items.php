@@ -17,7 +17,7 @@
                                 foreach($cart_items as $item): ?>
                                 
                                 <tr id="row-<?=$item['_id']?>">
-                                    <td><img style="width:50%" src="<?=$item['image']['urls']['small']['SSLCDN'] ?>" alt=""></td>
+                                    <td><? if(array_key_exists('urls',$item['image'])){ ?><img style="width:50%" src="<?=$item['image']['urls']['small']['SSLCDN'] ?>" alt=""><? } ?></td>
                                     <td>
                                         <div class="row-fluid">
                                             <b><a href="/store/<?=$item['_id']?><?=$item['slug']?>"><?=$item['name'] ?> </a></b>

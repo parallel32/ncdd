@@ -329,9 +329,9 @@ MasterCard, Visa and Discover credit cards have a 3 digit code printed on the ba
                             <?=$this->element('js/FormPostClass.js');?>
                             <?
                             ## stripe
-                            echo $this->element('js/Payment.js');
+                            //echo $this->element('js/Payment.js');
                             ## fdgg
-                            //echo $this->element('js/PaymentFDGG.js');
+                            echo $this->element('js/PaymentFDGG.js');
                             ?>
                           <script>
                           jQuery(document).ready(function() {    

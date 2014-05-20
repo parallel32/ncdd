@@ -56,7 +56,12 @@
          <!-- END PAGE CONTAINER-->    
       </div>
       <!-- END PAGE -->
-<?=$this->element('js/Payment.js');?>
+<?
+## stripe
+//echo $this->element('js/Payment.js');
+## fdgg
+echo $this->element('js/PaymentFDGG.js');
+?>      
 <script>
 jQuery(document).ready(function() {    
    io.saw.Payment.indexInit();
