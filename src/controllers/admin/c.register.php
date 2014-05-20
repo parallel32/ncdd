@@ -173,7 +173,7 @@ $app->post('/registration/payment', function (Request $request) use ($app) {
 $app->get('/registration/{paymentId}/pay/{registrationId}', function ($paymentId, $registrationId, Request $request) use ($app) {
     
     $registration = new Model\Registration(array('_id'=>$registrationId, 'paymentId'=>$paymentId), $app);
-    //$app['seminarConfirmationEmail']($app,$registrationId);
+    $app['seminarConfirmationEmail']($app,$registrationId);
     $registration->markPaid();
     
     $payment = new Model\Payment(array('_id'=>$paymentId),$app);
