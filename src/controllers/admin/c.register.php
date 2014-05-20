@@ -254,8 +254,8 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 
 		$payment = new Model\Payment($doc['payment'],$app);
 		$app['validateModel']($app, $payment,$groups=array('cc'));
-		$app['seminarConfirmationEmail']($app,$rs_id);
 		$paymentId = $payment->charge();
+		$app['seminarConfirmationEmail']($app,$rs_id);
 		
 	}
 	if($doc['currentStatus'] == Model\Registration::$status['SCHOLARSHIP']){
