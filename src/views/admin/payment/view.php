@@ -99,6 +99,7 @@ $user = call_user_func(function($app){ $user = $this->app['session']->get('user'
                         </div>
                         <!--/span-->
                      </div>
+                     <!--
                      <div class="row-fluid">
                         <div class="span8 ">
                            <div class="control-group ">
@@ -108,8 +109,9 @@ $user = call_user_func(function($app){ $user = $this->app['session']->get('user'
                               </div>
                            </div>
                         </div>
-                        <!--/span-->
+                        <!--/span--
                      </div>
+                     -->
                      <div class="row-fluid">
                         <div class="span8 ">
                            <div class="control-group ">

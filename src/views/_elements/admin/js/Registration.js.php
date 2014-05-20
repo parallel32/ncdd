@@ -74,7 +74,7 @@
 				break;
 		}
 		if($('#currentPaymentType').val() == <?=\Saw\Model\Registration::$paymentType['CREDIT']?>){
-			io.saw.Payment.createStripeToken();
+			io.saw.Payment.initiateRegistration();
 		}
 		
 	};

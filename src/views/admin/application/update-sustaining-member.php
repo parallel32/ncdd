@@ -916,58 +916,9 @@
                }
          }
          Payment.createStripeToken = function (){
-            Stripe.setPublishableKey("<?=SAW_STRIPE_PUBLIC_KEY?>");
-            $('#saw-form .form-actions .btn.green').html('<i class="icon-time"></i> Validating Your Card..');
+            $('#saw-form .form-actions .btn.green').html('<i class="icon-time"></i> Processing Your Registration..');
             $('#saw-form .form-actions .btn.green').attr("disabled", "disabled");
-
-            Stripe.createToken({
-               name: $('#card-name').val(),
-               number: $('#card-number').val(),
-               cvc: $('#card-cvc').val(),
-               exp_month: $('#card-expMonth').val(), 
-               exp_year: $('#card-expYear').val(),
-               address_line1:$('#card-addressLine1').val(),
-               address_line2:$('#card-addressLine2').val(),
-               address_state:$('#card-stateProvinceRegion').val(),
-               address_zip:$('#card-zipPostalCode').val(),
-               address_country:$('#card-country').val()
-            },function(status, response) {
-               if (status >= 400) { // we have an error
-                  // re-enable the submit button
-                  $('#saw-form .form-actions .btn.green').removeAttr("disabled");
-                  $('#saw-form .form-actions .btn.green').html('<i class="icon-ok"></i> Submit Payment');
-
-                  // process the error
-                  if(response.hasOwnProperty('error')){
-                     $('#saw-form .control-group.'+response.error.param).addClass('error');
-                     $('#saw-form .control-group.'+response.error.param+' :input').after('<span class="help-inline">'+response.error.message+'</span>');            
-                  }
-                  // set response message
-                  $('#saw-form .alert-error').removeClass('hide').html('<span>'+response.error.message+'</span>');
-                  $('#saw-form .control-group :input.'+response.error.param).parents('.control-group').addClass('error');
-                  $('#saw-form .control-group :input.'+response.error.param).parents('.controls').append(
-                  '<span for="'+response.error.param+'" class="help-block error pulsate" style="">'+response.error.message+'</span>'
-                  );
-
-                  // finally re-set the token field to blank
-                  $('#saw-form .token').val('');
-               } else {
-                  // payment button text
-                  $('#saw-form .form-actions .btn.green').html('<i class="icon-time"></i> Processing Your Registration..');
-                  // remove errors
-                  $('#saw-form .control-group').find('.help-block.error').remove();
-                  $('#saw-form .error').removeClass('error');
-                  $('#saw-form .alert-error').addClass('hide')
-
-                  // set returned values to the form
-                  $('#saw-form .token').val(response.id);
-                  // in case of a form validation error we need to save the credit card number because on the next save stripe will have to re-process
-                  Payment.hold_card = $('#saw-form .number').val();
-                  $('#saw-form .number').val(response.card.last4);
-                  $('#saw-form .cardType').val(response.card.type);
-                  submitApp();
-               }
-            });// end Stripe.createToken
+            submitApp();
          }
          Payment.hold_card = '';
          Payment.init = function(){
