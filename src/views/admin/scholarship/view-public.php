@@ -265,7 +265,7 @@
                         <div class="control-group">
                            <label class="control-label">Please take a moment to explain your reasons for requesting a scholarship. </label>
                            <div class="controls">
-                              <textarea rows="5" class="span12 reasonForScholarship" name="doc[reasonForScholarship]" readonly><?=$this->vars['scholarship']['reasonForScholarship']?></textarea>
+                              <?=$this->vars['scholarship']['reasonForScholarship']?>
                            </div>
                         </div>
                      </div>
