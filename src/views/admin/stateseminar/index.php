@@ -14,6 +14,7 @@
             <!-- BEGIN PAGE CONTENT--> 
             <div class="row-fluid">
                <div class="span12">
+                  <? if($accessLevel >= EDITOR){ ?>
                   <div class="row-fluid">
                      <div class="span12">
                         <a id="add-stateseminar" class="btn green add-stateseminar"><i class=" icon-plus"></i> Add New </a>
@@ -21,7 +22,7 @@
                         <br>
                      </div>
                   </div>
-                  
+                  <? } ?>
                   <!-- CATEGORIES -->
                   <div class="row-fluid">
                      <div id="blog" class="span12">
