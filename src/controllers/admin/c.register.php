@@ -258,7 +258,7 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 		$app['seminarConfirmationEmail']($app,$rs_id);
 		
 	}
-	if($doc['currentStatus'] == Model\Registration::$status['SCHOLARSHIP']){
+	if(array_key_exists('currentStatus', $doc) && $doc['currentStatus'] == Model\Registration::$status['SCHOLARSHIP']){
 		$app['seminarConfirmationEmail']($app,$rs_id);
 	}
 	//*/
