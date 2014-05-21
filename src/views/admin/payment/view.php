@@ -1,5 +1,5 @@
 <?
-$user = call_user_func(function($app){ $user = $this->app['session']->get('user'); return $user;},$this->app);
+$user = call_user_func(function($app){ $user = $app['session']->get('user'); return $user;},$this->app);
 ?>
       <!-- BEGIN PAGE -->
       <div class="page-content">
