@@ -59,6 +59,19 @@
                            </div>
                            <!--/span-->
                         </div>
+                        <h3 class="form-section text-info"><strong>Url</strong></h3>
+                        <p>SEO friendly URL.  Can be changed after you finish typing the Name.</p>
+                        <div class="row-fluid">
+                           <div class="span12 ">
+                              <div class="control-group ">
+                                 <label class="control-label"></label>
+                                 <div class="controls">
+                                    <input type="text" name="doc[slug]" value="<?=(!empty($this->vars['stateseminar']) && array_key_exists('slug',$this->vars['stateseminar'])) ? $this->vars['stateseminar']['slug']: ''?>" class="m-wrap span10 slug">
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
                         <h3 class="form-section text-info"><strong>Sponsor</strong></h3>
                         <p>Provide the name of the sponsor</p>
                         <div class="row-fluid">
