@@ -152,7 +152,7 @@ $app->post('/reference/{id}', function ($id, Request $request) use ($app) {
 	    		$subject = 'All References Submitted';
 		    	$to = SAW_ADMIN_EMAIL;
 		    	$view_vars = array('applicationId'=>$doc['applicationId']);
-		    	$body = $app['view']->render('email/new-member-reference-max-submissions','email', $view_vars);
+		    	$body = $app['view']->render('email/reference-max-submissions','email', $view_vars);
 		    	$app['sendMail']($subject, $body, $to);
 	    	}
 	    	

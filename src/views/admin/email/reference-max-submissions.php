@@ -8,11 +8,9 @@
 									<table border="0" cellpadding="20" cellspacing="0" width="100%">
 										<tr>
 											<td valign="top">
-												<h2 class="h2">General Member Application's Reference Forms are Ready</h2>
+												<h2 class="h2">Reference forms for the following application are ready:</h2>
 												<br />
 												<div class="textdark">
-													The general member application form references are ready:
-													<br/>
 													Go to the Admin Dashboard to view this and other Applications.  <a href="https://<?=SAW_ADMIN_WEBSITE?>/application/<?=$this->vars['applicationId']?>/view" target="_blank">https://<?=SAW_ADMIN_WEBSITE?>/application/<?=$this->vars['applicationId']?>/view</a>. 
 												</div>
 											</td>
