@@ -231,7 +231,8 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
     	$message = 'Our records indicate you have already submitted an application.  Please Log-in if you are looking for another Application or contact NCDD directly.';
     	$response_status = 400;
     }else{
-    	$application->insert();
+    	$applicationId = $application->insert();
+    	$_POST['applicationId'] = $applicationId->__toString();
     	$label = 'Your application was received.  Thank you.';
     	$message = 'Thank you for your interest in NCDD.  Your application has been submitted.  You will be notified by the College when it is approved or if there are any questions.';
     	$response_status = 200;
@@ -262,6 +263,7 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 	    						,'city'=>$doc['city']
 	    						,'state'=>$doc['state']
 	    						,'email'=>$doc['email']
+	    						,'applicationId'=>$_POST['applicationId']
 	    	);
 	    	$body = $app['view']->render('email/new-member-applicant-submission','email', $view_vars);
 	    	$app['sendMail']($subject, $body, $to);
@@ -285,7 +287,8 @@ $app->post('/application/new-sustaining-member', function (Request $request) use
     	$message = 'Our records indicate you have already submitted an application.  Please Log-in if you are looking for another Application or contact NCDD directly.';
     	$response_status = 400;
     }else{
-    	$application->insert();
+    	$applicationId = $application->insert();
+    	$_POST['applicationId'] = $applicationId->__toString();
     	$label = 'Your application was received.  Thank you.';
     	$message = 'Thank you for your interest in NCDD.  Your application has been submitted.  You will be notified by the College when it is approved or if there are any questions.';
     	$response_status = 200;
@@ -316,6 +319,7 @@ $app->post('/application/new-sustaining-member', function (Request $request) use
 	    						,'city'=>$doc['city']
 	    						,'state'=>$doc['state']
 	    						,'email'=>$doc['email']
+	    						,'applicationId'=>$_POST['applicationId']
 	    	);
 	    	$body = $app['view']->render('email/new-sustaining-member-applicant-submission','email', $view_vars);
 	    	$app['sendMail']($subject, $body, $to);
@@ -576,6 +580,9 @@ $app->get('/application/{id}/view', function ($id, Request $request) use ($app) 
 	$application = new Model\Apply($doc=array('_id'=>$id), $app);
 	$application = $application->findById();
 
+	$reference = new Model\Reference($doc=array('_id'=>$id), $app);
+	$references = $reference->fetch(0,50,array('applicationId'=>$application['_id']));
+
 	$location = new Model\Location($doc=array('member'=>array('_id'=>$application['memberId'])), $app);
 	$location = $location->getByMemberId();
 	$member = $location['member'];
@@ -593,6 +600,7 @@ $app->get('/application/{id}/view', function ($id, Request $request) use ($app) 
 						,'application'=>$application
 						,'location'=>$location
 						,'member'=>$member
+						,'references'=>$references
 						);
 	switch ($application['class']) {
 		case 'NewMemberApplication': // old deprecated
@@ -1024,6 +1032,18 @@ $app->get('/applications/all/{offset}/{limit}', function ($offset, $limit, Reque
 $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $request) use ($app) {
 	$application = new Model\Apply($doc=array(), $app);
 	$submitted = $application->fetchByStatus('SUBMITTED',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
+	for ($i=0; $i < count($submitted); $i++) { 
+		switch ($submitted[$i]['class']) {
+	    	case 'ApplyNewMember':
+	    		$reference = new Model\ReferenceMember(array('applicationId'=>$submitted[$i]['_id']), $app);
+	    		break;
+	    	case 'ApplyNewSustainingMember':
+	    		$reference = new Model\ReferenceSustainingMember(array('applicationId'=>$submitted[$i]['_id']), $app);
+	    		break;
+	    	
+	    }
+	    $submitted[$i]['new_references'] = array('total'=>$reference->getTotalSubmissions(),'max'=>$reference->getMaxSubmissions());
+	}
 	$approved = $application->fetchByStatus('APPROVED',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
 	$trial = $application->fetchByStatus('TRIAL',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
 	$paid = $application->fetchByDatePaid(90, $offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));

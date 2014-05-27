@@ -32,9 +32,12 @@ class ApplyNewMember extends Apply {
 	public $everLawEnforcementExplain;
 	public $futureLawEnforcement;
 	public $futureLawEnforcementExplain;
+	public $licensedInUSAAustraliaCanada;
 	public $executed;
 	public $executedPrintedName;
+	public $executedPrintedNameDate;
 	public $authorizationReleasePrintedName;
+	public $authorizationReleasePrintedNameDate;
 	public $referenceFormDownload;
 
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
@@ -50,14 +53,17 @@ class ApplyNewMember extends Apply {
 		$metadata->addPropertyConstraint('everInvestigation', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('everLawEnforcement', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('futureLawEnforcement', new Constraints\NotBlank(array('message'=>'cannot be blank')));
+		$metadata->addPropertyConstraint('licensedInUSAAustraliaCanada', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('executed', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('executedPrintedName', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('membershipDues', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		/* commented out per Rhea's request
-		//$metadata->addPropertyConstraint('authorizationReleasePrintedName', new Constraints\NotBlank(array('message'=>'cannot be blank')));
+		//* commented out per Rhea's request
+		$metadata->addPropertyConstraint('authorizationReleasePrintedName', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		//*/
 		$metadata->addConstraint(new Callback(array('methods' => array('explain'))));
+		/* dependency replaced by automated reference form
 		$metadata->addConstraint(new Callback(array('methods' => array('referenceFormDownload'))));
+		*/
 	}
 	public function explain(ExecutionContext $context){
 		if($this->everBeenArrested == 'yes' && empty($this->everBeenArrestedExplain)){
@@ -80,6 +86,14 @@ class ApplyNewMember extends Apply {
 			$propertyPath = $context->getPropertyPath().'everLawEnforcementExplain';
 			$context->addViolationAtPath($propertyPath,'Please explain your answer.', array(), null);
 		}
+		if($this->licensedInUSAAustraliaCanada == 'no')){
+			$propertyPath = $context->getPropertyPath().'licensedInUSAAustraliaCanada';
+			$context->addViolationAtPath($propertyPath,'This question requires an answer of "Yes"', array(), null);
+		}
+		if($this->futureLawEnforcement == 'no')){
+			$propertyPath = $context->getPropertyPath().'futureLawEnforcement';
+			$context->addViolationAtPath($propertyPath,'This question requires an answer of "Yes"', array(), null);
+		}
 		/* commented out by request from Rhea to make this question simply a yes or no answer.
 		if($this->futureLawEnforcement == 'yes' && empty($this->futureLawEnforcementExplain)){
 			$propertyPath = $context->getPropertyPath().'futureLawEnforcementExplain';
@@ -87,12 +101,14 @@ class ApplyNewMember extends Apply {
 		}*/
 
 	}
+	/* dependency replaced by automated reference form
 	public function referenceFormDownload(ExecutionContext $context){
 		if($this->referenceFormDownload == 'no'){
 			$propertyPath = $context->getPropertyPath().'referenceFormDownload';
 			$context->addViolationAtPath($propertyPath,'Please confirm you have downloaded the Reference form.', array(), null);
 		}
 	}
+	*/
 	public function __construct($doc, Application $app){
 		parent::__construct($doc,$app);
 		$this->init($doc);
@@ -118,9 +134,10 @@ class ApplyNewMember extends Apply {
 		$this->futureLawEnforcementExplain = $doc['futureLawEnforcementExplain'];
 		$this->executed = (!empty($doc['executed']) && strpos($doc['executed'], 'Executed at') === false) ? $this->prepareExecuted($doc['executed']) : $doc['executed'];
 		$this->executedPrintedName = $doc['executedPrintedName'];
+		$this->executedPrintedNameDate = $doc['executedPrintedNameDate'];
 		$this->authorizationReleasePrintedName = $doc['authorizationReleasePrintedName'];
+		$this->authorizationReleasePrintedNameDate = $doc['authorizationReleasePrintedNameDate'];
 		$this->referenceFormDownload = $doc['referenceFormDownload'];
-
 
 	}
 	
@@ -151,7 +168,9 @@ class ApplyNewMember extends Apply {
 		$this->futureLawEnforcementExplain = $this->futureLawEnforcementExplain ?: '';
 		$this->executed = $this->executed ?: '';
 		$this->executedPrintedName = $this->executedPrintedName ?: '';
+		$this->executedPrintedNameDate = $this->executedPrintedNameDate ?: '';
 		$this->authorizationReleasePrintedName = $this->authorizationReleasePrintedName ?: '';
+		$this->authorizationReleasePrintedNameDate = $this->authorizationReleasePrintedNameDate ?: '';
 		$this->referenceFormDownload = $this->referenceFormDownload ?: '';
 	}
 	public function insert(){

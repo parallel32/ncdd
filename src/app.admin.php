@@ -35,6 +35,7 @@ $app = require __DIR__.'/controllers/admin/c.comment.php';
 $app = require __DIR__.'/controllers/admin/c.register.php';
 $app = require __DIR__.'/controllers/admin/c.topic.php';
 $app = require __DIR__.'/controllers/admin/c.stateseminar.php';
+$app = require __DIR__.'/controllers/admin/c.reference.php';
 
 /**
  * Before Filter

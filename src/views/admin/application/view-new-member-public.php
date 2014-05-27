@@ -415,11 +415,12 @@
                   <div class="row-fluid">
                      <div class="span12 ">
                         <div class="control-group">
-                           <label class="control-label">Printed Name</label>
-                           <div class="controls">
-                                 <input disabled class="m-wrap span12 executedPrintedName" type="text" value="<?=$this->vars['application']['executedPrintedName']?>">
+                           <label class="control-label"></label>
+                           <div class="input-prepend input-append">
+                              <span class="add-on">Printed Name: </span>
+                              <input disabled name="doc[executedPrintedName]" value="<?=$this->vars['application']['executedPrintedName']?>" class="m-wrap span12 executedPrintedName" type="text" placeholder="">
+                              <span class="add-on"> <?=(array_key_exists('executedPrintedNameDate', $this->vars['application'])) ? $this->vars['application']['executedPrintedNameDate'] : ''?></span>
                            </div>
-                           
                         </div>
                      </div>
                      <!--/span-->
@@ -447,7 +448,7 @@
                      </div>
                      <!--/span-->
                   </div>
-                  <!--
+                  
                   <h3 class="form-section text-center">THE NATIONAL COLLEGE FOR DUI DEFENSE, INC.</br> AUTHORIZATION AND RELEASE</h3>
                   <div class="row-fluid">
                      <div class="span12">
@@ -477,24 +478,25 @@
                            </br></br>
                         </p>
                      </div>
-                     <!--/span--
+                     <!--/span-->
                   </div>
                   <div class="row-fluid">
                      <div class="span12 ">
                         <div class="control-group">
                            <label class="control-label">By printing your name you acknowledge this Authorization and Release.</label>
                            <div class="controls">
-                              <div class="input-prepend">
+                              <div class="input-prepend input-append">
                                  <span class="add-on">Printed Name: </span>
                                  <input disabled class="m-wrap span12 authorizationReleasePrintedName" type="text" value="<?=$this->vars['application']['authorizationReleasePrintedName']?>" placeholder="">
+                                 <span class="add-on"> <?=(array_key_exists('authorizationReleasePrintedNameDate', $this->vars['application'])) ? $this->vars['application']['authorizationReleasePrintedNameDate'] : ''?></span>
                               </div>
                            </div>
                            
                         </div>
                      </div>
-                     <!--/span--
+                     <!--/span-->
                   </div>
-                  -->
+                  <!--
                   <div class="row-fluid">
                      <div class="span12">
                         <div class="control-group">
@@ -507,8 +509,9 @@
                            </div>
                         </div>
                      </div>
-                     <!--/span-->
+                     <!--/span--
                   </div>
+               -->
                   <div class="row-fluid">
                      <div class="span6 ">
                         <div class="control-group">

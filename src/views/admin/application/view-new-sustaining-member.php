@@ -403,7 +403,7 @@
                            </div>
                         </div>
                      </div>
-                     <!--/span-->
+                     <!--/span--
                      <div class="span6 ">
                         <div class="control-group">
                            <label class="control-label">If "Yes", please explain.</label>
@@ -436,11 +436,12 @@
                   <div class="row-fluid">
                      <div class="span12 ">
                         <div class="control-group">
-                           <label class="control-label">Printed Name</label>
-                           <div class="controls">
-                                 <input disabled class="m-wrap span12 executedPrintedName" type="text" value="<?=$this->vars['application']['executedPrintedName']?>">
+                           <label class="control-label"></label>
+                           <div class="input-prepend input-append">
+                              <span class="add-on">Printed Name: </span>
+                              <input disabled name="doc[executedPrintedName]" value="<?=$this->vars['application']['executedPrintedName']?>" class="m-wrap span12 executedPrintedName" type="text" placeholder="">
+                              <span class="add-on"> <?=(array_key_exists('executedPrintedNameDate', $this->vars['application'])) ? $this->vars['application']['executedPrintedNameDate'] : ''?></span>
                            </div>
-                           
                         </div>
                      </div>
                      <!--/span-->
@@ -473,14 +474,16 @@
                      <div class="span12 ">
                         <div class="control-group">
                            <label class="control-label">By printing your name you acknowledge this Authorization and Release.</label>
-                           <div class="controls">
-                              <input disabled class="m-wrap span12 authorizationRelease" type="text" value="<?=$this->vars['application']['authorizationRelease']?>" placeholder="">
+                           <div class="input-prepend input-append">
+                              <span class="add-on">Printed Name: </span>
+                              <input disabled class="m-wrap span12 authorizationReleasePrintedName" type="text" value="<?=$this->vars['application']['authorizationReleasePrintedName']?>" placeholder="">
+                              <span class="add-on"> <?=(array_key_exists('authorizationReleasePrintedNameDate', $this->vars['application'])) ? $this->vars['application']['authorizationReleasePrintedNameDate'] : ''?></span>
                            </div>
-                           
                         </div>
                      </div>
                      <!--/span-->
                   </div>
+                  <!--
                   <div class="row-fluid">
                      <div class="span12">
                         <div class="control-group">
@@ -494,9 +497,9 @@
                            </div>
                         </div>
                      </div>
-                     <!--/span-->
+                     <!--/span--
                   </div>
-
+                  -->
                   <div class="row-fluid">
                      <div class="span6 ">
                         <div class="control-group">
@@ -526,6 +529,50 @@
                      <button type="button" class="btn cancel">Cancel and Go Back</button>
                      <button type="button" data-id="<?=$this->vars['application']['_id']?>" class="btn red delete">Delete Application</button>
                   </div>
+                  <!-- REFERENCES -->
+                  <div class="row-fluid">
+                     <div class="span12">
+                        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                        <div class="portlet box yellow">
+                           <div class="portlet-title" id="application">
+                              <div class="caption"><i class="icon-user"></i>References</div>
+                           </div>
+                           <div id="applications-to-approve" class="portlet-body">
+                              <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                              <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
+                                 <thead>
+                                    <tr role="row">
+                                       <th class="">Name</th>
+                                       <th class="">Email</th>
+                                       <th class="">Phone</th>
+                                       <th class="">Area</th>
+                                       <th class="hidden-480">Date Submitted</th>
+                                       <th class=""></th>
+                                    </tr>
+                                 </thead>
+                                 <tbody role="alert" aria-live="polite" aria-relevant="all">
+                                    <? if(!empty($this->vars['references'])): foreach($this->vars['references'] as $reference): ?>
+                                    <tr class="gradeX odd">
+                                       <td class=" "><?=$reference['name']?></td>
+                                       <td class="hidden-phone"><?=$reference['email']?></td>
+                                       <td class="hidden-phone"><?=$reference['phone']?></td>
+                                       <td class="hidden-480 "><?=$reference['city'].', '.$reference['state']?></td>
+                                       <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($reference['submittedDate']['fullDateTime']), $reference['timeZone']); ?>
+                                       <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$reference['submittedDate']['monthDay'].' '.$reference['submittedDate']['shortTime']?></td>
+                                       <td class=" "><a href="/reference/<?=$reference['_id']?>/view" class="btn blue mini view"><i class=" "></i> View</a></td>
+                                    </tr>
+                                    <? endforeach;?>
+                                    <? else: ?>
+                                       <td colspan="7">No references.</td>
+                                    <? endif;?>
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div><a name="trial"></a>
+                        <!-- END EXAMPLE TABLE PORTLET-->
+                     </div>
+                  </div>
+                  <!--/ REFERENCES -->
                </form>
                <!-- END FORM--> 
 

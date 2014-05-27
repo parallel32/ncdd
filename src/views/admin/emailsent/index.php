@@ -87,7 +87,7 @@
                            
                         </font></font></div>
                      </div>
-                     <a class="more" href="#paid90"><font><font>
+                     <a class="more" href="#emailssent"><font><font>
                      click to scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
                      </a>                 
                   </div>
@@ -127,7 +127,7 @@
                            </tbody>
                         </table>
                      </div>
-                  </div><a name="trial"></a>
+                  </div><a name="emailssent"></a>
                   <!-- END EXAMPLE TABLE PORTLET-->
                </div>
             </div>

@@ -95,6 +95,7 @@
                            <thead>
                               <tr role="row">
                                  <th class="">Name</th>
+                                 <th class="">Notes</th>
                                  <th class="">Ref.</th>
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-480">Area</th>
@@ -109,6 +110,13 @@
                                  <? $middleName = (!empty($application['middleName'])) ? ' '.$application['middleName'].' ':' '; ?>
                                  <td class=" "><?=$application['firstName'].$middleName.$application['lastName']?></td>
                                  <td class=" hidden-phone" id="<?=$application['_id']?>"><input type="text" class="m-wrap" style="width:32px;" value="<?=(array_key_exists('references',$application)) ? $application['references']:''; ?>"><a data-id="<?=$application['_id']?>" href="#" class="btn green icn-only ref-update"><i class="icon-check icon-white"></i></a></td>
+                                 <td class="hidden-phone">
+                                    <? if($application['new_references']['total'] >= $application['new_references']['max']): ?>
+                                    <span class="label label-success"><?=$application['new_references']['total'].' of '.$application['new_references']['max']?></span>
+                                    <? else: ?>
+                                    <span class="label label-important"><?=$application['new_references']['total'].' of '.$application['new_references']['max']?></span>
+                                    <? endif; ?>
+                                 </td>
                                  <td class="hidden-phone"><?=$application['email']?></td>
                                  <td class="hidden-480 "><?=$application['city'].', '.$application['state']?></td>
                                  <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($application['submittedDate']['fullDateTime']), $application['timeZone']); ?>

@@ -62,9 +62,8 @@ class Apply extends Model {
 		$metadata->addPropertyConstraint('state', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('postalCode', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('country', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		$metadata->addPropertyConstraint('lat', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		$metadata->addPropertyConstraint('lon', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		//$metadata->addConstraint(new Callback(array('methods' => array('listServ'))));
+		$metadata->addConstraint(new Callback(array('methods' => array('latLonValidate'))));
 	}
 	/* --commented out because it's no longer necessary
 	public function listServ(ExecutionContext $context){
@@ -74,6 +73,13 @@ class Apply extends Model {
 		}
 	}
 	*/
+	public function latLonValidate(ExecutionContext $context){
+		if(empty($this->lat) && empty($this->lon)){
+			$propertyPath = $context->getPropertyPath().'geocodeaddress';
+			$context->addViolationAtPath($propertyPath,'Please Geocode your address by clicking "Submit for Geocoding"', array(), null);
+		}
+	}
+	
 	public function __construct($doc, Application $app){
 		parent::__construct($app);
 		$this->init($doc);

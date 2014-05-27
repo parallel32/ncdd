@@ -85,7 +85,7 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 			// publish forum posts
 			error_log('forum topics published: '.file_get_contents('http://'.SAW_ADMIN_WEBSITE.'/topic/publish-schedule'));
 			// retry email Q
-			error_log(file_get_contents('http://'.SAW_ADMIN_WEBSITE.'/dashboard/emailq'));
+			error_log('emails sent from the email queue: '.file_get_contents('http://'.SAW_ADMIN_WEBSITE.'/dashboard/emailq'));
 		}
 	}
 });

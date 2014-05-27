@@ -35,7 +35,9 @@ class ApplyNewSustainingMember extends Apply {
 	public $attendSeminarExplain;
 	public $executed;
 	public $executedPrintedName;
+	public $executedPrintedNameDate;
 	public $authorizationReleasePrintedName;
+	public $authorizationReleasePrintedNameDate;
 	public $referenceFormDownload;
 	public $sponsor;
 
@@ -57,7 +59,9 @@ class ApplyNewSustainingMember extends Apply {
 		$metadata->addPropertyConstraint('sponsor', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('authorizationReleasePrintedName', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addConstraint(new Callback(array('methods' => array('explain'))));
+		/* dependency replaced by automated reference form
 		$metadata->addConstraint(new Callback(array('methods' => array('referenceFormDownload'))));
+		*/
 
 	}
 	public function explain(ExecutionContext $context){
@@ -86,18 +90,20 @@ class ApplyNewSustainingMember extends Apply {
 			$propertyPath = $context->getPropertyPath().'futureLawEnforcementExplain';
 			$context->addViolationAtPath($propertyPath,'Please explain your answer.', array(), null);
 		}*/
-		if($this->attendSeminar == 'yes' && empty($this->attendSeminarExplain)){
+		/*if($this->attendSeminar == 'yes' && empty($this->attendSeminarExplain)){
 			$propertyPath = $context->getPropertyPath().'attendSeminarExplain';
 			$context->addViolationAtPath($propertyPath,'Please explain your answer.', array(), null);
-		}
+		}*/
 
 	}
+	/* dependency replaced by automated reference form
 	public function referenceFormDownload(ExecutionContext $context){
 		if($this->referenceFormDownload == 'no'){
 			$propertyPath = $context->getPropertyPath().'referenceFormDownload';
 			$context->addViolationAtPath($propertyPath,'Please confirm you have downloaded the Reference form.', array(), null);
 		}
 	}
+	*/
 	public function __construct($doc, Application $app){
 		parent::__construct($doc,$app);
 		$this->init($doc);
@@ -124,7 +130,9 @@ class ApplyNewSustainingMember extends Apply {
 		$this->attendSeminarExplain = $doc['attendSeminarExplain'];
 		$this->executed = (!empty($doc['executed']) && strpos($doc['executed'], 'Executed at') === false) ? $this->prepareExecuted($doc['executed']) : $doc['executed'];
 		$this->executedPrintedName = $doc['executedPrintedName'];
+		$this->executedPrintedNameDate = $doc['executedPrintedNameDate'];
 		$this->authorizationReleasePrintedName = $doc['authorizationReleasePrintedName'];
+		$this->authorizationReleasePrintedNameDate = $doc['authorizationReleasePrintedNameDate'];
 		$this->authorizationRelease = (!empty($doc['authorizationReleasePrintedName'])) ? $this->preparePrintedName($doc['authorizationReleasePrintedName']) : '';
 		$this->referenceFormDownload = $doc['referenceFormDownload'];
 		$this->sponsor = $doc['sponsor'];
@@ -160,7 +168,9 @@ class ApplyNewSustainingMember extends Apply {
 		$this->attendSeminarExplain = $this->attendSeminarExplain ?: '';
 		$this->executed = $this->executed ?: '';
 		$this->executedPrintedName = $this->executedPrintedName ?: '';
+		$this->executedPrintedNameDate = $this->executedPrintedNameDate ?: '';
 		$this->authorizationReleasePrintedName = $this->authorizationReleasePrintedName ?: '';
+		$this->authorizationReleasePrintedNameDate = $this->authorizationReleasePrintedNameDate ?: '';
 		$this->referenceFormDownload = $this->referenceFormDownload ?: '';
 		$this->sponsor = $this->sponsor ?: '';
 	}

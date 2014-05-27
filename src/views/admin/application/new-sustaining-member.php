@@ -206,7 +206,7 @@
                         <div class="control-group">
                            <label class="control-label" >Type in your full address and then click Submit for Geocoding:</label>
                            <div class="controls">
-                              <input type="text" id="geocodeaddress" class="m-wrap span12" >
+                              <input type="text" id="geocodeaddress" class="m-wrap span12 geocodeaddress" >
                               <button type="button" class="btn blue geocodeaddress">Submit for Geocoding <i class="icon-globe"></i></button>
                            </div>
                         </div>
@@ -494,7 +494,7 @@
                            </div>
                         </div>
                      </div>
-                     <!--/span-->
+                     <!--/span--
                      <div class="span6 ">
                         <div class="control-group">
                            <label class="control-label">If "Yes", please explain.</label>
@@ -529,11 +529,14 @@
                   <div class="row-fluid">
                      <div class="span12 ">
                         <div class="control-group">
-                           <label class="control-label">Printed Name</label>
-                           <div class="controls">
-                                 <input name="doc[executedPrintedName]" class="m-wrap span12 executedPrintedName" type="text">
+                           <label class="control-label"></label>
+                           <div class="input-prepend input-append">
+                              <span class="add-on">Printed Name </span>
+                              <input name="doc[executedPrintedName]" class="m-wrap span12 executedPrintedName" type="text" placeholder="">
+                              <? $date = new \DateTime(); $datee = $date->format('dS').' of '.$date->format('F').', 20'.$date->format('y'); ?>
+                              <input name="doc[executedPrintedNameDate]" class="m-wrap span12 executedPrintedNameDate" type="hidden" value="<?=$datee?>">
+                              <span class="add-on"> <?=$datee?></span>
                            </div>
-                           
                         </div>
                      </div>
                      <!--/span-->
@@ -567,15 +570,18 @@
                            <label class="control-label">By printing your name you acknowledge this Authorization and Release.</label>
                            <div class="controls">
                               <div class="input-prepend input-append">
-                                 <span class="add-on">Printed Name: </span>
+                                 <span class="add-on">Printed Name </span>
                                  <input name="doc[authorizationReleasePrintedName]" class="m-wrap span12 authorizationReleasePrintedName" type="text" placeholder="">
-                                 <span class="add-on">, on this <? $date = new \DateTime(); echo $date->format('dS');?> day of <?echo $date->format('F');?>, 20<?echo $date->format('y');?></span>
+                                 <? $date = new \DateTime(); $datee = $date->format('dS').' of '.$date->format('F').', 20'.$date->format('y'); ?>
+                                 <input name="doc[authorizationReleasePrintedNameDate]" class="m-wrap span12 authorizationReleasePrintedNameDate" type="hidden" value="<?=$datee?>">
+                                 <span class="add-on"> <?=$datee?></span>
                               </div>
                            </div>
                         </div>
                      </div>
                      <!--/span-->
                   </div>
+                  <!--
                   <div class="row-fluid">
                      <div class="span12">
                         <div class="control-group">
@@ -592,8 +598,9 @@
                            </div>
                         </div>
                      </div>
-                     <!--/span-->
+                     <!--/span--
                   </div>
+                  -->
                   <div class="row-fluid">
                      <div class="span6 ">
                         <div class="control-group">
