@@ -230,7 +230,8 @@ Governing, <b>GENERAL MEMBERSHIP</b> as adopted and approved by the National Col
                      <!--/span-->
                   </div>
                   
-
+                  <? if (false): /*removed per Rhea's request*/?>
+                  <!--
                   <? $middleName = (!empty($this->vars['application']['middleName'])) ? ' '.$this->vars['application']['middleName'] : '' ?>
                   <h3 class="form-section">8. Proof of Authorization and Release for <b><?=$this->vars['application']['firstName'].$middleName.' '.$this->vars['application']['lastName']?></b></h3>
                   <div class="row-fluid">
@@ -261,7 +262,7 @@ Governing, <b>GENERAL MEMBERSHIP</b> as adopted and approved by the National Col
                            </br></br>
                         </p>
                      </div>
-                     <!--/span-->
+                     <!--/span--
                   </div>
                   <div class="row-fluid">
                      <div class="span12 ">
@@ -277,9 +278,10 @@ Governing, <b>GENERAL MEMBERSHIP</b> as adopted and approved by the National Col
                            
                         </div>
                      </div>
-                     <!--/span-->
+                     <!--/span--
                   </div>
-
+                  -->
+                  <? endif; ?>
 
                   <!-- SUCCESSFUL SAVE MODAL -->
                   <div id="save-success" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="save-success-label" aria-hidden="true">

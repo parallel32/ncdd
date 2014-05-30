@@ -215,7 +215,8 @@ Governing, <b>SUSTAINING MEMBERSHIP</b> as adopted and approved by the National 
                      <!--/span-->
                   </div>
                   
-
+                  <? if (false): /*removed per Rhea's request*/?>
+                  <!--
                   <? $middleName = (!empty($this->vars['application']['middleName'])) ? ' '.$this->vars['application']['middleName'] : '' ?>
                   <h3 class="form-section">8. Proof of Authorization and Release for <b><?=$this->vars['application']['firstName'].$middleName.' '.$this->vars['application']['lastName']?></b></h3>
                   <div class="row-fluid">
@@ -246,7 +247,7 @@ Governing, <b>SUSTAINING MEMBERSHIP</b> as adopted and approved by the National 
                            </br></br>
                         </p>
                      </div>
-                     <!--/span-->
+                     <!--/span--
                   </div>
                   <div class="row-fluid">
                      <div class="span12 ">
@@ -262,8 +263,10 @@ Governing, <b>SUSTAINING MEMBERSHIP</b> as adopted and approved by the National 
                            
                         </div>
                      </div>
-                     <!--/span-->
+                     <!--/span--
                   </div>
+                  -->
+                  <? endif; ?>
 
 
                   <!-- SUCCESSFUL SAVE MODAL -->
