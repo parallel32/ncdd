@@ -225,7 +225,7 @@
                            <label class="control-label">I am an attorney presently admitted and licensed and currently eligible to practice law in a state or province of the United States, Canada, or Australia.</label>
                            <div class="controls">
                               <div class="success-toggle-button">
-                                 <input disabled type="text" value="<?=$this->vars['application']['licensedInUSAAustraliaCanada']?>" class="m-wrap span12 licensedInUSAAustraliaCanada">
+                                 <input disabled type="text" value="<?=(array_key_exists('licensedInUSAAustraliaCanada', $this->vars['application'])) ? $this->vars['application']['licensedInUSAAustraliaCanada'] : ''?>" class="m-wrap span12 licensedInUSAAustraliaCanada">
                               </div>
                            </div>
                         </div>
@@ -235,7 +235,7 @@
                         <div class="control-group">
                            <label class="control-label">If you selected "No", please explain.</label>
                            <div class="controls">
-                              <textarea disabled class="span12 licensedInUSAAustraliaCanadaExplain" name="doc[licensedInUSAAustraliaCanadaExplain]"><?=$this->vars['application']['licensedInUSAAustraliaCanadaExplain']?></textarea>
+                              <textarea disabled class="span12 licensedInUSAAustraliaCanadaExplain" name="doc[licensedInUSAAustraliaCanadaExplain]"><?=(array_key_exists('licensedInUSAAustraliaCanadaExplain', $this->vars['application'])) ? $this->vars['application']['licensedInUSAAustraliaCanadaExplain'] : ''?></textarea>
                            </div>
                         </div>
                      </div>
@@ -286,7 +286,9 @@
                      <!--/span-->
                   </div>
 
-            <? if (false): ?>
+            <? if (!empty($this->vars['application']['percentDUIDefense'])): ?>
+                  <h2>START - OLD APP FIELDS</h2>
+                  <hr>
                   <h3 class="form-section">4.</h3>
                   <div class="row-fluid">
                      <div class="span12">
@@ -462,6 +464,8 @@
                      </div>
                      <!--/span-->
                   </div>
+                  <hr>
+                  <h2>END - OLD APP FIELDS</h2>
             <? endif; ?>
                   <h3 class="form-section">5.</h3>
                   <div class="row-fluid">

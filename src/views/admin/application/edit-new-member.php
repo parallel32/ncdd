@@ -287,8 +287,8 @@
                            <div class="controls">
                               <div class="success-toggle-button">
                                  <select class="small m-wrap licensedInUSAAustraliaCanada" name="doc[licensedInUSAAustraliaCanada]">
-                                    <option<?=($this->vars['application']['licensedInUSAAustraliaCanada'] == "no") ? ' selected' :'';?> value="no">No</option>
-                                    <option<?=($this->vars['application']['licensedInUSAAustraliaCanada'] == "yes") ? ' selected' :'';?> value="yes">Yes</option>
+                                    <option<?=(array_key_exists('licensedInUSAAustraliaCanada', $this->vars['application']) && $this->vars['application']['licensedInUSAAustraliaCanada'] == "no") ? ' selected' :'';?> value="no">No</option>
+                                    <option<?=(array_key_exists('licensedInUSAAustraliaCanada', $this->vars['application']) && $this->vars['application']['licensedInUSAAustraliaCanada'] == "yes") ? ' selected' :'';?> value="yes">Yes</option>
                                  </select>
                               </div>
                            </div>
@@ -299,7 +299,7 @@
                         <div class="control-group">
                            <label class="control-label">If you selected "No", please explain.</label>
                            <div class="controls">
-                              <textarea class="span12 licensedInUSAAustraliaCanadaExplain" name="doc[licensedInUSAAustraliaCanadaExplain]"><?=$this->vars['application']['licensedInUSAAustraliaCanadaExplain']?></textarea>
+                              <textarea class="span12 licensedInUSAAustraliaCanadaExplain" name="doc[licensedInUSAAustraliaCanadaExplain]"><?=(array_key_exists('licensedInUSAAustraliaCanadaExplain', $this->vars['application'])) ? $this->vars['application']['licensedInUSAAustraliaCanadaExplain'] : ''?></textarea>
                            </div>
                         </div>
                      </div>
@@ -356,7 +356,9 @@
                      <!--/span-->
                   </div>
 
-            <? if(false): ?>
+            <? if (!empty($this->vars['application']['percentDUIDefense'])): ?>
+                  <h2>START - OLD APP FIELDS</h2>
+                  <hr>
                   <h3 class="form-section">4.</h3>
                   <div class="row-fluid">
                      <div class="span12">
@@ -561,6 +563,8 @@
                      </div>
                      <!--/span-->
                   </div>
+                  <hr>
+                  <h2>END - OLD APP FIELDS</h2>
             <? endif; ?>
                   <h3 class="form-section">5.</h3>
                   <div class="row-fluid">

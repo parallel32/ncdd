@@ -130,6 +130,7 @@ class ApplyNewMember extends Apply {
 		$this->everLawEnforcementExplain = $doc['everLawEnforcementExplain'];
 		$this->futureLawEnforcement = $doc['futureLawEnforcement'];
 		$this->licensedInUSAAustraliaCanada = $doc['licensedInUSAAustraliaCanada'];
+		$this->licensedInUSAAustraliaCanadaExplain = $doc['licensedInUSAAustraliaCanadaExplain'];
 		$this->futureLawEnforcementExplain = $doc['futureLawEnforcementExplain'];
 		$this->executed = (!empty($doc['executed']) && strpos($doc['executed'], 'Executed at') === false) ? $this->prepareExecuted($doc['executed']) : $doc['executed'];
 		$this->executedPrintedName = $doc['executedPrintedName'];
@@ -163,6 +164,7 @@ class ApplyNewMember extends Apply {
 		$this->everInvestigationExplain = $this->everInvestigationExplain ?: '';
 		$this->everLawEnforcement = $this->everLawEnforcement ?: '';
 		$this->licensedInUSAAustraliaCanada = $this->licensedInUSAAustraliaCanada ?: '';
+		$this->licensedInUSAAustraliaCanadaExplain = $this->licensedInUSAAustraliaCanadaExplain ?: '';
 		$this->everLawEnforcementExplain = $this->everLawEnforcementExplain ?: '';
 		$this->futureLawEnforcement = $this->futureLawEnforcement ?: '';
 		$this->futureLawEnforcementExplain = $this->futureLawEnforcementExplain ?: '';

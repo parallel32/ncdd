@@ -231,6 +231,77 @@
                      </div>
                      <!--/span-->
                   </div>
+                  <h3 class="form-section">4. Check all that apply.  Please supply an explaination for those which do not apply.</h3>
+                  <div class="row-fluid">
+                     <div class="span6">
+                        <div class="control-group">
+                           <label class="control-label">I am an attorney presently admitted and licensed and currently eligible to practice law in a state or province of the United States, Canada, or Australia.</label>
+                           <div class="controls">
+                              <div class="success-toggle-button">
+                                 <input disabled type="text" value="<?=(array_key_exists('licensedInUSAAustraliaCanada', $this->vars['application'])) ? $this->vars['application']['licensedInUSAAustraliaCanada'] : ''?>" class="m-wrap span12 licensedInUSAAustraliaCanada">
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">If you selected "No", please explain.</label>
+                           <div class="controls">
+                              <textarea disabled class="span12 licensedInUSAAustraliaCanadaExplain" name="doc[licensedInUSAAustraliaCanadaExplain]"><?=(array_key_exists('licensedInUSAAustraliaCanadaExplain', $this->vars['application'])) ? $this->vars['application']['licensedInUSAAustraliaCanadaExplain'] : ''?></textarea>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <div class="row-fluid">
+                     <div class="span6">
+                        <div class="control-group">
+                           <label class="control-label">I have not been the subject of a professional inquiry and have not had discipline imposed upon me by any jurisdiction in which I am licensed or permitted to practice. I also agree that I shall immediately report to the College any such inquiry or discipline as a condition of my continued membership in the College.</label>
+                           <div class="controls">
+                              <div class="success-toggle-button">
+                                 <input disabled type="text" value="<?=$this->vars['application']['everInvestigation']?>" class="m-wrap span12 everInvestigation">
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">If you selected "No", please explain.</label>
+                           <div class="controls">
+                              <textarea disabled class="span12 everInvestigationExplain" name="doc[everInvestigationExplain]"><?=$this->vars['application']['everInvestigationExplain']?></textarea>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <div class="row-fluid">
+                     <div class="span6">
+                        <div class="control-group">
+                           <label class="control-label">I am not presently serving, in any capacity, either part time or full time, in law enforcement or prosecution agencies and understand that any future service requires my immediate disclosure to the NCDD and termination of my membership.</label>
+                           <div class="controls">
+                              <div class="success-toggle-button">
+                                 <input disabled type="text" value="<?=$this->vars['application']['everLawEnforcement']?>" class="m-wrap span12 everLawEnforcement">
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">If you selected "No", please explain.</label>
+                           <div class="controls">
+                              <textarea disabled class="span12 everLawEnforcementExplain" name="doc[everLawEnforcementExplain]"><?=$this->vars['application']['everLawEnforcementExplain']?></textarea>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+
+            <? if (!empty($this->vars['application']['percentDUIDefense'])): ?>
+                  <h2>START - OLD APP FIELDS</h2>
+                  <hr>
                   <h3 class="form-section">4.</h3>
                   <div class="row-fluid">
                      <div class="span12">
@@ -406,6 +477,9 @@
                      </div>
                      <!--/span-->
                   </div>
+                  <hr>
+                  <h2>END - OLD APP FIELDS</h2>
+            <? endif; ?>
                   <h3 class="form-section">5.</h3>
                   <div class="row-fluid">
                      <div class="span12 ">
@@ -440,7 +514,6 @@
                      </div>
                      <!--/span-->
                   </div>
-
                   <h3 class="form-section">Check which applies to your membership:</h3>
                   <div class="row-fluid">
                      <div class="span12 ">
