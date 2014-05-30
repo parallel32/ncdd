@@ -33,6 +33,7 @@ class ApplyNewMember extends Apply {
 	public $futureLawEnforcement;
 	public $futureLawEnforcementExplain;
 	public $licensedInUSAAustraliaCanada;
+	public $licensedInUSAAustraliaCanadaExplain;
 	public $executed;
 	public $executedPrintedName;
 	public $executedPrintedNameDate;
@@ -43,28 +44,41 @@ class ApplyNewMember extends Apply {
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addPropertyConstraint('hearAboutNCDD', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('yearsInLawPractice', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		$metadata->addPropertyConstraint('percentDUIDefense', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		$metadata->addPropertyConstraint('juryTrialsAvailableInYourState', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		$metadata->addPropertyConstraint('numberDUITrialsHandeled', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		$metadata->addPropertyConstraint('numberNonDUITrialsHandeled', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		$metadata->addPropertyConstraint('everBeenArrested', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		$metadata->addPropertyConstraint('everChargedByBar', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		$metadata->addPropertyConstraint('everConvictedCrime', new Constraints\NotBlank(array('message'=>'cannot be blank')));
+		//$metadata->addPropertyConstraint('percentDUIDefense', new Constraints\NotBlank(array('message'=>'cannot be blank')));
+		//$metadata->addPropertyConstraint('juryTrialsAvailableInYourState', new Constraints\NotBlank(array('message'=>'cannot be blank')));
+		//$metadata->addPropertyConstraint('numberDUITrialsHandeled', new Constraints\NotBlank(array('message'=>'cannot be blank')));
+		//$metadata->addPropertyConstraint('numberNonDUITrialsHandeled', new Constraints\NotBlank(array('message'=>'cannot be blank')));
+		//$metadata->addPropertyConstraint('everBeenArrested', new Constraints\NotBlank(array('message'=>'cannot be blank')));
+		//$metadata->addPropertyConstraint('everChargedByBar', new Constraints\NotBlank(array('message'=>'cannot be blank')));
+		//$metadata->addPropertyConstraint('everConvictedCrime', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('everInvestigation', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('everLawEnforcement', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		$metadata->addPropertyConstraint('futureLawEnforcement', new Constraints\NotBlank(array('message'=>'cannot be blank')));
+		//$metadata->addPropertyConstraint('futureLawEnforcement', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('licensedInUSAAustraliaCanada', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('executed', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('executedPrintedName', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('membershipDues', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('authorizationReleasePrintedName', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addConstraint(new Callback(array('methods' => array('explain'))));
-		$metadata->addConstraint(new Callback(array('methods' => array('requireYes'))));
 		/* dependency replaced by automated reference form
 		$metadata->addConstraint(new Callback(array('methods' => array('referenceFormDownload'))));
 		*/
 	}
 	public function explain(ExecutionContext $context){
+		if($this->everInvestigation == 'no' && empty($this->everInvestigationExplain)){
+			$propertyPath = $context->getPropertyPath().'everInvestigationExplain';
+			$context->addViolationAtPath($propertyPath,'Please explain your answer.', array(), null);
+		}
+		if($this->everLawEnforcement == 'no' && empty($this->everLawEnforcementExplain)){
+			$propertyPath = $context->getPropertyPath().'everLawEnforcementExplain';
+			$context->addViolationAtPath($propertyPath,'Please explain your answer.', array(), null);
+		}
+		if($this->licensedInUSAAustraliaCanada == 'no' && empty($this->licensedInUSAAustraliaCanadaExplain)){
+			$propertyPath = $context->getPropertyPath().'licensedInUSAAustraliaCanadaExplain';
+			$context->addViolationAtPath($propertyPath,'Please explain your answer.', array(), null);
+		}
+		
+		/* commented out in preparation for the newly updated reference form
 		if($this->everBeenArrested == 'yes' && empty($this->everBeenArrestedExplain)){
 			$propertyPath = $context->getPropertyPath().'everBeenArrestedExplain';
 			$context->addViolationAtPath($propertyPath,'Please explain your answer.', array(), null);
@@ -77,32 +91,13 @@ class ApplyNewMember extends Apply {
 			$propertyPath = $context->getPropertyPath().'everConvictedCrimeExplain';
 			$context->addViolationAtPath($propertyPath,'Please explain your answer.', array(), null);
 		}
-		if($this->everInvestigation == 'yes' && empty($this->everInvestigationExplain)){
-			$propertyPath = $context->getPropertyPath().'everInvestigationExplain';
-			$context->addViolationAtPath($propertyPath,'Please explain your answer.', array(), null);
-		}
-		if($this->everLawEnforcement == 'yes' && empty($this->everLawEnforcementExplain)){
-			$propertyPath = $context->getPropertyPath().'everLawEnforcementExplain';
-			$context->addViolationAtPath($propertyPath,'Please explain your answer.', array(), null);
-		}
+		*/
 		/* commented out by request from Rhea to make this question simply a yes or no answer.
 		if($this->futureLawEnforcement == 'yes' && empty($this->futureLawEnforcementExplain)){
 			$propertyPath = $context->getPropertyPath().'futureLawEnforcementExplain';
 			$context->addViolationAtPath($propertyPath,'Please explain your answer.', array(), null);
 		}*/
 
-	}
-	public function requireYes(ExecutionContext $context){
-		error_log($this->licensedInUSAAustraliaCanada);
-		if($this->futureLawEnforcement == 'no'){
-			$propertyPath = $context->getPropertyPath().'futureLawEnforcement';
-			$context->addViolationAtPath($propertyPath,'This question requires an answer of "Yes"', array(), null);
-		}
-		if($this->licensedInUSAAustraliaCanada == 'no'){
-			$propertyPath = $context->getPropertyPath().'licensedInUSAAustraliaCanada';
-			$context->addViolationAtPath($propertyPath,'This question requires an answer of "Yes"', array(), null);
-		}
-		
 	}
 	/* dependency replaced by automated reference form
 	public function referenceFormDownload(ExecutionContext $context){

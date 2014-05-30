@@ -128,7 +128,7 @@
                      <!--/span-->
                      <div class="span6 ">
                         <div class="control-group">
-                           <label class="control-label">Listserv Email (if different from above)</label>
+                           <label class="control-label">Would you like to be added to the NCDD List Server?  Highly recommended. Listserv Email (if different from above)</label>
                            <div class="controls">
                               <input type="text" name="doc[listServEmail]" class="m-wrap span12 listServEmail">
                            </div>
@@ -289,6 +289,86 @@
                      </div>
                      <!--/span-->
                   </div>
+                  <h3 class="form-section">4. Check all that apply.  Please supply an explaination for those which do not apply.</h3>
+                  <div class="row-fluid">
+                     <div class="span6">
+                        <div class="control-group">
+                           <label class="control-label">I am an attorney presently admitted and licensed and currently eligible to practice law in a state or province of the United States, Canada, or Australia.</label>
+                           <div class="controls">
+                              <div class="success-toggle-button">
+                                 <select class="small m-wrap licensedInUSAAustraliaCanada" name="doc[licensedInUSAAustraliaCanada]">
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">If you selected "No", please explain.</label>
+                           <div class="controls">
+                              <textarea class="span12 licensedInUSAAustraliaCanadaExplain" name="doc[licensedInUSAAustraliaCanadaExplain]"></textarea>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <div class="row-fluid">
+                     <div class="span6">
+                        <div class="control-group">
+                           <label class="control-label">I have not been the subject of a professional inquiry and have not had discipline imposed upon me by any jurisdiction in which I am licensed or permitted to practice. I also agree that I shall immediately report to the College any such inquiry or discipline as a condition of my continued membership in the College.</label>
+                           <div class="controls">
+                              <div class="success-toggle-button">
+                                 <select class="small m-wrap everInvestigation" name="doc[everInvestigation]">
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">If you selected "No", please explain.</label>
+                           <div class="controls">
+                              <textarea class="span12 everInvestigationExplain" name="doc[everInvestigationExplain]"></textarea>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <div class="row-fluid">
+                     <div class="span6">
+                        <div class="control-group">
+                           <label class="control-label">I am not presently serving, in any capacity, either part time or full time, in law enforcement or prosecution agencies and understand that any future service requires my immediate disclosure to the NCDD and termination of my membership.</label>
+                           <div class="controls">
+                              <div class="success-toggle-button">
+                                 <select class="small m-wrap everLawEnforcement" name="doc[everLawEnforcement]">
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">If you selected "No", please explain.</label>
+                           <div class="controls">
+                              <textarea class="span12 everLawEnforcementExplain" name="doc[everLawEnforcementExplain]"></textarea>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+
+
+
+            <? if(false): ?>
                   <h3 class="form-section">4.</h3>
                   <div class="row-fluid">
                      <div class="span12">
@@ -508,14 +588,17 @@
                      </div>
                      <!--/span-->
                   </div>
-                  <h3 class="form-section">14.</h3>
+            <? endif;?>
+                  <h3 class="form-section">5.</h3>
                   <div class="row-fluid">
                      <div class="span12 ">
                         <div class="control-group">
                            <label class="control-label">
                            I have substantial current involvement in the practice area of DUI/DWI defense and I understand that as a condition of continued membership I must continue to have substantial involvement, including attendance at one (or more) seminars every two (2) years either sponsored by NCDD or at a State/local seminar approved by NCDD.
                            </br></br>
-                           I have read the general membership rules, and I understand and agree to be bound by them as they are presently published and as they may be amended from time to time during my membership.  I declare under penalties of perjury that the foregoing statements are true and correct to the best of my knowledge.
+                           I have read the general membership rules, and I understand and agree to be bound by them as they are presently published and as they may be amended from time to time during my membership.
+                           </br></br>
+                           I declare under penalty of perjury that the foregoing statements are true and correct to the best of my knowledge.
                            </label>
                            <div class="controls">
                               </br>
@@ -685,6 +768,6 @@
 <script>
 jQuery(document).ready(function() {    
    io.saw.Application.newMemberInit();
-   io.saw.Address.init('#saw-form');
+   io.saw.Address.init('#saw-form');     
 });      
 </script>

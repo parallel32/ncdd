@@ -406,14 +406,16 @@
                      </div>
                      <!--/span-->
                   </div>
-                  <h3 class="form-section">14.</h3>
+                  <h3 class="form-section">5.</h3>
                   <div class="row-fluid">
                      <div class="span12 ">
                         <div class="control-group">
-                           <label class="control-label">I understand that as a condition of continued membership I must attend at least one seminar every two (2) years sponsored/co-sponsored by NCDD or a State seminar listed on the NCDD website.
+                           <label class="control-label">
+                           I have substantial current involvement in the practice area of DUI/DWI defense and I understand that as a condition of continued membership I must continue to have substantial involvement, including attendance at one (or more) seminars every two (2) years either sponsored by NCDD or at a State/local seminar approved by NCDD.
                            </br></br>
-                           I have read the general membership rules, and I understand and agree to be bound by them. I declare under penalty of perjury that the foregoing two (2) pages are true and correct to the best of my knowledge.
-                           </br>
+                           I have read the general membership rules, and I understand and agree to be bound by them as they are presently published and as they may be amended from time to time during my membership.
+                           </br></br>
+                           I declare under penalty of perjury that the foregoing statements are true and correct to the best of my knowledge.
                            </label>
                            <div class="controls">
                               <div class="">
