@@ -54,14 +54,15 @@ class EmailQ extends Model {
 	}
 	public function insert(){
 		$this->prepareInsert();
-		$result = $this->find($query=array('to'=>$this->to,'subject'=>$this->subject),$fields=array('_id'),true);
-		if(empty($result)){
+		// THIS CONTROL BELOW was causing misleading errors because there are multiple unique emails that go out to the same email address having the same subject
+		//$result = $this->find($query=array('to'=>$this->to,'subject'=>$this->subject),$fields=array('_id'),true);
+		//if(empty($result)){
 			if(parent::insert()){
 	        	return $this->_id;
 	        }else{
 				throw new \Saw\Model\Exceptions\DomainException("Adding failed.  Please try again.");
 			}
-		}
+		//}
 	}
 	public function edit(){
 		if($this->saveSafe()){

@@ -54,16 +54,17 @@ class EmailSent extends Model {
 	}
 	public function insert(){
 		$this->prepareInsert();
-		// make sure it's not in the emailq first..
-		$eq = new EmailQ(array(),self::$app);
-		$result = $eq->find($query=array('to'=>$this->to,'subject'=>$this->subject),$fields=array('_id'),true);
-		if(empty($result)){
+		// make sure it's not in the emailq first..// THIS CONTROL BELOW was causing misleading errors because there are multiple unique emails that go out to the same email address having the same subject
+		//$result = $this->find($query=array('to'=>$this->to,'subject'=>$this->subject),$fields=array('_id'),true);		
+		//$eq = new EmailQ(array(),self::$app);
+		//$result = $eq->find($query=array('to'=>$this->to,'subject'=>$this->subject),$fields=array('_id'),true);
+		//if(empty($result)){
 			if(parent::insert()){
 	        	return $this->_id;
 	        }else{
 				throw new \Saw\Model\Exceptions\DomainException("Adding failed.  Please try again.");
 			}
-		}
+		//}
 	}
 	public function edit(){
 		if($this->saveSafe()){

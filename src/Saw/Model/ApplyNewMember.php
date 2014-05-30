@@ -57,10 +57,9 @@ class ApplyNewMember extends Apply {
 		$metadata->addPropertyConstraint('executed', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('executedPrintedName', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('membershipDues', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		//* commented out per Rhea's request
 		$metadata->addPropertyConstraint('authorizationReleasePrintedName', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		//*/
 		$metadata->addConstraint(new Callback(array('methods' => array('explain'))));
+		$metadata->addConstraint(new Callback(array('methods' => array('requireYes'))));
 		/* dependency replaced by automated reference form
 		$metadata->addConstraint(new Callback(array('methods' => array('referenceFormDownload'))));
 		*/
@@ -86,20 +85,24 @@ class ApplyNewMember extends Apply {
 			$propertyPath = $context->getPropertyPath().'everLawEnforcementExplain';
 			$context->addViolationAtPath($propertyPath,'Please explain your answer.', array(), null);
 		}
-		if($this->licensedInUSAAustraliaCanada == 'no')){
-			$propertyPath = $context->getPropertyPath().'licensedInUSAAustraliaCanada';
-			$context->addViolationAtPath($propertyPath,'This question requires an answer of "Yes"', array(), null);
-		}
-		if($this->futureLawEnforcement == 'no')){
-			$propertyPath = $context->getPropertyPath().'futureLawEnforcement';
-			$context->addViolationAtPath($propertyPath,'This question requires an answer of "Yes"', array(), null);
-		}
 		/* commented out by request from Rhea to make this question simply a yes or no answer.
 		if($this->futureLawEnforcement == 'yes' && empty($this->futureLawEnforcementExplain)){
 			$propertyPath = $context->getPropertyPath().'futureLawEnforcementExplain';
 			$context->addViolationAtPath($propertyPath,'Please explain your answer.', array(), null);
 		}*/
 
+	}
+	public function requireYes(ExecutionContext $context){
+		error_log($this->licensedInUSAAustraliaCanada);
+		if($this->futureLawEnforcement == 'no'){
+			$propertyPath = $context->getPropertyPath().'futureLawEnforcement';
+			$context->addViolationAtPath($propertyPath,'This question requires an answer of "Yes"', array(), null);
+		}
+		if($this->licensedInUSAAustraliaCanada == 'no'){
+			$propertyPath = $context->getPropertyPath().'licensedInUSAAustraliaCanada';
+			$context->addViolationAtPath($propertyPath,'This question requires an answer of "Yes"', array(), null);
+		}
+		
 	}
 	/* dependency replaced by automated reference form
 	public function referenceFormDownload(ExecutionContext $context){
@@ -131,6 +134,7 @@ class ApplyNewMember extends Apply {
 		$this->everLawEnforcement = $doc['everLawEnforcement'];
 		$this->everLawEnforcementExplain = $doc['everLawEnforcementExplain'];
 		$this->futureLawEnforcement = $doc['futureLawEnforcement'];
+		$this->licensedInUSAAustraliaCanada = $doc['licensedInUSAAustraliaCanada'];
 		$this->futureLawEnforcementExplain = $doc['futureLawEnforcementExplain'];
 		$this->executed = (!empty($doc['executed']) && strpos($doc['executed'], 'Executed at') === false) ? $this->prepareExecuted($doc['executed']) : $doc['executed'];
 		$this->executedPrintedName = $doc['executedPrintedName'];
@@ -163,6 +167,7 @@ class ApplyNewMember extends Apply {
 		$this->everInvestigation = $this->everInvestigation ?: '';
 		$this->everInvestigationExplain = $this->everInvestigationExplain ?: '';
 		$this->everLawEnforcement = $this->everLawEnforcement ?: '';
+		$this->licensedInUSAAustraliaCanada = $this->licensedInUSAAustraliaCanada ?: '';
 		$this->everLawEnforcementExplain = $this->everLawEnforcementExplain ?: '';
 		$this->futureLawEnforcement = $this->futureLawEnforcement ?: '';
 		$this->futureLawEnforcementExplain = $this->futureLawEnforcementExplain ?: '';

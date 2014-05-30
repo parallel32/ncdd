@@ -49,12 +49,11 @@
                      <div class="span12 ">
                         <div class="control-group">
                            <label class="control-label">Please complete the below and submit this form within ten (10) days of receipt. The below named
-individual has applied for a <b>SUSTAINING MEMBERSHIP</b> with the National College for DUI Defense, Inc. and listed you 
+individual has applied for <b>SUSTAINING MEMBERSHIP</b> with the National College for DUI Defense, Inc. and listed you 
 as a reference. The applicant has authorized an investigation into his/her background and has required that all sources having 
 control of records pertaining to him/her cooperate with the National College in making such information available and has 
-released any privilege pertaining to the furnishing of such information to the National College. A copy of applicants 
-Authorization and Release form is at the bottom of this form. Infomation furnished will be held confidential as provided in the Rules 
-Governing, <b>SUSTAINING MEMBERSHIP</b> as adopted and approved by the National College for DUI Defense, Inc.
+released any privilege pertaining to the furnishing of such information to the National College. <? if (false) {?>A copy of applicant's 
+Authorization and Release form is at the bottom of this form.<? } ?> Infomation furnished will be held confidential as provided in the Membership Eligibility Rules for <b>SUSTAINING MEMBERSHIP</b> as adopted and approved by the National College for DUI Defense, Inc.
                            </label>
                         </div>
                      </div>
@@ -257,8 +256,8 @@ Governing, <b>SUSTAINING MEMBERSHIP</b> as adopted and approved by the National 
                      <!--/span-->
                   </div>
                   
-
-
+                  <? if (false): /*removed per Rhea's request*/?>
+                  <!--
                   <h3 class="form-section">8. Proof of Authorization and Release for <b><?=$this->vars['application']['firstName'].$middleName.' '.$this->vars['application']['lastName']?></b></h3>
                   <div class="row-fluid">
                      <div class="span12">
@@ -288,7 +287,7 @@ Governing, <b>SUSTAINING MEMBERSHIP</b> as adopted and approved by the National 
                            </br></br>
                         </p>
                      </div>
-                     <!--/span-->
+                     <!--/span--
                   </div>
                   <div class="row-fluid">
                      <div class="span12 ">
@@ -304,9 +303,10 @@ Governing, <b>SUSTAINING MEMBERSHIP</b> as adopted and approved by the National 
                            
                         </div>
                      </div>
-                     <!--/span-->
+                     <!--/span--
                   </div>
-
+                  -->
+                  <? endif; ?>
 
                   <!-- SUCCESSFUL SAVE MODAL -->
                   <div id="save-success" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="save-success-label" aria-hidden="true">
