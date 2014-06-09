@@ -14,6 +14,7 @@ class ApplyNewMember extends Apply {
 	
 	public $type = 'NEW MEMBER APPLICATION';
 	public $class = 'ApplyNewMember';
+	static public $dues = array(1=>175,6=>225,'publicDefender'=>50);
 	public $hearAboutNCDD;
 	public $yearsInLawPractice;
 	public $percentDUIDefense;
@@ -40,10 +41,10 @@ class ApplyNewMember extends Apply {
 	public $authorizationReleasePrintedName;
 	public $authorizationReleasePrintedNameDate;
 	public $referenceFormDownload;
+	public $publidDefender;
 
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addPropertyConstraint('hearAboutNCDD', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		$metadata->addPropertyConstraint('yearsInLawPractice', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		//$metadata->addPropertyConstraint('percentDUIDefense', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		//$metadata->addPropertyConstraint('juryTrialsAvailableInYourState', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		//$metadata->addPropertyConstraint('numberDUITrialsHandeled', new Constraints\NotBlank(array('message'=>'cannot be blank')));
@@ -57,12 +58,38 @@ class ApplyNewMember extends Apply {
 		$metadata->addPropertyConstraint('licensedInUSAAustraliaCanada', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('executed', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('executedPrintedName', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		$metadata->addPropertyConstraint('membershipDues', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('authorizationReleasePrintedName', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addConstraint(new Callback(array('methods' => array('explain'))));
+		$metadata->addConstraint(new Callback(array('methods' => array('yearsinlawpractice'))));
+		$metadata->addConstraint(new Callback(array('methods' => array('dues'))));
 		/* dependency replaced by automated reference form
 		$metadata->addConstraint(new Callback(array('methods' => array('referenceFormDownload'))));
 		*/
+	}
+	public function dues(ExecutionContext $context){
+		$years = date('Y') - $this->yearsInLawPractice;
+		switch (true) {
+			case ($this->publicDefender == 'yes'):
+				$this->membershipDues = self::$dues['publicDefender'];
+				break;
+			case ($years < 6):
+				$this->membershipDues = self::$dues[1];
+				break;
+			case ($years >= 6):
+				$this->membershipDues = self::$dues[6];
+				break;
+			default:
+				$propertyPath = $context->getPropertyPath().'membershipDues';
+				$context->addViolationAtPath($propertyPath,'Membership Dues could not be calculated.', array(), null);	
+				break;
+		}
+		//error_log('membershipDues:'.$this->membershipDues);
+	}
+	public function yearsinlawpractice(ExecutionContext $context){
+		if(empty($this->yearsInLawPractice) || !is_numeric($this->yearsInLawPractice)){
+			$propertyPath = $context->getPropertyPath().'yearsInLawPractice';
+			$context->addViolationAtPath($propertyPath,'Please enter a year (numbers only) i.e: 2008.', array(), null);
+		}
 	}
 	public function explain(ExecutionContext $context){
 		if($this->everInvestigation == 'no' && empty($this->everInvestigationExplain)){
@@ -138,6 +165,7 @@ class ApplyNewMember extends Apply {
 		$this->authorizationReleasePrintedName = $doc['authorizationReleasePrintedName'];
 		$this->authorizationReleasePrintedNameDate = $doc['authorizationReleasePrintedNameDate'];
 		$this->referenceFormDownload = $doc['referenceFormDownload'];
+		$this->publicDefender = $doc['publicDefender'];
 
 	}
 	
@@ -174,6 +202,7 @@ class ApplyNewMember extends Apply {
 		$this->authorizationReleasePrintedName = $this->authorizationReleasePrintedName ?: '';
 		$this->authorizationReleasePrintedNameDate = $this->authorizationReleasePrintedNameDate ?: '';
 		$this->referenceFormDownload = $this->referenceFormDownload ?: '';
+		$this->publicDefender = $this->publicDefender ?: '';
 	}
 	public function insert(){
 		$this->prepareInsert();

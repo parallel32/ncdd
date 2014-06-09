@@ -14,6 +14,7 @@ class ApplyNewSustainingMember extends Apply {
 	
 	public $type = 'NEW SUSTAINING MEMBER APPLICATION';
 	public $class = 'ApplyNewSustainingMember';
+	static public $dues = 3500;
 	public $yearsInLawPractice;
 	public $percentDUIDefense;
 	public $juryTrialsAvailableInYourState;
@@ -147,6 +148,7 @@ class ApplyNewSustainingMember extends Apply {
 		parent::prepareInsert();
 		$this->type = $this->type ?: 'NEW MEMBER APPLICATION';
 		$this->class = $this->class ?: 'ApplyNewMemeber';
+		$this->membershipDues = self::$dues;
 		$this->yearsInLawPractice = $this->yearsInLawPractice ?: '';
 		$this->percentDUIDefense = $this->percentDUIDefense ?: '';
 		$this->juryTrialsAvailableInYourState = $this->juryTrialsAvailableInYourState ?: '';

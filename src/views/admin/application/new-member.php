@@ -128,7 +128,7 @@
                      <!--/span-->
                      <div class="span6 ">
                         <div class="control-group">
-                           <label class="control-label">Would you like to be added to the NCDD List Server?  Highly recommended. Listserv Email (if different from above)</label>
+                           <label class="control-label">Listserv Email (if different from above)</label>
                            <div class="controls">
                               <input type="text" name="doc[listServEmail]" class="m-wrap span12 listServEmail">
                            </div>
@@ -200,7 +200,7 @@
                      <!--/span-->
                   </div>
                   <h3 class="form-section text-info"><strong>Geocode Your Address</strong></h3>
-                  <p>We attempt to determine the Latitude and Longitude of your address for furture searches based on nearby a client's location</p>
+                  <p>We attempt to determine the Latitude and Longitude of your address for future searches based on a client's nearby location</p>
                   <div class="row-fluid validateAddress">
                      <div class="span12 ">
                         <div class="control-group">
@@ -281,7 +281,7 @@
                   <div class="row-fluid">
                      <div class="span12">
                         <div class="control-group">
-                           <label class="control-label">Number of years in law practice:</label>
+                           <label class="control-label">Year of admission to practice:</label>
                            <div class="controls">
                               <input type="text" name="doc[yearsInLawPractice]" class="m-wrap span12 yearsInLawPractice">
                            </div>
@@ -289,7 +289,22 @@
                      </div>
                      <!--/span-->
                   </div>
-                  <h3 class="form-section">4. Check all that apply.  Please supply an explaination for those which do not apply.</h3>
+                  <h3 class="form-section">4.</h3>
+                  <div class="row-fluid">
+                     <div class="span12">
+                        <div class="control-group">
+                           <label class="control-label">Are you a Public Defender?</label>
+                           <div class="controls">
+                              <select class="small m-wrap publicDefender" name="doc[publicDefender]">
+                                 <option value="no">No</option>
+                                 <option value="yes">Yes</option>
+                              </select>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <h3 class="form-section">5. Check all that apply.  Please supply an explanation for those which do not apply.</h3>
                   <div class="row-fluid">
                      <div class="span6">
                         <div class="control-group">
@@ -589,7 +604,7 @@
                      <!--/span-->
                   </div>
             <? endif;?>
-                  <h3 class="form-section">5.</h3>
+                  <h3 class="form-section">6.</h3>
                   <div class="row-fluid">
                      <div class="span12 ">
                         <div class="control-group">
@@ -629,23 +644,15 @@
                      <!--/span-->
                   </div>
 
-                  <h3 class="form-section">Check which applies to your membership:</h3>
+                  <h3 class="form-section">Membership Dues</h3>
                   <div class="row-fluid">
                      <div class="span12 ">
                         <div class="control-group">
-                           <label class="control-label"></label>
-                           <div class="controls">
-                              <select class=" m-wrap span12 membershipDues" name="doc[membershipDues]">
-                                 <option value="175">1-5 years in law practice ($175 annual dues) </option>
-                                 <option value="225">6 or more years in law practice ($225 annual dues)</option>
-                                 <option value="50"> Public Defender ($50 annual dues)</option>
-                              </select>
-                           </div>
+                           <label class="control-label" id="calculate-dues">Please answer all the questions in order to calculate your membership dues.</label>
                         </div>
                      </div>
                      <!--/span-->
                   </div>
-                  
                   
                   <h3 class="form-section text-center">THE NATIONAL COLLEGE FOR DUI DEFENSE, INC.</br> AUTHORIZATION AND RELEASE</h3>
                   <div class="row-fluid">
@@ -656,7 +663,17 @@
                         </p>
                         <h3 class="text-center"><u>ACKNOWLEDGEMENT</u></h3>
                         <p>
-                           APPLICANT herein acknowledges that initial membership or renewal of membership is not automatically bestowed with payment of membership fees; (2) that the College endeavors to maintain among its membership attorneys of high ethical and moral character; and, (3) the entire membership benefits when each member maintains standards of reasonable conduct and character within his or her community and professional associations.
+                           I understand and agree that as a condition of present and continuing membership in NCDD I shall immediately report all facts or circumstances relating thereto to the Executive Director of NCDD:
+                        </p>
+                        <p>
+a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess is suspended, terminated, revoked, or restricted, or if I am otherwise disciplined or censured by a licensing authority for the practice of law before any court or jurisdiction;
+<br>b.&nbsp;&nbsp;if I obtain employment with any prosecuting authority either by contract, or if part time or full time or;
+<br>c.&nbsp;&nbsp;if I am no longer in substantial current involvement in the practice area of DUI/DWI defense;
+<br>d.&nbsp;&nbsp;if I fail to attend one (or more) seminars every two (2) years either sponsored by NCDD or at a State/local seminar approved by NCDD; or
+<br>e.&nbsp;&nbsp;if I am no longer eligible for membership in NCDD under the bylaws as amended. 
+                        </p>
+                        <p>
+                           I hereby authorize NCDD to charge the debit or credit card that I may have on file for any and all membership dues for membership or other fees at the level and rate then in effect until such time as I notify the Executive Director of NCDD to cancel such authorization. All membership dues will be charged on the due date as set out in the rules governing membership. Cancellation of use of this method of payment is prospective only. Notice must be given in writing or by email at least 14 days prior to the due date of membership dues or fees.
                         </p>
                         <h3 class="text-center"><u>AUTHORIZE AND RELEASE</u></h3>
                         <p>
@@ -730,6 +747,17 @@
                      <!--/span-->
                   </div>
                   
+                  <div class="row-fluid">
+                     <div class="span12 ">
+                        <p></p>
+                        <p></p>
+                        <p class="text-center">
+                        As is the policy of the NCDD, the application process shall not directly or indirectly discriminate against any applicant for reason of race, color, gender, age, religion, disability, national origin, ancestry, marital status, sexual orientation, parental status, military discharge status, or income status.
+                        </p>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  
                   <!-- SUCCESSFUL SAVE MODAL -->
                   <div id="save-success" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="save-success-label" aria-hidden="true">
                      <div class="modal-header">
@@ -766,8 +794,32 @@
 <?=$this->element('js/Application.js');?>
 <?=$this->element('js/Address.js');?>
 <script>
+calculatedues = function(){
+   $('#calculate-dues').html('Please answer all the questions in order to calculate your membership dues.');
+   var years = $('#saw-form .yearsInLawPractice').val();
+   if($('#saw-form .publicDefender').val() == 'yes'){
+      $('#calculate-dues').html('$50.00');
+   } else if($('#saw-form .publicDefender').val() == 'yes'){
+      calculatedues();
+   } else if(years.length > 0){
+      if (new Date().getFullYear() - parseInt(years) < 6){
+         $('#calculate-dues').html('$175.00');
+      }
+      if (new Date().getFullYear() - parseInt(years)  >= 6){
+         $('#calculate-dues').html('$225.00');
+      }
+   }
+   return true;
+};
 jQuery(document).ready(function() {    
    io.saw.Application.newMemberInit();
-   io.saw.Address.init('#saw-form');     
+   io.saw.Address.init('#saw-form');
+   $('#saw-form .publicDefender').change(function(){
+      calculatedues();
+   });
+   $('#saw-form .yearsInLawPractice').keyup(function(){
+      calculatedues();
+   })
+   window.setInterval(calculatedues,1000);
 });      
 </script>

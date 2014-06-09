@@ -54,7 +54,7 @@ $app->get('/payment/{offset}/{limit}', function ($offset, $limit, Request $reque
 	return $app['view']->render('payment/index', 'default', $view_vars);
 })
 ->value('offset','0')
-->value('limit','100')
+->value('limit','1000')
 ->before($mustbeMEMBER);
 
 
