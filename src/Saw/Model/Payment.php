@@ -695,9 +695,9 @@ EOT;
 	}
 	public function fetchAll(){
 		if(!empty($this->memberId)){
-			$result = $this->find($query=array('memberId'=>$this->memberId),$fields=array(),true,$sort=array('_id'=>-1),0,1000);
+			$result = $this->find($query=array('memberId'=>$this->memberId),$fields=array(),true,$sort=array('_id'=>-1),0,100000);
 		}else{
-			$result = $this->find($query=array(),$fields=array(),true,$sort=array('_id'=>-1));
+			$result = $this->find($query=array(),$fields=array(),true,$sort=array('_id'=>-1),0,100000);
 		}
 		return $result;
 	}
