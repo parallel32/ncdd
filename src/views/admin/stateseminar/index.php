@@ -54,11 +54,11 @@
                                        <td class=" "><?=$sponsoredseminar['sponsor']?></td>
                                        <td class=" "><?=$sponsoredseminar['cosponsor']?></td>
                                        <td class=" "><span class="label label-info"><?=\Saw\Model\StateSeminar::$typeReversed[$sponsoredseminar['currentType']]?></span></td>
-                                       <td class=" "><? if($accessLevel >= EDITOR){ ?><a data-id="<?=$sponsoredseminar['_id']?>" data-member-id="" class="btn blue mini edit"><i class=" icon-pencil"></i> Edit</a><? } ?></td>
+                                       <td class=" "><? if($accessLevel >= EDITOR){ ?><a data-id="<?=$sponsoredseminar['_id']?>" data-member-id="" class="btn blue mini edit">Edit</a><? } ?></td>
                                     </tr>
                                     <? endforeach;?>
                                     <? else: ?>
-                                       <td colspan="5">None to show.</td>
+                                       <td colspan="7">None to show.</td>
                                     <? endif;?>
                                  </tbody>
                               </table>
@@ -98,11 +98,11 @@
                                        <td class=" "><?=$stateseminar['date']['fullMonth']?></td>
                                        <td class=" "><?=$stateseminar['sponsor']?></td>
                                        <td class=" "><?=$stateseminar['cosponsor']?></td>
-                                       <td class=" "><? if($accessLevel >= EDITOR){ ?><a data-id="<?=$stateseminar['_id']?>" data-member-id="" class="btn blue mini edit"><i class=" icon-pencil"></i> Edit</a><? } ?></td>
+                                       <td class=" "><? if($accessLevel >= EDITOR){ ?><a data-id="<?=$stateseminar['_id']?>" data-member-id="" class="btn blue mini edit">Edit</a><? } ?></td>
                                     </tr>
                                     <? endforeach;?>
                                     <? else: ?>
-                                       <td colspan="5">None to show.</td>
+                                       <td colspan="6">None to show.</td>
                                     <? endif;?>
                                  </tbody>
                               </table>
