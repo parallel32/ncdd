@@ -138,7 +138,15 @@ $app->get('/blog', function (Request $request) use ($app) {
 	$view_vars = array_merge($page_vars,$view_vars);
 
 	$blog = new Model\Blog(array(),$app);
-	$posts = $blog->fetchPublished(0,4);
+	$posts = $blog->fetchPublished(0,500);
+	if(!empty($posts)){
+		for ($i=0; $i < count($posts); $i++) { 
+			/**
+				todo
+			*/
+		    $posts[$i]['body'] = $app['prepare_content_remove_media']($posts[$i]['body']); 
+		}
+	}
 	$archives = $blog->fetchArchiveCounts();
 
 	$view_vars['posts'] = $posts;
@@ -156,6 +164,14 @@ $app->get('/blog/archives/{month}/{year}', function ($month, $year, Request $req
 
 	$blog = new Model\Blog(array(),$app);
 	$posts = $blog->fetchArchives($month,$year);
+	if(!empty($posts)){
+		for ($i=0; $i < count($posts); $i++) { 
+			/**
+				todo
+			*/
+		    $posts[$i]['body'] = $app['prepare_content_remove_media']($posts[$i]['body']); 
+		}
+	}
 	$archives = $blog->fetchArchiveCounts();
 
 	$view_vars['posts'] = $posts;
@@ -175,6 +191,14 @@ $app->get('/blog/tag/{tag}', function ($tag, Request $request) use ($app) {
 
 	$blog = new Model\Blog(array(),$app);
 	$posts = $blog->fetchTag($tag);
+	if(!empty($posts)){
+		for ($i=0; $i < count($posts); $i++) { 
+			/**
+				todo
+			*/
+		    $posts[$i]['body'] = $app['prepare_content_remove_media']($posts[$i]['body']); 
+		}
+	}
 	$archives = $blog->fetchArchiveCounts();
 
 	$view_vars['posts'] = $posts;

@@ -3,8 +3,6 @@
    $show = 'yes';
    if(!empty($this->vars['blog']) && array_key_exists('currentStatus',$this->vars['blog'])): 
       $status = \Saw\Model\Blog::$statusReversed[$this->vars['blog']['currentStatus']];
-   error_log('status:'.$status);
-   error_log('accessLevel:'.$accessLevel);
       switch ($status) {
          case 'REVIEW':
             if($accessLevel == MEMBER){
@@ -36,7 +34,6 @@
             break;
       }
    endif;
-   error_log('show:'.$show);
 ?>
 
          <!-- BEGIN PAGE -->
