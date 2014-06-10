@@ -548,7 +548,7 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
 <br>e.&nbsp;&nbsp;if I am no longer eligible for membership in NCDD under the bylaws as amended. 
                         </p>
                         <p>
-                           I hereby authorize NCDD to charge the debit or credit card that I may have on file for any and all membership dues for membership or other fees at the level and rate then in effect until such time as I notify the Executive Director of NCDD to cancel such authorization. All membership dues will be charged on the due date as set out in the rules governing membership. Cancellation of use of this method of payment is prospective only. Notice must be given in writing or by email at least 14 days prior to the due date of membership dues or fees.
+                           I hereby authorize NCDD to charge the debit or credit card that I may have on file for any and all membership dues for membership or other fees at the level and rate then in effect until such time as I notify the Executive Director of NCDD to cancel such authorization. All membership dues will be charged on the due date as set out in the rules governing membership. Cancellation of use of this method of payment is prospective only. Notice of cancellation must be delivered to the Executive Director in writing or by email at least 14 days prior to the due date of membership dues or fees.
                         </p>
                         <h3 class="text-center"><u>AUTHORIZE AND RELEASE</u></h3>
                         <p>
