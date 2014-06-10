@@ -72,6 +72,13 @@ EOT;
 EOT;
 
          break;
+      case 'multi-select':
+         echo <<< EOT
+            <link rel="stylesheet" type="text/css" href="/assets/plugins/jquery-multi-select/css/multi-select-metro.css" />
+
+EOT;
+
+         break;
       default:
          echo "";
          break;

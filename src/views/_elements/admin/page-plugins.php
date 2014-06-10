@@ -48,6 +48,12 @@ EOT;
 
 EOT;
          break;
+      case 'multi-select':
+         echo <<< EOT
+            <script type="text/javascript" src="/assets/plugins/jquery-multi-select/js/jquery.multi-select.js"></script>   
+
+EOT;
+         break;
       case 'checkboxes':
          echo <<< EOT
              <script type="text/javascript" src="/assets/plugins/bootstrap-toggle-buttons/static/js/jquery.toggle.buttons.js"></script>

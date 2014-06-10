@@ -230,7 +230,7 @@ $app->get('/blog/{memberId}/edit/{blogId}', function ($memberId, $blogId, Reques
 	);
 	$view_vars = array(
 						 'active'=>'Blog/My'
-						,'page-plugin'=>'editor'
+						,'page-plugin'=>'multi-select'
 						,'headline'=>(empty($blogId)) ? 'Add a new blog post' : 'Edit your blog posts' 
 						,'description'=>"Edit your post and submit it for review when finished."
 						,'crumbs'=>$crumbs

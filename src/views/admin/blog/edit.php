@@ -3,6 +3,8 @@
    $show = 'yes';
    if(!empty($this->vars['blog']) && array_key_exists('currentStatus',$this->vars['blog'])): 
       $status = \Saw\Model\Blog::$statusReversed[$this->vars['blog']['currentStatus']];
+   error_log('status:'.$status);
+   error_log('accessLevel:'.$accessLevel);
       switch ($status) {
          case 'REVIEW':
             if($accessLevel == MEMBER){
@@ -34,10 +36,8 @@
             break;
       }
    endif;
+   error_log('show:'.$show);
 ?>
-
-         <link rel="stylesheet" type="text/css" href="/assets/plugins/jquery-multi-select/css/multi-select-metro.css" />
-         <script type="text/javascript" src="/assets/plugins/jquery-multi-select/js/jquery.multi-select.js"></script>   
 
          <!-- BEGIN PAGE -->
          <div class="page-content">
@@ -318,8 +318,10 @@
          jQuery(document).ready(function() {    
             io.saw.Blog.init();
             io.saw.ClearField.init({formArr:['#saw-form']}); 
+            <? if ($show == 'yes'): ?>
+               $('#tags').multiSelect();
+            <? endif; ?>            
          });
-            
          </script>
          <? if ($show == 'yes'): ?>
          <?/**

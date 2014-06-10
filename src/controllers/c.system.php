@@ -165,11 +165,11 @@ $app['prepare_vfl'] = $app->protect(function (&$view_vars) use ($app) {
                          'access_token'=>$access_token
                         ,'client_id'=>GOOGLE_DRIVE_CLIENT_ID
                         );
-
     $view_vars = array_merge($view_vars,$picker_view_vars);
     } catch (Exception $e) {
       // do nothing so the page can keep loading the fall back is to not allow the 
       // vfl button on the editor to appear  
+    	error_log('excption in prepare_vfl:'.$e->getMessage());
     }
 });
 
