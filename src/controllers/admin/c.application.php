@@ -340,8 +340,11 @@ $app->get('/application/update-member/{memberId}', function ($memberId, Request 
 
 	$location = new Model\Location($doc=array('member'=>array('_id'=>$memberId)), $app);
 	$location = $location->getByMemberId();
-	$member = $location['member'];
 
+	$member = new Model\Member($doc=array('_id'=>$memberId), $app);
+	$member = $member->findById();
+	
+	
 	$crumbs = array(array('name'=>'Dashboard','href'=>'/')
 					,array('name'=>'Membership Renewal','href'=>'/application/update-member')
 					);
@@ -366,7 +369,12 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 	
 	$location = new Model\Location($doc=array('member'=>array('_id'=>$memberId)), $app);
 	$location = $location->getByMemberId();
-	$member = $location['member'];
+	$member = new Model\Member($doc=array('_id'=>$memberId), $app);
+	$member = $member->findById();
+	if(empty($location)){
+		$location['city'] = '';
+		$location['state'] = '';
+	}
 
 
     // retrieve document from request
