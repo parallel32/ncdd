@@ -7,6 +7,9 @@
                                 <h2><a href="/apply-for-board-certification">Apply For Board Certification</a></h2>
                                 <br> 
                                 <h2><a href="/apply-for-re-certification">Apply For Re-Certification</a></h2>
+                                <br> 
+                                <h2><a href="/rules-governing-board-certification">Rules Governing Board Certification</a></h2>
+
                             </div>
                         </div>
                     </div>
