@@ -360,8 +360,7 @@ $app->get('/scholarship/{id}/approve', function ($id,Request $request) use ($app
 ////////////
 $app->get('/scholarship/{id}/delete', function ($id, Request $request) use ($app) {
     $scholarship = new Model\Scholarship(array('_id'=>$id), $app);
-    $scholarship = $scholarship->findById();
-    
+    $scholarship->findById();
     $scholarship->remove();
     return new Response(json_encode(array('message' => 'Successfully Deleted')), 200,array('Content-Type' => 'application/json'));
 })->before($mustbeADMIN);
