@@ -778,6 +778,11 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                   </div>
                   
                   <div class="form-actions text-center">
+                     <? $user = $this->app['session']->get('user');
+                           if($user['accessLevel'] == ADMIN){  
+                        ?>
+                        <input type="checkbox" name="suppress_emails" <?=(array_key_exists('suppress_emails',$user) && !empty($user['suppress_emails']))?'checked':'';?> value="yes">Suppress Emails.
+                        <? } ?>
                      <button type="button" class="btn green"><i class="icon-ok"></i> Submit Application</button>
                      <button type="button" class="btn cancel-go-back">Cancel and Go Back</button>
                   </div>

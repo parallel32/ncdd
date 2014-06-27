@@ -10,6 +10,12 @@
             </div>
             <!-- END PAGE HEADER-->
             
+            <div class="alert alert-info">
+               <strong>New Member App -</strong> <a href="https://<?=SAW_ADMIN_WEBSITE?>/application/new-member">https://<?=SAW_ADMIN_WEBSITE?>/application/new-member</a>
+            </div>
+            <div class="alert alert-info">
+               <strong>New Sustaining Member App -</strong> <a href="https://<?=SAW_ADMIN_WEBSITE?>/application/new-sustaining-member">https://<?=SAW_ADMIN_WEBSITE?>/application/new-sustaining-member</a>
+            </div>
 
             <div class="row-fluid">
                   <div class="responsive span6" data-tablet="span6" data-desktop="span6">

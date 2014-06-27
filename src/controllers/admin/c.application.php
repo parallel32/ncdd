@@ -86,7 +86,6 @@ $app['applicationEmails'] = $app->protect(function ($app,$applicationId,$context
 				break;
 			
 		}
-		// TODO no emails when ADMIN is approving -- temporary and should be removed after Hunter is done with the manual entry and payment of snail mailed renewals
 		$user = $app['session']->get('user');
 		$user['suppress_emails'] = $request->get('suppress_emails');
 		$app['session']->set('user',$user);
@@ -240,6 +239,11 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
     return new Response(json_encode(array('message' => $message,'label'=>$label)), $response_status,array('Content-Type' => 'application/json'));
 })->after(function (Request $request, Response $response, Silex\Application $app) {
 		if((int)$response->getStatusCode() == 200):
+			$user = $app['session']->get('user');
+			$user['suppress_emails'] = $request->get('suppress_emails');
+			$app['session']->set('user',$user);
+			$suppress = ($user['accessLevel'] == ADMIN && $user['suppress_emails'] == 'yes') ? true: false;
+
 	    	$doc = $request->get('doc');
 	    	// send admin the email notification
 	    	$subject = 'General Member Application Form Submitted';
@@ -252,7 +256,7 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 	    						,'email'=>$doc['email']
 	    	);
 	    	$body = $app['view']->render('email/new-member','email', $view_vars);
-	    	$app['sendMail']($subject, $body, $to);
+	    	if(!$suppress){$app['sendMail']($subject, $body, $to);}
 
 	    	// send applicant the email notification
 	    	$subject = 'Your Application for NCDD Membership has been Received';
@@ -266,7 +270,7 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 	    						,'applicationId'=>$_POST['applicationId']
 	    	);
 	    	$body = $app['view']->render('email/new-member-applicant-submission','email', $view_vars);
-	    	$app['sendMail']($subject, $body, $to);
+	    	if(!$suppress){$app['sendMail']($subject, $body, $to);}
 	    endif;
 });
 ///////////////////////////////////////
@@ -296,6 +300,11 @@ $app->post('/application/new-sustaining-member', function (Request $request) use
     return new Response(json_encode(array('message' => $message,'label'=>$label)), $response_status,array('Content-Type' => 'application/json'));
 })->after(function (Request $request, Response $response, Silex\Application $app) {
 		if((int)$response->getStatusCode() == 200):
+	    	$user = $app['session']->get('user');
+			$user['suppress_emails'] = $request->get('suppress_emails');
+			$app['session']->set('user',$user);
+			$suppress = ($user['accessLevel'] == ADMIN && $user['suppress_emails'] == 'yes') ? true: false;
+			
 	    	$doc = $request->get('doc');
 	    	// send admin the email notification
 	    	$subject = 'Sustaining Member Application Form Submitted';
@@ -308,7 +317,7 @@ $app->post('/application/new-sustaining-member', function (Request $request) use
 	    						,'email'=>$doc['email']
 	    	);
 	    	$body = $app['view']->render('email/new-sustaining-member','email', $view_vars);
-	    	$app['sendMail']($subject, $body, $to);
+	    	if(!$suppress){$app['sendMail']($subject, $body, $to);}
 
 	    	// send applicant the email notification
 	    	$subject = 'Your Application for NCDD Membership has been Received';
@@ -322,7 +331,7 @@ $app->post('/application/new-sustaining-member', function (Request $request) use
 	    						,'applicationId'=>$_POST['applicationId']
 	    	);
 	    	$body = $app['view']->render('email/new-sustaining-member-applicant-submission','email', $view_vars);
-	    	$app['sendMail']($subject, $body, $to);
+	    	if(!$suppress){$app['sendMail']($subject, $body, $to);}
 	    endif;
 });
 
@@ -429,7 +438,6 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 		);
 		$body = $app['view']->render('email/payment-thankyou','email', $view_vars);
 		
-		// TODO no emails when ADMIN is approving -- temporary and should be removed after Hunter is done with the manual entry and payment of snail mailed renewals
 		$user = $app['session']->get('user');
 		$user['suppress_emails'] = $request->get('suppress_emails');
 		$app['session']->set('user',$user);
@@ -944,7 +952,6 @@ $app->post('/application/payment', function (Request $request) use ($app) {
 	);
 	$body = $app['view']->render('email/payment-thankyou','email', $view_vars);
 	
-	// TODO no emails when ADMIN is approving -- temporary and should be removed after Hunter is done with the manual entry and payment of snail mailed renewals
 	$user = $app['session']->get('user');
 	$user['suppress_emails'] = $request->get('suppress_emails');
 	$app['session']->set('user',$user);
