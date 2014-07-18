@@ -17,6 +17,185 @@ $utilities = $app['controllers_factory'];
 $utilities->before($mustbeADMIN);
 
 
+///////////////////////////////////////////////
+// joinDate update via membertemp collection //
+///////////////////////////////////////////////
+$utilities->get('/joindatememberupdate', function () use ($app) {
+    
+    $membertemp = new Model\MemberTemp(array(),$app);
+    $mts = $membertemp->find($query=array(),$fields=array('joinDate.feed'=>1,'memberId'=>1,'_id'=>1),$slaveOkay=true,$sort=array(),$offset=0,$limit=1000000);
+    //*
+    $count = 0;
+    foreach($mts as $mt):
+        if(!empty($mt['memberId'])){
+            $member = new Model\Member(array('_id'=>$mt['memberId'],'joinDate'=>$mt['joinDate']['feed']),$app);
+            $member->saveEdit();
+            $count++;
+        }
+    endforeach;
+    //*/
+    
+    // now fix all members' joinDate in the location collection
+    $member = new Model\Member(array(),$app);
+    $ms = $member->find($query=array(),$fields=array('joinDate.feed'=>1,'_id'=>1),$slaveOkay=true,$sort=array(),$offset=0,$limit=1000000);
+    //*
+    $count2 = 0;
+    foreach($ms as $m):
+        if(!empty($m['_id'])){
+            $member = new Model\Member(array('_id'=>$m['_id'],'joinDate'=>$m['joinDate']['feed']),$app);
+            $member->saveEdit();
+            $count2++;
+        }
+    endforeach;
+    
+
+
+    return new Response('count - '.$count.' count2 - '.$count2,200,array('Content-Type' => 'text/html')); 
+    
+});
+
+/////////////////////////////////
+// joinDate member matchup //
+/////////////////////////////////
+$utilities->get('/joindatemembermatch', function () use ($app) {
+    return false;
+    $membertemp = new Model\MemberTemp(array(),$app);
+    $member     = new Model\Member(array(),$app);
+    $mts = $membertemp->find($query=array(),$fields=array('firstName'=>1,'lastName'=>1,'state'=>1,'_id'),$slaveOkay=true,$sort=array(),$offset=0,$limit=1000000);
+
+    $notfound  = 0;
+    $found_a  = 0;
+    $found_b  = 0;
+    $notfound_table=" <table>";
+    $found_table=" <table>";
+    $duplicates_table=" <table>";
+    $found_records = array();
+    foreach ($mts as $mt) {
+        $found  = false;
+        $name   = $mt['firstName'].' '.$mt['lastName'];
+        $state  = $mt['state'];
+
+        $mem_a = $member->find(array('firstName'=>$mt['firstName'],'lastName'=>$mt['lastName']),array('firstName'=>1,'lastName'=>1,'displayName'=>1,'state'=>1,'_id'=>1));
+        $mem_b = $member->find(array('displayName'=>$name),array('firstName'=>1,'lastName'=>1,'displayName'=>1,'_id'=>1,'state'=>1));
+        
+        if(!empty($mem_a)){
+            //echo "<pre>mem_a";print_r($mem_a);echo "</pre>";
+            $found = true;
+            $found_a++;
+            $found_table.="<tr><td>{A} ".count($mem_a)." ".$mem_a[0]['firstName']."</td> <td>".$mem_a[0]['lastName']."</td> <td>".$mem_a[0]['displayName']."</td> <td>".$mem_a[0]['_id']."</td>  ";
+            if(count($mem_a) > 1){
+                $duplicates_table.="<tr><td>{A} MT ".$mt['firstName']."</td> <td>".$mt['lastName']."</td> <td>".$name."</td> <td>".$mt['state']."</td> <td>".$mt['_id']."</td>  ";
+                $duplicates_table.='<tr><td colspan=5>db.membertemp.update({_id:ObjectId("'.$mt['_id'].'")}{$set:{memberId:ObjectId("")}})</td>  ';
+                $duplicates_table.="<tr><td>{A} M ".$mem_a[0]['firstName']."</td> <td>".$mem_a[0]['lastName']."</td> <td>".$mem_a[0]['displayName']."</td> <td>".$mem_a[0]['_id']."</td>  ";
+                $duplicates_table.="<tr><td>{A} M ".$mem_a[1]['firstName']."</td> <td>".$mem_a[1]['lastName']."</td> <td>".$mem_a[1]['displayName']."</td> <td>".$mem_a[1]['_id']."</td>  ";
+            }elseif(count($mem_a) == 1){
+                $mt['memberId'] = $mem_a[0]['_id'];
+                $found_record = $mt;    
+            }
+            
+        }
+        if(!empty($mem_b) && $found == false){
+            //echo "<pre>mem_b";print_r($mem_b);echo "</pre>";
+            $found = true;
+            $found_b++;
+            $found_table.="<tr><td>{B} ".count($mem_b)." ".$mem_b[0]['firstName']."</td> <td>".$mem_b[0]['lastName']."</td> <td>".$mem_b[0]['displayName']."</td> <td>".$state."</td> <td>".$mem_b[0]['_id']."</td>  ";
+            if(count($mem_b) > 1){
+                $duplicates_table.="<tr><td>{A} MT ".$mt['firstName']."</td> <td>".$mt['lastName']."</td> <td>".$mt['displayName']."</td> <td>".$mt['state']."</td> <td>".$mt['_id']."</td>  ";
+                $duplicates_table.="<tr><td>{B} M ".$mem_b[0]['firstName']."</td> <td>".$mem_b[0]['lastName']."</td> <td>".$mem_b[0]['displayName']."</td> <td>".$mem_b[0]['_id']."</td>  ";
+                $duplicates_table.="<tr><td>{B} M ".$mem_b[1]['firstName']."</td> <td>".$mem_b[1]['lastName']."</td> <td>".$mem_b[1]['displayName']."</td> <td>".$mem_b[1]['_id']."</td>  ";
+            }elseif(count($mem_b) == 1){
+                $mt['memberId'] = $mem_b[0]['_id'];
+                $found_record = $mt;    
+            }
+        }
+        
+        if(!$found){
+            //echo "<pre>Not Found:";print_r($mt);echo "</pre>";
+            $notfound_table.="<tr><td>".$mt['firstName']."</td> <td>".$mt['lastName']."</td> <td>".$mt['state']."</td> <td>".'db.membertemp.update({_id:ObjectId("'.$mt['_id'].'")},{$set:{memberId:ObjectId("")}})</td>  ';
+            $notfound++;
+        }
+        /*
+        if($found && $found_record){
+            $memtemp = new Model\MemberTemp($found_record,$app);
+            $memtemp->saveSafe();    
+        }
+        //*/
+
+    }
+    $notfound_table.="</table>";
+    $found_table.="</table>";
+    $duplicates_table.="</table>";
+
+    echo " <table>";
+    echo "<tr><td>notfound:".$notfound."</td></tr>";
+    echo "<tr><td>".$found_a."</td></tr>";
+    echo "<tr><td>".$found_b."</td></tr>";
+    echo "</table>";
+    echo "<h2>Duplicates</h2>";
+    echo $duplicates_table;
+    echo "<h2>Not Found (mt records)</h2>";
+    echo $notfound_table;
+    echo "<h2>Found</h2>";
+    echo $found_table;
+
+    
+    return new Response('',200,array('Content-Type' => 'text/html')); 
+    
+});
+
+/////////////////////////////////
+// joinDate member import //
+/////////////////////////////////
+// query to get members based on join date range
+// var cutoffdate = new Date(2013, 1, 1);
+// db.member.find({'joinDate.date': {$lt: cutoffdate}}).count();
+$utilities->get('/joindatememberimport', function () use ($app) {
+    return false;
+    ini_set('memory_limit','1024M');
+    
+    $fields = array();
+    $fields[]='ignore';
+    $fields[]='firstName';
+    $fields[]='lastName';
+    $fields[]='state';
+    $fields[]='joinDate';
+    
+    //*
+    $cnt = 1;
+    $row = 1;
+    if (($handle = fopen("/var/www/upload/member-joindate-import.csv", "r")) !== FALSE) {
+        while (($data = fgetcsv($handle)) !== FALSE) {
+            $num = count($data);
+            //echo "<p> $num fields in line $row: <br /></p>\n";
+            $row++;
+            for ($c=0; $c < $num; $c++) {
+                $output[$row][$fields[$c]] = trim($data[$c]);
+                //echo $data[$c] . "<br />\n";
+            }
+            //echo "<pre>";print_r($output[$row]);echo "</pre>";
+        }
+        fclose($handle);
+    }
+    //echo "<pre>";print_r($output);echo "</pre>";
+    //*
+
+    //*
+    // create the temporary member records
+    // first remove all records
+    Model\MemberTemp::purge($app);
+    $cnt = 1;
+    $total = count($output);
+    foreach ($output as $record):
+        unset($record['ignore']);
+        $record['joinDate'] = new Model\Date($app, $record['joinDate']);
+        $member = new Model\MemberTemp($record,$app);
+        $member->insert();
+        $cnt++;        
+    endforeach;
+    //*/
+    return new Response('cool: '.$cnt.' members inserted',200,array('Content-Type' => 'text/html')); 
+});
+
 ////////////////////////////////////
 // import member name corrections //
 ///////////////////////////////////

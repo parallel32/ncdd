@@ -110,9 +110,19 @@ class Member extends User {
 		}else if(is_numeric($doc['boardCertified'])){
 			$this->boardCertified = (int)$doc['boardCertified'];
 		}
-		
-		
-        $this->joinDate = (!empty($doc['joinDate'])) ? (is_object($doc['joinDate'])) ? $doc['joinDate']->__toArray() : new Date(self::$app,$doc['joinDate'], $this->timeZone)  : $doc['joinDate'];
+		if(!empty($doc['joinDate'])){
+			if(is_object($doc['joinDate'])){
+				$this->joinDate = $doc['joinDate']->__toArray();
+			}
+			if(is_array($doc['joinDate'])){
+				$this->joinDate = $doc['joinDate'];
+			}
+			if(is_string($doc['joinDate'])){
+				$this->joinDate = new Date(self::$app,$doc['joinDate'], $this->timeZone);
+			}	
+		}else{
+			$this->joinDate = '';
+		}
         include_once __DIR__.'/../Provider/WordPress/ncdd-wp-includes.php';
 		$this->aboutMe = (!empty($doc['aboutMe'])) ? wptexturize(wpautop($doc['aboutMe'])) : '';
 		// for import only $this->aboutMe = $doc['aboutMe'];
