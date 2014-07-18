@@ -21,7 +21,7 @@ $utilities->before($mustbeADMIN);
 // joinDate update via membertemp collection //
 ///////////////////////////////////////////////
 $utilities->get('/joindatememberupdate', function () use ($app) {
-    
+    return false;
     $membertemp = new Model\MemberTemp(array(),$app);
     $mts = $membertemp->find($query=array(),$fields=array('joinDate.feed'=>1,'memberId'=>1,'_id'=>1),$slaveOkay=true,$sort=array(),$offset=0,$limit=1000000);
     //*
