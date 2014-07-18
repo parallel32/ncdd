@@ -327,6 +327,3 @@
          <? $id = (array_key_exists('blog',$this->vars)) ? $this->vars['blog']['_id'] : '' ?>
          <?=$this->element('editor',array('_id'=>$id,'client_id'=>$this->vars['client_id'],'access_token'=>$this->vars['access_token']));?>
          <? endif; ?>
-
-
-

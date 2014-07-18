@@ -231,8 +231,14 @@ class Blog extends Model {
 					$this->published = 'no';
 					break;
 				case 'PUBLISH':
-					$this->publishDate = new Date(self::$app,'now');
-					$this->published = 'yes';
+					// here need to check if the blog is already in publish status and if so, don't update the publish date.  most likely it's just being edited.
+					$res = $this->findOne(array('_id'=>$this->_id),array('currentStatus'=>1));
+					if(!empty($res) && self::$statusReversed[$res['currentStatus']] == 'PUBLISH'){
+						// DO NOTHING
+					}else{
+						$this->publishDate = new Date(self::$app,'now');
+						$this->published = 'yes';
+					}
 					break;
 			}
 		}

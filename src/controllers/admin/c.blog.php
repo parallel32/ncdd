@@ -307,6 +307,10 @@ $app->post('/blog/{memberId}/edit', function ($memberId, Request $request) use (
     $member = new Model\Member(array('_id'=>$memberId),$app);
     $member->findById();
     $blog = new Model\Blog($document, $app, $member);
+    // this is a preparation to make a check in the after filter for whether to resend the email if the status was already PUBLISH when this edit happened
+    $bres = $blog->findOne(array('_id'=>$blog->_id),array('currentStatus'=>1));
+	$_POST['currentStatus_before_save'] = $bres['currentStatus'];
+
     // validate the model
    	$app['validateModel']($app,$blog);
     $blog->saveEdit();
@@ -347,18 +351,22 @@ $app->post('/blog/{memberId}/edit', function ($memberId, Request $request) use (
 	    	if((int)$doc['currentStatus'] >= (int)Model\Blog::$status['SCHEDULE']){
 	    		$accessLevel = call_user_func(function($app){ $user = $app['session']->get('user'); return $user['accessLevel'];},$app);
 	    		if($accessLevel >= EDITOR){
-	    			// send out the email to blog author notifying that the blog posted
-			    	$blog = new Model\Blog(array('_id'=>$_POST['current_id']),$app);
-		    		$blog->findById();
-			    	//error_log('send Author email......for:'.$blog->headline);
-			    	//*
-			    	// send admin the email notification
-			    	$subject = 'Blog Post Approved';
-			    	$to = $blog->author['email'];
-			    	$view_vars = array('headline'=>$blog->headline);
-			    	$body = $app['view']->render('email/blog-post-approved','email', $view_vars);
-			    	$app['sendMail']($subject, $body, $to);
-			    	//*/
+	    			if(!empty($_POST['currentStatus_before_save']) && Model\Blog::$statusReversed[$_POST['currentStatus_before_save']] == 'PUBLISH'){
+	    				// do nothing .. don't send out emails
+	    			}else{
+		    			// send out the email to blog author notifying that the blog posted
+				    	$blog = new Model\Blog(array('_id'=>$_POST['current_id']),$app);
+			    		$blog->findById();
+				    	//error_log('send Author email......for:'.$blog->headline);
+				    	//*
+				    	// send admin the email notification
+				    	$subject = 'Blog Post Approved';
+				    	$to = $blog->author['email'];
+				    	$view_vars = array('headline'=>$blog->headline);
+				    	$body = $app['view']->render('email/blog-post-approved','email', $view_vars);
+				    	$app['sendMail']($subject, $body, $to);
+				    	//*/
+				    }
 	    		}
 		    }
 	    endif;
