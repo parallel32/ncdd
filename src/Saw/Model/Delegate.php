@@ -63,7 +63,7 @@ class Delegate extends Model {
 		$this->state = $doc['state'];
 		$this->abbr = $doc['abbr'];
 		$this->slug = (empty($doc['slug']) && !empty($doc['state'])) ? self::slugify($doc['state']): $doc['slug'];
-		$this->slug = ($this->slug[0] != '/') ? '/'.$this->slug: $this->slug;
+		$this->slug = (!empty($this->slug) && $this->slug[0] != '/') ? '/'.$this->slug: $this->slug;
 		include_once __DIR__.'/../Provider/WordPress/ncdd-wp-includes.php';
 		$this->body = (!empty($doc['body'])) ? wptexturize(wpautop($doc['body'])) : '';
 		$this->image = $doc['image'];
@@ -114,8 +114,11 @@ class Delegate extends Model {
 		$result = $this->findOne($query,$fields,$slaveOkay=true,$sort=array(),(int)$offset,(int)$limit);
 		return $result;
 	}
-	public function fetchByState($state,$country,$allfields=false){
-		$query = array('abbr'=>$state,'country'=>$country);
+	public function fetchByState($state,$country,$allfields=false,$allrecords=true){
+		if($allrecords)
+			$query = array('abbr'=>$state,'country'=>$country);
+		else
+			$query = array('abbr'=>$state,'country'=>$country,'currentStatus'=>self::$status['PUBLISH']);
 		if($allfields){
 			$fields = array();
 		}else{
@@ -123,6 +126,25 @@ class Delegate extends Model {
 		}
 		
 		$result = $this->findOne($query,$fields);
+		return $result;
+	}
+	public function fetchAll($published=true,$fields=array(),$formatted=false){
+		
+		$query=array();
+		
+		if($published)
+			$aquery = array('currentStatus'=>self::$status['PUBLISH']);
+
+		if($formatted){
+			$countries = $this->distinct('country',$aquery);
+			foreach($countries as $country){
+				$query=array_merge(array('country'=>$country),$aquery);
+				$_countries[$country] = $this->find($query,array('state'=>1,'abbr'=>1,'slug'=>1),true,$sort=array('state'=>1));
+			}
+			$result = $_countries;
+		}else{
+			$result = $this->find($query,$fields);
+		}
 		return $result;
 	}
 	
@@ -185,7 +207,7 @@ class Delegate extends Model {
 	    $stateMap['usa']['Delaware']='DE';
 	    $stateMap['usa']['Alaska']='AK';
 	    $stateMap['usa']['Wyoming']='WY';
-	    $stateMap['usa']['Washington, D.C.']='DC';
+	    $stateMap['usa']['Washington, DC']='DC';
 	    $stateMap['usa']['Rhode Island']='RI';
 	    $stateMap['usa']['Kentucky']='KY';
 	    $stateMap['usa']['Vermont']='VT';
@@ -193,7 +215,7 @@ class Delegate extends Model {
 	    $stateMap['usa']['North Dakota']='ND';
 	    ksort($stateMap['usa']);
 	    $stateMap['canada']['Alberta']='AB';
-	    $stateMap['canada']['British Columbia']='SK';
+	    $stateMap['canada']['British Columbia']='BC';
 	    $stateMap['canada']['Manitoba']='MB';
 	    $stateMap['canada']['New Brunswick']='NB';
 	    $stateMap['canada']['Newfoundland and Labrador']='NL';

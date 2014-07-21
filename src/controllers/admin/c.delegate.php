@@ -93,7 +93,6 @@ $app->get('/delegate/add/{country}/{stateabbr}', function ($country,$stateabbr,R
 		$_id = $delegate->saveEdit();
 		$delegate = $delegate->findById();
 	}
-	//echo "<pre>";print_r($delegate);echo "</pre>";
 	$crumbs = array(array('name'=>'Delegate','href'=>'/delegate'));
 	$view_vars = array( 'active'=>'Delegate'
 						,'page-plugin'=>'datatables'

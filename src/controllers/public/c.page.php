@@ -359,7 +359,7 @@ $app->get('/dui-laws-in-your-state/{country}/{state}', function ($country, $stat
 	// if a delegate page exists for this country / state.. issue a redirect to /state-delegates/{country}/{state}#dui-laws  -> so they can go right to that section
 	$delegate = new Model\Delegate(array(), $app);
 	$states = array('alabama'=>'AL','alaska'=>'AK','arizona'=>'AZ','arkansas'=>'AR','california'=>'CA','colorado'=>'CO','connecticut'=>'CT','delaware'=>'DE','washington-dc'=>'DC','florida'=>'FL','georgia'=>'GA','hawaii'=>'HI','idaho'=>'ID','illinois'=>'IL','indiana'=>'IN','iowa'=>'IA','kansas'=>'KS','kentucky'=>'KY','louisiana'=>'LA','maine'=>'ME','maryland'=>'MD','massachusetts'=>'MA','michigan'=>'MI','minnesota'=>'MN','mississippi'=>'MS','missouri'=>'MO','montana'=>'MT','nebraska'=>'NE','nevada'=>'NV','new-hampshire'=>'NH','new-jersey'=>'NJ','new-mexico'=>'NM','new-york'=>'NY','north-carolina'=>'NC','north-dakota'=>'ND','ohio'=>'OH','oklahoma'=>'OK','oregon'=>'OR','pennsylvania'=>'PA','rhode-island'=>'RI','south-carolina'=>'SC','south-dakota'=>'SD','tennessee'=>'TN','texas'=>'TX','utah'=>'UT','vermont'=>'VT','virginia'=>'VA','washington'=>'WA','west-virginia'=>'WV','wisconsin'=>'WI','wyoming'=>'WY','ontario'=>'ON','quebec'=>'QC','saskatchewan'=>'SK');
-	$delegate = $delegate->fetchByState(strtolower($states[$state]),$country,true);
+	$delegate = $delegate->fetchByState(strtolower($states[$state]),$country,true,false);
 	if(!empty($delegate)){
 		return $app->redirect('/state-delegates/'.$country.'/'.$state.'#dui-laws');	
 	}
@@ -471,8 +471,11 @@ $app->get('/state-delegates', function (Request $request) use ($app) {
 	
 	$member = new Model\Member(array(), $app);
 	$members = $member->search('State Delegates',true);
-
 	$view_vars['members'] = $members;
+
+	$delegate = new Model\Delegate(array(), $app);
+	$view_vars['delegate_states'] = $delegate->fetchAll($published=true,$fields=array('state'=>1,'country'=>1,'abbr'=>1,'slug'=>1),$formatted=true);
+
 	$view_vars = array_merge($page_vars,$view_vars);
 	
 	return $app['view']->render('page/state-delegates', 'content', $view_vars);
@@ -500,8 +503,8 @@ $app->get('/state-delegates/{country}/{state}', function ($country, $state, Requ
 	////////////////////////////////////
 	// process delegate members block //
 	////////////////////////////////////	
-	$delegate = new Model\Delegate(array(), $app);
-	$delegate = $delegate->fetchByState(strtolower($state),$orig_country,true);
+	$delegateObj = new Model\Delegate(array(), $app);
+	$delegate = $delegateObj->fetchByState(strtolower($state),$orig_country,true);
 	$result = $delegate['members'];
 	if(!empty($result)):
 	$i=0;
@@ -563,6 +566,7 @@ $app->get('/state-delegates/{country}/{state}', function ($country, $state, Requ
 	);
 	$page_vars = $app['get_pages']($state);
 	$view_vars = array_merge($page_vars,$view_vars);
+	$view_vars['delegate_states'] = $delegateObj->fetchAll($published=true,$fields=array('state'=>1,'country'=>1,'abbr'=>1,'slug'=>1),$formatted=true);
 	
 	return $app['view']->render('page/state-delegates/state', 'content', $view_vars);
 

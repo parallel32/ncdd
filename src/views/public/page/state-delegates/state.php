@@ -121,125 +121,31 @@ ul.sidebarlist li {
                         <div class="center span12 bc">
                             <div class="dropdown visible-phone mapsPhone">
                                 <a class="dropdown-toggle btn" href="javascript:void(0)">
-                                    Select state
+                                    Select A State
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="mapsPhoneDropdown">
-                                    <li class="titleMap">USA</li>
-                                    <li><a href="/state-delegates/usa/alabama">Alabama</a></li>
-                                <li><a href="/state-delegates/usa/alaska">Alaska</a></li>
-                                <li><a href="/state-delegates/usa/arizona">Arizona</a></li>
-                                <li><a href="/state-delegates/usa/arkansas">Arkansas</a></li>
-                                <li><a href="/state-delegates/usa/california">California</a></li>
-                                <li><a href="/state-delegates/usa/colorado">Colorado</a></li>
-                                <li><a href="/state-delegates/usa/connecticut">Connecticut</a></li>
-                                <li><a href="/state-delegates/usa/delaware">Delaware</a></li>
-                                <li><a href="/state-delegates/usa/washington-dc">Washington DC</a></li>
-                                <li><a href="/state-delegates/usa/florida">Florida</a></li>
-                                <li><a href="/state-delegates/usa/georgia">Georgia</a></li>
-                                <li><a href="/state-delegates/usa/hawaii">Hawaii</a></li>
-                                <li><a href="/state-delegates/usa/idaho">Idaho</a></li>
-                                <li><a href="/state-delegates/usa/illinois">Illinois</a></li>
-                                <li><a href="/state-delegates/usa/indiana">Indiana</a></li>
-                                <li><a href="/state-delegates/usa/iowa">Iowa</a></li>
-                                <li><a href="/state-delegates/usa/kansas">Kansas</a></li>
-                                <li><a href="/state-delegates/usa/kentucky">Kentucky</a></li>
-                                <li><a href="/state-delegates/usa/louisiana">Louisiana</a></li>
-                                <li><a href="/state-delegates/usa/maine">Maine</a></li>
-                                <li><a href="/state-delegates/usa/maryland">Maryland</a></li>
-                                <li><a href="/state-delegates/usa/massachusetts">Massachusetts</a></li>
-                                <li><a href="/state-delegates/usa/michigan">Michigan</a></li>
-                                <li><a href="/state-delegates/usa/minnesota">Minnesota</a></li>
-                                <li><a href="/state-delegates/usa/mississippi">Mississippi</a></li>
-                                <li><a href="/state-delegates/usa/missouri">Missouri</a></li>
-                                <li><a href="/state-delegates/usa/montana">Montana</a></li>
-                                <li><a href="/state-delegates/usa/nebraska">Nebraska</a></li>
-                                <li><a href="/state-delegates/usa/nevada">Nevada</a></li>
-                                <li><a href="/state-delegates/usa/new-hampshire">New Hampshire</a></li>
-                                <li><a href="/state-delegates/usa/new-jersey">New Jersey</a></li>
-                                <li><a href="/state-delegates/usa/new-mexico">New Mexico</a></li>
-                                <li><a href="/state-delegates/usa/new-york">New York</a></li>
-                                <li><a href="/state-delegates/usa/north-carolina">North Carolina</a></li>
-                                <li><a href="/state-delegates/usa/ohio">Ohio</a></li>
-                                <li><a href="/state-delegates/usa/oklahoma">Oklahoma</a></li>
-                                <li><a href="/state-delegates/usa/oregon">Oregon</a></li>
-                                <li><a href="/state-delegates/usa/pennsylvania">Pennsylvania</a></li>
-                                <li><a href="/state-delegates/usa/south-carolina">South Carolina</a></li>
-                                <li><a href="/state-delegates/usa/south-dakota">South Dakota</a></li>
-                                <li><a href="/state-delegates/usa/tennessee">Tennessee</a></li>
-                                <li><a href="/state-delegates/usa/texas">Texas</a></li>
-                                <li><a href="/state-delegates/usa/utah">Utah</a></li>
-                                <li><a href="/state-delegates/usa/vermont">Vermont</a></li>
-                                <li><a href="/state-delegates/usa/virginia">Virginia </a></li>
-                                <li><a href="/state-delegates/usa/washington">Washington</a></li>
-                                <li><a href="/state-delegates/usa/west-virginia">West Virginia</a></li>
-                                <li><a href="/state-delegates/usa/wisconsin">Wisconsin</a></li>
-                                <li><a href="/state-delegates/usa/wyoming">Wyoming </a></li>
+                                    <? foreach($this->vars['delegate_states'] as $country=>$state): ?>
+                                    <li class="titleMap"><?=strtoupper($country)?></li>
+                                    <? foreach($this->vars['delegate_states'][$country] as $state): ?>
+                                    <li><a href="/state-delegates/<?=$country?><?=$state['slug']?>"><?=$state['state']?></a></li>
+                                    <? endforeach; ?>
+                                    <? endforeach; ?>
                                 </ul>
                             </div>
                        </div> 
                     <div class="pagecontent ">
                         <div class="span2 hidden-phone">
                           <div class="selectstate center bc">SELECT ANOTHER STATE</div>
-                          <div class="country bc">USA</div>
+                          <? foreach($this->vars['delegate_states'] as $country=>$state): ?>
+                          <div class="country bc"><?=strtoupper($country)?></div>
                           <ul class="sidebarlist bc">
-                            <li><a href="/state-delegates/usa/alabama">Alabama</a></li>
-                                <li><a href="/state-delegates/usa/alaska">Alaska</a></li>
-                                <li><a href="/state-delegates/usa/arizona">Arizona</a></li>
-                                <li><a href="/state-delegates/usa/arkansas">Arkansas</a></li>
-                                <li><a href="/state-delegates/usa/california">California</a></li>
-                                <li><a href="/state-delegates/usa/colorado">Colorado</a></li>
-                                <li><a href="/state-delegates/usa/connecticut">Connecticut</a></li>
-                                <li><a href="/state-delegates/usa/delaware">Delaware</a></li>
-                                <li><a href="/state-delegates/usa/washington-dc">Washington DC</a></li>
-                                <li><a href="/state-delegates/usa/florida">Florida</a></li>
-                                <li><a href="/state-delegates/usa/georgia">Georgia</a></li>
-                                <li><a href="/state-delegates/usa/hawaii">Hawaii</a></li>
-                                <li><a href="/state-delegates/usa/idaho">Idaho</a></li>
-                                <li><a href="/state-delegates/usa/illinois">Illinois</a></li>
-                                <li><a href="/state-delegates/usa/indiana">Indiana</a></li>
-                                <li><a href="/state-delegates/usa/iowa">Iowa</a></li>
-                                <li><a href="/state-delegates/usa/kansas">Kansas</a></li>
-                                <li><a href="/state-delegates/usa/kentucky">Kentucky</a></li>
-                                <li><a href="/state-delegates/usa/louisiana">Louisiana</a></li>
-                                <li><a href="/state-delegates/usa/maine">Maine</a></li>
-                                <li><a href="/state-delegates/usa/maryland">Maryland</a></li>
-                                <li><a href="/state-delegates/usa/massachusetts">Massachusetts</a></li>
-                                <li><a href="/state-delegates/usa/michigan">Michigan</a></li>
-                                <li><a href="/state-delegates/usa/minnesota">Minnesota</a></li>
-                                <li><a href="/state-delegates/usa/mississippi">Mississippi</a></li>
-                                <li><a href="/state-delegates/usa/missouri">Missouri</a></li>
-                                <li><a href="/state-delegates/usa/montana">Montana</a></li>
-                                <li><a href="/state-delegates/usa/nebraska">Nebraska</a></li>
-                                <li><a href="/state-delegates/usa/nevada">Nevada</a></li>
-                                <li><a href="/state-delegates/usa/new-hampshire">New Hampshire</a></li>
-                                <li><a href="/state-delegates/usa/new-jersey">New Jersey</a></li>
-                                <li><a href="/state-delegates/usa/new-mexico">New Mexico</a></li>
-                                <li><a href="/state-delegates/usa/new-york">New York</a></li>
-                                <li><a href="/state-delegates/usa/north-carolina">North Carolina</a></li>
-                                <li><a href="/state-delegates/usa/ohio">Ohio</a></li>
-                                <li><a href="/state-delegates/usa/oklahoma">Oklahoma</a></li>
-                                <li><a href="/state-delegates/usa/oregon">Oregon</a></li>
-                                <li><a href="/state-delegates/usa/pennsylvania">Pennsylvania</a></li>
-                                <li><a href="/state-delegates/usa/south-carolina">South Carolina</a></li>
-                                <li><a href="/state-delegates/usa/south-dakota">South Dakota</a></li>
-                                <li><a href="/state-delegates/usa/tennessee">Tennessee</a></li>
-                                <li><a href="/state-delegates/usa/texas">Texas</a></li>
-                                <li><a href="/state-delegates/usa/utah">Utah</a></li>
-                                <li><a href="/state-delegates/usa/vermont">Vermont</a></li>
-                                <li><a href="/state-delegates/usa/virginia">Virginia </a></li>
-                                <li><a href="/state-delegates/usa/washington">Washington</a></li>
-                                <li><a href="/state-delegates/usa/west-virginia">West Virginia</a></li>
-                                <li><a href="/state-delegates/usa/wisconsin">Wisconsin</a></li>
-                                <li><a href="/state-delegates/usa/wyoming">Wyoming </a></li>
+                            <? foreach($this->vars['delegate_states'][$country] as $state): ?>
+                            <li><a href="/state-delegates/<?=$country?><?=$state['slug']?>"><?=$state['state']?></a></li>
+                            <? endforeach; ?>
+                         <? endforeach; ?>
+
                         </ul>
-                        <!--
-                        <div class="country bc">Canada</div>
-                        <ul class="sidebarlist bc">
-                           <li><a href="/find-an-attorney/canada/ontario">Ontario </a></li>
-                            <li><a href="/find-an-attorney/canada/quebec">Quebec </a></li>
-                        </ul>
-                        -->
                     </div>
                     <div class="cityNameBlock">
                         <h5 class="cityName pull-left"></h5>
@@ -320,14 +226,14 @@ ul.sidebarlist li {
                         <? endif; ?>
                         
 
-
+                        <? if(!empty($this->vars['events'])): ?>
                         <a name="events"><h2>Events</h2></a>                        
                         <div class=" tc ">
                             <div class="span12 tl">
                                 <div class="row-fluid sessionSeminarsDetailPage">
                                     <div class="pull-left span12 tab-content">
                                         <div class="tab-pane active" id="sessionsSeminarsPage">
-                                            <? if(!empty($this->vars['events'])): ?>
+                                            
                                             <table class="table-bordered" style="margin-top: 0px; width:100%">
                                                 <tbody>
                                                     <tr>
@@ -346,12 +252,13 @@ ul.sidebarlist li {
                                                      
                                                 </tbody></table>
                                                 <br>
-                                            <? endif; ?>
+                                            
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <? endif; ?>
                         <div class="clear"></div>
                         <br>
                         <a name="dui-laws"><h2>DUI Laws</h2></a>                        
