@@ -92,7 +92,7 @@ img.thumbnail{ max-width: 100%;}
                               <img width="160" src="<?=$member['image']?>" class="thumbnail" alt="profilepic"/>
                               </div>
                             </div>
-                            <div class="span4 tc">
+                            <div class="span5 ">
                                 <? $middleName = (!empty($member['middleName'])) ? ' '.$member['middleName'].' ':' '; ?>
                                 <h2 class="blue1"><?=$member['firstName']?><?=$middleName?><?=$member['lastName']?></h2>
                                 <!--
@@ -110,11 +110,14 @@ img.thumbnail{ max-width: 100%;}
                                 <? if($member['boardCertified'] =='Yes'): ?>
                                 <img width="120" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/boardcertified" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
                                 <? endif; ?>
+                                <? if( !empty($member['currentFacultyPosition']) && $member['currentFacultyPosition'] == \Saw\Model\Member::$facultyPositionReversed[\Saw\Model\Member::$facultyPosition['DELEGATE']]): ?>
+                                <img width="100" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/exec" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
+                                <? endif; ?>
                             </div>
-                            <div class="span6 contact">
+                            <div class="span5 contact">
                               <div class="span5">
                                 <ul class="inline">
-                                  <? if(!empty($member['currentFacultyPosition'])): ?>
+                                  <? if(!empty($member['currentFacultyPosition']) && $member['currentFacultyPosition'] != \Saw\Model\Member::$facultyPositionReversed[\Saw\Model\Member::$facultyPosition['DELEGATE']]): ?>
                                       <li><img class="" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/exec" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" /></li>
                                   <? endif; ?>
                                 </ul>
@@ -147,7 +150,7 @@ img.thumbnail{ max-width: 100%;}
                                 </div>
                                 <div class="span6" style="margin-left:0px;">
                                   <? if(!empty($member['websites'])): ?>
-                                      <a class="orange" href="http://<?=$member['websites'][0]['website']?>"><i class="icon-share orange"></i> <?=$member['websites'][0]['website']?></a>
+                                      <a class="orange" href="http://<?=$member['websites'][0]['website']?>"> <?=$member['websites'][0]['website']?></a>
                                   <? endif; ?>
                                 </div>
                               </div>
@@ -162,7 +165,7 @@ img.thumbnail{ max-width: 100%;}
                                     </div>
                                     <div class="span12">
                                       <? if(!empty($member['websites'])): ?>
-                                      <a href="http://<?=$member['websites'][0]['website']?>" class="orange"><i class="icon-share orange"></i> <?=$member['websites'][0]['website']?></a>
+                                      <a href="http://<?=$member['websites'][0]['website']?>" class="orange"></i> <?=$member['websites'][0]['website']?></a>
                                       <? endif; ?>
                                     </div>
                                 </div>
@@ -177,7 +180,7 @@ img.thumbnail{ max-width: 100%;}
                 <? endif; ?>
                 <div class="span3">
                 <? $i=0; foreach($member['websites'] as $website): ?>
-                <i class="icon-share orange"></i>  <a href="http://<?=$website['website']?>" alt="<?=$website['websiteDesc']?>" title="<?=$website['websiteDesc']?>"><?=$website['website']?></a>
+                <a href="http://<?=$website['website']?>" alt="<?=$website['websiteDesc']?>" title="<?=$website['websiteDesc']?>"><?=$website['website']?></a>
                 <? $i++; if($i == count($member['websites']) - 1){ echo "<br>";} ?>
                 <?
                 endforeach; ?>

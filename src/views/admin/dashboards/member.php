@@ -129,6 +129,11 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                <? endif; ?>
                <? endif; ?>
 
+               <? if(!empty($this->vars['delegate'])): ?>
+               <h3 class="form-section">Manage Your State Delegate Page</h3>
+               <span><a href="/delegate/edit/<?=$this->vars['delegate']['_id']?>" class="btn blue large edit-profile"><i class=" icon-pencil"></i> Manage <?=$this->vars['delegate']['state']?></a></span>
+               <br><br>
+               <? endif; ?>
                <h3 class="form-section">Profile Information</h3>
                <span><a data-id="<?=call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$this->app);?>" class="btn blue large edit-profile"><i class=" icon-pencil"></i> Edit Your Profile</a></span>
                <br><br>
@@ -154,7 +159,12 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                      <div class="control-group ">
                         <label class="control-label">Executive Status</label>
                         <div class="controls">
+                           <? if($this->vars['member']['currentFacultyPosition'] == \Saw\Model\Member::$facultyPosition['DELEGATE']):?>
+                           <img width="152" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/exec">
+                           <? else: ?>
                            <img src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/exec">
+                           <? endif; ?>
+                           
                         </div>
                      </div>
                   </div>

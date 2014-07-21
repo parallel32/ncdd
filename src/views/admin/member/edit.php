@@ -303,7 +303,11 @@
                               <div class="control-group ">
                                  <label class="control-label">Executive Status</label>
                                  <div class="controls">
+                                    <? if($this->vars['member']['currentFacultyPosition'] == \Saw\Model\Member::$facultyPosition['DELEGATE']):?>
+                                    <img width="152" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/exec">
+                                    <? else: ?>
                                     <img src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$this->vars['member']['_id']?>/exec">
+                                    <? endif; ?>
                                  </div>
                               </div>
                            </div>

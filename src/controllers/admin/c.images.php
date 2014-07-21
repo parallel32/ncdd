@@ -17,11 +17,17 @@ $app->match('/image/upload', function (Request $request) use ($app) {
 		throw new \Saw\Model\Exceptions\DomainException("You must pass up a record id (belongsTo).  Please try again.");
 	}
 	try {
-		$image = $app['imageFactory']($doc['context'],$doc['belongsTo']);
+		if(array_key_exists('parentAttr', $doc)){
+			$image = $app['imageFactory']($doc['context'],$doc['belongsTo'],$doc['parentAttr']);
+		}else{
+			$image = $app['imageFactory']($doc['context'],$doc['belongsTo']);
+		}
+
+		//error_log('image/upload image from factory:'.print_r($image,true));
 		$image->setRequest($request);
 		$image->prepareFile();
         
-        if(array_key_exists('filetype', $doc) && $doc['filetype'] = 'file'){
+        if(array_key_exists('filetype', $doc) && $doc['filetype'] == 'file'){
         	$app['upload-mongo']->saveFile($image);
 		}else{
 			// image sanity check
@@ -33,12 +39,18 @@ $app->match('/image/upload', function (Request $request) use ($app) {
 	        }
 	        $app['upload-mongo']->saveImage($image);
 		}
-
+		if(property_exists($image, 'parentAttr')){
+			$delete_url = "/image/delete/".$image->context."/".$image->belongsTo.'/'.$image->parentAttr;
+			$parent_attr = $image->parentAttr;
+		}else{
+			$delete_url = "/image/delete/".$image->context."/".$image->belongsTo;	
+			$parent_attr = '';
+		}		
 		$response_arr = array('files'=>array(0=>array('name'=>$image->getUploadedFileName()
 														,'size'=>$image->getUploadedFileSize()
 														,'thumbnail_url'=>$app['getImageURL']($image,'small')
 														,'delete_type'=>"GET"
-														,'delete_url'=>"/image/delete/".$image->context."/".$image->belongsTo)));
+														,'delete_url'=>$delete_url)));
 		return new Response(json_encode($response_arr), 200,array('Content-Type' => 'application/json'));	
 	} catch (Saw\Model\Exceptions\DomainException $e) {
 		$fileName = $_FILES['file']['name'];
@@ -85,8 +97,13 @@ $app->match('/image/crop', function (Request $request) use ($app) {
 	if(empty($doc['belongsTo'])){
 		throw new \Saw\Model\Exceptions\DomainException("You must pass up a record id (belongsTo).  Please try again.");
 	}
-	$image = $app['imageFactory']($doc['context'],$doc['belongsTo']);
-  
+
+	if(array_key_exists('parentAttr', $doc)){
+		$image = $app['imageFactory']($doc['context'],$doc['belongsTo'],$doc['parentAttr']);
+	}else{
+		$image = $app['imageFactory']($doc['context'],$doc['belongsTo']);
+	}
+	
     $app['upload-mongo']->cropImage($doc['x'],$doc['y'],$doc['w'],$doc['h'],$doc['imageId'],$image,$doc['size']);
 	$image = $image->__toArray();
 	return new Response(json_encode(array('imageUrl'=>$image['urls'][$doc['size']]['CDN'].'?v='.time(), 'message'=>'success')), 200,array('Content-Type' => 'application/json'));	
@@ -95,13 +112,22 @@ $app->match('/image/crop', function (Request $request) use ($app) {
 /////////////////////
 // DELETE AN IMAGE //
 /////////////////////
-$app->get('/image/delete/{context}/{belongsTo}', function ($context, $belongsTo, Request $request) use ($app) {
+$app->get('/image/delete/{context}/{belongsTo}/{parentAttr}', function ($context, $belongsTo, $parentAttr, Request $request) use ($app) {
 	try {
 		$belongsTo = new \MongoId($belongsTo);
-		$deleteQuery = array('belongsTo'=>$belongsTo);
+		if(!empty($parentAttr)){
+			$deleteQuery = array('belongsTo'=>$belongsTo,'parentAttr'=>$parentAttr);
+		}else{
+			$deleteQuery = array('belongsTo'=>$belongsTo);
+		}
+
 		$app['upload-mongo']->deleteByCriteria($deleteQuery);
 		$parentObj = $app['imageParentFactory']($context,$belongsTo);
-		$parentObj->image = new \stdClass();
+		if(!empty($parentAttr)){
+			$parentObj->{$parentAttr} = new \stdClass();
+		}else{
+			$parentObj->image = new \stdClass();
+		}		
 		$parentObj->saveEdit();
 		return new Response('success', 200, array('Content-Type' => 'text/html'));	
 	} catch (Exception $e) {
@@ -114,7 +140,9 @@ $app->get('/image/delete/{context}/{belongsTo}', function ($context, $belongsTo,
 		//Otherwise if it's 500 it will display Internal Server Error by default
 		return new Response(json_encode($response_arr), 200,array('Content-Type' => 'application/json'));
 	}
-})->before($mustbeMEMBER);
+})
+->value('parentAttr','')
+->before($mustbeMEMBER);
 ///////////////////
 // DELETE A FILE //
 ///////////////////
@@ -163,7 +191,7 @@ $app->get('/images/{imageId}', function ($imageId, Request $request) use ($app,$
 	}
 });
 
-$app->get('/image/{context}/{belongsTo}/{size}', function ($context, $belongsTo, $size, Request $request) use ($app,$imgUnavailable) {
+$app->get('/image/{context}/{belongsTo}/{size}/{parentAttr}', function ($context, $belongsTo, $size, $parentAttr,Request $request) use ($app,$imgUnavailable) {
 	$belongsTo = new \MongoId($belongsTo);
 	if($context == 'drive'){
 		$drive = new Model\Drive(array('_id'=>$belongsTo),$app);
@@ -185,7 +213,13 @@ $app->get('/image/{context}/{belongsTo}/{size}', function ($context, $belongsTo,
 			return new Response($file_contents, 200, array('Content-Type' => 'image/jpeg'));
 		}
 	}else{
-		$file_contents = $app['upload-mongo']->getImageByCriteria(array('belongsTo'=>$belongsTo, 'size'=>$size));
+		if(!empty($parentAttr)){
+			$query = array('belongsTo'=>$belongsTo, 'size'=>$size,'parentAttr'=>$parentAttr);
+			
+		}else{
+			$query = array('belongsTo'=>$belongsTo, 'size'=>$size);
+		}
+		$file_contents = $app['upload-mongo']->getImageByCriteria($query);
 	    if(!empty($file_contents)){
 	    	return new Response($file_contents, 200, array('Content-Type' => 'image/jpeg'));
 		}else{
@@ -195,7 +229,7 @@ $app->get('/image/{context}/{belongsTo}/{size}', function ($context, $belongsTo,
 		}	
 	}
 	
-});
+})->value('parentAttr','');
 
 // prepares an image url 
 $app['getImageURL'] = $app->protect(function ($image,$size,$ssl=false) { 
@@ -203,7 +237,12 @@ $app['getImageURL'] = $app->protect(function ($image,$size,$ssl=false) {
     if(is_object($image)) $image = $image->__toArray();
     if(!empty($image) && !empty($image['base'])) {
         $base = ($ssl) ? $image['baseSSL'] : $image['base'];
-        $url = $base.'/image/'.$image['context'].'/'.$image['belongsTo'].'/'.$size;
+        if(array_key_exists('parentAttr', $image) && !empty($image['parentAttr'])){
+        	$url = $base.'/image/'.$image['context'].'/'.$image['belongsTo'].'/'.$size.'/'.$image['parentAttr'];
+        }else{
+        	$url = $base.'/image/'.$image['context'].'/'.$image['belongsTo'].'/'.$size;	
+        }
+        
         if(!empty($image['modified'])) {
             $url.='?v='.$image['modified'];
         }
@@ -211,7 +250,7 @@ $app['getImageURL'] = $app->protect(function ($image,$size,$ssl=false) {
     return $url;
 });
 
-$app['imageFactory'] = $app->protect(function ($context,$belongsTo) {
+$app['imageFactory'] = $app->protect(function ($context,$belongsTo,$parentAttr='') {
 	switch ($context) {
 		case 'drive':
 			return new Model\ImageDrive($belongsTo);
@@ -242,6 +281,9 @@ $app['imageFactory'] = $app->protect(function ($context,$belongsTo) {
 			break;
 		case 'stateseminar':
 			return new Model\ImageStateSeminar($belongsTo);
+			break;
+		case 'delegate':
+			return new Model\ImageDelegate($belongsTo,$parentAttr);
 			break;
 
 	}
@@ -275,6 +317,9 @@ $app['imageParentFactory'] = $app->protect(function ($context,$belongsTo) use ($
 			break;
 		case 'stateseminar':
 			return new Model\StateSeminar(array('_id'=>$belongsTo),$app);
+			break;
+		case 'delegate':
+			return new Model\Delegate(array('_id'=>$belongsTo),$app);
 			break;
 
 	}

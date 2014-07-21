@@ -29,6 +29,7 @@ class StateSeminar extends Model {
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addPropertyConstraint('name', new Constraints\NotBlank(array('message'=>'cannot be blank')));
+		$metadata->addPropertyConstraint('date', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('sponsor', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('slug', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addConstraint(new Callback(array(

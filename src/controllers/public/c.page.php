@@ -336,7 +336,9 @@ $app->get('/duilawsinyourstate.php', function (Request $request) use ($app) {
 	return $app->redirect('/dui-laws-in-your-state/usa/'.$slug);	
 
 });
+/**
 
+*/
 $app->get('/dui-laws-in-your-state', function (Request $request) use ($app) {
 	$slug = 'dui-laws-in-your-state';
 	$page = new Model\Page($doc=array('slug'=>$slug), $app);
@@ -447,6 +449,9 @@ $app->get('/findstatedelegate.php', function (Request $request) use ($app) {
 	return $app->redirect('/state-delegates/usa/'.$slug);	
 
 });
+/**
+
+*/
 $app->get('/state-delegates', function (Request $request) use ($app) {
 	$slug = 'state-delegates';
 	$page = new Model\Page($doc=array('slug'=>$slug), $app);

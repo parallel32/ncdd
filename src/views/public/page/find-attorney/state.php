@@ -260,7 +260,7 @@ ul.sidebarlist li {
                             </div>
                                 <div class="row-fluid searchmeta">
                                     <span class="meta muted"></span>
-                                    <div class="span5 tc">
+                                    <div class="span5 ">
                                         <? $middleName = (!empty($member['middleName'])) ? ' '.$member['middleName'].' ':' '; ?>
                                         <strong class="bc laywername"><?=$member['firstName']?><?=$middleName?><?=$member['lastName']?></strong><br>
                                         <!--
@@ -277,12 +277,15 @@ ul.sidebarlist li {
                                         <? if($member['boardCertified'] =='Yes'): ?>
                                         <img class="sheild" width="120" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/boardcertified" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
                                         <? endif; ?>
+                                        <? if( !empty($member['currentFacultyPosition']) && $member['currentFacultyPosition'] == \Saw\Model\Member::$facultyPositionReversed[\Saw\Model\Member::$facultyPosition['DELEGATE']]): ?>
+                                        <img width="100" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/exec" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
+                                        <? endif; ?>
                                     </div>
                                     <div class="span4 bc">
                                         <a href="mailto:<?=$member['email']?>"><img src="/assets/img/contactme.png"></a>
                                         <br><br><br> <span class="phone"><a href="tel:<?=$member['primaryPhone']?>"><?=$member['primaryPhone']?></a></span>
                                         <div class="clear"></div>
-                                        <? if(!empty($member['currentFacultyPosition'])): ?>
+                                        <? if(!empty($member['currentFacultyPosition']) && $member['currentFacultyPosition'] != \Saw\Model\Member::$facultyPositionReversed[\Saw\Model\Member::$facultyPosition['DELEGATE']]): ?>
                                             <img class="delegation" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/exec" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
                                         <? endif; ?>
                                     </div>
@@ -290,7 +293,7 @@ ul.sidebarlist li {
                                 <div class="row-fluid searchmetafooter">
                                     <div class="span3 tl">
                                         <? if(!empty($member['websites'])): ?>
-                                            <a href="http://<?=$member['websites'][0]['website']?>"><i class="icon-share"></i> <?=$member['websites'][0]['website']?></a>
+                                            <a href="http://<?=$member['websites'][0]['website']?>"> <?=$member['websites'][0]['website']?></a>
                                         <? endif; ?>
                                     </div>
                                     

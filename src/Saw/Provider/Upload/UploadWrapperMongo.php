@@ -26,7 +26,12 @@ class UploadWrapperMongo
      */
     public function saveImage(&$image,$replace=false) {
         // first delete any images previously associated with the parent Object
-        $this->deleteByCriteria(array('belongsTo'=>$image->belongsTo));
+        if(property_exists($image, 'parentAttr')){
+            $this->deleteByCriteria(array('belongsTo'=>$image->belongsTo,'parentAttr'=>$image->parentAttr));
+        }else{
+            $this->deleteByCriteria(array('belongsTo'=>$image->belongsTo));    
+        }
+        
         // create image sizes from the original image and save to mongo
         foreach ($image->sizes as $key=>$size){
             
@@ -40,9 +45,17 @@ class UploadWrapperMongo
                 $base_name = $image->getFile()->getBasename('.'.$ext);
                 $new_name = $path.'/'.$base_name.'-'.$size['size'].'.'.$ext;
             $img->save($new_name);
+
+            // prepare the document to store with the actual image file.
+            if(property_exists($image, 'parentAttr')){
+                $doc=array('belongsTo'=>$image->belongsTo,'size'=>$key,'parentAttr'=>$image->parentAttr);
+            }else{
+                $doc=array('belongsTo'=>$image->belongsTo,'size'=>$key);
+            }
+            
             $image->sizes[$key]['id'] = (string)$this->app['mongo']->storeFile($new_name
                                                         ,$this->collection
-                                                        ,$doc=array('belongsTo'=>$image->belongsTo,'size'=>$key));
+                                                        ,$doc);
                                                         //*/
             $image->makeUrls();
             

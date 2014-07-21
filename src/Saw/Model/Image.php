@@ -33,6 +33,8 @@ class Image {
 	// via composition store a reference to the object to which this 
 	// image will be nested so that it can be saved more efficiently
 	public $parentObject;
+	// the attribute name in the parent object where the image object is stored.
+	public $parentAttr;
 	
 	public static $uploadedFileName;
 	public static $uploadBaseDir = SAW_FILE_UPLOAD_DIR;
@@ -49,9 +51,10 @@ class Image {
         $this->modified = '';
 		$this->sizes = array();
 		$this->urls = array();
-		$this->urlTemplate = 'image/{context}/{belongsTo}/{size}';
+		$this->urlTemplate = 'image/{context}/{belongsTo}/{size}/{parentAttr}';
 		$this->setCDN($cdn);
 		$this->urlRelative = $this->urlTemplate;
+		$this->parentAttr = 'image';
 	}
 	public function setCDN($cdn=true){
 		if($cdn){
@@ -69,8 +72,8 @@ class Image {
 	public function makeUrls(){
 		$tmp = array();
         foreach($this->sizes as $key=>$size):
-			$find = array('{context}','{size}','{belongsTo}');
-			$replace = array($this->context, $key, $this->belongsTo);
+			$find = array('{context}','{size}','{belongsTo}','{parentAttr}');
+			$replace = array($this->context, $key, $this->belongsTo, $this->parentAttr);
 			$tmp[$key]['CDN'] = str_replace($find, $replace, $this->urlCDN);
 			$tmp[$key]['SSLCDN'] = str_replace($find, $replace, $this->urlSSLCDN);
 			$tmp[$key]['RELATIVE'] = str_replace($find, $replace, $this->urlRelative);
@@ -88,7 +91,9 @@ class Image {
 	}
 	public function instantiateParent($app){
 		$reflectionClass = new \ReflectionClass($this->parentObject);
-        return $reflectionClass->newInstance(array('_id'=>$this->belongsTo,'image'=>$this->__toArray()), $app);
+		$arr = array('_id'=>$this->belongsTo,$this->parentAttr=>$this->__toArray());
+		//error_log('Image.instantiateParent:arr'.print_r($arr,true));
+        return $reflectionClass->newInstance($arr, $app);
 	}
 
 	public function setRequest(\Symfony\Component\HttpFoundation\Request $request){

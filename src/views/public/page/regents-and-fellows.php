@@ -173,7 +173,7 @@ ul.sidebarlist li {
                                 <div class="row-fluid searchmetafooter">
                                     <div class="span3 tl">
                                         <? if(!empty($member['websites'])): ?>
-                                            <a href="http://<?=$member['websites'][0]['website']?>"><i class="icon-share"></i> <?=$member['websites'][0]['website']?></a>
+                                            <a href="http://<?=$member['websites'][0]['website']?>"> <?=$member['websites'][0]['website']?></a>
                                         <? endif; ?>
                                     </div>
                                     
