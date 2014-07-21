@@ -336,9 +336,7 @@ $app->get('/duilawsinyourstate.php', function (Request $request) use ($app) {
 	return $app->redirect('/dui-laws-in-your-state/usa/'.$slug);	
 
 });
-/**
 
-*/
 $app->get('/dui-laws-in-your-state', function (Request $request) use ($app) {
 	$slug = 'dui-laws-in-your-state';
 	$page = new Model\Page($doc=array('slug'=>$slug), $app);
@@ -354,6 +352,17 @@ $app->get('/dui-laws-in-your-state', function (Request $request) use ($app) {
 	return $app['view']->render('page/dui-laws-in-your-state', 'content', $view_vars);
 });
 $app->get('/dui-laws-in-your-state/{country}/{state}', function ($country, $state, Request $request) use ($app) {
+
+	/**
+
+	*/
+	// if a delegate page exists for this country / state.. issue a redirect to /state-delegates/{country}/{state}#dui-laws  -> so they can go right to that section
+	$delegate = new Model\Delegate(array(), $app);
+	$states = array('alabama'=>'AL','alaska'=>'AK','arizona'=>'AZ','arkansas'=>'AR','california'=>'CA','colorado'=>'CO','connecticut'=>'CT','delaware'=>'DE','washington-dc'=>'DC','florida'=>'FL','georgia'=>'GA','hawaii'=>'HI','idaho'=>'ID','illinois'=>'IL','indiana'=>'IN','iowa'=>'IA','kansas'=>'KS','kentucky'=>'KY','louisiana'=>'LA','maine'=>'ME','maryland'=>'MD','massachusetts'=>'MA','michigan'=>'MI','minnesota'=>'MN','mississippi'=>'MS','missouri'=>'MO','montana'=>'MT','nebraska'=>'NE','nevada'=>'NV','new-hampshire'=>'NH','new-jersey'=>'NJ','new-mexico'=>'NM','new-york'=>'NY','north-carolina'=>'NC','north-dakota'=>'ND','ohio'=>'OH','oklahoma'=>'OK','oregon'=>'OR','pennsylvania'=>'PA','rhode-island'=>'RI','south-carolina'=>'SC','south-dakota'=>'SD','tennessee'=>'TN','texas'=>'TX','utah'=>'UT','vermont'=>'VT','virginia'=>'VA','washington'=>'WA','west-virginia'=>'WV','wisconsin'=>'WI','wyoming'=>'WY','ontario'=>'ON','quebec'=>'QC','saskatchewan'=>'SK');
+	$delegate = $delegate->fetchByState(strtolower($states[$state]),$country,true);
+	if(!empty($delegate)){
+		return $app->redirect('/state-delegates/'.$country.'/'.$state.'#dui-laws');	
+	}
 
 	switch (strtolower($country)) {
 		case 'usa':
@@ -449,9 +458,6 @@ $app->get('/findstatedelegate.php', function (Request $request) use ($app) {
 	return $app->redirect('/state-delegates/usa/'.$slug);	
 
 });
-/**
-
-*/
 $app->get('/state-delegates', function (Request $request) use ($app) {
 	$slug = 'state-delegates';
 	$page = new Model\Page($doc=array('slug'=>$slug), $app);
@@ -471,8 +477,11 @@ $app->get('/state-delegates', function (Request $request) use ($app) {
 	
 	return $app['view']->render('page/state-delegates', 'content', $view_vars);
 });
-$app->get('/state-delegates/{country}/{state}', function ($country, $state, Request $request) use ($app) {
+/**
 
+*/
+$app->get('/state-delegates/{country}/{state}', function ($country, $state, Request $request) use ($app) {
+	$orig_country = $country;
 	switch (strtolower($country)) {
 		case 'usa':
 			$country = 'US';
@@ -485,12 +494,73 @@ $app->get('/state-delegates/{country}/{state}', function ($country, $state, Requ
 	$state = $states[$state];
 	$state_reversed = array('AL'=>'Alabama','AK'=>'Alaska',    'AZ'=>'Arizona',    'AR'=>'Arkansas',    'CA'=>'California',    'CO'=>'Colorado',    'CT'=>'Connecticut',    'DE'=>'Delaware',    'DC'=>'District of Columbia',    'FL'=>'Florida',    'GA'=>'Georgia',    'HI'=>'Hawaii',    'ID'=>'Idaho',    'IL'=>'Illinois',    'IN'=>'Indiana',    'IA'=>'Iowa',  'IO'=>'Iowa',    'KS'=>'Kansas',    'KY'=>'Kentucky',    'LA'=>'Louisiana',    'ME'=>'Maine',    'MD'=>'Maryland',    'MA'=>'Massachusetts',    'MI'=>'Michigan',    'MN'=>'Minnesota',    'MS'=>'Mississippi',    'MO'=>'Missouri',    'MT'=>'Montana', 'NE'=>'Nebraska',    'NV'=>'Nevada',    'NH'=>'New Hampshire',    'NJ'=>'New Jersey',    'NM'=>'New Mexico',    'NY'=>'New York',    'NC'=>'North Carolina',    'ND'=>'North Dakota',    'OH'=>'Ohio',    'OK'=>'Oklahoma',    'OR'=>'Oregon',    'PA'=>'Pennsylvania',    'RI'=>'Rhode Island',    'SC'=>'South Carolina',    'SD'=>'South Dakota',    'TN'=>'Tennessee',    'TX'=>'Texas',    'UT'=>'Utah',    'VT'=>'Vermont',    'VA'=>'Virginia',    'WA'=>'Washington',    'WV'=>'West Virginia',   'WI'=>'Wisconsin',    'WY'=>'Wyoming','ON'=>'Ontario','SK'=>'Saskatchewan','QC'=>'Quebec');
 	
-	$member = new Model\Member(array(), $app);
-	$members = $member->searchStateDelegatesByState($state);
+	//$member = new Model\Member(array(), $app);
+	//$members = $member->searchStateDelegatesByState($state);
+
+	////////////////////////////////////
+	// process delegate members block //
+	////////////////////////////////////	
+	$delegate = new Model\Delegate(array(), $app);
+	$delegate = $delegate->fetchByState(strtolower($state),$orig_country,true);
+	$result = $delegate['members'];
+	if(!empty($result)):
+	$i=0;
+	foreach ($result as $key => $value) {
+		$result[$i]['_id'] = $value['_id'];
+		$result[$i]['firstName'] = $value['firstName'];
+		$result[$i]['middleName'] = (array_key_exists('middleName',$value)) ? $value['middleName']: '';
+		$result[$i]['lastName'] = $value['lastName'];
+		$result[$i]['slug'] = $value['slug'];
+		$result[$i]['primaryPhone'] = $value['primaryPhone'];
+		$result[$i]['email'] = $value['email'];
+		// do some extra processing with the values here
+		$result[$i]['image'] = (!empty($value['image'])) ? $value['image']['urls']['small']['SSLCDN'] : '/noprofileimage';
+		$result[$i]['currentMembership'] = (!empty($value['currentMembership'])) ? Model\Member::$membershipReversed[$value['currentMembership']] : '';;
+		$result[$i]['currentFacultyPosition'] = (!empty($value['currentFacultyPosition'])) ? Model\Member::$facultyPositionReversed[$value['currentFacultyPosition']] : '';
+		$result[$i]['boardCertified'] = ($value['boardCertified']) ? "Yes" : "No";
+		$result[$i]['boardCertifiedBadge'] = Model\Member::$boardCertifiedBadge;
+		$result[$i]['staff'] = ((array_key_exists('staff',$value)) ? $value['staff']: '') ? "Yes" : "No";
+		$result[$i]['staffBadge'] = Model\Member::$staffBadge;
+		
+		$result[$i]['websites'] = $value['websites'];
+		$i++;
+	}
+	endif;
+	$_result = array();
+	if(!empty($result)):
+		for ($i=0; $i < count($result); $i++) {
+			$_result[(string)$result[$i]['_id']] = $result[$i];
+		}
+	endif;
+	$members = $_result;
+
+	///////////////////////////
+	// process content block //
+	///////////////////////////	
+	$content = $app['prepare_content']($delegate['body']);
+
+	//////////////////
+	// process pics //
+	//////////////////	
+	$image 	= (!empty($delegate['image'])) ? $delegate['image']['urls']['large']['SSLCDN'] : '';
+	$image2 = (!empty($delegate['image2'])) ? $delegate['image2']['urls']['large']['SSLCDN'] : '';
+	$image3 = (!empty($delegate['image3'])) ? $delegate['image3']['urls']['large']['SSLCDN'] : '';
+
+	////////////////////
+	// process events //
+	////////////////////	
+	$events = $delegate['events'];
 
 	$view_vars['slogan_block'] = 'founding-members';
 	$view_vars['state'] = $state_reversed[$state];
 	$view_vars['members'] = $members;
+	$view_vars['events'] = $events;
+	$view_vars['content'] = $content;
+	$view_vars['pics'] = array(
+		$image
+		,$image2
+		,$image3
+	);
 	$page_vars = $app['get_pages']($state);
 	$view_vars = array_merge($page_vars,$view_vars);
 	

@@ -245,15 +245,15 @@ ul.sidebarlist li {
                         <h5 class="cityName pull-left"></h5>
                     </div>
                     <div class="span10">
-
+                        <a name="state-delegate"><h2>State Delegate<?=(count($this->vars['members']) > 1) ?'s':'';?></h2></a>
                         <? foreach($this->vars['members'] as $member): ?>
                             <div class=" tc searchresultswrap">
                                 <div style="overflow-y: hidden;width: 130px;height: 150px;float: left;">
                                 <img width="130" src="<?=$member['image']?>" alt="" class="searchlayerimg"> 
-                            </div>
+                                </div>
                                 <div class="row-fluid searchmeta">
                                     <span class="meta muted"></span>
-                                    <div class="span5 tc">
+                                    <div class="span6 ">
                                         <? $middleName = (!empty($member['middleName'])) ? ' '.$member['middleName'].' ':' '; ?>
                                         <strong class="bc laywername"><?=$member['firstName']?><?=$middleName?><?=$member['lastName']?></strong><br>
                                         <!--
@@ -274,7 +274,7 @@ ul.sidebarlist li {
                                         <img width="100" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/exec" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
                                         <? endif; ?>
                                     </div>
-                                    <div class="span4 bc">
+                                    <div class="span3 bc">
                                         <a href="mailto:<?=$member['email']?>"><img src="/assets/img/contactme.png"></a>
                                         <br><br><br> <span class="phone"><a href="tel:<?=$member['primaryPhone']?>"><?=$member['primaryPhone']?></a></span>
                                         <div class="clear"></div>
@@ -290,11 +290,13 @@ ul.sidebarlist li {
                                         <? endif; ?>
                                     </div>
                                     
-                                    <? if(!empty($member['location']['raw'])): ?>
+                                    
                                     <div class="span8 tl">
+                                        <? if(!empty($member['location']['raw'])): ?>
                                         <a href="/member/<?=$member['_id']?>/<?=$member['slug']?>"><i class="icon-map-marker"></i> <?=$member['location']['raw']?></a>
+                                        <? endif; ?>
                                     </div>
-                                    <? endif; ?>
+                                    
                                     
                                     <div class="span1 tr">
                                         <a href="/member/<?=$member['_id']?>/<?=$member['slug']?>"><img src="/assets/img/fullprofile.png" class="pull-right"> </a>
@@ -304,6 +306,62 @@ ul.sidebarlist li {
                             <div class="clear"></div>
                             <br>
                         <? endforeach; ?>
+                        
+                        <? if(!empty($this->vars['pics'][0]) || !empty($this->vars['pics'][1]) || !empty($this->vars['pics'][2])):?>
+                        <a name="photos"><h2>Photos</h2></a>
+                        <div class="">
+                            <div class="span4"><p><?=(!empty($this->vars['pics'][0])) ? '<img width="280" height="224" src="'.$this->vars['pics'][0].'">' : ''?></p></div>
+                            <div class="span4"><p><?=(!empty($this->vars['pics'][1])) ? '<img width="280" height="224" src="'.$this->vars['pics'][1].'">' : ''?></p></div>
+                            <div class="span4"><p><?=(!empty($this->vars['pics'][2])) ? '<img width="280" height="224" src="'.$this->vars['pics'][2].'">' : ''?></p></div>
+                        </br></br>
+                        </div>
+                        <div class="clear"></div>
+                        <br>
+                        <? endif; ?>
+                        
+
+
+                        <a name="events"><h2>Events</h2></a>                        
+                        <div class=" tc ">
+                            <div class="span12 tl">
+                                <div class="row-fluid sessionSeminarsDetailPage">
+                                    <div class="pull-left span12 tab-content">
+                                        <div class="tab-pane active" id="sessionsSeminarsPage">
+                                            <? if(!empty($this->vars['events'])): ?>
+                                            <table class="table-bordered" style="margin-top: 0px; width:100%">
+                                                <tbody>
+                                                    <tr>
+                                                        <td><div class="bd">Name</div></td>
+                                                        <td><div class="bd">Sponsor</div></td>
+                                                        <td><div class="bd">Date</div></td>
+                                                    </tr>
+
+                                                     <? foreach($this->vars['events'] as $event): ?>
+                                                        <tr>
+                                                            <td><?=$event['name']?></td>
+                                                            <td><?=$event['sponsor']?></td>
+                                                            <td><?=$event['date']['fullMonth']?></td>
+                                                        </tr>
+                                                     <? endforeach; ?>              
+                                                     
+                                                </tbody></table>
+                                                <br>
+                                            <? endif; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <br>
+                        <a name="dui-laws"><h2>DUI Laws</h2></a>                        
+                        <div class=" tc ">
+                            <div class="span12 tl">
+                                <?=$this->vars['content']?>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <br>
                         <!--
                         <div class="pagination tc">
                             <ul>
