@@ -117,172 +117,168 @@ ul.sidebarlist li {
 </div>
 </div></div>
 <div class="container-fluid pagecontent" id="learn">
-                    <div class="row-fluid">
-                        <div class="center span12 bc">
-                            <div class="dropdown visible-phone mapsPhone">
-                                <a class="dropdown-toggle btn" href="javascript:void(0)">
-                                    Select A State
-                                    <b class="caret"></b>
-                                </a>
-                                <ul class="mapsPhoneDropdown">
-                                    <? foreach($this->vars['delegate_states'] as $country=>$state): ?>
-                                    <li class="titleMap"><?=strtoupper($country)?></li>
-                                    <? foreach($this->vars['delegate_states'][$country] as $state): ?>
-                                    <li><a href="/state-delegates/<?=$country?><?=$state['slug']?>"><?=$state['state']?></a></li>
-                                    <? endforeach; ?>
-                                    <? endforeach; ?>
-                                </ul>
-                            </div>
-                       </div> 
-                    <div class="pagecontent ">
-                        <div class="span2 hidden-phone">
-                          <div class="selectstate center bc">SELECT ANOTHER STATE</div>
-                          <? foreach($this->vars['delegate_states'] as $country=>$state): ?>
-                          <div class="country bc"><?=strtoupper($country)?></div>
-                          <ul class="sidebarlist bc">
-                            <? foreach($this->vars['delegate_states'][$country] as $state): ?>
-                            <li><a href="/state-delegates/<?=$country?><?=$state['slug']?>"><?=$state['state']?></a></li>
-                            <? endforeach; ?>
-                         <? endforeach; ?>
+    <div class="row-fluid">
+        <div class="center span12 bc">
+            <div class="dropdown visible-phone mapsPhone">
+                <a class="dropdown-toggle btn" href="javascript:void(0)">
+                    Select A State
+                    <b class="caret"></b>
+                </a>
+                <ul class="mapsPhoneDropdown">
+                    <? foreach($this->vars['delegate_states'] as $country=>$state): ?>
+                    <li class="titleMap"><?=strtoupper($country)?></li>
+                    <? foreach($this->vars['delegate_states'][$country] as $state): ?>
+                    <li><a href="/state-delegates/<?=$country?><?=$state['slug']?>"><?=$state['state']?></a></li>
+                    <? endforeach; ?>
+                    <? endforeach; ?>
+                </ul>
+            </div>
+       </div> 
+        <div class="pagecontent ">
+            <div class="span2 hidden-phone">
+              <div class="selectstate center bc">SELECT ANOTHER STATE</div>
+              <? foreach($this->vars['delegate_states'] as $country=>$state): ?>
+              <div class="country bc"><?=strtoupper($country)?></div>
+              <ul class="sidebarlist bc">
+                <? foreach($this->vars['delegate_states'][$country] as $state): ?>
+                <li><a href="/state-delegates/<?=$country?><?=$state['slug']?>"><?=$state['state']?></a></li>
+                <? endforeach; ?>
+             <? endforeach; ?>
 
-                        </ul>
+            </ul>
+        </div>
+        <div class="cityNameBlock">
+            <h5 class="cityName pull-left"></h5>
+        </div>
+        <div class="span10">
+            <a name="state-delegate"><h2>State Delegate<?=(count($this->vars['members']) > 1) ?'s':'';?></h2></a>
+            <? foreach($this->vars['members'] as $member): ?>
+                <div class=" tc searchresultswrap">
+                    <div style="overflow-y: hidden;width: 130px;height: 150px;float: left;">
+                    <img width="130" src="<?=$member['image']?>" alt="" class="searchlayerimg"> 
                     </div>
-                    <div class="cityNameBlock">
-                        <h5 class="cityName pull-left"></h5>
-                    </div>
-                    <div class="span10">
-                        <a name="state-delegate"><h2>State Delegate<?=(count($this->vars['members']) > 1) ?'s':'';?></h2></a>
-                        <? foreach($this->vars['members'] as $member): ?>
-                            <div class=" tc searchresultswrap">
-                                <div style="overflow-y: hidden;width: 130px;height: 150px;float: left;">
-                                <img width="130" src="<?=$member['image']?>" alt="" class="searchlayerimg"> 
-                                </div>
-                                <div class="row-fluid searchmeta">
-                                    <span class="meta muted"></span>
-                                    <div class="span6 ">
-                                        <? $middleName = (!empty($member['middleName'])) ? ' '.$member['middleName'].' ':' '; ?>
-                                        <strong class="bc laywername"><?=$member['firstName']?><?=$middleName?><?=$member['lastName']?></strong><br>
-                                        <!--
-                                        <span class="orange meta"><?=$member['currentMembership']?></span><br>
-                                        <?if(!empty($member['currentFacultyPosition'])):?>
-                                            <span class="orange meta"><?=$member['currentFacultyPosition']?></span><br>
-                                        <?endif;?>
-                                        -->
-                                        
-                                        <img class="sheild" width="100" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/member" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
-                                        <? if($member['staff'] =='Yes'): ?>
-                                        <img class="sheild" width="100" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/staff" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
-                                        <? endif; ?>
-                                        <? if($member['boardCertified'] =='Yes'): ?>
-                                        <img class="sheild" width="120" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/boardcertified" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
-                                        <? endif; ?>
-                                        <? if( !empty($member['currentFacultyPosition']) && $member['currentFacultyPosition'] == \Saw\Model\Member::$facultyPositionReversed[\Saw\Model\Member::$facultyPosition['DELEGATE']]): ?>
-                                        <img width="100" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/exec" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
-                                        <? endif; ?>
-                                    </div>
-                                    <div class="span3 bc">
-                                        <a href="mailto:<?=$member['email']?>"><img src="/assets/img/contactme.png"></a>
-                                        <br><br><br> <span class="phone"><a href="tel:<?=$member['primaryPhone']?>"><?=$member['primaryPhone']?></a></span>
-                                        <div class="clear"></div>
-                                        <? if(!empty($member['currentFacultyPosition']) && $member['currentFacultyPosition'] != \Saw\Model\Member::$facultyPositionReversed[\Saw\Model\Member::$facultyPosition['DELEGATE']]): ?>
-                                            <img class="delegation" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/exec" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
-                                        <? endif; ?>
-                                    </div>
-                                </div>
-                                <div class="row-fluid searchmetafooter">
-                                    <div class="span3 tl">
-                                        <? if(!empty($member['websites'])): ?>
-                                            <a href="http://<?=$member['websites'][0]['website']?>"> <?=$member['websites'][0]['website']?></a>
-                                        <? endif; ?>
-                                    </div>
-                                    
-                                    
-                                    <div class="span8 tl">
-                                        <? if(!empty($member['location']['raw'])): ?>
-                                        <a href="/member/<?=$member['_id']?>/<?=$member['slug']?>"><i class="icon-map-marker"></i> <?=$member['location']['raw']?></a>
-                                        <? endif; ?>
-                                    </div>
-                                    
-                                    
-                                    <div class="span1 tr">
-                                        <a href="/member/<?=$member['_id']?>/<?=$member['slug']?>"><img src="/assets/img/fullprofile.png" class="pull-right"> </a>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="row-fluid searchmeta">
+                        <span class="meta muted"></span>
+                        <div class="span6 ">
+                            <? $middleName = (!empty($member['middleName'])) ? ' '.$member['middleName'].' ':' '; ?>
+                            <strong class="bc laywername"><?=$member['firstName']?><?=$middleName?><?=$member['lastName']?></strong><br>
+                            <!--
+                            <span class="orange meta"><?=$member['currentMembership']?></span><br>
+                            <?if(!empty($member['currentFacultyPosition'])):?>
+                                <span class="orange meta"><?=$member['currentFacultyPosition']?></span><br>
+                            <?endif;?>
+                            -->
+                            
+                            <img class="sheild" width="100" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/member" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
+                            <? if($member['staff'] =='Yes'): ?>
+                            <img class="sheild" width="100" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/staff" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
+                            <? endif; ?>
+                            <? if($member['boardCertified'] =='Yes'): ?>
+                            <img class="sheild" width="120" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/boardcertified" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
+                            <? endif; ?>
+                            <? if( !empty($member['currentFacultyPosition']) && $member['currentFacultyPosition'] == \Saw\Model\Member::$facultyPositionReversed[\Saw\Model\Member::$facultyPosition['DELEGATE']]): ?>
+                            <img width="100" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/exec" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
+                            <? endif; ?>
+                        </div>
+                        <div class="span3 bc">
+                            <a href="mailto:<?=$member['email']?>"><img src="/assets/img/contactme.png"></a>
+                            <br><br><br> <span class="phone"><a href="tel:<?=$member['primaryPhone']?>"><?=$member['primaryPhone']?></a></span>
                             <div class="clear"></div>
-                            <br>
-                        <? endforeach; ?>
-                        
-                        <? if(!empty($this->vars['pics'][0]) || !empty($this->vars['pics'][1]) || !empty($this->vars['pics'][2])):?>
-                        <a name="photos"><h2>Photos</h2></a>
-                        <div class="">
-                            <div class="span4"><p><?=(!empty($this->vars['pics'][0])) ? '<img width="280" height="224" src="'.$this->vars['pics'][0].'">' : ''?></p></div>
-                            <div class="span4"><p><?=(!empty($this->vars['pics'][1])) ? '<img width="280" height="224" src="'.$this->vars['pics'][1].'">' : ''?></p></div>
-                            <div class="span4"><p><?=(!empty($this->vars['pics'][2])) ? '<img width="280" height="224" src="'.$this->vars['pics'][2].'">' : ''?></p></div>
-                        </br></br>
+                            <? if(!empty($member['currentFacultyPosition']) && $member['currentFacultyPosition'] != \Saw\Model\Member::$facultyPositionReversed[\Saw\Model\Member::$facultyPosition['DELEGATE']]): ?>
+                                <img class="delegation" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/exec" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
+                            <? endif; ?>
                         </div>
-                        <div class="clear"></div>
-                        <br>
-                        <? endif; ?>
-                        
-
-                        <? if(!empty($this->vars['events'])): ?>
-                        <a name="events"><h2>Events</h2></a>                        
-                        <div class=" tc ">
-                            <div class="span12 tl">
-                                <div class="row-fluid sessionSeminarsDetailPage">
-                                    <div class="pull-left span12 tab-content">
-                                        <div class="tab-pane active" id="sessionsSeminarsPage">
-                                            
-                                            <table class="table-bordered" style="margin-top: 0px; width:100%">
-                                                <tbody>
-                                                    <tr>
-                                                        <td><div class="bd">Name</div></td>
-                                                        <td><div class="bd">Sponsor</div></td>
-                                                        <td><div class="bd">Date</div></td>
-                                                    </tr>
-
-                                                     <? foreach($this->vars['events'] as $event): ?>
-                                                        <tr>
-                                                            <td><?=$event['name']?></td>
-                                                            <td><?=$event['sponsor']?></td>
-                                                            <td><?=$event['date']['fullMonth']?></td>
-                                                        </tr>
-                                                     <? endforeach; ?>              
-                                                     
-                                                </tbody></table>
-                                                <br>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <? endif; ?>
-                        <div class="clear"></div>
-                        <br>
-                        <a name="dui-laws"><h2>DUI Laws</h2></a>                        
-                        <div class=" tc ">
-                            <div class="span12 tl">
-                                <?=$this->vars['content']?>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <br>
-                        <!--
-                        <div class="pagination tc">
-                            <ul>
-                              <li><a href="#">Prev</a></li>
-                              <li><a href="#">1</a></li>
-                              <li><a href="#">2</a></li>
-                              <li><a href="#">3</a></li>
-                              <li><a href="#">4</a></li>
-                              <li><a href="#">5</a></li>
-                              <li><a href="#">Next</a></li>
-                          </ul>
-                      </div>-->
                     </div>
-                    <div class="clear"></div>
+                    <div class="row-fluid searchmetafooter">
+                        <div class="span3 tl">
+                            <? if(!empty($member['websites'])): ?>
+                                <a href="http://<?=$member['websites'][0]['website']?>"> <?=$member['websites'][0]['website']?></a>
+                            <? endif; ?>
+                        </div>
+                        
+                        
+                        <div class="span8 tl">
+                            <? if(!empty($member['location']['raw'])): ?>
+                            <a href="/member/<?=$member['_id']?>/<?=$member['slug']?>"><i class="icon-map-marker"></i> <?=$member['location']['raw']?></a>
+                            <? endif; ?>
+                        </div>
+                        
+                        
+                        <div class="span1 tr">
+                            <a href="/member/<?=$member['_id']?>/<?=$member['slug']?>"><img src="/assets/img/fullprofile.png" class="pull-right"> </a>
+                        </div>
                     </div>
                 </div>
+                <div class="clear"></div>
+                <br>
+            <? endforeach; ?>
+            
+            <? if(!empty($this->vars['pics'][0]) || !empty($this->vars['pics'][1]) || !empty($this->vars['pics'][2])):?>
+            <a name="photos"><h2>Photos</h2></a>
+            <div class="tc">
+                <div class="span4"><p><?=(!empty($this->vars['pics'][0])) ? '<img width="280" src="'.$this->vars['pics'][0].'">' : ''?></p></div>
+                <div class="span4"><p><?=(!empty($this->vars['pics'][1])) ? '<img width="280" src="'.$this->vars['pics'][1].'">' : ''?></p></div>
+                <div class="span4"><p><?=(!empty($this->vars['pics'][2])) ? '<img width="280" src="'.$this->vars['pics'][2].'">' : ''?></p></div>
+            </div>
+            <div class="clear"></div>
+            <br>
+            <? endif; ?>
+            
+
+            <? if(!empty($this->vars['events'])): ?>
+            <a name="events"><h2>Events</h2></a>                        
+            <div class=" tc ">
+                <div class="span10">
+                    <div class="row-fluid sessionSeminarsDetailPage">
+                        <div class="pull-left span12 tab-content">
+                            <div class="tab-pane active" id="sessionsSeminarsPage">
+                                
+                                <table class="table-bordered" style="margin-top: 0px; width:100%">
+                                    <tbody>
+                                        <tr>
+                                            <td><div class="bd">Name</div></td>
+                                            <td><div class="bd">Sponsor</div></td>
+                                            <td><div class="bd">Date</div></td>
+                                        </tr>
+
+                                         <? foreach($this->vars['events'] as $event): ?>
+                                            <tr>
+                                                <td><?=$event['name']?></td>
+                                                <td><?=$event['sponsor']?></td>
+                                                <td><?=$event['date']['fullMonth']?></td>
+                                            </tr>
+                                         <? endforeach; ?>              
+                                         
+                                    </tbody></table>
+                                    <br>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <br>
+            <? endif; ?>
+            <div class="row-fluid">
+                <h2><a name="dui-laws">DUI Laws</a></h2>                        
+                <div class="span10">
+                    <?=$this->vars['content']?>
+                </div>
+            </div>
+            <!--
+            <div class="pagination tc">
+                <ul>
+                  <li><a href="#">Prev</a></li>
+                  <li><a href="#">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#">4</a></li>
+                  <li><a href="#">5</a></li>
+                  <li><a href="#">Next</a></li>
+              </ul>
+          </div>-->
+        </div>
+        </div>
+    </div>
 </div>
