@@ -260,12 +260,14 @@ ul.sidebarlist li {
             <div class="clear"></div>
             <br>
             <? endif; ?>
+            <? if(!empty($this->vars['content'])):?>
             <div class="row-fluid">
                 <h2><a name="dui-laws">DUI Laws</a></h2>                        
                 <div class="span10">
                     <?=$this->vars['content']?>
                 </div>
             </div>
+            <? endif; ?>
             <!--
             <div class="pagination tc">
                 <ul>

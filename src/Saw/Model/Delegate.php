@@ -137,7 +137,7 @@ class Delegate extends Model {
 
 		if($formatted){
 			$countries = $this->distinct('country',$query);
-			krsort($countries);
+			ksort($countries);
 			foreach($countries as $country){
 				$q=array_merge(array('country'=>$country),$query);
 				$_countries[$country] = $this->find($q,array('state'=>1,'abbr'=>1,'slug'=>1),true,$sort=array('state'=>1));
