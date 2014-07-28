@@ -964,7 +964,7 @@ input[type="checkbox"] {
 .sloganBlock .deansMessage {
   height: 248px;
   border-bottom: 5px solid #cacaca;
-  background: url("../img/deansMessageSloganBg.png") no-repeat center;
+  background: url("../img/deansMessageSloganBg.jpg") no-repeat center;
   background-size: cover;
 }
 /* line 910, ../sass/screen.scss */

@@ -993,7 +993,7 @@ body {
 .sloganBlock .deansMessage {
   height: 248px;
   border-bottom: 5px solid #cacaca;
-  background: url("/assets/img/deansMessageSloganBg.png") no-repeat center;
+  background: url("/assets/img/deansMessageSloganBg.jpg") no-repeat center;
   background-size: cover;
 }
 /* line 897, ../sass/screen.scss */
