@@ -27,6 +27,7 @@ class Seminar extends Model {
 	public $image; // image object
 	public $register; // register object
 	public $registerNotice; // registration notice
+	public $registerUrl; // registration notice
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addPropertyConstraint('location', new Constraints\NotBlank(array('message'=>'cannot be blank')));
@@ -41,6 +42,20 @@ class Seminar extends Model {
 		$metadata->addConstraint(new Callback(array(
             'methods' => array('isValidExpirationDate'),
         )));
+        $metadata->addConstraint(new Callback(array(
+            'methods' => array('registerUrlCheck'),
+        )));
+	}
+	/**
+	 * validator helper function
+	*/
+	public function registerUrlCheck(ExecutionContext $context){
+		if(!empty($this->registerUrl) && !empty($this->register) && $this->register['currentStatus'] == SeminarRegister::$status['OFF']){
+			if(strpos($this->registerUrl, 'http') === false && strpos($this->registerUrl, 'https') === false ){
+				$propertyPath = $context->getPropertyPath().'registerUrl';
+	        	$context->addViolationAtPath($propertyPath,'This must have an http:// or an https:// in the beginning for it to be a valid URL', array(), null);
+			}
+		}
 	}
 	/**
 	 * validator helper function
@@ -126,6 +141,7 @@ class Seminar extends Model {
         $this->image = (is_object($doc['image'])) ? $doc['image']->__toArray() : $doc['image'];
         $this->register = (is_object($doc['register'])) ? $doc['register']->__toArray() : $doc['register'];
         $this->registerNotice = $doc['registerNotice'];
+        $this->registerUrl = $doc['registerUrl'];
         
 	}
 	
@@ -144,6 +160,7 @@ class Seminar extends Model {
 		$this->image = (!empty($this->image)) ? (is_object($this->image)) ? $this->image->__toArray() : $this->image  : new \stdClass();
 		$this->register = (!empty($this->register)) ? (is_object($this->register)) ? $this->register->__toArray() : $this->register  : new \stdClass();
 		$this->registerNotice = $this->registerNotice ?: array();
+		$this->registerUrl = $this->registerUrl ?: '';
 		
 	}
 	public function insert(){

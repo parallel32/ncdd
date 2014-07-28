@@ -54,6 +54,10 @@
                               <a class="btn green register-seminar" data-name="<?=$slug?>" data-id="<?=$seminar['_id']?>">
                                 Register <i class="icon-plus"></i>
                               </a>
+                              <?elseif(array_key_exists('registerUrl',$seminar) && !empty($seminar['registerUrl'])): ?>
+                              <a href="<?=$seminar['registerUrl']?>" class="btn green">
+                                Register <i class="icon-plus"></i>
+                              </a>
                               <? else: ?>
                               <a class="btn grey disabled" data-name="<?=$slug?>" data-id="<?=$seminar['_id']?>">
                                 Registration will be available soon.

@@ -39,6 +39,8 @@
                                                 <a href="https://<?=SAW_ADMIN_WEBSITE?>/registration/seminar/<?=$seminar['_id']?><?=$slug?>" class="btn readMore pull-left">Register Online +</a>
                                                 <? elseif(array_key_exists('register',$seminar) && array_key_exists('currentStatus',$seminar['register']) && $seminar['register']['currentStatus'] == \Saw\Model\SeminarRegister::$status['MEMBERSONLY']): ?>
                                                 <a href="https://<?=SAW_ADMIN_WEBSITE?>/registration/seminar/<?=$seminar['_id']?><?=$slug?>" class="btn readMore pull-left">Registration Available for Members Only +</a>
+                                                <?elseif(array_key_exists('registerUrl',$seminar) && !empty($seminar['registerUrl'])): ?>
+                                                <a href="<?=$seminar['registerUrl']?>" class="btn readMore pull-left">Register Here +</a>
                                                 <? else: ?>
                                                 <ul class="postTags pull-left">
                                                     <li><h5>Registration will be available soon.</h5></li>

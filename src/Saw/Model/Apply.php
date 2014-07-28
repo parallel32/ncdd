@@ -347,12 +347,14 @@ class Apply extends Model {
 	}
 	
 	public function proRate(){
-		
+		error_log('approvedDate:'.$this->approvedDate['iso']);
 		$date = new \DateTime($this->approvedDate['iso']);
 		$curMonth = date("n", $date->getTimeStamp());
 		$curDay = date("j", $date->getTimeStamp());
 		$curQuarter = ceil($curMonth/3);
-		
+		error_log('curMonth:'.$curMonth);
+		error_log('curQuarter:'.$curQuarter);
+		error_log('curDay:'.$curDay);
 		if($curQuarter <= 1){
 			switch ($this->membershipDues) {
 				case 175:
@@ -378,6 +380,7 @@ class Apply extends Model {
 					break;
 			}
 		} else if($curQuarter > 2 && $curQuarter <= 3){
+			error_log('hererererererer');
 			switch ($this->membershipDues) {
 				case 175:
 					return array('q'=>3,'a'=>100);

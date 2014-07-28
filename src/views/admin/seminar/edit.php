@@ -151,6 +151,14 @@
                                     You have some form errors. Please check below.
                                  </div>
                                  <div class="control-group">
+                                    <label class="control-label">Registration URL</label>
+                                    <div class="controls">
+                                      <input type="text" name="doc[registerUrl]" value="<?=(array_key_exists('registerUrl',$seminar)) ? $seminar['registerUrl'] : '';?>" data-required="1" class="span12 m-wrap registerUrl">
+                                      <span class="help-block">If filled in, this will activate the register button and redirect the person to this URL.</span>
+                                      <span class="help-block"><b>However</b>, if "Activate Registration" below is set to ON or MEMBERSONLY, the register button will be linked to our registration form.</span>
+                                    </div>
+                                 </div>
+                                 <div class="control-group">
                                     <label class="control-label">Registration Notice</label>
                                     <div class="controls">
                                       <input type="text" name="doc[registerNotice]" value="<?=(array_key_exists('registerNotice',$seminar)) ? $seminar['registerNotice'] : '';?>" data-required="1" class="span12 m-wrap registerNotice">
