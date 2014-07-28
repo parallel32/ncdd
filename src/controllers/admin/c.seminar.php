@@ -110,7 +110,6 @@ $seminar->post('/edit', function (Request $request) use ($app, $common_view_vars
 	    $app['validateModel']($app,$register);
 	    $document['register']=$register->__toArray();
 	    $seminar = new Model\Seminar($document, $app);
-	    $app['validateModel']($app,$seminar);
 	    $seminar->saveEdit();
     }else{
     	$seminar = new Model\Seminar($document, $app);
