@@ -534,9 +534,9 @@ class Member extends User {
 				break;
 			case 'Faculty':
 				if($listedOnly){
-					$result = $this->find($query=array('currentFacultyPosition'=>array('$gte'=>self::$facultyPosition['DELEGATE']),'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);
+					$result = $this->find($query=array('currentFacultyPosition'=>array('$gte'=>self::$facultyPosition['DELEGATE']),'listed'=>1),$fields,true,$sort=array('lastName'=>1),$offset=0,$limit=3000);
 				}else{
-					$result = $this->find($query=array('currentFacultyPosition'=>array('$gte'=>self::$facultyPosition['DELEGATE'])),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);
+					$result = $this->find($query=array('currentFacultyPosition'=>array('$gte'=>self::$facultyPosition['DELEGATE'])),$fields,true,$sort=array('lastName'=>1),$offset=0,$limit=3000);
 				}
 				$i=0;
 				foreach ($result as $key => $value) {
@@ -799,7 +799,7 @@ class Member extends User {
 					,'raw'=>1
 					);
 		
-		$result = self::$app['mongo']->find('location',array('member.currentFacultyPosition'=>array('$gte'=>self::$facultyPosition['DELEGATE']), 'state'=>$state,'member.listed'=>1),$fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.currentOrder'=>-1,'member.orderNumState'=>1));
+		$result = self::$app['mongo']->find('location',array('member.currentFacultyPosition'=>array('$gte'=>self::$facultyPosition['DELEGATE']), 'state'=>$state,'member.listed'=>1),$fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.lastName'=>1));
 		$i=0;
 		foreach ($result as $key => $value) {
 			$result[$i]['_id'] = $value['member']['_id'];
