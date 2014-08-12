@@ -8,7 +8,7 @@
                     <h3><?=$this->vars['page']['headline']?></h3>
                 </div>
             </div>
-        </div>
+        
                     
 
 
@@ -315,7 +315,7 @@ Unless the law is concerned with convicting the many, while ignoring the few, th
     </div>
 
 
-
+</div>
 
                     <div class="row-fluid becomeAmember">
                         <div class="becomeAmemberContent">

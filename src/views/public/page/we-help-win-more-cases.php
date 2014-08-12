@@ -8,184 +8,185 @@
                     <h3><?=$this->vars['page']['headline']?></h3>
                 </div>
             </div>
-        </div>
-                    <div class="quiz pad30">
-        <div class="row text-center">
-            <a href="https://<?=SAW_ADMIN_WEBSITE?>/application/new-member"><img src="/assets/img/quiz-btn.png"></a>
-        </div>
+        
+                <div class="quiz pad30">
+                    <div class="row text-center">
+                        <a href="https://<?=SAW_ADMIN_WEBSITE?>/application/new-member"><img src="/assets/img/quiz-btn.png"></a>
+                    </div>
 
-        <div class="row">
-                <div class="borderMe">
+                    <div class="row">
+                            <div class="borderMe">
 
-                <div style="width:5%; float:left;">&nbsp;
-                </div>
+                            <div style="width:5%; float:left;">&nbsp;
+                            </div>
 
-                <div class="col-md-5 col-sm-11 col-xs-11">
-                    <p class="lead">"I need a repair or operators manual for a certain breath alcohol . . ."</p>
+                            <div class="col-md-5 col-sm-11 col-xs-11">
+                                <p class="lead">"I need a repair or operators manual for a certain breath alcohol . . ."</p>
 
-                    <p>When you join the National College for DUI Defense, your access to documents regarding the operation and functioning of virtually every breath alcohol
-                    machine used by law enforcement is just a click away. And you will win more cases. 
-                    </p>
+                                <p>When you join the National College for DUI Defense, your access to documents regarding the operation and functioning of virtually every breath alcohol
+                                machine used by law enforcement is just a click away. And you will win more cases. 
+                                </p>
+                                <div class="spacer5"></div>
+                                <div class="spacer5"></div>
+
+
+                                <p class="lead">“I am looking for a scientific article on
+                                alcohol or drugs and . . .”</p>
+
+                                <p>Become a member of NCDD and gain access to an
+                                online library which contains thousands of scientific
+                                articles dealing with alcohol, drugs, driving, testing,
+                                limitations, errors, and everything necessary to
+                                become the best attorney and expert in the courtroom.
+                                As a member you have the opportunity to attend our annual
+                                ‘Mastering Scientific Evidence’ three day seminar to
+                                give you added expertise. And you will win more cases. 
+                                </p>
+                                <div class="spacer5"></div>
+                                <div class="spacer5"></div>
+                                                     <p class="lead">“I could use some help! I need a
+                                motion for an unusual case and
+                                unusual facts . . .”</p>
+
+                                <p>When you join the National College for DUI Defense,
+                                it’s like adding 1300 lawyers to your knowledge base
+                                and to your law firm. The NCDD listserver provides
+                                members access to lawyers and advice that will change
+                                a difficult case to one with copies of motions, ideas, and
+                                assistance unlike anything you may have received in
+                                the past. And you will win more cases. 
+                                </p>
+                                <div class="spacer5"></div>
+                                <div class="spacer5"></div>
+                            </div>
+
+                            <div class="col-md-5 col-sm-11 col-xs-11">
+                                <p class="lead">“I would like some training on DUI issues such as . . .”</p>
+
+                                <p>The National College for DUI Defense provides
+                                training 4 times annually on matters relating to
+                                trial techniques, breath alcohol testing, field sobriety
+                                testing, blood alcohol testing, drug testing, and
+                                persuasion in the courtroom. Join the College and you
+                                will receive the best training available to a defense
+                                attorney. The Summer Session which is conducted
+                                annually on the property at Harvard Law School is
+                                unsurpassable. And you will win more cases.
+                                </p>
+                                <div class="spacer5"></div>
+                                <div class="spacer5"></div>
+
+                                <p class="lead">“I need an expert that can testify on . . .”</p>
+
+                                <p>Members of the National College enjoy access to
+                                experts in the fields of toxicology, pharmacology, drug
+                                or alcohol testing, blood or breath testing, accident
+                                reconstruction and field sobriety testing. If you simply
+                                have a question that needs answering, or are looking
+                                for a qualified witness for a trial, you will find them
+                                through the other members of NCDD. And you will
+                                win more cases.
+                                </p>
+                                <div class="spacer5"></div>
+                                <div class="spacer5"></div>
+
+                                <p class="lead">“What effect will this case have on my client’s out-of-state license?”</p>
+
+                                    <p>With over 1300 members representing all 50 states,
+                                    plus Canada and as far away as South Africa, our
+                                    members can assist you with any special licensing
+                                    concerns that might effect that special client of yours.
+                                    And you will win more cases.
+                                </p>
+                                <div class="spacer5"></div>
+                                <div class="spacer5"></div>
+                            </div>
+                            <div id="closer"></div>
+                            </div>
+                    </div>
+
                     <div class="spacer5"></div>
                     <div class="spacer5"></div>
-
-
-                    <p class="lead">“I am looking for a scientific article on
-                    alcohol or drugs and . . .”</p>
-
-                    <p>Become a member of NCDD and gain access to an
-                    online library which contains thousands of scientific
-                    articles dealing with alcohol, drugs, driving, testing,
-                    limitations, errors, and everything necessary to
-                    become the best attorney and expert in the courtroom.
-                    As a member you have the opportunity to attend our annual
-                    ‘Mastering Scientific Evidence’ three day seminar to
-                    give you added expertise. And you will win more cases. 
-                    </p>
+                     <div class="spacer5"></div>
                     <div class="spacer5"></div>
-                    <div class="spacer5"></div>
-                                         <p class="lead">“I could use some help! I need a
-                    motion for an unusual case and
-                    unusual facts . . .”</p>
+                    <!--<div class="blogDescr"></div>-->
 
-                    <p>When you join the National College for DUI Defense,
-                    it’s like adding 1300 lawyers to your knowledge base
-                    and to your law firm. The NCDD listserver provides
-                    members access to lawyers and advice that will change
-                    a difficult case to one with copies of motions, ideas, and
-                    assistance unlike anything you may have received in
-                    the past. And you will win more cases. 
-                    </p>
-                    <div class="spacer5"></div>
-                    <div class="spacer5"></div>
-                </div>
+                    <div class="row">
+                            <div class="col-md-7 col-sm-11 col-xs-11">
+                            <h4>Are You Ready to Join National College for DUI Defense?</h4>
+                                <ol class="quiz-list">
+                                <li class="question"> If administered correctly, the HGN test takes approximately how long to perform?<br><span class="answer"><!--Answer:</span> Answer will go here.--></li>
+                                <li class="question">According to NHTSA, speeding is one of the top 30 clues of impaired driving (true/false)<br><span class="answer"><!--Answer:</span> Answer will go here.--></li>
+                                <li class="question">What effect does holding your breath have on a breath test result?<br><span class="answer"><!--Answer:</span> Answer will go here.--></li>
+                                <li class="question">What is the ‘sale of the house’ analogy in DUI closing arguments?<br><span class="answer"><!--Answer:</span><!-- Answer will go here.--></li>
+                                <li class="question">What effect does Ringer’s lactate have on blood alcohol testing?<br><span class="answer"><!--Answer:</span><!-- Answer will go here.--></li>
+                                <li class="question">The scientific ratio for determining whole blood alcohol content from a serum test is 1.18 (true/false)<br><span class="answer"><!--Answer:</span> Answer will go here.--></li>
+                                <li class="question">What does the Rho factor in Widmark’s formula stand for?<br><span class="answer"><!--Answer:</span> Answer will go here.--></li>
+                                <li class="question">The three phases of NHTSA’s DUI Detection are?<br><span class="answer"><!--Answer:</span><!-- Answer will go here.--></li>
+                                <li class="question">What are 5 of the 20 myths of breath testing?<br><span class="answer"><!--Answer:</span><!-- Answer will go here.--></li>
+                                <li class="question">What is 'salting out' and how does it effect a blood test’s accuracy?<br><span class="answer"><!--Answer:</span> Answer will go here.--></li>
+                                </ol>
 
-                <div class="col-md-5 col-sm-11 col-xs-11">
-                    <p class="lead">“I would like some training on DUI issues such as . . .”</p>
+                                <a href="https://<?=SAW_ADMIN_WEBSITE?>/application/new-member"><img src="/assets/img/quiz-btn.png"></a>
 
-                    <p>The National College for DUI Defense provides
-                    training 4 times annually on matters relating to
-                    trial techniques, breath alcohol testing, field sobriety
-                    testing, blood alcohol testing, drug testing, and
-                    persuasion in the courtroom. Join the College and you
-                    will receive the best training available to a defense
-                    attorney. The Summer Session which is conducted
-                    annually on the property at Harvard Law School is
-                    unsurpassable. And you will win more cases.
-                    </p>
-                    <div class="spacer5"></div>
-                    <div class="spacer5"></div>
+                            </div>
 
-                    <p class="lead">“I need an expert that can testify on . . .”</p>
+                            <div class="col-md-4 col-sm-11 col-xs-11">
 
-                    <p>Members of the National College enjoy access to
-                    experts in the fields of toxicology, pharmacology, drug
-                    or alcohol testing, blood or breath testing, accident
-                    reconstruction and field sobriety testing. If you simply
-                    have a question that needs answering, or are looking
-                    for a qualified witness for a trial, you will find them
-                    through the other members of NCDD. And you will
-                    win more cases.
-                    </p>
-                    <div class="spacer5"></div>
-                    <div class="spacer5"></div>
+                                <h4>The members of the National College for DUI Defense wrote the books on DUI Defense</h4>
 
-                    <p class="lead">“What effect will this case have on my client’s out-of-state license?”</p>
-
-                        <p>With over 1300 members representing all 50 states,
-                        plus Canada and as far away as South Africa, our
-                        members can assist you with any special licensing
-                        concerns that might effect that special client of yours.
-                        And you will win more cases.
-                    </p>
-                    <div class="spacer5"></div>
-                    <div class="spacer5"></div>
-                </div>
-                <div id="closer"></div>
-                </div>
-        </div>
-
-        <div class="spacer5"></div>
-        <div class="spacer5"></div>
-         <div class="spacer5"></div>
-        <div class="spacer5"></div>
-        <!--<div class="blogDescr"></div>-->
-
-        <div class="row">
-                <div class="col-md-7 col-sm-11 col-xs-11">
-                <h4>Are You Ready to Join National College for DUI Defense?</h4>
-                    <ol class="quiz-list">
-                    <li class="question"> If administered correctly, the HGN test takes approximately how long to perform?<br><span class="answer"><!--Answer:</span> Answer will go here.--></li>
-                    <li class="question">According to NHTSA, speeding is one of the top 30 clues of impaired driving (true/false)<br><span class="answer"><!--Answer:</span> Answer will go here.--></li>
-                    <li class="question">What effect does holding your breath have on a breath test result?<br><span class="answer"><!--Answer:</span> Answer will go here.--></li>
-                    <li class="question">What is the ‘sale of the house’ analogy in DUI closing arguments?<br><span class="answer"><!--Answer:</span><!-- Answer will go here.--></li>
-                    <li class="question">What effect does Ringer’s lactate have on blood alcohol testing?<br><span class="answer"><!--Answer:</span><!-- Answer will go here.--></li>
-                    <li class="question">The scientific ratio for determining whole blood alcohol content from a serum test is 1.18 (true/false)<br><span class="answer"><!--Answer:</span> Answer will go here.--></li>
-                    <li class="question">What does the Rho factor in Widmark’s formula stand for?<br><span class="answer"><!--Answer:</span> Answer will go here.--></li>
-                    <li class="question">The three phases of NHTSA’s DUI Detection are?<br><span class="answer"><!--Answer:</span><!-- Answer will go here.--></li>
-                    <li class="question">What are 5 of the 20 myths of breath testing?<br><span class="answer"><!--Answer:</span><!-- Answer will go here.--></li>
-                    <li class="question">What is 'salting out' and how does it effect a blood test’s accuracy?<br><span class="answer"><!--Answer:</span> Answer will go here.--></li>
-                    </ol>
-
-                    <a href="https://<?=SAW_ADMIN_WEBSITE?>/application/new-member"><img src="/assets/img/quiz-btn.png"></a>
-
-                </div>
-
-                <div class="col-md-4 col-sm-11 col-xs-11">
-
-                    <h4>The members of the National College for DUI Defense wrote the books on DUI Defense</h4>
-
-                    <img src="/assets/img/quiz.jpg" width="100%" class=""><br><br>
+                                <img src="/assets/img/quiz.jpg" width="100%" class=""><br><br>
 
 
 
-                <div class="borderMe">
+                            <div class="borderMe">
+                                
+                                <ul>
+                                <li>Taylor and Oberman - <em>Drunk Driving Defense</em></li>
+                                <li>FK Whited III - <em>Drinking/Driving Litigation: Criminal and Civil and others</em></li>
+                                <li>James Farragher Campbell - <em>Defense of Speeding, Reckless Driving and Vehicular Homicide</em></li>
+                                <li>James Nesci - Arizona DUI Defense: <em>The Law and Practice and others</em></li>
+                                <li>Burglin and Simons - <em>California Drunk Driving Law</em></li>
+                                <li>Stephen Jones - <em>author of Massachusetts Drunk Driving Defense</em></li>
+                                <li>Lenny Stamm - <em>author Maryland DUI Law</em></li>
+                                <li>Gerstenzang and Sills - <em>Handling the DWI Case in New York</em></li>
+                                <li>Donald Ramsell - <em>author of Illinois DUI Law &amp; Practice Guidebook</em></li>
+                                <li>Phil Price - <em>Alabama DUI Handbook</em></li>
+                                <li>Mimi Coffey - <em>Texas DWI Defense</em></li>
+                                <li>Edge and Hunsucker - <em>Oklahoma DUI Defense</em></li>
+                                <li>Steve Oberman - <em>DUI: The Crime and
+                                Consequences in Tennessee</em></li>
+                                <li>Victor Carmody - <em>Mississippi DUI Law and Practice</em></li>
+                                <li>James Campbell - <em>Defense of Speeding,
+                                Reckless Driving and Vehicular Homicide</em></li>
+                                <li>William Kirk - <em>Defending DUIs in Washington</em></li>
+                                <li>Countless other authors and books devoted to DUI/DWI Defense</li>
+                                </ul>
+                                </div>
+                            </div>
+
+                    </div>
+
                     
-                    <ul>
-                    <li>Taylor and Oberman - <em>Drunk Driving Defense</em></li>
-                    <li>FK Whited III - <em>Drinking/Driving Litigation: Criminal and Civil and others</em></li>
-                    <li>James Farragher Campbell - <em>Defense of Speeding, Reckless Driving and Vehicular Homicide</em></li>
-                    <li>James Nesci - Arizona DUI Defense: <em>The Law and Practice and others</em></li>
-                    <li>Burglin and Simons - <em>California Drunk Driving Law</em></li>
-                    <li>Stephen Jones - <em>author of Massachusetts Drunk Driving Defense</em></li>
-                    <li>Lenny Stamm - <em>author Maryland DUI Law</em></li>
-                    <li>Gerstenzang and Sills - <em>Handling the DWI Case in New York</em></li>
-                    <li>Donald Ramsell - <em>author of Illinois DUI Law &amp; Practice Guidebook</em></li>
-                    <li>Phil Price - <em>Alabama DUI Handbook</em></li>
-                    <li>Mimi Coffey - <em>Texas DWI Defense</em></li>
-                    <li>Edge and Hunsucker - <em>Oklahoma DUI Defense</em></li>
-                    <li>Steve Oberman - <em>DUI: The Crime and
-                    Consequences in Tennessee</em></li>
-                    <li>Victor Carmody - <em>Mississippi DUI Law and Practice</em></li>
-                    <li>James Campbell - <em>Defense of Speeding,
-                    Reckless Driving and Vehicular Homicide</em></li>
-                    <li>William Kirk - <em>Defending DUIs in Washington</em></li>
-                    <li>Countless other authors and books devoted to DUI/DWI Defense</li>
-                    </ul>
+
+            <div class="spacer5"></div>
+            <div class="spacer5"></div>
+            <div class="spacer5"></div>
+            <div class="spacer5"></div>
+            <div class="spacer5"></div>
+            <div class="spacer5"></div>
+            <div class="row">
+
+            <div style="width:4%; float:left;">&nbsp;
+            </div>
+             
+            <div style="width:70%; margin:0 auto; text-align:center;">
+            <p>
+                    As a practicing DUI/DWI Defense Attorney, we invite you to apply to join the 1300 members of National College for DUI Defense by applying online <a href="https://<?=SAW_ADMIN_WEBSITE?>/application/new-member">here</a>, or by contacting Rhea Kirk, Executive Director at 334.264.1950 or <a href="mailto:rhea@ncdd.com" target="_blank">rhea@ncdd.com</a>.
+            </p>
+            </div>
                     </div>
                 </div>
-
-        </div>
-
-        
-
-<div class="spacer5"></div>
-<div class="spacer5"></div>
-<div class="spacer5"></div>
-<div class="spacer5"></div>
-<div class="spacer5"></div>
-<div class="spacer5"></div>
-<div class="row">
-
-<div style="width:4%; float:left;">&nbsp;
-</div>
- 
-<div style="width:70%; margin:0 auto; text-align:center;">
-<p>
-        As a practicing DUI/DWI Defense Attorney, we invite you to apply to join the 1300 members of National College for DUI Defense by applying online <a href="https://<?=SAW_ADMIN_WEBSITE?>/application/new-member">here</a>, or by contacting Rhea Kirk, Executive Director at 334.264.1950 or <a href="mailto:rhea@ncdd.com" target="_blank">rhea@ncdd.com</a>.
-</p>
-</div>
-        </div>
     </div>
                     <div class="row-fluid becomeAmember">
                         <div class="becomeAmemberContent">

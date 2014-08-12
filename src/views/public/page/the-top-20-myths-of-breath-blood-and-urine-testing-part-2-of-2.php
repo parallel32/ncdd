@@ -8,7 +8,7 @@
                     <h3><?=$this->vars['page']['headline']?></h3>
                 </div>
             </div>
-        </div>
+        
                     
 
 
@@ -314,6 +314,8 @@ It is our duty to educate legislators, judges, juries, prosecutors, police, othe
     </div>
 
 
+
+</div>
 
 
                     <div class="row-fluid becomeAmember">
