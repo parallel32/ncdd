@@ -158,6 +158,7 @@ Our experience with the Intoxilyzer 5000 has shown that its residual mouth alcoh
                                     </div>
                                 </div>
                             </li>
+                            <!--
                             <li class="span3">
                                 <div class="thumbnail">
                                     <div class="caption">
@@ -171,7 +172,7 @@ Our experience with the Intoxilyzer 5000 has shown that its residual mouth alcoh
                                     </div>
                                 </div>
                             </li>
-                            
+                            -->
                         </ul>
                         
                     </div>
