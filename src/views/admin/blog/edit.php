@@ -317,6 +317,7 @@
             io.saw.ClearField.init({formArr:['#saw-form']}); 
             <? if ($show == 'yes'): ?>
                $('#tags').multiSelect();
+               $( "#saw-form .scheduleDate" ).datepicker();
             <? endif; ?>            
          });
          </script>

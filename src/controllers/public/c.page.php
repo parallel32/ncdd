@@ -574,6 +574,48 @@ $app->get('/state-delegates/{country}/{state}', function ($country, $state, Requ
 
 });
 
+$app->get('/we-help-win-more-cases', function (Request $request) use ($app) {
+	$slug = 'we-help-win-more-cases';
+	$page = new Model\Page($doc=array('slug'=>$slug), $app);
+	$page = $page->findById('slug');
+	$page['body'] = $app['prepare_content']($page['body']);
+
+	$view_vars = array('page'=>$page);
+	$view_vars['slogan_block'] = 'we-help-win-more-cases';
+
+	$page_vars = $app['get_pages']($slug);
+	$view_vars = array_merge($page_vars,$view_vars);
+	return $app['view']->render('page/we-help-win-more-cases', 'content', $view_vars);
+});
+
+$app->get('/the-top-20-myths-of-breath-blood-and-urine-testing-part-1-of-2', function (Request $request) use ($app) {
+	$slug = 'the-top-20-myths-of-breath-blood-and-urine-testing-part-1-of-2';
+	$page = new Model\Page($doc=array('slug'=>$slug), $app);
+	$page = $page->findById('slug');
+	$page['body'] = $app['prepare_content']($page['body']);
+
+	$view_vars = array('page'=>$page);
+	$view_vars['slogan_block'] = 'the-top-20-myths-of-breath-blood-and-urine-testing-part-1-of-2';
+
+	$page_vars = $app['get_pages']($slug);
+	$view_vars = array_merge($page_vars,$view_vars);
+	return $app['view']->render('page/the-top-20-myths-of-breath-blood-and-urine-testing-part-1-of-2', 'content', $view_vars);
+});
+
+$app->get('/the-top-20-myths-of-breath-blood-and-urine-testing-part-2-of-2', function (Request $request) use ($app) {
+	$slug = 'the-top-20-myths-of-breath-blood-and-urine-testing-part-2-of-2';
+	$page = new Model\Page($doc=array('slug'=>$slug), $app);
+	$page = $page->findById('slug');
+	$page['body'] = $app['prepare_content']($page['body']);
+
+	$view_vars = array('page'=>$page);
+	$view_vars['slogan_block'] = 'the-top-20-myths-of-breath-blood-and-urine-testing-part-2-of-2';
+
+	$page_vars = $app['get_pages']($slug);
+	$view_vars = array_merge($page_vars,$view_vars);
+	return $app['view']->render('page/the-top-20-myths-of-breath-blood-and-urine-testing-part-2-of-2', 'content', $view_vars);
+});
+
 // Regents and Fellows
 $app->get('/regents-and-fellows', function (Request $request) use ($app) {
 	$slug = 'regents-and-fellows';

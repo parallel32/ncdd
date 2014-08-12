@@ -15,10 +15,15 @@
                   National College for DUI Defense, Inc. 
                   <br/>445 S. Decatur St. 
                   <br/>Montgomery, AL 36104
-                  <br/>Tel: 334-264-1950 
+                  <br/>Tel: 334-264-1950
                   <br/>Fax: 334-264-1920
                </p>
                <!-- END PAGE TITLE & BREADCRUMB-->
+            </div>
+         </div>
+         <div class="row-fluid">
+            <div class="span12">
+               <h4 class="page-title text-center">Please Review the <a href="//<?=SAW_CONSUMER_WEBSITE?>/become-a-member">Membership Eligibility Rules</a></h4>
             </div>
          </div>
          <!-- END PAGE HEADER-->

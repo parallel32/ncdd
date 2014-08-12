@@ -88,9 +88,11 @@ class Drive extends Model {
     	$this->removeByCriteria(array('belongsTo'=>$this->belongsTo));
     	
     	// delete binary files
-    	foreach ($results as $file):
-			self::$app['upload-mongo']->deleteByCriteria(array('belongsTo'=>$file['_id']));
-		endforeach;
+    	if(!empty($results) && is_array($results)){
+	    	foreach ($results as $file):
+				self::$app['upload-mongo']->deleteByCriteria(array('belongsTo'=>$file['_id']));
+			endforeach;
+		}
 
 	}
 }

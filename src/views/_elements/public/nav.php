@@ -68,7 +68,7 @@
                                 </ul>
                                 <ul class="pull-right menu">
                                     <li><a href="/find-an-attorney" class="text-center">ATTORNEYS <small>Find One Nearby</small></a></li>
-                                    <li><a href="/become-a-member" class="text-center">BECOME <br> A MEMBER</a></li>
+                                    <li><a href="/we-help-win-more-cases" class="text-center">BECOME <br> A MEMBER</a></li>
                                 </ul>
                             </div>
                         </div>
