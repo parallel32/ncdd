@@ -117,6 +117,8 @@ ul.sidebarlist li {
 </div>
 </div></div>
 <div class="container-fluid pagecontent" id="learn">
+    <h2>Coming soon.</h2>
+    <? if(false): ?>
                     <div class="row-fluid">
                         <div class="center span12">
                             <div class="dropdown visible-phone mapsPhone">
@@ -337,4 +339,5 @@ ul.sidebarlist li {
                     <div class="clear"></div>
                     </div>
                 </div>
+<? endif; ?>
 </div>
