@@ -158,6 +158,19 @@ Our experience with the Intoxilyzer 5000 has shown that its residual mouth alcoh
                                     </div>
                                 </div>
                             </li>
+                            <li class="span3">
+                                <div class="thumbnail">
+                                    <div class="caption">
+                                        <h4 class=""><a href="/faculty">Our Faculty</a></h4>
+                                        <ul class="info">
+                                            <li>August 12, 2014</li>
+                                        </ul>
+                                        <p class="descr ">We would like to introduce our Faculty.  Through their tireless efforts, they help make our Organization great.  Please browse our roster to find a Faculty Member near you.</p>
+                                        <br>
+                                        <p class="text-center"><a href="/faculty">Browse the Faculty Pages</a></p>
+                                    </div>
+                                </div>
+                            </li>
                             
                         </ul>
                         

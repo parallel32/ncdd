@@ -1,3 +1,5 @@
+
+
 <style>
 @font-face {
   font-family: 'Bree Serif';
@@ -107,76 +109,76 @@ ul.sidebarlist li {
         .delegationone,.delegation{ top: auto; margin-top: 0px; right: auto;}
     }
 
-</style>
+            </style>
 
 
 
 <div class="container"><div class="title text-center">
 <div class="bg">
-<h3><?=$this->vars['page']['headline']?></h3>
+<h3><?=$this->vars['state']?> Faculty</h3>
 </div>
 </div></div>
 <div class="container-fluid pagecontent" id="learn">
                     <div class="row-fluid">
-                        <div class="center span12">
+                        <div class="center span12 bc">
                             <div class="dropdown visible-phone mapsPhone">
                                 <a class="dropdown-toggle btn" href="javascript:void(0)">
-                                    Select A State
+                                    Select state
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="mapsPhoneDropdown">
                                     <li class="titleMap">USA</li>
-                                    <li><a href="/founding-members/usa/alabama">Alabama</a></li>
-                                <!-- <li><a href="/founding-members/usa/alaska">Alaska</a></li> -->
-                                <li><a href="/founding-members/usa/arizona">Arizona</a></li>
-                                <li><a href="/founding-members/usa/arkansas">Arkansas</a></li>
-                                <li><a href="/founding-members/usa/california">California</a></li>
-                                <li><a href="/founding-members/usa/colorado">Colorado</a></li>
-                                <li><a href="/founding-members/usa/connecticut">Connecticut</a></li>
-                                <!-- <li><a href="/founding-members/usa/delaware">Delaware</a></li> -->
-                                <!-- <li><a href="/founding-members/usa/washington-dc">Washington DC</a></li> -->
-                                <li><a href="/founding-members/usa/florida">Florida</a></li>
-                                <li><a href="/founding-members/usa/georgia">Georgia</a></li>
-                                <!-- <li><a href="/founding-members/usa/hawaii">Hawaii</a></li> -->
-                                <!-- <li><a href="/founding-members/usa/idaho">Idaho</a></li> -->
-                                <li><a href="/founding-members/usa/illinois">Illinois</a></li>
-                                <li><a href="/founding-members/usa/indiana">Indiana</a></li>
-                                <li><a href="/founding-members/usa/iowa">Iowa</a></li>
-                                <li><a href="/founding-members/usa/kansas">Kansas</a></li>
-                                <li><a href="/founding-members/usa/kentucky">Kentucky</a></li>
-                                <li><a href="/founding-members/usa/louisiana">Louisiana</a></li>
-                                <!-- <li><a href="/founding-members/usa/maine">Maine</a></li> -->
-                                <li><a href="/founding-members/usa/maryland">Maryland</a></li>
-                                <!-- <li><a href="/founding-members/usa/massachusetts">Massachusetts</a></li> -->
-                                <!-- <li><a href="/founding-members/usa/michigan">Michigan</a></li> -->
-                                <li><a href="/founding-members/usa/minnesota">Minnesota</a></li>
-                                <li><a href="/founding-members/usa/mississippi">Mississippi</a></li>
-                                <li><a href="/founding-members/usa/missouri">Missouri</a></li>
-                                <!-- <li><a href="/founding-members/usa/montana">Montana</a></li> -->
-                                <!-- <li><a href="/founding-members/usa/nebraska">Nebraska</a></li>
-                                <li><a href="/founding-members/usa/nevada">Nevada</a></li> -->
-                                <li><a href="/founding-members/usa/new-hampshire">New Hampshire</a></li>
-                                <li><a href="/founding-members/usa/new-jersey">New Jersey</a></li>
-                                <li><a href="/founding-members/usa/new-mexico">New Mexico</a></li>
-                                <li><a href="/founding-members/usa/new-york">New York</a></li>
-                                <li><a href="/founding-members/usa/north-carolina">North Carolina</a></li>
-                                <!-- <li><a href="/founding-members/usa/north-dakota">North Dakota</a></li> -->
-                                <li><a href="/founding-members/usa/ohio">Ohio</a></li>
-                                <!-- <li><a href="/founding-members/usa/oklahoma">Oklahoma</a></li> -->
-                                <!-- <li><a href="/founding-members/usa/oregon">Oregon</a></li> -->
-                                <!-- <li><a href="/founding-members/usa/pennsylvania">Pennsylvania</a></li> -->
-                                <li><a href="/founding-members/usa/rhode-island">Rhode Island</a></li>
-                                <li><a href="/founding-members/usa/south-carolina">South Carolina</a></li>
-                                <!-- <li><a href="/founding-members/usa/south-dakota">South Dakota</a></li> -->
-                                <li><a href="/founding-members/usa/tennessee">Tennessee</a></li>
-                                <li><a href="/founding-members/usa/texas">Texas</a></li>
-                                <!-- <li><a href="/founding-members/usa/utah">Utah</a></li> -->
-                                <!-- <li><a href="/founding-members/usa/vermont">Vermont</a></li> -->
-                                <li><a href="/founding-members/usa/virginia">Virginia </a></li>
-                                <li><a href="/founding-members/usa/washington">Washington</a></li>
-                                <!-- <li><a href="/founding-members/usa/west-virginia">West Virginia</a></li> -->
-                                <li><a href="/founding-members/usa/wisconsin">Wisconsin</a></li>
-                                <!-- <li><a href="/founding-members/usa/wyoming">Wyoming </a></li> -->
+                                    <li><a href="/faculty/usa/alabama">Alabama</a></li>
+                                <li><a href="/faculty/usa/alaska">Alaska</a></li>
+                                <li><a href="/faculty/usa/arizona">Arizona</a></li>
+                                <li><a href="/faculty/usa/arkansas">Arkansas</a></li>
+                                <li><a href="/faculty/usa/california">California</a></li>
+                                <li><a href="/faculty/usa/colorado">Colorado</a></li>
+                                <li><a href="/faculty/usa/connecticut">Connecticut</a></li>
+                                <li><a href="/faculty/usa/delaware">Delaware</a></li> 
+                                <li><a href="/faculty/usa/washington-dc">Washington DC</a></li> 
+                                <li><a href="/faculty/usa/florida">Florida</a></li>
+                                <li><a href="/faculty/usa/georgia">Georgia</a></li>
+                                <li><a href="/faculty/usa/hawaii">Hawaii</a></li> 
+                                <li><a href="/faculty/usa/idaho">Idaho</a></li> 
+                                <li><a href="/faculty/usa/illinois">Illinois</a></li>
+                                <li><a href="/faculty/usa/indiana">Indiana</a></li>
+                                <li><a href="/faculty/usa/iowa">Iowa</a></li>
+                                <li><a href="/faculty/usa/kansas">Kansas</a></li>
+                                <li><a href="/faculty/usa/kentucky">Kentucky</a></li>
+                                <li><a href="/faculty/usa/louisiana">Louisiana</a></li>
+                                <li><a href="/faculty/usa/maine">Maine</a></li> 
+                                <li><a href="/faculty/usa/maryland">Maryland</a></li>
+                                <li><a href="/faculty/usa/massachusetts">Massachusetts</a></li> 
+                                <li><a href="/faculty/usa/michigan">Michigan</a></li> 
+                                <li><a href="/faculty/usa/minnesota">Minnesota</a></li>
+                                <li><a href="/faculty/usa/mississippi">Mississippi</a></li>
+                                <li><a href="/faculty/usa/missouri">Missouri</a></li>
+                                <li><a href="/faculty/usa/montana">Montana</a></li> 
+                                <li><a href="/faculty/usa/nebraska">Nebraska</a></li>
+                                <li><a href="/faculty/usa/nevada">Nevada</a></li> 
+                                <li><a href="/faculty/usa/new-hampshire">New Hampshire</a></li>
+                                <li><a href="/faculty/usa/new-jersey">New Jersey</a></li>
+                                <li><a href="/faculty/usa/new-mexico">New Mexico</a></li>
+                                <li><a href="/faculty/usa/new-york">New York</a></li>
+                                <li><a href="/faculty/usa/north-carolina">North Carolina</a></li>
+                                <!-- <li><a href="/faculty/usa/north-dakota">North Dakota</a></li> -->
+                                <li><a href="/faculty/usa/ohio">Ohio</a></li>
+                                <li><a href="/faculty/usa/oklahoma">Oklahoma</a></li> 
+                                <li><a href="/faculty/usa/oregon">Oregon</a></li> 
+                                <li><a href="/faculty/usa/pennsylvania">Pennsylvania</a></li> 
+                                <li><a href="/faculty/usa/rhode-island">Rhode Island</a></li>
+                                <li><a href="/faculty/usa/south-carolina">South Carolina</a></li>
+                                <li><a href="/faculty/usa/south-dakota">South Dakota</a></li> 
+                                <li><a href="/faculty/usa/tennessee">Tennessee</a></li>
+                                <li><a href="/faculty/usa/texas">Texas</a></li>
+                                <li><a href="/faculty/usa/utah">Utah</a></li> 
+                                <li><a href="/faculty/usa/vermont">Vermont</a></li> 
+                                <li><a href="/faculty/usa/virginia">Virginia </a></li>
+                                <li><a href="/faculty/usa/washington">Washington</a></li>
+                                <li><a href="/faculty/usa/west-virginia">West Virginia</a></li> 
+                                <li><a href="/faculty/usa/wisconsin">Wisconsin</a></li>
+                                <!-- <li><a href="/faculty/usa/wyoming">Wyoming </a></li>     -->
                                     <!--
                                     <li class="titleMap">Canada</li>
                                     <li><a href="/find-an-attorney/cananda/ontario">Ontario </a></li>
@@ -185,76 +187,69 @@ ul.sidebarlist li {
                                 </ul>
                             </div>
                            
-
-                            
-                            <div class="text-left becomeAmember">
-                                <p>
-                                <?=$this->vars['page']['body']?>
-                            </p>
-                            </div>
                        </div> 
                     <div class="pagecontent ">
                         <div class="span2 hidden-phone">
                           <div class="selectstate center bc">SELECT ANOTHER STATE</div>
                           <div class="country bc">USA</div>
                           <ul class="sidebarlist bc">
-                            <li><a href="/founding-members/usa/alabama">Alabama</a></li>
-                                <!-- <li><a href="/founding-members/usa/alaska">Alaska</a></li> -->
-                                <li><a href="/founding-members/usa/arizona">Arizona</a></li>
-                                <li><a href="/founding-members/usa/arkansas">Arkansas</a></li>
-                                <li><a href="/founding-members/usa/california">California</a></li>
-                                <li><a href="/founding-members/usa/colorado">Colorado</a></li>
-                                <li><a href="/founding-members/usa/connecticut">Connecticut</a></li>
-                                <!-- <li><a href="/founding-members/usa/delaware">Delaware</a></li> -->
-                                <!-- <li><a href="/founding-members/usa/washington-dc">Washington DC</a></li> -->
-                                <li><a href="/founding-members/usa/florida">Florida</a></li>
-                                <li><a href="/founding-members/usa/georgia">Georgia</a></li>
-                                <!-- <li><a href="/founding-members/usa/hawaii">Hawaii</a></li> -->
-                                <!-- <li><a href="/founding-members/usa/idaho">Idaho</a></li> -->
-                                <li><a href="/founding-members/usa/illinois">Illinois</a></li>
-                                <li><a href="/founding-members/usa/indiana">Indiana</a></li>
-                                <li><a href="/founding-members/usa/iowa">Iowa</a></li>
-                                <li><a href="/founding-members/usa/kansas">Kansas</a></li>
-                                <li><a href="/founding-members/usa/kentucky">Kentucky</a></li>
-                                <li><a href="/founding-members/usa/louisiana">Louisiana</a></li>
-                                <!-- <li><a href="/founding-members/usa/maine">Maine</a></li> -->
-                                <li><a href="/founding-members/usa/maryland">Maryland</a></li>
-                                <!-- <li><a href="/founding-members/usa/massachusetts">Massachusetts</a></li> -->
-                                <!-- <li><a href="/founding-members/usa/michigan">Michigan</a></li> -->
-                                <li><a href="/founding-members/usa/minnesota">Minnesota</a></li>
-                                <li><a href="/founding-members/usa/mississippi">Mississippi</a></li>
-                                <li><a href="/founding-members/usa/missouri">Missouri</a></li>
-                                <!-- <li><a href="/founding-members/usa/montana">Montana</a></li> -->
-                                <!-- <li><a href="/founding-members/usa/nebraska">Nebraska</a></li>
-                                <li><a href="/founding-members/usa/nevada">Nevada</a></li> -->
-                                <li><a href="/founding-members/usa/new-hampshire">New Hampshire</a></li>
-                                <li><a href="/founding-members/usa/new-jersey">New Jersey</a></li>
-                                <li><a href="/founding-members/usa/new-mexico">New Mexico</a></li>
-                                <li><a href="/founding-members/usa/new-york">New York</a></li>
-                                <li><a href="/founding-members/usa/north-carolina">North Carolina</a></li>
-                                <!-- <li><a href="/founding-members/usa/north-dakota">North Dakota</a></li> -->
-                                <li><a href="/founding-members/usa/ohio">Ohio</a></li>
-                                <!-- <li><a href="/founding-members/usa/oklahoma">Oklahoma</a></li> -->
-                                <!-- <li><a href="/founding-members/usa/oregon">Oregon</a></li> -->
-                                <!-- <li><a href="/founding-members/usa/pennsylvania">Pennsylvania</a></li> -->
-                                <li><a href="/founding-members/usa/rhode-island">Rhode Island</a></li>
-                                <li><a href="/founding-members/usa/south-carolina">South Carolina</a></li>
-                                <!-- <li><a href="/founding-members/usa/south-dakota">South Dakota</a></li> -->
-                                <li><a href="/founding-members/usa/tennessee">Tennessee</a></li>
-                                <li><a href="/founding-members/usa/texas">Texas</a></li>
-                                <!-- <li><a href="/founding-members/usa/utah">Utah</a></li> -->
-                                <!-- <li><a href="/founding-members/usa/vermont">Vermont</a></li> -->
-                                <li><a href="/founding-members/usa/virginia">Virginia </a></li>
-                                <li><a href="/founding-members/usa/washington">Washington</a></li>
-                                <!-- <li><a href="/founding-members/usa/west-virginia">West Virginia</a></li> -->
-                                <li><a href="/founding-members/usa/wisconsin">Wisconsin</a></li>
-                                <!-- <li><a href="/founding-members/usa/wyoming">Wyoming </a></li> -->
+                            <li><a href="/faculty/usa/alabama">Alabama</a></li>
+                                <li><a href="/faculty/usa/alaska">Alaska</a></li>
+                                <li><a href="/faculty/usa/arizona">Arizona</a></li>
+                                <li><a href="/faculty/usa/arkansas">Arkansas</a></li>
+                                <li><a href="/faculty/usa/california">California</a></li>
+                                <li><a href="/faculty/usa/colorado">Colorado</a></li>
+                                <li><a href="/faculty/usa/connecticut">Connecticut</a></li>
+                                <li><a href="/faculty/usa/delaware">Delaware</a></li> 
+                                <li><a href="/faculty/usa/washington-dc">Washington DC</a></li> 
+                                <li><a href="/faculty/usa/florida">Florida</a></li>
+                                <li><a href="/faculty/usa/georgia">Georgia</a></li>
+                                <li><a href="/faculty/usa/hawaii">Hawaii</a></li> 
+                                <li><a href="/faculty/usa/idaho">Idaho</a></li> 
+                                <li><a href="/faculty/usa/illinois">Illinois</a></li>
+                                <li><a href="/faculty/usa/indiana">Indiana</a></li>
+                                <li><a href="/faculty/usa/iowa">Iowa</a></li>
+                                <li><a href="/faculty/usa/kansas">Kansas</a></li>
+                                <li><a href="/faculty/usa/kentucky">Kentucky</a></li>
+                                <li><a href="/faculty/usa/louisiana">Louisiana</a></li>
+                                <li><a href="/faculty/usa/maine">Maine</a></li> 
+                                <li><a href="/faculty/usa/maryland">Maryland</a></li>
+                                <li><a href="/faculty/usa/massachusetts">Massachusetts</a></li> 
+                                <li><a href="/faculty/usa/michigan">Michigan</a></li> 
+                                <li><a href="/faculty/usa/minnesota">Minnesota</a></li>
+                                <li><a href="/faculty/usa/mississippi">Mississippi</a></li>
+                                <li><a href="/faculty/usa/missouri">Missouri</a></li>
+                                <li><a href="/faculty/usa/montana">Montana</a></li> 
+                                <li><a href="/faculty/usa/nebraska">Nebraska</a></li>
+                                <li><a href="/faculty/usa/nevada">Nevada</a></li> 
+                                <li><a href="/faculty/usa/new-hampshire">New Hampshire</a></li>
+                                <li><a href="/faculty/usa/new-jersey">New Jersey</a></li>
+                                <li><a href="/faculty/usa/new-mexico">New Mexico</a></li>
+                                <li><a href="/faculty/usa/new-york">New York</a></li>
+                                <li><a href="/faculty/usa/north-carolina">North Carolina</a></li>
+                                <!-- <li><a href="/faculty/usa/north-dakota">North Dakota</a></li> -->
+                                <li><a href="/faculty/usa/ohio">Ohio</a></li>
+                                <li><a href="/faculty/usa/oklahoma">Oklahoma</a></li> 
+                                <li><a href="/faculty/usa/oregon">Oregon</a></li> 
+                                <li><a href="/faculty/usa/pennsylvania">Pennsylvania</a></li> 
+                                <li><a href="/faculty/usa/rhode-island">Rhode Island</a></li>
+                                <li><a href="/faculty/usa/south-carolina">South Carolina</a></li>
+                                <li><a href="/faculty/usa/south-dakota">South Dakota</a></li> 
+                                <li><a href="/faculty/usa/tennessee">Tennessee</a></li>
+                                <li><a href="/faculty/usa/texas">Texas</a></li>
+                                <li><a href="/faculty/usa/utah">Utah</a></li> 
+                                <li><a href="/faculty/usa/vermont">Vermont</a></li> 
+                                <li><a href="/faculty/usa/virginia">Virginia </a></li>
+                                <li><a href="/faculty/usa/washington">Washington</a></li>
+                                <li><a href="/faculty/usa/west-virginia">West Virginia</a></li> 
+                                <li><a href="/faculty/usa/wisconsin">Wisconsin</a></li>
+                                <!-- <li><a href="/faculty/usa/wyoming">Wyoming </a></li>     -->
                         </ul>
                         <!--
                         <div class="country bc">Canada</div>
                         <ul class="sidebarlist bc">
-                           <li><a href="/find-an-attorney/canada/ontario">Ontario </a></li>
-                            <li><a href="/find-an-attorney/canada/quebec">Quebec </a></li>
+                           <li><a href="/faculty/canada/ontario">Ontario </a></li>
+                            <li><a href="/faculty/canada/quebec">Quebec </a></li>
                         </ul>
                         -->
                     </div>
@@ -270,7 +265,7 @@ ul.sidebarlist li {
                             </div>
                                 <div class="row-fluid searchmeta">
                                     <span class="meta muted"></span>
-                                    <div class="span5 tc">
+                                    <div class="span5">
                                         <? $middleName = (!empty($member['middleName'])) ? ' '.$member['middleName'].' ':' '; ?>
                                         <strong class="bc laywername"><?=$member['firstName']?><?=$middleName?><?=$member['lastName']?></strong><br>
                                         <!--
@@ -295,7 +290,7 @@ ul.sidebarlist li {
                                         <a href="mailto:<?=$member['email']?>"><img src="/assets/img/contactme.png"></a>
                                         <br><br><br> <span class="phone"><a href="tel:<?=$member['primaryPhone']?>"><?=$member['primaryPhone']?></a></span>
                                         <div class="clear"></div>
-                                        <? if( !empty($member['currentFacultyPosition']) && $member['currentFacultyPosition'] != \Saw\Model\Member::$facultyPositionReversed[\Saw\Model\Member::$facultyPosition['DELEGATE']]): ?>
+                                        <? if(!empty($member['currentFacultyPosition']) && $member['currentFacultyPosition'] != \Saw\Model\Member::$facultyPositionReversed[\Saw\Model\Member::$facultyPosition['DELEGATE']]): ?>
                                             <img class="delegation" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/exec" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
                                         <? endif; ?>
                                     </div>

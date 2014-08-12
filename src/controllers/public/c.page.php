@@ -444,6 +444,54 @@ $app->get('/founding-members/{country}/{state}', function ($country, $state, Req
 
 });
 
+
+$app->get('/faculty', function (Request $request) use ($app) {
+	$slug = 'faculty';
+	$page = new Model\Page($doc=array('slug'=>$slug), $app);
+	$page = $page->findById('slug');
+	$page['body'] = $app['prepare_content']($page['body']);
+
+	$view_vars = array('page'=>$page);
+	$view_vars['slogan_block'] = 'faculty';
+
+	$page_vars = $app['get_pages']($slug);
+	
+	$member = new Model\Member(array(), $app);
+	$members = $member->search('Faculty',true);
+
+	$view_vars['members'] = $members;
+	$view_vars = array_merge($page_vars,$view_vars);
+	
+	return $app['view']->render('page/faculty', 'content', $view_vars);
+});
+$app->get('/faculty/{country}/{state}', function ($country, $state, Request $request) use ($app) {
+
+	switch (strtolower($country)) {
+		case 'usa':
+			$country = 'US';
+			break;
+		case 'canada':
+			$country = 'CA';
+			break;
+	}
+	$states = array('alabama'=>'AL','alaska'=>'AK','arizona'=>'AZ','arkansas'=>'AR','california'=>'CA','colorado'=>'CO','connecticut'=>'CT','delaware'=>'DE','washington-dc'=>'DC','florida'=>'FL','georgia'=>'GA','hawaii'=>'HI','idaho'=>'ID','illinois'=>'IL','indiana'=>'IN','iowa'=>'IA','kansas'=>'KS','kentucky'=>'KY','louisiana'=>'LA','maine'=>'ME','maryland'=>'MD','massachusetts'=>'MA','michigan'=>'MI','minnesota'=>'MN','mississippi'=>'MS','missouri'=>'MO','montana'=>'MT','nebraska'=>'NE','nevada'=>'NV','new-hampshire'=>'NH','new-jersey'=>'NJ','new-mexico'=>'NM','new-york'=>'NY','north-carolina'=>'NC','north-dakota'=>'ND','ohio'=>'OH','oklahoma'=>'OK','oregon'=>'OR','pennsylvania'=>'PA','rhode-island'=>'RI','south-carolina'=>'SC','south-dakota'=>'SD','tennessee'=>'TN','texas'=>'TX','utah'=>'UT','vermont'=>'VT','virginia'=>'VA','washington'=>'WA','west-virginia'=>'WV','wisconsin'=>'WI','wyoming'=>'WY','ontario'=>'ON','quebec'=>'QC','saskatchewan'=>'SK');
+	$state = $states[$state];
+	$state_reversed = array('AL'=>'Alabama','AK'=>'Alaska',    'AZ'=>'Arizona',    'AR'=>'Arkansas',    'CA'=>'California',    'CO'=>'Colorado',    'CT'=>'Connecticut',    'DE'=>'Delaware',    'DC'=>'District of Columbia',    'FL'=>'Florida',    'GA'=>'Georgia',    'HI'=>'Hawaii',    'ID'=>'Idaho',    'IL'=>'Illinois',    'IN'=>'Indiana',    'IA'=>'Iowa',  'IO'=>'Iowa',    'KS'=>'Kansas',    'KY'=>'Kentucky',    'LA'=>'Louisiana',    'ME'=>'Maine',    'MD'=>'Maryland',    'MA'=>'Massachusetts',    'MI'=>'Michigan',    'MN'=>'Minnesota',    'MS'=>'Mississippi',    'MO'=>'Missouri',    'MT'=>'Montana', 'NE'=>'Nebraska',    'NV'=>'Nevada',    'NH'=>'New Hampshire',    'NJ'=>'New Jersey',    'NM'=>'New Mexico',    'NY'=>'New York',    'NC'=>'North Carolina',    'ND'=>'North Dakota',    'OH'=>'Ohio',    'OK'=>'Oklahoma',    'OR'=>'Oregon',    'PA'=>'Pennsylvania',    'RI'=>'Rhode Island',    'SC'=>'South Carolina',    'SD'=>'South Dakota',    'TN'=>'Tennessee',    'TX'=>'Texas',    'UT'=>'Utah',    'VT'=>'Vermont',    'VA'=>'Virginia',    'WA'=>'Washington',    'WV'=>'West Virginia',   'WI'=>'Wisconsin',    'WY'=>'Wyoming','ON'=>'Ontario','SK'=>'Saskatchewan','QC'=>'Quebec');
+	
+	$member = new Model\Member(array(), $app);
+	$members = $member->searchFacultyByState($state);
+
+	$view_vars['slogan_block'] = 'faculty';
+	$view_vars['state'] = $state_reversed[$state];
+	$view_vars['members'] = $members;
+	$page_vars = $app['get_pages']($state);
+	$view_vars = array_merge($page_vars,$view_vars);
+	
+	return $app['view']->render('page/faculty/state', 'content', $view_vars);
+
+});
+
+
 // State Delegates
 // redirects the old foundingmembers.php?location=State to the new routes
 // because Redirect 301 doesn't work with querystrings..

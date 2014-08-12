@@ -532,6 +532,19 @@ class Member extends User {
 					$i++;
 				}
 				break;
+			case 'Faculty':
+				if($listedOnly){
+					$result = $this->find($query=array('currentFacultyPosition'=>array('$gte'=>self::$facultyPosition['DELEGATE']),'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);
+				}else{
+					$result = $this->find($query=array('currentFacultyPosition'=>array('$gte'=>self::$facultyPosition['DELEGATE'])),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);
+				}
+				$i=0;
+				foreach ($result as $key => $value) {
+					$location_result = self::$app['mongo']->findOne('location', $query=array('member._id'=>$value['_id']),array('raw'=>true),$slaveOkay=true);
+					$result[$i]['location'] = array('raw'=>$location_result['raw']);
+					$i++;
+				}
+				break;
 			case 'Board Certified':
 				if($listedOnly){
 					$result = $this->find($query=array('boardCertified'=>1,'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
@@ -736,6 +749,57 @@ class Member extends User {
 		
 		$result = self::$app['mongo']->find('location',array('member.currentMembership'=>self::$membership['FOUNDING MEMBER'], 'state'=>$state,'member.listed'=>1),$fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.currentOrder'=>-1,'member.orderNumState'=>1));
 		
+		$i=0;
+		foreach ($result as $key => $value) {
+			$result[$i]['_id'] = $value['member']['_id'];
+			$result[$i]['firstName'] = $value['member']['firstName'];
+			$result[$i]['middleName'] = (array_key_exists('middleName',$value['member'])) ? $value['member']['middleName']: '';
+			$result[$i]['lastName'] = $value['member']['lastName'];
+			$result[$i]['slug'] = $value['member']['slug'];
+			$result[$i]['primaryPhone'] = $value['member']['primaryPhone'];
+			$result[$i]['email'] = $value['member']['email'];
+			// do some extra processing with the values here
+			$result[$i]['image'] = (!empty($value['member']['image'])) ? $value['member']['image']['urls']['small']['SSLCDN'] : '/noprofileimage';
+			$result[$i]['currentMembership'] = (!empty($value['member']['currentMembership'])) ? self::$membershipReversed[$value['member']['currentMembership']] : '';;
+			$result[$i]['currentFacultyPosition'] = (!empty($value['member']['currentFacultyPosition'])) ? self::$facultyPositionReversed[$value['member']['currentFacultyPosition']] : '';
+			$result[$i]['boardCertified'] = ($value['member']['boardCertified']) ? "Yes" : "No";
+			$result[$i]['boardCertifiedBadge'] = self::$boardCertifiedBadge;
+			$result[$i]['staff'] = ((array_key_exists('staff',$value['member'])) ? $value['member']['staff']: '') ? "Yes" : "No";
+			$result[$i]['staffBadge'] = self::$staffBadge;
+			
+			$result[$i]['websites'] = $value['member']['websites'];
+			$result[$i]['location']['raw'] = $value['raw'];
+			$i++;
+		}
+		$_result = array();
+		if(!empty($result)):
+			for ($i=0; $i < count($result); $i++) {
+				$_result[(string)$result[$i]['_id']] = $result[$i];
+			}
+
+		endif;
+		return $_result;
+	}
+
+	public function searchFacultyByState($state){
+
+		$fields=array('member._id'=>1
+					,'member.firstName'=>1
+					,'member.middleName'=>1
+					,'member.lastName'=>1
+					,'member.slug'=>1
+					,'member.primaryPhone'=>1
+					,'member.email'=>1
+					,'member.image'=>1
+					,'member.currentMembership'=>1
+					,'member.currentFacultyPosition'=>1
+					,'member.boardCertified'=>1
+					,'member.staff'=>1
+					,'member.websites'=>1
+					,'raw'=>1
+					);
+		
+		$result = self::$app['mongo']->find('location',array('member.currentFacultyPosition'=>array('$gte'=>self::$facultyPosition['DELEGATE']), 'state'=>$state,'member.listed'=>1),$fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.currentOrder'=>-1,'member.orderNumState'=>1));
 		$i=0;
 		foreach ($result as $key => $value) {
 			$result[$i]['_id'] = $value['member']['_id'];
