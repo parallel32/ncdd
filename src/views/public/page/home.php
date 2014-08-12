@@ -99,6 +99,72 @@
                     </div>
                     <!--/ LATEST DUI BLOG POSTS -->
 
+                    <!-- FEATURED PAGES -->
+                    <div class="row-fluid bottomPadding postsList">
+                        <div class="title text-center">
+                            <div class="bg">
+                                <h3>Featured on NCDD.com</h3>
+                            </div>
+                        </div>
+                        <ul class="thumbnails">
+
+                            <li class="span3">
+                                <div class="thumbnail">
+                                    <div class="caption">
+                                        <h4 class=""><a href="/we-help-win-more-cases">We Help Win More Cases</a></h4>
+                                        <ul class="info">
+                                            <li>August 11, 2014</li>
+                                        </ul>
+                                        <p class="descr ">When you join the National College for DUI Defense, it’s like adding 1300 lawyers to your knowledge base and to your law firm. The NCDD listserver provides members access to lawyers and advice that will change a difficult case to one with copies of motions, ideas, and assistance unlike anything you may have received in the past. And you will win more cases.</p>
+                                        <br>
+                                        <p class="text-center"><a href="/we-help-win-more-cases">Read More</a></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="span3">
+                                <div class="thumbnail">
+                                    <div class="caption">
+                                        <h4 class=""><a href="/the-top-20-myths-of-breath-blood-and-urine-testing-part-1-of-2">The Top 20 Myths of Breaht, Blood and Urine Testing Part 1</a></h4>
+                                        <ul class="info">
+                                            <li>August 11, 2014</li>
+                                        </ul>
+                                        <p class="descr">Myth #1: Breath means alveolar air
+The alcohol breath test is the most commonly used form of alcohol testing evidence in drunk driving prosecutions. Many articles praise the breath test as a highly accurate and reliable means of testing the amount of alcohol in the alveolar air of a person at the time of the test, assuming certain safeguards are met. ...</p>
+                                        <br>
+                                        <p class="text-center"><a href="/the-top-20-myths-of-breath-blood-and-urine-testing-part-1-of-2">Read More</a></p>
+                                        <div class="autor">
+                                            <img width="35" height="37" src="https://<?=SAW_ADMIN_WEBSITE?>/image/member/5208d6119afe0b53323e8fef/small" alt="" class="avatar pull-left">
+                                            <div class="pull-left"><span>Posted By:</span><br><a href="/member/5208d6119afe0b53323e8fef/leonard-r-stamm">Leonard R. Stamm</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="span3">
+                                <div class="thumbnail">
+                                    <div class="caption">
+                                        <h4 class=""><a href="/the-top-20-myths-of-breath-blood-and-urine-testing-part-2-of-2">The Top 20 Myths of Breaht, Blood and Urine Testing Part 2</a></h4>
+                                        <ul class="info">
+                                            <li>August 11, 2014</li>
+                                        </ul>
+                                        <p class="descr ">Myth #11: Breath test: slope detectors protect against mouth alcohol influencing a result
+
+Our experience with the Intoxilyzer 5000 has shown that its residual mouth alcohol flagging program (that is, the slope detector) is not entirely reliable under the extreme experimental conditions employed in the present study. In this experiment we were able to obtain apparent BrACs as high as 0.18 g/210 L in spite of this feature. ...</p>
+                                        <br>
+                                        <p class="text-center"><a href="/the-top-20-myths-of-breath-blood-and-urine-testing-part-2-of-2">Read More</a></p>
+                                        <div class="autor">
+                                            <img width="35" height="37" src="https://<?=SAW_ADMIN_WEBSITE?>/image/member/5208d6119afe0b53323e8fef/small" alt="" class="avatar pull-left">
+                                            <div class="pull-left"><span>Posted By:</span><br><a href="/member/5208d6119afe0b53323e8fef/leonard-r-stamm">Leonard R. Stamm</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                        </ul>
+                        
+                    </div>
+
+                    <!--/ FEATURED PAGES -->
+
                     <!-- SESSIONS AND SEMINARS -->
                     <div class="row-fluid bottomPadding upcomingSeminars">
                         <div class="title text-center">
