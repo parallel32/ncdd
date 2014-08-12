@@ -119,15 +119,15 @@
                     <br><span class="answer">Answer:</span> Answer will go here.
                     </li>
 
-                    <li class="question">According to NHTSA, speeding is one of the top 30 clues of impaired driving (true/false)<br><span class="answer">Answer:</span> Answer will go here.</li>
-                    <li class="question">What effect does holding your breath have on a breath test result?<br><span class="answer">Answer:</span> Answer will go here.</li>
-                    <li class="question">What is the ‘sale of the house’ analogy in DUI closing arguments?<br><span class="answer">Answer:</span> Answer will go here.</li>
-                    <li class="question">What effect does Ringer’s lactate have on blood alcohol testing?<br><span class="answer">Answer:</span> Answer will go here.</li>
-                    <li class="question">The scientific ratio for determining whole blood alcohol content from a serum test is 1.18 (true/false)<br><span class="answer">Answer:</span> Answer will go here.</li>
-                    <li class="question">What does the Rho factor in Widmark’s formula stand for?<br><span class="answer">Answer:</span> Answer will go here.</li>
-                    <li class="question">The three phases of NHTSA’s DUI Detection are?<br><span class="answer">Answer:</span> Answer will go here.</li>
-                    <li class="question">What are 5 of the 20 myths of breath testing?<br><span class="answer">Answer:</span> Answer will go here.</li>
-                    <li class="question">What is 'salting out' and how does it effect a blood test’s accuracy?<br><span class="answer">Answer:</span> Answer will go here.</li>
+                    <li class="question">According to NHTSA, speeding is one of the top 30 clues of impaired driving (true/false)<br><span class="answer"><!--Answer:</span> Answer will go here.--></li>
+                    <li class="question">What effect does holding your breath have on a breath test result?<br><span class="answer">Answer:</span><!-- Answer will go here.--></li>
+                    <li class="question">What is the ‘sale of the house’ analogy in DUI closing arguments?<br><span class="answer">Answer:</span><!-- Answer will go here.--></li>
+                    <li class="question">What effect does Ringer’s lactate have on blood alcohol testing?<br><span class="answer">Answer:</span><!-- Answer will go here.--></li>
+                    <li class="question">The scientific ratio for determining whole blood alcohol content from a serum test is 1.18 (true/false)<br><span class="answer"><!--Answer:</span> Answer will go here.--></li>
+                    <li class="question">What does the Rho factor in Widmark’s formula stand for?<br><span class="answer"><!--Answer:</span> Answer will go here.--></li>
+                    <li class="question">The three phases of NHTSA’s DUI Detection are?<br><span class="answer">Answer:</span><!-- Answer will go here.--></li>
+                    <li class="question">What are 5 of the 20 myths of breath testing?<br><span class="answer">Answer:</span><!-- Answer will go here.--></li>
+                    <li class="question">What is 'salting out' and how does it effect a blood test’s accuracy?<br><span class="answer"><!--Answer:</span> Answer will go here.--></li>
                     </ol>
 
                     <a href="https://<?=SAW_ADMIN_WEBSITE?>/application/new-member"><img src="/assets/img/quiz-btn.png"></a>
