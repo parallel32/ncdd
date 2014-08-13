@@ -40,6 +40,7 @@ class Blog extends Model {
 	public $scheduleDate;
 	// dates
 	public $add; // for designating which upsert is happening the insert or the update
+	public $twitter;
 	public $timeZone = 'America/New_York';
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
@@ -144,6 +145,7 @@ class Blog extends Model {
 		$this->setCurrentType();
 
 		$this->add = $doc['add'];
+		$this->twitter = $doc['twitter'];
 		
 	}
 	
@@ -173,6 +175,7 @@ class Blog extends Model {
 		$this->scheduleDate = $this->scheduleDate ?: new \stdClass();
 
 		$this->add = $this->add ?: 'yes';
+		$this->twitter = $this->twitter ?: new \stdClass();
 
 	}
 	public function saveEdit(){

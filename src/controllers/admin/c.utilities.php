@@ -30,11 +30,17 @@ $utilities->get('/ttools', function () use ($app) {
         'access_token_secret' => 'WNwBchlcG715X4zT1fOjwFujnQb9HfANc3aV3C4EGqEWe',
     );
 
-    $app = new \TTools\App($config);
-    echo '<pre>';print_r($app->updateWithMedia('/var/www/ncdd/www/ncdd.com/public_html/assets/img/logo.png','our new logo'));echo '</pre>';
+    $tapp = new \TTools\App($config);
+    //echo '<pre>';print_r($tapp->updateWithMedia('Are Prosecutor\'s Office Policies Legal? https://ncdd.com/blog/527aa72ea6ec613578e680b4/are-prosecutor-s-office-policies-legal'));echo '</pre>';
     
-    //$app->update('This is my awesome tweet update');    
-    //$app->updateWithMedia('/var/www/ncdd/www/ncdd.com/public_html/assets/img/logo.png','our new logo')
+    $image = file_get_contents('https://admin.ncdd.com/image/blog/527aa72ea6ec613578e680b4/large');
+    $message = 'Are Prosecutor\'s Office Policies Legal? https://ncdd.com/blog/527aa72ea6ec613578e680b4/are-prosecutor-s-office-policies-legal'.time();
+    echo '<pre>';print_r($tapp->post('/statuses/update_with_media.json', array('status'  => $message,'in_reply_to_status_id' => '','media[]' => "$image;type=image/jpeg"), true));echo '</pre>';
+
+
+    //array('extra_info' => '123456','file_contents'=>'@'.$file_name_with_full_path.';type=image/jpeg;filename=a-differnent-name.jpeg');
+    //$tapp->update('This is my awesome tweet update');    
+    //$tapp->updateWithMedia('/var/www/ncdd/www/ncdd.com/public_html/assets/img/logo.png','our new logo')
 
     return new Response('',200,array('Content-Type' => 'text/html')); 
     

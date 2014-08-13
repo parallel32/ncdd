@@ -117,6 +117,7 @@
                               <table class="table table-striped table-bordered table-hover dataTable" id="publisheds" aria-describedby="sample_1_info">
                                  <thead>
                                     <tr role="row">
+                                       <th class=""><i class=" icon-twitter"></th>
                                        <th class="">Headline</th>
                                        <th class="">Author</th>
                                        <th class="hidden-480">Published On</th>
@@ -128,6 +129,7 @@
                                  <tbody role="alert" aria-live="polite" aria-relevant="all">
                                     <? if(!empty($this->vars['published'])): foreach($this->vars['published'] as $blog): ?>
                                     <tr class="gradeX odd">
+                                       <td class=" "><?=(array_key_exists('twitter', $blog)) ? 'YES': 'NO'?></td>
                                        <td class=" "><?=$blog['headline']?></td>
                                        <td class=" "><?=$blog['author']['displayName']?></td>
                                        <td class="hidden-480 "><?=$blog['publishDate']['shortTime'].'  '.$blog['publishDate']['monthDay'];?></td>
