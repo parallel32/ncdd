@@ -34,7 +34,6 @@ EOT;
 <meta name="twitter:title" content="$title">
 <meta name="twitter:description" content="$description">
 <meta name="twitter:creator" content="@NCDDNews">
-<meta name="twitter:image:src" content="">
 <meta name="twitter:domain" content="ncdd.com">
 
 <meta property="og:title" content="$title" />
