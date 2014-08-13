@@ -29,7 +29,8 @@
         "nesbot/Carbon": "dev-master",
         "imagine/imagine": "dev-master",
         "google/apiclient": "dev-master",
-        "sendgrid/sendgrid": "dev-master"
+        "sendgrid/sendgrid": "dev-master",
+        "ttools/ttools": "2.1.*"
     },
     "autoload": {
 		"psr-0": {"Saw":"src/"}
