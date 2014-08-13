@@ -126,16 +126,16 @@ img.thumbnail{ max-width: 100%;}
                                 <a href="mailto:<?=$member['email']?>" ><img src="/assets/img/contactme.png" alt="contact"></a><br><br>
                                 <ul class="socialicons">
                                   <? if(!empty($member['linkedInUrl'])): ?>
-                                  <li><a href="http://<?=$member['linkedInUrl']?>" target="_blank"><img src="/assets/img/ln.png" alt="linkedin"></a></li>
+                                  <li><a href="<?=$member['linkedInUrl']?>" target="_blank"><img src="/assets/img/ln.png" alt="linkedin"></a></li>
                                   <? endif; ?>
                                   <? if(!empty($member['googlePlusUrl'])): ?>
-                                  <li><a href="http://<?=$member['googlePlusUrl']?>" target="_blank"><img src="/assets/img/gplus.png" alt="googleplus"></a></li>
+                                  <li><a href="<?=$member['googlePlusUrl']?>" target="_blank"><img src="/assets/img/gplus.png" alt="googleplus"></a></li>
                                   <? endif; ?>
                                   <? if(!empty($member['twitterUrl'])): ?>
-                                  <li><a href="http://<?=$member['twitterUrl']?>" target="_blank"><img src="/assets/img/twitter.png" alt="tweets"></a></li>
+                                  <li><a href="<?=$member['twitterUrl']?>" target="_blank"><img src="/assets/img/twitter.png" alt="tweets"></a></li>
                                   <? endif; ?>
                                   <? if(!empty($member['facebookUrl'])): ?>
-                                  <li><a href="http://<?=$member['facebookUrl']?>" target="_blank"><img src="/assets/img/fb.png" alt="fb"></a></li>
+                                  <li><a href="<?=$member['facebookUrl']?>" target="_blank"><img src="/assets/img/fb.png" alt="fb"></a></li>
                                   <? endif; ?>
                                 </ul>
                                   <br>

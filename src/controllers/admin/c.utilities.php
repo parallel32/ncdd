@@ -12,11 +12,33 @@ use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Saw\Model;
 use QueryPath\QueryPath;
 use Cocur\Slugify\Slugify;
+use TTools\App;
 
 $utilities = $app['controllers_factory'];
 $utilities->before($mustbeADMIN);
 
+/////////////////////////////
+// TTools Twitter api test //
+/////////////////////////////
+$utilities->get('/ttools', function () use ($app) {
 
+    // configuration keys for the ncdd test app on @pricepost
+    $config = array(
+        'consumer_key'        => 'm1HYjvx0LbpZIbOHBGBDsjR4w',
+        'consumer_secret'     => 'lfkQsbUpjCRvAW9t3ndGfwpnDYAcuojlf6H0LmuMPx8S1lAx9N',
+        'access_token'        => '279052250-0douNboEdh7zZbEZBEGUGfNyvTzVpPyK7y9RAlFk',
+        'access_token_secret' => 'WNwBchlcG715X4zT1fOjwFujnQb9HfANc3aV3C4EGqEWe',
+    );
+
+    $app = new \TTools\App($config);
+    echo '<pre>';print_r($app->updateWithMedia('/var/www/ncdd/www/ncdd.com/public_html/assets/img/logo.png','our new logo'));echo '</pre>';
+    
+    //$app->update('This is my awesome tweet update');    
+    //$app->updateWithMedia('/var/www/ncdd/www/ncdd.com/public_html/assets/img/logo.png','our new logo')
+
+    return new Response('',200,array('Content-Type' => 'text/html')); 
+    
+});
 ///////////////////////////////////////////////
 // joinDate update via membertemp collection //
 ///////////////////////////////////////////////
