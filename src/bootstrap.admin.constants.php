@@ -10,3 +10,8 @@ define("SAW_SITE_KEY",apache_getenv('SAW_SITE_KEY'));
 define("SAW_INDEX_ROUTE",apache_getenv('SAW_INDEX_ROUTE'));
 // upload directory constant.  this is needed by the template model when receiving template uploads to prepare them for processing
 define("SAW_FILE_UPLOAD_DIR",apache_getenv('SAW_FILE_UPLOAD_DIR'));
+// NCDDNews twitter app
+define("TWITTER_CONSUMER_KEY",apache_getenv('TWITTER_CONSUMER_KEY'));
+define("TWITTER_CONSUMER_SECRET",apache_getenv('TWITTER_CONSUMER_SECRET'));
+define("TWITTER_ACCESS_TOKEN",apache_getenv('TWITTER_ACCESS_TOKEN'));
+define("TWITTER_ACCESS_TOKEN_SECRET",apache_getenv('TWITTER_ACCESS_TOKEN_SECRET'));

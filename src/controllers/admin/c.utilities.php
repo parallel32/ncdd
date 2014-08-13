@@ -24,19 +24,15 @@ $utilities->get('/ttools', function () use ($app) {
 
     // configuration keys for the ncdd test app on @pricepost
     $config = array(
-        'consumer_key'        => 'm1HYjvx0LbpZIbOHBGBDsjR4w',
-        'consumer_secret'     => 'lfkQsbUpjCRvAW9t3ndGfwpnDYAcuojlf6H0LmuMPx8S1lAx9N',
-        'access_token'        => '279052250-0douNboEdh7zZbEZBEGUGfNyvTzVpPyK7y9RAlFk',
-        'access_token_secret' => 'WNwBchlcG715X4zT1fOjwFujnQb9HfANc3aV3C4EGqEWe',
+        'consumer_key'        => TWITTER_CONSUMER_KEY,
+        'consumer_secret'     => TWITTER_CONSUMER_SECRET,
+        'access_token'        => TWITTER_ACCESS_TOKEN,
+        'access_token_secret' => TWITTER_ACCESS_TOKEN_SECRET,
     );
 
     $tapp = new \TTools\App($config);
-    //echo '<pre>';print_r($tapp->updateWithMedia('Are Prosecutor\'s Office Policies Legal? https://ncdd.com/blog/527aa72ea6ec613578e680b4/are-prosecutor-s-office-policies-legal'));echo '</pre>';
-    
-    $image = file_get_contents('https://admin.ncdd.com/image/blog/527aa72ea6ec613578e680b4/large');
-    $message = 'Are Prosecutor\'s Office Policies Legal? https://ncdd.com/blog/527aa72ea6ec613578e680b4/are-prosecutor-s-office-policies-legal'.time();
-    echo '<pre>';print_r($tapp->post('/statuses/update_with_media.json', array('status'  => $message,'in_reply_to_status_id' => '','media[]' => "$image;type=image/jpeg"), true));echo '</pre>';
-
+    echo '<pre>';print_r($tapp->update('Office Policies Legal? https://ncdd.com/blog/527aa72ea6ec613578e680b4/are-prosecutor-s-office-policies-legal'));echo '</pre>';
+        
 
     //array('extra_info' => '123456','file_contents'=>'@'.$file_name_with_full_path.';type=image/jpeg;filename=a-differnent-name.jpeg');
     //$tapp->update('This is my awesome tweet update');    

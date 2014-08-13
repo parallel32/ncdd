@@ -1,6 +1,53 @@
 <? 
 $published = (!empty($this->vars['post'])) ? true: false; 
 
+$post = $this->vars['post'];
+
+$title = $post['headline'];
+$body = strip_tags($post['body']);
+$description = substr($body,0,strpos($body, ' ',190)).'...';
+
+$url = 'https://'.SAW_CONSUMER_WEBSITE.'/blog/'.$post['_id'].'/'.$post['slug'];
+if((\Saw\Model\Blog::$typeReversed[$post['currentType']] < \Saw\Model\Blog::$type['PICTURE']) && !empty($post['image'])){
+    $image = $post['image']['urls']['large']['SSLCDN'];    
+    echo $twitter_card_photo = <<<EOT
+<meta name="twitter:card" content="photo">
+<meta name="twitter:site" content="@NCDDNews">
+<meta name="twitter:creator" content="@NCDDNews">
+<meta name="twitter:title" content="$title">
+<meta name="twitter:image:src" content="$image">
+<meta name="twitter:domain" content="ncdd.com">
+
+<meta property="og:title" content="$title" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="$url" />
+<meta property="og:image" content="$image" />
+<meta property="og:description" content="$description" />
+
+EOT;
+
+}else{
+    
+    echo $twitter_card_summary = <<<EOT
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@NCDDNews">
+<meta name="twitter:title" content="$title">
+<meta name="twitter:description" content="$description">
+<meta name="twitter:creator" content="@NCDDNews">
+<meta name="twitter:image:src" content="">
+<meta name="twitter:domain" content="ncdd.com">
+
+<meta property="og:title" content="$title" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="$url" />
+<meta property="og:description" content="$description" />
+
+EOT;
+
+}
+
+
+
 ?>
             <div class="row-fluid blog">
                         <div class="title text-center">
@@ -14,7 +61,6 @@ $published = (!empty($this->vars['post'])) ? true: false;
                             <div class="row-fluid">
                                 <div class="span8 pull-left">
 
-                                    <? $post = $this->vars['post'];?>
                                     <?
                                         switch (\Saw\Model\Blog::$typeReversed[$post['currentType']]) {
                                             case 'EDITORIAL':
