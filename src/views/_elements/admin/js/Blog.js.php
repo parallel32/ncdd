@@ -155,7 +155,7 @@ $user_id = $user['user_id'];
 		   		if(blockuiformpost == 'yes'){
 			   		$('#save-modal .modal-body p').html(responseObj.message);
 			      	//$('#save-modal-label').html(responseObj.label);
-			    	$('#save-modal').modal({keyboard: false});   		
+			    	$('#save-modal').modal({keyboard: false});
 			    }
 		   };
 
@@ -180,7 +180,29 @@ $user_id = $user['user_id'];
 		}
 		setTimeout(Blog.autosave, 5000);
 	};
-	
-	
+	Blog.tweet = function(id){
+		$('#tweet-modal .btn.finished').click(function(e){
+			$('#tweet-modal').modal('hide');	
+		});	
+		$('#tweet-modal .tweeting').show();
+		$('#tweet-modal .successful').hide();
+		$('#tweet-modal .error').hide();
+
+		$('#tweet-modal').modal({keyboard: false});
+		io.saw.FormGet.activate({postUrl:'/blog/tweet/'+id
+			,postOnComplete:function(responseObj,responseStatus){
+				$('#tweet-modal .tweeting').hide();
+			}
+			,postOnSuccess:function(responseObj){
+				$('#tweet-modal .successful').show();
+				$('#tweet-modal .successful p').html('<h4>'+responseObj.response.text+'</h4><h4><a target="_blank" href="'+responseObj.response.link+'">'+responseObj.response.link+'</a></h4>');
+				$('#'+id+' .tweet').html('<a class="btn green" target="_blank" href="'+responseObj.response.link+'"><i class="icon-twitter"></a>');
+			}
+			,postOnErrors:function(responseObj){
+				$('#tweet-modal .error').show();
+				$('#tweet-modal .error p').html('<h4>'+responseObj.response.error+'</h4>');
+			}
+		});      	
+	};	
 }( io.saw.Blog = io.saw.Blog || {}, io.saw.jQuery || jQuery ));
 </script>

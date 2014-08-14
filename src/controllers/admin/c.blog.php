@@ -10,7 +10,7 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Saw\Model;
-
+use TTools\App;
 
 // slugify
 $app->post('/blog/slugify', function (Request $request) use ($app) {
@@ -20,6 +20,37 @@ $app->post('/blog/slugify', function (Request $request) use ($app) {
     
     return new Response(json_encode(array('slug'=>$slug, 'message' => 'successful operation.')), 200,array('Content-Type' => 'application/json'));
 })->before($mustbeMEMBER);
+
+// tweet
+$app->get('/blog/tweet/{id}', function ($id, Request $request) use ($app) {
+	// retrieve document from request
+
+    $blog = new Model\Blog(array('_id'=>$id),$app);
+    $blog = $blog->findById();
+  	
+    $tapp = new \TTools\App(array(
+        'consumer_key'        => TWITTER_CONSUMER_KEY,
+        'consumer_secret'     => TWITTER_CONSUMER_SECRET,
+        'access_token'        => TWITTER_ACCESS_TOKEN,
+        'access_token_secret' => TWITTER_ACCESS_TOKEN_SECRET,
+    ));
+    $response = $tapp->update($blog['headline'].' https://'.SAW_CONSUMER_WEBSITE.'/blog/'.$blog['_id'].'/'.$blog['slug']);
+    
+    if(!array_key_exists('error', $response)){
+
+    	$twitter_response['created_at'] = $response['created_at'];
+    	$twitter_response['id_str'] = $response['id_str'];
+    	$twitter_response['text'] = $response['text'];
+    	$twitter_response['link'] = 'http://twitter.com/'.$response['user']['name'].'/status/'.$response['id_str'];
+
+ 		$blog = new Model\Blog(array('_id'=>$blog['_id'],'twitter'=>$twitter_response),$app);
+	    $blog->saveSafe();
+
+	    return new Response(json_encode(array('response'=>$twitter_response, 'message' => 'successful operation.')), 200,array('Content-Type' => 'application/json'));
+    }
+    return new Response(json_encode(array('response'=>array('error'=>$response['raw_response']), 'message'=>'The post to twitter failed.')), 400,array('Content-Type' => 'application/json'));
+    
+})->before($mustbeADMIN);
 
 // call this method to publish the scheduled blogs
 $app->get('/blog/publish-schedule', function (Request $request) use ($app) {

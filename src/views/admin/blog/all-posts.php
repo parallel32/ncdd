@@ -117,7 +117,7 @@
                               <table class="table table-striped table-bordered table-hover dataTable" id="publisheds" aria-describedby="sample_1_info">
                                  <thead>
                                     <tr role="row">
-                                       <th class=""><i class=" icon-twitter"></th>
+                                       <th class=""></th>
                                        <th class="">Headline</th>
                                        <th class="">Author</th>
                                        <th class="hidden-480">Published On</th>
@@ -128,8 +128,8 @@
                                  </thead>
                                  <tbody role="alert" aria-live="polite" aria-relevant="all">
                                     <? if(!empty($this->vars['published'])): foreach($this->vars['published'] as $blog): ?>
-                                    <tr class="gradeX odd">
-                                       <td class=" "><?=(array_key_exists('twitter', $blog)) ? 'YES': 'NO'?></td>
+                                    <tr id="<?=$blog['_id']?>" class="gradeX odd">
+                                       <td class="tweet"><?=(array_key_exists('twitter', $blog)) ? '<a class="btn green" target="_blank" href="'.$blog['twitter']['link'].'"><i class="icon-twitter"></a>': '<a class="btn red" href="javascript:io.saw.Blog.tweet(\''.$blog['_id'].'\')"><i class="icon-twitter red"></a>'?></td>
                                        <td class=" "><?=$blog['headline']?></td>
                                        <td class=" "><?=$blog['author']['displayName']?></td>
                                        <td class="hidden-480 "><?=$blog['publishDate']['shortTime'].'  '.$blog['publishDate']['monthDay'];?></td>
@@ -204,6 +204,8 @@
          <!-- END PAGE CONTAINER-->    
       </div>
       <!-- END PAGE -->
+      <? $this->vars['memberId'] = ''; ?>
+      <?=$this->element('js/Blog.js');?>
       <script>
          jQuery(document).ready(function() {    
             $('.edit').click(function(e){
@@ -212,3 +214,22 @@
             
          });
       </script>
+
+      <!-- SUCCESSFUL SAVE MODAL -->
+      <div id="tweet-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="tweet-modal-label" aria-hidden="true">
+         <div class="modal-body">
+            <p class="tweeting">Tweeting...please wait.</p>
+            <div class="successful hide">
+               <h3><font color="green">Successful Tweet.  Click below to see it on Twitter.</font></h3>
+               <p></p>
+            </div>
+            <div class="error hide">
+               <h3><font color="red">Oops, something went wrong.</font></h3>
+               <p></p>
+            </div>
+         </div>
+         <div class="modal-footer">
+            <button class="btn finished">Close</button>
+         </div>
+      </div>
+      <!--/ SUCCESSFUL SAVE MODAL -->

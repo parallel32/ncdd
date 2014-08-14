@@ -31,7 +31,7 @@ $utilities->get('/ttools', function () use ($app) {
     );
 
     $tapp = new \TTools\App($config);
-    echo '<pre>';print_r($tapp->update('Office Policies Legal? https://ncdd.com/blog/527aa72ea6ec613578e680b4/are-prosecutor-s-office-policies-legal'));echo '</pre>';
+    echo '<pre>';print_r($tapp->update('Office Policies Legal?Office Policies Legal?Office Policies Legal?Office Policies Legal?Office Policies Legal?Office Policies Legal?Office Policies Legal?Office Policies Legal?Office Policies Legal?Office Policies Legal?Office Policies Legal?Office Policies Legal?Office Policies Legal?Office Policies Legal? https://ncdd.com/blog/527aa72ea6ec613578e680b4/are-prosecutor-s-office-policies-legal'));echo '</pre>';
         
 
     //array('extra_info' => '123456','file_contents'=>'@'.$file_name_with_full_path.';type=image/jpeg;filename=a-differnent-name.jpeg');
