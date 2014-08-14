@@ -129,7 +129,7 @@
                                  <tbody role="alert" aria-live="polite" aria-relevant="all">
                                     <? if(!empty($this->vars['published'])): foreach($this->vars['published'] as $blog): ?>
                                     <tr id="<?=$blog['_id']?>" class="gradeX odd">
-                                       <td class="tweet"><?=(array_key_exists('twitter', $blog)) ? '<a class="btn green" target="_blank" href="'.$blog['twitter']['link'].'"><i class="icon-twitter"></a>': '<a class="btn red" href="javascript:io.saw.Blog.tweet(\''.$blog['_id'].'\')"><i class="icon-twitter red"></a>'?></td>
+                                       <td class="tweet"><?=(array_key_exists('twitter', $blog) && array_key_exists('created_at', $blog['twitter'])) ? '<a class="btn green" target="_blank" href="'.$blog['twitter']['link'].'"><i class="icon-twitter"></a>': '<a class="btn red" href="javascript:io.saw.Blog.tweet(\''.$blog['_id'].'\')"><i class="icon-twitter red"></a>'?></td>
                                        <td class=" "><?=$blog['headline']?></td>
                                        <td class=" "><?=$blog['author']['displayName']?></td>
                                        <td class="hidden-480 "><?=$blog['publishDate']['shortTime'].'  '.$blog['publishDate']['monthDay'];?></td>
