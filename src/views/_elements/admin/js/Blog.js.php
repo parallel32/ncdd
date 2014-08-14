@@ -192,15 +192,16 @@ $user_id = $user['user_id'];
 		io.saw.FormGet.activate({postUrl:'/blog/tweet/'+id
 			,postOnComplete:function(responseObj,responseStatus){
 				$('#tweet-modal .tweeting').hide();
+				if(responseStatus == 400){
+					$('#tweet-modal .error').show();
+					$('#tweet-modal .error p').html('<h4>'+responseObj.response.error+'</h4>');
+				}
 			}
 			,postOnSuccess:function(responseObj){
+
 				$('#tweet-modal .successful').show();
 				$('#tweet-modal .successful p').html('<h4>'+responseObj.response.text+'</h4><h4><a target="_blank" href="'+responseObj.response.link+'">'+responseObj.response.link+'</a></h4>');
 				$('#'+id+' .tweet').html('<a class="btn green" target="_blank" href="'+responseObj.response.link+'"><i class="icon-twitter"></a>');
-			}
-			,postOnErrors:function(responseObj){
-				$('#tweet-modal .error').show();
-				$('#tweet-modal .error p').html('<h4>'+responseObj.response.error+'</h4>');
 			}
 		});      	
 	};	
