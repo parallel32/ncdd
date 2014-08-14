@@ -535,10 +535,39 @@ class Member extends User {
 			case 'Faculty':
 				if($listedOnly){
 					//$result = $this->find($query=array('currentFacultyPosition'=>array('$gte'=>self::$facultyPosition['DELEGATE'],'$lt'=>self::$facultyPosition['FELLOW'],'$ne'=>self::$facultyPosition['REGENT']),'listed'=>1),$fields,true,$sort=array('lastName'=>1,'firstName'=>1),$offset=0,$limit=3000);
-					$result = $this->find($query=array('staff'=>1,'listed'=>1),$fields,true,$sort=array('lastName'=>1,'firstName'=>1),$offset=0,$limit=3000);
+					$result = $this->find($query=array(
+						'staff'=>1
+						,'currentFacultyPosition'=>array(
+							'$nin'=>array(
+								self::$facultyPosition['FELLOW']
+								,self::$facultyPosition['DEAN']
+								,self::$facultyPosition['DEAN EMERITUS']
+								,self::$facultyPosition['ASSISTANT DEAN']
+								,self::$facultyPosition['SECRETARY']
+								,self::$facultyPosition['TREASURER']
+								,self::$facultyPosition['REGENT']
+								,self::$facultyPosition['FORMER REGENT']
+							)
+						)
+						,'listed'=>1
+					),$fields,true,$sort=array('lastName'=>1,'firstName'=>1),$offset=0,$limit=3000);
 				}else{
 					//$result = $this->find($query=array('currentFacultyPosition'=>array('$gte'=>self::$facultyPosition['DELEGATE'],'$lt'=>self::$facultyPosition['FELLOW'],'$ne'=>self::$facultyPosition['REGENT'])),$fields,true,$sort=array('lastName'=>1,'firstName'=>1),$offset=0,$limit=3000);
-					$result = $this->find($query=array('staff'=>1),$fields,true,$sort=array('lastName'=>1,'firstName'=>1),$offset=0,$limit=3000);
+					$result = $this->find($query=array(
+						'staff'=>1
+						,'currentFacultyPosition'=>array(
+							'$nin'=>array(
+								self::$facultyPosition['FELLOW']
+								,self::$facultyPosition['DEAN']
+								,self::$facultyPosition['DEAN EMERITUS']
+								,self::$facultyPosition['ASSISTANT DEAN']
+								,self::$facultyPosition['SECRETARY']
+								,self::$facultyPosition['TREASURER']
+								,self::$facultyPosition['REGENT']
+								,self::$facultyPosition['FORMER REGENT']
+							)
+						)
+					),$fields,true,$sort=array('lastName'=>1,'firstName'=>1),$offset=0,$limit=3000);
 				}
 				$i=0;
 				foreach ($result as $key => $value) {
