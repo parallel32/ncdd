@@ -534,9 +534,9 @@ class Member extends User {
 				break;
 			case 'Faculty':
 				if($listedOnly){
-					$result = $this->find($query=array('currentFacultyPosition'=>array('$gte'=>self::$facultyPosition['DELEGATE']),'listed'=>1),$fields,true,$sort=array('lastName'=>1,'firstName'=>1),$offset=0,$limit=3000);
+					$result = $this->find($query=array('currentFacultyPosition'=>array('$gte'=>self::$facultyPosition['DELEGATE'],'$lt'=>self::$facultyPosition['FELLOW'],'$ne'=>self::$facultyPosition['REGENT']),'listed'=>1),$fields,true,$sort=array('lastName'=>1,'firstName'=>1),$offset=0,$limit=3000);
 				}else{
-					$result = $this->find($query=array('currentFacultyPosition'=>array('$gte'=>self::$facultyPosition['DELEGATE'])),$fields,true,$sort=array('lastName'=>1,'firstName'=>1),$offset=0,$limit=3000);
+					$result = $this->find($query=array('currentFacultyPosition'=>array('$gte'=>self::$facultyPosition['DELEGATE'],'$lt'=>self::$facultyPosition['FELLOW'],'$ne'=>self::$facultyPosition['REGENT'])),$fields,true,$sort=array('lastName'=>1,'firstName'=>1),$offset=0,$limit=3000);
 				}
 				$i=0;
 				foreach ($result as $key => $value) {
