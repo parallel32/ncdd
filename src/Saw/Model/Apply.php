@@ -380,7 +380,6 @@ class Apply extends Model {
 					break;
 			}
 		} else if($curQuarter > 2 && $curQuarter <= 3){
-			error_log('hererererererer');
 			switch ($this->membershipDues) {
 				case 175:
 					return array('q'=>3,'a'=>100);

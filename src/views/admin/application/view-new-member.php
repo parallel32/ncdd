@@ -672,6 +672,11 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                   </div>
                   
                   <div class="form-actions text-center">
+                     <? $user = $this->app['session']->get('user');
+                           if($user['accessLevel'] == ADMIN){  
+                        ?>
+                        <input type="checkbox" name="suppress_emails" <?=(array_key_exists('suppress_emails',$user) && !empty($user['suppress_emails']))?'checked':'';?> value="yes">Suppress Emails.
+                        <? } ?>
                      <? if($this->vars['application']['currentStatus'] >= \Saw\Model\Apply::$status['APPROVED'] && $this->vars['application']['currentStatus'] < \Saw\Model\Apply::$status['PAID']): ?>
                      <button type="button" data-id="<?=$this->vars['application']['_id']?>" class="btn green pay"><i class="icon-money"></i> Pay Application</button>
                      <? endif; ?>
