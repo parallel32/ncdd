@@ -42,6 +42,7 @@ class ApplyNewMember extends Apply {
 	public $authorizationReleasePrintedNameDate;
 	public $referenceFormDownload;
 	public $publidDefender;
+	public $promocode;
 
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addPropertyConstraint('hearAboutNCDD', new Constraints\NotBlank(array('message'=>'cannot be blank')));
@@ -62,9 +63,16 @@ class ApplyNewMember extends Apply {
 		$metadata->addConstraint(new Callback(array('methods' => array('explain'))));
 		$metadata->addConstraint(new Callback(array('methods' => array('yearsinlawpractice'))));
 		$metadata->addConstraint(new Callback(array('methods' => array('dues'))));
+		$metadata->addConstraint(new Callback(array('methods' => array('checkpromo'))));
 		/* dependency replaced by automated reference form
 		$metadata->addConstraint(new Callback(array('methods' => array('referenceFormDownload'))));
 		*/
+	}
+	public function checkpromo(ExecutionContext $context){
+		if(!empty($this->promocode) && $this->promocode != 'NCDD2014'){
+			$propertyPath = $context->getPropertyPath().'promocode';
+			$context->addViolationAtPath($propertyPath,'Invalid promo code. Please try again', array(), null);	
+		}		
 	}
 	public function dues(ExecutionContext $context){
 		$years = date('Y') - $this->yearsInLawPractice;
@@ -166,6 +174,7 @@ class ApplyNewMember extends Apply {
 		$this->authorizationReleasePrintedNameDate = $doc['authorizationReleasePrintedNameDate'];
 		$this->referenceFormDownload = $doc['referenceFormDownload'];
 		$this->publicDefender = (array_key_exists('publicDefender',$doc)) ? $doc['publicDefender'] : '';
+		$this->promocode = (array_key_exists('promocode',$doc)) ? $doc['promocode'] : '';
 
 	}
 	
@@ -203,6 +212,7 @@ class ApplyNewMember extends Apply {
 		$this->authorizationReleasePrintedNameDate = $this->authorizationReleasePrintedNameDate ?: '';
 		$this->referenceFormDownload = $this->referenceFormDownload ?: '';
 		$this->publicDefender = $this->publicDefender ?: '';
+		$this->promocode = $this->promocode ?: '';
 	}
 	public function insert(){
 		$this->prepareInsert();

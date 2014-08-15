@@ -761,6 +761,18 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                      </div>
                      <!--/span-->
                   </div>
+                  <div class="row-fluid">
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">Promo Code:</label>
+                           <div class="controls">
+                              <input type="text" name="doc[promocode]" class="m-wrap span12 promocode">
+                              <span class="help-block">If you have a promo code please enter it here.</span>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
                   
                   <div class="row-fluid">
                      <div class="span12 ">
