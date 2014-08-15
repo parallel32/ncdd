@@ -13,6 +13,7 @@
     height: 50%;
 }
 </style>
+
                     <div class="row-fluid welcome">
                         <div class="title text-center bigTitle">
                             <div class="bg">
@@ -32,6 +33,23 @@
                                 <div class="tab-pane active " id="welcome">
                                     <iframe class="pull-right" height="70%" src="//www.youtube.com/embed/IgTzHmMDqng?rel=0" frameborder="0" allowfullscreen></iframe>
                                     <?=$this->vars['welcome']['body']?>
+                                    <div class="text-center">
+                                        <br><a href="https://twitter.com/NCDDNews" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @NCDDNews</a>&nbsp;&nbsp;
+                                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                                    </div>
+                                    <br>
+                                    <div class="text-center">
+                                        <div id="fb-root"></div>
+                                        <script>(function(d, s, id) {
+                                          var js, fjs = d.getElementsByTagName(s)[0];
+                                          if (d.getElementById(id)) return;
+                                          js = d.createElement(s); js.id = id;
+                                          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=227794137272613&version=v2.0";
+                                          fjs.parentNode.insertBefore(js, fjs);
+                                        }(document, 'script', 'facebook-jssdk'));</script>
+                                        <div class="fb-like" data-href="https://www.facebook.com/NationalCollegeforDUIDefense" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+                                    </div>
+
                                 </div>
                                 <div class="tab-pane" id="nationallyRecognized">
                                     <img src="/assets/img/certificate.png" alt="" class="pull-right certificate">
@@ -237,6 +255,18 @@ Our experience with the Intoxilyzer 5000 has shown that its residual mouth alcoh
                         <div class="text-center">
                             <a href="/dui-news" class="btn">More News</a> <br><br><a href="https://twitter.com/NCDDNews" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @NCDDNews</a>
                             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                        </div>
+                        <br>
+                        <div class="text-center">
+                            <div id="fb-root"></div>
+                            <script>(function(d, s, id) {
+                              var js, fjs = d.getElementsByTagName(s)[0];
+                              if (d.getElementById(id)) return;
+                              js = d.createElement(s); js.id = id;
+                              js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=227794137272613&version=v2.0";
+                              fjs.parentNode.insertBefore(js, fjs);
+                            }(document, 'script', 'facebook-jssdk'));</script>
+                            <div class="fb-like" data-href="https://www.facebook.com/NationalCollegeforDUIDefense" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
                         </div>
                     </div>
                     <script>

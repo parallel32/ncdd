@@ -19,6 +19,7 @@ $utilities->before($mustbeADMIN);
 
 /////////////////////////////
 // TTools Twitter api test //
+// reference: http://ttools.readthedocs.org/en/latest/example_silex.html
 /////////////////////////////
 $utilities->get('/ttools', function () use ($app) {
 
