@@ -117,37 +117,6 @@ ul.sidebarlist li {
 </div>
 </div></div>
 
-
-
-
-alaska
-        arizona
-        arkansas
-        colorado
-        delaware
-        dc
-        hawaii
-        indiana
-        iowa
-        kentuck
-        louis
-        mich
-        minn
-        miss
-        missouri
-        mont
-        neb
-        nevada
-        new mex
-        north caro
-        oregon
-        rhode island
-        south dakota
-        vermont
-        virginia
-        wiscon
-
-
 <div class="container-fluid pagecontent" id="learn">
     <? if(true): ?>
                     <div class="row-fluid">
