@@ -35,7 +35,6 @@ $app->get('/blog/tweet/{id}', function ($id, Request $request) use ($app) {
         'access_token_secret' => TWITTER_ACCESS_TOKEN_SECRET,
     ));
     $response = $tapp->update($blog['headline'].' https://'.SAW_CONSUMER_WEBSITE.'/blog/'.$blog['_id'].$blog['slug']);
-    
     if(!array_key_exists('error', $response)){
 
     	$twitter_response['created_at'] = $response['created_at'];
