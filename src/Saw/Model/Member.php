@@ -830,8 +830,20 @@ class Member extends User {
 					,'raw'=>1
 					);
 		
-		$result = self::$app['mongo']->find('location',array('member.currentFacultyPosition'=>array('$gte'=>self::$facultyPosition['DELEGATE']), 'state'=>$state,'member.listed'=>1),$fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.lastName'=>1,'member.firstName'=>1));
+		$result = self::$app['mongo']->find('location',array('member.staff'=>1,'member.currentFacultyPosition'=>array(
+			'$nin'=>array(
+				self::$facultyPosition['FELLOW']
+				,self::$facultyPosition['DEAN']
+				,self::$facultyPosition['DEAN EMERITUS']
+				,self::$facultyPosition['ASSISTANT DEAN']
+				,self::$facultyPosition['SECRETARY']
+				,self::$facultyPosition['TREASURER']
+				,self::$facultyPosition['REGENT']
+				,self::$facultyPosition['FORMER REGENT']
+			)
+		), 'state'=>$state,'member.listed'=>1),$fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.lastName'=>1,'member.firstName'=>1));
 		$i=0;
+
 		foreach ($result as $key => $value) {
 			$result[$i]['_id'] = $value['member']['_id'];
 			$result[$i]['firstName'] = $value['member']['firstName'];
