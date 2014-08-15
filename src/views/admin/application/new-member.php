@@ -23,9 +23,19 @@
          </div>
          <div class="row-fluid">
             <div class="span12">
-               <h4 class="page-title text-center">Please Review the <a href="//<?=SAW_CONSUMER_WEBSITE?>/become-a-member">Membership Eligibility Rules</a></h4>
+               <h4 class="page-title text-center">Please Review Our <a href="//<?=SAW_CONSUMER_WEBSITE?>/become-a-member">Membership Eligibility Rules</a></h4>
             </div>
          </div>
+         <? if(false): ?>
+         <div class="row-fluid">
+            <div class="span12">
+            <h4 class="page-title">Our Annual Membership Dues</h4>
+            <p><h4>Attorneys in practice for less than 6 years: $<?=$this->vars['dues'][1]['amount']?>, currently pro-rated at $<?=$this->vars['dues'][1]['prorated']['a']?></h4></p>
+            <p><h4>Attorneys in practice for 6 years or more: $<?=$this->vars['dues'][6]['amount']?>, currently pro-rated at $<?=$this->vars['dues'][6]['prorated']['a']?></h4></p>
+            <p><h4>Attorneys in practice as Public Defenders: $<?=$this->vars['dues']['publicDefender']['amount']?>, currently pro-rated at $<?=$this->vars['dues']['publicDefender']['prorated']['a']?></h4></p>
+            </div>
+         </div>
+         <? endif; ?>
          <!-- END PAGE HEADER-->
          <!-- BEGIN PAGE CONTENT-->
          <div class="row-fluid">

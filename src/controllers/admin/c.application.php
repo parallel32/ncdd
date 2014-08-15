@@ -216,7 +216,14 @@ $app->get('/application/downloads/{file}', function ($file, Request $request) us
 // NEW MEMBER APPLICATION //
 ////////////////////////////
 $app->get('/application/new-member', function (Request $request) use ($app) {
-	return $app['view']->render('application/new-member', 'blank');
+
+	foreach(Model\ApplyNewMember::$dues as $type => $amount){
+		$apply = new Model\Apply(array('membershipDues'=>$amount),$app);
+		$dues[$type]['amount'] = $amount;
+		$dues[$type]['prorated'] = $apply->proRate('today');
+	}
+	
+	return $app['view']->render('application/new-member', 'blank',array('dues'=>$dues));
 });
 $app->post('/application/new-member', function (Request $request) use ($app) {
 	// retrieve document from request

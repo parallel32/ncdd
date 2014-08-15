@@ -622,6 +622,9 @@ $app->get('/state-delegates/{country}/{state}', function ($country, $state, Requ
 
 });
 
+$app->get('/quiz', function (Request $request) use ($app) {
+	return $app->redirect('/we-help-win-more-cases');
+});
 $app->get('/we-help-win-more-cases', function (Request $request) use ($app) {
 	$slug = 'we-help-win-more-cases';
 	$page = new Model\Page($doc=array('slug'=>$slug), $app);
