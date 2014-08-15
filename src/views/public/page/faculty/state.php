@@ -190,7 +190,7 @@ ul.sidebarlist li {
                        </div> 
                     <div class="pagecontent ">
                         <div class="span2 hidden-phone">
-                          <div class="selectstate center bc">SELECT ANOTHER STATE</div>
+                          <div class="selectstate center bc">SELECT A STATE</div>
                           <div class="country bc">USA</div>
                           <ul class="sidebarlist bc">
                             <li><a href="/faculty/usa/alabama">Alabama</a></li>

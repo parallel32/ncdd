@@ -165,7 +165,7 @@ class ApplyNewMember extends Apply {
 		$this->authorizationReleasePrintedName = $doc['authorizationReleasePrintedName'];
 		$this->authorizationReleasePrintedNameDate = $doc['authorizationReleasePrintedNameDate'];
 		$this->referenceFormDownload = $doc['referenceFormDownload'];
-		$this->publicDefender = $doc['publicDefender'];
+		$this->publicDefender = (array_key_exists('publicDefender',$doc)) ? $doc['publicDefender'] : '';
 
 	}
 	

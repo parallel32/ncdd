@@ -144,7 +144,7 @@ ul.sidebarlist li {
                        </div> 
                     <div class="pagecontent ">
                         <div class="span2 hidden-phone">
-                          <div class="selectstate center bc">SELECT ANOTHER STATE</div>
+                          <div class="selectstate center bc">SELECT A STATE</div>
                           <? foreach($this->vars['delegate_states'] as $country=>$state): ?>
                           <div class="country bc"><?=strtoupper($country)?></div>
                           <ul class="sidebarlist bc">
