@@ -16,7 +16,7 @@
 <br/>
 <br/>Your application for General Membership has been received.
 <br/><br/>
-<br/>Below is a link to the online reference form.  Please forward it to your 2 references and remind them to submit is as soon as they can.
+<br/>Below is a link to the online reference form.  Please forward it to your 2 references and remind them to submit it as soon as they can.
 <br/>
 <br/><a href="https://<?=SAW_ADMIN_WEBSITE?>/reference/<?=$this->vars['applicationId']?>/<?=$this->vars['firstName'].'-'.$this->vars['lastName']?>" target="_blank">Click here to view the reference form</a>. 
 <br><br>
