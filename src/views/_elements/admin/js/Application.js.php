@@ -23,7 +23,7 @@
 		});      
 	};
 	function newMemberAdd (){
-		
+		$('#saw-form .btn.green').prop('disabled', true);
 		var full_address = $('#address1').val()+' '+$('#address2').val()+' '+$('#city').val()+', '+$('#state').val()+' '+$('#zip').val()+', '+$('#country').val();
 		$('#raw').val(full_address);
 			
@@ -37,6 +37,7 @@
 			   	}else{
 			   		var responseObj = $.parseJSON(responseObj.responseText);
 			   	}
+			   	$('#saw-form .btn.green').prop('disabled', false);
 		   }
 		   ,postOnSuccess:function(responseObj){}
 		});      
@@ -67,10 +68,34 @@
 		      newMemberAdd();
 		   }
 		});
+		/*
 		$('#saw-form .btn.green').click(function(e){
 			e.preventDefault();
 			newMemberAdd();
 		});
+		*/
+
+		var DELAY = 500, clicks = 0, timer = null;
+		$(function(){
+		    $('#saw-form .btn.green').on("click", function(e){
+		        clicks++;  //count clicks
+		        if(clicks === 1) {
+		            timer = setTimeout(function() {
+		                newMemberAdd();  //perform single-click action    
+		                clicks = 0;             //after action performed, reset counter
+		            }, DELAY);
+		        } else {
+		            clearTimeout(timer);    //prevent single-click action
+		            newMemberAdd();  //perform double-click action
+		            clicks = 0;             //after action performed, reset counter
+		        }
+		    })
+		    .on("dblclick", function(e){
+		        e.preventDefault();  //cancel system double-click event
+		    });
+		});
+
+
 		$('#saw-form .cancel-go-back').click(function(e){
 			e.preventDefault();
 			document.location.href="https://<?=SAW_CONSUMER_WEBSITE?>";

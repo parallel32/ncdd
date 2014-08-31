@@ -98,6 +98,28 @@ $app->get('/badge/{id}/staff', function ($id, Request $request) use ($app, $imgU
 	return new Response($file_contents, 200, array('Content-Type' => 'image/jpeg'));
 		
 });
+$app->get('/badge/{id}/delegate', function ($id, Request $request) use ($app, $imgUnavailable) {
+	
+	// return the badge
+	$member = new Model\Member(array('_id'=>$id),$app);
+	$member = $member->findById();
+	$delegate = new Model\Delegate(array(), $app);
+	$delegate = $delegate->fetchByDelegate($id);
+	
+	if(!empty($delegate)){
+		$badge_path = Model\Member::$facultyBadge[$member['currentFacultyPosition']];
+	}
+
+	if (!file_exists($badge_path)) {
+        $img_path = $imgUnavailable;
+    }else{
+    	$img_path = $badge_path;
+    }
+	
+	$file_contents = file_get_contents($img_path);
+	return new Response($file_contents, 200, array('Content-Type' => 'image/jpeg'));
+		
+});
 $app->get('/member/{id}/{slug}', function ($id, $slug, Request $request) use ($app) {
 	
 	// return the badge
