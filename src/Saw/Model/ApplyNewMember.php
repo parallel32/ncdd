@@ -69,7 +69,7 @@ class ApplyNewMember extends Apply {
 		*/
 	}
 	public function checkpromo(ExecutionContext $context){
-		if(!empty($this->promocode) && $this->promocode != 'NCDD2014'){
+		if(!empty($this->promocode) && strtoupper($this->promocode) != 'NCDD2014'){
 			$propertyPath = $context->getPropertyPath().'promocode';
 			$context->addViolationAtPath($propertyPath,'Invalid promo code. If you keep getting this error and cannot submit your application please make sure the field is blank.', array(), null);	
 		}		
