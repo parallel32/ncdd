@@ -11,6 +11,25 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                   <?=$this->element('page-title-and-bread-crumb');?>
                </div>
             </div>
+
+
+            <div id="approved-applications" class="row-fluid">
+               <div class="span12">
+<h3 class="form-section">Rules regarding the content of NCDD  member profiles:  </h3>
+
+<p>NCDD kindly asks that you follow these guidelines when authoring your biography: </p>
+
+<p>The profiles of NCDD members are intended to provide the public with objective and verifiable data regarding the lawyer.  A lawyer shall not make a false or misleading communication about the lawyer or the lawyer's services. Any profile is prohibited if it</p>
+
+<p>(a) contains a material misrepresentation of fact or law, or omits a fact necessary to make the statement considered as a whole not materially misleading;</p>
+
+<p>(b) is likely to create an unjustified expectation about results the lawyer can achieve, or states or implies that the lawyer can achieve results by means that violate these Rules or other law; or</p>
+
+<p>(c) compares the lawyer's services with other lawyers' services, unless the comparison can be factually substantiated.</p>
+
+<p>(d) uses opinions, superlatives or other terms of self-aggrandizement. For example, it would be improper to describe oneself as the 'top' or 'best' or 'most highly qualified' or 'expert' attorney in any manner, except when identifying certificates, awards or recognitions issued to him or her by an agency or organization recognized by NCDD. If such terms are used to identify any certificates, awards or recognitions issued by any agency, governmental or private, or by any group, organization or association, the reference must be truthful and verifiable and may not be misleading.</p>
+               </div>
+            </div>
             <!-- END PAGE HEADER-->
                   <div id="dashboard">
                <!-- BEGIN DASHBOARD STATS --
