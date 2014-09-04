@@ -18,7 +18,7 @@
                                 foreach($cart_items as $item): ?>
                                 
                                 <tr id="row-<?=$item['_id']?>">
-                                    <td><img style="width:50%" src="<?=$item['image']['urls']['small']['CDN'] ?>" alt=""></td>
+                                    <td><? if(array_key_exists('urls', $item['image'])): ?><img style="width:50%" src="<?=$item['image']['urls']['small']['CDN'] ?>" alt=""><? endif; ?></td>
                                     <td>
                                         <div class="row-fluid">
                                             <b><a href="https://<?=SAW_CONSUMER_WEBSITE?>/store/<?=$item['_id']?><?=$item['slug']?>"><?=$item['name'] ?> </a></b>
