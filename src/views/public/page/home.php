@@ -173,7 +173,9 @@ The alcohol breath test is the most commonly used form of alcohol testing eviden
                             <li class="span3">
                                 <div class="thumbnail">
                                     <div class="caption">
-                                        <h4 class=""><a href="/horizontal-gaze-nystagmus-how-it-works-how-to-challenge-and-exclude-it">The Top 20 Myths of Breaht, Blood and Urine Testing Part 2</a></h4>
+                                        <h4 class=""><a href="/horizontal-gaze-nystagmus-how-it-works-how-to-challenge-and-exclude-it">Horizontal Gaze Nystagmus<br>
+                    How it Works<br>
+                    How to Challenge and <br>Exclude It</a></h4>
                                         <ul class="info">
                                             <li>September 8, 2014</li>
                                         </ul>
