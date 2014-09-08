@@ -160,26 +160,6 @@ The alcohol breath test is the most commonly used form of alcohol testing eviden
                             <li class="span3">
                                 <div class="thumbnail">
                                     <div class="caption">
-                                        <h4 class=""><a href="/the-top-20-myths-of-breath-blood-and-urine-testing-part-2-of-2">The Top 20 Myths of Breaht, Blood and Urine Testing Part 2</a></h4>
-                                        <ul class="info">
-                                            <li>August 11, 2014</li>
-                                        </ul>
-                                        <p class="descr ">Myth #11: Breath test: slope detectors protect against mouth alcohol influencing a result
-
-Our experience with the Intoxilyzer 5000 has shown that its residual mouth alcohol flagging program (that is, the slope detector) is not entirely reliable under the extreme experimental conditions employed in the present study. In this experiment we were able to obtain apparent BrACs as high as 0.18 g/210 L in spite of this feature. ...</p>
-                                        <br>
-                                        <p class="text-center"><a href="/the-top-20-myths-of-breath-blood-and-urine-testing-part-2-of-2">Read More</a></p>
-                                        <div class="autor">
-                                            <img width="35" height="37" src="https://<?=SAW_ADMIN_WEBSITE?>/image/member/5208d6119afe0b53323e8fef/small" alt="" class="avatar pull-left">
-                                            <div class="pull-left"><span>Posted By:</span><br><a href="/member/5208d6119afe0b53323e8fef/leonard-r-stamm">Leonard R. Stamm</a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            
-                            <li class="span3">
-                                <div class="thumbnail">
-                                    <div class="caption">
                                         <h4 class=""><a href="/faculty">Our Faculty</a></h4>
                                         <ul class="info">
                                             <li>August 12, 2014</li>
@@ -187,6 +167,23 @@ Our experience with the Intoxilyzer 5000 has shown that its residual mouth alcoh
                                         <p class="descr ">We would like to introduce our Faculty.  Through their tireless efforts, they help make our Organization great.  Please browse our roster to find a Faculty Member near you.</p>
                                         <br>
                                         <p class="text-center"><a href="/faculty">Browse the Faculty Pages</a></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="span3">
+                                <div class="thumbnail">
+                                    <div class="caption">
+                                        <h4 class=""><a href="/horizontal-gaze-nystagmus-how-it-works-how-to-challenge-and-exclude-it">The Top 20 Myths of Breaht, Blood and Urine Testing Part 2</a></h4>
+                                        <ul class="info">
+                                            <li>September 8, 2014</li>
+                                        </ul>
+                                        <p class="descr ">The majority of States recognize that the Horizontal Gaze Nystagmus (HGN) test is scientific evidence.<sup>i</sup> As a scientific test it generally requires expert testimony for admissibility. Even States that have found, as a matter of law, that the scientific basis for HGN and the general method of applying it are sufficiently reliable to allow admission without proof of these elements in each case, generally require some degree of proof that the test was administered correctly on the occasion in question. ...</p>
+                                        <br>
+                                        <p class="text-center"><a href="/horizontal-gaze-nystagmus-how-it-works-how-to-challenge-and-exclude-it">Read More</a></p>
+                                        <div class="autor">
+                                            <img width="35" height="37" src="https://<?=SAW_ADMIN_WEBSITE?>/image/member/5208d6139afe0b53323e9013/small" alt="" class="avatar pull-left">
+                                            <div class="pull-left"><span>Posted By:</span><br><a href="/member/5208d6139afe0b53323e9013/w-troy-mckinney">W. Troy McKinney</a></div>
+                                        </div>
                                     </div>
                                 </div>
                             </li>

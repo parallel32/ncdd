@@ -667,6 +667,20 @@ $app->get('/the-top-20-myths-of-breath-blood-and-urine-testing-part-2-of-2', fun
 	return $app['view']->render('page/the-top-20-myths-of-breath-blood-and-urine-testing-part-2-of-2', 'content', $view_vars);
 });
 
+$app->get('/horizontal-gaze-nystagmus-how-it-works-how-to-challenge-and-exclude-it', function (Request $request) use ($app) {
+	$slug = 'horizontal-gaze-nystagmus-how-it-works-how-to-challenge-and-exclude-it';
+	$page = new Model\Page($doc=array('slug'=>$slug), $app);
+	$page = $page->findById('slug');
+	$page['body'] = $app['prepare_content']($page['body']);
+
+	$view_vars = array('page'=>$page);
+	$view_vars['slogan_block'] = 'horizontal-gaze-nystagmus-how-it-works-how-to-challenge-and-exclude-it';
+
+	$page_vars = $app['get_pages']($slug);
+	$view_vars = array_merge($page_vars,$view_vars);
+	return $app['view']->render('page/horizontal-gaze-nystagmus-how-it-works-how-to-challenge-and-exclude-it', 'content', $view_vars);
+});
+
 // Regents and Fellows
 $app->get('/regents-and-fellows', function (Request $request) use ($app) {
 	$slug = 'regents-and-fellows';
