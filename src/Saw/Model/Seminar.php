@@ -205,28 +205,22 @@ class Seminar extends Model {
 
 			$start = Carbon::createFromTimeStamp(strtotime($startDate['fullMonth']), $tz);
 			$end = Carbon::createFromTimeStamp(strtotime($endDate['fullMonth']), $tz);
-		// use this to check the timezone bug
-			//error_log('Carbon start:'.print_r($start,true));
-			//error_log('Start Date:'.print_r($startDate['fullMonth'],true));
-     		//error_log('end:'.print_r($end,true));
 			$days = $start->diffInDays($end)+1;
-     		//error_log('days:'.print_r($days,true));
-
-			for ($i=1; $i <= $days; $i++) { 
+     	
+			for ($i=0; $i < $days; $i++) { 
 				$start = Carbon::createFromTimeStamp(strtotime($startDate['fullMonth']), $tz);
-				$date = new Date(self::$app,$start->addDays($i-1)->toATOMString(), $this->timeZone);
-				$agenda_name = 'Agenda Day '.($i);
+				$add_days = $start->addDays($i)->toATOMString();
+				$date = new Date(self::$app,$add_days, $this->timeZone);
+				$agenda_name = 'Agenda Day '.($i+1);
 	     		$agenda = new Agenda(array(
 	     			'seminarId'=>$this->_id,
 	     			'name'=>$agenda_name,
 	     			'timeZone'=>$this->timeZone,
 	     			'date'=> $date
 	     		),self::$app);
-	     	//error_log('date:'.print_r($date->__toArray(),true));
 	     		$find_res = $agenda->findOne(array('seminarId'=>$this->_id,'name'=>$agenda_name));
 	     		if(!empty($find_res)  && !empty($find_res['_id'])){
 	     			// update
-	     			//$agenda->_id = $find_res['_id'];
 	     			foreach($find_res['timeSlots'] as $timeSlot):
 	     				$date = new Date(self::$app,$find_res['date']['fullMonth'].' '.$timeSlot['date']['longTime'], $this->timeZone);
 	     				$agendaTime = new AgendaTime(array('date'=>$date
@@ -244,8 +238,6 @@ class Seminar extends Model {
 	     	$agenda->removeBySeminarId();
 
 	     	// add the new ones
-	     //error_log('---------------------------------------------------------------------------------------------------:');
-	     //error_log('agendas:'.print_r($agendas,true));
 	     	foreach ($agendas as $agenda_obj){
 	     		$agenda_obj->insert();
 	     	}

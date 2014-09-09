@@ -161,7 +161,7 @@
                                  <div class="control-group">
                                     <label class="control-label">Registration Notice</label>
                                     <div class="controls">
-                                      <input type="text" name="doc[registerNotice]" value="<?=(array_key_exists('registerNotice',$seminar)) ? $seminar['registerNotice'] : '';?>" data-required="1" class="span12 m-wrap registerNotice">
+                                      <input type="text" name="doc[registerNotice]" value="<?=(array_key_exists('registerNotice',$seminar) && !empty($seminar['registerNotice'])) ? $seminar['registerNotice'] : '';?>" data-required="1" class="span12 m-wrap registerNotice">
                                       <span class="help-block">If filled in, this will place a large blue banner above the registration fields.</span>
                                     </div>
                                  </div>
