@@ -19,7 +19,7 @@
                     </div>
                     <div class="row">
                         <ol class="quiz-list">
-                        <li class="question"> If administered correctly, the <a href="https://<?=SAW_CONSUMER_WEBSITE?>/horizontal-gaze-nystagmus-how-it-works-how-to-challenge-and-exclude-it">HGN test</a> takes approximately how long to perform?<br><span class="answer"></li>
+                        <li class="question"> If administered correctly, the HGN test takes approximately how long to perform?<br><span class="answer"></li>
                         <li class="question">According to NHTSA, speeding is one of the top 30 clues of impaired driving (true/false)<br><span class="answer"></li>
                         <li class="question">What effect does holding your breath have on a breath test result?<br><span class="answer"></li>
                         <li class="question">What is the ‘sale of the house’ analogy in DUI closing arguments?<br><span class="answer"></li>
