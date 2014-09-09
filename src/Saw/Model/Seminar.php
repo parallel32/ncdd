@@ -174,13 +174,13 @@ class Seminar extends Model {
 			$start = Carbon::createFromTimeStamp(strtotime($startDate['fullMonth']), $tz);
 			$end = Carbon::createFromTimeStamp(strtotime($endDate['fullMonth']), $tz);
 			$days = $start->diffInDays($end)+1;
-
-			for ($i=1; $i <= $days; $i++) { 
+			for ($i=0; $i < $days; $i++) { 
 				$start = Carbon::createFromTimeStamp(strtotime($startDate['fullMonth']), $tz);
-				$date = new Date(self::$app,$start->addDays($i)->toATOMString(), $this->timeZone);
+				$add_days = $start->addDays($i)->toATOMString();
+				$date = new Date(self::$app,$add_days, $this->timeZone);
 	     		$agenda = new Agenda(array(
 	     			'seminarId'=>$this->_id,
-	     			'name'=>'Agenda Day '.($i),
+	     			'name'=>'Agenda Day '.($i+1),
 	     			'timeZone'=>$this->timeZone,
 	     			'date'=> $date
 	     		),self::$app);
