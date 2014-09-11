@@ -96,30 +96,37 @@ high.</li>
                         <h1 style="color:#53778D">Our members wrote the books on DUI Defense..</h1>
                     </div>
                     <div class="container">
-                        <style>ul {padding:0 0 0 0;margin:0 0 0 0;}ul li {list-style:none;margin-bottom:25px;}ul li img {cursor: pointer;}</style>
+                        <style>
+                            .book-gallery ul {padding:0 0 0 0;margin:0 0 0 0;}
+                            .book-gallery ul li {list-style:none;margin-bottom:25px;}
+                            .book-gallery ul li img {cursor: pointer;}
+                            .book-gallery ul li {background: none; background-image:none;}
+                        </style>
+                        <div class="book-gallery">
                          <ul class="row">
-                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Edge Hunsucker - Oklahoma DUI Defense.jpg"/></li>
-                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/George Stein - Georgia DUI Law.png"/></li>
-                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Gerstenzang - Handling the DWI Case in New York.jpg"/></li>
-                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/James Campbell Defense of Speeding etc.jpg"/></li>
-                        </ul><ul class="row">
-                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/James Nesci - Arizona DUI Defense.jpg"/></li>
-                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Kirk Defending DUIs in Washington.jpg"/></li>
-                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Mishlove wisconsin-owi-defense-book.jpg"/></li>
-                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Oberman - Drunk Driving Defense.jpg"/></li>
-                        </ul><ul class="row">
-                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Oberman - Tennessee DUI Book High-Res.jpg"/></li>
-                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Oberman Taylor Drunk Driving Defense High Res.jpg"/></li>
-                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Phil Price Alabama DUI Handbook.jpg"/></li>
-                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Ramsell Book Low Res.jpg"/></li>
-                        </ul><ul class="row">
-                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Simons and Burglin  California Drunk Driving.gif"/></li>
-                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Stamm - Maryland DUI Law - Big.jpg"/></li>
-                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Texas DWI Defense Photo.png"/></li>
-                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Whited - Drinking Driving Litigation Photo 2.jpg"/></li>
-                        </ul><ul class="row">
-                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Whited - Drinking Driving Litigation.jpg"/></li>  
-                         </ul>
+                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Edge Hunsucker - Oklahoma DUI Defense.jpg"/></li>
+                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/George Stein - Georgia DUI Law.png"/></li>
+                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Gerstenzang - Handling the DWI Case in New York.jpg"/></li>
+                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/James Campbell Defense of Speeding etc.jpg"/></li>
+                            </ul><ul class="row">
+                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/James Nesci - Arizona DUI Defense.jpg"/></li>
+                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Kirk Defending DUIs in Washington.jpg"/></li>
+                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Mishlove wisconsin-owi-defense-book.jpg"/></li>
+                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Oberman - Drunk Driving Defense.jpg"/></li>
+                            </ul><ul class="row">
+                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Oberman - Tennessee DUI Book High-Res.jpg"/></li>
+                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Oberman Taylor Drunk Driving Defense High Res.jpg"/></li>
+                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Phil Price Alabama DUI Handbook.jpg"/></li>
+                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Ramsell Book Low Res.jpg"/></li>
+                            </ul><ul class="row">
+                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Simons and Burglin  California Drunk Driving.gif"/></li>
+                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Stamm - Maryland DUI Law - Big.jpg"/></li>
+                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Texas DWI Defense Photo.png"/></li>
+                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Whited - Drinking Driving Litigation Photo 2.jpg"/></li>
+                            </ul><ul class="row">
+                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Whited - Drinking Driving Litigation.jpg"/></li>  
+                             </ul>
+                        </div>
                     </div>
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                       <div class="modal-dialog">

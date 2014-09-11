@@ -725,8 +725,10 @@ class Member extends User {
 					,'member.websites'=>1
 					,'raw'=>1
 					);
-		
+		// order number
 		$result = self::$app['mongo']->find('location',array('state'=>$state,'member.listed'=>1),$fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.currentOrder'=>-1,'member.orderNumState'=>1));
+		// join date
+		//$result = self::$app['mongo']->find('location',array('state'=>$state,'member.listed'=>1),$fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.currentOrder'=>-1,'member.joinDate.date'=>1));
 		
 		$i=0;
 		foreach ($result as $key => $value) {

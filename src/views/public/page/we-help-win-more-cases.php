@@ -36,7 +36,14 @@
                         <h1 style="color:#53778D">Our members wrote the books on DUI Defense..</h1>
                     </div>
                     <div class="container">
-                        <style>ul {padding:0 0 0 0;margin:0 0 0 0;}ul li {list-style:none;margin-bottom:25px;}ul li img {cursor: pointer;}</style>
+                    <style>
+                        .book-gallery ul {padding:0 0 0 0;margin:0 0 0 0;}
+                        .book-gallery ul li {list-style:none;margin-bottom:25px;}
+                        .book-gallery ul li img {cursor: pointer;}
+                        .book-gallery ul li {background: none; background-image:none;}
+                    </style>
+                    <div class="book-gallery">
+                        
                          <ul class="row">
                               <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Edge Hunsucker - Oklahoma DUI Defense.jpg"/></li>
                               <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/George Stein - Georgia DUI Law.png"/></li>
@@ -60,6 +67,7 @@
                         </ul><ul class="row">
                               <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Whited - Drinking Driving Litigation.jpg"/></li>  
                          </ul>
+                    </div>
                     </div>
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                       <div class="modal-dialog">
