@@ -311,7 +311,7 @@ $app->post('/application/new-sustaining-member', function (Request $request) use
 	    	$user = $app['session']->get('user');
 			$user['suppress_emails'] = $request->get('suppress_emails');
 			$app['session']->set('user',$user);
-			$suppress = ($user['accessLevel'] == ADMIN && $user['suppress_emails'] == 'yes') ? true: false;
+			$suppress = (!empty($user) && array_key_exists('accesslevel', $user) && $user['accessLevel'] == ADMIN && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes') ? true: false;
 			
 	    	$doc = $request->get('doc');
 	    	// send admin the email notification
