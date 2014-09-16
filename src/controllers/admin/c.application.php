@@ -260,7 +260,7 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
     }
 
 	$application = new Model\ApplyNewMember($doc, $app);
-	if($application->findByEmail()){
+	if(!empty($doc['email']) && $application->findByEmail()){
     	$label = 'Success, but...';
     	$message = 'Our records indicate you have already submitted an application.  Please Log-in if you are looking for another Application or contact NCDD directly.';
     	$response_status = 400;

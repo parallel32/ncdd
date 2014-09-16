@@ -162,7 +162,6 @@ class Apply extends Model {
 		$query = array('email'=>trim(strtolower($this->email)));
         $fields = array('_id'=>1);
 		$result = self::$app['mongo']->findOne($this->collection, $query, $fields, $slaveOkay=true);
-		
 		if(!empty($result)):
 			$this->_id = $result['_id'];
 			return true;
