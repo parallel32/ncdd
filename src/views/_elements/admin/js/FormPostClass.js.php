@@ -17,6 +17,7 @@
 		params.blockUI = params.blockUI || 'yes';
 		params.blockUIParams = params.blockUIParams || {};
 		params.validate = params.validate || 'yes';
+		params.invalidFieldsString = params.invalidFieldsString || 'yes';
 		params.blockObj = undefined;
 	};
 	FormPost.getParams = function(){
@@ -62,7 +63,9 @@
 							'<span for="'+fieldObj.name+'" class="help-block error pulsate" style="">'+fieldObj.message+'</span>'
 							);
 						}
-						invalid_fields_str+='<li>'+fieldObj.name+'</li>';
+						if(params.invalidFieldsString == 'yes'){
+							invalid_fields_str+='<li>'+fieldObj.name+'</li>';
+						}
 					});
 					$(params.formName+' .alert-error').removeClass('hide').html('<span>'+responseObj.message+'</span>'+invalid_fields_str);
 				}else if(responseObj.hasOwnProperty('message') && responseObj.message.length > 0){

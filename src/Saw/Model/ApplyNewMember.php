@@ -69,10 +69,14 @@ class ApplyNewMember extends Apply {
 		*/
 	}
 	public function checkpromo(ExecutionContext $context){
-		if(!empty($this->promocode) && strtoupper($this->promocode) != 'NCDD2014'){
-			$propertyPath = $context->getPropertyPath().'promocode';
-			$context->addViolationAtPath($propertyPath,'Invalid promo code. If you keep getting this error and cannot submit your application please make sure the field is blank.', array(), null);	
-		}		
+		///*
+		if(!empty($this->promocode) && strtoupper($this->promocode) == 'NCDDTRIAL'){
+			if(empty($this->referredBy)){
+				$propertyPath = $context->getPropertyPath().'referredBy';
+				$context->addViolationAtPath($propertyPath,'Trial memberships require a referral.  Please fill in this field.', array(), null);	
+			}
+		}
+		//*/
 	}
 	public function dues(ExecutionContext $context){
 		$years = date('Y') - $this->yearsInLawPractice;
@@ -174,7 +178,7 @@ class ApplyNewMember extends Apply {
 		$this->authorizationReleasePrintedNameDate = $doc['authorizationReleasePrintedNameDate'];
 		$this->referenceFormDownload = $doc['referenceFormDownload'];
 		$this->publicDefender = (array_key_exists('publicDefender',$doc)) ? $doc['publicDefender'] : '';
-		$this->promocode = (array_key_exists('promocode',$doc)) ? $doc['promocode'] : '';
+		$this->promocode = (array_key_exists('promocode',$doc)) ? strtoupper($doc['promocode']) : '';
 
 	}
 	

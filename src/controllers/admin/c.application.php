@@ -29,7 +29,9 @@ $app['applicationEmails'] = $app->protect(function ($app,$applicationId,$context
 				$view_vars = array('email'=>$member->email
 									,'password'=>$member->password
 									,'firstName'=>$member->firstName
+									,'middleName'=>$member->middleName
 									,'lastName'=>$member->lastName
+									,'paymentId'=>$application->paymentId
 				);
 				$body = $app['view']->render('email/new-member-welcome','email', $view_vars);
 				break;
@@ -215,6 +217,22 @@ $app->get('/application/downloads/{file}', function ($file, Request $request) us
 ////////////////////////////
 // NEW MEMBER APPLICATION //
 ////////////////////////////
+$app->post('/application/promocode', function (Request $request) use ($app) {
+	// retrieve document from request
+    $doc = $request->get('doc');
+    if(!empty($doc['promocode']) && (strtoupper($doc['promocode']) == 'NCDD2014' || strtoupper($doc['promocode']) == 'NCDDTRIAL')){
+    	$valid = 'yes';
+    	$message = 'Valid Promo Code.';
+    	$type = (strtoupper($doc['promocode']) == 'NCDD2014') ? 'discount': 'trial';
+    }else{
+    	$type = '';
+    	$valid = 'no';
+    	$message = 'Invalid Promo Code.';
+    }
+    
+    return new Response(json_encode(array('valid'=>$valid, 'type'=>$type,'message' => $message)), 200,array('Content-Type' => 'application/json'));
+});
+
 $app->get('/application/new-member', function (Request $request) use ($app) {
 
 	foreach(Model\ApplyNewMember::$dues as $type => $amount){
@@ -225,24 +243,97 @@ $app->get('/application/new-member', function (Request $request) use ($app) {
 	
 	return $app['view']->render('application/new-member', 'blank',array('dues'=>$dues));
 });
+/**
+
+updated new member application submittal form
+
+*/
 $app->post('/application/new-member', function (Request $request) use ($app) {
 	// retrieve document from request
     $doc = $request->get('doc');
-    $application = new Model\ApplyNewMember($doc, $app);
-    // validate the model
-    $app['validateModel']($app,$application);
+    // promocode sanity check
+    if(!array_key_exists('promocode', $doc)){
+    	$doc['promocode'] = '';
+    }else{
+    	$doc['promocode'] = strtoupper(trim($doc['promocode']));
+    }
 
-    if($application->findByEmail()){
+	$application = new Model\ApplyNewMember($doc, $app);
+	if($application->findByEmail()){
     	$label = 'Success, but...';
     	$message = 'Our records indicate you have already submitted an application.  Please Log-in if you are looking for another Application or contact NCDD directly.';
     	$response_status = 400;
-    }else{
-    	$applicationId = $application->insert();
-    	$_POST['applicationId'] = $applicationId->__toString();
-    	$label = 'Your application was received.  Thank you.';
-    	$message = 'Thank you for your interest in NCDD.  Your application has been submitted.  You will be notified by the College when it is approved or if there are any questions.';
-    	$response_status = 200;
+    	return new Response(json_encode(array('message' => $message,'label'=>$label)), $response_status,array('Content-Type' => 'application/json'));
     }
+
+    // validate the application
+    $app['validateModel']($app,$application);
+    
+    // payment stuff BEGIN
+    $paymentId = new \stdClass();
+	$validation_group = ($doc['payment']['currentPaymentType'] == Model\Payment::$paymentType['CREDIT']) ? 'cc' : 'check';		
+	$doc['payment']['ownerId'] = new \stdClass();
+	$doc['payment']['ownerClass'] = 'ApplyNewMember';
+	
+	// re-calculate the amount in case the amount gets compromised on the way up to the server
+	$dues = array();
+	foreach(Model\ApplyNewMember::$dues as $type => $amount){
+		$apply = new Model\Apply(array('membershipDues'=>$amount),$app);
+		$dues[$type]['amount'] = $amount;
+		$dues[$type]['prorated'] = $apply->proRate('today');
+	}
+	$yilp = $application->yearsInLawPractice;
+	$now = date('Y',strtotime('today'));
+
+	if($now - $yilp >= 6){
+		$amt = $dues[6]['prorated']['a'];
+	}elseif ($now - $yilp < 6){
+		$amt = $dues[1]['prorated']['a'];
+	}
+	if($application->publicDefender == 'yes'){
+		$amt = $dues['publicDefender']['prorated']['a'];
+	}
+	$doc['amount'] = $amt;
+	$payment = new Model\Payment($doc['payment'],$app);
+
+	// validate the payment
+	$app['validateModel']($app, $payment,$groups=array($validation_group));
+		$application->paymentId = $payment->charge();
+	// payment stuff END
+	
+	$applicationId = $application->insert();
+	$_POST['applicationId'] = $applicationId->__toString();
+
+	if($doc['promocode'] == 'NCDDTRIAL'){
+		$trial_doc['startDate'] = 'now';
+		$trial_doc['endDate'] = "+60 days";
+		$trial_doc['referredBy'] = $doc['referredBy'];
+		
+		$trial = new Model\Trial($trial_doc,$app);
+
+		$application = new Model\Apply(array('_id'=>$applicationId,'referredBy'=>$doc['referredBy'],'trial'=>$trial->__toArray()), $app);
+		$application->saveEdit();
+
+		// approve as trial
+		$response = $app['applicationEmails']($app,$applicationId,$context='new-member-trial',$request);
+	}else{
+		// approve
+		// sends email/new-member-welcome which now combines:
+		// email/new-member-applicant-submission + 
+		// email/new-member-welcome + 
+		// email/new-member-welcome-complete + 
+		// email/payment-thankyou
+		$response = $app['applicationEmails']($app,$applicationId,$context='new-member-welcome',$request);
+		// marking the application paid
+		$application = new Model\Apply(array('_id'=>$applicationId, 'paymentId'=>$application->paymentId), $app);
+		$application->markPaid(false);
+	}
+
+	
+
+	$label = 'Your application was received.  Thank you.';
+	$message = 'Thank you for your interest in NCDD.  Your application has been submitted.  Please check your inbox for your receipt and log-in information.';
+	$response_status = 200;
     return new Response(json_encode(array('message' => $message,'label'=>$label)), $response_status,array('Content-Type' => 'application/json'));
 })->after(function (Request $request, Response $response, Silex\Application $app) {
 		if((int)$response->getStatusCode() == 200):
@@ -267,6 +358,8 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 	    	if(!$suppress){$app['sendMail']($subject, $body, $to);}
 
 	    	// send applicant the email notification
+	    	// deprecated - all emails are handeled in the controller body except the for the admin email above
+	    	/*
 	    	$subject = 'Your Application for NCDD Membership has been Received';
 	    	$to = $doc['email'];
 	    	$view_vars = array('firstName'=>$doc['firstName']
@@ -279,6 +372,7 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 	    	);
 	    	$body = $app['view']->render('email/new-member-applicant-submission','email', $view_vars);
 	    	if(!$suppress){$app['sendMail']($subject, $body, $to);}
+	    	//*/
 	    endif;
 });
 ///////////////////////////////////////
@@ -1070,17 +1164,50 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 	$approved = $application->fetchByStatus('APPROVED',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
 	$trial = $application->fetchByStatus('TRIAL',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
 	$paid = $application->fetchByDatePaid(90, $offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
+
+	$ncddtrialpromocode = $application->fetchByStatus('TRIAL',$offset, $limit,$filter=array('promocode'=>'NCDDTRIAL'));
+	$ncdd2014promocode = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('promocode'=>'NCDD2014'));
+	for ($i=0; $i < count($ncdd2014promocode); $i++) { 
+		switch ($ncdd2014promocode[$i]['class']) {
+	    	case 'ApplyNewMember':
+	    		$reference = new Model\ReferenceMember(array('applicationId'=>$ncdd2014promocode[$i]['_id']), $app);
+	    		break;
+	    	case 'ApplyNewSustainingMember':
+	    		$reference = new Model\ReferenceSustainingMember(array('applicationId'=>$ncdd2014promocode[$i]['_id']), $app);
+	    		break;
+	    	
+	    }
+	    $ncdd2014promocode[$i]['new_references'] = array('total'=>$reference->getTotalSubmissions(),'max'=>$reference->getMaxSubmissions());
+	}
+	$date = new Model\Date($app,'9/15/2014');
+	$newlypaid = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('promocode'=>array('$nin'=>array('NCDD2014','NCDDTRIAL')),'paidDate.date'=>array('$gte'=> new \MongoDate(strtotime($date->iso)))));
+	for ($i=0; $i < count($newlypaid); $i++) { 
+		switch ($newlypaid[$i]['class']) {
+	    	case 'ApplyNewMember':
+	    		$reference = new Model\ReferenceMember(array('applicationId'=>$newlypaid[$i]['_id']), $app);
+	    		break;
+	    	case 'ApplyNewSustainingMember':
+	    		$reference = new Model\ReferenceSustainingMember(array('applicationId'=>$newlypaid[$i]['_id']), $app);
+	    		break;
+	    	
+	    }
+	    $newlypaid[$i]['new_references'] = array('total'=>$reference->getTotalSubmissions(),'max'=>$reference->getMaxSubmissions());
+	}
 	$crumbs = array(array('name'=>'Applications','href'=>'/applications'));
 	$view_vars = array(
 						 'active'=>'Applications/New'
 						,'page-plugin'=>'datatables'
 						,'headline'=>'Applications'
-						,'description'=>"View all application here."
+						,'description'=>"View all applications here."
 						,'crumbs'=>$crumbs
 						,'submitted'=>$submitted
 						,'approved'=>$approved
 						,'trial'=>$trial
-						,'paid'=>$paid);
+						,'paid'=>$paid
+						,'ncdd2014promocode'=>$ncdd2014promocode
+						,'ncddtrialpromocode'=>$ncddtrialpromocode
+						,'newlypaid'=>$newlypaid
+	);
 	return $app['view']->render('application/index', 'default', $view_vars);
 })
 ->value('offset','0')

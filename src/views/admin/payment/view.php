@@ -93,7 +93,7 @@ $user = call_user_func(function($app){ $user = $app['session']->get('user'); ret
                            <div class="control-group ">
                               <label class="control-label">Credit Card Number</label>
                               <div class="controls">
-                                 <input type="text" value="<?=$this->vars['payment']['number']?>" readonly class="m-wrap span8 number">
+                                 <input type="text" value="<?=(strlen($this->vars['payment']['number']) > 10) ? substr($this->vars['payment']['number'], -4): $this->vars['payment']['number']?>" readonly class="m-wrap span8 number">
                               </div>
                            </div>
                         </div>

@@ -2,7 +2,49 @@
 	$return_to_app_index = (array_key_exists('application', $this->vars)) ? (array_key_exists('_id', $this->vars['application']) && strpos(strtolower($this->vars['application']['class']),'update') !== false) ? "document.location.href='/renewals';": "document.location.href='/applications';" : '';
 ?>
 <script type="text/javascript">
+
 (function( Application, $, undefined ) {
+	function yearsinlawpracticelogic (){
+		var the_element = $('#saw-form .control-group :input.yearsInLawPractice').parents('.control-group');
+    	the_element.find('.help-block.error').remove();
+		the_element.removeClass('error');
+   	    if(new Date($('#saw-form .yearsInLawPractice').val(),1,1) !== "Invalid Date" && !isNaN(new Date($('#saw-form .yearsInLawPractice').val(),1,1)) ){
+        	var yilp = new Date($('#saw-form .yearsInLawPractice').val(), 1,1).getFullYear();
+        	var now = new Date().getFullYear();
+        	if(now - yilp >= 6){
+        		var amount = (window.gsix_amount-window.gsix_prorated == window.gsix_amount) ? window.gsix_amount : window.gsix_prorated; 
+        		$('.payment.amount').val(amount);
+        		$('.payment.amount').html(amount+' - '+window.gsix_message);
+        	}else if (now - yilp < 6){
+        		var amount = (window.lsix_amount-window.lsix_prorated == window.lsix_amount) ? window.lsix_amount : window.lsix_prorated; 
+        		$('.payment.amount').val(amount);
+        		$('.payment.amount').html(amount+' - '+window.lsix_message);
+        	}
+        }else{
+        	the_element.addClass('error');
+   			if(the_element.find('.help-block.error').length == 0){
+   				the_element.append('<span for="yearsInLawPractice" class="help-block error " style="">Please enter a valid year only.  Alpha characters and full dates will cause this to keep appearing. </span>');
+   			}
+        }
+        publicdefenderlogic();
+	};
+	function publicdefenderlogic (){
+		if($('#saw-form .publicDefender').val() == 'yes'){
+    		var amount = (window.pd_amount-window.pd_prorated == window.pd_amount) ? window.pd_amount : window.pd_prorated; 
+    		$('.payment.amount').val(amount);
+    		$('.payment.amount').html(amount+' - '+window.pd_message);
+    	}
+	};
+	function promocodelogic (){
+		if($('#promocodetype').val() == 'discount'){
+    		$('.payment.amount').val('0');
+    		$('.payment.amount').html('0'+' - Free 2014 membership.  Please Continue to fill out the payment information.');
+    	}
+    	if($('#promocodetype').val() == 'trial'){
+    		$('.payment.amount').val('0');
+    		$('.payment.amount').html('0'+' - Trial membership.  Please Continue to fill out the payment information.');
+    	}
+	};
 	function newSustainingMemberAdd (){
 		
 		var full_address = $('#address1').val()+' '+$('#address2').val()+' '+$('#city').val()+', '+$('#state').val()+' '+$('#zip').val()+', '+$('#country').val();
@@ -29,6 +71,7 @@
 			
 		io.saw.FormPost.activate({postUrl:'/application/new-member'
 		   ,serializeSelector:':input'
+		   ,invalidFieldsString:'no'
 		   ,postOnComplete:function(responseObj,responseStatus){
 			   	if(responseStatus == 'success'){
 					$('#save-success .modal-body p').html(responseObj.message);
@@ -111,6 +154,46 @@
 
         $("#phone").inputmask("mask", {"mask": "(999) 999-9999"}); //specifying fn & options
         $("#fax").inputmask("mask", {"mask": "(999) 999-9999"}); //specifying fn & options
+
+
+        $('#saw-form .publicDefender').change(function(){
+        	publicdefenderlogic();
+        });
+        $('#saw-form .yearsInLawPractice').blur(function(){
+        	yearsinlawpracticelogic();        	
+        });
+        $('#saw-form .promocode').keyup(function(){
+        	window.clearTimeout(window.promocodetimeoutid);//cancel previous timer so they don't queue up when you're typing
+			window.promocodetimeoutid = window.setTimeout(function(theThis){ // delay so it's not in every key-up stroke
+				if(theThis.val().length == 0){
+	        		$('#promocodetype').val('');
+	        	}
+	        	io.saw.FormPost.activate({postUrl:'/application/promocode'
+				   ,blockUI:'no'
+				   ,serializeSelector:'.promocode'
+				   ,postOnComplete:function(responseObj,responseStatus){}
+				   ,postOnSuccess:function(responseObj){
+				   		var the_element = $('#saw-form .control-group :input.promocode').parents('.control-group');
+				   		if(responseObj.valid == 'yes'){
+				   			$('#promocodetype').val(responseObj.type);
+				   			the_element.addClass('success');
+				   			if(the_element.find('.help-block.success').length == 0){
+				   				the_element.append('<span for="promocode" class="help-block success " style="">'+responseObj.message+'</span>');
+				   			}
+				   		}
+				   		if(responseObj.valid == 'no'){
+				   			$('#promocodetype').val('');
+				   			the_element.find('.help-block.success').remove();
+							the_element.removeClass('success');
+				   		}
+					yearsinlawpracticelogic();
+					promocodelogic();   		
+				   }
+				});				
+			},1500,$(this));
+
+			
+        });
 
 	};
 	Application.newSustainingMemberInit = function(){

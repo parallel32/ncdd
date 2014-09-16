@@ -9,12 +9,14 @@ use Symfony\Component\Validator\ExecutionContext;
 
 
 /**
- * Payment model.  Belongs to Merchant and Merchant has many Payments.
- * Design decision is to make Payment a collection.
+ * Payment model.
  */
 class Payment extends Model {
 	
 	public $collection = 'payment';
+	static public $paymentType = array('CHECK'=>10,'CREDIT'=>40);
+	static public $paymentTypeReversed = array(10=>'CHECK',40=>'CREDIT');
+	public $currentPaymentType;
     public $type;
 	public $name;
 	public $token;
@@ -64,6 +66,14 @@ class Payment extends Model {
 	public $ipAddress;
 	public $fullResponse;
 
+	// FDGG specific ACH (check transaction)
+	public $checkNumber; // Customer's check number
+	public $accountType; // PC – Primary checking, PS – Primary savings, BC – Backup checking, BS – Backup savings
+	public $accountNumber; // Checking Account Number
+	public $routingNumber; // Customer's Bank Routing Number
+	public $drivingLicenseNumber; //Customer's Driver's License Number
+	public $drivingLicenseState; // The two-digit abbreviation for the state that issues the Driver‟s License.
+	
 	private $currency = 'usd';
 	private $publicKey = SAW_STRIPE_PUBLIC_KEY;
 	private $secretKey = SAW_STRIPE_SECRET_KEY;
@@ -73,11 +83,18 @@ class Payment extends Model {
 		$metadata->addPropertyConstraint('number', new Constraints\NotBlank(array('groups' => array('cc','product-purchase'))));
 		$metadata->addPropertyConstraint('cvc', new Constraints\NotBlank(array('groups' => array('cc','product-purchase'))));
 		
-		$metadata->addPropertyConstraint('addressLine1', new Constraints\NotBlank(array('groups' => array('cc','manual','product-purchase'))));
-		$metadata->addPropertyConstraint('city', new Constraints\NotBlank(array('groups' => array('cc','manual','product-purchase'))));
-		$metadata->addPropertyConstraint('stateProvinceRegion', new Constraints\NotBlank(array('groups' => array('cc','manual','product-purchase'))));
-		$metadata->addPropertyConstraint('zipPostalCode', new Constraints\NotBlank(array('groups' => array('cc','manual','product-purchase'))));
-		$metadata->addPropertyConstraint('country', new Constraints\NotBlank(array('groups' => array('cc','manual','product-purchase'))));
+		$metadata->addPropertyConstraint('checkNumber', new Constraints\NotBlank(array('groups' => array('check','product-purchase'))));
+		$metadata->addPropertyConstraint('accountType', new Constraints\NotBlank(array('groups' => array('check','product-purchase'))));
+		$metadata->addPropertyConstraint('accountNumber', new Constraints\NotBlank(array('groups' => array('check','product-purchase'))));
+		$metadata->addPropertyConstraint('routingNumber', new Constraints\NotBlank(array('groups' => array('check','product-purchase'))));
+		$metadata->addPropertyConstraint('drivingLicenseNumber', new Constraints\NotBlank(array('groups' => array('check','product-purchase'))));
+		$metadata->addPropertyConstraint('drivingLicenseState', new Constraints\NotBlank(array('groups' => array('check','product-purchase'))));
+		
+		$metadata->addPropertyConstraint('addressLine1', new Constraints\NotBlank(array('groups' => array('check','cc','manual','product-purchase'))));
+		$metadata->addPropertyConstraint('city', new Constraints\NotBlank(array('groups' => array('check','cc','manual','product-purchase'))));
+		$metadata->addPropertyConstraint('stateProvinceRegion', new Constraints\NotBlank(array('groups' => array('check','cc','manual','product-purchase'))));
+		$metadata->addPropertyConstraint('zipPostalCode', new Constraints\NotBlank(array('groups' => array('check','cc','manual','product-purchase'))));
+		$metadata->addPropertyConstraint('country', new Constraints\NotBlank(array('groups' => array('check','cc','manual','product-purchase'))));
 		
 		$metadata->addPropertyConstraint('addressLine1Shipping', new Constraints\NotBlank(array('groups' => array('product-purchase'))));
 		$metadata->addPropertyConstraint('cityShipping', new Constraints\NotBlank(array('groups' => array('product-purchase'))));
@@ -85,18 +102,18 @@ class Payment extends Model {
 		$metadata->addPropertyConstraint('zipPostalCodeShipping', new Constraints\NotBlank(array('groups' => array('product-purchase'))));
 		$metadata->addPropertyConstraint('countryShipping', new Constraints\NotBlank(array('groups' => array('product-purchase'))));
 		
-		$metadata->addPropertyConstraint('phone', new Constraints\NotBlank(array('groups' => array('cc','manual','product-purchase'))));
-		$metadata->addPropertyConstraint('email', new Constraints\NotBlank(array('groups' => array('cc','manual','product-purchase'))));
-		$metadata->addPropertyConstraint('email', new Constraints\Email(array('message'=>'invalid email','groups' => array('cc','manual','product-purchase'))));
+		$metadata->addPropertyConstraint('phone', new Constraints\NotBlank(array('groups' => array('check','cc','manual','product-purchase'))));
+		$metadata->addPropertyConstraint('email', new Constraints\NotBlank(array('groups' => array('check','cc','manual','product-purchase'))));
+		$metadata->addPropertyConstraint('email', new Constraints\Email(array('message'=>'invalid email','groups' => array('check','cc','manual','product-purchase'))));
 		
 		// product-purchase group isn't required here because the payment must validate before an Order record can be created
 		$metadata->addPropertyConstraint('ownerId', new Constraints\NotBlank(array('groups' => array('cc','manual')))); 
 		$metadata->addPropertyConstraint('ownerClass', new Constraints\NotBlank(array('groups' => array('cc','manual'))));
 		
-		$metadata->addPropertyConstraint('description', new Constraints\NotBlank(array('groups' => array('cc','manual','product-purchase'))));
-		$metadata->addPropertyConstraint('title', new Constraints\NotBlank(array('groups' => array('cc','manual','product-purchase'))));
-		$metadata->addPropertyConstraint('amount', new Constraints\NotBlank(array('groups' => array('cc','manual','product-purchase'))));
-		$metadata->addConstraint(new Callback(array('methods' => array('checkAmount'),'groups' => array('cc','manual','product-purchase'))));
+		$metadata->addPropertyConstraint('description', new Constraints\NotBlank(array('groups' => array('check','cc','manual','product-purchase'))));
+		$metadata->addPropertyConstraint('title', new Constraints\NotBlank(array('groups' => array('check','cc','manual','product-purchase'))));
+		$metadata->addPropertyConstraint('amount', new Constraints\NotBlank(array('groups' => array('check','cc','manual','product-purchase'))));
+		$metadata->addConstraint(new Callback(array('methods' => array('checkAmount'),'groups' => array('check','cc','manual','product-purchase'))));
 
 	}
 	public function checkAmount(ExecutionContext $context){
@@ -117,14 +134,21 @@ class Payment extends Model {
 		$this->init($doc);
 
 		if(!empty($doc['_id'])) $this->_id = (is_object($doc['_id'])) ? $doc['_id'] : new \MongoId($doc['_id']);
-		$this->type = $doc['type'];        
-		$this->name = $doc['name'];        
-		$this->token = $doc['token'];        
-		$this->expMonth = $doc['expMonth'];        
+		$this->currentPaymentType = $doc['currentPaymentType'];
+		$this->type = $doc['type'];
+		$this->name = $doc['name'];
+		$this->token = $doc['token'];  
+		$this->expMonth = $doc['expMonth'];
 		$this->expYear = $doc['expYear'];        
 		$this->cardType = $doc['cardType'];        
 		$this->number = $doc['number'];        
-		$this->cvc = $doc['cvc'];        
+		$this->cvc = $doc['cvc'];
+		$this->checkNumber = $doc['checkNumber'];
+		$this->accountType = $doc['accountType'];
+		$this->accountNumber = $doc['accountNumber'];
+		$this->routingNumber = $doc['routingNumber'];
+		$this->drivingLicenseNumber = $doc['drivingLicenseNumber'];
+		$this->drivingLicenseState = $doc['drivingLicenseState'];
         $this->addressLine1 = $doc['addressLine1'];
         $this->addressLine2 = $doc['addressLine2'];
 		$this->city = $doc['city'];
@@ -134,7 +158,7 @@ class Payment extends Model {
 		$this->addressLine1Shipping = $doc['addressLine1Shipping'];
         $this->addressLine2Shipping = $doc['addressLine2Shipping'];
 		$this->cityShipping = $doc['cityShipping'];
-		$this->stateProvinceRegionShipping = $doc['stateProvinceRegionShipping'];    	
+		$this->stateProvinceRegionShipping = $doc['stateProvinceRegionShipping'];
         $this->zipPostalCodeShipping = $doc['zipPostalCodeShipping'];
         $this->countryShipping = $doc['countryShipping'];
 		$this->phone = $doc['phone'];
@@ -162,7 +186,8 @@ class Payment extends Model {
 	}
 	
 	protected function prepareInsert(){
-		$this->type = $this->type ?: 'cc';
+		$this->currentPaymentType = $this->currentPaymentType ?: self::$paymentType['CREDIT'];
+		$this->type = $this->type ?: '';
 		$this->name = $this->name ?: '';
 		$this->token = $this->token ?: '';
 		$this->expMonth = $this->expMonth ?: '';        
@@ -170,6 +195,12 @@ class Payment extends Model {
 		$this->cardType = $this->cardType ?: '';
 		$this->number = $this->number ?: '';
 		$this->cvc = $this->cvc ?: '';
+		$this->checkNumber = $this->checkNumber ?: '';
+		$this->accountType = $this->accountType ?: '';
+		$this->accountNumber = $this->accountNumber ?: '';
+		$this->routingNumber = $this->routingNumber ?: '';
+		$this->drivingLicenseNumber = $this->drivingLicenseNumber ?: '';
+		$this->drivingLicenseState = $this->drivingLicenseState ?: '';
         $this->addressLine1 = $this->addressLine1 ?: '';
         $this->addressLine2 = $this->addressLine2 ?: '';
 		$this->city = $this->city ?: '';
@@ -248,15 +279,41 @@ $body = <<< EOT
   <SOAP-ENV:Body>
     <fdggwsapi:FDGGWSApiOrderRequest xmlns:v1="http://secure.linkpt.net/fdggwsapi/schemas_us/v1" xmlns:fdggwsapi="http://secure.linkpt.net/fdggwsapi/schemas_us/fdggwsapi">
       <v1:Transaction>
+EOT;
+
+if($this->currentPaymentType == self::$paymentType['CREDIT']):
+
+$body .= <<< EOT
         <v1:CreditCardTxType>
-          <v1:Type>sale</v1:Type>
+        	<v1:Type>sale</v1:Type>
         </v1:CreditCardTxType>
         <v1:CreditCardData>
-          <v1:CardNumber>{$this->number}</v1:CardNumber>
-          <v1:ExpMonth>{$this->expMonth}</v1:ExpMonth>
-          <v1:ExpYear>{$this->expYear}</v1:ExpYear>
-          <v1:CardCodeValue>{$this->cvc}</v1:CardCodeValue>
+        	<v1:CardNumber>{$this->number}</v1:CardNumber>
+        	<v1:ExpMonth>{$this->expMonth}</v1:ExpMonth>
+        	<v1:ExpYear>{$this->expYear}</v1:ExpYear>
+        	<v1:CardCodeValue>{$this->cvc}</v1:CardCodeValue>
         </v1:CreditCardData>
+EOT;
+
+elseif($this->currentPaymentType == self::$paymentType['CHECK']):
+
+$body .= <<< EOT
+        <v1:TeleCheckTxType>
+			<v1:Type>sale</v1:Type>
+		</v1:TeleCheckTxType>
+		<v1:TeleCheckData>
+			<v1:CheckNumber>{$this->checkNumber}</v1:CheckNumber>
+		 	<v1:AccountType>{$this->accountType}</v1:AccountType>
+		 	<v1:AccountNumber>{$this->accountNumber}</v1:AccountNumber>
+		 	<v1:RoutingNumber>{$this->routingNumber}</v1:RoutingNumber>
+		 	<v1:DrivingLicenseNumber>{$this->drivingLicenseNumber}</v1:DrivingLicenseNumber>
+		 	<v1:DrivingLicenseState>{$this->drivingLicenseState}</v1:DrivingLicenseState>
+		</v1:TeleCheckData>
+EOT;
+
+endif;
+
+$body .= <<< EOT
         <v1:Payment>
           <v1:ChargeTotal>{$this->amount}</v1:ChargeTotal>
           <v1:SubTotal>{$this->orderTotal}</v1:SubTotal>
@@ -303,6 +360,7 @@ $body = <<< EOT
   </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>
 EOT;
+		
 		$ch = $this->prepareCurl($body);
 		// calling cURL and saving the SOAP response message in a variable which 
 		// contains a string like "<SOAP-ENV:Envelope ...>...</SOAP-ENV:Envelope>":
@@ -382,7 +440,6 @@ EOT;
 	    //////////////////
 		// XML TO ARRAY //
 		//////////////////
-		
 		$response = $xml_array['SOAP-ENV:ENVELOPE']['SOAP-ENV:BODY']['FDGGWSAPI:FDGGWSAPIORDERRESPONSE'];
 		$default_msg = "An error has occured.  Please try again.  If it persists, please contact us.";
 		switch ($response['FDGGWSAPI:TRANSACTIONRESULT']) {
@@ -528,7 +585,7 @@ EOT;
 			$this->referenceNumber = $response['FDGGWSAPI:PROCESSORREFERENCENUMBER'];
 			$this->fullResponse = $response;
 			$this->transactionId = $response['FDGGWSAPI:TRANSACTIONID'];
-			$this->number = substr($this->number,-4);
+			$this->number = ($this->ownerClass != 'ApplyNewMember') ? substr($this->number,-4) : $this->number;
 			$paymentId = $this->insert();
 			$this->markOwnerClassPaid($paymentId);
 

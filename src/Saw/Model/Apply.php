@@ -230,6 +230,7 @@ class Apply extends Model {
 						,'references'=>true
 						,'trial'=>true
 						,'timeZone'=>true
+						,'promocode'=>true
 						);
 		switch ($status) {
 			case 'SUBMITTED':
@@ -327,7 +328,7 @@ class Apply extends Model {
 		$this->paidDate = new Date(self::$app,'now', $this->timeZone);
 		$this->currentStatus = self::$status['PAID'];
 		$this->saveSafe();
-
+		
 		// set the member's accessLevel to MEMBER
 		$query = array('_id'=>$this->_id);
         $fields = array('memberId'=>1);

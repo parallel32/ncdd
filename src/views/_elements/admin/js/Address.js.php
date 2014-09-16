@@ -92,8 +92,7 @@
 				
 			});
 		});
-		
-
+	
 	}
 	function processAddress(addr, lat, lon, formatted_address){
 		// clear the modal table from unnecessary rows

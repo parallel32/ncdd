@@ -241,7 +241,9 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 
 	$doc['total'] = (int)$hardCopyFee+(int)$registrationFee;
 	
-	//*
+	/**
+	
+	*/
 	$paymentId = new \stdClass();	
 	$rs = new Model\RegistrationSeminar($doc,$app);
 	$app['validateModel']($app, $rs);

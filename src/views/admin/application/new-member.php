@@ -657,17 +657,7 @@
                      <!--/span-->
                   </div>
 
-                  <h3 class="form-section">Membership Dues</h3>
-                  <div class="row-fluid">
-                     <div class="span12 ">
-                        <div class="control-group">
-                           <label class="control-label" id="calculate-dues">Please answer all the questions in order to calculate your membership dues.</label>
-                        </div>
-                     </div>
-                     <!--/span-->
-                  </div>
-                  
-                  <h3 class="form-section text-center">THE NATIONAL COLLEGE FOR DUI DEFENSE, INC.</br> AUTHORIZATION AND RELEASE</h3>
+                  <h3 class="form-section">7. AUTHORIZATION AND RELEASE</h3>
                   <div class="row-fluid">
                      <div class="span12">
                         <h3 class="text-center"><u>PARTIES</u></h3>
@@ -759,19 +749,463 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                      </div>
                      <!--/span-->
                   </div>
+                  <h3 class="form-section">8. Promotional Code</h3>
                   <div class="row-fluid">
                      <div class="span6 ">
                         <div class="control-group">
-                           <label class="control-label">Promo Code:</label>
+                           <label class="control-label">If you have a promo code please enter it here:</label>
                            <div class="controls">
                               <input type="text" name="doc[promocode]" class="m-wrap span12 promocode">
-                              <span class="help-block">If you have a promo code please enter it here.</span>
+                              <input type="hidden" id="promocodetype">
                            </div>
                         </div>
                      </div>
                      <!--/span-->
                   </div>
                   
+                  
+                  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  
+                  <!-- PAYMENT ELEMENT -->
+                  <style>
+                  .card {
+                  float: left;
+                  width: 39px;
+                  height: 25px;
+                  text-indent: -9999px;
+                  background-position: 0 0;
+                  background-repeat: no-repeat;
+                  padding-right: 2px;
+                  }
+                  
+                  .card.visa {
+                  background-image: url('/assets/img/card-visa.gif');
+                  }
+                  .card.master {
+                  background-image: url('/assets/img/card-mastercard.gif');
+                  }
+                  .card.amex {
+                  background-image: url('/assets/img/card-amex.gif');
+                  }
+                  .card.discover {
+                  background-image: url('/assets/img/card-discover.gif');
+                  }
+                  </style>
+                  <script>
+                  // less than six years
+                  var lsix_amount = <?=$this->vars['dues'][1]['amount']?>;
+                  var lsix_prorated = <?=$this->vars['dues'][1]['prorated']['a']?>;
+                  var lsix_message = 'Attorneys in practice for less than 6 years';
+                  // greater than or equal to six years
+                  var gsix_amount = <?=$this->vars['dues'][6]['amount']?>;
+                  var gsix_prorated = <?=$this->vars['dues'][6]['prorated']['a']?>;
+                  var gsix_message = 'Attorneys in practice for 6 or more years';
+                  // public defenders
+                  var pd_amount = <?=$this->vars['dues']['publicDefender']['amount']?>;
+                  var pd_prorated = <?=$this->vars['dues']['publicDefender']['prorated']['a']?>;
+                  var pd_message = 'Public Defender';
+                  jQuery(document).ready(function() {  
+ 
+                     $('#pay-by-cc').click(function(e){
+                        e.preventDefault();
+                        $('#payment-form .currentPaymentType').val('<?=\Saw\Model\Payment::$paymentType['CREDIT']?>');
+                        $('#payment-information-billing').removeClass('hide');
+                        $('#payment-information-cc').removeClass('hide');
+                        $('#payment-information-check').addClass('hide');
+                     });
+                     $('#pay-by-check').click(function(e){
+                        e.preventDefault();
+                        $('#payment-form .currentPaymentType').val('<?=\Saw\Model\Payment::$paymentType['CHECK']?>');
+                        $('#payment-information-cc').addClass('hide');
+                        $('#payment-information-check').removeClass('hide');
+                        $('#payment-information-billing').removeClass('hide');
+                     });
+                  });      
+
+                  </script>
+                  <div id="payment-form">
+                     
+                     <input type="hidden" class="payment memberId" name="doc[payment][memberId]" value="">
+                     <input type="hidden" class="payment description" name="doc[payment][description]" value="<?='INV-'.time();?>">
+                     <input type="hidden" class="payment title" name="doc[payment][title]" value="New Member Application">
+                     <input type="hidden" class="payment amount" name="doc[payment][amount]" value="">
+                     <input type="hidden" class="payment cardType" name="doc[payment][cardType]" value="">
+                     <input type="hidden" class="payment currentPaymentType" name="doc[payment][currentPaymentType]" value="">
+                     <input type="hidden" class="payment token" name="doc[payment][token]" value="">
+                     <h3 class="form-section">9. Payment Amount</h3>
+                     <div class="row-fluid">
+                        <h4>$<i class="payment amount"></i></h4>                        
+                     </div>
+                     <br><br>
+                     <h3 class="form-section">10. Payment Information</h3>
+                     <div class="row-fluid">
+                        <h4>Please select a payment method:</h4>
+                        <button id="pay-by-cc" type="button" class="btn blue pay-by-cc">Pay by Credit Card</button>
+                        <button id="pay-by-check" type="button" class="btn blue pay-by-check">Pay by Check</button>
+                     </div>
+                     <br><br>
+
+                     
+
+
+
+
+
+
+
+
+
+
+
+                     <?
+                     //////////////////
+                     // PAY BY CHECK //
+                     //////////////////
+                     ?>
+                     <div id="payment-information-check" class="hide">
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Check Number</label>
+                              <div class="controls">
+                                 <input id="check-number" type="text" name="doc[payment][checkNumber]" class="m-wrap span8 payment checkNumber">
+                                 <span class="help-block">This refers to the number, which is usually located on the top right corner of checks.</span>
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Checking Account Type</label>
+                              <div class="controls">
+                                 <select id="check-account-type" class="span4 payment accountType" name="doc[payment][accountType]">
+                                    <option value="pc">Primary checking</option>
+                                    <option value="ps">Primary savings</option>
+                                    <option value="bc">Backup checking</option>
+                                    <option value="bs">Backup savings</option>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Checking Account Number</label>
+                              <div class="controls">
+                                 <input id="check-account-number" type="text" name="doc[payment][accountNumber]" class="m-wrap span8 payment accountNumber">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Checking Routing Number</label>
+                              <div class="controls">
+                                 <input id="check-routing-number" type="text" name="doc[payment][routingNumber]" class="m-wrap span8 payment routingNumber">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Your Driver's License Number</label>
+                              <div class="controls">
+                                 <input id="check-driving-license-number" type="text" name="doc[payment][drivingLicenseNumber]" class="m-wrap span8 payment drivingLicenseNumber">
+                                 <span class="help-block">This should be the driver's license number of the owner of the checking account.</span>
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Your Driver's License State</label>
+                              <div class="controls">
+                                 <input id="check-driving-license-state" type="text" name="doc[payment][drivingLicenseState]" class="m-wrap span8 payment drivingLicenseState">
+                                 <span class="help-block">This should be the state in which the driver's license was issued.</span>
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     </div>
+                     
+
+
+
+
+
+
+
+
+                     <?
+                     ///////////////////
+                     // PAY BY CREDIT //
+                     ///////////////////
+                     ?>
+                     <div id="payment-information-cc" class="hide">
+                     <div class="row-fluid">
+                        <div class="span12 ">
+                           <div class="control-group">
+                              <label class="control-label" for="type">We Accept</label>
+                              <div class="controls">
+                                 <span class="card visa" title="Visa">Visa</span>
+                                 <span class="card master" title="Mastercard">Mastercard</span>
+                                 <span class="card amex" title="American Express">American Express</span>
+                                 <span class="card discover" title="Discover">Discover</span>
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span12 "><span class="cardType"></span></div>
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Your name as it appears on the card</label>
+                              <div class="controls">
+                                 <input id="card-name" type="text" name="doc[payment][name]" class="m-wrap span8 payment name" value="">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Credit Card Number</label>
+                              <div class="controls">
+                                 <input id="card-number" type="text" name="doc[payment][number]" class="m-wrap span8 payment number">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">CVC Code</label>
+                              <div class="controls">
+                                 <input id="card-cvc" type="text" name="doc[payment][cvc]" class="m-wrap span8 payment cvc">
+                                 <span class="help-block">This is the 3 or 4 digit security code on your card. </span>
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Expiration Date</label>
+                              <div class="controls">
+                                 <select id="card-expMonth" class="span4 payment expMonth" name="doc[payment][expMonth]"></select>
+                                 <select id="card-expYear" class="span4 payment expYear" name="doc[payment][expYear]"></select>
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     </div>
+
+                     <div id="payment-information-billing" class="hide">
+                     <h3 class="form-section">Billing Address</h3>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Address Line 1</label>
+                              <div class="controls">
+                                 <input id="card-addressLine1" type="text" name="doc[payment][addressLine1]" class="m-wrap span8 payment addressLine1" value="">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Address Line 2</label>
+                              <div class="controls">
+                                 <input id="card-addressLine2" type="text" name="doc[payment][addressLine2]" class="m-wrap span8 payment addressLine2" value="">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">City</label>
+                              <div class="controls">
+                                 <input id="card-city" type="text" name="doc[payment][city]" class="m-wrap span8 payment city" value="">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">State/Province/Region</label>
+                              <div class="controls">
+                                 <input id="card-stateProvinceRegion" type="text" name="doc[payment][stateProvinceRegion]" class="m-wrap span8 payment stateProvinceRegion" value="">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Zip/PostalCode</label>
+                              <div class="controls">
+                                 <input id="card-zipPostalCode" type="text" name="doc[payment][zipPostalCode]" class="m-wrap span8 payment zipPostalCode" value="">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Country</label>
+                              <div class="controls">
+                                 <input id="card-country" type="text" name="doc[payment][country]" class="m-wrap span8 payment country" value="">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <h3 class="form-section">Credit Card Contact Information</h3>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Email</label>
+                              <div class="controls">
+                                 <input id="card-email" type="text" name="doc[payment][email]" class="m-wrap span8 payment email" value="">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Phone</label>
+                              <div class="controls">
+                                 <input id="card-phone" type="text" name="doc[payment][phone]" class="m-wrap span8 payment phone" value="">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     </div>
+                  </div>
+                  <!--/ PAYMENT ELEMENT -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                   <div class="row-fluid">
                      <div class="span12 ">
                         <p></p>
@@ -782,7 +1216,8 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                      </div>
                      <!--/span-->
                   </div>
-                  
+
+
                   <!-- SUCCESSFUL SAVE MODAL -->
                   <div id="save-success" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="save-success-label" aria-hidden="true">
                      <div class="modal-header">
@@ -851,5 +1286,122 @@ jQuery(document).ready(function() {
       calculatedues();
    })
    window.setInterval(calculatedues,1000);
+});      
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript">
+(function( Payment, $, undefined ) {
+   
+   var params = {};
+
+   function validateCVC(cvc){
+      if(Stripe.validateCVC(cvc.val())){
+         cvc.parents('.control-group').removeClass('error');// remove the red highlight
+         cvc.next('.help-inline').remove(); // remove the error text
+         $('#saw-form .control-group').find('.help-block.error').remove(); // remove help blocks too
+      }else{
+         // bootstrap field to red with error message
+         cvc.parents('.control-group').addClass('error');
+         if(cvc.next('.help-inline').length == 0){
+            cvc.after('<span class="help-inline">A valid security code is required.</span>');
+         }
+      }
+   }
+   function validateCardNumber(card){
+      if(Stripe.validateCardNumber(card.val())){
+            card.parents('.control-group').removeClass('error');// remove the red highlight
+            card.next().remove(); // remove the error text
+            $('#saw-form .control-group').find('.help-block.error').remove(); // remove help blocks too
+            $('#saw-form .card').css('backgroundPosition','0 -25px');
+            switch (Stripe.cardType(card.val())){
+               case 'Visa':
+                  $('#saw-form .card.visa').css('backgroundPosition','0 0px');
+                  break;
+               case 'MasterCard':
+                  $('#saw-form .card.master').css('backgroundPosition','0 0px');
+                  break;
+               case 'American Express':
+                  $('#saw-form .card.amex').css('backgroundPosition','0 0px');
+                  break;
+               case 'Discover':
+                  $('#saw-form .card.discover').css('backgroundPosition','0 0px');
+                  break;         
+            }
+            $('#saw-form .cardType').html(Stripe.cardType(card.val()));
+         }else{
+            // bootstrap field to red with error message
+            card.parents('.control-group').addClass('error');
+            if(card.next('.help-inline').length == 0){
+               card.after('<span class="help-inline">A valid card number is required.</span>');
+            }
+         }
+   }
+   Payment.initiateRegistration = function () {
+      $('.submit-registration').html('<i class="icon-time"></i> Processing your registration..');
+      $('.submit-registration').attr("disabled", "disabled");
+      io.saw.Registration.doRegistration();
+   }
+   Payment.hold_card = '';
+   Payment.init = function(){
+      
+      // validate card number
+      $('#saw-form .number').blur(function(){
+         validateCardNumber($(this));
+      });
+      // validate cvc check
+      $('#saw-form .cvc').blur(function(){
+         validateCVC($(this));
+      });
+         
+   };
+   
+   
+}( io.saw.Payment = io.saw.Payment || {}, io.saw.jQuery || jQuery ));
+</script>
+<script>
+jQuery(document).ready(function() {    
+
+   // init the credit card fields
+   io.saw.Payment.init()
+   // prepare the month dropdown
+   var select = $("#card-expMonth"),
+   month = new Date().getMonth() + 1;
+   for (var i = 1; i <= 12; i++) {
+      select.append($("<option value='"+i+"' "+(month === i ? "selected" : "")+">"+i+"</option>"))
+   }
+
+   // prepare the year dropdown
+   var select = $("#card-expYear"),
+   year = new Date().getFullYear();
+
+   for (var i = 0; i < 12; i++) {
+      select.append($("<option value='"+(i + year)+"' "+(i === 0 ? "selected" : "")+">"+(i + year)+"</option>"))
+   }
+   // end - init the credit card fields
+
 });      
 </script>
