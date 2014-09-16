@@ -91,7 +91,8 @@ $app['applicationEmails'] = $app->protect(function ($app,$applicationId,$context
 		$user = $app['session']->get('user');
 		$user['suppress_emails'] = $request->get('suppress_emails');
 		$app['session']->set('user',$user);
-		if($user['accessLevel'] == ADMIN && $user['suppress_emails'] == 'yes'){
+
+		if(array_key_exists('accessLevel', $user) && $user['accessLevel'] == ADMIN && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes'){
 			switch ($apply_arr['class']) {
 				case 'UpdateMember':
 				case 'UpdateFoundingMember':
@@ -189,7 +190,7 @@ $app['applicationEmails'] = $app->protect(function ($app,$applicationId,$context
 		$user = $app['session']->get('user');
 		$user['suppress_emails'] = $request->get('suppress_emails');
 		$app['session']->set('user',$user);
-		if($user['accessLevel'] == ADMIN && $user['suppress_emails'] == 'yes'){
+		if(array_key_exists('accessLevel', $user) && $user['accessLevel'] == ADMIN && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes'){
 			switch ($apply_arr['class']) {
 				case 'UpdateMember':
 					return new Response(json_encode(array('message' => 'Approved successfully AND No emails sent to members.')), 200,array('Content-Type' => 'application/json'));
