@@ -294,7 +294,7 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 			}
 			$doc['total'] = (int)$hardCopyFee+(int)$doc['registrationFee'];
 			
-			if(Model\Scholarship::checkRegNum((int)$doc['registrationNumber'],$app)){
+			if(array_key_exists('registrationNumber', $doc) && Model\Scholarship::checkRegNum((int)$doc['registrationNumber'],$app)){
 				$doc['total'] = 0;
 				$doc['total_reason'] = "Scholarship Awarded";
 			}
