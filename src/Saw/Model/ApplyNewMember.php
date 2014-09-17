@@ -70,7 +70,7 @@ class ApplyNewMember extends Apply {
 	}
 	public function checkpromo(ExecutionContext $context){
 		///*
-		if(!empty($this->promocode) && strtoupper($this->promocode) == 'NCDDTRIAL'){
+		if(!empty($this->promocode) && strtoupper($this->promocode) == 'TRIAL'){
 			if(empty($this->referredBy)){
 				$propertyPath = $context->getPropertyPath().'referredBy';
 				$context->addViolationAtPath($propertyPath,'Trial memberships require a referral.  Please fill in this field.', array(), null);	

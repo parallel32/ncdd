@@ -111,7 +111,7 @@
                         <i class="icon-hideme"><?=(!empty($this->vars['ncddtrialpromocode'])) ? count($this->vars['ncddtrialpromocode']) : 0;?></i>
                      </div>
                      <div class="details">
-                        <div class="number"><font><font>NCDDTRIAL Promo</font></font></div>
+                        <div class="number"><font><font>TRIAL Promo</font></font></div>
                         <div class="desc"><font><font>
                            
                         </font></font></div>
