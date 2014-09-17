@@ -307,7 +307,7 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 
 	if($doc['promocode'] == 'TRIAL'){
 		$trial_doc['startDate'] = 'now';
-		$trial_doc['endDate'] = "+60 days";
+		$trial_doc['endDate'] = "+1 year";
 		$trial_doc['referredBy'] = $doc['referredBy'];
 		
 		$trial = new Model\Trial($trial_doc,$app);
