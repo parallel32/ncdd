@@ -234,7 +234,7 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 		$doc['currentStatus'] = Model\Registration::$status['DEPOSIT'];
 	}
 
-	if(Model\Scholarship::checkRegNum((int)$doc['registrationNumber'],$app)){
+	if(array_key_exists('registrationNumber', $doc) && Model\Scholarship::checkRegNum((int)$doc['registrationNumber'],$app)){
 		$registrationFee = 0;
 		$doc['currentStatus'] = Model\Registration::$status['SCHOLARSHIP'];
 	}
