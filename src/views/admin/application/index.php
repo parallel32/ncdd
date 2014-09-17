@@ -87,12 +87,11 @@
                </div>
                
             </div>
-            
             <div class="row-fluid">
                <div class="responsive span6" data-tablet="span6" data-desktop="span6">
                   <div class="dashboard-stat blue">
                      <div class="visual">
-                        <i class="icon-hideme"><?=count($this->vars['ncdd2014promocode']);?></i>
+                        <i class="icon-hideme"><?=(!empty($this->vars['ncdd2014promocode'])) ? count($this->vars['ncdd2014promocode']): 0;?></i>
                      </div>
                      <div class="details">
                         <div class="number"><font><font></font>NCDD2014 Promo</font></div>
@@ -109,7 +108,7 @@
                   <a name="approve"></a>
                   <div class="dashboard-stat blue">
                      <div class="visual">
-                        <i class="icon-hideme"><?=count($this->vars['ncddtrialpromocode']);?></i>
+                        <i class="icon-hideme"><?=(!empty($this->vars['ncddtrialpromocode'])) ? count($this->vars['ncddtrialpromocode']) : 0;?></i>
                      </div>
                      <div class="details">
                         <div class="number"><font><font>NCDDTRIAL Promo</font></font></div>
@@ -129,7 +128,7 @@
                <div class="responsive span6" data-tablet="span6" data-desktop="span6">
                   <div class="dashboard-stat blue">
                      <div class="visual">
-                        <i class="icon-hideme"><?=count($this->vars['newlypaid']);?></i>
+                        <i class="icon-hideme"><?=(!empty($this->vars['newlypaid'])) ? count($this->vars['newlypaid']): 0;?></i>
                      </div>
                      <div class="details">
                         <div class="number"><font><font></font>Paid w/o Promo</font></div>
@@ -304,7 +303,7 @@
 
             <div class="row-fluid" id="ncdd2014promocode">
                <div class="span12">
-                  <a name="ncdd2014promocode"></a>
+                  
                   <!-- BEGIN EXAMPLE TABLE PORTLET-->
                   <div class="portlet box blue">
                      <div class="portlet-title" id="application">
@@ -351,7 +350,7 @@
                            </tbody>
                         </table>
                      </div>
-                  </div><a name="newlypaid"></a>
+                  </div><a name="newlypaid"></a><a name="ncdd2014promocode"></a>
                   <!-- END EXAMPLE TABLE PORTLET-->
                </div>
             </div>

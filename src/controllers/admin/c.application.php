@@ -1168,6 +1168,7 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 
 	$ncddtrialpromocode = $application->fetchByStatus('TRIAL',$offset, $limit,$filter=array('promocode'=>'NCDDTRIAL'));
 	$ncdd2014promocode = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('promocode'=>'NCDD2014'));
+	if(!empty($ncdd2014promocode)):
 	for ($i=0; $i < count($ncdd2014promocode); $i++) { 
 		switch ($ncdd2014promocode[$i]['class']) {
 	    	case 'ApplyNewMember':
@@ -1180,8 +1181,10 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 	    }
 	    $ncdd2014promocode[$i]['new_references'] = array('total'=>$reference->getTotalSubmissions(),'max'=>$reference->getMaxSubmissions());
 	}
-	$date = new Model\Date($app,'9/15/2014');
+	endif;
+	$date = new Model\Date($app,'9/16/2014 5:00 PM');
 	$newlypaid = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('promocode'=>array('$nin'=>array('NCDD2014','NCDDTRIAL')),'paidDate.date'=>array('$gte'=> new \MongoDate(strtotime($date->iso)))));
+	if(!empty($newlypaid)):
 	for ($i=0; $i < count($newlypaid); $i++) { 
 		switch ($newlypaid[$i]['class']) {
 	    	case 'ApplyNewMember':
@@ -1194,6 +1197,7 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 	    }
 	    $newlypaid[$i]['new_references'] = array('total'=>$reference->getTotalSubmissions(),'max'=>$reference->getMaxSubmissions());
 	}
+	endif;
 	$crumbs = array(array('name'=>'Applications','href'=>'/applications'));
 	$view_vars = array(
 						 'active'=>'Applications/New'
