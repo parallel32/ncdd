@@ -281,21 +281,7 @@ $body = <<< EOT
       <v1:Transaction>
 EOT;
 
-if($this->currentPaymentType == self::$paymentType['CREDIT']):
-
-$body .= <<< EOT
-        <v1:CreditCardTxType>
-        	<v1:Type>sale</v1:Type>
-        </v1:CreditCardTxType>
-        <v1:CreditCardData>
-        	<v1:CardNumber>{$this->number}</v1:CardNumber>
-        	<v1:ExpMonth>{$this->expMonth}</v1:ExpMonth>
-        	<v1:ExpYear>{$this->expYear}</v1:ExpYear>
-        	<v1:CardCodeValue>{$this->cvc}</v1:CardCodeValue>
-        </v1:CreditCardData>
-EOT;
-
-elseif($this->currentPaymentType == self::$paymentType['CHECK']):
+if($this->currentPaymentType == self::$paymentType['CHECK']):
 
 $body .= <<< EOT
         <v1:TeleCheckTxType>
@@ -309,6 +295,20 @@ $body .= <<< EOT
 		 	<v1:DrivingLicenseNumber>{$this->drivingLicenseNumber}</v1:DrivingLicenseNumber>
 		 	<v1:DrivingLicenseState>{$this->drivingLicenseState}</v1:DrivingLicenseState>
 		</v1:TeleCheckData>
+EOT;
+
+else:
+
+	$body .= <<< EOT
+        <v1:CreditCardTxType>
+        	<v1:Type>sale</v1:Type>
+        </v1:CreditCardTxType>
+        <v1:CreditCardData>
+        	<v1:CardNumber>{$this->number}</v1:CardNumber>
+        	<v1:ExpMonth>{$this->expMonth}</v1:ExpMonth>
+        	<v1:ExpYear>{$this->expYear}</v1:ExpYear>
+        	<v1:CardCodeValue>{$this->cvc}</v1:CardCodeValue>
+        </v1:CreditCardData>
 EOT;
 
 endif;
@@ -360,7 +360,6 @@ $body .= <<< EOT
   </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>
 EOT;
-		
 		$ch = $this->prepareCurl($body);
 		// calling cURL and saving the SOAP response message in a variable which 
 		// contains a string like "<SOAP-ENV:Envelope ...>...</SOAP-ENV:Envelope>":

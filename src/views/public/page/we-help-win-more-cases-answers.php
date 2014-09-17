@@ -288,7 +288,7 @@ high.</li>
                             </div>
                             <div id="closer"></div>
                             </div>
-                            
+                            jhall@hallrustomfritz.com
                     </div>
                     <div align="center" class="row">
                         <a href="https://<?=SAW_ADMIN_WEBSITE?>/application/new-member"><img src="/assets/img/quiz-btn.png" class="applyBtn"></a>
