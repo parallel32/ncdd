@@ -110,7 +110,7 @@ jQuery(document).ready(function() {
                         '   <td><a target="_blank" class="btn mini green-stripe" href="https://<?=SAW_CONSUMER_WEBSITE?>/member/'+member._id.$id+'/'+member.slug+'">View</a></td>'+
                         <? if($accessLevel >= EDITOR): ?>
                         '   <td><a class="btn mini blue-stripe edit" data-id="'+member._id.$id+'">Edit</a></td>'+
-                        '   <td><a class="btn mini yellow-stripe user-login" data-id="'+member._id.$id+'"><i class="icon-key"></i> Log In</a></td>'+
+                        '   <td><a class="btn mini yellow-stripe user-login" data-id="'+member._id.$id+'">LogIn</a></td>'+
                         <? endif; ?>
                         '</tr>';
                   $('#results tbody').append(html);
