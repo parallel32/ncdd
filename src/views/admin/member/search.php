@@ -121,6 +121,7 @@ jQuery(document).ready(function() {
                $('#results td .edit').click(function(e){
                   document.location.href='/member/'+$(this).attr('data-id')+'/edit';
                });   
+               <? if($accessLevel >= EDITOR): ?>
                $('#results td .user-login').click(function(e){
                   io.saw.FormGet.activate({postUrl:'/authentication/shadologin/'+$(this).attr('data-id')
                      ,postOnComplete:function(responseObj,responseStatus){}
@@ -132,7 +133,7 @@ jQuery(document).ready(function() {
                      }
                   });
                });
-               
+               <? endif; ?>
 
                $('#results tbody .order-update').click(function(e){
                   e.preventDefault();
