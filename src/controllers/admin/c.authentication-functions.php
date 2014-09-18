@@ -114,4 +114,23 @@ $app['adminLogin'] = $app->protect(function ($app,$request) {
     }
 });
 
+$app->get('/authentication/shadologin/{userId}', function ($userId, Request $request) use ($app) {
+    
+        $user = new Model\Member(array('_id'=>$userId), $app);
+        $user = $user->findById();
+
+        $sess_user['user_id']       = $user['_id'];
+        $sess_user['accessLevel']   = $user['accessLevel'];
+        $sess_user['displayName']   = $user['displayName'];
+        $sess_user['status']        = $user['status'];
+                
+        unset($_SESSION['SAW_SITE_MODE']);
+        
+        $app['session']->set('user',array());    
+        $app['session']->set('user',$sess_user);
+        
+        return new Response(json_encode(array('message' => 'login successful')), 200,array('Content-Type' => 'application/json'));
+
+})->before($mustbeADMIN);
+
 return $app;

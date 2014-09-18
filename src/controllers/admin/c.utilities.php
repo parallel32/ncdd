@@ -22,7 +22,7 @@ $utilities->before($mustbeADMIN);
 // reference: http://ttools.readthedocs.org/en/latest/example_silex.html
 /////////////////////////////
 $utilities->get('/ttools', function () use ($app) {
-
+    return false;
     // configuration keys for the ncdd test app on @pricepost
     $config = array(
         'consumer_key'        => TWITTER_CONSUMER_KEY,
@@ -1110,30 +1110,102 @@ $utilities->get('/gdrive', function () use ($app, $checkPermissions) {
 });
 
 // view user sessions
-$utilities->get('/viewusersessions/{userId}', function ($userId) use ($app, $checkPermissions) {
-    //$checkPermissions(CONSUMER);
+$utilities->get('/viewusersessions/{userId}', function ($userId) use ($app) {
+    return false;
     if (empty($userId)) {
         $user_id = call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$app);
         if(!empty($user_id)) {
-            $userId = $user_id->__toString();
+            $userId = (string)$user_id;
         }
     }
-
+echo '<pre>';print_r(session_id());echo '</pre>';
+echo '<pre>';print_r($_SESSION);echo '</pre>';
     //$query = array('user_id'=>new \MongoId($userId));
 
     $regex = new MongoRegex('/'.$userId.'/i');
     $query = array('data'=>$regex);
+    $query = array('_id'=>'23rred3vbdihd13nrsa7ca1rl3');
     $sessions = $app['mongo']->find('session', $query, $fields=array(),$slaveOkay=true);
+
+echo '<pre>';print_r($sessions);echo '</pre>';
+    /*
+    $session_string = $sessions['data']->bin;
+
+    $current_session = session_encode();
+    echo '<pre>';print_r($session_string);echo '</pre>';
+    echo '<pre>';print_r($current_session);echo '</pre>';
+    //*/
+    /*
+    foreach ($_SESSION as $key => $value){
+        unset($_SESSION[$key]);
+    }
+    session_decode($session_string);
+    $restored_session = $_SESSION;
+    foreach ($_SESSION as $key => $value){
+        unset($_SESSION[$key]);
+    }
+    session_decode($current_session);
+    echo '<pre>';print_r($restored_session);echo '</pre>';
+    //*/
+
+
 
     $query = array('_id'=>new \MongoId($userId));
     $user = $app['mongo']->findOne('user', $query, $fields=array(),$slaveOkay=true);
-
+echo '<pre>';print_r($user);echo '</pre>';
     return $app['view']->render('utilities/view_user_session',array('sessions'=>$sessions,'user'=>$user));
     
 })->value('userId', '');
+/*
+// view my session
+$app->get('/utilities/viewsession', function (Request $request) use ($app, $checkPermissions) {
+    try{
+        $checkPermissions(ADMIN);
+        $user = array();//Model\Consumer::getUserBySession($app);
+        $consumer_doc['firstName'] = 'Mike';
+        $consumer_doc['lastName'] = 'Hairetis';
+        $consumer_doc['parent'] = new \MongoId('1352224210401664');
+        
+        $consumer = new Model\Merchant($consumer_doc,$app);
+        $consumer->insert();
+        
+        return $app['view']->render('utilities/view_my_session','admin',array('user'=>$user));  
+    } catch (Grapeword\Exceptions\GrapewordException $e) {
+        $http_status_code = $e->getHttpStatusCode();
+        $abort_response = $e->getAbortResponse();  
+        $app->abort($http_status_code, $abort_response);
+    }
+});
 
+// view user sessions
+$app->get('/utilities/viewusersessions/{userId}', function ($userId) use ($app, $checkPermissions) {
+    try{
+        $checkPermissions(ADMIN);
+        if (empty($userId)) {
+            $user_id = call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$app);
+            if(!empty($user_id)) {
+                $userId = $user_id->__toString();
+            }
+        }
 
+        //$query = array('user_id'=>new \MongoId($userId));
+    
+        $regex = new MongoRegex('/'.$userId.'/i');
+        $query = array('data'=>$regex);
+        $sessions = $app['mongo']->find('session', $query, $fields=array(),$slaveOkay=true);
+    
+        $query = array('_id'=>new \MongoId($userId));
+        $user = $app['mongo']->findOne('user', $query, $fields=array(),$slaveOkay=true);
+    
+        return $app['view']->render('utilities/view_user_session','admin',array('sessions'=>$sessions,'user'=>$user));
+    } catch (Grapeword\Exceptions\GrapewordException $e) {
+        $http_status_code = $e->getHttpStatusCode();
+        $abort_response = $e->getAbortResponse();  
+        $app->abort($http_status_code, $abort_response);
+    }
+})->value('userId', '');
 
+//*/
 
 
 return $utilities;

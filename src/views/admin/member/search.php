@@ -110,16 +110,29 @@ jQuery(document).ready(function() {
                         '   <td><a target="_blank" class="btn mini green-stripe" href="https://<?=SAW_CONSUMER_WEBSITE?>/member/'+member._id.$id+'/'+member.slug+'">View</a></td>'+
                         <? if($accessLevel >= EDITOR): ?>
                         '   <td><a class="btn mini blue-stripe edit" data-id="'+member._id.$id+'">Edit</a></td>'+
+                        '   <td><a class="btn mini yellow-stripe user-login" data-id="'+member._id.$id+'"><i class="icon-key"></i> Log In</a></td>'+
                         <? endif; ?>
                         '</tr>';
                   $('#results tbody').append(html);
                   $('#results thead').removeClass('hide');
                });
                
-                  // bind click events to the records....
+               // bind click events to the records....
                $('#results td .edit').click(function(e){
                   document.location.href='/member/'+$(this).attr('data-id')+'/edit';
                });   
+               $('#results td .user-login').click(function(e){
+                  io.saw.FormGet.activate({postUrl:'/authentication/shadologin/'+$(this).attr('data-id')
+                     ,postOnComplete:function(responseObj,responseStatus){}
+                     ,postOnSuccess:function(responseObj){
+                        document.location.href = '/';
+                     }
+                     ,postOnErrors:function(responseObj){
+                        alert('Something failed trying to sign in as this user...this is an unlikely error with no logs.  Please recall what you did and email Mike.');
+                     }
+                  });
+               });
+               
 
                $('#results tbody .order-update').click(function(e){
                   e.preventDefault();
@@ -146,6 +159,6 @@ jQuery(document).ready(function() {
    <? if(!empty($this->vars['query'])){ ?>
       window.saw_search();
    <? } ?>
-   
+
 });      
 </script>
