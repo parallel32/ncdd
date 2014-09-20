@@ -70,9 +70,28 @@
                               <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Stamm - Maryland DUI Law - Big.jpg"/></li>
                               <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Texas DWI Defense Photo.png"/></li>
                               <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Whited - Drinking Driving Litigation Photo 2.jpg"/></li>
-                        </ul><ul class="row">
-                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Whited - Drinking Driving Litigation.jpg"/></li>  
-                         </ul>
+                        </ul>
+                        <ul class="row">
+                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/arizona dui defense.png"/></li>
+                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/colorado dui defense.png"/></li>
+                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/florida dui defense.png"/></li>
+                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/iowa owi defense.png"/></li>
+                            </ul>
+                            <ul class="row">
+                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/new hampshire dwi defense.png"/></li>
+                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/oklahoma dui defense.png"/></li>
+                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/texas dwi defense.png"/></li>
+                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/utah dui defense.png"/></li>
+                            </ul>
+                            <ul class="row">
+                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/virginia dui defense.png"/></li>
+                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/west virginia dui defense.png"/></li>
+                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/wisconsin owi defense.png"/></li>
+                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/how to beat a dui.png"/></li>
+                            </ul>
+                            <ul class="row">
+                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Whited - Drinking Driving Litigation.jpg"/></li>  
+                             </ul>
                     </div>
                     </div>
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -126,6 +145,7 @@
                                         <li>Victor Carmody - <em>Mississippi DUI Law and Practice</em></li>
                                         <li>James Campbell - <em>Defense of Speeding, Reckless Driving and Vehicular Homicide</em></li>
                                         <li>Cowan, Fox, Kirk - <em>Defending DUIs in Washington</em></li>
+                                        <li>Trichter & McKinney - <em>Texas Drunk Driving Law</em></li>
                                         <li>Countless other authors and books devoted to DUI/DWI Defense</li>
                                     </ul>
                                 </div>
