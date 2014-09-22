@@ -167,7 +167,7 @@
                      $country = $this->vars['registration']['country'];
                      ?>
                      <input type="hidden" class="name" name="doc[name]" value="<?=$name?>">
-                     <input type="hidden" class="memberId" name="doc[memberId]" value="<?=$memberId?>">
+                     <input type="hidden" class="memberId" name="doc[memberId]" value="<?=(!empty($memberId)) ? $memberId: ''?>">
                      <input type="hidden" class="ownerId" name="doc[ownerId]" value="<?=$ownerId?>">
                      <input type="hidden" class="ownerClass" name="doc[ownerClass]" value="<?=$ownerClass?>">
                      <input type="hidden" class="description" name="doc[description]" value="<?=$description?>">
