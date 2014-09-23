@@ -1151,6 +1151,7 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 	$application = new Model\Apply($doc=array(), $app);
 	$submitted = $application->fetchByStatus('SUBMITTED',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
 error_log('for variable: submitted  ==>'.print_r($submitted,true));
+	if(!empty($submitted)){
 	for ($i=0; $i < count($submitted); $i++) { 
 		switch ($submitted[$i]['class']) {
 	    	case 'ApplyNewMember':
@@ -1167,7 +1168,7 @@ error_log('for variable: submitted  ==>'.print_r($submitted,true));
 	    }else{
 	    	$submitted[$i]['new_references'] = array('total'=>0,'max'=>0);
 	    }
-	}
+	}}
 	$approved = $application->fetchByStatus('APPROVED',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
 	$trial = $application->fetchByStatus('TRIAL',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
 	$paid = $application->fetchByDatePaid(90, $offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));

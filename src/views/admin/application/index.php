@@ -21,7 +21,7 @@
                   <div class="responsive span6" data-tablet="span6" data-desktop="span6">
                      <div class="dashboard-stat red">
                         <div class="visual">
-                           <i class="icon-hideme"><?=count($this->vars['submitted']);?></i>
+                           <i class="icon-hideme"><?=(count($this->vars['submitted']) == 0) ? '0': count($this->vars['submitted'])?></i>
                         </div>
                         <div class="details">
                            <div class="number"><font><font>
