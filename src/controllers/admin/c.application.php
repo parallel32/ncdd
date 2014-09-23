@@ -1150,6 +1150,7 @@ $app->get('/applications/all/{offset}/{limit}', function ($offset, $limit, Reque
 $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $request) use ($app) {
 	$application = new Model\Apply($doc=array(), $app);
 	$submitted = $application->fetchByStatus('SUBMITTED',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
+error_log('for variable: submitted  ==>'.print_r($submitted,true));
 	for ($i=0; $i < count($submitted); $i++) { 
 		switch ($submitted[$i]['class']) {
 	    	case 'ApplyNewMember':
