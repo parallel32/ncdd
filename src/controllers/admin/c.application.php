@@ -1161,6 +1161,7 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 	    		break;
 	    	
 	    }
+	    error_log('for variable: reference  ==>'.print_r($reference,true));
 	    if(!empty($reference)){
 	    	$submitted[$i]['new_references'] = array('total'=>$reference->getTotalSubmissions(),'max'=>$reference->getMaxSubmissions());
 	    }else{
