@@ -287,6 +287,11 @@
                      </div>
                      <!--/ ERROR -->
                      <div class="form-actions text-center">
+                        <? $user = $this->app['session']->get('user');
+                           if($user['accessLevel'] == ADMIN){  
+                        ?>
+                        <input type="checkbox" name="suppress_emails" <?=(array_key_exists('suppress_emails',$user) && !empty($user['suppress_emails']))?'checked':'';?> value="yes">Suppress Emails.
+                        <? } ?>
                         <button data-registration-id="<?=$this->vars['registration']['_id']?>" type="button" class="btn green submit-payment"><i class="icon-ok"></i> Submit Payment</button>
                         <button data-id="<?=$this->vars['registration']['_id']?>" type="button" class="btn cancel">Cancel and Go Back</button>
                      </div>

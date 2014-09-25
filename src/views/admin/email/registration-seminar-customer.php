@@ -38,7 +38,7 @@
 	<tr><td><strong>Total:</strong></td><td>$<?=$this->vars['total']?> <?=(!empty($this->vars['total_reason'])) ? $this->vars['total_reason']:'' ?></td></tr>
 </table>
 <? if($this->vars['paymentType'] == 'credit'):?>
-<br/><strong>Paid with:</strong> <?=$this->vars['cardType'].' ending in: '.$this->vars['cardNumber']?>
+<br/><strong>Paid with credit card </strong> <?=$this->vars['cardType'].' ending in '.(strlen($this->vars['cardNumber']) > 5) ? substr($this->vars['cardNumber'], -4): $this->vars['cardNumber']?>
 <? else: ?>
 <br/>You have opted to pay by check.  Please mail a <strong>check payable to NCDD</strong> at the following address:
 <br/>

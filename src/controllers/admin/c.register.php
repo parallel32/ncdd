@@ -148,6 +148,12 @@ $app->get('/registration/seminar/{id}/pay', function ($id, Request $request) use
 $app->post('/registration/payment', function (Request $request) use ($app) {
 	// retrieve document from request
 	$doc = $request->get('doc');
+
+	// get and set the suppress email check
+	$user = $app['session']->get('user');
+	$user['suppress_emails'] = $request->get('suppress_emails');
+	$user = $app['session']->set('user',$user);
+	
 	$payment = new Model\Payment($doc,$app);
 	$app['validateModel']($app, $payment,$groups=array('manual'));
 	$paymentId = $payment->manualCharge();
@@ -187,8 +193,13 @@ $app->get('/registration/{paymentId}/pay/{registrationId}', function ($paymentId
 						,'email'=>$payment->email
 	);
 	$body = $app['view']->render('email/payment-thankyou','email', $view_vars);
-		
-	$app['sendMail']($subject, $body, $to);
+	
+	$user = $app['session']->get('user');
+	if(array_key_exists('accessLevel', $user) && $user['accessLevel'] == ADMIN && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes'){
+		// don't send the email		
+	}else{
+		$app['sendMail']($subject, $body, $to);	
+	}	
 
     return new Response(json_encode(array('message' => 'Paid successfully')), 200,array('Content-Type' => 'application/json'));
 })->before($mustbeMEMBER);
@@ -222,6 +233,11 @@ $app->get('/registration/seminar/{seminarId}/{slug}', function ($seminarId, $slu
 $app->post('/registration/seminar', function (Request $request) use ($app) {
 	// retrieve document from request
 	$doc = $request->get('doc'); 
+	// get and set the suppress email check
+	$user = $app['session']->get('user');
+	$user['suppress_emails'] = $request->get('suppress_emails');
+	$user = $app['session']->set('user',$user);
+		
 	$registrationFee = $doc['registrationFee'];
 	$hardCopy = (array_key_exists('hardCopy',$doc)) ? $doc['hardCopy'] : '';
 	$hardCopyFee = (array_key_exists('hardCopyFee',$doc)) ? $doc['hardCopyFee'] : '';
@@ -257,7 +273,6 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 		$payment = new Model\Payment($doc['payment'],$app);
 		$app['validateModel']($app, $payment,$groups=array('cc'));
 		$paymentId = $payment->charge();
-		$app['seminarConfirmationEmail']($app,$rs_id);
 		
 	}
 	if(array_key_exists('currentStatus', $doc) && $doc['currentStatus'] == Model\Registration::$status['SCHOLARSHIP']){

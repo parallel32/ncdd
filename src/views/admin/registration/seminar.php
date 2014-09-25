@@ -590,17 +590,23 @@ endif; ?>
                         You have some form errors. Please check below.
                      </div>
                      <!--/ ERROR -->
-               </form>
-               <!-- END FORM--> 
                   
                      <div id="submit-registration-buttons" class="form-actions text-center">
+                        <? $user = $this->app['session']->get('user');
+                           if($user['accessLevel'] == ADMIN){  
+                        ?>
+                        <input type="checkbox" name="suppress_emails" <?=(array_key_exists('suppress_emails',$user) && !empty($user['suppress_emails']))?'checked':'';?> value="yes">Suppress Emails.
+                        <? } ?>
+                     
                         <button type="button" class="btn blue check">Pay By Check</button>
                         <button type="button" class="btn blue credit hide">Pay by Credit Card</button>
                         <button type="button" class="btn green submit-registration"><i class="icon-ok"></i> Submit Registration</button>
                         <button type="button" class="btn cancel-registration">Cancel and Go Back</button>
                      </div>
-
-
+               
+               </form>
+               <!-- END FORM--> 
+               
                <? endif; ?>
             <? else: ?>
             <br><h2 class="text-center">Registration for this seminar is no longer available.</h2>
