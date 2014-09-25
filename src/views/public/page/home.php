@@ -26,12 +26,10 @@
                                     <li class="active"><a href="#welcome">WELCOME</a></li>
                                     <li><a href="#nationallyRecognized">NATIONALLY RECOGNIZED</a></li>
                                     <li><a href="#missionStatement">MISSION STATEMENT</a></li>
-                                    <li><a href="#noticeToMembers">NOTICE TO MEMBERS</a></li>
                                 </ul>
                             </div>
                             <div class="tab-content">
                                 <div class="tab-pane active " id="welcome">
-                                    <iframe class="pull-right" height="70%" src="//www.youtube.com/embed/IgTzHmMDqng?rel=0" frameborder="0" allowfullscreen></iframe>
                                     <?=$this->vars['welcome']['body']?>
                                     <div class="text-center">
                                         <br><a href="https://twitter.com/NCDDNews" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @NCDDNews</a>&nbsp;&nbsp;
@@ -64,9 +62,7 @@
                                     <img src="/assets/img/missionStatementFoto.png" alt="" class="pull-right missionStatementFoto">
                                     <?=$this->vars['ms']['body']?>
                                 </div>
-                                <div class="tab-pane" id="noticeToMembers">
-                                    <?=$this->vars['ntm']['body']?>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
