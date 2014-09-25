@@ -223,7 +223,7 @@ endif; ?>
                      </div>
                      <!--/span-->
                   </div>
-                  <? if(array_key_exists('register',$this->vars['seminar']) && array_key_exists('rsvpQuestion',$this->vars['seminar']['register']) && $this->vars['seminar']['register']['rsvpQuestion'] == 'ON'): ?>
+                  <? if((array_key_exists('register',$this->vars['seminar']) && array_key_exists('rsvpQuestion',$this->vars['seminar']['register']) && $this->vars['seminar']['register']['rsvpQuestion'] == 'ON') || (array_key_exists('register',$this->vars['seminar']) && !array_key_exists('rsvpQuestion',$this->vars['seminar']['register'])) ): ?>
                   <div class="row-fluid ">
                      <div class="span12 ">
                         <div class="control-group">
