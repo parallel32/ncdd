@@ -71,6 +71,49 @@
                         </div>
                     </div>
 
+                    <!-- SESSIONS AND SEMINARS -->
+                    <div class="row-fluid bottomPadding upcomingSeminars">
+                        <div class="title text-center">
+                            <div class="bg">
+                                <h3>Upcoming Seminars</h3>
+                            </div>
+                        </div>
+                        <ul class="thumbnails">
+
+                            <? foreach ($this->vars['seminars'] as $seminar): ?>
+                            <? $slug = (array_key_exists('slug',$seminar)) ? '/'.$seminar['slug'] : ''; ?>
+
+                            <li class="span3">
+                                <div class="thumbnail">
+                                    <? if(!empty($seminar['image'])){?>
+                                    <a href="/sessions-and-seminars/<?=$seminar['_id']?><?=$slug?>"><img src="<?=$seminar['image']['urls']['small']['SSLCDN'] ?>" alt="" width="100%"></a>
+                                    <? } ?>
+                                    <div class="caption">
+                                        <h4 class="text-center"><a href="/sessions-and-seminars/<?=$seminar['_id']?><?=$slug?>"><?=$seminar['headline']?></a></h4>
+                                        <h5 class="text-center"><a href="/sessions-and-seminars/<?=$seminar['_id']?><?=$slug?>"><?=(array_key_exists('location',$seminar)) ? $seminar['location']: '';?></a></h5>
+                                        <p class="data text-center"><?=$seminar['startDate']['monthDay']?> - <?=$seminar['endDate']['monthDay']?>, <?=$seminar['startDate']['year']?></p><br>
+                                        <? $seminar['description'] = strip_tags($seminar['description']); 
+                                        if (strlen($seminar['description']) > 500){ ?>
+                                        <p class="descr text-center"><?=substr($seminar['description'],0,strpos($seminar['description'], ' ',500))?> ...</p>
+                                        <br>
+                                        <p class="text-center"><a href="/sessions-and-seminars/<?=$seminar['_id']?><?=$slug?>">Read More</a></p>
+                                        <? }else{ ?>
+                                        <p class="descr text-center"><?=$seminar['description']?></p>
+                                        <br>
+                                        <p class="text-center"><a href="/sessions-and-seminars/<?=$seminar['_id']?><?=$slug?>">Read More</a></p>
+                                        <? } ?>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <? endforeach; ?>
+                        </ul>
+                        <div class="text-center">
+                            <a href="/sessions-and-seminars" class="btn">All Seminars</a>
+                        </div>
+                    </div>
+                    <!--/ SESSIONS AND SEMINARS -->
+
                     <!-- LATEST DUI BLOG POSTS -->
                     <div class="row-fluid bottomPadding postsList">
                         
@@ -195,50 +238,6 @@ The alcohol breath test is the most commonly used form of alcohol testing eviden
                     </div>
 
                     <!--/ FEATURED PAGES -->
-
-                    <!-- SESSIONS AND SEMINARS -->
-                    <div class="row-fluid bottomPadding upcomingSeminars">
-                        <div class="title text-center">
-                            <div class="bg">
-                                <h3>Upcoming Seminars</h3>
-                            </div>
-                        </div>
-                        <ul class="thumbnails">
-
-                            <? foreach ($this->vars['seminars'] as $seminar): ?>
-                            <? $slug = (array_key_exists('slug',$seminar)) ? '/'.$seminar['slug'] : ''; ?>
-
-                            <li class="span3">
-                                <div class="thumbnail">
-                                    <? if(!empty($seminar['image'])){?>
-                                    <a href="/sessions-and-seminars/<?=$seminar['_id']?><?=$slug?>"><img src="<?=$seminar['image']['urls']['small']['SSLCDN'] ?>" alt="" width="100%"></a>
-                                    <? } ?>
-                                    <div class="caption">
-                                        <h4 class="text-center"><a href="/sessions-and-seminars/<?=$seminar['_id']?><?=$slug?>"><?=$seminar['headline']?></a></h4>
-                                        <h5 class="text-center"><a href="/sessions-and-seminars/<?=$seminar['_id']?><?=$slug?>"><?=(array_key_exists('location',$seminar)) ? $seminar['location']: '';?></a></h5>
-                                        <p class="data text-center"><?=$seminar['startDate']['monthDay']?> - <?=$seminar['endDate']['monthDay']?>, <?=$seminar['startDate']['year']?></p><br>
-                                        <? $seminar['description'] = strip_tags($seminar['description']); 
-                                        if (strlen($seminar['description']) > 500){ ?>
-                                        <p class="descr text-center"><?=substr($seminar['description'],0,strpos($seminar['description'], ' ',500))?> ...</p>
-                                        <br>
-                                        <p class="text-center"><a href="/sessions-and-seminars/<?=$seminar['_id']?><?=$slug?>">Read More</a></p>
-                                        <? }else{ ?>
-                                        <p class="descr text-center"><?=$seminar['description']?></p>
-                                        <br>
-                                        <p class="text-center"><a href="/sessions-and-seminars/<?=$seminar['_id']?><?=$slug?>">Read More</a></p>
-                                        <? } ?>
-                                    </div>
-                                </div>
-                            </li>
-                            
-                            <? endforeach; ?>
-                        </ul>
-                        <div class="text-center">
-                            <a href="/sessions-and-seminars" class="btn">All Seminars</a>
-                        </div>
-                    </div>
-
-                    <!--/ SESSIONS AND SEMINARS -->
 
                     <!-- RECENT DUI NEWS -->
                     <div class="row-fluid bottomPadding recentNews">
