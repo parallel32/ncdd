@@ -230,14 +230,23 @@
                                  <div class="control-group">
                                     <label class="control-label">Activate Scholarships</label>
                                     <div class="controls">
-                                       <select name="doc[register][scholarship]" class="span6 m-wrap currentStatus" data-placeholder="Choose a Category" tabindex="1">
+                                       <select name="doc[register][scholarship]" class="span6 m-wrap scholarship" data-placeholder="Choose a Category" tabindex="1">
                                           <option value="OFF" <?=(array_key_exists('register',$seminar) && array_key_exists('scholarship',$seminar['register'])) ? ('OFF' == $seminar['register']['scholarship']) ? "selected" : "" : '';?>>OFF</option>
                                           <option value="ON" <?=(array_key_exists('register',$seminar) && array_key_exists('scholarship',$seminar['register'])) ? ('ON' == $seminar['register']['scholarship']) ? "selected" : "" : '';?>>ON</option>
                                        </select>
                                        <span class="help-block">Turn ON / OFF; applying for scholarships and registering with scholarships</span>
                                     </div>
                                  </div>
-                                 
+                                 <div class="control-group">
+                                    <label class="control-label">RSVP (dinner)</label>
+                                    <div class="controls">
+                                       <select name="doc[register][rsvpQuestion]" class="span6 m-wrap rsvpQuestion" data-placeholder="Choose a Category" tabindex="1">
+                                          <option value="OFF" <?=(array_key_exists('register',$seminar) && array_key_exists('rsvpQuestion',$seminar['register'])) ? ('OFF' == $seminar['register']['rsvpQuestion']) ? "selected" : "" : '';?>>OFF</option>
+                                          <option value="ON" <?=(array_key_exists('register',$seminar) && array_key_exists('rsvpQuestion',$seminar['register'])) ? ('ON' == $seminar['register']['rsvpQuestion']) ? "selected" : "" : '';?>>ON</option>
+                                       </select>
+                                       <span class="help-block">Turn ON / OFF; whether to rsvp fo the dinner</span>
+                                    </div>
+                                 </div>
                               </div>
                            </div>
 

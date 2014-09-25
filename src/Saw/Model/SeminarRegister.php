@@ -25,6 +25,8 @@ class SeminarRegister extends Model {
 	public $deposit; // the amount for the initial deposit
 	public $depositDueDate; // the due date for payment of the remainer of the deposit
 	public $scholarship;
+	public $rsvpQuestion; // on | off
+
 
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addConstraint(new Callback(array(
@@ -34,6 +36,7 @@ class SeminarRegister extends Model {
             'methods' => array('isValidDeposit'),
         )));
 	}
+
 	/**
 	 * validator helper function
 	*/
@@ -94,6 +97,8 @@ class SeminarRegister extends Model {
 		$this->deposit = $doc['deposit'];
         $this->depositDueDate = $doc['depositDueDate'];
         $this->scholarship = $doc['scholarship'];
+        $this->rsvpQuestion = $doc['rsvpQuestion'];
+
 	}
 	
 	/**
@@ -110,6 +115,8 @@ class SeminarRegister extends Model {
 		$this->deposit = $this->deposit ?: '';
 		$this->depositDueDate = $this->depositDueDate ?: '';
 		$this->scholarship = $this->scholarship ?: '';
+		$this->rsvpQuestion = $this->rsvpQuestion ?: 'yes';
+
 	}
 	
 	public function saveEdit(){
