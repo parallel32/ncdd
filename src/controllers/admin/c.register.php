@@ -315,7 +315,7 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 			}
 
 			// need the rsvp text
-			$rsvp = $doc['rsvp'];
+			$rsvp = (!empty($doc['rsvp'])) ? $doc['rsvp']:'';
 
 			// need the payment type and details
 			$paymentType = ($doc['currentPaymentType'] == Model\Registration::$paymentType['CREDIT']) ? 'credit' : 'check' ;
