@@ -23,7 +23,9 @@
 <br/><br/><h4 class="h4">Registration Details:</h4>
 <table>
 	<tr><td><strong>Registrant Name:</strong></td><td><?=$this->vars['registrantName']?></td></tr>
+	<? if((array_key_exists('register',$this->vars['seminar']) && array_key_exists('rsvpQuestion',$this->vars['seminar']['register']) && $this->vars['seminar']['register']['rsvpQuestion'] == 'ON') || (array_key_exists('register',$this->vars['seminar']) && !array_key_exists('rsvpQuestion',$this->vars['seminar']['register'])) ): ?>
 	<tr><td><strong>Attendees Dinner RSVP:</strong></td><td><?=$this->vars['rsvp']?></td></tr>
+	<? endif; ?>
 	<? if(array_key_exists('hardCopy',$this->vars) && !empty($this->vars['hardCopy']) && $this->vars['hardCopy'] == 'YES'): ?>
 	<tr><td><strong>Material hard copy:</strong></td><td><?=$this->vars['hardCopy']?></td></tr>
 	<?endif;?>

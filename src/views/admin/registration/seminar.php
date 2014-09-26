@@ -45,7 +45,7 @@ endif; ?>
                <? endif; ?>
                <? if(!$signed_in):?>
                <!-- BEGIN FORM-->
-               <form id="signin-form" class="form-horizontal portlet" novalidate="novalidate">
+               <form method="post" id="signin-form" class="form-horizontal portlet" novalidate="novalidate">
                   <input type="hidden" name="doc[message]" value="You will be redirected back to the registration form after sign in.">
                   <input type="hidden" name="doc[redirect]" value="/registration/seminar/<?=$this->vars['seminar']['_id']?>/<?=$this->vars['seminar']['slug']?>">
 
