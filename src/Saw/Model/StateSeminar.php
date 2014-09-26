@@ -94,23 +94,23 @@ class StateSeminar extends Model {
 	}
 	public function fetchAll($offset=0,$limit=1000){
         $fields = array();
-		$categories = $this->find($query=array(),$fields,$slaveOkay=true,$sort=array('currentType'=>-1,'date.date'=>1),$offset,$limit);
+		$categories = $this->find($query=array(),$fields,$slaveOkay=true,$sort=array('currentType'=>-1,'date.date'=>-1),$offset,$limit);
 		return $categories;
 	}
 	public function fetchSponsored($offset=0,$limit=1000){
         $fields = array();
-		$categories = $this->find($query=array('currentType'=>array('$gt'=>self::$type['STATE'])),$fields,$slaveOkay=true,$sort=array('date.date'=>1),$offset,$limit);
+		$categories = $this->find($query=array('currentType'=>array('$gt'=>self::$type['STATE'])),$fields,$slaveOkay=true,$sort=array('date.date'=>-1),$offset,$limit);
 		return $categories;
 	}
 	public function fetchByType($offset=0,$limit=1000){
         $fields = array();
-		$categories = $this->find($query=array('currentType'=>$this->currentType),$fields,$slaveOkay=true,$sort=array('date.date'=>1),$offset,$limit);
+		$categories = $this->find($query=array('currentType'=>$this->currentType),$fields,$slaveOkay=true,$sort=array('date.date'=>-1),$offset,$limit);
 		return $categories;
 	}
 	public function fetchByTypeFormatted($offset=0,$limit=1000){
         $fields = array();
         $cat = array();
-		$categories = $this->find($query=array('currentType'=>$this->currentType),$fields,$slaveOkay=true,$sort=array('date.date'=>1),$offset,$limit);
+		$categories = $this->find($query=array('currentType'=>$this->currentType),$fields,$slaveOkay=true,$sort=array('date.date'=>-1),$offset,$limit);
 		if(!empty($categories)){
 			foreach($categories as $stateseminar):
 				$cat[$stateseminar['_id']->__toString()] = $stateseminar['name'];
@@ -123,7 +123,7 @@ class StateSeminar extends Model {
 	public function fetchByTypeFormattedSlug($offset=0,$limit=1000){
         $fields = array();
         $cat = array();
-		$categories = $this->find($query=array('currentType'=>$this->currentType),$fields,$slaveOkay=true,$sort=array('date.date'=>1),$offset,$limit);
+		$categories = $this->find($query=array('currentType'=>$this->currentType),$fields,$slaveOkay=true,$sort=array('date.date'=>-1),$offset,$limit);
 		if(!empty($categories)){
 			foreach($categories as $stateseminar):
 				$cat[$stateseminar['_id']->__toString()] = array('name'=>$stateseminar['name'],'slug'=>$stateseminar['slug']);
