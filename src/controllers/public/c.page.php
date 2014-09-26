@@ -1553,7 +1553,7 @@ EOT;
 $app->get('/{slug}', function ($slug, Request $request) use ($app) {
 	
 	$page_vars = $app['get_pages']($slug);
-	$view_vars['slogan_block'] = strtolower($page_vars['page']['section']);
+	$view_vars['slogan_block'] = (array_key_exists('section', $page_vars)) ? strtolower($page_vars['page']['section']): '';
 	
 	switch ($slug) {
 		case 'deans-message':

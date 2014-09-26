@@ -124,7 +124,7 @@
                             <li class="span3">
                                 <div class="thumbnail">
                                     <? if(!empty($post['image'])): ?>
-                                    <a href="/blog/<?=$post['_id']?><?=$post['slug']?>"><img src="<?=$post['image']['urls']['small']['SSLCDN'] ?>" alt=""></a>
+                                    <a href="/blog/<?=$post['_id']?><?=$post['slug']?>"><img style="height:inherit;" src="<?=$post['image']['urls']['small']['SSLCDN'] ?>" alt=""></a>
                                     <? endif; ?>
                                     <div class="caption">
                                         <h4><a href="/blog/<?=$post['_id']?><?=$post['slug']?>"><?=$post['headline']?></a></h4>
@@ -134,7 +134,7 @@
                                         <? /**
 
                                         */?>
-                                        <p><?if(strlen($post['body'])>299){$post['body'] = strip_tags($post['body']); echo substr($post['body'],0,strpos($post['body'], ' ',300));?> ...<br><br><p class="text-center"><a href="/blog/<?=$post['_id']?><?=$post['slug']?>">Read More</a></p><?}else{ echo $post['body']; }?></p>
+                                        <p><?if(strlen($post['body'])>=299){$post['body'] = strip_tags($post['body']); echo substr($post['body'],0,strpos($post['body'], ' ',299));?> ...<br><br><p class="text-center"><a href="/blog/<?=$post['_id']?><?=$post['slug']?>">Read More</a></p><?}else{ echo strip_tags($post['body']); }?></p>
                                         <div class="autor">
                                             <img src="<?=(!empty($post['author']['image'])) ? $post['author']['image']['urls']['small']['SSLCDN'] : '/noprofileimage';?>" alt="" class="avatar pull-left">
                                             <? $middleName = (!empty($post['author']['middleName'])) ? ' '.$post['author']['middleName'].' ':' '; ?>
