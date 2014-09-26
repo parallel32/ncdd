@@ -259,9 +259,11 @@
          </div>
          <!-- END PAGE -->
          <?=$this->element('js/StateSeminar.js');?>
+         <?=$this->element('js/ClearField.js');?>
          <script>
          jQuery(document).ready(function() {    
             io.saw.StateSeminar.init();
+            io.saw.ClearField.init({formArr:['#saw-form']}); 
          });
             
          </script>
