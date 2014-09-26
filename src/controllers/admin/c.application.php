@@ -92,7 +92,7 @@ $app['applicationEmails'] = $app->protect(function ($app,$applicationId,$context
 		$user['suppress_emails'] = $request->get('suppress_emails');
 		$app['session']->set('user',$user);
 
-		if(array_key_exists('accessLevel', $user) && $user['accessLevel'] == ADMIN && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes'){
+		if(array_key_exists('accessLevel', $user) && ($user['accessLevel'] == ADMIN  || (array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') ) ) && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes'){
 			switch ($apply_arr['class']) {
 				case 'UpdateMember':
 				case 'UpdateFoundingMember':
@@ -190,7 +190,7 @@ $app['applicationEmails'] = $app->protect(function ($app,$applicationId,$context
 		$user = $app['session']->get('user');
 		$user['suppress_emails'] = $request->get('suppress_emails');
 		$app['session']->set('user',$user);
-		if(array_key_exists('accessLevel', $user) && $user['accessLevel'] == ADMIN && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes'){
+		if(array_key_exists('accessLevel', $user) && ($user['accessLevel'] == ADMIN  || (array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') )) && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes'){
 			switch ($apply_arr['class']) {
 				case 'UpdateMember':
 					return new Response(json_encode(array('message' => 'Approved successfully AND No emails sent to members.')), 200,array('Content-Type' => 'application/json'));
@@ -341,7 +341,7 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 			$user = $app['session']->get('user');
 			$user['suppress_emails'] = $request->get('suppress_emails');
 			$app['session']->set('user',$user);
-			$suppress = (!empty($user) && array_key_exists('accesslevel', $user) && $user['accessLevel'] == ADMIN && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes') ? true: false;
+			$suppress = (!empty($user) && array_key_exists('accesslevel', $user) && ($user['accessLevel'] == ADMIN || (array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') )) && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes') ? true: false;
 
 
 	    	$doc = $request->get('doc');
@@ -406,7 +406,7 @@ $app->post('/application/new-sustaining-member', function (Request $request) use
 	    	$user = $app['session']->get('user');
 			$user['suppress_emails'] = $request->get('suppress_emails');
 			$app['session']->set('user',$user);
-			$suppress = (!empty($user) && array_key_exists('accesslevel', $user) && $user['accessLevel'] == ADMIN && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes') ? true: false;
+			$suppress = (!empty($user) && array_key_exists('accesslevel', $user) && ($user['accessLevel'] == ADMIN || (array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') ) ) && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes') ? true: false;
 			
 	    	$doc = $request->get('doc');
 	    	// send admin the email notification
@@ -544,7 +544,7 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 		$user = $app['session']->get('user');
 		$user['suppress_emails'] = $request->get('suppress_emails');
 		$app['session']->set('user',$user);
-		if($user['accessLevel'] == ADMIN && $user['suppress_emails'] == 'yes'){
+		if( ($user['accessLevel'] == ADMIN  || (array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') )) && $user['suppress_emails'] == 'yes'){
 			// do nothing
 		}else{
 			$app['sendMail']($subject, $body, $to);
@@ -1058,7 +1058,7 @@ $app->post('/application/payment', function (Request $request) use ($app) {
 	$user = $app['session']->get('user');
 	$user['suppress_emails'] = $request->get('suppress_emails');
 	$app['session']->set('user',$user);
-	if($user['accessLevel'] == ADMIN && $user['suppress_emails'] == 'yes'){
+	if( ($user['accessLevel'] == ADMIN || (array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') )) && $user['suppress_emails'] == 'yes'){
 		// do nothing
 	}else{
 		$app['sendMail']($subject, $body, $to);

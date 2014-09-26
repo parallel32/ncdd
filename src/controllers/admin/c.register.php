@@ -195,7 +195,7 @@ $app->get('/registration/{paymentId}/pay/{registrationId}', function ($paymentId
 	$body = $app['view']->render('email/payment-thankyou','email', $view_vars);
 	
 	$user = $app['session']->get('user');
-	if(array_key_exists('accessLevel', $user) && $user['accessLevel'] == ADMIN && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes'){
+	if(array_key_exists('accessLevel', $user) && ($user['accessLevel'] == ADMIN || (array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') )) && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes'){
 		// don't send the email		
 	}else{
 		$app['sendMail']($subject, $body, $to);	

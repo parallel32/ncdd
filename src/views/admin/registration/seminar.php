@@ -45,7 +45,7 @@ endif; ?>
                <? endif; ?>
                <? if(!$signed_in):?>
                <!-- BEGIN FORM-->
-               <form method="post" id="signin-form" class="form-horizontal portlet" novalidate="novalidate">
+               <form id="signin-form" class="form-horizontal portlet" novalidate="novalidate">
                   <input type="hidden" name="doc[message]" value="You will be redirected back to the registration form after sign in.">
                   <input type="hidden" name="doc[redirect]" value="/registration/seminar/<?=$this->vars['seminar']['_id']?>/<?=$this->vars['seminar']['slug']?>">
 
@@ -87,7 +87,7 @@ endif; ?>
                            <label class="control-label">Name</label>
                            <div class="controls">
                               <? $middleName = (!empty($this->vars['member']['middleName'])) ? ' '.$this->vars['member']['middleName'].' ':' '; ?>
-                              <input type="text" name="doc[name]" value="<?=($signed_in) ? $this->vars['member']['firstName'].$middleName.$this->vars['member']['lastName'] :'' ?>" class="m-wrap span12 name">
+                              <input type="text" autocomplete="on" name="doc[name]" value="<?=($signed_in) ? $this->vars['member']['firstName'].$middleName.$this->vars['member']['lastName'] :'' ?>" class="m-wrap span12 name">
                            </div>
                         </div>
                      </div>
@@ -98,7 +98,7 @@ endif; ?>
                         <div class="control-group">
                            <label class="control-label">Telephone</label>
                            <div class="controls">
-                              <input id="phone" type="text" name="doc[phone]" value="<?=($signed_in) ? $this->vars['member']['primaryPhone'] :'' ?>" class="m-wrap span12 phone">
+                              <input id="phone" type="text" autocomplete="on" name="doc[phone]" value="<?=($signed_in) ? $this->vars['member']['primaryPhone'] :'' ?>" class="m-wrap span12 phone">
                            </div>
                         </div>
                      </div>
@@ -107,7 +107,7 @@ endif; ?>
                         <div class="control-group ">
                            <label class="control-label">Facsimile</label>
                            <div class="controls">
-                              <input id="fax" type="text" name="doc[fax]" value="<?=($signed_in) ? $this->vars['member']['primaryFax'] :'' ?>" class="m-wrap span12 fax">
+                              <input id="fax" type="text" autocomplete="on" name="doc[fax]" value="<?=($signed_in) ? $this->vars['member']['primaryFax'] :'' ?>" class="m-wrap span12 fax">
                            </div>
                         </div>
                      </div>
@@ -118,7 +118,7 @@ endif; ?>
                         <div class="control-group">
                            <label class="control-label">Bar Number / State</label>
                            <div class="controls">
-                              <input type="text" name="doc[barNumber]" value="<?=($signed_in) ? $this->vars['member']['barNumber'] :'' ?>" class="m-wrap span12 barNumber">
+                              <input type="text" autocomplete="on" name="doc[barNumber]" value="<?=($signed_in) ? $this->vars['member']['barNumber'] :'' ?>" class="m-wrap span12 barNumber">
                            </div>
                         </div>
                      </div>
@@ -129,7 +129,7 @@ endif; ?>
                         <div class="control-group">
                            <label class="control-label">Email</label>
                            <div class="controls">
-                              <input type="text" name="doc[email]" value="<?=($signed_in) ? $this->vars['member']['email'] :'' ?>" class="m-wrap span12 email">
+                              <input type="text" autocomplete="on" name="doc[email]" value="<?=($signed_in) ? $this->vars['member']['email'] :'' ?>" class="m-wrap span12 email">
                            </div>
                         </div>
                      </div>
@@ -143,7 +143,7 @@ endif; ?>
                         <div class="control-group">
                            <label class="control-label" >Address 1</label>
                            <div class="controls">
-                              <input type="text" id="address1" name="doc[address1]" value="<?=($signed_in) ? $this->vars['location']['addressLine1'] :'' ?>" class="m-wrap span12 address1">
+                              <input type="text" autocomplete="on" id="address1" name="doc[address1]" value="<?=($signed_in) ? $this->vars['location']['addressLine1'] :'' ?>" class="m-wrap span12 address1">
                            </div>
                         </div>
                      </div>
@@ -153,7 +153,7 @@ endif; ?>
                         <div class="control-group">
                            <label class="control-label" >Address 2</label>
                            <div class="controls">
-                              <input type="text" id="address2" name="doc[address2]" value="<?=($signed_in) ? $this->vars['location']['addressLine2'] :'' ?>" class="m-wrap span12 address2">
+                              <input type="text" autocomplete="on" id="address2" name="doc[address2]" value="<?=($signed_in) ? $this->vars['location']['addressLine2'] :'' ?>" class="m-wrap span12 address2">
                            </div>
                         </div>
                      </div>
@@ -163,7 +163,7 @@ endif; ?>
                         <div class="control-group">
                            <label class="control-label" >City</label>
                            <div class="controls">
-                              <input type="text" id="city" name="doc[city]" value="<?=($signed_in) ? $this->vars['location']['city'] :'' ?>" class="m-wrap span12 city"> 
+                              <input type="text" autocomplete="on" id="city" name="doc[city]" value="<?=($signed_in) ? $this->vars['location']['city'] :'' ?>" class="m-wrap span12 city"> 
                            </div>
                         </div>
                      </div>
@@ -172,7 +172,7 @@ endif; ?>
                         <div class="control-group">
                            <label class="control-label" >State / Province</label>
                            <div class="controls">
-                              <input type="text" id="state" name="doc[state]" value="<?=($signed_in) ? $this->vars['location']['state'] :'' ?>" class="m-wrap span12 state"> 
+                              <input type="text" autocomplete="on" id="state" name="doc[state]" value="<?=($signed_in) ? $this->vars['location']['state'] :'' ?>" class="m-wrap span12 state"> 
                            </div>
                         </div>
                      </div>
@@ -184,7 +184,7 @@ endif; ?>
                         <div class="control-group">
                            <label class="control-label" >Postal Code</label>
                            <div class="controls">
-                              <input type="text" id="zip" name="doc[postalCode]" value="<?=($signed_in) ? $this->vars['location']['zip'] :'' ?>" class="m-wrap span12 postalCode"> 
+                              <input type="text" autocomplete="on" id="zip" name="doc[postalCode]" value="<?=($signed_in) ? $this->vars['location']['zip'] :'' ?>" class="m-wrap span12 postalCode"> 
                            </div>
                         </div>
                      </div>
@@ -193,7 +193,7 @@ endif; ?>
                         <div class="control-group">
                            <label class="control-label" >Country</label>
                            <div class="controls">
-                              <input type="text" id="country" name="doc[country]" value="<?=($signed_in) ? $this->vars['location']['country'] :'' ?>" class="m-wrap span12 country"> 
+                              <input type="text" autocomplete="on" id="country" name="doc[country]" value="<?=($signed_in) ? $this->vars['location']['country'] :'' ?>" class="m-wrap span12 country"> 
                            </div>
                         </div>
                      </div>
@@ -206,7 +206,7 @@ endif; ?>
                         <div class="control-group">
                            <label class="control-label" >How many times have you previously attended this Seminar?</label>
                            <div class="controls">
-                              <input type="text" name="doc[previouslyAttended]" value="" class="m-wrap span12 previouslyAttended"> 
+                              <input type="text" autocomplete="on" name="doc[previouslyAttended]" value="" class="m-wrap span12 previouslyAttended"> 
                            </div>
                         </div>
                      </div>
@@ -217,7 +217,7 @@ endif; ?>
                         <div class="control-group">
                            <label class="control-label" >Name for Name Tag</label>
                            <div class="controls">
-                              <input type="text" name="doc[nameTag]" value="<?=($signed_in) ? $this->vars['member']['firstName'].$middleName.$this->vars['member']['lastName'] :'' ?>" class="m-wrap span12 nameTag"> 
+                              <input type="text" autocomplete="on" name="doc[nameTag]" value="<?=($signed_in) ? $this->vars['member']['firstName'].$middleName.$this->vars['member']['lastName'] :'' ?>" class="m-wrap span12 nameTag"> 
                            </div>
                         </div>
                      </div>
@@ -253,7 +253,7 @@ endif; ?>
                            <div class="controls">
                               <div class="input-prepend input-append">
                                  <span class="add-on">Printed Name </span>
-                                 <input name="doc[attendanceCertificationStatement]" class="m-wrap span12 attendanceCertificationStatement" type="text" placeholder="">
+                                 <input name="doc[attendanceCertificationStatement]" class="m-wrap span12 attendanceCertificationStatement" type="text" autocomplete="on" placeholder="">
                                  <span class="add-on">, on this <? $date = new \DateTime(); echo $date->format('dS');?> day of <?echo $date->format('F');?>, 20<?echo $date->format('y');?></span>
                               </div>
                            </div>
@@ -271,7 +271,7 @@ endif; ?>
                         <div class="control-group">
                            <label class="control-label" >If you've applied for a scholarship, please enter your scholarship's registration number below:</label>
                            <div class="controls">
-                              <input name="doc[registrationNumber]" id="registrationNumber" type="text" value="" class="m-wrap span4">
+                              <input name="doc[registrationNumber]" id="registrationNumber" type="text" autocomplete="on" value="" class="m-wrap span4">
                               <a id="verify-reg-num" class="btn blue">Verify Scholarship Registration Number</a>
                               <span class="help-block"></span>
                            </div>
@@ -287,7 +287,7 @@ endif; ?>
                            <div class="controls">
                               <div class="input-prepend input-append">
                                   <span class="add-on">$ </span>
-                                     <input id="registration_fee" type="text" disabled value="<?=($signed_in) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>" class="m-wrap span12"> 
+                                     <input id="registration_fee" type="text" autocomplete="on" disabled value="<?=($signed_in) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>" class="m-wrap span12"> 
                                      <input name="doc[registrationFee]" type="hidden" value="<?=($signed_in) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>" class="m-wrap span12"> 
                                      <input name="doc[registrationFeeOriginal]" type="hidden" value="<?=($signed_in) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>" class="m-wrap span12"> 
                                   <span class="add-on">.00</span>
@@ -340,7 +340,7 @@ endif; ?>
                            <div class="controls">
                               <div class="input-prepend input-append">
                                   <span class="add-on">$ </span>
-                                     <input name="doc[total]" id="total" type="text" disabled value="<?=($signed_in) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>" class="m-wrap span12"> 
+                                     <input name="doc[total]" id="total" type="text" autocomplete="on" disabled value="<?=($signed_in) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>" class="m-wrap span12"> 
                                      <input name="" id="total_orig" type="hidden" value="<?=($signed_in) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>" class="m-wrap span12"> 
                                   <span class="add-on">.00</span>
                               </div>
@@ -426,7 +426,7 @@ endif; ?>
                            <div class="control-group ">
                               <label class="control-label">Your name as it appears on the card</label>
                               <div class="controls">
-                                 <input id="card-name" type="text" name="doc[payment][name]" class="m-wrap span8 name" value="<?=($signed_in) ? $this->vars['member']['firstName'].$middleName.$this->vars['member']['lastName']: ''?>">
+                                 <input id="card-name" type="text" autocomplete="on" name="doc[payment][name]" class="m-wrap span8 name" value="<?=($signed_in) ? $this->vars['member']['firstName'].$middleName.$this->vars['member']['lastName']: ''?>">
                               </div>
                            </div>
                         </div>
@@ -437,7 +437,7 @@ endif; ?>
                            <div class="control-group ">
                               <label class="control-label">Credit Card Number</label>
                               <div class="controls">
-                                 <input id="card-number" type="text" name="doc[payment][number]" class="m-wrap span8 number">
+                                 <input id="card-number" type="text" autocomplete="on" name="doc[payment][number]" class="m-wrap span8 number">
                               </div>
                            </div>
                         </div>
@@ -448,7 +448,7 @@ endif; ?>
                            <div class="control-group ">
                               <label class="control-label">CVC Code</label>
                               <div class="controls">
-                                 <input id="card-cvc" type="text" name="doc[payment][cvc]" class="m-wrap span8 cvc">
+                                 <input id="card-cvc" type="text" autocomplete="on" name="doc[payment][cvc]" class="m-wrap span8 cvc">
                               </div>
                            </div>
                         </div>
@@ -473,7 +473,7 @@ endif; ?>
                            <div class="control-group ">
                               <label class="control-label">Address Line 1</label>
                               <div class="controls">
-                                 <input id="card-addressLine1" type="text" name="doc[payment][addressLine1]" class="m-wrap span8 addressLine1" value="<?=($signed_in) ? $this->vars['location']['addressLine1']: ''?>">
+                                 <input id="card-addressLine1" type="text" autocomplete="on" name="doc[payment][addressLine1]" class="m-wrap span8 addressLine1" value="<?=($signed_in) ? $this->vars['location']['addressLine1']: ''?>">
                               </div>
                            </div>
                         </div>
@@ -484,7 +484,7 @@ endif; ?>
                            <div class="control-group ">
                               <label class="control-label">Address Line 2</label>
                               <div class="controls">
-                                 <input id="card-addressLine2" type="text" name="doc[payment][addressLine2]" class="m-wrap span8 addressLine2" value="<?=($signed_in) ? $this->vars['location']['addressLine2']: ''?>">
+                                 <input id="card-addressLine2" type="text" autocomplete="on" name="doc[payment][addressLine2]" class="m-wrap span8 addressLine2" value="<?=($signed_in) ? $this->vars['location']['addressLine2']: ''?>">
                               </div>
                            </div>
                         </div>
@@ -495,7 +495,7 @@ endif; ?>
                            <div class="control-group ">
                               <label class="control-label">City</label>
                               <div class="controls">
-                                 <input id="card-city" type="text" name="doc[payment][city]" class="m-wrap span8 city" value="<?=($signed_in) ? $this->vars['location']['city']: ''?>">
+                                 <input id="card-city" type="text" autocomplete="on" name="doc[payment][city]" class="m-wrap span8 city" value="<?=($signed_in) ? $this->vars['location']['city']: ''?>">
                               </div>
                            </div>
                         </div>
@@ -506,7 +506,7 @@ endif; ?>
                            <div class="control-group ">
                               <label class="control-label">State/Province/Region</label>
                               <div class="controls">
-                                 <input id="card-stateProvinceRegion" type="text" name="doc[payment][stateProvinceRegion]" class="m-wrap span8 stateProvinceRegion" value="<?=($signed_in) ? $this->vars['location']['state']: ''?>">
+                                 <input id="card-stateProvinceRegion" type="text" autocomplete="on" name="doc[payment][stateProvinceRegion]" class="m-wrap span8 stateProvinceRegion" value="<?=($signed_in) ? $this->vars['location']['state']: ''?>">
                               </div>
                            </div>
                         </div>
@@ -517,7 +517,7 @@ endif; ?>
                            <div class="control-group ">
                               <label class="control-label">Zip/PostalCode</label>
                               <div class="controls">
-                                 <input id="card-zipPostalCode" type="text" name="doc[payment][zipPostalCode]" class="m-wrap span8 zipPostalCode" value="<?=($signed_in) ? $this->vars['location']['zip']: ''?>">
+                                 <input id="card-zipPostalCode" type="text" autocomplete="on" name="doc[payment][zipPostalCode]" class="m-wrap span8 zipPostalCode" value="<?=($signed_in) ? $this->vars['location']['zip']: ''?>">
                               </div>
                            </div>
                         </div>
@@ -528,7 +528,7 @@ endif; ?>
                            <div class="control-group ">
                               <label class="control-label">Country</label>
                               <div class="controls">
-                                 <input id="card-country" type="text" name="doc[payment][country]" class="m-wrap span8 country" value="<?=($signed_in) ? $this->vars['location']['country']: ''?>">
+                                 <input id="card-country" type="text" autocomplete="on" name="doc[payment][country]" class="m-wrap span8 country" value="<?=($signed_in) ? $this->vars['location']['country']: ''?>">
                               </div>
                            </div>
                         </div>
@@ -540,7 +540,7 @@ endif; ?>
                            <div class="control-group ">
                               <label class="control-label">Email</label>
                               <div class="controls">
-                                 <input id="card-email" type="text" name="doc[payment][email]" class="m-wrap span8 email" value="<?=($signed_in) ? $this->vars['member']['email']: ''?>">
+                                 <input id="card-email" type="text" autocomplete="on" name="doc[payment][email]" class="m-wrap span8 email" value="<?=($signed_in) ? $this->vars['member']['email']: ''?>">
                               </div>
                            </div>
                         </div>
@@ -551,7 +551,7 @@ endif; ?>
                            <div class="control-group ">
                               <label class="control-label">Phone</label>
                               <div class="controls">
-                                 <input id="card-phone" type="text" name="doc[payment][phone]" class="m-wrap span8 phone" value="<?=($signed_in) ? $this->vars['member']['primaryPhone']: ''?>">
+                                 <input id="card-phone" type="text" autocomplete="on" name="doc[payment][phone]" class="m-wrap span8 phone" value="<?=($signed_in) ? $this->vars['member']['primaryPhone']: ''?>">
                               </div>
                            </div>
                         </div>
@@ -595,7 +595,7 @@ endif; ?>
                   
                      <div id="submit-registration-buttons" class="form-actions text-center">
                         <? $user = $this->app['session']->get('user');
-                           if($user['accessLevel'] == ADMIN){  
+                           if($user['accessLevel'] == ADMIN || (array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') )){  
                         ?>
                         <input type="checkbox" name="suppress_emails" <?=(array_key_exists('suppress_emails',$user) && !empty($user['suppress_emails']))?'checked':'';?> value="yes">Suppress Emails.
                         <? } ?>

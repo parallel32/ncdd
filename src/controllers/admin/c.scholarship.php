@@ -189,7 +189,7 @@ $app->post('/scholarship/update/{memberId}', function ($memberId, Request $reque
 		$user = $app['session']->get('user');
 		$user['suppress_emails'] = $request->get('suppress_emails');
 		$app['session']->set('user',$user);
-		if($user['accessLevel'] == ADMIN && $user['suppress_emails'] == 'yes'){
+		if(($user['accessLevel'] == ADMIN || (array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') )) && $user['suppress_emails'] == 'yes'){
 			// do nothing
 		}else{
 			$app['sendMail']($subject, $body, $to);
@@ -348,7 +348,7 @@ $app->get('/scholarship/{id}/approve', function ($id,Request $request) use ($app
 	$user = $app['session']->get('user');
 	$user['suppress_emails'] = $request->get('suppress_emails');
 	$app['session']->set('user',$user);
-	if($user['accessLevel'] == ADMIN && $user['suppress_emails'] == 'yes'){
+	if(($user['accessLevel'] == ADMIN || (array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') ) ) && $user['suppress_emails'] == 'yes'){
 		// do nothing
 	}else{
 		$app['sendMail']($subject, $body, $to);

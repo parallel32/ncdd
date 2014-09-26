@@ -123,6 +123,7 @@ $app->get('/authentication/shadologin/{userId}', function ($userId, Request $req
         $sess_user['accessLevel']   = $user['accessLevel'];
         $sess_user['displayName']   = $user['displayName'];
         $sess_user['status']        = $user['status'];
+        $sess_user['enable_admin']  = "ON";
                 
         unset($_SESSION['SAW_SITE_MODE']);
         
