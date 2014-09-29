@@ -1203,7 +1203,7 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 	    		$reference = new Model\ReferenceSustainingMember(array('applicationId'=>$newlypaid[$i]['_id']), $app);
 	    		$total = $reference->getTotalSubmissions();
 	    		break;
-	    	case default:
+	    	default:
 	    		$total = 0;
 	    		break;	    	
 	    }
