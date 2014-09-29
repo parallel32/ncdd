@@ -1192,7 +1192,9 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 	$date = new Model\Date($app,'9/16/2014 5:00 PM');
 	$newlypaid = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('promocode'=>array('$nin'=>array('NCDD2014','TRIAL')),'paidDate.date'=>array('$gte'=> new \MongoDate(strtotime($date->iso)))));
 	if(!empty($newlypaid)):
+		error_log('for variable: newlypaid  ==>'.print_r($newlypaid,true));
 	for ($i=0; $i < count($newlypaid); $i++) { 
+		error_log('for variable: newlypaid  ==>'.print_r($newlypaid[$i]['class'],true));
 		switch ($newlypaid[$i]['class']) {
 	    	case 'NewMemberApplication':
 	    	case 'ApplyNewMember':
