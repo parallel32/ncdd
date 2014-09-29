@@ -1198,16 +1198,19 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 	    	case 'ApplyNewMember':
 	    		$reference = new Model\ReferenceMember(array('applicationId'=>$newlypaid[$i]['_id']), $app);
 	    		$total = $reference->getTotalSubmissions();
+	    		$max = $reference->getMaxSubmissions();
 	    		break;
 	    	case 'ApplyNewSustainingMember':
 	    		$reference = new Model\ReferenceSustainingMember(array('applicationId'=>$newlypaid[$i]['_id']), $app);
 	    		$total = $reference->getTotalSubmissions();
+	    		$max = $reference->getMaxSubmissions();
 	    		break;
 	    	default:
 	    		$total = 0;
+	    		$max = 0;
 	    		break;	    	
 	    }
-	    $newlypaid[$i]['new_references'] = array('total'=>$total,'max'=>$reference->getMaxSubmissions());
+	    $newlypaid[$i]['new_references'] = array('total'=>$total,'max'=>$max);
 	}
 	endif;
 	$crumbs = array(array('name'=>'Applications','href'=>'/applications'));
