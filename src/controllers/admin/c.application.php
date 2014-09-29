@@ -1194,6 +1194,7 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 	if(!empty($newlypaid)):
 	for ($i=0; $i < count($newlypaid); $i++) { 
 		switch ($newlypaid[$i]['class']) {
+	    	case 'NewMemberApplication':
 	    	case 'ApplyNewMember':
 	    		$reference = new Model\ReferenceMember(array('applicationId'=>$newlypaid[$i]['_id']), $app);
 	    		break;
