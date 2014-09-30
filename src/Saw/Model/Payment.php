@@ -141,7 +141,7 @@ class Payment extends Model {
 		$this->expMonth = $doc['expMonth'];
 		$this->expYear = $doc['expYear'];        
 		$this->cardType = $doc['cardType'];        
-		$this->number = $doc['number'];        
+		$this->number = (string)$doc['number'];        
 		$this->cvc = $doc['cvc'];
 		$this->checkNumber = $doc['checkNumber'];
 		$this->accountType = $doc['accountType'];
@@ -584,7 +584,7 @@ EOT;
 			$this->referenceNumber = $response['FDGGWSAPI:PROCESSORREFERENCENUMBER'];
 			$this->fullResponse = $response;
 			$this->transactionId = $response['FDGGWSAPI:TRANSACTIONID'];
-			$this->number = ($this->ownerClass != 'ApplyNewMember') ? substr($this->number,-4) : $this->number;
+			$this->number = ($this->ownerClass == 'ApplyNewMember') ? (string)$this->number.'.x' : substr((string)$this->number,-4);
 			$paymentId = $this->insert();
 			$this->markOwnerClassPaid($paymentId);
 
