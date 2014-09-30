@@ -261,11 +261,11 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 
 	$application = new Model\ApplyNewMember($doc, $app);
 	if(!empty($doc['email']) && $application->findByEmail()){
-    	$label = 'Success, but...';
-    	$message = 'Our records indicate you have already submitted an application.  Please Log-in if you are looking for another Application or contact NCDD directly.';
-    	$response_status = 400;
-    	return new Response(json_encode(array('message' => $message,'label'=>$label)), $response_status,array('Content-Type' => 'application/json'));
+    	$response_arr = array('message'=>"Our records indicate you have already submitted an application.  Please Log-in if you are looking for another Application or contact NCDD directly.",
+                              "invalidFields"=>array(array('name'=>'email','message'=>'Our records indicate you have already submitted an application.  Please Log-in if you are looking for another Application or contact NCDD directly.')));
+        return new Response(json_encode($response_arr), 403,array('Content-Type' => 'application/json'));
     }
+        
 
     // validate the application
     $app['validateModel']($app,$application);
@@ -386,14 +386,15 @@ $app->post('/application/new-sustaining-member', function (Request $request) use
 	// retrieve document from request
     $doc = $request->get('doc');
     $application = new Model\ApplyNewSustainingMember($doc, $app);
-    // validate the model
-    $app['validateModel']($app,$application);
 
     if($application->findByEmail()){
-    	$label = 'Your submission is correct, but...';
-    	$message = 'Our records indicate you have already submitted an application.  Please Log-in if you are looking for another Application or contact NCDD directly.';
-    	$response_status = 400;
+    	$response_arr = array('message'=>"Our records indicate you have already submitted an application.  Please Log-in if you are looking for another Application or contact NCDD directly.",
+                              "invalidFields"=>array(array('name'=>'email','message'=>'Our records indicate you have already submitted an application.  Please Log-in if you are looking for another Application or contact NCDD directly.')));
+        return new Response(json_encode($response_arr), 403,array('Content-Type' => 'application/json'));
     }else{
+        // validate the model
+	    $app['validateModel']($app,$application);
+
     	$applicationId = $application->insert();
     	$_POST['applicationId'] = $applicationId->__toString();
     	$label = 'Your application was received.  Thank you.';
