@@ -848,6 +848,7 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                         $('#payment-information-cc').removeClass('hide');
                         $('#payment-information-check').addClass('hide');
                      });
+                     <? if(false):?>
                      $('#pay-by-check').click(function(e){
                         e.preventDefault();
                         $('#payment-form .currentPaymentType').val('<?=\Saw\Model\Payment::$paymentType['CHECK']?>');
@@ -855,6 +856,7 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                         $('#payment-information-check').removeClass('hide');
                         $('#payment-information-billing').removeClass('hide');
                      });
+                     <? endif; ?>
                   });      
 
                   </script>
@@ -876,7 +878,9 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                      <div class="row-fluid">
                         <h4>Please select a payment method:</h4>
                         <button id="pay-by-cc" type="button" class="btn blue pay-by-cc">Pay by Credit Card</button>
+                        <? if(false): ?>
                         <button id="pay-by-check" type="button" class="btn blue pay-by-check">Pay by Check</button>
+                        <? endif; ?>
                      </div>
                      <br><br>
 
@@ -891,7 +895,7 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
 
 
 
-
+                     <? if (false): ?>
                      <?
                      //////////////////
                      // PAY BY CHECK //
@@ -973,7 +977,7 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                         <!--/span-->
                      </div>
                      </div>
-                     
+                     <? endif; ?>
 
 
 
@@ -1239,10 +1243,11 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                   
                   <div class="form-actions text-center">
                      <? $user = $this->app['session']->get('user');
+                           if(is_array($user)){
                            if($user['accessLevel'] == ADMIN || (array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') )){  
                         ?>
                         <input type="checkbox" name="suppress_emails" <?=(array_key_exists('suppress_emails',$user) && !empty($user['suppress_emails']))?'checked':'';?> value="yes">Suppress Emails.
-                        <? } ?>
+                        <? }} ?>
                      <button type="button" class="btn green"><i class="icon-ok"></i> Submit Application</button>
                      <button type="button" class="btn cancel-go-back">Cancel and Go Back</button>
                   </div>
@@ -1286,6 +1291,8 @@ jQuery(document).ready(function() {
       calculatedues();
    })
    window.setInterval(calculatedues,1000);
+
+   $('#pay-by-cc').trigger('click');
 });      
 </script>
 
