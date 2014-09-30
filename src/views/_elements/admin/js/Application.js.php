@@ -8,7 +8,7 @@
 		var the_element = $('#saw-form .control-group :input.yearsInLawPractice').parents('.control-group');
     	the_element.find('.help-block.error').remove();
 		the_element.removeClass('error');
-   	    if(new Date($('#saw-form .yearsInLawPractice').val(),1,1) !== "Invalid Date" && !isNaN(new Date($('#saw-form .yearsInLawPractice').val(),1,1)) ){
+   	    if($('#saw-form .yearsInLawPractice').val() != '' && new Date($('#saw-form .yearsInLawPractice').val(),1,1) !== "Invalid Date" && !isNaN(new Date($('#saw-form .yearsInLawPractice').val(),1,1)) ){
         	var yilp = new Date($('#saw-form .yearsInLawPractice').val(), 1,1).getFullYear();
         	var now = new Date().getFullYear();
         	if(now - yilp >= 6){
@@ -27,18 +27,50 @@
    			}
         }
         publicdefenderlogic();
+        promocodelogic();
 	};
 	function publicdefenderlogic (){
 		if($('#saw-form .publicDefender').val() == 'yes'){
     		var amount = (window.pd_amount-window.pd_prorated == window.pd_amount) ? window.pd_amount : window.pd_prorated; 
     		$('.payment.amount').val(amount);
     		$('.payment.amount').html(amount+' - '+window.pd_message);
+    		promocodelogic();
     	}
 	};
 	function promocodelogic (){
 		if($('#promocodetype').val() == 'discount'){
-    		$('.payment.amount').val('0');
-    		$('.payment.amount').html('0'+' - Free 2014 membership.  Please Continue to fill out the payment information.');
+				
+			var promo_message = ' - 2015 Membership dues.  The remainder of 2014 is free with this promo code.  Please Continue to fill out the payment information.';
+			var the_element = $('#saw-form .control-group :input.yearsInLawPractice').parents('.control-group');
+	    	the_element.find('.help-block.error').remove();
+			the_element.removeClass('error');
+	   	    if($('#saw-form .yearsInLawPractice').val() != '' && new Date($('#saw-form .yearsInLawPractice').val(),1,1) !== "Invalid Date" && !isNaN(new Date($('#saw-form .yearsInLawPractice').val(),1,1)) ){
+	        	var yilp = new Date($('#saw-form .yearsInLawPractice').val(), 1,1).getFullYear();
+	        	var now = new Date().getFullYear();
+	        	if(now - yilp >= 6){
+	        		var amount = window.gsix_amount; 
+	        		$('.payment.amount').val(amount);
+	        		$('.payment.amount').html(amount+' - '+window.gsix_message+promo_message);
+	        	}else if (now - yilp < 6){
+	        		var amount = window.lsix_amount; 
+	        		$('.payment.amount').val(amount);
+	        		$('.payment.amount').html(amount+' - '+window.lsix_message+promo_message);
+	        	}
+
+	        	if($('#saw-form .publicDefender').val() == 'yes'){
+		    		var amount = window.pd_amount; 
+		    		$('.payment.amount').val(amount);
+		    		$('.payment.amount').html(amount+' - '+window.pd_message+promo_message);
+		    	}
+
+	        }else{
+	        	the_element.addClass('error');
+	   			if(the_element.find('.help-block.error').length == 0){
+	   				the_element.append('<span for="yearsInLawPractice" class="help-block error " style="">Please enter a valid year only.  Alpha characters and full dates will cause this to keep appearing. </span>');
+	   				$('.payment.amount').html('<span for="yearsInLawPractice" class="help-block error " style="">Please scroll up and enter a valid year for question #3 Year of admission to practice.</span>');
+	   			}
+	        }
+
     	}
     	if($('#promocodetype').val() == 'trial'){
     		$('.payment.amount').val('0');
@@ -158,9 +190,11 @@
 
         $('#saw-form .publicDefender').change(function(){
         	publicdefenderlogic();
+        	promocodelogic();
         });
-        $('#saw-form .yearsInLawPractice').blur(function(){
+        $('#saw-form .yearsInLawPractice').keyup(function(){
         	yearsinlawpracticelogic();        	
+        	promocodelogic();
         });
         $('#saw-form .promocode').keyup(function(){
         	window.clearTimeout(window.promocodetimeoutid);//cancel previous timer so they don't queue up when you're typing

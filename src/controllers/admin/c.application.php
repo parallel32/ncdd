@@ -287,19 +287,21 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 	$now = date('Y',strtotime('today'));
 
 	if($now - $yilp >= 6){
-		$amt = $dues[6]['prorated']['a'];
+		$amt = (!empty($doc['promocode']) && $doc['promocode'] == 'NCDD2014') ? $dues[6]['amount']: $dues[6]['prorated']['a'];
 	}elseif ($now - $yilp < 6){
-		$amt = $dues[1]['prorated']['a'];
+		$amt = (!empty($doc['promocode']) && $doc['promocode'] == 'NCDD2014') ? $dues[1]['amount']: $dues[1]['prorated']['a'];
 	}
 	if($application->publicDefender == 'yes'){
 		$amt = $dues['publicDefender']['prorated']['a'];
+		$amt = (!empty($doc['promocode']) && $doc['promocode'] == 'NCDD2014') ? $dues['publicDefender']['amount']: $dues['publicDefender']['prorated']['a'];
 	}
+
 	$doc['amount'] = $amt;
 	$payment = new Model\Payment($doc['payment'],$app);
 
 	// validate the payment
 	$app['validateModel']($app, $payment,$groups=array($validation_group));
-		$application->paymentId = $payment->charge();
+	$application->paymentId = $payment->charge();
 	// payment stuff END
 	
 	$applicationId = $application->insert();
