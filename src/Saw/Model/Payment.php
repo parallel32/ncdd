@@ -83,12 +83,12 @@ class Payment extends Model {
 		$metadata->addPropertyConstraint('number', new Constraints\NotBlank(array('groups' => array('cc','product-purchase'))));
 		$metadata->addPropertyConstraint('cvc', new Constraints\NotBlank(array('groups' => array('cc','product-purchase'))));
 		
-		$metadata->addPropertyConstraint('checkNumber', new Constraints\NotBlank(array('groups' => array('check','product-purchase'))));
-		$metadata->addPropertyConstraint('accountType', new Constraints\NotBlank(array('groups' => array('check','product-purchase'))));
-		$metadata->addPropertyConstraint('accountNumber', new Constraints\NotBlank(array('groups' => array('check','product-purchase'))));
-		$metadata->addPropertyConstraint('routingNumber', new Constraints\NotBlank(array('groups' => array('check','product-purchase'))));
-		$metadata->addPropertyConstraint('drivingLicenseNumber', new Constraints\NotBlank(array('groups' => array('check','product-purchase'))));
-		$metadata->addPropertyConstraint('drivingLicenseState', new Constraints\NotBlank(array('groups' => array('check','product-purchase'))));
+		$metadata->addPropertyConstraint('checkNumber', new Constraints\NotBlank(array('groups' => array('check'))));
+		$metadata->addPropertyConstraint('accountType', new Constraints\NotBlank(array('groups' => array('check'))));
+		$metadata->addPropertyConstraint('accountNumber', new Constraints\NotBlank(array('groups' => array('check'))));
+		$metadata->addPropertyConstraint('routingNumber', new Constraints\NotBlank(array('groups' => array('check'))));
+		$metadata->addPropertyConstraint('drivingLicenseNumber', new Constraints\NotBlank(array('groups' => array('check'))));
+		$metadata->addPropertyConstraint('drivingLicenseState', new Constraints\NotBlank(array('groups' => array('check'))));
 		
 		$metadata->addPropertyConstraint('addressLine1', new Constraints\NotBlank(array('groups' => array('check','cc','manual','product-purchase'))));
 		$metadata->addPropertyConstraint('city', new Constraints\NotBlank(array('groups' => array('check','cc','manual','product-purchase'))));
@@ -312,7 +312,9 @@ else:
 EOT;
 
 endif;
-
+error_log('for variable: amount  ==>'.print_r($this->amount,true));
+error_log('for variable: orderTotal  ==>'.print_r($this->orderTotal,true));
+error_log('for variable: shippingTotal  ==>'.print_r($this->shippingTotal,true));
 $body .= <<< EOT
         <v1:Payment>
           <v1:ChargeTotal>{$this->amount}</v1:ChargeTotal>
@@ -568,7 +570,9 @@ EOT;
 			$this->expYear = substr($this->expYear, -2);
 			$this->orderTotal = (!empty($this->orderTotal)) ? $this->orderTotal.'.00' : $this->amount.'.00';
 			$this->shippingTotal = (!empty($this->shippingTotal)) ? $this->shippingTotal.'.00' : '0.00';
+			$this->amount = ($this->orderTotal + $this->shippingTotal) - $this->discountTotal;
 			$this->amount = $this->amount.'.00';
+			$this->orderTotal = $this->orderTotal - $this->discountTotal;
 			$this->transactionOrigin = 'ECI';
 			$this->invoiceNumber = new \MongoId();
 			$this->poNumber = new \MongoId();
