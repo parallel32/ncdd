@@ -38,8 +38,10 @@
     	}
 	};
 	function promocodelogic (){
+		$('#payment-information').show();
+		$('.payment.amount').val(0);
+		$('.payment.amount').html();
 		if($('#promocodetype').val() == 'discount'){
-				
 			var promo_message = ' - 2015 Membership dues.  The remainder of 2014 is free with this promo code.  Please Continue to fill out the payment information.';
 			var the_element = $('#saw-form .control-group :input.yearsInLawPractice').parents('.control-group');
 	    	the_element.find('.help-block.error').remove();
@@ -74,7 +76,8 @@
     	}
     	if($('#promocodetype').val() == 'trial'){
     		$('.payment.amount').val('0');
-    		$('.payment.amount').html('0'+' - Trial membership.  Please Continue to fill out the payment information.');
+    		$('.payment.amount').html('0'+' - Trial membership.');
+    		$('#payment-information').hide();
     	}
 	};
 	function newSustainingMemberAdd (){
@@ -224,7 +227,7 @@
 					promocodelogic();   		
 				   }
 				});				
-			},1500,$(this));
+			},500,$(this));
 
 			
         });

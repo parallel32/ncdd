@@ -765,41 +765,6 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                   
                   
                   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                   
                   <!-- PAYMENT ELEMENT -->
                   <style>
@@ -874,6 +839,7 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                         <h4>$<i class="payment amount"></i></h4>                        
                      </div>
                      <br><br>
+                  <div id="payment-information" class="">
                      <h3 class="form-section">10. Payment Information</h3>
                      <div class="row-fluid">
                         <h4>Please select a payment method:</h4>
@@ -1150,63 +1116,8 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                      </div>
                      </div>
                   </div>
+                  </div>
                   <!--/ PAYMENT ELEMENT -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1244,7 +1155,7 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                   <div class="form-actions text-center">
                      <? $user = $this->app['session']->get('user');
                            if(is_array($user)){
-                           if($user['accessLevel'] == ADMIN || (array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') )){  
+                           if($user['accessLevel'] == ADMIN || ((is_array($user)) && array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') )){  
                         ?>
                         <input type="checkbox" name="suppress_emails" <?=(array_key_exists('suppress_emails',$user) && !empty($user['suppress_emails']))?'checked':'';?> value="yes">Suppress Emails.
                         <? }} ?>
