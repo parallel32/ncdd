@@ -1,3 +1,4 @@
+                    <? if(false){?>
                     <div class="row-fluid becomeAmember">
                         <div class="becomeAmemberContent">
                             <div class="span3">
@@ -13,6 +14,7 @@
                             </div>
                         </div>
                     </div>
+                    <? } ?>
                     <div class="row-fluid becomeAmember">
                         <div class="becomeAmemberContent">
                             <?=$this->vars['page']['body']?>
