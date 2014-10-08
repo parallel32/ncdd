@@ -960,7 +960,6 @@ $app->get('/shopping-cart/checkout', function (Request $request) use ($app) {
 
 	$view_vars=array();
 	$page_vars = $app['get_pages']('checkout');
-	$view_vars = array_merge($page_vars,$view_vars);
 	$view_vars['cart_items'] = $app['session']->get('shoppingcart');
 	$user = $app['session']->get('user');
 	if(is_object($user['user_id'])){
@@ -973,6 +972,8 @@ $app->get('/shopping-cart/checkout', function (Request $request) use ($app) {
 		$user = array();
 	}
 	$view_vars['user'] = $user;
+	$view_vars = array_merge($page_vars,$view_vars);
+
 	return $app['view']->render('page/shopping-cart-checkout', 'content',$view_vars);
 });
 $app->post('/shopping-cart/checkout', function (Request $request) use ($app) {
@@ -1045,7 +1046,6 @@ $app->post('/shopping-cart/checkout', function (Request $request) use ($app) {
 $app->get('/shopping-cart/checkout/receipt/{orderId}', function ($orderId, Request $request) use ($app) {
 	$order = new Model\Order(array('_id'=>$orderId),$app);
 	$order = $order->findById();
-
 	if(!empty($order['payment']['memberId'])){
 		$member = new Model\Member(array('_id'=>$order['payment']['memberId']),$app);
 		$user = $member->findById();

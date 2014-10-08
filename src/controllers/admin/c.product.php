@@ -18,6 +18,7 @@ $product->get('/', function (Request $request) use ($app) {
 	
 	$order = new Model\Order(array(),$app);
 	$new_orders = $order->fetchByStatus('NEW');
+	
 	$new_orders_cnt = (is_array($new_orders) && !empty($new_orders)) ? count($new_orders): 0;
 	$fulfilled_orders = $order->fetchByStatus('SHIPPED');
 	$fulfilled_orders_cnt = (is_array($fulfilled_orders) && !empty($fulfilled_orders)) ? count($fulfilled_orders): 0;

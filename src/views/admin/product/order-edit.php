@@ -170,7 +170,7 @@
                            <!--/span-->
                         </div>
                         <h3 class="form-section text-info"><strong>Tracking Number</strong></h3>
-                        <p>For your records, enter the name of the tracking number.</p>
+                        <p>For your records, enter the tracking number.</p>
                         <div class="row-fluid">
                            <div class="span12 ">
                               <div class="control-group">

@@ -91,7 +91,8 @@
                                             <li>$<?=number_format($shipping,2)?></li>
                                         </ul>
                                     </td>
-                                    <? else: ?>
+                                    <? else: 
+                                    $discount = 0;?>
                                     <td>
                                         <ul>
                                             <li>Subtotal</li>

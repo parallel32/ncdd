@@ -161,7 +161,7 @@ class Payment extends Model {
 		$this->stateProvinceRegionShipping = $doc['stateProvinceRegionShipping'];
         $this->zipPostalCodeShipping = $doc['zipPostalCodeShipping'];
         $this->countryShipping = $doc['countryShipping'];
-		$this->phone = $doc['phone'];
+		$this->phone = (string)$doc['phone'];
 		$this->email = $doc['email'];
 		$this->amount = $doc['amount'];
 		$this->orderTotal = $doc['orderTotal'];
