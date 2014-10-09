@@ -99,7 +99,7 @@
                            
                         </font></font></div>
                      </div>
-                     <a class="more" href="#ncdd2014promocode"><font><font>
+                     <a class="more" href="#ncdd2014"><font><font>
                      Click to scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
                      </a>                 
                   </div>
@@ -136,7 +136,7 @@
                            
                         </font></font></div>
                      </div>
-                     <a class="more" href="#newlypaid"><font><font>
+                     <a class="more" href="#paidwopromo"><font><font>
                      Click to scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
                      </a>                 
                   </div>
@@ -296,12 +296,12 @@
                            </tbody>
                         </table>
                      </div>
-                  </div>
+                  </div><a name="ncdd2014"></a>
                   <!-- END EXAMPLE TABLE PORTLET-->
                </div>
             </div>
 
-            <div class="row-fluid" id="ncdd2014promocode">
+            <div class="row-fluid">
                <div class="span12">
                   
                   <!-- BEGIN EXAMPLE TABLE PORTLET-->
@@ -350,12 +350,12 @@
                            </tbody>
                         </table>
                      </div>
-                  </div><a name="newlypaid"></a><a name="ncdd2014promocode"></a>
+                  </div><a name="paidwopromo"></a>
                   <!-- END EXAMPLE TABLE PORTLET-->
                </div>
             </div>
             
-            <div class="row-fluid" id="newlypaid">
+            <div class="row-fluid">
                <div class="span12">
                   <!-- BEGIN EXAMPLE TABLE PORTLET-->
                   <div class="portlet box blue">
