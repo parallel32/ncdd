@@ -438,29 +438,67 @@ EOT;
 	        }
 	    }
 	    //print_r($xml_array);  // for debugging and seeing the result well formatted in the ajax response
+	    error_log('for variable: xml_array  ==>'.print_r($xml_array,true));
 	    //////////////////
 		// XML TO ARRAY //
 		//////////////////
-		$response = $xml_array['SOAP-ENV:ENVELOPE']['SOAP-ENV:BODY']['FDGGWSAPI:FDGGWSAPIORDERRESPONSE'];
-		$default_msg = "An error has occured.  Please try again.  If it persists, please contact us.";
-		switch ($response['FDGGWSAPI:TRANSACTIONRESULT']) {
-			case 'APPROVED':
-				return $response;
-				break;
-			case 'FRAUD':
-				$message = (array_key_exists('FDGGWSAPI:ERRORMESSAGE', $response)) ? $response['FDGGWSAPI:ERRORMESSAGE']: $default_msg;
-				break;
-			case 'DECLINED':
-				$message = (array_key_exists('FDGGWSAPI:ERRORMESSAGE', $response)) ? $response['FDGGWSAPI:ERRORMESSAGE']: $default_msg;
-				break;
-			case 'DUPLICATE':
-				$message = (array_key_exists('FDGGWSAPI:ERRORMESSAGE', $response)) ? $response['FDGGWSAPI:ERRORMESSAGE']: $default_msg;
-				break;
-			case 'FAILED':
-				$message = (array_key_exists('FDGGWSAPI:ERRORMESSAGE', $response)) ? $response['FDGGWSAPI:ERRORMESSAGE']: $default_msg;
-				break;
-			
+		if(	
+			!empty($xml_array)
+			&& is_array($xml_array) 
+			&& array_key_exists('SOAP-ENV:ENVELOPE', $xml_array)
+			&& is_array($xml_array['SOAP-ENV:ENVELOPE'])
+			&& array_key_exists('SOAP-ENV:BODY', $xml_array['SOAP-ENV:ENVELOPE'])
+			&& is_array($xml_array['SOAP-ENV:ENVELOPE']['SOAP-ENV:BODY'])
+			&& array_key_exists('FDGGWSAPI:FDGGWSAPIORDERRESPONSE', $xml_array['SOAP-ENV:ENVELOPE']['SOAP-ENV:BODY'])
+			&& is_array($xml_array['SOAP-ENV:ENVELOPE']['SOAP-ENV:BODY']['FDGGWSAPI:FDGGWSAPIORDERRESPONSE'])
+			&& array_key_exists('FDGGWSAPI:TRANSACTIONRESULT', $xml_array['SOAP-ENV:ENVELOPE']['SOAP-ENV:BODY']['FDGGWSAPI:FDGGWSAPIORDERRESPONSE'])
+
+		){
+			error_log('for variable: here  ==>'.print_r('A',true));
+			$response = $xml_array['SOAP-ENV:ENVELOPE']['SOAP-ENV:BODY']['FDGGWSAPI:FDGGWSAPIORDERRESPONSE'];
+			$default_msg = "An error has occured.  Please try again.  If it persists, please contact us.";
+			switch ($response['FDGGWSAPI:TRANSACTIONRESULT']) {
+				case 'APPROVED':
+					return $response;
+					break;
+				case 'FRAUD':
+					$message = (array_key_exists('FDGGWSAPI:ERRORMESSAGE', $response)) ? $response['FDGGWSAPI:ERRORMESSAGE']: $default_msg;
+					break;
+				case 'DECLINED':
+					$message = (array_key_exists('FDGGWSAPI:ERRORMESSAGE', $response)) ? $response['FDGGWSAPI:ERRORMESSAGE']: $default_msg;
+					break;
+				case 'DUPLICATE':
+					$message = (array_key_exists('FDGGWSAPI:ERRORMESSAGE', $response)) ? $response['FDGGWSAPI:ERRORMESSAGE']: $default_msg;
+					break;
+				case 'FAILED':
+					$message = (array_key_exists('FDGGWSAPI:ERRORMESSAGE', $response)) ? $response['FDGGWSAPI:ERRORMESSAGE']: $default_msg;
+					break;
+				
+			}
+		}else if(
+			!empty($xml_array)
+			&& is_array($xml_array) 
+			&& array_key_exists('SOAP-ENV:ENVELOPE', $xml_array)
+			&& is_array($xml_array['SOAP-ENV:ENVELOPE'])
+			&& array_key_exists('SOAP-ENV:BODY', $xml_array['SOAP-ENV:ENVELOPE'])
+			&& is_array($xml_array['SOAP-ENV:ENVELOPE']['SOAP-ENV:BODY'])
+			&& array_key_exists('SOAP-ENV:FAULT', $xml_array['SOAP-ENV:ENVELOPE']['SOAP-ENV:BODY'])
+			&& is_array($xml_array['SOAP-ENV:ENVELOPE']['SOAP-ENV:BODY']['SOAP-ENV:FAULT'])
+			&& array_key_exists('DETAIL', $xml_array['SOAP-ENV:ENVELOPE']['SOAP-ENV:BODY']['SOAP-ENV:FAULT'])
+
+		){
+			error_log('for variable: here  ==>'.print_r('B',true));
+			$message = $xml_array['SOAP-ENV:ENVELOPE']['SOAP-ENV:BODY']['SOAP-ENV:FAULT']['DETAIL'];
+		}else{
+			error_log('for variable: here  ==>'.print_r('C',true));
+			if(is_array($xml_array)){
+				$message = "An error has occured.  Please try again.  If it persists, please contact us."."<!--".implode('----', $xml_array)."-->";
+			}else{
+				$message = "Please try again because an error occured.  If it persists, please contact us.";
+			}
 		}
+		
+		error_log('for variable: message  ==>'.print_r($message,true));
 		throw new \Exception($message);
 
 

@@ -258,6 +258,7 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
     }else{
     	$doc['promocode'] = strtoupper(trim($doc['promocode']));
     }
+    $doc['userAgent'] = $request->headers->get('User-Agent');
 
 	$application = new Model\ApplyNewMember($doc, $app);
 	if(!empty($doc['email']) && $application->findByEmail()){
@@ -393,6 +394,7 @@ $app->get('/application/new-sustaining-member', function (Request $request) use 
 $app->post('/application/new-sustaining-member', function (Request $request) use ($app) {
 	// retrieve document from request
     $doc = $request->get('doc');
+    $doc['userAgent'] = $request->headers->get('User-Agent');
     $application = new Model\ApplyNewSustainingMember($doc, $app);
 
     if($application->findByEmail()){

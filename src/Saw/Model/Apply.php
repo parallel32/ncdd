@@ -46,6 +46,7 @@ class Apply extends Model {
 	public $membershipDues;
 	public $trial;
 	public $referredBy;
+	public $userAgent;
 
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addPropertyConstraint('firstName', new Constraints\NotBlank(array('message'=>'cannot be blank')));
@@ -112,6 +113,7 @@ class Apply extends Model {
 		if(!empty($doc['paymentId'])) $this->paymentId = (is_object($doc['paymentId'])) ? $doc['paymentId'] : new \MongoId($doc['paymentId']);
 		$this->membershipDues = $doc['membershipDues'];
 		$this->referredBy = $doc['referredBy'];
+		$this->userAgent = $doc['userAgent'];
 		$this->trial = (is_object($doc['trial'])) ? $doc['trial']->__toArray(false) : $doc['trial'];
 
 	}
@@ -150,6 +152,7 @@ class Apply extends Model {
 		$this->membershipDues = $this->membershipDues ?: '';
 		$this->referredBy = $this->referredBy ?: '';
 		$this->trial = $this->trial ?: new \stdClass();
+		$this->userAgent = $this->userAgent ?: '';
 
 	}
 	

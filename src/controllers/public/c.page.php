@@ -70,7 +70,7 @@ $app->get('/preview/{slug}', function ($slug, Request $request) use ($app) {
 //home page
 $app->get('/', function (Request $request) use ($app) {
 	$view_vars['slogan_block'] = 'home';
-
+	
 	$page = new Model\Page($doc=array('slug'=>'welcome'), $app);
 	$welcome = $page->findById('slug');
 	$welcome['body'] = $app['prepare_content']($welcome['body']);

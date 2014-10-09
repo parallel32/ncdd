@@ -1154,7 +1154,7 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                   
                   <div class="form-actions text-center">
                      <? $user = $this->app['session']->get('user');
-                           if(is_array($user)){
+                           if(is_array($user) && array_key_exists('accessLevel', $user)){
                            if($user['accessLevel'] == ADMIN || ((is_array($user)) && array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') )){  
                         ?>
                         <input type="checkbox" name="suppress_emails" <?=(array_key_exists('suppress_emails',$user) && !empty($user['suppress_emails']))?'checked':'';?> value="yes">Suppress Emails.
