@@ -321,7 +321,7 @@
                   <div class="row-fluid">
                      <div class="span6">
                         <div class="control-group">
-                           <label class="control-label">I am an attorney presently admitted and licensed and currently eligible to practice law in a state or province of the United States, Canada, or Australia.</label>
+                           <label class="control-label">I am an attorney presently admitted and licensed and currently eligible to practice law.</label>
                            <div class="controls">
                               <div class="success-toggle-button">
                                  <select class="small m-wrap licensedInUSAAustraliaCanada" name="doc[licensedInUSAAustraliaCanada]">
