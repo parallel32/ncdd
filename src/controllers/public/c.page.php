@@ -70,7 +70,7 @@ $app->get('/preview/{slug}', function ($slug, Request $request) use ($app) {
 //home page
 $app->get('/', function (Request $request) use ($app) {
 	$view_vars['slogan_block'] = 'home';
-	
+
 	$page = new Model\Page($doc=array('slug'=>'welcome'), $app);
 	$welcome = $page->findById('slug');
 	$welcome['body'] = $app['prepare_content']($welcome['body']);
@@ -330,7 +330,7 @@ $app->get('/duilawsinyourstate.php', function (Request $request) use ($app) {
 	$location = $request->get('location');
 	$slugify = new \Cocur\Slugify\Slugify();//for iconv translit
 	$slug = $slugify->slugify($location);
-	if($slug == 'n-a'){
+	if($slug == 'n-a' || empty($slug)){
 		return $app->redirect('/dui-laws-in-your-state');
 	}
 	return $app->redirect('/dui-laws-in-your-state/usa/'.$slug);	
