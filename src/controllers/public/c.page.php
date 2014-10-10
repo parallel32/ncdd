@@ -623,7 +623,17 @@ $app->get('/state-delegates/{country}/{state}', function ($country, $state, Requ
 });
 
 $app->get('/quiz', function (Request $request) use ($app) {
-	return $app->redirect('/we-help-win-more-cases');
+	$slug = 'we-help-win-more-cases';
+	$page = new Model\Page($doc=array('slug'=>$slug), $app);
+	$page = $page->findById('slug');
+	$page['body'] = $app['prepare_content']($page['body']);
+
+	$view_vars = array('page'=>$page);
+	$view_vars['slogan_block'] = 'we-help-win-more-cases';
+
+	$page_vars = $app['get_pages']($slug);
+	$view_vars = array_merge($page_vars,$view_vars);
+	return $app['view']->render('page/we-help-win-more-cases', 'content', $view_vars);
 });
 $app->get('/we-help-win-more-cases', function (Request $request) use ($app) {
 	$slug = 'we-help-win-more-cases';
