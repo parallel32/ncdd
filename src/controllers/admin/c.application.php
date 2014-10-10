@@ -286,17 +286,19 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 	}
 	$yilp = $application->yearsInLawPractice;
 	$now = date('Y',strtotime('today'));
-
+error_log(__FILE__.' '.__LINE__.' for variable: yilp  ==>'.print_r($yilp,true));
 	if($now - $yilp >= 6){
+error_log('for variable: >=6  ==>'.print_r('',true));
 		$amt = (!empty($doc['promocode']) && $doc['promocode'] == 'NCDD2014') ? $dues[6]['amount']: $dues[6]['prorated']['a'];
 	}elseif ($now - $yilp < 6){
+error_log('for variable: <6  ==>'.print_r('',true));
 		$amt = (!empty($doc['promocode']) && $doc['promocode'] == 'NCDD2014') ? $dues[1]['amount']: $dues[1]['prorated']['a'];
 	}
 	if($application->publicDefender == 'yes'){
 		$amt = $dues['publicDefender']['prorated']['a'];
 		$amt = (!empty($doc['promocode']) && $doc['promocode'] == 'NCDD2014') ? $dues['publicDefender']['amount']: $dues['publicDefender']['prorated']['a'];
 	}
-
+error_log('for variable: amt A  ==>'.print_r($amt,true));
 	if($doc['promocode'] == 'TRIAL'){
 		$trial_doc['startDate'] = 'now';
 		$trial_doc['endDate'] = "+1 year";
@@ -321,8 +323,9 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 		// email/new-member-welcome + 
 		// email/new-member-welcome-complete + 
 		// email/payment-thankyou
-
+error_log('for variable: amt B  ==>'.print_r($amt,true));
 		$doc['amount'] = $amt;
+		$doc['payment']['amount'] = $amt;
 		$payment = new Model\Payment($doc['payment'],$app);
 
 		// validate the payment
