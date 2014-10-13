@@ -412,7 +412,7 @@ class Member extends User {
 				}else{
 					$query=array('state'=>$state);
 				}
-				$m_result = self::$app['mongo']->find('location', $query,$m_fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.currentOrder'=>-1,'member.orderNumState'=>1));
+				$m_result = self::$app['mongo']->find('location', $query,$m_fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.currentOrder'=>-1,'member.joinDate.date'=>1,'member.orderNumState'=>1));
 				//error_log('query:'.print_r($query,true));
 				//error_log('result:'.print_r($m_result,true));
 				//echo "<pre>".print_r($m_result);echo "</pre>";
@@ -726,7 +726,7 @@ class Member extends User {
 					,'raw'=>1
 					);
 		// order number
-		$result = self::$app['mongo']->find('location',array('state'=>$state,'member.listed'=>1),$fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.currentOrder'=>-1,'member.orderNumState'=>1));
+		$result = self::$app['mongo']->find('location',array('state'=>$state,'member.listed'=>1),$fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.currentOrder'=>-1,'member.joinDate.date'=>1,'member.orderNumState'=>1));
 		// join date
 		//$result = self::$app['mongo']->find('location',array('state'=>$state,'member.listed'=>1),$fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.currentOrder'=>-1,'member.joinDate.date'=>1));
 		
@@ -780,7 +780,7 @@ class Member extends User {
 					,'raw'=>1
 					);
 		
-		$result = self::$app['mongo']->find('location',array('member.currentMembership'=>self::$membership['FOUNDING MEMBER'], 'state'=>$state,'member.listed'=>1),$fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.currentOrder'=>-1,'member.orderNumState'=>1));
+		$result = self::$app['mongo']->find('location',array('member.currentMembership'=>self::$membership['FOUNDING MEMBER'], 'state'=>$state,'member.listed'=>1),$fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.currentOrder'=>-1,'member.joinDate.date'=>1,'member.orderNumState'=>1));
 		
 		$i=0;
 		foreach ($result as $key => $value) {
