@@ -16,12 +16,14 @@
 <br/>
 <br/>Your application for Sustaining Membership has been received.
 <br/>
-<br/>Below is a link to the online reference form.  Please forward it to your 4 references and remind them to submit is as soon as they can.
+<br/>Below is a link to the online reference form.  Please forward it to your 4 references, one being from your sponsoring Regent or Fellow and remind them to submit is as soon as they can.
 <br/>Once we have your 4 references, your application will be presented to the board at the next meeting.
 <br/>
 <br/><a href="https://<?=SAW_ADMIN_WEBSITE?>/reference/<?=$this->vars['applicationId']?>/<?=$this->vars['firstName'].'-'.$this->vars['lastName']?>" target="_blank">Click here to view the reference form</a>.
 <br>
 <br/>When your application is approved, you will receive an email with instructions.
+<br/>
+<br/>Thak you for your Sustaining Member Application.
 <br/>
 <br>National College for DUI Defense, Inc. 
 <br>445 S. Decatur St. 

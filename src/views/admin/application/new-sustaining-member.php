@@ -542,7 +542,7 @@
                      <!--/span-->
                   </div>
 
-                  <h3 class="form-section">A one-time membership fee in the amount of $3500 is payable upon application approval.</h3>
+                  <h3 class="form-section">A one-time membership fee in the amount of $3500 is payable upon application approval.  The payment may be made over a period of 3 years.</h3>
                   <div class="row-fluid">
                      <div class="span12 ">
                         <div class="control-group">
@@ -558,7 +558,7 @@
                   <div class="row-fluid">
                      <div class="span12">
                         <p>
-                           I, <input class="m-wrap span3 acknowledgePrintedName" type="text" placeholder="<print your name below>" readonly> 
+                           I, <input class="m-wrap span3 acknowledgePrintedName" type="text" placeholder="<print your name below>" > 
                            having filed an application for a <strong>SUSTAINING MEMBERSHIP</strong> hereby authorize and give my consent to The National College for DUI Defense, Inc., hereby including its Membership Committee, (hereinafter collectively referred to as the “National College”), to conduct an investigation as to my moral character and fitness and to make inquiries and request such information from third parties as, in the sole discretion of the National College is necessary to such investigation. I further authorize the use of any such information in the course of the National College’s, investigation and evaluation of my application for <strong>SUSTAINING MEMBERSHIP</strong>. I authorize and request every person, firm, company, corporation, school, employer (past or present), governmental agency, court, association, institution, or other third party having opinions about me or knowledge or control of any information, documents, records (including, but not limited to, criminal history, and record information), or data pertaining to me, to reveal, furnish and release to the National College, or any of its agents or representatives, and such opinions, knowledge, information, documents, records or other data. Without limiting the previously described authority, I specifically authorize the release of files of any professional association regarding all undergraduate, graduate or professional school records relating to my admission to, and conduct during my enrollment in such schools. I hereby authorized all such persons as set out above to answer any inquiries, questions, or interrogatories concerning me, which may be submitted to them by or on my behalf of the National College. I further waive absolutely any privileges I may have which re applicable to any documents or information sought from you pursuant to this authorization and release. Notwithstanding any statement herein to the contrary, this Authorization and Release shall not operate to release any medical or mental health records relating to alcohol, drug or chemical dependency. I hereby release, discharge and hold harmless the National College, its agents or representatives and any person, firm, company, corporation, school, employer (past or present), governmental agency, court, association, institution, or other third party, and their agents, from any and all liability of every nature and kind arising out of the furnishing, inspection, and the use of such options, knowledge, documents, records or other data. A photocopy of this authorization shall be accepted with the same validity as the original.
                         </p>
                      </div>
@@ -662,6 +662,9 @@ jQuery(document).ready(function() {
 
    $('.acknowledgePrintedName').keyup(function (){
       $('.authorizationReleasePrintedName').val($(this).val());
+   });
+   $('.authorizationReleasePrintedName').keyup(function (){
+      $('.acknowledgePrintedName').val($(this).val());
    });
    $('.authorizationReleasePrintedName').keyup(function (){
       $('.acknowledgePrintedName').val($(this).val());
