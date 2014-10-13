@@ -247,6 +247,16 @@
                                        <span class="help-block">Turn ON / OFF; whether to rsvp fo the dinner</span>
                                     </div>
                                  </div>
+                                 <div class="control-group">
+                                    <label class="control-label">Attendance Question</label>
+                                    <div class="controls">
+                                       <select name="doc[register][attendanceQuestion]" class="span6 m-wrap attendanceQuestion" data-placeholder="Choose a Category" tabindex="1">
+                                          <option value="ON" <?=(array_key_exists('register',$seminar) && array_key_exists('attendanceQuestion',$seminar['register'])) ? ('ON' == $seminar['register']['attendanceQuestion']) ? "selected" : "" : '';?>>ON</option>
+                                          <option value="OFF" <?=(array_key_exists('register',$seminar) && array_key_exists('attendanceQuestion',$seminar['register'])) ? ('OFF' == $seminar['register']['attendanceQuestion']) ? "selected" : "" : '';?>>OFF</option>
+                                       </select>
+                                       <span class="help-block">Turn ON / OFF; whether to ask the previously attended seminars question.</span>
+                                    </div>
+                                 </div>
                               </div>
                            </div>
 

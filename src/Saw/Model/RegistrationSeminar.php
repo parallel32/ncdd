@@ -26,6 +26,7 @@ class RegistrationSeminar extends Registration {
 	public $total;
 	public $seminarId;
 	public $previouslyAttended;
+	public $previouslyAttendedExists;
 	public $depositQuestion; // yes | no
 	public $deposit; // the amount for the initial deposit
 	public $depositDueDate; // the due date for payment of the remainer of the deposit
@@ -36,13 +37,23 @@ class RegistrationSeminar extends Registration {
 		$metadata->addPropertyConstraint('nameTag', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('barNumber', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('attendanceCertificationStatement', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		$metadata->addPropertyConstraint('previouslyAttended', new Constraints\NotBlank(array('message'=>'cannot be blank')));
+		$metadata->addConstraint(new Callback(array(
+            'methods' => array('previouslyAttended'),
+        )));
+	}
+	public function previouslyAttended(ExecutionContext $context){
+		
+		if($this->previouslyAttendedExists == 'yes' && empty($this->previouslyAttended)){
+			$propertyPath = $context->getPropertyPath().'previouslyAttended';
+        	$context->addViolationAtPath($propertyPath,'Please enter how many times you have previously attended this seminar.', array(), null);
+		}
+		
 	}
 	
 	public function __construct($doc, Application $app){
+		$this->previouslyAttendedExists = (array_key_exists('previouslyAttended',$doc)) ? 'yes': 'no';
 		parent::__construct($doc,$app);
 		$this->init($doc);
-		
 		$this->nameTag = $doc['nameTag'];
 		$this->barNumber = (string)$doc['barNumber'];
 		$this->rsvp = (string)$doc['rsvp'];

@@ -26,6 +26,7 @@ class SeminarRegister extends Model {
 	public $depositDueDate; // the due date for payment of the remainer of the deposit
 	public $scholarship;
 	public $rsvpQuestion; // on | off
+	public $attendanceQuestion; // on | off
 
 
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
@@ -98,6 +99,7 @@ class SeminarRegister extends Model {
         $this->depositDueDate = $doc['depositDueDate'];
         $this->scholarship = $doc['scholarship'];
         $this->rsvpQuestion = $doc['rsvpQuestion'];
+        $this->attendanceQuestion = $doc['attendanceQuestion'];
 
 	}
 	
@@ -116,6 +118,7 @@ class SeminarRegister extends Model {
 		$this->depositDueDate = $this->depositDueDate ?: '';
 		$this->scholarship = $this->scholarship ?: '';
 		$this->rsvpQuestion = $this->rsvpQuestion ?: 'yes';
+		$this->attendanceQuestion = $this->attendanceQuestion ?: 'no';
 
 	}
 	

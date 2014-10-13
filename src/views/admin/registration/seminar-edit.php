@@ -142,6 +142,7 @@ endif; ?>
                   </div>
                   <!-- END ADDRESS -->
                   <h3 class="form-section">3. Registration Details</h3>
+                  <? if((array_key_exists('register',$this->vars['seminar']) && array_key_exists('attendanceQuestion',$this->vars['seminar']['register']) && $this->vars['seminar']['register']['attendanceQuestion'] == 'ON') || (array_key_exists('register',$this->vars['seminar']) && !array_key_exists('attendanceQuestion',$this->vars['seminar']['register'])) ): ?>
                   <div class="row-fluid ">
                      <div class="span12 ">
                         <div class="control-group">
@@ -153,6 +154,7 @@ endif; ?>
                      </div>
                      <!--/span-->
                   </div>
+                  <? endif; ?>
                   <div class="row-fluid ">
                      <div class="span12 ">
                         <div class="control-group">
