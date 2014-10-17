@@ -23,7 +23,7 @@
                            <div class="desc">New Orders</div>
                         </div>
                         <a class="more" href="/product/">
-                        View more <i class="m-icon-swapright m-icon-white"></i>
+                        View <i class="m-icon-swapright m-icon-white"></i>
                         </a>                 
                      </div>
                   </div>
@@ -37,7 +37,7 @@
                            <div class="desc">Blogs to Approve</div>
                         </div>
                         <a class="more" href="/blog/all-posts">
-                        View more <i class="m-icon-swapright m-icon-white"></i>
+                        View <i class="m-icon-swapright m-icon-white"></i>
                         </a>                 
                      </div>
                   </div>
@@ -77,7 +77,7 @@
                            <div class="desc">Sustaining Members</div>
                         </div>
                         <a class="more" href="/member/search?query=Sustaining%20Members">
-                        View more <i class="m-icon-swapright m-icon-white"></i>
+                        View <i class="m-icon-swapright m-icon-white"></i>
                         </a>                 
                      </div>
                   </div>
@@ -91,7 +91,7 @@
                            <div class="desc">General M's</div>
                         </div>
                         <a class="more" href="/member/search?query=Sustaining%20Members">
-                        View more <i class="m-icon-swapright m-icon-white"></i>
+                        View <i class="m-icon-swapright m-icon-white"></i>
                         </a>                 
                      </div>
                   </div>
@@ -105,7 +105,7 @@
                            <div class="desc">Founding Members</div>
                         </div>
                         <a class="more" href="/member/search?query=Founding%20Members">
-                        View more <i class="m-icon-swapright m-icon-white"></i>
+                        View <i class="m-icon-swapright m-icon-white"></i>
                         </a>                 
                      </div>
                   </div>
@@ -119,7 +119,7 @@
                            <div class="desc">Public Defenders</div>
                         </div>
                         <a class="more" href="/member/search?query=Public%20Defenders">
-                        View more <i class="m-icon-swapright m-icon-white"></i>
+                        View <i class="m-icon-swapright m-icon-white"></i>
                         </a>                 
                      </div>
                   </div>
@@ -135,7 +135,7 @@
                            <div class="desc">Regents</div>
                         </div>
                         <a class="more" href="/member/search?query=Regents">
-                        View more <i class="m-icon-swapright m-icon-white"></i>
+                        View <i class="m-icon-swapright m-icon-white"></i>
                         </a>                 
                      </div>
                   </div>
@@ -149,7 +149,7 @@
                            <div class="desc">Fellows</div>
                         </div>
                         <a class="more" href="/member/search?query=Fellows">
-                        View more <i class="m-icon-swapright m-icon-white"></i>
+                        View <i class="m-icon-swapright m-icon-white"></i>
                         </a>                 
                      </div>
                   </div>
@@ -163,7 +163,7 @@
                            <div class="desc">State Delegates</div>
                         </div>
                         <a class="more" href="/member/search?query=State%20Delegates">
-                        View more <i class="m-icon-swapright m-icon-white"></i>
+                        View <i class="m-icon-swapright m-icon-white"></i>
                         </a>                 
                      </div>
                   </div>
@@ -177,7 +177,7 @@
                            <div class="desc">Faculty</div>
                         </div>
                         <a class="more" href="/member/search?query=Faculty">
-                        View more <i class="m-icon-swapright m-icon-white"></i>
+                        View <i class="m-icon-swapright m-icon-white"></i>
                         </a>                 
                      </div>
                   </div>
@@ -193,7 +193,7 @@
                            <div class="desc">Board Certified</div>
                         </div>
                         <a class="more" href="/member/search?query=Board%20Certified">
-                        View more <i class="m-icon-swapright m-icon-white"></i>
+                        View <i class="m-icon-swapright m-icon-white"></i>
                         </a>                 
                      </div>
                   </div>
@@ -207,7 +207,7 @@
                            <div class="desc">Staff</div>
                         </div>
                         <a class="more" href="/member/search?query=Staff">
-                        View more <i class="m-icon-swapright m-icon-white"></i>
+                        View <i class="m-icon-swapright m-icon-white"></i>
                         </a>                 
                      </div>
                   </div>
@@ -221,7 +221,7 @@
                            <div class="desc">Former Regents</div>
                         </div>
                         <a class="more" href="/member/search?query=Former%20Regents">
-                        View more <i class="m-icon-swapright m-icon-white"></i>
+                        View <i class="m-icon-swapright m-icon-white"></i>
                         </a>                 
                      </div>
                   </div>
