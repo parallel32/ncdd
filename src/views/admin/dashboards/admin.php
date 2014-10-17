@@ -70,10 +70,10 @@
                   <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
                      <div class="dashboard-stat blue">
                         <div class="visual">
-                           <i class="icon-user"></i>
+                           <i class="icon-hideme"><?=$this->vars['sm']?></i>
                         </div>
                         <div class="details">
-                           <div class="number"><?=$this->vars['sm']?></div>
+                           <div class="number"></div>
                            <div class="desc">Sustaining Members</div>
                         </div>
                         <a class="more" href="/member/search?query=Sustaining%20Members">
@@ -84,11 +84,11 @@
                   <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
                      <div class="dashboard-stat blue">
                         <div class="visual">
-                           <i class="icon-user"></i>
+                           <i class="icon-hideme"><?=$this->vars['gm']?></i>
                         </div>
                         <div class="details">
-                           <div class="number"><?=$this->vars['gm']?></div>
-                           <div class="desc">General Members</div>
+                           <div class="number"></div>
+                           <div class="desc">General M's</div>
                         </div>
                         <a class="more" href="/member/search?query=Sustaining%20Members">
                         View more <i class="m-icon-swapright m-icon-white"></i>
@@ -98,10 +98,10 @@
                   <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
                      <div class="dashboard-stat blue">
                         <div class="visual">
-                           <i class="icon-user"></i>
+                           <i class="icon-hideme"><?=$this->vars['fm']?></i>
                         </div>
                         <div class="details">
-                           <div class="number"><?=$this->vars['fm']?></div>
+                           <div class="number"></div>
                            <div class="desc">Founding Members</div>
                         </div>
                         <a class="more" href="/member/search?query=Founding%20Members">
@@ -112,10 +112,10 @@
                   <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
                      <div class="dashboard-stat blue">
                         <div class="visual">
-                           <i class="icon-user"></i>
+                           <i class="icon-hideme"><?=$this->vars['pd']?></i>
                         </div>
                         <div class="details">
-                           <div class="number"><?=$this->vars['pd']?></div>
+                           <div class="number"></div>
                            <div class="desc">Public Defenders</div>
                         </div>
                         <a class="more" href="/member/search?query=Public%20Defenders">
@@ -128,10 +128,10 @@
                   <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
                      <div class="dashboard-stat blue">
                         <div class="visual">
-                           <i class="icon-user"></i>
+                           <i class="icon-hideme"><?=$this->vars['r']?></i>
                         </div>
                         <div class="details">
-                           <div class="number"><?=$this->vars['r']?></div>
+                           <div class="number"></div>
                            <div class="desc">Regents</div>
                         </div>
                         <a class="more" href="/member/search?query=Regents">
@@ -142,10 +142,10 @@
                   <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
                      <div class="dashboard-stat blue">
                         <div class="visual">
-                           <i class="icon-user"></i>
+                           <i class="icon-hideme"><?=$this->vars['f']?></i>
                         </div>
                         <div class="details">
-                           <div class="number"><?=$this->vars['f']?></div>
+                           <div class="number"></div>
                            <div class="desc">Fellows</div>
                         </div>
                         <a class="more" href="/member/search?query=Fellows">
@@ -156,10 +156,10 @@
                   <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
                      <div class="dashboard-stat blue">
                         <div class="visual">
-                           <i class="icon-user"></i>
+                           <i class="icon-hideme"><?=$this->vars['sd']?></i>
                         </div>
                         <div class="details">
-                           <div class="number"><?=$this->vars['sd']?></div>
+                           <div class="number"></div>
                            <div class="desc">State Delegates</div>
                         </div>
                         <a class="more" href="/member/search?query=State%20Delegates">
@@ -170,10 +170,10 @@
                   <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
                      <div class="dashboard-stat blue">
                         <div class="visual">
-                           <i class="icon-user"></i>
+                           <i class="icon-hideme"><?=$this->vars['fa']?></i>
                         </div>
                         <div class="details">
-                           <div class="number"><?=$this->vars['fa']?></div>
+                           <div class="number"></div>
                            <div class="desc">Faculty</div>
                         </div>
                         <a class="more" href="/member/search?query=Faculty">
@@ -186,10 +186,10 @@
                   <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
                      <div class="dashboard-stat blue">
                         <div class="visual">
-                           <i class="icon-user"></i>
+                           <i class="icon-hideme"><?=$this->vars['bc']?></i>
                         </div>
                         <div class="details">
-                           <div class="number"><?=$this->vars['bc']?></div>
+                           <div class="number"></div>
                            <div class="desc">Board Certified</div>
                         </div>
                         <a class="more" href="/member/search?query=Board%20Certified">
@@ -200,10 +200,10 @@
                   <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
                      <div class="dashboard-stat blue">
                         <div class="visual">
-                           <i class="icon-user"></i>
+                           <i class="icon-hideme"><?=$this->vars['st']?></i>
                         </div>
                         <div class="details">
-                           <div class="number"><?=$this->vars['st']?></div>
+                           <div class="number"></div>
                            <div class="desc">Staff</div>
                         </div>
                         <a class="more" href="/member/search?query=Staff">
@@ -214,10 +214,10 @@
                   <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
                      <div class="dashboard-stat blue">
                         <div class="visual">
-                           <i class="icon-user"></i>
+                           <i class="icon-hideme"><?=$this->vars['fr']?></i>
                         </div>
                         <div class="details">
-                           <div class="number"><?=$this->vars['fr']?></div>
+                           <div class="number"></div>
                            <div class="desc">Former Regents</div>
                         </div>
                         <a class="more" href="/member/search?query=Former%20Regents">
