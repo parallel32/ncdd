@@ -238,41 +238,7 @@
 
 
 
-               <h1>New Applications</h1>
-               <div class="row-fluid">
-                  <div class="responsive span6" data-tablet="span6" data-desktop="span6">
-                     <div class="dashboard-stat red">
-                        <div class="visual">
-                           <i class="icon-hideme"><?=$this->vars['submitted']?></i>
-                        </div>
-                        <div class="details">
-                           <div class="number"><font><font>
-                              To Approve
-                           </font></font></div>
-                           <div class="desc"><font><font>                           
-                              
-                           </font></font></div>
-                        </div>
-                        <a class="more" href="/applications#approve"><font><font>
-                        Go </font></font><i class="m-icon-swapright m-icon-white"></i>
-                        </a>                 
-                     </div>
-                  </div>
-                  <div class="responsive span6" data-tablet="span6" data-desktop="span6">
-                     <div class="dashboard-stat purple">
-                        <div class="visual">
-                           <i class="icon-hide-me"><span class="number"><?=$this->vars['trial'];?></span></i>
-                        </div>
-                        <div class="details">
-                           <div class="number"><font><font></font>Trial Mode</font></div>
-                           <div class="desc"><font><font></font></font></div>
-                        </div>
-                        <a class="more" href="/applications#trial"><font><font>
-                        Go </font></font><i class="m-icon-swapright m-icon-white"></i>
-                        </a>                 
-                     </div>
-                  </div>
-            </div>
+            <h1>New Applications</h1>
             <div class="row-fluid">
                <div class="responsive span6" data-tablet="span6" data-desktop="span6">
                   <div class="dashboard-stat yellow">
@@ -359,6 +325,20 @@
                         </font></font></div>
                      </div>
                      <a class="more" href="/applications#paidwopromo"><font><font>
+                     Go </font></font><i class="m-icon-swapright m-icon-white"></i>
+                     </a>                 
+                  </div>
+               </div>
+               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                  <div class="dashboard-stat purple">
+                     <div class="visual">
+                        <i class="icon-hide-me"><span class="number"><?=$this->vars['trial'];?></span></i>
+                     </div>
+                     <div class="details">
+                        <div class="number"><font><font></font>Trial Mode</font></div>
+                        <div class="desc"><font><font></font></font></div>
+                     </div>
+                     <a class="more" href="/applications#trial"><font><font>
                      Go </font></font><i class="m-icon-swapright m-icon-white"></i>
                      </a>                 
                   </div>
