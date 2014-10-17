@@ -838,8 +838,8 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                         <p></p>
                      </div>
                      <div class="modal-footer">
-                        <a href="/applications" class="btn blue " data-insertid="">Back to Applications</button>
-                        <a href="/applications/new-member-admin" class="btn blue " data-insertid="">Add Another</button>
+                        <a href="/applications" class="btn blue " data-insertid="">Back to Applications</a>
+                        <a href="/applications/new-member-admin" class="btn blue " data-insertid="">Add Another</a>
                      </div>
                   </div>
                   <!--/ SUCCESSFUL SAVE MODAL -->
