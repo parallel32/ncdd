@@ -67,7 +67,7 @@
                <h1>Members</h1>
                <!-- BEGIN DASHBOARD STATS -->
                <div class="row-fluid">
-                  <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
+                  <div class="span3 responsive" data-tablet="span3" data-desktop="span3">
                      <div class="dashboard-stat blue">
                         <div class="visual">
                            <i class="icon-hideme"><?=$this->vars['sm']?></i>
@@ -81,7 +81,7 @@
                         </a>                 
                      </div>
                   </div>
-                  <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
+                  <div class="span3 responsive" data-tablet="span3" data-desktop="span3">
                      <div class="dashboard-stat blue">
                         <div class="visual">
                            <i class="icon-hideme"><?=$this->vars['gm']?></i>
@@ -95,7 +95,7 @@
                         </a>                 
                      </div>
                   </div>
-                  <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
+                  <div class="span3 responsive" data-tablet="span3" data-desktop="span3">
                      <div class="dashboard-stat blue">
                         <div class="visual">
                            <i class="icon-hideme"><?=$this->vars['fm']?></i>
@@ -109,7 +109,7 @@
                         </a>                 
                      </div>
                   </div>
-                  <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
+                  <div class="span3 responsive" data-tablet="span3" data-desktop="span3">
                      <div class="dashboard-stat blue">
                         <div class="visual">
                            <i class="icon-hideme"><?=$this->vars['pd']?></i>
@@ -125,7 +125,7 @@
                   </div>
                </div>
                <div class="row-fluid">
-                  <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
+                  <div class="span3 responsive" data-tablet="span3" data-desktop="span3">
                      <div class="dashboard-stat blue">
                         <div class="visual">
                            <i class="icon-hideme"><?=$this->vars['r']?></i>
@@ -139,7 +139,7 @@
                         </a>                 
                      </div>
                   </div>
-                  <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
+                  <div class="span3 responsive" data-tablet="span3" data-desktop="span3">
                      <div class="dashboard-stat blue">
                         <div class="visual">
                            <i class="icon-hideme"><?=$this->vars['f']?></i>
@@ -153,7 +153,7 @@
                         </a>                 
                      </div>
                   </div>
-                  <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
+                  <div class="span3 responsive" data-tablet="span3" data-desktop="span3">
                      <div class="dashboard-stat blue">
                         <div class="visual">
                            <i class="icon-hideme"><?=$this->vars['sd']?></i>
@@ -167,7 +167,7 @@
                         </a>                 
                      </div>
                   </div>
-                  <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
+                  <div class="span3 responsive" data-tablet="span3" data-desktop="span3">
                      <div class="dashboard-stat blue">
                         <div class="visual">
                            <i class="icon-hideme"><?=$this->vars['fa']?></i>
@@ -183,7 +183,7 @@
                   </div>
                </div>
                <div class="row-fluid">
-                  <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
+                  <div class="span3 responsive" data-tablet="span3" data-desktop="span3">
                      <div class="dashboard-stat blue">
                         <div class="visual">
                            <i class="icon-hideme"><?=$this->vars['bc']?></i>
@@ -197,7 +197,7 @@
                         </a>                 
                      </div>
                   </div>
-                  <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
+                  <div class="span3 responsive" data-tablet="span3" data-desktop="span3">
                      <div class="dashboard-stat blue">
                         <div class="visual">
                            <i class="icon-hideme"><?=$this->vars['st']?></i>
@@ -211,7 +211,7 @@
                         </a>                 
                      </div>
                   </div>
-                  <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
+                  <div class="span3 responsive" data-tablet="span3" data-desktop="span3">
                      <div class="dashboard-stat blue">
                         <div class="visual">
                            <i class="icon-hideme"><?=$this->vars['fr']?></i>
