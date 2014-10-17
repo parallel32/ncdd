@@ -299,7 +299,7 @@
                   <div class="row-fluid">
                      <div class="span6">
                         <div class="control-group">
-                           <label class="control-label">I am an attorney presently admitted and licensed and currently eligible to practice law in a state or province of the United States, Canada, or Australia.</label>
+                           <label class="control-label">I am an attorney presently admitted and licensed and currently eligible to practice law.</label>
                            <div class="controls">
                               <div class="success-toggle-button">
                                  <select class="small m-wrap licensedInUSAAustraliaCanada" name="doc[licensedInUSAAustraliaCanada]">
@@ -587,9 +587,9 @@
                      <div class="span12 ">
                         <div class="control-group">
                            <label class="control-label">
-                           I have substantial current involvement in the practice area of DUI/DWI defense and I understand that as a condition of continued membership I must continue to have substantial involvement, including attendance at one (or more) seminars every two (2) years either sponsored by NCDD or at a State/local seminar approved by NCDD.
+                           I have substantial current involvement in the practice area of DUI/DWI defense and I understand that as a condition of continued membership I must continue to have substantial involvement, including attendance at one (or more) seminars every two (2) years either sponsored by NCDD or at a State/local seminar approved by NCDD. 
                            </br></br>
-                           I have read the general membership rules, and I understand and agree to be bound by them as they are presently published and as they may be amended from time to time during my membership.
+                           I have read the general membership rules, and I understand and agree to be bound by them as they are presently published and as they may be amended from time to time during my membership. 
                            </br></br>
                            I declare under penalty of perjury that the foregoing statements are true and correct to the best of my knowledge.
                            </label>
@@ -615,17 +615,7 @@
                      <!--/span-->
                   </div>
 
-                  <h3 class="form-section">Membership Dues</h3>
-                  <div class="row-fluid">
-                     <div class="span12 ">
-                        <div class="control-group">
-                           <label class="control-label" id="calculate-dues">$<?=$this->vars['application']['membershipDues']?></label>
-                        </div>
-                     </div>
-                     <!--/span-->
-                  </div>
-                  
-                  <h3 class="form-section text-center">THE NATIONAL COLLEGE FOR DUI DEFENSE, INC.</br> AUTHORIZATION AND RELEASE</h3>
+                  <h3 class="form-section">7. AUTHORIZATION AND RELEASE</h3>
                   <div class="row-fluid">
                      <div class="span12">
                         <h3 class="text-center"><u>PARTIES</u></h3>
@@ -666,6 +656,7 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                      </div>
                      <!--/span-->
                   </div>
+
                   <div class="row-fluid">
                      <div class="span12 ">
                         <div class="control-group">
@@ -709,6 +700,20 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                            <div class="controls">
                               <input type="text" name="doc[referredBy]" value="<?=(array_key_exists('trial',$this->vars['application'])) ? (array_key_exists('referredBy',$this->vars['application']['trial'])) ? $this->vars['application']['trial']['referredBy'] : (array_key_exists('referredBy',$this->vars['application'])) ? $this->vars['application']['referredBy'] : '' : (array_key_exists('referredBy',$this->vars['application'])) ? $this->vars['application']['referredBy'] : '';?>" class="m-wrap span12 referredBy">
                               <span class="help-block">If someone referred you, who is already a member, please type their name here.</span>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+
+                  <h3 class="form-section">8. Promotional Code</h3>
+                  <div class="row-fluid">
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">If you have a promo code please enter it here:</label>
+                           <div class="controls">
+                              <input type="text" name="doc[promocode]" class="m-wrap span12 promocode" value="<?=(array_key_exists('promocode', $this->vars['application'])) ? $this->vars['application']['promocode'] : ''?>">
+                              <input type="hidden" id="promocodetype">
                            </div>
                         </div>
                      </div>

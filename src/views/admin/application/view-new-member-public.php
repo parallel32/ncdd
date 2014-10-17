@@ -239,7 +239,7 @@
                   <div class="row-fluid">
                      <div class="span6">
                         <div class="control-group">
-                           <label class="control-label">I am an attorney presently admitted and licensed and currently eligible to practice law in a state or province of the United States, Canada, or Australia.</label>
+                           <label class="control-label">I am an attorney presently admitted and licensed and currently eligible to practice law.</label>
                            <div class="controls">
                               <div class="success-toggle-button">
                                  <input disabled type="text" value="<?=(array_key_exists('licensedInUSAAustraliaCanada', $this->vars['application'])) ? $this->vars['application']['licensedInUSAAustraliaCanada'] : ''?>" class="m-wrap span12 licensedInUSAAustraliaCanada">
@@ -484,7 +484,7 @@
                   <hr>
                   <h2>END - OLD APP FIELDS</h2>
             <? endif; ?>
-                  <h3 class="form-section">5.</h3>
+                  <h3 class="form-section">6.</h3>
                   <div class="row-fluid">
                      <div class="span12 ">
                         <div class="control-group">
@@ -519,17 +519,7 @@
                      <!--/span-->
                   </div>
 
-                  <h3 class="form-section">Membership Dues</h3>
-                  <div class="row-fluid">
-                     <div class="span12 ">
-                        <div class="control-group">
-                           <label class="control-label" id="calculate-dues">$<?=$this->vars['application']['membershipDues']?></label>
-                        </div>
-                     </div>
-                     <!--/span-->
-                  </div>
-                  
-                  <h3 class="form-section text-center">THE NATIONAL COLLEGE FOR DUI DEFENSE, INC.</br> AUTHORIZATION AND RELEASE</h3>
+                  <h3 class="form-section">7. AUTHORIZATION AND RELEASE</h3>
                   <div class="row-fluid">
                      <div class="span12">
                         <h3 class="text-center"><u>PARTIES</u></h3>
@@ -614,6 +604,20 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                      </div>
                      <!--/span-->
                   </div>
+
+                  <h3 class="form-section">8. Promotional Code</h3>
+                  <div class="row-fluid">
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">If you have a promo code please enter it here:</label>
+                           <div class="controls">
+                              <input disabled type="text" name="doc[promocode]" class="m-wrap span12 promocode" value="<?=(array_key_exists('promocode', $this->vars['application'])) ? $this->vars['application']['promocode'] : ''?>">
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+
 
                   <div class="row-fluid">
                      <div class="span12 ">
