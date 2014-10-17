@@ -244,12 +244,35 @@ $app->get('/application/new-member', function (Request $request) use ($app) {
 	
 	return $app['view']->render('application/new-member', 'blank',array('dues'=>$dues));
 });
+$app->get('/application/new-member-admin', function (Request $request) use ($app) {
+
+	foreach(Model\ApplyNewMember::$dues as $type => $amount){
+		$apply = new Model\Apply(array('membershipDues'=>$amount),$app);
+		$dues[$type]['amount'] = $amount;
+		$dues[$type]['prorated'] = $apply->proRate('today');
+	}
+	$crumbs = array(array('name'=>'Applications','href'=>'/applications')
+		,array('name'=>'(admin) Add New Member','href'=>'/applications/new-member-admin')
+	);
+	$view_vars = array(
+						 'active'=>'Applications/New'
+						,'page-plugin'=>'datatables'
+						,'headline'=>'Add a new member'
+						,'description'=>"<a class='btn ' href='/applications'><i class=''></i> Cancel</a>"
+						,'crumbs'=>$crumbs
+						,'dues'=>$dues
+	);
+	return $app['view']->render('application/new-member-admin', 'default', $view_vars);
+});
 /**
 
 updated new member application submittal form
 
 */
 $app->post('/application/new-member', function (Request $request) use ($app) {
+	$user = $app['session']->get('user');
+   	$is_admin = (is_array($user) && array_key_exists('accessLevel', $user) && $user['accessLevel'] == ADMIN) ? true : false;
+
 	// retrieve document from request
     $doc = $request->get('doc');
     // promocode sanity check
@@ -266,16 +289,17 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
                               "invalidFields"=>array(array('name'=>'email','message'=>'Our records indicate you have already submitted an application.  Please Log-in if you are looking for another Application or contact NCDD directly.')));
         return new Response(json_encode($response_arr), 403,array('Content-Type' => 'application/json'));
     }
-        
 
     // validate the application
     $app['validateModel']($app,$application);
     
-    // payment stuff BEGIN
-    $paymentId = new \stdClass();
-	$validation_group = ($doc['payment']['currentPaymentType'] == Model\Payment::$paymentType['CREDIT']) ? 'cc' : 'check';		
-	$doc['payment']['ownerId'] = new \stdClass();
-	$doc['payment']['ownerClass'] = 'ApplyNewMember';
+    if($is_admin == false):
+	    // payment stuff BEGIN
+	    $paymentId = new \stdClass();
+		$validation_group = ($doc['payment']['currentPaymentType'] == Model\Payment::$paymentType['CREDIT']) ? 'cc' : 'check';		
+		$doc['payment']['ownerId'] = new \stdClass();
+		$doc['payment']['ownerClass'] = 'ApplyNewMember';
+	endif;
 	
 	// re-calculate the amount in case the amount gets compromised on the way up to the server
 	$dues = array();
@@ -286,19 +310,15 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 	}
 	$yilp = $application->yearsInLawPractice;
 	$now = date('Y',strtotime('today'));
-error_log(__FILE__.' '.__LINE__.' for variable: yilp  ==>'.print_r($yilp,true));
 	if($now - $yilp >= 6){
-error_log('for variable: >=6  ==>'.print_r('',true));
 		$amt = (!empty($doc['promocode']) && $doc['promocode'] == 'NCDD2014') ? $dues[6]['amount']: $dues[6]['prorated']['a'];
 	}elseif ($now - $yilp < 6){
-error_log('for variable: <6  ==>'.print_r('',true));
 		$amt = (!empty($doc['promocode']) && $doc['promocode'] == 'NCDD2014') ? $dues[1]['amount']: $dues[1]['prorated']['a'];
 	}
 	if($application->publicDefender == 'yes'){
 		$amt = $dues['publicDefender']['prorated']['a'];
 		$amt = (!empty($doc['promocode']) && $doc['promocode'] == 'NCDD2014') ? $dues['publicDefender']['amount']: $dues['publicDefender']['prorated']['a'];
 	}
-error_log('for variable: amt A  ==>'.print_r($amt,true));
 	if($doc['promocode'] == 'TRIAL'){
 		$trial_doc['startDate'] = 'now';
 		$trial_doc['endDate'] = "+1 year";
@@ -323,23 +343,30 @@ error_log('for variable: amt A  ==>'.print_r($amt,true));
 		// email/new-member-welcome + 
 		// email/new-member-welcome-complete + 
 		// email/payment-thankyou
-error_log('for variable: amt B  ==>'.print_r($amt,true));
-		$doc['amount'] = $amt;
-		$doc['payment']['amount'] = $amt;
-		$payment = new Model\Payment($doc['payment'],$app);
+		if($is_admin == false):
+			$doc['amount'] = $amt;
+			$doc['payment']['amount'] = $amt;
+			$payment = new Model\Payment($doc['payment'],$app);
 
-		// validate the payment
-		$app['validateModel']($app, $payment,$groups=array($validation_group));
-		$application->paymentId = $payment->charge();
-		// payment stuff END
-		
+			// validate the payment
+			$app['validateModel']($app, $payment,$groups=array($validation_group));
+			$application->paymentId = $payment->charge();
+			// payment stuff END
+		endif;
+
+		if($is_admin){
+			$application->currentStatus = Model\Apply::$status['APPROVED'];
+		}
 		$applicationId = $application->insert();
 		$_POST['applicationId'] = $applicationId->__toString();
 
 		$response = $app['applicationEmails']($app,$applicationId,$context='new-member-welcome',$request);
-		// marking the application paid
-		$application = new Model\Apply(array('_id'=>$applicationId, 'paymentId'=>$application->paymentId), $app);
-		$application->markPaid(false);
+
+		if($is_admin == false):
+			// marking the application paid
+			$application = new Model\Apply(array('_id'=>$applicationId, 'paymentId'=>$application->paymentId), $app);
+			$application->markPaid(false);
+		endif;
 	}
 
 	
@@ -1163,26 +1190,6 @@ $app->get('/applications/all/{offset}/{limit}', function ($offset, $limit, Reque
 
 $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $request) use ($app) {
 	$application = new Model\Apply($doc=array(), $app);
-	$submitted = $application->fetchByStatus('SUBMITTED',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
-
-	if(!empty($submitted)){
-	for ($i=0; $i < count($submitted); $i++) { 
-		switch ($submitted[$i]['class']) {
-	    	case 'ApplyNewMember':
-	    		$reference = new Model\ReferenceMember(array('applicationId'=>$submitted[$i]['_id']), $app);
-	    		break;
-	    	case 'ApplyNewSustainingMember':
-	    		$reference = new Model\ReferenceSustainingMember(array('applicationId'=>$submitted[$i]['_id']), $app);
-	    		break;
-	    	
-	    }
-
-	    if(!empty($reference)){
-	    	$submitted[$i]['new_references'] = array('total'=>$reference->getTotalSubmissions(),'max'=>$reference->getMaxSubmissions());
-	    }else{
-	    	$submitted[$i]['new_references'] = array('total'=>0,'max'=>0);
-	    }
-	}}
 	$approved = $application->fetchByStatus('APPROVED',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
 	$trial = $application->fetchByStatus('TRIAL',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
 	$paid = $application->fetchByDatePaid(90, $offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
@@ -1232,9 +1239,8 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 						 'active'=>'Applications/New'
 						,'page-plugin'=>'datatables'
 						,'headline'=>'Applications'
-						,'description'=>"View all applications here."
+						,'description'=>"<a class='btn green ' href='/application/new-member-admin'><i class='icon-plus'></i> New Member</a>"
 						,'crumbs'=>$crumbs
-						,'submitted'=>$submitted
 						,'approved'=>$approved
 						,'trial'=>$trial
 						,'paid'=>$paid
