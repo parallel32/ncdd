@@ -10,186 +10,371 @@
             </div>
             <!-- END PAGE HEADER-->
                   <div id="dashboard">
-               <!-- BEGIN DASHBOARD STATS --
+
+               <!-- BEGIN DASHBOARD STATS -->
                <div class="row-fluid">
                   <div class="span6 responsive" data-tablet="span6" data-desktop="span6">
-                     <div class="dashboard-stat blue">
+                     <div class="dashboard-stat red">
                         <div class="visual">
-                           <i class="icon-comments"></i>
+                           <i class="icon-barcode"></i>
                         </div>
                         <div class="details">
-                           <div class="number">
-                              13
-                           </div>
-                           <div class="desc">                           
-                              Clients
-                           </div>
+                           <div class="number"><?=$this->vars['newOrders']?></div>
+                           <div class="desc">New Orders</div>
                         </div>
-                        <a class="more" href="#">
+                        <a class="more" href="/product/">
                         View more <i class="m-icon-swapright m-icon-white"></i>
                         </a>                 
                      </div>
                   </div>
                   <div class="span6 responsive" data-tablet="span6" data-desktop="span6">
-                     <div class="dashboard-stat yellow">
+                     <div class="dashboard-stat red">
                         <div class="visual">
-                           <i class="icon-bar-chart"></i>
+                           <i class="icon-edit"></i>
                         </div>
                         <div class="details">
-                           <div class="number">33</div>
-                           <div class="desc">Domains</div>
+                           <div class="number"><?=$this->vars['blogs']?></div>
+                           <div class="desc">Blogs to Approve</div>
                         </div>
-                        <a class="more" href="#">
+                        <a class="more" href="/blog/all-posts">
                         View more <i class="m-icon-swapright m-icon-white"></i>
                         </a>                 
                      </div>
                   </div>
                </div>
                <!-- END DASHBOARD STATS -->
-
-               <!-- NEW ORDERS -->
-               <div id="orders" class="row-fluid">
-                  <div class="span12">
-                     <!-- BEGIN EXAMPLE TABLE PORTLET-->
-                     <div class="portlet box red">
-                        <div class="portlet-title" id="orders">
-                           <div class="caption"><i class="icon-barcode"></i>New Orders</div>
-                           <div class="actions">
-                              <a class="btn yellow view"><i class=" icon-eye-open"></i> View All</a>
-                           </div>
-                        </div>
-                        <div class="portlet-body">
-                           <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
-                           <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
-                              <thead>
-                                 <tr role="row">
-                                    <th class="">Ordered By</th>
-                                    <th class="">Date</th>
-                                    <th class="hidden-phone">Subtotal</th>
-                                    <th class="hidden-480">Shipping</th>
-                                    <th class="hidden-480">Discount</th>
-                                    <th class="hidden-480">Total</th>
-                                    <th class=""></th>
-                                 </tr>
-                              </thead>
-                              <tbody role="alert" aria-live="polite" aria-relevant="all">
-                                 <? if(!empty($this->vars['newOrders'])): 
-                                    foreach($this->vars['newOrders'] as $order): ?>
-                                 <tr class="gradeX odd">
-                                    <td class=" "><?=$order['payment']['name']?></td>
-                                    <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($order['orderDate']['fullDateTime']), $order['timeZone']); ?>
-                                    <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$order['orderDate']['monthDay'].' '.$order['orderDate']['shortTime']?></td>
-                                    <td class=" hidden-phone"><?='$'.number_format($order['orderTotal'],2)?></td>
-                                    <td class="hidden-phone"><?='$'.number_format($order['shippingTotal'],2)?></td>
-                                    <td class="hidden-480 "><?=(array_key_exists('discountTotal',$order)) ? '$'.number_format($order['discountTotal'],2): ''?></td>
-                                    <td class="center hidden-480 "><?='$'.number_format($order['payment']['amount'],2)?></td>
-                                    <td class=" "><a data-id="<?=$order['_id']?>" class="btn blue mini view"><i class=" "></i> View + Fulfill</a></td>
-                                 </tr>
-                                 <? endforeach;?>
-                                 <? else: ?>
-                                    <td colspan="7">No new orders.</td>
-                                 <? endif;?>
-                              </tbody>
-                           </table>
-                        </div>
-                     </div><a name="products"></a>
-                     <!-- END EXAMPLE TABLE PORTLET-->
-                  </div>
-               </div>
-               </div>
-               <!--/ NEW ORDERS -->
-               <!-- APPLICATIONS TO APPROVE -->
                <div class="row-fluid">
                   <div class="span12">
-                     <!-- BEGIN EXAMPLE TABLE PORTLET-->
-                     <div class="portlet box red">
-                        <div class="portlet-title" id="application">
-                           <div class="caption"><i class="icon-user"></i>Applications To Approve (most recent submissions)</div>
-                           <div class="actions">
-                              <a class="btn yellow view"><i class=" icon-eye-open"></i> View All</a>
+                     <!-- BEGIN CHART PORTLET-->
+                     <div class="portlet box blue">
+                        <div class="portlet-title">
+                           <div class="caption">
+                              <i class="icon-bar-chart font-green-haze"></i>
+                              <span class="">New Members by Month</span>
+                           </div>
+                           <div class="tools">
+                              Running total = <?=$this->vars['graph_total']?>
                            </div>
                         </div>
                         <div class="portlet-body">
-                           <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
-                           <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
-                              <thead>
-                                 <tr role="row">
-                                    <th class="">Name</th>
-                                    <th class="">Email</th>
-                                    <th class="hidden-480">Area</th>
-                                    <th class="hidden-480">Date Submitted</th>
-                                    <th class="hidden-480">Application Type</th>
-                                    <th class=""></th>
-                                 </tr>
-                              </thead>
-                              <tbody role="alert" aria-live="polite" aria-relevant="all">
-                                 <? if(!empty($this->vars['applications'])): foreach($this->vars['applications'] as $application): ?>
-                                 <tr class="gradeX odd">
-                                    <? $middleName = (!empty($application['middleName'])) ? ' '.$application['middleName'].' ':' '; ?>
-                                    <td class=" "><?=$application['firstName'].$middleName.$application['lastName']?></td>
-                                    <td class=" "><?=$application['email']?></td>
-                                    <td class="hidden-480 "><?=$application['city'].', '.$application['state']?></td>
-                                    <td class="hidden-480 "><?=$application['submittedDate']['monthDay'].' '.$application['submittedDate']['shortTime']?></td>
-                                    <td class="center hidden-480 "><?=$application['type']?></td>
-                                    <td class=" "><a data-id="<?=$application['_id']?>" class="btn blue mini view"><i class=" "></i> View </a></td>
-                                 </tr>
-                                 <? endforeach;?>
-                                 <? else: ?>
-                                    <td colspan="5">Nothing to approve.</td>
-                                 <? endif;?>
-                              </tbody>
-                           </table>
+                           <div id="chart_3" class="chart" style="height: 400px; overflow: hidden; text-align: left;"></div>
                         </div>
                      </div>
-                     <!-- END EXAMPLE TABLE PORTLET-->
+                     <!-- END CHART PORTLET-->
                   </div>
                </div>
-               <div class="clearfix"></div>
-               <!--/ APPLICATIONS TO APPROVE -->
 
-               <!-- BLOG POSTS TO APPROVE -->
-               <div id="approve-blogs" class="row-fluid">
-                  <div class="span12">
-                     <!-- BEGIN EXAMPLE TABLE PORTLET-->
-                     <div class="portlet box red">
-                        <div class="portlet-title" id="blog">
-                           <div class="caption"><i class="icon-edit"></i>DUI Blog Posts To Approve (most recent submissions)</div>
-                           <div class="actions">
-                              <a href="/blog" class="btn yellow view"><i class="icon-eye-open"></i> View All</a>
-                           </div>
+               <h1>Members</h1>
+               <!-- BEGIN DASHBOARD STATS -->
+               <div class="row-fluid">
+                  <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
+                     <div class="dashboard-stat blue">
+                        <div class="visual">
+                           <i class="icon-user"></i>
                         </div>
-                        <div class="portlet-body">
-                           <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
-                           <table class="table table-striped table-bordered table-hover dataTable" id="blogs" aria-describedby="sample_1_info">
-                              <thead>
-                                 <tr role="row">
-                                    <th class="">Headline</th>
-                                    <th class="hidden-480">Date Submitted</th>
-                                    <th class="hidden-480">Author</th>
-                                    <th class=""></th>
-                                 </tr>
-                              </thead>
-                              <tbody role="alert" aria-live="polite" aria-relevant="all">
-                                 <? if(!empty($this->vars['blogs'])): foreach($this->vars['blogs'] as $blog): ?>
-                                 <tr class="gradeX odd">
-                                    <td class=" "><?=$blog['headline']?></td>
-                                    <td class="hidden-480 "><?=$blog['reviewDate']['shortTime'].' '.$blog['reviewDate']['monthDay']?></td>
-                                    <td class="hidden-480 "><?=$blog['author']['firstName'].' '.$blog['author']['lastName']?></td>
-                                    <td class=" "><a data-member-id="<?=$blog['author']['_id']?>" data-blog-id="<?=$blog['_id']?>" class="btn blue mini view-post"><i class=" "></i> View</a></td>
-                                 </tr>
-                                 <? endforeach;?>
-                                 <? else: ?>
-                                    <td colspan="5">No blog posts.</td>
-                                 <? endif;?>
-                              </tbody>
-                           </table>
+                        <div class="details">
+                           <div class="number"><?=$this->vars['sm']?></div>
+                           <div class="desc">Sustaining Members</div>
                         </div>
+                        <a class="more" href="/member/search?query=Sustaining%20Members">
+                        View more <i class="m-icon-swapright m-icon-white"></i>
+                        </a>                 
                      </div>
-                     <!-- END EXAMPLE TABLE PORTLET-->
+                  </div>
+                  <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
+                     <div class="dashboard-stat blue">
+                        <div class="visual">
+                           <i class="icon-user"></i>
+                        </div>
+                        <div class="details">
+                           <div class="number"><?=$this->vars['gm']?></div>
+                           <div class="desc">General Members</div>
+                        </div>
+                        <a class="more" href="/member/search?query=Sustaining%20Members">
+                        View more <i class="m-icon-swapright m-icon-white"></i>
+                        </a>                 
+                     </div>
+                  </div>
+                  <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
+                     <div class="dashboard-stat blue">
+                        <div class="visual">
+                           <i class="icon-user"></i>
+                        </div>
+                        <div class="details">
+                           <div class="number"><?=$this->vars['fm']?></div>
+                           <div class="desc">Founding Members</div>
+                        </div>
+                        <a class="more" href="/member/search?query=Founding%20Members">
+                        View more <i class="m-icon-swapright m-icon-white"></i>
+                        </a>                 
+                     </div>
+                  </div>
+                  <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
+                     <div class="dashboard-stat blue">
+                        <div class="visual">
+                           <i class="icon-user"></i>
+                        </div>
+                        <div class="details">
+                           <div class="number"><?=$this->vars['pd']?></div>
+                           <div class="desc">Public Defenders</div>
+                        </div>
+                        <a class="more" href="/member/search?query=Public%20Defenders">
+                        View more <i class="m-icon-swapright m-icon-white"></i>
+                        </a>                 
+                     </div>
                   </div>
                </div>
-               <br><br>
-               <!--/ BLOG POSTS TO APPROVE -->
+               <div class="row-fluid">
+                  <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
+                     <div class="dashboard-stat blue">
+                        <div class="visual">
+                           <i class="icon-user"></i>
+                        </div>
+                        <div class="details">
+                           <div class="number"><?=$this->vars['r']?></div>
+                           <div class="desc">Regents</div>
+                        </div>
+                        <a class="more" href="/member/search?query=Regents">
+                        View more <i class="m-icon-swapright m-icon-white"></i>
+                        </a>                 
+                     </div>
+                  </div>
+                  <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
+                     <div class="dashboard-stat blue">
+                        <div class="visual">
+                           <i class="icon-user"></i>
+                        </div>
+                        <div class="details">
+                           <div class="number"><?=$this->vars['f']?></div>
+                           <div class="desc">Fellows</div>
+                        </div>
+                        <a class="more" href="/member/search?query=Fellows">
+                        View more <i class="m-icon-swapright m-icon-white"></i>
+                        </a>                 
+                     </div>
+                  </div>
+                  <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
+                     <div class="dashboard-stat blue">
+                        <div class="visual">
+                           <i class="icon-user"></i>
+                        </div>
+                        <div class="details">
+                           <div class="number"><?=$this->vars['sd']?></div>
+                           <div class="desc">State Delegates</div>
+                        </div>
+                        <a class="more" href="/member/search?query=State%20Delegates">
+                        View more <i class="m-icon-swapright m-icon-white"></i>
+                        </a>                 
+                     </div>
+                  </div>
+                  <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
+                     <div class="dashboard-stat blue">
+                        <div class="visual">
+                           <i class="icon-user"></i>
+                        </div>
+                        <div class="details">
+                           <div class="number"><?=$this->vars['fa']?></div>
+                           <div class="desc">Faculty</div>
+                        </div>
+                        <a class="more" href="/member/search?query=Faculty">
+                        View more <i class="m-icon-swapright m-icon-white"></i>
+                        </a>                 
+                     </div>
+                  </div>
+               </div>
+               <div class="row-fluid">
+                  <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
+                     <div class="dashboard-stat blue">
+                        <div class="visual">
+                           <i class="icon-user"></i>
+                        </div>
+                        <div class="details">
+                           <div class="number"><?=$this->vars['bc']?></div>
+                           <div class="desc">Board Certified</div>
+                        </div>
+                        <a class="more" href="/member/search?query=Board%20Certified">
+                        View more <i class="m-icon-swapright m-icon-white"></i>
+                        </a>                 
+                     </div>
+                  </div>
+                  <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
+                     <div class="dashboard-stat blue">
+                        <div class="visual">
+                           <i class="icon-user"></i>
+                        </div>
+                        <div class="details">
+                           <div class="number"><?=$this->vars['st']?></div>
+                           <div class="desc">Staff</div>
+                        </div>
+                        <a class="more" href="/member/search?query=Staff">
+                        View more <i class="m-icon-swapright m-icon-white"></i>
+                        </a>                 
+                     </div>
+                  </div>
+                  <div class="span6 responsive" data-tablet="span6" data-desktop="span3">
+                     <div class="dashboard-stat blue">
+                        <div class="visual">
+                           <i class="icon-user"></i>
+                        </div>
+                        <div class="details">
+                           <div class="number"><?=$this->vars['fr']?></div>
+                           <div class="desc">Former Regents</div>
+                        </div>
+                        <a class="more" href="/member/search?query=Former%20Regents">
+                        View more <i class="m-icon-swapright m-icon-white"></i>
+                        </a>                 
+                     </div>
+                  </div>
+                  
+               </div>
+               <!-- END DASHBOARD STATS -->
+
+               
+
+
+
+
+
+
+
+
+               <h1>New Applications</h1>
+               <div class="row-fluid">
+                  <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                     <div class="dashboard-stat red">
+                        <div class="visual">
+                           <i class="icon-hideme"><?=$this->vars['submitted']?></i>
+                        </div>
+                        <div class="details">
+                           <div class="number"><font><font>
+                              To Approve
+                           </font></font></div>
+                           <div class="desc"><font><font>                           
+                              
+                           </font></font></div>
+                        </div>
+                        <a class="more" href="/applications#approve"><font><font>
+                        Go </font></font><i class="m-icon-swapright m-icon-white"></i>
+                        </a>                 
+                     </div>
+                  </div>
+                  <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                     <div class="dashboard-stat purple">
+                        <div class="visual">
+                           <i class="icon-hide-me"><span class="number"><?=$this->vars['trial'];?></span></i>
+                        </div>
+                        <div class="details">
+                           <div class="number"><font><font></font>Trial Mode</font></div>
+                           <div class="desc"><font><font></font></font></div>
+                        </div>
+                        <a class="more" href="/applications#trial"><font><font>
+                        Go </font></font><i class="m-icon-swapright m-icon-white"></i>
+                        </a>                 
+                     </div>
+                  </div>
+            </div>
+            <div class="row-fluid">
+               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                  <div class="dashboard-stat yellow">
+                     <div class="visual">
+                        <i class="icon-hideme"><?=$this->vars['approved'];?></i>
+                     </div>
+                     <div class="details">
+                        <div class="number"><font><font></font>Unpaid</font></div>
+                        <div class="desc"><font><font>
+                           
+                        </font></font></div>
+                     </div>
+                     <a class="more" href="/applications#unpaid"><font><font>
+                     Go </font></font><i class="m-icon-swapright m-icon-white"></i>
+                     </a>                 
+                  </div>
+               </div>
+               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                  <a name="approve"></a>
+                  <div class="dashboard-stat green">
+                     <div class="visual">
+                        <i class="icon-hideme"><?=$this->vars['paid'];?></i>
+                     </div>
+                     <div class="details">
+                        <div class="number"><font><font>Paid (90 days)</font></font></div>
+                        <div class="desc"><font><font>
+                           
+                        </font></font></div>
+                     </div>
+                     <a class="more" href="/applications/all"><font><font>
+                     Go </font></font><i class="m-icon-swapright m-icon-white"></i>
+                     </a>                 
+                  </div>
+               </div>
+               
+            </div>
+            <div class="row-fluid">
+               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                  <div class="dashboard-stat blue">
+                     <div class="visual">
+                        <i class="icon-hideme"><?=$this->vars['ncdd2014promocode'];?></i>
+                     </div>
+                     <div class="details">
+                        <div class="number"><font><font></font>NCDD2014 Promo</font></div>
+                        <div class="desc"><font><font>
+                           
+                        </font></font></div>
+                     </div>
+                     <a class="more" href="/applications#ncdd2014"><font><font>
+                     Go </font></font><i class="m-icon-swapright m-icon-white"></i>
+                     </a>                 
+                  </div>
+               </div>
+               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                  <a name="approve"></a>
+                  <div class="dashboard-stat blue">
+                     <div class="visual">
+                        <i class="icon-hideme"><?=$this->vars['ncddtrialpromocode'];?></i>
+                     </div>
+                     <div class="details">
+                        <div class="number"><font><font>TRIAL Promo</font></font></div>
+                        <div class="desc"><font><font>
+                           
+                        </font></font></div>
+                     </div>
+                     <a class="more" href="/applications#trial"><font><font>
+                     Go </font></font><i class="m-icon-swapright m-icon-white"></i>
+                     </a>                 
+                  </div>
+               </div>
+               
+            </div>
+            
+            <div class="row-fluid">
+               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                  <div class="dashboard-stat blue">
+                     <div class="visual">
+                        <i class="icon-hideme"><?=$this->vars['newlypaid'];?></i>
+                     </div>
+                     <div class="details">
+                        <div class="number"><font><font></font>Paid w/o Promo</font></div>
+                        <div class="desc"><font><font>
+                           
+                        </font></font></div>
+                     </div>
+                     <a class="more" href="/applications#paidwopromo"><font><font>
+                     Go </font></font><i class="m-icon-swapright m-icon-white"></i>
+                     </a>                 
+                  </div>
+               </div>
+            </div>
+               
+
+
+
+
+
+
+
+
+
+
 
                <!-- PRIVATE PAGES (RECENT) -->
                <div class="row-fluid">
@@ -245,6 +430,58 @@
 <script>
 jQuery(document).ready(function() {    
    io.saw.Dashboard.adminInit();
-      
+   AmCharts.makeChart("chart_3", {
+            "type": "serial",
+            "theme": "light",
+
+            "fontFamily": 'Open Sans',            
+            "color":    '#888888',
+            
+            "pathToImages": "/assets/plugins/amcharts/amcharts/images/",
+
+            "dataProvider": [
+            <? 
+               $json = '';
+               foreach ($this->vars['graph']['result'] as $member) {
+                  $month = (strlen($member['_id']['month']) > 1) ? $member['_id']['month'] : '0'.$member['_id']['month'];
+                  $json.= '{"date":"'.$member['_id']['year'].'-'.$month.'-01","signups":'.$member['count'].'},';
+               }
+               echo $json;
+            ?>
+            ],
+            "balloon": {
+                "cornerRadius": 6
+            },
+            "valueAxes": [{
+               "axisAlpha": 0,
+               "inside": true,
+               "position": "left",
+               "ignoreAxisWidth": true,
+               "title":"New Members"
+            }],
+            "graphs": [{
+                "bullet": "square",
+                "bulletBorderAlpha": 1,
+                "bulletBorderThickness": 1,
+                "fillAlphas": 0.3,
+                "fillColorsField": "lineColor",
+                "legendValueText": "[[value]]",
+                "lineColorField": "lineColor",
+                "title": "signups",
+                "valueField": "signups"
+            }],
+            "chartScrollbar": {},
+            "chartCursor": {
+                "categoryBalloonDateFormat": "YYYY MMM DD",
+                "cursorAlpha": 0,
+                "zoomable": false
+            },
+            "dataDateFormat": "YYYY-MM-DD",
+            "categoryField": "date",
+            "categoryAxis": {
+        "minPeriod": "mm",
+        "parseDates": true
+    }
+        });
 });
 </script>

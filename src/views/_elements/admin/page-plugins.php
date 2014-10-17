@@ -219,6 +219,14 @@ EOT;
 
 
 EOT;
+         case 'amcharts':
+         echo <<< EOT
+            <!-- amcharts -->
+            <script src="/assets/plugins/amcharts/amcharts/amcharts.js" type="text/javascript"></script>
+            <script src="/assets/plugins/amcharts/amcharts/serial.js" type="text/javascript"></script>
+            <script src="/assets/plugins/amcharts/amcharts/themes/light.js" type="text/javascript"></script>
+            
+EOT;
          break;
       default:
          echo "<!-- empty ... -->";

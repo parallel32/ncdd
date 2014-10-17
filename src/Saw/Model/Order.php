@@ -131,6 +131,29 @@ class Order extends Model {
 		return $result;
 
 	}
+	public function countByStatus($status){
+		
+		$query = array('currentStatus'=>self::$status[$status]);
+		$fields = array();
+		switch ($status) {
+			case 'NEW':
+				$sort=array('orderDate.date'=>-1);
+				break;
+			case 'SHIPPED':
+				$sort=array('shipDate.date'=>-1);
+				break;
+			case 'REFUNDED':
+				$sort=array('refundDate.date'=>-1);
+				break;
+			
+			default:
+				$sort=array('_id'=>-1);
+				break;
+		}
+		$result = $this->count($query,$slaveOkay=true);
+		return $result;
+
+	}
 	public function delete(){
 
 		// delete topic

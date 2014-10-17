@@ -256,6 +256,32 @@ class Apply extends Model {
 		return $result;
 
 	}
+	public function countByStatus($status,$filter=array()){
+		$query = array('currentStatus'=>self::$status[$status]);
+		if(!empty($filter)){
+			$query = array_merge($filter, $query);
+		}
+		switch ($status) {
+			case 'SUBMITTED':
+				$sort=array('submittedDate.date'=>-1);
+				break;
+			case 'APPROVED':
+				$sort=array('approvedDate.date'=>-1);
+				break;
+			case 'PAID':
+				$sort=array('paidDate.date'=>-1);
+				break;
+			case 'TRIAL':
+				$sort=array('trial.startDate.date'=>-1);
+				break;
+			default:
+				$sort=array('_id'=>-1);
+				break;
+		}
+		$result = $this->count($query,$slaveOkay=true);
+		return $result;
+
+	}
 	public function fetchByMember($status, $offset=0,$limit=100){
 		$user = User::getUserAccessLevelBySession(self::$app);
 		$query = array('currentStatus'=>self::$status[$status]
@@ -322,6 +348,18 @@ class Apply extends Model {
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('paidDate.date'=>-1),(int)$offset,(int)$limit);
 		//error_log('fetch:'.print_r($query,true));
 		//error_log('result:'.print_r($result,true));
+		return $result;
+
+	}
+	public function countByDatePaid($days=90, $filter=array()){
+		$query = array('currentStatus'=>self::$status['PAID']
+						,'paidDate.date'=>array('$lte'=>new \MongoDate(strtotime('now'))
+												,'$gte'=>new \MongoDate(strtotime('-'.$days.' day')))
+		);
+		if(!empty($filter)){
+			$query = array_merge($filter, $query);
+		}
+		$result = $this->count($query,$slaveOkay=true);
 		return $result;
 
 	}

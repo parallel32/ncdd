@@ -298,6 +298,15 @@ class Blog extends Model {
 		return $result;
 
 	}
+	public function countByStatus($status, $published='yes'){
+		$query = array('currentStatus'=>self::$status[$status]);
+		if(!empty($published)){
+			$query['published'] = $published;
+		}
+		$result = $this->count($query,$slaveOkay=true);
+		return $result;
+
+	}
 	public function fetchPublished($offset=0,$limit=10000){
 		$query = array('currentStatus'=>self::$status['PUBLISH']);
 		$fields = array();

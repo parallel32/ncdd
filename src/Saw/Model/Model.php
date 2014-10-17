@@ -244,6 +244,17 @@ class Model {
 			return false;
 		endif;
 	}
+	// a convenience query to find one record in the model 
+	public function aggregate($query=array()){
+		
+		$result = self::$app['mongo']->aggregate($this->collection, $query);
+		
+		if(!empty($result)):
+			return $result;
+		else:
+			return false;
+		endif;
+	}
 	
 	public function count($query=array(),$slaveOkay=true){
 

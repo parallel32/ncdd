@@ -216,6 +216,24 @@ class MongoWrapper
 		
 	}
 	
+	public function aggregate($collection, $query=array(), $slaveOkay=true){
+		
+		$collection = $this->database->selectCollection($collection);
+		if(!$slaveOkay)
+			$collection->setReadPreference(\MongoClient::RP_PRIMARY);
+		else
+			$collection->setReadPreference(\MongoClient::RP_SECONDARY);
+		
+		$result_arr = $collection->aggregate($query);
+
+		if(!empty($result_arr)):
+			return $result_arr;
+		else:
+			return false;
+		endif;
+		
+	}
+	
 	public function runCommand($command,$admin=false,$slaveOkay=false){
 		
 		if($admin){

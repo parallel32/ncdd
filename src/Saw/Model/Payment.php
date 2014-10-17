@@ -164,8 +164,6 @@ class Payment extends Model {
 		$this->phone = (string)$doc['phone'];
 		$this->email = $doc['email'];
 		$this->amount = $doc['amount'];
-error_log('for variable: CONSTRUCTOR  ==>'.print_r($this->amount,true));
-error_log('for variable: CONSTRUCTOR2  ==>'.print_r($doc['amount'],true));
 		$this->orderTotal = $doc['orderTotal'];
 		$this->shippingTotal = $doc['shippingTotal'];
 		$this->discountTotal = $doc['discountTotal'];
@@ -184,7 +182,6 @@ error_log('for variable: CONSTRUCTOR2  ==>'.print_r($doc['amount'],true));
 		$this->poNumber = $doc['poNumber'];
 		$this->ipAddress = $doc['ipAddress'];
 		$this->fullResponse = $doc['fullResponse'];
-
 	}
 	
 	protected function prepareInsert(){
@@ -806,5 +803,41 @@ error_log('for variable: this->amount  ==>'.print_r($this->amount,true));
 		}
 		return $result;
 	}
-	
+	public function countByClass($ownerClass){
+		$result = $this->count($query=array('ownerClass'=>$ownerClass));
+		return $result;
+	}
+	public function fetchAllByClass($ownerClass){
+		$query = array(
+			array('$project'=>array(
+				'year'=>array('$year'=>'$paidDate.date')
+				,'month'=>array('$month'=>'$paidDate.date')
+				,'ownerClass'=>array('$cond'=>array(array('$eq'=>array('$ownerClass',$ownerClass)),1,0))
+			))
+			,array('$group'=>array(
+				'_id'=>array('year'=>'$year','month'=>'$month')
+				,'count'=>array('$sum'=>'$ownerClass')
+			))
+			,array('$sort'=>array(
+				'_id'=>1
+			))
+		);
+		$result = $this->aggregate($query);
+		//$result = $this->find($query,$fields=array('paidDate.feed'=>1),true,$sort=array(),0,100000);
+		return $result;
+	}
+/*
+	db.payment.aggregate(
+	    {$project : {
+	         year : {$year : "$paidDate.date"}, 
+	         month : {$month : "$paidDate.date"},
+	         ownerClass : {$cond: [{$eq: ['$ownerClass', 'ApplyNewMember']}, 1, 0]}
+	    }},
+	    {$group : {
+	         _id : {year : "$year", month : "$month"}, 
+	         count : {$sum : "$ownerClass"}
+	    }},
+	    {   $sort    : { _id : 1 }}
+	);
+*/	
 }

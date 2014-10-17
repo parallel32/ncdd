@@ -22,18 +22,29 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 	$user = Model\User::getUserAccessLevelBySession($app);
 	$crumbs = array(array('name'=>'Dashboard','href'=>'/'));
 	$view_vars = array(
-						 'page-plugin'=>'dashboard,datatables'
+						 'page-plugin'=>'dashboard,datatables,amcharts'
 						,'description'=>"Welcome.  Here you'll find aggregated data from your account."
 						,'crumbs'=>$crumbs);
 	$view_vars = array_merge($common_view_vars, $view_vars);
 	switch ($user['accessLevel']) {
 		case ADMIN:
+			$payment = new Model\Payment(array(),$app);
+			$payments = $payment->fetchAllByClass('ApplyNewMember');
+			$view_vars['graph']=$payments;
+			$view_vars['graph_total']=$payment->countByClass('ApplyNewMember');
+			
 			$apply = new Model\Apply(array(),$app);
-			$applications = $apply->fetchByStatus('SUBMITTED',0,5);
-			$view_vars['applications']=$applications;
-
+			$view_vars['submitted']=$apply->countByStatus('SUBMITTED',$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
+			$view_vars['approved']=$apply->countByStatus('APPROVED',$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
+			$view_vars['trial']=$apply->countByStatus('TRIAL',$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
+			$view_vars['paid']=$apply->countByDatePaid(90, $filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
+			$view_vars['ncddtrialpromocode']=$apply->countByStatus('TRIAL',$filter=array('promocode'=>'TRIAL'));
+			$view_vars['ncdd2014promocode']=$apply->countByStatus('PAID',$filter=array('promocode'=>'NCDD2014'));
+			$date = new Model\Date($app,'9/16/2014 5:00 PM');
+			$view_vars['newlypaid']=$apply->countByStatus('PAID',$filter=array('promocode'=>array('$nin'=>array('NCDD2014','TRIAL')),'paidDate.date'=>array('$gte'=> new \MongoDate(strtotime($date->iso)))));
+	
 			$blog = new Model\Blog(array(),$app);
-			$blogs = $blog->fetchByStatus('REVIEW','no',0,5);
+			$blogs = $blog->countByStatus('REVIEW','no',0,5);
 			$view_vars['blogs']=$blogs;
 
 			$page = new Model\Page(array(), $app);
@@ -41,8 +52,21 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 			$view_vars['pages']=$pages;
 
 			$order = new Model\Order(array(),$app);
-			$new_orders = $order->fetchByStatus('NEW',0,5);
+			$new_orders = $order->countByStatus('NEW',0,5);
 			$view_vars['newOrders']=$new_orders;
+
+			$member = new Model\Member(array(),$app);
+			$view_vars['sm']=$member->searchCount('Sustaining Members');
+			$view_vars['gm']=$member->searchCount('General Members');
+			$view_vars['fm']=$member->searchCount('Founding Members');
+			$view_vars['pd']=$member->searchCount('Public Defenders');
+			$view_vars['r']=$member->searchCount('Regents');
+			$view_vars['f']=$member->searchCount('Fellows');
+			$view_vars['sd']=$member->searchCount('State Delegates');
+			$view_vars['fa']=$member->searchCount('Faculty');
+			$view_vars['bc']=$member->searchCount('Board Certified');
+			$view_vars['st']=$member->searchCount('Staff');
+			$view_vars['fr']=$member->searchCount('Former Regents');
 
 			array_push($view_vars['crumbs'],array('name'=>'Admin','href'=>'/'));
 			return $app['view']->render('dashboards/admin', 'default', $view_vars);
