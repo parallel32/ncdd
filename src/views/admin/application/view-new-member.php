@@ -687,9 +687,9 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                      <button type="button" data-id="<?=$this->vars['application']['_id']?>" data-type="<?=$this->vars['application']['class']?>" class="btn green approve"><i class="icon-ok"></i> Approve Application</button>
                      <? endif; ?>
                      <button type="button" class="btn cancel">Cancel and Go Back</button>
-                     <? if($this->vars['application']['currentStatus'] < \Saw\Model\Apply::$status['TRIAL']): ?>
+                     <? //if($this->vars['application']['currentStatus'] < \Saw\Model\Apply::$status['TRIAL']): ?>
                      <button type="button" data-id="<?=$this->vars['application']['_id']?>" class="btn purple trial"><i class="icon-ok"></i> Approve as Trial</button>
-                     <? endif; ?>
+                     <? //endif; ?>
                      <button type="button" data-id="<?=$this->vars['application']['_id']?>" class="btn red delete">Delete Application</button>
                   </div>
                   <!-- REFERENCES -->
