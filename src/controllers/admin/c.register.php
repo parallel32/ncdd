@@ -35,7 +35,12 @@ $app['seminarConfirmationEmail'] = $app->protect(function ($app,$registrationId)
 		$body = str_replace("#payment_link#", 'https://'.SAW_ADMIN_WEBSITE.'/registration/seminar/deposit/'.$registrationId, $body);
 	}
 	
-	$app['sendMail']($subject, $body, $to);
+	$user = $app['session']->get('user');
+    if(array_key_exists('accessLevel', $user) && ($user['accessLevel'] == ADMIN || ((is_array($user)) && array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') )) && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes'){
+		// don't send the email		
+	}else{
+		$app['sendMail']($subject, $body, $to);
+	}
 
 });
 ////////////////////////////
@@ -179,7 +184,12 @@ $app->post('/registration/payment', function (Request $request) use ($app) {
 $app->get('/registration/{paymentId}/pay/{registrationId}', function ($paymentId, $registrationId, Request $request) use ($app) {
     
     $registration = new Model\Registration(array('_id'=>$registrationId, 'paymentId'=>$paymentId), $app);
-    $app['seminarConfirmationEmail']($app,$registrationId);
+    $user = $app['session']->get('user');
+    if(array_key_exists('accessLevel', $user) && ($user['accessLevel'] == ADMIN || ((is_array($user)) && array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') )) && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes'){
+		// don't send the email		
+	}else{
+		$app['seminarConfirmationEmail']($app,$registrationId);
+	}
     $registration->markPaid();
     
     $payment = new Model\Payment(array('_id'=>$paymentId),$app);
@@ -194,7 +204,7 @@ $app->get('/registration/{paymentId}/pay/{registrationId}', function ($paymentId
 	);
 	$body = $app['view']->render('email/payment-thankyou','email', $view_vars);
 	
-	$user = $app['session']->get('user');
+	
 	if(array_key_exists('accessLevel', $user) && ($user['accessLevel'] == ADMIN || ((is_array($user)) && array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') )) && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes'){
 		// don't send the email		
 	}else{
@@ -276,7 +286,12 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 		
 	}
 	if(array_key_exists('currentStatus', $doc) && $doc['currentStatus'] == Model\Registration::$status['SCHOLARSHIP']){
-		$app['seminarConfirmationEmail']($app,$rs_id);
+		$user = $app['session']->get('user');
+	    if(array_key_exists('accessLevel', $user) && ($user['accessLevel'] == ADMIN || ((is_array($user)) && array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') )) && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes'){
+			// don't send the email		
+		}else{
+			$app['seminarConfirmationEmail']($app,$rs_id);
+		}
 	}
 	//*/
 	return new Response(json_encode(array(
@@ -340,6 +355,10 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 	    	$body = $app['view']->render('email/registration-seminar-admin','email', $view_vars);
 	    	$app['sendMail']($subject, $body, $to);
 
+	    	/**
+				This is no longer necessary
+	    	*/
+			/*
 	    	// send applicant the email notification (this is not the confirmation, which also includes the deposit)
     		$subject = 'NCDD Seminar Registration Information';
 	    	$to = $doc['email'];
@@ -357,7 +376,7 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 	    	);
 	    	$body = $app['view']->render('email/registration-seminar-customer','email', $view_vars);
 	    	$app['sendMail']($subject, $body, $to);
-
+			//*/
 	    endif;
 	    //*/
 });
