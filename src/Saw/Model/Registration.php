@@ -55,7 +55,7 @@ class Registration extends Model {
         $this->currentStatus = $doc['currentStatus'];
         $this->currentPaymentType = $doc['currentPaymentType'];
 		$this->name = $doc['name'];
-		$this->phone = $doc['phone'];
+		$this->phone = (string)$doc['phone'];
 		$this->fax = $doc['fax'];
 		$this->email = $doc['email'];
 		$this->address1 = $doc['address1'];
