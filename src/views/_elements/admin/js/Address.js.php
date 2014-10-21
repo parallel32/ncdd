@@ -134,7 +134,7 @@
 			// preapre the table row
 			tr_row = '<tr>'+
 			'<td class="highlight">'+
-			'We could not validate this address.  Please click "SELECT" to the right and enter the address manually.'+
+			'We could not validate this address.  Please click "CANCEL" below, enter the address manually and try again.'+
 			'</td>'+
 			'<td><a class="btn mini purple" '+
 			'data-address="'+address1+'"'+

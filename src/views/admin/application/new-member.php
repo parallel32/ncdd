@@ -150,7 +150,7 @@
                      <!--/span-->
                   </div>
                   <!-- BEGIN ADDRESS -->
-                  <h3 class="form-section">Address</h3>
+                  <h3 class="form-section">Business Address</h3>
                   <div class="row-fluid addr ">
                      <div class="span12 ">
                         <div class="control-group">
@@ -229,10 +229,34 @@
                   <input type="hidden" name="doc[lat]" id="lat">
                   <input type="hidden" name="doc[lon]" id="lon">
                   <!-- BEGIN ADDRESS MODAL -->
+
+<script>
+jQuery(document).ready(function() {
+   var geocoding_started = false;
+   $('#country').keyup(function(e){
+      if(!geocoding_started){
+         $('#saw-form .btn.geocodeaddress').trigger('click');
+         geocoding_started = true;
+      }
+   });
+   $('#country').change(function(e){
+      if(!geocoding_started){
+         $('#saw-form .btn.geocodeaddress').trigger('click');
+         geocoding_started = true;
+      }
+   });
+   $('#geocodeaddress').focus(function(e){
+      if(!geocoding_started){
+         $('#saw-form .btn.geocodeaddress').trigger('click');
+         geocoding_started = true;
+      }
+   });    
+});      
+</script>
                   <div id="address_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="address-modal-label" aria-hidden="true">
                      <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                        <h3 id="address-modal-label">Select the Address</h3>
+                        <h3 id="address-modal-label">GEOCODE Your Address</h3>
                         <p>Select the address which you intend to use.</p>
                      </div>
                      <div class="modal-body">
@@ -253,7 +277,7 @@
                                                 <td class="highlight">
                                                    Loading Address...
                                                 </td>
-                                                <td><a class="btn mini purple" 
+                                                <td><a class="btn mini purple hide" 
                                                    data-address=""
                                                    data-city=""
                                                    data-state=""

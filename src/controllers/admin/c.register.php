@@ -246,8 +246,8 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 	// get and set the suppress email check
 	$user = $app['session']->get('user');
 	$user['suppress_emails'] = $request->get('suppress_emails');
-	$user = $app['session']->set('user',$user);
-		
+	$app['session']->set('user',$user);
+
 	$registrationFee = $doc['registrationFee'];
 	$hardCopy = (array_key_exists('hardCopy',$doc)) ? $doc['hardCopy'] : '';
 	$hardCopyFee = (array_key_exists('hardCopyFee',$doc)) ? $doc['hardCopyFee'] : '';
