@@ -1211,7 +1211,7 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 	}
 	endif;
 	$date = new Model\Date($app,'9/16/2014 5:00 PM');
-	$newlypaid = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('promocode'=>array('$nin'=>array('NCDD2014','TRIAL')),'paidDate.date'=>array('$gte'=> new \MongoDate(strtotime($date->iso)))));
+	$newlypaid = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION')),'promocode'=>array('$nin'=>array('NCDD2014','TRIAL')),'paidDate.date'=>array('$gte'=> new \MongoDate(strtotime($date->iso)))));
 	if(!empty($newlypaid)):
 	for ($i=0; $i < count($newlypaid); $i++) { 
 		switch ($newlypaid[$i]['class']) {
