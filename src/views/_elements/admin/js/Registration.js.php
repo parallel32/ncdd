@@ -86,10 +86,28 @@
 		      io.saw.Registration.register();
 		   }
 		});
-		$('.submit-registration').click(function(e){
-			e.preventDefault();
-			io.saw.Registration.register();
+		
+		var DELAY = 500, clicks = 0, timer = null;
+		$(function(){
+		    $('.submit-registration').on("click", function(e){
+		        clicks++;  //count clicks
+		        if(clicks === 1) {
+		            timer = setTimeout(function() {
+		                io.saw.Registration.register();  //perform single-click action    
+		                clicks = 0;             //after action performed, reset counter
+		            }, DELAY);
+		        } else {
+		            clearTimeout(timer);    //prevent single-click action
+		            io.saw.Registration.register();  //perform double-click action
+		            clicks = 0;             //after action performed, reset counter
+		        }
+		    })
+		    .on("dblclick", function(e){
+		        e.preventDefault();  //cancel system double-click event
+		    });
 		});
+
+
 		$('.cancel-registration').click(function(e){
 			e.preventDefault();
 			document.location.href="https://<?=SAW_CONSUMER_WEBSITE?>";
