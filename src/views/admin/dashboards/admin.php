@@ -200,20 +200,6 @@
                   <div class="span3 responsive" data-tablet="span3" data-desktop="span3">
                      <div class="dashboard-stat blue">
                         <div class="visual">
-                           <i class="icon-hideme"><?=$this->vars['st']?></i>
-                        </div>
-                        <div class="details">
-                           <div class="number"></div>
-                           <div class="desc">Faculty</div>
-                        </div>
-                        <a class="more" href="/member/search?query=Faculty">
-                        View <i class="m-icon-swapright m-icon-white"></i>
-                        </a>                 
-                     </div>
-                  </div>
-                  <div class="span3 responsive" data-tablet="span3" data-desktop="span3">
-                     <div class="dashboard-stat blue">
-                        <div class="visual">
                            <i class="icon-hideme"><?=$this->vars['fr']?></i>
                         </div>
                         <div class="details">
