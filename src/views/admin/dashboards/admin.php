@@ -90,7 +90,7 @@
                            <div class="number"></div>
                            <div class="desc">General M's</div>
                         </div>
-                        <a class="more" href="/member/search?query=Sustaining%20Members">
+                        <a class="more" href="/member/search?query=General%20Members">
                         View <i class="m-icon-swapright m-icon-white"></i>
                         </a>                 
                      </div>
