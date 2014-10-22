@@ -204,9 +204,9 @@
                         </div>
                         <div class="details">
                            <div class="number"></div>
-                           <div class="desc">Staff</div>
+                           <div class="desc">Faculty</div>
                         </div>
-                        <a class="more" href="/member/search?query=Staff">
+                        <a class="more" href="/member/search?query=Faculty">
                         View <i class="m-icon-swapright m-icon-white"></i>
                         </a>                 
                      </div>

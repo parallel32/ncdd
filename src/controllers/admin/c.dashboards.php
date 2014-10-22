@@ -65,7 +65,7 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 			$view_vars['sd']=$member->searchCount('State Delegates');
 			$view_vars['fa']=$member->searchCount('Faculty');
 			$view_vars['bc']=$member->searchCount('Board Certified');
-			$view_vars['st']=$member->searchCount('Staff');
+			$view_vars['st']=$member->searchCount('Faculty');
 			$view_vars['fr']=$member->searchCount('Former Regents');
 
 			array_push($view_vars['crumbs'],array('name'=>'Admin','href'=>'/'));
