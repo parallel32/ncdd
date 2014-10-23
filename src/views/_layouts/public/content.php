@@ -27,6 +27,10 @@
           text-shadow: 0 0 0 #dce8f0, 0 0 0 #bfccd5, 0 0 0 #bfccd5, 0 0 0 #bfccd5, 0 0 0 #bfccd5, 0 0 0 #bfccd5, 0 0 0 white;
           z-index: 10;
         }
+        .content .recentNews .thumbnails .thumbnail .caption h4{
+            font-family: bebasregular;
+        }
+        h4 {font-size:14px;}
     </style>
     <body>
         <div class="wrapper">
