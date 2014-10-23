@@ -18,6 +18,14 @@
     <style>
         p img{padding:20px;}
         p.embedly iframe {padding:20px;}
+        .content .title h2, .content .title h3 {
+          border-top: 1px solid #d1dbe1;
+          color: #699bc6;
+          letter-spacing: 2px;
+          margin: 0;
+          position: relative;
+          z-index: 10;
+        }
     </style>
     <body>
         <div class="wrapper">
