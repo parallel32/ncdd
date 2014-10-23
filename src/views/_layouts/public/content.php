@@ -21,9 +21,10 @@
         .content .title h2, .content .title h3 {
           border-top: 1px solid #d1dbe1;
           color: #699bc6;
-          letter-spacing: 2px;
+          letter-spacing: 1px;
           margin: 0;
           position: relative;
+          text-shadow: 0 0 0 #dce8f0, 0 0 0 #bfccd5, 0 0 0 #bfccd5, 0 0 0 #bfccd5, 0 0 0 #bfccd5, 0 0 0 #bfccd5, 0 0 0 white;
           z-index: 10;
         }
     </style>
