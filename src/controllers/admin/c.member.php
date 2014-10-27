@@ -93,6 +93,7 @@ $member->get('/{userId}/edit', function ($userId, Request $request) use ($app) {
 	$member = $member->findById();
 	$member['membershipBadge'] = (!empty($member['currentMembership'])) ? Model\Member::$membershipBadge[$member['currentMembership']] : '';
 	$member['boardCertifiedBadge'] = Model\Member::$boardCertifiedBadge;
+	$member['boardCertifiedBadgeSr'] = Model\Member::$boardCertifiedBadgeSr;
 	$member['facultyBadge'] = (!empty($member['currentFacultyPosition'])) ? Model\Member::$facultyBadge[$member['currentFacultyPosition']]: '';;
 	$member ['membershipReversed'] = Model\Member::$membershipReversed;
 	$member ['facultyPositionReversed'] = Model\Member::$facultyPositionReversed;

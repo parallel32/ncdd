@@ -176,6 +176,9 @@ ul.sidebarlist li {
                             <? if($member['boardCertified'] =='Yes'): ?>
                             <img class="sheild" width="120" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/boardcertified" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
                             <? endif; ?>
+                            <? if(array_key_exists('boardCertifiedSr', $member) && $member['boardCertifiedSr'] =='Yes'): ?>
+                            <img class="sheild" width="120" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/boardcertified" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
+                            <? endif; ?>
                             <? if( !empty($member['currentFacultyPosition']) && $member['currentFacultyPosition'] == \Saw\Model\Member::$facultyPositionReversed[\Saw\Model\Member::$facultyPosition['DELEGATE']]): ?>
                             <img width="100" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/exec" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
                             <? endif; ?>

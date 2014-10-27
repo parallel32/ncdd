@@ -96,6 +96,11 @@ jQuery(document).ready(function() {
                      //console.log('B'+ member.orderNum.toString());
                      orderNum = member.orderNum.toString();
                   }
+                  if(member.hasOwnProperty('boardCertifiedSr')){
+                     var boardCertified = (member.boardCertified == 'Yes' || member.boardCertifiedSr == 'Yes') ? 'Yes' : 'No';
+                  }else{
+                     var boardCertified = member.boardCertified;
+                  }
                   html = '<tr>'+
                         '   <td><img width="159" src="'+member.image+'" alt=""></td>'+
                         '   <td class="">'+member.displayName+'</td>'+
@@ -105,7 +110,7 @@ jQuery(document).ready(function() {
                         '   <td class=" hidden-phone"><span class="label">'+member.currentOrder+'</span></td>'+
                         '   <td class=" hidden-phone"><span class="label">'+member.currentMembership+'</span></td>'+
                         '   <td class=" hidden-phone hidden-tablet"><span class="label">'+member.currentFacultyPosition+'</span></td>'+
-                        '   <td class=" hidden-phone hidden-tablet"><span class="label">'+member.boardCertified+'</span></td>'+
+                        '   <td class=" hidden-phone hidden-tablet"><span class="label">'+boardCertified+'</span></td>'+
                         '   <td class=" hidden-phone hidden-tablet"><span class="label">'+member.listed+'</span></td>'+
                         '   <td><a target="_blank" class="btn mini green-stripe" href="https://<?=SAW_CONSUMER_WEBSITE?>/member/'+member._id.$id+'/'+member.slug+'">View</a></td>'+
                         <? if($accessLevel >= EDITOR): ?>

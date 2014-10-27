@@ -160,6 +160,9 @@ ul.sidebarlist li {
                                         <? if($member['boardCertified'] =='Yes'): ?>
                                         <img class="sheild" width="120" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/boardcertified" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
                                         <? endif; ?>
+                                        <? if(array_key_exists('boardCertifiedSr', $member) && $member['boardCertifiedSr'] =='Yes'): ?>
+                                        <img class="sheild" width="120" src="https://<?=SAW_CONSUMER_WEBSITE?>/badge/<?=$member['_id']?>/boardcertified" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
+                                        <? endif; ?>
                                     </div>
                                     <div class="span4 bc">
                                         <a href="mailto:<?=$member['email']?>"><img src="/assets/img/contactme.png"></a>

@@ -51,8 +51,8 @@ class Member extends User {
 											,30=>'./../../../www/ncdd.com/public_html/assets/img/badges/sustaining.png'
 											);
 	// order descending
-	static public $order = array('DEAN'=>65,'FELLOW'=>60,'DEAN EMERITUS'=>58,'ASSISTANT DEAN'=>57,'SECRETARY'=>56,'TREASURER'=>55,'REGENT'=>50,'BOARD CERTIFIED'=>45,'FOUNDING MEMBER'=>40,'SUSTAINING MEMBER'=>35,'DELEGATE'=>20,'FORMER REGENT'=>15,'GENERAL MEMBER'=>5,'PUBLIC DEFENDER'=>3);
-	static public $orderReversed = array(65=>'DEAN',60=>'FELLOW',58=>'DEAN EMERITUS',57=>'ASSISTANT DEAN',56=>'SECRETARY',55=>'TREASURER',50=>'REGENT',45=>'BOARD CERTIFIED',40=>'FOUNDING MEMBER',35=>'SUSTAINING MEMBER',20=>'DELEGATE',15=>'FORMER REGENT',5=>'GENERAL MEMBER',3=>'PUBLIC DEFENDER');
+	static public $order = array('DEAN'=>65,'FELLOW'=>60,'DEAN EMERITUS'=>58,'ASSISTANT DEAN'=>57,'SECRETARY'=>56,'TREASURER'=>55,'REGENT'=>50,'BOARD CERTIFIED SR'=>47,'BOARD CERTIFIED'=>45,'FOUNDING MEMBER'=>40,'SUSTAINING MEMBER'=>35,'DELEGATE'=>20,'FORMER REGENT'=>15,'GENERAL MEMBER'=>5,'PUBLIC DEFENDER'=>3);
+	static public $orderReversed = array(65=>'DEAN',60=>'FELLOW',58=>'DEAN EMERITUS',57=>'ASSISTANT DEAN',56=>'SECRETARY',55=>'TREASURER',50=>'REGENT',47=>'BOARD CERTIFIED SR',45=>'BOARD CERTIFIED',40=>'FOUNDING MEMBER',35=>'SUSTAINING MEMBER',20=>'DELEGATE',15=>'FORMER REGENT',5=>'GENERAL MEMBER',3=>'PUBLIC DEFENDER');
 	public $currentOrder;
 	
 	// order descending
@@ -73,6 +73,8 @@ class Member extends User {
 	public static $staffBadge = './../../../www/ncdd.com/public_html/assets/img/badges/faculty.png';
 	public $boardCertified; // yes | no
 	public static $boardCertifiedBadge = './../../../www/ncdd.com/public_html/assets/img/badges/boardcertified.png';
+	public $boardCertifiedSr; // yes | no
+	public static $boardCertifiedBadgeSr = './../../../www/ncdd.com/public_html/assets/img/badges/boardcertifiedsr.png';
 	public $listed;
 	public $joinDate;
 	public $timeZone='America/New_York';
@@ -105,11 +107,20 @@ class Member extends User {
 		
         if(strtolower($doc['boardCertified']) == 'yes'){
 			$this->boardCertified = 1;
+			$this->boardCertifiedSr = 0;
+		}else if(strtolower($doc['boardCertified']) == 'yes2'){
+			$this->boardCertified = 0;
+			$this->boardCertifiedSr = 1;
 		}else if(strtolower($doc['boardCertified']) == 'no'){
 			$this->boardCertified = 0;
+			$this->boardCertifiedSr = 0;
 		}else if(is_numeric($doc['boardCertified'])){
 			$this->boardCertified = (int)$doc['boardCertified'];
 		}
+		if(is_numeric($doc['boardCertifiedSr'])){
+			$this->boardCertifiedSr = (int)$doc['boardCertifiedSr'];
+		}
+
 		if(!empty($doc['joinDate'])){
 			if(is_object($doc['joinDate'])){
 				$this->joinDate = $doc['joinDate']->__toArray();
@@ -165,6 +176,9 @@ class Member extends User {
 		if($this->boardCertified){
 			array_push($order_arr, self::$order['BOARD CERTIFIED']);	
 		}
+		if($this->boardCertifiedSr){
+			array_push($order_arr, self::$order['BOARD CERTIFIED SR']);	
+		}
 		rsort($order_arr);
 		if(!empty($order_arr)){
 			$this->currentOrder = $order_arr[0];
@@ -207,6 +221,7 @@ class Member extends User {
 		$this->currentOrder = $this->currentOrder ?: self::$order['GENERAL MEMBER'];
 		$this->currentFacultyPosition = $this->currentFacultyPosition ?: 0;
 		$this->boardCertified = $this->boardCertified ?: 0;
+		$this->boardCertifiedSr = $this->boardCertifiedSr ?: 0;
 		$this->staff = $this->staff ?: 0;
 		$this->joinDate = (!empty($this->joinDate)) ? (is_object($this->joinDate)) ? $this->joinDate->__toArray() : $this->joinDate  : new Date(self::$app,'now', $this->timeZone);
 		$this->timeZone = $this->timeZone ?: 'America/New_York';
@@ -382,6 +397,7 @@ class Member extends User {
 					,'currentMembership'=>1
 					,'currentFacultyPosition'=>1
 					,'boardCertified'=>1
+					,'boardCertifiedSr'=>1
 					,'staff'=>1
 					,'listed'=>1
 					,'websites'=>1
@@ -431,6 +447,7 @@ class Member extends User {
 					$result[$i]['currentMembership'] = $value['member']['currentMembership'];
 					$result[$i]['currentFacultyPosition'] = $value['member']['currentFacultyPosition'];
 					$result[$i]['boardCertified'] = $value['member']['boardCertified'];
+					$result[$i]['boardCertifiedSr'] = $value['member']['boardCertifiedSr'];
 					$result[$i]['staff'] = (array_key_exists('staff',$value['member'])) ? $value['member']['staff']: '';
 					$result[$i]['listed'] = $value['member']['listed'];
 					$result[$i]['websites'] = $value['member']['websites'];
@@ -583,6 +600,13 @@ class Member extends User {
 					$result = $this->find($query=array('boardCertified'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
 				}
 				break;
+			case 'Board Certified Sr':
+				if($listedOnly){
+					$result = $this->find($query=array('boardCertifiedSr'=>1,'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				}else{
+					$result = $this->find($query=array('boardCertifiedSr'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				}
+				break;
 			case 'Staff':
 				if($listedOnly){
 					$result = $this->find($query=array('staff'=>1,'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
@@ -631,9 +655,11 @@ class Member extends User {
 				$result[$i]['currentMembership'] = (!empty($result[$i]['currentMembership'])) ? self::$membershipReversed[$result[$i]['currentMembership']] : '';
 				$result[$i]['currentFacultyPosition'] = (!empty($result[$i]['currentFacultyPosition'])) ? self::$facultyPositionReversed[$result[$i]['currentFacultyPosition']] : '';
 				$result[$i]['boardCertified'] = ($result[$i]['boardCertified']) ? "Yes" : "No";
+				$result[$i]['boardCertifiedSr'] = (array_key_exists('boardCertifiedSr', $result[$i]) && $result[$i]['boardCertifiedSr']) ? "Yes" : "No";
 				$result[$i]['staff'] = ((array_key_exists('staff',$result[$i])) ? $result[$i]['staff']: '') ? "Yes" : "No";
 				$result[$i]['listed'] = ($result[$i]['listed']) ? "Yes" : "No";
 				$result[$i]['boardCertifiedBadge'] = self::$boardCertifiedBadge;
+				$result[$i]['boardCertifiedBadgeSr'] = self::$boardCertifiedBadgeSr;
 				$result[$i]['staffBadge'] = self::$staffBadge;
 			}
 		endif;
@@ -655,6 +681,7 @@ class Member extends User {
 					,'currentMembership'=>1
 					,'currentFacultyPosition'=>1
 					,'boardCertified'=>1
+					,'boardCertifiedSr'=>1
 					,'staff'=>1
 					,'listed'=>1
 					,'websites'=>1
@@ -699,9 +726,11 @@ class Member extends User {
 				$result[$i]['currentMembership'] = (!empty($result[$i]['currentMembership'])) ? self::$membershipReversed[$result[$i]['currentMembership']] : '';
 				$result[$i]['currentFacultyPosition'] = (!empty($result[$i]['currentFacultyPosition'])) ? self::$facultyPositionReversed[$result[$i]['currentFacultyPosition']] : '';
 				$result[$i]['boardCertified'] = ($result[$i]['boardCertified']) ? "Yes" : "No";
+				$result[$i]['boardCertifiedSr'] = (array_key_exists('boardCertifiedSr', $result[$i]) && $result[$i]['boardCertifiedSr']) ? "Yes" : "No";
 				$result[$i]['staff'] = ((array_key_exists('staff',$result[$i])) ? $result[$i]['staff']: '') ? "Yes" : "No";
 				$result[$i]['listed'] = ($result[$i]['listed']) ? "Yes" : "No";
 				$result[$i]['boardCertifiedBadge'] = self::$boardCertifiedBadge;
+				$result[$i]['boardCertifiedBadgeSr'] = self::$boardCertifiedBadgeSr;
 				$result[$i]['staffBadge'] = self::$staffBadge;
 			}
 		endif;
@@ -721,6 +750,7 @@ class Member extends User {
 					,'member.currentMembership'=>1
 					,'member.currentFacultyPosition'=>1
 					,'member.boardCertified'=>1
+					,'member.boardCertifiedSr'=>1
 					,'member.staff'=>1
 					,'member.websites'=>1
 					,'raw'=>1
@@ -744,7 +774,9 @@ class Member extends User {
 			$result[$i]['currentMembership'] = (!empty($value['member']['currentMembership'])) ? self::$membershipReversed[$value['member']['currentMembership']] : '';;
 			$result[$i]['currentFacultyPosition'] = (!empty($value['member']['currentFacultyPosition'])) ? self::$facultyPositionReversed[$value['member']['currentFacultyPosition']] : '';
 			$result[$i]['boardCertified'] = ($value['member']['boardCertified']) ? "Yes" : "No";
+			$result[$i]['boardCertifiedSr'] = (array_key_exists('boardCertifiedSr', $value['member']) && $value['member']['boardCertifiedSr']) ? "Yes" : "No";
 			$result[$i]['boardCertifiedBadge'] = self::$boardCertifiedBadge;
+			$result[$i]['boardCertifiedBadgeSr'] = self::$boardCertifiedBadgeSr;
 			$result[$i]['staff'] = ((array_key_exists('staff',$value['member'])) ? $value['member']['staff']: '') ? "Yes" : "No";
 			$result[$i]['staffBadge'] = self::$staffBadge;
 			
@@ -775,6 +807,7 @@ class Member extends User {
 					,'member.currentMembership'=>1
 					,'member.currentFacultyPosition'=>1
 					,'member.boardCertified'=>1
+					,'member.boardCertifiedSr'=>1
 					,'member.staff'=>1
 					,'member.websites'=>1
 					,'raw'=>1
@@ -797,6 +830,8 @@ class Member extends User {
 			$result[$i]['currentFacultyPosition'] = (!empty($value['member']['currentFacultyPosition'])) ? self::$facultyPositionReversed[$value['member']['currentFacultyPosition']] : '';
 			$result[$i]['boardCertified'] = ($value['member']['boardCertified']) ? "Yes" : "No";
 			$result[$i]['boardCertifiedBadge'] = self::$boardCertifiedBadge;
+			$result[$i]['boardCertifiedSr'] = (array_key_exists('boardCertifiedSr', $value['member']) && $value['member']['boardCertifiedSr']) ? "Yes" : "No";
+			$result[$i]['boardCertifiedBadgeSr'] = self::$boardCertifiedBadgeSr;
 			$result[$i]['staff'] = ((array_key_exists('staff',$value['member'])) ? $value['member']['staff']: '') ? "Yes" : "No";
 			$result[$i]['staffBadge'] = self::$staffBadge;
 			
@@ -827,6 +862,7 @@ class Member extends User {
 					,'member.currentMembership'=>1
 					,'member.currentFacultyPosition'=>1
 					,'member.boardCertified'=>1
+					,'member.boardCertifiedSr'=>1
 					,'member.staff'=>1
 					,'member.websites'=>1
 					,'raw'=>1
@@ -860,6 +896,8 @@ class Member extends User {
 			$result[$i]['currentFacultyPosition'] = (!empty($value['member']['currentFacultyPosition'])) ? self::$facultyPositionReversed[$value['member']['currentFacultyPosition']] : '';
 			$result[$i]['boardCertified'] = ($value['member']['boardCertified']) ? "Yes" : "No";
 			$result[$i]['boardCertifiedBadge'] = self::$boardCertifiedBadge;
+			$result[$i]['boardCertifiedSr'] = (array_key_exists('boardCertifiedSr', $value['member']) && $value['member']['boardCertifiedSr']) ? "Yes" : "No";
+			$result[$i]['boardCertifiedBadgeSr'] = self::$boardCertifiedBadgeSr;
 			$result[$i]['staff'] = ((array_key_exists('staff',$value['member'])) ? $value['member']['staff']: '') ? "Yes" : "No";
 			$result[$i]['staffBadge'] = self::$staffBadge;
 			
@@ -890,6 +928,7 @@ class Member extends User {
 					,'member.currentMembership'=>1
 					,'member.currentFacultyPosition'=>1
 					,'member.boardCertified'=>1
+					,'member.boardCertifiedSr'=>1
 					,'member.staff'=>1
 					,'member.websites'=>1
 					,'raw'=>1
@@ -913,6 +952,8 @@ class Member extends User {
 			$result[$i]['currentFacultyPosition'] = (!empty($value['member']['currentFacultyPosition'])) ? self::$facultyPositionReversed[$value['member']['currentFacultyPosition']] : '';
 			$result[$i]['boardCertified'] = ($value['member']['boardCertified']) ? "Yes" : "No";
 			$result[$i]['boardCertifiedBadge'] = self::$boardCertifiedBadge;
+			$result[$i]['boardCertifiedSr'] = (array_key_exists('boardCertifiedSr', $value['member']) && $value['member']['boardCertifiedSr']) ? "Yes" : "No";
+			$result[$i]['boardCertifiedBadgeSr'] = self::$boardCertifiedBadgeSr;
 			$result[$i]['staff'] = ((array_key_exists('staff',$value['member'])) ? $value['member']['staff']: '') ? "Yes" : "No";
 			$result[$i]['staffBadge'] = self::$staffBadge;
 			
@@ -1034,6 +1075,13 @@ class Member extends User {
 					$result = $this->count($query=array('boardCertified'=>1,'listed'=>1),true);		
 				}else{
 					$result = $this->count($query=array('boardCertified'=>1),true);		
+				}
+				break;
+			case 'Board Certified Sr':
+				if($listedOnly){
+					$result = $this->count($query=array('boardCertifiedSr'=>1,'listed'=>1),true);		
+				}else{
+					$result = $this->count($query=array('boardCertifiedSr'=>1),true);		
 				}
 				break;
 			case 'Staff':

@@ -200,6 +200,20 @@
                   <div class="span3 responsive" data-tablet="span3" data-desktop="span3">
                      <div class="dashboard-stat blue">
                         <div class="visual">
+                           <i class="icon-hideme"><?=$this->vars['bcsr']?></i>
+                        </div>
+                        <div class="details">
+                           <div class="number"></div>
+                           <div class="desc">Board Certified Sr</div>
+                        </div>
+                        <a class="more" href="/member/search?query=Board%20Certified%20Sr">
+                        View <i class="m-icon-swapright m-icon-white"></i>
+                        </a>                 
+                     </div>
+                  </div>
+                  <div class="span3 responsive" data-tablet="span3" data-desktop="span3">
+                     <div class="dashboard-stat blue">
+                        <div class="visual">
                            <i class="icon-hideme"><?=$this->vars['fr']?></i>
                         </div>
                         <div class="details">
@@ -279,23 +293,19 @@
                   </div>
                </div>
                <div class="responsive span6" data-tablet="span6" data-desktop="span6">
-                  <a name="approve"></a>
-                  <div class="dashboard-stat blue">
+                  <div class="dashboard-stat purple">
                      <div class="visual">
-                        <i class="icon-hideme"><?=$this->vars['ncddtrialpromocode'];?></i>
+                        <i class="icon-hide-me"><span class="number"><?=$this->vars['trial'];?></span></i>
                      </div>
                      <div class="details">
-                        <div class="number"><font><font>TRIAL Promo</font></font></div>
-                        <div class="desc"><font><font>
-                           
-                        </font></font></div>
+                        <div class="number"><font><font></font>Trial Mode</font></div>
+                        <div class="desc"><font><font></font></font></div>
                      </div>
                      <a class="more" href="/applications#trial"><font><font>
                      Go </font></font><i class="m-icon-swapright m-icon-white"></i>
                      </a>                 
                   </div>
                </div>
-               
             </div>
             
             <div class="row-fluid">
@@ -315,20 +325,7 @@
                      </a>                 
                   </div>
                </div>
-               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
-                  <div class="dashboard-stat purple">
-                     <div class="visual">
-                        <i class="icon-hide-me"><span class="number"><?=$this->vars['trial'];?></span></i>
-                     </div>
-                     <div class="details">
-                        <div class="number"><font><font></font>Trial Mode</font></div>
-                        <div class="desc"><font><font></font></font></div>
-                     </div>
-                     <a class="more" href="/applications#trial"><font><font>
-                     Go </font></font><i class="m-icon-swapright m-icon-white"></i>
-                     </a>                 
-                  </div>
-               </div>
+               
             </div>
                
 

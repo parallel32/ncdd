@@ -572,6 +572,8 @@ $app->get('/state-delegates/{country}/{state}', function ($country, $state, Requ
 		$result[$i]['currentFacultyPosition'] = (!empty($value['currentFacultyPosition'])) ? Model\Member::$facultyPositionReversed[$value['currentFacultyPosition']] : '';
 		$result[$i]['boardCertified'] = ($value['boardCertified']) ? "Yes" : "No";
 		$result[$i]['boardCertifiedBadge'] = Model\Member::$boardCertifiedBadge;
+		$result[$i]['boardCertifiedSr'] = (array_key_exists('boardCertifiedSr', $value) && $value['boardCertifiedSr']) ? "Yes" : "No";
+		$result[$i]['boardCertifiedBadgeSr'] = Model\Member::$boardCertifiedBadgeSr;
 		$result[$i]['staff'] = ((array_key_exists('staff',$value)) ? $value['staff']: '') ? "Yes" : "No";
 		$result[$i]['staffBadge'] = Model\Member::$staffBadge;
 		
@@ -1093,6 +1095,7 @@ $app->get('/search', function (Request $request) use ($app) {
 				$website = (!empty($member['websites'])) ? '<a href="http://'.$member['websites'][0]['website'].'"> '.$member['websites'][0]['website'].'</a>' : '';
 				$staff = ($member['staff'] =='Yes') ? '<a href="/member/'.$member['_id'].'/'.$member['slug'].'"><img class="sheild" width="100" src="https://'.SAW_CONSUMER_WEBSITE.'/badge/'.$member['_id'].'/staff" alt="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" title="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" /></a>':'';
                 $boardCertified = ($member['boardCertified'] =='Yes') ? '<a href="/member/'.$member['_id'].'/'.$member['slug'].'"><img class="sheild" width="120" src="https://'.SAW_CONSUMER_WEBSITE.'/badge/'.$member['_id'].'/boardcertified" alt="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" title="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" /></a>':'';
+                $boardCertifiedSr = ($member['boardCertifiedSr'] =='Yes') ? '<a href="/member/'.$member['_id'].'/'.$member['slug'].'"><img class="sheild" width="120" src="https://'.SAW_CONSUMER_WEBSITE.'/badge/'.$member['_id'].'/boardcertified" alt="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" title="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" /></a>':'';
                 
                 $title = '<a href="/member/'.$member['_id'].'/'.$member['slug'].'">'.$member['firstName'].$middleName.$member['lastName'].'</a>';
                 $image = '<a href="/member/'.$member['_id'].'/'.$member['slug'].'"><img src="'.$member['image'].'" width="130" alt=""></a>';
@@ -1115,7 +1118,7 @@ $html = <<<EOT
 		<p>{$body}</p>
 	</div>
 	<div class="span5">
-		<a href="/member/{$member['_id']}/{$member['slug']}"><img class="sheild" width="100" src="https://{$saw_consumer_website}/badge/{$member['_id']}/member" alt="NCDD National College for DUI Defense: {$member['firstName']}{$middleName}{$member['lastName']}" title="NCDD National College for DUI Defense: {$member['firstName']}{$middleName}{$member['lastName']}" /></a>{$boardCertified}{$staff} 
+		<a href="/member/{$member['_id']}/{$member['slug']}"><img class="sheild" width="100" src="https://{$saw_consumer_website}/badge/{$member['_id']}/member" alt="NCDD National College for DUI Defense: {$member['firstName']}{$middleName}{$member['lastName']}" title="NCDD National College for DUI Defense: {$member['firstName']}{$middleName}{$member['lastName']}" /></a>{$boardCertified}{$boardCertifiedSr}{$staff} 
 	</div>		
 </li>
 EOT;
@@ -1133,6 +1136,7 @@ EOT;
 				$website = (!empty($member['websites'])) ? '<a href="http://'.$member['websites'][0]['website'].'"> '.$member['websites'][0]['website'].'</a>' : '';
 				$staff = ($member['staff'] =='Yes') ? '<a href="/member/'.$member['_id'].'/'.$member['slug'].'"><img class="sheild" width="100" src="https://'.SAW_CONSUMER_WEBSITE.'/badge/'.$member['_id'].'/staff" alt="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" title="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" /></a>':'';
                 $boardCertified = ($member['boardCertified'] =='Yes') ? '<a href="/member/'.$member['_id'].'/'.$member['slug'].'"><img class="sheild" width="120" src="https://'.SAW_CONSUMER_WEBSITE.'/badge/'.$member['_id'].'/boardcertified" alt="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" title="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" /></a>':'';
+                $boardCertifiedSr = ($member['boardCertifiedSr'] =='Yes') ? '<a href="/member/'.$member['_id'].'/'.$member['slug'].'"><img class="sheild" width="120" src="https://'.SAW_CONSUMER_WEBSITE.'/badge/'.$member['_id'].'/boardcertified" alt="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" title="NCDD National College for DUI Defense: '.$member['firstName'].$middleName.$member['lastName'].'" /></a>':'';
                 
                 $title = '<a href="/member/'.$member['_id'].'/'.$member['slug'].'">'.$member['firstName'].$middleName.$member['lastName'].'</a>';
                 $image = '<a href="/member/'.$member['_id'].'/'.$member['slug'].'"><img src="'.$member['image'].'" width="130" alt=""></a>';
@@ -1154,7 +1158,7 @@ $html = <<<EOT
 		<p>{$body}</p>
 	</div>
 	<div class="span5">
-		<a href="/member/{$member['_id']}/{$member['slug']}"><img class="sheild" width="100" src="https://{$saw_consumer_website}/badge/{$member['_id']}/member" alt="NCDD National College for DUI Defense: {$member['firstName']}{$middleName}{$member['lastName']}" title="NCDD National College for DUI Defense: {$member['firstName']}{$middleName}{$member['lastName']}" /></a>{$boardCertified}{$staff} 
+		<a href="/member/{$member['_id']}/{$member['slug']}"><img class="sheild" width="100" src="https://{$saw_consumer_website}/badge/{$member['_id']}/member" alt="NCDD National College for DUI Defense: {$member['firstName']}{$middleName}{$member['lastName']}" title="NCDD National College for DUI Defense: {$member['firstName']}{$middleName}{$member['lastName']}" /></a>{$boardCertified}{$boardCertifiedSr}{$staff} 
 	</div>		
 </li>
 EOT;

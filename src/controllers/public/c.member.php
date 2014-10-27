@@ -68,6 +68,8 @@ $app->get('/badge/{id}/boardcertified', function ($id, Request $request) use ($a
 	$badge_path = '';
 	if(!empty($member) && $member['boardCertified'])
 		$badge_path = Model\Member::$boardCertifiedBadge;
+	else if(!empty($member) && $member['boardCertifiedSr'])
+		$badge_path = Model\Member::$boardCertifiedBadgeSr;
 
 	if (!file_exists($badge_path)) {
         $img_path = $imgUnavailable;
@@ -131,6 +133,8 @@ $app->get('/member/{id}/{slug}', function ($id, $slug, Request $request) use ($a
 	$member['currentFacultyPosition'] = (!empty($member['currentFacultyPosition'])) ? Model\Member::$facultyPositionReversed[$member['currentFacultyPosition']] : '';
 	$member['boardCertified'] = (array_key_exists('boardCertified',$member) && $member['boardCertified']) ? "Yes" : "No";
 	$member['boardCertifiedBadge'] = Model\Member::$boardCertifiedBadge;
+	$member['boardCertifiedSr'] = (array_key_exists('boardCertifiedSr',$member) && $member['boardCertifiedSr']) ? "Yes" : "No";
+	$member['boardCertifiedBadgeSr'] = Model\Member::$boardCertifiedBadgeSr;
 	$member['staff'] = ((array_key_exists('staff',$member)) ? $member['staff']: '') ? "Yes" : "No";
 	$member['staffBadge'] = Model\Member::$staffBadge;
 	$member['aboutMe'] = $app['prepare_content']($member['aboutMe']);

@@ -38,7 +38,6 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 			$view_vars['approved']=$apply->countByStatus('APPROVED',$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
 			$view_vars['trial']=$apply->countByStatus('TRIAL',$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
 			$view_vars['paid']=$apply->countByDatePaid(90, $filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
-			$view_vars['ncddtrialpromocode']=$apply->countByStatus('TRIAL',$filter=array('promocode'=>'TRIAL'));
 			$view_vars['ncdd2014promocode']=$apply->countByStatus('PAID',$filter=array('promocode'=>'NCDD2014'));
 			$date = new Model\Date($app,'9/16/2014 5:00 PM');
 			$view_vars['newlypaid']=$apply->countByStatus('PAID',$filter=array('promocode'=>array('$nin'=>array('NCDD2014','TRIAL')),'paidDate.date'=>array('$gte'=> new \MongoDate(strtotime($date->iso)))));
@@ -65,6 +64,7 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 			$view_vars['sd']=$member->searchCount('State Delegates');
 			$view_vars['fa']=$member->searchCount('Faculty');
 			$view_vars['bc']=$member->searchCount('Board Certified');
+			$view_vars['bcsr']=$member->searchCount('Board Certified Sr');
 			$view_vars['fr']=$member->searchCount('Former Regents');
 
 			array_push($view_vars['crumbs'],array('name'=>'Admin','href'=>'/'));
