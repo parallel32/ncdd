@@ -15,7 +15,7 @@
 <br/>
 <br/>Your scholarship application for <b><?=$this->vars['for']?></b> has been received.
 <br/>
-<br/>When your application is approved, you will receive an email with instructions.
+<br/>If your application is approved, you will receive an email with instructions.
 <br/>
 <br>National College for DUI Defense, Inc. 
 <br>445 S. Decatur St. 

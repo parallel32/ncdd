@@ -351,7 +351,8 @@ $app->get('/scholarship/{id}/approve', function ($id,Request $request) use ($app
 	if(($user['accessLevel'] == ADMIN || ((is_array($user)) && array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') ) ) && $user['suppress_emails'] == 'yes'){
 		// do nothing
 	}else{
-		$app['sendMail']($subject, $body, $to);
+		// temporarily disabled because Hunter and Rhea will manually send a letter out
+		//$app['sendMail']($subject, $body, $to);
 	}
 	return new Response(json_encode(array('message' => 'Approved successfully')), 200,array('Content-Type' => 'application/json'));
 })->before($mustbeADMIN);
