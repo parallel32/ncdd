@@ -173,6 +173,18 @@
                      </div>
                      <!--/span-->
                   </div>
+                  <div class="row-fluid ">
+                     <div class="span12 ">
+                        <div class="control-group">
+                           <label class="control-label" >Children Attendees Dinner RSVP</label>
+                           <div class="controls">
+                              <input type="text" disabled name="doc[rsvpkids]" value="<?=(array_key_exists('rsvpkids',$this->vars['registration'])) ? $this->vars['registration']['rsvpkids']:'' ?>" class="m-wrap span12 rsvpkids"> 
+                              <span class="help-block">Please enter how many children you would like to RSVP for the dinner.</span>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
                   <? endif; ?>
                   </br></br>
                   <h3 class="form-section">4. Attendance Certification Statement</h3>

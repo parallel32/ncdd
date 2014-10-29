@@ -182,6 +182,25 @@ endif; ?>
                      </div>
                      <!--/span-->
                   </div>
+                  <div class="row-fluid ">
+                     <div class="span12 ">
+                        <div class="control-group">
+                           <label class="control-label" >Children Attendees Dinner RSVP</label>
+                           <div class="controls">
+                              <select name="doc[rsvpkids]" class="span6 m-wrap rsvpkids">
+                                 <option <?=(array_key_exists('rsvpkids',$this->vars['registration']) && $this->vars['registration']['rsvpkids'] == 0) ? 'selected': ''?> value="0">0</option>
+                                 <option <?=(array_key_exists('rsvpkids',$this->vars['registration']) && $this->vars['registration']['rsvpkids'] == 1) ? 'selected': ''?> value="1">1</option>
+                                 <option <?=(array_key_exists('rsvpkids',$this->vars['registration']) && $this->vars['registration']['rsvpkids'] == 2) ? 'selected': ''?> value="2">2</option>
+                                 <option <?=(array_key_exists('rsvpkids',$this->vars['registration']) && $this->vars['registration']['rsvpkids'] == 3) ? 'selected': ''?> value="3">3</option>
+                                 <option <?=(array_key_exists('rsvpkids',$this->vars['registration']) && $this->vars['registration']['rsvpkids'] == 4) ? 'selected': ''?> value="4">4</option>
+                                 <option <?=(array_key_exists('rsvpkids',$this->vars['registration']) && $this->vars['registration']['rsvpkids'] == 5) ? 'selected': ''?> value="5">5</option>
+                              </select>
+                              <span class="help-block">Please enter how many children you would like to RSVP for the dinner.</span>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
                   <? endif; ?>
                   </br></br>
                   <h3 class="form-section">4. Attendance Certification Statement</h3>

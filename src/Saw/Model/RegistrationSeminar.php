@@ -18,6 +18,7 @@ class RegistrationSeminar extends Registration {
 	public $nameTag;
 	public $barNumber;
 	public $rsvp;
+	public $rsvpkids;
 	public $attendanceCertificationStatement;
 	public $hardCopy; // YES | NO
 	public $registrationFee;
@@ -57,6 +58,7 @@ class RegistrationSeminar extends Registration {
 		$this->nameTag = $doc['nameTag'];
 		$this->barNumber = (string)$doc['barNumber'];
 		$this->rsvp = (string)$doc['rsvp'];
+		$this->rsvpkids = (string)$doc['rsvpkids'];
 		$date = new \DateTime();
 		$acs_text = ', on this '.$date->format('dS').' day of '.$date->format('F').', 20'.$date->format('y');
 		if(!empty($doc['attendanceCertificationStatement']) && strpos($doc['attendanceCertificationStatement'],'day of') === false){
@@ -85,6 +87,7 @@ class RegistrationSeminar extends Registration {
 		$this->nameTag = $this->nameTag ?: '';
 		$this->barNumber = $this->barNumber ?: '';
 		$this->rsvp = $this->rsvp ?: '';
+		$this->rsvpkids = $this->rsvpkids ?: '';
 		$this->attendanceCertificationStatement = $this->attendanceCertificationStatement ?: '';
 		$this->hardCopy = $this->hardCopy ?: 'NO';
 		$this->registrationFee = $this->registrationFee ?: 0;

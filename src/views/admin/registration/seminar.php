@@ -241,6 +241,25 @@ endif; ?>
                      </div>
                      <!--/span-->
                   </div>
+                  <div class="row-fluid ">
+                     <div class="span12 ">
+                        <div class="control-group">
+                           <label class="control-label" >Children Attendees Dinner RSVP</label>
+                           <div class="controls">
+                              <select name="doc[rsvpkids]" class="span6 m-wrap rsvpkids">
+                                 <option value="0">0</option>
+                                 <option value="1">1</option>
+                                 <option value="2">2</option>
+                                 <option value="3">3</option>
+                                 <option value="4">4</option>
+                                 <option value="5">5</option>
+                              </select>
+                              <span class="help-block">Please enter how many children you would like to RSVP for the dinner.</span>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
                   <? endif; ?>
                   </br></br>
                   <h3 class="form-section">4. Attendance Certification Statement</h3>
