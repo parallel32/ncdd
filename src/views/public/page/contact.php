@@ -8,16 +8,17 @@
                         <div class="contactContent">
                             <p>Feel free to submit any inquiries directly through this form.</p>
                             <form id="saw-form" class="pull-left span6">
-                                <div class="alert alert-error hide">
-                                  
-                                </div>   
+                                <div class="alert alert-error hide"></div>
                                 <input type="text" name="doc[name]" placeholder="Your Name" class="span12">
                                 <input type="text" name="doc[email]" placeholder="Your E-mail" class="span12">
                                 <textarea  name="doc[message]" cols="30" rows="10" placeholder="Message" class="span12"></textarea>
                                 <img id="challenge" src="<? $captcha = $this->app['session']->get('captcha'); echo $captcha['image_src'];?>" style="padding-bottom:10px;">
                                 <input type="text" name="doc[challenge]" placeholder="Type Image Text Here" class="span12">
                                 <span class="help-block">You can type in upper case or lower case letters.</span>
-                                <input id="send-contact" type="button" class="btn pull-right" value="Send">
+                                <div class="form-actions text-center">
+                                    <button id="send-contact" type="button" class="btn pull-right">Submit</button>
+                                </div>
+                                <div class="alert alert-error hide"></div>
                             </form>
                             <div class="address pull-right span6">
                                 <address><p><?=$this->vars['page']['body']?></p></address>
@@ -32,8 +33,8 @@
                     <?=$this->element('js/FormPostClass.js');?>
                     <script>
                         jQuery(document).ready(function() {
-                            $('#saw-form .btn').click(function(e){
-                                e.preventDefault();
+                            var submitcontact = function(){
+                                $('.alert').addClass('hide').removeClass('alert-success').addClass('alert-error').html('');
                                 $('#send-contact').val('Sending...');
                                 $('#send-contact').attr('disabled',true);
                                 io.saw.FormPost.activate({
@@ -51,7 +52,31 @@
                                             var responseObj = $.parseJSON(responseObj.responseText);
                                         }
                                     }
-                                   ,postOnSuccess:function(){}
+                                   ,postOnSuccess:function(){
+                                        $('input[type=text]').val('');
+                                        $('textarea').val('');
+                                        
+                                        
+                                   }
+                                });
+                            };
+                            var DELAY = 300, clicks = 0, timer = null;
+                            $(function(){
+                                $('#saw-form .btn').on("click", function(e){
+                                    clicks++;  //count clicks
+                                    if(clicks === 1) {
+                                        timer = setTimeout(function() {
+                                            submitcontact();
+                                            clicks = 0;
+                                        }, DELAY);
+                                    } else {
+                                        clearTimeout(timer);    //prevent single-click action
+                                        submitcontact();
+                                        clicks = 0;
+                                    }
+                                })
+                                .on("dblclick", function(e){
+                                    e.preventDefault();
                                 });
                             });
                             
