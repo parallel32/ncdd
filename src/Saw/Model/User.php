@@ -168,7 +168,7 @@ class User extends Model {
 
 	public static function getUserBySession(Application $app, $collection){
 		
-		$user_id = call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$app);
+		$user_id = call_user_func(function($app){ $user = $app['session']->get('user'); return (array_key_exists('user_id',$user)) ? $user['user_id'] : '';},$app);
 		$user_doc = array();
 		if(!empty($user_id)) {
 			$query = array('_id'=>$user_id);
