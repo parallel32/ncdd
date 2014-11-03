@@ -115,7 +115,7 @@ ul.sidebarlist li {
 
 <div class="container"><div class="title text-center">
 <div class="bg">
-<h3><?=$this->vars['state']?> Faculty</h3>
+<h3><?=$this->vars['state']?> Board Certified Senior Members</h3>
 </div>
 </div></div>
 <div class="container-fluid pagecontent" id="learn">
@@ -128,57 +128,10 @@ ul.sidebarlist li {
                                 </a>
                                 <ul class="mapsPhoneDropdown">
                                     <li class="titleMap">USA</li>
-                                    <li><a href="/faculty/usa/alabama">Alabama</a></li>
-                                <!--<li><a href="/faculty/usa/alaska">Alaska</a></li>-->
-                                <!--<li><a href="/faculty/usa/arizona">Arizona</a></li>-->
-                                <!--<li><a href="/faculty/usa/arkansas">Arkansas</a></li>-->
-                                <li><a href="/faculty/usa/california">California</a></li>
-                                <!--<li><a href="/faculty/usa/colorado">Colorado</a></li>-->
-                                <li><a href="/faculty/usa/connecticut">Connecticut</a></li>
-                                <!--<li><a href="/faculty/usa/delaware">Delaware</a></li>-->
-                                <!--<li><a href="/faculty/usa/washington-dc">Washington DC</a></li>-->
-                                <li><a href="/faculty/usa/florida">Florida</a></li>
-                                <li><a href="/faculty/usa/georgia">Georgia</a></li>
-                                <!--<li><a href="/faculty/usa/hawaii">Hawaii</a></li>-->
-                                <!--<li><a href="/faculty/usa/idaho">Idaho</a></li>-->
-                                <li><a href="/faculty/usa/illinois">Illinois</a></li>
-                                <!--<li><a href="/faculty/usa/indiana">Indiana</a></li>-->
-                                <!--<li><a href="/faculty/usa/iowa">Iowa</a></li>-->
-                                <li><a href="/faculty/usa/kansas">Kansas</a></li>
-                                <!--<li><a href="/faculty/usa/kentucky">Kentucky</a></li>-->
-                                <!--<li><a href="/faculty/usa/louisiana">Louisiana</a></li>-->
-                                <li><a href="/faculty/usa/maine">Maine</a></li> 
-                                <li><a href="/faculty/usa/maryland">Maryland</a></li>
-                                <li><a href="/faculty/usa/massachusetts">Massachusetts</a></li>
-                                <!--<li><a href="/faculty/usa/michigan">Michigan</a></li>-->
-                                <!--<li><a href="/faculty/usa/minnesota">Minnesota</a></li>-->
-                                <!--<li><a href="/faculty/usa/mississippi">Mississippi</a></li>-->
-                                <!--<li><a href="/faculty/usa/missouri">Missouri</a></li>-->
-                                <!--<li><a href="/faculty/usa/montana">Montana</a></li>-->
-                                <!--<li><a href="/faculty/usa/nebraska">Nebraska</a></li>
-                                <li><a href="/faculty/usa/nevada">Nevada</a></li>-->
-                                <li><a href="/faculty/usa/new-hampshire">New Hampshire</a></li>
-                                <li><a href="/faculty/usa/new-jersey">New Jersey</a></li>
-                                <!--<li><a href="/faculty/usa/new-mexico">New Mexico</a></li>-->
-                                <li><a href="/faculty/usa/new-york">New York</a></li>
-                                <!--<li><a href="/faculty/usa/north-carolina">North Carolina</a></li>-->
-                                <!--<li><a href="/faculty/usa/north-dakota">North Dakota</a></li>-->
-                                <li><a href="/faculty/usa/ohio">Ohio</a></li>
-                                <li><a href="/faculty/usa/oklahoma">Oklahoma</a></li>
-                                <!--<li><a href="/faculty/usa/oregon">Oregon</a></li>-->
-                                <li><a href="/faculty/usa/pennsylvania">Pennsylvania</a></li> 
-                                <!--<li><a href="/faculty/usa/rhode-island">Rhode Island</a></li>-->
-                                <li><a href="/faculty/usa/south-carolina">South Carolina</a></li>
-                                <!--<li><a href="/faculty/usa/south-dakota">South Dakota</a></li>-->
-                                <li><a href="/faculty/usa/tennessee">Tennessee</a></li>
-                                <li><a href="/faculty/usa/texas">Texas</a></li>
-                                <li><a href="/faculty/usa/utah">Utah</a></li> 
-                                <!--<li><a href="/faculty/usa/vermont">Vermont</a></li>-->
-                                <!--<li><a href="/faculty/usa/virginia">Virginia </a></li>-->
-                                <li><a href="/faculty/usa/washington">Washington</a></li>
-                                <li><a href="/faculty/usa/west-virginia">West Virginia</a></li>
-                                <!--<li><a href="/faculty/usa/wisconsin">Wisconsin</a></li>-->
-                                <!--<li><a href="/faculty/usa/wyoming">Wyoming </a></li>-->
+                                    <li><a href="/board-certified-senior-members/usa/california">California</a></li>
+                                <li><a href="/board-certified-senior-members/usa/florida">Florida</a></li>
+                                <li><a href="/board-certified-senior-members/usa/washington">Washington</a></li>
+                                    
                                     <!--
                                     <li class="titleMap">Canada</li>
                                     <li><a href="/find-an-attorney/cananda/ontario">Ontario </a></li>
@@ -193,63 +146,17 @@ ul.sidebarlist li {
                           <div class="selectstate center bc">SELECT A STATE</div>
                           <div class="country bc">USA</div>
                           <ul class="sidebarlist bc">
-                            <li><a href="/faculty/usa/alabama">Alabama</a></li>
-                                <!--<li><a href="/faculty/usa/alaska">Alaska</a></li>-->
-                                <!--<li><a href="/faculty/usa/arizona">Arizona</a></li>-->
-                                <!--<li><a href="/faculty/usa/arkansas">Arkansas</a></li>-->
-                                <li><a href="/faculty/usa/california">California</a></li>
-                                <!--<li><a href="/faculty/usa/colorado">Colorado</a></li>-->
-                                <li><a href="/faculty/usa/connecticut">Connecticut</a></li>
-                                <!--<li><a href="/faculty/usa/delaware">Delaware</a></li>-->
-                                <!--<li><a href="/faculty/usa/washington-dc">Washington DC</a></li>-->
-                                <li><a href="/faculty/usa/florida">Florida</a></li>
-                                <li><a href="/faculty/usa/georgia">Georgia</a></li>
-                                <!--<li><a href="/faculty/usa/hawaii">Hawaii</a></li>-->
-                                <!--<li><a href="/faculty/usa/idaho">Idaho</a></li>-->
-                                <li><a href="/faculty/usa/illinois">Illinois</a></li>
-                                <!--<li><a href="/faculty/usa/indiana">Indiana</a></li>-->
-                                <!--<li><a href="/faculty/usa/iowa">Iowa</a></li>-->
-                                <li><a href="/faculty/usa/kansas">Kansas</a></li>
-                                <!--<li><a href="/faculty/usa/kentucky">Kentucky</a></li>-->
-                                <!--<li><a href="/faculty/usa/louisiana">Louisiana</a></li>-->
-                                <li><a href="/faculty/usa/maine">Maine</a></li> 
-                                <li><a href="/faculty/usa/maryland">Maryland</a></li>
-                                <li><a href="/faculty/usa/massachusetts">Massachusetts</a></li>
-                                <!--<li><a href="/faculty/usa/michigan">Michigan</a></li>-->
-                                <!--<li><a href="/faculty/usa/minnesota">Minnesota</a></li>-->
-                                <!--<li><a href="/faculty/usa/mississippi">Mississippi</a></li>-->
-                                <!--<li><a href="/faculty/usa/missouri">Missouri</a></li>-->
-                                <!--<li><a href="/faculty/usa/montana">Montana</a></li>-->
-                                <!--<li><a href="/faculty/usa/nebraska">Nebraska</a></li>
-                                <li><a href="/faculty/usa/nevada">Nevada</a></li>-->
-                                <li><a href="/faculty/usa/new-hampshire">New Hampshire</a></li>
-                                <li><a href="/faculty/usa/new-jersey">New Jersey</a></li>
-                                <!--<li><a href="/faculty/usa/new-mexico">New Mexico</a></li>-->
-                                <li><a href="/faculty/usa/new-york">New York</a></li>
-                                <!--<li><a href="/faculty/usa/north-carolina">North Carolina</a></li>-->
-                                <!--<li><a href="/faculty/usa/north-dakota">North Dakota</a></li>-->
-                                <li><a href="/faculty/usa/ohio">Ohio</a></li>
-                                <li><a href="/faculty/usa/oklahoma">Oklahoma</a></li>
-                                <!--<li><a href="/faculty/usa/oregon">Oregon</a></li>-->
-                                <li><a href="/faculty/usa/pennsylvania">Pennsylvania</a></li> 
-                                <!--<li><a href="/faculty/usa/rhode-island">Rhode Island</a></li>-->
-                                <li><a href="/faculty/usa/south-carolina">South Carolina</a></li>
-                                <!--<li><a href="/faculty/usa/south-dakota">South Dakota</a></li>-->
-                                <li><a href="/faculty/usa/tennessee">Tennessee</a></li>
-                                <li><a href="/faculty/usa/texas">Texas</a></li>
-                                <li><a href="/faculty/usa/utah">Utah</a></li> 
-                                <!--<li><a href="/faculty/usa/vermont">Vermont</a></li>-->
-                                <!--<li><a href="/faculty/usa/virginia">Virginia </a></li>-->
-                                <li><a href="/faculty/usa/washington">Washington</a></li>
-                                <li><a href="/faculty/usa/west-virginia">West Virginia</a></li>
-                                <!--<li><a href="/faculty/usa/wisconsin">Wisconsin</a></li>-->
-                                <!--<li><a href="/faculty/usa/wyoming">Wyoming </a></li>-->
+                            <li><a href="/board-certified-senior-members/usa/california">California</a></li>
+                                <li><a href="/board-certified-senior-members/usa/florida">Florida</a></li>
+                                <li><a href="/board-certified-senior-members/usa/washington">Washington</a></li>
+
+                                    
                         </ul>
                         <!--
                         <div class="country bc">Canada</div>
                         <ul class="sidebarlist bc">
-                           <li><a href="/faculty/canada/ontario">Ontario </a></li>
-                            <li><a href="/faculty/canada/quebec">Quebec </a></li>
+                           <li><a href="/sustaining-members/canada/ontario">Ontario </a></li>
+                            <li><a href="/sustaining-members/canada/quebec">Quebec </a></li>
                         </ul>
                         -->
                     </div>

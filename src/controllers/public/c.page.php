@@ -492,6 +492,147 @@ $app->get('/faculty/{country}/{state}', function ($country, $state, Request $req
 });
 
 
+$app->get('/sustaining-members', function (Request $request) use ($app) {
+	$slug = 'sustaining-members';
+	$page = new Model\Page($doc=array('slug'=>$slug), $app);
+	$page = $page->findById('slug');
+	$page['body'] = $app['prepare_content']($page['body']);
+
+	$view_vars = array('page'=>$page);
+	$view_vars['slogan_block'] = 'sustaining-members';
+
+	$page_vars = $app['get_pages']($slug);
+	
+	$member = new Model\Member(array(), $app);
+	$members = $member->search('Sustaining Members',true);
+
+	$view_vars['members'] = $members;
+	$view_vars = array_merge($page_vars,$view_vars);
+	
+	return $app['view']->render('page/sustaining-members', 'content', $view_vars);
+});
+$app->get('/sustaining-members/{country}/{state}', function ($country, $state, Request $request) use ($app) {
+
+	switch (strtolower($country)) {
+		case 'usa':
+			$country = 'US';
+			break;
+		case 'canada':
+			$country = 'CA';
+			break;
+	}
+	$states = array('alabama'=>'AL','alaska'=>'AK','arizona'=>'AZ','arkansas'=>'AR','california'=>'CA','colorado'=>'CO','connecticut'=>'CT','delaware'=>'DE','washington-dc'=>'DC','florida'=>'FL','georgia'=>'GA','hawaii'=>'HI','idaho'=>'ID','illinois'=>'IL','indiana'=>'IN','iowa'=>'IA','kansas'=>'KS','kentucky'=>'KY','louisiana'=>'LA','maine'=>'ME','maryland'=>'MD','massachusetts'=>'MA','michigan'=>'MI','minnesota'=>'MN','mississippi'=>'MS','missouri'=>'MO','montana'=>'MT','nebraska'=>'NE','nevada'=>'NV','new-hampshire'=>'NH','new-jersey'=>'NJ','new-mexico'=>'NM','new-york'=>'NY','north-carolina'=>'NC','north-dakota'=>'ND','ohio'=>'OH','oklahoma'=>'OK','oregon'=>'OR','pennsylvania'=>'PA','rhode-island'=>'RI','south-carolina'=>'SC','south-dakota'=>'SD','tennessee'=>'TN','texas'=>'TX','utah'=>'UT','vermont'=>'VT','virginia'=>'VA','washington'=>'WA','west-virginia'=>'WV','wisconsin'=>'WI','wyoming'=>'WY','ontario'=>'ON','quebec'=>'QC','saskatchewan'=>'SK');
+	$state = $states[$state];
+	$state_reversed = array('AL'=>'Alabama','AK'=>'Alaska',    'AZ'=>'Arizona',    'AR'=>'Arkansas',    'CA'=>'California',    'CO'=>'Colorado',    'CT'=>'Connecticut',    'DE'=>'Delaware',    'DC'=>'District of Columbia',    'FL'=>'Florida',    'GA'=>'Georgia',    'HI'=>'Hawaii',    'ID'=>'Idaho',    'IL'=>'Illinois',    'IN'=>'Indiana',    'IA'=>'Iowa',  'IO'=>'Iowa',    'KS'=>'Kansas',    'KY'=>'Kentucky',    'LA'=>'Louisiana',    'ME'=>'Maine',    'MD'=>'Maryland',    'MA'=>'Massachusetts',    'MI'=>'Michigan',    'MN'=>'Minnesota',    'MS'=>'Mississippi',    'MO'=>'Missouri',    'MT'=>'Montana', 'NE'=>'Nebraska',    'NV'=>'Nevada',    'NH'=>'New Hampshire',    'NJ'=>'New Jersey',    'NM'=>'New Mexico',    'NY'=>'New York',    'NC'=>'North Carolina',    'ND'=>'North Dakota',    'OH'=>'Ohio',    'OK'=>'Oklahoma',    'OR'=>'Oregon',    'PA'=>'Pennsylvania',    'RI'=>'Rhode Island',    'SC'=>'South Carolina',    'SD'=>'South Dakota',    'TN'=>'Tennessee',    'TX'=>'Texas',    'UT'=>'Utah',    'VT'=>'Vermont',    'VA'=>'Virginia',    'WA'=>'Washington',    'WV'=>'West Virginia',   'WI'=>'Wisconsin',    'WY'=>'Wyoming','ON'=>'Ontario','SK'=>'Saskatchewan','QC'=>'Quebec');
+	
+	$member = new Model\Member(array(), $app);
+	$members = $member->searchSustainingMembersByState($state);
+
+	$view_vars['slogan_block'] = 'sustaining-members';
+	$view_vars['state'] = $state_reversed[$state];
+	$view_vars['members'] = $members;
+	$page_vars = $app['get_pages']($state);
+	$view_vars = array_merge($page_vars,$view_vars);
+	
+	return $app['view']->render('page/sustaining-members/state', 'content', $view_vars);
+
+});
+
+
+$app->get('/board-certified-members', function (Request $request) use ($app) {
+	$slug = 'board-certified-members';
+	$page = new Model\Page($doc=array('slug'=>$slug), $app);
+	$page = $page->findById('slug');
+	$page['body'] = $app['prepare_content']($page['body']);
+
+	$view_vars = array('page'=>$page);
+	$view_vars['slogan_block'] = 'board-certified-members';
+
+	$page_vars = $app['get_pages']($slug);
+	
+	$member = new Model\Member(array(), $app);
+	$members = $member->search('Board Certified',true);
+
+	$view_vars['members'] = $members;
+	$view_vars = array_merge($page_vars,$view_vars);
+	
+	return $app['view']->render('page/board-certified-members', 'content', $view_vars);
+});
+$app->get('/board-certified-members/{country}/{state}', function ($country, $state, Request $request) use ($app) {
+
+	switch (strtolower($country)) {
+		case 'usa':
+			$country = 'US';
+			break;
+		case 'canada':
+			$country = 'CA';
+			break;
+	}
+	$states = array('alabama'=>'AL','alaska'=>'AK','arizona'=>'AZ','arkansas'=>'AR','california'=>'CA','colorado'=>'CO','connecticut'=>'CT','delaware'=>'DE','washington-dc'=>'DC','florida'=>'FL','georgia'=>'GA','hawaii'=>'HI','idaho'=>'ID','illinois'=>'IL','indiana'=>'IN','iowa'=>'IA','kansas'=>'KS','kentucky'=>'KY','louisiana'=>'LA','maine'=>'ME','maryland'=>'MD','massachusetts'=>'MA','michigan'=>'MI','minnesota'=>'MN','mississippi'=>'MS','missouri'=>'MO','montana'=>'MT','nebraska'=>'NE','nevada'=>'NV','new-hampshire'=>'NH','new-jersey'=>'NJ','new-mexico'=>'NM','new-york'=>'NY','north-carolina'=>'NC','north-dakota'=>'ND','ohio'=>'OH','oklahoma'=>'OK','oregon'=>'OR','pennsylvania'=>'PA','rhode-island'=>'RI','south-carolina'=>'SC','south-dakota'=>'SD','tennessee'=>'TN','texas'=>'TX','utah'=>'UT','vermont'=>'VT','virginia'=>'VA','washington'=>'WA','west-virginia'=>'WV','wisconsin'=>'WI','wyoming'=>'WY','ontario'=>'ON','quebec'=>'QC','saskatchewan'=>'SK');
+	$state = $states[$state];
+	$state_reversed = array('AL'=>'Alabama','AK'=>'Alaska',    'AZ'=>'Arizona',    'AR'=>'Arkansas',    'CA'=>'California',    'CO'=>'Colorado',    'CT'=>'Connecticut',    'DE'=>'Delaware',    'DC'=>'District of Columbia',    'FL'=>'Florida',    'GA'=>'Georgia',    'HI'=>'Hawaii',    'ID'=>'Idaho',    'IL'=>'Illinois',    'IN'=>'Indiana',    'IA'=>'Iowa',  'IO'=>'Iowa',    'KS'=>'Kansas',    'KY'=>'Kentucky',    'LA'=>'Louisiana',    'ME'=>'Maine',    'MD'=>'Maryland',    'MA'=>'Massachusetts',    'MI'=>'Michigan',    'MN'=>'Minnesota',    'MS'=>'Mississippi',    'MO'=>'Missouri',    'MT'=>'Montana', 'NE'=>'Nebraska',    'NV'=>'Nevada',    'NH'=>'New Hampshire',    'NJ'=>'New Jersey',    'NM'=>'New Mexico',    'NY'=>'New York',    'NC'=>'North Carolina',    'ND'=>'North Dakota',    'OH'=>'Ohio',    'OK'=>'Oklahoma',    'OR'=>'Oregon',    'PA'=>'Pennsylvania',    'RI'=>'Rhode Island',    'SC'=>'South Carolina',    'SD'=>'South Dakota',    'TN'=>'Tennessee',    'TX'=>'Texas',    'UT'=>'Utah',    'VT'=>'Vermont',    'VA'=>'Virginia',    'WA'=>'Washington',    'WV'=>'West Virginia',   'WI'=>'Wisconsin',    'WY'=>'Wyoming','ON'=>'Ontario','SK'=>'Saskatchewan','QC'=>'Quebec');
+	
+	$member = new Model\Member(array(), $app);
+	$members = $member->searchBoardCertifiedByState($state);
+
+	$view_vars['slogan_block'] = 'board-certified-members';
+	$view_vars['state'] = $state_reversed[$state];
+	$view_vars['members'] = $members;
+	$page_vars = $app['get_pages']($state);
+	$view_vars = array_merge($page_vars,$view_vars);
+	
+	return $app['view']->render('page/board-certified-members/state', 'content', $view_vars);
+
+});
+
+
+$app->get('/board-certified-senior-members', function (Request $request) use ($app) {
+	$slug = 'board-certified-senior-members';
+	$page = new Model\Page($doc=array('slug'=>$slug), $app);
+	$page = $page->findById('slug');
+	$page['body'] = $app['prepare_content']($page['body']);
+
+	$view_vars = array('page'=>$page);
+	$view_vars['slogan_block'] = 'board-certified-senior-members';
+
+	$page_vars = $app['get_pages']($slug);
+	
+	$member = new Model\Member(array(), $app);
+	$members = $member->search('Board Certified Sr',true);
+
+	$view_vars['members'] = $members;
+	$view_vars = array_merge($page_vars,$view_vars);
+	
+	return $app['view']->render('page/board-certified-senior-members', 'content', $view_vars);
+});
+$app->get('/board-certified-senior-members/{country}/{state}', function ($country, $state, Request $request) use ($app) {
+
+	switch (strtolower($country)) {
+		case 'usa':
+			$country = 'US';
+			break;
+		case 'canada':
+			$country = 'CA';
+			break;
+	}
+	$states = array('alabama'=>'AL','alaska'=>'AK','arizona'=>'AZ','arkansas'=>'AR','california'=>'CA','colorado'=>'CO','connecticut'=>'CT','delaware'=>'DE','washington-dc'=>'DC','florida'=>'FL','georgia'=>'GA','hawaii'=>'HI','idaho'=>'ID','illinois'=>'IL','indiana'=>'IN','iowa'=>'IA','kansas'=>'KS','kentucky'=>'KY','louisiana'=>'LA','maine'=>'ME','maryland'=>'MD','massachusetts'=>'MA','michigan'=>'MI','minnesota'=>'MN','mississippi'=>'MS','missouri'=>'MO','montana'=>'MT','nebraska'=>'NE','nevada'=>'NV','new-hampshire'=>'NH','new-jersey'=>'NJ','new-mexico'=>'NM','new-york'=>'NY','north-carolina'=>'NC','north-dakota'=>'ND','ohio'=>'OH','oklahoma'=>'OK','oregon'=>'OR','pennsylvania'=>'PA','rhode-island'=>'RI','south-carolina'=>'SC','south-dakota'=>'SD','tennessee'=>'TN','texas'=>'TX','utah'=>'UT','vermont'=>'VT','virginia'=>'VA','washington'=>'WA','west-virginia'=>'WV','wisconsin'=>'WI','wyoming'=>'WY','ontario'=>'ON','quebec'=>'QC','saskatchewan'=>'SK');
+	$state = $states[$state];
+	$state_reversed = array('AL'=>'Alabama','AK'=>'Alaska',    'AZ'=>'Arizona',    'AR'=>'Arkansas',    'CA'=>'California',    'CO'=>'Colorado',    'CT'=>'Connecticut',    'DE'=>'Delaware',    'DC'=>'District of Columbia',    'FL'=>'Florida',    'GA'=>'Georgia',    'HI'=>'Hawaii',    'ID'=>'Idaho',    'IL'=>'Illinois',    'IN'=>'Indiana',    'IA'=>'Iowa',  'IO'=>'Iowa',    'KS'=>'Kansas',    'KY'=>'Kentucky',    'LA'=>'Louisiana',    'ME'=>'Maine',    'MD'=>'Maryland',    'MA'=>'Massachusetts',    'MI'=>'Michigan',    'MN'=>'Minnesota',    'MS'=>'Mississippi',    'MO'=>'Missouri',    'MT'=>'Montana', 'NE'=>'Nebraska',    'NV'=>'Nevada',    'NH'=>'New Hampshire',    'NJ'=>'New Jersey',    'NM'=>'New Mexico',    'NY'=>'New York',    'NC'=>'North Carolina',    'ND'=>'North Dakota',    'OH'=>'Ohio',    'OK'=>'Oklahoma',    'OR'=>'Oregon',    'PA'=>'Pennsylvania',    'RI'=>'Rhode Island',    'SC'=>'South Carolina',    'SD'=>'South Dakota',    'TN'=>'Tennessee',    'TX'=>'Texas',    'UT'=>'Utah',    'VT'=>'Vermont',    'VA'=>'Virginia',    'WA'=>'Washington',    'WV'=>'West Virginia',   'WI'=>'Wisconsin',    'WY'=>'Wyoming','ON'=>'Ontario','SK'=>'Saskatchewan','QC'=>'Quebec');
+	
+	$member = new Model\Member(array(), $app);
+	$members = $member->searchBoardCertifiedSrByState($state);
+
+	$view_vars['slogan_block'] = 'board-certified-senior-members';
+	$view_vars['state'] = $state_reversed[$state];
+	$view_vars['members'] = $members;
+	$page_vars = $app['get_pages']($state);
+	$view_vars = array_merge($page_vars,$view_vars);
+	
+	return $app['view']->render('page/board-certified-senior-members/state', 'content', $view_vars);
+
+});
+
+
 // State Delegates
 // redirects the old foundingmembers.php?location=State to the new routes
 // because Redirect 301 doesn't work with querystrings..
