@@ -216,5 +216,17 @@ class Registration extends Model {
 		}		
 
 	}
+	public function remove(){
+		$result = $this->findOne(array('_id'=>$this->_id));
+
+		// purge payment
+    	self::$app['mongo']->remove(array('_id'=>$result['paymentId']), 'payment', $justOne=false, $options=array('fsync'=>true));
+    	// purge scholarship
+    	self::$app['mongo']->remove(array('registrationNumber'=>$result['registrationNumber']), 'scholarship', $justOne=false, $options=array('fsync'=>true));
+
+    	// delete member
+    	parent::remove();
+
+    }
 			
 }

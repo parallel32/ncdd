@@ -112,6 +112,7 @@
 			e.preventDefault();
 			document.location.href="https://<?=SAW_CONSUMER_WEBSITE?>";
 		});
+		
 		$('#save-success .btn.continue').click(function(e){
 			e.preventDefault();
 			window.location.href="https://<?=SAW_CONSUMER_WEBSITE?>";
@@ -265,7 +266,9 @@
 				}
 			}); 	
 		});
-		
+		$('#delete-modal .cancel').click(function(e){
+			$('#delete-modal').modal('hide');
+		});
 
 		$('#saw-form .view.cancel').click(function(e){
 			e.preventDefault();

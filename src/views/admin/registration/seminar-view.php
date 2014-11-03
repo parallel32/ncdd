@@ -284,20 +284,20 @@
                      <!--/span-->
                   </div>
                   <div class="alert alert-error hide">
-                        <button class="close" data-dismiss="alert"></button>
-                        You have some form errors. Please check below.
-                     </div>
-                     
-                     <div class="form-actions text-center">
-                        <? if($this->vars['registration']['currentStatus'] < \Saw\Model\Registration::$status['PAID']): ?>
-                        <button type="button" data-id="<?=$this->vars['registration']['_id']?>" class="btn green pay"><i class="icon-money"></i> Mark Paid</button>
-                        <? endif; ?>
-                        <button type="button" data-id="<?=$this->vars['registration']['_id']?>" class="btn blue edit"><i class="icon-pencil"></i> Edit</button>
-                        <button type="button" data-id="<?=$this->vars['seminar']['_id']?>" class="btn view cancel">Cancel and Go Back</button>
-                        <? if($this->vars['registration']['currentStatus'] < \Saw\Model\Registration::$status['PAID']): ?>
-                        <button type="button" data-id="<?=$this->vars['registration']['_id']?>" class="btn red delete">Delete</button>
-                        <? endif; ?>
-                     </div>
+                     <button class="close" data-dismiss="alert"></button>
+                     You have some form errors. Please check below.
+                  </div>
+                  
+                  <div class="form-actions text-center">
+                     <? if($this->vars['registration']['currentStatus'] < \Saw\Model\Registration::$status['PAID']): ?>
+                     <button type="button" data-id="<?=$this->vars['registration']['_id']?>" class="btn green pay"><i class="icon-money"></i> Mark Paid</button>
+                     <? endif; ?>
+                     <button type="button" data-id="<?=$this->vars['registration']['_id']?>" class="btn blue edit"><i class="icon-pencil"></i> Edit</button>
+                     <button type="button" data-id="<?=$this->vars['seminar']['_id']?>" class="btn view cancel">Cancel and Go Back</button>
+                     <? if($this->vars['registration']['currentStatus'] <= \Saw\Model\Registration::$status['PAID']): ?>
+                     <button type="button" data-id="<?=$this->vars['registration']['_id']?>" class="btn red delete">Delete</button>
+                     <? endif; ?>
+                  </div>
                </form>
                   <!-- END FORM--> 
 
