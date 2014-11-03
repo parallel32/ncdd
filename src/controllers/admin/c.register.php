@@ -163,6 +163,18 @@ $app->post('/registration/payment', function (Request $request) use ($app) {
 	$app['validateModel']($app, $payment,$groups=array('manual'));
 	$paymentId = $payment->manualCharge();
 
+	if (!empty($doc['donationamount']) && is_numeric($doc['donationamount'])) {
+		
+		$doc['title'] = $doc['title'].' - DONATION';
+		$doc['amount'] = $doc['donationamount'];
+
+		$payment = new Model\Payment($doc,$app);
+		$paymentId = $payment->manualCharge();
+		// update contribution payment id on the registration record
+		$registration = new Model\Registration($doc=array('_id'=>$doc['ownerId'],'contributionPaymentId'=>$paymentId), $app);
+		
+	}
+	
 	/*
 	// thank you receipt message
 	$subject = 'NCDD Payment Received';

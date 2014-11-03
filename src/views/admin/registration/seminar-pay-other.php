@@ -190,6 +190,22 @@
                         </div>
                         <!--/span-->
                      </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Donation Amount - if no donation, leave blank </label>
+                              <div class="controls">
+                                 <div class="input-prepend input-append">
+                                    <span class="add-on">$ </span>
+                                       <input type="text" name="doc[donationamount]" class="m-wrap span8 donationamount" value="">
+                                    <span class="add-on">.00</span>
+                                 </div>
+                                 <span class="help-block">A seperate payment record with this amount will be created.</span>
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
                      <h3 class="form-section">Billing Address</h3>
                      <div class="row-fluid">
                         <div class="span8 ">

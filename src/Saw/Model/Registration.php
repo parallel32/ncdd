@@ -32,6 +32,7 @@ class Registration extends Model {
 	public $country;
 	public $memberId;
 	public $paymentId;
+	public $contributionPaymentId;
 	public $submittedDate;
 	public $paidDate;
 
@@ -67,6 +68,7 @@ class Registration extends Model {
 		$this->paidDate = $doc['paidDate'];
 		if(!empty($doc['memberId'])) $this->memberId = (is_object($doc['memberId'])) ? $doc['memberId'] : new \MongoId($doc['memberId']);
 		if(!empty($doc['paymentId'])) $this->paymentId = (is_object($doc['paymentId'])) ? $doc['paymentId'] : new \MongoId($doc['paymentId']);
+		if(!empty($doc['contributionPaymentId'])) $this->paymentId = (is_object($doc['contributionPaymentId'])) ? $doc['contributionPaymentId'] : new \MongoId($doc['contributionPaymentId']);
 		
 	}
 	
@@ -90,6 +92,7 @@ class Registration extends Model {
 		$this->country = $this->country ?: '';
 		$this->memberId = $this->memberId ?: new \stdClass();
 		$this->paymentId = $this->paymentId ?: new \stdClass();
+		$this->contributionPaymentId = $this->contributionPaymentId ?: new \stdClass();
 	}
 	
 	public function saveEdit(){
@@ -131,6 +134,7 @@ class Registration extends Model {
 						,'_id'=>true
 						,'memberId'=>true
 						,'paymentId'=>true
+						,'contributionPaymentId'=>true
 						);
 		switch ($status) {
 			case 'SUBMITTED':
@@ -163,6 +167,7 @@ class Registration extends Model {
 						,'_id'=>true
 						,'memberId'=>true
 						,'paymentId'=>true
+						,'contributionPaymentId'=>true
 						);
 		switch ($status) {
 			case 'SUBMITTED':
@@ -196,6 +201,7 @@ class Registration extends Model {
 						,'_id'=>true
 						,'memberId'=>true
 						,'paymentId'=>true
+						,'contributionPaymentId'=>true
 						);
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('paidDate.date'=>-1),(int)$offset,(int)$limit);
 		//error_log('fetch:'.print_r($query,true));
@@ -221,6 +227,7 @@ class Registration extends Model {
 
 		// purge payment
     	self::$app['mongo']->remove(array('_id'=>$result['paymentId']), 'payment', $justOne=false, $options=array('fsync'=>true));
+    	self::$app['mongo']->remove(array('_id'=>$result['contributionPaymentId']), 'payment', $justOne=false, $options=array('fsync'=>true));
     	// purge scholarship
     	self::$app['mongo']->remove(array('registrationNumber'=>$result['registrationNumber']), 'scholarship', $justOne=false, $options=array('fsync'=>true));
 
