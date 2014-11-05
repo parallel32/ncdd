@@ -38,7 +38,7 @@
                   <a name="approve"></a>
                   <div class="dashboard-stat green">
                      <div class="visual">
-                        <i class="icon-hideme"><?=(is_array(count($this->vars['paid']))) ? count($this->vars['paid']) : 0;?></i>
+                        <i class="icon-hideme"><?=count($this->vars['paid']);?></i>
                      </div>
                      <div class="details">
                         <div class="number"><font><font>Paid (90 days)</font></font></div>
@@ -73,7 +73,7 @@
                <div class="responsive span6" data-tablet="span6" data-desktop="span6">
                   <div class="dashboard-stat purple">
                      <div class="visual">
-                        <i class="icon-hide-me"><span class="number"><?=(is_array(count($this->vars['trial']))) ? count($this->vars['trial']) : 0;?></span></i>
+                        <i class="icon-hide-me"><span class="number"><?=count($this->vars['trial']);?></span></i>
                      </div>
                      <div class="details">
                         <div class="number"><font><font></font>Trial Mode</font></div>
