@@ -47,6 +47,7 @@ class Apply extends Model {
 	public $trial;
 	public $referredBy;
 	public $userAgent;
+	public $termsAcknowledgement;
 
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addPropertyConstraint('firstName', new Constraints\NotBlank(array('message'=>'cannot be blank')));
@@ -65,6 +66,7 @@ class Apply extends Model {
 		$metadata->addPropertyConstraint('country', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		//$metadata->addConstraint(new Callback(array('methods' => array('listServ'))));
 		$metadata->addConstraint(new Callback(array('methods' => array('latLonValidate'))));
+		$metadata->addConstraint(new Callback(array('methods' => array('termsAckValidate'))));
 	}
 	/* --commented out because it's no longer necessary
 	public function listServ(ExecutionContext $context){
@@ -78,6 +80,12 @@ class Apply extends Model {
 		if(empty($this->lat) && empty($this->lon)){
 			$propertyPath = $context->getPropertyPath().'geocodeaddress';
 			$context->addViolationAtPath($propertyPath,'Please Geocode your address by clicking "Submit for Geocoding"', array(), null);
+		}
+	}
+	public function termsAckValidate(ExecutionContext $context){
+		if(empty($this->termsAcknowledgement)){
+			$propertyPath = $context->getPropertyPath().'termsAcknowledgement';
+			$context->addViolationAtPath($propertyPath,'Please read and accept our terms in order to submit the application.', array(), null);
 		}
 	}
 	
@@ -114,6 +122,7 @@ class Apply extends Model {
 		$this->membershipDues = $doc['membershipDues'];
 		$this->referredBy = $doc['referredBy'];
 		$this->userAgent = $doc['userAgent'];
+		$this->termsAcknowledgement = $doc['termsAcknowledgement'];
 		$this->trial = (is_object($doc['trial'])) ? $doc['trial']->__toArray(false) : $doc['trial'];
 
 	}
@@ -153,6 +162,7 @@ class Apply extends Model {
 		$this->referredBy = $this->referredBy ?: '';
 		$this->trial = $this->trial ?: new \stdClass();
 		$this->userAgent = $this->userAgent ?: '';
+		$this->termsAcknowledgement = $this->termsAcknowledgement ?: '';
 
 	}
 	

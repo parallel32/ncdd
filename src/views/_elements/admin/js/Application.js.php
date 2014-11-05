@@ -87,6 +87,7 @@
 
 		io.saw.FormPost.activate({postUrl:'/application/new-sustaining-member'
 		   ,serializeSelector:':input'
+		   ,invalidFieldsString:'no'
 		   ,postOnComplete:function(responseObj,responseStatus){
 			   	if(responseStatus == 'success'){
 					$('#save-success .modal-body p').html(responseObj.message);
