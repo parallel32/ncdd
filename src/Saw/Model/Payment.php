@@ -311,6 +311,9 @@ else:
 EOT;
 
 endif;
+error_log('for variable: name  ==>'.print_r($this->name,true));
+error_log('for variable: phone  ==>'.print_r($this->phone,true));
+error_log('for variable: email  ==>'.print_r($this->email,true));
 error_log('for variable: amount  ==>'.print_r($this->amount,true));
 error_log('for variable: orderTotal  ==>'.print_r($this->orderTotal,true));
 error_log('for variable: shippingTotal  ==>'.print_r($this->shippingTotal,true));
