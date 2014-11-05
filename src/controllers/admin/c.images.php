@@ -201,6 +201,8 @@ $app->get('/image/{context}/{belongsTo}/{size}/{parentAttr}', function ($context
 	    if(!empty($file_contents) && !empty($drive['file'])){
 	    	$response = new Response($file_contents, 200, array('Content-Type' => 'application/octet-stream'));
 	    	$filename = (!mb_detect_encoding($drive['file']['originalFileName'], 'ASCII', true)) ? preg_replace('/[[:^print:]]/', '', $drive['file']['originalFileName']): $drive['file']['originalFileName'];
+	    	$filename = str_replace('/', '', $filename);
+	    	$filename = str_replace('\\', '', $filename);
 	    	$d = $response->headers->makeDisposition(
 			    ResponseHeaderBag::DISPOSITION_ATTACHMENT,
 			    $filename
