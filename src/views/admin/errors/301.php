@@ -10,12 +10,12 @@
                resolve action: <?=$this->vars['error']->resolveAction?><br />
                <a href="/">Return home</a> or try the search bar below.
             </p>
-            <form action="#">
+            <!--<form action="#">
                <div class="input-append">                      
                   <input class="m-wrap" size="16" type="text" placeholder="keyword..." />
                   <button class="btn blue">Search</button>
                </div>
-            </form>
+            </form>-->
          </div>
       </div>
    </div>

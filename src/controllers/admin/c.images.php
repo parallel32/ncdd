@@ -200,9 +200,10 @@ $app->get('/image/{context}/{belongsTo}/{size}/{parentAttr}', function ($context
 		$file_contents = $app['upload-mongo']->getImageByCriteria(array('belongsTo'=>$belongsTo, 'size'=>$size));
 	    if(!empty($file_contents) && !empty($drive['file'])){
 	    	$response = new Response($file_contents, 200, array('Content-Type' => 'application/octet-stream'));
+	    	$filename = (!mb_detect_encoding($drive['file']['originalFileName'], 'ASCII', true)) ? preg_replace('/[[:^print:]]/', '', $drive['file']['originalFileName']): $drive['file']['originalFileName'];
 	    	$d = $response->headers->makeDisposition(
 			    ResponseHeaderBag::DISPOSITION_ATTACHMENT,
-			    $drive['file']['originalFileName']
+			    $filename
 			);
 			$response->headers->set('Content-Disposition', $d);
 	    	return $response;
