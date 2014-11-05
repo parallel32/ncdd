@@ -841,6 +841,9 @@ $app->post('/application/edit', function (Request $request) use ($app) {
 
 	// retrieve document from request
     $doc = $request->get('doc');
+    if(!array_key_exists('termsAcknowledgement', $doc)){
+    	$doc['termsAcknowledgement'] = 'no';
+    }
     $endTrial = $request->get('endTrial');
     $startTrial = $request->get('startTrial');
     

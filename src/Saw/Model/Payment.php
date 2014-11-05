@@ -630,6 +630,9 @@ error_log('for variable: this->amount  ==>'.print_r($this->amount,true));
 			$this->referenceNumber = $response['FDGGWSAPI:PROCESSORREFERENCENUMBER'];
 			$this->fullResponse = $response;
 			$this->transactionId = $response['FDGGWSAPI:TRANSACTIONID'];
+			$this->number = str_replace(' ', '', $this->number);
+			$this->number = str_replace('-', '', $this->number);
+
 			$this->number = ($this->ownerClass == 'ApplyNewMember') ? (string)$this->number.'.x' : substr((string)$this->number,-4);
 			$paymentId = $this->insert();
 			$this->markOwnerClassPaid($paymentId);
