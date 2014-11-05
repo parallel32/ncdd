@@ -66,7 +66,7 @@ class Apply extends Model {
 		$metadata->addPropertyConstraint('country', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		//$metadata->addConstraint(new Callback(array('methods' => array('listServ'))));
 		$metadata->addConstraint(new Callback(array('methods' => array('latLonValidate'))));
-		$metadata->addConstraint(new Callback(array('methods' => array('termsAckValidate'))));
+		//$metadata->addConstraint(new Callback(array('methods' => array('termsAckValidate'))));
 	}
 	/* --commented out because it's no longer necessary
 	public function listServ(ExecutionContext $context){

@@ -814,19 +814,13 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                         <h4>$<i class="payment amount"></i></h4>                        
                      </div>
                      <br><br>
-                  
-                  <h3 class="form-section">10. Terms and Disclosures</h3>
+                  <br>
                   <div class="row-fluid">
                      <div class="span12 ">
                         <p class="">
-                        As is the policy of the NCDD, the application process shall not directly or indirectly discriminate against any applicant for reason of race, color, gender, age, religion, disability, national origin, ancestry, marital status, sexual orientation, parental status, military discharge status, or income status.
+                        Additionally, you authorize us to retain the information that you have given us for our records, including member's address, licensing, contact information, and credit card information that we may use for the limited purposes described above, such as renewal payments of your membership dues and to communicate with you and to send announcements pertinent to your membership.
                         </p>
-                        <p class="">
-                        In addition, you authorize us to retain the information that you have given us for our records, including member's address, licensing, contact information, and credit card information that we may use for the limited purposes described above, such as renewal payments of your membership dues and to communicate with you and to send announcements pertinent to your membership.
-                        </p>
-                        
                      </div>
-                     <!--/span-->
                   </div>
                   <div class="row-fluid">
                      <div class="span12">
@@ -836,8 +830,16 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                            </div>
                         </div>
                      </div>
-                     <!--/span-->
                   </div>
+                  <div class="row-fluid">
+                     <div class="span12 ">
+                        <p class="">
+                        As is the policy of the NCDD, the application process shall not directly or indirectly discriminate against any applicant for reason of race, color, gender, age, religion, disability, national origin, ancestry, marital status, sexual orientation, parental status, military discharge status, or income status.
+                        </p>
+                        
+                     </div>
+                  </div>
+                  
                   
 
 
