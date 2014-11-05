@@ -767,8 +767,8 @@ $utilities->get('/importforumssdfsdfsdfsdfds', function () use ($app) {
 //////////////////////////////////////
 // import forum post attached files // 
 //////////////////////////////////////
-$utilities->get('/importforumpostattachments', function () use ($app) {
-    // return false;
+$utilities->get('/importforumpostattachments-sdfsdfsdfsdf', function () use ($app) {
+    return false;
     ini_set('memory_limit','1024M');
     // id, section_title, thread_title, post_author,date_time,section_id
     
