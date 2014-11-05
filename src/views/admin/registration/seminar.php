@@ -49,8 +49,8 @@ endif; ?>
                   <input type="hidden" name="doc[message]" value="You will be redirected back to the registration form after sign in.">
                   <input type="hidden" name="doc[redirect]" value="/registration/seminar/<?=$this->vars['seminar']['_id']?>/<?=$this->vars['seminar']['slug']?>">
 
-                  <h3 class="form-section">Members, please sign in to facilitate registration.</h3>
-                  <button type="button" class="btn blue signin"><i class="icon-key"></i> Sign In</button>
+                  <h2 class="form-section">Members, please use your user ID and password to log into the website to receive your discounted NCDD member registration fee.</h2>
+                  <button type="button" class="btn big blue signin"><i class="icon-key"></i> <b>Click Here to Log-In</b></button>
                   <script>
                      jQuery(document).ready(function() {    
                         $('#signin-form .signin').click(function(e){
