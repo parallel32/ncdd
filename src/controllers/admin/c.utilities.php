@@ -764,6 +764,112 @@ $utilities->get('/importforumssdfsdfsdfsdfds', function () use ($app) {
     //*/
     return new Response('cool: '.$cnt.' topics created',200,array('Content-Type' => 'text/html')); 
 });
+//////////////////////////////////////
+// import forum post attached files // 
+//////////////////////////////////////
+$utilities->get('/importforumpostattachments', function () use ($app) {
+    // return false;
+    ini_set('memory_limit','1024M');
+    // id, section_title, thread_title, post_author,date_time,section_id
+    
+    $fields = array();
+    $fields[]='id';
+    $fields[]='section_title';
+    $fields[]='thread_title';
+    $fields[]='post_author';
+    $fields[]='date_time';
+    $fields[]='section_id';
+
+    //*
+    
+    $cnt = 1;
+    $row = 1;
+    if (($handle = fopen("/var/www/upload/forum_posts.csv", "r")) !== FALSE) {
+        while (($data = fgetcsv($handle)) !== FALSE) {
+            $num = count($data);
+            //echo "<p> $num fields in line $row: <br /></p>\n";
+            $row++;
+            for ($c=0; $c < $num; $c++) {
+                $output[$row][$fields[$c]] = trim($data[$c]);
+                //echo $data[$c] . "<br />\n";
+            }
+        }
+        fclose($handle);
+    }
+    //echo "<pre>";print_r($output);echo "</pre>";
+    //*
+
+    //*
+    // create the topics
+    $cnt = 1;
+    $total = count($output);
+    foreach ($output as $record):
+        
+        if(!empty($record['thread_title'])){
+            
+            // get the full file path to each file contained in the corresponding directory
+            if (file_exists('/var/www/upload/topics/'.$record['id']) && $handle = opendir('/var/www/upload/topics/'.$record['id'])) {
+                $recprd['attachements'] = array();
+                /* This is the correct way to loop over the directory. */
+                while (false !== ($entry = readdir($handle))) {
+                    if($entry != '.' && $entry != '..'){
+                        $record['attachments'][] = array('url'=>'/var/www/upload/topics/'.$record['id'].'/'.$entry, 'name'=>$entry);
+                    }
+                }
+                closedir($handle);
+            }
+            // get the topic record in mongo
+            $topic = new Model\Topic(array('headline'=>$record['thread_title']),$app);
+            $topic_record = $topic->findById('headline');
+            echo '<pre>';print_r('=========    START     ==================================================================================');echo '</pre>';
+            echo '<pre>';print_r($topic_record['headline'].' - '.$topic_record['_id']);echo '</pre>';
+            echo '<pre>';print_r($record);echo '</pre>';
+            if(!empty($topic_record)):
+            // upload the files to the topic
+                if(array_key_exists('attachments', $record) && !empty($record['attachments'])){
+                    foreach($record['attachments'] as $file):
+
+                        // create the drive document record
+                        $drive = new Model\Drive(array('add'=>'yes','belongsTo'=>$topic_record['_id']),$app);
+                        $drive_id = $drive->saveEdit();
+
+                        $img_name = $file['name'];
+                        $img_path = $file['url'];
+                        $image = $app['imageFactory']('drivefile',$drive_id);
+                        $image->prepareFile($img_name);
+echo '<pre>IMAGE';print_r($image);echo '</pre>';
+                        // store the file
+                        $image->originalFileName = $img_name;
+                        $image->sizes['small']['id'] = (string)$app['mongo']->storeFile($img_path
+                                                                    ,'image'
+                                                                    ,$doc=array('belongsTo'=>$image->belongsTo,'size'=>'small'));
+                        $image->makeUrls();
+                        $modelObj = $image->instantiateParent($app);
+                        $_id = $modelObj->saveEdit();
+                        
+                        $file_arr['name'] = $file['name'];
+                        $file_arr['embedUrl'] = $app['getImageURL']($image,'small');
+                        $file_arr['id'] = $_id;
+
+                        $topic_record['files'] = (empty($topic_record['files']) || !array_key_exists('files', $topic_record)) ? array() : $topic_record['files'];
+                        array_push($topic_record['files'], $file_arr);
+
+                    endforeach;
+                    if(array_key_exists('files', $topic_record)){
+                        echo '<pre>';print_r($topic_record['files']);echo '</pre>';
+                        $utopic = new Model\Topic(array('_id'=>$topic_record['_id'],'files'=>$topic_record['files']),$app);
+                        $utopic->saveSafe();
+                    }
+                }
+
+            endif;
+
+            $cnt++;
+        }
+    endforeach;
+    //*/
+    return new Response('cool: '.$cnt.' topics created',200,array('Content-Type' => 'text/html')); 
+});
 
 //////////////////////////////////////////////
 // MIGRATE FROM MEMBER.LOCATION TO LOCATION //
