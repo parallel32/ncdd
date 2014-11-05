@@ -227,7 +227,9 @@ class Registration extends Model {
 
 		// purge payment
     	self::$app['mongo']->remove(array('_id'=>$result['paymentId']), 'payment', $justOne=false, $options=array('fsync'=>true));
-    	self::$app['mongo']->remove(array('_id'=>$result['contributionPaymentId']), 'payment', $justOne=false, $options=array('fsync'=>true));
+    	if(array_key_exists('contributionPaymentId', $result)){
+    		self::$app['mongo']->remove(array('_id'=>$result['contributionPaymentId']), 'payment', $justOne=false, $options=array('fsync'=>true));
+    	}
     	// purge scholarship
     	self::$app['mongo']->remove(array('registrationNumber'=>$result['registrationNumber']), 'scholarship', $justOne=false, $options=array('fsync'=>true));
 
