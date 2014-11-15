@@ -128,7 +128,12 @@
 		$('#payment-form .cvc').blur(function(){
 			validateCVC($(this));
 		});
-			
+		
+		$.extend($.inputmask.defaults, {
+            'autounmask': true
+        });
+
+        $("#payment-form .phone").inputmask("mask", {"mask": "(999) 999-9999"}); //specifying fn & options
 	};
 	
 }( io.saw.Payment = io.saw.Payment || {}, io.saw.jQuery || jQuery ));

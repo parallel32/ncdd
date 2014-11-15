@@ -1,3 +1,4 @@
+
                     <div class="row-fluid shoppingCart" style="padding-bottom:0px;">
                         <div class="obliqueLineTitle text-center"><h2><?=$this->vars['page']['headline']?></h2></div>
                         <div class="shoppingCartBody productDescrrr">
@@ -369,3 +370,4 @@ MasterCard, Visa and Discover credit cards have a 3 digit code printed on the ba
                           <!--/ PAYMENT ELEMENT -->
                         <!-- END FORM--> 
                     </div>
+                    <script src="/assets/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js" type="text/javascript" ></script>

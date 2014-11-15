@@ -44,6 +44,9 @@ class Order extends Model {
 		if(!empty($doc['_id'])) $this->_id = (is_object($doc['_id'])) ? $doc['_id'] : new \MongoId($doc['_id']);
       
 		$this->payment = (is_object($doc['payment'])) ? $doc['payment']->__toArray(false) : $doc['payment'];
+		if(is_array($this->payment)){
+			$this->payment['phone'] = (string)$this->payment['phone'];
+		}
 		$this->currentStatus = (!empty($doc['currentStatus'])) ? (int)$doc['currentStatus']: $doc['currentStatus'];
 		$this->orderDate = $doc['orderDate'];
 		$this->shipDate = $doc['shipDate'];

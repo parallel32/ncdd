@@ -1,6 +1,6 @@
 <?php
 $app = require __DIR__.'/app.php';
-
+error_log('=========================================================');
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;

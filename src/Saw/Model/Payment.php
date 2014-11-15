@@ -206,7 +206,7 @@ class Payment extends Model {
 		$this->stateProvinceRegion = $this->stateProvinceRegion ?: '';    	
         $this->zipPostalCode = $this->zipPostalCode ?: '';
         $this->country = $this->country ?: 'US';
-		$this->phone = $this->phone ?: '';
+		$this->phone = (string)$this->phone ?: '';
 		$this->email = $this->email ?: '';
 		$this->amount = $this->amount ?: '';
 		$this->orderTotal = $this->orderTotal ?: '';
