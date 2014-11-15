@@ -21,7 +21,7 @@
                <div class="responsive span6" data-tablet="span6" data-desktop="span6">
                   <div class="dashboard-stat yellow">
                      <div class="visual">
-                        <i class="icon-hideme"><?=(is_array(count($this->vars['approved']))) ? count($this->vars['approved']): 0;?></i>
+                        <i class="icon-hideme"><?=(is_array($this->vars['approved'])) ? count($this->vars['approved']): 0;?></i>
                      </div>
                      <div class="details">
                         <div class="number"><font><font></font>Unpaid</font></div>
