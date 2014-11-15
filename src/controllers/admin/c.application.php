@@ -311,13 +311,13 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 	$yilp = $application->yearsInLawPractice;
 	$now = date('Y',strtotime('today'));
 	if($now - $yilp >= 6){
-		$amt = (!empty($doc['promocode']) && $doc['promocode'] == 'NCDD2014') ? $dues[6]['amount']: $dues[6]['prorated']['a'];
+		$amt = (empty($doc['promocode']) || $doc['promocode'] == 'NCDD2014') ? $dues[6]['amount']: $dues[6]['prorated']['a'];
 	}elseif ($now - $yilp < 6){
-		$amt = (!empty($doc['promocode']) && $doc['promocode'] == 'NCDD2014') ? $dues[1]['amount']: $dues[1]['prorated']['a'];
+		$amt = (empty($doc['promocode']) || $doc['promocode'] == 'NCDD2014') ? $dues[1]['amount']: $dues[1]['prorated']['a'];
 	}
 	if($application->publicDefender == 'yes'){
 		$amt = $dues['publicDefender']['prorated']['a'];
-		$amt = (!empty($doc['promocode']) && $doc['promocode'] == 'NCDD2014') ? $dues['publicDefender']['amount']: $dues['publicDefender']['prorated']['a'];
+		$amt = (empty($doc['promocode']) || $doc['promocode'] == 'NCDD2014') ? $dues['publicDefender']['amount']: $dues['publicDefender']['prorated']['a'];
 	}
 	if($doc['promocode'] == 'TRIAL'){
 		$trial_doc['startDate'] = 'now';

@@ -220,14 +220,14 @@
 				   			}
 				   		}
 				   		if(responseObj.valid == 'no'){
-				   			$('#promocodetype').val('');
+				   			$('#promocodetype').val('discount');
 				   			the_element.find('.help-block.success').remove();
 							the_element.removeClass('success');
 				   		}
 					yearsinlawpracticelogic();
 					promocodelogic();   		
 				   }
-				});				
+				});
 			},500,$(this));
 
 			
