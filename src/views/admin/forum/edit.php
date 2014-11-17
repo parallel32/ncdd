@@ -60,7 +60,7 @@ $isOwner =  ( array_key_exists('topic',$this->vars) && array_key_exists('forum',
                   <div class="span12">
                      <form id="saw-form" class="horizontal-form portlet">
                         <input id="add" type="hidden" name="doc[add]" value="<?=$this->vars['add']?>">
-                        <input id="currentStatus" type="hidden" name="doc[currentStatus]" value="<?=$this->vars['topic']['currentStatus']?>">
+                        <input id="currentStatus" type="hidden" name="doc[currentStatus]" value="<?=(array_key_exists('topic',$this->vars)) ? $this->vars['topic']['currentStatus'] : '' ?>">
                         <input id="_id" type="hidden" name="doc[_id]" value="<?=(array_key_exists('topic',$this->vars)) ? $this->vars['topic']['_id'] : '' ?>">
                         <!-- ERROR -->
                         <div class="alert alert-error hide">
