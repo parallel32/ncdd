@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+
+<html class="no-js">
+  <head>
+    
+<!-- force browser refresh of favicon.  Plz remove me someday? -->
+<link href="http://www.avvo.com/favicon.ico?v=2" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+
+<meta charset="utf-8">
+<title>Find the Best Dui / Dwi Lawyer in Louisiana - Avvo.com</title>
+
+<meta name="description" content="Find, research and rate 68 DUI / DWI lawyers in Louisiana. Free attorney background profiles, disciplinary sanctions, and client reviews." />
+
+<meta name="robots" content="noindex,follow" />
+
+
+
+<meta property="og:image" content="http://assets2.iavvo.com/assets/header_logo-d9da0710ef4f108673b08e2f89ee79c8.png" />
+      
+    
+<meta href="http://www.avvo.com/search/lawyer_search?loc=Louisiana&amp;q=DUI%20%2F%20DWI&amp;start=10" rel="next" />
+
+
+
+<meta name="robots" content="NOODP,NOYDIR" />
+
+<script>
+//<![CDATA[
+window.locationContext = {"id":277,"name":"Louisiana","city_name":null,"state_name":"Louisiana","state_code":"LA","postal_code":null};window.adLocationContext = {"id":69792,"name":"70116","city_name":"New Orleans","state_name":"Louisiana","state_code":"LA","postal_code":"70116"};window.specialtyContext = {"id":56,"name":"DUI"};
+//]]>
+</script><script src="//cdn.optimizely.com/js/275511722.js"></script>
+
+<link href="https://plus.google.com/107840042923877554905" rel="publisher" />
+
+  <link href="http://assets2.iavvo.com/assets/application-679b5b560ef19c2728b0c8d332d28f6a.css" media="all" rel="stylesheet" />
+  <!--[if lt IE 9]>
+    <link href="http://assets2.iavvo.com/assets/font_avvo_icon_bad_IE_bad_dog-27d8ace9b1fdd6c93145f0e1b7827dc6.css" media="all" rel="stylesheet" />
+  <![endif]-->
+
+<link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:700|Open+Sans:300,400,600,700" media="all" rel="stylesheet" />
+
+<script src="http://assets1.iavvo.com/assets/application-944ee4fdb62f3df1542271af9ecbae14.js"></script>
+
+<!--[if (gte IE 6)&(lte IE 8)]>
+    <script src="http://assets1.iavvo.com/assets/selectivizr-c4422edc73658e842dce601b5979afe2.js"></script>
+<![endif]-->
+
+
+
+  <link href="http://www.avvo.com/search/lawyer_search?q=DUI+%2F+DWI&amp;loc=Louisiana" rel="canonical" />
+
+<script>
+//<![CDATA[
+
+  google_analytics_domain_name=".avvo.com";
+  try {
+    var _gaq = _gaq || [];
+    _gaq.push(
+      ['_setAccount', 'UA-4437273-1'],
+      ['_setDomainName', '.avvo.com'],
+      ['_setCustomVar', 1,'user_type','other', 1],
+      ['_setCustomVar', 5, 'abs', '....................................................................................................', 3]
+    );
+
+        _gaq.push(['_setCustomVar', 3,'spec',"56_DUI / DWI", 3]);
+
+    _gaq.push(['_trackPageview']);
+  } catch(err) {}
+
+//]]>
+</script>
+
+  <script>
+//<![CDATA[
+
+  try {
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  } catch(err) {}
+
+//]]>
+</script>
+
+
+
+<script type="text/javascript">window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"location":{"id":277,"detail_type":"Gnomon::State","detail_id":21,"country_id":231,"country_name":"United States","state_id":21,"state_name":"Louisiana","state_code":"LA","county_id":null,"county_name":null,"city_id":null,"city_name":null,"neighborhood_id":null,"neighborhood_name":null,"postal_code_id":null,"postal_code_name":null,"to_location":"Louisiana","to_short_location":"Louisiana","to_long_location":"Louisiana","to_location_with_region":"Louisiana","latitude":null,"longitude":null,"updated_at":"2012-08-28T14:45:56.000-07:00","population":null,"canonical_postal_code_id":32613},"pageTitle":"Find the Best Dui / Dwi Lawyer in Louisiana","siteSection":"lawyer search","logicalSection":"lawyers/search","renderType":"desktop","persistentSessionId":"b4973935-6179-4e43-acc4-f3772260a239","userId":null,"userEmail":null,"userType":"anonymous","professionalId":null,"specialty":56,"search_type":"lawyer"});</script>
+
+  <meta name="ad-location-id" content="69792" /><meta name="ad-specialty-id" content="56" /><meta name="page-template-name" content="Lawyer SERP" /></head>
+  <body>
+    <script>
+//<![CDATA[
+duraLogEvents('eJztl01vnDAQhv9KZKm9BDY2+AOvFPWStIqUQ9UP9RBFlgGzsQSY2JDtqup/\n78BmpSbtrSriwA2/eGZexo+MfXdHKOFciEzQCHXeVSYE61pdK9t0/jhAEdKN\nC8lelyj6gToXbD/KWxKhQvdm5/wBbVGt9wfjVWm9KfpRilDt4D1MVbZE20SI\nCIXOFFbX/WGSGAfFaF88KFdVwfRoi1/bgGlEcJKyLEKla7SFwmi/32/005Pb\nFK6BOoOvQbw4prp4NnIcvXu8vPp6c/4meX9+9e3mLTi6vHWDDVa3GiK9qYz3\nxqNtO9Q1ZAoQqXem7U9KOFqZjKAkJ5gyxmNJiYlpwnWcZaWJU04qJmWuqaFT\n1sb1RtkOQggWG5JkG8I3CRbwsjH9gxuTfbj+gp4rjsmP5bxpy1FoQ6/bwqjd\nMBXO8rKSGpOY5jmLqc5knNMCnlJe4KygWhc5JOuMDzb0YF+98J1TKVKZspgT\nIWMwmca6KGhcpUIkCcc6SSX6eR/9Ew7JTDhQQjGTYsVh2Tikc+4OOFlxWDYO\ndK7dIUmFzPiKw7JxYHPtDpJhzPCKw7Jx4HPtDlgILNaj5MJxELP9LBg4ZCsO\ny8Yhm+tnwbL16LB4GuR8F4tM4vWeuXAcCJ7vKElpth4l5+YB+qCerNm/IuDP\nVbWdOolQLMUp4RDzOJgJDOj/2cUZdB+0oGsTlDe7UzxJOX0lA2E9rHzhSqNe\n1OJSyORvDJnv8OG9Dea3RrZDAwnDUPcBIrOxs9NAwVQ1ftoR4NC5NjhvSlVD\n42y7U6F2Y0gKuNnQ1fpwUkiEetOAAkvb6gYSoNsJtbPP158+ohXP/43n/S9p\nJmjk\n');
+//]]>
+</script>
+
+<script>
+//<![CDATA[
+
+  $(document).on('click', '[data-dura-trackable-href]', duraUpdateLinkHREF);
+
+//]]>
+</script>
+    <noscript><iframe height="0" src="//www.googletagmanager.com/ns.html?id=GTM-K2L3VH" style="display:none;visibility:hidden" width="0"></iframe></noscript><script type="text/javascript">(function(w, d, s, l, i){
+  w[l] = w[l] || [];
+  w[l].push({ 'gtm.start' : new Date().getTime(),
+              event       : 'gtm.js'});
+  var f   = d.getElementsByTagName(s)[0];
+  var j   = d.createElement(s);
+  var dl  = l != 'dataLayer' ? '&l='+ l : '';
+  j.async = true;
+  j.src   = '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-K2L3VH');</script>
+    <div id="bing_tracking">
+
+</div>
+    <noscript>
+  <div style="text-align:center;background:#fbf3c5;color:#911717;padding:8px;border-bottom:1px solid #D7DADD;">
+  <strong>We've detected that your browser does not support scripting.</strong> <br/>
+  Scripting must be enabled to use Avvo. Turn on scripting and reload this page.
+  </div>
+</noscript>
+
+    <hgroup><header><nav id="page_header"><a href="//www.avvo.com/"><img alt="Logo@2x" class="logo" src="http://assets2.iavvo.com/assets/logos/logo@2x-39c17b04a49441c5131b852386f9312e.png" /></a><ul class="pull-right" id="sign-in-module"><li class="left-margin"><a href="/for-lawyers">For Lawyers</a></li><li class="left-margin"><a href="/account/login" rel="nofollow">Sign in</a></li><li class="left-margin"><a href="/account/register" rel="nofollow">Register</a></li></ul></nav></header></hgroup>
+    <div class="page">
+      <div id="primary_nav_and_breadcrumb">
+        <nav class="" id="primary_nav"><style type="text/css">.menu-primary{height:auto}.menu-primary #my-avvo-link{padding-top:28px}</style><ul class="center-content clearfix menu-primary"><li><a href="/free-legal-advice">Research<br/>Legal Advice</a></li><li><a href="/ask-a-lawyer">Ask<br/>a Lawyer</a></li><li class="active"><a href="/find-a-lawyer">Find<br/>a Lawyer</a></li><li><a href="/review-your-lawyer">Review<br/>Your Lawyer</a></li></ul><script type="text/javascript">$(document).ready(function(){
+  if(false){
+    $('.menu-primary.my_avvo').show();
+    $('#my-avvo-link').parent('li').addClass('active');
+  }
+  $('#my-avvo-link').click(function(){
+    $('.menu-primary.my_avvo').slideToggle();
+    return false;
+  })
+})</script>  <div class="search browsable" id="primary_nav_search">
+      <span id="search_selector">
+        Lawyers
+      </span>
+      <ul id="search_selector_menu" style="display:none;">
+          <li data-form-id="lawyer_search">Lawyers</li>
+          <li data-form-id="legal_advice_search">Legal Advice</li>
+      </ul>
+
+        <span id="lawyer_search" class="search_form_container selectable" >
+          
+<form accept-charset="UTF-8" action="/search/lawyer_search" class="search_form search-form" id="lawyer_search_primary_nav_search_search_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+  <input autocomplete="off" class="keyword_field keyword-search-field " data-tooltip-right="true" id="lawyer_search_primary_nav_search_search_form_keyword_field" name="q" placeholder="Lawyer&#39;s name -OR- Practice area" type="text" value="DUI / DWI" />
+  <input autocomplete="off" class="location_field location-search-field " id="lawyer_search_primary_nav_search_search_form_location_field" name="loc" placeholder="City, State -OR- ZIP" type="text" value="Louisiana" />
+  <span class="icon-submit">
+    <input class="button primary action " name="commit" style="" type="submit" value="" />
+  </span>
+
+</form>
+        </span>
+</div>
+<script>
+//<![CDATA[
+
+  $(document).click(function(e){
+    if(e.target.id != "search_selector") {
+      $("#search_selector_menu").hide();
+    }
+  });
+
+  $("#search_selector_menu li").click(function(e) {
+    form_id = $(this).attr("data-form-id");
+    $("#primary_nav_search .search_form_container").hide();
+    $("#" + form_id).show();
+    $("#search_selector").html($(this).html());
+    $("ul.ui-autocomplete").hide();
+    $("#search_selector_menu").hide();
+  });
+
+  $("#search_selector").click(function(e) {
+    $("#search_selector_menu").toggle();
+    $("#search_selector_menu").position({
+      my: "left top",
+      at: "left bottom",
+      of: $("#search_selector")
+    });
+  });
+
+  $("#primary_nav_search .keyword_field").change(function(e) {
+    $("#primary_nav_search .keyword_field").val($(e.target).val());
+    $("#primary_nav_search .keyword_field").trigger('valuechanged');
+  });
+
+  $("#primary_nav_search .location_field").change(function(e) {
+    $("#primary_nav_search .location_field").each(function(i,el) {
+      $(el).val($(e.target).val());
+      $(el).trigger('valuechanged');
+    });
+  });
+
+//]]>
+</script>
+</nav><div id="breadcrumb"><div class="breadcrumbs"><span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/find-a-lawyer" itemprop="url"><span itemprop="title">Rated Lawyers</span></a></span>&nbsp;&gt;&nbsp;<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/all-lawyers/la.html" itemprop="url"><span itemprop="title">Louisiana</span></a></span>&nbsp;&gt;&nbsp;<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><span class="current" itemprop="title">DUI / DWI Attorneys</span></span></div></div><!--[if lt IE 9]><script type="text/javascript">$(document).ready(function(){
+  $('.icon-submit').click(function(){
+    $(this).parent().submit();
+  });
+})</script><![endif]-->
+      </div>
+      <div id="flash"></div>
+    </div>
+    <div class="page stripped">
+      
+          <h1 class="light margin0">Louisiana DUI Attorneys<small>&nbsp;&#151;&nbsp;68&nbsp;found</small></h1>  <section class="module margin8 link-table link-table-6-up">
+    <h2>Narrow results by city</h2>
+    <table class="margin4">
+        <tr>
+            <td>
+                <a href="/dui-dwi-lawyer/la/alexandria.html" title="Alexandria DUI / DWI">Alexandria</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/la/covington.html" title="Covington DUI / DWI">Covington</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/la/harvey.html" title="Harvey DUI / DWI">Harvey</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/la/lake_charles.html" title="Lake Charles DUI / DWI">Lake Charles</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/la/pineville.html" title="Pineville DUI / DWI">Pineville</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/la/westwego.html" title="Westwego DUI / DWI">Westwego</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="/dui-dwi-lawyer/la/baton_rouge.html" title="Baton Rouge DUI / DWI">Baton Rouge</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/la/elmwood.html" title="Elmwood DUI / DWI">Elmwood</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/la/houma.html" title="Houma DUI / DWI">Houma</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/la/mandeville.html" title="Mandeville DUI / DWI">Mandeville</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/la/river_ridge.html" title="River Ridge DUI / DWI">River Ridge</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="/dui-dwi-lawyer/la/bossier_city.html" title="Bossier City DUI / DWI">Bossier City</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/la/gonzales.html" title="Gonzales DUI / DWI">Gonzales</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/la/kenner.html" title="Kenner DUI / DWI">Kenner</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/la/marrero.html" title="Marrero DUI / DWI">Marrero</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/la/shreveport.html" title="Shreveport DUI / DWI">Shreveport</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="/dui-dwi-lawyer/la/bridge_city.html" title="Bridge City DUI / DWI">Bridge City</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/la/gretna.html" title="Gretna DUI / DWI">Gretna</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/la/kolin.html" title="Kolin DUI / DWI">Kolin</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/la/metairie.html" title="Metairie DUI / DWI">Metairie</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/la/slidell.html" title="Slidell DUI / DWI">Slidell</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="/dui-dwi-lawyer/la/chalmette.html" title="Chalmette DUI / DWI">Chalmette</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/la/hammond.html" title="Hammond DUI / DWI">Hammond</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/la/lafayette.html" title="Lafayette DUI / DWI">Lafayette</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/la/new_orleans.html" title="New Orleans DUI / DWI">New Orleans</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/la/terrytown.html" title="Terrytown DUI / DWI">Terrytown</a>
+            </td>
+        </tr>
+    </table>
+
+  <a class="continue navigation" href="/find-a-lawyer/dui-dwi-lawyer/la/all-cities-counties" title="Browse Louisiana DUI Lawyers">See all cities in Louisiana</a>
+  </section>
+<div class="page-row"><div class="span2"><div id="filters"><div class="module margin6"><h2>Lawyers with</h2><div class="filter"><label class="checkbox" for="client_reviews_1"><input class="checkbox" data-search-filter="client_reviews" id="client_reviews_1" name="client_reviews" type="checkbox" value="1" /> Client reviews</label></div><div class="filter"><label class="checkbox" for="endorsements_1"><input class="checkbox" data-search-filter="endorsements" id="endorsements_1" name="endorsements" type="checkbox" value="1" /> Endorsements</label></div><div class="filter"><label class="checkbox" for="no_misconduct_1"><input class="checkbox" data-search-filter="no_misconduct" id="no_misconduct_1" name="no_misconduct" type="checkbox" value="1" /> No misconduct</label></div><div class="filter"><label class="checkbox" for="avvo_pro_1"><input class="checkbox" data-search-filter="avvo_pro" id="avvo_pro_1" name="avvo_pro" type="checkbox" value="1" /> Avvo Pro <a data-tooltip="Lawyers who subscribe to Avvo Pro have the ability to customize components of their profile, generate more leads with enhanced contact options, and track their performance on Avvo.
+&lt;a href=&quot;/for-lawyers/avvo-pro&quot;&gt;Learn more.&lt;/a&gt;
+" href="#!" rel="nofollow"><span class="label label-avvo-pro">Pro</span></a></label></div><div class="filter"><label class="checkbox" for="free_consultations_1"><input class="checkbox" data-search-filter="free_consultations" id="free_consultations_1" name="free_consultations" type="checkbox" value="1" /> Free consultations</label></div></div><div class="module margin6"><h2>Avvo Rating</h2><div id="rating_slider"></div><div><h4 class="ui-slider-label light" id="rating_slider_label">1.0 to 10.0</h4></div><script type="text/javascript">$(function(){
+  $("#rating_slider").slider({
+    min: 1,
+    max: 10,
+    range: true,
+    values: [1, 10],
+    slide: function(evt, ui) {
+      // update the slider label
+      $("#rating_slider_label").html(ui.values[0] + ".0 to " + ui.values[1] + ".0");
+    },
+    stop: function(evt, ui) {
+      rating = ui.values[0] + "," + ui.values[1];
+      replace_filter_value("rating", rating);
+      filter_search_results();
+    }
+  });
+});</script></div><div class="module margin6"><h2>Languages</h2><div class="filter"><label class="checkbox" for="languages_50"><input class="checkbox" data-search-filter="languages" id="languages_50" name="languages" type="checkbox" value="50" /> Spanish</label></div><div class="filter"><label class="checkbox" for="languages_19"><input class="checkbox" data-search-filter="languages" id="languages_19" name="languages" type="checkbox" value="19" /> French</label></div><div class="filter"><label class="checkbox" for="languages_20"><input class="checkbox" data-search-filter="languages" id="languages_20" name="languages" type="checkbox" value="20" /> German</label></div><a data-modal-open="modal_O1tiF" data-modal-url="/search_filters/languages?&amp;ids%5B%5D=50&amp;ids%5B%5D=19&amp;ids%5B%5D=20&amp;ids%5B%5D=18&amp;ids%5B%5D=29&amp;ids%5B%5D=44&amp;ids%5B%5D=47" href="#!">All languages</a></div></div></div><div class="span6 margin9"><div class="page-row results_nav content-bar margin1"><div class="span6 content-bar-left"><div class="margin2" id="sorting">
+<label for="sort_select" class="inline-label">Sort by</label>
+<select id="sort_select" class="input-medium" >
+  <option selected="selected" value="relevancy">Best Match</option>
+<option value="avvo_rating">Avvo Rating</option>
+<option value="number_of_reviews">Number of Reviews</option>
+<option value="name">Name</option>
+</select>
+</div><hr /></div></div><div data-location-id="277" data-specialty-id="56" id="results"><div class="js-ads" data-ad-format="desktop" data-ad-limit="3" data-ad-track="true" data-ad-type="sponsored_listing_ads" data-ad-variant="inline" data-preview-ad="null"></div>  <ol class="avvo-undecorated-list with-overlay">
+    
+  <li class="margin7" id="professional_1761358"><div class="page-row"><div class="span6"><div class="page-row"><div class="span1"><a href="/attorneys/70454-la-james-layrisson-1761358.html" rel="nofollow"><img alt="Louisiana DUI / DWI Attorney James Parker Layrisson" borderless="true" class="borderless thumbnail_large" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/1761358_1364677505.jpg" title="James Parker Layrisson" /></a></div><div class="span5"><div class="page-row"><div class="span3"><span class="name result_title"><h3 class="margin1"><a data-professional-id="1761358" href="/attorneys/70454-la-james-layrisson-1761358.html">James Layrisson</a> </h3></span><div class="muted margin1"><span><span>Ponchatoula</span>, <span>LA</span></span> <span>DUI / DWI Attorney</span><br />Licensed for 12 years</div><div class="client_rating client-rating"><span class="score"><a href="/attorneys/70454-la-james-layrisson-1761358/reviews.html"><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span></a> <a href="/attorneys/70454-la-james-layrisson-1761358/reviews.html" rel="nofollow">26 reviews</a></span></div></div><div class="center-content span2"><div class="margin3"><span class="muted light">AVVO<br />RATING</span><br /><span class="avvo_rating_numeric"><h2 class="bold ultratight margin0">10.0</h2><div><a class="tooltip_link tooltip-link" data-tooltip-remote-options="" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">Superb</a></div></span></div></div></div></div></div></div></div></li>
+  
+  <li class="margin7" id="professional_4140597"><div class="page-row"><div class="span6"><div class="page-row"><div class="span1"><a href="/attorneys/70130-la-ariel-digiulio-4140597.html" rel="nofollow"><img alt="Louisiana DUI / DWI Attorney Ariel K. DiGiulio" borderless="true" class="borderless thumbnail_large" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/4140597_1352489312.jpg" title="Ariel K. DiGiulio" /></a></div><div class="span5"><div class="page-row"><div class="span3"><span class="name result_title"><h3 class="margin1"><a data-professional-id="4140597" href="/attorneys/70130-la-ariel-digiulio-4140597.html">Ariel DiGiulio</a> <a data-tooltip="Lawyers who subscribe to Avvo Pro have the ability to customize components of their profile, generate more leads with enhanced contact options, and track their performance on Avvo.
+&lt;a href=&quot;/for-lawyers/avvo-pro&quot;&gt;Learn more.&lt;/a&gt;
+" href="#!" rel="nofollow"><span class="label label-avvo-pro">Pro</span></a></h3></span><div class="muted margin1"><span><span>New Orleans</span>, <span>LA</span></span> <span>DUI / DWI Attorney</span><br />Licensed for 9 years</div><div class="client_rating client-rating"><span class="score"><a href="/attorneys/70130-la-ariel-digiulio-4140597/reviews.html"><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span></a> <a href="/attorneys/70130-la-ariel-digiulio-4140597/reviews.html" rel="nofollow">3 reviews</a></span></div></div><div class="center-content span2"><div class="margin3"><span class="muted light">AVVO<br />RATING</span><br /><span class="avvo_rating_numeric"><h2 class="bold ultratight margin0">10.0</h2><div><a class="tooltip_link tooltip-link" data-tooltip-remote-options="" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">Superb</a></div></span></div></div><div class="span5 set"><div class="item"><i class="icon-padded right narrow icon-phone"></i> <span class="7520_phone phone">504-524-4080</span></div><div class="item"><a class="email" data-avn="{&quot;name&quot;:&quot;amos.gtm.view-advertising-email-form-pro&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;4140597-Ariel-DiGiulio&quot;,&quot;position&quot;:&quot;pro&quot;}}" href="/attorneys/70130-la-ariel-digiulio-4140597/contact.html" rel="nofollow"><i class="icon-blue icon-padded right narrow icon-email2"></i> Email</a></div><div class="item"><a class="website" data-avn="{&quot;name&quot;:&quot;amos.profiles.website_clicked&quot;,&quot;payload&quot;:{&quot;gtm&quot;:{&quot;event&quot;:&quot;contact-advertising-website&quot;,&quot;property&quot;:&quot;4140597-Ariel-DiGiulio&quot;,&quot;position&quot;:&quot;pro&quot;}}}" href="http://www.digiulioutley.com" onclick="this.href=&#39;/attorneys/70130-la-ariel-digiulio-4140597/website.html&#39;;return true;" rel="nofollow" target="_blank"><i class="icon-professional-newsletter icon-blue icon-padded right narrow"></i> Website</a></div></div></div></div></div></div></div></li>
+  
+  <li class="margin7" id="professional_1761302"><div class="page-row"><div class="span6"><div class="page-row"><div class="span1"><a href="/attorneys/71105-la-kenneth-smith-1761302.html" rel="nofollow"><img alt="Louisiana DUI / DWI Attorney Kenneth Craig Smith Jr." borderless="true" class="borderless thumbnail_large" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/1761302_1236985029.jpg" title="Kenneth Craig Smith Jr." /></a></div><div class="span5"><div class="page-row"><div class="span3"><span class="name result_title"><h3 class="margin1"><a data-professional-id="1761302" href="/attorneys/71105-la-kenneth-smith-1761302.html">Kenneth Smith</a> <a data-tooltip="Lawyers who subscribe to Avvo Pro have the ability to customize components of their profile, generate more leads with enhanced contact options, and track their performance on Avvo.
+&lt;a href=&quot;/for-lawyers/avvo-pro&quot;&gt;Learn more.&lt;/a&gt;
+" href="#!" rel="nofollow"><span class="label label-avvo-pro">Pro</span></a></h3></span><div class="muted margin1"><span><span>Shreveport</span>, <span>LA</span></span> <span>DUI / DWI Attorney</span><br />Licensed for 21 years</div><div class="client_rating client-rating"><span class="score">Not yet reviewed </span></div></div><div class="center-content span2"><div class="margin3"><span class="muted light">AVVO<br />RATING</span><br /><span class="avvo_rating_numeric"><h2 class="bold ultratight margin0">10.0</h2><div><a class="tooltip_link tooltip-link" data-tooltip-remote-options="" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">Superb</a></div></span></div></div><div class="span5 set"><div class="item"><i class="icon-padded right narrow icon-phone"></i> <span class="9961_phone phone">318-219-1001</span><script>
+//<![CDATA[
+
+          $(document).ready(function(){
+            $(".9961_phone").each(function(index, element) {
+              $(element).html("318-550-3115");
+              if(element.parentNode.tagName == "A"){
+                element.parentNode.setAttribute("href","tel:318-550-3115");
+              }
+            });
+          });
+        
+//]]>
+</script></div></div></div></div></div></div></div></li>
+  
+  <li class="margin7" id="professional_4237986"><div class="page-row"><div class="span6"><div class="page-row"><div class="span1"><a href="/attorneys/70130-la-dylan-utley-4237986.html" rel="nofollow"><img alt="Louisiana DUI / DWI Attorney Dylan Clark Utley" borderless="true" class="borderless thumbnail_large" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/4237986_1357782704.jpg" title="Dylan Clark Utley" /></a></div><div class="span5"><div class="page-row"><div class="span3"><span class="name result_title"><h3 class="margin1"><a data-professional-id="4237986" href="/attorneys/70130-la-dylan-utley-4237986.html">Dylan Utley</a> <a data-tooltip="Lawyers who subscribe to Avvo Pro have the ability to customize components of their profile, generate more leads with enhanced contact options, and track their performance on Avvo.
+&lt;a href=&quot;/for-lawyers/avvo-pro&quot;&gt;Learn more.&lt;/a&gt;
+" href="#!" rel="nofollow"><span class="label label-avvo-pro">Pro</span></a></h3></span><div class="muted margin1"><span><span>New Orleans</span>, <span>LA</span></span> <span>DUI / DWI Attorney</span><br />Licensed for 13 years</div><div class="client_rating client-rating"><span class="score"><a href="/attorneys/70130-la-dylan-utley-4237986/reviews.html"><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span></a> <a href="/attorneys/70130-la-dylan-utley-4237986/reviews.html" rel="nofollow">10 reviews</a></span></div></div><div class="center-content span2"><div class="margin3"><span class="muted light">AVVO<br />RATING</span><br /><span class="avvo_rating_numeric"><h2 class="bold ultratight margin0">10.0</h2><div><a class="tooltip_link tooltip-link" data-tooltip-remote-options="" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">Superb</a></div></span></div></div><div class="span5 set"><div class="item"><i class="icon-padded right narrow icon-phone"></i> <span class="15413_phone phone">504-524-4080</span><script>
+//<![CDATA[
+
+          $(document).ready(function(){
+            $(".15413_phone").each(function(index, element) {
+              $(element).html("504-708-1881");
+              if(element.parentNode.tagName == "A"){
+                element.parentNode.setAttribute("href","tel:504-708-1881");
+              }
+            });
+          });
+        
+//]]>
+</script></div><div class="item"><a class="email" data-avn="{&quot;name&quot;:&quot;amos.gtm.view-advertising-email-form-pro&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;4237986-Dylan-Utley&quot;,&quot;position&quot;:&quot;pro&quot;}}" href="/attorneys/70130-la-dylan-utley-4237986/contact.html" rel="nofollow"><i class="icon-blue icon-padded right narrow icon-email2"></i> Email</a></div><div class="item"><a class="website" data-avn="{&quot;name&quot;:&quot;amos.profiles.website_clicked&quot;,&quot;payload&quot;:{&quot;gtm&quot;:{&quot;event&quot;:&quot;contact-advertising-website&quot;,&quot;property&quot;:&quot;4237986-Dylan-Utley&quot;,&quot;position&quot;:&quot;pro&quot;}}}" href="http://www.digiulioutley.com" onclick="this.href=&#39;/attorneys/70130-la-dylan-utley-4237986/website.html&#39;;return true;" rel="nofollow" target="_blank"><i class="icon-professional-newsletter icon-blue icon-padded right narrow"></i> Website</a></div></div></div></div></div></div></div></li>
+  
+  <li class="margin7" id="professional_1950050"><div class="page-row"><div class="span6"><div class="page-row"><div class="span1"><a href="/attorneys/70810-la-glynn-delatte-1950050.html" rel="nofollow"><img alt="Louisiana DUI / DWI Attorney Glynn Joseph Delatte Jr." borderless="true" class="borderless thumbnail_large" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/1950050_1272136740.jpg" title="Glynn Joseph Delatte Jr." /></a></div><div class="span5"><div class="page-row"><div class="span3"><span class="name result_title"><h3 class="margin1"><a data-professional-id="1950050" href="/attorneys/70810-la-glynn-delatte-1950050.html">Glynn Delatte</a> </h3></span><div class="muted margin1"><span><span>Baton Rouge</span>, <span>LA</span></span> <span>DUI / DWI Attorney</span><br />Licensed for 19 years</div><div class="client_rating client-rating"><span class="score"><a href="/attorneys/70810-la-glynn-delatte-1950050/reviews.html"><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span></a> <a href="/attorneys/70810-la-glynn-delatte-1950050/reviews.html" rel="nofollow">3 reviews</a></span></div></div><div class="center-content span2"><div class="margin3"><span class="muted light">AVVO<br />RATING</span><br /><span class="avvo_rating_numeric"><h2 class="bold ultratight margin0">8.3</h2><div><a class="tooltip_link tooltip-link" data-tooltip-remote-options="" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">Excellent</a></div></span></div></div></div></div></div></div></div></li>
+  
+  <li class="margin7" id="professional_4077078"><div class="page-row"><div class="span6"><div class="page-row"><div class="span1"><a href="/attorneys/70130-la-stephen-hebert-4077078.html" rel="nofollow"><img alt="Louisiana DUI / DWI Attorney Stephen David Hebert" borderless="true" class="borderless thumbnail_large" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/4077078_1332882847.jpg" title="Stephen David Hebert" /></a></div><div class="span5"><div class="page-row"><div class="span3"><span class="name result_title"><h3 class="margin1"><a data-professional-id="4077078" href="/attorneys/70130-la-stephen-hebert-4077078.html">Stephen Hebert</a> <a data-tooltip="Lawyers who subscribe to Avvo Pro have the ability to customize components of their profile, generate more leads with enhanced contact options, and track their performance on Avvo.
+&lt;a href=&quot;/for-lawyers/avvo-pro&quot;&gt;Learn more.&lt;/a&gt;
+" href="#!" rel="nofollow"><span class="label label-avvo-pro">Pro</span></a></h3></span><div class="muted margin1"><span><span>New Orleans</span>, <span>LA</span></span> <span>DUI / DWI Attorney</span><br />Licensed for 12 years</div><div class="client_rating client-rating"><span class="score"><a href="/attorneys/70130-la-stephen-hebert-4077078/reviews.html"><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span></a> <a href="/attorneys/70130-la-stephen-hebert-4077078/reviews.html" rel="nofollow">22 reviews</a></span></div></div><div class="center-content span2"><div class="margin3"><span class="muted light">AVVO<br />RATING</span><br /><span class="avvo_rating_numeric"><h2 class="bold ultratight margin0">10.0</h2><div><a class="tooltip_link tooltip-link" data-tooltip-remote-options="" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">Superb</a></div></span></div></div><div class="span5 set"><div class="item"><i class="icon-padded right narrow icon-phone"></i> <span class="7545_phone phone">504-250-6020</span><script>
+//<![CDATA[
+
+          $(document).ready(function(){
+            $(".7545_phone").each(function(index, element) {
+              $(element).html("504-265-1447");
+              if(element.parentNode.tagName == "A"){
+                element.parentNode.setAttribute("href","tel:504-265-1447");
+              }
+            });
+          });
+        
+//]]>
+</script></div><div class="item"><a class="email" data-avn="{&quot;name&quot;:&quot;amos.gtm.view-advertising-email-form-pro&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;4077078-Stephen-Hebert&quot;,&quot;position&quot;:&quot;pro&quot;}}" href="/attorneys/70130-la-stephen-hebert-4077078/contact.html" rel="nofollow"><i class="icon-blue icon-padded right narrow icon-email2"></i> Email</a></div><div class="item"><a class="website" data-avn="{&quot;name&quot;:&quot;amos.profiles.website_clicked&quot;,&quot;payload&quot;:{&quot;gtm&quot;:{&quot;event&quot;:&quot;contact-advertising-website&quot;,&quot;property&quot;:&quot;4077078-Stephen-Hebert&quot;,&quot;position&quot;:&quot;pro&quot;}}}" href="http://www.stephendhebert.com" onclick="this.href=&#39;/attorneys/70130-la-stephen-hebert-4077078/website.html&#39;;return true;" rel="nofollow" target="_blank"><i class="icon-professional-newsletter icon-blue icon-padded right narrow"></i> Website</a></div></div></div></div></div></div></div></li>
+  
+  <li class="margin7" id="professional_4257785"><div class="page-row"><div class="span6"><div class="page-row"><div class="span1"><a href="/attorneys/70806-la-benjamin-labranche-4257785.html" rel="nofollow"><img alt="Louisiana DUI / DWI Attorney Benjamin Rene LaBranche" borderless="true" class="borderless thumbnail_large" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/4257785_1358800322.jpg" title="Benjamin Rene LaBranche" /></a></div><div class="span5"><div class="page-row"><div class="span3"><span class="name result_title"><h3 class="margin1"><a data-professional-id="4257785" href="/attorneys/70806-la-benjamin-labranche-4257785.html">Benjamin LaBranche</a> <a data-tooltip="Lawyers who subscribe to Avvo Pro have the ability to customize components of their profile, generate more leads with enhanced contact options, and track their performance on Avvo.
+&lt;a href=&quot;/for-lawyers/avvo-pro&quot;&gt;Learn more.&lt;/a&gt;
+" href="#!" rel="nofollow"><span class="label label-avvo-pro">Pro</span></a></h3></span><div class="muted margin1"><span><span>Baton Rouge</span>, <span>LA</span></span> <span>DUI / DWI Attorney</span><br />Licensed for 10 years</div><div class="client_rating client-rating"><span class="score"><a href="/attorneys/70806-la-benjamin-labranche-4257785/reviews.html"><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span></a> <a href="/attorneys/70806-la-benjamin-labranche-4257785/reviews.html" rel="nofollow">10 reviews</a></span></div></div><div class="center-content span2"><div class="margin3"><span class="muted light">AVVO<br />RATING</span><br /><span class="avvo_rating_numeric"><h2 class="bold ultratight margin0">9.8</h2><div><a class="tooltip_link tooltip-link" data-tooltip-remote-options="" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">Superb</a></div></span></div></div><div class="span5 set"><div class="item"><i class="icon-padded right narrow icon-phone"></i> <span class="8422_phone phone">225-927-5495</span><script>
+//<![CDATA[
+
+          $(document).ready(function(){
+            $(".8422_phone").each(function(index, element) {
+              $(element).html("225-361-8828");
+              if(element.parentNode.tagName == "A"){
+                element.parentNode.setAttribute("href","tel:225-361-8828");
+              }
+            });
+          });
+        
+//]]>
+</script></div><div class="item"><a class="email" data-avn="{&quot;name&quot;:&quot;amos.gtm.view-advertising-email-form-pro&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;4257785-Benjamin-LaBranche&quot;,&quot;position&quot;:&quot;pro&quot;}}" href="/attorneys/70806-la-benjamin-labranche-4257785/contact.html" rel="nofollow"><i class="icon-blue icon-padded right narrow icon-email2"></i> Email</a></div><div class="item"><a class="website" data-avn="{&quot;name&quot;:&quot;amos.profiles.website_clicked&quot;,&quot;payload&quot;:{&quot;gtm&quot;:{&quot;event&quot;:&quot;contact-advertising-website&quot;,&quot;property&quot;:&quot;4257785-Benjamin-LaBranche&quot;,&quot;position&quot;:&quot;pro&quot;}}}" href="http://BRLLAWYER.COM" onclick="this.href=&#39;/attorneys/70806-la-benjamin-labranche-4257785/website.html&#39;;return true;" rel="nofollow" target="_blank"><i class="icon-professional-newsletter icon-blue icon-padded right narrow"></i> Website</a></div></div></div></div></div></div></div></li>
+  
+  <li class="margin7" id="professional_158986"><div class="page-row"><div class="span6"><div class="page-row"><div class="span1"><a href="/attorneys/70601-la-alvin-hunt-158986.html" rel="nofollow"><img alt="Louisiana DUI / DWI Attorney Alvin David Hunt" borderless="true" class="borderless thumbnail_large" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/158986_1416256301.jpg" title="Alvin David Hunt" /></a></div><div class="span5"><div class="page-row"><div class="span3"><span class="name result_title"><h3 class="margin1"><a data-professional-id="158986" href="/attorneys/70601-la-alvin-hunt-158986.html">Alvin Hunt</a> <a data-tooltip="Lawyers who subscribe to Avvo Pro have the ability to customize components of their profile, generate more leads with enhanced contact options, and track their performance on Avvo.
+&lt;a href=&quot;/for-lawyers/avvo-pro&quot;&gt;Learn more.&lt;/a&gt;
+" href="#!" rel="nofollow"><span class="label label-avvo-pro">Pro</span></a></h3></span><div class="muted margin1"><span><span>Lake Charles</span>, <span>LA</span></span> <span>DUI / DWI Attorney</span><br />Licensed for 23 years</div><div class="client_rating client-rating"><span class="score"><a href="/attorneys/70601-la-alvin-hunt-158986/reviews.html"><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span></a> <a href="/attorneys/70601-la-alvin-hunt-158986/reviews.html" rel="nofollow">12 reviews</a></span></div></div><div class="center-content span2"><div class="margin3"><span class="muted light">AVVO<br />RATING</span><br /><span class="avvo_rating_numeric"><h2 class="bold ultratight margin0">8.3</h2><div><a class="tooltip_link tooltip-link" data-tooltip-remote-options="" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">Excellent</a></div></span></div></div><div class="span5 set"><div class="item"><i class="icon-padded right narrow icon-phone"></i> <span class="18189_phone phone">337-310-9111</span><script>
+//<![CDATA[
+
+          $(document).ready(function(){
+            $(".18189_phone").each(function(index, element) {
+              $(element).html("337-660-2083");
+              if(element.parentNode.tagName == "A"){
+                element.parentNode.setAttribute("href","tel:337-660-2083");
+              }
+            });
+          });
+        
+//]]>
+</script></div><div class="item"><a class="email" data-avn="{&quot;name&quot;:&quot;amos.gtm.view-advertising-email-form-pro&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;158986-Alvin-Hunt&quot;,&quot;position&quot;:&quot;pro&quot;}}" href="/attorneys/70601-la-alvin-hunt-158986/contact.html" rel="nofollow"><i class="icon-blue icon-padded right narrow icon-email2"></i> Email</a></div><div class="item"><a class="website" data-avn="{&quot;name&quot;:&quot;amos.profiles.website_clicked&quot;,&quot;payload&quot;:{&quot;gtm&quot;:{&quot;event&quot;:&quot;contact-advertising-website&quot;,&quot;property&quot;:&quot;158986-Alvin-Hunt&quot;,&quot;position&quot;:&quot;pro&quot;}}}" href="http://www.huntlawfirm.com" onclick="this.href=&#39;/attorneys/70601-la-alvin-hunt-158986/website.html&#39;;return true;" rel="nofollow" target="_blank"><i class="icon-professional-newsletter icon-blue icon-padded right narrow"></i> Website</a></div></div></div></div></div></div></div></li>
+  
+  <li class="margin7" id="professional_1768907"><div class="page-row"><div class="span6"><div class="page-row"><div class="span1"><a href="/attorneys/70002-la-michael-conroy-1768907.html" rel="nofollow"><img alt="Louisiana DUI / DWI Attorney Michael D. Conroy" borderless="true" class="borderless thumbnail_large" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/1768907_1405455727.jpg" title="Michael D. Conroy" /></a></div><div class="span5"><div class="page-row"><div class="span3"><span class="name result_title"><h3 class="margin1"><a data-professional-id="1768907" href="/attorneys/70002-la-michael-conroy-1768907.html">Michael Conroy</a> <a data-tooltip="Lawyers who subscribe to Avvo Pro have the ability to customize components of their profile, generate more leads with enhanced contact options, and track their performance on Avvo.
+&lt;a href=&quot;/for-lawyers/avvo-pro&quot;&gt;Learn more.&lt;/a&gt;
+" href="#!" rel="nofollow"><span class="label label-avvo-pro">Pro</span></a></h3></span><div class="muted margin1"><span><span>Metairie</span>, <span>LA</span></span> <span>DUI / DWI Attorney</span><br />Licensed for 33 years</div><div class="client_rating client-rating"><span class="score"><a href="/attorneys/70002-la-michael-conroy-1768907/reviews.html"><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-half-star icon-gold" style="font-size:15px"></span></a> <a href="/attorneys/70002-la-michael-conroy-1768907/reviews.html" rel="nofollow">8 reviews</a></span></div></div><div class="center-content span2"><div class="margin3"><span class="muted light">AVVO<br />RATING</span><br /><span class="avvo_rating_numeric"><h2 class="bold ultratight margin0">10.0</h2><div><a class="tooltip_link tooltip-link" data-tooltip-remote-options="" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">Superb</a></div></span></div></div><div class="span5 set"><div class="item"><i class="icon-padded right narrow icon-phone"></i> <span class="3025_phone phone">985-809-7050</span></div><div class="item"><a class="email" data-avn="{&quot;name&quot;:&quot;amos.gtm.view-advertising-email-form-pro&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;1768907-Michael-Conroy&quot;,&quot;position&quot;:&quot;pro&quot;}}" href="/attorneys/70002-la-michael-conroy-1768907/contact.html" rel="nofollow"><i class="icon-blue icon-padded right narrow icon-email2"></i> Email</a></div><div class="item"><a class="website" data-avn="{&quot;name&quot;:&quot;amos.profiles.website_clicked&quot;,&quot;payload&quot;:{&quot;gtm&quot;:{&quot;event&quot;:&quot;contact-advertising-website&quot;,&quot;property&quot;:&quot;1768907-Michael-Conroy&quot;,&quot;position&quot;:&quot;pro&quot;}}}" href="http://www.conroylawfirm.com/contact.htm" onclick="this.href=&#39;/attorneys/70002-la-michael-conroy-1768907/website.html&#39;;return true;" rel="nofollow" target="_blank"><i class="icon-professional-newsletter icon-blue icon-padded right narrow"></i> Website</a></div></div></div></div></div></div></div></li>
+  
+  <li class="margin7" id="professional_1954480"><div class="page-row"><div class="span6"><div class="page-row"><div class="span1"><a href="/attorneys/70809-la-carl-barkemeyer-1954480.html" rel="nofollow"><img alt="Louisiana DUI / DWI Attorney Carl Alexander Barkemeyer" borderless="true" class="borderless thumbnail_large" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/1954480_1280867411.jpg" title="Carl Alexander Barkemeyer" /></a></div><div class="span5"><div class="page-row"><div class="span3"><span class="name result_title"><h3 class="margin1"><a data-professional-id="1954480" href="/attorneys/70809-la-carl-barkemeyer-1954480.html">Carl Barkemeyer</a> </h3></span><div class="muted margin1"><span><span>Baton Rouge</span>, <span>LA</span></span> <span>DUI / DWI Attorney</span><br />Licensed for 9 years</div><div class="client_rating client-rating"><span class="score"><a href="/attorneys/70809-la-carl-barkemeyer-1954480/reviews.html"><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span></a> <a href="/attorneys/70809-la-carl-barkemeyer-1954480/reviews.html" rel="nofollow">5 reviews</a></span></div></div><div class="center-content span2"><div class="margin3"><span class="muted light">AVVO<br />RATING</span><br /><span class="avvo_rating_numeric"><h2 class="bold ultratight margin0">8.1</h2><div><a class="tooltip_link tooltip-link" data-tooltip-remote-options="" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">Excellent</a></div></span></div></div></div></div></div></div></div></li>
+  
+
+<div style="display:none;" id="interstitial">
+  <div id="interstitial_bg">
+  </div>
+  <p>
+    <img alt="" class="spinner" src="http://assets1.iavvo.com/assets/spinner-67122eeb98417b51e28d1fae18455456.gif" /> Loading...
+    
+  </p>
+</div>
+
+  </ol>
+</div><div class="content-bar" id="bottom_results_actions"><div class="content-bar-left" id="bottom_pagination">  <div class="pagination bottom">
+    
+        
+<span class="current">
+  1
+</span>
+        
+
+  <a data-start="10" href="/search/lawyer_search?loc=Louisiana&amp;q=DUI%20%2F%20DWI&amp;start=10" rel="follow">2</a>
+
+        
+
+  <a data-start="20" href="/search/lawyer_search?loc=Louisiana&amp;q=DUI%20%2F%20DWI&amp;start=20" rel="follow">3</a>
+
+        
+
+  <a data-start="30" href="/search/lawyer_search?loc=Louisiana&amp;q=DUI%20%2F%20DWI&amp;start=30" rel="follow">4</a>
+
+        
+
+  <a data-start="40" href="/search/lawyer_search?loc=Louisiana&amp;q=DUI%20%2F%20DWI&amp;start=40" rel="follow">5</a>
+
+        <span class="gap">…</span>
+    <a data-start="10" href="/search/lawyer_search?loc=Louisiana&amp;q=DUI%20%2F%20DWI&amp;start=10" rel="nofollow"><i class="icon-arrow-right"></i></a>
+
+  </div>
+</div></div></div><div class="span4"><div class="margin8"><div class="js-ads" data-ad-limit="1" data-ad-track="true" data-ad-type="display_ads" data-preview-ad="null"></div></div><div class="box module"><h2><a href="/dui-dwi-lawyer.html" title="DUI / DWI Attorney">DUI / DWI</a></h2>If you are suspected of driving while under the influence of alcohol or drugs, you may be arrested for DUI (driving under the influence). Depending on the state, the specific crime is also called DWI (driving while intoxicated), OUI (operating under the influence), or OWI (operating while intoxicated). A DUI conviction has serious consequences (for example, losing your driving privileges); but an experienced DUI attorney can often get the charges dropped or reduced, or may be able to negotiate lesser penalties depending on your circumstances and your past history.</div></div></div><script type="text/javascript">$(function() {
+  update_seo_link('prev', "/search/lawyer_search", false);
+  update_seo_link('next', "/search/lawyer_search?start=10", true);
+});</script>
+</div>      <div class="page stripped">
+        <div class="page-row">
+          <div id="seo_links" class="whole_width_section span12">
+            <section class="module"><h2>Louisiana lawyers in related practice areas</h2><nav class="margin4 link-table link-table-5-up"><table class="links"><tr><td><a href="/criminal-defense-lawyer/la.html" title="Louisiana Criminal Defense Attorneys">Criminal Defense</a></td><td><a href="/speeding-traffic-ticket-lawyer/la.html" title="Louisiana Speeding / Traffic Ticket Lawyers">Speeding Ticket</a></td><td><a href="/personal-injury-lawyer/la.html" title="Louisiana Personal Injury Lawyers">Personal Injury</a></td><td><a href="/car-auto-accident-lawyer/la.html" title="Louisiana Car / Auto Accident Lawyers">Car Accident</a></td><td>&nbsp;</td></tr></table></nav><div class="navigation"><a href="/find-a-lawyer/all-practice-areas/la" title="Browse Louisiana Lawyers">See all practice areas</a></div></section>
+          </div>
+        </div>
+      </div>
+
+    <footer class="persistent-footer page full-width no-border"><div class="page-row"><a class="quiet span3" href="//www.avvo.com/"><div class="icon-avvo-logo footer-logo"></div><div class="footer-slogan">Legal. <strong>Easier.</strong></div></a><div class="span3"><a class="quiet" href="/"><h3>Explore Avvo</h3></a><p class="margin1"><a class="quiet" href="/ask-a-lawyer">Ask a Lawyer</a></p><p class="margin1"><a class="quiet" href="/find-a-lawyer">Find a Lawyer</a></p><p class="margin1"><a class="quiet" href="/free-legal-advice">Free Legal Advice</a></p><p class="margin1"><a class="quiet" href="/review-your-lawyer">Review a Lawyer</a></p></div><div class="span3"><a class="quiet" href="/for-lawyers"><h3>For Lawyers</h3></a><p class="margin1"><a class="quiet" href="/for-lawyers">Lawyer Advertising</a></p><p class="margin1"><a class="quiet" href="/claim-your-profile">Claim Your Profile</a></p><p class="margin1"><a class="quiet" href="/support/all-firm-claim">For Law Firms</a></p><p class="margin1"><a class="quiet" href="//ignite.avvo.com">Marketing Management Software</a></p><p class="margin1"><a class="quiet" href="//lawyernomics.avvo.com">Lawyernomics Blog</a></p></div><div class="span3"><a class="quiet" href="/about_avvo"><h3>Company Info</h3></a><p class="margin1"><a class="quiet" href="/about_avvo/about_us">About Us</a></p><p class="margin1"><a class="quiet" href="/for-lawyers/support">Support</a></p><p class="margin1"><a class="quiet" href="//press.avvo.com">Press Room</a></p><p class="margin1"><a class="quiet" href="/partner_with_us">Partner With Us</a></p><p class="margin1"><a class="quiet" href="/about_avvo/jobs">Careers</a></p><p class="margin1"><a class="quiet" href="//avvoblog.com">Avvo Blog</a></p><p class="margin1"><a class="quiet" href="//nakedlaw.avvo.com">NakedLaw Blog</a></p></div></div></footer><footer class="black"><div id="fine_print_container"><div id="fine_print"><div class="contact_avvo">Follow us on <a href="//www.twitter.com/avvo"><img alt="Twitter" src="http://assets2.iavvo.com/assets/embed/additional_links/twitter_icon-c160ce8886d11899e6833dd271a13f2d.png" /></a><a href="http://www.facebook.com/avvo"><img alt="Facebook" src="http://assets2.iavvo.com/assets/embed/additional_links/facebook_icon-6d9bd4ddfbad9c81a22fd2471b67d673.png" /></a><a href="//plus.google.com/107840042923877554905"><img alt="Google icon" src="http://assets1.iavvo.com/assets/embed/additional_links/google_icon-942738832fa1fe452c21f15e5a9194b2.png" /></a></div><p class="bottom_links"><span class="copyright">&copy;2014 Avvo, Inc. All Rights Reserved </span><span><a href="?q=DUI+%2F+DWI&amp;loc=Louisiana&amp;prefer_mobile=true" rel="nofollow">Mobile View</a></span><span class="pipe">|</span><span><a href="/support/terms" rel="nofollow">Terms of Use</a></span><span class="pipe">|</span><span><a href="/support/privacy" rel="nofollow">Privacy Policy</a></span><span class="pipe">|</span><span><a href="/support/community_guidelines" rel="nofollow">Community Guidelines</a></span></p></div></div></footer>
+
+    <noscript>
+  <div style="text-align:center;background:#fbf3c5;color:#911717;padding:8px;border-bottom:1px solid #D7DADD;">
+  <strong>We've detected that your browser does not support scripting.</strong> <br/>
+  Scripting must be enabled to use Avvo. Turn on scripting and reload this page.
+  </div>
+</noscript>
+
+
+
+
+    <!-- r:2c4e22c7b390a64641358a65bde9e1a551c45b69 -->
+<!-- d:Fri Nov 21 22:19:26 PST 2014 -->
+<!-- p:www.avvo.com -->  
+
+
+
+
+
+    
+    <script src="http://assets1.iavvo.com/assets/footer_common-59d36e58c17ffbec325b4d50f60e0fda.js"></script>
+    <script src="http://assets1.iavvo.com/assets/search-6a9a820c10896b2fd5b961344ac921d6.js"></script>
+    <script src="http://assets2.iavvo.com/assets/search_map-325fc9a87514a270649fbcecca249bc0.js"></script>
+
+
+
+<div id="google_remarketing">
+
+    <script type="text/javascript">
+    /* <![CDATA[ */
+    var google_conversion_id = 1057123743;
+    var google_conversion_language = "en";
+    var google_conversion_format = "3";
+    var google_conversion_color = "ffffff";
+    var google_conversion_label = "z9BlCKXnsAIQn9uJ-AM";
+    var google_conversion_value = 0;
+    /* ]]> */
+    </script>
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js?avvo_RYrO">
+    </script>
+    <noscript>
+    <div style="display:inline;">
+    <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/1057123743/?label=z9BlCKXnsAIQn9uJ-AM&amp;guid=ON&amp;script=0"/>
+    </div>
+    </noscript>
+
+</div>
+
+    <script>
+//<![CDATA[
+
+$(function(){
+  var a=document.createElement("script");
+  var b=$("script")[0];
+  a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0011/6860.js";
+  a.async=true;a.type="text/javascript";
+  b.parentNode.insertBefore(a,b);
+});
+
+//]]>
+</script>
+  </body>
+
+
+</html>

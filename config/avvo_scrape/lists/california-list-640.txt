@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+
+<html class="no-js">
+  <head>
+    
+<!-- force browser refresh of favicon.  Plz remove me someday? -->
+<link href="http://www.avvo.com/favicon.ico?v=2" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+
+<meta charset="utf-8">
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-1.newrelic.com","errorBeacon":"bam.nr-data.net","licenseKey":"75deeee971","applicationID":"13620","transactionName":"JlZeFUoJD1VUSxdaUBJAVRNLSRBcUEtbXg==","queueTime":0,"applicationTime":1865,"agentToken":null,"agent":"js-agent.newrelic.com/nr-476.min.js","ttGuid":"ef89f0fc8ab4b6c2"}</script>
+<script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UAUOU0VSCwUCVA=="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),f=c.length,u=i(a,o,r),d=0;f>d;d++)c[d].apply(u,n);return u}function a(t,e){f[t]=s(t).concat(e)}function s(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:s,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(f){try{r("ierr",[f,(new Date).getTime(),!0])}catch(u){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(5),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,window.onerror=e,NREUM.noticeError=n;try{throw new Error}catch(f){"stack"in f&&(t(1),t(4),"addEventListener"in window&&t(2),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&t(3),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:8,2:5,3:9,4:7,5:20,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],4:[function(t){function e(){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var n=t("ee"),r=t("handle"),o=t(2);t("loader").features.stn=!0,t(1),n.on("fn-start",function(t){var e=t[0];e instanceof Event&&(this.bstStart=Date.now())}),n.on("fn-end",function(t,e){var n=t[0];n instanceof Event&&r("bst",[n,e,this.bstStart,Date.now()])}),o.on("fn-start",function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),o.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),this.bstType])}),n.on("pushState-start",function(){this.time=Date.now(),this.startPath=location.pathname+location.hash}),n.on("pushState-end",function(){r("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),"addEventListener"in window.performance&&(window.performance.addEventListener("webkitresourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.webkitClearResourceTimings()},!1),window.performance.addEventListener("resourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.clearResourceTimings()},!1)),document.addEventListener("scroll",e,!1),document.addEventListener("keypress",e,!1),document.addEventListener("click",e,!1)}},{1:6,2:8,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],5:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=(t(1),t("ee").create()),i=t(2)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=t[1]=a(e,"nr@wrapped",function(){return i(e,"fn-",null,e.name||"anonymous")}):"function"==typeof e.handleEvent&&i.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:20,2:21,ee:"QJf3ax",gos:"7eSDFh"}],6:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window.history,["pushState"],"-")},{1:21,2:20,ee:"QJf3ax"}],7:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:21,2:20,ee:"QJf3ax"}],8:[function(t,e){function n(t,e,n){var r=t[0];"string"==typeof r&&(r=new Function(r)),t[0]=o(r,"fn-",null,n)}var r=(t(2),t("ee").create()),o=t(1)(r);e.exports=r,o.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",n)},{1:21,2:20,ee:"QJf3ax"}],9:[function(t,e){function n(){c.inPlace(this,d,"fn-")}function r(t,e){c.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}var i=t("ee").create(),a=t(1),s=t(2),c=s(i),f=s(a),u=window.XMLHttpRequest,d=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=i,window.XMLHttpRequest=function(t){var e=new u(t);try{i.emit("new-xhr",[],e),f.inPlace(e,["addEventListener","removeEventListener"],"-",function(t,e){return e}),e.addEventListener("readystatechange",n,!1)}catch(r){try{i.emit("internal-error",[r])}catch(o){}}return e},window.XMLHttpRequest.prototype=u.prototype,c.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),i.on("send-xhr-start",r),i.on("open-xhr-start",r)},{1:5,2:21,ee:"QJf3ax"}],10:[function(t){function e(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function n(t){var n=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!n.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){n.status=t.status;var a=t.responseType,f="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,u=e(f);if(u&&(r.rxSize=u),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(n.cat=d.split(", ").pop())}}else n.status=0;r.cbTime=this.cbTime,o("xhr",[n,r,this.startTime])}}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,f=t(1);t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=n,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,n){var r=this.metrics,o=t[0],i=this;if(r&&o){var f=e(o);f&&(r.txSize=f)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof n.onload))&&i.end(n)}catch(e){try{a.emit("internal-error",[e])}catch(r){}}};for(var u=0;c>u;u++)n.addEventListener(s[u],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:11,3:9,4:5,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],11:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=p.info=NREUM.info;if(t&&t.agent&&t.licenseKey&&t.applicationID&&c&&c.body){p.proto="https"===d.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=c.createElement("script");e.src=p.proto+t.agent,c.body.appendChild(e)}}function r(){"complete"===c.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=window,c=s.document,f="addEventListener",u="attachEvent",d=(""+location).split("?")[0],p=e.exports={offset:i(),origin:d,features:{}};c[f]?(c[f]("DOMContentLoaded",o,!1),s[f]("load",n,!1)):(c[u]("onreadystatechange",r),s[u]("onload",n)),a("mark",["firstbyte",i()])},{handle:"D5DuLP"}],20:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],21:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@wrapper",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,f;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){u([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return f=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,f],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=!0,f(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,f?s+o:o,i,s,t))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){u([o,e,n,r])}}function f(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){u([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function u(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:20,ee:"QJf3ax"}]},{},["G9z0Bl",3,10,4]);</script>
+<title>Find the Best Dui / Dwi Lawyer in California - Page 65 - Avvo.com</title>
+
+<meta name="description" content="Find, research and rate 1293 DUI / DWI lawyers in California. Free attorney background profiles, disciplinary sanctions, and client reviews. Page 65" />
+
+<meta name="robots" content="noindex,follow" />
+
+
+
+<meta property="og:image" content="http://assets2.iavvo.com/assets/header_logo-d9da0710ef4f108673b08e2f89ee79c8.png" />
+      
+<meta href="http://www.avvo.com/search/lawyer_search?loc=California&amp;q=DUI%20%2F%20DWI&amp;start=630" rel="prev" />
+
+    
+<meta href="http://www.avvo.com/search/lawyer_search?loc=California&amp;q=DUI%20%2F%20DWI&amp;start=650" rel="next" />
+
+
+
+<meta name="robots" content="NOODP,NOYDIR" />
+
+<script>
+//<![CDATA[
+window.locationContext = {"id":262,"name":"California","city_name":null,"state_name":"California","state_code":"CA","postal_code":null};window.adLocationContext = {"id":53868,"name":"90006","city_name":"Los Angeles","state_name":"California","state_code":"CA","postal_code":"90006"};window.specialtyContext = {"id":56,"name":"DUI"};
+//]]>
+</script><script src="//cdn.optimizely.com/js/275511722.js"></script>
+
+<link href="https://plus.google.com/107840042923877554905" rel="publisher" />
+
+  <link href="http://assets1.iavvo.com/assets/application-679b5b560ef19c2728b0c8d332d28f6a.css" media="all" rel="stylesheet" />
+  <!--[if lt IE 9]>
+    <link href="http://assets1.iavvo.com/assets/font_avvo_icon_bad_IE_bad_dog-27d8ace9b1fdd6c93145f0e1b7827dc6.css" media="all" rel="stylesheet" />
+  <![endif]-->
+
+<link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:700|Open+Sans:300,400,600,700" media="all" rel="stylesheet" />
+
+<script src="http://assets1.iavvo.com/assets/application-944ee4fdb62f3df1542271af9ecbae14.js"></script>
+
+<!--[if (gte IE 6)&(lte IE 8)]>
+    <script src="http://assets1.iavvo.com/assets/selectivizr-c4422edc73658e842dce601b5979afe2.js"></script>
+<![endif]-->
+
+
+
+  <link href="http://www.avvo.com/search/lawyer_search?loc=California&amp;q=DUI%20%2F%20DWI&amp;start=640" rel="canonical" />
+
+<script>
+//<![CDATA[
+
+  google_analytics_domain_name=".avvo.com";
+  try {
+    var _gaq = _gaq || [];
+    _gaq.push(
+      ['_setAccount', 'UA-4437273-1'],
+      ['_setDomainName', '.avvo.com'],
+      ['_setCustomVar', 1,'user_type','other', 1],
+      ['_setCustomVar', 5, 'abs', '....................................................................................................', 3]
+    );
+
+        _gaq.push(['_setCustomVar', 3,'spec',"56_DUI / DWI", 3]);
+
+    _gaq.push(['_trackPageview']);
+  } catch(err) {}
+
+//]]>
+</script>
+
+  <script>
+//<![CDATA[
+
+  try {
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  } catch(err) {}
+
+//]]>
+</script>
+
+
+
+<script type="text/javascript">window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"location":{"id":262,"detail_type":"Gnomon::State","detail_id":6,"country_id":231,"country_name":"United States","state_id":6,"state_name":"California","state_code":"CA","county_id":null,"county_name":null,"city_id":null,"city_name":null,"neighborhood_id":null,"neighborhood_name":null,"postal_code_id":null,"postal_code_name":null,"to_location":"California","to_short_location":"California","to_long_location":"California","to_location_with_region":"California","latitude":null,"longitude":null,"updated_at":"2012-08-28T14:45:56.000-07:00","population":null,"canonical_postal_code_id":16687},"pageTitle":"Find the Best Dui / Dwi Lawyer in California - Page 65","siteSection":"lawyer search","logicalSection":"lawyers/search","renderType":"desktop","persistentSessionId":"1f09a9a2-2572-4ef1-8502-7b8021a522bf","userId":null,"userEmail":null,"userType":"anonymous","professionalId":null,"specialty":56,"search_type":"lawyer"});</script>
+
+  <meta name="ad-location-id" content="53868" /><meta name="ad-specialty-id" content="56" /><meta name="page-template-name" content="Lawyer SERP" /></head>
+  <body>
+    <script>
+//<![CDATA[
+duraLogEvents('eJztmEtr3DAUhf9KECQre6KXJXsgdNGkJdBF6YMuQhAaW5oIbMuRPJkOpf+9\n1+MMNGl3BReDNwYd655zff0x9vjujnAihKSYiwR1wVsTo/OtrpVrujAuUIJ0\n4yPb6wolP1Dno+sHeU0SVOrebH04oDWq9f5ggqpcMGU/SAmqPZyHrcpVaE0F\nTVDsTOl03R+OUgah0ehQPihvbTQ92AiO0etWYCshLJcyQZVvtINstN/vV/rp\nya9K30DBLtQgXo5ul8+9jKs30MbVW10760Pr9MXj1fXX23OKz+k7OF5/u72I\nvQ791ZgcjDUhmIDW7a6uwTiCkd6atj8pcWzs2BbKKmIzXpK0EEan3OIqzUVW\npYyUG11ILnlVHF0b3xvlOighWK4IzVdErCiWcLIx/YMfzN7ffEHPiYP5GBdM\nWw1CC122pVHb3TE4t7LkdiNSzGSeclIUqcY0S7W1ebnBObXZENyZEF3soX31\nom9icaELTVOaSZpyY0maZ5imcpNjSnRG6cain/fJPwFCpwSkKBjmCyCzAoRN\nCAiTLKeMLYTMihA+ISFU8oKIBZBZAZJNCAjHknJCFkJmRYiYkhBKZLbwMSs+\n5KQvIRhnxQLIrADJp3wHEbzAeAFkVoAUkz5hOKcLH7Pig+ApP4RQkS2/IP+b\nEJiDenJm/4qJP++z69RJhDCGGRFQ87gzR1Rg/meXZzB50KKuTVTBbE/1jDH+\nSgbmeuCg9JVRL7Iylov8b1SZ73DhvYvmt0G2uwYM467u48BTwYbZHpcKNqvh\n4kaoY+fb6IOpVA2jc+1WxdoPRcNnFhe7Wh9OCvxr6k0DCtzcVjdggD4c2Tv7\nfPPpI1p4nZjX+18RgJ3e\n');
+//]]>
+</script>
+
+<script>
+//<![CDATA[
+
+  $(document).on('click', '[data-dura-trackable-href]', duraUpdateLinkHREF);
+
+//]]>
+</script>
+    <noscript><iframe height="0" src="//www.googletagmanager.com/ns.html?id=GTM-K2L3VH" style="display:none;visibility:hidden" width="0"></iframe></noscript><script type="text/javascript">(function(w, d, s, l, i){
+  w[l] = w[l] || [];
+  w[l].push({ 'gtm.start' : new Date().getTime(),
+              event       : 'gtm.js'});
+  var f   = d.getElementsByTagName(s)[0];
+  var j   = d.createElement(s);
+  var dl  = l != 'dataLayer' ? '&l='+ l : '';
+  j.async = true;
+  j.src   = '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-K2L3VH');</script>
+    <div id="bing_tracking">
+
+</div>
+    <noscript>
+  <div style="text-align:center;background:#fbf3c5;color:#911717;padding:8px;border-bottom:1px solid #D7DADD;">
+  <strong>We've detected that your browser does not support scripting.</strong> <br/>
+  Scripting must be enabled to use Avvo. Turn on scripting and reload this page.
+  </div>
+</noscript>
+
+    <hgroup><header><nav id="page_header"><a href="//www.avvo.com/"><img alt="Logo@2x" class="logo" src="http://assets1.iavvo.com/assets/logos/logo@2x-39c17b04a49441c5131b852386f9312e.png" /></a><ul class="pull-right" id="sign-in-module"><li class="left-margin"><a href="/for-lawyers">For Lawyers</a></li><li class="left-margin"><a href="/account/login" rel="nofollow">Sign in</a></li><li class="left-margin"><a href="/account/register" rel="nofollow">Register</a></li></ul></nav></header></hgroup>
+    <div class="page">
+      <div id="primary_nav_and_breadcrumb">
+        <nav class="" id="primary_nav"><style type="text/css">.menu-primary{height:auto}.menu-primary #my-avvo-link{padding-top:28px}</style><ul class="center-content clearfix menu-primary"><li><a href="/free-legal-advice">Research<br/>Legal Advice</a></li><li><a href="/ask-a-lawyer">Ask<br/>a Lawyer</a></li><li class="active"><a href="/find-a-lawyer">Find<br/>a Lawyer</a></li><li><a href="https://advisor.avvo.com?avvo_source=avvo&amp;avvo_medium=global_navigation&amp;avvo_campaign=avvo_advisor">Instant<br/>Phone Call <span class='label label-success' style='line-height: 12px;'>New!</span></a></li><li><a href="/review-your-lawyer">Review<br/>Your Lawyer</a></li></ul><script type="text/javascript">$(document).ready(function(){
+  if(false){
+    $('.menu-primary.my_avvo').show();
+    $('#my-avvo-link').parent('li').addClass('active');
+  }
+  $('#my-avvo-link').click(function(){
+    $('.menu-primary.my_avvo').slideToggle();
+    return false;
+  })
+})</script>  <div class="search browsable" id="primary_nav_search">
+      <span id="search_selector">
+        Lawyers
+      </span>
+      <ul id="search_selector_menu" style="display:none;">
+          <li data-form-id="lawyer_search">Lawyers</li>
+          <li data-form-id="legal_advice_search">Legal Advice</li>
+      </ul>
+
+        <span id="lawyer_search" class="search_form_container selectable" >
+          
+<form accept-charset="UTF-8" action="/search/lawyer_search" class="search_form search-form" id="lawyer_search_primary_nav_search_search_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+  <input autocomplete="off" class="keyword_field keyword-search-field " data-tooltip-right="true" id="lawyer_search_primary_nav_search_search_form_keyword_field" name="q" placeholder="Lawyer&#39;s name -OR- Practice area" type="text" value="DUI / DWI" />
+  <input autocomplete="off" class="location_field location-search-field " id="lawyer_search_primary_nav_search_search_form_location_field" name="loc" placeholder="City, State -OR- ZIP" type="text" value="California" />
+  <span class="icon-submit">
+    <input class="button primary action " name="commit" style="" type="submit" value="" />
+  </span>
+
+</form>
+        </span>
+</div>
+<script>
+//<![CDATA[
+
+  $(document).click(function(e){
+    if(e.target.id != "search_selector") {
+      $("#search_selector_menu").hide();
+    }
+  });
+
+  $("#search_selector_menu li").click(function(e) {
+    form_id = $(this).attr("data-form-id");
+    $("#primary_nav_search .search_form_container").hide();
+    $("#" + form_id).show();
+    $("#search_selector").html($(this).html());
+    $("ul.ui-autocomplete").hide();
+    $("#search_selector_menu").hide();
+  });
+
+  $("#search_selector").click(function(e) {
+    $("#search_selector_menu").toggle();
+    $("#search_selector_menu").position({
+      my: "left top",
+      at: "left bottom",
+      of: $("#search_selector")
+    });
+  });
+
+  $("#primary_nav_search .keyword_field").change(function(e) {
+    $("#primary_nav_search .keyword_field").val($(e.target).val());
+    $("#primary_nav_search .keyword_field").trigger('valuechanged');
+  });
+
+  $("#primary_nav_search .location_field").change(function(e) {
+    $("#primary_nav_search .location_field").each(function(i,el) {
+      $(el).val($(e.target).val());
+      $(el).trigger('valuechanged');
+    });
+  });
+
+//]]>
+</script>
+</nav><div id="breadcrumb"><div class="breadcrumbs"><span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/find-a-lawyer" itemprop="url"><span itemprop="title">Rated Lawyers</span></a></span>&nbsp;&gt;&nbsp;<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/all-lawyers/ca.html" itemprop="url"><span itemprop="title">California</span></a></span>&nbsp;&gt;&nbsp;<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><span class="current" itemprop="title">DUI / DWI Attorneys</span></span></div></div><!--[if lt IE 9]><script type="text/javascript">$(document).ready(function(){
+  $('.icon-submit').click(function(){
+    $(this).parent().submit();
+  });
+})</script><![endif]-->
+      </div>
+      <div id="flash"></div>
+    </div>
+    <div class="page stripped">
+      
+          <h1 class="light margin0">California DUI Attorneys<small>&nbsp;&#151;&nbsp;1,293&nbsp;found</small></h1>  <section class="module margin8 link-table link-table-6-up">
+    <h2>Narrow results by city</h2>
+    <table class="margin4">
+        <tr>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/anaheim.html" title="Anaheim DUI / DWI">Anaheim</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/fresno.html" title="Fresno DUI / DWI">Fresno</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/lakewood.html" title="Lakewood DUI / DWI">Lakewood</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/oceanside.html" title="Oceanside DUI / DWI">Oceanside</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/salinas.html" title="Salinas DUI / DWI">Salinas</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/santa_barbara.html" title="Santa Barbara DUI / DWI">Santa Barbara</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/bakersfield.html" title="Bakersfield DUI / DWI">Bakersfield</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/glendale.html" title="Glendale DUI / DWI">Glendale</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/long_beach.html" title="Long Beach DUI / DWI">Long Beach</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/ontario.html" title="Ontario DUI / DWI">Ontario</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/san_bernardino.html" title="San Bernardino DUI / DWI">San Bernardino</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/santa_clarita.html" title="Santa Clarita DUI / DWI">Santa Clarita</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/chula_vista.html" title="Chula Vista DUI / DWI">Chula Vista</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/hayward.html" title="Hayward DUI / DWI">Hayward</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/los_angeles.html" title="Los Angeles DUI / DWI">Los Angeles</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/oxnard.html" title="Oxnard DUI / DWI">Oxnard</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/san_diego.html" title="San Diego DUI / DWI">San Diego</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/santa_rosa.html" title="Santa Rosa DUI / DWI">Santa Rosa</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/city_of_industry.html" title="City Of Industry DUI / DWI">City Of Industry</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/huntington_beach.html" title="Huntington Beach DUI / DWI">Huntington Beach</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/modesto.html" title="Modesto DUI / DWI">Modesto</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/pomona.html" title="Pomona DUI / DWI">Pomona</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/san_francisco.html" title="San Francisco DUI / DWI">San Francisco</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/stockton.html" title="Stockton DUI / DWI">Stockton</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/fontana.html" title="Fontana DUI / DWI">Fontana</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/la_puente.html" title="La Puente DUI / DWI">La Puente</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/north_hollywood.html" title="North Hollywood DUI / DWI">North Hollywood</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/riverside.html" title="Riverside DUI / DWI">Riverside</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/san_jose.html" title="San Jose DUI / DWI">San Jose</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/van_nuys.html" title="Van Nuys DUI / DWI">Van Nuys</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/fremont.html" title="Fremont DUI / DWI">Fremont</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/laguna_beach.html" title="Laguna Beach DUI / DWI">Laguna Beach</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/oakland.html" title="Oakland DUI / DWI">Oakland</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/sacramento.html" title="Sacramento DUI / DWI">Sacramento</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/santa_ana.html" title="Santa Ana DUI / DWI">Santa Ana</a>
+            </td>
+            <td>
+                <a href="/dui-dwi-lawyer/ca/whittier.html" title="Whittier DUI / DWI">Whittier</a>
+            </td>
+        </tr>
+    </table>
+
+  <a class="continue navigation" href="/find-a-lawyer/dui-dwi-lawyer/ca/all-cities-counties" title="Browse California DUI Lawyers">See all cities in California</a>
+  </section>
+<div class="page-row"><div class="span2"><div id="filters"><div class="module margin6"><h2>Lawyers with</h2><div class="filter"><label class="checkbox" for="client_reviews_1"><input class="checkbox" data-search-filter="client_reviews" id="client_reviews_1" name="client_reviews" type="checkbox" value="1" /> Client reviews</label></div><div class="filter"><label class="checkbox" for="endorsements_1"><input class="checkbox" data-search-filter="endorsements" id="endorsements_1" name="endorsements" type="checkbox" value="1" /> Endorsements</label></div><div class="filter"><label class="checkbox" for="no_misconduct_1"><input class="checkbox" data-search-filter="no_misconduct" id="no_misconduct_1" name="no_misconduct" type="checkbox" value="1" /> No misconduct</label></div><div class="filter"><label class="checkbox" for="avvo_pro_1"><input class="checkbox" data-search-filter="avvo_pro" id="avvo_pro_1" name="avvo_pro" type="checkbox" value="1" /> Avvo Pro <a data-tooltip="Lawyers who subscribe to Avvo Pro have the ability to customize components of their profile, generate more leads with enhanced contact options, and track their performance on Avvo.
+&lt;a href=&quot;/for-lawyers/avvo-pro&quot;&gt;Learn more.&lt;/a&gt;
+" href="#!" rel="nofollow"><span class="label label-avvo-pro">Pro</span></a></label></div><div class="filter"><label class="checkbox" for="free_consultations_1"><input class="checkbox" data-search-filter="free_consultations" id="free_consultations_1" name="free_consultations" type="checkbox" value="1" /> Free consultations</label></div></div><div class="module margin6"><h2>Avvo Rating</h2><div id="rating_slider"></div><div><h4 class="ui-slider-label light" id="rating_slider_label">1.0 to 10.0</h4></div><script type="text/javascript">$(function(){
+  $("#rating_slider").slider({
+    min: 1,
+    max: 10,
+    range: true,
+    values: [1, 10],
+    slide: function(evt, ui) {
+      // update the slider label
+      $("#rating_slider_label").html(ui.values[0] + ".0 to " + ui.values[1] + ".0");
+    },
+    stop: function(evt, ui) {
+      rating = ui.values[0] + "," + ui.values[1];
+      replace_filter_value("rating", rating);
+      filter_search_results();
+    }
+  });
+});</script></div><div class="module margin6"><h2>Languages</h2><div class="filter"><label class="checkbox" for="languages_50"><input class="checkbox" data-search-filter="languages" id="languages_50" name="languages" type="checkbox" value="50" /> Spanish</label></div><div class="filter"><label class="checkbox" for="languages_69"><input class="checkbox" data-search-filter="languages" id="languages_69" name="languages" type="checkbox" value="69" /> Farsi</label></div><div class="filter"><label class="checkbox" for="languages_19"><input class="checkbox" data-search-filter="languages" id="languages_19" name="languages" type="checkbox" value="19" /> French</label></div><a data-modal-open="modal_6t4bC" data-modal-url="/search_filters/languages?&amp;ids%5B%5D=50&amp;ids%5B%5D=69&amp;ids%5B%5D=19&amp;ids%5B%5D=4&amp;ids%5B%5D=47&amp;ids%5B%5D=13&amp;ids%5B%5D=32&amp;ids%5B%5D=52&amp;ids%5B%5D=25&amp;ids%5B%5D=20&amp;ids%5B%5D=3&amp;ids%5B%5D=28&amp;ids%5B%5D=45&amp;ids%5B%5D=26&amp;ids%5B%5D=29&amp;ids%5B%5D=59&amp;ids%5B%5D=43&amp;ids%5B%5D=17&amp;ids%5B%5D=23&amp;ids%5B%5D=41&amp;ids%5B%5D=58&amp;ids%5B%5D=62&amp;ids%5B%5D=55&amp;ids%5B%5D=44&amp;ids%5B%5D=46&amp;ids%5B%5D=57&amp;ids%5B%5D=66&amp;ids%5B%5D=71&amp;ids%5B%5D=77&amp;ids%5B%5D=21&amp;ids%5B%5D=14&amp;ids%5B%5D=18&amp;ids%5B%5D=10&amp;ids%5B%5D=31&amp;ids%5B%5D=48&amp;ids%5B%5D=49&amp;ids%5B%5D=53&amp;ids%5B%5D=70&amp;ids%5B%5D=73&amp;ids%5B%5D=74&amp;ids%5B%5D=75&amp;ids%5B%5D=78&amp;ids%5B%5D=84&amp;ids%5B%5D=95&amp;ids%5B%5D=96" href="#!">All languages</a></div></div></div><div class="span6 margin9"><div class="page-row results_nav content-bar margin1"><div class="span6 content-bar-left"><div class="margin2" id="sorting">
+<label for="sort_select" class="inline-label">Sort by</label>
+<select id="sort_select" class="input-medium" >
+  <option selected="selected" value="relevancy">Best Match</option>
+<option value="avvo_rating">Avvo Rating</option>
+<option value="number_of_reviews">Number of Reviews</option>
+<option value="name">Name</option>
+</select>
+</div><hr /></div></div><div data-location-id="262" data-specialty-id="56" id="results">  <ol class="avvo-undecorated-list with-overlay">
+    
+  <li class="margin7" id="professional_113877"><div class="page-row"><div class="span6"><div class="page-row"><div class="span1"><a href="/attorneys/93921-ca-thomas-nash-113877.html" rel="nofollow"><img alt="California DUI / DWI Attorney Thomas Vinson Nash" borderless="true" class="borderless thumbnail_large" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/113877_1364242814.jpg" title="Thomas Vinson Nash" /></a></div><div class="span5"><div class="page-row"><div class="span3"><span class="name result_title"><h3 class="margin1"><a data-professional-id="113877" href="/attorneys/93921-ca-thomas-nash-113877.html">Thomas Nash</a> <a data-tooltip="Lawyers who subscribe to Avvo Pro have the ability to customize components of their profile, generate more leads with enhanced contact options, and track their performance on Avvo.
+&lt;a href=&quot;/for-lawyers/avvo-pro&quot;&gt;Learn more.&lt;/a&gt;
+" href="#!" rel="nofollow"><span class="label label-avvo-pro">Pro</span></a></h3></span><div class="muted margin1"><span><span>Carmel</span>, <span>CA</span></span> <span>DUI / DWI Attorney</span><br />Licensed for 31 years</div><div class="client_rating client-rating"><span class="score">Not yet reviewed </span></div></div><div class="center-content span2"><div class="margin3"><span class="muted light">AVVO<br />RATING</span><br /><span class="avvo_rating_numeric"><h2 class="bold ultratight margin0">7.6</h2><div><a class="tooltip_link tooltip-link" data-tooltip-remote-options="" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">Very Good</a></div></span></div>  <div>
+    <i class="icon-misconduct icon-red"></i>
+    <a class="text-red" data-tooltip="This lawyer has been disciplined by a state licensing authority." href="#!" rel="nofollow">Misconduct</a>
+  </div>
+</div><div class="span5 set"><div class="item"><i class="icon-padded right narrow icon-phone"></i> <span class="8471_phone phone">831-624-5000</span></div><div class="item"><a class="email" data-avn="{&quot;name&quot;:&quot;amos.gtm.view-advertising-email-form-pro&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;113877-Thomas-Nash&quot;,&quot;position&quot;:&quot;pro&quot;}}" href="/attorneys/93921-ca-thomas-nash-113877/contact.html" rel="nofollow"><i class="icon-blue icon-padded right narrow icon-email2"></i> Email</a></div><div class="item"><a class="website" data-avn="{&quot;name&quot;:&quot;amos.profiles.website_clicked&quot;,&quot;payload&quot;:{&quot;gtm&quot;:{&quot;event&quot;:&quot;contact-advertising-website&quot;,&quot;property&quot;:&quot;113877-Thomas-Nash&quot;,&quot;position&quot;:&quot;pro&quot;}}}" href="http://www.attorneytomnash.com/" onclick="this.href=&#39;/attorneys/93921-ca-thomas-nash-113877/website.html&#39;;return true;" rel="nofollow" target="_blank"><i class="icon-professional-newsletter icon-blue icon-padded right narrow"></i> Website</a></div></div></div></div></div></div></div></li>
+  
+  <li class="margin7" id="professional_199304"><div class="page-row"><div class="span6"><div class="page-row"><div class="span1"><a href="/attorneys/94102-ca-david-rencher-199304.html" rel="nofollow"><img alt="California DUI / DWI Attorney David Leonardo Rencher" borderless="true" class="borderless thumbnail_large" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/199304_1309904187.jpg" title="David Leonardo Rencher" /></a></div><div class="span5"><div class="page-row"><div class="span3"><span class="name result_title"><h3 class="margin1"><a data-professional-id="199304" href="/attorneys/94102-ca-david-rencher-199304.html">David Rencher</a> </h3></span><div class="muted margin1"><span><span>San Francisco</span>, <span>CA</span></span> <span>DUI / DWI Attorney</span><br />Licensed for 12 years</div><div class="client_rating client-rating"><span class="score"><a href="/attorneys/94102-ca-david-rencher-199304/reviews.html"><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span></a> <a href="/attorneys/94102-ca-david-rencher-199304/reviews.html" rel="nofollow">13 reviews</a></span></div></div><div class="center-content span2"><div class="margin3"><span class="muted light">AVVO<br />RATING</span><br /><span class="avvo_rating_numeric"><h2 class="bold ultratight margin0">8.5</h2><div><a class="tooltip_link tooltip-link" data-tooltip-remote-options="" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">Excellent</a></div></span></div></div></div></div></div></div></div></li>
+  
+  <li class="margin7" id="professional_3738233"><div class="page-row"><div class="span6"><div class="page-row"><div class="span1"><a href="/attorneys/93721-ca-scott-levy-3738233.html" rel="nofollow"><img alt="California DUI / DWI Attorney Scott David Levy" borderless="true" class="borderless thumbnail_large" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/3738233_1367248965.jpg" title="Scott David Levy" /></a></div><div class="span5"><div class="page-row"><div class="span3"><span class="name result_title"><h3 class="margin1"><a data-professional-id="3738233" href="/attorneys/93721-ca-scott-levy-3738233.html">Scott Levy</a> </h3></span><div class="muted margin1"><span><span>Fresno</span>, <span>CA</span></span> <span>DUI / DWI Attorney</span><br />Licensed for 4 years</div><div class="client_rating client-rating"><span class="score"><a href="/attorneys/93721-ca-scott-levy-3738233/reviews.html"><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span></a> <a href="/attorneys/93721-ca-scott-levy-3738233/reviews.html" rel="nofollow">15 reviews</a></span></div></div><div class="center-content span2"><div class="margin3"><span class="muted light">AVVO<br />RATING</span><br /><span class="avvo_rating_numeric"><h2 class="bold ultratight margin0">7.5</h2><div><a class="tooltip_link tooltip-link" data-tooltip-remote-options="" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">Very Good</a></div></span></div></div></div></div></div></div></div></li>
+  
+  <li class="margin7" id="professional_274916"><div class="page-row"><div class="span6"><div class="page-row"><div class="span1"><a href="/attorneys/92311-ca-david-leicht-274916.html" rel="nofollow"><img alt="California DUI / DWI Attorney David Leicht" borderless="true" class="borderless thumbnail_large" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/274916_1404252771.jpg" title="David Leicht" /></a></div><div class="span5"><div class="page-row"><div class="span3"><span class="name result_title"><h3 class="margin1"><a data-professional-id="274916" href="/attorneys/92311-ca-david-leicht-274916.html">David Leicht</a> <a data-tooltip="Lawyers who subscribe to Avvo Pro have the ability to customize components of their profile, generate more leads with enhanced contact options, and track their performance on Avvo.
+&lt;a href=&quot;/for-lawyers/avvo-pro&quot;&gt;Learn more.&lt;/a&gt;
+" href="#!" rel="nofollow"><span class="label label-avvo-pro">Pro</span></a></h3></span><div class="muted margin1"><span><span>Barstow</span>, <span>CA</span></span> <span>DUI / DWI Attorney</span><br />Licensed for 12 years</div><div class="client_rating client-rating"><span class="score"><a href="/attorneys/92311-ca-david-leicht-274916/reviews.html"><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span></a> <a href="/attorneys/92311-ca-david-leicht-274916/reviews.html" rel="nofollow">4 reviews</a></span></div></div><div class="center-content span2"><div class="margin3"><span class="muted light">AVVO<br />RATING</span><br /><span class="avvo_rating_numeric"><h2 class="bold ultratight margin0">6.7</h2><div><a class="tooltip_link tooltip-link" data-tooltip-remote-options="" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">Good</a></div></span></div></div><div class="span5 set"><div class="item"><i class="icon-padded right narrow icon-phone"></i> <span class="16317_phone phone">760-256-3104</span><script>
+//<![CDATA[
+
+          $(document).ready(function(){
+            $(".16317_phone").each(function(index, element) {
+              $(element).html("760-979-4570");
+              if(element.parentNode.tagName == "A"){
+                element.parentNode.setAttribute("href","tel:760-979-4570");
+              }
+            });
+          });
+        
+//]]>
+</script></div><div class="item"><a class="email" data-avn="{&quot;name&quot;:&quot;amos.gtm.view-advertising-email-form-pro&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;274916-David-Leicht&quot;,&quot;position&quot;:&quot;pro&quot;}}" href="/attorneys/92311-ca-david-leicht-274916/contact.html" rel="nofollow"><i class="icon-blue icon-padded right narrow icon-email2"></i> Email</a></div><div class="item"><a class="website" data-avn="{&quot;name&quot;:&quot;amos.profiles.website_clicked&quot;,&quot;payload&quot;:{&quot;gtm&quot;:{&quot;event&quot;:&quot;contact-advertising-website&quot;,&quot;property&quot;:&quot;274916-David-Leicht&quot;,&quot;position&quot;:&quot;pro&quot;}}}" href="http://leichtlaw.net/" onclick="this.href=&#39;/attorneys/92311-ca-david-leicht-274916/website.html&#39;;return true;" rel="nofollow" target="_blank"><i class="icon-professional-newsletter icon-blue icon-padded right narrow"></i> Website</a></div></div></div></div></div></div></div></li>
+  
+  <li class="margin7" id="professional_4072411"><div class="page-row"><div class="span6"><div class="page-row"><div class="span1"><a href="/attorneys/90012-ca-sharon-babakhan-4072411.html" rel="nofollow"><img alt="California DUI / DWI Attorney Sharon Paris Babakhan" borderless="true" class="borderless thumbnail_large" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/4072411_1370139655.jpg" title="Sharon Paris Babakhan" /></a></div><div class="span5"><div class="page-row"><div class="span3"><span class="name result_title"><h3 class="margin1"><a data-professional-id="4072411" href="/attorneys/90012-ca-sharon-babakhan-4072411.html">Sharon Babakhan</a> </h3></span><div class="muted margin1"><span><span>Los Angeles</span>, <span>CA</span></span> <span>DUI / DWI Attorney</span><br />Licensed for 3 years</div><div class="client_rating client-rating"><span class="score"><a href="/attorneys/90012-ca-sharon-babakhan-4072411/reviews.html"><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span></a> <a href="/attorneys/90012-ca-sharon-babakhan-4072411/reviews.html" rel="nofollow">3 reviews</a></span></div></div><div class="center-content span2"><div class="margin3"><span class="muted light">AVVO<br />RATING</span><br /><span class="avvo_rating_numeric"><h2 class="bold ultratight margin0">7.9</h2><div><a class="tooltip_link tooltip-link" data-tooltip-remote-options="" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">Very Good</a></div></span></div></div></div></div></div></div></div></li>
+  
+  <li class="margin7" id="professional_42175"><div class="page-row"><div class="span6"><div class="page-row"><div class="span1"><a href="/attorneys/94538-ca-earl-jiang-42175.html" rel="nofollow"><img alt="California DUI / DWI Attorney Earl Long Jiang" borderless="true" class="borderless thumbnail_large" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/42175_1290022347.jpg" title="Earl Long Jiang" /></a></div><div class="span5"><div class="page-row"><div class="span3"><span class="name result_title"><h3 class="margin1"><a data-professional-id="42175" href="/attorneys/94538-ca-earl-jiang-42175.html">Earl Jiang</a> </h3></span><div class="muted margin1"><span><span>Fremont</span>, <span>CA</span></span> <span>DUI / DWI Attorney</span><br />Licensed for 26 years</div><div class="client_rating client-rating"><span class="score"><a href="/attorneys/94538-ca-earl-jiang-42175/reviews.html"><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span></a> <a href="/attorneys/94538-ca-earl-jiang-42175/reviews.html" rel="nofollow">1 review</a></span></div></div><div class="center-content span2"><div class="margin3"><span class="muted light">AVVO<br />RATING</span><br /><span class="avvo_rating_numeric"><h2 class="bold ultratight margin0">7.0</h2><div><a class="tooltip_link tooltip-link" data-tooltip-remote-options="" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">Very Good</a></div></span></div></div></div></div></div></div></div></li>
+  
+  <li class="margin7" id="professional_370059"><div class="page-row"><div class="span6"><div class="page-row"><div class="span1"><a href="/attorneys/92501-ca-daniel-greenberg-370059.html" rel="nofollow"><img alt="California DUI / DWI Attorney Daniel Linson Greenberg" borderless="true" class="borderless thumbnail_large" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/370059_1299866741.jpg" title="Daniel Linson Greenberg" /></a></div><div class="span5"><div class="page-row"><div class="span3"><span class="name result_title"><h3 class="margin1"><a data-professional-id="370059" href="/attorneys/92501-ca-daniel-greenberg-370059.html">Daniel Greenberg</a> </h3></span><div class="muted margin1"><span><span>Riverside</span>, <span>CA</span></span> <span>DUI / DWI Attorney</span><br />Licensed for 40 years</div><div class="client_rating client-rating"><span class="score"><a href="/attorneys/92501-ca-daniel-greenberg-370059/reviews.html"><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span></a> <a href="/attorneys/92501-ca-daniel-greenberg-370059/reviews.html" rel="nofollow">5 reviews</a></span></div></div><div class="center-content span2"><div class="margin3"><span class="muted light">AVVO<br />RATING</span><br /><span class="avvo_rating_numeric"><h2 class="bold ultratight margin0">6.5</h2><div><a class="tooltip_link tooltip-link" data-tooltip-remote-options="" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">Good</a></div></span></div></div></div></div></div></div></div></li>
+  
+  <li class="margin7" id="professional_264900"><div class="page-row"><div class="span6"><div class="page-row"><div class="span1"><a href="/attorneys/95437-ca-patrick-pekin-264900.html" rel="nofollow"><img alt="California DUI / DWI Attorney Patrick Michael Pekin" borderless="true" class="borderless thumbnail_large" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/264900_1406740354.jpg" title="Patrick Michael Pekin" /></a></div><div class="span5"><div class="page-row"><div class="span3"><span class="name result_title"><h3 class="margin1"><a data-professional-id="264900" href="/attorneys/95437-ca-patrick-pekin-264900.html">Patrick Pekin</a> <a data-tooltip="Lawyers who subscribe to Avvo Pro have the ability to customize components of their profile, generate more leads with enhanced contact options, and track their performance on Avvo.
+&lt;a href=&quot;/for-lawyers/avvo-pro&quot;&gt;Learn more.&lt;/a&gt;
+" href="#!" rel="nofollow"><span class="label label-avvo-pro">Pro</span></a></h3></span><div class="muted margin1"><span><span>Fort Bragg</span>, <span>CA</span></span> <span>DUI / DWI Attorney</span><br />Licensed for 11 years</div><div class="client_rating client-rating"><span class="score"><a href="/attorneys/95437-ca-patrick-pekin-264900/reviews.html"><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span></a> <a href="/attorneys/95437-ca-patrick-pekin-264900/reviews.html" rel="nofollow">10 reviews</a></span></div></div><div class="center-content span2"><div class="margin3"><span class="muted light">AVVO<br />RATING</span><br /><span class="avvo_rating_numeric"><h2 class="bold ultratight margin0">8.3</h2><div><a class="tooltip_link tooltip-link" data-tooltip-remote-options="" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">Excellent</a></div></span></div></div><div class="span5 set"><div class="item"><i class="icon-padded right narrow icon-phone"></i> <span class="17095_phone phone">707-962-0261</span><script>
+//<![CDATA[
+
+          $(document).ready(function(){
+            $(".17095_phone").each(function(index, element) {
+              $(element).html("707-962-4011");
+              if(element.parentNode.tagName == "A"){
+                element.parentNode.setAttribute("href","tel:707-962-4011");
+              }
+            });
+          });
+        
+//]]>
+</script></div><div class="item"><a class="email" data-avn="{&quot;name&quot;:&quot;amos.gtm.view-advertising-email-form-pro&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;264900-Patrick-Pekin&quot;,&quot;position&quot;:&quot;pro&quot;}}" href="/attorneys/95437-ca-patrick-pekin-264900/contact.html" rel="nofollow"><i class="icon-blue icon-padded right narrow icon-email2"></i> Email</a></div><div class="item"><a class="website" data-avn="{&quot;name&quot;:&quot;amos.profiles.website_clicked&quot;,&quot;payload&quot;:{&quot;gtm&quot;:{&quot;event&quot;:&quot;contact-advertising-website&quot;,&quot;property&quot;:&quot;264900-Patrick-Pekin&quot;,&quot;position&quot;:&quot;pro&quot;}}}" href="http://www.pekinandpekinlaw.com" onclick="this.href=&#39;/attorneys/95437-ca-patrick-pekin-264900/website.html&#39;;return true;" rel="nofollow" target="_blank"><i class="icon-professional-newsletter icon-blue icon-padded right narrow"></i> Website</a></div></div></div></div></div></div></div></li>
+  
+  <li class="margin7" id="professional_42442"><div class="page-row"><div class="span6"><div class="page-row"><div class="span1"><a href="/attorneys/92505-ca-richard-isles-42442.html" rel="nofollow"><img alt="California DUI / DWI Attorney Richard Kenneth Isles" borderless="true" class="borderless thumbnail_large" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/42442_1376933703.jpg" title="Richard Kenneth Isles" /></a></div><div class="span5"><div class="page-row"><div class="span3"><span class="name result_title"><h3 class="margin1"><a data-professional-id="42442" href="/attorneys/92505-ca-richard-isles-42442.html">Richard Isles</a> <a data-tooltip="Lawyers who subscribe to Avvo Pro have the ability to customize components of their profile, generate more leads with enhanced contact options, and track their performance on Avvo.
+&lt;a href=&quot;/for-lawyers/avvo-pro&quot;&gt;Learn more.&lt;/a&gt;
+" href="#!" rel="nofollow"><span class="label label-avvo-pro">Pro</span></a></h3></span><div class="muted margin1"><span><span>Riverside</span>, <span>CA</span></span> <span>DUI / DWI Attorney</span><br />Licensed for 25 years</div><div class="client_rating client-rating"><span class="score"><a href="/attorneys/92505-ca-richard-isles-42442/reviews.html"><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-half-star icon-gold" style="font-size:15px"></span></a> <a href="/attorneys/92505-ca-richard-isles-42442/reviews.html" rel="nofollow">43 reviews</a></span></div></div><div class="center-content span2"><div class="margin3"><span class="muted light">AVVO<br />RATING</span><br /><span class="avvo_rating_numeric"><h2 class="bold ultratight margin0">8.3</h2><div><a class="tooltip_link tooltip-link" data-tooltip-remote-options="" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">Excellent</a></div></span></div></div><div class="span5 set"><div class="item"><i class="icon-padded right narrow icon-phone"></i> <span class="18252_phone phone">951-468-8907</span><script>
+//<![CDATA[
+
+          $(document).ready(function(){
+            $(".18252_phone").each(function(index, element) {
+              $(element).html("951-468-3036");
+              if(element.parentNode.tagName == "A"){
+                element.parentNode.setAttribute("href","tel:951-468-3036");
+              }
+            });
+          });
+        
+//]]>
+</script></div><div class="item"><a class="email" data-avn="{&quot;name&quot;:&quot;amos.gtm.view-advertising-email-form-pro&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;42442-Richard-Isles&quot;,&quot;position&quot;:&quot;pro&quot;}}" href="/attorneys/92505-ca-richard-isles-42442/contact.html" rel="nofollow"><i class="icon-blue icon-padded right narrow icon-email2"></i> Email</a></div><div class="item"><a class="website" data-avn="{&quot;name&quot;:&quot;amos.profiles.website_clicked&quot;,&quot;payload&quot;:{&quot;gtm&quot;:{&quot;event&quot;:&quot;contact-advertising-website&quot;,&quot;property&quot;:&quot;42442-Richard-Isles&quot;,&quot;position&quot;:&quot;pro&quot;}}}" href="http://www.islesfamilylaw.com/" onclick="this.href=&#39;/attorneys/92505-ca-richard-isles-42442/website.html&#39;;return true;" rel="nofollow" target="_blank"><i class="icon-professional-newsletter icon-blue icon-padded right narrow"></i> Website</a></div></div></div></div></div></div></div></li>
+  
+  <li class="margin7" id="professional_126500"><div class="page-row"><div class="span6"><div class="page-row"><div class="span1"><a href="/attorneys/92101-ca-jason-turner-126500.html" rel="nofollow"><img alt="California DUI / DWI Attorney Jason Gregory Turner" borderless="true" class="borderless thumbnail_large" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/126500_1256873082.jpg" title="Jason Gregory Turner" /></a></div><div class="span5"><div class="page-row"><div class="span3"><span class="name result_title"><h3 class="margin1"><a data-professional-id="126500" href="/attorneys/92101-ca-jason-turner-126500.html">Jason Gregory Turner</a> </h3></span><div class="muted margin1"><span><span>San Diego</span>, <span>CA</span></span> <span>DUI / DWI Attorney</span><br />Licensed for 15 years</div><div class="client_rating client-rating"><span class="score"><a href="/attorneys/92101-ca-jason-turner-126500/reviews.html"><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span><span class="icon-padded right narrow icon-star icon-gold" style="font-size:15px"></span></a> <a href="/attorneys/92101-ca-jason-turner-126500/reviews.html" rel="nofollow">1 review</a></span></div></div><div class="center-content span2"><div class="margin3"><span class="muted light">AVVO<br />RATING</span><br /><span class="avvo_rating_numeric"><h2 class="bold ultratight margin0">6.6</h2><div><a class="tooltip_link tooltip-link" data-tooltip-remote-options="" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">Good</a></div></span></div></div></div></div></div></div></div></li>
+  
+
+<div style="display:none;" id="interstitial">
+  <div id="interstitial_bg">
+  </div>
+  <p>
+    <img alt="" class="spinner" src="http://assets1.iavvo.com/assets/spinner-67122eeb98417b51e28d1fae18455456.gif" /> Loading...
+    
+  </p>
+</div>
+
+  </ol>
+</div><div class="content-bar" id="bottom_results_actions"><div class="content-bar-left" id="bottom_pagination">  <div class="pagination bottom">
+    <a data-start="630" href="/search/lawyer_search?loc=California&amp;q=DUI%20%2F%20DWI&amp;start=630" rel="nofollow"><i class="icon-arrow-left"></i></a>
+
+        
+
+  <a data-start="0" href="/search/lawyer_search?loc=California&amp;q=DUI%20%2F%20DWI" rel="follow">1</a>
+
+        <span class="gap">…</span>
+        
+
+  <a data-start="630" href="/search/lawyer_search?loc=California&amp;q=DUI%20%2F%20DWI&amp;start=630" rel="follow">64</a>
+
+        
+<span class="current">
+  65
+</span>
+        
+
+  <a data-start="650" href="/search/lawyer_search?loc=California&amp;q=DUI%20%2F%20DWI&amp;start=650" rel="follow">66</a>
+
+        
+
+  <a data-start="660" href="/search/lawyer_search?loc=California&amp;q=DUI%20%2F%20DWI&amp;start=660" rel="follow">67</a>
+
+        
+
+  <a data-start="670" href="/search/lawyer_search?loc=California&amp;q=DUI%20%2F%20DWI&amp;start=670" rel="follow">68</a>
+
+        
+
+  <a data-start="680" href="/search/lawyer_search?loc=California&amp;q=DUI%20%2F%20DWI&amp;start=680" rel="follow">69</a>
+
+        <span class="gap">…</span>
+    <a data-start="650" href="/search/lawyer_search?loc=California&amp;q=DUI%20%2F%20DWI&amp;start=650" rel="nofollow"><i class="icon-arrow-right"></i></a>
+
+  </div>
+</div></div></div><div class="span4"><div class="margin8"><div class="js-ads" data-ad-limit="1" data-ad-track="true" data-ad-type="display_ads" data-preview-ad="null"></div><div id="b_column_sponsored_listings"><div class="js-ads" data-ad-format="desktop" data-ad-limit="3" data-ad-track="true" data-ad-type="sponsored_listing_ads" data-ad-variant="medium" data-preview-ad="null"></div></div></div><div class="box module"><h2><a href="/dui-dwi-lawyer.html" title="DUI / DWI Attorney">DUI / DWI</a></h2>If you are suspected of driving while under the influence of alcohol or drugs, you may be arrested for DUI (driving under the influence). Depending on the state, the specific crime is also called DWI (driving while intoxicated), OUI (operating under the influence), or OWI (operating while intoxicated). A DUI conviction has serious consequences (for example, losing your driving privileges); but an experienced DUI attorney can often get the charges dropped or reduced, or may be able to negotiate lesser penalties depending on your circumstances and your past history.</div></div></div><script type="text/javascript">$(function() {
+  update_seo_link('prev', "/search/lawyer_search?start=630", true);
+  update_seo_link('next', "/search/lawyer_search?start=650", true);
+});</script>
+</div>      <div class="page stripped">
+        <div class="page-row">
+          <div id="seo_links" class="whole_width_section span12">
+            <section class="module"><h2>California lawyers in related practice areas</h2><nav class="margin4 link-table link-table-5-up"><table class="links"><tr><td><a href="/criminal-defense-lawyer/ca.html" title="California Criminal Defense Attorneys">Criminal Defense</a></td><td><a href="/speeding-traffic-ticket-lawyer/ca.html" title="California Speeding / Traffic Ticket Lawyers">Speeding Ticket</a></td><td><a href="/personal-injury-lawyer/ca.html" title="California Personal Injury Lawyers">Personal Injury</a></td><td><a href="/car-auto-accident-lawyer/ca.html" title="California Car / Auto Accident Lawyers">Car Accident</a></td><td>&nbsp;</td></tr></table></nav><div class="navigation"><a href="/find-a-lawyer/all-practice-areas/ca" title="Browse California Lawyers">See all practice areas</a></div></section>
+          </div>
+        </div>
+      </div>
+
+    <footer class="persistent-footer page full-width no-border"><div class="page-row"><a class="quiet span3" href="//www.avvo.com/"><div class="icon-avvo-logo footer-logo"></div><div class="footer-slogan">Legal. <strong>Easier.</strong></div></a><div class="span3"><a class="quiet" href="/"><h3>Explore Avvo</h3></a><p class="margin1"><a class="quiet" href="/ask-a-lawyer">Ask a Lawyer</a></p><p class="margin1"><a class="quiet" href="/find-a-lawyer">Find a Lawyer</a></p><p class="margin1"><a class="quiet" href="/free-legal-advice">Free Legal Advice</a></p><p class="margin1"><a class="quiet" href="/review-your-lawyer">Review a Lawyer</a></p></div><div class="span3"><a class="quiet" href="/for-lawyers"><h3>For Lawyers</h3></a><p class="margin1"><a class="quiet" href="/for-lawyers">Lawyer Advertising</a></p><p class="margin1"><a class="quiet" href="/claim-your-profile">Claim Your Profile</a></p><p class="margin1"><a class="quiet" href="/support/all-firm-claim">For Law Firms</a></p><p class="margin1"><a class="quiet" href="//ignite.avvo.com">Marketing Management Software</a></p><p class="margin1"><a class="quiet" href="//lawyernomics.avvo.com">Lawyernomics Blog</a></p></div><div class="span3"><a class="quiet" href="/about_avvo"><h3>Company Info</h3></a><p class="margin1"><a class="quiet" href="/about_avvo/about_us">About Us</a></p><p class="margin1"><a class="quiet" href="/for-lawyers/support">Support</a></p><p class="margin1"><a class="quiet" href="//press.avvo.com">Press Room</a></p><p class="margin1"><a class="quiet" href="/partner_with_us">Partner With Us</a></p><p class="margin1"><a class="quiet" href="/about_avvo/jobs">Careers</a></p><p class="margin1"><a class="quiet" href="//avvoblog.com">Avvo Blog</a></p><p class="margin1"><a class="quiet" href="//nakedlaw.avvo.com">NakedLaw Blog</a></p></div></div></footer><footer class="black"><div id="fine_print_container"><div id="fine_print"><div class="contact_avvo">Follow us on <a href="//www.twitter.com/avvo"><img alt="Twitter" src="http://assets1.iavvo.com/assets/embed/additional_links/twitter_icon-c160ce8886d11899e6833dd271a13f2d.png" /></a><a href="http://www.facebook.com/avvo"><img alt="Facebook" src="http://assets2.iavvo.com/assets/embed/additional_links/facebook_icon-6d9bd4ddfbad9c81a22fd2471b67d673.png" /></a><a href="//plus.google.com/107840042923877554905"><img alt="Google icon" src="http://assets2.iavvo.com/assets/embed/additional_links/google_icon-942738832fa1fe452c21f15e5a9194b2.png" /></a></div><p class="bottom_links"><span class="copyright">&copy;2014 Avvo, Inc. All Rights Reserved </span><span><a href="?loc=California&amp;q=DUI%20%2F%20DWI&amp;start=640&amp;prefer_mobile=true" rel="nofollow">Mobile View</a></span><span class="pipe">|</span><span><a href="/support/terms" rel="nofollow">Terms of Use</a></span><span class="pipe">|</span><span><a href="/support/privacy" rel="nofollow">Privacy Policy</a></span><span class="pipe">|</span><span><a href="/support/community_guidelines" rel="nofollow">Community Guidelines</a></span></p></div></div></footer>
+
+    <noscript>
+  <div style="text-align:center;background:#fbf3c5;color:#911717;padding:8px;border-bottom:1px solid #D7DADD;">
+  <strong>We've detected that your browser does not support scripting.</strong> <br/>
+  Scripting must be enabled to use Avvo. Turn on scripting and reload this page.
+  </div>
+</noscript>
+
+
+
+
+    <!-- r:2c4e22c7b390a64641358a65bde9e1a551c45b69 -->
+<!-- d:Fri Nov 21 22:19:26 PST 2014 -->
+<!-- p:www.avvo.com -->  
+
+
+
+
+
+    
+    <script src="http://assets1.iavvo.com/assets/footer_common-59d36e58c17ffbec325b4d50f60e0fda.js"></script>
+    <script src="http://assets2.iavvo.com/assets/search-6a9a820c10896b2fd5b961344ac921d6.js"></script>
+    <script src="http://assets2.iavvo.com/assets/search_map-325fc9a87514a270649fbcecca249bc0.js"></script>
+
+
+
+<div id="google_remarketing">
+
+    <script type="text/javascript">
+    /* <![CDATA[ */
+    var google_conversion_id = 1057123743;
+    var google_conversion_language = "en";
+    var google_conversion_format = "3";
+    var google_conversion_color = "ffffff";
+    var google_conversion_label = "z9BlCKXnsAIQn9uJ-AM";
+    var google_conversion_value = 0;
+    /* ]]> */
+    </script>
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js?avvo_Ju3M">
+    </script>
+    <noscript>
+    <div style="display:inline;">
+    <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/1057123743/?label=z9BlCKXnsAIQn9uJ-AM&amp;guid=ON&amp;script=0"/>
+    </div>
+    </noscript>
+
+</div>
+
+    <script>
+//<![CDATA[
+
+$(function(){
+  var a=document.createElement("script");
+  var b=$("script")[0];
+  a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0011/6860.js";
+  a.async=true;a.type="text/javascript";
+  b.parentNode.insertBefore(a,b);
+});
+
+//]]>
+</script>
+  </body>
+
+
+</html>

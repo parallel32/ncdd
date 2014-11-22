@@ -9,20 +9,24 @@
 <meta charset="utf-8">
 <title>Find the Best Dui / Dwi Lawyer in Georgia - Page 51 - Avvo.com</title>
 
-<meta name="description" content="Find, research and rate 500 DUI / DWI lawyers in Georgia. Free attorney background profiles, disciplinary sanctions, and client reviews. Page 51" />
+<meta name="description" content="Find, research and rate 502 DUI / DWI lawyers in Georgia. Free attorney background profiles, disciplinary sanctions, and client reviews. Page 51" />
 
 <meta name="robots" content="noindex,follow" />
 
 
 
-<meta property="og:image" content="http://assets1.iavvo.com/assets/header_logo-d9da0710ef4f108673b08e2f89ee79c8.png" />
+<meta property="og:image" content="http://assets2.iavvo.com/assets/header_logo-d9da0710ef4f108673b08e2f89ee79c8.png" />
+      
+<meta href="http://www.avvo.com/search/lawyer_search?loc=Georgia&amp;q=DUI%20%2F%20DWI&amp;start=490" rel="prev" />
+
+    
 
 
 <meta name="robots" content="NOODP,NOYDIR" />
 
 <script>
 //<![CDATA[
-window.locationContext = {"id":268,"name":"Georgia","city_name":null,"state_name":"Georgia","state_code":"GA","postal_code":null};window.adLocationContext = {"id":51842,"name":"30301","city_name":"Atlanta","state_name":"Georgia","state_code":"GA","postal_code":"30301"};window.specialtyContext = {"id":56,"name":"DUI"};
+window.locationContext = {"id":268,"name":"Georgia","city_name":null,"state_name":"Georgia","state_code":"GA","postal_code":null};window.adLocationContext = {"id":61489,"name":"30316","city_name":"Atlanta","state_name":"Georgia","state_code":"GA","postal_code":"30316"};window.specialtyContext = {"id":56,"name":"DUI"};
 //]]>
 </script><script src="//cdn.optimizely.com/js/275511722.js"></script>
 
@@ -30,15 +34,15 @@ window.locationContext = {"id":268,"name":"Georgia","city_name":null,"state_name
 
   <link href="http://assets2.iavvo.com/assets/application-679b5b560ef19c2728b0c8d332d28f6a.css" media="all" rel="stylesheet" />
   <!--[if lt IE 9]>
-    <link href="http://assets1.iavvo.com/assets/font_avvo_icon_bad_IE_bad_dog-27d8ace9b1fdd6c93145f0e1b7827dc6.css" media="all" rel="stylesheet" />
+    <link href="http://assets2.iavvo.com/assets/font_avvo_icon_bad_IE_bad_dog-27d8ace9b1fdd6c93145f0e1b7827dc6.css" media="all" rel="stylesheet" />
   <![endif]-->
 
 <link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:700|Open+Sans:300,400,600,700" media="all" rel="stylesheet" />
 
-<script src="http://assets2.iavvo.com/assets/application-6521b375ced68ce5bd2b55ed51893365.js"></script>
+<script src="http://assets1.iavvo.com/assets/application-944ee4fdb62f3df1542271af9ecbae14.js"></script>
 
 <!--[if (gte IE 6)&(lte IE 8)]>
-    <script src="http://assets2.iavvo.com/assets/selectivizr-c4422edc73658e842dce601b5979afe2.js"></script>
+    <script src="http://assets1.iavvo.com/assets/selectivizr-c4422edc73658e842dce601b5979afe2.js"></script>
 <![endif]-->
 
 
@@ -83,13 +87,13 @@ window.locationContext = {"id":268,"name":"Georgia","city_name":null,"state_name
 
 
 <script type="text/javascript">window.dataLayer = window.dataLayer || [];
-window.dataLayer.push({"location":{"id":268,"detail_type":"Gnomon::State","detail_id":12,"country_id":231,"country_name":"United States","state_id":12,"state_name":"Georgia","state_code":"GA","county_id":null,"county_name":null,"city_id":null,"city_name":null,"neighborhood_id":null,"neighborhood_name":null,"postal_code_id":null,"postal_code_name":null,"to_location":"Georgia","to_short_location":"Georgia","to_long_location":"Georgia","to_location_with_region":"Georgia","latitude":null,"longitude":null,"updated_at":"2012-08-28T14:45:56.000-07:00","population":null,"canonical_postal_code_id":30701},"pageTitle":"Find the Best Dui / Dwi Lawyer in Georgia - Page 51","siteSection":"lawyer search","logicalSection":"lawyers/search","renderType":"desktop","persistentSessionId":"7d803bbd-3510-4554-885e-e5176fb0b5d9","userId":null,"userEmail":null,"userType":"anonymous","professionalId":null,"specialty":56,"search_type":"lawyer"});</script>
+window.dataLayer.push({"location":{"id":268,"detail_type":"Gnomon::State","detail_id":12,"country_id":231,"country_name":"United States","state_id":12,"state_name":"Georgia","state_code":"GA","county_id":null,"county_name":null,"city_id":null,"city_name":null,"neighborhood_id":null,"neighborhood_name":null,"postal_code_id":null,"postal_code_name":null,"to_location":"Georgia","to_short_location":"Georgia","to_long_location":"Georgia","to_location_with_region":"Georgia","latitude":null,"longitude":null,"updated_at":"2012-08-28T14:45:56.000-07:00","population":null,"canonical_postal_code_id":30701},"pageTitle":"Find the Best Dui / Dwi Lawyer in Georgia - Page 51","siteSection":"lawyer search","logicalSection":"lawyers/search","renderType":"desktop","persistentSessionId":"6b7a9bea-5718-4f89-a476-1712ffc1b116","userId":null,"userEmail":null,"userType":"anonymous","professionalId":null,"specialty":56,"search_type":"lawyer"});</script>
 
-  <meta name="ad-location-id" content="51842" /><meta name="ad-specialty-id" content="56" /><meta name="page-template-name" content="Lawyer SERP" /></head>
+  <meta name="ad-location-id" content="61489" /><meta name="ad-specialty-id" content="56" /><meta name="page-template-name" content="Lawyer SERP" /></head>
   <body>
     <script>
 //<![CDATA[
-duraLogEvents('eJxdkVtr3DAQhf9KECRP1q4uli8LS1+ShkAfSi/0IQQhW7MbgWw5kr3uUvrf\nO97EtOmLzXyeOTPn+PGR51xVghWSZWQwR9AnBzPJiOlCErOxmyEGuzGnU9i0\noSPZL+JDa0YXeu0s2Ymiyogb9ArJjkgmGUeFlwniGevb7w9X26vbHw/IkvGQ\ndITjOi+lqP7DQ0ij8boNFvS7XYpXucDmAVpn/Hh+hUVG4OcAcXQJLqSfvM9I\nP3UomCY/Jmxi6O6t0tirF6dkx9miFvoUIljtXRpdf9TJh2VGZsS6NHhzXgnP\nyAgdkhF0bzoUIJ/MfIZ49fXuy2d0Z0Nn3BLBPM//REam6BFuE5jYPm/9ZUa/\nVh/Q4f4eQjw6c/Oyx6yuBbsWH/GJid1gEnHc4/lkuf8AMUJcHU4JVdBHP64k\nQUprWERxkG1THmiTm4Lmoqpp3dSCltKKvAaZN6q5qHYB/bhhGWEbofiGyxLf\n+K2D8TksWvd338jbwr8JR+jtAno8sm9BH6fLXoCC5ZwDrYtc0byVjBp5KKmt\nDqblddEWIFAM/0LCwPF6/e7s0lZMNo2lUnFGc6VyWlUKKCheFoeGNcrW5PfT\n0x+Y++EU\n');
+duraLogEvents('eJztVE1r3DAQ/StBkJzsXUv+kL2w9JI0BHoo/aCHEITWHjsC2XIkebdL6X/v\nyM5Cs+2tkF5yMejNzHtPo4fv72lGi4IXaZFEZLSmBeeUGaQWqh/tciARkb1x\n7CAbEv0go3HKB3hDI1JLD52xR7IhWh6OYEWjLNQ+QBHRBuvYKlRDNqwoI+JG\nqJXU/jhDeYEISFs/CtO2DjzS5ElCzq1ga8YoZ2kakcb0UqE4ORwOK7nfm1Vt\nepyYrEZwvdCtn80sp3foY3sLxnZKXj1tr7/eXbLkkr3H7/W3uyvnpfXbRddC\nC9aCJZth0hpZHbLIDgZ/QtxiazZFmMxpy1uIacbrOGuqPJZVAjGvSp5iSbIm\nm1l740GoEUdowleUlStarFjCsdiDfzSB7PbmC3lWDOSLnIWhCcCALocaRDfN\nwk3DymLX7oIwjbNcpnGZQhPTsq1pziospmGNYJ1yHu2LF76LHZfVDmScc1rG\nWVtWscx4EVNOWYsMO0oL8vMh+qd4sFeNR5ql1Vs8/mc8cA9ir+BwFog/X1mN\n4gSiWJqkyBaRpwnmoOD+L9YXuHnEnNTghIXuNE8ZTc5gDJzHFNSmAfFCq6BZ\nWf0tU/AdL+6Vg98WOUw9ErpJe4dNCQurnU8Ce0W4G4oH6dEMzlhohMbNqaET\nTpswE7Kn3Kjl8YTg79FDjwi+7SB7JCAf5txdfL759JG8ZfU1s/rwC8JVNC4=\n');
 //]]>
 </script>
 
@@ -205,7 +209,7 @@ duraLogEvents('eJxdkVtr3DAQhf9KECRP1q4uli8LS1+ShkAfSi/0IQQhW7MbgWw5kr3uUvrf\nO97
     </div>
     <div class="page stripped">
       
-          <h1 class="light margin0">Georgia DUI Attorneys<small>&nbsp;&#151;&nbsp;500&nbsp;found</small></h1>  <section class="module margin8 link-table link-table-6-up">
+          <h1 class="light margin0">Georgia DUI Attorneys<small>&nbsp;&#151;&nbsp;502&nbsp;found</small></h1>  <section class="module margin8 link-table link-table-6-up">
     <h2>Narrow results by city</h2>
     <table class="margin4">
         <tr>
@@ -347,7 +351,7 @@ duraLogEvents('eJxdkVtr3DAQhf9KECRP1q4uli8LS1+ShkAfSi/0IQQhW7MbgWw5kr3uUvrf\nO97
       filter_search_results();
     }
   });
-});</script></div><div class="module margin6"><h2>Languages</h2><div class="filter"><label class="checkbox" for="languages_50"><input class="checkbox" data-search-filter="languages" id="languages_50" name="languages" type="checkbox" value="50" /> Spanish</label></div><div class="filter"><label class="checkbox" for="languages_19"><input class="checkbox" data-search-filter="languages" id="languages_19" name="languages" type="checkbox" value="19" /> French</label></div><div class="filter"><label class="checkbox" for="languages_20"><input class="checkbox" data-search-filter="languages" id="languages_20" name="languages" type="checkbox" value="20" /> German</label></div><a data-modal-open="modal_Woxc6" data-modal-url="/search_filters/languages?&amp;ids%5B%5D=50&amp;ids%5B%5D=19&amp;ids%5B%5D=20&amp;ids%5B%5D=26&amp;ids%5B%5D=32&amp;ids%5B%5D=58&amp;ids%5B%5D=21&amp;ids%5B%5D=92&amp;ids%5B%5D=69&amp;ids%5B%5D=3&amp;ids%5B%5D=29&amp;ids%5B%5D=23&amp;ids%5B%5D=18&amp;ids%5B%5D=28&amp;ids%5B%5D=41&amp;ids%5B%5D=45&amp;ids%5B%5D=47&amp;ids%5B%5D=49&amp;ids%5B%5D=62&amp;ids%5B%5D=72" href="#!">All languages</a></div></div></div><div class="span6 margin9"><div class="page-row results_nav content-bar margin1"><div class="span6 content-bar-left"><div class="margin2" id="sorting">
+});</script></div><div class="module margin6"><h2>Languages</h2><div class="filter"><label class="checkbox" for="languages_50"><input class="checkbox" data-search-filter="languages" id="languages_50" name="languages" type="checkbox" value="50" /> Spanish</label></div><div class="filter"><label class="checkbox" for="languages_19"><input class="checkbox" data-search-filter="languages" id="languages_19" name="languages" type="checkbox" value="19" /> French</label></div><div class="filter"><label class="checkbox" for="languages_20"><input class="checkbox" data-search-filter="languages" id="languages_20" name="languages" type="checkbox" value="20" /> German</label></div><a data-modal-open="modal_ULeBX" data-modal-url="/search_filters/languages?&amp;ids%5B%5D=50&amp;ids%5B%5D=19&amp;ids%5B%5D=20&amp;ids%5B%5D=26&amp;ids%5B%5D=32&amp;ids%5B%5D=58&amp;ids%5B%5D=21&amp;ids%5B%5D=92&amp;ids%5B%5D=69&amp;ids%5B%5D=3&amp;ids%5B%5D=29&amp;ids%5B%5D=23&amp;ids%5B%5D=18&amp;ids%5B%5D=28&amp;ids%5B%5D=41&amp;ids%5B%5D=45&amp;ids%5B%5D=47&amp;ids%5B%5D=49&amp;ids%5B%5D=62&amp;ids%5B%5D=72" href="#!">All languages</a></div></div></div><div class="span6 margin9"><div class="page-row results_nav content-bar margin1"><div class="span6 content-bar-left"><div class="margin2" id="sorting">
 <label for="sort_select" class="inline-label">Sort by</label>
 <select id="sort_select" class="input-medium" >
   <option selected="selected" value="relevancy">Best Match</option>
@@ -357,6 +361,10 @@ duraLogEvents('eJxdkVtr3DAQhf9KECRP1q4uli8LS1+ShkAfSi/0IQQhW7MbgWw5kr3uUvrf\nO97
 </select>
 </div><hr /></div></div><div data-location-id="268" data-specialty-id="56" id="results">  <ol class="avvo-undecorated-list with-overlay">
     
+  <li class="margin7" id="professional_4217233"><div class="page-row"><div class="span6"><div class="page-row"><div class="span1"><a href="/attorneys/30901-ga-melody-ebron-4217233.html" rel="nofollow"><img alt="Georgia DUI / DWI Attorney Melody Melissa Ebron" borderless="true" class="borderless thumbnail_large" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/4217233_1416597526.jpg" title="Melody Melissa Ebron" /></a></div><div class="span5"><div class="page-row"><div class="span3"><span class="name result_title"><h3 class="margin1"><a data-professional-id="4217233" href="/attorneys/30901-ga-melody-ebron-4217233.html">Melody Ebron</a> </h3></span><div class="muted margin1"><span><span>Augusta</span>, <span>GA</span></span> <span>DUI / DWI Attorney</span><br />Licensed for 7 years</div><div class="client_rating client-rating"><span class="score">Not yet reviewed </span></div></div><div class="center-content span2"><div class="margin3"><span class="muted light">AVVO<br />RATING</span><br /><span class="avvo_rating_no_concern"><div class="button no_concern"><a class="tooltip_link tooltip-link" data-tooltip="We have not found any information in this lawyer&#39;s background that is, in our opinion, concerning." href="#!" rel="nofollow">No<br/>Concern</a></div></span></div></div></div></div></div></div></div></li>
+  
+  <li class="margin7" id="professional_4234393"><div class="page-row"><div class="span6"><div class="page-row"><div class="span1"><a href="/attorneys/30005-ga-kristy-higdon-4234393.html" rel="nofollow"><img alt="Georgia DUI / DWI Attorney Kristy Ann Higdon" borderless="true" class="borderless thumbnail_large" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/4234393_1416603809.jpg" title="Kristy Ann Higdon" /></a></div><div class="span5"><div class="page-row"><div class="span3"><span class="name result_title"><h3 class="margin1"><a data-professional-id="4234393" href="/attorneys/30005-ga-kristy-higdon-4234393.html">Kristy Ann Higdon</a> </h3></span><div class="muted margin1"><span><span>Alpharetta</span>, <span>GA</span></span> <span>DUI / DWI Attorney</span><br />Licensed for 2 years</div><div class="client_rating client-rating"><span class="score">Not yet reviewed </span></div></div><div class="center-content span2"><div class="margin3"><span class="muted light">AVVO<br />RATING</span><br /><span class="avvo_rating_no_concern"><div class="button no_concern"><a class="tooltip_link tooltip-link" data-tooltip="We have not found any information in this lawyer&#39;s background that is, in our opinion, concerning." href="#!" rel="nofollow">No<br/>Concern</a></div></span></div></div></div></div></div></div></div></li>
+  
 
 <div style="display:none;" id="interstitial">
   <div id="interstitial_bg">
@@ -378,15 +386,21 @@ duraLogEvents('eJxdkVtr3DAQhf9KECRP1q4uli8LS1+ShkAfSi/0IQQhW7MbgWw5kr3uUvrf\nO97
         <span class="gap">…</span>
         
 
+  <a data-start="480" href="/search/lawyer_search?loc=Georgia&amp;q=DUI%20%2F%20DWI&amp;start=480" rel="follow">49</a>
+
+        
+
   <a data-start="490" href="/search/lawyer_search?loc=Georgia&amp;q=DUI%20%2F%20DWI&amp;start=490" rel="follow">50</a>
 
-    <a data-start="510" href="/search/lawyer_search?loc=Georgia&amp;q=DUI%20%2F%20DWI&amp;start=510" rel="nofollow"><i class="icon-arrow-right"></i></a>
-
+        
+<span class="current">
+  51
+</span>
+    
   </div>
-</div></div></div><div class="span4"><div class="margin8"><div class="js-ads" data-ad-limit="1" data-ad-track="true" data-ad-type="display_ads" data-preview-ad="null"></div><div id="b_column_sponsored_listings"><div class="js-ads" data-ad-limit="3" data-ad-track="true" data-ad-type="sponsored_listing_ads" data-ad-variant="medium" data-preview-ad="null"></div></div></div><div class="box module"><h2><a href="/dui-dwi-lawyer.html" title="DUI / DWI Attorney">DUI / DWI</a></h2>If you are suspected of driving while under the influence of alcohol or drugs, you may be arrested for DUI (driving under the influence). Depending on the state, the specific crime is also called DWI (driving while intoxicated), OUI (operating under the influence), or OWI (operating while intoxicated). A DUI conviction has serious consequences (for example, losing your driving privileges); but an experienced DUI attorney can often get the charges dropped or reduced, or may be able to negotiate lesser penalties depending on your circumstances and your past history.</div></div></div><script type="text/javascript">$(function() {
+</div></div></div><div class="span4"><div class="margin8"><div class="js-ads" data-ad-limit="1" data-ad-track="true" data-ad-type="display_ads" data-preview-ad="null"></div><div id="b_column_sponsored_listings"><div class="js-ads" data-ad-format="desktop" data-ad-limit="3" data-ad-track="true" data-ad-type="sponsored_listing_ads" data-ad-variant="medium" data-preview-ad="null"></div></div></div><div class="box module"><h2><a href="/dui-dwi-lawyer.html" title="DUI / DWI Attorney">DUI / DWI</a></h2>If you are suspected of driving while under the influence of alcohol or drugs, you may be arrested for DUI (driving under the influence). Depending on the state, the specific crime is also called DWI (driving while intoxicated), OUI (operating under the influence), or OWI (operating while intoxicated). A DUI conviction has serious consequences (for example, losing your driving privileges); but an experienced DUI attorney can often get the charges dropped or reduced, or may be able to negotiate lesser penalties depending on your circumstances and your past history.</div></div></div><script type="text/javascript">$(function() {
   update_seo_link('prev', "/search/lawyer_search?start=490", true);
   update_seo_link('next', "/search/lawyer_search?start=510", false);
-  $(document).trigger('ads:load');
 });</script>
 </div>      <div class="page stripped">
         <div class="page-row">
@@ -396,7 +410,7 @@ duraLogEvents('eJxdkVtr3DAQhf9KECRP1q4uli8LS1+ShkAfSi/0IQQhW7MbgWw5kr3uUvrf\nO97
         </div>
       </div>
 
-    <footer class="persistent-footer page full-width no-border"><div class="page-row"><a class="quiet span3" href="//www.avvo.com/"><div class="icon-avvo-logo footer-logo"></div><div class="footer-slogan">Legal. <strong>Easier.</strong></div></a><div class="span3"><a class="quiet" href="/"><h3>Explore Avvo</h3></a><p class="margin1"><a class="quiet" href="/ask-a-lawyer">Ask a Lawyer</a></p><p class="margin1"><a class="quiet" href="/find-a-lawyer">Find a Lawyer</a></p><p class="margin1"><a class="quiet" href="/free-legal-advice">Free Legal Advice</a></p><p class="margin1"><a class="quiet" href="/review-your-lawyer">Review a Lawyer</a></p></div><div class="span3"><a class="quiet" href="/for-lawyers"><h3>For Lawyers</h3></a><p class="margin1"><a class="quiet" href="/for-lawyers">Lawyer Advertising</a></p><p class="margin1"><a class="quiet" href="/claim-your-profile">Claim Your Profile</a></p><p class="margin1"><a class="quiet" href="/support/all-firm-claim">For Law Firms</a></p><p class="margin1"><a class="quiet" href="//ignite.avvo.com">Marketing Management Software</a></p><p class="margin1"><a class="quiet" href="//lawyernomics.avvo.com">Lawyernomics Blog</a></p></div><div class="span3"><a class="quiet" href="/about_avvo"><h3>Company Info</h3></a><p class="margin1"><a class="quiet" href="/about_avvo/about_us">About Us</a></p><p class="margin1"><a class="quiet" href="/for-lawyers/support">Support</a></p><p class="margin1"><a class="quiet" href="//press.avvo.com">Press Room</a></p><p class="margin1"><a class="quiet" href="/partner_with_us">Partner With Us</a></p><p class="margin1"><a class="quiet" href="/about_avvo/jobs">Careers</a></p><p class="margin1"><a class="quiet" href="//avvoblog.com">Avvo Blog</a></p><p class="margin1"><a class="quiet" href="//nakedlaw.avvo.com">NakedLaw Blog</a></p></div></div></footer><footer class="black"><div id="fine_print_container"><div id="fine_print"><div class="contact_avvo">Follow us on <a href="//www.twitter.com/avvo"><img alt="Twitter" src="http://assets2.iavvo.com/assets/embed/additional_links/twitter_icon-c160ce8886d11899e6833dd271a13f2d.png" /></a><a href="http://www.facebook.com/avvo"><img alt="Facebook" src="http://assets1.iavvo.com/assets/embed/additional_links/facebook_icon-6d9bd4ddfbad9c81a22fd2471b67d673.png" /></a><a href="//plus.google.com/107840042923877554905"><img alt="Google icon" src="http://assets2.iavvo.com/assets/embed/additional_links/google_icon-942738832fa1fe452c21f15e5a9194b2.png" /></a></div><p class="bottom_links"><span class="copyright">&copy;2014 Avvo, Inc. All Rights Reserved </span><span><a href="?loc=Georgia&amp;q=DUI%20%2F%20DWI&amp;start=500&amp;prefer_mobile=true" rel="nofollow">Mobile View</a></span><span class="pipe">|</span><span><a href="/support/terms" rel="nofollow">Terms of Use</a></span><span class="pipe">|</span><span><a href="/support/privacy" rel="nofollow">Privacy Policy</a></span><span class="pipe">|</span><span><a href="/support/community_guidelines" rel="nofollow">Community Guidelines</a></span></p></div></div></footer>
+    <footer class="persistent-footer page full-width no-border"><div class="page-row"><a class="quiet span3" href="//www.avvo.com/"><div class="icon-avvo-logo footer-logo"></div><div class="footer-slogan">Legal. <strong>Easier.</strong></div></a><div class="span3"><a class="quiet" href="/"><h3>Explore Avvo</h3></a><p class="margin1"><a class="quiet" href="/ask-a-lawyer">Ask a Lawyer</a></p><p class="margin1"><a class="quiet" href="/find-a-lawyer">Find a Lawyer</a></p><p class="margin1"><a class="quiet" href="/free-legal-advice">Free Legal Advice</a></p><p class="margin1"><a class="quiet" href="/review-your-lawyer">Review a Lawyer</a></p></div><div class="span3"><a class="quiet" href="/for-lawyers"><h3>For Lawyers</h3></a><p class="margin1"><a class="quiet" href="/for-lawyers">Lawyer Advertising</a></p><p class="margin1"><a class="quiet" href="/claim-your-profile">Claim Your Profile</a></p><p class="margin1"><a class="quiet" href="/support/all-firm-claim">For Law Firms</a></p><p class="margin1"><a class="quiet" href="//ignite.avvo.com">Marketing Management Software</a></p><p class="margin1"><a class="quiet" href="//lawyernomics.avvo.com">Lawyernomics Blog</a></p></div><div class="span3"><a class="quiet" href="/about_avvo"><h3>Company Info</h3></a><p class="margin1"><a class="quiet" href="/about_avvo/about_us">About Us</a></p><p class="margin1"><a class="quiet" href="/for-lawyers/support">Support</a></p><p class="margin1"><a class="quiet" href="//press.avvo.com">Press Room</a></p><p class="margin1"><a class="quiet" href="/partner_with_us">Partner With Us</a></p><p class="margin1"><a class="quiet" href="/about_avvo/jobs">Careers</a></p><p class="margin1"><a class="quiet" href="//avvoblog.com">Avvo Blog</a></p><p class="margin1"><a class="quiet" href="//nakedlaw.avvo.com">NakedLaw Blog</a></p></div></div></footer><footer class="black"><div id="fine_print_container"><div id="fine_print"><div class="contact_avvo">Follow us on <a href="//www.twitter.com/avvo"><img alt="Twitter" src="http://assets2.iavvo.com/assets/embed/additional_links/twitter_icon-c160ce8886d11899e6833dd271a13f2d.png" /></a><a href="http://www.facebook.com/avvo"><img alt="Facebook" src="http://assets2.iavvo.com/assets/embed/additional_links/facebook_icon-6d9bd4ddfbad9c81a22fd2471b67d673.png" /></a><a href="//plus.google.com/107840042923877554905"><img alt="Google icon" src="http://assets1.iavvo.com/assets/embed/additional_links/google_icon-942738832fa1fe452c21f15e5a9194b2.png" /></a></div><p class="bottom_links"><span class="copyright">&copy;2014 Avvo, Inc. All Rights Reserved </span><span><a href="?loc=Georgia&amp;q=DUI%20%2F%20DWI&amp;start=500&amp;prefer_mobile=true" rel="nofollow">Mobile View</a></span><span class="pipe">|</span><span><a href="/support/terms" rel="nofollow">Terms of Use</a></span><span class="pipe">|</span><span><a href="/support/privacy" rel="nofollow">Privacy Policy</a></span><span class="pipe">|</span><span><a href="/support/community_guidelines" rel="nofollow">Community Guidelines</a></span></p></div></div></footer>
 
     <noscript>
   <div style="text-align:center;background:#fbf3c5;color:#911717;padding:8px;border-bottom:1px solid #D7DADD;">
@@ -408,8 +422,8 @@ duraLogEvents('eJxdkVtr3DAQhf9KECRP1q4uli8LS1+ShkAfSi/0IQQhW7MbgWw5kr3uUvrf\nO97
 
 
 
-    <!-- r:d0ffec3bc11a57f69753a533575b8c7718a4cfd2 -->
-<!-- d:Wed Nov 12 07:51:24 PST 2014 -->
+    <!-- r:2c4e22c7b390a64641358a65bde9e1a551c45b69 -->
+<!-- d:Fri Nov 21 22:19:26 PST 2014 -->
 <!-- p:www.avvo.com -->  
 
 
@@ -418,7 +432,7 @@ duraLogEvents('eJxdkVtr3DAQhf9KECRP1q4uli8LS1+ShkAfSi/0IQQhW7MbgWw5kr3uUvrf\nO97
 
     
     <script src="http://assets1.iavvo.com/assets/footer_common-59d36e58c17ffbec325b4d50f60e0fda.js"></script>
-    <script src="http://assets2.iavvo.com/assets/search-6a9a820c10896b2fd5b961344ac921d6.js"></script>
+    <script src="http://assets1.iavvo.com/assets/search-6a9a820c10896b2fd5b961344ac921d6.js"></script>
     <script src="http://assets2.iavvo.com/assets/search_map-325fc9a87514a270649fbcecca249bc0.js"></script>
 
 
@@ -435,7 +449,7 @@ duraLogEvents('eJxdkVtr3DAQhf9KECRP1q4uli8LS1+ShkAfSi/0IQQhW7MbgWw5kr3uUvrf\nO97
     var google_conversion_value = 0;
     /* ]]> */
     </script>
-    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js?avvo_DLIh">
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js?avvo_cS0Y">
     </script>
     <noscript>
     <div style="display:inline;">
