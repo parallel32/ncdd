@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+
+<html class="no-js">
+  <head>
+    
+<!-- force browser refresh of favicon.  Plz remove me someday? -->
+<link href="http://www.avvo.com/favicon.ico?v=2" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+
+<meta charset="utf-8">
+<title>Lawyer Howard Weintraub - Atlanta Attorney - Avvo.com</title>
+
+<meta name="description" content="Howard Weintraub is a DUI Attorney in Atlanta, GA. Click Howard’s profile to discover their Avvo Rating, write a review, and read professional endorsements." />
+
+<meta name="robots" content="index,follow" />
+
+
+
+<meta property="og:image" content="http://assets2.iavvo.com/assets/header_logo-d9da0710ef4f108673b08e2f89ee79c8.png" />
+
+
+<meta name="robots" content="NOODP,NOYDIR" />
+
+<script>
+//<![CDATA[
+window.locationContext = {"id":23673,"name":"Atlanta","city_name":"Atlanta","state_name":"Georgia","state_code":"GA","postal_code":null};window.adLocationContext = {"id":61489,"name":"30316","city_name":"Atlanta","state_name":"Georgia","state_code":"GA","postal_code":"30316"};
+//]]>
+</script><script src="//cdn.optimizely.com/js/275511722.js"></script>
+
+<link href="https://plus.google.com/107840042923877554905" rel="publisher" />
+
+  <link href="http://assets2.iavvo.com/assets/application-679b5b560ef19c2728b0c8d332d28f6a.css" media="all" rel="stylesheet" />
+  <!--[if lt IE 9]>
+    <link href="http://assets2.iavvo.com/assets/font_avvo_icon_bad_IE_bad_dog-27d8ace9b1fdd6c93145f0e1b7827dc6.css" media="all" rel="stylesheet" />
+  <![endif]-->
+
+<link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:700|Open+Sans:300,400,600,700" media="all" rel="stylesheet" />
+
+<script src="http://assets1.iavvo.com/assets/application-944ee4fdb62f3df1542271af9ecbae14.js"></script>
+
+<!--[if (gte IE 6)&(lte IE 8)]>
+    <script src="http://assets1.iavvo.com/assets/selectivizr-c4422edc73658e842dce601b5979afe2.js"></script>
+<![endif]-->
+
+
+
+  <link href="http://www.avvo.com/attorneys/30309-ga-howard-weintraub-542461.html" rel="canonical" />
+
+<script>
+//<![CDATA[
+
+  google_analytics_domain_name=".avvo.com";
+  try {
+    var _gaq = _gaq || [];
+    _gaq.push(
+      ['_setAccount', 'UA-4437273-1'],
+      ['_setDomainName', '.avvo.com'],
+      ['_setCustomVar', 1,'user_type','other', 1],
+      ['_setCustomVar', 5, 'abs', '....................................................................................................', 3]
+    );
+
+        _gaq.push(['_setCustomVar', 2,'type', 'pro', 3]);
+        _gaq.push(['_setCustomVar', 3,'spec',"56_DUI / DWI", 3]);
+
+    _gaq.push(['_trackPageview']);
+  } catch(err) {}
+
+//]]>
+</script>
+
+  <script>
+//<![CDATA[
+
+  try {
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  } catch(err) {}
+
+//]]>
+</script>
+
+
+
+<script type="text/javascript">window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"location":{"id":6561264,"professional_id":542461,"name":"The Law Offices of Howard J. Weintraub, P.C.","displayable":true,"ordinal":3,"updated_at":"2014-11-18T14:10:13.000-08:00","updated_by":33282,"license_id":null,"created_at":"2014-02-03T13:15:57.000-08:00"},"pageTitle":"Lawyer Howard Weintraub - Atlanta Attorney","siteSection":null,"logicalSection":"lawyers/show","renderType":"desktop","persistentSessionId":"71122073-d49e-4179-ae5a-6cc4956e88e4","userId":null,"userEmail":null,"userType":"anonymous","professionalId":null,"professional":"542461-Howard-Weintraub","specialty":56,"claimStatus":"claimed","ratingType":"No concern","rating":10.0,"reviewScore":5.0,"reviews":109,"endorsements":23,"profileContent":{"contributions":{"legalAnswers":44,"bestAnswers":2,"agree":2,"helpful":6,"guides":1,"staffPicks":0},"headshot":"yes","aboutMe":"yes","publications":5,"awards":13,"workExperience":3,"speakingEngagements":7},"professionalType":"advertiser"});</script>
+
+  <meta name="ad-location-id" content="61489" /><meta name="ad-specialty-id" content="56" /><meta name="page-template-name" content="Lawyer Profile - Main" /></head>
+  <body>
+    <script>
+//<![CDATA[
+duraLogEvents('eJztUsuO2yAU/ZWItfGAQ8BkP+qmlbrobjSyrs2Ng4TBAhI3qvrvxXEjTWbf\nXZcc7nncx9sbF1wqpXS7r8gcwwlTssGD6+w0x+1BKgJTSM0ChlS/yAAZxxBv\n5HgnWIfkM9WQ40E0QvKKmDCB9aV2WZYartdQD2EqhEt0BXyBnEP0eEsve7Zn\nmo5Az2GBaOiC1ucIl55uUvU5T64QI54wRozk6C/OFaGEsYMRfX4gaQtyj0EY\nk1xLZugg+wMVpue0PTRAmRa6x+Ygsce76hQydnYuFM5UzZu25rJumCqfE+Zz\nWMW+vP4gfx1X8c0uojcr4FMGP2A3Xu7GXAl9Em1PNWuBCiZbCoa1lPOGN9qA\nkkqug8OYbMolfveUW5W64r6nRmikgitNAQ9A5TAIXVK3LQry+716XmCZQ3e1\nuHxamQtlaQ/pZi9VqU0zDhZcvm3rkhXBnyVMtgk/NJfAYeoijg92Sc8+wXMo\nnbtuCAa7JyfJRatXp+BTiGg6Vzq1fuySCzmRYxEyNs0Obh+QjFNByi48TFgG\n8RWWG8bd9+3UdnT3bb2n/4f1jw/r/Q98Q01Q\n');
+//]]>
+</script>
+
+<script>
+//<![CDATA[
+
+  $(document).on('click', '[data-dura-trackable-href]', duraUpdateLinkHREF);
+
+//]]>
+</script>
+    <noscript><iframe height="0" src="//www.googletagmanager.com/ns.html?id=GTM-K2L3VH" style="display:none;visibility:hidden" width="0"></iframe></noscript><script type="text/javascript">(function(w, d, s, l, i){
+  w[l] = w[l] || [];
+  w[l].push({ 'gtm.start' : new Date().getTime(),
+              event       : 'gtm.js'});
+  var f   = d.getElementsByTagName(s)[0];
+  var j   = d.createElement(s);
+  var dl  = l != 'dataLayer' ? '&l='+ l : '';
+  j.async = true;
+  j.src   = '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-K2L3VH');</script>
+    <div id="bing_tracking">
+
+</div>
+    <noscript>
+  <div style="text-align:center;background:#fbf3c5;color:#911717;padding:8px;border-bottom:1px solid #D7DADD;">
+  <strong>We've detected that your browser does not support scripting.</strong> <br/>
+  Scripting must be enabled to use Avvo. Turn on scripting and reload this page.
+  </div>
+</noscript>
+
+    <hgroup><header><nav id="page_header"><a href="//www.avvo.com/"><img alt="Logo@2x" class="logo" src="http://assets2.iavvo.com/assets/logos/logo@2x-39c17b04a49441c5131b852386f9312e.png" /></a><ul class="pull-right" id="sign-in-module"><li class="left-margin"><a href="/for-lawyers">For Lawyers</a></li><li class="left-margin"><a href="/account/login" rel="nofollow">Sign in</a></li><li class="left-margin"><a href="/account/register" rel="nofollow">Register</a></li></ul></nav></header></hgroup>
+    <div class="page">
+      <div id="primary_nav_and_breadcrumb">
+        <nav class="" id="primary_nav"><style type="text/css">.menu-primary{height:auto}.menu-primary #my-avvo-link{padding-top:28px}</style><ul class="center-content clearfix menu-primary"><li><a href="/free-legal-advice">Research<br/>Legal Advice</a></li><li><a href="/ask-a-lawyer">Ask<br/>a Lawyer</a></li><li class="active"><a href="/find-a-lawyer">Find<br/>a Lawyer</a></li><li><a href="https://advisor.avvo.com?avvo_source=avvo&amp;avvo_medium=global_navigation&amp;avvo_campaign=avvo_advisor">Instant<br/>Phone Call <span class='label label-success' style='line-height: 12px;'>New!</span></a></li><li><a href="/review-your-lawyer">Review<br/>Your Lawyer</a></li></ul><script type="text/javascript">$(document).ready(function(){
+  if(false){
+    $('.menu-primary.my_avvo').show();
+    $('#my-avvo-link').parent('li').addClass('active');
+  }
+  $('#my-avvo-link').click(function(){
+    $('.menu-primary.my_avvo').slideToggle();
+    return false;
+  })
+})</script>  <div class="search browsable" id="primary_nav_search">
+      <span id="search_selector">
+        Lawyers
+      </span>
+      <ul id="search_selector_menu" style="display:none;">
+          <li data-form-id="lawyer_search">Lawyers</li>
+          <li data-form-id="legal_advice_search">Legal Advice</li>
+      </ul>
+
+        <span id="lawyer_search" class="search_form_container selectable" >
+          
+<form accept-charset="UTF-8" action="/search/lawyer_search" class="search_form search-form" id="lawyer_search_primary_nav_search_search_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+  <input autocomplete="off" class="keyword_field keyword-search-field " data-tooltip-right="true" id="lawyer_search_primary_nav_search_search_form_keyword_field" name="q" placeholder="Lawyer&#39;s name -OR- Practice area" type="text" />
+  <input autocomplete="off" class="location_field location-search-field " id="lawyer_search_primary_nav_search_search_form_location_field" name="loc" placeholder="City, State -OR- ZIP" type="text" value="Atlanta, GA" />
+  <span class="icon-submit">
+    <input class="button primary action " name="commit" style="" type="submit" value="" />
+  </span>
+
+</form>
+        </span>
+</div>
+<script>
+//<![CDATA[
+
+  $(document).click(function(e){
+    if(e.target.id != "search_selector") {
+      $("#search_selector_menu").hide();
+    }
+  });
+
+  $("#search_selector_menu li").click(function(e) {
+    form_id = $(this).attr("data-form-id");
+    $("#primary_nav_search .search_form_container").hide();
+    $("#" + form_id).show();
+    $("#search_selector").html($(this).html());
+    $("ul.ui-autocomplete").hide();
+    $("#search_selector_menu").hide();
+  });
+
+  $("#search_selector").click(function(e) {
+    $("#search_selector_menu").toggle();
+    $("#search_selector_menu").position({
+      my: "left top",
+      at: "left bottom",
+      of: $("#search_selector")
+    });
+  });
+
+  $("#primary_nav_search .keyword_field").change(function(e) {
+    $("#primary_nav_search .keyword_field").val($(e.target).val());
+    $("#primary_nav_search .keyword_field").trigger('valuechanged');
+  });
+
+  $("#primary_nav_search .location_field").change(function(e) {
+    $("#primary_nav_search .location_field").each(function(i,el) {
+      $(el).val($(e.target).val());
+      $(el).trigger('valuechanged');
+    });
+  });
+
+//]]>
+</script>
+</nav><div id="breadcrumb"><div class="breadcrumbs"><span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/all-lawyers/ga.html" itemprop="url"><span itemprop="title">Georgia</span></a></span>&nbsp;&gt;&nbsp;<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/all-lawyers/ga/atlanta.html" itemprop="url"><span itemprop="title">Atlanta</span></a></span>&nbsp;&gt;&nbsp;<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/dui-dwi-lawyer/ga/atlanta.html" itemprop="url"><span itemprop="title">DUI / DWI Attorneys</span></a></span>&nbsp;&gt;&nbsp;<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><span class="current" itemprop="title"><span>Howard J. Weintraub</span></span></span></div></div><!--[if lt IE 9]><script type="text/javascript">$(document).ready(function(){
+  $('.icon-submit').click(function(){
+    $(this).parent().submit();
+  });
+})</script><![endif]-->
+      </div>
+      <div id="flash"></div>
+    </div>
+    
+      <span>
+          
+<div class="page stripped"  itemscope = "itemscope" itemtype = "http://schema.org/Attorney" >
+
+  <!-- header -->
+    <div class="page-row margin6" id="profile_header"><div class="span12"><h1 class="light pull-left condensed margin0"><span class="pull-left" itemprop="name">Howard J. Weintraub
+</span><h4><br /><div class="span-auto condensed"><a data-tooltip="Lawyers who subscribe to Avvo Pro have the ability to customize components of their profile, generate more leads with enhanced contact options, and track their performance on Avvo.
+&lt;a href=&quot;/for-lawyers/avvo-pro&quot;&gt;Learn more.&lt;/a&gt;
+" href="#!" rel="nofollow"><span class="label label-avvo-pro">Pro</span></a></div></h4></h1></div><div class="span12 margin2" id="name_alias_section"><h3></h3></div><div class="span12 inline-hgroup" id="firm_office_detail"></div></div>
+
+
+  <div class="page-row">
+    <section class="span8" id="profile_details">
+
+
+      <!-- tabs -->
+
+
+      <div id="profile_overview">
+  <!-- headshot -->
+  <div class="page-row" id="headshot">
+    <div class="span2">
+      <span class="avvo-inline-block">
+        <img alt="Howard J. Weintraub" class="borderless standard" itemprop="image" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/standard/542461_1295474085.jpg" title="Howard J. Weintraub" />
+      </span>
+    </div>
+    <div class="span6">
+          <h3 class="light">Results Matter When It’s Your Life! Expertise in Federal Criminal Defense and Georgia DUI&#39;s.</h3><div class="page-row margin3"><div class="span6"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></div><div class="span6">Georgia DUI Dismissal — Thanks to Howard Weintraub’s Brilliant Legal Representation</div><div class="span6 text-meta margin1">- a DUI client</div></div><div class="page-row margin3"><div class="span6"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></div><div class="span6">Conviction Expunged, Mr. Weintraub is Incredibly Talented and Effective!</div><div class="span6 text-meta margin1">- a Criminal Defense client</div></div>
+
+    </div>
+  </div>
+</div>
+
+
+    
+        <hr>
+        <div class="offset2">
+            <div class="page-row">
+              <div class="page-row margin8"><div class="span3"><div class="page-row"><div class="span3" itemscope="itemscope" itemtype="http://schema.org/Review"><div itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Organization"><meta content="Avvo Inc." itemprop="name" /><meta content="Avvo" itemprop="alternateName" /><meta content="http://www.avvo.com" itemprop="url" /></div><div class="icon half-width pull-left" data-tooltip-remote="avvo_rating_description"><img alt="Avvorating@2x" src="http://assets1.iavvo.com/assets/embed/profile/avvorating@2x-cf89cef391e72dc3ea9ec72ed16ce495.png" width="100" /></div><div class="pull-left center-content margin5" itemprop="reviewRating" itemscope="itemscope" itemtype="http://schema.org/Rating"><span class="avvo_rating_numeric"><h2 class="text-red light bold center-content condensed margin0" itemprop="ratingValue">10.0</h2><img alt="" class="rating_image" src="http://assets2.iavvo.com/assets/profile_rating/icon_rating_10-658f76e74c0051e763d8556fdce67c1d.gif" /><h3 class="rating_info center-content text-red light"><span class="summary"><a class="tooltip_link tooltip-link" data-tooltip-remote-options="" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">Superb</a></span></h3><meta content="10.0" itemprop="bestRating" /><meta content="0.0" itemprop="worstRating" /></span></div><meta content="Howard J. Weintraub" itemprop="itemReviewed" /></div><div class="span3 margin4">  <table id="sub_rating">
+
+        <tr>
+          <td>Experience</td>
+          <td>
+            <span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Industry Recognition</td>
+          <td>
+            <span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Professional Conduct</td>
+          <td>
+            <span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span></span>
+          </td>
+        </tr>
+
+  </table>
+<p class="text-meta"><a class="tooltip_link tooltip-link" data-tooltip-remote-options="provisional=false" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">What is the Avvo Rating?</a></p></div></div></div><div class="span3 margin6"><div class="page-row"><div class="span3"><div class="page-row"><div class="span1"><img alt="Reviews" class="full-width" src="http://assets2.iavvo.com/assets/embed/profile/reviews-72fd939ee2e493ce25a7b88d3da6028c.png" /></div><div class="span2"><a class="count" href="/attorneys/30309-ga-howard-weintraub-542461/reviews.html"><div class="page-row"><div class="inline-hgroup span2"><h3 class="light condensed margin0 stripped">109&nbsp;</h3><h5 class="light condensed margin0 stripped">Reviews</h5></div><div class="span2"><a class="star_rating full-width" href="/attorneys/30309-ga-howard-weintraub-542461/reviews.html"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a></div></div></a><div class="client_review_links">Current or former client? <a data-avn="{&quot;name&quot;:&quot;amos.gtm.view-lawyer-review-form&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;542461-Howard-Weintraub&quot;}}" href="/attorneys/30309-ga-howard-weintraub-542461/write_review.html" rel="nofollow">Write a review</a></div></div></div></div><hr class="span3" /><div class="span3"><div class="page-row"><div class="span1"><img alt="Endorse" class="full-width" src="http://assets2.iavvo.com/assets/embed/profile/endorse-393f817ef630e2e358047b4ca97e17ed.png" /></div><div class="span2"><div class="page-row"><a href="/attorneys/30309-ga-howard-weintraub-542461/endorsements.html"><div class="inline-hgroup span2"><h3 class="light condensed margin0 stripped">23&nbsp;</h3><h5 class="light condensed margin0 stripped">Endorsements</h5></div></a></div>Lawyers: <br><a href="/attorneys/30309-ga-howard-weintraub-542461/write_endorsement.html" rel="nofollow">Endorse this lawyer</a></div></div></div><hr class="span3" /><div class="span3"><div class="page-row"><div class="span1"><img alt="Contri" class="full-width" src="http://assets1.iavvo.com/assets/embed/profile/contri-c5a1b74b9701f86d9b28e2d9f4f0334c.png" /></div><div class="span2"><div class="page-row"><div class="inline-hgroup span2"><h5 class="light condensed margin0">Contributor Level</h5><h3 class="light condensed margin0 stripped">9</h3></div></div><p><a href="/attorneys/30309-ga-howard-weintraub-542461/answers.html">View contributions</a></p></div></div></div></div></div><div class="span6"><div id="profile_actions" class="lawyer_profile_actions">
+    <a class="primary action" data-avn="{&quot;name&quot;:&quot;amos.gtm.view-lawyer-email-form&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;542461-Howard-Weintraub&quot;}}" href="/attorneys/30309-ga-howard-weintraub-542461/contact.html" rel="nofollow">Email Lawyer</a>
+
+  <a class="action" data-avn="{&quot;name&quot;:&quot;amos.gtm.contact-lawyer-website&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;542461-Howard-Weintraub&quot;}}" href="http://www.ga-criminaldefense.com" onclick="this.href=&#39;/attorneys/30309-ga-howard-weintraub-542461/website.html&#39;;return true;" target="_blank">Lawyer&#39;s website</a>
+
+  <a class="action send" href="/attorneys/30309-ga-howard-weintraub-542461/share.html" rel="nofollow">Send to a friend</a>
+</div>
+</div></div>
+            </div>
+          </div>
+      <div class="module"><h2>Overview</h2><div class="page-row" id="overview"><section class="span8">
+        <div class="js-replaceable margin6" id="specialties"><div class="page-row" id="specialties"><div class="span2"><h5 class="light">PRACTICE AREAS</h5></div><div class="span6"><div class="page-row"><div class="span2">
+<img alt="Chart?chs=169x169&amp;cht=p&amp;chp=4" class="full-width" id="specialty_chart" src="http://chart.apis.google.com/chart?chs=169x169&amp;cht=p&amp;chp=4.7&amp;chco=76d0eb|f48026|ffeb73|7ac142|f24962&amp;chd=t:60,18,9,7,6" />
+
+</div><div class="span4"><div class="page-row js-link-hub"><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#76d0eb"></div><div class="span3"><a class="tooltip_link tooltip-link" data-tooltip="GA DUI attorney, Howard J. Weintraub, has represented hundreds of individuals charged with a Georgia DUI, DWI driving under the influence.  A full-service GA-CriminalDefense Law Firm defending charges ranging from Federal white collar crimes to State felony charges including: Drug Trafficking, Theft, Fraud, Forgery, Arson, Domestic Violence, Battery, Kidnapping, Child Abuse, Robbery, Rape, Assault, Drug Possession, Weapons, Conspiracy, Probation Violation, 2241 Appeals and Federal 2255 Appeals." href="#!" rel="nofollow">60% DUI / DWI</a><div class="text-meta">39 years</div></div></div></div></div><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#f48026"></div><div class="span3"><a class="tooltip_link tooltip-link" data-tooltip="Federal Defense Attorney, Howard J. Weintraub, has represented hundreds of individuals within southeast regional states of GA, TN, NC, AL, SC, FL, DC and also throughout the USA in federal cases that include: money laundering, fraud, extortion, trafficking, homeland security, white collar crimes, kidnapping, bribery, counterfeiting, tax fraud, embezzlement, kickbacks, manslaughter, homicide, murder, drug trafficking, SEC fraud, insider trading, fraud, conspiracy, Ponzi, 2255 and federal appeals." href="#!" rel="nofollow">18% Federal Crime</a><div class="text-meta">39 years</div></div></div></div></div><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#ffeb73"></div><div class="span3"><a class="tooltip_link tooltip-link" data-tooltip="Federal Defense Attorney, Howard J. Weintraub, has represented hundreds of individuals within southeast regional states of GA, TN, NC, AL, SC, FL, DC and also throughout the USA in federal cases that include: money laundering, fraud, extortion, trafficking, homeland security, white collar crimes, kidnapping, bribery, counterfeiting, tax fraud, embezzlement, kickbacks, manslaughter, homicide, murder, drug trafficking, SEC fraud, insider trading, fraud, conspiracy, Ponzi, 2255 and federal appeals." href="#!" rel="nofollow">9% White Collar Crime</a><div class="text-meta">39 years</div></div></div></div></div><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#7ac142"></div><div class="span3"><a class="tooltip_link tooltip-link" data-tooltip="Federal Defense Attorney, Howard J. Weintraub, has represented hundreds of individuals within southeast regional states of GA, TN, NC, AL, SC, FL, DC and also throughout the USA in federal cases that include: money laundering, fraud, extortion, trafficking, homeland security, white collar crimes, kidnapping, bribery, counterfeiting, tax fraud, embezzlement, kickbacks, manslaughter, homicide, murder, drug trafficking, SEC fraud, insider trading, fraud, conspiracy, Ponzi, 2255 and federal appeals." href="#!" rel="nofollow">7% Tax Fraud / Tax Evasion</a><div class="text-meta">39 years</div></div></div></div></div><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#f24962"></div><div class="span3"><a class="tooltip_link tooltip-link" data-tooltip="As a criminal defense attorney, Howard J. Weintraub has represented hundreds of individuals charged with a wide range of criminal ranging from a Georgia DUI, driving under the influence of alcohol and/or drugs to white-collar crimes.  Mr. Weintraub&#39;s practice consists of primarily defending those individuals charged with violations of the federal criminal laws and those individuals charged with DUI driving under the influence of alcohol and/or drugs, as well as with other state crimes." href="#!" rel="nofollow">6% Criminal Defense</a><div class="text-meta">39 years</div></div></div></div></div></div></div></div><div id="not_practicing_section">
+</div></div></div></div>
+        <div class="js-replaceable margin6" id="fees_payments"><div class="page-row" id="fees_payments_section"><div class="span2"><h5 class="light">FEES AND<BR> PAYMENT TYPES</h5></div><div class="span6"><div class="page-row"><div class="span6 margin4"><h4>Fees</h4><div id="fees_detail">    Retainer (Sometimes)
+
+</div></div><div class="span6"><h4>Payment types</h4><div id="payments_detail">  Cash, Check, Credit Card
+  
+</div></div></div></div></div></div>
+          <div class="js-replaceable margin6" id="contact_information"><div class="page-row" id="contact_information_section"><div class="span2"><h5 class="light">CONTACT INFORMATION</h5></div><div class="span6"><div class="page-row" id="contact_information_detail">  <div id="avvo_pro_contact_module" class="page-row">
+    <div id="map" class="span3">
+      <section class="reloadable-module" data-widget-params="eJwVjEEKwjAQRa8is07BVHGRC-hGXHY9NNM0MGlCJ6VgKXgNr-dJnC7_f4-3Qc8oAg666ANVce6ec2B6YgEDBWdMSjeYMJFaj7zi7H-fr5xewxB7UmkpHqvCAVnIwBp9HcG19mZgpBjGCs4eQ-JbrWlh3g1w7pGPIk2aqDGRVExFj_Zsr421TXuB_Q_i1jOw"><div class="margin4" data-map="" id="map_div" style="width:216px; height:116px"><div data-map-marker="" data-map-marker-address="1355 Peachtree Street NE, Suite 1250, Atlanta, GA 30309" data-map-marker-href="http://maps.google.com?q=1355%20Peachtree%20Street%20NE,%20Suite%201250,%20Atlanta,%20GA%2030309 (Howard%E2%80%99s%20Office)" data-map-marker-name="Howard’s Office" data-map-marker-point-latitude="33.791746" data-map-marker-point-longitude="-84.385153"></div></div></section><!--not_cached Widget:widgetsgoogle_map:false:ajax:false:size::name:Howard’sOffice:address::map_div_id:map_div:update:false:width:216:height:116-->
+        <a href="http://maps.google.com?q=1355%20Peachtree%20Street%20NE,%20Suite%201250,%20Atlanta,%20GA%2030309 (Howard%E2%80%99s%20Office)" target="_blank"><span class='icon-map'></span> See larger map</a>
+    </div>
+
+  <div id="enhanced_contact_options" class=" span3 " >
+      <div class="page-row margin2">
+          <div class="span1">
+            <h3 class="icon-phone pull-right"></h3>
+          </div>
+          <h3 class="span-auto">
+            <span class="1473_phone phone">404-892-2000</span><script>
+//<![CDATA[
+
+          $(document).ready(function(){
+            $(".1473_phone").each(function(index, element) {
+              $(element).html("877-484-2181");
+              if(element.parentNode.tagName == "A"){
+                element.parentNode.setAttribute("href","tel:877-484-2181");
+              }
+            });
+          });
+        
+//]]>
+</script>
+          </h3>
+      </div>
+      <div class="page-row margin2">
+          <div class="span1">
+            <h4 class="icon-email2 pull-right"></h4>
+          </div>
+          <h4 class="span-auto">
+            <a class="email" href="/attorneys/30309-ga-howard-weintraub-542461/contact.html" rel="nofollow">Email this lawyer</a>
+          </h4>
+      </div>
+      <div class="page-row margin2">
+          <div class="span1">
+            <h4 class="icon-website pull-right"></h4>
+          </div>
+          <h4 class="span-auto">
+            <a class="website" data-avn="{&quot;name&quot;:&quot;amos.profiles.website_clicked&quot;,&quot;payload&quot;:{&quot;professional_id&quot;:542461,&quot;profession_name&quot;:&quot;lawyer&quot;,&quot;specialty_name&quot;:&quot;DUI&quot;}}" href="http://www.ga-criminaldefense.com" onclick="this.href=&#39;/attorneys/30309-ga-howard-weintraub-542461/website.html&#39;;return true;" rel="nofollow" target="_blank">Visit website</a>
+          </h4>
+      </div>
+
+  </div>
+
+  <div style="clear:both"></div>
+
+  <div class="spacer"> </div>
+    <hr />
+</div>
+
+<div class="span3"><div class="address_list avvo-undecorated-list" id="sortable_address_list"><div class="address_sort margin4" id="address_6561264"><div class="address_name semibold">The Law Offices of Howard J. Weintraub, P.C.</div><span><div class="address_line_1">1355 Peachtree Street NE</div><div class="address_line_2">Suite 1250</div></span><div class="address_city_state">Atlanta, GA 30309</div><div class="address_phone"><span class="phone_label muted">Office: </span><span id="phone_number_0" itemprop="telephone"><span class="1473_phone ">404-892-2000</span><script>
+//<![CDATA[
+
+          $(document).ready(function(){
+            $(".1473_phone").each(function(index, element) {
+              $(element).html("877-484-2181");
+              if(element.parentNode.tagName == "A"){
+                element.parentNode.setAttribute("href","tel:877-484-2181");
+              }
+            });
+          });
+        
+//]]>
+</script></span></div><div class="address_phone"><span class="phone_label muted">Fax: </span><span id="phone_number_1" itemprop="faxNumber">404-892-2040</span></div><a data-avn="{&quot;name&quot;:&quot;amos.contacts.viewed_directions&quot;,&quot;payload&quot;:{&quot;professional_id&quot;:542461}}" href="http://maps.google.com/maps?q=1355+Peachtree+Street+NE%2C+Suite+1250%2C+Atlanta%2C+GA+30309+%28The+Law+Offices+of+Howard+J.+Weintraub%2C+P.C.%29" rel="nofollow" target="_blank"><span class="icon-map"></span> View map</a></div></div></div><div class="span3">  <div id="additional_links" class="page-row">
+      <div class="span3">
+        <div class="page-row">
+          <div class="span1">
+            <span class='icon-website  pull-right'></span>
+          </div>
+          <div class="span2">
+              <a href="http://www.ga-criminaldefense.com/DUI.aspx" rel="nofollow" target="_blank">DUI Defense</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="span3">
+        <div class="page-row">
+          <div class="span1">
+            <span class='icon-website  pull-right'></span>
+          </div>
+          <div class="span2">
+              <a href="http://www.ga-criminaldefense.com/Federal-Criminal-Defense/White-Collar-Crimes.aspx" rel="nofollow" target="_blank">White Collar Crimes</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="span3">
+        <div class="page-row">
+          <div class="span1">
+            <span class='icon-website  pull-right'></span>
+          </div>
+          <div class="span2">
+              <a href="http://www.ga-criminaldefense.com/Federal-Criminal-Defense/Federal-Crimes.aspx" rel="nofollow" target="_blank">Federal Crimes</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="span3">
+        <div class="page-row">
+          <div class="span1">
+            <span class='icon-googleplus  pull-right'></span>
+          </div>
+          <div class="span2">
+              <a href="https://plus.google.com/105030216258393775945" rel="me" target="_blank">Google+</a>
+          </div>
+        </div>
+      </div>
+
+
+  </div>
+</div>
+</div></div></div></div>
+        <div class="js-replaceable margin6" id="languages"><div class="page-row" id="languages_section"><div class="span2"><h5 class="light">LANGUAGES SPOKEN</h5></div><div class="span6"><div id="languages_detail"><ul class="avvo-undecorated-list margin0">
+    <li>
+  English
+</li>
+
+</ul>
+</div></div></div></div>
+        <div class="js-replaceable margin6" id="about_me"><div class="page-row" id="about_me_section"><div class="span2"><h5 class="light">ABOUT ME</h5></div><div class="span6"><div id="about_me_detail">  
+    <div id="media_table_wrapper">
+      <table><tr><td><a data-modal-open="modal_cMGuG" data-modal-url="/attorneys/542461/media/475348/video" href="#!"><div class="thumbnail borderless with-overlay"><img alt="" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/thumbnail_small/542461_1373300780.jpg" title="" /><br /><div class="icon-play pull-left"></div></div></a></td><td><div class="thumbnail borderless"><a data-modal-open="viEFNNkM" href="#!" nofollow="nofollow" title=""><img alt="" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/thumbnail_small/542461_1295474298.jpg" title="" /></a></div><div id="viEFNNkM" style="display:none;width:;height:"><div class="modal-header">Image</div><div class="modal-body"><img alt="542461 1295474298" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/normalized/542461_1295474298.jpg" /></div></div></td><td><div class="thumbnail borderless"><a data-modal-open="SjS0FRBv" href="#!" nofollow="nofollow" title="The Law Offices of Howard J. Weintraub, is a full-service GA-CriminalDefense.com law firm that offers criminal defense representation for GA DUI, Federal white collar crimes and State felony charges."><img alt="The Law Offices of Howard J. Weintraub, is a full-service GA-CriminalDefense.com law firm that offers criminal defense representation for GA DUI, Federal white collar crimes and State felony charges." src="http://headshots.iavvo.com/avvo/ugc/images/gallery/thumbnail_small/542461_1290444121.jpg" title="The Law Offices of Howard J. Weintraub, is a full-service GA-CriminalDefense.com law firm that offers criminal defense representation for GA DUI, Federal white collar crimes and State felony charges." /></a></div><div id="SjS0FRBv" style="display:none;width:;height:"><div class="modal-header">The Law Offices of Howard J. Weintraub, is a full-service GA-CriminalDefense.com law firm that offers criminal defense representation for GA DUI, Federal white collar crimes and State felony charges.</div><div class="modal-body"><img alt="542461 1290444121" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/normalized/542461_1290444121.jpg" /></div></div></td><td><div class="thumbnail borderless"><a data-modal-open="ljKfKFeH" href="#!" nofollow="nofollow" title="The Law Offices of Howard J. Weintraub are located in The Peachtree, a beautiful brick highrise building in Midtown Atlanta, between 16th and 17th Street, near High Museum.  Our address is 1355 Peachtree St. NE, Suite 1520."><img alt="The Law Offices of Howard J. Weintraub are located in The Peachtree, a beautiful brick highrise building in Midtown Atlanta, between 16th and 17th Street, near High Museum.  Our address is 1355 Peachtree St. NE, Suite 1520." src="http://headshots.iavvo.com/avvo/ugc/images/gallery/thumbnail_small/542461_1271523785.jpg" title="The Law Offices of Howard J. Weintraub are located in The Peachtree, a beautiful brick highrise building in Midtown Atlanta, between 16th and 17th Street, near High Museum.  Our address is 1355 Peachtree St. NE, Suite 1520." /></a></div><div id="ljKfKFeH" style="display:none;width:;height:"><div class="modal-header">The Law Offices of Howard J. Weintraub are located in The Peachtree, a beautiful brick highrise building in Midtown Atlanta, between 16th and 17th Street, near High Museum.  Our address is 1355 Peachtree St. NE, Suite 1520.</div><div class="modal-body"><img alt="542461 1271523785" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/normalized/542461_1271523785.jpg" /></div></div></td></tr></table>
+    </div>
+  
+    <p>
+      Everyone needs help sometimeand I enjoy helping people! 
+Being a criminal defense attorney allows me to assist good people who find themselves in need of legal... <a href="/attorneys/30309-ga-howard-weintraub-542461/aboutme.html">more</a>
+    </p>
+
+  <a class="navigation" href="/attorneys/30309-ga-howard-weintraub-542461/aboutme.html">View all photos and/or videos</a>
+</div></div></div></div>
+</section></div></div>
+      <div class="module"><h2>References</h2><div class="page-row" id="references"><section class="span8">
+        <div class="js-replaceable margin6" id="reviews"><div class="page-row" id="reviews_section"><div class="span2"><h5 class="light">CLIENT REVIEWS</h5></div><div class="span6"><div id="reviews_detail"><div class="page-row"><div class="span1"><img alt="Reviews" class="full-width" src="http://assets2.iavvo.com/assets/embed/profile/reviews-72fd939ee2e493ce25a7b88d3da6028c.png" /></div><div class="span5"><div class="overview">
+  <h4>Average Client Rating</h4>
+  <div class="star_rating">
+      <a class="stars" href="/attorneys/30309-ga-howard-weintraub-542461/reviews.html"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a>
+      <span class="review_count"><a href="/attorneys/30309-ga-howard-weintraub-542461/reviews.html">109 reviews</a></span>
+  </div>
+  <div class="client_review_links">Current or former client? <a data-avn="{&quot;name&quot;:&quot;amos.gtm.view-lawyer-review-form&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;542461-Howard-Weintraub&quot;}}" href="/attorneys/30309-ga-howard-weintraub-542461/write_review.html" rel="nofollow">Write a review</a></div>
+</div>
+
+</div></div><hr class="margin4" /><div class="page-row margin2 with-overlay"><div class="span1"><img alt="Quotes@2x" class="full-width" src="http://assets2.iavvo.com/assets/embed/topic_pages/quotes@2x-77df7504b38dc1ede65c9b0e3e45acf7.png" /></div><div class="span5"><h3 class="light"><a href="/attorneys/30309-ga-howard-weintraub-542461/reviews.html#19859">“Georgia DUI Dismissal — Thanks to Howard Weintraub’s Brilliant Legal Representation”</a></h3><a href="/attorneys/30309-ga-howard-weintraub-542461/reviews.html#19859"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a><p>I was arrested for DUI in September, 2006. After searching for a good lawyer to represent me, a friend of mine highly recommended that I use Howard... </p><p class="text-meta">Posted by: a DUI client, over 5 years ago.</p><div class="overlay bottom right margin2"><a data-tooltip-remote="confirm_objectionable" href="/professional_reviews/19859/objectionable" id="professional_review_objectionable_19859" rel="nofollow"><i class="medium-gray icon-flag"></i> Flag</a></div></div></div><div class="page-row margin2 with-overlay"><div class="span1"><img alt="Quotes@2x" class="full-width" src="http://assets2.iavvo.com/assets/embed/topic_pages/quotes@2x-77df7504b38dc1ede65c9b0e3e45acf7.png" /></div><div class="span5"><h3 class="light"><a href="/attorneys/30309-ga-howard-weintraub-542461/reviews.html#46711">“Conviction Expunged, Mr. Weintraub is Incredibly Talented and Effective!”</a></h3><a href="/attorneys/30309-ga-howard-weintraub-542461/reviews.html#46711"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a><p>I first met Howard Weintraub in January 2006.  From that first meeting until the termination of my case in December 2009, Mr. Weintraub demonstrated... </p><p class="text-meta">Posted by: a Criminal Defense client, almost 5 years ago.</p><div class="overlay bottom right margin2"><a data-tooltip-remote="confirm_objectionable" href="/professional_reviews/46711/objectionable" id="professional_review_objectionable_46711" rel="nofollow"><i class="medium-gray icon-flag"></i> Flag</a></div></div></div><div class="margin4"><a class="navigation" href="/attorneys/30309-ga-howard-weintraub-542461/reviews.html">View all 109 reviews</a></div></div></div></div></div>
+        
+        <div class="js-replaceable margin6" id="endorsements"><div class="page-row" id="endorsements_section"><div class="span2"><h5 class="light">PEER ENDORSEMENTS</h5></div><div class="span6"><div id="endorsements_detail"><div class="page-row"><div class="span1"><img alt="Endorse" class="full-width" src="http://assets2.iavvo.com/assets/embed/profile/endorse-393f817ef630e2e358047b4ca97e17ed.png" /></div><div class="span5"><h4>Endorsements</h4><p class="pull-left"><a href="/attorneys/30309-ga-howard-weintraub-542461/endorsements.html">23 endorsements</a></p><div class="pull-right">Lawyers: <a href="/attorneys/30309-ga-howard-weintraub-542461/write_endorsement.html" rel="nofollow">Endorse this lawyer</a></div></div></div><hr class="margin4" />
+<div class="page-row margin6">
+  <!-- clear the cache -->
+  <div class="span1"><a href="/attorneys/47403-in-guy-haskell-4142455.html"><img alt="Guy Henry Haskell" class="borderless thumbnail_medium" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/4142455_1340971916.jpg" title="Guy Henry Haskell" /></a></div>
+  <div class="span5">
+    <div>
+      <p>
+        I endorse Attorney Weintraub without reservation.
+      </p> 
+      <span class="muted text-meta">Endorsement from lawyer:
+        <a href="/attorneys/47403-in-guy-haskell-4142455.html">Guy Haskell</a>
+         , BLOOMINGTON (IN), 10 months ago
+      </span>
+    </div>
+  </div>
+</div>
+<div class="page-row margin6">
+  <!-- clear the cache -->
+  <div class="span1"><a href="/attorneys/30312-ga-eric-bernstein-1235911.html"><img alt="Eric Nathan Bernstein" class="borderless thumbnail_medium" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/1235911_1370618867.jpg" title="Eric Nathan Bernstein" /></a></div>
+  <div class="span5">
+    <div>
+      <p>
+        Having worked together on a case with Mr. Weintraub, it is evident that he knows his way around a courtroom.  Mr. Weintraub&#39;s knowledge of the law... 
+          <a href="/attorneys/30309-ga-howard-weintraub-542461/endorsements.html" rel="nofollow">more</a>
+      </p> 
+      <span class="muted text-meta">Endorsement from lawyer:
+        <a href="/attorneys/30312-ga-eric-bernstein-1235911.html">Eric Bernstein</a>
+         , Atlanta (GA), 10 months ago
+      </span>
+    </div>
+  </div>
+</div><a class="navigation" href="/attorneys/30309-ga-howard-weintraub-542461/endorsements.html">View all 23 endorsements</a></div></div></div></div>
+</section></div></div>
+      <div class="module"><h2>R&eacute;sum&eacute;</h2><div class="page-row" id="resume"><section class="span8">
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="licenses_section"><div id="licenses"><div class="span8 margin2"><div class="box"><h5 class="light margin0">LICENSE</h5></div></div><div class="span8"><div id="licenses_detail"><p>39 years since Howard J. Weintraub was first licensed to practice law.</p><div class="js-link-hub"><table class="table"><thead><tr><th>State</th><th>License status</th><th>Year acquired</th><th>Last updated by Avvo</th></tr></thead><tbody>
+<tr class="">
+  <td>Dist. of Columbia</td>
+  <td>
+      Active 
+  </td>
+  <td>1976</td>
+  <td>07/18/2014</td>
+</tr>
+<tr class="">
+  <td>Georgia</td>
+  <td>
+      Active Member in Good Standing 
+  </td>
+  <td>1975</td>
+  <td>10/28/2014</td>
+</tr></tbody></table></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="sanctions_section"><div id="sanctions"><div class="span8 margin2"><div class="box"><h5 class="light margin0">PROFESSIONAL MISCONDUCT</h5></div></div><div class="span8"><div id="sanctions_detail">  <p class="article-body sans-serif">
+    <span class="icon-no-misconduct icon-green icon-padded narrow right"></span>
+    We have not found any instances of professional misconduct for this lawyer.
+  </p>
+
+</div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="work_experience_section"><div id="work_experience"><div class="span8 margin2"><div class="box"><h5 class="light margin0">WORK EXPERIENCE</h5></div></div><div class="span8"><div id="work_experience_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Position</th><th>Duration</th></tr></thead><tbody><tr class=" ">
+  <td>
+    Criminal Defense Attorney, Georgia at The Law Offices of Howard J. Weintraub, PC
+  </td>
+  <td>
+    1985&ndash;present
+  </td>
+</tr>
+<tr class=" ">
+  <td>
+    Assistant United States Attorney at Northern District of Georgia
+  </td>
+  <td>
+    1978&ndash;1985
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Federal Prosecutor, Appellate Section of the Criminal Division at United States Department of Justice in Washington, D.C.
+  </td>
+  <td>
+    1975&ndash;1978
+  </td>
+</tr>
+</tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 3 job entries<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional positions<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="education_section"><div id="education"><div class="span8 margin2"><div class="box"><h5 class="light margin0">EDUCATION</h5></div></div><div class="span8"><div id="education_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>School</th><th>Major</th><th>Degree</th><th>Graduated</th></tr></thead><tbody><tr class=" ">
+  <td>Emory University School of Law</td>
+  <td>Law</td>
+  <td>JD - Juris Doctor</td>
+  <td>1975</td>
+</tr>
+
+<tr class=" ">
+  <td>State University of New York</td>
+  <td></td>
+  <td>BA - Bachelor of Arts</td>
+  <td>1972</td>
+</tr>
+
+</tbody></table></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="awards_section"><div id="awards"><div class="span8 margin2"><div class="box"><h5 class="light margin0">AWARDS</h5></div></div><div class="span8"><div id="awards_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Award Name</th><th>Granting Organization</th><th>Date</th></tr></thead><tbody><tr><td>The Bar Register of Preeminent Lawyers AV Rated</td><td>Martindale-Hubbell</td><td>2010</td></tr><tr><td>The Bar Register of Preeminent Lawyers AV Rated</td><td>Martindale-Hubbell 2009</td><td>2009</td></tr><tr class="js-expandable"><td>AV Rated Atlanta, GA Criminal Defense Lawyer</td><td>Martindale-Hubbell</td><td>2008</td></tr><tr class="js-expandable"><td>Super Lawyers, Georgia Criminal Defense,White Collar, DUI, DWI</td><td>Super Lawyers Magazine, http://www.superlawyers.com</td><td>2007</td></tr><tr class="js-expandable"><td>Commendation</td><td>Federal Bureau of Investigation</td><td>1984</td></tr><tr class="js-expandable"><td>Internal Security Division, Commendation</td><td>Internal Revenue Service</td><td>1984</td></tr><tr class="js-expandable"><td>United States Secret Service, Commendation</td><td>Department of Treasury</td><td>1983</td></tr><tr class="js-expandable"><td>SBA Commendation</td><td>United States Small Business Administration</td><td>1982</td></tr><tr class="js-expandable"><td>Federal Aviation Administration, Commendation</td><td>Federal Aviation Administration, Southern Regional Office</td><td>1981</td></tr><tr class="js-expandable"><td>United States Attorney General Commendation</td><td>United States Attorney General William French Smith, Commendation</td><td>1981</td></tr><tr class="js-expandable"><td>Federal Bureau of Investigation, 2 Commendations</td><td>Federal Bureau of Investigation, Atlanta, Georgia</td><td>1981</td></tr><tr class="js-expandable"><td>United States District Judge Commendation</td><td>United States District Judge James Lawrence King, Commendation</td><td>1981</td></tr><tr class="js-expandable"><td>American Jurisprudence Awards</td><td>Lawyers Cooperative Publishing Company</td><td>1974</td></tr></tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 13 awards<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional awards<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="organizations_section"><div id="organizations"><div class="span8 margin2"><div class="box"><h5 class="light margin0">ASSOCIATIONS</h5></div></div><div class="span8"><div id="organizations_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Position</th><th>Association Name</th><th>Duration</th></tr></thead><tbody><tr class=" ">
+  <td>Member</td>
+  <td>Atlanta Bar Association</td>
+  <td>
+    1975&ndash;present
+  </td>
+</tr>
+<tr class=" ">
+  <td>Member</td>
+  <td>American Bar Association</td>
+  <td>
+    1975&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member</td>
+  <td>State Bar of Georgia</td>
+  <td>
+    1975&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member</td>
+  <td>District of Columbia Bar</td>
+  <td>
+    1977&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member</td>
+  <td>Georgia Trial Lawyers Association</td>
+  <td>
+    
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member</td>
+  <td>National Association of Criminal Defense Lawyers</td>
+  <td>
+    1985&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member</td>
+  <td>Lawyers Club Association.</td>
+  <td>
+    1985&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member, Board of Directors</td>
+  <td>Georgia Association of Criminal Defense Lawyers</td>
+  <td>
+    1987&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Chairman, Criminal Law Section</td>
+  <td>Atlanta Bar Association, Criminal Law</td>
+  <td>
+    1990&ndash;1991
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member, Health Care Fraud Subcommittee</td>
+  <td>American Bar Association White Collar Crime Committee</td>
+  <td>
+    1990&ndash;1992
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member, Practitioners Advisory Group U.S. Sentencing Commission</td>
+  <td>Practitioners Advisory Group for the United States Sentencing Commission</td>
+  <td>
+    1990&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member, Ad Hoc</td>
+  <td>Metropolitan Atlanta Crime Commission</td>
+  <td>
+    1984&ndash;1985
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Membership Chairman</td>
+  <td>Peachtree Atlanta Kiwanis Club</td>
+  <td>
+    1985&ndash;1986
+  </td>
+</tr>
+</tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 13 association entries<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional associations<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+</section></div></div>
+      <div class="module"><h2>Portfolio</h2><div class="page-row" id="portfolio"><section class="span8">
+        <div class="js-replaceable margin7"><div class="page-row with-overlay" id=""><div id=""><div class="span8 margin2"><div class="box"><h5 class="light margin0">CONTRIBUTION</h5></div></div><div class="span8"><div class="contri-badge"><div class="contributor-level-badge level-2 margin1" data-tooltip-remote="contributor_badge"><i class="icon-badge-feather"></i></div><div class="badge-text">Contributor Level 9</div></div>
+<table class="table">
+  <tr>
+    <th>Answers:</th>
+    <td><a class="article-body sans-serif" href="/attorneys/30309-ga-howard-weintraub-542461/answers.html">44</a></td>
+    <td><a class="article-body sans-serif" href="/attorneys/30309-ga-howard-weintraub-542461/answers.html">Legal Answers</a></td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>2</td>
+    <td>Best Answers - chosen by asker</td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>2</td>
+    <td>Answers marked "I agree" by other lawyers</td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>6</td>
+    <td>Answers marked helpful by other users</td>
+  </tr>
+  <tr>
+    <th>Guides:</th>
+    <td><a class="article-body sans-serif" href="/attorneys/30309-ga-howard-weintraub-542461/guides.html">1</a></td>
+    <td><a class="article-body sans-serif" href="/attorneys/30309-ga-howard-weintraub-542461/guides.html">Legal Guide</a></td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>0</td>
+    <td>Staff Picks</td>
+  </tr>
+</table>
+  <a class="navigation" href="/attorneys/30309-ga-howard-weintraub-542461/answers.html">View all contributions</a>
+</div></div></div></div>
+        
+        <div class="js-replaceable margin7"><div class="page-row with-overlay" id="legal_cases_section"><div id="legal_cases"><div class="span8 margin2"><div class="box"><h5 class="light margin0">CASES</h5></div></div><div class="span8">  <div class="margin4">
+  <div class="case_title"><a href="/attorneys/30309-ga-howard-weintraub-542461/legal_cases/27199">CASH v. The STATE No. A08A1310 Court of Appeals of Georgia</a></div>
+  <div class="outcome">
+    <strong>Outcome:</strong> JUDGMENT REVERSED ON APPEAL
+  </div>
+</div>
+
+
+</div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="publications_section"><div id="publications"><div class="span8 margin2"><div class="box"><h5 class="light margin0">PUBLICATIONS</h5></div></div><div class="span8"><div id="publications_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Article</th><th>Publication</th><th>Date</th></tr></thead><tbody><tr class=" ">
+  <td><a href="http://atlanta-criminal-lawyer.com/profile.html#published" rel="nofollow" target="_blank">Effective Use Of Pretrial Motions In A DUI Case: There Are Ways to Win Without Going To Trial</a></td>
+  <td>Institute of Continuing Legal Education, Georgia, Publication No. 932291</td>
+  <td>1993</td>
+</tr>
+<tr class=" ">
+  <td><a href="http://atlanta-criminal-lawyer.com/profile.html#published" rel="nofollow" target="_blank">Grand Jury Practice: Special Problems Of The Corporate Investigation</a></td>
+  <td>Institute of Continuing Legal Education, Georgia, Publication No. 901069</td>
+  <td>1990</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://atlanta-criminal-lawyer.com/profile.html#published" rel="nofollow" target="_blank">Forfeiture Of Attorneys&#39; Fees Under The 1984 Comprehensive Crime Control Act</a></td>
+  <td>Georgia State Bar Journal, Vol.22, No.2</td>
+  <td>1985</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://pview.findlaw.com/view/2749075_1" rel="nofollow" target="_blank">An Analysis Of Alternatives To Incarceration In Georgia</a></td>
+  <td>A Special Research Project, Emory Law Journal, Vol. 24</td>
+  <td>1975</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://atlanta-criminal-lawyer.com/profile.html#bar" rel="nofollow" target="_blank">Criminal Procedure -- Constitutional Law -- Increased Sentence By A Jury Permitted At Retrial Following A Successful Appeal or Collateral Attack Of An Erroneous Conviction - Chaffin v. Stychcombe, 412 U.S. 17 YR.1973</a></td>
+  <td>Emory Law Journal, Vol. 23, No. 3</td>
+  <td>1974</td>
+</tr>
+</tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 5 publications<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional publications<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="speaking_engagements_section"><div id="speaking_engagements"><div class="span8 margin2"><div class="box"><h5 class="light margin0">SPEAKING ENGAGEMENTS</h5></div></div><div class="span8"><div id="speaking_engagements_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Presentation Name</th><th>Conference</th><th>Date</th></tr></thead><tbody><tr class=" ">
+  <td>Trial Techniques, Faculty Member</td>
+  <td>Emory University School of Law, Atlanta, GA, Trial Techniques Program</td>
+  <td >2008</td>
+</tr>
+<tr class=" ">
+  <td>Criminal Defense Lawyers</td>
+  <td>Georgia Association of Criminal Defense Lawyers, Winter Seminar</td>
+  <td >1993</td>
+</tr>
+<tr class=" js-expandable">
+  <td>DUI / DWI Seminar, Defense Of Drinking Driver Institute</td>
+  <td>Defense Of Drinking Driver Institute Seminar</td>
+  <td >1993</td>
+</tr>
+<tr class=" js-expandable">
+  <td>Corporate Criminal Defense</td>
+  <td>Atlanta, Georgia 1990 Corporate Criminal Defense Seminar</td>
+  <td >1990</td>
+</tr>
+<tr class=" js-expandable">
+  <td>Legal Education, Instructor</td>
+  <td>United States Department of Justice, Office of Legal Education, Washington D.C</td>
+  <td >1985</td>
+</tr>
+<tr class=" js-expandable">
+  <td>Legal Education, Instructor</td>
+  <td>United States Department of Justice, Office of Legal Education, Washington D.C</td>
+  <td >1984</td>
+</tr>
+<tr class=" js-expandable">
+  <td>Legal Education, Instructor</td>
+  <td>United States Department of Justice, Office of Legal Education, Washington D.C.</td>
+  <td >1983</td>
+</tr>
+</tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 7 speaking engagements<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional speaking engagements<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+</section></div></div>    </section>
+
+    <div class="span4" id="profile_b_column">
+      
+
+  <section class="reloadable-module" data-widget-params="eJwNizEOwjAQBP-ytSNhYyjc8gEkCkp0cgw6cbaj3FFAlL_jcmdmN2QhVSTceX4V05Ruxvn9va79yVIuvRllg8NCK9URbliGKqrcG8mDZ6RTDPHsHZR_Bal9RHYH6ZlkTJQ23sa1qFFdBggHHyfvp3DE_gdE8CpG"><div class="page-row"><div class="span4 margin4 js-floating-box" id="sticky_profile_contact_widget"><div class="box"><section><h4 class="light margin4">In most cases timing is crucial, and immediate action is often required. CALL NOW!</h4><div class="page-row margin0"><div class="span1 boxed-left"><h3 class="icon-phone pull-right"></h3></div><div class="span3 boxed-right"><h3><span class="1473_phone ">404-892-2000</span><script>
+//<![CDATA[
+
+          $(document).ready(function(){
+            $(".1473_phone").each(function(index, element) {
+              $(element).html("877-484-2181");
+              if(element.parentNode.tagName == "A"){
+                element.parentNode.setAttribute("href","tel:877-484-2181");
+              }
+            });
+          });
+        
+//]]>
+</script></h3></div></div><div class="page-row"><div class="span4 boxed-right boxed-left"><form accept-charset="UTF-8" action="/attorneys/30309-ga-howard-weintraub-542461/contact/preprocess" class="new_contact_professional" data-remote="true" id="sticky_contact_email_form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+  <textarea class="collapsed full-width text" id="sticky_contact_professional_message" name="contact_professional[message]" placeholder="Send this attorney a message" rows="5">
+</textarea>
+
+  <div id="sticky_contact_hidden_fields" style="display: none;">
+    <label class="full-width" for="sticky_contact_professional_name" required="required">Your name</label><input class="full-width text" id="sticky_contact_professional_name" name="contact_professional[name]" type="text" />
+    <label class="full-width" for="sticky_contact_professional_email" required="required">Your email address</label><input class="full-width text" id="sticky_contact_professional_email" name="contact_professional[email]" type="text" />
+    <input id="using_new_styles" name="using_new_styles" type="hidden" value="true" />
+    
+
+    <p style="position:relative;">
+      <input class="primary action" name="commit" type="submit" value="Preview" />
+      <button class="cancel action" name="button" onclick="" type="button">Cancel</button>
+    </p>
+  </div>
+</form>
+<script>
+//<![CDATA[
+
+  $(document).ready(function(){
+    $('#sticky_contact_professional_message').focus(function() {
+      if(!$('#sticky_contact_hidden_fields').is(':visible')) {
+        _avn.notify('amos.contacts.viewed_email_form', {"professional_id":542461,"gtm":{"position":"pro","property":"542461-Howard-Weintraub"}});
+        $('#sticky_contact_hidden_fields').slideDown(0.6);
+      }
+      $('#sticky_contact_professional_message').parents(".field").removeClass("collapsed");
+    });
+    $("#sticky_contact_email_form :input.cancel").click(function(evt){
+      $('#sticky_contact_hidden_fields').slideUp();
+      $('#sticky_contact_professional_message').val("").parents(".field").addClass("collapsed");
+      $('#sticky_contact_professional_name').val("");
+      $('#sticky_contact_professional_email').val("");
+      $('.sticky_profile_contact_widget .error').each(function(i, e){ $(e).html('');});
+
+      evt.preventDefault();
+      return false;
+    });
+  });
+
+//]]>
+</script></div></div><div class="page-row margin2"><div class="span1 boxed-left"><h4 class="icon-website pull-right"></h4></div><div class="span3 boxed-right"><h4><a data-avn="{&quot;name&quot;:&quot;amos.profiles.website_clicked&quot;,&quot;payload&quot;:{&quot;gtm&quot;:{&quot;event&quot;:&quot;contact-advertising-website&quot;,&quot;position&quot;:&quot;pro&quot;,&quot;property&quot;:&quot;542461-Howard-Weintraub&quot;}}}" href="http://www.ga-criminaldefense.com" onclick="this.href=&#39;/attorneys/30309-ga-howard-weintraub-542461/website.html&#39;;return true;" target="_blank">Visit attorney&#39;s website</a></h4></div></div></section></div></div></div></section><!--not_cached Widget:widgetssticky_profile_contact:false:ajax:false:size::professional_id:542461:edit_mode:false;1416733152-->
+
+    </div>
+
+    
+  </div>
+</div>
+
+
+<script>
+//<![CDATA[
+
+  $(function(){
+    $('.js-replaceable').bind('dom:changed', function(){
+      $(this).find('.js-hover-tooltip-link').hoverTooltip();
+    });
+  });
+
+//]]>
+</script>
+</span>
+    <footer class="persistent-footer page full-width no-border"><div class="page-row"><a class="quiet span3" href="//www.avvo.com/"><div class="icon-avvo-logo footer-logo"></div><div class="footer-slogan">Legal. <strong>Easier.</strong></div></a><div class="span3"><a class="quiet" href="/"><h3>Explore Avvo</h3></a><p class="margin1"><a class="quiet" href="/ask-a-lawyer">Ask a Lawyer</a></p><p class="margin1"><a class="quiet" href="/find-a-lawyer">Find a Lawyer</a></p><p class="margin1"><a class="quiet" href="/free-legal-advice">Free Legal Advice</a></p><p class="margin1"><a class="quiet" href="/review-your-lawyer">Review a Lawyer</a></p></div><div class="span3"><a class="quiet" href="/for-lawyers"><h3>For Lawyers</h3></a><p class="margin1"><a class="quiet" href="/for-lawyers">Lawyer Advertising</a></p><p class="margin1"><a class="quiet" href="/claim-your-profile">Claim Your Profile</a></p><p class="margin1"><a class="quiet" href="/support/all-firm-claim">For Law Firms</a></p><p class="margin1"><a class="quiet" href="//ignite.avvo.com">Marketing Management Software</a></p><p class="margin1"><a class="quiet" href="//lawyernomics.avvo.com">Lawyernomics Blog</a></p></div><div class="span3"><a class="quiet" href="/about_avvo"><h3>Company Info</h3></a><p class="margin1"><a class="quiet" href="/about_avvo/about_us">About Us</a></p><p class="margin1"><a class="quiet" href="/for-lawyers/support">Support</a></p><p class="margin1"><a class="quiet" href="//press.avvo.com">Press Room</a></p><p class="margin1"><a class="quiet" href="/partner_with_us">Partner With Us</a></p><p class="margin1"><a class="quiet" href="/about_avvo/jobs">Careers</a></p><p class="margin1"><a class="quiet" href="//avvoblog.com">Avvo Blog</a></p><p class="margin1"><a class="quiet" href="//nakedlaw.avvo.com">NakedLaw Blog</a></p></div></div></footer><footer class="black"><div id="fine_print_container"><div id="fine_print"><div class="contact_avvo">Follow us on <a href="//www.twitter.com/avvo"><img alt="Twitter" src="http://assets2.iavvo.com/assets/embed/additional_links/twitter_icon-c160ce8886d11899e6833dd271a13f2d.png" /></a><a href="http://www.facebook.com/avvo"><img alt="Facebook" src="http://assets1.iavvo.com/assets/embed/additional_links/facebook_icon-6d9bd4ddfbad9c81a22fd2471b67d673.png" /></a><a href="//plus.google.com/107840042923877554905"><img alt="Google icon" src="http://assets2.iavvo.com/assets/embed/additional_links/google_icon-942738832fa1fe452c21f15e5a9194b2.png" /></a></div><p class="bottom_links"><span class="copyright">&copy;2014 Avvo, Inc. All Rights Reserved </span><span><a href="?prefer_mobile=true" rel="nofollow">Mobile View</a></span><span class="pipe">|</span><span><a href="/support/terms" rel="nofollow">Terms of Use</a></span><span class="pipe">|</span><span><a href="/support/privacy" rel="nofollow">Privacy Policy</a></span><span class="pipe">|</span><span><a href="/support/community_guidelines" rel="nofollow">Community Guidelines</a></span></p></div></div></footer>
+
+    <noscript>
+  <div style="text-align:center;background:#fbf3c5;color:#911717;padding:8px;border-bottom:1px solid #D7DADD;">
+  <strong>We've detected that your browser does not support scripting.</strong> <br/>
+  Scripting must be enabled to use Avvo. Turn on scripting and reload this page.
+  </div>
+</noscript>
+
+
+
+
+    <!-- r:2c4e22c7b390a64641358a65bde9e1a551c45b69 -->
+<!-- d:Fri Nov 21 22:19:26 PST 2014 -->
+<!-- p:www.avvo.com -->  
+
+
+
+
+
+    
+    <script src="http://assets1.iavvo.com/assets/footer_common-59d36e58c17ffbec325b4d50f60e0fda.js"></script>
+    <script src="http://assets1.iavvo.com/assets/floating_box-a803f669a36f68baa4d79a920d5fe3a1.js"></script>
+
+
+
+<div id="google_remarketing">
+
+    <script type="text/javascript">
+    /* <![CDATA[ */
+    var google_conversion_id = 1057123743;
+    var google_conversion_language = "en";
+    var google_conversion_format = "3";
+    var google_conversion_color = "ffffff";
+    var google_conversion_label = "z9BlCKXnsAIQn9uJ-AM";
+    var google_conversion_value = 0;
+    /* ]]> */
+    </script>
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js?avvo_5ovt">
+    </script>
+    <noscript>
+    <div style="display:inline;">
+    <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/1057123743/?label=z9BlCKXnsAIQn9uJ-AM&amp;guid=ON&amp;script=0"/>
+    </div>
+    </noscript>
+
+</div>
+
+    <script>
+//<![CDATA[
+
+$(function(){
+  var a=document.createElement("script");
+  var b=$("script")[0];
+  a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0011/6860.js";
+  a.async=true;a.type="text/javascript";
+  b.parentNode.insertBefore(a,b);
+});
+
+//]]>
+</script>
+  </body>
+
+
+</html>

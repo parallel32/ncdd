@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+
+<html class="no-js">
+  <head>
+    
+<!-- force browser refresh of favicon.  Plz remove me someday? -->
+<link href="http://www.avvo.com/favicon.ico?v=2" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+
+<meta charset="utf-8">
+<title>Lawyer Steven Amjad - Champaign Attorney - Avvo.com</title>
+
+<meta name="description" content="Steven Amjad is a Personal Injury Attorney in Champaign, IL. Click Steven’s profile to discover their Avvo Rating, write a review, and read professional endorsements." />
+
+<meta name="robots" content="index,follow" />
+
+
+
+<meta property="og:image" content="http://assets2.iavvo.com/assets/header_logo-d9da0710ef4f108673b08e2f89ee79c8.png" />
+
+
+<meta name="robots" content="NOODP,NOYDIR" />
+
+<script>
+//<![CDATA[
+window.locationContext = {"id":23673,"name":"Atlanta","city_name":"Atlanta","state_name":"Georgia","state_code":"GA","postal_code":null};window.adLocationContext = {"id":61489,"name":"30316","city_name":"Atlanta","state_name":"Georgia","state_code":"GA","postal_code":"30316"};
+//]]>
+</script><script src="//cdn.optimizely.com/js/275511722.js"></script>
+
+<link href="https://plus.google.com/107840042923877554905" rel="publisher" />
+
+  <link href="http://assets1.iavvo.com/assets/application-679b5b560ef19c2728b0c8d332d28f6a.css" media="all" rel="stylesheet" />
+  <!--[if lt IE 9]>
+    <link href="http://assets1.iavvo.com/assets/font_avvo_icon_bad_IE_bad_dog-27d8ace9b1fdd6c93145f0e1b7827dc6.css" media="all" rel="stylesheet" />
+  <![endif]-->
+
+<link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:700|Open+Sans:300,400,600,700" media="all" rel="stylesheet" />
+
+<script src="http://assets2.iavvo.com/assets/application-944ee4fdb62f3df1542271af9ecbae14.js"></script>
+
+<!--[if (gte IE 6)&(lte IE 8)]>
+    <script src="http://assets2.iavvo.com/assets/selectivizr-c4422edc73658e842dce601b5979afe2.js"></script>
+<![endif]-->
+
+
+
+  <link href="http://www.avvo.com/attorneys/61826-il-steven-amjad-1089301.html" rel="canonical" />
+
+<script>
+//<![CDATA[
+
+  google_analytics_domain_name=".avvo.com";
+  try {
+    var _gaq = _gaq || [];
+    _gaq.push(
+      ['_setAccount', 'UA-4437273-1'],
+      ['_setDomainName', '.avvo.com'],
+      ['_setCustomVar', 1,'user_type','other', 1],
+      ['_setCustomVar', 5, 'abs', '....................................................................................................', 3]
+    );
+
+        _gaq.push(['_setCustomVar', 2,'type', 'pro', 3]);
+        _gaq.push(['_setCustomVar', 3,'spec',"104_Personal Injury", 3]);
+
+    _gaq.push(['_trackPageview']);
+  } catch(err) {}
+
+//]]>
+</script>
+
+  <script>
+//<![CDATA[
+
+  try {
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  } catch(err) {}
+
+//]]>
+</script>
+
+
+
+<script type="text/javascript">window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"location":{"id":77203,"professional_id":1089301,"name":"Meyer Capel, A Professional Corporation","displayable":true,"ordinal":2,"updated_at":"2011-03-09T13:58:17.000-08:00","updated_by":395813,"license_id":null,"created_at":null},"pageTitle":"Lawyer Steven Amjad - Champaign Attorney","siteSection":null,"logicalSection":"lawyers/show","renderType":"desktop","persistentSessionId":"a9ed6e56-85cd-4191-9c7e-38fa4d2fdeba","userId":null,"userEmail":null,"userType":"anonymous","professionalId":null,"professional":"1089301-Steven-Amjad","specialty":104,"claimStatus":"claimed","ratingType":"No concern","rating":9.9,"reviewScore":5.0,"reviews":18,"endorsements":10,"profileContent":{"contributions":{"legalAnswers":108,"bestAnswers":2,"agree":24,"helpful":13,"guides":1,"staffPicks":0},"headshot":"yes","aboutMe":"yes","publications":12,"awards":7,"workExperience":3,"speakingEngagements":13},"professionalType":"advertiser"});</script>
+
+  <meta name="ad-location-id" content="61489" /><meta name="ad-specialty-id" content="104" /><meta name="page-template-name" content="Lawyer Profile - Main" /></head>
+  <body>
+    <script>
+//<![CDATA[
+duraLogEvents('eJztUk2P2yAQ/SsRZ+M1NgGce9VLK/XQ22qFJmacZYXBAhI3qvrfi/MhbXLv\nrUce896bmTevr4wzIftWsq4icwwjpmSDB6ftNMfrg1QEppDYAoZUv8kAGQ8h\nnsnuQrAOyTPVkB1rVN81rCImTGB9KV6WpYbTKdRDmArjGF0BXyDnED2e04tg\nqhXUOpoyntBTmD7A0JtO/Z4nV1gRR4wRI9n5o3NFJWHUcECf70i6tnFpgsgO\njFEjo0JxpJwDUNVJSRsUBgXfm2GQF9UpZNR2LhTWyJq1qmaibpv1c8L8Hlax\nr19+kpvjKn61i+jNCviUwQ+oD8eLMR+3veItpxLVnnIjgO5RtHS/7UfJ+p7J\nLVvXhjHZMq/P+qFv6NEI3AqqtoOhnPWM9oNE2qkRuGlHg3sgf96qx/jKHvTJ\n4vIUmAslsrt02wlZatOMgwWXz7eweEXwV+km24SfpkvgMOmIhzudtax5gudQ\nRnd6CAb1g5VgXPWrVfApRDTalVGtP+jkQk5kV4SMTbOD8yck41SQEoaHCcsm\nvsFyxrj5cb20Dd18X6/p/1n9y7N6+wvRCU9g\n');
+//]]>
+</script>
+
+<script>
+//<![CDATA[
+
+  $(document).on('click', '[data-dura-trackable-href]', duraUpdateLinkHREF);
+
+//]]>
+</script>
+    <noscript><iframe height="0" src="//www.googletagmanager.com/ns.html?id=GTM-K2L3VH" style="display:none;visibility:hidden" width="0"></iframe></noscript><script type="text/javascript">(function(w, d, s, l, i){
+  w[l] = w[l] || [];
+  w[l].push({ 'gtm.start' : new Date().getTime(),
+              event       : 'gtm.js'});
+  var f   = d.getElementsByTagName(s)[0];
+  var j   = d.createElement(s);
+  var dl  = l != 'dataLayer' ? '&l='+ l : '';
+  j.async = true;
+  j.src   = '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-K2L3VH');</script>
+    <div id="bing_tracking">
+
+</div>
+    <noscript>
+  <div style="text-align:center;background:#fbf3c5;color:#911717;padding:8px;border-bottom:1px solid #D7DADD;">
+  <strong>We've detected that your browser does not support scripting.</strong> <br/>
+  Scripting must be enabled to use Avvo. Turn on scripting and reload this page.
+  </div>
+</noscript>
+
+    <hgroup><header><nav id="page_header"><a href="//www.avvo.com/"><img alt="Logo@2x" class="logo" src="http://assets2.iavvo.com/assets/logos/logo@2x-39c17b04a49441c5131b852386f9312e.png" /></a><ul class="pull-right" id="sign-in-module"><li class="left-margin"><a href="/for-lawyers">For Lawyers</a></li><li class="left-margin"><a href="/account/login" rel="nofollow">Sign in</a></li><li class="left-margin"><a href="/account/register" rel="nofollow">Register</a></li></ul></nav></header></hgroup>
+    <div class="page">
+      <div id="primary_nav_and_breadcrumb">
+        <nav class="" id="primary_nav"><style type="text/css">.menu-primary{height:auto}.menu-primary #my-avvo-link{padding-top:28px}</style><ul class="center-content clearfix menu-primary"><li><a href="/free-legal-advice">Research<br/>Legal Advice</a></li><li><a href="/ask-a-lawyer">Ask<br/>a Lawyer</a></li><li class="active"><a href="/find-a-lawyer">Find<br/>a Lawyer</a></li><li><a href="https://advisor.avvo.com?avvo_source=avvo&amp;avvo_medium=global_navigation&amp;avvo_campaign=avvo_advisor">Instant<br/>Phone Call <span class='label label-success' style='line-height: 12px;'>New!</span></a></li><li><a href="/review-your-lawyer">Review<br/>Your Lawyer</a></li></ul><script type="text/javascript">$(document).ready(function(){
+  if(false){
+    $('.menu-primary.my_avvo').show();
+    $('#my-avvo-link').parent('li').addClass('active');
+  }
+  $('#my-avvo-link').click(function(){
+    $('.menu-primary.my_avvo').slideToggle();
+    return false;
+  })
+})</script>  <div class="search browsable" id="primary_nav_search">
+      <span id="search_selector">
+        Lawyers
+      </span>
+      <ul id="search_selector_menu" style="display:none;">
+          <li data-form-id="lawyer_search">Lawyers</li>
+          <li data-form-id="legal_advice_search">Legal Advice</li>
+      </ul>
+
+        <span id="lawyer_search" class="search_form_container selectable" >
+          
+<form accept-charset="UTF-8" action="/search/lawyer_search" class="search_form search-form" id="lawyer_search_primary_nav_search_search_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+  <input autocomplete="off" class="keyword_field keyword-search-field " data-tooltip-right="true" id="lawyer_search_primary_nav_search_search_form_keyword_field" name="q" placeholder="Lawyer&#39;s name -OR- Practice area" type="text" />
+  <input autocomplete="off" class="location_field location-search-field " id="lawyer_search_primary_nav_search_search_form_location_field" name="loc" placeholder="City, State -OR- ZIP" type="text" value="Atlanta, GA" />
+  <span class="icon-submit">
+    <input class="button primary action " name="commit" style="" type="submit" value="" />
+  </span>
+
+</form>
+        </span>
+</div>
+<script>
+//<![CDATA[
+
+  $(document).click(function(e){
+    if(e.target.id != "search_selector") {
+      $("#search_selector_menu").hide();
+    }
+  });
+
+  $("#search_selector_menu li").click(function(e) {
+    form_id = $(this).attr("data-form-id");
+    $("#primary_nav_search .search_form_container").hide();
+    $("#" + form_id).show();
+    $("#search_selector").html($(this).html());
+    $("ul.ui-autocomplete").hide();
+    $("#search_selector_menu").hide();
+  });
+
+  $("#search_selector").click(function(e) {
+    $("#search_selector_menu").toggle();
+    $("#search_selector_menu").position({
+      my: "left top",
+      at: "left bottom",
+      of: $("#search_selector")
+    });
+  });
+
+  $("#primary_nav_search .keyword_field").change(function(e) {
+    $("#primary_nav_search .keyword_field").val($(e.target).val());
+    $("#primary_nav_search .keyword_field").trigger('valuechanged');
+  });
+
+  $("#primary_nav_search .location_field").change(function(e) {
+    $("#primary_nav_search .location_field").each(function(i,el) {
+      $(el).val($(e.target).val());
+      $(el).trigger('valuechanged');
+    });
+  });
+
+//]]>
+</script>
+</nav><div id="breadcrumb"><div class="breadcrumbs"><span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/all-lawyers/il.html" itemprop="url"><span itemprop="title">Illinois</span></a></span>&nbsp;&gt;&nbsp;<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/all-lawyers/il/champaign.html" itemprop="url"><span itemprop="title">Champaign</span></a></span>&nbsp;&gt;&nbsp;<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/personal-injury-lawyer/il/champaign.html" itemprop="url"><span itemprop="title">Personal Injury Lawyers</span></a></span>&nbsp;&gt;&nbsp;<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><span class="current" itemprop="title"><span>Steven Abraham Amjad</span></span></span></div></div><!--[if lt IE 9]><script type="text/javascript">$(document).ready(function(){
+  $('.icon-submit').click(function(){
+    $(this).parent().submit();
+  });
+})</script><![endif]-->
+      </div>
+      <div id="flash"></div>
+    </div>
+    
+      <span>
+          
+<div class="page stripped"  itemscope = "itemscope" itemtype = "http://schema.org/Attorney" >
+
+  <!-- header -->
+    <div class="page-row margin6" id="profile_header"><div class="span12"><h1 class="light pull-left condensed margin0"><span class="pull-left" itemprop="name">Steven Abraham Amjad
+</span><h4><br /><div class="span-auto condensed"><a data-tooltip="Lawyers who subscribe to Avvo Pro have the ability to customize components of their profile, generate more leads with enhanced contact options, and track their performance on Avvo.
+&lt;a href=&quot;/for-lawyers/avvo-pro&quot;&gt;Learn more.&lt;/a&gt;
+" href="#!" rel="nofollow"><span class="label label-avvo-pro">Pro</span></a></div></h4></h1></div><div class="span12 margin2" id="name_alias_section"><h3>  <span class="muted">Also known as </span><span class="nickname">Steve Amjad</span>
+</h3></div><div class="span12 inline-hgroup" id="firm_office_detail"></div></div>
+
+
+  <div class="page-row">
+    <section class="span8" id="profile_details">
+
+
+      <!-- tabs -->
+
+
+      <div id="profile_overview">
+  <!-- headshot -->
+  <div class="page-row" id="headshot">
+    <div class="span2">
+      <span class="avvo-inline-block">
+        <img alt="Steven Abraham Amjad" class="borderless standard" itemprop="image" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/standard/1089301_1394728626.jpg" title="Steven Abraham Amjad" />
+      </span>
+    </div>
+    <div class="span6">
+          <h3 class="light">I handle cases throughout Central Illinois and have the background to help you out.</h3><div class="page-row margin3"><div class="span6"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></div><div class="span6">The least I can do is to acknowledge good work</div><div class="span6 text-meta margin1">- Norin, a Criminal Defense client</div></div><div class="page-row margin3"><div class="span6"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></div><div class="span6">Great Service.</div><div class="span6 text-meta margin1">- Rob</div></div>
+
+    </div>
+  </div>
+</div>
+
+
+    
+        <hr>
+        <div class="offset2">
+            <div class="page-row">
+              <div class="page-row margin8"><div class="span3"><div class="page-row"><div class="span3" itemscope="itemscope" itemtype="http://schema.org/Review"><div itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Organization"><meta content="Avvo Inc." itemprop="name" /><meta content="Avvo" itemprop="alternateName" /><meta content="http://www.avvo.com" itemprop="url" /></div><div class="icon half-width pull-left" data-tooltip-remote="avvo_rating_description"><img alt="Avvorating@2x" src="http://assets2.iavvo.com/assets/embed/profile/avvorating@2x-cf89cef391e72dc3ea9ec72ed16ce495.png" width="100" /></div><div class="pull-left center-content margin5" itemprop="reviewRating" itemscope="itemscope" itemtype="http://schema.org/Rating"><span class="avvo_rating_numeric"><h2 class="text-red light bold center-content condensed margin0" itemprop="ratingValue">9.9</h2><img alt="" class="rating_image" src="http://assets1.iavvo.com/assets/profile_rating/icon_rating_09-95b4825ad0ede6d4783b9d54e47e84e0.gif" /><h3 class="rating_info center-content text-red light"><span class="summary"><a class="tooltip_link tooltip-link" data-tooltip-remote-options="" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">Superb</a></span></h3><meta content="10.0" itemprop="bestRating" /><meta content="0.0" itemprop="worstRating" /></span></div><meta content="Steven Abraham Amjad" itemprop="itemReviewed" /></div><div class="span3 margin4">  <table id="sub_rating">
+
+        <tr>
+          <td>Experience</td>
+          <td>
+            <span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-half-circle" style="font-size:13px"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Industry Recognition</td>
+          <td>
+            <span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Professional Conduct</td>
+          <td>
+            <span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span></span>
+          </td>
+        </tr>
+
+  </table>
+<p class="text-meta"><a class="tooltip_link tooltip-link" data-tooltip-remote-options="provisional=false" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">What is the Avvo Rating?</a></p></div></div></div><div class="span3 margin6"><div class="page-row"><div class="span3"><div class="page-row"><div class="span1"><img alt="Reviews" class="full-width" src="http://assets2.iavvo.com/assets/embed/profile/reviews-72fd939ee2e493ce25a7b88d3da6028c.png" /></div><div class="span2"><a class="count" href="/attorneys/61826-il-steven-amjad-1089301/reviews.html"><div class="page-row"><div class="inline-hgroup span2"><h3 class="light condensed margin0 stripped">18&nbsp;</h3><h5 class="light condensed margin0 stripped">Reviews</h5></div><div class="span2"><a class="star_rating full-width" href="/attorneys/61826-il-steven-amjad-1089301/reviews.html"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a></div></div></a><div class="client_review_links">Current or former client? <a data-avn="{&quot;name&quot;:&quot;amos.gtm.view-lawyer-review-form&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;1089301-Steven-Amjad&quot;}}" href="/attorneys/61826-il-steven-amjad-1089301/write_review.html" rel="nofollow">Write a review</a></div></div></div></div><hr class="span3" /><div class="span3"><div class="page-row"><div class="span1"><img alt="Endorse" class="full-width" src="http://assets1.iavvo.com/assets/embed/profile/endorse-393f817ef630e2e358047b4ca97e17ed.png" /></div><div class="span2"><div class="page-row"><a href="/attorneys/61826-il-steven-amjad-1089301/endorsements.html"><div class="inline-hgroup span2"><h3 class="light condensed margin0 stripped">10&nbsp;</h3><h5 class="light condensed margin0 stripped">Endorsements</h5></div></a></div>Lawyers: <br><a href="/attorneys/61826-il-steven-amjad-1089301/write_endorsement.html" rel="nofollow">Endorse this lawyer</a></div></div></div><hr class="span3" /><div class="span3"><div class="page-row"><div class="span1"><img alt="Contri" class="full-width" src="http://assets2.iavvo.com/assets/embed/profile/contri-c5a1b74b9701f86d9b28e2d9f4f0334c.png" /></div><div class="span2"><div class="page-row"><div class="inline-hgroup span2"><h5 class="light condensed margin0">Contributor Level</h5><h3 class="light condensed margin0 stripped">11</h3></div></div><p><a href="/attorneys/61826-il-steven-amjad-1089301/answers.html">View contributions</a></p></div></div></div></div></div><div class="span6"><div id="profile_actions" class="lawyer_profile_actions">
+    <a class="primary action" data-avn="{&quot;name&quot;:&quot;amos.gtm.view-lawyer-email-form&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;1089301-Steven-Amjad&quot;}}" href="/attorneys/61826-il-steven-amjad-1089301/contact.html" rel="nofollow">Email Lawyer</a>
+
+  <a class="action" data-avn="{&quot;name&quot;:&quot;amos.gtm.contact-lawyer-website&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;1089301-Steven-Amjad&quot;}}" href="http://www.meyercapel.com/attorneys/amjad.html" onclick="this.href=&#39;/attorneys/61826-il-steven-amjad-1089301/website.html&#39;;return true;" target="_blank">Lawyer&#39;s website</a>
+
+  <a class="action send" href="/attorneys/61826-il-steven-amjad-1089301/share.html" rel="nofollow">Send to a friend</a>
+</div>
+</div></div>
+            </div>
+          </div>
+      <div class="module"><h2>Overview</h2><div class="page-row" id="overview"><section class="span8">
+        <div class="js-replaceable margin6" id="specialties"><div class="page-row" id="specialties"><div class="span2"><h5 class="light">PRACTICE AREAS</h5></div><div class="span6"><div class="page-row"><div class="span2">
+<img alt="Chart?chs=169x169&amp;cht=p&amp;chp=4" class="full-width" id="specialty_chart" src="http://chart.apis.google.com/chart?chs=169x169&amp;cht=p&amp;chp=4.7&amp;chco=76d0eb|f48026|ffeb73|7ac142&amp;chd=t:40,30,15,15" />
+
+</div><div class="span4"><div class="page-row js-link-hub"><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#76d0eb"></div><div class="span3"><a class="tooltip_link tooltip-link" data-tooltip="My goals are your goals. I will give you the information that you need to be satisfied as you seek a verdict from a jury, or when you accept a settlement from the party that hurt you." href="#!" rel="nofollow">40% Personal Injury</a><div class="text-meta">11 years, 50 cases</div></div></div></div></div><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#f48026"></div><div class="span3"><a class="tooltip_link tooltip-link" data-tooltip="My goals are your goals. I will give you the information that you need to be satisfied as you seek a verdict from a jury, or when you accept a settlement from the party that hurt you." href="#!" rel="nofollow">30% Car / Auto Accident</a><div class="text-meta">11 years, 50 cases</div></div></div></div></div><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#ffeb73"></div><div class="span3"><a class="tooltip_link tooltip-link" data-tooltip="I am a former Prosecutor and have served as Special Prosecutor in Champaign County, Illinois. This gives me the knowledge of what motivates the prosecutor in the charges against you." href="#!" rel="nofollow">15% DUI / DWI</a><div class="text-meta">11 years, 100 cases</div></div></div></div></div><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#7ac142"></div><div class="span3"><a class="tooltip_link tooltip-link" data-tooltip="I am a former Prosecutor and have served as Special Prosecutor in Champaign County, Illinois. This gives me the knowledge of what motivates the prosecutor in the charges against you." href="#!" rel="nofollow">15% Criminal Defense</a><div class="text-meta">11 years, 500 cases</div></div></div></div></div></div></div></div><div id="not_practicing_section">
+</div></div></div></div>
+        <div class="js-replaceable margin6" id="fees_payments"><div class="page-row" id="fees_payments_section"><div class="span2"><h5 class="light">FEES AND<BR> PAYMENT TYPES</h5></div><div class="span6"><div class="page-row"><div class="span6 margin4"><h4>Fees</h4><div id="fees_detail">    Contingent (33%), Hourly ($235-$270/hour), Retainer (Sometimes)
+
+</div></div><div class="span6"><h4>Payment types</h4><div id="payments_detail">  Cash, Check, Credit Card
+  
+</div></div></div></div></div></div>
+          <div class="js-replaceable margin6" id="contact_information"><div class="page-row" id="contact_information_section"><div class="span2"><h5 class="light">CONTACT INFORMATION</h5></div><div class="span6"><div class="page-row" id="contact_information_detail">  <div id="avvo_pro_contact_module" class="page-row">
+    <div id="map" class="span3">
+      <section class="reloadable-module" data-widget-params="eJwVjEEKwjAQRa8is07BVHGRC7gSFy5cD820DUzS4EwVLAWv4fU8idPl_-_xFugYRSDAPcWBVEI4T9PAdMEKDio-MBtdoGAms25KTyq_z1d2175PHZk014hqsEcWcvBKUUcIrT85GCkNo0Lw25D0NqvMzKsDnjrkrUjFEpoyiWKudrR7f2y8b9oDrH_pqDPA"><div class="margin4" data-map="" id="map_div" style="width:216px; height:116px"><div data-map-marker="" data-map-marker-address="306 West Church Street, Champaign, IL 61826" data-map-marker-href="http://maps.google.com?q=306%20West%20Church%20Street,%20Champaign,%20IL%2061826 (Steven%E2%80%99s%20Office)" data-map-marker-name="Steven’s Office" data-map-marker-point-latitude="40.11825" data-map-marker-point-longitude="-88.24765"></div></div></section><!--not_cached Widget:widgetsgoogle_map:false:ajax:false:size::name:Steven’sOffice:address::map_div_id:map_div:update:false:width:216:height:116-->
+        <a href="http://maps.google.com?q=306%20West%20Church%20Street,%20Champaign,%20IL%2061826 (Steven%E2%80%99s%20Office)" target="_blank"><span class='icon-map'></span> See larger map</a>
+    </div>
+
+  <div id="enhanced_contact_options" class=" span3 " >
+      <div class="page-row margin2">
+          <div class="span1">
+            <h3 class="icon-phone pull-right"></h3>
+          </div>
+          <h3 class="span-auto">
+            <span class="3013_phone phone">217-819-4357</span><script>
+//<![CDATA[
+
+          $(document).ready(function(){
+            $(".3013_phone").each(function(index, element) {
+              $(element).html("217-583-4043");
+              if(element.parentNode.tagName == "A"){
+                element.parentNode.setAttribute("href","tel:217-583-4043");
+              }
+            });
+          });
+        
+//]]>
+</script>
+          </h3>
+      </div>
+      <div class="page-row margin2">
+          <div class="span1">
+            <h4 class="icon-email2 pull-right"></h4>
+          </div>
+          <h4 class="span-auto">
+            <a class="email" href="/attorneys/61826-il-steven-amjad-1089301/contact.html" rel="nofollow">Email this lawyer</a>
+          </h4>
+      </div>
+      <div class="page-row margin2">
+          <div class="span1">
+            <h4 class="icon-website pull-right"></h4>
+          </div>
+          <h4 class="span-auto">
+            <a class="website" data-avn="{&quot;name&quot;:&quot;amos.profiles.website_clicked&quot;,&quot;payload&quot;:{&quot;professional_id&quot;:1089301,&quot;profession_name&quot;:&quot;lawyer&quot;,&quot;specialty_name&quot;:&quot;Personal Injury&quot;}}" href="http://www.meyercapel.com/attorneys/amjad.html" onclick="this.href=&#39;/attorneys/61826-il-steven-amjad-1089301/website.html&#39;;return true;" rel="nofollow" target="_blank">Visit website</a>
+          </h4>
+      </div>
+
+  </div>
+
+  <div style="clear:both"></div>
+
+  <div class="spacer"> </div>
+    <hr />
+</div>
+
+<div class="span3"><div class="address_list avvo-undecorated-list" id="sortable_address_list"><div class="address_sort margin4" id="address_77203"><div class="address_name semibold">Meyer Capel, A Professional Corporation</div><span><div class="address_line_1">306 West Church Street</div><div class="address_line_2"></div></span><div class="address_city_state">Champaign, IL 61826</div><div class="address_phone"><span class="phone_label muted">Office: </span><span id="phone_number_0" itemprop="telephone"><span class="3013_phone ">217-819-4357</span><script>
+//<![CDATA[
+
+          $(document).ready(function(){
+            $(".3013_phone").each(function(index, element) {
+              $(element).html("217-583-4043");
+              if(element.parentNode.tagName == "A"){
+                element.parentNode.setAttribute("href","tel:217-583-4043");
+              }
+            });
+          });
+        
+//]]>
+</script></span></div><div class="address_phone"><span class="phone_label muted">Mobile: </span><span id="phone_number_1"><span class="3013_phone ">217-819-4357</span><script>
+//<![CDATA[
+
+          $(document).ready(function(){
+            $(".3013_phone").each(function(index, element) {
+              $(element).html("217-583-4043");
+              if(element.parentNode.tagName == "A"){
+                element.parentNode.setAttribute("href","tel:217-583-4043");
+              }
+            });
+          });
+        
+//]]>
+</script></span></div><div class="address_phone"><span class="phone_label muted">Fax: </span><span id="phone_number_2" itemprop="faxNumber">217-352-1083</span></div><a data-avn="{&quot;name&quot;:&quot;amos.contacts.viewed_directions&quot;,&quot;payload&quot;:{&quot;professional_id&quot;:1089301}}" href="http://maps.google.com/maps?q=306+West+Church+Street%2C+Champaign%2C+IL+61826+%28Meyer+Capel%2C+A+Professional+Corporation%29" rel="nofollow" target="_blank"><span class="icon-map"></span> View map</a></div></div><div class="address_list" id="more_addresses" style="display:none"><div class="address_sort margin4" id="address_7356555"><div class="address_name semibold">Steven Amjad</div><span><div class="address_line_1">202 North Center</div><div class="address_line_2"></div></span><div class="address_city_state">Bloomington, IL 61701</div><div class="address_phone"><span class="phone_label muted">Office: </span><span id="phone_number_0"><span class="3013_phone ">217-819-4357</span><script>
+//<![CDATA[
+
+          $(document).ready(function(){
+            $(".3013_phone").each(function(index, element) {
+              $(element).html("217-583-4043");
+              if(element.parentNode.tagName == "A"){
+                element.parentNode.setAttribute("href","tel:217-583-4043");
+              }
+            });
+          });
+        
+//]]>
+</script></span></div><a data-avn="{&quot;name&quot;:&quot;amos.contacts.viewed_directions&quot;,&quot;payload&quot;:{&quot;professional_id&quot;:1089301}}" href="http://maps.google.com/maps?q=202+North+Center%2C+Bloomington%2C+IL+61701+%28Steven+Amjad%29" rel="nofollow" target="_blank"><span class="icon-map"></span> View map</a></div></div><p>
+
+<a href="#!" id="more_addresses_link" onclick="
+   $(&#39;#more_addresses&#39;).slideDown(500);
+   $(&#39;#more_addresses_link&#39;).hide();
+   $(&#39;#less_addresses_link&#39;).show();
+" rel="nofollow">See additional addresses</a>
+
+
+<a href="#!" id="less_addresses_link" onclick="
+   $(&#39;#more_addresses&#39;).slideUp(500);
+   $(&#39;#less_addresses_link&#39;).hide();
+   $(&#39;#more_addresses_link&#39;).show();
+" style="display:none;">Hide additional addresses</a>
+</p></div><div class="span3"></div>
+</div></div></div></div>
+        <div class="js-replaceable margin6" id="languages"><div class="page-row" id="languages_section"><div class="span2"><h5 class="light">LANGUAGES SPOKEN</h5></div><div class="span6"><div id="languages_detail"><ul class="avvo-undecorated-list margin0">
+    <li>
+  English
+</li>
+
+</ul>
+</div></div></div></div>
+        <div class="js-replaceable margin6" id="about_me"><div class="page-row" id="about_me_section"><div class="span2"><h5 class="light">ABOUT ME</h5></div><div class="span6"><div id="about_me_detail">  
+    <div id="media_table_wrapper">
+      <table><tr><td><div class="thumbnail borderless"><a data-modal-open="Kv96kzoh" href="#!" nofollow="nofollow" title=""><img alt="" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/thumbnail_small/1089301_1299684140.jpg" title="" /></a></div><div id="Kv96kzoh" style="display:none;width:;height:"><div class="modal-header">Image</div><div class="modal-body"><img alt="1089301 1299684140" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/normalized/1089301_1299684140.jpg" /></div></div></td><td></td><td></td><td></td></tr></table>
+    </div>
+  
+    <p>
+      In the context of a personal injury case, I generally understand that the last thing a client wants to do is share their compensation from an injury that they... <a href="/attorneys/61826-il-steven-amjad-1089301/aboutme.html">more</a>
+    </p>
+
+  <a class="navigation" href="/attorneys/61826-il-steven-amjad-1089301/aboutme.html">View all photos and/or videos</a>
+</div></div></div></div>
+</section></div></div>
+      <div class="module"><h2>References</h2><div class="page-row" id="references"><section class="span8">
+        <div class="js-replaceable margin6" id="reviews"><div class="page-row" id="reviews_section"><div class="span2"><h5 class="light">CLIENT REVIEWS</h5></div><div class="span6"><div id="reviews_detail"><div class="page-row"><div class="span1"><img alt="Reviews" class="full-width" src="http://assets2.iavvo.com/assets/embed/profile/reviews-72fd939ee2e493ce25a7b88d3da6028c.png" /></div><div class="span5"><div class="overview">
+  <h4>Average Client Rating</h4>
+  <div class="star_rating">
+      <a class="stars" href="/attorneys/61826-il-steven-amjad-1089301/reviews.html"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a>
+      <span class="review_count"><a href="/attorneys/61826-il-steven-amjad-1089301/reviews.html">18 reviews</a></span>
+  </div>
+  <div class="client_review_links">Current or former client? <a data-avn="{&quot;name&quot;:&quot;amos.gtm.view-lawyer-review-form&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;1089301-Steven-Amjad&quot;}}" href="/attorneys/61826-il-steven-amjad-1089301/write_review.html" rel="nofollow">Write a review</a></div>
+</div>
+
+</div></div><hr class="margin4" /><div class="page-row margin2 with-overlay"><div class="span1"><img alt="Quotes@2x" class="full-width" src="http://assets2.iavvo.com/assets/embed/topic_pages/quotes@2x-77df7504b38dc1ede65c9b0e3e45acf7.png" /></div><div class="span5"><h3 class="light"><a href="/attorneys/61826-il-steven-amjad-1089301/reviews.html#107348">“The least I can do is to acknowledge good work”</a></h3><a href="/attorneys/61826-il-steven-amjad-1089301/reviews.html#107348"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a><p>I have found that professionals come in various levels of calling/talent.
+Mr. Amjad has it going for him.
+To the above rating categories I would... </p><p class="text-meta">Posted by: Norin, over 3 years ago.</p><div class="overlay bottom right margin2"><a data-tooltip-remote="confirm_objectionable" href="/professional_reviews/107348/objectionable" id="professional_review_objectionable_107348" rel="nofollow"><i class="medium-gray icon-flag"></i> Flag</a></div></div></div><div class="page-row margin2 with-overlay"><div class="span1"><img alt="Quotes@2x" class="full-width" src="http://assets2.iavvo.com/assets/embed/topic_pages/quotes@2x-77df7504b38dc1ede65c9b0e3e45acf7.png" /></div><div class="span5"><h3 class="light"><a href="/attorneys/61826-il-steven-amjad-1089301/reviews.html#107381">“Great Service.”</a></h3><a href="/attorneys/61826-il-steven-amjad-1089301/reviews.html#107381"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a><p>I couldn&#39;t be more pleased with Steven&#39;s professionalism and expedience in resolving my legal matter.</p><p class="text-meta">Posted by: Rob, over 3 years ago.</p><div class="overlay bottom right margin2"><a data-tooltip-remote="confirm_objectionable" href="/professional_reviews/107381/objectionable" id="professional_review_objectionable_107381" rel="nofollow"><i class="medium-gray icon-flag"></i> Flag</a></div></div></div><div class="margin4"><a class="navigation" href="/attorneys/61826-il-steven-amjad-1089301/reviews.html">View all 18 reviews</a></div></div></div></div></div>
+        
+        <div class="js-replaceable margin6" id="endorsements"><div class="page-row" id="endorsements_section"><div class="span2"><h5 class="light">PEER ENDORSEMENTS</h5></div><div class="span6"><div id="endorsements_detail"><div class="page-row"><div class="span1"><img alt="Endorse" class="full-width" src="http://assets1.iavvo.com/assets/embed/profile/endorse-393f817ef630e2e358047b4ca97e17ed.png" /></div><div class="span5"><h4>Endorsements</h4><p class="pull-left"><a href="/attorneys/61826-il-steven-amjad-1089301/endorsements.html">10 endorsements</a></p><div class="pull-right">Lawyers: <a href="/attorneys/61826-il-steven-amjad-1089301/write_endorsement.html" rel="nofollow">Endorse this lawyer</a></div></div></div><hr class="margin4" />
+<div class="page-row margin6">
+  <!-- clear the cache -->
+  <div class="span1"><a href="/attorneys/61801-il-thomas-bruno-1141286.html"><img alt="Thomas Anthony Bruno" class="borderless thumbnail_medium" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/1141286_1415908410.jpg" title="Thomas Anthony Bruno" /></a></div>
+  <div class="span5">
+    <div>
+      <p>
+        Steve and I worked together on a multi-year litigation matter involving serious injuries against a unit of local government.
+Steve was insightful... 
+          <a href="/attorneys/61826-il-steven-amjad-1089301/endorsements.html" rel="nofollow">more</a>
+      </p> 
+      <span class="muted text-meta">Endorsement from lawyer:
+        <a href="/attorneys/61801-il-thomas-bruno-1141286.html">Thomas Bruno</a>
+         , Urbana (IL), 10 days ago
+      </span>
+    </div>
+  </div>
+</div>
+<div class="page-row margin6">
+  <!-- clear the cache -->
+  <div class="span1"><a href="/attorneys/61820-il-andrew-hatch-1120026.html"><img alt="Andrew J. Hatch" class="borderless headshot_bg_0 thumbnail_medium" src="http://assets1.iavvo.com/assets/ghost_66x88-47dc434e37608ff6348acea7b6f444f8.png" title="Andrew J. Hatch" /></a></div>
+  <div class="span5">
+    <div>
+      <p>
+        I endorse this lawyer.
+      </p> 
+      <span class="muted text-meta">Endorsement from lawyer:
+        <a href="/attorneys/61820-il-andrew-hatch-1120026.html">Andrew Hatch</a>
+         , Champaign (IL), 10 days ago
+      </span>
+    </div>
+  </div>
+</div><a class="navigation" href="/attorneys/61826-il-steven-amjad-1089301/endorsements.html">View all 10 endorsements</a></div></div></div></div>
+</section></div></div>
+      <div class="module"><h2>R&eacute;sum&eacute;</h2><div class="page-row" id="resume"><section class="span8">
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="licenses_section"><div id="licenses"><div class="span8 margin2"><div class="box"><h5 class="light margin0">LICENSE</h5></div></div><div class="span8"><div id="licenses_detail"><p>13 years since Steven Abraham Amjad was first licensed to practice law.</p><div class="js-link-hub"><table class="table"><thead><tr><th>State</th><th>License status</th><th>Year acquired</th><th>Last updated by Avvo</th></tr></thead><tbody>
+<tr class="">
+  <td>Illinois</td>
+  <td>
+      Active And Authorized To Practice Law
+  </td>
+  <td>2002</td>
+  <td>10/24/2014</td>
+</tr>
+<tr class="">
+  <td>Missouri</td>
+  <td>
+      Good Standing, Active
+  </td>
+  <td>2001</td>
+  <td>01/08/2013</td>
+</tr></tbody></table></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="sanctions_section"><div id="sanctions"><div class="span8 margin2"><div class="box"><h5 class="light margin0">PROFESSIONAL MISCONDUCT</h5></div></div><div class="span8"><div id="sanctions_detail">  <p class="article-body sans-serif">
+    <span class="icon-no-misconduct icon-green icon-padded narrow right"></span>
+    We have not found any instances of professional misconduct for this lawyer.
+  </p>
+
+</div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="work_experience_section"><div id="work_experience"><div class="span8 margin2"><div class="box"><h5 class="light margin0">WORK EXPERIENCE</h5></div></div><div class="span8"><div id="work_experience_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Position</th><th>Duration</th></tr></thead><tbody><tr class=" ">
+  <td>
+    Attorney at Meyer Capel, P.C.
+  </td>
+  <td>
+    2004&ndash;present
+  </td>
+</tr>
+<tr class=" ">
+  <td>
+    Assistant Circuit Attorney at Office of the Circuit Attorney
+  </td>
+  <td>
+    2002&ndash;2004
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Attorney at Colliers Turley Martin Tucker
+  </td>
+  <td>
+    2000&ndash;2002
+  </td>
+</tr>
+</tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 3 job entries<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional positions<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="education_section"><div id="education"><div class="span8 margin2"><div class="box"><h5 class="light margin0">EDUCATION</h5></div></div><div class="span8"><div id="education_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>School</th><th>Major</th><th>Degree</th><th>Graduated</th></tr></thead><tbody><tr class=" ">
+  <td>Saint Louis University School of Law</td>
+  <td>Law</td>
+  <td>JD - Juris Doctor</td>
+  <td>2001</td>
+</tr>
+
+<tr class=" ">
+  <td>University of Illinois, Urbana-Champaign</td>
+  <td>Stretegic Finance</td>
+  <td>M.B.A.</td>
+  <td>1999</td>
+</tr>
+
+<tr class=" js-expandable">
+  <td>Saint Louis University</td>
+  <td>Finance/International Business</td>
+  <td>BS - Bachelor of Science</td>
+  <td>1998</td>
+</tr>
+
+</tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 3 degrees<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional degrees<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="awards_section"><div id="awards"><div class="span8 margin2"><div class="box"><h5 class="light margin0">AWARDS</h5></div></div><div class="span8"><div id="awards_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Award Name</th><th>Granting Organization</th><th>Date</th></tr></thead><tbody><tr><td>Bar Register of Preeminent Lawyers</td><td>Martindale-Hubbell</td><td>2014</td></tr><tr><td>Million Dollar Advocate</td><td>Million Dollar Advocates Forum</td><td>2014</td></tr><tr class="js-expandable"><td>Top Contributor</td><td>Avvo.com</td><td>2013</td></tr><tr class="js-expandable"><td>Clients Choice Award</td><td>Avvo.com</td><td>2013</td></tr><tr class="js-expandable"><td>Clients Choice Award</td><td>Avvo.com</td><td>2012</td></tr><tr class="js-expandable"><td>Honor Corps</td><td>National Litigation Academy</td><td>2011</td></tr><tr class="js-expandable"><td>Firm Profile- Meyer Capel, P.C.</td><td>Leading Lawyer Magazine</td><td>2009</td></tr></tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 7 awards<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional awards<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="organizations_section"><div id="organizations"><div class="span8 margin2"><div class="box"><h5 class="light margin0">ASSOCIATIONS</h5></div></div><div class="span8"><div id="organizations_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Position</th><th>Association Name</th><th>Duration</th></tr></thead><tbody><tr class=" ">
+  <td>Member</td>
+  <td>Illinois State Bar Association</td>
+  <td>
+    2002&ndash;present
+  </td>
+</tr>
+<tr class=" ">
+  <td>Member</td>
+  <td>Missouri State Bar</td>
+  <td>
+    2001&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Allied Attorney</td>
+  <td>Alliance Defense Fund</td>
+  <td>
+    2007&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member</td>
+  <td>Champaign County Bar Association</td>
+  <td>
+    2004&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member</td>
+  <td>Illinois Trial Lawyers Association</td>
+  <td>
+    2005&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member</td>
+  <td>National Association of Criminal Defense Lawyers</td>
+  <td>
+    2005&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Mentor</td>
+  <td>Illinois State Bar Association</td>
+  <td>
+    2011&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>General Assembly Member</td>
+  <td>Illinois State Bar Association</td>
+  <td>
+    2013&ndash;present
+  </td>
+</tr>
+</tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 8 association entries<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional associations<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+</section></div></div>
+      <div class="module"><h2>Portfolio</h2><div class="page-row" id="portfolio"><section class="span8">
+        <div class="js-replaceable margin7"><div class="page-row with-overlay" id=""><div id=""><div class="span8 margin2"><div class="box"><h5 class="light margin0">CONTRIBUTION</h5></div></div><div class="span8"><div class="contri-badge"><div class="contributor-level-badge level-3 margin1" data-tooltip-remote="contributor_badge"><i class="icon-badge-feather"></i></div><div class="badge-text">Contributor Level 11</div></div>
+<table class="table">
+  <tr>
+    <th>Answers:</th>
+    <td><a class="article-body sans-serif" href="/attorneys/61826-il-steven-amjad-1089301/answers.html">108</a></td>
+    <td><a class="article-body sans-serif" href="/attorneys/61826-il-steven-amjad-1089301/answers.html">Legal Answers</a></td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>2</td>
+    <td>Best Answers - chosen by asker</td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>24</td>
+    <td>Answers marked "I agree" by other lawyers</td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>13</td>
+    <td>Answers marked helpful by other users</td>
+  </tr>
+  <tr>
+    <th>Guides:</th>
+    <td><a class="article-body sans-serif" href="/attorneys/61826-il-steven-amjad-1089301/guides.html">1</a></td>
+    <td><a class="article-body sans-serif" href="/attorneys/61826-il-steven-amjad-1089301/guides.html">Legal Guide</a></td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>0</td>
+    <td>Staff Picks</td>
+  </tr>
+</table>
+  <a class="navigation" href="/attorneys/61826-il-steven-amjad-1089301/answers.html">View all contributions</a>
+</div></div></div></div>
+        
+        <div class="js-replaceable margin7"><div class="page-row with-overlay" id="legal_cases_section"><div id="legal_cases"><div class="span8 margin2"><div class="box"><h5 class="light margin0">CASES</h5></div></div><div class="span8">  <div class="margin4">
+  <div class="case_title"><a href="/attorneys/61826-il-steven-amjad-1089301/legal_cases/109514">Bank&#39;s Motion to Dismiss granted with prejudice</a></div>
+  <div class="outcome">
+    <strong>Outcome:</strong> Dismissed in Steve&#39;s favor
+  </div>
+</div>
+
+<div class="margin4">
+  <div class="case_title"><a href="/attorneys/61826-il-steven-amjad-1089301/legal_cases/104516">$310,00 Settlement after a truck accident</a></div>
+  <div class="outcome">
+    <strong>Outcome:</strong> Settlement
+  </div>
+</div>
+
+<div class="margin4">
+  <div class="case_title"><a href="/attorneys/61826-il-steven-amjad-1089301/legal_cases/104515">$200,000 Car accident Settlement</a></div>
+  <div class="outcome">
+    <strong>Outcome:</strong> Settlement
+  </div>
+</div>
+
+
+    <a class="navigation" href="/attorneys/61826-il-steven-amjad-1089301/legal_cases">See all cases</a>
+</div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="publications_section"><div id="publications"><div class="span8 margin2"><div class="box"><h5 class="light margin0">PUBLICATIONS</h5></div></div><div class="span8"><div id="publications_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Article</th><th>Publication</th><th>Date</th></tr></thead><tbody><tr class=" ">
+  <td><a href="https://www.iltla.com/index.php/member-services/publications?id=673" rel="nofollow" target="_blank">Are Hospitals Greedy? Protecting your Clients from Medical Providers that Refuse to Submit Medical Insurance Claims</a></td>
+  <td>Trial Journal, Illinois Trial Lawyers Association</td>
+  <td>2012</td>
+</tr>
+<tr class=" ">
+  <td><a href="http://www.chicagotribune.com/news/local/ct-met-civil-union-bb-20110916,0,4632447,full.story#tugs_story_display" rel="nofollow" target="_blank">Same-sex couple denied ceremony at B&amp;Bs might act: Case could draw a line between personal and religious freedoms</a></td>
+  <td>Chicago Tribune</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.pantagraph.com/news/state-and-regional/illinois/article_2ed1c5e8-909d-5ca8-8592-1e79819058f8.html?mode=story" rel="nofollow" target="_blank">Illinois civil unions law pits religious, gay rights</a></td>
+  <td>Bloomington Pantagraph</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.paxtonrecord.net/news/business/miscellaneous/2011-08-17/agency-finds-evidence-discrimination.html" rel="nofollow" target="_blank">Agency finds evidence of discrimination</a></td>
+  <td>Paxton Record</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.meyercapel.com/attorneys/Individual-Expertise-Team-Excellence.pdf" rel="nofollow" target="_blank">Leading Lawyers Network- Meyer Capel Profile</a></td>
+  <td>Leading Lawyers Network Magazine</td>
+  <td>2009</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.news-gazette.com/news/courts-police-and-fire/2008-11-04/name-young-victim-jon-white-will-remain-undisclosed.html" rel="nofollow" target="_blank">Name of young victim of Jon White will remain undisclosed</a></td>
+  <td>Champaign News Gazette</td>
+  <td>2008</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.news-gazette.com/news/courts-police-and-fire/2008-11-12/urbana-district-reaches-tentative-settlement-white-victim.htm" rel="nofollow" target="_blank">Urbana district reaches tentative settlement with White victim</a></td>
+  <td>Champaign News Gazette</td>
+  <td>2008</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.news-gazette.com/news/courts-police-and-fire/2008-12-20/white-case-settlement-forces-education-urbana-employees.html" rel="nofollow" target="_blank">White case settlement forces education of Urbana employees</a></td>
+  <td>Champaign News Gazette</td>
+  <td>2008</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.news-gazette.com/news/courts-police-and-fire/2008-03-06/man-receives-35-year-sentence-drug-charges.html" rel="nofollow" target="_blank">Man receives 35-year sentence on drug charges</a></td>
+  <td>Champaign News Gazette</td>
+  <td>2008</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.news-gazette.com/news/other/2008-07-25/abuse-victim-files-suit-against-white-urbana-school-district.html" rel="nofollow" target="_blank">Abuse victim files suit against White, Urbana school district</a></td>
+  <td>Champaign News Gazette</td>
+  <td>2008</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.news-gazette.com/news/courts-police-and-fire/2008-02-21/urbana-school-district-could-face-legal-action.html" rel="nofollow" target="_blank">Urbana school district could face legal action</a></td>
+  <td>Champaign News Gazette</td>
+  <td>2008</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.news-gazette.com/news/courts-police-and-fire/2006-08-07/mahomet-man-gets-10-year-sentence-burglary-attack.html" rel="nofollow" target="_blank">Mahomet man gets 10-year sentence for burglary, attack</a></td>
+  <td>Champaign News Gazette</td>
+  <td>2006</td>
+</tr>
+</tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 12 publications<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional publications<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="speaking_engagements_section"><div id="speaking_engagements"><div class="span8 margin2"><div class="box"><h5 class="light margin0">SPEAKING ENGAGEMENTS</h5></div></div><div class="span8"><div id="speaking_engagements_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Presentation Name</th><th>Conference</th><th>Date</th></tr></thead><tbody><tr class=" ">
+  <td><a href="http://store.sterlingeducation.com/seminar/12IL03094-Landlord-Tenant-Law-Champaign-IL/agenda" rel="nofollow">Landlord Tenant Law</a></td>
+  <td>SES: Landlord Tenant Law</td>
+  <td >2012</td>
+</tr>
+<tr class=" ">
+  <td>Litigation for Business Owners</td>
+  <td>Tips to Avoid a lawsuit</td>
+  <td >2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td>Free Speech Issues at Work and School</td>
+  <td>Various</td>
+  <td >2010</td>
+</tr>
+<tr class=" js-expandable">
+  <td>Protecting the Sanctitiy of Life and Marriage</td>
+  <td>Various</td>
+  <td >2010</td>
+</tr>
+<tr class=" js-expandable">
+  <td>Protecting the Sanctitiy of Life and Marriage</td>
+  <td>Various</td>
+  <td >2009</td>
+</tr>
+<tr class=" js-expandable">
+  <td>Free Speech Issues at Work and School</td>
+  <td>Various</td>
+  <td >2009</td>
+</tr>
+<tr class=" js-expandable">
+  <td>Protecting the Sanctitiy of Life and Marriage</td>
+  <td>Various</td>
+  <td >2008</td>
+</tr>
+<tr class=" js-expandable">
+  <td>Free Speech Issues at Work and School</td>
+  <td>Various</td>
+  <td >2008</td>
+</tr>
+<tr class=" js-expandable">
+  <td>Client Communications: Setting the Right Expectations</td>
+  <td>Basic Skills for New Attorneys</td>
+  <td >2008</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.meyercapel.com/pubs/lawsuit.pdf" rel="nofollow">Tips to Avoid a Lawsuit</a></td>
+  <td>Small Business Series</td>
+  <td >2006</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.meyercapel.com/pubs/Contracts.pdf" rel="nofollow">Contracts: What you need to know</a></td>
+  <td>Small Business Series</td>
+  <td >2006</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.meyercapel.com/pubs/law_tech_and_Internet.pdf" rel="nofollow">Law, Technology and the Internet</a></td>
+  <td>Small Business Legal Series</td>
+  <td >2006</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.meyercapel.com/pubs/Intro.pdf" rel="nofollow">An Introduction to Business Structures</a></td>
+  <td>Small Business Legal Series</td>
+  <td >2006</td>
+</tr>
+</tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 13 speaking engagements<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional speaking engagements<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+</section></div></div>    </section>
+
+    <div class="span4" id="profile_b_column">
+      
+
+  <section class="reloadable-module" data-widget-params="eJwNizEOwjAQBP-ytSPZCQW45QNIFJTo5Bh04mxHuUsBUf6Oy52Z3ZGEVBHx4PmdTWO8G6fP97a2F0u-tmqUDA4LrVR6uGPpKqtyqyRPnhGDP18mHxyUfxmxbiKHg7RE0idy7XfjktWoLB2MPpyGEIZxwvEHaVUqdg=="><div class="page-row"><div class="span4 margin4 js-floating-box" id="sticky_profile_contact_widget"><div class="box"><section><h4 class="light margin4">We&#39;re ready to help. Contact us today.</h4><div class="page-row margin0"><div class="span1 boxed-left"><h3 class="icon-phone pull-right"></h3></div><div class="span3 boxed-right"><h3><span class="3013_phone ">217-819-4357</span><script>
+//<![CDATA[
+
+          $(document).ready(function(){
+            $(".3013_phone").each(function(index, element) {
+              $(element).html("217-583-4043");
+              if(element.parentNode.tagName == "A"){
+                element.parentNode.setAttribute("href","tel:217-583-4043");
+              }
+            });
+          });
+        
+//]]>
+</script></h3></div></div><div class="page-row"><div class="span4 boxed-right boxed-left"><form accept-charset="UTF-8" action="/attorneys/61826-il-steven-amjad-1089301/contact/preprocess" class="new_contact_professional" data-remote="true" id="sticky_contact_email_form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+  <textarea class="collapsed full-width text" id="sticky_contact_professional_message" name="contact_professional[message]" placeholder="Send this attorney a message" rows="5">
+</textarea>
+
+  <div id="sticky_contact_hidden_fields" style="display: none;">
+    <label class="full-width" for="sticky_contact_professional_name" required="required">Your name</label><input class="full-width text" id="sticky_contact_professional_name" name="contact_professional[name]" type="text" />
+    <label class="full-width" for="sticky_contact_professional_email" required="required">Your email address</label><input class="full-width text" id="sticky_contact_professional_email" name="contact_professional[email]" type="text" />
+    <input id="using_new_styles" name="using_new_styles" type="hidden" value="true" />
+    
+
+    <p style="position:relative;">
+      <input class="primary action" name="commit" type="submit" value="Preview" />
+      <button class="cancel action" name="button" onclick="" type="button">Cancel</button>
+    </p>
+  </div>
+</form>
+<script>
+//<![CDATA[
+
+  $(document).ready(function(){
+    $('#sticky_contact_professional_message').focus(function() {
+      if(!$('#sticky_contact_hidden_fields').is(':visible')) {
+        _avn.notify('amos.contacts.viewed_email_form', {"professional_id":1089301,"gtm":{"position":"pro","property":"1089301-Steven-Amjad"}});
+        $('#sticky_contact_hidden_fields').slideDown(0.6);
+      }
+      $('#sticky_contact_professional_message').parents(".field").removeClass("collapsed");
+    });
+    $("#sticky_contact_email_form :input.cancel").click(function(evt){
+      $('#sticky_contact_hidden_fields').slideUp();
+      $('#sticky_contact_professional_message').val("").parents(".field").addClass("collapsed");
+      $('#sticky_contact_professional_name').val("");
+      $('#sticky_contact_professional_email').val("");
+      $('.sticky_profile_contact_widget .error').each(function(i, e){ $(e).html('');});
+
+      evt.preventDefault();
+      return false;
+    });
+  });
+
+//]]>
+</script></div></div><div class="page-row margin2"><div class="span1 boxed-left"><h4 class="icon-website pull-right"></h4></div><div class="span3 boxed-right"><h4><a data-avn="{&quot;name&quot;:&quot;amos.profiles.website_clicked&quot;,&quot;payload&quot;:{&quot;gtm&quot;:{&quot;event&quot;:&quot;contact-advertising-website&quot;,&quot;position&quot;:&quot;pro&quot;,&quot;property&quot;:&quot;1089301-Steven-Amjad&quot;}}}" href="http://www.meyercapel.com/attorneys/amjad.html" onclick="this.href=&#39;/attorneys/61826-il-steven-amjad-1089301/website.html&#39;;return true;" target="_blank">Visit attorney&#39;s website</a></h4></div></div></section></div></div></div></section><!--not_cached Widget:widgetssticky_profile_contact:false:ajax:false:size::professional_id:1089301:edit_mode:false;1416733865-->
+
+    </div>
+
+    
+  </div>
+</div>
+
+
+<script>
+//<![CDATA[
+
+  $(function(){
+    $('.js-replaceable').bind('dom:changed', function(){
+      $(this).find('.js-hover-tooltip-link').hoverTooltip();
+    });
+  });
+
+//]]>
+</script>
+</span>
+    <footer class="persistent-footer page full-width no-border"><div class="page-row"><a class="quiet span3" href="//www.avvo.com/"><div class="icon-avvo-logo footer-logo"></div><div class="footer-slogan">Legal. <strong>Easier.</strong></div></a><div class="span3"><a class="quiet" href="/"><h3>Explore Avvo</h3></a><p class="margin1"><a class="quiet" href="/ask-a-lawyer">Ask a Lawyer</a></p><p class="margin1"><a class="quiet" href="/find-a-lawyer">Find a Lawyer</a></p><p class="margin1"><a class="quiet" href="/free-legal-advice">Free Legal Advice</a></p><p class="margin1"><a class="quiet" href="/review-your-lawyer">Review a Lawyer</a></p></div><div class="span3"><a class="quiet" href="/for-lawyers"><h3>For Lawyers</h3></a><p class="margin1"><a class="quiet" href="/for-lawyers">Lawyer Advertising</a></p><p class="margin1"><a class="quiet" href="/claim-your-profile">Claim Your Profile</a></p><p class="margin1"><a class="quiet" href="/support/all-firm-claim">For Law Firms</a></p><p class="margin1"><a class="quiet" href="//ignite.avvo.com">Marketing Management Software</a></p><p class="margin1"><a class="quiet" href="//lawyernomics.avvo.com">Lawyernomics Blog</a></p></div><div class="span3"><a class="quiet" href="/about_avvo"><h3>Company Info</h3></a><p class="margin1"><a class="quiet" href="/about_avvo/about_us">About Us</a></p><p class="margin1"><a class="quiet" href="/for-lawyers/support">Support</a></p><p class="margin1"><a class="quiet" href="//press.avvo.com">Press Room</a></p><p class="margin1"><a class="quiet" href="/partner_with_us">Partner With Us</a></p><p class="margin1"><a class="quiet" href="/about_avvo/jobs">Careers</a></p><p class="margin1"><a class="quiet" href="//avvoblog.com">Avvo Blog</a></p><p class="margin1"><a class="quiet" href="//nakedlaw.avvo.com">NakedLaw Blog</a></p></div></div></footer><footer class="black"><div id="fine_print_container"><div id="fine_print"><div class="contact_avvo">Follow us on <a href="//www.twitter.com/avvo"><img alt="Twitter" src="http://assets2.iavvo.com/assets/embed/additional_links/twitter_icon-c160ce8886d11899e6833dd271a13f2d.png" /></a><a href="http://www.facebook.com/avvo"><img alt="Facebook" src="http://assets1.iavvo.com/assets/embed/additional_links/facebook_icon-6d9bd4ddfbad9c81a22fd2471b67d673.png" /></a><a href="//plus.google.com/107840042923877554905"><img alt="Google icon" src="http://assets2.iavvo.com/assets/embed/additional_links/google_icon-942738832fa1fe452c21f15e5a9194b2.png" /></a></div><p class="bottom_links"><span class="copyright">&copy;2014 Avvo, Inc. All Rights Reserved </span><span><a href="?prefer_mobile=true" rel="nofollow">Mobile View</a></span><span class="pipe">|</span><span><a href="/support/terms" rel="nofollow">Terms of Use</a></span><span class="pipe">|</span><span><a href="/support/privacy" rel="nofollow">Privacy Policy</a></span><span class="pipe">|</span><span><a href="/support/community_guidelines" rel="nofollow">Community Guidelines</a></span></p></div></div></footer>
+
+    <noscript>
+  <div style="text-align:center;background:#fbf3c5;color:#911717;padding:8px;border-bottom:1px solid #D7DADD;">
+  <strong>We've detected that your browser does not support scripting.</strong> <br/>
+  Scripting must be enabled to use Avvo. Turn on scripting and reload this page.
+  </div>
+</noscript>
+
+
+
+
+    <!-- r:2c4e22c7b390a64641358a65bde9e1a551c45b69 -->
+<!-- d:Fri Nov 21 22:19:26 PST 2014 -->
+<!-- p:www.avvo.com -->  
+
+
+
+
+
+    
+    <script src="http://assets2.iavvo.com/assets/footer_common-59d36e58c17ffbec325b4d50f60e0fda.js"></script>
+    <script src="http://assets1.iavvo.com/assets/floating_box-a803f669a36f68baa4d79a920d5fe3a1.js"></script>
+
+
+
+<div id="google_remarketing">
+
+    <script type="text/javascript">
+    /* <![CDATA[ */
+    var google_conversion_id = 1057123743;
+    var google_conversion_language = "en";
+    var google_conversion_format = "3";
+    var google_conversion_color = "ffffff";
+    var google_conversion_label = "z9BlCKXnsAIQn9uJ-AM";
+    var google_conversion_value = 0;
+    /* ]]> */
+    </script>
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js?avvo_DM9o">
+    </script>
+    <noscript>
+    <div style="display:inline;">
+    <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/1057123743/?label=z9BlCKXnsAIQn9uJ-AM&amp;guid=ON&amp;script=0"/>
+    </div>
+    </noscript>
+
+</div>
+
+    <script>
+//<![CDATA[
+
+$(function(){
+  var a=document.createElement("script");
+  var b=$("script")[0];
+  a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0011/6860.js";
+  a.async=true;a.type="text/javascript";
+  b.parentNode.insertBefore(a,b);
+});
+
+//]]>
+</script>
+  </body>
+
+
+</html>

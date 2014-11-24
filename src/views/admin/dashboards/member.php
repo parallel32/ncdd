@@ -12,6 +12,14 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                </div>
             </div>
 
+            <div class="row-fluid">
+               <div class="span12">
+                  <div class="span12">
+                     <h3>Please watch this video tutorial on how to utilize the Virtual Forensic Library.</h3>
+                     <iframe width="640" height="480" src="//www.youtube.com/embed/OvM3pPAWJ9Q?rel=0" frameborder="0" allowfullscreen></iframe>
+                  </div>
+               </div>
+            </div>
 
             <div id="approved-applications" class="row-fluid">
                <div class="span12">

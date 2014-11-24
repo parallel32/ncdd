@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+
+<html class="no-js">
+  <head>
+    
+<!-- force browser refresh of favicon.  Plz remove me someday? -->
+<link href="http://www.avvo.com/favicon.ico?v=2" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+
+<meta charset="utf-8">
+<title>Lawyer Steven Weaver - Saint Louis Attorney - Avvo.com</title>
+
+<meta name="description" content="Steven Weaver is a Criminal Defense Attorney in Saint Louis, MO. Click Steven’s profile to discover his Avvo Rating, write a review, and read professional endorsements." />
+
+<meta name="robots" content="index,follow" />
+
+
+
+<meta property="og:image" content="http://assets2.iavvo.com/assets/header_logo-d9da0710ef4f108673b08e2f89ee79c8.png" />
+
+
+<meta name="robots" content="NOODP,NOYDIR" />
+
+<script>
+//<![CDATA[
+window.locationContext = {"id":23673,"name":"Atlanta","city_name":"Atlanta","state_name":"Georgia","state_code":"GA","postal_code":null};window.adLocationContext = {"id":61489,"name":"30316","city_name":"Atlanta","state_name":"Georgia","state_code":"GA","postal_code":"30316"};
+//]]>
+</script><script src="//cdn.optimizely.com/js/275511722.js"></script>
+
+<link href="https://plus.google.com/107840042923877554905" rel="publisher" />
+
+  <link href="http://assets1.iavvo.com/assets/application-679b5b560ef19c2728b0c8d332d28f6a.css" media="all" rel="stylesheet" />
+  <!--[if lt IE 9]>
+    <link href="http://assets1.iavvo.com/assets/font_avvo_icon_bad_IE_bad_dog-27d8ace9b1fdd6c93145f0e1b7827dc6.css" media="all" rel="stylesheet" />
+  <![endif]-->
+
+<link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:700|Open+Sans:300,400,600,700" media="all" rel="stylesheet" />
+
+<script src="http://assets2.iavvo.com/assets/application-944ee4fdb62f3df1542271af9ecbae14.js"></script>
+
+<!--[if (gte IE 6)&(lte IE 8)]>
+    <script src="http://assets2.iavvo.com/assets/selectivizr-c4422edc73658e842dce601b5979afe2.js"></script>
+<![endif]-->
+
+
+
+  <link href="http://www.avvo.com/attorneys/63103-mo-steven-weaver-270389.html" rel="canonical" />
+
+<script>
+//<![CDATA[
+
+  google_analytics_domain_name=".avvo.com";
+  try {
+    var _gaq = _gaq || [];
+    _gaq.push(
+      ['_setAccount', 'UA-4437273-1'],
+      ['_setDomainName', '.avvo.com'],
+      ['_setCustomVar', 1,'user_type','other', 1],
+      ['_setCustomVar', 5, 'abs', '....................................................................................................', 3]
+    );
+
+        _gaq.push(['_setCustomVar', 2,'type', 'claimed', 3]);
+        _gaq.push(['_setCustomVar', 3,'spec',"55_Criminal Defense", 3]);
+
+    _gaq.push(['_trackPageview']);
+  } catch(err) {}
+
+//]]>
+</script>
+
+  <script>
+//<![CDATA[
+
+  try {
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  } catch(err) {}
+
+//]]>
+</script>
+  <script type='text/javascript'>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function() {
+      var gads = document.createElement('script');
+      gads.async = true;
+      gads.type = 'text/javascript';
+      var useSSL = 'https:' == document.location.protocol;
+      gads.src = (useSSL ? 'https:' : 'http:') +
+        '//www.googletagservices.com/tag/js/gpt.js';
+      var node = document.getElementsByTagName('script')[0];
+      node.parentNode.insertBefore(gads, node);
+    })();
+  </script>
+
+  <script type='text/javascript'>
+    googletag.cmd.push(function () {
+              googletag.pubads().setTargeting('useg', 'unknown');
+              googletag.pubads().setTargeting('spec', '55');
+    });
+
+      googletag.cmd.push(function() {
+        googletag.defineSlot('/4508117/legal_directory_300x100_right', [300, 100], 'div-gpt-ad-440095570213-0').addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.pubads().collapseEmptyDivs();
+        googletag.enableServices();
+      });
+  </script>
+
+
+
+<script type="text/javascript">window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"location":{"id":6053378,"professional_id":270389,"name":"TLW and Associates","displayable":true,"ordinal":1,"updated_at":"2012-08-14T02:42:14.000-07:00","updated_by":319037,"license_id":null,"created_at":"2013-08-27T10:31:39.000-07:00"},"pageTitle":"Lawyer Steven Weaver - Saint Louis Attorney","siteSection":null,"logicalSection":"lawyers/show","renderType":"desktop","persistentSessionId":"611acef1-c171-4833-87a9-660cdb9163a4","userId":null,"userEmail":null,"userType":"anonymous","professionalId":null,"professional":"270389-Steven-Weaver","specialty":55,"claimStatus":"claimed","ratingType":"No concern","rating":7.5,"reviewScore":5.0,"reviews":1,"endorsements":8,"profileContent":{"contributions":{"legalAnswers":473,"bestAnswers":16,"agree":305,"helpful":47,"guides":0,"staffPicks":0},"headshot":"yes","aboutMe":"yes","publications":1,"awards":1,"workExperience":2,"speakingEngagements":0},"professionalType":"non-advertiser"});</script>
+
+  <meta name="ad-location-id" content="61489" /><meta name="ad-specialty-id" content="55" /><meta name="page-template-name" content="Lawyer Profile - Main" /></head>
+  <body>
+    <script>
+//<![CDATA[
+duraLogEvents('eJztUk2P2yAQ/SsRZ+NlDMF27lUvrdRDb6sVmtjjLBIGC0jcqOp/L04aqdl7\nbz36mfcx8+b1FRToTmrVdhVbYpgoJRs8OmPnJd4/WMVwDglWHFn1kw2Y6RTi\nlR1uBOuIfaSO7NC0QnZ9xcYwo/Xl7bquNV4uoR7CXAjn6Ar4gjmH6OmaXrQE\nIfkceMp0Ic9XwgtFftep3/PsCivSRDFSZAd/dq6oJIoGT+TzA0n3FLcMrNfT\ntO+AOIIeuRL7hh/FRByUmFRP2Gigm+ocMhm7FAqItoamq0HXjWjLz5nye9jE\nPn/6zv44buJ3u0h+3ACfMvqBzOl8MyYSzXESiktd7JRqet533Z6rjnoklKAb\nuW2NYrJlXp/NU24NgANNwAdooZCk5F2LPddaDOOxBy1RsV9v1XN7ZQ/mYmn9\n0JcLpbGHdCN1K8uWFhosuny9gft9xehHCZNtor+GS+gomUinBxsaEB/gJZTJ\nnRnCSObJSYPa+k9L8ClEGo0rk1p/MsmFnNihpBhtWhxeHwhULNNckNKFx5nK\nIr7geqW4+3a/sx3ffd2O6f9V/curevsNylRM2A==\n');
+//]]>
+</script>
+
+<script>
+//<![CDATA[
+
+  $(document).on('click', '[data-dura-trackable-href]', duraUpdateLinkHREF);
+
+//]]>
+</script>
+    <noscript><iframe height="0" src="//www.googletagmanager.com/ns.html?id=GTM-K2L3VH" style="display:none;visibility:hidden" width="0"></iframe></noscript><script type="text/javascript">(function(w, d, s, l, i){
+  w[l] = w[l] || [];
+  w[l].push({ 'gtm.start' : new Date().getTime(),
+              event       : 'gtm.js'});
+  var f   = d.getElementsByTagName(s)[0];
+  var j   = d.createElement(s);
+  var dl  = l != 'dataLayer' ? '&l='+ l : '';
+  j.async = true;
+  j.src   = '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-K2L3VH');</script>
+    <div id="bing_tracking">
+
+</div>
+    <noscript>
+  <div style="text-align:center;background:#fbf3c5;color:#911717;padding:8px;border-bottom:1px solid #D7DADD;">
+  <strong>We've detected that your browser does not support scripting.</strong> <br/>
+  Scripting must be enabled to use Avvo. Turn on scripting and reload this page.
+  </div>
+</noscript>
+
+    <hgroup><header><nav id="page_header"><a href="//www.avvo.com/"><img alt="Logo@2x" class="logo" src="http://assets2.iavvo.com/assets/logos/logo@2x-39c17b04a49441c5131b852386f9312e.png" /></a><ul class="pull-right" id="sign-in-module"><li class="left-margin"><a href="/for-lawyers">For Lawyers</a></li><li class="left-margin"><a href="/account/login" rel="nofollow">Sign in</a></li><li class="left-margin"><a href="/account/register" rel="nofollow">Register</a></li></ul></nav></header></hgroup>
+    <div class="page">
+      <div id="primary_nav_and_breadcrumb">
+        <nav class="" id="primary_nav"><style type="text/css">.menu-primary{height:auto}.menu-primary #my-avvo-link{padding-top:28px}</style><ul class="center-content clearfix menu-primary"><li><a href="/free-legal-advice">Research<br/>Legal Advice</a></li><li><a href="/ask-a-lawyer">Ask<br/>a Lawyer</a></li><li class="active"><a href="/find-a-lawyer">Find<br/>a Lawyer</a></li><li><a href="https://advisor.avvo.com?avvo_source=avvo&amp;avvo_medium=global_navigation&amp;avvo_campaign=avvo_advisor">Instant<br/>Phone Call <span class='label label-success' style='line-height: 12px;'>New!</span></a></li><li><a href="/review-your-lawyer">Review<br/>Your Lawyer</a></li></ul><script type="text/javascript">$(document).ready(function(){
+  if(true){
+    $('.menu-primary.my_avvo').show();
+    $('#my-avvo-link').parent('li').addClass('active');
+  }
+  $('#my-avvo-link').click(function(){
+    $('.menu-primary.my_avvo').slideToggle();
+    return false;
+  })
+})</script>  <div class="search browsable" id="primary_nav_search">
+      <span id="search_selector">
+        Lawyers
+      </span>
+      <ul id="search_selector_menu" style="display:none;">
+          <li data-form-id="lawyer_search">Lawyers</li>
+          <li data-form-id="legal_advice_search">Legal Advice</li>
+      </ul>
+
+        <span id="lawyer_search" class="search_form_container selectable" >
+          
+<form accept-charset="UTF-8" action="/search/lawyer_search" class="search_form search-form" id="lawyer_search_primary_nav_search_search_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+  <input autocomplete="off" class="keyword_field keyword-search-field " data-tooltip-right="true" id="lawyer_search_primary_nav_search_search_form_keyword_field" name="q" placeholder="Lawyer&#39;s name -OR- Practice area" type="text" />
+  <input autocomplete="off" class="location_field location-search-field " id="lawyer_search_primary_nav_search_search_form_location_field" name="loc" placeholder="City, State -OR- ZIP" type="text" value="Atlanta, GA" />
+  <span class="icon-submit">
+    <input class="button primary action " name="commit" style="" type="submit" value="" />
+  </span>
+
+</form>
+        </span>
+</div>
+<script>
+//<![CDATA[
+
+  $(document).click(function(e){
+    if(e.target.id != "search_selector") {
+      $("#search_selector_menu").hide();
+    }
+  });
+
+  $("#search_selector_menu li").click(function(e) {
+    form_id = $(this).attr("data-form-id");
+    $("#primary_nav_search .search_form_container").hide();
+    $("#" + form_id).show();
+    $("#search_selector").html($(this).html());
+    $("ul.ui-autocomplete").hide();
+    $("#search_selector_menu").hide();
+  });
+
+  $("#search_selector").click(function(e) {
+    $("#search_selector_menu").toggle();
+    $("#search_selector_menu").position({
+      my: "left top",
+      at: "left bottom",
+      of: $("#search_selector")
+    });
+  });
+
+  $("#primary_nav_search .keyword_field").change(function(e) {
+    $("#primary_nav_search .keyword_field").val($(e.target).val());
+    $("#primary_nav_search .keyword_field").trigger('valuechanged');
+  });
+
+  $("#primary_nav_search .location_field").change(function(e) {
+    $("#primary_nav_search .location_field").each(function(i,el) {
+      $(el).val($(e.target).val());
+      $(el).trigger('valuechanged');
+    });
+  });
+
+//]]>
+</script>
+</nav><div id="breadcrumb"><div class="breadcrumbs"><span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/all-lawyers/mo.html" itemprop="url"><span itemprop="title">Missouri</span></a></span>&nbsp;&gt;&nbsp;<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/all-lawyers/mo/saint_louis.html" itemprop="url"><span itemprop="title">Saint Louis</span></a></span>&nbsp;&gt;&nbsp;<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/criminal-defense-lawyer/mo/saint_louis.html" itemprop="url"><span itemprop="title">Criminal Defense Attorneys</span></a></span>&nbsp;&gt;&nbsp;<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><span class="current" itemprop="title"><span>Steven Parnell Weaver</span></span></span></div></div><!--[if lt IE 9]><script type="text/javascript">$(document).ready(function(){
+  $('.icon-submit').click(function(){
+    $(this).parent().submit();
+  });
+})</script><![endif]-->
+      </div>
+      <div id="flash"></div>
+    </div>
+    
+      <span>
+          
+<div class="page stripped"  itemscope = "itemscope" itemtype = "http://schema.org/Attorney" >
+
+  <!-- header -->
+    <div class="page-row margin6" id="profile_header"><div class="span12"><h1 class="light pull-left condensed margin0"><span class="pull-left" itemprop="name">Steven Parnell Weaver
+</span></h1></div><div class="span12 margin2" id="name_alias_section"><h3></h3></div><div class="span12 inline-hgroup" id="firm_office_detail"></div></div>
+
+
+  <div class="page-row">
+    <section class="span8" id="profile_details">
+
+
+      <!-- tabs -->
+
+
+      <div id="profile_overview">
+  <!-- headshot -->
+  <div class="page-row" id="headshot">
+    <div class="span2">
+      <span class="avvo-inline-block">
+        <img alt="Steven Parnell Weaver" class="borderless standard" itemprop="image" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/standard/270389_1376416290.jpg" title="Steven Parnell Weaver" />
+      </span>
+    </div>
+    <div class="span6">
+        <div class="page-row margin8"><div class="span3"><div class="page-row"><div class="span3" itemscope="itemscope" itemtype="http://schema.org/Review"><div itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Organization"><meta content="Avvo Inc." itemprop="name" /><meta content="Avvo" itemprop="alternateName" /><meta content="http://www.avvo.com" itemprop="url" /></div><div class="icon half-width pull-left" data-tooltip-remote="avvo_rating_description"><img alt="Avvorating@2x" src="http://assets2.iavvo.com/assets/embed/profile/avvorating@2x-cf89cef391e72dc3ea9ec72ed16ce495.png" width="100" /></div><div class="pull-left center-content margin5" itemprop="reviewRating" itemscope="itemscope" itemtype="http://schema.org/Rating"><span class="avvo_rating_numeric"><h2 class="text-red light bold center-content condensed margin0" itemprop="ratingValue">7.5</h2><img alt="" class="rating_image" src="http://assets2.iavvo.com/assets/profile_rating/icon_rating_07-779c3c62c0d6b19f8bac2056f17ba695.gif" /><h3 class="rating_info center-content text-red light"><span class="summary"><a class="tooltip_link tooltip-link" data-tooltip-remote-options="" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">Very&nbsp;Good</a></span></h3><meta content="10.0" itemprop="bestRating" /><meta content="0.0" itemprop="worstRating" /></span></div><meta content="Steven Parnell Weaver" itemprop="itemReviewed" /></div><div class="span3 margin4">  <table id="sub_rating">
+
+        <tr>
+          <td>Experience</td>
+          <td>
+            <span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-half-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-empty-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-empty-circle" style="font-size:13px"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Industry Recognition</td>
+          <td>
+            <span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-half-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-empty-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-empty-circle" style="font-size:13px"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Professional Conduct</td>
+          <td>
+            <span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span></span>
+          </td>
+        </tr>
+
+  </table>
+<p class="text-meta"><a class="tooltip_link tooltip-link" data-tooltip-remote-options="provisional=false" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">What is the Avvo Rating?</a></p></div></div></div><div class="span3 margin6"><div class="page-row"><div class="span3"><div class="page-row"><div class="span1"><img alt="Reviews" class="full-width" src="http://assets2.iavvo.com/assets/embed/profile/reviews-72fd939ee2e493ce25a7b88d3da6028c.png" /></div><div class="span2"><a class="count" href="/attorneys/63103-mo-steven-weaver-270389/reviews.html"><div class="page-row"><div class="inline-hgroup span2"><h3 class="light condensed margin0 stripped">1&nbsp;</h3><h5 class="light condensed margin0 stripped">Review</h5></div><div class="span2"><a class="star_rating full-width" href="/attorneys/63103-mo-steven-weaver-270389/reviews.html"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a></div></div></a><div class="client_review_links">Current or former client? <a data-avn="{&quot;name&quot;:&quot;amos.gtm.view-lawyer-review-form&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;270389-Steven-Weaver&quot;}}" href="/attorneys/63103-mo-steven-weaver-270389/write_review.html" rel="nofollow">Write a review</a></div></div></div></div><hr class="span3" /><div class="span3"><div class="page-row"><div class="span1"><img alt="Endorse" class="full-width" src="http://assets1.iavvo.com/assets/embed/profile/endorse-393f817ef630e2e358047b4ca97e17ed.png" /></div><div class="span2"><div class="page-row"><a href="/attorneys/63103-mo-steven-weaver-270389/endorsements.html"><div class="inline-hgroup span2"><h3 class="light condensed margin0 stripped">8&nbsp;</h3><h5 class="light condensed margin0 stripped">Endorsements</h5></div></a></div>Lawyers: <br><a href="/attorneys/63103-mo-steven-weaver-270389/write_endorsement.html" rel="nofollow">Endorse this lawyer</a></div></div></div><hr class="span3" /><div class="span3"><div class="page-row"><div class="span1"><img alt="Contri" class="full-width" src="http://assets2.iavvo.com/assets/embed/profile/contri-c5a1b74b9701f86d9b28e2d9f4f0334c.png" /></div><div class="span2"><div class="page-row"><div class="inline-hgroup span2"><h5 class="light condensed margin0">Contributor Level</h5><h3 class="light condensed margin0 stripped">13</h3></div></div><p><a href="/attorneys/63103-mo-steven-weaver-270389/answers.html">View contributions</a></p></div></div></div></div></div><div class="span6"><div id="profile_actions" class="lawyer_profile_actions">
+    <a class="primary action" data-avn="{&quot;name&quot;:&quot;amos.gtm.view-lawyer-email-form&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;270389-Steven-Weaver&quot;}}" href="/attorneys/63103-mo-steven-weaver-270389/contact.html" rel="nofollow">Email Lawyer</a>
+
+  
+
+  <a class="action send" href="/attorneys/63103-mo-steven-weaver-270389/share.html" rel="nofollow">Send to a friend</a>
+</div>
+</div></div>
+    </div>
+  </div>
+</div>
+
+
+    
+      <div class="module"><h2>Overview</h2><div class="page-row" id="overview"><section class="span8">
+        <div class="js-replaceable margin6" id="specialties"><div class="page-row" id="specialties"><div class="span2"><h5 class="light">PRACTICE AREAS</h5></div><div class="span6"><div class="page-row"><div class="span2">
+<img alt="Chart?chs=169x169&amp;cht=p&amp;chp=4" class="full-width" id="specialty_chart" src="http://chart.apis.google.com/chart?chs=169x169&amp;cht=p&amp;chp=4.7&amp;chco=76d0eb|f48026|ffeb73|7ac142|b5b5b5&amp;chd=t:50,20,10,10,10" />
+
+</div><div class="span4"><div class="page-row js-link-hub"><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#76d0eb"></div><div class="span3"><a class="tooltip_link tooltip-link" data-tooltip="I came back home to Saint Louis after 6 years in the public defender&#39;s office in Los Angeles.  I have seen and handled just about any type of case and I am here to help.  No one is going to fight harder." href="#!" rel="nofollow">50% Criminal Defense</a><div class="text-meta">7 years, 2,500 cases</div></div></div></div></div><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#f48026"></div><div class="span3"><a class="tooltip_link tooltip-link" data-tooltip="We handle personal injury and other civil litigation issues." href="#!" rel="nofollow">20% Litigation</a><div class="text-meta">7 years, 15 cases</div></div></div></div></div><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#ffeb73"></div><div class="span3"><a class="tooltip_link tooltip-link" data-tooltip="I have won multiple DUI jury trials and have successfully had the charges dismissed on illegal search and seizure grounds.  I can say that I won a trial when my client had a BAC of .22.  Not many attorneys can say that." href="#!" rel="nofollow">10% DUI / DWI</a><div class="text-meta">7 years, 500 cases</div></div></div></div></div><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#7ac142"></div><div class="span3"><a class="tooltip_link tooltip-link" data-tooltip="Orders of Protection; Visitation and Custody Issues; Uncontested Divorce" href="#!" rel="nofollow">10% Family</a><div class="text-meta">7 years, 50 cases</div></div></div></div></div><div class="span4"><div class="js-expandable"><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#b5b5b5"></div><div class="span3"><a class="tooltip_link tooltip-link" data-tooltip="I worked in South Central Los Angeles for 2 years with juveniles at Kenyon Juvenile Justice Center and you will be hard pressed to find someone in St. Louis that has more experience than I do in this area.  No one works harder for you.  If we can get our kids right, this country will have a future. If we do not...." href="#!" rel="nofollow">5% Juvenile</a><div class="text-meta">7 years, 500 cases</div></div></div></div></div><div class="span4"><div class="js-expandable"><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#b5b5b5"></div><div class="span3"><a class="tooltip_link tooltip-link" data-tooltip="We have reasonable fees and we are not afraid to go to trial if needed." href="#!" rel="nofollow">5% Speeding / Traffic Ticket</a><div class="text-meta">2 years, 50 cases</div></div></div></div></div><div class="span4"><span><a class="js-toggle-hub" href="#!" rel="nofollow">Show all areas of practice<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional areas of practice<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div><div id="not_practicing_section">
+</div></div></div></div>
+        <div class="js-replaceable margin6" id="fees_payments"><div class="page-row" id="fees_payments_section"><div class="span2"><h5 class="light">FEES AND<BR> PAYMENT TYPES</h5></div><div class="span6"><div class="page-row"><div class="span6 margin4"><h4>Fees</h4><div id="fees_detail">    Retainer (Sometimes)
+
+</div></div><div class="span6"><h4>Payment types</h4><div id="payments_detail">  Cash, Credit Card
+  
+</div></div></div></div></div></div>
+          <div class="js-replaceable margin6" id="contact_information"><div class="page-row" id="contact_information_section"><div class="span2"><h5 class="light">CONTACT INFORMATION</h5></div><div class="span6"><div class="page-row" id="contact_information_detail"><div class="span3"><div class="address_list avvo-undecorated-list" id="sortable_address_list"><div class="address_sort margin4" id="address_6053378"><div class="address_name semibold">TLW and Associates</div><span><div class="address_line_1">3216 Locust St</div><div class="address_line_2"></div></span><div class="address_city_state">Saint Louis, MO 63103</div><div class="address_phone"><span class="phone_label muted">Office: </span><span id="phone_number_0" itemprop="telephone">314-531-4747</span></div><a data-avn="{&quot;name&quot;:&quot;amos.contacts.viewed_directions&quot;,&quot;payload&quot;:{&quot;professional_id&quot;:270389}}" href="http://maps.google.com/maps?q=3216+Locust+St%2C+Saint+Louis%2C+MO+63103+%28TLW+and+Associates%29" rel="nofollow" target="_blank"><span class="icon-map"></span> View map</a> <span class="pipe">|</span> <a href="/attorneys/63103-mo-steven-weaver-270389/user_reported_information.html?address=6053378" rel="nofollow">Edit this address</a></div></div></div><div class="span3"><div class="page-row"><div class="span3"><div class="page-row"><div class="span1"><div class="icon-email2 pull-right"></div></div><div class="span2"><a href="/attorneys/63103-mo-steven-weaver-270389/contact.html" rel="nofollow">Email this lawyer</a></div></div></div><hr class="span3" /></div>  <div id="additional_links" class="page-row">
+      <div class="span3">
+        <div class="page-row">
+          <div class="span1">
+            <span class='icon-website  pull-right'></span>
+          </div>
+          <div class="span2">
+              <a href="http://www.tlw-law.com" rel="nofollow" target="_blank">Law Office</a>
+          </div>
+        </div>
+      </div>
+
+
+  </div>
+</div>
+</div></div></div></div>
+        <div class="js-replaceable margin6" id="languages"><div class="page-row" id="languages_section"><div class="span2"><h5 class="light">LANGUAGES SPOKEN</h5></div><div class="span6"><div id="languages_detail"><ul class="avvo-undecorated-list margin0">
+    <li>
+  English
+</li>
+
+</ul>
+</div></div></div></div>
+        <div class="js-replaceable margin6" id="about_me"><div class="page-row" id="about_me_section"><div class="span2"><h5 class="light">ABOUT ME</h5></div><div class="span6"><div id="about_me_detail">  
+    <div id="media_table_wrapper">
+      <table><tr><td><div class="thumbnail borderless"><a data-modal-open="5j6G3fuk" href="#!" nofollow="nofollow" title=""><img alt="" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/thumbnail_small/270389_1376418343.jpg" title="" /></a></div><div id="5j6G3fuk" style="display:none;width:;height:"><div class="modal-header">Image</div><div class="modal-body"><img alt="270389 1376418343" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/normalized/270389_1376418343.jpg" /></div></div></td><td><div class="thumbnail borderless"><a data-modal-open="WtMzTuBd" href="#!" nofollow="nofollow" title=""><img alt="" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/thumbnail_small/270389_1376418321.jpg" title="" /></a></div><div id="WtMzTuBd" style="display:none;width:;height:"><div class="modal-header">Image</div><div class="modal-body"><img alt="270389 1376418321" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/normalized/270389_1376418321.jpg" /></div></div></td><td></td><td></td></tr></table>
+    </div>
+  
+    <p>
+      Former Missouri Tiger who has come back to his hometown of St. Louis after getting the best experience in the world with the Los Angeles County Public Defender'... <a href="/attorneys/63103-mo-steven-weaver-270389/aboutme.html">more</a>
+    </p>
+
+  <a class="navigation" href="/attorneys/63103-mo-steven-weaver-270389/aboutme.html">View all photos and/or videos</a>
+</div></div></div></div>
+</section></div></div>
+      <div class="module"><h2>References</h2><div class="page-row" id="references"><section class="span8">
+        <div class="js-replaceable margin6" id="reviews"><div class="page-row" id="reviews_section"><div class="span2"><h5 class="light">CLIENT REVIEWS</h5></div><div class="span6"><div id="reviews_detail"><div class="page-row"><div class="span1"><img alt="Reviews" class="full-width" src="http://assets2.iavvo.com/assets/embed/profile/reviews-72fd939ee2e493ce25a7b88d3da6028c.png" /></div><div class="span5"><div class="overview">
+  <h4>Client Rating</h4>
+  <div class="star_rating">
+      <a class="stars" href="/attorneys/63103-mo-steven-weaver-270389/reviews.html"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a>
+      <span class="review_count"><a href="/attorneys/63103-mo-steven-weaver-270389/reviews.html">1 review</a></span>
+  </div>
+  <div class="client_review_links">Current or former client? <a data-avn="{&quot;name&quot;:&quot;amos.gtm.view-lawyer-review-form&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;270389-Steven-Weaver&quot;}}" href="/attorneys/63103-mo-steven-weaver-270389/write_review.html" rel="nofollow">Write a review</a></div>
+</div>
+
+</div></div><hr class="margin4" /><div class="page-row margin2 with-overlay"><div class="span1"><img alt="Quotes@2x" class="full-width" src="http://assets2.iavvo.com/assets/embed/topic_pages/quotes@2x-77df7504b38dc1ede65c9b0e3e45acf7.png" /></div><div class="span5"><h3 class="light"><a href="/attorneys/63103-mo-steven-weaver-270389/reviews.html#325503">“Had my case dropped”</a></h3><a href="/attorneys/63103-mo-steven-weaver-270389/reviews.html#325503"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a><p>Many lawyers wanted to over charge me to take the case. Even charge me just to answer a few questions. Steven listened,  gave me a great price and... </p><p class="text-meta">Posted by: Edward, about 1 year ago.</p><div class="overlay bottom right margin2"><a data-tooltip-remote="confirm_objectionable" href="/professional_reviews/325503/objectionable" id="professional_review_objectionable_325503" rel="nofollow"><i class="medium-gray icon-flag"></i> Flag</a></div></div></div><div class="margin4"></div></div></div></div></div>
+        
+        <div class="js-replaceable margin6" id="endorsements"><div class="page-row" id="endorsements_section"><div class="span2"><h5 class="light">PEER ENDORSEMENTS</h5></div><div class="span6"><div id="endorsements_detail"><div class="page-row"><div class="span1"><img alt="Endorse" class="full-width" src="http://assets1.iavvo.com/assets/embed/profile/endorse-393f817ef630e2e358047b4ca97e17ed.png" /></div><div class="span5"><h4>Endorsements</h4><p class="pull-left"><a href="/attorneys/63103-mo-steven-weaver-270389/endorsements.html">8 endorsements</a></p><div class="pull-right">Lawyers: <a href="/attorneys/63103-mo-steven-weaver-270389/write_endorsement.html" rel="nofollow">Endorse this lawyer</a></div></div></div><hr class="margin4" />
+<div class="page-row margin6">
+  <!-- clear the cache -->
+  <div class="span1"><a href="/attorneys/30809-ga-michael-waddington-575452.html"><img alt="Michael S. Waddington" class="borderless thumbnail_medium" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/575452_1403592827.jpg" title="Michael S. Waddington" /></a></div>
+  <div class="span5">
+    <div>
+      <p>
+        I endorse Steven. He is a highly skilled attorney that is well respected in the legal community.
+      </p> 
+      <span class="muted text-meta">Endorsement from lawyer:
+        <a href="/attorneys/30809-ga-michael-waddington-575452.html">Michael Waddington</a>
+         , Evans (GA), 6 months ago
+      </span>
+    </div>
+  </div>
+</div>
+<div class="page-row margin6">
+  <!-- clear the cache -->
+  <div class="span1"><a href="/attorneys/94104-ca-kasie-lee-366231.html"><img alt="Kasie Waiyee Lee" class="borderless thumbnail_medium" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/366231_1359277162.jpg" title="Kasie Waiyee Lee" /></a></div>
+  <div class="span5">
+    <div>
+      <p>
+        Steven is a strong advocate who consistently thinks outside the box, which is a rarity in this field. He is also articulate and trustworthy. I highly... 
+          <a href="/attorneys/63103-mo-steven-weaver-270389/endorsements.html" rel="nofollow">more</a>
+      </p> 
+      <span class="muted text-meta">Endorsement from lawyer:
+        <a href="/attorneys/94104-ca-kasie-lee-366231.html">Kasie Lee</a>
+         , San Francisco (CA), About 1 year ago
+      </span>
+    </div>
+  </div>
+</div><a class="navigation" href="/attorneys/63103-mo-steven-weaver-270389/endorsements.html">View all 8 endorsements</a></div></div></div></div>
+</section></div></div>
+      <div class="module"><h2>R&eacute;sum&eacute;</h2><div class="page-row" id="resume"><section class="span8">
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="licenses_section"><div id="licenses"><div class="span8 margin2"><div class="box"><h5 class="light margin0">LICENSE</h5></div></div><div class="span8"><div id="licenses_detail"><p>8 years since Steven Parnell Weaver was first licensed to practice law.</p><div class="js-link-hub"><table class="table"><thead><tr><th>State</th><th>License status</th><th>Year acquired</th><th>Last updated by Avvo</th></tr></thead><tbody>
+<tr class="">
+  <td>California</td>
+  <td>
+      Active
+  </td>
+  <td>2006</td>
+  <td>09/17/2014</td>
+</tr>
+<tr class="">
+  <td>Missouri</td>
+  <td>
+      Good Standing, Active
+  </td>
+  <td>2013</td>
+  <td>04/02/2013</td>
+</tr></tbody></table></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="sanctions_section"><div id="sanctions"><div class="span8 margin2"><div class="box"><h5 class="light margin0">PROFESSIONAL MISCONDUCT</h5></div></div><div class="span8"><div id="sanctions_detail">  <p class="article-body sans-serif">
+    <span class="icon-no-misconduct icon-green icon-padded narrow right"></span>
+    We have not found any instances of professional misconduct for this lawyer.
+  </p>
+
+</div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="work_experience_section"><div id="work_experience"><div class="span8 margin2"><div class="box"><h5 class="light margin0">WORK EXPERIENCE</h5></div></div><div class="span8"><div id="work_experience_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Position</th><th>Duration</th></tr></thead><tbody><tr class=" ">
+  <td>
+    Associate at TLW and Associates, LLC
+  </td>
+  <td>
+    2012&ndash;present
+  </td>
+</tr>
+<tr class=" ">
+  <td>
+    Public Defender at Los Angeles County Office Of Public Defender
+  </td>
+  <td>
+    2006&ndash;2012
+  </td>
+</tr>
+</tbody></table></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="education_section"><div id="education"><div class="span8 margin2"><div class="box"><h5 class="light margin0">EDUCATION</h5></div></div><div class="span8"><div id="education_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>School</th><th>Major</th><th>Degree</th><th>Graduated</th></tr></thead><tbody><tr class=" ">
+  <td>Florida Coastal SOL</td>
+  <td></td>
+  <td>law</td>
+  <td></td>
+</tr>
+
+<tr class=" ">
+  <td>Univ of Missouri</td>
+  <td></td>
+  <td>undergraduate</td>
+  <td></td>
+</tr>
+
+</tbody></table></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="awards_section"><div id="awards"><div class="span8 margin2"><div class="box"><h5 class="light margin0">AWARDS</h5></div></div><div class="span8"><div id="awards_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Award Name</th><th>Granting Organization</th><th>Date</th></tr></thead><tbody><tr><td>2013 top contributor</td><td>www.avvo.com</td><td>2013</td></tr></tbody></table></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="organizations_section"><div id="organizations"><div class="span8 margin2"><div class="box"><h5 class="light margin0">ASSOCIATIONS</h5></div></div><div class="span8"><div id="organizations_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Position</th><th>Association Name</th><th>Duration</th></tr></thead><tbody><tr class=" ">
+  <td></td>
+  <td>John M. Langston Bar Association</td>
+  <td>
+    2006&ndash;2012
+  </td>
+</tr>
+<tr class=" ">
+  <td></td>
+  <td>Missouri State Bar Association</td>
+  <td>
+    2012&ndash;present
+  </td>
+</tr>
+</tbody></table></div></div></div></div></div></div>
+</section></div></div>
+      <div class="module"><h2>Portfolio</h2><div class="page-row" id="portfolio"><section class="span8">
+        <div class="js-replaceable margin7"><div class="page-row with-overlay" id=""><div id=""><div class="span8 margin2"><div class="box"><h5 class="light margin0">CONTRIBUTION</h5></div></div><div class="span8"><div class="contri-badge"><div class="contributor-level-badge level-3 margin1" data-tooltip-remote="contributor_badge"><i class="icon-badge-feather"></i></div><div class="badge-text">Contributor Level 13</div></div>
+<table class="table">
+  <tr>
+    <th>Answers:</th>
+    <td><a class="article-body sans-serif" href="/attorneys/63103-mo-steven-weaver-270389/answers.html">473</a></td>
+    <td><a class="article-body sans-serif" href="/attorneys/63103-mo-steven-weaver-270389/answers.html">Legal Answers</a></td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>16</td>
+    <td>Best Answers - chosen by asker</td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>305</td>
+    <td>Answers marked "I agree" by other lawyers</td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>47</td>
+    <td>Answers marked helpful by other users</td>
+  </tr>
+  <tr>
+    <th>Guides:</th>
+    <td>0</td>
+    <td>Legal Guides</td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>0</td>
+    <td>Staff Picks</td>
+  </tr>
+</table>
+  <a class="navigation" href="/attorneys/63103-mo-steven-weaver-270389/answers.html">View all contributions</a>
+</div></div></div></div>
+        
+        <div class="js-replaceable margin7"><div class="page-row with-overlay" id="legal_cases_section"><div id="legal_cases"><div class="span8 margin2"><div class="box"><h5 class="light margin0">CASES</h5></div></div><div class="span8">  <div class="margin4">
+  <div class="case_title"><a href="/attorneys/63103-mo-steven-weaver-270389/legal_cases/93738">Wrong Suspect</a></div>
+  <div class="outcome">
+    <strong>Outcome:</strong> Juvenile pled guilty to a Misdemeanor disturbing the peace - went home after over 60 days in custody and is now discharged from probation
+  </div>
+</div>
+
+
+</div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="publications_section"><div id="publications"><div class="span8 margin2"><div class="box"><h5 class="light margin0">PUBLICATIONS</h5></div></div><div class="span8"><div id="publications_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Article</th><th>Publication</th><th>Date</th></tr></thead><tbody><tr class=" ">
+  <td>A Parent&#39;s Guide to the CA Juvenile System</td>
+  <td>Kenyon Juvenile Justice Center</td>
+  <td>2011</td>
+</tr>
+</tbody></table></div></div></div></div></div></div>
+
+          
+</section></div></div>    </section>
+
+    <div class="span4" id="profile_b_column">
+      
+
+
+
+    <div class="margin7"><div class="js-ads" data-ad-limit="1" data-ad-track="true" data-ad-type="display_ads" data-preview-ad="null"></div></div><div class="margin7 js-common-sponsored-listings"><div class="js-ads" data-ad-format="desktop" data-ad-limit="3" data-ad-track="true" data-ad-type="sponsored_listing_ads" data-ad-variant="99" data-preview-ad="null"></div></div><div class="margin9"><section class="reloadable-module" data-widget-params="eJw1iz0KwzAMRu-iOQE7zeStU4_Q0QhbuAIlDpYCTUPuXkPp9r6fd0ISVIUAT86FTEN41FqE7hkG2LDh0scTMEeVav0nVFBi5kbJajvizbm3dy42Li_rjm6UGMWOyBnCuosMsCu1Pyt_6MfXAFITSo9Aa1eNF1LDZevF5Pw8ej9OM1xfdf03HA==">
+  <!-- ca-pub-4491911546116478/legal_directory_300x100_right -->
+
+  <div id='div-gpt-ad-440095570213-0' class="module google_ad google_ad_legal_directory_300x100_right" style='width:300px; height:100px;'>
+    <script>
+//<![CDATA[
+$(function(){
+      googletag.cmd.push(function() { googletag.display('div-gpt-ad-440095570213-0'); });
+});
+//]]>
+</script>  </div>
+</section><!--not_cached Widget:widgetsgoogle_ad:false:ajax:false:size::ad_slot:legal_directory_300x100_right:user::specialty_id::lawyer_id:--></div>
+
+    <section class="reloadable-module" data-widget-params="eJxdUk1v2zAM_S8624EcpbWjU7HzDsVaoEeDsehEmGQZEp3ULfrfR3lxlvUk6PHx8fHjU3QOUhJavFlzREpa_0IHhOY5hh5TsmEA94JxTKIQI0TwTP4U4100_60ReltL1eyZFbG370IPk3OF6G1MNIBHrvFCeMaBhbw1xuEVfYY4oHMMs5WV-oZwxshYmvo7tSMOBmOby6lCoAfrWjAm4tLDZUnqwpAmR3Y4Pp0CZcqmC56lLnhIlrCdolv1mEvQUeuDmRy2BEdnB1yj3GXHymjaw9zC-RyE7sEl5Mh0cLZzGWV9OHDuNzOSxadEwbNdD3N7rSQ0xYkFUhdhZOFvWX_rJuwiUvsbZ26qNy6Msb-cVNVxE7wv6xdHQlcPqlZq9w8E1hdbWalSNmWlXiupt1v90GyklKWstZSrQuuRTsEsk6zkCtrxbpqPzaZqmk3NT06bRpPv4lZjV8p9qeSrlFrutPq_xkrOLlW1l6ouBK8mHwwfymMhDFJunOYxb_sHxGgTYdT6J1zmZfFXxv1lkSV3Ww6P6OYnI188N_uBt48LHWS2WC6OeD6JwI-r-aoqt1J8_QEZuv_U">  <div class="module">
+    <h2>Related Lawyer Searches</h2>
+    <ul class="links">
+        <li><a href="/criminal-defense-lawyer/mo.html" title="Missouri Criminal Defense Attorneys">Missouri Criminal Defense lawyers</a></li>
+        <li><a href="/dui-dwi-lawyer/mo.html" title="Missouri DUI / DWI Attorneys">Missouri DUI lawyers</a></li>
+        <li><a href="/family-lawyer/mo.html" title="Missouri Family Law Attorneys">Missouri Family lawyers</a></li>
+        <li><a href="/juvenile-lawyer/mo.html" title="Missouri Juvenile Law Attorneys">Missouri Juvenile lawyers</a></li>
+        <li><a href="/litigation-lawyer/mo.html" title="Missouri Litigation Lawyers">Missouri Litigation lawyers</a></li>
+        <li><a href="/speeding-traffic-ticket-lawyer/mo.html" title="Missouri Speeding / Traffic Ticket Lawyers">Missouri Speeding Ticket lawyers</a></li>
+        <li><a href="/criminal-defense-lawyer/mo/saint_louis_county.html" title="Saint Louis County Criminal Defense Attorneys">Saint Louis County Criminal Defense lawyers</a></li>
+        <li><a href="/dui-dwi-lawyer/mo/saint_louis_county.html" title="Saint Louis County DUI / DWI Attorneys">Saint Louis County DUI lawyers</a></li>
+        <li><a href="/family-lawyer/mo/saint_louis_county.html" title="Saint Louis County Family Law Attorneys">Saint Louis County Family lawyers</a></li>
+        <li><a href="/juvenile-lawyer/mo/saint_louis_county.html" title="Saint Louis County Juvenile Law Attorneys">Saint Louis County Juvenile lawyers</a></li>
+        <li><a href="/litigation-lawyer/mo/saint_louis_county.html" title="Saint Louis County Litigation Lawyers">Saint Louis County Litigation lawyers</a></li>
+        <li><a href="/speeding-traffic-ticket-lawyer/mo/saint_louis_county.html" title="Saint Louis County Speeding / Traffic Ticket Lawyers">Saint Louis County Speeding Ticket lawyers</a></li>
+        <li><a href="/criminal-defense-lawyer/mo/saint_louis.html" title="Saint Louis Criminal Defense Attorneys">Saint Louis Criminal Defense lawyers</a></li>
+        <li><a href="/dui-dwi-lawyer/mo/saint_louis.html" title="Saint Louis DUI / DWI Attorneys">Saint Louis DUI lawyers</a></li>
+        <li><a href="/family-lawyer/mo/saint_louis.html" title="Saint Louis Family Law Attorneys">Saint Louis Family lawyers</a></li>
+        <li><a href="/juvenile-lawyer/mo/saint_louis.html" title="Saint Louis Juvenile Law Attorneys">Saint Louis Juvenile lawyers</a></li>
+        <li><a href="/litigation-lawyer/mo/saint_louis.html" title="Saint Louis Litigation Lawyers">Saint Louis Litigation lawyers</a></li>
+        <li><a href="/speeding-traffic-ticket-lawyer/mo/saint_louis.html" title="Saint Louis Speeding / Traffic Ticket Lawyers">Saint Louis Speeding Ticket lawyers</a></li>
+    </ul>
+  </div>
+</section><!--Widget:widgetsrelated_professional_serps:false:ajax:false:size::professional:Barrister::Professional-270389:limit:20-->
+
+
+    </div>
+
+    
+  </div>
+</div>
+
+
+<script>
+//<![CDATA[
+
+  $(function(){
+    $('.js-replaceable').bind('dom:changed', function(){
+      $(this).find('.js-hover-tooltip-link').hoverTooltip();
+    });
+  });
+
+//]]>
+</script>
+</span>
+    <footer class="persistent-footer page full-width no-border"><div class="page-row"><a class="quiet span3" href="//www.avvo.com/"><div class="icon-avvo-logo footer-logo"></div><div class="footer-slogan">Legal. <strong>Easier.</strong></div></a><div class="span3"><a class="quiet" href="/"><h3>Explore Avvo</h3></a><p class="margin1"><a class="quiet" href="/ask-a-lawyer">Ask a Lawyer</a></p><p class="margin1"><a class="quiet" href="/find-a-lawyer">Find a Lawyer</a></p><p class="margin1"><a class="quiet" href="/free-legal-advice">Free Legal Advice</a></p><p class="margin1"><a class="quiet" href="/review-your-lawyer">Review a Lawyer</a></p></div><div class="span3"><a class="quiet" href="/for-lawyers"><h3>For Lawyers</h3></a><p class="margin1"><a class="quiet" href="/for-lawyers">Lawyer Advertising</a></p><p class="margin1"><a class="quiet" href="/claim-your-profile">Claim Your Profile</a></p><p class="margin1"><a class="quiet" href="/support/all-firm-claim">For Law Firms</a></p><p class="margin1"><a class="quiet" href="//ignite.avvo.com">Marketing Management Software</a></p><p class="margin1"><a class="quiet" href="//lawyernomics.avvo.com">Lawyernomics Blog</a></p></div><div class="span3"><a class="quiet" href="/about_avvo"><h3>Company Info</h3></a><p class="margin1"><a class="quiet" href="/about_avvo/about_us">About Us</a></p><p class="margin1"><a class="quiet" href="/for-lawyers/support">Support</a></p><p class="margin1"><a class="quiet" href="//press.avvo.com">Press Room</a></p><p class="margin1"><a class="quiet" href="/partner_with_us">Partner With Us</a></p><p class="margin1"><a class="quiet" href="/about_avvo/jobs">Careers</a></p><p class="margin1"><a class="quiet" href="//avvoblog.com">Avvo Blog</a></p><p class="margin1"><a class="quiet" href="//nakedlaw.avvo.com">NakedLaw Blog</a></p></div></div></footer><footer class="black"><div id="fine_print_container"><div id="fine_print"><div class="contact_avvo">Follow us on <a href="//www.twitter.com/avvo"><img alt="Twitter" src="http://assets2.iavvo.com/assets/embed/additional_links/twitter_icon-c160ce8886d11899e6833dd271a13f2d.png" /></a><a href="http://www.facebook.com/avvo"><img alt="Facebook" src="http://assets1.iavvo.com/assets/embed/additional_links/facebook_icon-6d9bd4ddfbad9c81a22fd2471b67d673.png" /></a><a href="//plus.google.com/107840042923877554905"><img alt="Google icon" src="http://assets2.iavvo.com/assets/embed/additional_links/google_icon-942738832fa1fe452c21f15e5a9194b2.png" /></a></div><p class="bottom_links"><span class="copyright">&copy;2014 Avvo, Inc. All Rights Reserved </span><span><a href="?prefer_mobile=true" rel="nofollow">Mobile View</a></span><span class="pipe">|</span><span><a href="/support/terms" rel="nofollow">Terms of Use</a></span><span class="pipe">|</span><span><a href="/support/privacy" rel="nofollow">Privacy Policy</a></span><span class="pipe">|</span><span><a href="/support/community_guidelines" rel="nofollow">Community Guidelines</a></span></p></div></div></footer>
+
+    <noscript>
+  <div style="text-align:center;background:#fbf3c5;color:#911717;padding:8px;border-bottom:1px solid #D7DADD;">
+  <strong>We've detected that your browser does not support scripting.</strong> <br/>
+  Scripting must be enabled to use Avvo. Turn on scripting and reload this page.
+  </div>
+</noscript>
+
+
+
+
+    <!-- r:2c4e22c7b390a64641358a65bde9e1a551c45b69 -->
+<!-- d:Fri Nov 21 22:19:26 PST 2014 -->
+<!-- p:www.avvo.com -->  
+
+
+
+
+
+    
+    <script src="http://assets2.iavvo.com/assets/footer_common-59d36e58c17ffbec325b4d50f60e0fda.js"></script>
+
+
+
+<div id="google_remarketing">
+
+    <script type="text/javascript">
+    /* <![CDATA[ */
+    var google_conversion_id = 1057123743;
+    var google_conversion_language = "en";
+    var google_conversion_format = "3";
+    var google_conversion_color = "ffffff";
+    var google_conversion_label = "z9BlCKXnsAIQn9uJ-AM";
+    var google_conversion_value = 0;
+    /* ]]> */
+    </script>
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js?avvo_F5hh">
+    </script>
+    <noscript>
+    <div style="display:inline;">
+    <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/1057123743/?label=z9BlCKXnsAIQn9uJ-AM&amp;guid=ON&amp;script=0"/>
+    </div>
+    </noscript>
+
+</div>
+
+    <script>
+//<![CDATA[
+
+$(function(){
+  var a=document.createElement("script");
+  var b=$("script")[0];
+  a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0011/6860.js";
+  a.async=true;a.type="text/javascript";
+  b.parentNode.insertBefore(a,b);
+});
+
+//]]>
+</script>
+  </body>
+
+
+</html>

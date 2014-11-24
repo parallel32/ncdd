@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+
+<html class="no-js">
+  <head>
+    
+<!-- force browser refresh of favicon.  Plz remove me someday? -->
+<link href="http://www.avvo.com/favicon.ico?v=2" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+
+<meta charset="utf-8">
+<title>Lawyer Brandan Davies - Overland Park Attorney - Avvo.com</title>
+
+<meta name="description" content="Brandan Davies is a Criminal Defense Attorney in Overland Park, KS. Click Brandan’s profile to discover their Avvo Rating, write a review, and read professional endorsements." />
+
+<meta name="robots" content="index,follow" />
+
+
+
+<meta property="og:image" content="http://assets2.iavvo.com/assets/header_logo-d9da0710ef4f108673b08e2f89ee79c8.png" />
+
+
+<meta name="robots" content="NOODP,NOYDIR" />
+
+<script>
+//<![CDATA[
+window.locationContext = {"id":23673,"name":"Atlanta","city_name":"Atlanta","state_name":"Georgia","state_code":"GA","postal_code":null};window.adLocationContext = {"id":61489,"name":"30316","city_name":"Atlanta","state_name":"Georgia","state_code":"GA","postal_code":"30316"};
+//]]>
+</script><script src="//cdn.optimizely.com/js/275511722.js"></script>
+
+<link href="https://plus.google.com/107840042923877554905" rel="publisher" />
+
+  <link href="http://assets1.iavvo.com/assets/application-679b5b560ef19c2728b0c8d332d28f6a.css" media="all" rel="stylesheet" />
+  <!--[if lt IE 9]>
+    <link href="http://assets1.iavvo.com/assets/font_avvo_icon_bad_IE_bad_dog-27d8ace9b1fdd6c93145f0e1b7827dc6.css" media="all" rel="stylesheet" />
+  <![endif]-->
+
+<link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:700|Open+Sans:300,400,600,700" media="all" rel="stylesheet" />
+
+<script src="http://assets2.iavvo.com/assets/application-944ee4fdb62f3df1542271af9ecbae14.js"></script>
+
+<!--[if (gte IE 6)&(lte IE 8)]>
+    <script src="http://assets2.iavvo.com/assets/selectivizr-c4422edc73658e842dce601b5979afe2.js"></script>
+<![endif]-->
+
+
+
+  <link href="http://www.avvo.com/attorneys/66210-ks-brandan-davies-3446791.html" rel="canonical" />
+
+<script>
+//<![CDATA[
+
+  google_analytics_domain_name=".avvo.com";
+  try {
+    var _gaq = _gaq || [];
+    _gaq.push(
+      ['_setAccount', 'UA-4437273-1'],
+      ['_setDomainName', '.avvo.com'],
+      ['_setCustomVar', 1,'user_type','other', 1],
+      ['_setCustomVar', 5, 'abs', '....................................................................................................', 3]
+    );
+
+        _gaq.push(['_setCustomVar', 2,'type', 'claimed', 3]);
+        _gaq.push(['_setCustomVar', 3,'spec',"55_Criminal Defense", 3]);
+
+    _gaq.push(['_trackPageview']);
+  } catch(err) {}
+
+//]]>
+</script>
+
+  <script>
+//<![CDATA[
+
+  try {
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  } catch(err) {}
+
+//]]>
+</script>
+  <script type='text/javascript'>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function() {
+      var gads = document.createElement('script');
+      gads.async = true;
+      gads.type = 'text/javascript';
+      var useSSL = 'https:' == document.location.protocol;
+      gads.src = (useSSL ? 'https:' : 'http:') +
+        '//www.googletagservices.com/tag/js/gpt.js';
+      var node = document.getElementsByTagName('script')[0];
+      node.parentNode.insertBefore(gads, node);
+    })();
+  </script>
+
+  <script type='text/javascript'>
+    googletag.cmd.push(function () {
+              googletag.pubads().setTargeting('useg', 'unknown');
+              googletag.pubads().setTargeting('spec', '55');
+    });
+
+      googletag.cmd.push(function() {
+        googletag.defineSlot('/4508117/legal_directory_300x100_right', [300, 100], 'div-gpt-ad-30153061079-0').addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.pubads().collapseEmptyDivs();
+        googletag.enableServices();
+      });
+  </script>
+
+
+
+<script type="text/javascript">window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"location":{"id":4640576,"professional_id":3446791,"name":"Copley, Roth, \u0026 Wilson LLC","displayable":true,"ordinal":2,"updated_at":"2012-06-25T21:13:52.000-07:00","updated_by":511392,"license_id":null,"created_at":null},"pageTitle":"Lawyer Brandan Davies - Overland Park Attorney","siteSection":null,"logicalSection":"lawyers/show","renderType":"desktop","persistentSessionId":"54f979b3-da54-44cd-b1c3-451f43c44e52","userId":null,"userEmail":null,"userType":"anonymous","professionalId":null,"professional":"3446791-Brandan-Davies","specialty":55,"claimStatus":"claimed","ratingType":"No concern","rating":10.0,"reviewScore":4.9521,"reviews":188,"endorsements":34,"profileContent":{"contributions":{"legalAnswers":108,"bestAnswers":9,"agree":6,"helpful":13,"guides":2,"staffPicks":0},"headshot":"yes","aboutMe":"yes","publications":20,"awards":8,"workExperience":9,"speakingEngagements":7},"professionalType":"non-advertiser"});</script>
+
+  <meta name="ad-location-id" content="61489" /><meta name="ad-specialty-id" content="55" /><meta name="page-template-name" content="Lawyer Profile - Main" /></head>
+  <body>
+    <script>
+//<![CDATA[
+duraLogEvents('eJztUsGumzAQ/JXI55iHwRjIveqllXro7enJWvCSZ9XYyHZCo6r/3iV5kZrc\ne+uRwTM7Ozuvr0IK1faqlmLPlhgmTMkGD07beYm3D7ZnMIckVjBs/4uNkPEY\n4oUdrgTrkD1TDTvUUpIuiZowg/X0eF3XAs7nUIxhJsYpOgJfIOcQPV7Si1KV\nKPmPxIcI3oDnBs4WE/9QKt7z7IgXccIYMbKDPzlHOgmjhiP6fEfSzcjVBjNY\n0oZNz8t2bLmEEvggKsNNN3YdNlC1qr6qziGjtgtRRNkWouoKoYqqbOnnjPk9\nbGKfP31nHxM38du4iN5sgE8Z/Ij6eLoOHpSUgxSS90KVXCKWHIzsuWqqaeq6\nVgxDvwWHMdmUyb5+8N3IqW/7oaYUGsmlHA35HmsuGzHJepQSm4r9fts/HpBy\n0BTa+nQyF+hod+mqVm1NKS04WnD5cgWbZs/wJ5nJNuFfyyVwmHTE450t6EhP\n8BJoc6fHYFA/TFJCdv02KfgUIhrtaFPrjzq5kBN1hNph0+Lgckdoh4wzIXQL\nDzNSEF9gvWDcfbtVbcd3X7c6/e/Vv+3V2x95Hk3b\n');
+//]]>
+</script>
+
+<script>
+//<![CDATA[
+
+  $(document).on('click', '[data-dura-trackable-href]', duraUpdateLinkHREF);
+
+//]]>
+</script>
+    <noscript><iframe height="0" src="//www.googletagmanager.com/ns.html?id=GTM-K2L3VH" style="display:none;visibility:hidden" width="0"></iframe></noscript><script type="text/javascript">(function(w, d, s, l, i){
+  w[l] = w[l] || [];
+  w[l].push({ 'gtm.start' : new Date().getTime(),
+              event       : 'gtm.js'});
+  var f   = d.getElementsByTagName(s)[0];
+  var j   = d.createElement(s);
+  var dl  = l != 'dataLayer' ? '&l='+ l : '';
+  j.async = true;
+  j.src   = '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-K2L3VH');</script>
+    <div id="bing_tracking">
+
+</div>
+    <noscript>
+  <div style="text-align:center;background:#fbf3c5;color:#911717;padding:8px;border-bottom:1px solid #D7DADD;">
+  <strong>We've detected that your browser does not support scripting.</strong> <br/>
+  Scripting must be enabled to use Avvo. Turn on scripting and reload this page.
+  </div>
+</noscript>
+
+    <hgroup><header><nav id="page_header"><a href="//www.avvo.com/"><img alt="Logo@2x" class="logo" src="http://assets2.iavvo.com/assets/logos/logo@2x-39c17b04a49441c5131b852386f9312e.png" /></a><ul class="pull-right" id="sign-in-module"><li class="left-margin"><a href="/for-lawyers">For Lawyers</a></li><li class="left-margin"><a href="/account/login" rel="nofollow">Sign in</a></li><li class="left-margin"><a href="/account/register" rel="nofollow">Register</a></li></ul></nav></header></hgroup>
+    <div class="page">
+      <div id="primary_nav_and_breadcrumb">
+        <nav class="" id="primary_nav"><style type="text/css">.menu-primary{height:auto}.menu-primary #my-avvo-link{padding-top:28px}</style><ul class="center-content clearfix menu-primary"><li><a href="/free-legal-advice">Research<br/>Legal Advice</a></li><li><a href="/ask-a-lawyer">Ask<br/>a Lawyer</a></li><li class="active"><a href="/find-a-lawyer">Find<br/>a Lawyer</a></li><li><a href="https://advisor.avvo.com?avvo_source=avvo&amp;avvo_medium=global_navigation&amp;avvo_campaign=avvo_advisor">Instant<br/>Phone Call <span class='label label-success' style='line-height: 12px;'>New!</span></a></li><li><a href="/review-your-lawyer">Review<br/>Your Lawyer</a></li></ul><script type="text/javascript">$(document).ready(function(){
+  if(false){
+    $('.menu-primary.my_avvo').show();
+    $('#my-avvo-link').parent('li').addClass('active');
+  }
+  $('#my-avvo-link').click(function(){
+    $('.menu-primary.my_avvo').slideToggle();
+    return false;
+  })
+})</script>  <div class="search browsable" id="primary_nav_search">
+      <span id="search_selector">
+        Lawyers
+      </span>
+      <ul id="search_selector_menu" style="display:none;">
+          <li data-form-id="lawyer_search">Lawyers</li>
+          <li data-form-id="legal_advice_search">Legal Advice</li>
+      </ul>
+
+        <span id="lawyer_search" class="search_form_container selectable" >
+          
+<form accept-charset="UTF-8" action="/search/lawyer_search" class="search_form search-form" id="lawyer_search_primary_nav_search_search_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+  <input autocomplete="off" class="keyword_field keyword-search-field " data-tooltip-right="true" id="lawyer_search_primary_nav_search_search_form_keyword_field" name="q" placeholder="Lawyer&#39;s name -OR- Practice area" type="text" />
+  <input autocomplete="off" class="location_field location-search-field " id="lawyer_search_primary_nav_search_search_form_location_field" name="loc" placeholder="City, State -OR- ZIP" type="text" value="Atlanta, GA" />
+  <span class="icon-submit">
+    <input class="button primary action " name="commit" style="" type="submit" value="" />
+  </span>
+
+</form>
+        </span>
+</div>
+<script>
+//<![CDATA[
+
+  $(document).click(function(e){
+    if(e.target.id != "search_selector") {
+      $("#search_selector_menu").hide();
+    }
+  });
+
+  $("#search_selector_menu li").click(function(e) {
+    form_id = $(this).attr("data-form-id");
+    $("#primary_nav_search .search_form_container").hide();
+    $("#" + form_id).show();
+    $("#search_selector").html($(this).html());
+    $("ul.ui-autocomplete").hide();
+    $("#search_selector_menu").hide();
+  });
+
+  $("#search_selector").click(function(e) {
+    $("#search_selector_menu").toggle();
+    $("#search_selector_menu").position({
+      my: "left top",
+      at: "left bottom",
+      of: $("#search_selector")
+    });
+  });
+
+  $("#primary_nav_search .keyword_field").change(function(e) {
+    $("#primary_nav_search .keyword_field").val($(e.target).val());
+    $("#primary_nav_search .keyword_field").trigger('valuechanged');
+  });
+
+  $("#primary_nav_search .location_field").change(function(e) {
+    $("#primary_nav_search .location_field").each(function(i,el) {
+      $(el).val($(e.target).val());
+      $(el).trigger('valuechanged');
+    });
+  });
+
+//]]>
+</script>
+</nav><div id="breadcrumb"><div class="breadcrumbs"><span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/all-lawyers/ks.html" itemprop="url"><span itemprop="title">Kansas</span></a></span>&nbsp;&gt;&nbsp;<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/all-lawyers/ks/overland_park.html" itemprop="url"><span itemprop="title">Overland Park</span></a></span>&nbsp;&gt;&nbsp;<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/criminal-defense-lawyer/ks/overland_park.html" itemprop="url"><span itemprop="title">Criminal Defense Attorneys</span></a></span>&nbsp;&gt;&nbsp;<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><span class="current" itemprop="title"><span>Brandan Joseph Davies Esq.</span></span></span></div></div><!--[if lt IE 9]><script type="text/javascript">$(document).ready(function(){
+  $('.icon-submit').click(function(){
+    $(this).parent().submit();
+  });
+})</script><![endif]-->
+      </div>
+      <div id="flash"></div>
+    </div>
+    
+      <span>
+          
+<div class="page stripped"  itemscope = "itemscope" itemtype = "http://schema.org/Attorney" >
+
+  <!-- header -->
+    <div class="page-row margin6" id="profile_header"><div class="span12"><h1 class="light pull-left condensed margin0"><span class="pull-left" itemprop="name">Brandan Joseph Davies Esq.
+</span></h1></div><div class="span12 margin2" id="name_alias_section"><h3></h3></div><div class="span12 inline-hgroup" id="firm_office_detail"></div></div>
+
+
+  <div class="page-row">
+    <section class="span8" id="profile_details">
+
+
+      <!-- tabs -->
+
+
+      <div id="profile_overview">
+  <!-- headshot -->
+  <div class="page-row" id="headshot">
+    <div class="span2">
+      <span class="avvo-inline-block">
+        <img alt="Brandan Joseph Davies Esq." class="borderless standard" itemprop="image" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/standard/3446791_1303253092.jpg" title="Brandan Joseph Davies Esq." />
+      </span>
+    </div>
+    <div class="span6">
+        <div class="page-row margin8"><div class="span3"><div class="page-row"><div class="span3" itemscope="itemscope" itemtype="http://schema.org/Review"><div itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Organization"><meta content="Avvo Inc." itemprop="name" /><meta content="Avvo" itemprop="alternateName" /><meta content="http://www.avvo.com" itemprop="url" /></div><div class="icon half-width pull-left" data-tooltip-remote="avvo_rating_description"><img alt="Avvorating@2x" src="http://assets2.iavvo.com/assets/embed/profile/avvorating@2x-cf89cef391e72dc3ea9ec72ed16ce495.png" width="100" /></div><div class="pull-left center-content margin5" itemprop="reviewRating" itemscope="itemscope" itemtype="http://schema.org/Rating"><span class="avvo_rating_numeric"><h2 class="text-red light bold center-content condensed margin0" itemprop="ratingValue">10.0</h2><img alt="" class="rating_image" src="http://assets1.iavvo.com/assets/profile_rating/icon_rating_10-658f76e74c0051e763d8556fdce67c1d.gif" /><h3 class="rating_info center-content text-red light"><span class="summary"><a class="tooltip_link tooltip-link" data-tooltip-remote-options="" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">Superb</a></span></h3><meta content="10.0" itemprop="bestRating" /><meta content="0.0" itemprop="worstRating" /></span></div><meta content="Brandan Joseph Davies Esq." itemprop="itemReviewed" /></div><div class="span3 margin4">  <table id="sub_rating">
+
+        <tr>
+          <td>Experience</td>
+          <td>
+            <span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-empty-circle" style="font-size:13px"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Industry Recognition</td>
+          <td>
+            <span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Professional Conduct</td>
+          <td>
+            <span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span></span>
+          </td>
+        </tr>
+
+  </table>
+<p class="text-meta"><a class="tooltip_link tooltip-link" data-tooltip-remote-options="provisional=false" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">What is the Avvo Rating?</a></p></div></div></div><div class="span3 margin6"><div class="page-row"><div class="span3"><div class="page-row"><div class="span1"><img alt="Reviews" class="full-width" src="http://assets2.iavvo.com/assets/embed/profile/reviews-72fd939ee2e493ce25a7b88d3da6028c.png" /></div><div class="span2"><a class="count" href="/attorneys/66210-ks-brandan-davies-3446791/reviews.html"><div class="page-row"><div class="inline-hgroup span2"><h3 class="light condensed margin0 stripped">188&nbsp;</h3><h5 class="light condensed margin0 stripped">Reviews</h5></div><div class="span2"><a class="star_rating full-width" href="/attorneys/66210-ks-brandan-davies-3446791/reviews.html"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a></div></div></a><div class="client_review_links">Current or former client? <a data-avn="{&quot;name&quot;:&quot;amos.gtm.view-lawyer-review-form&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;3446791-Brandan-Davies&quot;}}" href="/attorneys/66210-ks-brandan-davies-3446791/write_review.html" rel="nofollow">Write a review</a></div></div></div></div><hr class="span3" /><div class="span3"><div class="page-row"><div class="span1"><img alt="Endorse" class="full-width" src="http://assets1.iavvo.com/assets/embed/profile/endorse-393f817ef630e2e358047b4ca97e17ed.png" /></div><div class="span2"><div class="page-row"><a href="/attorneys/66210-ks-brandan-davies-3446791/endorsements.html"><div class="inline-hgroup span2"><h3 class="light condensed margin0 stripped">34&nbsp;</h3><h5 class="light condensed margin0 stripped">Endorsements</h5></div></a></div>Lawyers: <br><a href="/attorneys/66210-ks-brandan-davies-3446791/write_endorsement.html" rel="nofollow">Endorse this lawyer</a></div></div></div><hr class="span3" /><div class="span3"><div class="page-row"><div class="span1"><img alt="Contri" class="full-width" src="http://assets2.iavvo.com/assets/embed/profile/contri-c5a1b74b9701f86d9b28e2d9f4f0334c.png" /></div><div class="span2"><div class="page-row"><div class="inline-hgroup span2"><h5 class="light condensed margin0">Contributor Level</h5><h3 class="light condensed margin0 stripped">11</h3></div></div><p><a href="/attorneys/66210-ks-brandan-davies-3446791/answers.html">View contributions</a></p></div></div></div></div></div><div class="span6"><div id="profile_actions" class="lawyer_profile_actions">
+    <a class="primary action" data-avn="{&quot;name&quot;:&quot;amos.gtm.view-lawyer-email-form&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;3446791-Brandan-Davies&quot;}}" href="/attorneys/66210-ks-brandan-davies-3446791/contact.html" rel="nofollow">Email Lawyer</a>
+
+  <a class="action" data-avn="{&quot;name&quot;:&quot;amos.gtm.contact-lawyer-website&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;3446791-Brandan-Davies&quot;}}" href="http://www.crwlawyers.com/attorney-kc-attorney.php" onclick="this.href=&#39;/attorneys/66210-ks-brandan-davies-3446791/website.html&#39;;return true;" target="_blank">Lawyer&#39;s website</a>
+
+  <a class="action send" href="/attorneys/66210-ks-brandan-davies-3446791/share.html" rel="nofollow">Send to a friend</a>
+</div>
+</div></div>
+    </div>
+  </div>
+</div>
+
+
+    
+      <div class="module"><h2>Overview</h2><div class="page-row" id="overview"><section class="span8">
+        <div class="js-replaceable margin6" id="specialties"><div class="page-row" id="specialties"><div class="span2"><h5 class="light">PRACTICE AREAS</h5></div><div class="span6"><div class="page-row"><div class="span2">
+<img alt="Chart?chs=169x169&amp;cht=p&amp;chp=4" class="full-width" id="specialty_chart" src="http://chart.apis.google.com/chart?chs=169x169&amp;cht=p&amp;chp=4.7&amp;chco=76d0eb|f48026|ffeb73&amp;chd=t:50,30,20" />
+
+</div><div class="span4"><div class="page-row js-link-hub"><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#76d0eb"></div><div class="span3"><a class="tooltip_link tooltip-link" data-tooltip="I help clients with criminal charges in both city and county court.  Including Arson, Theft, Drug possession, drug manufacturing, assault, battery, gun crimes, DUI ect." href="#!" rel="nofollow">50% Criminal Defense</a></div></div></div></div><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#f48026"></div><div class="span3"><a class="tooltip_link tooltip-link" data-tooltip="I help clients with traffic problems including suspended licenses, DUI/DWI, and speeding tickets." href="#!" rel="nofollow">30% DUI / DWI</a></div></div></div></div><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#ffeb73"></div><div class="span3"><a class="tooltip_link tooltip-link" data-tooltip="I help clients with traffic problems including suspended licenses, DUI/DWI, and speeding tickets." href="#!" rel="nofollow">20% Speeding / Traffic Ticket</a></div></div></div></div></div></div></div><div id="not_practicing_section">
+</div></div></div></div>
+        <div class="js-replaceable margin6" id="fees_payments"><div class="page-row" id="fees_payments_section"><div class="span2"><h5 class="light">FEES AND<BR> PAYMENT TYPES</h5></div><div class="span6"><div class="page-row"><div class="span6 margin4"><h4>Fees</h4><div id="fees_detail">    Fixed (Sometimes)
+
+</div></div><div class="span6"><h4>Payment types</h4><div id="payments_detail">  Cash, Check, Credit Card
+  
+</div></div></div></div></div></div>
+          <div class="js-replaceable margin6" id="contact_information"><div class="page-row" id="contact_information_section"><div class="span2"><h5 class="light">CONTACT INFORMATION</h5></div><div class="span6"><div class="page-row" id="contact_information_detail"><div class="span3"><div class="address_list avvo-undecorated-list" id="sortable_address_list"><div class="address_sort margin4" id="address_4640576"><div class="address_name semibold">Copley, Roth, &amp; Wilson LLC</div><span><div class="address_line_1">7500 College Blvd.</div><div class="address_line_2">Suite 700</div></span><div class="address_city_state">Overland Park, KS 66210</div><div class="address_phone"><span class="phone_label muted">Office: </span><span id="phone_number_0" itemprop="telephone">913-732-3014</span></div><a data-avn="{&quot;name&quot;:&quot;amos.contacts.viewed_directions&quot;,&quot;payload&quot;:{&quot;professional_id&quot;:3446791}}" href="http://maps.google.com/maps?q=7500+College+Blvd.%2C+Suite+700%2C+Overland+Park%2C+KS+66210+%28Copley%2C+Roth%2C+%26+Wilson+LLC%29" rel="nofollow" target="_blank"><span class="icon-map"></span> View map</a> <span class="pipe">|</span> <a href="/attorneys/66210-ks-brandan-davies-3446791/user_reported_information.html?address=4640576" rel="nofollow">Edit this address</a></div></div></div><div class="span3"><div class="page-row"><div class="span3"><div class="page-row"><div class="span1"><div class="icon-email2 pull-right"></div></div><div class="span2"><a href="/attorneys/66210-ks-brandan-davies-3446791/contact.html" rel="nofollow">Email this lawyer</a></div></div></div><div class="span3"><div class="page-row"><div class="span1"><div class="icon-website pull-right"></div></div><div class="span2"><a data-avn="{&quot;name&quot;:&quot;amos.profiles.website_clicked&quot;,&quot;payload&quot;:{&quot;professional_id&quot;:3446791,&quot;profession_name&quot;:&quot;lawyer&quot;,&quot;specialty_name&quot;:&quot;Criminal Defense&quot;}}" href="http://www.crwlawyers.com/attorney-kc-attorney.php" itemprop="url" onclick="this.href=&#39;/attorneys/66210-ks-brandan-davies-3446791/website.html&#39;;return true;" target="_blank">Visit lawyer&#39;s website</a></div></div></div><hr class="span3" /></div>  <div id="additional_links" class="page-row">
+      <div class="span3">
+        <div class="page-row">
+          <div class="span1">
+            <span class='icon-facebook  pull-right'></span>
+          </div>
+          <div class="span2">
+              <a href="https://www.facebook.com/brandan.davies" rel="nofollow me" target="_blank">Facebook</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="span3">
+        <div class="page-row">
+          <div class="span1">
+            <span class='icon-website  pull-right'></span>
+          </div>
+          <div class="span2">
+              <a href="http://www.kansas-criminal-defense.com" rel="nofollow" target="_blank">My Website</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="span3">
+        <div class="page-row">
+          <div class="span1">
+            <span class='icon-linkedin  pull-right'></span>
+          </div>
+          <div class="span2">
+              <a href="http://www.linkedin.com/pub/brandan-davies/32/68b/688/" rel="nofollow me" target="_blank">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="span3">
+        <div class="page-row">
+          <div class="span1">
+            <span class='icon-twitter  pull-right'></span>
+          </div>
+          <div class="span2">
+              <a href="http://www.twitter.com/KCTICKETGUY" rel="nofollow me" target="_blank">Twitter</a>
+          </div>
+        </div>
+      </div>
+
+
+  </div>
+</div>
+</div></div></div></div>
+        <div class="js-replaceable margin6" id="languages"><div class="page-row" id="languages_section"><div class="span2"><h5 class="light">LANGUAGES SPOKEN</h5></div><div class="span6"><div id="languages_detail"><ul class="avvo-undecorated-list margin0">
+    <li>
+  English
+</li>
+
+    <li>
+  Spanish
+</li>
+
+</ul>
+</div></div></div></div>
+        <div class="js-replaceable margin6" id="about_me"><div class="page-row" id="about_me_section"><div class="span2"><h5 class="light">ABOUT ME</h5></div><div class="span6"><div id="about_me_detail">  
+    <div id="media_table_wrapper">
+      <table><tr><td><div class="thumbnail borderless"><a data-modal-open="wO54JSiq" href="#!" nofollow="nofollow" title=""><img alt="" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/thumbnail_small/3446791_1301014922.jpg" title="" /></a></div><div id="wO54JSiq" style="display:none;width:;height:"><div class="modal-header">Image</div><div class="modal-body"><img alt="3446791 1301014922" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/normalized/3446791_1301014922.jpg" /></div></div></td><td><div class="thumbnail borderless"><a data-modal-open="jhVYrrT0" href="#!" nofollow="nofollow" title=""><img alt="" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/thumbnail_small/3446791_1301014907.jpg" title="" /></a></div><div id="jhVYrrT0" style="display:none;width:;height:"><div class="modal-header">Image</div><div class="modal-body"><img alt="3446791 1301014907" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/normalized/3446791_1301014907.jpg" /></div></div></td><td><div class="thumbnail borderless"><a data-modal-open="e9u0u3On" href="#!" nofollow="nofollow" title=""><img alt="" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/thumbnail_small/3446791_1301014878.jpg" title="" /></a></div><div id="e9u0u3On" style="display:none;width:;height:"><div class="modal-header">Image</div><div class="modal-body"><img alt="3446791 1301014878" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/normalized/3446791_1301014878.jpg" /></div></div></td><td><a data-modal-open="modal_MkqFi" data-modal-url="/attorneys/3446791/media/251846/video" href="#!"><div class="thumbnail borderless with-overlay"><img alt="" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/thumbnail_small/3446791_1301014764.jpg" title="" /><br /><div class="icon-play pull-left"></div></div></a></td></tr></table>
+    </div>
+  
+    <p>
+      I am an attorney in Overland Park.  The majority of my practice is criminal and traffic  including speeding tickets, Suspended licenses, DUI as well as more... <a href="/attorneys/66210-ks-brandan-davies-3446791/aboutme.html">more</a>
+    </p>
+
+  <a class="navigation" href="/attorneys/66210-ks-brandan-davies-3446791/aboutme.html">View all photos and/or videos</a>
+</div></div></div></div>
+</section></div></div>
+      <div class="module"><h2>References</h2><div class="page-row" id="references"><section class="span8">
+        <div class="js-replaceable margin6" id="reviews"><div class="page-row" id="reviews_section"><div class="span2"><h5 class="light">CLIENT REVIEWS</h5></div><div class="span6"><div id="reviews_detail"><div class="page-row"><div class="span1"><img alt="Reviews" class="full-width" src="http://assets2.iavvo.com/assets/embed/profile/reviews-72fd939ee2e493ce25a7b88d3da6028c.png" /></div><div class="span5"><div class="overview">
+  <h4>Average Client Rating</h4>
+  <div class="star_rating">
+      <a class="stars" href="/attorneys/66210-ks-brandan-davies-3446791/reviews.html"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a>
+      <span class="review_count"><a href="/attorneys/66210-ks-brandan-davies-3446791/reviews.html">188 reviews</a></span>
+  </div>
+  <div class="client_review_links">Current or former client? <a data-avn="{&quot;name&quot;:&quot;amos.gtm.view-lawyer-review-form&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;3446791-Brandan-Davies&quot;}}" href="/attorneys/66210-ks-brandan-davies-3446791/write_review.html" rel="nofollow">Write a review</a></div>
+</div>
+
+</div></div><hr class="margin4" /><div class="page-row margin2 with-overlay"><div class="span1"><img alt="Quotes@2x" class="full-width" src="http://assets2.iavvo.com/assets/embed/topic_pages/quotes@2x-77df7504b38dc1ede65c9b0e3e45acf7.png" /></div><div class="span5"><h3 class="light"><a href="/attorneys/66210-ks-brandan-davies-3446791/reviews.html#490894">“Great lawyer!”</a></h3><a href="/attorneys/66210-ks-brandan-davies-3446791/reviews.html#490894"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a><p>Brandan was great! He worked hard on my case, kept me informed, and never wasted my time. I highly recommend him!</p><p class="text-meta">Posted by: Kirsten, 4 days ago.</p><div class="overlay bottom right margin2"><a data-tooltip-remote="confirm_objectionable" href="/professional_reviews/490894/objectionable" id="professional_review_objectionable_490894" rel="nofollow"><i class="medium-gray icon-flag"></i> Flag</a></div></div></div><div class="page-row margin2 with-overlay"><div class="span1"><img alt="Quotes@2x" class="full-width" src="http://assets2.iavvo.com/assets/embed/topic_pages/quotes@2x-77df7504b38dc1ede65c9b0e3e45acf7.png" /></div><div class="span5"><h3 class="light"><a href="/attorneys/66210-ks-brandan-davies-3446791/reviews.html#489117">“Made the process easy”</a></h3><a href="/attorneys/66210-ks-brandan-davies-3446791/reviews.html#489117"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a><p>Brandan made the process for getting my speeding ticket reduced to a non-moving violation very easy. He handled everything... I would recommend his... </p><p class="text-meta">Posted by: a client, 6 days ago.</p><div class="overlay bottom right margin2"><a data-tooltip-remote="confirm_objectionable" href="/professional_reviews/489117/objectionable" id="professional_review_objectionable_489117" rel="nofollow"><i class="medium-gray icon-flag"></i> Flag</a></div></div></div><div class="margin4"><a class="navigation" href="/attorneys/66210-ks-brandan-davies-3446791/reviews.html">View all 188 reviews</a></div></div></div></div></div>
+        
+        <div class="js-replaceable margin6" id="endorsements"><div class="page-row" id="endorsements_section"><div class="span2"><h5 class="light">PEER ENDORSEMENTS</h5></div><div class="span6"><div id="endorsements_detail"><div class="page-row"><div class="span1"><img alt="Endorse" class="full-width" src="http://assets1.iavvo.com/assets/embed/profile/endorse-393f817ef630e2e358047b4ca97e17ed.png" /></div><div class="span5"><h4>Endorsements</h4><p class="pull-left"><a href="/attorneys/66210-ks-brandan-davies-3446791/endorsements.html">34 endorsements</a></p><div class="pull-right">Lawyers: <a href="/attorneys/66210-ks-brandan-davies-3446791/write_endorsement.html" rel="nofollow">Endorse this lawyer</a></div></div></div><hr class="margin4" />
+<div class="page-row margin6">
+  <!-- clear the cache -->
+  <div class="span1"><a href="/attorneys/92122-ca-thomas-huguenor-252877.html"><img alt="Thomas Huguenor" class="borderless thumbnail_medium" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/252877_1410447437.jpg" title="Thomas Huguenor" /></a></div>
+  <div class="span5">
+    <div>
+      <p>
+        Top Trial Lawyers Top 100 list. Brandan is the one to call in KC. I endorse this lawyer.
+      </p> 
+      <span class="muted text-meta">Endorsement from lawyer:
+        <a href="/attorneys/92122-ca-thomas-huguenor-252877.html">Thomas Huguenor</a>
+         , La Jolla (CA), 3 months ago
+      </span>
+    </div>
+  </div>
+</div>
+<div class="page-row margin6">
+  <!-- clear the cache -->
+  <div class="span1"><a href="/attorneys/33919-fl-david-pittman-1244486.html"><img alt="David B Pittman" class="borderless thumbnail_medium" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/1244486_1351874471.jpg" title="David B Pittman" /></a></div>
+  <div class="span5">
+    <div>
+      <p>
+        I endorse this lawyer.
+      </p> 
+      <span class="muted text-meta">Endorsement from lawyer:
+        <a href="/attorneys/33919-fl-david-pittman-1244486.html">David Pittman</a>
+         , Ft Myers (FL), 6 months ago
+      </span>
+    </div>
+  </div>
+</div><a class="navigation" href="/attorneys/66210-ks-brandan-davies-3446791/endorsements.html">View all 34 endorsements</a></div></div></div></div>
+</section></div></div>
+      <div class="module"><h2>R&eacute;sum&eacute;</h2><div class="page-row" id="resume"><section class="span8">
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="licenses_section"><div id="licenses"><div class="span8 margin2"><div class="box"><h5 class="light margin0">LICENSE</h5></div></div><div class="span8"><div id="licenses_detail"><p>4 years since Brandan Joseph Davies Esq. was first licensed to practice law.</p><div class="js-link-hub"><table class="table"><thead><tr><th>State</th><th>License status</th><th>Year acquired</th><th>Last updated by Avvo</th></tr></thead><tbody>
+<tr class="">
+  <td>Kansas</td>
+  <td>
+      Authorized to practice law
+  </td>
+  <td>2010</td>
+  <td>10/09/2014</td>
+</tr></tbody></table></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="sanctions_section"><div id="sanctions"><div class="span8 margin2"><div class="box"><h5 class="light margin0">PROFESSIONAL MISCONDUCT</h5></div></div><div class="span8"><div id="sanctions_detail">  <p class="article-body sans-serif">
+    <span class="icon-no-misconduct icon-green icon-padded narrow right"></span>
+    We have not found any instances of professional misconduct for this lawyer.
+  </p>
+
+</div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="work_experience_section"><div id="work_experience"><div class="span8 margin2"><div class="box"><h5 class="light margin0">WORK EXPERIENCE</h5></div></div><div class="span8"><div id="work_experience_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Position</th><th>Duration</th></tr></thead><tbody><tr class=" ">
+  <td>
+    Attorney at Copley, Roth, and Wilson LLC
+  </td>
+  <td>
+    2012&ndash;present
+  </td>
+</tr>
+<tr class=" ">
+  <td>
+    Member at Law Office of Brandan Davies LLC
+  </td>
+  <td>
+    2010&ndash;2012
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Clerk at Tulsa County Law Library
+  </td>
+  <td>
+    2009&ndash;2010
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Early Settlement Mediator at Oklahoma Supreme Court
+  </td>
+  <td>
+    2008&ndash;2010
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Apprentice at Northeast Oklahoma Federal Court
+  </td>
+  <td>
+    2009&ndash;2010
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Investigator at Tulsa County Public Defender&#39;s Office
+  </td>
+  <td>
+    2008&ndash;2009
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Manger at Fedex Home Delivery
+  </td>
+  <td>
+    2002&ndash;2007
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Legal Clerk at Neighbor for Neighbor
+  </td>
+  <td>
+    2007
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Law Clerk at FPS&amp;S
+  </td>
+  <td>
+    2006
+  </td>
+</tr>
+</tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 9 job entries<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional positions<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="education_section"><div id="education"><div class="span8 margin2"><div class="box"><h5 class="light margin0">EDUCATION</h5></div></div><div class="span8"><div id="education_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>School</th><th>Major</th><th>Degree</th><th>Graduated</th></tr></thead><tbody><tr class=" ">
+  <td>University of Tulsa College of Law</td>
+  <td>Law</td>
+  <td>Juris Doctor</td>
+  <td>2010</td>
+</tr>
+
+<tr class=" ">
+  <td>University of Kansas</td>
+  <td>Political Science</td>
+  <td>BA - Bachelor of Arts</td>
+  <td>2006</td>
+</tr>
+
+</tbody></table></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="awards_section"><div id="awards"><div class="span8 margin2"><div class="box"><h5 class="light margin0">AWARDS</h5></div></div><div class="span8"><div id="awards_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Award Name</th><th>Granting Organization</th><th>Date</th></tr></thead><tbody><tr><td>Top 100 Trial Lawyers</td><td>National Trial Lawyers</td><td>2014</td></tr><tr><td>Rising Star</td><td>SuperLawyers</td><td>2014</td></tr><tr class="js-expandable"><td>Top 40 Under 40</td><td>National Trial Lawyers</td><td>2014</td></tr><tr class="js-expandable"><td>Graduated with Honors</td><td>University of Tulsa</td><td>2010</td></tr><tr class="js-expandable"><td>CALI Excellence for the Future Award in International Law</td><td>University of Tulsa</td><td>2010</td></tr><tr class="js-expandable"><td>Carl Albert Executive Fellow</td><td>State of Oklahoma</td><td>2009</td></tr><tr class="js-expandable"><td>Honors Designation in Interviewing, Counseling, and Negotiation</td><td>University of Tulsa</td><td>2009</td></tr><tr class="js-expandable"><td>CALI Excellence for the Future Award in Advanced Torts</td><td>University of Tulsa</td><td>2009</td></tr></tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 8 awards<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional awards<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="organizations_section"><div id="organizations"><div class="span8 margin2"><div class="box"><h5 class="light margin0">ASSOCIATIONS</h5></div></div><div class="span8"><div id="organizations_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Position</th><th>Association Name</th><th>Duration</th></tr></thead><tbody><tr class=" ">
+  <td>Member</td>
+  <td>Johnson County Bar Association</td>
+  <td>
+    2010&ndash;present
+  </td>
+</tr>
+<tr class=" ">
+  <td>Member</td>
+  <td>American Bar Association</td>
+  <td>
+    2010&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member</td>
+  <td>University of Kansas Alumni Association</td>
+  <td>
+    2007&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member</td>
+  <td>University of Tulsa Alumni Association</td>
+  <td>
+    2010&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member</td>
+  <td>Kansas Association of Criminal Defense Lawyers</td>
+  <td>
+    2012&ndash;present
+  </td>
+</tr>
+</tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 5 association entries<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional associations<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+</section></div></div>
+      <div class="module"><h2>Portfolio</h2><div class="page-row" id="portfolio"><section class="span8">
+        <div class="js-replaceable margin7"><div class="page-row with-overlay" id=""><div id=""><div class="span8 margin2"><div class="box"><h5 class="light margin0">CONTRIBUTION</h5></div></div><div class="span8"><div class="contri-badge"><div class="contributor-level-badge level-3 margin1" data-tooltip-remote="contributor_badge"><i class="icon-badge-feather"></i></div><div class="badge-text">Contributor Level 11</div></div>
+<table class="table">
+  <tr>
+    <th>Answers:</th>
+    <td><a class="article-body sans-serif" href="/attorneys/66210-ks-brandan-davies-3446791/answers.html">108</a></td>
+    <td><a class="article-body sans-serif" href="/attorneys/66210-ks-brandan-davies-3446791/answers.html">Legal Answers</a></td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>9</td>
+    <td>Best Answers - chosen by asker</td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>6</td>
+    <td>Answers marked "I agree" by other lawyers</td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>13</td>
+    <td>Answers marked helpful by other users</td>
+  </tr>
+  <tr>
+    <th>Guides:</th>
+    <td><a class="article-body sans-serif" href="/attorneys/66210-ks-brandan-davies-3446791/guides.html">2</a></td>
+    <td><a class="article-body sans-serif" href="/attorneys/66210-ks-brandan-davies-3446791/guides.html">Legal Guides</a></td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>0</td>
+    <td>Staff Picks</td>
+  </tr>
+</table>
+  <a class="navigation" href="/attorneys/66210-ks-brandan-davies-3446791/answers.html">View all contributions</a>
+</div></div></div></div>
+        
+        <div class="js-replaceable margin7"><div class="page-row with-overlay" id="legal_cases_section"><div id="legal_cases"><div class="span8 margin2"><div class="box"><h5 class="light margin0">CASES</h5></div></div><div class="span8">  <div class="margin4">
+  <div class="case_title"><a href="/attorneys/66210-ks-brandan-davies-3446791/legal_cases/127986">State vs. AG</a></div>
+  <div class="outcome">
+    <strong>Outcome:</strong> Plead Guilty to One count Misdemeanor MJ Possession and One Count  Misdemeanor Paraphernalia (12 month probation.)
+  </div>
+</div>
+
+<div class="margin4">
+  <div class="case_title"><a href="/attorneys/66210-ks-brandan-davies-3446791/legal_cases/123140">DUI in Roeland Park</a></div>
+  <div class="outcome">
+    <strong>Outcome:</strong> case dismissed
+  </div>
+</div>
+
+<div class="margin4">
+  <div class="case_title"><a href="/attorneys/66210-ks-brandan-davies-3446791/legal_cases/123330">Expungment in Wichita Municipal Court</a></div>
+  <div class="outcome">
+    <strong>Outcome:</strong> expungement granted
+  </div>
+</div>
+
+
+    <a class="navigation" href="/attorneys/66210-ks-brandan-davies-3446791/legal_cases">See all cases</a>
+</div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="publications_section"><div id="publications"><div class="span8 margin2"><div class="box"><h5 class="light margin0">PUBLICATIONS</h5></div></div><div class="span8"><div id="publications_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Article</th><th>Publication</th><th>Date</th></tr></thead><tbody><tr class=" ">
+  <td><a href="http://www.morningsun.net/community/blogs/legaltalk_blog" rel="nofollow" target="_blank">What is probation?</a></td>
+  <td>Pittsburg Morining Sun</td>
+  <td>2012</td>
+</tr>
+<tr class=" ">
+  <td><a href="http://www.journaldemocrat.com/community/blogs/legaltalk_blog/x423027628/I-got-a-DUI-Do-I-need-a-Lawyer" rel="nofollow" target="_blank">I recieved a DUI.  Do I need a Lawyer?</a></td>
+  <td>Syracuse Journal-Democrat</td>
+  <td>2012</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.ncnewspress.com/community/blogs/legaltalk_blog/x1596658429/What-is-probation" rel="nofollow" target="_blank">Nebraska City Newspress</a></td>
+  <td>Legal Talk</td>
+  <td>2012</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.leavenworthtimes.com/community/blogs/legaltalk_blog" rel="nofollow" target="_blank">Legal Talk</a></td>
+  <td>Leavenworth Times</td>
+  <td>2012</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.hamburgreporter.com/community/blogs/legaltalk_blog" rel="nofollow" target="_blank">Speeding Ticket and a warrant for my arrest!</a></td>
+  <td>Hamburg Reporter</td>
+  <td>2012</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.examiner.net/community/blogs/legaltalk_blog" rel="nofollow" target="_blank">What is probation?</a></td>
+  <td>Independence Examiner</td>
+  <td>2012</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.gbtribune.com/section/14/article/27538/preview/" rel="nofollow" target="_blank">Ask an Attorney</a></td>
+  <td>Great Bend Tribune</td>
+  <td>2012</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.leavenworthtimes.com/community/blogs/legaltalk_blog/x1361412306/My-neighbor-is-selling-drugs-How-do-I-press-charges" rel="nofollow" target="_blank">My Neighbor is selling drugs...How do I press charges.</a></td>
+  <td>Leavenworth Times</td>
+  <td>2012</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.gbtribune.com/section/14/article/26586/preview/" rel="nofollow" target="_blank">Ask an Attorney</a></td>
+  <td>Great Bend Tribune</td>
+  <td>2012</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.sjnewsonline.com/news/x550243701/Legal-Talk-Diversion-not-for-the-mistake-prone" rel="nofollow" target="_blank">Legal Talk: Diversion Not for the Mistake Prone</a></td>
+  <td>St. Johns News</td>
+  <td>2012</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://arkcity.net/articles/2012/02/07/news/farm_and_business/doc4f30829720398478256723.txt" rel="nofollow" target="_blank">Ask an Attorney:</a></td>
+  <td>Arkansas City Traveler</td>
+  <td>2012</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.sjnewsonline.com/opinions/columnists/x917957104/Legal-Talk-Class-Action-Lawsuit-Is-it-in-your-best-interest" rel="nofollow" target="_blank">Legal Talk:Class Action Lawsuit: Is it in your best interest?</a></td>
+  <td>St. Johns News</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.sjnewsonline.com/opinions/columnists/x493115719/Legal-Talk-Suspended-license-conviction-gets-you-mandatory-jail-time" rel="nofollow" target="_blank">Legal Talk: Suspended License Conviction gets you mandatory Jail Time</a></td>
+  <td>St. Johns News</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.sjnewsonline.com/newsnow/x301186046/Legal-Talk-Non-payment-of-fines-could-land-you-in-jail" rel="nofollow" target="_blank">Legal Talk: Non-Payment of fines could land you in Jail</a></td>
+  <td>St. Johns News</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.gbtribune.com/archives/25796/preview/" rel="nofollow" target="_blank">Ask an Attorney: Moving Doesn&#39;t Cancel Probabtion</a></td>
+  <td>Great Bend Tribune</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.sjnewsonline.com/opinions/columnists/x671084258/Legal-Talk-Record-can-make-job-search-difficult" rel="nofollow" target="_blank">Legal Talk: Record Can make Job Search Difficult</a></td>
+  <td>St Johns News</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.gbtribune.com/section/28/article/22526/preview/" rel="nofollow" target="_blank">Suspended license a reason to worry.</a></td>
+  <td>Great Bend Tribune</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td>TBCA and LSABA Team up</td>
+  <td>Tulsa Lawyer</td>
+  <td>2010</td>
+</tr>
+<tr class=" js-expandable">
+  <td>Published Tulsa Lawyer June 2009</td>
+  <td>Tulsa Lawyer</td>
+  <td>2009</td>
+</tr>
+<tr class=" js-expandable">
+  <td>Published Tulsa Business Journal, Commerce and Legal News, Vol. 100 No. 59</td>
+  <td>Commerce and Legal News</td>
+  <td>2009</td>
+</tr>
+</tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 20 publications<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional publications<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="speaking_engagements_section"><div id="speaking_engagements"><div class="span8 margin2"><div class="box"><h5 class="light margin0">SPEAKING ENGAGEMENTS</h5></div></div><div class="span8"><div id="speaking_engagements_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Presentation Name</th><th>Conference</th><th>Date</th></tr></thead><tbody><tr class=" ">
+  <td>Criminal Defense: Drug and DUI awareness for College Students</td>
+  <td>Criminal Justice Department of Kansas City Kansas Community College</td>
+  <td >2014</td>
+</tr>
+<tr class=" ">
+  <td><a href="http://www.kmbc.com/news/kansas-city/former-ku-fullback-sues-ncaa-over-head-trauma/-/11664182/22973624/-/mqikyc/-/index.html?absolute=true&amp;utm_source=dlvr.it&amp;utm_medium=twitter&amp;utm_campaign=kmbc" rel="nofollow">NCAA Head Trauma Litigation</a></td>
+  <td>KMBC 9 News</td>
+  <td >2013</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.theolathenews.com/2013/08/28/2079432_testimony-disputed-in-hereford.html" rel="nofollow">Comment on Herford House Trial</a></td>
+  <td>Kansas City Star</td>
+  <td >2013</td>
+</tr>
+<tr class=" js-expandable">
+  <td>Criminal Law - Defending the criminally accused in Kansas</td>
+  <td>Kansas City Kansas Community College Guest Speaker</td>
+  <td >2013</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.kcnetworkinggroup.com/speaker-schedule.html" rel="nofollow">DUI in Kansas</a></td>
+  <td>Kansas City Networking Group</td>
+  <td >2012</td>
+</tr>
+<tr class=" js-expandable">
+  <td>Separation of Powers Program</td>
+  <td>Youth Education</td>
+  <td >2009</td>
+</tr>
+<tr class=" js-expandable">
+  <td>Importance of Voting</td>
+  <td>Hamilton Middle School</td>
+  <td >2008</td>
+</tr>
+</tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 7 speaking engagements<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional speaking engagements<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+</section></div></div>    </section>
+
+    <div class="span4" id="profile_b_column">
+      
+
+
+
+    <div class="margin7"><div class="js-ads" data-ad-limit="1" data-ad-track="true" data-ad-type="display_ads" data-preview-ad="null"></div></div><div class="margin7 js-common-sponsored-listings"><div class="js-ads" data-ad-format="desktop" data-ad-limit="3" data-ad-track="true" data-ad-type="sponsored_listing_ads" data-ad-variant="99" data-preview-ad="null"></div></div><div class="margin9"><section class="reloadable-module" data-widget-params="eJw1iz0KwzAMRu-iOQE76eStU4_Q0QhbuAIlDpYCTUPuXkPp9r6fd0ISVIUAT86FTEN41FqE7hkG2LDh0scTMEeVav0nVFBi5kbJajvi7NzbOxcbl5d1RzdKjGJH5Axh3UUG2JXan5U_9ONrAKkJpUegtavGC6nhsvVicv42ej9OM1xfdfo3Gw==">
+  <!-- ca-pub-4491911546116478/legal_directory_300x100_right -->
+
+  <div id='div-gpt-ad-30153061079-0' class="module google_ad google_ad_legal_directory_300x100_right" style='width:300px; height:100px;'>
+    <script>
+//<![CDATA[
+$(function(){
+      googletag.cmd.push(function() { googletag.display('div-gpt-ad-30153061079-0'); });
+});
+//]]>
+</script>  </div>
+</section><!--not_cached Widget:widgetsgoogle_ad:false:ajax:false:size::ad_slot:legal_directory_300x100_right:user::specialty_id::lawyer_id:--></div>
+
+    <section class="reloadable-module" data-widget-params="eJxdUstu2zAQ_BWD51gRJTm2eCr6uBQ9FG2AHoU1ubIJU6JKrqyqQf69Szl2jdzI5XBmdnZfhHYQo1DilzUHpKjUD3RAaL4H32KM1vfgfmIYongQAwToGPwihrvXdLdGqLKqnra1ZFjA1v4Rqh-dexCtDZF66JBFPgboDfRM1VljHL6Vv_qIw5Gr7OUK_Qxni0k0ju3CJr7E3xnfD9gbDE1SZC3swLoGjAm4tLG_KHw4abL6hHQY50z7jv9NuI-WsBkDOxZHokE9Pk7TlOkwOZhmDDEhH4HIhx7n9Umvr-dsOA5MoX1PoKnpvBkdNgQHZ_tk9hM4t-r9tGp9WMGqDYgrBsfRERCHlHxzZJo9omn2cwPnsxeqBReRX8a9s9qlKjcDe6Z-11bO2mMk33HjHczNmxGhKIxMEHWAgYnf_brkH1EHpOaEMxttd0WRyyKvNWJqyIHtFkdCVaXcPD39rwHTCwbLdV6ui-pZblVVq3KX5Xm-zrcqz68ETYd09GYZSXWt2eFuKttNVhdZsZGZ3Jb8bRxM2rGbRrVmGVk_y1pttqooLxq7i8YVnExupCzr4kGceVqcq1Bs2CCltmkelhWDEGwkDEp9W6YqbohlZep6s5Pskiw5vGbECd38pMorx2b_4u3ivIaEFph2lzifSNANd-YLKV7_AS0ZGIQ=">  <div class="module">
+    <h2>Related Lawyer Searches</h2>
+    <ul class="links">
+        <li><a href="/criminal-defense-lawyer/ks/johnson_county.html" title="Johnson County Criminal Defense Attorneys">Johnson County Criminal Defense lawyers</a></li>
+        <li><a href="/dui-dwi-lawyer/ks/johnson_county.html" title="Johnson County DUI / DWI Attorneys">Johnson County DUI lawyers</a></li>
+        <li><a href="/speeding-traffic-ticket-lawyer/ks/johnson_county.html" title="Johnson County Speeding / Traffic Ticket Lawyers">Johnson County Speeding Ticket lawyers</a></li>
+        <li><a href="/criminal-defense-lawyer/ks.html" title="Kansas Criminal Defense Attorneys">Kansas Criminal Defense lawyers</a></li>
+        <li><a href="/dui-dwi-lawyer/ks.html" title="Kansas DUI / DWI Attorneys">Kansas DUI lawyers</a></li>
+        <li><a href="/speeding-traffic-ticket-lawyer/ks.html" title="Kansas Speeding / Traffic Ticket Lawyers">Kansas Speeding Ticket lawyers</a></li>
+        <li><a href="/criminal-defense-lawyer/ks/overland_park.html" title="Overland Park Criminal Defense Attorneys">Overland Park Criminal Defense lawyers</a></li>
+        <li><a href="/dui-dwi-lawyer/ks/overland_park.html" title="Overland Park DUI / DWI Attorneys">Overland Park DUI lawyers</a></li>
+        <li><a href="/speeding-traffic-ticket-lawyer/ks/overland_park.html" title="Overland Park Speeding / Traffic Ticket Lawyers">Overland Park Speeding Ticket lawyers</a></li>
+    </ul>
+  </div>
+</section><!--Widget:widgetsrelated_professional_serps:false:ajax:false:size::professional:Barrister::Professional-3446791:limit:20-->
+
+
+    </div>
+
+    
+  </div>
+</div>
+
+
+<script>
+//<![CDATA[
+
+  $(function(){
+    $('.js-replaceable').bind('dom:changed', function(){
+      $(this).find('.js-hover-tooltip-link').hoverTooltip();
+    });
+  });
+
+//]]>
+</script>
+</span>
+    <footer class="persistent-footer page full-width no-border"><div class="page-row"><a class="quiet span3" href="//www.avvo.com/"><div class="icon-avvo-logo footer-logo"></div><div class="footer-slogan">Legal. <strong>Easier.</strong></div></a><div class="span3"><a class="quiet" href="/"><h3>Explore Avvo</h3></a><p class="margin1"><a class="quiet" href="/ask-a-lawyer">Ask a Lawyer</a></p><p class="margin1"><a class="quiet" href="/find-a-lawyer">Find a Lawyer</a></p><p class="margin1"><a class="quiet" href="/free-legal-advice">Free Legal Advice</a></p><p class="margin1"><a class="quiet" href="/review-your-lawyer">Review a Lawyer</a></p></div><div class="span3"><a class="quiet" href="/for-lawyers"><h3>For Lawyers</h3></a><p class="margin1"><a class="quiet" href="/for-lawyers">Lawyer Advertising</a></p><p class="margin1"><a class="quiet" href="/claim-your-profile">Claim Your Profile</a></p><p class="margin1"><a class="quiet" href="/support/all-firm-claim">For Law Firms</a></p><p class="margin1"><a class="quiet" href="//ignite.avvo.com">Marketing Management Software</a></p><p class="margin1"><a class="quiet" href="//lawyernomics.avvo.com">Lawyernomics Blog</a></p></div><div class="span3"><a class="quiet" href="/about_avvo"><h3>Company Info</h3></a><p class="margin1"><a class="quiet" href="/about_avvo/about_us">About Us</a></p><p class="margin1"><a class="quiet" href="/for-lawyers/support">Support</a></p><p class="margin1"><a class="quiet" href="//press.avvo.com">Press Room</a></p><p class="margin1"><a class="quiet" href="/partner_with_us">Partner With Us</a></p><p class="margin1"><a class="quiet" href="/about_avvo/jobs">Careers</a></p><p class="margin1"><a class="quiet" href="//avvoblog.com">Avvo Blog</a></p><p class="margin1"><a class="quiet" href="//nakedlaw.avvo.com">NakedLaw Blog</a></p></div></div></footer><footer class="black"><div id="fine_print_container"><div id="fine_print"><div class="contact_avvo">Follow us on <a href="//www.twitter.com/avvo"><img alt="Twitter" src="http://assets2.iavvo.com/assets/embed/additional_links/twitter_icon-c160ce8886d11899e6833dd271a13f2d.png" /></a><a href="http://www.facebook.com/avvo"><img alt="Facebook" src="http://assets1.iavvo.com/assets/embed/additional_links/facebook_icon-6d9bd4ddfbad9c81a22fd2471b67d673.png" /></a><a href="//plus.google.com/107840042923877554905"><img alt="Google icon" src="http://assets2.iavvo.com/assets/embed/additional_links/google_icon-942738832fa1fe452c21f15e5a9194b2.png" /></a></div><p class="bottom_links"><span class="copyright">&copy;2014 Avvo, Inc. All Rights Reserved </span><span><a href="?prefer_mobile=true" rel="nofollow">Mobile View</a></span><span class="pipe">|</span><span><a href="/support/terms" rel="nofollow">Terms of Use</a></span><span class="pipe">|</span><span><a href="/support/privacy" rel="nofollow">Privacy Policy</a></span><span class="pipe">|</span><span><a href="/support/community_guidelines" rel="nofollow">Community Guidelines</a></span></p></div></div></footer>
+
+    <noscript>
+  <div style="text-align:center;background:#fbf3c5;color:#911717;padding:8px;border-bottom:1px solid #D7DADD;">
+  <strong>We've detected that your browser does not support scripting.</strong> <br/>
+  Scripting must be enabled to use Avvo. Turn on scripting and reload this page.
+  </div>
+</noscript>
+
+
+
+
+    <!-- r:2c4e22c7b390a64641358a65bde9e1a551c45b69 -->
+<!-- d:Fri Nov 21 22:19:26 PST 2014 -->
+<!-- p:www.avvo.com -->  
+
+
+
+
+
+    
+    <script src="http://assets2.iavvo.com/assets/footer_common-59d36e58c17ffbec325b4d50f60e0fda.js"></script>
+
+
+
+<div id="google_remarketing">
+
+    <script type="text/javascript">
+    /* <![CDATA[ */
+    var google_conversion_id = 1057123743;
+    var google_conversion_language = "en";
+    var google_conversion_format = "3";
+    var google_conversion_color = "ffffff";
+    var google_conversion_label = "z9BlCKXnsAIQn9uJ-AM";
+    var google_conversion_value = 0;
+    /* ]]> */
+    </script>
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js?avvo_INu7">
+    </script>
+    <noscript>
+    <div style="display:inline;">
+    <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/1057123743/?label=z9BlCKXnsAIQn9uJ-AM&amp;guid=ON&amp;script=0"/>
+    </div>
+    </noscript>
+
+</div>
+
+    <script>
+//<![CDATA[
+
+$(function(){
+  var a=document.createElement("script");
+  var b=$("script")[0];
+  a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0011/6860.js";
+  a.async=true;a.type="text/javascript";
+  b.parentNode.insertBefore(a,b);
+});
+
+//]]>
+</script>
+  </body>
+
+
+</html>

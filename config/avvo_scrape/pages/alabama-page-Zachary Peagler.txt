@@ -102,7 +102,7 @@ window.locationContext = {"id":23673,"name":"Atlanta","city_name":"Atlanta","sta
     });
 
       googletag.cmd.push(function() {
-        googletag.defineSlot('/4508117/legal_directory_300x100_right', [300, 100], 'div-gpt-ad-390208359875-0').addService(googletag.pubads());
+        googletag.defineSlot('/4508117/legal_directory_300x100_right', [300, 100], 'div-gpt-ad-216311601408-0').addService(googletag.pubads());
         googletag.pubads().enableSingleRequest();
         googletag.pubads().collapseEmptyDivs();
         googletag.enableServices();
@@ -112,13 +112,13 @@ window.locationContext = {"id":23673,"name":"Atlanta","city_name":"Atlanta","sta
 
 
 <script type="text/javascript">window.dataLayer = window.dataLayer || [];
-window.dataLayer.push({"location":{"id":5927405,"professional_id":3562163,"name":"Peagler \u0026 Hollett, LLC","displayable":true,"ordinal":1,"updated_at":"2014-09-24T09:12:15.000-07:00","updated_by":480501,"license_id":null,"created_at":"2013-06-05T10:15:59.000-07:00"},"pageTitle":"Lawyer Zachary Peagler - Birmingham Attorney","siteSection":null,"logicalSection":"lawyers/show","renderType":"desktop","persistentSessionId":"2e280ae3-7e91-4424-afdf-9afe23535b75","userId":null,"userEmail":null,"userType":"anonymous","professionalId":null,"professional":"3562163-Zachary-Peagler","specialty":55,"claimStatus":"claimed","ratingType":"No concern","rating":9.1,"reviewScore":0.0,"reviews":0,"endorsements":4,"profileContent":{"contributions":{"legalAnswers":0,"bestAnswers":0,"agree":0,"helpful":0,"guides":0,"staffPicks":0},"headshot":"yes","aboutMe":"no","publications":0,"awards":13,"workExperience":3,"speakingEngagements":2},"professionalType":"non-advertiser"});</script>
+window.dataLayer.push({"location":{"id":5927405,"professional_id":3562163,"name":"Peagler \u0026 Hollett, LLC","displayable":true,"ordinal":1,"updated_at":"2014-09-24T09:12:15.000-07:00","updated_by":480501,"license_id":null,"created_at":"2013-06-05T10:15:59.000-07:00"},"pageTitle":"Lawyer Zachary Peagler - Birmingham Attorney","siteSection":null,"logicalSection":"lawyers/show","renderType":"desktop","persistentSessionId":"b4aff8a9-36d3-4f9b-b1be-5a996e76874b","userId":null,"userEmail":null,"userType":"anonymous","professionalId":null,"professional":"3562163-Zachary-Peagler","specialty":55,"claimStatus":"claimed","ratingType":"No concern","rating":9.1,"reviewScore":0.0,"reviews":0,"endorsements":4,"profileContent":{"contributions":{"legalAnswers":0,"bestAnswers":0,"agree":0,"helpful":0,"guides":0,"staffPicks":0},"headshot":"yes","aboutMe":"no","publications":0,"awards":13,"workExperience":3,"speakingEngagements":2},"professionalType":"non-advertiser"});</script>
 
   <meta name="ad-location-id" content="61489" /><meta name="ad-specialty-id" content="55" /><meta name="page-template-name" content="Lawyer Profile - Main" /></head>
   <body>
     <script>
 //<![CDATA[
-duraLogEvents('eJztUk2PmzAQ/SuRz5jFXxhyr3pppR56W62sCQwEydjIdkJp1f9ek2ykZu+9\n9cjD72Nm3usrk6yutRZcFmQJfsAYJ+/Ammlewv2DFARmH/kKPSl+kQ4Sjj5s\n5HgjTBbJR2pPjkLVnNWiIL2fYXL58bquJVyvvuz8nBmXYDP4Ain54HCLL0Lx\nSlCw9Cd0ZwgbXRBGi4G+S5XnNNtMDDhgCBjI0V2szUIRg4ERXXog8Z7kloMM\nNTaqRkURlKJSc04bXvWUM9V2zcBboeVNdfYJzbRkCqt0yXhTsrrklc4/Z0xn\nv4t9/vSdvDvu4ne7gK7fARcTuA7NeLkZtxU7ZU9NOy5aKqE90VaCpL1q8jwD\nNkKzfXMY4hRTjm+ecnPkTQUoqMaWUSm5pDD0A21hQC6UUCetyO+34vmCeQ/m\nOuH64WbW56s9pLmodT5MXLCbwKbtBipVEPyRw6Qp4l/DRbAYTcDxwWacVR/g\nxefJrel8j+bJqWayaXcn76IP2BubJ53caKL1KeaS5HpMcbGwPRBWkIRzRvIt\nHMyYF/EF1g3D4du9awd6+Lr36X+x/nGx3v4AF3tOEw==\n');
+duraLogEvents('eJztUk2PmzAQ/SuRz5i1+bAh96qXXamH3lYra4CBWDI2sp1QWvW/1yQbqcm9\ntx55+H3MzHt/5xUXkjEpm4ws3o0YgnYWjNLz4m8fJCMwu1CsMJDsF+kh4uT8\nRo5XgjZInqkDOZa1KLgoMzK4GbRNj9d1zeFycXnv5sQ4e5PAF4jReYtbeCnr\ngpUUDP0J/Qn8RheEyaCnn1L5Kc4mET2O6D16crRnY5JQQK9gQhvvSLglueYg\nDZOj3JXLppW06oDRjmNHZfIrBmiHfoSr6uwiKr0kCmcy50WTc5EXTKafM8aT\n28W+fvlOPh138ZudRzvsgA0RbI9qOl+NWT2IClnyRGhoxTnSBkZBR8Z50ddY\nN8D2zaEPOsQUXz3k7ioYxwZaWoqhpNXYdil3h7SGthUoRSOrjvz+yB4vmPag\nLhrXp5sZl652ly5KIdNhwoK9BhO3K1jXGcEfKUzUAf8aLoDBoDxOdzYvOHuC\nF5cmN6p3A6oHJ8Grpt2dnA3O46BMmlTbSQXjYkglSfXQYTGw3RGekYhzQtIt\nLMyYFvEK64b+8O3WtQM9vO19+l+sf1ysjz8EWVCD\n');
 //]]>
 </script>
 
@@ -536,11 +536,11 @@ duraLogEvents('eJztUk2PmzAQ/SuRz5jFXxhyr3pppR56W62sCQwEydjIdkJp1f9ek2ykZu+9\n9cj
     <div class="margin7"><div class="js-ads" data-ad-limit="1" data-ad-track="true" data-ad-type="display_ads" data-preview-ad="null"></div></div><div class="margin7 js-common-sponsored-listings"><div class="js-ads" data-ad-format="desktop" data-ad-limit="3" data-ad-track="true" data-ad-type="sponsored_listing_ads" data-ad-variant="99" data-preview-ad="null"></div></div><div class="margin9"><section class="reloadable-module" data-widget-params="eJw1iz0KwzAMRu-iOQE77eStU4_Q0QhbuAIlDpYCTULuXkPp9r6fd0ISVIUAL86FTEN41lqEHhkGWLHh3McTMEeVav0nVFBi5kbJatvjzbmPdy42Lm_rjq6UGMX2yBnCsokMsCm1Pysf9ONrAKkJpUegpavGM6nhvPZicv4-ej9OE1xfdfc3Gg==">
   <!-- ca-pub-4491911546116478/legal_directory_300x100_right -->
 
-  <div id='div-gpt-ad-390208359875-0' class="module google_ad google_ad_legal_directory_300x100_right" style='width:300px; height:100px;'>
+  <div id='div-gpt-ad-216311601408-0' class="module google_ad google_ad_legal_directory_300x100_right" style='width:300px; height:100px;'>
     <script>
 //<![CDATA[
 $(function(){
-      googletag.cmd.push(function() { googletag.display('div-gpt-ad-390208359875-0'); });
+      googletag.cmd.push(function() { googletag.display('div-gpt-ad-216311601408-0'); });
 });
 //]]>
 </script>  </div>
@@ -625,7 +625,7 @@ $(function(){
     var google_conversion_value = 0;
     /* ]]> */
     </script>
-    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js?avvo_UGIQ">
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js?avvo_buP0">
     </script>
     <noscript>
     <div style="display:inline;">

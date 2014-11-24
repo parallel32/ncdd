@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+
+<html class="no-js">
+  <head>
+    
+<!-- force browser refresh of favicon.  Plz remove me someday? -->
+<link href="http://www.avvo.com/favicon.ico?v=2" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+
+<meta charset="utf-8">
+<title>Lawyer L. Ty Wilson - Savannah Attorney - Avvo.com</title>
+
+<meta name="description" content="L. Ty Wilson is a Workers Compensation Attorney in Savannah, GA. Click L. Ty’s profile to discover their Avvo Rating, write a review, and read professional endorsements." />
+
+<meta name="robots" content="index,follow" />
+
+
+
+<meta property="og:image" content="http://assets2.iavvo.com/assets/header_logo-d9da0710ef4f108673b08e2f89ee79c8.png" />
+
+
+<meta name="robots" content="NOODP,NOYDIR" />
+
+<script>
+//<![CDATA[
+window.locationContext = {"id":23673,"name":"Atlanta","city_name":"Atlanta","state_name":"Georgia","state_code":"GA","postal_code":null};window.adLocationContext = {"id":61489,"name":"30316","city_name":"Atlanta","state_name":"Georgia","state_code":"GA","postal_code":"30316"};
+//]]>
+</script><script src="//cdn.optimizely.com/js/275511722.js"></script>
+
+<link href="https://plus.google.com/107840042923877554905" rel="publisher" />
+
+  <link href="http://assets2.iavvo.com/assets/application-679b5b560ef19c2728b0c8d332d28f6a.css" media="all" rel="stylesheet" />
+  <!--[if lt IE 9]>
+    <link href="http://assets2.iavvo.com/assets/font_avvo_icon_bad_IE_bad_dog-27d8ace9b1fdd6c93145f0e1b7827dc6.css" media="all" rel="stylesheet" />
+  <![endif]-->
+
+<link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:700|Open+Sans:300,400,600,700" media="all" rel="stylesheet" />
+
+<script src="http://assets1.iavvo.com/assets/application-944ee4fdb62f3df1542271af9ecbae14.js"></script>
+
+<!--[if (gte IE 6)&(lte IE 8)]>
+    <script src="http://assets1.iavvo.com/assets/selectivizr-c4422edc73658e842dce601b5979afe2.js"></script>
+<![endif]-->
+
+
+
+  <link href="http://www.avvo.com/attorneys/31401-ga-lty-wilson-1784840.html" rel="canonical" />
+
+<script>
+//<![CDATA[
+
+  google_analytics_domain_name=".avvo.com";
+  try {
+    var _gaq = _gaq || [];
+    _gaq.push(
+      ['_setAccount', 'UA-4437273-1'],
+      ['_setDomainName', '.avvo.com'],
+      ['_setCustomVar', 1,'user_type','other', 1],
+      ['_setCustomVar', 5, 'abs', '....................................................................................................', 3]
+    );
+
+        _gaq.push(['_setCustomVar', 2,'type', 'pro', 3]);
+        _gaq.push(['_setCustomVar', 3,'spec',"67_Workers Compensation", 3]);
+
+    _gaq.push(['_trackPageview']);
+  } catch(err) {}
+
+//]]>
+</script>
+
+  <script>
+//<![CDATA[
+
+  try {
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  } catch(err) {}
+
+//]]>
+</script>
+
+
+
+<script type="text/javascript">window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"location":{"id":3506273,"professional_id":1784840,"name":"Savannah Office by Appointment only","displayable":true,"ordinal":0,"updated_at":"2013-08-08T13:31:33.000-07:00","updated_by":62117,"license_id":null,"created_at":null},"pageTitle":"Lawyer L. Ty Wilson - Savannah Attorney","siteSection":null,"logicalSection":"lawyers/show","renderType":"desktop","persistentSessionId":"d368a09b-e42d-415a-8b77-bbcb7ff664bd","userId":null,"userEmail":null,"userType":"anonymous","professionalId":null,"professional":"1784840-L. Ty-Wilson","specialty":67,"claimStatus":"claimed","ratingType":"No concern","rating":10.0,"reviewScore":5.0,"reviews":17,"endorsements":48,"profileContent":{"contributions":{"legalAnswers":172,"bestAnswers":4,"agree":138,"helpful":15,"guides":23,"staffPicks":0},"headshot":"yes","aboutMe":"yes","publications":14,"awards":17,"workExperience":4,"speakingEngagements":3},"professionalType":"advertiser"});</script>
+
+  <meta name="ad-location-id" content="61489" /><meta name="ad-specialty-id" content="67" /><meta name="page-template-name" content="Lawyer Profile - Main" /></head>
+  <body>
+    <script>
+//<![CDATA[
+duraLogEvents('eJztUsGOmzAU/JXIZ8xiMLaT+6qXVuqht9XKesCDtWRsZDuhqOq/1yQbdTf3\n3npk8MybN29eXhhnQgol67YgS/Ajxmi8A6vNvITbBykIzD7WKwyk+EV6SDj5\nsJHTlWAskkfqQE5MKq54VZDBz2BcfryuawmXiy97P2fGOdgMPkFKPjjc4lPD\neMXoBNSmja7GRu/ou0r5lmabOQFHDAEDObmztVkjYtAwoUt3JN5MXC0QxhiM\nvQSqWikoF6Klx5a3tBddwxQTHJm4qs4+oTbLTqlkyWpVMlHWlcw/Z0xvfhf7\n8vyDvE/cxW/jArphB1xM4HrU0/k6OOvXqu4klWxQlHegKEgOVPCqbdrjKFXb\n7qFhiCambF9/8j00QkF17CjyeqCctXmDTkradX0nx1EI3g3k92vx93gii+Uc\n9MXg+nAu6/PB7tJ1I2STU1qwN5BzvoJCFgR/ZjPJRPywXASLUQec7mxWs+oB\nXnze3OreD6g/TRKMq+M+ybvoAw7a5k2Nm3S0PkVy2pth4mJh+4AknDOSb+Fg\nxhzEV1g3DIfvt5od6OHbXqX/nfp3nXr9AzlESlk=\n');
+//]]>
+</script>
+
+<script>
+//<![CDATA[
+
+  $(document).on('click', '[data-dura-trackable-href]', duraUpdateLinkHREF);
+
+//]]>
+</script>
+    <noscript><iframe height="0" src="//www.googletagmanager.com/ns.html?id=GTM-K2L3VH" style="display:none;visibility:hidden" width="0"></iframe></noscript><script type="text/javascript">(function(w, d, s, l, i){
+  w[l] = w[l] || [];
+  w[l].push({ 'gtm.start' : new Date().getTime(),
+              event       : 'gtm.js'});
+  var f   = d.getElementsByTagName(s)[0];
+  var j   = d.createElement(s);
+  var dl  = l != 'dataLayer' ? '&l='+ l : '';
+  j.async = true;
+  j.src   = '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-K2L3VH');</script>
+    <div id="bing_tracking">
+
+</div>
+    <noscript>
+  <div style="text-align:center;background:#fbf3c5;color:#911717;padding:8px;border-bottom:1px solid #D7DADD;">
+  <strong>We've detected that your browser does not support scripting.</strong> <br/>
+  Scripting must be enabled to use Avvo. Turn on scripting and reload this page.
+  </div>
+</noscript>
+
+    <hgroup><header><nav id="page_header"><a href="//www.avvo.com/"><img alt="Logo@2x" class="logo" src="http://assets2.iavvo.com/assets/logos/logo@2x-39c17b04a49441c5131b852386f9312e.png" /></a><ul class="pull-right" id="sign-in-module"><li class="left-margin"><a href="/for-lawyers">For Lawyers</a></li><li class="left-margin"><a href="/account/login" rel="nofollow">Sign in</a></li><li class="left-margin"><a href="/account/register" rel="nofollow">Register</a></li></ul></nav></header></hgroup>
+    <div class="page">
+      <div id="primary_nav_and_breadcrumb">
+        <nav class="" id="primary_nav"><style type="text/css">.menu-primary{height:auto}.menu-primary #my-avvo-link{padding-top:28px}</style><ul class="center-content clearfix menu-primary"><li><a href="/free-legal-advice">Research<br/>Legal Advice</a></li><li><a href="/ask-a-lawyer">Ask<br/>a Lawyer</a></li><li class="active"><a href="/find-a-lawyer">Find<br/>a Lawyer</a></li><li><a href="https://advisor.avvo.com?avvo_source=avvo&amp;avvo_medium=global_navigation&amp;avvo_campaign=avvo_advisor">Instant<br/>Phone Call <span class='label label-success' style='line-height: 12px;'>New!</span></a></li><li><a href="/review-your-lawyer">Review<br/>Your Lawyer</a></li></ul><script type="text/javascript">$(document).ready(function(){
+  if(false){
+    $('.menu-primary.my_avvo').show();
+    $('#my-avvo-link').parent('li').addClass('active');
+  }
+  $('#my-avvo-link').click(function(){
+    $('.menu-primary.my_avvo').slideToggle();
+    return false;
+  })
+})</script>  <div class="search browsable" id="primary_nav_search">
+      <span id="search_selector">
+        Lawyers
+      </span>
+      <ul id="search_selector_menu" style="display:none;">
+          <li data-form-id="lawyer_search">Lawyers</li>
+          <li data-form-id="legal_advice_search">Legal Advice</li>
+      </ul>
+
+        <span id="lawyer_search" class="search_form_container selectable" >
+          
+<form accept-charset="UTF-8" action="/search/lawyer_search" class="search_form search-form" id="lawyer_search_primary_nav_search_search_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+  <input autocomplete="off" class="keyword_field keyword-search-field " data-tooltip-right="true" id="lawyer_search_primary_nav_search_search_form_keyword_field" name="q" placeholder="Lawyer&#39;s name -OR- Practice area" type="text" />
+  <input autocomplete="off" class="location_field location-search-field " id="lawyer_search_primary_nav_search_search_form_location_field" name="loc" placeholder="City, State -OR- ZIP" type="text" value="Atlanta, GA" />
+  <span class="icon-submit">
+    <input class="button primary action " name="commit" style="" type="submit" value="" />
+  </span>
+
+</form>
+        </span>
+</div>
+<script>
+//<![CDATA[
+
+  $(document).click(function(e){
+    if(e.target.id != "search_selector") {
+      $("#search_selector_menu").hide();
+    }
+  });
+
+  $("#search_selector_menu li").click(function(e) {
+    form_id = $(this).attr("data-form-id");
+    $("#primary_nav_search .search_form_container").hide();
+    $("#" + form_id).show();
+    $("#search_selector").html($(this).html());
+    $("ul.ui-autocomplete").hide();
+    $("#search_selector_menu").hide();
+  });
+
+  $("#search_selector").click(function(e) {
+    $("#search_selector_menu").toggle();
+    $("#search_selector_menu").position({
+      my: "left top",
+      at: "left bottom",
+      of: $("#search_selector")
+    });
+  });
+
+  $("#primary_nav_search .keyword_field").change(function(e) {
+    $("#primary_nav_search .keyword_field").val($(e.target).val());
+    $("#primary_nav_search .keyword_field").trigger('valuechanged');
+  });
+
+  $("#primary_nav_search .location_field").change(function(e) {
+    $("#primary_nav_search .location_field").each(function(i,el) {
+      $(el).val($(e.target).val());
+      $(el).trigger('valuechanged');
+    });
+  });
+
+//]]>
+</script>
+</nav><div id="breadcrumb"><div class="breadcrumbs"><span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/all-lawyers/ga.html" itemprop="url"><span itemprop="title">Georgia</span></a></span>&nbsp;&gt;&nbsp;<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/all-lawyers/ga/atlanta.html" itemprop="url"><span itemprop="title">Atlanta</span></a></span>&nbsp;&gt;&nbsp;<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/workers-compensation-lawyer/ga/atlanta.html" itemprop="url"><span itemprop="title">Workers&#39; Compensation Lawyers</span></a></span>&nbsp;&gt;&nbsp;<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><span class="current" itemprop="title"><span>L. Ty Wilson</span></span></span></div></div><!--[if lt IE 9]><script type="text/javascript">$(document).ready(function(){
+  $('.icon-submit').click(function(){
+    $(this).parent().submit();
+  });
+})</script><![endif]-->
+      </div>
+      <div id="flash"></div>
+    </div>
+    
+      <span>
+          
+<div class="page stripped"  itemscope = "itemscope" itemtype = "http://schema.org/Attorney" >
+
+  <!-- header -->
+    <div class="page-row margin6" id="profile_header"><div class="span12"><h1 class="light pull-left condensed margin0"><span class="pull-left" itemprop="name">L. Ty Wilson
+</span><h4><br /><div class="span-auto condensed"><a data-tooltip="Lawyers who subscribe to Avvo Pro have the ability to customize components of their profile, generate more leads with enhanced contact options, and track their performance on Avvo.
+&lt;a href=&quot;/for-lawyers/avvo-pro&quot;&gt;Learn more.&lt;/a&gt;
+" href="#!" rel="nofollow"><span class="label label-avvo-pro">Pro</span></a></div></h4></h1></div><div class="span12 margin2" id="name_alias_section"><h3>  <span class="muted">Also known as </span><span class="nickname">Ty Wilson</span>
+</h3></div><div class="span12 inline-hgroup" id="firm_office_detail"></div></div>
+
+
+  <div class="page-row">
+    <section class="span8" id="profile_details">
+
+
+      <!-- tabs -->
+
+
+      <div id="profile_overview">
+  <!-- headshot -->
+  <div class="page-row" id="headshot">
+    <div class="span2">
+      <span class="avvo-inline-block">
+        <img alt="L. Ty Wilson" class="borderless standard" itemprop="image" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/standard/1784840_1233180659.jpg" title="L. Ty Wilson" />
+      </span>
+    </div>
+    <div class="span6">
+          <h3 class="light">You may not need an attorney.  Call and order our free reports and books to educate yourself.</h3><div class="page-row margin3"><div class="span6"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></div><div class="span6">My hero</div><div class="span6 text-meta margin1">- Latisha, a Car Accident client</div></div><div class="page-row margin3"><div class="span6"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></div><div class="span6">An asset to the legal community</div><div class="span6 text-meta margin1">- Willie, a Workers Compensation client</div></div>
+
+    </div>
+  </div>
+</div>
+
+
+    
+        <hr>
+        <div class="offset2">
+            <div class="page-row">
+              <div class="page-row margin8"><div class="span3"><div class="page-row"><div class="span3" itemscope="itemscope" itemtype="http://schema.org/Review"><div itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Organization"><meta content="Avvo Inc." itemprop="name" /><meta content="Avvo" itemprop="alternateName" /><meta content="http://www.avvo.com" itemprop="url" /></div><div class="icon half-width pull-left" data-tooltip-remote="avvo_rating_description"><img alt="Avvorating@2x" src="http://assets1.iavvo.com/assets/embed/profile/avvorating@2x-cf89cef391e72dc3ea9ec72ed16ce495.png" width="100" /></div><div class="pull-left center-content margin5" itemprop="reviewRating" itemscope="itemscope" itemtype="http://schema.org/Rating"><span class="avvo_rating_numeric"><h2 class="text-red light bold center-content condensed margin0" itemprop="ratingValue">10.0</h2><img alt="" class="rating_image" src="http://assets2.iavvo.com/assets/profile_rating/icon_rating_10-658f76e74c0051e763d8556fdce67c1d.gif" /><h3 class="rating_info center-content text-red light"><span class="summary"><a class="tooltip_link tooltip-link" data-tooltip-remote-options="" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">Superb</a></span></h3><meta content="10.0" itemprop="bestRating" /><meta content="0.0" itemprop="worstRating" /></span></div><meta content="L. Ty Wilson" itemprop="itemReviewed" /></div><div class="span3 margin4">  <table id="sub_rating">
+
+        <tr>
+          <td>Experience</td>
+          <td>
+            <span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Industry Recognition</td>
+          <td>
+            <span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Professional Conduct</td>
+          <td>
+            <span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span></span>
+          </td>
+        </tr>
+
+  </table>
+<p class="text-meta"><a class="tooltip_link tooltip-link" data-tooltip-remote-options="provisional=false" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">What is the Avvo Rating?</a></p></div></div></div><div class="span3 margin6"><div class="page-row"><div class="span3"><div class="page-row"><div class="span1"><img alt="Reviews" class="full-width" src="http://assets2.iavvo.com/assets/embed/profile/reviews-72fd939ee2e493ce25a7b88d3da6028c.png" /></div><div class="span2"><a class="count" href="/attorneys/31401-ga-lty-wilson-1784840/reviews.html"><div class="page-row"><div class="inline-hgroup span2"><h3 class="light condensed margin0 stripped">17&nbsp;</h3><h5 class="light condensed margin0 stripped">Reviews</h5></div><div class="span2"><a class="star_rating full-width" href="/attorneys/31401-ga-lty-wilson-1784840/reviews.html"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a></div></div></a><div class="client_review_links">Current or former client? <a data-avn="{&quot;name&quot;:&quot;amos.gtm.view-lawyer-review-form&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;1784840-L. Ty-Wilson&quot;}}" href="/attorneys/31401-ga-lty-wilson-1784840/write_review.html" rel="nofollow">Write a review</a></div></div></div></div><hr class="span3" /><div class="span3"><div class="page-row"><div class="span1"><img alt="Endorse" class="full-width" src="http://assets2.iavvo.com/assets/embed/profile/endorse-393f817ef630e2e358047b4ca97e17ed.png" /></div><div class="span2"><div class="page-row"><a href="/attorneys/31401-ga-lty-wilson-1784840/endorsements.html"><div class="inline-hgroup span2"><h3 class="light condensed margin0 stripped">48&nbsp;</h3><h5 class="light condensed margin0 stripped">Endorsements</h5></div></a></div>Lawyers: <br><a href="/attorneys/31401-ga-lty-wilson-1784840/write_endorsement.html" rel="nofollow">Endorse this lawyer</a></div></div></div><hr class="span3" /><div class="span3"><div class="page-row"><div class="span1"><img alt="Contri" class="full-width" src="http://assets1.iavvo.com/assets/embed/profile/contri-c5a1b74b9701f86d9b28e2d9f4f0334c.png" /></div><div class="span2"><div class="page-row"><div class="inline-hgroup span2"><h5 class="light condensed margin0">Contributor Level</h5><h3 class="light condensed margin0 stripped">13</h3></div></div><p><a href="/attorneys/31401-ga-lty-wilson-1784840/answers.html">View contributions</a></p></div></div></div></div></div><div class="span6"><div id="profile_actions" class="lawyer_profile_actions">
+    <a class="primary action" data-avn="{&quot;name&quot;:&quot;amos.gtm.view-lawyer-email-form&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;1784840-L. Ty-Wilson&quot;}}" href="/attorneys/31401-ga-lty-wilson-1784840/contact.html" rel="nofollow">Email Lawyer</a>
+
+  <a class="action" data-avn="{&quot;name&quot;:&quot;amos.gtm.contact-lawyer-website&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;1784840-L. Ty-Wilson&quot;}}" href="http://www.tywilsonlaw.com" onclick="this.href=&#39;/attorneys/31401-ga-lty-wilson-1784840/website.html&#39;;return true;" target="_blank">Lawyer&#39;s website</a>
+
+  <a class="action send" href="/attorneys/31401-ga-lty-wilson-1784840/share.html" rel="nofollow">Send to a friend</a>
+</div>
+</div></div>
+            </div>
+          </div>
+      <div class="module"><h2>Overview</h2><div class="page-row" id="overview"><section class="span8">
+        <div class="js-replaceable margin6" id="specialties"><div class="page-row" id="specialties"><div class="span2"><h5 class="light">PRACTICE AREAS</h5></div><div class="span6"><div class="page-row"><div class="span2">
+<img alt="Chart?chs=169x169&amp;cht=p&amp;chp=4" class="full-width" id="specialty_chart" src="http://chart.apis.google.com/chart?chs=169x169&amp;cht=p&amp;chp=4.7&amp;chco=76d0eb|f48026|ffeb73|7ac142&amp;chd=t:40,40,15,5" />
+
+</div><div class="span4"><div class="page-row js-link-hub"><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#76d0eb"></div><div class="span3">40% Workers Compensation</div></div></div></div><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#f48026"></div><div class="span3">40% Personal Injury</div></div></div></div><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#ffeb73"></div><div class="span3">15% DUI / DWI</div></div></div></div><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#7ac142"></div><div class="span3">5% Estate Planning</div></div></div></div></div></div></div><div id="not_practicing_section">
+</div></div></div></div>
+        <div class="js-replaceable margin6" id="fees_payments"><div class="page-row" id="fees_payments_section"><div class="span2"><h5 class="light">FEES AND<BR> PAYMENT TYPES</h5></div><div class="span6"><div class="page-row"><div class="span6 margin4"><h4>Fees</h4><div id="fees_detail">    Contingent (25%-40%)
+
+</div></div><div class="span6"><h4>Payment types</h4><div id="payments_detail">  Cash, Credit Card
+  
+</div></div></div></div></div></div>
+          <div class="js-replaceable margin6" id="contact_information"><div class="page-row" id="contact_information_section"><div class="span2"><h5 class="light">CONTACT INFORMATION</h5></div><div class="span6"><div class="page-row" id="contact_information_detail">  <div id="avvo_pro_contact_module" class="page-row">
+    <div id="map" class="span3">
+      <section class="reloadable-module" data-widget-params="eJwVjEEKwjAQRa9SZp2KqeIiF3CjuBFcD800DUza0EkRLQWv4fU8idPl_-_xFmgZRcDBI_pARZw7j2NgumIGAxknTEoXGDCRWpdddX_9Pl-pbl0XW1Jnzh6Lsg5ZyMAz-tKDa-zJQE8x9AWc3YbEt1rDzLwa4LFF3oI0aKLERFIwZT2avT3W1tbNAdY_Zjcysg=="><div class="margin4" data-map="" id="map_div" style="width:216px; height:116px"><div data-map-marker="" data-map-marker-address="Atlanta Office, Atlanta, GA" data-map-marker-href="http://maps.google.com?q=Atlanta%20Office,%20Atlanta,%20GA (L.%20Ty%E2%80%99s%20Office)" data-map-marker-name="L. Ty’s Office" data-map-marker-point-latitude="33.748995" data-map-marker-point-longitude="-84.387982"></div></div></section><!--not_cached Widget:widgetsgoogle_map:false:ajax:false:size::name:L.Ty’sOffice:address::map_div_id:map_div:update:false:width:216:height:116-->
+        <a href="http://maps.google.com?q=Atlanta%20Office,%20Atlanta,%20GA (L.%20Ty%E2%80%99s%20Office)" target="_blank"><span class='icon-map'></span> See larger map</a>
+    </div>
+
+  <div id="enhanced_contact_options" class=" span3 " >
+      <div class="page-row margin2">
+          <div class="span1">
+            <h4 class="icon-email2 pull-right"></h4>
+          </div>
+          <h4 class="span-auto">
+            <a class="email" href="/attorneys/31401-ga-lty-wilson-1784840/contact.html" rel="nofollow">Email this lawyer</a>
+          </h4>
+      </div>
+      <div class="page-row margin2">
+          <div class="span1">
+            <h4 class="icon-website pull-right"></h4>
+          </div>
+          <h4 class="span-auto">
+            <a class="website" data-avn="{&quot;name&quot;:&quot;amos.profiles.website_clicked&quot;,&quot;payload&quot;:{&quot;professional_id&quot;:1784840,&quot;profession_name&quot;:&quot;lawyer&quot;,&quot;specialty_name&quot;:&quot;Workers Compensation&quot;}}" href="http://www.tywilsonlaw.com" onclick="this.href=&#39;/attorneys/31401-ga-lty-wilson-1784840/website.html&#39;;return true;" rel="nofollow" target="_blank">Visit website</a>
+          </h4>
+      </div>
+      <div class="page-row margin2">
+          <div class="span1">
+            <h3 class="icon-phone pull-right"></h3>
+          </div>
+          <h3 class="span-auto">
+            <span class="6070_phone phone">912-508-4711</span><script>
+//<![CDATA[
+
+          $(document).ready(function(){
+            $(".6070_phone").each(function(index, element) {
+              $(element).html("866-869-1970");
+              if(element.parentNode.tagName == "A"){
+                element.parentNode.setAttribute("href","tel:866-869-1970");
+              }
+            });
+          });
+        
+//]]>
+</script>
+          </h3>
+      </div>
+
+  </div>
+
+  <div style="clear:both"></div>
+
+  <div class="spacer"> </div>
+    <hr />
+</div>
+
+<div class="span3"><div class="address_list avvo-undecorated-list" id="sortable_address_list"><div class="address_sort margin4" id="address_1610768"><div class="address_name semibold">L. Ty Wilson, P.C. - By Appointment Only</div><span><div class="address_line_1">Atlanta Office</div><div class="address_line_2"></div></span><div class="address_city_state">Atlanta, GA</div><div class="address_phone"><span class="phone_label muted">Office: </span><span id="phone_number_0" itemprop="telephone"><span class="6070_phone ">912-508-4711</span><script>
+//<![CDATA[
+
+          $(document).ready(function(){
+            $(".6070_phone").each(function(index, element) {
+              $(element).html("866-869-1970");
+              if(element.parentNode.tagName == "A"){
+                element.parentNode.setAttribute("href","tel:866-869-1970");
+              }
+            });
+          });
+        
+//]]>
+</script></span></div><div class="address_phone"><span class="phone_label muted">Office: </span><span id="phone_number_1" itemprop="telephone"><span class="6070_phone ">912-508-4711</span><script>
+//<![CDATA[
+
+          $(document).ready(function(){
+            $(".6070_phone").each(function(index, element) {
+              $(element).html("866-869-1970");
+              if(element.parentNode.tagName == "A"){
+                element.parentNode.setAttribute("href","tel:866-869-1970");
+              }
+            });
+          });
+        
+//]]>
+</script></span></div><a data-avn="{&quot;name&quot;:&quot;amos.contacts.viewed_directions&quot;,&quot;payload&quot;:{&quot;professional_id&quot;:1784840}}" href="http://maps.google.com/maps?q=Atlanta+Office%2C+Atlanta%2C+GA+%28L.+Ty+Wilson%2C+P.C.+-+By+Appointment+Only%29" rel="nofollow" target="_blank"><span class="icon-map"></span> View map</a></div></div><div class="address_list" id="more_addresses" style="display:none"><div class="address_sort margin4" id="address_4959777"><div class="address_name semibold">Lawrenceville Office by appointment only.</div><span><div class="address_line_1">965 Oakland Road</div><div class="address_line_2">Suite 2A</div></span><div class="address_city_state">Lawrenceville, GA 30044</div><div class="address_phone"><span class="phone_label muted">Office: </span><span id="phone_number_0"><span class="6070_phone ">912-508-4711</span><script>
+//<![CDATA[
+
+          $(document).ready(function(){
+            $(".6070_phone").each(function(index, element) {
+              $(element).html("866-869-1970");
+              if(element.parentNode.tagName == "A"){
+                element.parentNode.setAttribute("href","tel:866-869-1970");
+              }
+            });
+          });
+        
+//]]>
+</script></span></div><a data-avn="{&quot;name&quot;:&quot;amos.contacts.viewed_directions&quot;,&quot;payload&quot;:{&quot;professional_id&quot;:1784840}}" href="http://maps.google.com/maps?q=965+Oakland+Road%2C+Suite+2A%2C+Lawrenceville%2C+GA+30044+%28Lawrenceville+Office+by+appointment+only.%29" rel="nofollow" target="_blank"><span class="icon-map"></span> View map</a></div><div class="address_sort margin4" id="address_3506273"><div class="address_name semibold">Savannah Office by Appointment only</div><span><div class="address_line_1">100 Bull Street</div><div class="address_line_2">Suite 200</div></span><div class="address_city_state">Savannah, GA 31401</div><div class="address_phone"><span class="phone_label muted">Office: </span><span id="phone_number_0"><span class="6070_phone ">912-508-4711</span><script>
+//<![CDATA[
+
+          $(document).ready(function(){
+            $(".6070_phone").each(function(index, element) {
+              $(element).html("866-869-1970");
+              if(element.parentNode.tagName == "A"){
+                element.parentNode.setAttribute("href","tel:866-869-1970");
+              }
+            });
+          });
+        
+//]]>
+</script></span></div><div class="address_phone"><span class="phone_label muted">Office: </span><span id="phone_number_1"><span class="6070_phone ">912-508-4711</span><script>
+//<![CDATA[
+
+          $(document).ready(function(){
+            $(".6070_phone").each(function(index, element) {
+              $(element).html("866-869-1970");
+              if(element.parentNode.tagName == "A"){
+                element.parentNode.setAttribute("href","tel:866-869-1970");
+              }
+            });
+          });
+        
+//]]>
+</script></span></div><a data-avn="{&quot;name&quot;:&quot;amos.contacts.viewed_directions&quot;,&quot;payload&quot;:{&quot;professional_id&quot;:1784840}}" href="http://maps.google.com/maps?q=100+Bull+Street%2C+Suite+200%2C+Savannah%2C+GA+31401+%28Savannah+Office+by+Appointment+only%29" rel="nofollow" target="_blank"><span class="icon-map"></span> View map</a></div></div><p>
+
+<a href="#!" id="more_addresses_link" onclick="
+   $(&#39;#more_addresses&#39;).slideDown(500);
+   $(&#39;#more_addresses_link&#39;).hide();
+   $(&#39;#less_addresses_link&#39;).show();
+" rel="nofollow">See additional addresses</a>
+
+
+<a href="#!" id="less_addresses_link" onclick="
+   $(&#39;#more_addresses&#39;).slideUp(500);
+   $(&#39;#less_addresses_link&#39;).hide();
+   $(&#39;#more_addresses_link&#39;).show();
+" style="display:none;">Hide additional addresses</a>
+</p></div><div class="span3">  <div id="additional_links" class="page-row">
+      <div class="span3">
+        <div class="page-row">
+          <div class="span1">
+            <span class='icon-blog  pull-right'></span>
+          </div>
+          <div class="span2">
+              <a href="http://www.accident-attorney-atlanta.com" rel="nofollow me" target="_blank">Blog</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="span3">
+        <div class="page-row">
+          <div class="span1">
+            <span class='icon-facebook  pull-right'></span>
+          </div>
+          <div class="span2">
+              <a href="http://www.facebook.com/TyWilsonLaw" rel="nofollow me" target="_blank">Facebook</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="span3">
+        <div class="page-row">
+          <div class="span1">
+            <span class='icon-linkedin  pull-right'></span>
+          </div>
+          <div class="span2">
+              <a href="http://www.linkedin.com/in/tywilson" rel="nofollow me" target="_blank">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="span3">
+        <div class="page-row">
+          <div class="span1">
+            <span class='icon-twitter  pull-right'></span>
+          </div>
+          <div class="span2">
+              <a href="https://twitter.com/#!/TyWilsonLaw" rel="nofollow me" target="_blank">Twitter</a>
+          </div>
+        </div>
+      </div>
+
+
+  </div>
+</div>
+</div></div></div></div>
+        
+        <div class="js-replaceable margin6" id="about_me"><div class="page-row" id="about_me_section"><div class="span2"><h5 class="light">ABOUT ME</h5></div><div class="span6"><div id="about_me_detail">  
+    <div id="media_table_wrapper">
+      <table><tr><td><a data-modal-open="modal_dVrY9" data-modal-url="/attorneys/1784840/media/432814/video" href="#!"><div class="thumbnail borderless with-overlay"><img alt="" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/thumbnail_small/1784840_1358439997.jpg" title="" /><br /><div class="icon-play pull-left"></div></div></a></td><td><a data-modal-open="modal_anMxJ" data-modal-url="/attorneys/1784840/media/283103/video" href="#!"><div class="thumbnail borderless with-overlay"><img alt="" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/thumbnail_small/1784840_1312382487.jpg" title="" /><br /><div class="icon-play pull-left"></div></div></a></td><td><a data-modal-open="modal_WZ8Kj" data-modal-url="/attorneys/1784840/media/283102/video" href="#!"><div class="thumbnail borderless with-overlay"><img alt="" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/thumbnail_small/1784840_1312382435.jpg" title="" /><br /><div class="icon-play pull-left"></div></div></a></td><td><a data-modal-open="modal_83OsI" data-modal-url="/attorneys/1784840/media/283101/video" href="#!"><div class="thumbnail borderless with-overlay"><img alt="" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/thumbnail_small/1784840_1312382397.jpg" title="" /><br /><div class="icon-play pull-left"></div></div></a></td></tr></table>
+    </div>
+  
+    <p>
+      My name is Ty Wilson, I am an attorney practicing primarily in the fields of Personal Injury, and Workers' Compensation in the State of Georgia.
+
+I practice in... <a href="/attorneys/31401-ga-lty-wilson-1784840/aboutme.html">more</a>
+    </p>
+
+  <a class="navigation" href="/attorneys/31401-ga-lty-wilson-1784840/aboutme.html">View all photos and/or videos</a>
+</div></div></div></div>
+</section></div></div>
+      <div class="module"><h2>References</h2><div class="page-row" id="references"><section class="span8">
+        <div class="js-replaceable margin6" id="reviews"><div class="page-row" id="reviews_section"><div class="span2"><h5 class="light">CLIENT REVIEWS</h5></div><div class="span6"><div id="reviews_detail"><div class="page-row"><div class="span1"><img alt="Reviews" class="full-width" src="http://assets2.iavvo.com/assets/embed/profile/reviews-72fd939ee2e493ce25a7b88d3da6028c.png" /></div><div class="span5"><div class="overview">
+  <h4>Average Client Rating</h4>
+  <div class="star_rating">
+      <a class="stars" href="/attorneys/31401-ga-lty-wilson-1784840/reviews.html"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a>
+      <span class="review_count"><a href="/attorneys/31401-ga-lty-wilson-1784840/reviews.html">17 reviews</a></span>
+  </div>
+  <div class="client_review_links">Current or former client? <a data-avn="{&quot;name&quot;:&quot;amos.gtm.view-lawyer-review-form&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;1784840-L. Ty-Wilson&quot;}}" href="/attorneys/31401-ga-lty-wilson-1784840/write_review.html" rel="nofollow">Write a review</a></div>
+</div>
+
+</div></div><hr class="margin4" /><div class="page-row margin2 with-overlay"><div class="span1"><img alt="Quotes@2x" class="full-width" src="http://assets2.iavvo.com/assets/embed/topic_pages/quotes@2x-77df7504b38dc1ede65c9b0e3e45acf7.png" /></div><div class="span5"><h3 class="light"><a href="/attorneys/31401-ga-lty-wilson-1784840/reviews.html#196027">“My hero”</a></h3><a href="/attorneys/31401-ga-lty-wilson-1784840/reviews.html#196027"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a><p>Ty Wilson is my ad visor and my guardian. Ty is more than a lawyer to me he has actually been a friend. When ever I had a problem Ty was there. I had... </p><p class="text-meta">Posted by: Latisha, over 2 years ago.</p><div class="overlay bottom right margin2"><a data-tooltip-remote="confirm_objectionable" href="/professional_reviews/196027/objectionable" id="professional_review_objectionable_196027" rel="nofollow"><i class="medium-gray icon-flag"></i> Flag</a></div></div></div><div class="page-row margin2 with-overlay"><div class="span1"><img alt="Quotes@2x" class="full-width" src="http://assets2.iavvo.com/assets/embed/topic_pages/quotes@2x-77df7504b38dc1ede65c9b0e3e45acf7.png" /></div><div class="span5"><h3 class="light"><a href="/attorneys/31401-ga-lty-wilson-1784840/reviews.html#89845">“An asset to the legal community”</a></h3><a href="/attorneys/31401-ga-lty-wilson-1784840/reviews.html#89845"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a><p>Mr. Wilson really helped me get through the last year while on workers compensation.  He made sure I got everything that was due as far as treatments... </p><p class="text-meta">Posted by: Willie, about 4 years ago.</p><div class="overlay bottom right margin2"><a data-tooltip-remote="confirm_objectionable" href="/professional_reviews/89845/objectionable" id="professional_review_objectionable_89845" rel="nofollow"><i class="medium-gray icon-flag"></i> Flag</a></div></div></div><div class="margin4"><a class="navigation" href="/attorneys/31401-ga-lty-wilson-1784840/reviews.html">View all 17 reviews</a></div></div></div></div></div>
+        
+        <div class="js-replaceable margin6" id="endorsements"><div class="page-row" id="endorsements_section"><div class="span2"><h5 class="light">PEER ENDORSEMENTS</h5></div><div class="span6"><div id="endorsements_detail"><div class="page-row"><div class="span1"><img alt="Endorse" class="full-width" src="http://assets2.iavvo.com/assets/embed/profile/endorse-393f817ef630e2e358047b4ca97e17ed.png" /></div><div class="span5"><h4>Endorsements</h4><p class="pull-left"><a href="/attorneys/31401-ga-lty-wilson-1784840/endorsements.html">48 endorsements</a></p><div class="pull-right">Lawyers: <a href="/attorneys/31401-ga-lty-wilson-1784840/write_endorsement.html" rel="nofollow">Endorse this lawyer</a></div></div></div><hr class="margin4" />
+<div class="page-row margin6">
+  <!-- clear the cache -->
+  <div class="span1"><a href="/attorneys/11235-ny-dmitriy-shakhnevich-4630288.html"><img alt="Dmitriy Shakhnevich" class="borderless thumbnail_medium" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/4630288_1411832485.jpg" title="Dmitriy Shakhnevich" /></a></div>
+  <div class="span5">
+    <div>
+      <p>
+        I endorse this lawyer.
+      </p> 
+      <span class="muted text-meta">Endorsement from lawyer:
+        <a href="/attorneys/11235-ny-dmitriy-shakhnevich-4630288.html">Dmitriy Shakhnevich</a>
+         , Brooklyn (NY), About 2 months ago
+      </span>
+    </div>
+  </div>
+</div>
+<div class="page-row margin6">
+  <!-- clear the cache -->
+  <div class="span1"><a href="/attorneys/30809-ga-michael-waddington-575452.html"><img alt="Michael S. Waddington" class="borderless thumbnail_medium" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/575452_1403592827.jpg" title="Michael S. Waddington" /></a></div>
+  <div class="span5">
+    <div>
+      <p>
+        I endorse Ty. He is a highly skilled attorney that is well respected in the legal community.
+      </p> 
+      <span class="muted text-meta">Endorsement from lawyer:
+        <a href="/attorneys/30809-ga-michael-waddington-575452.html">Michael Waddington</a>
+         , Evans (GA), 6 months ago
+      </span>
+    </div>
+  </div>
+</div><a class="navigation" href="/attorneys/31401-ga-lty-wilson-1784840/endorsements.html">View all 48 endorsements</a></div></div></div></div>
+</section></div></div>
+      <div class="module"><h2>R&eacute;sum&eacute;</h2><div class="page-row" id="resume"><section class="span8">
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="licenses_section"><div id="licenses"><div class="span8 margin2"><div class="box"><h5 class="light margin0">LICENSE</h5></div></div><div class="span8"><div id="licenses_detail"><p>13 years since L. Ty Wilson was first licensed to practice law.</p><div class="js-link-hub"><table class="table"><thead><tr><th>State</th><th>License status</th><th>Year acquired</th><th>Last updated by Avvo</th></tr></thead><tbody>
+<tr class="">
+  <td>Georgia</td>
+  <td>
+      Active Member in Good Standing 
+  </td>
+  <td>2001</td>
+  <td>10/28/2014</td>
+</tr></tbody></table></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="sanctions_section"><div id="sanctions"><div class="span8 margin2"><div class="box"><h5 class="light margin0">PROFESSIONAL MISCONDUCT</h5></div></div><div class="span8"><div id="sanctions_detail">  <p class="article-body sans-serif">
+    <span class="icon-no-misconduct icon-green icon-padded narrow right"></span>
+    We have not found any instances of professional misconduct for this lawyer.
+  </p>
+
+</div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="work_experience_section"><div id="work_experience"><div class="span8 margin2"><div class="box"><h5 class="light margin0">WORK EXPERIENCE</h5></div></div><div class="span8"><div id="work_experience_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Position</th><th>Duration</th></tr></thead><tbody><tr class=" ">
+  <td>
+    Principal at L. Ty Wilson, P.C.
+  </td>
+  <td>
+    2005&ndash;present
+  </td>
+</tr>
+<tr class=" ">
+  <td>
+    Principal at L. Ty Wilson, LLC
+  </td>
+  <td>
+    2004
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Staff Attorney at King &amp; Spalding
+  </td>
+  <td>
+    2002&ndash;2004
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Law Clerk at John Scott, P.C.
+  </td>
+  <td>
+    1998&ndash;2002
+  </td>
+</tr>
+</tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 4 job entries<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional positions<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="education_section"><div id="education"><div class="span8 margin2"><div class="box"><h5 class="light margin0">EDUCATION</h5></div></div><div class="span8"><div id="education_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>School</th><th>Major</th><th>Degree</th><th>Graduated</th></tr></thead><tbody><tr class=" ">
+  <td>John Marshall Law School, Atlanta</td>
+  <td>Law</td>
+  <td>JD - Juris Doctor</td>
+  <td>2000</td>
+</tr>
+
+<tr class=" ">
+  <td>Sam Houston State University</td>
+  <td>Finance</td>
+  <td>BA - Bachelor of Arts</td>
+  <td>1993</td>
+</tr>
+
+</tbody></table></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="awards_section"><div id="awards"><div class="span8 margin2"><div class="box"><h5 class="light margin0">AWARDS</h5></div></div><div class="span8"><div id="awards_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Award Name</th><th>Granting Organization</th><th>Date</th></tr></thead><tbody><tr><td>AV Preeminent 5.0 out of 5 Peer Review Rated</td><td>Martindale-Hubbell</td><td>2015</td></tr><tr><td>Legal Leaders of Georgia</td><td>Martindale-Hubbell</td><td>2014</td></tr><tr class="js-expandable"><td>AV Preeminent 5.0 out of 5 Peer Review Rated</td><td>Martindale-Hubbell</td><td>2014</td></tr><tr class="js-expandable"><td>Peer Review Rated</td><td>Martindale-Hubbell</td><td>2014</td></tr><tr class="js-expandable"><td>AV Peer Review Rating</td><td>Martindale-Hubbell</td><td>2014</td></tr><tr class="js-expandable"><td>Top Attorneys</td><td>American Lawyer Media</td><td>2013</td></tr><tr class="js-expandable"><td>Peer Review Rated</td><td>Martindale-Hubbell</td><td>2013</td></tr><tr class="js-expandable"><td>AV Peer Review Rating</td><td>Martindale-Hubbell</td><td>2013</td></tr><tr class="js-expandable"><td>Top Lawyer</td><td>American Lawyer</td><td>2012</td></tr><tr class="js-expandable"><td>Top Attorneys</td><td>National Law Journal</td><td>2012</td></tr><tr class="js-expandable"><td>Peer Review Rated</td><td>Martindale-Hubbell</td><td>2012</td></tr><tr class="js-expandable"><td>AV Peer Review Rating</td><td>Martindale-Hubbell</td><td>2012</td></tr><tr class="js-expandable"><td>Peer Review Rated</td><td>Martindale-Hubbell</td><td>2011</td></tr><tr class="js-expandable"><td>Invited Member</td><td>Georgia Trial Lawyers Association</td><td>2004</td></tr><tr class="js-expandable"><td>Invited Member</td><td>Southern Trial Lawyers Association</td><td>2004</td></tr><tr class="js-expandable"><td>Moot Court</td><td>John Marshall Law School</td><td>1999</td></tr><tr class="js-expandable"><td></td><td></td><td></td></tr></tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 17 awards<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional awards<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="organizations_section"><div id="organizations"><div class="span8 margin2"><div class="box"><h5 class="light margin0">ASSOCIATIONS</h5></div></div><div class="span8"><div id="organizations_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Position</th><th>Association Name</th><th>Duration</th></tr></thead><tbody><tr class=" ">
+  <td>Member</td>
+  <td>Cobb Bar Association</td>
+  <td>
+    2006&ndash;2010
+  </td>
+</tr>
+<tr class=" ">
+  <td>Member</td>
+  <td>American Association for Justice</td>
+  <td>
+    2004&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member</td>
+  <td>Rockdale County Bar Association</td>
+  <td>
+    2009&ndash;2012
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member</td>
+  <td>Atlanta Bar Association</td>
+  <td>
+    2008&ndash;2012
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member</td>
+  <td>State Bar of Georgia</td>
+  <td>
+    2001&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member</td>
+  <td>Georgia Association of Criminal Defense Lawyers</td>
+  <td>
+    2006&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member</td>
+  <td>Southern Trial Lawyers Association</td>
+  <td>
+    2004&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member</td>
+  <td>Georgia Trial Lawyers Association, Workers Compensation Section</td>
+  <td>
+    2006&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member</td>
+  <td>Georgia Trial Lawyers Association</td>
+  <td>
+    2004&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Attorney Member</td>
+  <td>Savannah Bar Association</td>
+  <td>
+    2012&ndash;present
+  </td>
+</tr>
+</tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 10 association entries<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional associations<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+</section></div></div>
+      <div class="module"><h2>Portfolio</h2><div class="page-row" id="portfolio"><section class="span8">
+        <div class="js-replaceable margin7"><div class="page-row with-overlay" id=""><div id=""><div class="span8 margin2"><div class="box"><h5 class="light margin0">CONTRIBUTION</h5></div></div><div class="span8"><div class="contri-badge"><div class="contributor-level-badge level-3 margin1" data-tooltip-remote="contributor_badge"><i class="icon-badge-feather"></i></div><div class="badge-text">Contributor Level 13</div></div>
+<table class="table">
+  <tr>
+    <th>Answers:</th>
+    <td><a class="article-body sans-serif" href="/attorneys/31401-ga-lty-wilson-1784840/answers.html">172</a></td>
+    <td><a class="article-body sans-serif" href="/attorneys/31401-ga-lty-wilson-1784840/answers.html">Legal Answers</a></td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>4</td>
+    <td>Best Answers - chosen by asker</td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>138</td>
+    <td>Answers marked "I agree" by other lawyers</td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>15</td>
+    <td>Answers marked helpful by other users</td>
+  </tr>
+  <tr>
+    <th>Guides:</th>
+    <td><a class="article-body sans-serif" href="/attorneys/31401-ga-lty-wilson-1784840/guides.html">23</a></td>
+    <td><a class="article-body sans-serif" href="/attorneys/31401-ga-lty-wilson-1784840/guides.html">Legal Guides</a></td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>0</td>
+    <td>Staff Picks</td>
+  </tr>
+</table>
+  <a class="navigation" href="/attorneys/31401-ga-lty-wilson-1784840/answers.html">View all contributions</a>
+</div></div></div></div>
+        <div class="js-replaceable margin7"><div class="page-row with-overlay" id="blog_syndication_section"><div id="blog_syndication"><div class="span8 margin2"><div class="box"><h5 class="light margin0">RECENTLY POSTED</h5></div></div><div class="span8"><div id="blog_syndication_detail"><h5 class="margin2">
+  <span class="icon-blog"></span>
+  <a href="http://www.accident-attorney-atlanta.com" rel="nofollow">Atlanta Accident Attorney</a>
+</h5>
+<div class="posts">
+  <div class="ajax_widget" data-widget-params="eJwNi0sOwjAMRO_idUuaCjZZcghYW4kplpyPElcIqt4d72bevDkgCo4BAZ6cNtIRwl3q9mD6UIcJGnbMNh-wdzHrrdqCcxgjJyo6o2rthb4WBIviJdbsXkTJ2Vk4s0K4TTD4RxDKLnIarhHFKlAxSTnTUMzNwLr46-z9vC5w_gEN_DLq" id="ajax_blog_viewer_widget_48392620"><img alt="Spinner" src="http://assets1.iavvo.com/assets/spinner-67122eeb98417b51e28d1fae18455456.gif" /></div><!--Widget:widgetsblog_viewer:true:ajax:true:size::title_url::title::limit:5:url:http:accident-attorney-atlanta.comfeed-->
+</div>
+</div></div></div></div></div>
+        <div class="js-replaceable margin7"><div class="page-row with-overlay" id="legal_cases_section"><div id="legal_cases"><div class="span8 margin2"><div class="box"><h5 class="light margin0">CASES</h5></div></div><div class="span8">  <div class="margin4">
+  <div class="case_title"><a href="/attorneys/31401-ga-lty-wilson-1784840/legal_cases/69517">Georgia Workers Comp Change Of Physicians</a></div>
+  <div class="outcome">
+    <strong>Outcome:</strong> Approved Change of Physician
+  </div>
+</div>
+
+<div class="margin4">
+  <div class="case_title"><a href="/attorneys/31401-ga-lty-wilson-1784840/legal_cases/70705">Rear end car wreck</a></div>
+  <div class="outcome">
+    <strong>Outcome:</strong> Confidental
+  </div>
+</div>
+
+<div class="margin4">
+  <div class="case_title"><a href="/attorneys/31401-ga-lty-wilson-1784840/legal_cases/69516">Rear End Car Crash</a></div>
+  <div class="outcome">
+    <strong>Outcome:</strong> Policy limits
+  </div>
+</div>
+
+
+    <a class="navigation" href="/attorneys/31401-ga-lty-wilson-1784840/legal_cases">See all cases</a>
+</div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="publications_section"><div id="publications"><div class="span8 margin2"><div class="box"><h5 class="light margin0">PUBLICATIONS</h5></div></div><div class="span8"><div id="publications_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Article</th><th>Publication</th><th>Date</th></tr></thead><tbody><tr class=" ">
+  <td>Social Media Can Hurt Your Injury Claim</td>
+  <td>hg.org</td>
+  <td>2012</td>
+</tr>
+<tr class=" ">
+  <td>How to Fire Your Attorney</td>
+  <td>HG.org</td>
+  <td>2012</td>
+</tr>
+<tr class=" js-expandable">
+  <td>Trucking Accidents and the Personal Injury Claim</td>
+  <td>HG.org</td>
+  <td>2012</td>
+</tr>
+<tr class=" js-expandable">
+  <td>Playground Injuries - More Common Than You Think</td>
+  <td>HG.org</td>
+  <td>2012</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.amazines.com/article_detail.cfm/3069652?articleid=3069652" rel="nofollow" target="_blank">What Can You Do When You&#39;re Hurt In a Slip-and-Fall</a></td>
+  <td>Article</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://ezinearticles.com/?How-Do-I-Prove-Negligence?&amp;id=6255944" rel="nofollow" target="_blank">How Do I Prove Negligence?</a></td>
+  <td>Article</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td>The Ultimate Consumer Guide to Purchasing Motor Vehicle Insurance in Georgia</td>
+  <td>Book</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td>Your Injury Diary</td>
+  <td>Book</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.articlebiz.com/article/1051412694-1-savannah-car-accident-atlanta-car-accident-collision-crash-wreck/" rel="nofollow" target="_blank">How to Find a Qualified Personal Injury Attorney in Georgia</a></td>
+  <td>Article</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://ezinearticles.com/?3-Reasons-Your-Workers-Compensation-Claim-May-Be-Denied&amp;id=6151547" rel="nofollow" target="_blank">3 Reasons Your Workers Compensation May Be Denied</a></td>
+  <td>Article</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.articlepros.com/business/advertising/article-591737.html" rel="nofollow" target="_blank">The 3 Things the Insurance Companies Consider When Settling a Georgia Workers Compensation Claim</a></td>
+  <td>Article</td>
+  <td>2010</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://ezinearticles.com/?Why-Are-All-Accident-Cases-Different?&amp;id=4499300" rel="nofollow" target="_blank">Why Are All Accident Cases Different?</a></td>
+  <td>Article</td>
+  <td>2010</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.10SecretsGeorgiaCarWreck.com" rel="nofollow" target="_blank">10 Secrets of Georgia Car Wreck Claims</a></td>
+  <td>Book</td>
+  <td>2010</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.articlepros.com/business/advertising/article-573520.html" rel="nofollow" target="_blank">5 Things You Must Know About Your Georgia Workers Compensation Claim</a></td>
+  <td>Article</td>
+  <td>2010</td>
+</tr>
+</tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 14 publications<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional publications<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="speaking_engagements_section"><div id="speaking_engagements"><div class="span8 margin2"><div class="box"><h5 class="light margin0">SPEAKING ENGAGEMENTS</h5></div></div><div class="span8"><div id="speaking_engagements_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Presentation Name</th><th>Conference</th><th>Date</th></tr></thead><tbody><tr class=" ">
+  <td>Discovering Priviledge Electronic Communications</td>
+  <td>King &amp; Spalding</td>
+  <td >2004</td>
+</tr>
+<tr class=" ">
+  <td>Discovery - E-mail</td>
+  <td>King &amp; Spalding</td>
+  <td >2003</td>
+</tr>
+<tr class=" js-expandable">
+  <td>Electronic Discovery How To Respond</td>
+  <td>King &amp; Spalding</td>
+  <td >2002</td>
+</tr>
+</tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 3 speaking engagements<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional speaking engagements<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+</section></div></div>    </section>
+
+    <div class="span4" id="profile_b_column">
+      
+
+  <section class="reloadable-module" data-widget-params="eJwNi0EKwjAQRe_y1yk0NWDJ1gsILlzKkEYZnCSlMy609O5m-d97f0cSUkXEnZdXNo3xZpze3-vWniz50qpRMjistFHp4Y61q6zKrZI8eEH05znMYXRQ_mXE-hE5HKQlkj6Ra78bl6xGZe1gGn0YvB-mE44_a5MqgA=="><div class="page-row"><div class="span4 margin4 js-floating-box" id="sticky_profile_contact_widget"><div class="box"><section><h4 class="light margin4">Call and order your free books &amp; reports.  Be Informed.  Be Aware.  Be Prepared.</h4><div class="page-row"><div class="span4 boxed-right boxed-left"><form accept-charset="UTF-8" action="/attorneys/31401-ga-lty-wilson-1784840/contact/preprocess" class="new_contact_professional" data-remote="true" id="sticky_contact_email_form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+  <textarea class="collapsed full-width text" id="sticky_contact_professional_message" name="contact_professional[message]" placeholder="Send this attorney a message" rows="5">
+</textarea>
+
+  <div id="sticky_contact_hidden_fields" style="display: none;">
+    <label class="full-width" for="sticky_contact_professional_name" required="required">Your name</label><input class="full-width text" id="sticky_contact_professional_name" name="contact_professional[name]" type="text" />
+    <label class="full-width" for="sticky_contact_professional_email" required="required">Your email address</label><input class="full-width text" id="sticky_contact_professional_email" name="contact_professional[email]" type="text" />
+    <input id="using_new_styles" name="using_new_styles" type="hidden" value="true" />
+    
+
+    <p style="position:relative;">
+      <input class="primary action" name="commit" type="submit" value="Preview" />
+      <button class="cancel action" name="button" onclick="" type="button">Cancel</button>
+    </p>
+  </div>
+</form>
+<script>
+//<![CDATA[
+
+  $(document).ready(function(){
+    $('#sticky_contact_professional_message').focus(function() {
+      if(!$('#sticky_contact_hidden_fields').is(':visible')) {
+        _avn.notify('amos.contacts.viewed_email_form', {"professional_id":1784840,"gtm":{"position":"pro","property":"1784840-L. Ty-Wilson"}});
+        $('#sticky_contact_hidden_fields').slideDown(0.6);
+      }
+      $('#sticky_contact_professional_message').parents(".field").removeClass("collapsed");
+    });
+    $("#sticky_contact_email_form :input.cancel").click(function(evt){
+      $('#sticky_contact_hidden_fields').slideUp();
+      $('#sticky_contact_professional_message').val("").parents(".field").addClass("collapsed");
+      $('#sticky_contact_professional_name').val("");
+      $('#sticky_contact_professional_email').val("");
+      $('.sticky_profile_contact_widget .error').each(function(i, e){ $(e).html('');});
+
+      evt.preventDefault();
+      return false;
+    });
+  });
+
+//]]>
+</script></div></div><div class="page-row margin2"><div class="span1 boxed-left"><h4 class="icon-website pull-right"></h4></div><div class="span3 boxed-right"><h4><a data-avn="{&quot;name&quot;:&quot;amos.profiles.website_clicked&quot;,&quot;payload&quot;:{&quot;gtm&quot;:{&quot;event&quot;:&quot;contact-advertising-website&quot;,&quot;position&quot;:&quot;pro&quot;,&quot;property&quot;:&quot;1784840-L. Ty-Wilson&quot;}}}" href="http://www.tywilsonlaw.com" onclick="this.href=&#39;/attorneys/31401-ga-lty-wilson-1784840/website.html&#39;;return true;" target="_blank">Visit attorney&#39;s website</a></h4></div></div><div class="page-row margin0"><div class="span1 boxed-left"><h3 class="icon-phone pull-right"></h3></div><div class="span3 boxed-right"><h3><span class="6070_phone ">912-508-4711</span><script>
+//<![CDATA[
+
+          $(document).ready(function(){
+            $(".6070_phone").each(function(index, element) {
+              $(element).html("866-869-1970");
+              if(element.parentNode.tagName == "A"){
+                element.parentNode.setAttribute("href","tel:866-869-1970");
+              }
+            });
+          });
+        
+//]]>
+</script></h3></div></div></section></div></div></div></section><!--not_cached Widget:widgetssticky_profile_contact:false:ajax:false:size::professional_id:1784840:edit_mode:false;1416464921-->
+
+    </div>
+
+    
+  </div>
+</div>
+
+
+<script>
+//<![CDATA[
+
+  $(function(){
+    $('.js-replaceable').bind('dom:changed', function(){
+      $(this).find('.js-hover-tooltip-link').hoverTooltip();
+    });
+  });
+
+//]]>
+</script>
+</span>
+    <footer class="persistent-footer page full-width no-border"><div class="page-row"><a class="quiet span3" href="//www.avvo.com/"><div class="icon-avvo-logo footer-logo"></div><div class="footer-slogan">Legal. <strong>Easier.</strong></div></a><div class="span3"><a class="quiet" href="/"><h3>Explore Avvo</h3></a><p class="margin1"><a class="quiet" href="/ask-a-lawyer">Ask a Lawyer</a></p><p class="margin1"><a class="quiet" href="/find-a-lawyer">Find a Lawyer</a></p><p class="margin1"><a class="quiet" href="/free-legal-advice">Free Legal Advice</a></p><p class="margin1"><a class="quiet" href="/review-your-lawyer">Review a Lawyer</a></p></div><div class="span3"><a class="quiet" href="/for-lawyers"><h3>For Lawyers</h3></a><p class="margin1"><a class="quiet" href="/for-lawyers">Lawyer Advertising</a></p><p class="margin1"><a class="quiet" href="/claim-your-profile">Claim Your Profile</a></p><p class="margin1"><a class="quiet" href="/support/all-firm-claim">For Law Firms</a></p><p class="margin1"><a class="quiet" href="//ignite.avvo.com">Marketing Management Software</a></p><p class="margin1"><a class="quiet" href="//lawyernomics.avvo.com">Lawyernomics Blog</a></p></div><div class="span3"><a class="quiet" href="/about_avvo"><h3>Company Info</h3></a><p class="margin1"><a class="quiet" href="/about_avvo/about_us">About Us</a></p><p class="margin1"><a class="quiet" href="/for-lawyers/support">Support</a></p><p class="margin1"><a class="quiet" href="//press.avvo.com">Press Room</a></p><p class="margin1"><a class="quiet" href="/partner_with_us">Partner With Us</a></p><p class="margin1"><a class="quiet" href="/about_avvo/jobs">Careers</a></p><p class="margin1"><a class="quiet" href="//avvoblog.com">Avvo Blog</a></p><p class="margin1"><a class="quiet" href="//nakedlaw.avvo.com">NakedLaw Blog</a></p></div></div></footer><footer class="black"><div id="fine_print_container"><div id="fine_print"><div class="contact_avvo">Follow us on <a href="//www.twitter.com/avvo"><img alt="Twitter" src="http://assets2.iavvo.com/assets/embed/additional_links/twitter_icon-c160ce8886d11899e6833dd271a13f2d.png" /></a><a href="http://www.facebook.com/avvo"><img alt="Facebook" src="http://assets1.iavvo.com/assets/embed/additional_links/facebook_icon-6d9bd4ddfbad9c81a22fd2471b67d673.png" /></a><a href="//plus.google.com/107840042923877554905"><img alt="Google icon" src="http://assets2.iavvo.com/assets/embed/additional_links/google_icon-942738832fa1fe452c21f15e5a9194b2.png" /></a></div><p class="bottom_links"><span class="copyright">&copy;2014 Avvo, Inc. All Rights Reserved </span><span><a href="?prefer_mobile=true" rel="nofollow">Mobile View</a></span><span class="pipe">|</span><span><a href="/support/terms" rel="nofollow">Terms of Use</a></span><span class="pipe">|</span><span><a href="/support/privacy" rel="nofollow">Privacy Policy</a></span><span class="pipe">|</span><span><a href="/support/community_guidelines" rel="nofollow">Community Guidelines</a></span></p></div></div></footer>
+
+    <noscript>
+  <div style="text-align:center;background:#fbf3c5;color:#911717;padding:8px;border-bottom:1px solid #D7DADD;">
+  <strong>We've detected that your browser does not support scripting.</strong> <br/>
+  Scripting must be enabled to use Avvo. Turn on scripting and reload this page.
+  </div>
+</noscript>
+
+
+
+
+    <!-- r:2c4e22c7b390a64641358a65bde9e1a551c45b69 -->
+<!-- d:Fri Nov 21 22:19:26 PST 2014 -->
+<!-- p:www.avvo.com -->  
+
+
+
+
+
+    
+    <script src="http://assets1.iavvo.com/assets/footer_common-59d36e58c17ffbec325b4d50f60e0fda.js"></script>
+    <script src="http://assets1.iavvo.com/assets/floating_box-a803f669a36f68baa4d79a920d5fe3a1.js"></script>
+
+
+
+<div id="google_remarketing">
+
+    <script type="text/javascript">
+    /* <![CDATA[ */
+    var google_conversion_id = 1057123743;
+    var google_conversion_language = "en";
+    var google_conversion_format = "3";
+    var google_conversion_color = "ffffff";
+    var google_conversion_label = "z9BlCKXnsAIQn9uJ-AM";
+    var google_conversion_value = 0;
+    /* ]]> */
+    </script>
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js?avvo_uisL">
+    </script>
+    <noscript>
+    <div style="display:inline;">
+    <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/1057123743/?label=z9BlCKXnsAIQn9uJ-AM&amp;guid=ON&amp;script=0"/>
+    </div>
+    </noscript>
+
+</div>
+
+    <script>
+//<![CDATA[
+
+$(function(){
+  var a=document.createElement("script");
+  var b=$("script")[0];
+  a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0011/6860.js";
+  a.async=true;a.type="text/javascript";
+  b.parentNode.insertBefore(a,b);
+});
+
+//]]>
+</script>
+  </body>
+
+
+</html>

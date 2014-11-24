@@ -23,7 +23,7 @@ There are video tutorials available in the tutorials folder that will assist you
 </p><p>
 The Members Resource Center includes a Motions and Briefs bank and a libray of Transcripts. The Motions and Briefs are divided into National and State Specific issues, and then by trial stage: Pre-trial, Trial, and Post Trial motions and briefs. The Transcripts are divided into Opening and Closing statements, Cross of Police Officers, Cross of State's Experts, and Direct of Defense Experts. 
 </p><p>
-If you have material that you would like to share with other NCDD members, please submit it as follows: Scientific Articles are submitted to NCDD Regent Mike Hawkins. Motions, Briefs, and Transcripts are submitted through your state delegate. 
+If you have material that you would like to share with other NCDD members, please submit it as follows: Scientific Articles are submitted to NCDD Regent Bill Kirk. Motions, Briefs, and Transcripts are submitted through your state delegate. 
 </p><p>
 Access to the NCDD Virtual Forensic Library and the Members Resource Center are controlled to prevent unauthorized access. A username and password have been sent to all members. If you have lost or forgotten your username of password use the Forgotten Username/Password function on the web site.  If that doesn't solve your problem, please contact NCDD Executive Director Rhea Kirk.
 </p><p>
@@ -40,6 +40,15 @@ I agree that by clicking this link I will abide by the rules and regulations of 
 	                 </div>
                   </div>
                 </div>
+                <br><br>
+                <div class="row-fluid">
+                  <div class="span12">
+                     <div class="span12 text-center">
+                        <h2>Please watch this video tutorial for using the Library.</h2>
+                        <iframe width="640" height="480" src="//www.youtube.com/embed/OvM3pPAWJ9Q?rel=0" frameborder="0" allowfullscreen></iframe>
+                     </div>
+                  </div>
+               </div>
             <!-- end PAGE CONTENT-->
          </div>
          <!-- END PAGE CONTAINER-->    
