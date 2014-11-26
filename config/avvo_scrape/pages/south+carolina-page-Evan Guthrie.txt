@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+
+<html class="no-js">
+  <head>
+    
+<!-- force browser refresh of favicon.  Plz remove me someday? -->
+<link href="http://www.avvo.com/favicon.ico?v=2" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+
+<meta charset="utf-8">
+<title>Lawyer Evan Guthrie - Charleston Attorney - Avvo.com</title>
+
+<meta name="description" content="Evan Guthrie is a Estate Planning Attorney in Charleston, SC. Click Evan’s profile to discover their Avvo Rating, write a review, and read professional endorsements." />
+
+<meta name="robots" content="index,follow" />
+
+
+
+<meta property="og:image" content="http://assets2.iavvo.com/assets/header_logo-d9da0710ef4f108673b08e2f89ee79c8.png" />
+
+
+<meta name="robots" content="NOODP,NOYDIR" />
+
+<script>
+//<![CDATA[
+window.locationContext = {"id":23673,"name":"Atlanta","city_name":"Atlanta","state_name":"Georgia","state_code":"GA","postal_code":null};window.adLocationContext = {"id":61489,"name":"30316","city_name":"Atlanta","state_name":"Georgia","state_code":"GA","postal_code":"30316"};
+//]]>
+</script><script src="//cdn.optimizely.com/js/275511722.js"></script>
+
+<link href="https://plus.google.com/107840042923877554905" rel="publisher" />
+
+  <link href="http://assets2.iavvo.com/assets/application-679b5b560ef19c2728b0c8d332d28f6a.css" media="all" rel="stylesheet" />
+  <!--[if lt IE 9]>
+    <link href="http://assets1.iavvo.com/assets/font_avvo_icon_bad_IE_bad_dog-27d8ace9b1fdd6c93145f0e1b7827dc6.css" media="all" rel="stylesheet" />
+  <![endif]-->
+
+<link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:700|Open+Sans:300,400,600,700" media="all" rel="stylesheet" />
+
+<script src="http://assets2.iavvo.com/assets/application-944ee4fdb62f3df1542271af9ecbae14.js"></script>
+
+<!--[if (gte IE 6)&(lte IE 8)]>
+    <script src="http://assets2.iavvo.com/assets/selectivizr-c4422edc73658e842dce601b5979afe2.js"></script>
+<![endif]-->
+
+
+
+  <link href="http://www.avvo.com/attorneys/29401-sc-evan-guthrie-3562169.html" rel="canonical" />
+
+<script>
+//<![CDATA[
+
+  google_analytics_domain_name=".avvo.com";
+  try {
+    var _gaq = _gaq || [];
+    _gaq.push(
+      ['_setAccount', 'UA-4437273-1'],
+      ['_setDomainName', '.avvo.com'],
+      ['_setCustomVar', 1,'user_type','other', 1],
+      ['_setCustomVar', 5, 'abs', '....................................................................................................', 3]
+    );
+
+        _gaq.push(['_setCustomVar', 2,'type', 'claimed', 3]);
+        _gaq.push(['_setCustomVar', 3,'spec',"70_Estate Planning", 3]);
+
+    _gaq.push(['_trackPageview']);
+  } catch(err) {}
+
+//]]>
+</script>
+
+  <script>
+//<![CDATA[
+
+  try {
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  } catch(err) {}
+
+//]]>
+</script>
+  <script type='text/javascript'>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function() {
+      var gads = document.createElement('script');
+      gads.async = true;
+      gads.type = 'text/javascript';
+      var useSSL = 'https:' == document.location.protocol;
+      gads.src = (useSSL ? 'https:' : 'http:') +
+        '//www.googletagservices.com/tag/js/gpt.js';
+      var node = document.getElementsByTagName('script')[0];
+      node.parentNode.insertBefore(gads, node);
+    })();
+  </script>
+
+  <script type='text/javascript'>
+    googletag.cmd.push(function () {
+              googletag.pubads().setTargeting('useg', 'unknown');
+              googletag.pubads().setTargeting('spec', '70');
+    });
+
+      googletag.cmd.push(function() {
+        googletag.defineSlot('/4508117/legal_directory_300x100_right', [300, 100], 'div-gpt-ad-4302170881-0').addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.pubads().collapseEmptyDivs();
+        googletag.enableServices();
+      });
+  </script>
+
+
+
+<script type="text/javascript">window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"location":{"id":3896346,"professional_id":3562169,"name":"Evan Guthrie Law Firm","displayable":true,"ordinal":2,"updated_at":"2011-08-16T11:45:03.000-07:00","updated_by":480821,"license_id":null,"created_at":null},"pageTitle":"Lawyer Evan Guthrie - Charleston Attorney","siteSection":"directory","logicalSection":"lawyers/show","renderType":"desktop","persistentSessionId":"26a3f691-b26d-437c-b098-b6cd525055e2","userId":null,"userEmail":null,"userType":"anonymous","professionalId":null,"professional":"3562169-Evan-Guthrie","specialty":70,"claimStatus":"claimed","ratingType":"No concern","rating":10.0,"reviewScore":5.0,"reviews":18,"endorsements":5,"profileContent":{"contributions":{"legalAnswers":266,"bestAnswers":13,"agree":155,"helpful":14,"guides":286,"staffPicks":0},"headshot":"yes","aboutMe":"yes","publications":2,"awards":7,"workExperience":1,"speakingEngagements":19},"professionalType":"non-advertiser"});</script>
+
+  <meta name="ad-location-id" content="61489" /><meta name="ad-specialty-id" content="70" /><meta name="page-template-name" content="Lawyer Profile - Main" /></head>
+  <body>
+    <script>
+//<![CDATA[
+duraLogEvents('eJztUk2P2yAQ/SsRZ+MFjLGd+6qXrrSH3lYrhM3YQcJgAYlrVf3vxclGanLv\nrUc/8z5m5n18UE5FR3jdsQItwY8Qo/FOWWnmJdw+UIHU7CNdlUbFLzSoBJMP\nGzpeCcYCeqZqdKxqwbJygbSflXH58bqupbpcfDn4OTPOwWbwRaXkg4MtvrCO\nE4rjgOGiHJ7O6RQM4C+d8pRmm1kBRggBAjq6s7VZJUKQagKX7ki8xbiGQF3P\nOlJrjjnoDnMGLW75IHDfjpVuatIK1lxVZ59AmiVTKGlKytqSipKR/ecM6eR3\nsW+vP9CX4y5+swvg9A64mJQbQE7nqzHVhABteyz6SmBeNxx3fGB4HPtqFCOn\nbS32tUGIJqYcXz7kZkLlZx3FPRMa86oZcE+6Fvdi0DWrSV0DQ78/i8fz5T3I\ni4H16WDW55PdpVklmipvaYHBKJu2K9iQAsHPHCaZCH8NF5WFKANMdzZllDzB\ni8+TWzl4DfLBSVDedruTd9EH0NLmSY2bZLQ+xdyQ3A0TF6u2O0ILlGDOSL6F\nUzPkRXxX6wbh8H4r2gEf3vYy/W/Vv2zV5x87ikt2\n');
+//]]>
+</script>
+
+<script>
+//<![CDATA[
+
+  $(document).on('click', '[data-dura-trackable-href]', duraUpdateLinkHREF);
+
+//]]>
+</script>
+    <noscript><iframe height="0" src="//www.googletagmanager.com/ns.html?id=GTM-K2L3VH" style="display:none;visibility:hidden" width="0"></iframe></noscript><script type="text/javascript">(function(w, d, s, l, i){
+  w[l] = w[l] || [];
+  w[l].push({ 'gtm.start' : new Date().getTime(),
+              event       : 'gtm.js'});
+  var f   = d.getElementsByTagName(s)[0];
+  var j   = d.createElement(s);
+  var dl  = l != 'dataLayer' ? '&l='+ l : '';
+  j.async = true;
+  j.src   = '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-K2L3VH');</script>
+    <div id="bing_tracking">
+
+</div>
+    <noscript>
+  <div style="text-align:center;background:#fbf3c5;color:#911717;padding:8px;border-bottom:1px solid #D7DADD;">
+  <strong>We've detected that your browser does not support scripting.</strong> <br/>
+  Scripting must be enabled to use Avvo. Turn on scripting and reload this page.
+  </div>
+</noscript>
+
+    <hgroup><header><nav id="page_header"><a href="//www.avvo.com/"><img alt="Logo@2x" class="logo" src="http://assets1.iavvo.com/assets/logos/logo@2x-39c17b04a49441c5131b852386f9312e.png" /></a><ul class="pull-right" id="sign-in-module"><li class="left-margin"><a href="/for-lawyers">For Lawyers</a></li><li class="left-margin"><a href="/account/login" rel="nofollow">Sign in</a></li><li class="left-margin"><a href="/account/register" rel="nofollow">Register</a></li></ul></nav></header></hgroup>
+    <div class="page">
+      <div id="primary_nav_and_breadcrumb">
+        <nav class="" id="primary_nav"><style type="text/css">.menu-primary{height:auto}.menu-primary #my-avvo-link{padding-top:28px}</style><ul class="center-content clearfix menu-primary"><li><a href="/free-legal-advice">Research<br/>Legal Advice</a></li><li><a href="/ask-a-lawyer">Ask<br/>a Lawyer</a></li><li class="active"><a href="/find-a-lawyer">Find<br/>a Lawyer</a></li><li><a href="https://advisor.avvo.com?avvo_source=avvo&amp;avvo_medium=global_navigation&amp;avvo_campaign=avvo_advisor">Instant<br/>Phone Call <span class='label label-success' style='line-height: 12px;'>New!</span></a></li><li><a href="/review-your-lawyer">Review<br/>Your Lawyer</a></li></ul><script type="text/javascript">$(document).ready(function(){
+  if(false){
+    $('.menu-primary.my_avvo').show();
+    $('#my-avvo-link').parent('li').addClass('active');
+  }
+  $('#my-avvo-link').click(function(){
+    $('.menu-primary.my_avvo').slideToggle();
+    return false;
+  })
+})</script>  <div class="search browsable" id="primary_nav_search">
+      <span id="search_selector">
+        Lawyers
+      </span>
+      <ul id="search_selector_menu" style="display:none;">
+          <li data-form-id="lawyer_search">Lawyers</li>
+          <li data-form-id="legal_advice_search">Legal Advice</li>
+      </ul>
+
+        <span id="lawyer_search" class="search_form_container selectable" >
+          
+<form accept-charset="UTF-8" action="/search/lawyer_search" class="search_form search-form" id="lawyer_search_primary_nav_search_search_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+  <input autocomplete="off" class="keyword_field keyword-search-field " data-tooltip-right="true" id="lawyer_search_primary_nav_search_search_form_keyword_field" name="q" placeholder="Lawyer&#39;s name -OR- Practice area" type="text" />
+  <input autocomplete="off" class="location_field location-search-field " id="lawyer_search_primary_nav_search_search_form_location_field" name="loc" placeholder="City, State -OR- ZIP" type="text" value="Atlanta, GA" />
+  <span class="icon-submit">
+    <input class="button primary action " name="commit" style="" type="submit" value="" />
+  </span>
+
+</form>
+        </span>
+</div>
+<script>
+//<![CDATA[
+
+  $(document).click(function(e){
+    if(e.target.id != "search_selector") {
+      $("#search_selector_menu").hide();
+    }
+  });
+
+  $("#search_selector_menu li").click(function(e) {
+    form_id = $(this).attr("data-form-id");
+    $("#primary_nav_search .search_form_container").hide();
+    $("#" + form_id).show();
+    $("#search_selector").html($(this).html());
+    $("ul.ui-autocomplete").hide();
+    $("#search_selector_menu").hide();
+  });
+
+  $("#search_selector").click(function(e) {
+    $("#search_selector_menu").toggle();
+    $("#search_selector_menu").position({
+      my: "left top",
+      at: "left bottom",
+      of: $("#search_selector")
+    });
+  });
+
+  $("#primary_nav_search .keyword_field").change(function(e) {
+    $("#primary_nav_search .keyword_field").val($(e.target).val());
+    $("#primary_nav_search .keyword_field").trigger('valuechanged');
+  });
+
+  $("#primary_nav_search .location_field").change(function(e) {
+    $("#primary_nav_search .location_field").each(function(i,el) {
+      $(el).val($(e.target).val());
+      $(el).trigger('valuechanged');
+    });
+  });
+
+//]]>
+</script>
+</nav><div id="breadcrumb"><div class="breadcrumbs"><span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/all-lawyers/sc.html" itemprop="url"><span itemprop="title">South Carolina</span></a></span>&nbsp;&gt;&nbsp;<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/all-lawyers/sc/charleston.html" itemprop="url"><span itemprop="title">Charleston</span></a></span>&nbsp;&gt;&nbsp;<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/estate-planning-lawyer/sc/charleston.html" itemprop="url"><span itemprop="title">Estate Planning Attorneys</span></a></span>&nbsp;&gt;&nbsp;<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><span class="current" itemprop="title"><span>Evan Kyle Guthrie</span></span></span></div></div><!--[if lt IE 9]><script type="text/javascript">$(document).ready(function(){
+  $('.icon-submit').click(function(){
+    $(this).parent().submit();
+  });
+})</script><![endif]-->
+      </div>
+      <div id="flash"></div>
+    </div>
+    
+      <span>
+          
+<div class="page stripped"  itemscope = "itemscope" itemtype = "http://schema.org/Attorney" >
+
+  <!-- header -->
+    <div class="page-row margin6" id="profile_header"><div class="span12"><h1 class="light pull-left condensed margin0"><span class="pull-left" itemprop="name">Evan Kyle Guthrie
+</span></h1></div><div class="span12 margin2" id="name_alias_section"><h3>  <span class="muted">Also known as </span><span class="nickname">Evan Guthrie</span>
+</h3></div><div class="span12 inline-hgroup" id="firm_office_detail"></div></div>
+
+
+  <div class="page-row">
+    <section class="span8" id="profile_details">
+
+
+      <!-- tabs -->
+
+
+      <div id="profile_overview">
+  <!-- headshot -->
+  <div class="page-row" id="headshot">
+    <div class="span2">
+      <span class="avvo-inline-block">
+        <img alt="Evan Kyle Guthrie" class="borderless standard" itemprop="image" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/standard/3562169_1391277140.jpg" title="Evan Kyle Guthrie" />
+      </span>
+    </div>
+    <div class="span6">
+        <div class="page-row margin8"><div class="span3"><div class="page-row"><div class="span3" itemscope="itemscope" itemtype="http://schema.org/Review"><div itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Organization"><meta content="Avvo Inc." itemprop="name" /><meta content="Avvo" itemprop="alternateName" /><meta content="http://www.avvo.com" itemprop="url" /></div><div class="icon half-width pull-left" data-tooltip-remote="avvo_rating_description"><img alt="Avvorating@2x" src="http://assets1.iavvo.com/assets/embed/profile/avvorating@2x-cf89cef391e72dc3ea9ec72ed16ce495.png" width="100" /></div><div class="pull-left center-content margin5" itemprop="reviewRating" itemscope="itemscope" itemtype="http://schema.org/Rating"><span class="avvo_rating_numeric"><h2 class="text-red light bold center-content condensed margin0" itemprop="ratingValue">10.0</h2><img alt="" class="rating_image" src="http://assets2.iavvo.com/assets/profile_rating/icon_rating_10-658f76e74c0051e763d8556fdce67c1d.gif" /><h3 class="rating_info center-content text-red light"><span class="summary"><a class="tooltip_link tooltip-link" data-tooltip-remote-options="" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">Superb</a></span></h3><meta content="10.0" itemprop="bestRating" /><meta content="0.0" itemprop="worstRating" /></span></div><meta content="Evan Kyle Guthrie" itemprop="itemReviewed" /></div><div class="span3 margin4">  <table id="sub_rating">
+
+        <tr>
+          <td>Experience</td>
+          <td>
+            <span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Industry Recognition</td>
+          <td>
+            <span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Professional Conduct</td>
+          <td>
+            <span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span></span>
+          </td>
+        </tr>
+
+  </table>
+<p class="text-meta"><a class="tooltip_link tooltip-link" data-tooltip-remote-options="provisional=false" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">What is the Avvo Rating?</a></p></div></div></div><div class="span3 margin6"><div class="page-row"><div class="span3"><div class="page-row"><div class="span1"><img alt="Reviews" class="full-width" src="http://assets2.iavvo.com/assets/embed/profile/reviews-72fd939ee2e493ce25a7b88d3da6028c.png" /></div><div class="span2"><a class="count" href="/attorneys/29401-sc-evan-guthrie-3562169/reviews.html"><div class="page-row"><div class="inline-hgroup span2"><h3 class="light condensed margin0 stripped">18&nbsp;</h3><h5 class="light condensed margin0 stripped">Reviews</h5></div><div class="span2"><a class="star_rating full-width" href="/attorneys/29401-sc-evan-guthrie-3562169/reviews.html"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a></div></div></a><div class="client_review_links">Current or former client? <a data-avn="{&quot;name&quot;:&quot;amos.gtm.view-lawyer-review-form&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;3562169-Evan-Guthrie&quot;}}" href="/attorneys/29401-sc-evan-guthrie-3562169/write_review.html" rel="nofollow">Write a review</a></div></div></div></div><hr class="span3" /><div class="span3"><div class="page-row"><div class="span1"><img alt="Endorse" class="full-width" src="http://assets1.iavvo.com/assets/embed/profile/endorse-393f817ef630e2e358047b4ca97e17ed.png" /></div><div class="span2"><div class="page-row"><a href="/attorneys/29401-sc-evan-guthrie-3562169/endorsements.html"><div class="inline-hgroup span2"><h3 class="light condensed margin0 stripped">5&nbsp;</h3><h5 class="light condensed margin0 stripped">Endorsements</h5></div></a></div>Lawyers: <br><a href="/attorneys/29401-sc-evan-guthrie-3562169/write_endorsement.html" rel="nofollow">Endorse this lawyer</a></div></div></div><hr class="span3" /><div class="span3"><div class="page-row"><div class="span1"><img alt="Contri" class="full-width" src="http://assets2.iavvo.com/assets/embed/profile/contri-c5a1b74b9701f86d9b28e2d9f4f0334c.png" /></div><div class="span2"><div class="page-row"><div class="inline-hgroup span2"><h5 class="light condensed margin0">Contributor Level</h5><h3 class="light condensed margin0 stripped">15</h3></div></div><p><a href="/attorneys/29401-sc-evan-guthrie-3562169/answers.html">View contributions</a></p></div></div></div></div></div><div class="span6"><div id="profile_actions" class="lawyer_profile_actions">
+    <a class="primary action" data-avn="{&quot;name&quot;:&quot;amos.gtm.view-lawyer-email-form&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;3562169-Evan-Guthrie&quot;}}" href="/attorneys/29401-sc-evan-guthrie-3562169/contact.html" rel="nofollow">Email Lawyer</a>
+
+  <a class="action" data-avn="{&quot;name&quot;:&quot;amos.gtm.contact-lawyer-website&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;3562169-Evan-Guthrie&quot;}}" href="http://www.ekglaw.com" onclick="this.href=&#39;/attorneys/29401-sc-evan-guthrie-3562169/website.html&#39;;return true;" target="_blank">Lawyer&#39;s website</a>
+
+  <a class="action send" href="/attorneys/29401-sc-evan-guthrie-3562169/share.html" rel="nofollow">Send to a friend</a>
+</div>
+</div></div>
+    </div>
+  </div>
+</div>
+
+
+    
+      <div class="module"><h2>Overview</h2><div class="page-row" id="overview"><section class="span8">
+        <div class="js-replaceable margin6" id="specialties"><div class="page-row" id="specialties"><div class="span2"><h5 class="light">PRACTICE AREAS</h5></div><div class="span6"><div class="page-row"><div class="span2">
+<img alt="Chart?chs=169x169&amp;cht=p&amp;chp=4" class="full-width" id="specialty_chart" src="http://chart.apis.google.com/chart?chs=169x169&amp;cht=p&amp;chp=4.7&amp;chco=76d0eb|f48026|ffeb73|7ac142|b5b5b5&amp;chd=t:50,15,10,10,15" />
+
+</div><div class="span4"><div class="page-row js-link-hub"><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#76d0eb"></div><div class="span3">50% Estate Planning<div class="text-meta">3 years</div></div></div></div></div><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#f48026"></div><div class="span3">15% Probate<div class="text-meta">3 years</div></div></div></div></div><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#ffeb73"></div><div class="span3">10% Personal Injury<div class="text-meta">3 years</div></div></div></div></div><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#7ac142"></div><div class="span3">10% Divorce / Separation</div></div></div></div><div class="span4"><div class="js-expandable"><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#b5b5b5"></div><div class="span3">1% Elder Law</div></div></div></div><div class="span4"><div class="js-expandable"><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#b5b5b5"></div><div class="span3">1% Guardianship</div></div></div></div><div class="span4"><div class="js-expandable"><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#b5b5b5"></div><div class="span3">1% Marriage / Prenuptials</div></div></div></div><div class="span4"><div class="js-expandable"><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#b5b5b5"></div><div class="span3">1% Wills / Living Wills</div></div></div></div><div class="span4"><div class="js-expandable"><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#b5b5b5"></div><div class="span3">1% Trusts</div></div></div></div><div class="span4"><div class="js-expandable"><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#b5b5b5"></div><div class="span3">1% Criminal Defense</div></div></div></div><div class="span4"><div class="js-expandable"><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#b5b5b5"></div><div class="span3">1% Business</div></div></div></div><div class="span4"><div class="js-expandable"><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#b5b5b5"></div><div class="span3">1% DUI / DWI</div></div></div></div><div class="span4"><div class="js-expandable"><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#b5b5b5"></div><div class="span3">1% Immigration</div></div></div></div><div class="span4"><div class="js-expandable"><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#b5b5b5"></div><div class="span3">1% Real Estate</div></div></div></div><div class="span4"><div class="js-expandable"><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#b5b5b5"></div><div class="span3">1% Family</div></div></div></div><div class="span4"><div class="js-expandable"><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#b5b5b5"></div><div class="span3">1% Wrongful Death</div></div></div></div><div class="span4"><div class="js-expandable"><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#b5b5b5"></div><div class="span3">1% Uncontested Divorce</div></div></div></div><div class="span4"><div class="js-expandable"><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#b5b5b5"></div><div class="span3">1% Workers Compensation</div></div></div></div><div class="span4"><div class="js-expandable"><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#b5b5b5"></div><div class="span3">1% Power Of Attorney</div></div></div></div><div class="span4"><span><a class="js-toggle-hub" href="#!" rel="nofollow">Show all areas of practice<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional areas of practice<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div><div id="not_practicing_section">
+</div></div></div></div>
+        <div class="js-replaceable margin6" id="fees_payments"><div class="page-row" id="fees_payments_section"><div class="span2"><h5 class="light">FEES AND<BR> PAYMENT TYPES</h5></div><div class="span6"><div class="page-row"><div class="span6 margin4"><h4>Fees</h4><div id="fees_detail">    Contingent (33%), Fixed (Sometimes), Retainer (Sometimes)
+
+</div></div><div class="span6"><h4>Payment types</h4><div id="payments_detail">  Cash, Check
+  
+</div></div></div></div></div></div>
+          <div class="js-replaceable margin6" id="contact_information"><div class="page-row" id="contact_information_section"><div class="span2"><h5 class="light">CONTACT INFORMATION</h5></div><div class="span6"><div class="page-row" id="contact_information_detail"><div class="span3"><div class="address_list avvo-undecorated-list" id="sortable_address_list"><div class="address_sort margin4" id="address_3896346"><div class="address_name semibold">Evan Guthrie Law Firm</div><span><div class="address_line_1">164 Market Street, Suite 362</div><div class="address_line_2"></div></span><div class="address_city_state">Charleston, SC 29401</div><div class="address_phone"><span class="phone_label muted">Office: </span><span id="phone_number_0" itemprop="telephone">843-926-3813</span></div><div class="address_phone"><span class="phone_label muted">Fax: </span><span id="phone_number_1" itemprop="faxNumber">843-723-0266</span></div><a data-avn="{&quot;name&quot;:&quot;amos.contacts.viewed_directions&quot;,&quot;payload&quot;:{&quot;professional_id&quot;:3562169}}" href="http://maps.google.com/maps?q=164+Market+Street%2C+Suite+362%2C+Charleston%2C+SC+29401+%28Evan+Guthrie+Law+Firm%29" rel="nofollow" target="_blank"><span class="icon-map"></span> View map</a> <span class="pipe">|</span> <a href="/attorneys/29401-sc-evan-guthrie-3562169/user_reported_information.html?address=3896346" rel="nofollow">Edit this address</a></div></div></div><div class="span3"><div class="page-row"><div class="span3"><div class="page-row"><div class="span1"><div class="icon-email2 pull-right"></div></div><div class="span2"><a href="/attorneys/29401-sc-evan-guthrie-3562169/contact.html" rel="nofollow">Email this lawyer</a></div></div></div><div class="span3"><div class="page-row"><div class="span1"><div class="icon-website pull-right"></div></div><div class="span2"><a data-avn="{&quot;name&quot;:&quot;amos.profiles.website_clicked&quot;,&quot;payload&quot;:{&quot;professional_id&quot;:3562169,&quot;profession_name&quot;:&quot;lawyer&quot;,&quot;specialty_name&quot;:&quot;Estate Planning&quot;}}" href="http://www.ekglaw.com" itemprop="url" onclick="this.href=&#39;/attorneys/29401-sc-evan-guthrie-3562169/website.html&#39;;return true;" target="_blank">Visit lawyer&#39;s website</a></div></div></div><hr class="span3" /></div>  <div id="additional_links" class="page-row">
+      <div class="span3">
+        <div class="page-row">
+          <div class="span1">
+            <span class='icon-twitter  pull-right'></span>
+          </div>
+          <div class="span2">
+              <a href="http://www.twitter.com/ekglaw" rel="nofollow me" target="_blank">Twitter</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="span3">
+        <div class="page-row">
+          <div class="span1">
+            <span class='icon-facebook  pull-right'></span>
+          </div>
+          <div class="span2">
+              <a href="http://www.facebook.com/ekglaw" rel="nofollow me" target="_blank">Facebook</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="span3">
+        <div class="page-row">
+          <div class="span1">
+            <span class='icon-linkedin  pull-right'></span>
+          </div>
+          <div class="span2">
+              <a href="http://www.linkedin.com/in/ekglaw" rel="nofollow me" target="_blank">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="span3">
+        <div class="page-row">
+          <div class="span1">
+            <span class='icon-blog  pull-right'></span>
+          </div>
+          <div class="span2">
+              <a href="http://newslawlife.ekglaw.com" rel="nofollow me" target="_blank">Blog</a>
+          </div>
+        </div>
+      </div>
+
+
+  </div>
+</div>
+</div></div></div></div>
+        <div class="js-replaceable margin6" id="languages"><div class="page-row" id="languages_section"><div class="span2"><h5 class="light">LANGUAGES SPOKEN</h5></div><div class="span6"><div id="languages_detail"><ul class="avvo-undecorated-list margin0">
+    <li>
+  English
+</li>
+
+</ul>
+</div></div></div></div>
+        <div class="js-replaceable margin6" id="about_me"><div class="page-row" id="about_me_section"><div class="span2"><h5 class="light">ABOUT ME</h5></div><div class="span6"><div id="about_me_detail">  
+    <div id="media_table_wrapper">
+      <table><tr><td><a data-modal-open="modal_VxaLH" data-modal-url="/attorneys/3562169/media/416874/video" href="#!"><div class="thumbnail borderless with-overlay"><img alt="" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/thumbnail_small/3562169_1354655140.jpg" title="" /><br /><div class="icon-play pull-left"></div></div></a></td><td><div class="thumbnail borderless"><a data-modal-open="VgsAXaYW" href="#!" nofollow="nofollow" title=""><img alt="" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/thumbnail_small/3562169_1353782739.jpg" title="" /></a></div><div id="VgsAXaYW" style="display:none;width:;height:"><div class="modal-header">Image</div><div class="modal-body"><img alt="3562169 1353782739" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/normalized/3562169_1353782739.jpg" /></div></div></td><td><div class="thumbnail borderless"><a data-modal-open="r5Ss6xj2" href="#!" nofollow="nofollow" title=""><img alt="" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/thumbnail_small/3562169_1312307641.jpg" title="" /></a></div><div id="r5Ss6xj2" style="display:none;width:;height:"><div class="modal-header">Image</div><div class="modal-body"><img alt="3562169 1312307641" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/normalized/3562169_1312307641.jpg" /></div></div></td><td><div class="thumbnail borderless"><a data-modal-open="iCzfyvwb" href="#!" nofollow="nofollow" title=""><img alt="" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/thumbnail_small/3562169_1312307613.jpg" title="" /></a></div><div id="iCzfyvwb" style="display:none;width:;height:"><div class="modal-header">Image</div><div class="modal-body"><img alt="3562169 1312307613" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/normalized/3562169_1312307613.jpg" /></div></div></td></tr></table>
+    </div>
+  
+    <p>
+      Evan Guthrie is licensed to practice law throughout the state of South Carolina. The Evan Guthrie Law Firm  practices in the areas of estate planning probate... <a href="/attorneys/29401-sc-evan-guthrie-3562169/aboutme.html">more</a>
+    </p>
+
+  <a class="navigation" href="/attorneys/29401-sc-evan-guthrie-3562169/aboutme.html">View all photos and/or videos</a>
+</div></div></div></div>
+</section></div></div>
+      <div class="module"><h2>References</h2><div class="page-row" id="references"><section class="span8">
+        <div class="js-replaceable margin6" id="reviews"><div class="page-row" id="reviews_section"><div class="span2"><h5 class="light">CLIENT REVIEWS</h5></div><div class="span6"><div id="reviews_detail"><div class="page-row"><div class="span1"><img alt="Reviews" class="full-width" src="http://assets2.iavvo.com/assets/embed/profile/reviews-72fd939ee2e493ce25a7b88d3da6028c.png" /></div><div class="span5"><div class="overview">
+  <h4>Average Client Rating</h4>
+  <div class="star_rating">
+      <a class="stars" href="/attorneys/29401-sc-evan-guthrie-3562169/reviews.html"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a>
+      <span class="review_count"><a href="/attorneys/29401-sc-evan-guthrie-3562169/reviews.html">18 reviews</a></span>
+  </div>
+  <div class="client_review_links">Current or former client? <a data-avn="{&quot;name&quot;:&quot;amos.gtm.view-lawyer-review-form&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;3562169-Evan-Guthrie&quot;}}" href="/attorneys/29401-sc-evan-guthrie-3562169/write_review.html" rel="nofollow">Write a review</a></div>
+</div>
+
+</div></div><hr class="margin4" /><div class="page-row margin2 with-overlay"><div class="span1"><img alt="Quotes@2x" class="full-width" src="http://assets2.iavvo.com/assets/embed/topic_pages/quotes@2x-77df7504b38dc1ede65c9b0e3e45acf7.png" /></div><div class="span5"><h3 class="light"><a href="/attorneys/29401-sc-evan-guthrie-3562169/reviews.html#334635">“Great Lawyer”</a></h3><a href="/attorneys/29401-sc-evan-guthrie-3562169/reviews.html#334635"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a><p>I reccomend him for estate planning and a will. He took his time and understood what I wanted. Good experience.</p><p class="text-meta">Posted by: a Estate Planning client, about 1 year ago.</p><div class="overlay bottom right margin2"><a data-tooltip-remote="confirm_objectionable" href="/professional_reviews/334635/objectionable" id="professional_review_objectionable_334635" rel="nofollow"><i class="medium-gray icon-flag"></i> Flag</a></div></div></div><div class="page-row margin2 with-overlay"><div class="span1"><img alt="Quotes@2x" class="full-width" src="http://assets2.iavvo.com/assets/embed/topic_pages/quotes@2x-77df7504b38dc1ede65c9b0e3e45acf7.png" /></div><div class="span5"><h3 class="light"><a href="/attorneys/29401-sc-evan-guthrie-3562169/reviews.html#316280">“Brilliant and driven!”</a></h3><a href="/attorneys/29401-sc-evan-guthrie-3562169/reviews.html#316280"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a><p>Evan is very perceptive and prompt. He handled the matter of my estate and will with care down to every last detail. It was a very comfortable... </p><p class="text-meta">Posted by: Shaun, over 1 year ago.</p><div class="overlay bottom right margin2"><a data-tooltip-remote="confirm_objectionable" href="/professional_reviews/316280/objectionable" id="professional_review_objectionable_316280" rel="nofollow"><i class="medium-gray icon-flag"></i> Flag</a></div></div></div><div class="margin4"><a class="navigation" href="/attorneys/29401-sc-evan-guthrie-3562169/reviews.html">View all 18 reviews</a></div></div></div></div></div>
+        
+        <div class="js-replaceable margin6" id="endorsements"><div class="page-row" id="endorsements_section"><div class="span2"><h5 class="light">PEER ENDORSEMENTS</h5></div><div class="span6"><div id="endorsements_detail"><div class="page-row"><div class="span1"><img alt="Endorse" class="full-width" src="http://assets1.iavvo.com/assets/embed/profile/endorse-393f817ef630e2e358047b4ca97e17ed.png" /></div><div class="span5"><h4>Endorsements</h4><p class="pull-left"><a href="/attorneys/29401-sc-evan-guthrie-3562169/endorsements.html">5 endorsements</a></p><div class="pull-right">Lawyers: <a href="/attorneys/29401-sc-evan-guthrie-3562169/write_endorsement.html" rel="nofollow">Endorse this lawyer</a></div></div></div><hr class="margin4" />
+<div class="page-row margin6">
+  <!-- clear the cache -->
+  <div class="span1"><a href="/attorneys/91203-ca-hovanes-margarian-1220642.html"><img alt="Hovanes Margarian" class="borderless thumbnail_medium" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/1220642_1308202100.jpg" title="Hovanes Margarian" /></a></div>
+  <div class="span5">
+    <div>
+      <p>
+        I endorse this lawyer.
+      </p> 
+      <span class="muted text-meta">Endorsement from lawyer:
+        <a href="/attorneys/91203-ca-hovanes-margarian-1220642.html">Hovanes Margarian</a>
+         , Glendale (CA), 3 months ago
+      </span>
+    </div>
+  </div>
+</div>
+<div class="page-row margin6">
+  <!-- clear the cache -->
+  <div class="span1"><a href="/attorneys/92112-ca-john-bohren-4376461.html"><img alt="John Christian Bohren" class="borderless thumbnail_medium" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/4376461_1389931212.jpg" title="John Christian Bohren" /></a></div>
+  <div class="span5">
+    <div>
+      <p>
+        Mr. Guthrie is an outstanding professional who represents his clients by emphasizing on their needs.  I recommend all my clients who need estate... 
+          <a href="/attorneys/29401-sc-evan-guthrie-3562169/endorsements.html" rel="nofollow">more</a>
+      </p> 
+      <span class="muted text-meta">Endorsement from lawyer:
+        <a href="/attorneys/92112-ca-john-bohren-4376461.html">John Bohren</a>
+         , San Diego (CA), 5 months ago
+      </span>
+    </div>
+  </div>
+</div><a class="navigation" href="/attorneys/29401-sc-evan-guthrie-3562169/endorsements.html">View all 5 endorsements</a></div></div></div></div>
+</section></div></div>
+      <div class="module"><h2>R&eacute;sum&eacute;</h2><div class="page-row" id="resume"><section class="span8">
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="licenses_section"><div id="licenses"><div class="span8 margin2"><div class="box"><h5 class="light margin0">LICENSE</h5></div></div><div class="span8"><div id="licenses_detail"><p>4 years since Evan Kyle Guthrie was first licensed to practice law.</p><div class="js-link-hub"><table class="table"><thead><tr><th>State</th><th>License status</th><th>Year acquired</th><th>Last updated by Avvo</th></tr></thead><tbody>
+<tr class="">
+  <td>South Carolina</td>
+  <td>
+      Good Standing
+  </td>
+  <td>2010</td>
+  <td>03/07/2013</td>
+</tr></tbody></table></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="sanctions_section"><div id="sanctions"><div class="span8 margin2"><div class="box"><h5 class="light margin0">PROFESSIONAL MISCONDUCT</h5></div></div><div class="span8"><div id="sanctions_detail">  <p class="article-body sans-serif">
+    <span class="icon-no-misconduct icon-green icon-padded narrow right"></span>
+    We have not found any instances of professional misconduct for this lawyer.
+  </p>
+
+</div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="work_experience_section"><div id="work_experience"><div class="span8 margin2"><div class="box"><h5 class="light margin0">WORK EXPERIENCE</h5></div></div><div class="span8"><div id="work_experience_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Position</th><th>Duration</th></tr></thead><tbody><tr class=" ">
+  <td>
+    Managing Partner at Evan Guthrie Law Firm
+  </td>
+  <td>
+    2010&ndash;present
+  </td>
+</tr>
+</tbody></table></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="education_section"><div id="education"><div class="span8 margin2"><div class="box"><h5 class="light margin0">EDUCATION</h5></div></div><div class="span8"><div id="education_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>School</th><th>Major</th><th>Degree</th><th>Graduated</th></tr></thead><tbody><tr class=" ">
+  <td>University of South Carolina School of Law</td>
+  <td>Law</td>
+  <td>Juris Doctor</td>
+  <td></td>
+</tr>
+
+<tr class=" ">
+  <td>College of Charleston</td>
+  <td>Political Science</td>
+  <td>BA - Bachelor of Arts</td>
+  <td></td>
+</tr>
+
+</tbody></table></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="awards_section"><div id="awards"><div class="span8 margin2"><div class="box"><h5 class="light margin0">AWARDS</h5></div></div><div class="span8"><div id="awards_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Award Name</th><th>Granting Organization</th><th>Date</th></tr></thead><tbody><tr><td>Star Of The Quarter</td><td>South Carolina Bar, Young Lawyers Division</td><td>2014</td></tr><tr><td>South Carolina Bar Leadership Academy</td><td>South Carolina Bar</td><td>2014</td></tr><tr class="js-expandable"><td>Star Of The Quarter</td><td>South Carolina Bar, Young Lawyers Division</td><td>2013</td></tr><tr class="js-expandable"><td>Clents&#39; Choice: Estate Planning</td><td>AVVO</td><td>2012</td></tr><tr class="js-expandable"><td>Top Contributor :Estate Planning</td><td>AVVO</td><td>2012</td></tr><tr class="js-expandable"><td>Star Of The Quarter</td><td>South Carolina Bar, Young Lawyers Division</td><td>2012</td></tr><tr class="js-expandable"><td>Dean&#39;s List</td><td>University of South Carolina School of Law</td><td>2010</td></tr></tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 7 awards<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional awards<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="organizations_section"><div id="organizations"><div class="span8 margin2"><div class="box"><h5 class="light margin0">ASSOCIATIONS</h5></div></div><div class="span8"><div id="organizations_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Position</th><th>Association Name</th><th>Duration</th></tr></thead><tbody><tr class=" ">
+  <td>Member</td>
+  <td>South Carolina Bar</td>
+  <td>
+    
+  </td>
+</tr>
+<tr class=" ">
+  <td>Member</td>
+  <td>Charleston County Bar Association</td>
+  <td>
+    
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member</td>
+  <td>Charleston Lawyers Club</td>
+  <td>
+    
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member</td>
+  <td>South Carolina Bar, Young Lawyers Division</td>
+  <td>
+    
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member</td>
+  <td>American Bar Association</td>
+  <td>
+    
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member</td>
+  <td>American Bar Association, Young Lawyers Division</td>
+  <td>
+    
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member</td>
+  <td>American Bar Association, General Practice, Solo and Small Firm Division</td>
+  <td>
+    
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member</td>
+  <td>South Carolina Bar Habitat for Humanity Wills Clinics Committee</td>
+  <td>
+    
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member</td>
+  <td>American Bar Association, Tort Trial and Insurance Practice Section</td>
+  <td>
+    
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member</td>
+  <td>American Bar Association, General Practice, Solo and Small Firm Division, Estate Planning, Probate &amp; Trust Committee</td>
+  <td>
+    
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Co-chair</td>
+  <td>South Carolina Bar, Young Lawyers Division, Color of Justice Committee</td>
+  <td>
+    
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Vice Chair</td>
+  <td>American Bar Association, Young Lawyers Division, Elder Law Committee</td>
+  <td>
+    
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Chair</td>
+  <td>South Carolina Bar, Young Lawyers Division, Habitat For Humanity Wills Clinic Committee</td>
+  <td>
+    
+  </td>
+</tr>
+</tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 13 association entries<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional associations<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+</section></div></div>
+      <div class="module"><h2>Portfolio</h2><div class="page-row" id="portfolio"><section class="span8">
+        <div class="js-replaceable margin7"><div class="page-row with-overlay" id=""><div id=""><div class="span8 margin2"><div class="box"><h5 class="light margin0">CONTRIBUTION</h5></div></div><div class="span8"><div class="contri-badge"><div class="contributor-level-badge level-3 margin1" data-tooltip-remote="contributor_badge"><i class="icon-badge-feather"></i></div><div class="badge-text">Contributor Level 15</div></div>
+<table class="table">
+  <tr>
+    <th>Answers:</th>
+    <td><a class="article-body sans-serif" href="/attorneys/29401-sc-evan-guthrie-3562169/answers.html">266</a></td>
+    <td><a class="article-body sans-serif" href="/attorneys/29401-sc-evan-guthrie-3562169/answers.html">Legal Answers</a></td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>13</td>
+    <td>Best Answers - chosen by asker</td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>155</td>
+    <td>Answers marked "I agree" by other lawyers</td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>14</td>
+    <td>Answers marked helpful by other users</td>
+  </tr>
+  <tr>
+    <th>Guides:</th>
+    <td><a class="article-body sans-serif" href="/attorneys/29401-sc-evan-guthrie-3562169/guides.html">286</a></td>
+    <td><a class="article-body sans-serif" href="/attorneys/29401-sc-evan-guthrie-3562169/guides.html">Legal Guides</a></td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>0</td>
+    <td>Staff Picks</td>
+  </tr>
+</table>
+  <a class="navigation" href="/attorneys/29401-sc-evan-guthrie-3562169/answers.html">View all contributions</a>
+</div></div></div></div>
+        
+        <div class="js-replaceable margin7"><div class="page-row with-overlay" id="legal_cases_section"><div id="legal_cases"><div class="span8 margin2"><div class="box"><h5 class="light margin0">CASES</h5></div></div><div class="span8">  <div class="margin4">
+  <div class="case_title"><a href="/attorneys/29401-sc-evan-guthrie-3562169/legal_cases/65597">Probate Court</a></div>
+  <div class="outcome">
+    <strong>Outcome:</strong> (not available)
+  </div>
+</div>
+
+
+</div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="publications_section"><div id="publications"><div class="span8 margin2"><div class="box"><h5 class="light margin0">PUBLICATIONS</h5></div></div><div class="span8"><div id="publications_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Article</th><th>Publication</th><th>Date</th></tr></thead><tbody><tr class=" ">
+  <td><a href="http://meetings.abanet.org/webupload/commupload/IL201050/relatedresources/newsletter_2012fall_animal_law.pdf" rel="nofollow" target="_blank">Pet Planning: Choice Over Chance</a></td>
+  <td>ABA-TIPS publication</td>
+  <td>2012</td>
+</tr>
+<tr class=" ">
+  <td><a href="http://lawprofessors.typepad.com/trusts_estates_prof/2012/10/from-evan-guthrie-law-firm-lessons-learned-from-alex-karras.html" rel="nofollow" target="_blank">From Evan Guthrie Law Firm: Lessons Learned From Alex Karras</a></td>
+  <td>Wills, Trusts &amp; Estates Prof Blog</td>
+  <td>2012</td>
+</tr>
+</tbody></table></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="speaking_engagements_section"><div id="speaking_engagements"><div class="span8 margin2"><div class="box"><h5 class="light margin0">SPEAKING ENGAGEMENTS</h5></div></div><div class="span8"><div id="speaking_engagements_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Presentation Name</th><th>Conference</th><th>Date</th></tr></thead><tbody><tr class=" ">
+  <td><a href="http://www.nbi-sems.com/Details.aspx/Trusts-101/Live-Seminar/R-64754ER|?NavigationDataSource1=Rpp:20,Nra:pEventDate%2bpEventStartTime%2bCredit+Hours%2bpCreditRecordCreditHours%2bCredit_C2%2bpStandardPrice%2bSeminar+Location%2bScope+of+Content%2bpLocationCity%2bpDescription%2bpDivision%2bpProductId%2bpProductDescription%2bProductCode+%28HIDDEN%29%2bpAdditionalFormats%2bpEventId%2bpAltSpaceDesc%2bpEventIndicator,N:63943-55" rel="nofollow">Estate Planning For The Disabled</a></td>
+  <td>Trusts 101</td>
+  <td >2014</td>
+</tr>
+<tr class=" ">
+  <td><a href="http://www.nbi-sems.com/Details.aspx/Trusts-101/Live-Seminar/R-64754ER|?NavigationDataSource1=Rpp:20,Nra:pEventDate%2bpEventStartTime%2bCredit+Hours%2bpCreditRecordCreditHours%2bCredit_C2%2bpStandardPrice%2bSeminar+Location%2bScope+of+Content%2bpLocationCity%2bpDescription%2bpDivision%2bpProductId%2bpProductDescription%2bProductCode+%28HIDDEN%29%2bpAdditionalFormats%2bpEventId%2bpAltSpaceDesc%2bpEventIndicator,N:63943-55" rel="nofollow">Trusts Used For Tax Reduction</a></td>
+  <td>Trusts 101</td>
+  <td >2014</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.nbi-sems.com/Details.aspx/Trusts-101/Live-Seminar/R-64754ER|?NavigationDataSource1=Rpp:20,Nra:pEventDate%2bpEventStartTime%2bCredit+Hours%2bpCreditRecordCreditHours%2bCredit_C2%2bpStandardPrice%2bSeminar+Location%2bScope+of+Content%2bpLocationCity%2bpDescription%2bpDivision%2bpProductId%2bpProductDescription%2bProductCode+%28HIDDEN%29%2bpAdditionalFormats%2bpEventId%2bpAltSpaceDesc%2bpEventIndicator,N:63943-55" rel="nofollow">Revocable Living Trusts</a></td>
+  <td>Trusts 101</td>
+  <td >2014</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.nbi-sems.com/Details.aspx/Trusts-101/Live-Seminar/R-64754ER|?NavigationDataSource1=Rpp:20,Nra:pEventDate%2bpEventStartTime%2bCredit+Hours%2bpCreditRecordCreditHours%2bCredit_C2%2bpStandardPrice%2bSeminar+Location%2bScope+of+Content%2bpLocationCity%2bpDescription%2bpDivision%2bpProductId%2bpProductDescription%2bProductCode+%28HIDDEN%29%2bpAdditionalFormats%2bpEventId%2bpAltSpaceDesc%2bpEventIndicator,N:63943-55" rel="nofollow">Where To Begin? - An Overview of Trusts</a></td>
+  <td>Trusts 101</td>
+  <td >2014</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.utexas.edu/law/advocacy/admiralty/" rel="nofollow">Judge</a></td>
+  <td>Judge John R. Brown Admiralty Moot Court Competition</td>
+  <td >2013</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.scbar.org/YoungLawyersDivision/EventandMeetingCalendar/vw/3/ItemID/1056/d/20130330.aspx" rel="nofollow">Moderator</a></td>
+  <td>Color of Justice</td>
+  <td >2013</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.charlestonlaw.edu/Current-Students/Student-Organizations/Advocacy/Moot-Court.aspx" rel="nofollow">Judge</a></td>
+  <td>Charleston School of Law National Moot Court Competition</td>
+  <td >2013</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.ccpl.org/content.asp?catID=11629" rel="nofollow">Estate Planning</a></td>
+  <td>New Year, New You</td>
+  <td >2012</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://ed.sc.gov/agency/programs-services/174/documents/Dorch2.pdf" rel="nofollow">Getting Ready For College and Careers</a></td>
+  <td>Dorchester Two Higher Learning Academy</td>
+  <td >2012</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.scbar.org/YoungLawyersDivision/EventandMeetingCalendar/vw/3/ItemID/807/d/20121027.aspx" rel="nofollow">Moderator</a></td>
+  <td>Color Of Justice</td>
+  <td >2012</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.americanbar.org/calendar/2012/10/yld_2012_fall_conference/schedule.html" rel="nofollow">Breakfast and Affiliate Showcase</a></td>
+  <td>American Bar Association YLD 2012 Fall Conference</td>
+  <td >2012</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.americanbar.org/calendar/2012/05/tips_joint_springmeetingwithgpsoloanduia/public_service.html" rel="nofollow">Charleston’s Trident Literacy Association through the TIPS Children’s Book Drive - Estate Planning Session</a></td>
+  <td>American Bar Association TIPS Spring Leadership and Joint Meeting with GP Solo</td>
+  <td >2012</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://scbar.org/YoungLawyersDivision/EventandMeetingCalendar/vw/3/ItemID/269/d/20111022.aspx" rel="nofollow">Exposure To The Bench And Bar</a></td>
+  <td>The Color of Justice</td>
+  <td >2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://news.cofc.edu/2011/10/18/pre-law-program-offers-more-events/" rel="nofollow">From Undergraduate To Lawyer</a></td>
+  <td>From Undergraduate To Lawyer</td>
+  <td >2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.dcl.lib.sc.us/Press_Releases/Release-388.htm" rel="nofollow">Estate Planning</a></td>
+  <td>Estate Planning Clinic</td>
+  <td >2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.dcl.lib.sc.us/Press_Releases/Release-395.htm" rel="nofollow">Estate Planning</a></td>
+  <td>Estate Planning Clinic</td>
+  <td >2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.dcl.lib.sc.us/Press_Releases/Release-392.htm" rel="nofollow">Estate Planning</a></td>
+  <td>Estate Planning Clinic</td>
+  <td >2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.americanbar.org/groups/law_students/events_competitions/fls/charleston.html" rel="nofollow">Resume and Career Advice</a></td>
+  <td>American Bar Association Fall Leadership Summit Circuits 4-5-6</td>
+  <td >2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.americanbar.org/groups/law_students/events_competitions/fls/charleston.html" rel="nofollow">Solo Practitioner Discussion</a></td>
+  <td>American Bar Association Fall Leadership Summit Circuits 4-5-6</td>
+  <td >2011</td>
+</tr>
+</tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 19 speaking engagements<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional speaking engagements<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+</section></div></div>    </section>
+
+    <div class="span4" id="profile_b_column">
+      
+
+
+
+    <div class="margin7"><div class="js-ads" data-ad-limit="1" data-ad-track="true" data-ad-type="display_ads" data-preview-ad="null"></div></div><div class="margin7 js-common-sponsored-listings"><div class="js-ads" data-ad-format="desktop" data-ad-limit="3" data-ad-track="true" data-ad-type="sponsored_listing_ads" data-ad-variant="99" data-preview-ad="null"></div></div><div class="margin9"><section class="reloadable-module" data-widget-params="eJw1iz0KwzAMRu-iOQE7bRdvnXqEjkbYwhUocbAUaBpy9xpKt_f9vAOSoCoEeHIuZBrCo9YidM8wwIoN5z4egDmqVOs_oYISMzdKVtseL869vXOxcXlZd3SlxCi2R84Qlk1kgE2p_Vn5Qz8-B5CaUHoEWrpqPJMazmsvJuevo_fjdIPzC3YANx0=">
+  <!-- ca-pub-4491911546116478/legal_directory_300x100_right -->
+
+  <div id='div-gpt-ad-4302170881-0' class="module google_ad google_ad_legal_directory_300x100_right" style='width:300px; height:100px;'>
+    <script>
+//<![CDATA[
+$(function(){
+      googletag.cmd.push(function() { googletag.display('div-gpt-ad-4302170881-0'); });
+});
+//]]>
+</script>  </div>
+</section><!--not_cached Widget:widgetsgoogle_ad:false:ajax:false:size::ad_slot:legal_directory_300x100_right:user::specialty_id::lawyer_id:--></div>
+
+    <section class="reloadable-module" data-widget-params="eJxdUstu2zAQ_Jc9ywr1sCLzVBQoemgPRRugR2ElrmwipCSQlFU1yL936diqkyOHszOzjxfoDHoPEn5rdaTgpfxJBgOpH27syXs9Dmh-kZs8JDChQ8vkF5jufuNbK5DFvsqz6sA0R73-A3KYjUmg186HAS2xyZczDqxjtVKGrti31RBjHOPG-jqHk9MR9HN_p3SkQZFroleWAFnUpkGlHF0a6MYhYBc-0fPR4JJ2o2WBhVqvAzWz45hwCmGSDw_LsqTvWNfSxo5qNtQEPBo90M2We-3YglTTrg2ezyPIHo0n_plbozsTUc6CLdd-SCVYfPZhtJzb4tpcnUAGN7OA7xxOLPyh6s3XU-coNM-0cnSRH7q-FnVLjyImNqjtJRHIkuE8-48hy0Musmwnqp2on7K9FKXMi1QIsROPUmwCjaVwGtVlouUN09PdUKs6zUWdVvu0KLlqnlS8jc2i3LFLVj2JTBaFzK4W9ZvFjRwzFgmcycV7AVkloCjEhsM6xX1_Rue0D-Sk_I7LSg42xmXXh0NdFPsEgg5m2wrPZosSkVcemP5L28OMHUY2ULy4wJPxAe10lzsX8PoPkgb9iA==">  <div class="module">
+    <h2>Related Lawyer Searches</h2>
+    <ul class="links">
+        <li><a href="/business-lawyer/sc/charleston.html" title="Charleston Business Attorneys">Charleston Business lawyers</a></li>
+        <li><a href="/estate-planning-lawyer/sc/charleston_county.html" title="Charleston County Estate Planning Attorneys">Charleston County Estate Planning lawyers</a></li>
+        <li><a href="/probate-lawyer/sc/charleston_county.html" title="Charleston County Probate Attorneys">Charleston County Probate lawyers</a></li>
+        <li><a href="/criminal-defense-lawyer/sc/charleston.html" title="Charleston Criminal Defense Attorneys">Charleston Criminal Defense lawyers</a></li>
+        <li><a href="/dui-dwi-lawyer/sc/charleston.html" title="Charleston DUI / DWI Attorneys">Charleston DUI lawyers</a></li>
+        <li><a href="/divorce-separation-lawyer/sc/charleston.html" title="Charleston Divorce / Separation Lawyers">Charleston Divorce lawyers</a></li>
+        <li><a href="/elder-law-lawyer/sc/charleston.html" title="Charleston Elder Law Attorneys">Charleston Elder Law lawyers</a></li>
+        <li><a href="/estate-planning-lawyer/sc/charleston.html" title="Charleston Estate Planning Attorneys">Charleston Estate Planning lawyers</a></li>
+        <li><a href="/family-lawyer/sc/charleston.html" title="Charleston Family Law Attorneys">Charleston Family lawyers</a></li>
+        <li><a href="/guardianship-lawyer/sc/charleston.html" title="Charleston Guardianship Law Attorneys">Charleston Guardianship lawyers</a></li>
+        <li><a href="/immigration-lawyer/sc/charleston.html" title="Charleston Immigration Attorneys">Charleston Immigration lawyers</a></li>
+        <li><a href="/personal-injury-lawyer/sc/charleston.html" title="Charleston Personal Injury Lawyers">Charleston Personal Injury lawyers</a></li>
+        <li><a href="/power-of-attorney-lawyer/sc/charleston.html" title="Charleston Power of Attorney Lawyers">Charleston Power Of Attorney lawyers</a></li>
+        <li><a href="/marriage-prenuptials-lawyer/sc/charleston.html" title="Charleston Marriage / Prenuptials Lawyers">Charleston Prenuptials lawyers</a></li>
+        <li><a href="/probate-lawyer/sc/charleston.html" title="Charleston Probate Attorneys">Charleston Probate lawyers</a></li>
+        <li><a href="/real-estate-lawyer/sc/charleston.html" title="Charleston Real Estate Attorneys">Charleston Real Estate lawyers</a></li>
+        <li><a href="/trusts-lawyer/sc/charleston.html" title="Charleston Trusts Attorneys">Charleston Trusts lawyers</a></li>
+        <li><a href="/uncontested-divorce-lawyer/sc/charleston.html" title="Charleston Uncontested Divorce Attorneys">Charleston Uncontested Divorce lawyers</a></li>
+        <li><a href="/wills-living-wills-lawyer/sc/charleston.html" title="Charleston Wills and Living Wills Lawyers">Charleston Wills lawyers</a></li>
+        <li><a href="/workers-compensation-lawyer/sc/charleston.html" title="Charleston Workers&#39; Compensation Lawyers">Charleston Workers Compensation lawyers</a></li>
+        <li><a href="/wrongful-death-lawyer/sc/charleston.html" title="Charleston Wrongful Death Attorneys">Charleston Wrongful Death lawyers</a></li>
+    </ul>
+  </div>
+</section><!--Widget:widgetsrelated_professional_serps:false:ajax:false:size::professional:Barrister::Professional-3562169:limit:20-->
+
+
+    </div>
+
+    
+  </div>
+</div>
+
+
+<script>
+//<![CDATA[
+
+  $(function(){
+    $('.js-replaceable').bind('dom:changed', function(){
+      $(this).find('.js-hover-tooltip-link').hoverTooltip();
+    });
+  });
+
+//]]>
+</script>
+</span>
+    <footer class="persistent-footer page full-width no-border"><div class="page-row"><a class="quiet span3" href="//www.avvo.com/"><div class="icon-avvo-logo footer-logo"></div><div class="footer-slogan">Legal. <strong>Easier.</strong></div></a><div class="span3"><a class="quiet" href="/"><h3>Explore Avvo</h3></a><p class="margin1"><a class="quiet" href="/ask-a-lawyer">Ask a Lawyer</a></p><p class="margin1"><a class="quiet" href="/find-a-lawyer">Find a Lawyer</a></p><p class="margin1"><a class="quiet" href="/free-legal-advice">Free Legal Advice</a></p><p class="margin1"><a class="quiet" href="/review-your-lawyer">Review a Lawyer</a></p></div><div class="span3"><a class="quiet" href="/for-lawyers"><h3>For Lawyers</h3></a><p class="margin1"><a class="quiet" href="/for-lawyers">Lawyer Advertising</a></p><p class="margin1"><a class="quiet" href="/claim-your-profile">Claim Your Profile</a></p><p class="margin1"><a class="quiet" href="/support/all-firm-claim">For Law Firms</a></p><p class="margin1"><a class="quiet" href="//ignite.avvo.com">Marketing Management Software</a></p><p class="margin1"><a class="quiet" href="//lawyernomics.avvo.com">Lawyernomics Blog</a></p></div><div class="span3"><a class="quiet" href="/about_avvo"><h3>Company Info</h3></a><p class="margin1"><a class="quiet" href="/about_avvo/about_us">About Us</a></p><p class="margin1"><a class="quiet" href="/for-lawyers/support">Support</a></p><p class="margin1"><a class="quiet" href="//press.avvo.com">Press Room</a></p><p class="margin1"><a class="quiet" href="/partner_with_us">Partner With Us</a></p><p class="margin1"><a class="quiet" href="/about_avvo/jobs">Careers</a></p><p class="margin1"><a class="quiet" href="//avvoblog.com">Avvo Blog</a></p><p class="margin1"><a class="quiet" href="//nakedlaw.avvo.com">NakedLaw Blog</a></p></div></div></footer><footer class="black"><div id="fine_print_container"><div id="fine_print"><div class="contact_avvo">Follow us on <a href="//www.twitter.com/avvo"><img alt="Twitter" src="http://assets2.iavvo.com/assets/embed/additional_links/twitter_icon-c160ce8886d11899e6833dd271a13f2d.png" /></a><a href="http://www.facebook.com/avvo"><img alt="Facebook" src="http://assets1.iavvo.com/assets/embed/additional_links/facebook_icon-6d9bd4ddfbad9c81a22fd2471b67d673.png" /></a><a href="//plus.google.com/107840042923877554905"><img alt="Google icon" src="http://assets1.iavvo.com/assets/embed/additional_links/google_icon-942738832fa1fe452c21f15e5a9194b2.png" /></a></div><p class="bottom_links"><span class="copyright">&copy;2014 Avvo, Inc. All Rights Reserved </span><span><a href="?prefer_mobile=true" rel="nofollow">Mobile View</a></span><span class="pipe">|</span><span><a href="/support/terms" rel="nofollow">Terms of Use</a></span><span class="pipe">|</span><span><a href="/support/privacy" rel="nofollow">Privacy Policy</a></span><span class="pipe">|</span><span><a href="/support/community_guidelines" rel="nofollow">Community Guidelines</a></span></p></div></div></footer>
+
+    <noscript>
+  <div style="text-align:center;background:#fbf3c5;color:#911717;padding:8px;border-bottom:1px solid #D7DADD;">
+  <strong>We've detected that your browser does not support scripting.</strong> <br/>
+  Scripting must be enabled to use Avvo. Turn on scripting and reload this page.
+  </div>
+</noscript>
+
+
+
+
+    <!-- r:bf1fc99141b7e49a11fec3d713a4b0844c28fcba -->
+<!-- d:Mon Nov 24 17:54:52 PST 2014 -->
+<!-- p:www.avvo.com -->  
+
+
+
+
+
+    
+    <script src="http://assets1.iavvo.com/assets/footer_common-59d36e58c17ffbec325b4d50f60e0fda.js"></script>
+
+
+
+<div id="google_remarketing">
+
+    <script type="text/javascript">
+    /* <![CDATA[ */
+    var google_conversion_id = 1057123743;
+    var google_conversion_language = "en";
+    var google_conversion_format = "3";
+    var google_conversion_color = "ffffff";
+    var google_conversion_label = "z9BlCKXnsAIQn9uJ-AM";
+    var google_conversion_value = 0;
+    /* ]]> */
+    </script>
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js?avvo_Yoel">
+    </script>
+    <noscript>
+    <div style="display:inline;">
+    <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/1057123743/?label=z9BlCKXnsAIQn9uJ-AM&amp;guid=ON&amp;script=0"/>
+    </div>
+    </noscript>
+
+</div>
+
+    <script>
+//<![CDATA[
+
+$(function(){
+  var a=document.createElement("script");
+  var b=$("script")[0];
+  a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0011/6860.js";
+  a.async=true;a.type="text/javascript";
+  b.parentNode.insertBefore(a,b);
+});
+
+//]]>
+</script>
+  </body>
+
+
+</html>

@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+
+<html class="no-js">
+  <head>
+    
+<!-- force browser refresh of favicon.  Plz remove me someday? -->
+<link href="http://www.avvo.com/favicon.ico?v=2" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+
+<meta charset="utf-8">
+<title>Lawyer Brenton Vincenzes - Fairfax Attorney - Avvo.com</title>
+
+<meta name="description" content="Brenton Vincenzes is a Criminal Defense Attorney in Fairfax, VA. Click Brenton’s profile to discover their Avvo Rating, write a review, and read professional endorsements." />
+
+<meta name="robots" content="index,follow" />
+
+
+
+<meta property="og:image" content="http://assets1.iavvo.com/assets/header_logo-d9da0710ef4f108673b08e2f89ee79c8.png" />
+
+
+<meta name="robots" content="NOODP,NOYDIR" />
+
+<script>
+//<![CDATA[
+window.locationContext = {"id":23673,"name":"Atlanta","city_name":"Atlanta","state_name":"Georgia","state_code":"GA","postal_code":null};window.adLocationContext = {"id":61489,"name":"30316","city_name":"Atlanta","state_name":"Georgia","state_code":"GA","postal_code":"30316"};
+//]]>
+</script><script src="//cdn.optimizely.com/js/275511722.js"></script>
+
+<link href="https://plus.google.com/107840042923877554905" rel="publisher" />
+
+  <link href="http://assets1.iavvo.com/assets/application-679b5b560ef19c2728b0c8d332d28f6a.css" media="all" rel="stylesheet" />
+  <!--[if lt IE 9]>
+    <link href="http://assets1.iavvo.com/assets/font_avvo_icon_bad_IE_bad_dog-27d8ace9b1fdd6c93145f0e1b7827dc6.css" media="all" rel="stylesheet" />
+  <![endif]-->
+
+<link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:700|Open+Sans:300,400,600,700" media="all" rel="stylesheet" />
+
+<script src="http://assets2.iavvo.com/assets/application-944ee4fdb62f3df1542271af9ecbae14.js"></script>
+
+<!--[if (gte IE 6)&(lte IE 8)]>
+    <script src="http://assets2.iavvo.com/assets/selectivizr-c4422edc73658e842dce601b5979afe2.js"></script>
+<![endif]-->
+
+
+
+  <link href="http://www.avvo.com/attorneys/22030-va-brenton-vincenzes-4301397.html" rel="canonical" />
+
+<script>
+//<![CDATA[
+
+  google_analytics_domain_name=".avvo.com";
+  try {
+    var _gaq = _gaq || [];
+    _gaq.push(
+      ['_setAccount', 'UA-4437273-1'],
+      ['_setDomainName', '.avvo.com'],
+      ['_setCustomVar', 1,'user_type','other', 1],
+      ['_setCustomVar', 5, 'abs', '....................................................................................................', 3]
+    );
+
+        _gaq.push(['_setCustomVar', 2,'type', 'pro', 3]);
+        _gaq.push(['_setCustomVar', 3,'spec',"55_Criminal Defense", 3]);
+
+    _gaq.push(['_trackPageview']);
+  } catch(err) {}
+
+//]]>
+</script>
+
+  <script>
+//<![CDATA[
+
+  try {
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  } catch(err) {}
+
+//]]>
+</script>
+
+
+
+<script type="text/javascript">window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"location":{"id":6013994,"professional_id":4301397,"name":"Vincenzes Law PLLC","displayable":true,"ordinal":1,"updated_at":"2013-07-24T01:38:14.000-07:00","updated_by":1501180,"license_id":null,"created_at":"2013-07-24T01:38:14.000-07:00"},"pageTitle":"Lawyer Brenton Vincenzes - Fairfax Attorney","siteSection":null,"logicalSection":"lawyers/show","renderType":"desktop","persistentSessionId":"0c9eab35-45e3-4e4a-aa60-0d7d46f85873","userId":null,"userEmail":null,"userType":"anonymous","professionalId":null,"professional":"4301397-Brenton-Vincenzes","specialty":55,"claimStatus":"claimed","ratingType":"No concern","rating":9.5,"reviewScore":5.0,"reviews":20,"endorsements":28,"profileContent":{"contributions":{"legalAnswers":296,"bestAnswers":10,"agree":185,"helpful":22,"guides":39,"staffPicks":0},"headshot":"yes","aboutMe":"yes","publications":39,"awards":6,"workExperience":18,"speakingEngagements":6},"professionalType":"advertiser"});</script>
+
+  <meta name="ad-location-id" content="61489" /><meta name="ad-specialty-id" content="55" /><meta name="page-template-name" content="Lawyer Profile - Main" /></head>
+  <body>
+    <script>
+//<![CDATA[
+duraLogEvents('eJztUrtu2zAU/RWDs6jwJVHyHnRpgQ7dgoC4kq4dAhQpkLRVt+i/l7JjIM7e\nrSPP5Xncx8sLV7ztpWh6VpElhgOmZIMHZ+y8xNuDVATmkMQKE6l+kxEyHkO8\nkP2VYB2Sz9SJ7JVkXPa6IlOYwfryeV3XGs7nUI9hLoxTdAV8gpxD9HhJT0Iw\nyegZ6BDR5+Dp2foR/S9M9F2sfsuzK9SIB4wRI9n7k3NFKmE0cCysO5JuWa5J\niGpRtg1vqGg5UKVZR4cOgPZ85CAZCqXxqjqHjMYuhcKZrrnoat7WgulSnDG/\nhU3sy/MP8u64id/sSuBpA3zKUDKb4+lqPEk+CWSMyqYRVB0OAx00U3RsS2Xo\ntBa63WaHMdmUS3zzkJuNPcIgG6oalFShAgrQMsomPan20DWdluTPa/W4wzIH\nc7a4ftqaC2Vvd2khWy3LlBYcLbh8uYJNUxH8WcJkm/BDcwkcJhPxeGdzwdkn\neAmlc2fGMKF5cGq56vrNKfgUIk7GlU6tP5rkQk5kX4QmmxYHlw9IxrkgZRce\nZiyD+ArrBePu++3adnT3bbuo/6f1z0/r9S8CSFAG\n');
+//]]>
+</script>
+
+<script>
+//<![CDATA[
+
+  $(document).on('click', '[data-dura-trackable-href]', duraUpdateLinkHREF);
+
+//]]>
+</script>
+    <noscript><iframe height="0" src="//www.googletagmanager.com/ns.html?id=GTM-K2L3VH" style="display:none;visibility:hidden" width="0"></iframe></noscript><script type="text/javascript">(function(w, d, s, l, i){
+  w[l] = w[l] || [];
+  w[l].push({ 'gtm.start' : new Date().getTime(),
+              event       : 'gtm.js'});
+  var f   = d.getElementsByTagName(s)[0];
+  var j   = d.createElement(s);
+  var dl  = l != 'dataLayer' ? '&l='+ l : '';
+  j.async = true;
+  j.src   = '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-K2L3VH');</script>
+    <div id="bing_tracking">
+
+</div>
+    <noscript>
+  <div style="text-align:center;background:#fbf3c5;color:#911717;padding:8px;border-bottom:1px solid #D7DADD;">
+  <strong>We've detected that your browser does not support scripting.</strong> <br/>
+  Scripting must be enabled to use Avvo. Turn on scripting and reload this page.
+  </div>
+</noscript>
+
+    <hgroup><header><nav id="page_header"><a href="//www.avvo.com/"><img alt="Logo@2x" class="logo" src="http://assets1.iavvo.com/assets/logos/logo@2x-39c17b04a49441c5131b852386f9312e.png" /></a><ul class="pull-right" id="sign-in-module"><li class="left-margin"><a href="/for-lawyers">For Lawyers</a></li><li class="left-margin"><a href="/account/login" rel="nofollow">Sign in</a></li><li class="left-margin"><a href="/account/register" rel="nofollow">Register</a></li></ul></nav></header></hgroup>
+    <div class="page">
+      <div id="primary_nav_and_breadcrumb">
+        <nav class="" id="primary_nav"><style type="text/css">.menu-primary{height:auto}.menu-primary #my-avvo-link{padding-top:28px}</style><ul class="center-content clearfix menu-primary"><li><a href="/free-legal-advice">Research<br/>Legal Advice</a></li><li><a href="/ask-a-lawyer">Ask<br/>a Lawyer</a></li><li class="active"><a href="/find-a-lawyer">Find<br/>a Lawyer</a></li><li><a href="https://advisor.avvo.com?avvo_source=avvo&amp;avvo_medium=global_navigation&amp;avvo_campaign=avvo_advisor">Instant<br/>Phone Call <span class='label label-success' style='line-height: 12px;'>New!</span></a></li><li><a href="/review-your-lawyer">Review<br/>Your Lawyer</a></li></ul><script type="text/javascript">$(document).ready(function(){
+  if(false){
+    $('.menu-primary.my_avvo').show();
+    $('#my-avvo-link').parent('li').addClass('active');
+  }
+  $('#my-avvo-link').click(function(){
+    $('.menu-primary.my_avvo').slideToggle();
+    return false;
+  })
+})</script>  <div class="search browsable" id="primary_nav_search">
+      <span id="search_selector">
+        Lawyers
+      </span>
+      <ul id="search_selector_menu" style="display:none;">
+          <li data-form-id="lawyer_search">Lawyers</li>
+          <li data-form-id="legal_advice_search">Legal Advice</li>
+      </ul>
+
+        <span id="lawyer_search" class="search_form_container selectable" >
+          
+<form accept-charset="UTF-8" action="/search/lawyer_search" class="search_form search-form" id="lawyer_search_primary_nav_search_search_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+  <input autocomplete="off" class="keyword_field keyword-search-field " data-tooltip-right="true" id="lawyer_search_primary_nav_search_search_form_keyword_field" name="q" placeholder="Lawyer&#39;s name -OR- Practice area" type="text" />
+  <input autocomplete="off" class="location_field location-search-field " id="lawyer_search_primary_nav_search_search_form_location_field" name="loc" placeholder="City, State -OR- ZIP" type="text" value="Atlanta, GA" />
+  <span class="icon-submit">
+    <input class="button primary action " name="commit" style="" type="submit" value="" />
+  </span>
+
+</form>
+        </span>
+</div>
+<script>
+//<![CDATA[
+
+  $(document).click(function(e){
+    if(e.target.id != "search_selector") {
+      $("#search_selector_menu").hide();
+    }
+  });
+
+  $("#search_selector_menu li").click(function(e) {
+    form_id = $(this).attr("data-form-id");
+    $("#primary_nav_search .search_form_container").hide();
+    $("#" + form_id).show();
+    $("#search_selector").html($(this).html());
+    $("ul.ui-autocomplete").hide();
+    $("#search_selector_menu").hide();
+  });
+
+  $("#search_selector").click(function(e) {
+    $("#search_selector_menu").toggle();
+    $("#search_selector_menu").position({
+      my: "left top",
+      at: "left bottom",
+      of: $("#search_selector")
+    });
+  });
+
+  $("#primary_nav_search .keyword_field").change(function(e) {
+    $("#primary_nav_search .keyword_field").val($(e.target).val());
+    $("#primary_nav_search .keyword_field").trigger('valuechanged');
+  });
+
+  $("#primary_nav_search .location_field").change(function(e) {
+    $("#primary_nav_search .location_field").each(function(i,el) {
+      $(el).val($(e.target).val());
+      $(el).trigger('valuechanged');
+    });
+  });
+
+//]]>
+</script>
+</nav><div id="breadcrumb"><div class="breadcrumbs"><span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/all-lawyers/va.html" itemprop="url"><span itemprop="title">Virginia</span></a></span>&nbsp;&gt;&nbsp;<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/all-lawyers/va/fairfax.html" itemprop="url"><span itemprop="title">Fairfax</span></a></span>&nbsp;&gt;&nbsp;<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/criminal-defense-lawyer/va/fairfax.html" itemprop="url"><span itemprop="title">Criminal Defense Attorneys</span></a></span>&nbsp;&gt;&nbsp;<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><span class="current" itemprop="title"><span>Brenton Daniel Vincenzes</span></span></span></div></div><!--[if lt IE 9]><script type="text/javascript">$(document).ready(function(){
+  $('.icon-submit').click(function(){
+    $(this).parent().submit();
+  });
+})</script><![endif]-->
+      </div>
+      <div id="flash"></div>
+    </div>
+    
+      <span>
+          
+<div class="page stripped"  itemscope = "itemscope" itemtype = "http://schema.org/Attorney" >
+
+  <!-- header -->
+    <div class="page-row margin6" id="profile_header"><div class="span12"><h1 class="light pull-left condensed margin0"><span class="pull-left" itemprop="name">Brenton Daniel Vincenzes
+</span><h4><br /><div class="span-auto condensed"><a data-tooltip="Lawyers who subscribe to Avvo Pro have the ability to customize components of their profile, generate more leads with enhanced contact options, and track their performance on Avvo.
+&lt;a href=&quot;/for-lawyers/avvo-pro&quot;&gt;Learn more.&lt;/a&gt;
+" href="#!" rel="nofollow"><span class="label label-avvo-pro">Pro</span></a></div></h4></h1></div><div class="span12 margin2" id="name_alias_section"><h3>  <span class="muted">Also known as </span><span class="nickname">Brent Vincenzes</span>, <span class="nickname">Brenton D. Vincenzes</span>
+</h3></div><div class="span12 inline-hgroup" id="firm_office_detail"></div></div>
+
+
+  <div class="page-row">
+    <section class="span8" id="profile_details">
+
+
+      <!-- tabs -->
+
+
+      <div id="profile_overview">
+  <!-- headshot -->
+  <div class="page-row" id="headshot">
+    <div class="span2">
+      <span class="avvo-inline-block">
+        <img alt="Brenton Daniel Vincenzes" class="borderless standard" itemprop="image" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/standard/4301397_1374655144.jpg" title="Brenton Daniel Vincenzes" />
+      </span>
+    </div>
+    <div class="span6">
+          <h3 class="light">A+ Communication and Vigilance</h3><div class="page-row margin3"><div class="span6"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></div><div class="span6">Exceptional service and fortitude</div><div class="span6 text-meta margin1">- Mr. Williams, a Criminal Defense client</div></div><div class="page-row margin3"><div class="span6"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></div><div class="span6">Great attorney who cared a lot about me and my situation</div><div class="span6 text-meta margin1">- Jackie</div></div>
+
+    </div>
+  </div>
+</div>
+
+
+    
+        <hr>
+        <div class="offset2">
+            <div class="page-row">
+              <div class="page-row margin8"><div class="span3"><div class="page-row"><div class="span3" itemscope="itemscope" itemtype="http://schema.org/Review"><div itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Organization"><meta content="Avvo Inc." itemprop="name" /><meta content="Avvo" itemprop="alternateName" /><meta content="http://www.avvo.com" itemprop="url" /></div><div class="icon half-width pull-left" data-tooltip-remote="avvo_rating_description"><img alt="Avvorating@2x" src="http://assets2.iavvo.com/assets/embed/profile/avvorating@2x-cf89cef391e72dc3ea9ec72ed16ce495.png" width="100" /></div><div class="pull-left center-content margin5" itemprop="reviewRating" itemscope="itemscope" itemtype="http://schema.org/Rating"><span class="avvo_rating_numeric"><h2 class="text-red light bold center-content condensed margin0" itemprop="ratingValue">9.5</h2><img alt="" class="rating_image" src="http://assets2.iavvo.com/assets/profile_rating/icon_rating_09-95b4825ad0ede6d4783b9d54e47e84e0.gif" /><h3 class="rating_info center-content text-red light"><span class="summary"><a class="tooltip_link tooltip-link" data-tooltip-remote-options="" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">Superb</a></span></h3><meta content="10.0" itemprop="bestRating" /><meta content="0.0" itemprop="worstRating" /></span></div><meta content="Brenton Daniel Vincenzes" itemprop="itemReviewed" /></div><div class="span3 margin4">  <table id="sub_rating">
+
+        <tr>
+          <td>Experience</td>
+          <td>
+            <span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-half-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-empty-circle" style="font-size:13px"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Industry Recognition</td>
+          <td>
+            <span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Professional Conduct</td>
+          <td>
+            <span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span></span>
+          </td>
+        </tr>
+
+  </table>
+<p class="text-meta"><a class="tooltip_link tooltip-link" data-tooltip-remote-options="provisional=false" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">What is the Avvo Rating?</a></p></div></div></div><div class="span3 margin6"><div class="page-row"><div class="span3"><div class="page-row"><div class="span1"><img alt="Reviews" class="full-width" src="http://assets1.iavvo.com/assets/embed/profile/reviews-72fd939ee2e493ce25a7b88d3da6028c.png" /></div><div class="span2"><a class="count" href="/attorneys/22030-va-brenton-vincenzes-4301397/reviews.html"><div class="page-row"><div class="inline-hgroup span2"><h3 class="light condensed margin0 stripped">20&nbsp;</h3><h5 class="light condensed margin0 stripped">Reviews</h5></div><div class="span2"><a class="star_rating full-width" href="/attorneys/22030-va-brenton-vincenzes-4301397/reviews.html"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a></div></div></a><div class="client_review_links">Current or former client? <a data-avn="{&quot;name&quot;:&quot;amos.gtm.view-lawyer-review-form&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;4301397-Brenton-Vincenzes&quot;}}" href="/attorneys/22030-va-brenton-vincenzes-4301397/write_review.html" rel="nofollow">Write a review</a></div></div></div></div><hr class="span3" /><div class="span3"><div class="page-row"><div class="span1"><img alt="Endorse" class="full-width" src="http://assets1.iavvo.com/assets/embed/profile/endorse-393f817ef630e2e358047b4ca97e17ed.png" /></div><div class="span2"><div class="page-row"><a href="/attorneys/22030-va-brenton-vincenzes-4301397/endorsements.html"><div class="inline-hgroup span2"><h3 class="light condensed margin0 stripped">28&nbsp;</h3><h5 class="light condensed margin0 stripped">Endorsements</h5></div></a></div>Lawyers: <br><a href="/attorneys/22030-va-brenton-vincenzes-4301397/write_endorsement.html" rel="nofollow">Endorse this lawyer</a></div></div></div><hr class="span3" /><div class="span3"><div class="page-row"><div class="span1"><img alt="Contri" class="full-width" src="http://assets1.iavvo.com/assets/embed/profile/contri-c5a1b74b9701f86d9b28e2d9f4f0334c.png" /></div><div class="span2"><div class="page-row"><div class="inline-hgroup span2"><h5 class="light condensed margin0">Contributor Level</h5><h3 class="light condensed margin0 stripped">15</h3></div></div><p><a href="/attorneys/22030-va-brenton-vincenzes-4301397/answers.html">View contributions</a></p></div></div></div></div></div><div class="span6"><div id="profile_actions" class="lawyer_profile_actions">
+    <a class="primary action" data-avn="{&quot;name&quot;:&quot;amos.gtm.view-lawyer-email-form&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;4301397-Brenton-Vincenzes&quot;}}" href="/attorneys/22030-va-brenton-vincenzes-4301397/contact.html" rel="nofollow">Email Lawyer</a>
+
+  <a class="action" data-avn="{&quot;name&quot;:&quot;amos.gtm.contact-lawyer-website&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;4301397-Brenton-Vincenzes&quot;}}" href="http://www.VincenzesLaw.com" onclick="this.href=&#39;/attorneys/22030-va-brenton-vincenzes-4301397/website.html&#39;;return true;" target="_blank">Lawyer&#39;s website</a>
+
+  <a class="action send" href="/attorneys/22030-va-brenton-vincenzes-4301397/share.html" rel="nofollow">Send to a friend</a>
+</div>
+</div></div>
+            </div>
+          </div>
+      <div class="module"><h2>Overview</h2><div class="page-row" id="overview"><section class="span8">
+        <div class="js-replaceable margin6" id="specialties"><div class="page-row" id="specialties"><div class="span2"><h5 class="light">PRACTICE AREAS</h5></div><div class="span6"><div class="page-row"><div class="span2">
+<img alt="Chart?chs=169x169&amp;cht=p&amp;chp=4" class="full-width" id="specialty_chart" src="http://chart.apis.google.com/chart?chs=169x169&amp;cht=p&amp;chp=4.7&amp;chco=76d0eb|f48026|ffeb73|7ac142&amp;chd=t:55,20,15,10" />
+
+</div><div class="span4"><div class="page-row js-link-hub"><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#76d0eb"></div><div class="span3"><a class="tooltip_link tooltip-link" data-tooltip="Traffic and misdemeanor defense, including reckless driving (a class 1 misdemeanor), DUI, possession of controlled substances, and more." href="#!" rel="nofollow">55% Criminal Defense</a></div></div></div></div><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#f48026"></div><div class="span3"><a class="tooltip_link tooltip-link" data-tooltip="Virginia DWI, DUI" href="#!" rel="nofollow">20% DUI / DWI</a></div></div></div></div><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#ffeb73"></div><div class="span3"><a class="tooltip_link tooltip-link" data-tooltip="Virginia Assault and Battery, Domestic Violence, Assault on Officer, Malicious Wounding, Manslaughter, and More." href="#!" rel="nofollow">15% Violent Crime</a></div></div></div></div><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#7ac142"></div><div class="span3"><a class="tooltip_link tooltip-link" data-tooltip="Virginia Reckless Driving, Speeding, License Offenses, and More." href="#!" rel="nofollow">10% Speeding / Traffic Ticket</a></div></div></div></div></div></div></div><div id="not_practicing_section">
+</div></div></div></div>
+        <div class="js-replaceable margin6" id="fees_payments"><div class="page-row" id="fees_payments_section"><div class="span2"><h5 class="light">FEES AND<BR> PAYMENT TYPES</h5></div><div class="span6"><div class="page-row"><div class="span6 margin4"><h4>Fees</h4><div id="fees_detail">    Fixed (Always), Free Consultation (60 minutes), Hourly ($150-$300/hour), Pro Bono (5%), Retainer (Sometimes)
+
+</div></div><div class="span6"><h4>Payment types</h4><div id="payments_detail">  Cash, Check, Credit Card
+  
+</div></div></div></div></div></div>
+          <div class="js-replaceable margin6" id="contact_information"><div class="page-row" id="contact_information_section"><div class="span2"><h5 class="light">CONTACT INFORMATION</h5></div><div class="span6"><div class="page-row" id="contact_information_detail">  <div id="avvo_pro_contact_module" class="page-row">
+    <div id="map" class="span3">
+      <section class="reloadable-module" data-widget-params="eJwVjD0KwkAQRq8iU2_ADWqxpY2VWFoPySRZmP0hM0EwBLyG1_MkTsrve4-3QscoAgGesR9JJYRbKSPTHSs4qDhjMrpCxkRmXWfKWvLv85XDYxhiR2YttUc1OiALOXjFXicIrb84mCiOk0Lw-5D4NisvzJsDLh3ynqRsCY2JRDFVO9qjPzXeN-0Ztj8kyzQl"><div class="margin4" data-map="" id="map_div" style="width:216px; height:116px"><div data-map-marker="" data-map-marker-address="11325 Random Hills Road, #360, Fairfax, VA 22030" data-map-marker-href="http://maps.google.com?q=11325%20Random%20Hills%20Road,%20%23360,%20Fairfax,%20VA%2022030 (Brenton%E2%80%99s%20Office)" data-map-marker-name="Brenton’s Office" data-map-marker-point-latitude="38.855428" data-map-marker-point-longitude="-77.337975"></div></div></section><!--not_cached Widget:widgetsgoogle_map:false:ajax:false:size::name:Brenton’sOffice:address::map_div_id:map_div:update:false:width:216:height:116-->
+        <a href="http://maps.google.com?q=11325%20Random%20Hills%20Road,%20%23360,%20Fairfax,%20VA%2022030 (Brenton%E2%80%99s%20Office)" target="_blank"><span class='icon-map'></span> See larger map</a>
+    </div>
+
+  <div id="enhanced_contact_options" class=" span3 " >
+      <div class="page-row margin2">
+          <div class="span1">
+            <h3 class="icon-phone pull-right"></h3>
+          </div>
+          <h3 class="span-auto">
+            <span class="11146_phone phone">703-665-3719</span><script>
+//<![CDATA[
+
+          $(document).ready(function(){
+            $(".11146_phone").each(function(index, element) {
+              $(element).html("877-959-3827");
+              if(element.parentNode.tagName == "A"){
+                element.parentNode.setAttribute("href","tel:877-959-3827");
+              }
+            });
+          });
+        
+//]]>
+</script>
+          </h3>
+      </div>
+      <div class="page-row margin2">
+          <div class="span1">
+            <h4 class="icon-email2 pull-right"></h4>
+          </div>
+          <h4 class="span-auto">
+            <a class="email" href="/attorneys/22030-va-brenton-vincenzes-4301397/contact.html" rel="nofollow">Email this lawyer</a>
+          </h4>
+      </div>
+      <div class="page-row margin2">
+          <div class="span1">
+            <h4 class="icon-website pull-right"></h4>
+          </div>
+          <h4 class="span-auto">
+            <a class="website" data-avn="{&quot;name&quot;:&quot;amos.profiles.website_clicked&quot;,&quot;payload&quot;:{&quot;professional_id&quot;:4301397,&quot;profession_name&quot;:&quot;lawyer&quot;,&quot;specialty_name&quot;:&quot;Criminal Defense&quot;}}" href="http://www.VincenzesLaw.com" onclick="this.href=&#39;/attorneys/22030-va-brenton-vincenzes-4301397/website.html&#39;;return true;" rel="nofollow" target="_blank">Visit website</a>
+          </h4>
+      </div>
+
+  </div>
+
+  <div style="clear:both"></div>
+
+  <div class="spacer"> </div>
+    <hr />
+</div>
+
+<div class="span3"><div class="address_list avvo-undecorated-list" id="sortable_address_list"><div class="address_sort margin4" id="address_6013994"><div class="address_name semibold">Vincenzes Law PLLC</div><span><div class="address_line_1">11325 Random Hills Road</div><div class="address_line_2">#360</div></span><div class="address_city_state">Fairfax, VA 22030</div><div class="address_phone"><span class="phone_label muted">Office: </span><span id="phone_number_0" itemprop="telephone"><span class="11146_phone ">703-665-3719</span><script>
+//<![CDATA[
+
+          $(document).ready(function(){
+            $(".11146_phone").each(function(index, element) {
+              $(element).html("877-959-3827");
+              if(element.parentNode.tagName == "A"){
+                element.parentNode.setAttribute("href","tel:877-959-3827");
+              }
+            });
+          });
+        
+//]]>
+</script></span></div><a data-avn="{&quot;name&quot;:&quot;amos.contacts.viewed_directions&quot;,&quot;payload&quot;:{&quot;professional_id&quot;:4301397}}" href="http://maps.google.com/maps?q=11325+Random+Hills+Road%2C+%23360%2C+Fairfax%2C+VA+22030+%28Vincenzes+Law+PLLC%29" rel="nofollow" target="_blank"><span class="icon-map"></span> View map</a></div></div></div><div class="span3">  <div id="additional_links" class="page-row">
+      <div class="span3">
+        <div class="page-row">
+          <div class="span1">
+            <span class='icon-blog  pull-right'></span>
+          </div>
+          <div class="span2">
+              <a href="http://vincenzeslaw.com/va-criminal-law-blog/" rel="nofollow me" target="_blank">Blog</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="span3">
+        <div class="page-row">
+          <div class="span1">
+            <span class='icon-facebook  pull-right'></span>
+          </div>
+          <div class="span2">
+              <a href="http://www.facebook.com/vincenzeslaw" rel="nofollow me" target="_blank">Facebook</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="span3">
+        <div class="page-row">
+          <div class="span1">
+            <span class='icon-googleplus  pull-right'></span>
+          </div>
+          <div class="span2">
+              <a href="https://plus.google.com/112138827344230607338" rel="me" target="_blank">Google+</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="span3">
+        <div class="page-row">
+          <div class="span1">
+            <span class='icon-linkedin  pull-right'></span>
+          </div>
+          <div class="span2">
+              <a href="http://www.linkedin.com/in/brentvincenzes" rel="nofollow me" target="_blank">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+
+
+  </div>
+</div>
+</div></div></div></div>
+        <div class="js-replaceable margin6" id="languages"><div class="page-row" id="languages_section"><div class="span2"><h5 class="light">LANGUAGES SPOKEN</h5></div><div class="span6"><div id="languages_detail"><ul class="avvo-undecorated-list margin0">
+    <li>
+  English
+</li>
+
+</ul>
+</div></div></div></div>
+        <div class="js-replaceable margin6" id="about_me"><div class="page-row" id="about_me_section"><div class="span2"><h5 class="light">ABOUT ME</h5></div><div class="span6"><div id="about_me_detail">  
+    <div id="media_table_wrapper">
+      <table><tr><td><div class="thumbnail borderless"><a data-modal-open="3EpqspHT" href="#!" nofollow="nofollow" title=""><img alt="" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/thumbnail_small/4301397_1410998320.jpg" title="" /></a></div><div id="3EpqspHT" style="display:none;width:;height:"><div class="modal-header">Image</div><div class="modal-body"><img alt="4301397 1410998320" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/normalized/4301397_1410998320.jpg" /></div></div></td><td><div class="thumbnail borderless"><a data-modal-open="3uOeZLRz" href="#!" nofollow="nofollow" title=""><img alt="" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/thumbnail_small/4301397_1398403421.jpg" title="" /></a></div><div id="3uOeZLRz" style="display:none;width:;height:"><div class="modal-header">Image</div><div class="modal-body"><img alt="4301397 1398403421" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/normalized/4301397_1398403421.jpg" /></div></div></td><td><div class="thumbnail borderless"><a data-modal-open="nDdDkl2k" href="#!" nofollow="nofollow" title=""><img alt="" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/thumbnail_small/4301397_1398403411.jpg" title="" /></a></div><div id="nDdDkl2k" style="display:none;width:;height:"><div class="modal-header">Image</div><div class="modal-body"><img alt="4301397 1398403411" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/normalized/4301397_1398403411.jpg" /></div></div></td><td><a data-modal-open="modal_HAK8I" data-modal-url="/attorneys/4301397/media/705517/video" href="#!"><div class="thumbnail borderless with-overlay"><img alt="The Vincenzes Law Firm&#39;s Northern Virginia Defense Commercial. &quot;Get the Lion on your side!&quot; Call toll free: 888.695.6565 or visit us at www.VincenzesLaw.com or www.FairfaxCountyCriminalDefense.com" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/thumbnail_small/4301397_1381120381.jpg" title="The Vincenzes Law Firm&#39;s Northern Virginia Defense Commercial. &quot;Get the Lion on your side!&quot; Call toll free: 888.695.6565 or visit us at www.VincenzesLaw.com or www.FairfaxCountyCriminalDefense.com" /><br /><div class="icon-play pull-left"></div></div></a></td></tr></table>
+    </div>
+  
+    <p>
+      I'm Brenton D. Vincenzes, Fairfax County Criminal Defense Attorney and Estate Planning Lawyer. My office is located close to the historic City of Fairfax. Drop... <a href="/attorneys/22030-va-brenton-vincenzes-4301397/aboutme.html">more</a>
+    </p>
+
+  <a class="navigation" href="/attorneys/22030-va-brenton-vincenzes-4301397/aboutme.html">View all photos and/or videos</a>
+</div></div></div></div>
+</section></div></div>
+      <div class="module"><h2>References</h2><div class="page-row" id="references"><section class="span8">
+        <div class="js-replaceable margin6" id="reviews"><div class="page-row" id="reviews_section"><div class="span2"><h5 class="light">CLIENT REVIEWS</h5></div><div class="span6"><div id="reviews_detail"><div class="page-row"><div class="span1"><img alt="Reviews" class="full-width" src="http://assets1.iavvo.com/assets/embed/profile/reviews-72fd939ee2e493ce25a7b88d3da6028c.png" /></div><div class="span5"><div class="overview">
+  <h4>Average Client Rating</h4>
+  <div class="star_rating">
+      <a class="stars" href="/attorneys/22030-va-brenton-vincenzes-4301397/reviews.html"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a>
+      <span class="review_count"><a href="/attorneys/22030-va-brenton-vincenzes-4301397/reviews.html">20 reviews</a></span>
+  </div>
+  <div class="client_review_links">Current or former client? <a data-avn="{&quot;name&quot;:&quot;amos.gtm.view-lawyer-review-form&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;4301397-Brenton-Vincenzes&quot;}}" href="/attorneys/22030-va-brenton-vincenzes-4301397/write_review.html" rel="nofollow">Write a review</a></div>
+</div>
+
+</div></div><hr class="margin4" /><div class="page-row margin2 with-overlay"><div class="span1"><img alt="Quotes@2x" class="full-width" src="http://assets2.iavvo.com/assets/embed/topic_pages/quotes@2x-77df7504b38dc1ede65c9b0e3e45acf7.png" /></div><div class="span5"><h3 class="light"><a href="/attorneys/22030-va-brenton-vincenzes-4301397/reviews.html#408869">“Exceptional service and fortitude”</a></h3><a href="/attorneys/22030-va-brenton-vincenzes-4301397/reviews.html#408869"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a><p>Top notch professionalism. Mr. Vincenzes was on top of the situation and worked very diligently in the matter to get the situation resolved... </p><p class="text-meta">Posted by: Mr. Williams, 7 months ago.</p><div class="overlay bottom right margin2"><a data-tooltip-remote="confirm_objectionable" href="/professional_reviews/408869/objectionable" id="professional_review_objectionable_408869" rel="nofollow"><i class="medium-gray icon-flag"></i> Flag</a></div></div></div><div class="page-row margin2 with-overlay"><div class="span1"><img alt="Quotes@2x" class="full-width" src="http://assets2.iavvo.com/assets/embed/topic_pages/quotes@2x-77df7504b38dc1ede65c9b0e3e45acf7.png" /></div><div class="span5"><h3 class="light"><a href="/attorneys/22030-va-brenton-vincenzes-4301397/reviews.html#328648">“Great attorney who cared a lot about me and my situation”</a></h3><a href="/attorneys/22030-va-brenton-vincenzes-4301397/reviews.html#328648"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a><p>Helped me when I really needed it. Such a smart, down to earth man. Thank you so much.  I had a problem with a person slandering my name and Mr.... </p><p class="text-meta">Posted by: Jackie, about 1 year ago.</p><div class="overlay bottom right margin2"><a data-tooltip-remote="confirm_objectionable" href="/professional_reviews/328648/objectionable" id="professional_review_objectionable_328648" rel="nofollow"><i class="medium-gray icon-flag"></i> Flag</a></div></div></div><div class="margin4"><a class="navigation" href="/attorneys/22030-va-brenton-vincenzes-4301397/reviews.html">View all 20 reviews</a></div></div></div></div></div>
+        
+        <div class="js-replaceable margin6" id="endorsements"><div class="page-row" id="endorsements_section"><div class="span2"><h5 class="light">PEER ENDORSEMENTS</h5></div><div class="span6"><div id="endorsements_detail"><div class="page-row"><div class="span1"><img alt="Endorse" class="full-width" src="http://assets1.iavvo.com/assets/embed/profile/endorse-393f817ef630e2e358047b4ca97e17ed.png" /></div><div class="span5"><h4>Endorsements</h4><p class="pull-left"><a href="/attorneys/22030-va-brenton-vincenzes-4301397/endorsements.html">28 endorsements</a></p><div class="pull-right">Lawyers: <a href="/attorneys/22030-va-brenton-vincenzes-4301397/write_endorsement.html" rel="nofollow">Endorse this lawyer</a></div></div></div><hr class="margin4" />
+<div class="page-row margin6">
+  <!-- clear the cache -->
+  <div class="span1"><a href="/attorneys/23434-va-andrew-page-4298449.html"><img alt="Andrew Russell Page" class="borderless thumbnail_medium" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/4298449_1406645768.jpg" title="Andrew Russell Page" /></a></div>
+  <div class="span5">
+    <div>
+      <p>
+        Brent is an excellent attorney who has not only exceptional speaking and leadership skills, but also has an uncanny ability to use technology to the... 
+          <a href="/attorneys/22030-va-brenton-vincenzes-4301397/endorsements.html" rel="nofollow">more</a>
+      </p> 
+      <span class="muted text-meta">Endorsement from lawyer:
+        <a href="/attorneys/23434-va-andrew-page-4298449.html">Andrew Page</a>
+         , Suffolk (VA), About 1 year ago
+      </span>
+    </div>
+  </div>
+</div>
+<div class="page-row margin6">
+  <!-- clear the cache -->
+  <div class="span1"><a href="/attorneys/23322-va-lu-aloupas-4237201.html"><img alt="Lu Aloupas" class="borderless thumbnail_medium" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/4237201_1388347674.jpg" title="Lu Aloupas" /></a></div>
+  <div class="span5">
+    <div>
+      <p>
+        Brent Vincenzes is an energetic, dedicated attorney who works hard for his clients.  You can trust that he has worked diligently to prepare his case... 
+          <a href="/attorneys/22030-va-brenton-vincenzes-4301397/endorsements.html" rel="nofollow">more</a>
+      </p> 
+      <span class="muted text-meta">Endorsement from lawyer:
+        <a href="/attorneys/23322-va-lu-aloupas-4237201.html">Lu Aloupas</a>
+         , Chesapeake (VA), About 1 year ago
+      </span>
+    </div>
+  </div>
+</div><a class="navigation" href="/attorneys/22030-va-brenton-vincenzes-4301397/endorsements.html">View all 28 endorsements</a></div></div></div></div>
+</section></div></div>
+      <div class="module"><h2>R&eacute;sum&eacute;</h2><div class="page-row" id="resume"><section class="span8">
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="licenses_section"><div id="licenses"><div class="span8 margin2"><div class="box"><h5 class="light margin0">LICENSE</h5></div></div><div class="span8"><div id="licenses_detail"><p>2 years since Brenton Daniel Vincenzes was first licensed to practice law.</p><div class="js-link-hub"><table class="table"><thead><tr><th>State</th><th>License status</th><th>Year acquired</th><th>Last updated by Avvo</th></tr></thead><tbody>
+<tr class="">
+  <td>Virginia</td>
+  <td>
+      Authorized to practice law
+  </td>
+  <td>2012</td>
+  <td>03/11/2014</td>
+</tr></tbody></table></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="sanctions_section"><div id="sanctions"><div class="span8 margin2"><div class="box"><h5 class="light margin0">PROFESSIONAL MISCONDUCT</h5></div></div><div class="span8"><div id="sanctions_detail">  <p class="article-body sans-serif">
+    <span class="icon-no-misconduct icon-green icon-padded narrow right"></span>
+    We have not found any instances of professional misconduct for this lawyer.
+  </p>
+
+</div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="work_experience_section"><div id="work_experience"><div class="span8 margin2"><div class="box"><h5 class="light margin0">WORK EXPERIENCE</h5></div></div><div class="span8"><div id="work_experience_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Position</th><th>Duration</th></tr></thead><tbody><tr class=" ">
+  <td>
+    Principal at Vincenzes Law PLLC
+  </td>
+  <td>
+    2013&ndash;present
+  </td>
+</tr>
+<tr class=" ">
+  <td>
+    Owner at UpGrade, LLC
+  </td>
+  <td>
+    2011&ndash;2013
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Owner at Virginia Legal Marketing
+  </td>
+  <td>
+    2011&ndash;2012
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Director of Operations at Elder Law Institute for Training and Education, LLC
+  </td>
+  <td>
+    2010&ndash;2012
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Director of Business Development at The Law Firm Of Evan H. Farr, PC
+  </td>
+  <td>
+    2010&ndash;2012
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Legal Intern at Joynes &amp; Gaidies Law Group
+  </td>
+  <td>
+    2009&ndash;2010
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Contract Attorney at Law Office Of Richard J. Serpe, PC
+  </td>
+  <td>
+    2009&ndash;2010
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Contract Attorney at Swango Law, PC
+  </td>
+  <td>
+    2009&ndash;2010
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Judicial Intern at City Newport News
+  </td>
+  <td>
+    2008
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Legal Intern at Keener Law Offices, PLC
+  </td>
+  <td>
+    2008
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Distribution Specialist at Ups Supply Chain Solutions
+  </td>
+  <td>
+    2006&ndash;2007
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Communications Specialist at Valeo Automotive Technology
+  </td>
+  <td>
+    2006&ndash;2007
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Legal Assistant at Dfi International
+  </td>
+  <td>
+    2005&ndash;2006
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Marketing Intern at TEOCO
+  </td>
+  <td>
+    2005
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Visitor Relations at Christopher Newport University
+  </td>
+  <td>
+    2004&ndash;2005
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Campus Police Assistant at Christopher Newport University
+  </td>
+  <td>
+    2004&ndash;2005
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Counselor at Fairfax County Parks and Recreation
+  </td>
+  <td>
+    2003
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Customer Acquisition Specialist at Better Homes Remodeling, Inc.
+  </td>
+  <td>
+    2002&ndash;2003
+  </td>
+</tr>
+</tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 18 job entries<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional positions<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="education_section"><div id="education"><div class="span8 margin2"><div class="box"><h5 class="light margin0">EDUCATION</h5></div></div><div class="span8"><div id="education_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>School</th><th>Major</th><th>Degree</th><th>Graduated</th></tr></thead><tbody><tr class=" ">
+  <td>Regent University School of Law</td>
+  <td>Law</td>
+  <td>JD - Juris Doctor</td>
+  <td>2010</td>
+</tr>
+
+<tr class=" ">
+  <td>Christopher Newport University</td>
+  <td>Business Administration</td>
+  <td>BS - Bachelor of Science</td>
+  <td>2007</td>
+</tr>
+
+</tbody></table></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="awards_section"><div id="awards"><div class="span8 margin2"><div class="box"><h5 class="light margin0">AWARDS</h5></div></div><div class="span8"><div id="awards_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Award Name</th><th>Granting Organization</th><th>Date</th></tr></thead><tbody><tr><td>Top 100 Trial Lawyers</td><td>National Trial Lawyers Association</td><td>2014</td></tr><tr><td>Top 40 Under 40</td><td>National Trial Lawyers Association</td><td>2014</td></tr><tr class="js-expandable"><td>10 Best</td><td>American Institute of Criminal Law Attorneys</td><td>2014</td></tr><tr class="js-expandable"><td>Clients&#39; Choice Award</td><td>Avvo</td><td>2014</td></tr><tr class="js-expandable"><td>Dean&#39;s Scholarship</td><td>Regent University</td><td>2008</td></tr><tr class="js-expandable"><td>Top Innovator</td><td>Valeo, Inc.</td><td>2007</td></tr></tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 6 awards<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional awards<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="organizations_section"><div id="organizations"><div class="span8 margin2"><div class="box"><h5 class="light margin0">ASSOCIATIONS</h5></div></div><div class="span8"><div id="organizations_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Position</th><th>Association Name</th><th>Duration</th></tr></thead><tbody><tr class=" ">
+  <td>Attorney Member</td>
+  <td>American Bar Association</td>
+  <td>
+    2010&ndash;present
+  </td>
+</tr>
+<tr class=" ">
+  <td>Attorney Member</td>
+  <td>National Legal Aid and Defender Association</td>
+  <td>
+    2013&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Attorney Member</td>
+  <td>Virginia State Bar</td>
+  <td>
+    2012&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Attorney Member</td>
+  <td>Virginia Indigent Defense Commission</td>
+  <td>
+    2013&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Attorney Member</td>
+  <td>Fairfax Bar Association</td>
+  <td>
+    2012&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Attorney Member</td>
+  <td>Virginia Association of Criminal Defense Lawyers</td>
+  <td>
+    2013&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Attorney Member</td>
+  <td>Virginia Bar Association</td>
+  <td>
+    2012&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Attorney Member</td>
+  <td>Virginia Trial Lawyers Association</td>
+  <td>
+    2013&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Senator</td>
+  <td>American Bar Association, Law Student Division</td>
+  <td>
+    2007&ndash;2009
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Executive Board Member</td>
+  <td>Alternative Dispute Resolution Board</td>
+  <td>
+    2009&ndash;2010
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Senior Editor</td>
+  <td>Regent Journal of International Law</td>
+  <td>
+    2009&ndash;2010
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member</td>
+  <td>American Civil Liberties Union</td>
+  <td>
+    2013&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Attorney Member</td>
+  <td>American Civil Liberties Union  of Virginia</td>
+  <td>
+    2013&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Attorney Member</td>
+  <td>National Organization for the Reform of Marijuana Laws</td>
+  <td>
+    2013&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member</td>
+  <td>National Trial Lawyers Association</td>
+  <td>
+    2014&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Appellate Defender Section Member</td>
+  <td>National Legal Aid and Defender Association</td>
+  <td>
+    2014&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Member</td>
+  <td>Virginia NORML</td>
+  <td>
+    2013&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Attorney Member</td>
+  <td>American Bar Association, Criminal Justice Section</td>
+  <td>
+    2014&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Attorney Member</td>
+  <td>NORML Legal Committee</td>
+  <td>
+    2014&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Criminal Practice Management/Solo and Small Firm CommitteeMember</td>
+  <td>American Bar Association, Criminal Justice Section</td>
+  <td>
+    2014&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>General District Court Committee</td>
+  <td>Fairfax Bar Association</td>
+  <td>
+    2014&ndash;present
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>Attorney Member</td>
+  <td>American Institute of Criminal Law Attorneys</td>
+  <td>
+    2014&ndash;present
+  </td>
+</tr>
+</tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 22 association entries<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional associations<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+</section></div></div>
+      <div class="module"><h2>Portfolio</h2><div class="page-row" id="portfolio"><section class="span8">
+        <div class="js-replaceable margin7"><div class="page-row with-overlay" id=""><div id=""><div class="span8 margin2"><div class="box"><h5 class="light margin0">CONTRIBUTION</h5></div></div><div class="span8"><div class="contri-badge"><div class="contributor-level-badge level-3 margin1" data-tooltip-remote="contributor_badge"><i class="icon-badge-feather"></i></div><div class="badge-text">Contributor Level 15</div></div>
+<table class="table">
+  <tr>
+    <th>Answers:</th>
+    <td><a class="article-body sans-serif" href="/attorneys/22030-va-brenton-vincenzes-4301397/answers.html">296</a></td>
+    <td><a class="article-body sans-serif" href="/attorneys/22030-va-brenton-vincenzes-4301397/answers.html">Legal Answers</a></td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>10</td>
+    <td>Best Answers - chosen by asker</td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>185</td>
+    <td>Answers marked "I agree" by other lawyers</td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>22</td>
+    <td>Answers marked helpful by other users</td>
+  </tr>
+  <tr>
+    <th>Guides:</th>
+    <td><a class="article-body sans-serif" href="/attorneys/22030-va-brenton-vincenzes-4301397/guides.html">39</a></td>
+    <td><a class="article-body sans-serif" href="/attorneys/22030-va-brenton-vincenzes-4301397/guides.html">Legal Guides</a></td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>0</td>
+    <td>Staff Picks</td>
+  </tr>
+</table>
+  <a class="navigation" href="/attorneys/22030-va-brenton-vincenzes-4301397/answers.html">View all contributions</a>
+</div></div></div></div>
+        <div class="js-replaceable margin7"><div class="page-row with-overlay" id="blog_syndication_section"><div id="blog_syndication"><div class="span8 margin2"><div class="box"><h5 class="light margin0">RECENTLY POSTED</h5></div></div><div class="span8"><div id="blog_syndication_detail"><h5 class="margin2">
+  <span class="icon-blog"></span>
+  <a href="http://vincenzeslaw.com/va-criminal-law-blog/" rel="nofollow">Fairfax, Virginia Criminal Defense Lawyer: Reckless Driving, DWI, DUI, Assault and Battery, Larceny, and Traffic</a>
+</h5>
+<div class="posts">
+  <div class="ajax_widget" data-widget-params="eJwNyksOgzAMRdG9eAwNQe3Ewy6iHVvBpZacj5JQJBB7r4fvvnNCUGoNEN6yrNwb4lPz-hLeucIAhSpFu0_Yqpr69l7QuZ-kwOngprTfQo7uw7w48ypROuBjgCYHA6ZN9bKcA6lN4GSoS-TWKRYL8-Tvo_fjPMH1B1elLhM=" id="ajax_blog_viewer_widget_34667660"><img alt="Spinner" src="http://assets2.iavvo.com/assets/spinner-67122eeb98417b51e28d1fae18455456.gif" /></div><!--Widget:widgetsblog_viewer:true:ajax:true:size::title_url::title::limit:5:url:http:vincenzeslaw.comfeed-->
+</div>
+</div></div></div></div></div>
+        <div class="js-replaceable margin7"><div class="page-row with-overlay" id="legal_cases_section"><div id="legal_cases"><div class="span8 margin2"><div class="box"><h5 class="light margin0">CASES</h5></div></div><div class="span8">  <div class="margin4">
+  <div class="case_title"><a href="/attorneys/22030-va-brenton-vincenzes-4301397/legal_cases/97490">Possession of Marijuana</a></div>
+  <div class="outcome">
+    <strong>Outcome:</strong> Charge Dropped
+  </div>
+</div>
+
+<div class="margin4">
+  <div class="case_title"><a href="/attorneys/22030-va-brenton-vincenzes-4301397/legal_cases/96922">Assault</a></div>
+  <div class="outcome">
+    <strong>Outcome:</strong> Charge Dropped
+  </div>
+</div>
+
+<div class="margin4">
+  <div class="case_title"><a href="/attorneys/22030-va-brenton-vincenzes-4301397/legal_cases/96921">Illegal Gambling</a></div>
+  <div class="outcome">
+    <strong>Outcome:</strong> Charge Dropped
+  </div>
+</div>
+
+
+    <a class="navigation" href="/attorneys/22030-va-brenton-vincenzes-4301397/legal_cases">See all cases</a>
+</div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="publications_section"><div id="publications"><div class="span8 margin2"><div class="box"><h5 class="light margin0">PUBLICATIONS</h5></div></div><div class="span8"><div id="publications_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Article</th><th>Publication</th><th>Date</th></tr></thead><tbody><tr class=" ">
+  <td><a href="http://www.ammoland.com/2013/09/gun-related-arrests-in-fairfax-county-virginia/#axzz2h4K70krL" rel="nofollow" target="_blank">New Study Finds Few Gun-Related Arrests in Fairfax County, Virginia</a></td>
+  <td>Ammo Land Shooting Sports News</td>
+  <td>2013</td>
+</tr>
+<tr class=" ">
+  <td><a href="http://vincenzeslaw.com/6-useful-defenses-to-reckless-driving-speeding/" rel="nofollow" target="_blank">Defenses to Reckless Driving and Speeding</a></td>
+  <td>Virginia Criminal and Traffic Blog</td>
+  <td>2013</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://vincenzeslaw.com/virginia-texting-and-driving-law-up-to-speed/" rel="nofollow" target="_blank">Virginia Texting and Driving: Up to Speed?</a></td>
+  <td>Virginia Criminal and Traffic Blog</td>
+  <td>2013</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://vincenzeslaw.com/virginia-lawyer/virginia-criminal-law/fairfax-dui-lawyer/#C42" rel="nofollow" target="_blank">Virginia DWI Penalties: BAC Level vs. Offense #</a></td>
+  <td>Fairfax County Criminal Defense Blog</td>
+  <td>2013</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://fairfaxwoman.com/article/don%E2%80%99t-let-another-year-pass-without-naming-guardians-for-your-kids" rel="nofollow" target="_blank">Don’t Let Another Year Pass Without Naming Guardians For Your Kids!</a></td>
+  <td>Fairfax Woman</td>
+  <td>2012</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://fairfaxwoman.com/article/estate-planning-for-newlyweds-easier-than-planning-the-wedding" rel="nofollow" target="_blank">Estate Planning for Newlyweds: Easier than Planning the Wedding!</a></td>
+  <td>Fairfax Woman</td>
+  <td>2012</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.yourhealthmagazine.net/index.php?option=com_k2&amp;view=item&amp;id=5764&amp;Itemid=110" rel="nofollow" target="_blank">Do You Love Your Family? Most Important New Year’s Resolution</a></td>
+  <td>Your Health Magazine</td>
+  <td>2012</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.yourhealthmagazine.net/index.php?option=com_k2&amp;view=item&amp;id=5860&amp;Itemid=110" rel="nofollow" target="_blank">Ways To Approach “Tough Conversations” With Mom Or Dad</a></td>
+  <td>Your Health Magazine</td>
+  <td>2012</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.yourhealthmagazine.net/index.php?option=com_k2&amp;view=item&amp;id=6122&amp;Itemid=110" rel="nofollow" target="_blank">Aging-In-Place With New Technology – More Seniors Say “No Thanks” To Nursing Homes</a></td>
+  <td>Your Health Magazine</td>
+  <td>2012</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.yourhealthmagazine.net/index.php?option=com_k2&amp;view=item&amp;id=6495&amp;Itemid=110" rel="nofollow" target="_blank">Three Tips To Help Seniors In Pain</a></td>
+  <td>Your Health Magazine</td>
+  <td>2012</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.yourhealthmagazine.net/index.php?option=com_k2&amp;view=item&amp;id=5091&amp;Itemid=110" rel="nofollow" target="_blank">Three Keys To Planning For Long-Term Care</a></td>
+  <td>Your Health Magazine</td>
+  <td>2012</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.yourhealthmagazine.net/index.php?option=com_k2&amp;view=item&amp;id=6030&amp;Itemid=110" rel="nofollow" target="_blank">Incapacity Planning Imperative for Melanoma Survivors</a></td>
+  <td>Your Health Magazine</td>
+  <td>2012</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.livingtrustplus.com/news/is-medicaid-too-complex-for-americans#.UjuUqj-4ijs" rel="nofollow" target="_blank">Is Medicaid too Complex for Americans?</a></td>
+  <td>Living Trust Plus™ News</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.livingtrustplus.com/news/elder-law-attorneys-transfer-and-cure-client-worries#.UjuVDz-4ijs" rel="nofollow" target="_blank">Elder Law Attorneys &quot;Transfer and Cure&quot; Client Worries</a></td>
+  <td>Living Trust Plus™ News</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.livingtrustplus.com/news/early-alzheimers-disease-afflicted-person-may-or-may-not-be-aware" rel="nofollow" target="_blank">Early Alzheimer’s Disease - “afflicted person may or may not be aware”</a></td>
+  <td>Living Trust Plus™ News</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.livingtrustplus.com/news/rap-recognize-the-risks-abstain-prevent-and-plan-for-the-future" rel="nofollow" target="_blank">“RAP” – Recognize the Risks, Abstain &amp; Prevent, and Plan for the Future</a></td>
+  <td>Living Trust Plus™ News</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.livingtrustplus.com/news/3-tips-to-help-you-take-the-first-steps-in-planning-for-their-long-term-car" rel="nofollow" target="_blank">3 tips to help you take the first steps in planning for their long-term care</a></td>
+  <td>Living Trust Plus™ Elder Law News</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.livingtrustplus.com/how-much-money-should-be-withheld-from-each-of-your-paychecks" rel="nofollow" target="_blank">How Much Should be Withheld from Each of Your Paychecks?</a></td>
+  <td>Living Trust Plus™ Elder Law and Estate Planning News</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.livingtrustplus.com/its-true-you-really-can-pay-for-short-and-long-term-care-in-northern-virgin" rel="nofollow" target="_blank">It’s True: You Really Can Pay for Short and Long Term Care in Northern Virginia</a></td>
+  <td>Living Trust Plus™ Elder Law and Estate Planning News</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.livingtrustplus.com/top-medicaid-asset-protection-strategies-part-1" rel="nofollow" target="_blank">Top Medicaid Asset Protection Strategies</a></td>
+  <td>Living Trust Plus™ Elder Law and Estate Planning</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.livingtrustplus.com/why-medicaid-planning-is-ethical" rel="nofollow" target="_blank">Why Medicaid Planning is Ethical</a></td>
+  <td>Living Trust Plus™ News</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.livingtrustplus.com/5-ways-to-ease-the-burden-when-caring-for-kids-and-aging-parents-national-s" rel="nofollow" target="_blank">5 Ways to Ease the Burden When Caring for Kids and Aging Parents</a></td>
+  <td>Living Trust Plus™ Elder Law and Estate Planning News</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://elderplanningplus.com/news/#.UjuXDT-4ijs" rel="nofollow" target="_blank">Walking speed may be used for predicting health, survival for elderly</a></td>
+  <td>Elder Planning Plus</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.medicaidplanningplus.com/faqs/" rel="nofollow" target="_blank">Frequently Asked Questions about Medicaid Planning Plus</a></td>
+  <td>Medicaid Planning Plus</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.veteransplanningplus.com/faqs/" rel="nofollow" target="_blank">Frequently Asked Questions about Veterans Planning Plus™</a></td>
+  <td>Veterans Planning Plus</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://fairfaxwoman.com/article/before-you-fill-out-the-school-emergency-card-for-your-kids" rel="nofollow" target="_blank">Before You Fill Out the School Emergency Card for Your Kids...</a></td>
+  <td>Fairfax Woman</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://fairfaxwoman.com/article/special-families-need-special-estate-planning-top-4-reasons-to-create-a-special-needs-plan" rel="nofollow" target="_blank">Special Families Need Special Estate Planning: Top 4 Reasons to Create a Special Needs Plan</a></td>
+  <td>Fairfax Woman</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://everythingelderlaw.blogspot.com/2011/01/nursing-home-patients-under-65-has.html" rel="nofollow" target="_blank">Nursing home patients under 65 on the rise</a></td>
+  <td>Everything Elder Law</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.yourhealthmagazine.net/index.php?option=com_k2&amp;view=item&amp;id=5317&amp;Itemid=110" rel="nofollow" target="_blank">Nursing Home Care Protecting Your Nest Egg</a></td>
+  <td>Your Health Magazine</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.yourhealthmagazine.net/index.php?option=com_k2&amp;view=item&amp;id=5496&amp;Itemid=110" rel="nofollow" target="_blank">Amidst Uncertainty: You Need a Plan</a></td>
+  <td>Your Health Magazine</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.yourhealthmagazine.net/index.php?option=com_k2&amp;view=item&amp;id=5713&amp;Itemid=110" rel="nofollow" target="_blank">Timeshare Traps and How To Avoid Them</a></td>
+  <td>Your Health Magazine</td>
+  <td>2011</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://everythingelderlaw.blogspot.com/2010/11/over-4-million-children-not-receiving.html" rel="nofollow" target="_blank">Over 4 Million Children Not Receiving Medicaid or CHIP, Despite Eligibility</a></td>
+  <td>Everything Elder Law</td>
+  <td>2010</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://everythingelderlaw.blogspot.com/2010/11/new-medicare-rules-give-power-to.html" rel="nofollow" target="_blank">Power to the Patients! New Rules Forbid Discrimination in Medicare Facilities</a></td>
+  <td>Everything Elder Law</td>
+  <td>2010</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://everythingelderlaw.blogspot.com/2010/12/obama-v-gop-healthcare-showdown.html" rel="nofollow" target="_blank">Obama v. GOP: Healthcare showdown</a></td>
+  <td>Everything Elder Law</td>
+  <td>2010</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://everythingelderlaw.blogspot.com/2010/12/veteran-misses-filing-deadline-due-to.html" rel="nofollow" target="_blank">Veteran misses filing deadline due to mental illness: Fair?</a></td>
+  <td>Everything Elder Law</td>
+  <td>2010</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://everythingelderlaw.blogspot.com/2010/12/most-likely-supreme-court-will-have-to.html" rel="nofollow" target="_blank">Most likely: Supreme Court will have to decide constitutionality of mandatory insurance</a></td>
+  <td>Everything Elder Law</td>
+  <td>2010</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://everythingelderlaw.blogspot.com/2010/12/true-cost-of-growing-old-in-2010-and.html" rel="nofollow" target="_blank">How expensive will nursing homes be in 2020?</a></td>
+  <td>Everything Elder Law</td>
+  <td>2010</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://blog.virginiaelderlaw.com/2010/12/should-the-wikileaks-fiasco-raise-healthcare-privacy-concerns/" rel="nofollow" target="_blank">Should WikiLeaks Fiasco Raise Healthcare Privacy Concerns?</a></td>
+  <td>Elder Law Plus</td>
+  <td>2010</td>
+</tr>
+<tr class=" js-expandable">
+  <td>Virginia Beach Cuisine</td>
+  <td>examiner.com</td>
+  <td>2008</td>
+</tr>
+</tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 39 publications<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional publications<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="speaking_engagements_section"><div id="speaking_engagements"><div class="span8 margin2"><div class="box"><h5 class="light margin0">SPEAKING ENGAGEMENTS</h5></div></div><div class="span8"><div id="speaking_engagements_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Presentation Name</th><th>Conference</th><th>Date</th></tr></thead><tbody><tr class=" ">
+  <td><a href="https://www.facebook.com/events/491506944302691/?ref=22" rel="nofollow">Virginia Cannabis Laws</a></td>
+  <td>NoVA NORML Panel Discussion on Virginia First Offender Program and Marijuana Policy in the Commonwealth</td>
+  <td >2014</td>
+</tr>
+<tr class=" ">
+  <td>Youth Leadership</td>
+  <td>Hangar 56</td>
+  <td >2013</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.fcps.edu/dss/ips/ssaw/SeminarBrochure.pdf" rel="nofollow">Alcohol and Other Drug Use Intervention Seminar</a></td>
+  <td>FCPS Suspension Intervention Seminar</td>
+  <td >2013</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://ge.tt/1n1hDRM/v/0" rel="nofollow">Mobile Law Firm Websites for Estate Planning and Elder Law Attorneys</a></td>
+  <td>Special Teleseminar: Mobile Sites Teleseminar for Living Trust Plus™ Members</td>
+  <td >2012</td>
+</tr>
+<tr class=" js-expandable">
+  <td>Benefits Focused Asset Protection</td>
+  <td>Benefits Focused Asset Protection ELITE Teleseminar</td>
+  <td >2012</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://instantteleseminar.com/?eventid=19375176" rel="nofollow">Elder Law</a></td>
+  <td>Living Trust Plus™ Asset Protection Teleseminar</td>
+  <td >2011</td>
+</tr>
+</tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 6 speaking engagements<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional speaking engagements<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+</section></div></div>    </section>
+
+    <div class="span4" id="profile_b_column">
+      
+
+  <section class="reloadable-module" data-widget-params="eJwNizEOwjAQBP-ytSPFSRDCLR9AokiJTo5BJ852lDsKiPJ3XO7M7I4opIqAmZdXMg3hbhzf39tWnyzpWotRNDistFFu4Y61qaTKtZA8eEGYxt6Pl7OD8i8hlI_I4SA1krSJVNrdOCc1ymsDQ--nzvtuOOH4A2pbKn0="><div class="page-row"><div class="span4 margin4 js-floating-box" id="sticky_profile_contact_widget"><div class="box"><section><h4 class="light margin4">We&#39;re ready to help. Contact us today.</h4><div class="page-row margin0"><div class="span1 boxed-left"><h3 class="icon-phone pull-right"></h3></div><div class="span3 boxed-right"><h3><span class="11146_phone ">703-665-3719</span><script>
+//<![CDATA[
+
+          $(document).ready(function(){
+            $(".11146_phone").each(function(index, element) {
+              $(element).html("877-959-3827");
+              if(element.parentNode.tagName == "A"){
+                element.parentNode.setAttribute("href","tel:877-959-3827");
+              }
+            });
+          });
+        
+//]]>
+</script></h3></div></div><div class="page-row"><div class="span4 boxed-right boxed-left"><form accept-charset="UTF-8" action="/attorneys/22030-va-brenton-vincenzes-4301397/contact/preprocess" class="new_contact_professional" data-remote="true" id="sticky_contact_email_form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+  <textarea class="collapsed full-width text" id="sticky_contact_professional_message" name="contact_professional[message]" placeholder="Send this attorney a message" rows="5">
+</textarea>
+
+  <div id="sticky_contact_hidden_fields" style="display: none;">
+    <label class="full-width" for="sticky_contact_professional_name" required="required">Your name</label><input class="full-width text" id="sticky_contact_professional_name" name="contact_professional[name]" type="text" />
+    <label class="full-width" for="sticky_contact_professional_email" required="required">Your email address</label><input class="full-width text" id="sticky_contact_professional_email" name="contact_professional[email]" type="text" />
+    <input id="using_new_styles" name="using_new_styles" type="hidden" value="true" />
+    
+
+    <p style="position:relative;">
+      <input class="primary action" name="commit" type="submit" value="Preview" />
+      <button class="cancel action" name="button" onclick="" type="button">Cancel</button>
+    </p>
+  </div>
+</form>
+<script>
+//<![CDATA[
+
+  $(document).ready(function(){
+    $('#sticky_contact_professional_message').focus(function() {
+      if(!$('#sticky_contact_hidden_fields').is(':visible')) {
+        _avn.notify('amos.contacts.viewed_email_form', {"professional_id":4301397,"gtm":{"position":"pro","property":"4301397-Brenton-Vincenzes"}});
+        $('#sticky_contact_hidden_fields').slideDown(0.6);
+      }
+      $('#sticky_contact_professional_message').parents(".field").removeClass("collapsed");
+    });
+    $("#sticky_contact_email_form :input.cancel").click(function(evt){
+      $('#sticky_contact_hidden_fields').slideUp();
+      $('#sticky_contact_professional_message').val("").parents(".field").addClass("collapsed");
+      $('#sticky_contact_professional_name').val("");
+      $('#sticky_contact_professional_email').val("");
+      $('.sticky_profile_contact_widget .error').each(function(i, e){ $(e).html('');});
+
+      evt.preventDefault();
+      return false;
+    });
+  });
+
+//]]>
+</script></div></div><div class="page-row margin2"><div class="span1 boxed-left"><h4 class="icon-website pull-right"></h4></div><div class="span3 boxed-right"><h4><a data-avn="{&quot;name&quot;:&quot;amos.profiles.website_clicked&quot;,&quot;payload&quot;:{&quot;gtm&quot;:{&quot;event&quot;:&quot;contact-advertising-website&quot;,&quot;position&quot;:&quot;pro&quot;,&quot;property&quot;:&quot;4301397-Brenton-Vincenzes&quot;}}}" href="http://www.VincenzesLaw.com" onclick="this.href=&#39;/attorneys/22030-va-brenton-vincenzes-4301397/website.html&#39;;return true;" target="_blank">Visit attorney&#39;s website</a></h4></div></div></section></div></div></div></section><!--not_cached Widget:widgetssticky_profile_contact:false:ajax:false:size::professional_id:4301397:edit_mode:false;1416930571-->
+
+    </div>
+
+    
+  </div>
+</div>
+
+
+<script>
+//<![CDATA[
+
+  $(function(){
+    $('.js-replaceable').bind('dom:changed', function(){
+      $(this).find('.js-hover-tooltip-link').hoverTooltip();
+    });
+  });
+
+//]]>
+</script>
+</span>
+    <footer class="persistent-footer page full-width no-border"><div class="page-row"><a class="quiet span3" href="//www.avvo.com/"><div class="icon-avvo-logo footer-logo"></div><div class="footer-slogan">Legal. <strong>Easier.</strong></div></a><div class="span3"><a class="quiet" href="/"><h3>Explore Avvo</h3></a><p class="margin1"><a class="quiet" href="/ask-a-lawyer">Ask a Lawyer</a></p><p class="margin1"><a class="quiet" href="/find-a-lawyer">Find a Lawyer</a></p><p class="margin1"><a class="quiet" href="/free-legal-advice">Free Legal Advice</a></p><p class="margin1"><a class="quiet" href="/review-your-lawyer">Review a Lawyer</a></p></div><div class="span3"><a class="quiet" href="/for-lawyers"><h3>For Lawyers</h3></a><p class="margin1"><a class="quiet" href="/for-lawyers">Lawyer Advertising</a></p><p class="margin1"><a class="quiet" href="/claim-your-profile">Claim Your Profile</a></p><p class="margin1"><a class="quiet" href="/support/all-firm-claim">For Law Firms</a></p><p class="margin1"><a class="quiet" href="//ignite.avvo.com">Marketing Management Software</a></p><p class="margin1"><a class="quiet" href="//lawyernomics.avvo.com">Lawyernomics Blog</a></p></div><div class="span3"><a class="quiet" href="/about_avvo"><h3>Company Info</h3></a><p class="margin1"><a class="quiet" href="/about_avvo/about_us">About Us</a></p><p class="margin1"><a class="quiet" href="/for-lawyers/support">Support</a></p><p class="margin1"><a class="quiet" href="//press.avvo.com">Press Room</a></p><p class="margin1"><a class="quiet" href="/partner_with_us">Partner With Us</a></p><p class="margin1"><a class="quiet" href="/about_avvo/jobs">Careers</a></p><p class="margin1"><a class="quiet" href="//avvoblog.com">Avvo Blog</a></p><p class="margin1"><a class="quiet" href="//nakedlaw.avvo.com">NakedLaw Blog</a></p></div></div></footer><footer class="black"><div id="fine_print_container"><div id="fine_print"><div class="contact_avvo">Follow us on <a href="//www.twitter.com/avvo"><img alt="Twitter" src="http://assets2.iavvo.com/assets/embed/additional_links/twitter_icon-c160ce8886d11899e6833dd271a13f2d.png" /></a><a href="http://www.facebook.com/avvo"><img alt="Facebook" src="http://assets1.iavvo.com/assets/embed/additional_links/facebook_icon-6d9bd4ddfbad9c81a22fd2471b67d673.png" /></a><a href="//plus.google.com/107840042923877554905"><img alt="Google icon" src="http://assets1.iavvo.com/assets/embed/additional_links/google_icon-942738832fa1fe452c21f15e5a9194b2.png" /></a></div><p class="bottom_links"><span class="copyright">&copy;2014 Avvo, Inc. All Rights Reserved </span><span><a href="?prefer_mobile=true" rel="nofollow">Mobile View</a></span><span class="pipe">|</span><span><a href="/support/terms" rel="nofollow">Terms of Use</a></span><span class="pipe">|</span><span><a href="/support/privacy" rel="nofollow">Privacy Policy</a></span><span class="pipe">|</span><span><a href="/support/community_guidelines" rel="nofollow">Community Guidelines</a></span></p></div></div></footer>
+
+    <noscript>
+  <div style="text-align:center;background:#fbf3c5;color:#911717;padding:8px;border-bottom:1px solid #D7DADD;">
+  <strong>We've detected that your browser does not support scripting.</strong> <br/>
+  Scripting must be enabled to use Avvo. Turn on scripting and reload this page.
+  </div>
+</noscript>
+
+
+
+
+    <!-- r:bf1fc99141b7e49a11fec3d713a4b0844c28fcba -->
+<!-- d:Mon Nov 24 17:54:52 PST 2014 -->
+<!-- p:www.avvo.com -->  
+
+
+
+
+
+    
+    <script src="http://assets2.iavvo.com/assets/footer_common-59d36e58c17ffbec325b4d50f60e0fda.js"></script>
+    <script src="http://assets2.iavvo.com/assets/floating_box-a803f669a36f68baa4d79a920d5fe3a1.js"></script>
+
+
+
+<div id="google_remarketing">
+
+    <script type="text/javascript">
+    /* <![CDATA[ */
+    var google_conversion_id = 1057123743;
+    var google_conversion_language = "en";
+    var google_conversion_format = "3";
+    var google_conversion_color = "ffffff";
+    var google_conversion_label = "z9BlCKXnsAIQn9uJ-AM";
+    var google_conversion_value = 0;
+    /* ]]> */
+    </script>
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js?avvo_E7DT">
+    </script>
+    <noscript>
+    <div style="display:inline;">
+    <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/1057123743/?label=z9BlCKXnsAIQn9uJ-AM&amp;guid=ON&amp;script=0"/>
+    </div>
+    </noscript>
+
+</div>
+
+    <script>
+//<![CDATA[
+
+$(function(){
+  var a=document.createElement("script");
+  var b=$("script")[0];
+  a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0011/6860.js";
+  a.async=true;a.type="text/javascript";
+  b.parentNode.insertBefore(a,b);
+});
+
+//]]>
+</script>
+  </body>
+
+
+</html>

@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+
+<html class="no-js">
+  <head>
+    
+<!-- force browser refresh of favicon.  Plz remove me someday? -->
+<link href="http://www.avvo.com/favicon.ico?v=2" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+
+<meta charset="utf-8">
+<title>Lawyer Jonathan Marshall - Red Bank Attorney - Avvo.com</title>
+
+<meta name="description" content="Jonathan Marshall is a Criminal Defense Attorney in Red Bank, NJ. Click Jonathan’s profile to discover their Avvo Rating, write a review, and read professional endorsements." />
+
+<meta name="robots" content="index,follow" />
+
+
+
+<meta property="og:image" content="http://assets1.iavvo.com/assets/header_logo-d9da0710ef4f108673b08e2f89ee79c8.png" />
+
+
+<meta name="robots" content="NOODP,NOYDIR" />
+
+<script>
+//<![CDATA[
+window.locationContext = {"id":23673,"name":"Atlanta","city_name":"Atlanta","state_name":"Georgia","state_code":"GA","postal_code":null};window.adLocationContext = {"id":61489,"name":"30316","city_name":"Atlanta","state_name":"Georgia","state_code":"GA","postal_code":"30316"};
+//]]>
+</script><script src="//cdn.optimizely.com/js/275511722.js"></script>
+
+<link href="https://plus.google.com/107840042923877554905" rel="publisher" />
+
+  <link href="http://assets2.iavvo.com/assets/application-679b5b560ef19c2728b0c8d332d28f6a.css" media="all" rel="stylesheet" />
+  <!--[if lt IE 9]>
+    <link href="http://assets1.iavvo.com/assets/font_avvo_icon_bad_IE_bad_dog-27d8ace9b1fdd6c93145f0e1b7827dc6.css" media="all" rel="stylesheet" />
+  <![endif]-->
+
+<link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:700|Open+Sans:300,400,600,700" media="all" rel="stylesheet" />
+
+<script src="http://assets2.iavvo.com/assets/application-944ee4fdb62f3df1542271af9ecbae14.js"></script>
+
+<!--[if (gte IE 6)&(lte IE 8)]>
+    <script src="http://assets1.iavvo.com/assets/selectivizr-c4422edc73658e842dce601b5979afe2.js"></script>
+<![endif]-->
+
+
+
+  <link href="http://www.avvo.com/attorneys/07701-nj-jonathan-marshall-1622712.html" rel="canonical" />
+
+<script>
+//<![CDATA[
+
+  google_analytics_domain_name=".avvo.com";
+  try {
+    var _gaq = _gaq || [];
+    _gaq.push(
+      ['_setAccount', 'UA-4437273-1'],
+      ['_setDomainName', '.avvo.com'],
+      ['_setCustomVar', 1,'user_type','other', 1],
+      ['_setCustomVar', 5, 'abs', '....................................................................................................', 3]
+    );
+
+        _gaq.push(['_setCustomVar', 2,'type', 'claimed', 3]);
+        _gaq.push(['_setCustomVar', 3,'spec',"55_Criminal Defense", 3]);
+
+    _gaq.push(['_trackPageview']);
+  } catch(err) {}
+
+//]]>
+</script>
+
+  <script>
+//<![CDATA[
+
+  try {
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  } catch(err) {}
+
+//]]>
+</script>
+  <script type='text/javascript'>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function() {
+      var gads = document.createElement('script');
+      gads.async = true;
+      gads.type = 'text/javascript';
+      var useSSL = 'https:' == document.location.protocol;
+      gads.src = (useSSL ? 'https:' : 'http:') +
+        '//www.googletagservices.com/tag/js/gpt.js';
+      var node = document.getElementsByTagName('script')[0];
+      node.parentNode.insertBefore(gads, node);
+    })();
+  </script>
+
+  <script type='text/javascript'>
+    googletag.cmd.push(function () {
+              googletag.pubads().setTargeting('useg', 'unknown');
+              googletag.pubads().setTargeting('spec', '55');
+    });
+
+      googletag.cmd.push(function() {
+        googletag.defineSlot('/4508117/legal_directory_300x100_right', [300, 100], 'div-gpt-ad-715905950046-0').addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.pubads().collapseEmptyDivs();
+        googletag.enableServices();
+      });
+  </script>
+
+
+
+<script type="text/javascript">window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"location":{"id":5347863,"professional_id":1622712,"name":"The Law Offices of Jonathan F. Marshall","displayable":true,"ordinal":0,"updated_at":"2013-11-04T11:33:12.000-08:00","updated_by":1085577,"license_id":null,"created_at":null},"pageTitle":"Lawyer Jonathan Marshall - Red Bank Attorney","siteSection":"knowledgebase","logicalSection":"lawyers/show","renderType":"desktop","persistentSessionId":"64607828-4620-4170-91bf-193585187f0d","userId":null,"userEmail":null,"userType":"anonymous","professionalId":null,"professional":"1622712-Jonathan-Marshall","specialty":55,"claimStatus":"claimed","ratingType":"No concern","rating":10.0,"reviewScore":5.0,"reviews":1,"endorsements":8,"profileContent":{"contributions":{"legalAnswers":7,"bestAnswers":1,"agree":7,"helpful":1,"guides":1,"staffPicks":0},"headshot":"yes","aboutMe":"yes","publications":5,"awards":5,"workExperience":8,"speakingEngagements":5},"professionalType":"non-advertiser"});</script>
+
+  <meta name="ad-location-id" content="61489" /><meta name="ad-specialty-id" content="55" /><meta name="page-template-name" content="Lawyer Profile - Main" /></head>
+  <body>
+    <script>
+//<![CDATA[
+duraLogEvents('eJztUsuO2yAU/ZWItfHwsMFkX3XTSl10Nxohaq4TRhgsIHGjqv9enEyqTvbd\nzdLHnMe95z4/046KoSeDUA1aUpwgZxeD8drNS7p9oAaZOeZuNRY1v9BoChxi\nuqD9leA8oEeqRXsqGJOUNcjG2bhQH6/r2przObZjnCvjlHwFn0wpMQW45Cci\nJaE4vOLXKlKOJuDZpHw03uM3sfZYZl+pCSZICRLah5P3VSpD0uYAodyRfMty\nTYKUmThXpMd26iXulOjxwKzCHKwhkwKurLmqzrGAdkulUCJbyoaWipYRWX/O\nUI5xE/v86Tt6c9zEb3YJgt2AkIsJI+jD6WpM+SQG6DmeKDO46yfYjDtMRwas\n43y0Um27g5RdLjW+fpdbdILIgQ24E4zgjkqCFf0xYap4P/R0kBOx6PdL87dD\nSapY3YM+O1gfWvOx9naXZlxIXre0wOiML5cr2PcNgp81THEZ/hkuGw9ZJzjc\n2ZRR8gAvsU7u9Rgt6HdOgnaD2pxiyDGB1b5O6sJBZx9LRvuawrq8eHO5I7RB\nBeaK1C6CmaEu4otZL5B2327XtsO7r9tFfZzWfz+tlz8tXk7A\n');
+//]]>
+</script>
+
+<script>
+//<![CDATA[
+
+  $(document).on('click', '[data-dura-trackable-href]', duraUpdateLinkHREF);
+
+//]]>
+</script>
+    <noscript><iframe height="0" src="//www.googletagmanager.com/ns.html?id=GTM-K2L3VH" style="display:none;visibility:hidden" width="0"></iframe></noscript><script type="text/javascript">(function(w, d, s, l, i){
+  w[l] = w[l] || [];
+  w[l].push({ 'gtm.start' : new Date().getTime(),
+              event       : 'gtm.js'});
+  var f   = d.getElementsByTagName(s)[0];
+  var j   = d.createElement(s);
+  var dl  = l != 'dataLayer' ? '&l='+ l : '';
+  j.async = true;
+  j.src   = '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-K2L3VH');</script>
+    <div id="bing_tracking">
+
+</div>
+    <noscript>
+  <div style="text-align:center;background:#fbf3c5;color:#911717;padding:8px;border-bottom:1px solid #D7DADD;">
+  <strong>We've detected that your browser does not support scripting.</strong> <br/>
+  Scripting must be enabled to use Avvo. Turn on scripting and reload this page.
+  </div>
+</noscript>
+
+    <hgroup><header><nav id="page_header"><a href="//www.avvo.com/"><img alt="Logo@2x" class="logo" src="http://assets2.iavvo.com/assets/logos/logo@2x-39c17b04a49441c5131b852386f9312e.png" /></a><ul class="pull-right" id="sign-in-module"><li class="left-margin"><a href="/for-lawyers">For Lawyers</a></li><li class="left-margin"><a href="/account/login" rel="nofollow">Sign in</a></li><li class="left-margin"><a href="/account/register" rel="nofollow">Register</a></li></ul></nav></header></hgroup>
+    <div class="page">
+      <div id="primary_nav_and_breadcrumb">
+        <nav class="" id="primary_nav"><style type="text/css">.menu-primary{height:auto}.menu-primary #my-avvo-link{padding-top:28px}</style><ul class="center-content clearfix menu-primary"><li><a href="/free-legal-advice">Research<br/>Legal Advice</a></li><li><a href="/ask-a-lawyer">Ask<br/>a Lawyer</a></li><li class="active"><a href="/find-a-lawyer">Find<br/>a Lawyer</a></li><li><a href="https://advisor.avvo.com?avvo_source=avvo&amp;avvo_medium=global_navigation&amp;avvo_campaign=avvo_advisor">Instant<br/>Phone Call <span class='label label-success' style='line-height: 12px;'>New!</span></a></li><li><a href="/review-your-lawyer">Review<br/>Your Lawyer</a></li></ul><script type="text/javascript">$(document).ready(function(){
+  if(false){
+    $('.menu-primary.my_avvo').show();
+    $('#my-avvo-link').parent('li').addClass('active');
+  }
+  $('#my-avvo-link').click(function(){
+    $('.menu-primary.my_avvo').slideToggle();
+    return false;
+  })
+})</script>  <div class="search browsable" id="primary_nav_search">
+      <span id="search_selector">
+        Lawyers
+      </span>
+      <ul id="search_selector_menu" style="display:none;">
+          <li data-form-id="lawyer_search">Lawyers</li>
+          <li data-form-id="legal_advice_search">Legal Advice</li>
+      </ul>
+
+        <span id="lawyer_search" class="search_form_container selectable" >
+          
+<form accept-charset="UTF-8" action="/search/lawyer_search" class="search_form search-form" id="lawyer_search_primary_nav_search_search_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+  <input autocomplete="off" class="keyword_field keyword-search-field " data-tooltip-right="true" id="lawyer_search_primary_nav_search_search_form_keyword_field" name="q" placeholder="Lawyer&#39;s name -OR- Practice area" type="text" />
+  <input autocomplete="off" class="location_field location-search-field " id="lawyer_search_primary_nav_search_search_form_location_field" name="loc" placeholder="City, State -OR- ZIP" type="text" value="Atlanta, GA" />
+  <span class="icon-submit">
+    <input class="button primary action " name="commit" style="" type="submit" value="" />
+  </span>
+
+</form>
+        </span>
+</div>
+<script>
+//<![CDATA[
+
+  $(document).click(function(e){
+    if(e.target.id != "search_selector") {
+      $("#search_selector_menu").hide();
+    }
+  });
+
+  $("#search_selector_menu li").click(function(e) {
+    form_id = $(this).attr("data-form-id");
+    $("#primary_nav_search .search_form_container").hide();
+    $("#" + form_id).show();
+    $("#search_selector").html($(this).html());
+    $("ul.ui-autocomplete").hide();
+    $("#search_selector_menu").hide();
+  });
+
+  $("#search_selector").click(function(e) {
+    $("#search_selector_menu").toggle();
+    $("#search_selector_menu").position({
+      my: "left top",
+      at: "left bottom",
+      of: $("#search_selector")
+    });
+  });
+
+  $("#primary_nav_search .keyword_field").change(function(e) {
+    $("#primary_nav_search .keyword_field").val($(e.target).val());
+    $("#primary_nav_search .keyword_field").trigger('valuechanged');
+  });
+
+  $("#primary_nav_search .location_field").change(function(e) {
+    $("#primary_nav_search .location_field").each(function(i,el) {
+      $(el).val($(e.target).val());
+      $(el).trigger('valuechanged');
+    });
+  });
+
+//]]>
+</script>
+</nav><div id="breadcrumb"><div class="breadcrumbs"><span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/all-lawyers/nj.html" itemprop="url"><span itemprop="title">New Jersey</span></a></span>&nbsp;&gt;&nbsp;<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/all-lawyers/nj/toms_river.html" itemprop="url"><span itemprop="title">Toms River</span></a></span>&nbsp;&gt;&nbsp;<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/criminal-defense-lawyer/nj/toms_river.html" itemprop="url"><span itemprop="title">Criminal Defense Attorneys</span></a></span>&nbsp;&gt;&nbsp;<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><span class="current" itemprop="title"><span>Jonathan F Marshall</span></span></span></div></div><!--[if lt IE 9]><script type="text/javascript">$(document).ready(function(){
+  $('.icon-submit').click(function(){
+    $(this).parent().submit();
+  });
+})</script><![endif]-->
+      </div>
+      <div id="flash"></div>
+    </div>
+    
+      <span>
+          
+<div class="page stripped"  itemscope = "itemscope" itemtype = "http://schema.org/Attorney" >
+
+  <!-- header -->
+    <div class="page-row margin6" id="profile_header"><div class="span12"><h1 class="light pull-left condensed margin0"><span class="pull-left" itemprop="name">Jonathan F Marshall
+</span></h1></div><div class="span12 margin2" id="name_alias_section"><h3>  <span class="muted">Also known as </span><span class="nickname">John Marshall</span>, <span class="nickname">John F. Marshall</span>
+</h3></div><div class="span12 inline-hgroup" id="firm_office_detail"></div></div>
+
+
+  <div class="page-row">
+    <section class="span8" id="profile_details">
+
+
+      <!-- tabs -->
+
+
+      <div id="profile_overview">
+  <!-- headshot -->
+  <div class="page-row" id="headshot">
+    <div class="span2">
+      <span class="avvo-inline-block">
+        <img alt="Jonathan F Marshall" class="borderless standard" itemprop="image" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/standard/1622712_1382972583.jpg" title="Jonathan F Marshall" />
+      </span>
+    </div>
+    <div class="span6">
+        <div class="page-row margin8"><div class="span3"><div class="page-row"><div class="span3" itemscope="itemscope" itemtype="http://schema.org/Review"><div itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Organization"><meta content="Avvo Inc." itemprop="name" /><meta content="Avvo" itemprop="alternateName" /><meta content="http://www.avvo.com" itemprop="url" /></div><div class="icon half-width pull-left" data-tooltip-remote="avvo_rating_description"><img alt="Avvorating@2x" src="http://assets2.iavvo.com/assets/embed/profile/avvorating@2x-cf89cef391e72dc3ea9ec72ed16ce495.png" width="100" /></div><div class="pull-left center-content margin5" itemprop="reviewRating" itemscope="itemscope" itemtype="http://schema.org/Rating"><span class="avvo_rating_numeric"><h2 class="text-red light bold center-content condensed margin0" itemprop="ratingValue">10.0</h2><img alt="" class="rating_image" src="http://assets1.iavvo.com/assets/profile_rating/icon_rating_10-658f76e74c0051e763d8556fdce67c1d.gif" /><h3 class="rating_info center-content text-red light"><span class="summary"><a class="tooltip_link tooltip-link" data-tooltip-remote-options="" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">Superb</a></span></h3><meta content="10.0" itemprop="bestRating" /><meta content="0.0" itemprop="worstRating" /></span></div><meta content="Jonathan F Marshall" itemprop="itemReviewed" /></div><div class="span3 margin4">  <table id="sub_rating">
+
+        <tr>
+          <td>Experience</td>
+          <td>
+            <span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Industry Recognition</td>
+          <td>
+            <span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Professional Conduct</td>
+          <td>
+            <span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span></span>
+          </td>
+        </tr>
+
+  </table>
+<p class="text-meta"><a class="tooltip_link tooltip-link" data-tooltip-remote-options="provisional=false" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">What is the Avvo Rating?</a></p></div></div></div><div class="span3 margin6"><div class="page-row"><div class="span3"><div class="page-row"><div class="span1"><img alt="Reviews" class="full-width" src="http://assets1.iavvo.com/assets/embed/profile/reviews-72fd939ee2e493ce25a7b88d3da6028c.png" /></div><div class="span2"><a class="count" href="/attorneys/07701-nj-jonathan-marshall-1622712/reviews.html"><div class="page-row"><div class="inline-hgroup span2"><h3 class="light condensed margin0 stripped">1&nbsp;</h3><h5 class="light condensed margin0 stripped">Review</h5></div><div class="span2"><a class="star_rating full-width" href="/attorneys/07701-nj-jonathan-marshall-1622712/reviews.html"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a></div></div></a><div class="client_review_links">Current or former client? <a data-avn="{&quot;name&quot;:&quot;amos.gtm.view-lawyer-review-form&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;1622712-Jonathan-Marshall&quot;}}" href="/attorneys/07701-nj-jonathan-marshall-1622712/write_review.html" rel="nofollow">Write a review</a></div></div></div></div><hr class="span3" /><div class="span3"><div class="page-row"><div class="span1"><img alt="Endorse" class="full-width" src="http://assets2.iavvo.com/assets/embed/profile/endorse-393f817ef630e2e358047b4ca97e17ed.png" /></div><div class="span2"><div class="page-row"><a href="/attorneys/07701-nj-jonathan-marshall-1622712/endorsements.html"><div class="inline-hgroup span2"><h3 class="light condensed margin0 stripped">8&nbsp;</h3><h5 class="light condensed margin0 stripped">Endorsements</h5></div></a></div>Lawyers: <br><a href="/attorneys/07701-nj-jonathan-marshall-1622712/write_endorsement.html" rel="nofollow">Endorse this lawyer</a></div></div></div><hr class="span3" /><div class="span3"><div class="page-row"><div class="span1"><img alt="Contri" class="full-width" src="http://assets1.iavvo.com/assets/embed/profile/contri-c5a1b74b9701f86d9b28e2d9f4f0334c.png" /></div><div class="span2"><div class="page-row"><div class="inline-hgroup span2"><h5 class="light condensed margin0">Contributor Level</h5><h3 class="light condensed margin0 stripped">4</h3></div></div><p><a href="/attorneys/07701-nj-jonathan-marshall-1622712/answers.html">View contributions</a></p></div></div></div></div></div><div class="span6"><div id="profile_actions" class="lawyer_profile_actions">
+    <a class="primary action" data-avn="{&quot;name&quot;:&quot;amos.gtm.view-lawyer-email-form&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;1622712-Jonathan-Marshall&quot;}}" href="/attorneys/07701-nj-jonathan-marshall-1622712/contact.html" rel="nofollow">Email Lawyer</a>
+
+  <a class="action" data-avn="{&quot;name&quot;:&quot;amos.gtm.contact-lawyer-website&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;1622712-Jonathan-Marshall&quot;}}" href="http://www.newjerseycriminallawattorney.com" onclick="this.href=&#39;/attorneys/07701-nj-jonathan-marshall-1622712/website.html&#39;;return true;" target="_blank">Lawyer&#39;s website</a>
+
+  <a class="action send" href="/attorneys/07701-nj-jonathan-marshall-1622712/share.html" rel="nofollow">Send to a friend</a>
+</div>
+</div></div>
+    </div>
+  </div>
+</div>
+
+
+    
+      <div class="module"><h2>Overview</h2><div class="page-row" id="overview"><section class="span8">
+        <div class="js-replaceable margin6" id="specialties"><div class="page-row" id="specialties"><div class="span2"><h5 class="light">PRACTICE AREAS</h5></div><div class="span6"><div class="page-row"><div class="span2">
+<img alt="Chart?chs=169x169&amp;cht=p&amp;chp=4" class="full-width" id="specialty_chart" src="http://chart.apis.google.com/chart?chs=169x169&amp;cht=p&amp;chp=4.7&amp;chco=76d0eb|f48026|ffeb73|7ac142&amp;chd=t:60,20,10,10" />
+
+</div><div class="span4"><div class="page-row js-link-hub"><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#76d0eb"></div><div class="span3">60% Criminal Defense</div></div></div></div><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#f48026"></div><div class="span3">20% DUI / DWI</div></div></div></div><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#ffeb73"></div><div class="span3">10% Federal Crime</div></div></div></div><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#7ac142"></div><div class="span3">10% Juvenile</div></div></div></div></div></div></div><div id="not_practicing_section">
+</div></div></div></div>
+        <div class="js-replaceable margin6" id="fees_payments"><div class="page-row" id="fees_payments_section"><div class="span2"><h5 class="light">FEES AND<BR> PAYMENT TYPES</h5></div><div class="span6"><div class="page-row"><div class="span6 margin4"><h4>Fees</h4><div id="fees_detail">    Fixed (Sometimes), Free Consultation (60 minutes)
+
+</div></div><div class="span6"><h4>Payment types</h4><div id="payments_detail">  Cash, Check, Credit Card
+  
+</div></div></div></div></div></div>
+          <div class="js-replaceable margin6" id="contact_information"><div class="page-row" id="contact_information_section"><div class="span2"><h5 class="light">CONTACT INFORMATION</h5></div><div class="span6"><div class="page-row" id="contact_information_detail"><div class="span3"><div class="address_list avvo-undecorated-list" id="sortable_address_list"><div class="address_sort margin4" id="address_6439743"><span><div class="address_line_1">29 Hadley Avenue</div><div class="address_line_2"></div></span><div class="address_city_state">Toms River, NJ 08753</div><a data-avn="{&quot;name&quot;:&quot;amos.contacts.viewed_directions&quot;,&quot;payload&quot;:{&quot;professional_id&quot;:1622712}}" href="http://maps.google.com/maps?q=29+Hadley+Avenue%2C+Toms+River%2C+NJ+08753+%28%29" rel="nofollow" target="_blank"><span class="icon-map"></span> View map</a> <span class="pipe">|</span> <a href="/attorneys/07701-nj-jonathan-marshall-1622712/user_reported_information.html?address=6439743" rel="nofollow">Edit this address</a></div></div><div class="address_list" id="more_addresses" style="display:none"><div class="address_sort margin4" id="address_6360496"><div class="address_name semibold">Law Offices of Jonathan F. Marshall</div><span><div class="address_line_1">75 Paterson Street</div><div class="address_line_2"></div></span><div class="address_city_state">New Brunswick, NJ 08901</div><div class="address_phone"><span class="phone_label muted">Office: </span><span id="phone_number_0">732-246-7126</span></div><a data-avn="{&quot;name&quot;:&quot;amos.contacts.viewed_directions&quot;,&quot;payload&quot;:{&quot;professional_id&quot;:1622712}}" href="http://maps.google.com/maps?q=75+Paterson+Street%2C+New+Brunswick%2C+NJ+08901+%28Law+Offices+of+Jonathan+F.+Marshall%29" rel="nofollow" target="_blank"><span class="icon-map"></span> View map</a> <span class="pipe">|</span> <a href="/attorneys/07701-nj-jonathan-marshall-1622712/user_reported_information.html?address=6360496" rel="nofollow">Edit this address</a></div><div class="address_sort margin4" id="address_5347863"><div class="address_name semibold">The Law Offices of Jonathan F. Marshall</div><span><div class="address_line_1">157 Broad Street</div><div class="address_line_2">Suite 111</div></span><div class="address_city_state">Red Bank, NJ 07701</div><div class="address_phone"><span class="phone_label muted">Office: </span><span id="phone_number_0">732-450-8300</span></div><a data-avn="{&quot;name&quot;:&quot;amos.contacts.viewed_directions&quot;,&quot;payload&quot;:{&quot;professional_id&quot;:1622712}}" href="http://maps.google.com/maps?q=157+Broad+Street%2C+Suite+111%2C+Red+Bank%2C+NJ+07701+%28The+Law+Offices+of+Jonathan+F.+Marshall%29" rel="nofollow" target="_blank"><span class="icon-map"></span> View map</a> <span class="pipe">|</span> <a href="/attorneys/07701-nj-jonathan-marshall-1622712/user_reported_information.html?address=5347863" rel="nofollow">Edit this address</a></div><div class="address_sort margin4" id="address_6439742"><span><div class="address_line_1">55 Madison Avenue</div><div class="address_line_2"></div></span><div class="address_city_state">Morristown, NJ 07960</div><a data-avn="{&quot;name&quot;:&quot;amos.contacts.viewed_directions&quot;,&quot;payload&quot;:{&quot;professional_id&quot;:1622712}}" href="http://maps.google.com/maps?q=55+Madison+Avenue%2C+Morristown%2C+NJ+07960+%28%29" rel="nofollow" target="_blank"><span class="icon-map"></span> View map</a> <span class="pipe">|</span> <a href="/attorneys/07701-nj-jonathan-marshall-1622712/user_reported_information.html?address=6439742" rel="nofollow">Edit this address</a></div><div class="address_sort margin4" id="address_7297256"><div class="address_name semibold">Law Offices of Jonathan F. Marshall</div><span><div class="address_line_1">One Gateway Center</div><div class="address_line_2">Suite 2600</div></span><div class="address_city_state">Newark, NJ 07102</div><div class="address_phone"><span class="phone_label muted">Office: </span><span id="phone_number_0">973-733-2204</span></div><a data-avn="{&quot;name&quot;:&quot;amos.contacts.viewed_directions&quot;,&quot;payload&quot;:{&quot;professional_id&quot;:1622712}}" href="http://maps.google.com/maps?q=One+Gateway+Center%2C+Suite+2600%2C+Newark%2C+NJ+07102+%28Law+Offices+of+Jonathan+F.+Marshall%29" rel="nofollow" target="_blank"><span class="icon-map"></span> View map</a> <span class="pipe">|</span> <a href="/attorneys/07701-nj-jonathan-marshall-1622712/user_reported_information.html?address=7297256" rel="nofollow">Edit this address</a></div><div class="address_sort margin4" id="address_6360501"><div class="address_name semibold">Law Offices of Jonathan F. Marshall</div><span><div class="address_line_1">73 Mountainview Boulevard</div><div class="address_line_2"></div></span><div class="address_city_state">Wayne, NJ 07470</div><div class="address_phone"><span class="phone_label muted">Office: </span><span id="phone_number_0">973-839-4007</span></div><a data-avn="{&quot;name&quot;:&quot;amos.contacts.viewed_directions&quot;,&quot;payload&quot;:{&quot;professional_id&quot;:1622712}}" href="http://maps.google.com/maps?q=73+Mountainview+Boulevard%2C+Wayne%2C+NJ+07470+%28Law+Offices+of+Jonathan+F.+Marshall%29" rel="nofollow" target="_blank"><span class="icon-map"></span> View map</a> <span class="pipe">|</span> <a href="/attorneys/07701-nj-jonathan-marshall-1622712/user_reported_information.html?address=6360501" rel="nofollow">Edit this address</a></div></div><p>
+
+<a href="#!" id="more_addresses_link" onclick="
+   $(&#39;#more_addresses&#39;).slideDown(500);
+   $(&#39;#more_addresses_link&#39;).hide();
+   $(&#39;#less_addresses_link&#39;).show();
+" rel="nofollow">See additional addresses</a>
+
+
+<a href="#!" id="less_addresses_link" onclick="
+   $(&#39;#more_addresses&#39;).slideUp(500);
+   $(&#39;#less_addresses_link&#39;).hide();
+   $(&#39;#more_addresses_link&#39;).show();
+" style="display:none;">Hide additional addresses</a>
+</p></div><div class="span3"><div class="page-row"><div class="span3"><div class="page-row"><div class="span1"><div class="icon-email2 pull-right"></div></div><div class="span2"><a href="/attorneys/07701-nj-jonathan-marshall-1622712/contact.html" rel="nofollow">Email this lawyer</a></div></div></div><div class="span3"><div class="page-row"><div class="span1"><div class="icon-website pull-right"></div></div><div class="span2"><a data-avn="{&quot;name&quot;:&quot;amos.profiles.website_clicked&quot;,&quot;payload&quot;:{&quot;professional_id&quot;:1622712,&quot;profession_name&quot;:&quot;lawyer&quot;,&quot;specialty_name&quot;:&quot;Criminal Defense&quot;}}" href="http://www.newjerseycriminallawattorney.com" itemprop="url" onclick="this.href=&#39;/attorneys/07701-nj-jonathan-marshall-1622712/website.html&#39;;return true;" target="_blank">Visit lawyer&#39;s website</a></div></div></div><hr class="span3" /></div>  <div id="additional_links" class="page-row">
+      <div class="span3">
+        <div class="page-row">
+          <div class="span1">
+            <span class='icon-website  pull-right'></span>
+          </div>
+          <div class="span2">
+              <a href="http://www.newjerseydwiattorney.com" rel="nofollow" target="_blank">New Jersey DWI Attorney</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="span3">
+        <div class="page-row">
+          <div class="span1">
+            <span class='icon-website  pull-right'></span>
+          </div>
+          <div class="span2">
+              <a href="http://www.essexcountycriminalattorneys.com/" rel="nofollow" target="_blank">Essex County Criminal Lawyer</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="span3">
+        <div class="page-row">
+          <div class="span1">
+            <span class='icon-website  pull-right'></span>
+          </div>
+          <div class="span2">
+              <a href="http://www.camdencountynjcriminallawyer.com/" rel="nofollow" target="_blank">Camden County Criminal Lawyer</a>
+          </div>
+        </div>
+      </div>
+
+
+  </div>
+</div>
+</div></div></div></div>
+        <div class="js-replaceable margin6" id="languages"><div class="page-row" id="languages_section"><div class="span2"><h5 class="light">LANGUAGES SPOKEN</h5></div><div class="span6"><div id="languages_detail"><ul class="avvo-undecorated-list margin0">
+    <li>
+  English
+</li>
+
+</ul>
+</div></div></div></div>
+        <div class="js-replaceable margin6" id="about_me"><div class="page-row" id="about_me_section"><div class="span2"><h5 class="light">ABOUT ME</h5></div><div class="span6"><div id="about_me_detail">  
+    <div id="media_table_wrapper">
+      <table><tr><td><div class="thumbnail borderless"><a data-modal-open="l4M4NaCz" href="#!" nofollow="nofollow" title=""><img alt="" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/thumbnail_small/1622712_1354310316.jpg" title="" /></a></div><div id="l4M4NaCz" style="display:none;width:;height:"><div class="modal-header">Image</div><div class="modal-body"><img alt="1622712 1354310316" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/normalized/1622712_1354310316.jpg" /></div></div></td><td><a data-modal-open="modal_Sf6lR" data-modal-url="/attorneys/1622712/media/416527/video" href="#!"><div class="thumbnail borderless with-overlay"><img alt="" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/thumbnail_small/1622712_1354310275.jpg" title="" /><br /><div class="icon-play pull-left"></div></div></a></td><td></td><td></td></tr></table>
+    </div>
+  
+    <p>
+      I am the Managing Partner of the Law Offices of Jonathan F. Marshall. Our firm is one of the largest criminal defense firms in the State of New Jersey and I... <a href="/attorneys/07701-nj-jonathan-marshall-1622712/aboutme.html">more</a>
+    </p>
+
+  <a class="navigation" href="/attorneys/07701-nj-jonathan-marshall-1622712/aboutme.html">View all photos and/or videos</a>
+</div></div></div></div>
+</section></div></div>
+      <div class="module"><h2>References</h2><div class="page-row" id="references"><section class="span8">
+        <div class="js-replaceable margin6" id="reviews"><div class="page-row" id="reviews_section"><div class="span2"><h5 class="light">CLIENT REVIEWS</h5></div><div class="span6"><div id="reviews_detail"><div class="page-row"><div class="span1"><img alt="Reviews" class="full-width" src="http://assets1.iavvo.com/assets/embed/profile/reviews-72fd939ee2e493ce25a7b88d3da6028c.png" /></div><div class="span5"><div class="overview">
+  <h4>Client Rating</h4>
+  <div class="star_rating">
+      <a class="stars" href="/attorneys/07701-nj-jonathan-marshall-1622712/reviews.html"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a>
+      <span class="review_count"><a href="/attorneys/07701-nj-jonathan-marshall-1622712/reviews.html">1 review</a></span>
+  </div>
+  <div class="client_review_links">Current or former client? <a data-avn="{&quot;name&quot;:&quot;amos.gtm.view-lawyer-review-form&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;1622712-Jonathan-Marshall&quot;}}" href="/attorneys/07701-nj-jonathan-marshall-1622712/write_review.html" rel="nofollow">Write a review</a></div>
+</div>
+
+</div></div><hr class="margin4" /><div class="page-row margin2 with-overlay"><div class="span1"><img alt="Quotes@2x" class="full-width" src="http://assets1.iavvo.com/assets/embed/topic_pages/quotes@2x-77df7504b38dc1ede65c9b0e3e45acf7.png" /></div><div class="span5"><h3 class="light"><a href="/attorneys/07701-nj-jonathan-marshall-1622712/reviews.html#280650">“Jonathan is amazing”</a></h3><a href="/attorneys/07701-nj-jonathan-marshall-1622712/reviews.html#280650"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a><p>Jonathan is very knowledgeable and down to earth. He analyzed the case to the client very professionally and planed the defense very carefully. He is... </p><p class="text-meta">Posted by: a Civil Rights client, over 1 year ago.</p><div class="overlay bottom right margin2"><a data-tooltip-remote="confirm_objectionable" href="/professional_reviews/280650/objectionable" id="professional_review_objectionable_280650" rel="nofollow"><i class="medium-gray icon-flag"></i> Flag</a></div></div></div><div class="margin4"></div></div></div></div></div>
+        
+        <div class="js-replaceable margin6" id="endorsements"><div class="page-row" id="endorsements_section"><div class="span2"><h5 class="light">PEER ENDORSEMENTS</h5></div><div class="span6"><div id="endorsements_detail"><div class="page-row"><div class="span1"><img alt="Endorse" class="full-width" src="http://assets2.iavvo.com/assets/embed/profile/endorse-393f817ef630e2e358047b4ca97e17ed.png" /></div><div class="span5"><h4>Endorsements</h4><p class="pull-left"><a href="/attorneys/07701-nj-jonathan-marshall-1622712/endorsements.html">8 endorsements</a></p><div class="pull-right">Lawyers: <a href="/attorneys/07701-nj-jonathan-marshall-1622712/write_endorsement.html" rel="nofollow">Endorse this lawyer</a></div></div></div><hr class="margin4" />
+<div class="page-row margin6">
+  <!-- clear the cache -->
+  <div class="span1"><a href="/attorneys/30809-ga-michael-waddington-575452.html"><img alt="Michael S. Waddington" class="borderless thumbnail_medium" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/575452_1403592827.jpg" title="Michael S. Waddington" /></a></div>
+  <div class="span5">
+    <div>
+      <p>
+        I endorse Jonathan. He is a highly skilled attorney that is well respected in the legal community.
+      </p> 
+      <span class="muted text-meta">Endorsement from lawyer:
+        <a href="/attorneys/30809-ga-michael-waddington-575452.html">Michael Waddington</a>
+         , Evans (GA), 6 months ago
+      </span>
+    </div>
+  </div>
+</div>
+<div class="page-row margin6">
+  <!-- clear the cache -->
+  <div class="span1"><a href="/attorneys/07728-nj-michael-grasso-1597011.html"><img alt="Michael A Grasso" class="borderless thumbnail_medium" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/1597011_1216668080.jpg" title="Michael A Grasso" /></a></div>
+  <div class="span5">
+    <div>
+      <p>
+        John Marshall is highly knowledgeable in the subject matter of municipal court and criminal defense throughout the State of New Jersey. I endorse... 
+          <a href="/attorneys/07701-nj-jonathan-marshall-1622712/endorsements.html" rel="nofollow">more</a>
+      </p> 
+      <span class="muted text-meta">Endorsement from lawyer:
+        <a href="/attorneys/07728-nj-michael-grasso-1597011.html">Michael Grasso</a>
+         , Freehold (NJ), 7 months ago
+      </span>
+    </div>
+  </div>
+</div><a class="navigation" href="/attorneys/07701-nj-jonathan-marshall-1622712/endorsements.html">View all 8 endorsements</a></div></div></div></div>
+</section></div></div>
+      <div class="module"><h2>R&eacute;sum&eacute;</h2><div class="page-row" id="resume"><section class="span8">
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="licenses_section"><div id="licenses"><div class="span8 margin2"><div class="box"><h5 class="light margin0">LICENSE</h5></div></div><div class="span8"><div id="licenses_detail"><p>21 years since Jonathan F Marshall was first licensed to practice law.</p><div class="js-link-hub"><table class="table"><thead><tr><th>State</th><th>License status</th><th>Year acquired</th><th>Last updated by Avvo</th></tr></thead><tbody>
+<tr class="">
+  <td>New Jersey</td>
+  <td>
+      Active
+  </td>
+  <td>1993</td>
+  <td>09/18/2014</td>
+</tr>
+<tr class="js-expandable ">
+  <td>Pennsylvania</td>
+  <td>
+      Retired
+  </td>
+  <td>1993</td>
+  <td>10/26/2014</td>
+</tr></tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See inactive licenses<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide inactive licenses<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="sanctions_section"><div id="sanctions"><div class="span8 margin2"><div class="box"><h5 class="light margin0">PROFESSIONAL MISCONDUCT</h5></div></div><div class="span8"><div id="sanctions_detail">  <p class="article-body sans-serif">
+    <span class="icon-no-misconduct icon-green icon-padded narrow right"></span>
+    We have not found any instances of professional misconduct for this lawyer.
+  </p>
+
+</div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="work_experience_section"><div id="work_experience"><div class="span8 margin2"><div class="box"><h5 class="light margin0">WORK EXPERIENCE</h5></div></div><div class="span8"><div id="work_experience_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Position</th><th>Duration</th></tr></thead><tbody><tr class=" ">
+  <td>
+    Managing Partner at The Law Offices of Jonathan F. Marshall
+  </td>
+  <td>
+    2000&ndash;present
+  </td>
+</tr>
+<tr class=" ">
+  <td>
+    Associate at Cleary Alfieri &amp; Grasso
+  </td>
+  <td>
+    1995&ndash;2000
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Municipal Prosecutor at Borough of Matawan
+  </td>
+  <td>
+    1997&ndash;1999
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Alternate Prosecutor at Wall Township
+  </td>
+  <td>
+    1997&ndash;1998
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Municipal Prosecutor at Township of Hazlet
+  </td>
+  <td>
+    1995&ndash;1998
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Alternate Prosecutor at Township of Colts Neck
+  </td>
+  <td>
+    1996&ndash;1997
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Defense Attorney at Law Offices of Mauro Casci
+  </td>
+  <td>
+    1993&ndash;1995
+  </td>
+</tr>
+<tr class=" js-expandable">
+  <td>
+    Judicial Law Clerk at Honorable John P. Arnone, J.S.C.
+  </td>
+  <td>
+    1992&ndash;1993
+  </td>
+</tr>
+</tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 8 job entries<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional positions<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="education_section"><div id="education"><div class="span8 margin2"><div class="box"><h5 class="light margin0">EDUCATION</h5></div></div><div class="span8"><div id="education_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>School</th><th>Major</th><th>Degree</th><th>Graduated</th></tr></thead><tbody><tr class=" ">
+  <td>Seton Hall University School of Law</td>
+  <td>Law</td>
+  <td>JD - Juris Doctor</td>
+  <td>1992</td>
+</tr>
+
+<tr class=" ">
+  <td>Rider University</td>
+  <td>Accounting &amp; Finance</td>
+  <td>BS - Bachelor of Science</td>
+  <td>1987</td>
+</tr>
+
+</tbody></table></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="awards_section"><div id="awards"><div class="span8 margin2"><div class="box"><h5 class="light margin0">AWARDS</h5></div></div><div class="span8"><div id="awards_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Award Name</th><th>Granting Organization</th><th>Date</th></tr></thead><tbody><tr><td>Top 100 Trial Lawyers</td><td>National Trial Lawyers Association</td><td>2013</td></tr><tr><td>SFST Instructor Certification</td><td>Impaired Driving Specialists</td><td>2011</td></tr><tr class="js-expandable"><td>Alcotest 7110 Certification</td><td>Draeger Technology</td><td>2010</td></tr><tr class="js-expandable"><td>DUI Detection &amp; SFST Certification</td><td>La Pier &amp; Associates</td><td>2010</td></tr><tr class="js-expandable"><td>Lifetime Membership</td><td>Million Dollar Advocates Forum</td><td>2003</td></tr></tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 5 awards<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional awards<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="organizations_section"><div id="organizations"><div class="span8 margin2"><div class="box"><h5 class="light margin0">ASSOCIATIONS</h5></div></div><div class="span8"><div id="organizations_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Position</th><th>Association Name</th><th>Duration</th></tr></thead><tbody><tr class=" ">
+  <td>Member</td>
+  <td>Association of Criminal Defense Lawyers of New Jersey</td>
+  <td>
+    
+  </td>
+</tr>
+<tr class=" ">
+  <td>Member</td>
+  <td>National College of DUI Defense</td>
+  <td>
+    2013&ndash;present
+  </td>
+</tr>
+</tbody></table></div></div></div></div></div></div>
+</section></div></div>
+      <div class="module"><h2>Portfolio</h2><div class="page-row" id="portfolio"><section class="span8">
+        <div class="js-replaceable margin7"><div class="page-row with-overlay" id=""><div id=""><div class="span8 margin2"><div class="box"><h5 class="light margin0">CONTRIBUTION</h5></div></div><div class="span8"><div class="contri-badge"><div class="contributor-level-badge level-1 margin1" data-tooltip-remote="contributor_badge"><i class="icon-badge-feather"></i></div><div class="badge-text">Contributor Level 4</div></div>
+<table class="table">
+  <tr>
+    <th>Answers:</th>
+    <td><a class="article-body sans-serif" href="/attorneys/07701-nj-jonathan-marshall-1622712/answers.html">7</a></td>
+    <td><a class="article-body sans-serif" href="/attorneys/07701-nj-jonathan-marshall-1622712/answers.html">Legal Answers</a></td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>1</td>
+    <td>Best Answer - chosen by asker</td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>7</td>
+    <td>Answers marked "I agree" by other lawyers</td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>1</td>
+    <td>Answer marked helpful by other users</td>
+  </tr>
+  <tr>
+    <th>Guides:</th>
+    <td><a class="article-body sans-serif" href="/attorneys/07701-nj-jonathan-marshall-1622712/guides.html">1</a></td>
+    <td><a class="article-body sans-serif" href="/attorneys/07701-nj-jonathan-marshall-1622712/guides.html">Legal Guide</a></td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>0</td>
+    <td>Staff Picks</td>
+  </tr>
+</table>
+  <a class="navigation" href="/attorneys/07701-nj-jonathan-marshall-1622712/answers.html">View all contributions</a>
+</div></div></div></div>
+        
+        <div class="js-replaceable margin7"><div class="page-row with-overlay" id="legal_cases_section"><div id="legal_cases"><div class="span8 margin2"><div class="box"><h5 class="light margin0">CASES</h5></div></div><div class="span8">  <div class="margin4">
+  <div class="case_title"><a href="/attorneys/07701-nj-jonathan-marshall-1622712/legal_cases/99211">State v. O&#39;Driscoll, 215 N.J. 461 (2013)</a></div>
+  <div class="outcome">
+    <strong>Outcome:</strong> Reversed on Other Grounds
+  </div>
+</div>
+
+<div class="margin4">
+  <div class="case_title"><a href="/attorneys/07701-nj-jonathan-marshall-1622712/legal_cases/99212">Gambino v. State Farm, 348 N.J.Super. 204 (App.Div.2002)</a></div>
+  <div class="outcome">
+    <strong>Outcome:</strong> Appeal Won
+  </div>
+</div>
+
+
+</div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="publications_section"><div id="publications"><div class="span8 margin2"><div class="box"><h5 class="light margin0">PUBLICATIONS</h5></div></div><div class="span8"><div id="publications_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Article</th><th>Publication</th><th>Date</th></tr></thead><tbody><tr class=" ">
+  <td>Economic Troubles Lead to Increase in Domestic Violence</td>
+  <td>Thompson Publishing Group/West</td>
+  <td>2012</td>
+</tr>
+<tr class=" ">
+  <td>Teens, Distracted Driving and the Danger of Texting</td>
+  <td>Thompson Publishing Group/West</td>
+  <td>2012</td>
+</tr>
+<tr class=" js-expandable">
+  <td>Dealer Next Door: Selling Marijuana Becomes a 2nd Job for Many</td>
+  <td>USA Today</td>
+  <td>2010</td>
+</tr>
+<tr class=" js-expandable">
+  <td>Interceptor Breath Test Device Stops Drunk Drivers Before They Start</td>
+  <td>New Jersey Star Ledger</td>
+  <td>2010</td>
+</tr>
+<tr class=" js-expandable">
+  <td>Strategies for Avoiding Incarceration for a 3rd DWI in New Jersey</td>
+  <td>West Publishing</td>
+  <td>2008</td>
+</tr>
+</tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 5 publications<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional publications<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="speaking_engagements_section"><div id="speaking_engagements"><div class="span8 margin2"><div class="box"><h5 class="light margin0">SPEAKING ENGAGEMENTS</h5></div></div><div class="span8"><div id="speaking_engagements_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Presentation Name</th><th>Conference</th><th>Date</th></tr></thead><tbody><tr class=" ">
+  <td>Legal Commentator</td>
+  <td>CN12 News</td>
+  <td >2013</td>
+</tr>
+<tr class=" ">
+  <td>Legal Consultant</td>
+  <td>Law &amp; Order</td>
+  <td >2010</td>
+</tr>
+<tr class=" js-expandable">
+  <td>Legal Consultant</td>
+  <td>House M.D.</td>
+  <td >2010</td>
+</tr>
+<tr class=" js-expandable">
+  <td>Legal Ethics &amp; the Internet</td>
+  <td>ICLE Conference</td>
+  <td >2009</td>
+</tr>
+<tr class=" js-expandable">
+  <td>Criminal Law in New Jersey</td>
+  <td>Brookdale Community College</td>
+  <td >1993</td>
+</tr>
+</tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 5 speaking engagements<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional speaking engagements<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+</section></div></div>    </section>
+
+    <div class="span4" id="profile_b_column">
+      
+
+
+
+    <div class="margin7"><div class="js-ads" data-ad-limit="1" data-ad-track="true" data-ad-type="display_ads" data-preview-ad="null"></div></div><div class="margin7 js-common-sponsored-listings"><div class="js-ads" data-ad-format="desktop" data-ad-limit="3" data-ad-track="true" data-ad-type="sponsored_listing_ads" data-ad-variant="99" data-preview-ad="null"></div></div><div class="margin9"><section class="reloadable-module" data-widget-params="eJw1iz0KwzAMRu-iOQE7zeStU4_Q0QhbuAIlDpYCTUPuXkPp9r6fd0ISVIUAT86FTEN41FqE7hkG2LDh0scTMEeVav0nVFBi5kbJajvizbm3dy42Li_rjm6UGMWOyBnCuosMsCu1Pyt_6MfXAFITSo9Aa1eNF1LDZevF5Pw8ej9OM1xfdf03HA==">
+  <!-- ca-pub-4491911546116478/legal_directory_300x100_right -->
+
+  <div id='div-gpt-ad-715905950046-0' class="module google_ad google_ad_legal_directory_300x100_right" style='width:300px; height:100px;'>
+    <script>
+//<![CDATA[
+$(function(){
+      googletag.cmd.push(function() { googletag.display('div-gpt-ad-715905950046-0'); });
+});
+//]]>
+</script>  </div>
+</section><!--not_cached Widget:widgetsgoogle_ad:false:ajax:false:size::ad_slot:legal_directory_300x100_right:user::specialty_id::lawyer_id:--></div>
+
+    <section class="reloadable-module" data-widget-params="eJxdUstu2zAQ_BWBZ1uW5IcSnpoGyKFtiiINEPQkrMW1TZcPgVxZUYP8e5eJ7bo5cjk7OzO7L6I1EKOQ4kmrLVKU8gENEKofwW8wRu0dmJ8YuigmooMAlsEvorv4TW-thCxXVVWXFcMCbvSzkK43ZiI2OkRyYJGHfGE87cAxl9VKGTzW77jAOk6wewhxB8ZwNfabC64tOoWheZs2EWhBmwaUCvhmYW-PfZ_2G2tgyFtvmWLAddSETR9YqtgRdXI2G4YhdzjsMUQc26CtZifcA0Q-OByPva13BC011qveYEOwNdolibeMzu4xu_Mhu8nuAmJ2613sDQFxKtmNG0lbzKrFrM6zr84P2S_fh-xBb3cUs-9-yFOgwbesHVWzHhs4HLyQGzAR-adfG92aVGWTsObhH-wWrK6P5C0HYmFsjlKFpNAzQWwDdEz8oes9x4htQGp-48hWDuP1wlUtuf1zmywbYOFJEYdcXC2Xdf2vCMwvqqKcT8tiWi0ey4VcFrKc50VRTItaFsWJobFIO6_edlWdarq7WNfqOi_LOq9XeWrqO5XO7jxhMS3Labl6LEpZzeWifp9w9T7hBE4a5xNx4C1y6OkEJ0IhJcc0dmlPnyEEHQmDlN9gGDGIM-K_myVNBk_xcDhnLanyyonpP3h-GN9CQgtMl5z2HAlsdyG8KsTrXxCYHvE=">  <div class="module">
+    <h2>Related Lawyer Searches</h2>
+    <ul class="links">
+        <li><a href="/criminal-defense-lawyer/nj/morristown.html" title="Morristown Criminal Defense Attorneys">Morristown Criminal Defense lawyers</a></li>
+        <li><a href="/dui-dwi-lawyer/nj/morristown.html" title="Morristown DUI / DWI Attorneys">Morristown DUI lawyers</a></li>
+        <li><a href="/federal-crime-lawyer/nj/morristown.html" title="Morristown Federal Crime Lawyers">Morristown Federal Crime lawyers</a></li>
+        <li><a href="/juvenile-lawyer/nj/morristown.html" title="Morristown Juvenile Law Attorneys">Morristown Juvenile lawyers</a></li>
+        <li><a href="/criminal-defense-lawyer/nj/new_brunswick.html" title="New Brunswick Criminal Defense Attorneys">New Brunswick Criminal Defense lawyers</a></li>
+        <li><a href="/dui-dwi-lawyer/nj/new_brunswick.html" title="New Brunswick DUI / DWI Attorneys">New Brunswick DUI lawyers</a></li>
+        <li><a href="/federal-crime-lawyer/nj/new_brunswick.html" title="New Brunswick Federal Crime Lawyers">New Brunswick Federal Crime lawyers</a></li>
+        <li><a href="/juvenile-lawyer/nj/new_brunswick.html" title="New Brunswick Juvenile Law Attorneys">New Brunswick Juvenile lawyers</a></li>
+        <li><a href="/criminal-defense-lawyer/nj/newark.html" title="Newark Criminal Defense Attorneys">Newark Criminal Defense lawyers</a></li>
+        <li><a href="/dui-dwi-lawyer/nj/newark.html" title="Newark DUI / DWI Attorneys">Newark DUI lawyers</a></li>
+        <li><a href="/federal-crime-lawyer/nj/newark.html" title="Newark Federal Crime Lawyers">Newark Federal Crime lawyers</a></li>
+        <li><a href="/juvenile-lawyer/nj/newark.html" title="Newark Juvenile Law Attorneys">Newark Juvenile lawyers</a></li>
+        <li><a href="/criminal-defense-lawyer/nj/red_bank.html" title="Red Bank Criminal Defense Attorneys">Red Bank Criminal Defense lawyers</a></li>
+        <li><a href="/dui-dwi-lawyer/nj/red_bank.html" title="Red Bank DUI / DWI Attorneys">Red Bank DUI lawyers</a></li>
+        <li><a href="/federal-crime-lawyer/nj/red_bank.html" title="Red Bank Federal Crime Lawyers">Red Bank Federal Crime lawyers</a></li>
+        <li><a href="/juvenile-lawyer/nj/red_bank.html" title="Red Bank Juvenile Law Attorneys">Red Bank Juvenile lawyers</a></li>
+        <li><a href="/criminal-defense-lawyer/nj/toms_river.html" title="Toms River Criminal Defense Attorneys">Toms River Criminal Defense lawyers</a></li>
+        <li><a href="/dui-dwi-lawyer/nj/toms_river.html" title="Toms River DUI / DWI Attorneys">Toms River DUI lawyers</a></li>
+        <li><a href="/federal-crime-lawyer/nj/toms_river.html" title="Toms River Federal Crime Lawyers">Toms River Federal Crime lawyers</a></li>
+        <li><a href="/juvenile-lawyer/nj/toms_river.html" title="Toms River Juvenile Law Attorneys">Toms River Juvenile lawyers</a></li>
+        <li><a href="/criminal-defense-lawyer/nj/wayne.html" title="Wayne Criminal Defense Attorneys">Wayne Criminal Defense lawyers</a></li>
+        <li><a href="/dui-dwi-lawyer/nj/wayne.html" title="Wayne DUI / DWI Attorneys">Wayne DUI lawyers</a></li>
+        <li><a href="/federal-crime-lawyer/nj/wayne.html" title="Wayne Federal Crime Lawyers">Wayne Federal Crime lawyers</a></li>
+        <li><a href="/juvenile-lawyer/nj/wayne.html" title="Wayne Juvenile Law Attorneys">Wayne Juvenile lawyers</a></li>
+    </ul>
+  </div>
+</section><!--Widget:widgetsrelated_professional_serps:false:ajax:false:size::professional:Barrister::Professional-1622712:limit:20-->
+
+
+    </div>
+
+    
+  </div>
+</div>
+
+
+<script>
+//<![CDATA[
+
+  $(function(){
+    $('.js-replaceable').bind('dom:changed', function(){
+      $(this).find('.js-hover-tooltip-link').hoverTooltip();
+    });
+  });
+
+//]]>
+</script>
+</span>
+    <footer class="persistent-footer page full-width no-border"><div class="page-row"><a class="quiet span3" href="//www.avvo.com/"><div class="icon-avvo-logo footer-logo"></div><div class="footer-slogan">Legal. <strong>Easier.</strong></div></a><div class="span3"><a class="quiet" href="/"><h3>Explore Avvo</h3></a><p class="margin1"><a class="quiet" href="/ask-a-lawyer">Ask a Lawyer</a></p><p class="margin1"><a class="quiet" href="/find-a-lawyer">Find a Lawyer</a></p><p class="margin1"><a class="quiet" href="/free-legal-advice">Free Legal Advice</a></p><p class="margin1"><a class="quiet" href="/review-your-lawyer">Review a Lawyer</a></p></div><div class="span3"><a class="quiet" href="/for-lawyers"><h3>For Lawyers</h3></a><p class="margin1"><a class="quiet" href="/for-lawyers">Lawyer Advertising</a></p><p class="margin1"><a class="quiet" href="/claim-your-profile">Claim Your Profile</a></p><p class="margin1"><a class="quiet" href="/support/all-firm-claim">For Law Firms</a></p><p class="margin1"><a class="quiet" href="//ignite.avvo.com">Marketing Management Software</a></p><p class="margin1"><a class="quiet" href="//lawyernomics.avvo.com">Lawyernomics Blog</a></p></div><div class="span3"><a class="quiet" href="/about_avvo"><h3>Company Info</h3></a><p class="margin1"><a class="quiet" href="/about_avvo/about_us">About Us</a></p><p class="margin1"><a class="quiet" href="/for-lawyers/support">Support</a></p><p class="margin1"><a class="quiet" href="//press.avvo.com">Press Room</a></p><p class="margin1"><a class="quiet" href="/partner_with_us">Partner With Us</a></p><p class="margin1"><a class="quiet" href="/about_avvo/jobs">Careers</a></p><p class="margin1"><a class="quiet" href="//avvoblog.com">Avvo Blog</a></p><p class="margin1"><a class="quiet" href="//nakedlaw.avvo.com">NakedLaw Blog</a></p></div></div></footer><footer class="black"><div id="fine_print_container"><div id="fine_print"><div class="contact_avvo">Follow us on <a href="//www.twitter.com/avvo"><img alt="Twitter" src="http://assets2.iavvo.com/assets/embed/additional_links/twitter_icon-c160ce8886d11899e6833dd271a13f2d.png" /></a><a href="http://www.facebook.com/avvo"><img alt="Facebook" src="http://assets1.iavvo.com/assets/embed/additional_links/facebook_icon-6d9bd4ddfbad9c81a22fd2471b67d673.png" /></a><a href="//plus.google.com/107840042923877554905"><img alt="Google icon" src="http://assets2.iavvo.com/assets/embed/additional_links/google_icon-942738832fa1fe452c21f15e5a9194b2.png" /></a></div><p class="bottom_links"><span class="copyright">&copy;2014 Avvo, Inc. All Rights Reserved </span><span><a href="?prefer_mobile=true" rel="nofollow">Mobile View</a></span><span class="pipe">|</span><span><a href="/support/terms" rel="nofollow">Terms of Use</a></span><span class="pipe">|</span><span><a href="/support/privacy" rel="nofollow">Privacy Policy</a></span><span class="pipe">|</span><span><a href="/support/community_guidelines" rel="nofollow">Community Guidelines</a></span></p></div></div></footer>
+
+    <noscript>
+  <div style="text-align:center;background:#fbf3c5;color:#911717;padding:8px;border-bottom:1px solid #D7DADD;">
+  <strong>We've detected that your browser does not support scripting.</strong> <br/>
+  Scripting must be enabled to use Avvo. Turn on scripting and reload this page.
+  </div>
+</noscript>
+
+
+
+
+    <!-- r:2c4e22c7b390a64641358a65bde9e1a551c45b69 -->
+<!-- d:Fri Nov 21 22:19:26 PST 2014 -->
+<!-- p:www.avvo.com -->  
+
+
+
+
+
+    
+    <script src="http://assets1.iavvo.com/assets/footer_common-59d36e58c17ffbec325b4d50f60e0fda.js"></script>
+
+
+
+<div id="google_remarketing">
+
+    <script type="text/javascript">
+    /* <![CDATA[ */
+    var google_conversion_id = 1057123743;
+    var google_conversion_language = "en";
+    var google_conversion_format = "3";
+    var google_conversion_color = "ffffff";
+    var google_conversion_label = "z9BlCKXnsAIQn9uJ-AM";
+    var google_conversion_value = 0;
+    /* ]]> */
+    </script>
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js?avvo_cXfM">
+    </script>
+    <noscript>
+    <div style="display:inline;">
+    <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/1057123743/?label=z9BlCKXnsAIQn9uJ-AM&amp;guid=ON&amp;script=0"/>
+    </div>
+    </noscript>
+
+</div>
+
+    <script>
+//<![CDATA[
+
+$(function(){
+  var a=document.createElement("script");
+  var b=$("script")[0];
+  a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0011/6860.js";
+  a.async=true;a.type="text/javascript";
+  b.parentNode.insertBefore(a,b);
+});
+
+//]]>
+</script>
+  </body>
+
+
+</html>

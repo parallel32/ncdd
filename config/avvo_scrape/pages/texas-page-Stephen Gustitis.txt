@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+
+<html class="no-js">
+  <head>
+    
+<!-- force browser refresh of favicon.  Plz remove me someday? -->
+<link href="http://www.avvo.com/favicon.ico?v=2" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+
+<meta charset="utf-8">
+<title>Lawyer Stephen Gustitis - Bryan Attorney - Avvo.com</title>
+
+<meta name="description" content="Stephen Gustitis is a Criminal Defense Attorney in Bryan, TX. Click Stephen’s profile to discover their Avvo Rating, write a review, and read professional endorsements." />
+
+<meta name="robots" content="index,follow" />
+
+
+
+<meta property="og:image" content="http://assets1.iavvo.com/assets/header_logo-d9da0710ef4f108673b08e2f89ee79c8.png" />
+
+
+<meta name="robots" content="NOODP,NOYDIR" />
+
+<script>
+//<![CDATA[
+window.locationContext = {"id":23673,"name":"Atlanta","city_name":"Atlanta","state_name":"Georgia","state_code":"GA","postal_code":null};window.adLocationContext = {"id":61489,"name":"30316","city_name":"Atlanta","state_name":"Georgia","state_code":"GA","postal_code":"30316"};
+//]]>
+</script><script src="//cdn.optimizely.com/js/275511722.js"></script>
+
+<link href="https://plus.google.com/107840042923877554905" rel="publisher" />
+
+  <link href="http://assets1.iavvo.com/assets/application-679b5b560ef19c2728b0c8d332d28f6a.css" media="all" rel="stylesheet" />
+  <!--[if lt IE 9]>
+    <link href="http://assets2.iavvo.com/assets/font_avvo_icon_bad_IE_bad_dog-27d8ace9b1fdd6c93145f0e1b7827dc6.css" media="all" rel="stylesheet" />
+  <![endif]-->
+
+<link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:700|Open+Sans:300,400,600,700" media="all" rel="stylesheet" />
+
+<script src="http://assets2.iavvo.com/assets/application-944ee4fdb62f3df1542271af9ecbae14.js"></script>
+
+<!--[if (gte IE 6)&(lte IE 8)]>
+    <script src="http://assets1.iavvo.com/assets/selectivizr-c4422edc73658e842dce601b5979afe2.js"></script>
+<![endif]-->
+
+
+
+  <link href="http://www.avvo.com/attorneys/77803-tx-stephen-gustitis-148186.html" rel="canonical" />
+
+<script>
+//<![CDATA[
+
+  google_analytics_domain_name=".avvo.com";
+  try {
+    var _gaq = _gaq || [];
+    _gaq.push(
+      ['_setAccount', 'UA-4437273-1'],
+      ['_setDomainName', '.avvo.com'],
+      ['_setCustomVar', 1,'user_type','other', 1],
+      ['_setCustomVar', 5, 'abs', '....................................................................................................', 3]
+    );
+
+        _gaq.push(['_setCustomVar', 2,'type', 'claimed', 3]);
+        _gaq.push(['_setCustomVar', 3,'spec',"55_Criminal Defense", 3]);
+
+    _gaq.push(['_trackPageview']);
+  } catch(err) {}
+
+//]]>
+</script>
+
+  <script>
+//<![CDATA[
+
+  try {
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  } catch(err) {}
+
+//]]>
+</script>
+  <script type='text/javascript'>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function() {
+      var gads = document.createElement('script');
+      gads.async = true;
+      gads.type = 'text/javascript';
+      var useSSL = 'https:' == document.location.protocol;
+      gads.src = (useSSL ? 'https:' : 'http:') +
+        '//www.googletagservices.com/tag/js/gpt.js';
+      var node = document.getElementsByTagName('script')[0];
+      node.parentNode.insertBefore(gads, node);
+    })();
+  </script>
+
+  <script type='text/javascript'>
+    googletag.cmd.push(function () {
+              googletag.pubads().setTargeting('useg', 'unknown');
+              googletag.pubads().setTargeting('spec', '55');
+    });
+
+      googletag.cmd.push(function() {
+        googletag.defineSlot('/4508117/legal_directory_300x100_right', [300, 100], 'div-gpt-ad-475841815844-0').addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.pubads().collapseEmptyDivs();
+        googletag.enableServices();
+      });
+  </script>
+
+
+
+<script type="text/javascript">window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({"location":{"id":166968,"professional_id":148186,"name":"Stephen Gustitis Criminal Defense Lawyer","displayable":true,"ordinal":2,"updated_at":"2008-08-11T00:00:00.000-07:00","updated_by":25764,"license_id":null,"created_at":null},"pageTitle":"Lawyer Stephen Gustitis - Bryan Attorney","siteSection":null,"logicalSection":"lawyers/show","renderType":"desktop","persistentSessionId":"d273575a-aecc-483d-be47-f65ef80f7679","userId":null,"userEmail":null,"userType":"anonymous","professionalId":null,"professional":"148186-Stephen-Gustitis","specialty":55,"claimStatus":"claimed","ratingType":"No concern","rating":9.9,"reviewScore":5.0,"reviews":21,"endorsements":8,"profileContent":{"contributions":{"legalAnswers":385,"bestAnswers":11,"agree":284,"helpful":41,"guides":0,"staffPicks":0},"headshot":"yes","aboutMe":"yes","publications":13,"awards":2,"workExperience":2,"speakingEngagements":0},"professionalType":"non-advertiser"});</script>
+
+  <meta name="ad-location-id" content="61489" /><meta name="ad-specialty-id" content="55" /><meta name="page-template-name" content="Lawyer Profile - Main" /></head>
+  <body>
+    <script>
+//<![CDATA[
+duraLogEvents('eJztUsGO2yAU/JWIs/EaG4yd+6qXrrSH3lYrRMyzg4TBAhJvVPXf+5w0UpN7\nbz168My8N/M+Phhnbc+4EKwgSwwjpGSD107ZeYm3D1IQPYfEV21I8ZMMOsMU\n4oXsrwTrgDxTDdkz3rGuLYgJs7Ye/13XtdTncyiHMCPhFB2CLzrnED1c0ouU\nXdXQ/EVThuUInk6nlG22id6kymOeHRIjjBAjRLL3J+dQKEFUegKf70i6DXId\ng/QVq4fxIClv+4byRnS0G8FQqHQlajHiK1xV55BB2QUprJIlq7uStWVdSXyc\nIR/DJvbt9Qf547iJ3+wieLMBPmXtB1DT6WpszGC4AUYPB4bGjHVUt8LQUdSH\nTnIxNC3fgoOYLK7ss3qY29SyEVJoqmEYKO8aQw/AJR1bAWNXjbKVPfn1WTwW\niDmos4X1qTIXsLS7dN20ssGUFhisdvlyBYUoCHzhMBg4/LVc0g6SijDd2axm\n1RO8BNzcqSEYUA9OLTbXb07BpxDBKIebWj+p5EJOZI9TGJsWpy93BHfIMCOC\nXXg9AwbxXa8XiLv326nt6O5tu6f/h/WPD+vzNzu0UaM=\n');
+//]]>
+</script>
+
+<script>
+//<![CDATA[
+
+  $(document).on('click', '[data-dura-trackable-href]', duraUpdateLinkHREF);
+
+//]]>
+</script>
+    <noscript><iframe height="0" src="//www.googletagmanager.com/ns.html?id=GTM-K2L3VH" style="display:none;visibility:hidden" width="0"></iframe></noscript><script type="text/javascript">(function(w, d, s, l, i){
+  w[l] = w[l] || [];
+  w[l].push({ 'gtm.start' : new Date().getTime(),
+              event       : 'gtm.js'});
+  var f   = d.getElementsByTagName(s)[0];
+  var j   = d.createElement(s);
+  var dl  = l != 'dataLayer' ? '&l='+ l : '';
+  j.async = true;
+  j.src   = '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-K2L3VH');</script>
+    <div id="bing_tracking">
+
+</div>
+    <noscript>
+  <div style="text-align:center;background:#fbf3c5;color:#911717;padding:8px;border-bottom:1px solid #D7DADD;">
+  <strong>We've detected that your browser does not support scripting.</strong> <br/>
+  Scripting must be enabled to use Avvo. Turn on scripting and reload this page.
+  </div>
+</noscript>
+
+    <hgroup><header><nav id="page_header"><a href="//www.avvo.com/"><img alt="Logo@2x" class="logo" src="http://assets2.iavvo.com/assets/logos/logo@2x-39c17b04a49441c5131b852386f9312e.png" /></a><ul class="pull-right" id="sign-in-module"><li class="left-margin"><a href="/for-lawyers">For Lawyers</a></li><li class="left-margin"><a href="/account/login" rel="nofollow">Sign in</a></li><li class="left-margin"><a href="/account/register" rel="nofollow">Register</a></li></ul></nav></header></hgroup>
+    <div class="page">
+      <div id="primary_nav_and_breadcrumb">
+        <nav class="" id="primary_nav"><style type="text/css">.menu-primary{height:auto}.menu-primary #my-avvo-link{padding-top:28px}</style><ul class="center-content clearfix menu-primary"><li><a href="/free-legal-advice">Research<br/>Legal Advice</a></li><li><a href="/ask-a-lawyer">Ask<br/>a Lawyer</a></li><li class="active"><a href="/find-a-lawyer">Find<br/>a Lawyer</a></li><li><a href="https://advisor.avvo.com?avvo_source=avvo&amp;avvo_medium=global_navigation&amp;avvo_campaign=avvo_advisor">Instant<br/>Phone Call <span class='label label-success' style='line-height: 12px;'>New!</span></a></li><li><a href="/review-your-lawyer">Review<br/>Your Lawyer</a></li></ul><script type="text/javascript">$(document).ready(function(){
+  if(false){
+    $('.menu-primary.my_avvo').show();
+    $('#my-avvo-link').parent('li').addClass('active');
+  }
+  $('#my-avvo-link').click(function(){
+    $('.menu-primary.my_avvo').slideToggle();
+    return false;
+  })
+})</script>  <div class="search browsable" id="primary_nav_search">
+      <span id="search_selector">
+        Lawyers
+      </span>
+      <ul id="search_selector_menu" style="display:none;">
+          <li data-form-id="lawyer_search">Lawyers</li>
+          <li data-form-id="legal_advice_search">Legal Advice</li>
+      </ul>
+
+        <span id="lawyer_search" class="search_form_container selectable" >
+          
+<form accept-charset="UTF-8" action="/search/lawyer_search" class="search_form search-form" id="lawyer_search_primary_nav_search_search_form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+  <input autocomplete="off" class="keyword_field keyword-search-field " data-tooltip-right="true" id="lawyer_search_primary_nav_search_search_form_keyword_field" name="q" placeholder="Lawyer&#39;s name -OR- Practice area" type="text" />
+  <input autocomplete="off" class="location_field location-search-field " id="lawyer_search_primary_nav_search_search_form_location_field" name="loc" placeholder="City, State -OR- ZIP" type="text" value="Atlanta, GA" />
+  <span class="icon-submit">
+    <input class="button primary action " name="commit" style="" type="submit" value="" />
+  </span>
+
+</form>
+        </span>
+</div>
+<script>
+//<![CDATA[
+
+  $(document).click(function(e){
+    if(e.target.id != "search_selector") {
+      $("#search_selector_menu").hide();
+    }
+  });
+
+  $("#search_selector_menu li").click(function(e) {
+    form_id = $(this).attr("data-form-id");
+    $("#primary_nav_search .search_form_container").hide();
+    $("#" + form_id).show();
+    $("#search_selector").html($(this).html());
+    $("ul.ui-autocomplete").hide();
+    $("#search_selector_menu").hide();
+  });
+
+  $("#search_selector").click(function(e) {
+    $("#search_selector_menu").toggle();
+    $("#search_selector_menu").position({
+      my: "left top",
+      at: "left bottom",
+      of: $("#search_selector")
+    });
+  });
+
+  $("#primary_nav_search .keyword_field").change(function(e) {
+    $("#primary_nav_search .keyword_field").val($(e.target).val());
+    $("#primary_nav_search .keyword_field").trigger('valuechanged');
+  });
+
+  $("#primary_nav_search .location_field").change(function(e) {
+    $("#primary_nav_search .location_field").each(function(i,el) {
+      $(el).val($(e.target).val());
+      $(el).trigger('valuechanged');
+    });
+  });
+
+//]]>
+</script>
+</nav><div id="breadcrumb"><div class="breadcrumbs"><span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/all-lawyers/tx.html" itemprop="url"><span itemprop="title">Texas</span></a></span>&nbsp;&gt;&nbsp;<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/all-lawyers/tx/bryan.html" itemprop="url"><span itemprop="title">Bryan</span></a></span>&nbsp;&gt;&nbsp;<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/criminal-defense-lawyer/tx/bryan.html" itemprop="url"><span itemprop="title">Criminal Defense Attorneys</span></a></span>&nbsp;&gt;&nbsp;<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><span class="current" itemprop="title"><span>Stephen A. Gustitis</span></span></span></div></div><!--[if lt IE 9]><script type="text/javascript">$(document).ready(function(){
+  $('.icon-submit').click(function(){
+    $(this).parent().submit();
+  });
+})</script><![endif]-->
+      </div>
+      <div id="flash"></div>
+    </div>
+    
+      <span>
+          
+<div class="page stripped"  itemscope = "itemscope" itemtype = "http://schema.org/Attorney" >
+
+  <!-- header -->
+    <div class="page-row margin6" id="profile_header"><div class="span12"><h1 class="light pull-left condensed margin0"><span class="pull-left" itemprop="name">Stephen A. Gustitis
+</span></h1></div><div class="span12 margin2" id="name_alias_section"><h3></h3></div><div class="span12 inline-hgroup" id="firm_office_detail"></div></div>
+
+
+  <div class="page-row">
+    <section class="span8" id="profile_details">
+
+
+      <!-- tabs -->
+
+
+      <div id="profile_overview">
+  <!-- headshot -->
+  <div class="page-row" id="headshot">
+    <div class="span2">
+      <span class="avvo-inline-block">
+        <img alt="Stephen A. Gustitis" class="borderless standard" itemprop="image" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/standard/148186_1379087958.jpg" title="Stephen A. Gustitis" />
+      </span>
+    </div>
+    <div class="span6">
+        <div class="page-row margin8"><div class="span3"><div class="page-row"><div class="span3" itemscope="itemscope" itemtype="http://schema.org/Review"><div itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Organization"><meta content="Avvo Inc." itemprop="name" /><meta content="Avvo" itemprop="alternateName" /><meta content="http://www.avvo.com" itemprop="url" /></div><div class="icon half-width pull-left" data-tooltip-remote="avvo_rating_description"><img alt="Avvorating@2x" src="http://assets1.iavvo.com/assets/embed/profile/avvorating@2x-cf89cef391e72dc3ea9ec72ed16ce495.png" width="100" /></div><div class="pull-left center-content margin5" itemprop="reviewRating" itemscope="itemscope" itemtype="http://schema.org/Rating"><span class="avvo_rating_numeric"><h2 class="text-red light bold center-content condensed margin0" itemprop="ratingValue">9.9</h2><img alt="" class="rating_image" src="http://assets1.iavvo.com/assets/profile_rating/icon_rating_09-95b4825ad0ede6d4783b9d54e47e84e0.gif" /><h3 class="rating_info center-content text-red light"><span class="summary"><a class="tooltip_link tooltip-link" data-tooltip-remote-options="" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">Superb</a></span></h3><meta content="10.0" itemprop="bestRating" /><meta content="0.0" itemprop="worstRating" /></span></div><meta content="Stephen A. Gustitis" itemprop="itemReviewed" /></div><div class="span3 margin4">  <table id="sub_rating">
+
+        <tr>
+          <td>Experience</td>
+          <td>
+            <span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Industry Recognition</td>
+          <td>
+            <span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-half-circle" style="font-size:13px"></span></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Professional Conduct</td>
+          <td>
+            <span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span><span class="icon-padded right narrow icon-circle" style="font-size:13px"></span></span>
+          </td>
+        </tr>
+
+  </table>
+<p class="text-meta"><a class="tooltip_link tooltip-link" data-tooltip-remote-options="provisional=false" data-tooltip-remote="avvo_rating_description" href="#!" rel="nofollow">What is the Avvo Rating?</a></p></div></div></div><div class="span3 margin6"><div class="page-row"><div class="span3"><div class="page-row"><div class="span1"><img alt="Reviews" class="full-width" src="http://assets2.iavvo.com/assets/embed/profile/reviews-72fd939ee2e493ce25a7b88d3da6028c.png" /></div><div class="span2"><a class="count" href="/attorneys/77803-tx-stephen-gustitis-148186/reviews.html"><div class="page-row"><div class="inline-hgroup span2"><h3 class="light condensed margin0 stripped">21&nbsp;</h3><h5 class="light condensed margin0 stripped">Reviews</h5></div><div class="span2"><a class="star_rating full-width" href="/attorneys/77803-tx-stephen-gustitis-148186/reviews.html"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a></div></div></a><div class="client_review_links">Current or former client? <a data-avn="{&quot;name&quot;:&quot;amos.gtm.view-lawyer-review-form&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;148186-Stephen-Gustitis&quot;}}" href="/attorneys/77803-tx-stephen-gustitis-148186/write_review.html" rel="nofollow">Write a review</a></div></div></div></div><hr class="span3" /><div class="span3"><div class="page-row"><div class="span1"><img alt="Endorse" class="full-width" src="http://assets2.iavvo.com/assets/embed/profile/endorse-393f817ef630e2e358047b4ca97e17ed.png" /></div><div class="span2"><div class="page-row"><a href="/attorneys/77803-tx-stephen-gustitis-148186/endorsements.html"><div class="inline-hgroup span2"><h3 class="light condensed margin0 stripped">8&nbsp;</h3><h5 class="light condensed margin0 stripped">Endorsements</h5></div></a></div>Lawyers: <br><a href="/attorneys/77803-tx-stephen-gustitis-148186/write_endorsement.html" rel="nofollow">Endorse this lawyer</a></div></div></div><hr class="span3" /><div class="span3"><div class="page-row"><div class="span1"><img alt="Contri" class="full-width" src="http://assets2.iavvo.com/assets/embed/profile/contri-c5a1b74b9701f86d9b28e2d9f4f0334c.png" /></div><div class="span2"><div class="page-row"><div class="inline-hgroup span2"><h5 class="light condensed margin0">Contributor Level</h5><h3 class="light condensed margin0 stripped">13</h3></div></div><p><a href="/attorneys/77803-tx-stephen-gustitis-148186/answers.html">View contributions</a></p></div></div></div></div></div><div class="span6"><div id="profile_actions" class="lawyer_profile_actions">
+    <a class="primary action" data-avn="{&quot;name&quot;:&quot;amos.gtm.view-lawyer-email-form&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;148186-Stephen-Gustitis&quot;}}" href="/attorneys/77803-tx-stephen-gustitis-148186/contact.html" rel="nofollow">Email Lawyer</a>
+
+  <a class="action" data-avn="{&quot;name&quot;:&quot;amos.gtm.contact-lawyer-website&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;148186-Stephen-Gustitis&quot;}}" href="http://www.gustitislaw.com" onclick="this.href=&#39;/attorneys/77803-tx-stephen-gustitis-148186/website.html&#39;;return true;" target="_blank">Lawyer&#39;s website</a>
+
+  <a class="action send" href="/attorneys/77803-tx-stephen-gustitis-148186/share.html" rel="nofollow">Send to a friend</a>
+</div>
+</div></div>
+    </div>
+  </div>
+</div>
+
+
+    
+      <div class="module"><h2>Overview</h2><div class="page-row" id="overview"><section class="span8">
+        <div class="js-replaceable margin6" id="specialties"><div class="page-row" id="specialties"><div class="span2"><h5 class="light">PRACTICE AREAS</h5></div><div class="span6"><div class="page-row"><div class="span2">
+<img alt="Chart?chs=169x169&amp;cht=p&amp;chp=4" class="full-width" id="specialty_chart" src="http://chart.apis.google.com/chart?chs=169x169&amp;cht=p&amp;chp=4.7&amp;chco=76d0eb|f48026&amp;chd=t:70,30" />
+
+</div><div class="span4"><div class="page-row js-link-hub"><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#76d0eb"></div><div class="span3"><a class="tooltip_link tooltip-link" data-tooltip="All areas of criminal defense including white collar crime, appeals, DWI, all felonies and misdemeanors." href="#!" rel="nofollow">70% Criminal Defense</a><div class="text-meta">21 years, 3,700 cases</div></div></div></div></div><div class="span4"><div><div class="rigid margin2" id=""><div class="box pull-left" style="background-color:#f48026"></div><div class="span3"><a class="tooltip_link tooltip-link" data-tooltip="Experienced DWI defense." href="#!" rel="nofollow">30% DUI / DWI</a><div class="text-meta">21 years, 750 cases</div></div></div></div></div></div></div></div><div id="not_practicing_section">
+</div></div></div></div>
+        <div class="js-replaceable margin6" id="fees_payments"><div class="page-row" id="fees_payments_section"><div class="span2"><h5 class="light">FEES AND<BR> PAYMENT TYPES</h5></div><div class="span6"><div class="page-row"><div class="span6 margin4"><h4>Fees</h4><div id="fees_detail">    Fixed (Always)
+
+</div></div><div class="span6"><h4>Payment types</h4><div id="payments_detail">  Cash, Check, Credit Card
+  
+</div></div></div></div></div></div>
+          <div class="js-replaceable margin6" id="contact_information"><div class="page-row" id="contact_information_section"><div class="span2"><h5 class="light">CONTACT INFORMATION</h5></div><div class="span6"><div class="page-row" id="contact_information_detail"><div class="span3"><div class="address_list avvo-undecorated-list" id="sortable_address_list"><div class="address_sort margin4" id="address_166968"><div class="address_name semibold">Stephen Gustitis Criminal Defense Lawyer</div><span><div class="address_line_1">102 East 26th Street</div><div class="address_line_2"></div></span><div class="address_city_state">Bryan, TX 77803</div><div class="address_phone"><span class="phone_label muted">Office: </span><span id="phone_number_0" itemprop="telephone">979-823-9111</span></div><a data-avn="{&quot;name&quot;:&quot;amos.contacts.viewed_directions&quot;,&quot;payload&quot;:{&quot;professional_id&quot;:148186}}" href="http://maps.google.com/maps?q=102+East+26th+Street%2C+Bryan%2C+TX+77803+%28Stephen+Gustitis+Criminal+Defense+Lawyer%29" rel="nofollow" target="_blank"><span class="icon-map"></span> View map</a> <span class="pipe">|</span> <a href="/attorneys/77803-tx-stephen-gustitis-148186/user_reported_information.html?address=166968" rel="nofollow">Edit this address</a></div></div></div><div class="span3"><div class="page-row"><div class="span3"><div class="page-row"><div class="span1"><div class="icon-email2 pull-right"></div></div><div class="span2"><a href="/attorneys/77803-tx-stephen-gustitis-148186/contact.html" rel="nofollow">Email this lawyer</a></div></div></div><div class="span3"><div class="page-row"><div class="span1"><div class="icon-website pull-right"></div></div><div class="span2"><a data-avn="{&quot;name&quot;:&quot;amos.profiles.website_clicked&quot;,&quot;payload&quot;:{&quot;professional_id&quot;:148186,&quot;profession_name&quot;:&quot;lawyer&quot;,&quot;specialty_name&quot;:&quot;Criminal Defense&quot;}}" href="http://www.gustitislaw.com" itemprop="url" onclick="this.href=&#39;/attorneys/77803-tx-stephen-gustitis-148186/website.html&#39;;return true;" target="_blank">Visit lawyer&#39;s website</a></div></div></div><hr class="span3" /></div>  <div id="additional_links" class="page-row">
+      <div class="span3">
+        <div class="page-row">
+          <div class="span1">
+            <span class='icon-website  pull-right'></span>
+          </div>
+          <div class="span2">
+              <a href="http://www.gustitislaw.com" rel="nofollow" target="_blank">Bryan|College Station Criminal Defense Lawyer</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="span3">
+        <div class="page-row">
+          <div class="span1">
+            <span class='icon-facebook  pull-right'></span>
+          </div>
+          <div class="span2">
+              <a href="https://www.facebook.com/pages/Gustitis-Law" rel="nofollow me" target="_blank">Facebook</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="span3">
+        <div class="page-row">
+          <div class="span1">
+            <span class='icon-googleplus  pull-right'></span>
+          </div>
+          <div class="span2">
+              <a href="https://plus.google.com/app/basic/113443677346239002651/about?cbp=hi2kezu10c0g" rel="me" target="_blank">Google+</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="span3">
+        <div class="page-row">
+          <div class="span1">
+            <span class='icon-linkedin  pull-right'></span>
+          </div>
+          <div class="span2">
+              <a href="http://www.linkedin.com/pub/stephen-gustitis/1b/4a0/b3b?_mSplash=1" rel="nofollow me" target="_blank">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+
+
+  </div>
+</div>
+</div></div></div></div>
+        
+        <div class="js-replaceable margin6" id="about_me"><div class="page-row" id="about_me_section"><div class="span2"><h5 class="light">ABOUT ME</h5></div><div class="span6"><div id="about_me_detail">  
+    <div id="media_table_wrapper">
+      <table><tr><td><div class="thumbnail borderless"><a data-modal-open="HfGq7cg5" href="#!" nofollow="nofollow" title=""><img alt="" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/thumbnail_small/148186_1316296133.jpg" title="" /></a></div><div id="HfGq7cg5" style="display:none;width:;height:"><div class="modal-header">Image</div><div class="modal-body"><img alt="148186 1316296133" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/normalized/148186_1316296133.jpg" /></div></div></td><td><div class="thumbnail borderless"><a data-modal-open="GxXUDV7a" href="#!" nofollow="nofollow" title=""><img alt="" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/thumbnail_small/148186_1316296118.jpg" title="" /></a></div><div id="GxXUDV7a" style="display:none;width:;height:"><div class="modal-header">Image</div><div class="modal-body"><img alt="148186 1316296118" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/normalized/148186_1316296118.jpg" /></div></div></td><td><div class="thumbnail borderless"><a data-modal-open="wGmzds46" href="#!" nofollow="nofollow" title=""><img alt="" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/thumbnail_small/148186_1316295918.jpg" title="" /></a></div><div id="wGmzds46" style="display:none;width:;height:"><div class="modal-header">Image</div><div class="modal-body"><img alt="148186 1316295918" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/normalized/148186_1316295918.jpg" /></div></div></td><td><div class="thumbnail borderless"><a data-modal-open="3xXEJZWd" href="#!" nofollow="nofollow" title=""><img alt="" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/thumbnail_small/148186_1316295729.jpg" title="" /></a></div><div id="3xXEJZWd" style="display:none;width:;height:"><div class="modal-header">Image</div><div class="modal-body"><img alt="148186 1316295729" src="http://headshots.iavvo.com/avvo/ugc/images/gallery/normalized/148186_1316295729.jpg" /></div></div></td></tr></table>
+    </div>
+  
+    <p>
+      While battling prosecutors in the heart of Aggieland, criminal defense attorney , Stephen Gustitis, takes late night calls from parents whose Texas Aggies have... <a href="/attorneys/77803-tx-stephen-gustitis-148186/aboutme.html">more</a>
+    </p>
+
+  <a class="navigation" href="/attorneys/77803-tx-stephen-gustitis-148186/aboutme.html">View all photos and/or videos</a>
+</div></div></div></div>
+</section></div></div>
+      <div class="module"><h2>References</h2><div class="page-row" id="references"><section class="span8">
+        <div class="js-replaceable margin6" id="reviews"><div class="page-row" id="reviews_section"><div class="span2"><h5 class="light">CLIENT REVIEWS</h5></div><div class="span6"><div id="reviews_detail"><div class="page-row"><div class="span1"><img alt="Reviews" class="full-width" src="http://assets2.iavvo.com/assets/embed/profile/reviews-72fd939ee2e493ce25a7b88d3da6028c.png" /></div><div class="span5"><div class="overview">
+  <h4>Average Client Rating</h4>
+  <div class="star_rating">
+      <a class="stars" href="/attorneys/77803-tx-stephen-gustitis-148186/reviews.html"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a>
+      <span class="review_count"><a href="/attorneys/77803-tx-stephen-gustitis-148186/reviews.html">21 reviews</a></span>
+  </div>
+  <div class="client_review_links">Current or former client? <a data-avn="{&quot;name&quot;:&quot;amos.gtm.view-lawyer-review-form&quot;,&quot;payload&quot;:{&quot;property&quot;:&quot;148186-Stephen-Gustitis&quot;}}" href="/attorneys/77803-tx-stephen-gustitis-148186/write_review.html" rel="nofollow">Write a review</a></div>
+</div>
+
+</div></div><hr class="margin4" /><div class="page-row margin2 with-overlay"><div class="span1"><img alt="Quotes@2x" class="full-width" src="http://assets2.iavvo.com/assets/embed/topic_pages/quotes@2x-77df7504b38dc1ede65c9b0e3e45acf7.png" /></div><div class="span5"><h3 class="light"><a href="/attorneys/77803-tx-stephen-gustitis-148186/reviews.html#488876">“Innocent beyond a reason of a doubt”</a></h3><a href="/attorneys/77803-tx-stephen-gustitis-148186/reviews.html#488876"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a><p>Having dealt with many lawyers in Houston and Byran/College station area, Mr. Gustatis stands out as being personal, charismatic, and very reliable.... </p><p class="text-meta">Posted by: a client, 8 days ago.</p><div class="overlay bottom right margin2"><a data-tooltip-remote="confirm_objectionable" href="/professional_reviews/488876/objectionable" id="professional_review_objectionable_488876" rel="nofollow"><i class="medium-gray icon-flag"></i> Flag</a></div></div></div><div class="page-row margin2 with-overlay"><div class="span1"><img alt="Quotes@2x" class="full-width" src="http://assets2.iavvo.com/assets/embed/topic_pages/quotes@2x-77df7504b38dc1ede65c9b0e3e45acf7.png" /></div><div class="span5"><h3 class="light"><a href="/attorneys/77803-tx-stephen-gustitis-148186/reviews.html#482937">“Number one Criminal Defense Attorney in Bryan/CS area!”</a></h3><a href="/attorneys/77803-tx-stephen-gustitis-148186/reviews.html#482937"><span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span><span class="icon-padded right narrow icon-star" style="font-size:15px"></span></span></a><p>Mr. Gustiutis is a man you defiantly want on your team when facing the law! He is always on his best game and his work shows it! During my case he... </p><p class="text-meta">Posted by: a client, 18 days ago.</p><div class="overlay bottom right margin2"><a data-tooltip-remote="confirm_objectionable" href="/professional_reviews/482937/objectionable" id="professional_review_objectionable_482937" rel="nofollow"><i class="medium-gray icon-flag"></i> Flag</a></div></div></div><div class="margin4"><a class="navigation" href="/attorneys/77803-tx-stephen-gustitis-148186/reviews.html">View all 21 reviews</a></div></div></div></div></div>
+        
+        <div class="js-replaceable margin6" id="endorsements"><div class="page-row" id="endorsements_section"><div class="span2"><h5 class="light">PEER ENDORSEMENTS</h5></div><div class="span6"><div id="endorsements_detail"><div class="page-row"><div class="span1"><img alt="Endorse" class="full-width" src="http://assets2.iavvo.com/assets/embed/profile/endorse-393f817ef630e2e358047b4ca97e17ed.png" /></div><div class="span5"><h4>Endorsements</h4><p class="pull-left"><a href="/attorneys/77803-tx-stephen-gustitis-148186/endorsements.html">8 endorsements</a></p><div class="pull-right">Lawyers: <a href="/attorneys/77803-tx-stephen-gustitis-148186/write_endorsement.html" rel="nofollow">Endorse this lawyer</a></div></div></div><hr class="margin4" />
+<div class="page-row margin6">
+  <!-- clear the cache -->
+  <div class="span1"><a href="/attorneys/75501-tx-bart-craytor-61515.html"><img alt="Bart Charles Craytor" class="borderless thumbnail_medium" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/61515_1353352778.jpg" title="Bart Charles Craytor" /></a></div>
+  <div class="span5">
+    <div>
+      <p>
+        Mr. Gustitis is a tireless advocate for his clients.  His successful appeals are evidence of his tenacity and dedication as well as his skill.  I... 
+          <a href="/attorneys/77803-tx-stephen-gustitis-148186/endorsements.html" rel="nofollow">more</a>
+      </p> 
+      <span class="muted text-meta">Endorsement from lawyer:
+        <a href="/attorneys/75501-tx-bart-craytor-61515.html">Bart Craytor</a>
+         , Texarkana (TX), Over 1 year ago
+      </span>
+    </div>
+  </div>
+</div>
+<div class="page-row margin6">
+  <!-- clear the cache -->
+  <div class="span1"><a href="/attorneys/01702-ma-howard-lewis-1440320.html"><img alt="Howard M Lewis" class="borderless thumbnail_medium" src="http://headshots.iavvo.com/avvo/ugc/images/head_shot/thumbnail_large/1440320_1296269055.jpg" title="Howard M Lewis" /></a></div>
+  <div class="span5">
+    <div>
+      <p>
+        I endorse this lawyer.  Attorney Gustitis is one of the finest Criminal Defense attorneys in his state. He is a strong and zealous advocate for his... 
+          <a href="/attorneys/77803-tx-stephen-gustitis-148186/endorsements.html" rel="nofollow">more</a>
+      </p> 
+      <span class="muted text-meta">Endorsement from lawyer:
+        <a href="/attorneys/01702-ma-howard-lewis-1440320.html">Howard Lewis</a>
+         , Framingham (MA), Over 1 year ago
+      </span>
+    </div>
+  </div>
+</div><a class="navigation" href="/attorneys/77803-tx-stephen-gustitis-148186/endorsements.html">View all 8 endorsements</a></div></div></div></div>
+</section></div></div>
+      <div class="module"><h2>R&eacute;sum&eacute;</h2><div class="page-row" id="resume"><section class="span8">
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="licenses_section"><div id="licenses"><div class="span8 margin2"><div class="box"><h5 class="light margin0">LICENSE</h5></div></div><div class="span8"><div id="licenses_detail"><p>24 years since Stephen A. Gustitis was first licensed to practice law.</p><div class="js-link-hub"><table class="table"><thead><tr><th>State</th><th>License status</th><th>Year acquired</th><th>Last updated by Avvo</th></tr></thead><tbody>
+<tr class="">
+  <td>Texas</td>
+  <td>
+      Eligible To Practice In Texas 
+  </td>
+  <td>1990</td>
+  <td>10/25/2014</td>
+</tr></tbody></table></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="sanctions_section"><div id="sanctions"><div class="span8 margin2"><div class="box"><h5 class="light margin0">PROFESSIONAL MISCONDUCT</h5></div></div><div class="span8"><div id="sanctions_detail">  <p class="article-body sans-serif">
+    <span class="icon-no-misconduct icon-green icon-padded narrow right"></span>
+    We have not found any instances of professional misconduct for this lawyer.
+  </p>
+
+</div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="work_experience_section"><div id="work_experience"><div class="span8 margin2"><div class="box"><h5 class="light margin0">WORK EXPERIENCE</h5></div></div><div class="span8"><div id="work_experience_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Position</th><th>Duration</th></tr></thead><tbody><tr class=" ">
+  <td>
+    Attorney at Stephen Gustitis, Attorney PLLC
+  </td>
+  <td>
+    1994&ndash;present
+  </td>
+</tr>
+<tr class=" ">
+  <td>
+    Assistant District Attorney at Brazos County District Attorney&#39;s Office
+  </td>
+  <td>
+    1990&ndash;1994
+  </td>
+</tr>
+</tbody></table></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="education_section"><div id="education"><div class="span8 margin2"><div class="box"><h5 class="light margin0">EDUCATION</h5></div></div><div class="span8"><div id="education_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>School</th><th>Major</th><th>Degree</th><th>Graduated</th></tr></thead><tbody><tr class=" ">
+  <td>University of Denver Sturm College of Law</td>
+  <td>Law</td>
+  <td>JD - Juris Doctor</td>
+  <td>1990</td>
+</tr>
+
+<tr class=" ">
+  <td>Susquehanna University</td>
+  <td></td>
+  <td>BA - Bachelor of Arts</td>
+  <td>1981</td>
+</tr>
+
+</tbody></table></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="awards_section"><div id="awards"><div class="span8 margin2"><div class="box"><h5 class="light margin0">AWARDS</h5></div></div><div class="span8"><div id="awards_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Award Name</th><th>Granting Organization</th><th>Date</th></tr></thead><tbody><tr><td>Texas Super Lawyer</td><td>Texas Super Lawyers Magazine</td><td>2012</td></tr><tr><td>Board Certification - Criminal Law</td><td>Texas Board of Legal Specialization</td><td>1995</td></tr></tbody></table></div></div></div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="organizations_section"><div id="organizations"><div class="span8 margin2"><div class="box"><h5 class="light margin0">ASSOCIATIONS</h5></div></div><div class="span8"><div id="organizations_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Position</th><th>Association Name</th><th>Duration</th></tr></thead><tbody><tr class=" ">
+  <td>Member</td>
+  <td>Texas Criminal Defense Lawyers Association</td>
+  <td>
+    1994&ndash;present
+  </td>
+</tr>
+<tr class=" ">
+  <td>Member</td>
+  <td>Brazos County Bar Association</td>
+  <td>
+    1994&ndash;present
+  </td>
+</tr>
+</tbody></table></div></div></div></div></div></div>
+</section></div></div>
+      <div class="module"><h2>Portfolio</h2><div class="page-row" id="portfolio"><section class="span8">
+        <div class="js-replaceable margin7"><div class="page-row with-overlay" id=""><div id=""><div class="span8 margin2"><div class="box"><h5 class="light margin0">CONTRIBUTION</h5></div></div><div class="span8"><div class="contri-badge"><div class="contributor-level-badge level-3 margin1" data-tooltip-remote="contributor_badge"><i class="icon-badge-feather"></i></div><div class="badge-text">Contributor Level 13</div></div>
+<table class="table">
+  <tr>
+    <th>Answers:</th>
+    <td><a class="article-body sans-serif" href="/attorneys/77803-tx-stephen-gustitis-148186/answers.html">385</a></td>
+    <td><a class="article-body sans-serif" href="/attorneys/77803-tx-stephen-gustitis-148186/answers.html">Legal Answers</a></td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>11</td>
+    <td>Best Answers - chosen by asker</td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>284</td>
+    <td>Answers marked "I agree" by other lawyers</td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>41</td>
+    <td>Answers marked helpful by other users</td>
+  </tr>
+  <tr>
+    <th>Guides:</th>
+    <td>0</td>
+    <td>Legal Guides</td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>0</td>
+    <td>Staff Picks</td>
+  </tr>
+</table>
+  <a class="navigation" href="/attorneys/77803-tx-stephen-gustitis-148186/answers.html">View all contributions</a>
+</div></div></div></div>
+        
+        <div class="js-replaceable margin7"><div class="page-row with-overlay" id="legal_cases_section"><div id="legal_cases"><div class="span8 margin2"><div class="box"><h5 class="light margin0">CASES</h5></div></div><div class="span8">  <div class="margin4">
+  <div class="case_title"><a href="/attorneys/77803-tx-stephen-gustitis-148186/legal_cases/48968">Warner v. State, PD-1644-06, Texas Court of Criminal Appeals</a></div>
+  <div class="outcome">
+    <strong>Outcome:</strong> Court of Criminal Appeals reversed and acquitted the Petitioner
+  </div>
+</div>
+
+<div class="margin4">
+  <div class="case_title"><a href="/attorneys/77803-tx-stephen-gustitis-148186/legal_cases/48965">Villanueva v. State, 227 S.W.3d 744 (Tex.Crim.App. 2007)</a></div>
+  <div class="outcome">
+    <strong>Outcome:</strong> Court of Criminal Appeals reversed one conviction on a double jeopardy claim.
+  </div>
+</div>
+
+
+</div></div></div></div>
+
+          <div class="js-replaceable margin7"><div class="page-row with-overlay" id="publications_section"><div id="publications"><div class="span8 margin2"><div class="box"><h5 class="light margin0">PUBLICATIONS</h5></div></div><div class="span8"><div id="publications_detail"><div class="js-link-hub"><table class="table"><thead><tr><th>Article</th><th>Publication</th><th>Date</th></tr></thead><tbody><tr class=" ">
+  <td><a href="http://www.voiceforthedefenseonline.com/story/back-never-give-stephen-gustitis" rel="nofollow" target="_blank">Off the Back: &quot;Never Give Up&quot;</a></td>
+  <td>Voice for the Defense (Texas Criminal Defense Lawyers Association)</td>
+  <td>2014</td>
+</tr>
+<tr class=" ">
+  <td><a href="http://voiceforthedefenseonline.com/story/back-who-should-polygraph-our-clients-stephen-gustitis" rel="nofollow" target="_blank">Off the Back: &quot;Who Should Polygraph Our Clients?&quot;</a></td>
+  <td>Voice for the Defense (Texas Criminal Defense Lawyers Association)</td>
+  <td>2014</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://voiceforthedefenseonline.com/story/back-defense-premium-stephen-gustitis" rel="nofollow" target="_blank">Off the Back: &quot;Defense at a Premium&quot;</a></td>
+  <td>Voice for the Defense (Texas Criminal Defense Lawyers Association)</td>
+  <td>2014</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://www.voiceforthedefenseonline.com/story/university-discipline-illusion-due-process" rel="nofollow" target="_blank">University Discipline: The Illusion of Due Process</a></td>
+  <td>Voice for the Defense (Texas Criminal Defense Lawyers Association)</td>
+  <td>2013</td>
+</tr>
+<tr class=" js-expandable">
+  <td>The Role of Forensic Evidence in Defending Criminal Cases</td>
+  <td>Inside the Minds - Utilizing Forensic Science in Criminal Cases (2014 Edition)</td>
+  <td>2013</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://texascriminaldefenselawyer.blogspot.com/2008/06/intoxilyzer-5000.html" rel="nofollow" target="_blank">The Intoxilyzer 5000</a></td>
+  <td>The Defense Perspective</td>
+  <td>2008</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://texascriminaldefenselawyer.blogspot.com/2008/06/more-on-henrys-law.html" rel="nofollow" target="_blank">More On Henry&#39;s Law</a></td>
+  <td>The Defense Perspective</td>
+  <td>2008</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://texascriminaldefenselawyer.blogspot.com/2008/06/temperatures-rising.html" rel="nofollow" target="_blank">Temperature&#39;s Rising</a></td>
+  <td>The Defense Perspective</td>
+  <td>2008</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://texascriminaldefenselawyer.blogspot.com/2008/07/chemical-interference-and-intoxilyzer_02.html" rel="nofollow" target="_blank">Chemical Interference and the Intoxilyzer 5000</a></td>
+  <td>The Defense Perspective</td>
+  <td>2008</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://texascriminaldefenselawyer.blogspot.com/2008/07/mouth-alcohol-and-intoxilyzer-5000_04.html" rel="nofollow" target="_blank">Mouth Alcohol and the Intoxilyzer 5000</a></td>
+  <td>The Defense Perspective</td>
+  <td>2008</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://texascriminaldefenselawyer.blogspot.com/2008/07/bloodbreath-partition-ratio.html" rel="nofollow" target="_blank">The Blood:Breath Partition Ratio</a></td>
+  <td>The Defense Perspective</td>
+  <td>2008</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://texascriminaldefenselawyer.blogspot.com/2008/07/intoxilyzer-5000-machine-tolerance.html" rel="nofollow" target="_blank">Intoxilyzer 5000 Machine Tolerance</a></td>
+  <td>The Defense Perspective</td>
+  <td>2008</td>
+</tr>
+<tr class=" js-expandable">
+  <td><a href="http://texascriminaldefenselawyer.blogspot.com/2008/07/retrograde-extrapolation-and.html" rel="nofollow" target="_blank">Retrograde Extrapolation and the Intoxilyzer 5000</a></td>
+  <td>The Defense Perspective</td>
+  <td>2008</td>
+</tr>
+</tbody></table><span><a class="js-toggle-hub" href="#!" rel="nofollow">See all 13 publications<span class="icon-menu-down icon-padded left narrow"></span></a><a class="js-toggle-hub" href="#!" rel="nofollow">Hide additional publications<span class="icon-menu-up icon-padded left narrow"></span></a></span></div></div></div></div></div></div>
+
+          
+</section></div></div>    </section>
+
+    <div class="span4" id="profile_b_column">
+      
+
+
+
+    <div class="margin7"><div class="js-ads" data-ad-limit="1" data-ad-track="true" data-ad-type="display_ads" data-preview-ad="null"></div></div><div class="margin7 js-common-sponsored-listings"><div class="js-ads" data-ad-format="desktop" data-ad-limit="3" data-ad-track="true" data-ad-type="sponsored_listing_ads" data-ad-variant="99" data-preview-ad="null"></div></div><div class="margin9"><section class="reloadable-module" data-widget-params="eJw1iz0KwzAMRu-iOQE7bRdvnXqEjkbYwhUocbAUaBpy9xpKt_f9vAOSoCoEeHIuZBrCo9YidM8wwIoN5z4egDmqVOs_oYISMzdKVtseL869vXOxcXlZd3SlxCi2R84Qlk1kgE2p_Vn5Qz8-B5CaUHoEWrpqPJMazmsvJuevo_fjdIPzC3YANx0=">
+  <!-- ca-pub-4491911546116478/legal_directory_300x100_right -->
+
+  <div id='div-gpt-ad-475841815844-0' class="module google_ad google_ad_legal_directory_300x100_right" style='width:300px; height:100px;'>
+    <script>
+//<![CDATA[
+$(function(){
+      googletag.cmd.push(function() { googletag.display('div-gpt-ad-475841815844-0'); });
+});
+//]]>
+</script>  </div>
+</section><!--not_cached Widget:widgetsgoogle_ad:false:ajax:false:size::ad_slot:legal_directory_300x100_right:user::specialty_id::lawyer_id:--></div>
+
+    <section class="reloadable-module" data-widget-params="eJxdUsFuGjEQ_RefgdgbEhaf0l5ySaWqidSjNaxnwcLetexZtjTKv3cMLEVIvvj5zXtvxvMpGg85Cy1-O7tFylr_Qg-E9mfqW8zZ9R34d0wxi5mIkCAw-VPEm9dyd1ZotaxV_cyshK37w5I_0oKLWpcydRCQkXfCuMOO0eCs9XiBvxUe55hor0MmR65Y5qE9iXWD9zOxxc5iMie3mcAAzhuwNuGphe2lzFQvAZpF0wcWGHGTHaEZEgcVO6KoHx7GcVxMbA_jhdr0HUFDJvR28GgItt51OHlzyw37oDWbo4HDoRea0oD8MGy8a3wBOQ9suPQumWRtdusDZw9wNBejSSA3CSLr3lWdbTM2Ccns8cjxCev2cR_34-CwBPbgwimQ0NXT6nn5HwJWF5WU9ZyPUh9yrauVVvVCSjmXKy3lVG8C0q6301DPmIv3OYZoy1pMwmrJqnO1-lA1a2m1PgvXZ-GJXII9KfW4rmbigKnsC5usZsIilV7pGMt_f4eUXCZMWr_BeMQkrozbxeLv8tfv4Klc8xTki0fl_uL14vsGCluc1o14KJkgxJvwlRRf_wAvSQC_">  <div class="module">
+    <h2>Related Lawyer Searches</h2>
+    <ul class="links">
+        <li><a href="/criminal-defense-lawyer/tx/brazos_county.html" title="Brazos County Criminal Defense Attorneys">Brazos County Criminal Defense lawyers</a></li>
+        <li><a href="/dui-dwi-lawyer/tx/brazos_county.html" title="Brazos County DUI / DWI Attorneys">Brazos County DUI lawyers</a></li>
+        <li><a href="/criminal-defense-lawyer/tx/bryan.html" title="Bryan Criminal Defense Attorneys">Bryan Criminal Defense lawyers</a></li>
+        <li><a href="/dui-dwi-lawyer/tx/bryan.html" title="Bryan DUI / DWI Attorneys">Bryan DUI lawyers</a></li>
+        <li><a href="/criminal-defense-lawyer/tx.html" title="Texas Criminal Defense Attorneys">Texas Criminal Defense lawyers</a></li>
+        <li><a href="/dui-dwi-lawyer/tx.html" title="Texas DUI / DWI Attorneys">Texas DUI lawyers</a></li>
+    </ul>
+  </div>
+</section><!--Widget:widgetsrelated_professional_serps:false:ajax:false:size::professional:Barrister::Professional-148186:limit:20-->
+
+
+    </div>
+
+    
+  </div>
+</div>
+
+
+<script>
+//<![CDATA[
+
+  $(function(){
+    $('.js-replaceable').bind('dom:changed', function(){
+      $(this).find('.js-hover-tooltip-link').hoverTooltip();
+    });
+  });
+
+//]]>
+</script>
+</span>
+    <footer class="persistent-footer page full-width no-border"><div class="page-row"><a class="quiet span3" href="//www.avvo.com/"><div class="icon-avvo-logo footer-logo"></div><div class="footer-slogan">Legal. <strong>Easier.</strong></div></a><div class="span3"><a class="quiet" href="/"><h3>Explore Avvo</h3></a><p class="margin1"><a class="quiet" href="/ask-a-lawyer">Ask a Lawyer</a></p><p class="margin1"><a class="quiet" href="/find-a-lawyer">Find a Lawyer</a></p><p class="margin1"><a class="quiet" href="/free-legal-advice">Free Legal Advice</a></p><p class="margin1"><a class="quiet" href="/review-your-lawyer">Review a Lawyer</a></p></div><div class="span3"><a class="quiet" href="/for-lawyers"><h3>For Lawyers</h3></a><p class="margin1"><a class="quiet" href="/for-lawyers">Lawyer Advertising</a></p><p class="margin1"><a class="quiet" href="/claim-your-profile">Claim Your Profile</a></p><p class="margin1"><a class="quiet" href="/support/all-firm-claim">For Law Firms</a></p><p class="margin1"><a class="quiet" href="//ignite.avvo.com">Marketing Management Software</a></p><p class="margin1"><a class="quiet" href="//lawyernomics.avvo.com">Lawyernomics Blog</a></p></div><div class="span3"><a class="quiet" href="/about_avvo"><h3>Company Info</h3></a><p class="margin1"><a class="quiet" href="/about_avvo/about_us">About Us</a></p><p class="margin1"><a class="quiet" href="/for-lawyers/support">Support</a></p><p class="margin1"><a class="quiet" href="//press.avvo.com">Press Room</a></p><p class="margin1"><a class="quiet" href="/partner_with_us">Partner With Us</a></p><p class="margin1"><a class="quiet" href="/about_avvo/jobs">Careers</a></p><p class="margin1"><a class="quiet" href="//avvoblog.com">Avvo Blog</a></p><p class="margin1"><a class="quiet" href="//nakedlaw.avvo.com">NakedLaw Blog</a></p></div></div></footer><footer class="black"><div id="fine_print_container"><div id="fine_print"><div class="contact_avvo">Follow us on <a href="//www.twitter.com/avvo"><img alt="Twitter" src="http://assets2.iavvo.com/assets/embed/additional_links/twitter_icon-c160ce8886d11899e6833dd271a13f2d.png" /></a><a href="http://www.facebook.com/avvo"><img alt="Facebook" src="http://assets1.iavvo.com/assets/embed/additional_links/facebook_icon-6d9bd4ddfbad9c81a22fd2471b67d673.png" /></a><a href="//plus.google.com/107840042923877554905"><img alt="Google icon" src="http://assets1.iavvo.com/assets/embed/additional_links/google_icon-942738832fa1fe452c21f15e5a9194b2.png" /></a></div><p class="bottom_links"><span class="copyright">&copy;2014 Avvo, Inc. All Rights Reserved </span><span><a href="?prefer_mobile=true" rel="nofollow">Mobile View</a></span><span class="pipe">|</span><span><a href="/support/terms" rel="nofollow">Terms of Use</a></span><span class="pipe">|</span><span><a href="/support/privacy" rel="nofollow">Privacy Policy</a></span><span class="pipe">|</span><span><a href="/support/community_guidelines" rel="nofollow">Community Guidelines</a></span></p></div></div></footer>
+
+    <noscript>
+  <div style="text-align:center;background:#fbf3c5;color:#911717;padding:8px;border-bottom:1px solid #D7DADD;">
+  <strong>We've detected that your browser does not support scripting.</strong> <br/>
+  Scripting must be enabled to use Avvo. Turn on scripting and reload this page.
+  </div>
+</noscript>
+
+
+
+
+    <!-- r:bf1fc99141b7e49a11fec3d713a4b0844c28fcba -->
+<!-- d:Mon Nov 24 17:54:52 PST 2014 -->
+<!-- p:www.avvo.com -->  
+
+
+
+
+
+    
+    <script src="http://assets1.iavvo.com/assets/footer_common-59d36e58c17ffbec325b4d50f60e0fda.js"></script>
+
+
+
+<div id="google_remarketing">
+
+    <script type="text/javascript">
+    /* <![CDATA[ */
+    var google_conversion_id = 1057123743;
+    var google_conversion_language = "en";
+    var google_conversion_format = "3";
+    var google_conversion_color = "ffffff";
+    var google_conversion_label = "z9BlCKXnsAIQn9uJ-AM";
+    var google_conversion_value = 0;
+    /* ]]> */
+    </script>
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js?avvo_SRLA">
+    </script>
+    <noscript>
+    <div style="display:inline;">
+    <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/1057123743/?label=z9BlCKXnsAIQn9uJ-AM&amp;guid=ON&amp;script=0"/>
+    </div>
+    </noscript>
+
+</div>
+
+    <script>
+//<![CDATA[
+
+$(function(){
+  var a=document.createElement("script");
+  var b=$("script")[0];
+  a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0011/6860.js";
+  a.async=true;a.type="text/javascript";
+  b.parentNode.insertBefore(a,b);
+});
+
+//]]>
+</script>
+  </body>
+
+
+</html>
