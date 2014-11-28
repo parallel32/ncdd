@@ -18,7 +18,7 @@ include_once __DIR__.'/../../src/Saw/Provider/HtmlDOM/simple_html_dom.php';
 if(true):
 $files = scandir('./pages');
 foreach ($files as $file) {
-    if($file !== '.' && $file !== '..'):
+    if($file !== '.' && $file !== '..' && $file !== '.DS_Store'):
         
         echo "processing - ".$file."\r\n";
         $content = file_get_contents('./pages/'.$file);        
@@ -28,7 +28,7 @@ foreach ($files as $file) {
         // get the name
         $element = $html->find("div[id=profile_header]");
         $ele2 = $element[0]->find("span[itemprop=name]");
-        $attorney_name = $ele2[0]->plaintext;
+        $attorney_name = trim((is_array($ele2) && count($ele2) > 0) ? $ele2[0]->plaintext: '');
         
         foreach($html->find('div[id=contact_information_section] div[class=address_sort]') as $item):
             $csv_string = '';
@@ -36,7 +36,7 @@ foreach ($files as $file) {
             echo "\r\n".$attorney_name;        
 
             $addr_name = $item->find('div[class=address_name]');
-            $addr_name = html_entity_decode($addr_name[0]->plaintext);
+            $addr_name = (is_array($addr_name) && count($addr_name) > 0) ? html_entity_decode($addr_name[0]->plaintext) :'';
             echo "\r\n".$addr_name;
             $csv_string = $csv_string.'"'.$addr_name.'"'.',';
             
