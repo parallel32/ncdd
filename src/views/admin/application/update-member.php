@@ -482,27 +482,11 @@
                   </div>
                   <h3 class="form-section">8.</h3>
                   <div class="row-fluid">
-                     <div class="span6 ">
+                     <div class="span12 ">
                         <div class="control-group">
-                           <label class="control-label">I certify that I have attended the following NCDD sponsored or co-sponsored seminar(s) 
-                              </br><b>OR</b></br> 
-                              State seminar (s) approved by NCDD and listed on the NCDD website in the last two (2) years.
+                           <label class="control-label">
+                           I have substantial current involvement in the practice area of DUI/DWI defense and I understand that as a condition of continued membership I must continue to have substantial involvement, including attendance at one (or more) seminars every two (2) years either sponsored by NCDD or at a State/local seminar approved by NCDD.
                            </label>
-                           <div class="controls">
-                              <select class="small m-wrap seminarAttendance" name="doc[seminarAttendance]">
-                                 <option value="no">No</option>
-                                 <option value="yes">Yes</option>
-                              </select>
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                     <div class="span6 ">
-                        <div class="control-group">
-                           <label class="control-label">If "Yes", you must provide the NAME and DATE of the approved seminar(s) attended in order to maintain your membership. Contact the NCDD office with questions.</label>
-                           <div class="controls">
-                              <textarea class="span12 seminarAttendanceExplain" name="doc[seminarAttendanceExplain]"></textarea>
-                           </div>
                         </div>
                      </div>
                      <!--/span-->
@@ -537,6 +521,7 @@
                      <!--/span-->
                   </div>
 
+                  
                   <h3 class="form-section">Check which applies to your membership:</h3>
                   <div class="row-fluid">
                      <div class="span12 ">
@@ -544,8 +529,8 @@
                            <label class="control-label"></label>
                            <div class="controls">
                               <select class=" m-wrap span12 membershipDues" name="doc[membershipDues]">
-                                 <option value="225">6 or more years in law practice ($225 annual dues)</option>
-                                 <option value="175">1-5 years in law practice ($175 annual dues) </option>
+                                 <option value="225">6 or more years in law practice ($225 annual dues - $50 off if paid by December 31st)</option>
+                                 <option value="175">1-5 years in law practice ($175 annual dues - $50 off if paid by December 31st) </option>
                                  <option value="50"> Public Defender ($50 annual dues)</option>
                               </select>
                            </div>
@@ -561,7 +546,7 @@
                            <div class="controls">
                               <input style="margin-left:1px;" type="radio" name="doc[payByCheck]" value="yes">&nbsp;&nbsp;Yes, I intend to pay by check.<br/><br/>
                               <input style="margin-left:1px;" type="radio" name="doc[payByCheck]" checked value="no">&nbsp;&nbsp;No, I intend to pay my membership dues online with my credit card.<br/><br/>
-                              Upon submission of this form and subsequent approval of your renewal, you will receive an email with instructions on how to pay your dues.
+                              <!--Upon submission of this form and subsequent approval of your renewal, you will receive an email with instructions on how to pay your dues.-->
                            </div>
                         </div>
                      </div>
@@ -569,7 +554,171 @@
                   </div>
                   
 
-                  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  <h3 class="form-section">If you intend to pay by credit card please provide your card details:</h3>
+                  <? if(array_key_exists('payment',$this->vars['member']) && !empty($this->vars['member']['payment']) && is_array($this->vars['member']['payment'])): 
+                        $this->vars['payment'] = $this->vars['member']['payment'];
+                     else:
+                        $this->vars['payment'] = array();
+                     endif;
+                  ?>
+                     <div class="row-fluid">
+                        <div class="span12 ">
+                           <div class="control-group">
+                              <label class="control-label" for="type">We Accept</label>
+                              <div class="controls">
+                                 <span class="card visa" title="Visa">Visa</span>
+                                 <span class="card master" title="Mastercard">Mastercard</span>
+                                 <span class="card amex" title="American Express">American Express</span>
+                                 <span class="card discover" title="Discover">Discover</span>
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span12 "><span class="cardType"></span></div>
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Your name as it appears on the card</label>
+                              <div class="controls">
+                                 <input type="text" name="doc[paymentlite][name]" class="m-wrap span8 paymentlite-name" value="<?=(array_key_exists('name',$this->vars['payment'])) ? $this->vars['payment']['name']: '';?>">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Credit Card Number</label>
+                              <div class="controls">
+                                 <input type="text" name="doc[paymentlite][number]" class="m-wrap span8 paymentlite-number" value="<?=(array_key_exists('number',$this->vars['payment'])) ? $this->vars['payment']['number']: '';?>">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">CVC Code</label>
+                              <div class="controls">
+                                 <input type="text" name="doc[paymentlite][cvc]" class="m-wrap span8 paymentlite-cvc" value="<?=(array_key_exists('cvc',$this->vars['payment'])) ? $this->vars['payment']['cvc']: '';?>">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Expiration Date</label>
+                              <div class="controls">
+                                 <select id="ccard-expMonth" class="span4 paymentlite-expMonth" name="doc[paymentlite][expMonth]"></select>
+                                 <select id="ccard-expYear" class="span4 paymentlite-expYear" name="doc[paymentlite][expYear]"></select>
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <h3 class="form-section">Credit Card Billing Address</h3>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Address Line 1</label>
+                              <div class="controls">
+                                 <input type="text" name="doc[paymentlite][addressLine1]" class="m-wrap span8 paymentlite-addressLine1" value="<?=(array_key_exists('addressLine1',$this->vars['payment'])) ? $this->vars['payment']['addressLine1']: '';?>">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Address Line 2</label>
+                              <div class="controls">
+                                 <input type="text" name="doc[paymentlite][addressLine2]" class="m-wrap span8 paymentlite-addressLine2" value="<?=(array_key_exists('addressLine2',$this->vars['payment'])) ? $this->vars['payment']['addressLine2']: '';?>">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">City</label>
+                              <div class="controls">
+                                 <input type="text" name="doc[paymentlite][city]" class="m-wrap span8 paymentlite-city" value="<?=(array_key_exists('city',$this->vars['payment'])) ? $this->vars['payment']['city']: '';?>">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">State/Province/Region</label>
+                              <div class="controls">
+                                 <input type="text" name="doc[paymentlite][stateProvinceRegion]" class="m-wrap span8 paymentlite-stateProvinceRegion" value="<?=(array_key_exists('stateProvinceRegion',$this->vars['payment'])) ? $this->vars['payment']['stateProvinceRegion']: '';?>">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Zip/PostalCode</label>
+                              <div class="controls">
+                                 <input type="text" name="doc[paymentlite][zipPostalCode]" class="m-wrap span8 paymentlite-zipPostalCode" value="<?=(array_key_exists('zipPostalCode',$this->vars['payment'])) ? $this->vars['payment']['zipPostalCode']: '';?>">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Country</label>
+                              <div class="controls">
+                                 <input type="text" name="doc[paymentlite][country]" class="m-wrap span8 paymentlite-country" value="<?=(array_key_exists('country',$this->vars['payment'])) ? $this->vars['payment']['country']: '';?>">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
 
 
 
@@ -673,7 +822,7 @@
                            <div class="control-group ">
                               <label class="control-label">Your name as it appears on the card</label>
                               <div class="controls">
-                                 <input id="card-name" type="text" name="doc[payment][name]" class="m-wrap span8 name" value="<?=$this->vars['member']['displayName']?>">
+                                 <input id="card-name" type="text" name="doc[payment][name]" class="m-wrap span8 payment-name" value="<?=$this->vars['member']['displayName']?>">
                               </div>
                            </div>
                         </div>
@@ -684,7 +833,7 @@
                            <div class="control-group ">
                               <label class="control-label">Credit Card Number</label>
                               <div class="controls">
-                                 <input id="card-number" type="text" name="doc[payment][number]" class="m-wrap span8 number">
+                                 <input id="card-number" type="text" name="doc[payment][number]" class="m-wrap span8 payment-number">
                               </div>
                            </div>
                         </div>
@@ -695,7 +844,7 @@
                            <div class="control-group ">
                               <label class="control-label">CVC Code</label>
                               <div class="controls">
-                                 <input id="card-cvc" type="text" name="doc[payment][cvc]" class="m-wrap span8 cvc">
+                                 <input id="card-cvc" type="text" name="doc[payment][cvc]" class="m-wrap span8 payment-cvc">
                               </div>
                            </div>
                         </div>
@@ -706,8 +855,8 @@
                            <div class="control-group ">
                               <label class="control-label">Expiration Date</label>
                               <div class="controls">
-                                 <select id="card-expMonth" class="span4 expMonth" name="doc[payment][expMonth]"></select>
-                                 <select id="card-expYear" class="span4 expYear" name="doc[payment][expYear]"></select>
+                                 <select id="card-expMonth" class="span4 payment-expMonth" name="doc[payment][expMonth]"></select>
+                                 <select id="card-expYear" class="span4 payment-expYear" name="doc[payment][expYear]"></select>
                               </div>
                            </div>
                         </div>
@@ -720,7 +869,7 @@
                            <div class="control-group ">
                               <label class="control-label">Address Line 1</label>
                               <div class="controls">
-                                 <input id="card-addressLine1" type="text" name="doc[payment][addressLine1]" class="m-wrap span8 addressLine1" value="<?=$this->vars['location']['addressLine1']?>">
+                                 <input id="card-addressLine1" type="text" name="doc[payment][addressLine1]" class="m-wrap span8 payment-addressLine1" value="<?=$this->vars['location']['addressLine1']?>">
                               </div>
                            </div>
                         </div>
@@ -731,7 +880,7 @@
                            <div class="control-group ">
                               <label class="control-label">Address Line 2</label>
                               <div class="controls">
-                                 <input id="card-addressLine2" type="text" name="doc[payment][addressLine2]" class="m-wrap span8 addressLine2" value="<?=$this->vars['location']['addressLine2']?>">
+                                 <input id="card-addressLine2" type="text" name="doc[payment][addressLine2]" class="m-wrap span8 payment-addressLine2" value="<?=$this->vars['location']['addressLine2']?>">
                               </div>
                            </div>
                         </div>
@@ -742,7 +891,7 @@
                            <div class="control-group ">
                               <label class="control-label">City</label>
                               <div class="controls">
-                                 <input id="card-city" type="text" name="doc[payment][city]" class="m-wrap span8 city" value="<?=$this->vars['location']['city']?>">
+                                 <input id="card-city" type="text" name="doc[payment][city]" class="m-wrap span8 payment-city" value="<?=$this->vars['location']['city']?>">
                               </div>
                            </div>
                         </div>
@@ -753,7 +902,7 @@
                            <div class="control-group ">
                               <label class="control-label">State/Province/Region</label>
                               <div class="controls">
-                                 <input id="card-stateProvinceRegion" type="text" name="doc[payment][stateProvinceRegion]" class="m-wrap span8 stateProvinceRegion" value="<?=$this->vars['location']['state']?>">
+                                 <input id="card-stateProvinceRegion" type="text" name="doc[payment][stateProvinceRegion]" class="m-wrap span8 payment-stateProvinceRegion" value="<?=$this->vars['location']['state']?>">
                               </div>
                            </div>
                         </div>
@@ -764,7 +913,7 @@
                            <div class="control-group ">
                               <label class="control-label">Zip/PostalCode</label>
                               <div class="controls">
-                                 <input id="card-zipPostalCode" type="text" name="doc[payment][zipPostalCode]" class="m-wrap span8 zipPostalCode" value="<?=$this->vars['location']['zip']?>">
+                                 <input id="card-zipPostalCode" type="text" name="doc[payment][zipPostalCode]" class="m-wrap span8 payment-zipPostalCode" value="<?=$this->vars['location']['zip']?>">
                               </div>
                            </div>
                         </div>
@@ -775,7 +924,7 @@
                            <div class="control-group ">
                               <label class="control-label">Country</label>
                               <div class="controls">
-                                 <input id="card-country" type="text" name="doc[payment][country]" class="m-wrap span8 country" value="<?=$this->vars['location']['country']?>">
+                                 <input id="card-country" type="text" name="doc[payment][country]" class="m-wrap span8 payment-country" value="<?=$this->vars['location']['country']?>">
                               </div>
                            </div>
                         </div>
@@ -787,7 +936,7 @@
                            <div class="control-group ">
                               <label class="control-label">Email</label>
                               <div class="controls">
-                                 <input id="card-email" type="text" name="doc[payment][email]" class="m-wrap span8 email" value="<?=$this->vars['member']['email']?>">
+                                 <input id="card-email" type="text" name="doc[payment][email]" class="m-wrap span8 payment-email" value="<?=$this->vars['member']['email']?>">
                               </div>
                            </div>
                         </div>
@@ -798,7 +947,7 @@
                            <div class="control-group ">
                               <label class="control-label">Phone</label>
                               <div class="controls">
-                                 <input id="card-phone" type="text" name="doc[payment][phone]" class="m-wrap span8 phone" value="<?=$this->vars['member']['primaryPhone']?>">
+                                 <input id="card-phone" type="text" name="doc[payment][phone]" class="m-wrap span8 payment-phone" value="<?=$this->vars['member']['primaryPhone']?>">
                               </div>
                            </div>
                         </div>
@@ -828,7 +977,21 @@
 
 
 
-
+                  <div class="row-fluid">
+                     <div class="span10 ">
+                        &nbsp;
+                     </div>
+                  </div>
+                  <div class="row-fluid">
+                     <div class="span10 ">
+                        <p class="alert alert-info">
+                        <b>Additionally, you authorize us to retain the information that you have given us for our records, including member's address, licensing, contact information, and credit card information that we may use for the limited purposes described above, such as renewal payments of your membership dues and to communicate with you and to send announcements pertinent to your membership.</b>
+                        <span class="control-group"><span class="controls"><input type="checkbox" name="doc[termsAcknowledgement]" class="termsAcknowledgement" value="yes">Yes, I agree.</span></span>
+                     </p>
+                     </div>
+                     
+                  </div>
+                  
 
 
 
@@ -1007,6 +1170,30 @@
 
 
 
+         // prepare the month dropdown
+            var select = $("#ccard-expMonth"),
+            month = new Date().getMonth() + 1;
+            for (var i = 1; i <= 12; i++) {
+               select.append($("<option value='"+i+"' "+(month === i ? "selected" : "")+">"+i+"</option>"))
+            }
+
+            // prepare the year dropdown
+            var select = $("#ccard-expYear"),
+            year = new Date().getFullYear();
+
+            for (var i = 0; i < 12; i++) {
+               select.append($("<option value='"+(i + year)+"' "+(i === 0 ? "selected" : "")+">"+(i + year)+"</option>"))
+            }
+            
+         <? if(array_key_exists('payment',$this->vars['member']) && !empty($this->vars['member']['payment']) && is_array($this->vars['member']['payment'])): ?>
+            // STORE CARD STUFF
+            var smonth = '<?=(array_key_exists('expMonth',$this->vars['payment'])) ? $this->vars['payment']['expMonth']: '';?>';
+            var syear = '<?=(array_key_exists('expYear',$this->vars['payment'])) ? $this->vars['payment']['expYear']: '';?>';
+            $('#ccard-expMonth option[value='+smonth+']').attr('selected', 'selected');
+            $('#ccard-expYear option[value=20'+syear+']').attr('selected', true);
+         <? endif; ?>
+
+
          submitApp = function(){
             io.saw.FormPost.activate({postUrl:'/application/update-member/<?=$this->vars["member"]["_id"]?>'
                ,serializeSelector:':input'
@@ -1043,7 +1230,5 @@
             }
             
          };
-
-
       });
       </script>

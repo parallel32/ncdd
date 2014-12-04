@@ -29,13 +29,13 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                </a>
             </li>
          <? if($accessLevel >= EDITOR):?>
-            <li class="<? echo (strpos($this->vars['active'], 'Application') !== false) ? 'active open':'';?>">
+            <li class="<? echo (strpos($this->vars['active'], 'Application') !== false) ? 'active open':'open';?>">
                <a href="javascript:;">
                <i class="icon-copy"></i> 
                <span class="title">Applications</span>
-               <? echo (strpos($this->vars['active'], 'Application') !== false) ? '<span class="selected"></span><span class="arrow open"></span>':'<span class="arrow"></span>';?>
+               <span class="selected"></span><span class="arrow open"></span>
                </a>
-               <ul class="sub-menu">
+               <ul class="sub-menu" style="display: block;">
                   <li class="<? echo ($this->vars['active'] == 'Applications/New') ? 'active':'';?>">
                      <a href="/applications"><i class="icon-file"></i> New Applications</a>
                   </li>
@@ -229,6 +229,15 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                <? echo ($this->vars['active'] == 'Payment') ? '<span class="selected"></span>':'';?>
                </a>
             </li>
+            <? if($accessLevel == MEMBER):?>
+            <li class="<? echo ($this->vars['active'] == 'Card') ? 'active':'';?>">
+               <a href="/card">
+               <i class="icon-money"></i> 
+               <span class="title">Credit Card on File</span>
+               <? echo ($this->vars['active'] == 'Card') ? '<span class="selected"></span>':'';?>
+               </a>
+            </li>
+            <? endif; ?>
          <? endif; ?>
          <? if($accessLevel >= EDITOR):?>
             <li class="<? echo ($this->vars['active'] == 'EmailSent') ? 'active':'';?>">

@@ -81,6 +81,8 @@ class Member extends User {
 	public $yearsinpractice;
 	public $changeAccessLevelTo;
 	public $renewal;
+	public $payment;
+	public $credit;
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		
@@ -150,7 +152,9 @@ class Member extends User {
 		$this->practiceAreas = $doc['practiceAreas'];
 		$this->yearsinpractice = $doc['yearsinpractice'];
 		$this->changeAccessLevelTo = $doc['changeAccessLevelTo'];
+		$this->credit = $doc['credit'];
 		$this->renewal = (is_object($doc['renewal'])) ? $doc['renewal']->__toArray(): $doc['renewal'];
+		$this->payment = (is_object($doc['payment'])) ? $doc['payment']->__toArray(): $doc['payment'];
 
 		// * means no order number present. use this because can't use zero, they'll shoot strait to the top
 		$this->orderNum = (!empty($doc['orderNum'])) ? ( $doc['orderNum'] == '*') ? $doc['orderNum']: (int)$doc['orderNum'] : ''; 
@@ -243,6 +247,8 @@ class Member extends User {
 		$this->orderNumState = $this->orderNumState ?: '*';
 		$this->changeAccessLevelTo = $this->changeAccessLevelTo ?: $this->accessLevel;
 		$this->renewal = $this->renewal ?: null;
+		$this->payment = $this->payment ?: null;
+		$this->credit = $this->credit ?: null;
 
 		parent::prepareInsert();
 	}
@@ -1354,7 +1360,8 @@ class Member extends User {
     }
 
     public function fetchByRenewalStatus($status, $membership=array(), $offset=0,$limit=100,$filter=array()){
-		$query = array('renewal.currentStatus'=>Renewal::$status[$status],
+		$query = array('status'=>USER_STATUS_ACTIVE,
+						'renewal.currentStatus'=>Renewal::$status[$status],
 						'currentMembership'=>array('$in'=>$membership));
 		if(!empty($filter)){
 			$query = array_merge($filter, $query);
@@ -1365,6 +1372,7 @@ class Member extends User {
 						,'timeZone'=>true
 						,'_id'=>true
 						,'renewal'=>true
+						,'payment'=>true
 						);
 		switch ($status) {
 			case 'SUBMITTED':

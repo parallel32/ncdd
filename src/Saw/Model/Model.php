@@ -207,7 +207,7 @@ class Model {
 		return false;
 	}
 	public function updateByCriteria($document, $criteria){
-		return self::$app['mongo']->update($document, $this->collection, $criteria, $multiple=true, $upsert=false, $options=array('fsync'=>true));
+		return self::$app['mongo']->update($document, $this->collection, $criteria, $multiple=true, $upsert=false, $options=array('fsync'=>false));
 		return false;
 	}
 	public function findById($id='_id', $slaveOkay=true){

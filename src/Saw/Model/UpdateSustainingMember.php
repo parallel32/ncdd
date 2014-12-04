@@ -40,10 +40,17 @@ class UpdateSustainingMember extends Apply {
 		$metadata->addPropertyConstraint('everInvestigation', new Constraints\NotBlank(array('message'=>'cannot be blank','groups' => array('update_member'))));
 		$metadata->addPropertyConstraint('everLawEnforcement', new Constraints\NotBlank(array('message'=>'cannot be blank','groups' => array('update_member'))));
 		$metadata->addPropertyConstraint('futureLawEnforcement', new Constraints\NotBlank(array('message'=>'cannot be blank','groups' => array('update_member'))));
-		$metadata->addPropertyConstraint('seminarAttendance', new Constraints\NotBlank(array('message'=>'cannot be blank','groups' => array('update_member'))));
+		//$metadata->addPropertyConstraint('seminarAttendance', new Constraints\NotBlank(array('message'=>'cannot be blank','groups' => array('update_member'))));
 		$metadata->addPropertyConstraint('executed', new Constraints\NotBlank(array('message'=>'cannot be blank','groups' => array('update_member'))));
 		$metadata->addPropertyConstraint('executedPrintedName', new Constraints\NotBlank(array('message'=>'cannot be blank','groups' => array('update_member'))));
 		$metadata->addConstraint(new Callback(array('methods' => array('explain'),'groups' => array('update_member'))));
+		$metadata->addConstraint(new Callback(array('methods' => array('termsAckValidate'),'groups' => array('update_member'))));
+	}
+	public function termsAckValidate(ExecutionContext $context){
+		if(empty($this->termsAcknowledgement) || $this->termsAcknowledgement == false || $this->termsAcknowledgement == 'no'){
+			$propertyPath = $context->getPropertyPath().'termsAcknowledgement';
+			$context->addViolationAtPath($propertyPath,'Please read and accept our terms in order to submit the application.', array(), null);
+		}
 	}
 	public function explain(ExecutionContext $context){
 		if($this->everBeenArrested == 'yes' && empty($this->everBeenArrestedExplain)){

@@ -17,6 +17,39 @@ use TTools\App;
 $utilities = $app['controllers_factory'];
 $utilities->before($mustbeADMIN);
 
+////////////////////////////////////////////////////
+// move the payment records to the member objects //
+////////////////////////////////////////////////////
+$utilities->get('/memberpayment', function () use ($app) {
+    $cnt = 0;
+    $cntp = 0;
+    $mems = '';
+    $payment = new Model\Payment(array(),$app);
+    $payments = $payment->find($query=array(),$fields=array(),$slaveOkay=true,$sort=array(),$offset=0,$limit=1000000);
+    foreach ($payments as $record){
+        $paymentlite = new Model\PaymentLite($record,$app);
+        if(strlen($record['number']) > 9 && strpos($record['number'], '.x') !== false){
+            $cnt++;
+            $member = new Model\Member(array('email'=>$record['email']),$app);
+            $memberarr = $member->findById('email');
+            if(!empty($memberarr) && is_array($memberarr)){
+                $mems.=$memberarr['displayName'].'<br>'; 
+                $member = new Model\Member(array('_id'=>$memberarr['_id'],'payment'=>$paymentlite),$app);
+                $member->saveSafe();
+            }else{
+                echo '<pre>';print_r($record['name'].' = '.$record['email'].' = '.$record['number']);echo '</pre>';
+                echo '<pre>';print_r($paymentlite);echo '</pre>';
+                $cntp++;
+            }
+        }
+    }
+    echo "cnt:".$cnt;
+    echo "cntp:".$cntp;
+    echo "<br><br>";
+    echo "auto-matched and saved payment info to member record:<br><br>".$mems;
+    return new Response('',200,array('Content-Type' => 'text/html')); 
+    
+});
 /////////////////////////////
 // TTools Twitter api test //
 // reference: http://ttools.readthedocs.org/en/latest/example_silex.html

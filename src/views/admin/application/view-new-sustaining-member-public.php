@@ -505,25 +505,19 @@
                   
                   <br>
                   <div class="row-fluid">
-                     <div class="span12 ">
-                        <p class="">
-                        Additionally, you authorize us to retain the information that you have given us for our records, including member's address, licensing, contact information, and credit card information that we may use for the limited purposes described above, such as renewal payments of your membership dues and to communicate with you and to send announcements pertinent to your membership.
+                     <div class="span10 ">
+                        <p class="alert alert-info">
+                        <b>Additionally, you authorize us to retain the information that you have given us for our records, including member's address, licensing, contact information, and credit card information that we may use for the limited purposes described above, such as renewal payments of your membership dues and to communicate with you and to send announcements pertinent to your membership.</b>
+                        <input <?=(array_key_exists('termsAcknowledgement',$this->vars['application']) && $this->vars['application']['termsAcknowledgement'] == 'yes') ? 'checked' : '' ?> type="checkbox" name="doc[termsAcknowledgement]" class="termsAcknowledgement" value="yes">Yes, I agree.
                         </p>
                      </div>
+                     
                   </div>
+                  
                   <div class="row-fluid">
-                     <div class="span12">
-                        <div class="control-group">
-                           <div class="controls">
-                              <input <?=(array_key_exists('termsAcknowledgement',$this->vars['application']) && $this->vars['application']['termsAcknowledgement'] == 'yes') ? 'checked' : '' ?> type="checkbox" name="doc[termsAcknowledgement]" class="termsAcknowledgement" value="yes">Yes, I agree.
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="row-fluid">
-                     <div class="span12 ">
-                        <p class="">
-                        As is the policy of the NCDD, the application process shall not directly or indirectly discriminate against any applicant for reason of race, color, gender, age, religion, disability, national origin, ancestry, marital status, sexual orientation, parental status, military discharge status, or income status.
+                     <div class="span10 ">
+                        <p class="alert">
+                        <b>As is the policy of the NCDD, the application process shall not directly or indirectly discriminate against any applicant for reason of race, color, gender, age, religion, disability, national origin, ancestry, marital status, sexual orientation, parental status, military discharge status, or income status.</b>
                         </p>
                         
                      </div>

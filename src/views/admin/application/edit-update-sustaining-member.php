@@ -506,27 +506,11 @@
                   
                   <h3 class="form-section">8.</h3>
                   <div class="row-fluid">
-                     <div class="span6 ">
+                     <div class="span12 ">
                         <div class="control-group">
-                           <label class="control-label">I certify that I have attended the following NCDD sponsored or co-sponsored seminar(s) 
-                              </br><b>OR</b></br> 
-                              State seminar (s) approved by NCDD and listed on the NCDD website in the last two (2) years.
+                           <label class="control-label">
+                           I have substantial current involvement in the practice area of DUI/DWI defense and I understand that as a condition of continued membership I must continue to have substantial involvement, including attendance at one (or more) seminars every two (2) years either sponsored by NCDD or at a State/local seminar approved by NCDD.
                            </label>
-                           <div class="controls">
-                              <select class="small m-wrap seminarAttendance" name="doc[seminarAttendance]">
-                                 <option<?=($this->vars['application']['seminarAttendance'] == "no") ? ' selected' :'';?> value="no">No</option>
-                                 <option<?=($this->vars['application']['seminarAttendance'] == "yes") ? ' selected' :'';?> value="yes">Yes</option>
-                              </select>
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                     <div class="span6 ">
-                        <div class="control-group">
-                           <label class="control-label">If "Yes", you must provide the NAME and DATE of the approved seminar(s) attended in order to maintain your membership. Contact the NCDD office with questions.</label>
-                           <div class="controls">
-                              <textarea name="doc[seminarAttendanceExplain]" class="span12 seminarAttendanceExplain"><?=$this->vars['application']['seminarAttendanceExplain']?></textarea>
-                           </div>
                         </div>
                      </div>
                      <!--/span-->
@@ -562,7 +546,15 @@
                      <!--/span-->
                   </div>
 
-                  
+                  <div class="row-fluid">
+                     <div class="span10 ">
+                        <p class="alert alert-info">
+                        <b>Additionally, you authorize us to retain the information that you have given us for our records, including member's address, licensing, contact information, and credit card information that we may use for the limited purposes described above, such as renewal payments of your membership dues and to communicate with you and to send announcements pertinent to your membership.</b>
+                        <span class="control-group"><span class="controls"><input <?=(array_key_exists('termsAcknowledgement',$this->vars['application']) && $this->vars['application']['termsAcknowledgement'] == 'yes') ? 'checked' : '' ?> type="checkbox" name="doc[termsAcknowledgement]" class="termsAcknowledgement" value="yes">Yes, I agree.</span></span>
+                     </p>
+                     </div>
+                     
+                  </div>
                   <h3 class="form-section">9. Voluntary Contribution to the NCDD Foundation.</h3>
                   <div class="row-fluid charity-div ">
                      <div class="span6 ">

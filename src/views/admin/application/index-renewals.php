@@ -120,7 +120,7 @@
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
                               <tr role="row">
-                                 <th class="">Name</th>
+                                 <th class=""></th><th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-phone">Phone</th>
                                  <th class="hidden-480">Date</th>
@@ -130,7 +130,7 @@
                            <tbody role="alert" aria-live="polite" aria-relevant="all">
                               <? if(!empty($this->vars['renewals']['submitted'])): foreach($this->vars['renewals']['submitted'] as $member): ?>
                               <tr class="gradeX odd ">
-                                 <td class=" "><?=$member['displayName']?></td>
+                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn purple mini view card">cc</a>':'' ?></td><td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
                                  <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($member['renewal']['submittedDate']['fullDateTime']), $member['timeZone']); ?>
@@ -163,7 +163,7 @@
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
                               <tr role="row">
-                                 <th class="">Name</th>
+                                 <th class=""></th><th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-phone">Phone</th>
                                  <th class="hidden-phone">Pay By</th>
@@ -174,7 +174,7 @@
                            <tbody role="alert" aria-live="polite" aria-relevant="all">
                               <? if(!empty($this->vars['renewals']['approved'])): foreach($this->vars['renewals']['approved'] as $member): ?>
                               <tr class="gradeX odd">
-                                 <td class=" "><?=$member['displayName']?></td>
+                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn purple mini view card">cc</a>':'' ?></td><td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
                                  <td class="hidden-phone"><?=($member['renewal']['payByCheck'] == 'yes') ? 'Chk': 'CC' ?></td>
@@ -211,7 +211,7 @@
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
                               <tr role="row">
-                                 <th class="">Name</th>
+                                 <th class=""></th><th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-phone">Phone</th>
                                  <th class="hidden-480">Date Paid</th>
@@ -221,7 +221,7 @@
                            <tbody role="alert" aria-live="polite" aria-relevant="all">
                               <? if(!empty($this->vars['renewals']['paid'])): foreach($this->vars['renewals']['paid'] as $member): ?>
                               <tr class="gradeX odd">
-                                 <td class=" "><?=$member['displayName']?></td>
+                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn purple mini view card">cc</a>':'' ?></td><td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
                                  <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($member['renewal']['paidDate']['fullDateTime']), $member['timeZone']); ?>
@@ -255,7 +255,7 @@
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
                               <tr role="row">
-                                 <th class="">Name</th>
+                                 <th class=""></th><th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-phone">Phone</th>
                                  <th class=""></th>
@@ -264,7 +264,7 @@
                            <tbody role="alert" aria-live="polite" aria-relevant="all">
                               <? if(!empty($this->vars['renewals']['unsubmitted'])): foreach($this->vars['renewals']['unsubmitted'] as $member): ?>
                               <tr class="gradeX odd">
-                                 <td class=" "><?=$member['displayName']?></td>
+                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn purple mini view card">cc</a>':'' ?></td><td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
                                  <td class=" "><a class="btn blue mini" href="/application/update-member/<?=$member['_id']?>"><i class=" "></i> View</a></td>
@@ -352,7 +352,7 @@
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
                               <tr role="row">
-                                 <th class="">Name</th>
+                                 <th class=""></th><th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-phone">Phone</th>
                                  <th class="hidden-480">Date</th>
@@ -362,7 +362,7 @@
                            <tbody role="alert" aria-live="polite" aria-relevant="all">
                               <? if(!empty($this->vars['updates_sustaining']['submitted'])): foreach($this->vars['updates_sustaining']['submitted'] as $member): ?>
                               <tr class="gradeX odd">
-                                 <td class=" "><?=$member['displayName']?></td>
+                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn purple mini view card">cc</a>':'' ?></td><td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
                                  <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($member['renewal']['submittedDate']['fullDateTime']), $member['timeZone']); ?>
@@ -395,7 +395,7 @@
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
                               <tr role="row">
-                                 <th class="">Name</th>
+                                 <th class=""></th><th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-phone">Phone</th>
                                  <th class="hidden-480">Date Approved</th>
@@ -405,7 +405,7 @@
                            <tbody role="alert" aria-live="polite" aria-relevant="all">
                               <? if(!empty($this->vars['updates_sustaining']['approved'])): foreach($this->vars['updates_sustaining']['approved'] as $member): ?>
                               <tr class="gradeX odd">
-                                 <td class=" "><?=$member['displayName']?></td>
+                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn purple mini view card">cc</a>':'' ?></td><td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
                                  <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($member['renewal']['approvedDate']['fullDateTime']), $member['timeZone']); ?>
@@ -438,7 +438,7 @@
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
                               <tr role="row">
-                                 <th class="">Name</th>
+                                 <th class=""></th><th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-phone">Phone</th>
                                  <th class=""></th>
@@ -447,7 +447,7 @@
                            <tbody role="alert" aria-live="polite" aria-relevant="all">
                               <? if(!empty($this->vars['updates_sustaining']['unsubmitted'])): foreach($this->vars['updates_sustaining']['unsubmitted'] as $member): ?>
                               <tr class="gradeX odd">
-                                 <td class=" "><?=$member['displayName']?></td>
+                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn purple mini view card">cc</a>':'' ?></td><td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
                                  <td class=" "><a class="btn blue mini" href="/application/update-sustaining-member/<?=$member['_id']?>"><i class=" "></i> View</a></td>
@@ -535,7 +535,7 @@
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
                               <tr role="row">
-                                 <th class="">Name</th>
+                                 <th class=""></th><th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-phone">Phone</th>
                                  <th class="hidden-480">Date</th>
@@ -545,7 +545,7 @@
                            <tbody role="alert" aria-live="polite" aria-relevant="all">
                               <? if(!empty($this->vars['updates_founding']['submitted'])): foreach($this->vars['updates_founding']['submitted'] as $member): ?>
                               <tr class="gradeX odd">
-                                 <td class=" "><?=$member['displayName']?></td>
+                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn purple mini view card">cc</a>':'' ?></td><td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
                                  <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($member['renewal']['submittedDate']['fullDateTime']), $member['timeZone']); ?>
@@ -578,7 +578,7 @@
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
                               <tr role="row">
-                                 <th class="">Name</th>
+                                 <th class=""></th><th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-phone">Phone</th>
                                  <th class="hidden-480">Date Approved</th>
@@ -588,7 +588,7 @@
                            <tbody role="alert" aria-live="polite" aria-relevant="all">
                               <? if(!empty($this->vars['updates_founding']['approved'])): foreach($this->vars['updates_founding']['approved'] as $member): ?>
                               <tr class="gradeX odd">
-                                 <td class=" "><?=$member['displayName']?></td>
+                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn purple mini view card">cc</a>':'' ?></td><td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
                                  <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($member['renewal']['approvedDate']['fullDateTime']), $member['timeZone']); ?>
@@ -621,7 +621,7 @@
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
                               <tr role="row">
-                                 <th class="">Name</th>
+                                 <th class=""></th><th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-phone">Phone</th>
                                  <th class=""></th>
@@ -630,7 +630,7 @@
                            <tbody role="alert" aria-live="polite" aria-relevant="all">
                               <? if(!empty($this->vars['updates_founding']['unsubmitted'])): foreach($this->vars['updates_founding']['unsubmitted'] as $member): ?>
                               <tr class="gradeX odd">
-                                 <td class=" "><?=$member['displayName']?></td>
+                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn purple mini view card">cc</a>':'' ?></td><td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
                                  <td class=" "><a class="btn blue mini" href="/application/update-founding-member/<?=$member['_id']?>"><i class=" "></i> View</a></td>
@@ -684,7 +684,7 @@
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
                               <tr role="row">
-                                 <th class="">Name</th>
+                                 <th class=""></th><th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-phone">Phone</th>
                                  <th class="hidden-480">Date </th>
@@ -694,7 +694,7 @@
                            <tbody role="alert" aria-live="polite" aria-relevant="all">
                               <? if(!empty($this->vars['donations'])): foreach($this->vars['donations'] as $member): ?>
                               <tr class="gradeX odd">
-                                 <td class=" "><?=$member['displayName']?></td>
+                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn purple mini view card">cc</a>':'' ?></td><td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
                                  <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($member['renewal']['submittedDate']['fullDateTime']), $member['timeZone']); ?>

@@ -293,6 +293,9 @@
 
 	};
 	Application.init = function(){
+		$('.btn.mini.view.card').click(function(e){
+			document.location.href='/card/'+$(this).attr('data-id');
+		});		
 		$('.btn.blue.mini.view').click(function(e){
 			document.location.href='/application/'+$(this).attr('data-id')+'/view';
 		});		

@@ -66,7 +66,7 @@ class Apply extends Model {
 		$metadata->addPropertyConstraint('country', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		//$metadata->addConstraint(new Callback(array('methods' => array('listServ'))));
 		$metadata->addConstraint(new Callback(array('methods' => array('latLonValidate'))));
-		//$metadata->addConstraint(new Callback(array('methods' => array('termsAckValidate'))));
+		$metadata->addConstraint(new Callback(array('methods' => array('termsAckValidate'))));
 	}
 	/* --commented out because it's no longer necessary
 	public function listServ(ExecutionContext $context){
@@ -83,7 +83,7 @@ class Apply extends Model {
 		}
 	}
 	public function termsAckValidate(ExecutionContext $context){
-		if(empty($this->termsAcknowledgement)){
+		if(empty($this->termsAcknowledgement) || $this->termsAcknowledgement == false || $this->termsAcknowledgement == 'no'){
 			$propertyPath = $context->getPropertyPath().'termsAcknowledgement';
 			$context->addViolationAtPath($propertyPath,'Please read and accept our terms in order to submit the application.', array(), null);
 		}

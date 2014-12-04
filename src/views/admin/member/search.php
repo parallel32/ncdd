@@ -116,6 +116,7 @@ jQuery(document).ready(function() {
                         <? if($accessLevel >= EDITOR): ?>
                         '   <td><a class="btn mini blue-stripe edit" data-id="'+member._id.$id+'">Edit</a></td>'+
                         '   <td><a class="btn mini yellow-stripe user-login" data-id="'+member._id.$id+'">LogIn</a></td>'+
+                        '   <td><a class="btn mini purple-stripe user-card" data-id="'+member._id.$id+'">Card</a></td>'+
                         <? endif; ?>
                         '</tr>';
                   $('#results tbody').append(html);
@@ -125,6 +126,9 @@ jQuery(document).ready(function() {
                // bind click events to the records....
                $('#results td .edit').click(function(e){
                   document.location.href='/member/'+$(this).attr('data-id')+'/edit';
+               });   
+               $('#results td .user-card').click(function(e){
+                  document.location.href='/card/'+$(this).attr('data-id');
                });   
                <? if($accessLevel >= EDITOR): ?>
                $('#results td .user-login').click(function(e){

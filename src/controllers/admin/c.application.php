@@ -275,6 +275,9 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 
 	// retrieve document from request
     $doc = $request->get('doc');
+    if(!array_key_exists('termsAcknowledgement', $doc)){
+    	$doc['termsAcknowledgement'] = 'no';
+    }
     // promocode sanity check
     if(!array_key_exists('promocode', $doc)){
     	$doc['promocode'] = '';
@@ -424,6 +427,9 @@ $app->get('/application/new-sustaining-member', function (Request $request) use 
 $app->post('/application/new-sustaining-member', function (Request $request) use ($app) {
 	// retrieve document from request
     $doc = $request->get('doc');
+    if(!array_key_exists('termsAcknowledgement', $doc)){
+    	$doc['termsAcknowledgement'] = 'no';
+    }
     $doc['userAgent'] = $request->headers->get('User-Agent');
     $application = new Model\ApplyNewSustainingMember($doc, $app);
 
@@ -497,6 +503,14 @@ $app->get('/application/update-member/{memberId}', function ($memberId, Request 
 	$member = new Model\Member($doc=array('_id'=>$memberId), $app);
 	$member = $member->findById();
 	
+	// prepare the card payment fields
+	if(is_array($member) && array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment'])){
+		$member['payment']['number'] = str_replace('.x', '', $member['payment']['number']);
+		$member['payment']['number'] = (!empty($member['payment']['number'])) ? '...'.substr($member['payment']['number'], -4) :'';
+		$payment = $member['payment'];
+	}else{
+		$payment = array();
+	}
 	
 	$crumbs = array(array('name'=>'Dashboard','href'=>'/')
 					,array('name'=>'Membership Renewal','href'=>'/application/update-member')
@@ -508,7 +522,9 @@ $app->get('/application/update-member/{memberId}', function ($memberId, Request 
 						,'description'=>"Fill in and submit this application to begin your membership renewal process."
 						,'crumbs'=>$crumbs
 						,'member'=>$member
-						,'location'=>$location);
+						,'location'=>$location
+						,'payment'=>$payment
+						);
 		
 	return $app['view']->render('application/update-member', 'default', $view_vars);
 })->value('memberId','');
@@ -561,7 +577,25 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
     
     // validate the model
     $app['validateModel']($app,$application,$groups=array('update_member'));
+
+    if(array_key_exists('payByCheck',$doc) && $doc['payByCheck'] == 'no'){
+    	// prepare to save the credit card information 
+	    $paymentlite = new Model\PaymentLite($doc['paymentlite'], $app);
+    	$validate[] = array('model'=>$paymentlite,'groups'=>array('cc'));
+    	$app['validateModel']($app,$validate);
+    }
+    
+    
+    // save the application
 	$app_id = $application->insert();		
+	if(array_key_exists('payByCheck',$doc) && $doc['payByCheck'] == 'no'){
+		// save the card
+		$paymentlite->number = $paymentlite->number.'.x';
+		$paymentlite->expYear = substr($paymentlite->expYear, -2);
+		$memberobj = new Model\Member(array('_id'=>$memberId,'payment'=>$paymentlite),$app);
+		$memberobj->saveSafe();
+	}
+	
 
 	if ($doc['contributionCheck'] == 'yes') {
 		
@@ -569,7 +603,9 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 		$doc['payment']['ownerClass'] = 'UpdateMember';
 
 		$payment = new Model\Payment($doc['payment'],$app);
-		$app['validateModel']($app, $payment,$groups=array('cc'));
+		
+		$validate[] = array('model'=>$payment,'groups'=>array('cc'));
+		$app['validateModel']($app,$validate);
 		$paymentId = $payment->charge();
 
 		// thank you receipt message
@@ -1301,6 +1337,11 @@ $app->get('/applications/activate/renewals/{activate}', function ($activate, Req
 	$member = new Model\Member($doc=array(), $app);
 	
 	if($activate == 'yes'){
+		// prepare to remove trial members from the lists by updating them after the renewals run
+		$application = new Model\Apply($doc=array(), $app);
+		$trial = $application->fetchByStatus('TRIAL',0, 10000,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
+		
+
 		// find all the active members who aren't already active and create the renewal attribute
 		$renewal = new Model\Renewal(array(),$app);
 		$renewal->prepareInsert();
@@ -1309,7 +1350,8 @@ $app->get('/applications/activate/renewals/{activate}', function ($activate, Req
 		// get the count of the updates to occur  /// $type 10 means a null type value
 		// actuall query db.member.find({$or:[{renewal:{$exists:false}},{renewal:{$exists:true,$type:10}},{renewal:{}}],status:2,currentMembership:10}).count();
 		$common_query = array('$or'=>array(array('renewal'=>array('$exists'=>false)),array('renewal'=>array('$exists'=>true,'$type'=>10)),array('renewal'=>new \stdClass())));		
-		
+		//$common_query = array();
+
 		$gm_query = array('currentMembership'=>Model\Member::$membership['GENERAL MEMBER'],'status'=>USER_STATUS_ACTIVE);
 		$sm_query = array('currentMembership'=>Model\Member::$membership['SUSTAINING MEMBER'],'status'=>USER_STATUS_ACTIVE);
 		$fm_query = array('currentMembership'=>Model\Member::$membership['FOUNDING MEMBER'],'status'=>USER_STATUS_ACTIVE);
@@ -1329,16 +1371,49 @@ $app->get('/applications/activate/renewals/{activate}', function ($activate, Req
 		$fm_update = $member->updateByCriteria(array('$set'=>array('renewal'=>$renewal)), $fm_query);
 		$pd_update = $member->updateByCriteria(array('$set'=>array('renewal'=>$renewal)), $pd_query);
 
+		$tr_count = 0;
+		if(!empty($trial) && is_array($trial)){
+			foreach ($trial as $record):
+				$trial_update = $member->updateByCriteria(array('$set'=>array('renewal'=>null)), array('_id'=>$record['memberId']));
+				$tr_count++;
+			endforeach;
+		}
+
+		// one-time - prepare the folks who paid 2015 with a promo code - their renewal needs to be marked paid automatically
+		$application = new Model\Apply($doc=array(), $app);
+		$ncdd2014promocode = $application->fetchByStatus('PAID',0, 10000,$filter=array('promocode'=>'NCDD2014'));
+		$promo_count = 0;
+		if(!empty($trial) && is_array($trial)){
+			foreach ($ncdd2014promocode as $record):
+				$doc['currentStatus'] = Model\Renewal::$status['PAID'];
+				$doc['applicationId'] = new \MongoId($record['_id']);
+				$doc['submittedDate'] = $record['submittedDate'];
+				$doc['approvedDate']  = $record['approvedDate'];
+				$doc['paidDate'] 	  = $record['paidDate'];
+				$doc['paymentId'] 	  = $record['paymentId'];
+
+				$renewal = new Model\Renewal($doc,$app);
+				$renewal->prepareInsert();
+				$renewal = $renewal->__toArray();
+
+				$ncdd2014promocode_update = $member->updateByCriteria(array('$set'=>array('renewal'=>$renewal)), array('_id'=>$record['memberId']));
+
+				$promo_count++;
+			endforeach;
+		}
+		
+
+
 
 		$label = 'Renewal Activation Successful.';
-    	$message = $gm_count.' General Members were activated<br><br>'.$sm_count.' Sustaining Members were activated<br><br>'.$fm_count.' Founding Members were activated<br><br>'.$pd_count.' Public Defenders were activated<br><br>Note: only active members were updated.  Non-active members who are activated during the renewal process will have to be manually activated.';
+    	$message = $gm_count.' General Members were activated<br><br>'.$sm_count.' Sustaining Members were activated<br><br>'.$fm_count.' Founding Members were activated<br><br>'.$pd_count.' Public Defenders were activated<br><br>'.$tr_count.' Trial Members were ignored<br><br>'.$promo_count.' Promo Members were marked PAID<br><br>Note: only active members\' renewals were activated.  Non-active members who are activated during the renewal process will have to be manually activated.';
     	
 	}elseif($activate == 'clear'){
 		// clear all active members' renewal attribute
-		$gm_query = array('currentMembership'=>Model\Member::$membership['GENERAL MEMBER'],'status'=>USER_STATUS_ACTIVE);
-		$sm_query = array('currentMembership'=>Model\Member::$membership['SUSTAINING MEMBER'],'status'=>USER_STATUS_ACTIVE);
-		$fm_query = array('currentMembership'=>Model\Member::$membership['FOUNDING MEMBER'],'status'=>USER_STATUS_ACTIVE);
-		$pd_query = array('currentMembership'=>Model\Member::$membership['PUBLIC DEFENDER'],'status'=>USER_STATUS_ACTIVE);
+		$gm_query = array('currentMembership'=>Model\Member::$membership['GENERAL MEMBER']);
+		$sm_query = array('currentMembership'=>Model\Member::$membership['SUSTAINING MEMBER']);
+		$fm_query = array('currentMembership'=>Model\Member::$membership['FOUNDING MEMBER']);
+		$pd_query = array('currentMembership'=>Model\Member::$membership['PUBLIC DEFENDER']);
 		
 		$gm_count = $member->count($gm_query);
 		$sm_count = $member->count($sm_query);
@@ -1351,7 +1426,7 @@ $app->get('/applications/activate/renewals/{activate}', function ($activate, Req
 		$pd_update = $member->updateByCriteria(array('$set'=>array('renewal'=>null)), $pd_query);
 
 		$label = 'Renewal Clear Successful.';
-    	$message = $gm_count.' General Members were cleared<br><br>'.$sm_count.' Sustaining Members were cleared<br><br>'.$fm_count.' Founding Members were cleared<br><br>'.$pd_count.' Public Defenders were cleared<br><br>Note: only active members were updated.  Non-active members who are activated during the renewal process will have to be manually cleared.';
+    	$message = $gm_count.' General Members were cleared<br><br>'.$sm_count.' Sustaining Members were cleared<br><br>'.$fm_count.' Founding Members were cleared<br><br>'.$pd_count.' Public Defenders were cleared<br><br>Note: both active and non active members\' renewals were cleared.  Non-active members who are activated during the renewal process will have to be manually cleared.';
     	
 	}
 

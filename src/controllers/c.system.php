@@ -6,20 +6,46 @@ use Saw\Model;
 use dflydev\markdown\MarkdownParser;
 
 // Logic for validating model fields
-$app['validateModel'] = $app->protect(function ($app,$model,$groups=array()) {
-	if(!empty($groups))
+$app['validateModel'] = $app->protect(function ($app,$model=array(),$groups=array()) {
+	$all_fields = array();
+	if(is_array($model) && !empty($model) && count($model) > 0){// means you're validating several classes and groups
+		foreach ($model as $modelo) {
+			$res = $app['prepareViolations']($modelo['model'],$modelo['groups'],$namespace=true);
+			$all_fields = array_merge($all_fields, $res);
+		}
+		$invalidfields_message = Saw\Model\Model::$invalidFieldsMessage;
+	}else{
+		$all_fields = $app['prepareViolations']($model,$groups);
+		$invalidfields_message = $model::$invalidFieldsMessage;
+	}
+	if(is_array($all_fields) && !empty($all_fields) && count($all_fields) > 0){
+		throw new Saw\Model\Exceptions\DomainException($invalidfields_message, $all_fields);
+	}
+});
+// prepares the viloations array to be passed into the throw exception
+$app['prepareViolations'] = $app->protect(function ($model,$groups,$namespace=false) use ($app) {
+	$fields = array();
+	$nsprefix = '';
+
+    if(!empty($groups))
 		$violations = $app['validator']->validate($model,$groups);
 	else
 		$violations = $app['validator']->validate($model);
+	if($namespace){
+		$reflectionClass = new \ReflectionClass($model);
+		$nsprefix = strtolower($reflectionClass->getShortName()).'-';
+	}
+	
 	if(is_object($violations) && count($violations)>0):
 		foreach ($violations as $violation):
-			$fields[] = array('name'=>$violation->getPropertyPath(),
+			$fields[] = array('name'=>$nsprefix.$violation->getPropertyPath(),
 							  'message'=>$violation->getMessage(),
 							  'invalid_value'=>$violation->getInvalidValue());
 		endforeach;
-		throw new Saw\Model\Exceptions\DomainException($model::$invalidFieldsMessage, $fields);
-	endif;	
+	endif;
+	return $fields;
 });
+
 $app['sendMail'] = $app->protect(function ($subject, $body, $to, $from=array(SAW_MAILER_FROM=>SAW_MAILER_FROM_NAME)) use ($app) {
 	
 	// save it to the email Q

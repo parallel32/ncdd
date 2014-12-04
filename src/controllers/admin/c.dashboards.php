@@ -107,12 +107,17 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 	if($user['accessLevel'] == ADMIN){
 		$rand = rand(1,100);
 		if ($rand<=CHANCE_SERVICE){
-			// publish blogs
-			error_log('blogs published: '.file_get_contents('http://'.SAW_ADMIN_WEBSITE.'/blog/publish-schedule'));
-			// publish forum posts
-			error_log('forum topics published: '.file_get_contents('http://'.SAW_ADMIN_WEBSITE.'/topic/publish-schedule'));
-			// retry email Q
-			error_log('emails sent from the email queue: '.file_get_contents('http://'.SAW_ADMIN_WEBSITE.'/dashboard/emailq'));
+			try {
+				// publish blogs
+				error_log('blogs published: '.file_get_contents('http://'.SAW_ADMIN_WEBSITE.'/blog/publish-schedule'));
+				// publish forum posts
+				error_log('forum topics published: '.file_get_contents('http://'.SAW_ADMIN_WEBSITE.'/topic/publish-schedule'));
+				// retry email Q
+				error_log('emails sent from the email queue: '.file_get_contents('http://'.SAW_ADMIN_WEBSITE.'/dashboard/emailq'));	
+			} catch (Exception $e) {
+				// no worries .. will just try again on the next chance.
+			}
+			
 		}
 	}
 });
