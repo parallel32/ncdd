@@ -21,6 +21,7 @@ $utilities->before($mustbeADMIN);
 // move the payment records to the member objects //
 ////////////////////////////////////////////////////
 $utilities->get('/memberpayment', function () use ($app) {
+    return false;
     $cnt = 0;
     $cntp = 0;
     $mems = '';
