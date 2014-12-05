@@ -118,8 +118,8 @@ class RegistrationSeminar extends Registration {
 
 	}
 	
-
-	public function fetchByStatus($seminarId, $status, $offset=0,$limit=100){
+	
+	public function fetchByStatusSeminar($seminarId, $status, $offset=0,$limit=100){
 		$seminarId = (is_object($seminarId)) ? $seminarId : new \MongoId($seminarId);
 		$query = array('seminarId'=>$seminarId,'currentStatus'=>self::$status[$status]);
 		$fields = array('name'=>true

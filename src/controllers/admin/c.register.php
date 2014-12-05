@@ -544,11 +544,11 @@ $app->get('/registrations/seminar/{seminarId}/{offset}/{limit}', function ($semi
 	$seminar = new Model\Seminar($doc=array('_id'=>$seminarId), $app);
 	$seminar = $seminar->findById();
 	$registration = new Model\RegistrationSeminar($doc=array(), $app);
-	$submitted = $registration->fetchByStatus($seminarId,'SUBMITTED',$offset, $limit);
-	$scholarship = $registration->fetchByStatus($seminarId,'SCHOLARSHIP',$offset, $limit);
-	$deposit = $registration->fetchByStatus($seminarId,'DEPOSIT',$offset, $limit);
-	$depositbalance = $registration->fetchByStatus($seminarId,'DEPOSITBALANCE',$offset, $limit);
-	$paid = $registration->fetchByStatus($seminarId,'PAID',$offset, $limit);
+	$submitted = $registration->fetchByStatusSeminar($seminarId,'SUBMITTED',$offset, $limit);
+	$scholarship = $registration->fetchByStatusSeminar($seminarId,'SCHOLARSHIP',$offset, $limit);
+	$deposit = $registration->fetchByStatusSeminar($seminarId,'DEPOSIT',$offset, $limit);
+	$depositbalance = $registration->fetchByStatusSeminar($seminarId,'DEPOSITBALANCE',$offset, $limit);
+	$paid = $registration->fetchByStatusSeminar($seminarId,'PAID',$offset, $limit);
 	$crumbs = array(array('name'=>'Seminars','href'=>'/seminar')
 					,array('name'=>$seminar['headline'],'href'=>'/seminar/view/'.$seminar['_id'])
 					,array('name'=>'Registrations','href'=>'/registrations/seminar/'.$seminar['_id']));

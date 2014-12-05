@@ -121,7 +121,7 @@ class Registration extends Model {
 		return $result;
 
 	}
-	public function fetchByStatus($seminarId='',$status, $offset=0,$limit=100){
+	public function fetchByStatus($status, $offset=0,$limit=100){
 		$query = array('currentStatus'=>self::$status[$status]);
 		$fields = array('name'=>true
 						,'email'=>true
