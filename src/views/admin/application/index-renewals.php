@@ -37,7 +37,7 @@
             </div>
             <!-- END PAGE HEADER-->
 
-
+            <? if(false):?>
             <script>
             jQuery(document).ready(function() {    
                /*
@@ -68,7 +68,7 @@
             });     
             </script>
             <!--<input type="button" class="btn auto-pay" value="autopay">-->
-
+            <? endif; ?>
             <h1>1. Renewals</h1>
             <div class="row-fluid">
                   <div class="responsive span6" data-tablet="span6" data-desktop="span6">
