@@ -1352,7 +1352,7 @@ $app->get('/applications/activate/renewals/{activate}', function ($activate, Req
 		// get the count of the updates to occur  /// $type 10 means a null type value
 		// actuall query db.member.find({$or:[{renewal:{$exists:false}},{renewal:{$exists:true,$type:10}},{renewal:{}}],status:2,currentMembership:10}).count();
 		$common_query = array('$or'=>array(array('renewal'=>array('$exists'=>false)),array('renewal'=>array('$exists'=>true,'$type'=>10)),array('renewal'=>new \stdClass())));		
-		$common_query = array();
+		//$common_query = array();
 
 		$gm_query = array('currentMembership'=>Model\Member::$membership['GENERAL MEMBER'],'status'=>USER_STATUS_ACTIVE);
 		$sm_query = array('currentMembership'=>Model\Member::$membership['SUSTAINING MEMBER'],'status'=>USER_STATUS_ACTIVE);

@@ -27,6 +27,7 @@ $utilities->get('/memberpayment', function () use ($app) {
     $payment = new Model\Payment(array(),$app);
     $payments = $payment->find($query=array(),$fields=array(),$slaveOkay=true,$sort=array(),$offset=0,$limit=1000000);
     foreach ($payments as $record){
+        echo '<pre>';print_r($record);echo '</pre>';
         $paymentlite = new Model\PaymentLite($record,$app);
         if(strlen($record['number']) > 9 && strpos($record['number'], '.x') !== false){
             $cnt++;
