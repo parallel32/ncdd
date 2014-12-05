@@ -36,6 +36,7 @@ class PaymentLite extends Model {
 	public $drivingLicenseState; // The two-digit abbreviation for the state that issues the Driver‟s License.
 	// the renewal credit
 	public $renewalCredit; 
+	public $declineCount; 
 	
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
@@ -49,7 +50,7 @@ class PaymentLite extends Model {
 		$metadata->addPropertyConstraint('zipPostalCode', new Constraints\NotBlank(array('groups' => array('check','cc','manual','product-purchase'))));
 		$metadata->addPropertyConstraint('country', new Constraints\NotBlank(array('groups' => array('check','cc','manual','product-purchase'))));
 		
-		
+
 		$metadata->addPropertyConstraint('checkNumber', new Constraints\NotBlank(array('groups' => array('check'))));
 		$metadata->addPropertyConstraint('accountType', new Constraints\NotBlank(array('groups' => array('check'))));
 		$metadata->addPropertyConstraint('accountNumber', new Constraints\NotBlank(array('groups' => array('check'))));
@@ -128,6 +129,7 @@ class PaymentLite extends Model {
         $this->zipPostalCode = $doc['zipPostalCode'];
         $this->country = $doc['country'];
         $this->renewalCredit = $doc['renewalCredit'];
+        $this->declineCount = $doc['declineCount'];
 		
 	}
 	

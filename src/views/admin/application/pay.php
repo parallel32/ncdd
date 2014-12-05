@@ -183,6 +183,21 @@
                      $payment_vars['country'] = (!empty($this->vars['application']['country'])) ? $this->vars['application']['country']: $this->vars['location']['country'];
                      $payment_vars['redirect_label'] = 'Go To Applications';
                      $payment_vars['redirect_url'] = '/applications';
+
+                     if(array_key_exists('payment',$this->vars['member']) && !empty($this->vars['member']['payment'])){
+                        $payment_vars['number'] = str_replace('.x', '', $this->vars['member']['payment']['number']);
+                        $payment_vars['cvc'] = $this->vars['member']['payment']['cvc'];
+                        $payment_vars['expMonth'] = $this->vars['member']['payment']['expMonth'];
+                        $payment_vars['expYear'] = $this->vars['member']['payment']['expYear'];
+                        $payment_vars['name'] = $this->vars['member']['payment']['name'];
+                        $payment_vars['address1'] = $this->vars['member']['payment']['addressLine1'];
+                        $payment_vars['address2'] = $this->vars['member']['payment']['addressLine2'];
+                        $payment_vars['city'] = $this->vars['member']['payment']['city'];
+                        $payment_vars['state'] = $this->vars['member']['payment']['stateProvinceRegion'];
+                        $payment_vars['postalCode'] = $this->vars['member']['payment']['zipPostalCode'];
+                        $payment_vars['country'] = $this->vars['member']['payment']['country'];
+                        
+                     }
                      $resetSession = ($accessLevel == ADMIN) ? 'no' : 'yes';
                      $payment_vars['chargeOnSuccess'] = <<< EOT
 {chargeOnSuccess:function(responseObj,paymentId){

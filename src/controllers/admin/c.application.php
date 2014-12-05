@@ -1439,5 +1439,197 @@ $app->get('/applications/activate/renewals/{activate}', function ($activate, Req
 
 
 
+
+
+
+
+
+
+
+//////////////////////////////////////
+// auto-payment system for renewals //
+//////////////////////////////////////
+
+// this is called via xhr from the index-renewals.php view every 8 seconds 
+// and processes 3 records each time
+$app->get('/application/autopay', function (Request $request) use ($app) {
+	$limit = 3;
+	////////////////////////////////////////////////////////////////////////
+	// get all the applications that must be paid and prepare the objects //
+	////////////////////////////////////////////////////////////////////////
+	$member = new Model\Member($doc=array(), $app);	
+	$query = array('status'=>USER_STATUS_ACTIVE,
+					'renewal.currentStatus'=>Model\Renewal::$status['APPROVED'],
+					'currentMembership'=>array('$in'=>array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER'])));
+	$approved_count = $member->count($query);
+
+	$offset = $app['session']->get('autopay-offset');
+	$offset = (empty($offset)) ? 0 : $offset;
+	
+	$approved = $member->fetchByRenewalStatus('APPROVED',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']),$offset, $limit);
+	$new_offset = ($offset+$limit > $approved_count) ? 0: $offset+$limit;
+	$app['session']->set('autopay-offset',$new_offset);
+
+
+
+
+	$apps_paid = array();
+	if(!empty($approved)):
+	foreach($approved as $record):
+		$apply = new Model\Apply($doc=array('_id'=>$record['renewal']['applicationId']), $app);
+		$application = $apply->findById();
+		
+		$location = new Model\Location($doc=array('member'=>array('_id'=>$application['memberId'])), $app);
+		$location = $location->getByMemberId();
+
+		$member = new Model\Member($doc=array('_id'=>$application['memberId']), $app);
+		$member = $member->findById();
+
+		if(!empty($member)
+			&& is_array($member)
+			&& array_key_exists('payment',$member)
+		    && !empty($member['payment'])
+		    && is_array($member['payment'])
+		    && array_key_exists('number',$member['payment'])
+		    && !empty($member['payment']['number'])):
+
+			/////////////////////////////////
+			// prepare their correct total //
+			/////////////////////////////////
+			$pro_rate = array('q'=>0,'a'=>0);
+			switch ($application['class']) {
+				case 'NewMemberApplication': // old deprecated
+				case 'ApplyNewMember':
+				case 'ApplyNewSustainingMember':
+					$pro_rate = $apply->proRate();
+				    break;		
+				case 'UpdateMember':
+				case 'UpdateFoundingMember':
+				case 'UpdateSustainingMember':
+					$pro_rate = array('q'=>0,'a'=>0);
+					break;
+			}
+
+			// EARLY BIRD DISCOUNT FOR 2014 
+			$discount = 0;
+			if($application['type'] == 'UPDATE MEMBER APPLICATION'
+			    && strtotime($application['approvedDate']['iso']) < strtotime('December 31, 2014')
+			    && $application['membershipDues'] > 50
+			): 
+				$discount = 50;
+			endif;
+			 // CREDIT DISCOUNT FOR MEMBERS WHO HOLD A CREDIT WITH US
+			$discount2 = 0;
+			if(array_key_exists('payment',$member) 
+			      && !empty($member['payment'])
+			      && is_array($member['payment'])
+			      && array_key_exists('renewalCredit',$member['payment'])
+			      && !empty($member['payment']['renewalCredit'])
+			      && $member['payment']['renewalCredit'] > 0
+			): 
+			   $discount2  = $member['payment']['renewalCredit'];
+			endif;
+		                       
+		    if($pro_rate['q'] > 1): 
+		    	$amount = $pro_rate['a'];
+		    else: 
+		       $amount = $application['membershipDues'];
+		    endif;
+		    
+		    $amount = $amount-$discount-$discount2;
+		    if($amount < 0 && !empty($discount2)){
+		    	$tpaymnt = $member['payment'];
+		    	$tpaymnt['renewalCredit'] = abs($amount);
+		    	$tmem = new Model\Member(array('_id'=>$application['memberId'],'payment'=>$tpaymnt),$app);
+		    	$tmem->saveSafe();
+		    } 
+		    $amount = ($amount <= 0) ? 0:$amount;
+		    
+		    /////////////////////////////////////////////////
+			// activate a manual charge and create receipt //
+			/////////////////////////////////////////////////
+
+			$doc['memberId'] = $application['memberId'];
+			$doc['ownerId'] = $application['_id'];
+			$doc['ownerClass'] = $application['class'];
+			$doc['description'] = 'INV-'.time();
+			$doc['title'] = $application['type'];
+			$doc['firstName'] = $application['firstName'];
+			$doc['lastName'] = $application['lastName'];
+			$doc['email'] = $application['email'];
+			$doc['phone'] = (!empty($application['phone'])) ? $application['phone']: $location['phone'];
+			$doc['addressLine1'] = (!empty($application['address1'])) ? $application['address1']: $location['addressLine1'];
+			$doc['addressLine2'] = (!empty($application['address2'])) ? $application['address2']: $location['addressLine2'];
+			$doc['city'] = (!empty($application['city'])) ? $application['city']: $location['city'];
+			$doc['stateProvinceRegion'] = (!empty($application['state'])) ? $application['state']: $location['state'];
+			$doc['zipPostalCode'] = (!empty($application['postalCode'])) ? $application['postalCode']: $location['zip'];
+			$doc['country'] = (!empty($application['country'])) ? $application['country']: $location['country'];
+			$doc['amount'] = $amount;
+			$doc['expMonth'] = $member['payment']['expMonth'];
+			$doc['expYear'] = $member['payment']['expYear'];
+			$doc['number'] = str_replace('.x', '', $member['payment']['number']);
+			//$doc['number'] = $member['payment']['number'];
+			$doc['cvc'] = $member['payment']['cvc'];
+			$doc['name'] = $member['payment']['name'];
+
+
+			$payment = new Model\Payment($doc,$app);
+			
+			if($amount <= 0){
+				$app['validateModel']($app, $payment,$groups=array('manual'));
+				$paymentId = $payment->manualCharge();
+				$tpaymnt = $member['payment'];
+		    	$tpaymnt['declineCount'] = 0;
+		    	$tmem = new Model\Member(array('_id'=>$application['memberId'],'payment'=>$tpaymnt),$app);
+		    	$tmem->saveSafe();
+			}else{
+				$app['validateModel']($app, $payment,$groups=array('cc'));
+				try {
+					$paymentId = $payment->charge();	
+					$tpaymnt = $member['payment'];
+			    	$tpaymnt['declineCount'] = 0;
+			    	$tmem = new Model\Member(array('_id'=>$application['memberId'],'payment'=>$tpaymnt),$app);
+			    	$tmem->saveSafe();
+				} catch (Exception $e) {
+					$tpaymnt = $member['payment'];
+			    	$tpaymnt['declineCount'] = (array_key_exists('declineCount', $tpaymnt)) ? $tpaymnt['declineCount']+1: 1;
+			    	$tmem = new Model\Member(array('_id'=>$application['memberId'],'payment'=>$tpaymnt),$app);
+			    	$tmem->saveSafe();
+					return new Response(json_encode(array('message'=>"appId:".$application['_id']." failed due to invalid card")), 400,array('Content-Type' => 'application/json'));
+				}
+				
+			}
+
+			///////////////////////////////
+			// mark the application paid //
+			///////////////////////////////
+			switch ($application['class']) {
+				case 'NewMemberApplication': // old deprecated
+				case 'ApplyNewMember':
+				case 'ApplyNewSustainingMember':
+					$appl = new Model\Apply(array('_id'=>$application['_id'], 'paymentId'=>$paymentId), $app);
+				    break;		
+				case 'UpdateMember':
+					$appl = new Model\UpdateMember(array('_id'=>$application['_id'], 'paymentId'=>$paymentId,'memberId'=>$application['memberId']), $app);
+					break;
+				case 'UpdateFoundingMember':
+					$appl = new Model\UpdateFoundingMember(array('_id'=>$application['_id'], 'paymentId'=>$paymentId,'memberId'=>$application['memberId']), $app);
+					break;
+				case 'UpdateSustainingMember':
+					$appl = new Model\UpdateSustainingMember(array('_id'=>$application['_id'], 'paymentId'=>$paymentId,'memberId'=>$application['memberId']), $app);
+					break;
+			}
+		   	$appl->markPaid(false);
+
+			// return the application id to the xhr
+			$apps_paid[] = $application['_id'];
+		endif;
+	endforeach;
+	endif;
+
+	return new Response(json_encode(array('apps_paid'=>$apps_paid,'new_offset'=>$new_offset,'message'=>"success")), 200,array('Content-Type' => 'application/json'));
+})->before($mustbeADMIN);
+
+
+
 return $app;
-//echo"<pre>";print_r($submitted);echo "</pre>";

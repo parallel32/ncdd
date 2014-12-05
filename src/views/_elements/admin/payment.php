@@ -89,7 +89,7 @@
                            <div class="control-group ">
                               <label class="control-label">Your name as it appears on the card</label>
                               <div class="controls">
-                                 <input type="text" name="doc[name]" class="m-wrap span8 name" value="<?=$firstName?> <?=$lastName?>">
+                                 <input type="text" name="doc[name]" class="m-wrap span8 name" value="<?=(isset($name) && !empty($name)) ? $name : $firstName.' '.$lastName?>">
                               </div>
                            </div>
                         </div>
@@ -100,7 +100,7 @@
                            <div class="control-group ">
                               <label class="control-label">Credit Card Number</label>
                               <div class="controls">
-                                 <input type="text" name="doc[number]" class="m-wrap span8 number">
+                                 <input type="text" name="doc[number]" class="m-wrap span8 number" value="<?=(isset($number) && !empty($number)) ? $number : ''?>">
                               </div>
                            </div>
                         </div>
@@ -111,7 +111,7 @@
                            <div class="control-group ">
                               <label class="control-label">CVC Code</label>
                               <div class="controls">
-                                 <input type="text" name="doc[cvc]" class="m-wrap span8 cvc">
+                                 <input type="text" name="doc[cvc]" class="m-wrap span8 cvc" value="<?=(isset($cvc) && !empty($cvc)) ? $cvc : ''?>">
                               </div>
                            </div>
                         </div>
@@ -122,8 +122,8 @@
                            <div class="control-group ">
                               <label class="control-label">Expiration Date</label>
                               <div class="controls">
-                                 <select class="span4 expMonth" name="doc[expMonth]"></select>
-                                 <select class="span4 expYear" name="doc[expYear]"></select>
+                                 <select id="ccard-expMonth" class="span4 expMonth" name="doc[expMonth]"></select>
+                                 <select id="ccard-expYear" class="span4 expYear" name="doc[expYear]"></select>
                               </div>
                            </div>
                         </div>
@@ -270,6 +270,15 @@
                      $('#save-success .continue.applications').click(function(e){
                         document.location.href='<?=$redirect_url?>';
                      });   
+                     <? endif; ?>
+
+
+                     <? if(isset($expMonth) && !empty($expMonth)): ?>
+                        // STORE CARD STUFF
+                        var smonth = '<?=$expMonth?>';
+                        var syear = '<?=$expYear?>';
+                        $('#ccard-expMonth option[value='+smonth+']').attr('selected', 'selected');
+                        $('#ccard-expYear option[value=20'+syear+']').attr('selected', true);
                      <? endif; ?>
                   });      
                   </script>
