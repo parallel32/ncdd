@@ -137,6 +137,7 @@
                                  <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$member['renewal']['submittedDate']['monthDay'].' '.$member['renewal']['submittedDate']['shortTime']?></td><td class=" ">
                                     <a data-id="<?=$member['renewal']['applicationId']?>" class="btn blue mini view"><i class=" "></i> Application</a>
                                     <a data-id="<?=$member['_id']?>" class="btn blue mini view member"><i class=" "></i> Member</a>
+                                    <a data-id="<?=$member['_id']?>" class="btn mini yellow-stripe user-login">LogIn</a>
                                  </td>
                               </tr>
                               <? endforeach;?>
@@ -182,6 +183,7 @@
                                  <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$member['renewal']['approvedDate']['monthDay'].' '.$member['renewal']['approvedDate']['shortTime']?></td><td class=" ">
                                     <a data-id="<?=$member['renewal']['applicationId']?>" class="btn blue mini view"><i class=" "></i> Application</a>
                                     <a data-id="<?=$member['_id']?>" class="btn blue mini view member"><i class=" "></i> Member</a>
+                                    <a data-id="<?=$member['_id']?>" class="btn mini yellow-stripe user-login">LogIn</a>
                                  </td>
                               </tr>
                               <? endforeach;?>
@@ -229,6 +231,7 @@
                                     <a data-id="<?=$member['renewal']['paymentId']?>" class="btn blue mini view payment"><i class=" "></i> Payment</a>
                                     <a data-id="<?=$member['renewal']['applicationId']?>" class="btn blue mini view"><i class=" "></i> Application</a>
                                     <a data-id="<?=$member['_id']?>" class="btn blue mini view member"><i class=" "></i> Member</a>
+                                    <a data-id="<?=$member['_id']?>" class="btn mini yellow-stripe user-login">LogIn</a>
                                  </td>
                               </tr>
                               <? endforeach;?>
@@ -267,7 +270,9 @@
                                  <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn purple mini view card">cc</a>':'' ?></td><td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
-                                 <td class=" "><a class="btn blue mini" href="/application/update-member/<?=$member['_id']?>"><i class=" "></i> View</a></td>
+                                 <td class=" "><a class="btn blue mini" href="/application/update-member/<?=$member['_id']?>"><i class=" "></i> View</a>
+                                    <a data-id="<?=$member['_id']?>" class="btn mini yellow-stripe user-login">LogIn</a>
+                                 </td>
                               </tr>
                               <? endforeach;?>
                               <? else: ?>
@@ -369,6 +374,7 @@
                                  <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$member['renewal']['submittedDate']['monthDay'].' '.$member['renewal']['submittedDate']['shortTime']?></td><td class=" ">
                                     <a data-id="<?=$member['renewal']['applicationId']?>" class="btn blue mini view"><i class=" "></i> Application</a>
                                     <a data-id="<?=$member['_id']?>" class="btn blue mini view member"><i class=" "></i> Member</a>
+                                    <a data-id="<?=$member['_id']?>" class="btn mini yellow-stripe user-login">LogIn</a>
                                  </td>
                               </tr>
                               <? endforeach;?>
@@ -412,6 +418,7 @@
                                  <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$member['renewal']['approvedDate']['monthDay'].' '.$member['renewal']['approvedDate']['shortTime']?></td><td class=" ">
                                     <a data-id="<?=$member['renewal']['applicationId']?>" class="btn blue mini view"><i class=" "></i> Application</a>
                                     <a data-id="<?=$member['_id']?>" class="btn blue mini view member"><i class=" "></i> Member</a>
+                                    <a data-id="<?=$member['_id']?>" class="btn mini yellow-stripe user-login">LogIn</a>
                                  </td>
                               </tr>
                               <? endforeach;?>
@@ -450,7 +457,9 @@
                                  <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn purple mini view card">cc</a>':'' ?></td><td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
-                                 <td class=" "><a class="btn blue mini" href="/application/update-sustaining-member/<?=$member['_id']?>"><i class=" "></i> View</a></td>
+                                 <td class=" "><a class="btn blue mini" href="/application/update-sustaining-member/<?=$member['_id']?>"><i class=" "></i> View</a>
+                                    <a data-id="<?=$member['_id']?>" class="btn mini yellow-stripe user-login">LogIn</a>
+                                 </td>
                               </tr>
                               <? endforeach;?>
                               <? else: ?>
@@ -552,6 +561,7 @@
                                  <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$member['renewal']['submittedDate']['monthDay'].' '.$member['renewal']['submittedDate']['shortTime']?></td><td class=" ">
                                     <a data-id="<?=$member['renewal']['applicationId']?>" class="btn blue mini view"><i class=" "></i> Application</a>
                                     <a data-id="<?=$member['_id']?>" class="btn blue mini view member"><i class=" "></i> Member</a>
+                                    <a data-id="<?=$member['_id']?>" class="btn mini yellow-stripe user-login">LogIn</a>
                                  </td>
                               </tr>
                               <? endforeach;?>
@@ -595,6 +605,7 @@
                                  <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$member['renewal']['approvedDate']['monthDay'].' '.$member['renewal']['approvedDate']['shortTime']?></td><td class=" ">
                                     <a data-id="<?=$member['renewal']['applicationId']?>" class="btn blue mini view"><i class=" "></i> Application</a>
                                     <a data-id="<?=$member['_id']?>" class="btn blue mini view member"><i class=" "></i> Member</a>
+                                    <a data-id="<?=$member['_id']?>" class="btn mini yellow-stripe user-login">LogIn</a>
                                  </td>
                               </tr>
                               <? endforeach;?>
@@ -633,7 +644,8 @@
                                  <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn purple mini view card">cc</a>':'' ?></td><td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
-                                 <td class=" "><a class="btn blue mini" href="/application/update-founding-member/<?=$member['_id']?>"><i class=" "></i> View</a></td>
+                                 <td class=" "><a class="btn blue mini" href="/application/update-founding-member/<?=$member['_id']?>"><i class=" "></i> View</a>
+                                 <a data-id="<?=$member['_id']?>" class="btn mini yellow-stripe user-login">LogIn</a></td>
                               </tr>
                               <? endforeach;?>
                               <? else: ?>
@@ -702,6 +714,7 @@
                                     <a data-id="<?=$member['renewal']['contributionPaymentId']?>" class="btn blue mini view payment"><i class=" "></i> Payment</a>
                                     <a data-id="<?=$member['renewal']['applicationId']?>" class="btn blue mini view"><i class=" "></i> Application</a>
                                     <a data-id="<?=$member['_id']?>" class="btn blue mini view member"><i class=" "></i> Member</a>
+                                    <a data-id="<?=$member['_id']?>" class="btn mini yellow-stripe user-login">LogIn</a>
                                  </td>
                               </tr>
                               <? endforeach;?>
@@ -834,6 +847,18 @@
                         $('#save-success').modal({keyboard: false});       
                      }
                   });   
+               });
+
+               $('td .user-login').click(function(e){
+                  io.saw.FormGet.activate({postUrl:'/authentication/shadologin/'+$(this).attr('data-id')
+                     ,postOnComplete:function(responseObj,responseStatus){}
+                     ,postOnSuccess:function(responseObj){
+                        document.location.href = '/';
+                     }
+                     ,postOnErrors:function(responseObj){
+                        alert('Something failed trying to sign in as this user...this is an unlikely error with no logs.  Please recall what you did and email Mike.');
+                     }
+                  });
                });
             
             });      

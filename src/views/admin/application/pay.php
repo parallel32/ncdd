@@ -60,11 +60,11 @@
                      </ul>
                   </div>
                </div>
+               
                <div class="row-fluid">
                   <table class="table table-striped table-hover">
                      <thead>
                         <tr>
-                           <th>#</th>
                            <th>Item</th>
                            <th class="hidden-480">Description</th>
                            <th class="hidden-480">Quantity</th>
@@ -74,18 +74,54 @@
                      </thead>
                      <tbody>
                         <tr>
-                           <td>1</td>
                            <td>Application</td>
                            <td class="hidden-480"><?=$this->vars['application']['type']?></td>
                            <td class="hidden-480">1</td>
                            <td class="hidden-480">$<?=$this->vars['application']['membershipDues']?></td>
                            <td>$<?=$this->vars['application']['membershipDues']?></td>
                         </tr>
+                        
+                       <?
+                        // EARLY BIRD DISCOUNT FOR 2014 
+                        if($this->vars['application']['type'] == 'UPDATE MEMBER APPLICATION'
+                            && strtotime($this->vars['application']['approvedDate']['iso']) < strtotime('December 31, 2014')
+                            && $this->vars['application']['membershipDues'] > 50
+                        ): 
+                           $discount = 50;
+                        ?>
+                        <tr>
+                           <td>Discount</td>
+                           <td class="hidden-480">Early Payment 2014 Discount</td>
+                           <td class="hidden-480">1</td>
+                           <td class="hidden-480">-$50</td>
+                           <td>-$50</td>
+                        </tr>
+                        <? endif; ?>
+                        <?
+                        // CREDIT DISCOUNT FOR MEMBERS WHO HOLD A CREDIT WITH US
+                        $discount2 = 0;
+                        if(array_key_exists('payment',$this->vars['member']) 
+                              && !empty($this->vars['member']['payment'])
+                              && is_array($this->vars['member']['payment'])
+                              && array_key_exists('renewalCredit',$this->vars['member']['payment'])
+                              && !empty($this->vars['member']['payment']['renewalCredit'])
+                              && $this->vars['member']['payment']['renewalCredit'] > 0
+                        ): 
+                           $discount2  = $this->vars['member']['payment']['renewalCredit'];
+                        ?>
+                        <tr>
+                           <td>Credit</td>
+                           <td class="hidden-480">Prior Membership Dues Credit</td>
+                           <td class="hidden-480">1</td>
+                           <td class="hidden-480">-$<?=$this->vars['member']['payment']['renewalCredit']?></td>
+                           <td>-$<?=$this->vars['member']['payment']['renewalCredit']?></td>
+                        </tr>
+                        <? endif; ?>
+
                         <? if($this->vars['pro_rated_membership_dues']['q'] > 1): 
                            $amount = $this->vars['pro_rated_membership_dues']['a'];
                         ?>
                         <tr>
-                           <td>2</td>
                            <td>Discount</td>
                            <td class="hidden-480">Pro-rated Discount</td>
                            <td class="hidden-480">1</td>
@@ -101,10 +137,25 @@
                <div class="row-fluid">
                   <div class="span12 invoice-block">
                      <ul class="unstyled amounts">
-                        <li><strong>Total:</strong> $<?=$amount?></li>
+                        <li><strong>Total:</strong> $<?$amount = $amount-$discount-$discount2; echo ($amount <= 0) ? 0:$amount;?></li>
                      </ul>
                   </div>
                </div>
+               <? if($amount <= 0): ?>
+               <div class="row-fluid">
+                  <div class="span12">
+                     <div class="alert alert-error">
+                        If you're seeing this, it means your invoice total is either $0 or less than $0.  
+                        <br><br>
+                        Your invoice has yet to be auto-paid by our automated system.  
+                        <br><br>
+                        Please wait a few more days or you may contact NCDD and they will take care of this.
+                        <br><br>
+                        Please note: if you're total is less than $0, the remaining amount of credit will persist in your account and will be applied in your upcoming membership renewal.
+                     </div>   
+                  </div>
+               </div>
+               <? endif; ?>
             </div>
             <? if(false): ?>
             <!--/ INVOICE -->

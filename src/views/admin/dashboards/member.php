@@ -40,6 +40,57 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                <br><br>
             <? endif; ?>
             <? endif; ?>
+
+            <!-- APPROVED APPLICATIONS -->
+               <? 
+                  $allow = false;
+                  if(!empty($this->vars['applications'])): 
+                     $allow = true;
+                     if(count($this->vars['applications']) == 1){
+                        if($this->vars['applications'][0]['class'] == 'UpdateFoundingMember' || $this->vars['applications'][0]['class'] == 'UpdateSustainingMember'){
+                           $allow = false;
+                        }
+                     }
+                  endif;
+               ?>
+               <? if(!empty($this->vars['applications']) && $allow): ?>
+               <div id="approved-applications" class="row-fluid">
+                  <div class="span12">
+                     <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                     <div class="portlet box red">
+                        <div class="portlet-title" id="application">
+                           <div class="caption"><i class="icon-user"></i>Your membership dues can now be paid.  Please do this promptly.</div>
+                        </div>
+                        <div class="portlet-body">
+                           <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                           <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
+                              <thead>
+                                 <tr role="row">
+                                    <th class="hidden-480">Date Approved</th>
+                                    <th class="hidden-480">Application Type</th>
+                                    <th class=""></th>
+                                 </tr>
+                              </thead>
+                              <tbody role="alert" aria-live="polite" aria-relevant="all">
+                                 <? if(!empty($this->vars['applications'])): foreach($this->vars['applications'] as $application): ?>
+                                 <tr class="gradeX odd">
+                                    <td class="hidden-480 "><?=$application['approvedDate']['monthDay'].' '.$application['approvedDate']['shortTime']?></td>
+                                    <td class="center hidden-480 "><?=$application['type']?></td>
+                                    <td class=" "><a data-id="<?=$application['_id']?>" class="btn blue mini pay"><i class=" "></i> Pay Membership Dues</a></td>
+                                 </tr>
+                                 <? endforeach;?>
+                                 <? else: ?>
+                                    <td colspan="5">Nothing to approve.</td>
+                                 <? endif;?>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                     <!-- END EXAMPLE TABLE PORTLET-->
+                  </div>
+               </div>
+               <? endif; ?>
+               <!--/ APPROVED APPLICATIONS -->
             <div class="row-fluid">
                <div class="span12">
                   &nbsp;
@@ -113,56 +164,7 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                <!-- END DASHBOARD STATS -->
 
 
-               <!-- APPROVED APPLICATIONS -->
-               <? 
-                  $allow = false;
-                  if(!empty($this->vars['applications'])): 
-                     $allow = true;
-                     if(count($this->vars['applications']) == 1){
-                        if($this->vars['applications'][0]['class'] == 'UpdateFoundingMember' || $this->vars['applications'][0]['class'] == 'UpdateSustainingMember'){
-                           $allow = false;
-                        }
-                     }
-                  endif;
-               ?>
-               <? if(!empty($this->vars['applications']) && $allow): ?>
-               <div id="approved-applications" class="row-fluid">
-                  <div class="span12">
-                     <!-- BEGIN EXAMPLE TABLE PORTLET-->
-                     <div class="portlet box red">
-                        <div class="portlet-title" id="application">
-                           <div class="caption"><i class="icon-user"></i>Your membership dues can now be paid.  Please do this promptly.</div>
-                        </div>
-                        <div class="portlet-body">
-                           <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
-                           <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
-                              <thead>
-                                 <tr role="row">
-                                    <th class="hidden-480">Date Approved</th>
-                                    <th class="hidden-480">Application Type</th>
-                                    <th class=""></th>
-                                 </tr>
-                              </thead>
-                              <tbody role="alert" aria-live="polite" aria-relevant="all">
-                                 <? if(!empty($this->vars['applications'])): foreach($this->vars['applications'] as $application): ?>
-                                 <tr class="gradeX odd">
-                                    <td class="hidden-480 "><?=$application['approvedDate']['monthDay'].' '.$application['approvedDate']['shortTime']?></td>
-                                    <td class="center hidden-480 "><?=$application['type']?></td>
-                                    <td class=" "><a data-id="<?=$application['_id']?>" class="btn blue mini pay"><i class=" "></i> Pay Membership Dues</a></td>
-                                 </tr>
-                                 <? endforeach;?>
-                                 <? else: ?>
-                                    <td colspan="5">Nothing to approve.</td>
-                                 <? endif;?>
-                              </tbody>
-                           </table>
-                        </div>
-                     </div>
-                     <!-- END EXAMPLE TABLE PORTLET-->
-                  </div>
-               </div>
-               <? endif; ?>
-               <!--/ APPROVED APPLICATIONS -->
+               
                
 
                <? if(!empty($this->vars['delegate'])): ?>

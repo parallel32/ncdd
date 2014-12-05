@@ -1041,7 +1041,8 @@ $app->get('/application/{id}/pay', function ($id, Request $request) use ($app) {
 	
 	$location = new Model\Location($doc=array('member'=>array('_id'=>$application['memberId'])), $app);
 	$location = $location->getByMemberId();
-	$member = $location['member'];
+	$member = new Model\Member($doc=array('_id'=>$application['memberId']), $app);
+	$member = $member->findById();
 
 	switch ($application['class']) {
 		case 'NewMemberApplication': // old deprecated
@@ -1082,7 +1083,8 @@ $app->get('/application/{id}/pay-other', function ($id, Request $request) use ($
 	
 	$location = new Model\Location($doc=array('member'=>array('_id'=>$application['memberId'])), $app);
 	$location = $location->getByMemberId();
-	$member = $location['member'];
+	$member = new Model\Member($doc=array('_id'=>$application['memberId']), $app);
+	$member = $member->findById();
 
 	switch ($application['class']) {
 		case 'NewMemberApplication': // old deprecated
