@@ -232,7 +232,7 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
             <? if($accessLevel == MEMBER):?>
             <li class="<? echo ($this->vars['active'] == 'Card') ? 'active':'';?>">
                <a href="/card">
-               <i class="icon-money"></i> 
+               <i class="icon-credit-card"></i> 
                <span class="title">Credit Card on File</span>
                <? echo ($this->vars['active'] == 'Card') ? '<span class="selected"></span>':'';?>
                </a>

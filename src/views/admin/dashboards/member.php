@@ -93,10 +93,15 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                <!--/ APPROVED APPLICATIONS -->
             <div class="row-fluid">
                <div class="span12">
-                  &nbsp;
+                  <a class="btn blue" href="/card"><i class="icon-credit-card"></i> Please browse here to manage your credit card on file with us.</a>
                </div>
             </div>
 
+            <div class="row-fluid">
+               <div class="span12">
+                  &nbsp;
+               </div>
+            </div>
 
             <div class="row-fluid">
                <div class="span12">
