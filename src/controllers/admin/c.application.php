@@ -278,6 +278,9 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
     if(!array_key_exists('termsAcknowledgement', $doc)){
     	$doc['termsAcknowledgement'] = 'no';
     }
+    if(!array_key_exists('twoSeminarsAcknowledgement', $doc)){
+    	$doc['twoSeminarsAcknowledgement'] = 'no';
+    }
     // promocode sanity check
     if(!array_key_exists('promocode', $doc)){
     	$doc['promocode'] = '';
@@ -429,6 +432,9 @@ $app->post('/application/new-sustaining-member', function (Request $request) use
     $doc = $request->get('doc');
     if(!array_key_exists('termsAcknowledgement', $doc)){
     	$doc['termsAcknowledgement'] = 'no';
+    }
+    if(!array_key_exists('twoSeminarsAcknowledgement', $doc)){
+    	$doc['twoSeminarsAcknowledgement'] = 'no';
     }
     $doc['userAgent'] = $request->headers->get('User-Agent');
     $application = new Model\ApplyNewSustainingMember($doc, $app);
@@ -879,6 +885,9 @@ $app->post('/application/edit', function (Request $request) use ($app) {
     $doc = $request->get('doc');
     if(!array_key_exists('termsAcknowledgement', $doc)){
     	$doc['termsAcknowledgement'] = 'no';
+    }
+    if(!array_key_exists('twoSeminarsAcknowledgement', $doc)){
+    	$doc['twoSeminarsAcknowledgement'] = 'no';
     }
     $endTrial = $request->get('endTrial');
     $startTrial = $request->get('startTrial');
