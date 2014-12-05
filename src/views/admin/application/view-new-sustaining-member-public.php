@@ -382,30 +382,11 @@
                   </div>
                   <h3 class="form-section">13.</h3>
                   <div class="row-fluid">
-                     <div class="span6 ">
-                        <div class="control-group">
-                           <label class="control-label">I understand that as a condition of continued membership I must attend at least one seminar every two (2) years sponsored/co-sponsored by NCDD or a State seminar listed on the NCDD website.</label>
-                           <div class="controls">
-                              <input disabled type="text" value="<?=$this->vars['application']['attendSeminar']?>" class="m-wrap span12 attendSeminar">
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span--
-                     <div class="span6 ">
-                        <div class="control-group">
-                           <label class="control-label">If "Yes", please explain.</label>
-                           <div class="controls">
-                              <textarea disabled class="span12 attendSeminarExplain" ><?=$this->vars['application']['attendSeminarExplain']?></textarea>
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                  </div>
-                  <h3 class="form-section">14.</h3>
-                  <div class="row-fluid">
                      <div class="span12 ">
                         <div class="control-group">
                            <label class="control-label">
+                           I have substantial current involvement in the practice area of DUI/DWI defense and I understand that as a condition of continued membership I must continue to have substantial involvement, including attendance at one (or more) seminars every two (2) years either sponsored by NCDD or at a State/local seminar approved by NCDD.
+                           <br><span class="control-group"><span class="controls"><input <?=(array_key_exists('twoSeminarsAcknowledgement',$this->vars['application']) && $this->vars['application']['twoSeminarsAcknowledgement'] == 'yes') ? 'checked' : '' ?> type="checkbox" name="doc[twoSeminarsAcknowledgement]" class="twoSeminarsAcknowledgement" value="yes"><b>Yes, I acknowledge this.</b></span></span>
                            </br></br>
                            I have read the general membership rules, and I understand and agree to be bound by them. I declare under penalty of perjury that the foregoing two (2) pages are true and correct to the best of my knowledge.
                            </br>

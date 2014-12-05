@@ -32,7 +32,7 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                         break;
                   }
                ?>
-               <span><a data-apptype="<?=$apptype?>" data-id="<?=call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$this->app);?>" class="btn green large renewal"><i class=" icon-pencil"></i> Begin membership renewal process.</a></span>
+               <span><a data-apptype="<?=$apptype?>" data-id="<?=call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$this->app);?>" class="btn green large renewal"><i class=" icon-pencil"></i> Click Here to Submit Your Renewal Form.</a></span>
                <br><br>
 
             <? elseif (!empty($this->vars['renewal']) && $this->vars['renewal']['currentStatus'] == \Saw\Model\Renewal::$status['SUBMITTED']): ?>

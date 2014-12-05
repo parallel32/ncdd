@@ -48,6 +48,7 @@ class Apply extends Model {
 	public $referredBy;
 	public $userAgent;
 	public $termsAcknowledgement;
+	public $twoSeminarsAcknowledgement;
 
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addPropertyConstraint('firstName', new Constraints\NotBlank(array('message'=>'cannot be blank')));
@@ -123,6 +124,7 @@ class Apply extends Model {
 		$this->referredBy = $doc['referredBy'];
 		$this->userAgent = $doc['userAgent'];
 		$this->termsAcknowledgement = $doc['termsAcknowledgement'];
+		$this->twoSeminarsAcknowledgement = $doc['twoSeminarsAcknowledgement'];
 		$this->trial = (is_object($doc['trial'])) ? $doc['trial']->__toArray(false) : $doc['trial'];
 
 	}
@@ -163,6 +165,7 @@ class Apply extends Model {
 		$this->trial = $this->trial ?: new \stdClass();
 		$this->userAgent = $this->userAgent ?: '';
 		$this->termsAcknowledgement = $this->termsAcknowledgement ?: '';
+		$this->twoSeminarsAcknowledgement = $this->twoSeminarsAcknowledgement ?: '';
 
 	}
 	
