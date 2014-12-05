@@ -37,7 +37,7 @@
             </div>
             <!-- END PAGE HEADER-->
 
-            <? if(false):?>
+            <? if(true):?>
             <script>
             jQuery(document).ready(function() {    
                /*
