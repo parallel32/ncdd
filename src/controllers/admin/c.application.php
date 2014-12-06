@@ -299,15 +299,7 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
     // validate the application
     $app['validateModel']($app,$application);
     
-    if($is_admin == false):
-	    // payment stuff BEGIN
-	    $paymentId = new \stdClass();
-		$validation_group = ($doc['payment']['currentPaymentType'] == Model\Payment::$paymentType['CREDIT']) ? 'cc' : 'check';		
-		$doc['payment']['ownerId'] = new \stdClass();
-		$doc['payment']['ownerClass'] = 'ApplyNewMember';
-	endif;
-	
-	// re-calculate the amount in case the amount gets compromised on the way up to the server
+    // re-calculate the amount in case the amount gets compromised on the way up to the server
 	$dues = array();
 	foreach(Model\ApplyNewMember::$dues as $type => $amount){
 		$apply = new Model\Apply(array('membershipDues'=>$amount),$app);
@@ -325,6 +317,9 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 		$amt = $dues['publicDefender']['prorated']['a'];
 		$amt = (empty($doc['promocode']) || $doc['promocode'] == 'NCDD2014') ? $dues['publicDefender']['amount']: $dues['publicDefender']['prorated']['a'];
 	}
+
+
+
 	if($doc['promocode'] == 'TRIAL'){
 		$trial_doc['startDate'] = 'now';
 		$trial_doc['endDate'] = "+1 year";
@@ -349,6 +344,20 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 		// email/new-member-welcome + 
 		// email/new-member-welcome-complete + 
 		// email/payment-thankyou
+		if($is_admin){
+			$application->currentStatus = Model\Apply::$status['APPROVED'];
+		}
+		$applicationId = $application->insert();
+		$_POST['applicationId'] = $applicationId->__toString();
+
+		if($is_admin == false):
+		    // payment stuff BEGIN
+		    $paymentId = new \stdClass();
+			$validation_group = ($doc['payment']['currentPaymentType'] == Model\Payment::$paymentType['CREDIT']) ? 'cc' : 'check';		
+			$doc['payment']['ownerId'] = $applicationId;
+			$doc['payment']['ownerClass'] = 'ApplyNewMember';
+		endif;
+		
 		if($is_admin == false):
 			$doc['amount'] = $amt;
 			$doc['payment']['amount'] = $amt;
@@ -360,19 +369,26 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 			// payment stuff END
 		endif;
 
-		if($is_admin){
-			$application->currentStatus = Model\Apply::$status['APPROVED'];
-		}
-		$applicationId = $application->insert();
-		$_POST['applicationId'] = $applicationId->__toString();
+
+		
 
 		$response = $app['applicationEmails']($app,$applicationId,$context='new-member-welcome',$request);
+
+		// save the card by getting the memberId first
+		$papplication = new Model\ApplyNewMember(array('_id'=>$applicationId), $app);
+		$papplication = $papplication->findById();
+		$paymentlite = new Model\PaymentLite($doc['payment'],$app);
+		$member = new Model\Member(array('_id'=>$papplication['memberId'],'payment'=>$paymentlite),$app);
+		$member->saveSafe();
+
+		error_log(__FILE__.' '.__LINE__.' for variable: member  ==>'.print_r($member->__toArray(),true));
 
 		if($is_admin == false):
 			// marking the application paid
 			$application = new Model\Apply(array('_id'=>$applicationId, 'paymentId'=>$application->paymentId), $app);
 			$application->markPaid(false);
 		endif;
+
 	}
 
 	
