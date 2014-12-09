@@ -37,6 +37,7 @@ class PaymentLite extends Model {
 	// the renewal credit
 	public $renewalCredit; 
 	public $declineCount; 
+	public $renewalREUSE; 
 	
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
@@ -130,6 +131,7 @@ class PaymentLite extends Model {
         $this->country = $doc['country'];
         $this->renewalCredit = $doc['renewalCredit'];
         $this->declineCount = $doc['declineCount'];
+        $this->renewalREUSE = $doc['renewalREUSE'];
 		
 	}
 	

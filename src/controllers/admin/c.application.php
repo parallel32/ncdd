@@ -601,7 +601,10 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
     // validate the model
     $app['validateModel']($app,$application,$groups=array('update_member'));
 
-    if(array_key_exists('payByCheck',$doc) && $doc['payByCheck'] == 'no'){
+    if(array_key_exists('payByCheck',$doc) && strpos($doc['payByCheck'], 'no') !== false){
+    	if($doc['payByCheck'] == 'no-store'){
+    		$doc['paymentlite']['renewalREUSE'] = 'yes';
+    	}
     	// prepare to save the credit card information 
 	    $paymentlite = new Model\PaymentLite($doc['paymentlite'], $app);
     	$validate[] = array('model'=>$paymentlite,'groups'=>array('cc'));
@@ -611,7 +614,7 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
     
     // save the application
 	$app_id = $application->insert();		
-	if(array_key_exists('payByCheck',$doc) && $doc['payByCheck'] == 'no'){
+	if(array_key_exists('payByCheck',$doc) && strpos($doc['payByCheck'], 'no') !== false){
 		// save the card
 		$paymentlite->number = $paymentlite->number.'.x';
 		$paymentlite->expYear = substr($paymentlite->expYear, -2);

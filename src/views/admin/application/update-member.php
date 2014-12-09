@@ -547,6 +547,7 @@
                            <div class="controls">
                               <input style="margin-left:1px;" type="radio" name="doc[payByCheck]" value="yes">&nbsp;&nbsp;Yes, I intend to pay by check.<br/><br/>
                               <input style="margin-left:1px;" type="radio" name="doc[payByCheck]" checked value="no">&nbsp;&nbsp;No, I intend to pay my membership dues online with my credit card.<br/><br/>
+                              <input style="margin-left:1px;" type="radio" name="doc[payByCheck]" checked value="no-store">&nbsp;&nbsp;I intend to pay my membership dues online with my credit card.  Please also store my credit card for future convenience.<br/><br/>
                               <!--Upon submission of this form and subsequent approval of your renewal, you will receive an email with instructions on how to pay your dues.-->
                            </div>
                         </div>
