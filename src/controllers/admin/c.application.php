@@ -1504,9 +1504,6 @@ $app->get('/application/autopay', function (Request $request) use ($app) {
 	$new_offset = ($offset+$limit > $approved_count) ? 0: $offset+$limit;
 	$app['session']->set('autopay-offset',$new_offset);
 
-error_log(__FILE__.' '.__LINE__.' for variable: approved  ==>'.print_r($approved,true));
-
-
 	$apps_paid = array();
 	if(!empty($approved)):
 	foreach($approved as $record):
