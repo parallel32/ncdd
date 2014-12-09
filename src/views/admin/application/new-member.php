@@ -26,6 +26,7 @@
                <h4 class="page-title text-center">Please Review Our <a href="//<?=SAW_CONSUMER_WEBSITE?>/become-a-member">Membership Eligibility Rules</a></h4>
             </div>
          </div>
+         <!--
          <div class="row-fluid">
             <div class="span12">
             <h4 class="page-title">Our Annual Membership Dues</h4>
@@ -34,6 +35,7 @@
             <p><h4>Attorneys in practice as Public Defenders: $<?=$this->vars['dues']['publicDefender']['amount']?>, currently pro-rated at $<?=$this->vars['dues']['publicDefender']['prorated']['a']?> to the end of the calendar year.</h4></p>
             </div>
          </div>
+         -->
          <!-- END PAGE HEADER-->
          <!-- BEGIN PAGE CONTENT-->
          <div class="row-fluid">

@@ -371,7 +371,7 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 
 
 		
-
+		// the member is created here via the approve() method called in the email sending logic
 		$response = $app['applicationEmails']($app,$applicationId,$context='new-member-welcome',$request);
 
 		// save the card by getting the memberId first
@@ -380,8 +380,9 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 		$paymentlite = new Model\PaymentLite($doc['payment'],$app);
 		$member = new Model\Member(array('_id'=>$papplication['memberId'],'payment'=>$paymentlite),$app);
 		$member->saveSafe();
-
-		error_log(__FILE__.' '.__LINE__.' for variable: member  ==>'.print_r($member->__toArray(),true));
+		$ppayment = new Model\Payment(array('_id'=>$application->paymentId,'memberId'=>$papplication['memberId']),$app);
+		$ppayment->saveSafe();
+		
 
 		if($is_admin == false):
 			// marking the application paid

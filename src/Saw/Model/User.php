@@ -279,8 +279,12 @@ class User extends Model {
 	
     public static function getUserAccessLevelBySession($app){
 		$sess_user = $app['session']->get('user');
-		return array('_id'=>$sess_user['user_id'],
-					 'accessLevel'=>$sess_user['accessLevel']);
+		if(array_key_exists('user_id', $sess_user)){
+			return array('_id'=>$sess_user['user_id'],
+						 'accessLevel'=>$sess_user['accessLevel']);
+		}else{
+			return false;
+		}
 	}
     
 	public function findByEmailVerifyToken(){
