@@ -580,6 +580,10 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 	$doc['email'] = (empty($doc['email'])) ? $member['email'] : $doc['email'];
 	$doc['city'] = (empty($doc['city'])) ? $location['city'] : $doc['city'];
 	$doc['state'] = (empty($doc['state'])) ? $location['state'] : $doc['state'];
+	// everything is automatically approved now
+	$doc['currentStatus'] = Model\Apply::$status['APPROVED'];
+	$doc['approvedDate'] = new Model\Date($app, 'now');
+	$doc['submittedDate'] = new Model\Date($app, 'now');
 
 	$paymentId = null;	
 	$app_id = new \stdClass();	
@@ -600,7 +604,6 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
     
     // validate the model
     $app['validateModel']($app,$application,$groups=array('update_member'));
-
     if(array_key_exists('payByCheck',$doc) && strpos($doc['payByCheck'], 'no') !== false){
     	if($doc['payByCheck'] == 'no-store'){
     		$doc['paymentlite']['renewalREUSE'] = 'yes';
@@ -662,10 +665,12 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 	
 	
 	
-	$member['renewal']['currentStatus'] = Model\Renewal::$status['SUBMITTED'];
+	$member['renewal']['currentStatus'] = Model\Renewal::$status['APPROVED'];
 	$member['renewal']['submittedDate'] = new Model\Date($app, 'now'); 
+	$member['renewal']['approvedDate'] = new Model\Date($app, 'now'); 
 	$member['renewal']['applicationId'] = $app_id; 
 	$member['renewal']['contributionPaymentId'] = $paymentId; 
+	$member['renewal']['payByCheck'] = $doc['payByCheck'];
 
 	$renewal = new Model\Renewal($member['renewal'],$app);
 	$renewal->setRenewalByMember($member['_id']);
@@ -1499,7 +1504,7 @@ $app->get('/application/autopay', function (Request $request) use ($app) {
 	$new_offset = ($offset+$limit > $approved_count) ? 0: $offset+$limit;
 	$app['session']->set('autopay-offset',$new_offset);
 
-
+error_log(__FILE__.' '.__LINE__.' for variable: approved  ==>'.print_r($approved,true));
 
 
 	$apps_paid = array();

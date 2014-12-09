@@ -522,7 +522,7 @@
                            <div class="controls">
                               <input style="margin-left:1px;" disabled <?=(array_key_exists('payByCheck',$this->vars['application'])) ? ($this->vars['application']['payByCheck'] == "yes") ? ' checked' :'' : '';?> type="radio" name="doc[payByCheck]" value="yes">&nbsp;&nbsp;Yes, I intend to pay my membership dues by check.<br/><br/>
                               <input style="margin-left:1px;" disabled <?=(array_key_exists('payByCheck',$this->vars['application'])) ? ($this->vars['application']['payByCheck'] == "no") ? ' checked' :'' : '';?> type="radio" name="doc[payByCheck]" value="no">&nbsp;&nbsp;No, I intend to pay my membership dues online with my credit card.<br/><br/>
-                              <input style="margin-left:1px;" disabled <?=(array_key_exists('payByCheck',$this->vars['application'])) ? ($this->vars['application']['payByCheck'] == "no-store") ? ' checked' :'' : '';?> type="radio" name="doc[payByCheck]" value="no">&nbsp;&nbsp;I intend to pay my membership dues online with my credit card.  Please also store my credit card for future convenience.<br/><br/>
+                              <input style="margin-left:1px;" disabled <?=(array_key_exists('payByCheck',$this->vars['application'])) ? ($this->vars['application']['payByCheck'] == "no-store") ? ' checked' :'' : '';?> type="radio" name="doc[payByCheck]" value="no-store">&nbsp;&nbsp;I intend to pay my membership dues online with my credit card.  Please also store my credit card for future convenience.<br/><br/>
                               <a href='/card/<?=$this->vars['member']['_id']?>' target="_blank">Click to view credit card on file</a>
                            </div>
                         </div>
