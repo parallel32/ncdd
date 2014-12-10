@@ -77,6 +77,7 @@ class Payment extends Model {
 	private $currency = 'usd';
 	private $publicKey = SAW_STRIPE_PUBLIC_KEY;
 	private $secretKey = SAW_STRIPE_SECRET_KEY;
+	public $invoiceBlock;
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addPropertyConstraint('name', new Constraints\NotBlank(array('groups' => array('cc','product-purchase'))));
@@ -182,6 +183,7 @@ class Payment extends Model {
 		$this->poNumber = $doc['poNumber'];
 		$this->ipAddress = $doc['ipAddress'];
 		$this->fullResponse = $doc['fullResponse'];
+		$this->invoiceBlock = $doc['invoiceBlock'];
 	}
 	
 	protected function prepareInsert(){
@@ -227,6 +229,7 @@ class Payment extends Model {
 		$this->poNumber = $this->poNumber ?: '';
 		$this->ipAddress = $this->ipAddress ?: '';
 		$this->fullResponse = $this->fullResponse ?: new \stdClass();
+		$this->invoiceBlock = $this->invoiceBlock ?: '';
 
 	}
 	
@@ -637,6 +640,7 @@ error_log('for variable: this->amount  ==>'.print_r($this->amount,true));
 			$this->number = str_replace('-', '', $this->number);
 			$this->number = substr((string)$this->number,-4);
 			$this->cvc = '';
+
 			$paymentId = $this->insert();
 			$this->markOwnerClassPaid($paymentId);
 

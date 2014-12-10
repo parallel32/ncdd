@@ -18,6 +18,32 @@ $app->post('/payment/charge', function (Request $request) use ($app) {
 	if(array_key_exists('payment',$doc) && is_array($doc['payment'])){
 		$doc = $doc['payment'];
 	}
+
+	// prepare the invoice for the payment record
+	$apply = new Model\Apply(array('_id'=>$doc['ownerId']), $app);
+	$application = $apply->findById();
+	if(!empty($application) && is_array($application)){	
+		$location = new Model\Location(array('member'=>array('_id'=>$application['memberId'])), $app);
+		$location = $location->getByMemberId();
+		$member = new Model\Member(array('_id'=>$application['memberId']), $app);
+		$member = $member->findById();
+
+		switch ($application['class']) {
+			case 'NewMemberApplication': // old deprecated
+			case 'ApplyNewMember':
+			case 'ApplyNewSustainingMember':
+				$pro_rate = $apply->proRate();
+			    break;		
+			case 'UpdateMember':
+			case 'UpdateFoundingMember':
+			case 'UpdateSustainingMember':
+				$pro_rate = array('q'=>0,'a'=>0);
+				break;
+		}
+		$doc['invoiceBlock'] = $app['view']->element('invoice-block',array('application'=>$application,'member'=>$member,'location'=>$location,'pro_rated_membership_dues'=>$pro_rate));
+	}
+	
+
 	//error_log('/payment/charge:doc:'.print_r($doc,true));
 	$payment = new Model\Payment($doc,$app);
 	$app['validateModel']($app, $payment,$groups=array('cc'));

@@ -17,7 +17,11 @@ $user = call_user_func(function($app){ $user = $app['session']->get('user'); ret
             <div class="span12">
                   <!-- PAYMENT ELEMENT -->
                   <form id="payment-form" class="horizontal-form portlet">
-                     <h3 class="form-section">Payment Information</h3>
+                     <?if(array_key_exists('invoiceBlock', $this->vars['payment'])): ?>
+                     <h3 class="form-section"><b>Invoice</b></h3>
+                     <?=$this->vars['payment']['invoiceBlock']?>
+                     <? endif; ?>
+                     <h3 class="form-section"><b>Payment Information</b></h3>
                      <div class="row-fluid">
                         <div class="span12 ">
                            <h4>

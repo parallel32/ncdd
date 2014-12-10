@@ -1082,6 +1082,7 @@ $app->get('/application/{id}/pay', function ($id, Request $request) use ($app) {
 	
 	$location = new Model\Location($doc=array('member'=>array('_id'=>$application['memberId'])), $app);
 	$location = $location->getByMemberId();
+
 	$member = new Model\Member($doc=array('_id'=>$application['memberId']), $app);
 	$member = $member->findById();
 
@@ -1165,6 +1166,32 @@ $app->get('/application/{id}/pay-other', function ($id, Request $request) use ($
 $app->post('/application/payment', function (Request $request) use ($app) {
 	// retrieve document from request
 	$doc = $request->get('doc');
+
+	// prepare the invoice for the payment record
+	$apply = new Model\Apply(array('_id'=>$doc['ownerId']), $app);
+	$application = $apply->findById();
+	if(!empty($application) && is_array($application)){	
+		$location = new Model\Location(array('member'=>array('_id'=>$application['memberId'])), $app);
+		$location = $location->getByMemberId();
+		$member = new Model\Member(array('_id'=>$application['memberId']), $app);
+		$member = $member->findById();
+
+		switch ($application['class']) {
+			case 'NewMemberApplication': // old deprecated
+			case 'ApplyNewMember':
+			case 'ApplyNewSustainingMember':
+				$pro_rate = $apply->proRate();
+			    break;		
+			case 'UpdateMember':
+			case 'UpdateFoundingMember':
+			case 'UpdateSustainingMember':
+				$pro_rate = array('q'=>0,'a'=>0);
+				break;
+		}
+		$doc['invoiceBlock'] = $app['view']->element('invoice-block',array('application'=>$application,'member'=>$member,'location'=>$location,'pro_rated_membership_dues'=>$pro_rate));
+	}
+
+
 	$payment = new Model\Payment($doc,$app);
 	$app['validateModel']($app, $payment,$groups=array('manual'));
 	$paymentId = $payment->manualCharge();
@@ -1485,12 +1512,12 @@ $app->get('/applications/activate/renewals/{activate}', function ($activate, Req
 
 
 
-
-
+/**
+AUTOPAY
+*/
 //////////////////////////////////////
 // auto-payment system for renewals //
 //////////////////////////////////////
-
 // this is called via xhr from the index-renewals.php view every 8 seconds 
 // and processes 3 records each time
 $app->get('/application/autopay', function (Request $request) use ($app) {
@@ -1522,6 +1549,7 @@ $app->get('/application/autopay', function (Request $request) use ($app) {
 
 		$member = new Model\Member($doc=array('_id'=>$application['memberId']), $app);
 		$member = $member->findById();
+		
 
 		if(!empty($member)
 			&& is_array($member)
@@ -1611,8 +1639,8 @@ $app->get('/application/autopay', function (Request $request) use ($app) {
 				//$doc['number'] = $member['payment']['number'];
 				$doc['cvc'] = $member['payment']['cvc'];
 				$doc['name'] = $member['payment']['name'];
-
-
+				// prepare the invoice
+			   	$doc['invoiceBlock'] = $app['view']->element('invoice-block',array('application'=>$application,'member'=>$member,'location'=>$location,'pro_rated_membership_dues'=>$pro_rate));
 				$payment = new Model\Payment($doc,$app);
 				
 				if($amount <= 0){
@@ -1660,6 +1688,7 @@ $app->get('/application/autopay', function (Request $request) use ($app) {
 						break;
 				}
 			   	$appl->markPaid(false);
+
 
 				// return the application id to the xhr
 				$apps_paid[] = $application['_id'];
