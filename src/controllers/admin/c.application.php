@@ -527,7 +527,7 @@ $app->get('/application/update-member/{memberId}', function ($memberId, Request 
 	$member = $member->findById();
 	
 	// prepare the card payment fields
-	if(is_array($member) && array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment'])){
+	if(is_array($member) && array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && array_key_exists('number', $member['payment'])){
 		$member['payment']['number'] = str_replace('.x', '', $member['payment']['number']);
 		$member['payment']['number'] = (!empty($member['payment']['number'])) ? '...'.substr($member['payment']['number'], -4) :'';
 		$payment = $member['payment'];
@@ -605,6 +605,7 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
     // validate the model
     $app['validateModel']($app,$application,$groups=array('update_member'));
     if(array_key_exists('payByCheck',$doc) && strpos($doc['payByCheck'], 'no') !== false){
+    	error_log(__FILE__.' '.__LINE__.' for variable: payByCheck AAA  ==>'.print_r($doc['payByCheck'],true));
     	if($doc['payByCheck'] == 'no-store'){
     		$doc['paymentlite']['renewalREUSE'] = 'yes';
     	}
@@ -618,6 +619,7 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
     // save the application
 	$app_id = $application->insert();		
 	if(array_key_exists('payByCheck',$doc) && strpos($doc['payByCheck'], 'no') !== false){
+		error_log(__FILE__.' '.__LINE__.' for variable: payByCheck BBB  ==>'.print_r($doc['payByCheck'],true));
 		// save the card
 		$paymentlite->number = $paymentlite->number.'.x';
 		$paymentlite->expYear = substr($paymentlite->expYear, -2);
@@ -680,7 +682,7 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 
 	return new Response(json_encode(array(
 		'label'=>'Your application was received.  Thank you.',
-		'message'=>'Thank you for your interest in NCDD.  Your application has been submitted.  You will be notified by the College when it is approved or if there are any questions.')), 200,array('Content-Type' => 'registration/json')
+		'message'=>'Thank you for your interest in NCDD.  Your application has been submitted.  You will be notified by the College if there are any questions or concerns that need to be addressed.')), 200,array('Content-Type' => 'registration/json')
 	);
 
 
