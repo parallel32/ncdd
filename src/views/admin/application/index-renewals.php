@@ -75,6 +75,12 @@
             <input type="button" class="btn auto-pay" value="autopay">
             <? } ?>
             <? endif; ?>
+
+            <p>
+               <a data-id="" class="btn red mini view card">cc</a>  =  NOT to be re-used
+               <br>
+               <a data-id="" class="btn purple mini view card">cc</a> = to be re-used
+            </p>
             <h1>1. Renewals</h1>
             <div class="row-fluid">
                   <div class="responsive span6" data-tablet="span6" data-desktop="span6">
