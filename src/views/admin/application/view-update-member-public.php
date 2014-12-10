@@ -482,6 +482,7 @@
 
 
                   <h3 class="form-section">Check which applies to your membership:</h3>
+                  <p class="alert alert-info"><b>As an added incentive to pay your dues early and sign up for automatic renewal, complete your Membership Renewal by December 31, 2014 and you will receive an automatic $50 off your 2015 Annual dues.</b></p>
                   <div class="row-fluid">
                      <div class="span12 ">
                         <div class="control-group">
@@ -489,10 +490,10 @@
                            <div class="controls">
                               <input disabled type="text" value="<?
                               if($this->vars['application']['membershipDues'] == 175){
-                                 echo "1-5 years in law practice ($175 annual dues - $50 off if paid by December 31st)";
+                                 echo "1-5 years in law practice ($175 annual dues)";
                               }
                               if($this->vars['application']['membershipDues'] == 225){
-                                 echo "6 or more years in law practice ($225 annual dues - $50 off if paid by December 31st)";
+                                 echo "6 or more years in law practice ($225 annual dues)";
                               }
                               if($this->vars['application']['membershipDues'] == 50){
                                  echo "Public Defender ($50 annual dues)";

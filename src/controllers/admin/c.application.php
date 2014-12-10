@@ -553,6 +553,7 @@ $app->get('/application/update-member/{memberId}', function ($memberId, Request 
 })->value('memberId','');
 
 /**
+
 RENEWAL SUBMISSIONS HERE
 
 */
@@ -610,7 +611,6 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
     // validate the model
     $app['validateModel']($app,$application,$groups=array('update_member'));
     if(array_key_exists('payByCheck',$doc) && strpos($doc['payByCheck'], 'no') !== false){
-    	error_log(__FILE__.' '.__LINE__.' for variable: payByCheck AAA  ==>'.print_r($doc['payByCheck'],true));
     	if($doc['payByCheck'] == 'no-store'){
     		$doc['paymentlite']['renewalREUSE'] = 'yes';
     	}
@@ -624,7 +624,6 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
     // save the application
 	$app_id = $application->insert();		
 	if(array_key_exists('payByCheck',$doc) && strpos($doc['payByCheck'], 'no') !== false){
-		error_log(__FILE__.' '.__LINE__.' for variable: payByCheck BBB  ==>'.print_r($doc['payByCheck'],true));
 		// save the card
 		$paymentlite->number = $paymentlite->number.'.x';
 		$paymentlite->expYear = substr($paymentlite->expYear, -2);
@@ -1579,7 +1578,8 @@ $app->get('/application/autopay', function (Request $request) use ($app) {
 			// EARLY BIRD DISCOUNT FOR 2014 
 			$discount = 0;
 			if($application['type'] == 'UPDATE MEMBER APPLICATION'
-			    && strtotime($application['approvedDate']['iso']) < strtotime('December 31, 2014')
+			    /*&& strtotime($application['approvedDate']['iso']) < strtotime('December 31, 2014')*/
+			    && array_key_exists('payment', $member) && array_key_exists('renewalREUSE', $member['payment']) && $member['payment']['renewalREUSE'] == 'yes'
 			    && $application['membershipDues'] > 50
 			): 
 				$discount = 50;

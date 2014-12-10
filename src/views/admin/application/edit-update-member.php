@@ -526,14 +526,15 @@
 
                                    
                   <h3 class="form-section">Check which applies to your membership:</h3>
+                  <p class="alert alert-info"><b>As an added incentive to pay your dues early and sign up for automatic renewal, complete your Membership Renewal by December 31, 2014 and you will receive an automatic $50 off your 2015 Annual dues.</b></p>
                   <div class="row-fluid">
                      <div class="span12 ">
                         <div class="control-group">
                            <label class="control-label"></label>
                            <div class="controls">
                               <select class=" m-wrap span12 membershipDues" name="doc[membershipDues]">
-                                 <option<?=($this->vars['application']['membershipDues'] == "175") ? ' selected' :'';?> value="175">1-5 years in law practice ($175 annual dues - $50 off if paid by December 31st) </option>
-                                 <option<?=($this->vars['application']['membershipDues'] == "225") ? ' selected' :'';?> value="225">6 or more years in law practice ($225 annual dues - $50 off if paid by December 31st)</option>
+                                 <option<?=($this->vars['application']['membershipDues'] == "175") ? ' selected' :'';?> value="175">1-5 years in law practice ($175 annual dues) </option>
+                                 <option<?=($this->vars['application']['membershipDues'] == "225") ? ' selected' :'';?> value="225">6 or more years in law practice ($225 annual dues)</option>
                                  <option<?=($this->vars['application']['membershipDues'] == "50") ? ' selected' :'';?> value="50"> Public Defender ($50 annual dues)</option>
                               </select>
                            </div>

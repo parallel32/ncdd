@@ -53,9 +53,11 @@
                         </tr>
 
                         <?
+                        $discount = 0;
                         // EARLY BIRD DISCOUNT FOR 2014 
                         if($application['type'] == 'UPDATE MEMBER APPLICATION'
-                            && strtotime($application['approvedDate']['iso']) < strtotime('December 31, 2014')
+                            /*&& strtotime($application['approvedDate']['iso']) < strtotime('December 31, 2014')*/
+                            && array_key_exists('payment', $member) && array_key_exists('renewalREUSE', $member['payment']) && $member['payment']['renewalREUSE'] == 'yes'
                             && $application['membershipDues'] > 50
                         ): 
                            $discount = 50;
