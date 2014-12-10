@@ -26,16 +26,32 @@
                <h4 class="page-title text-center">Please Review Our <a href="//<?=SAW_CONSUMER_WEBSITE?>/become-a-member">Membership Eligibility Rules</a></h4>
             </div>
          </div>
-         <!--
+         
          <div class="row-fluid">
             <div class="span12">
             <h4 class="page-title">Our Annual Membership Dues</h4>
-            <p><h4>Attorneys in practice for less than 6 years: $<?=$this->vars['dues'][1]['amount']?>, currently pro-rated at $<?=$this->vars['dues'][1]['prorated']['a']?> to the end of the calendar year.</h4></p>
-            <p><h4>Attorneys in practice for 6 years or more: $<?=$this->vars['dues'][6]['amount']?>, currently pro-rated at $<?=$this->vars['dues'][6]['prorated']['a']?> to the end of the calendar year.</h4></p>
-            <p><h4>Attorneys in practice as Public Defenders: $<?=$this->vars['dues']['publicDefender']['amount']?>, currently pro-rated at $<?=$this->vars['dues']['publicDefender']['prorated']['a']?> to the end of the calendar year.</h4></p>
+            <? if( $this->vars['dues'][1]['amount'] == $this->vars['dues'][1]['prorated']['a']): ?>
+               <p><h4>Attorneys in practice for less than 6 years: $<?=$this->vars['dues'][1]['amount']?></h4></p>
+            <? else: ?>
+               <p><h4>Attorneys in practice for less than 6 years: $<?=$this->vars['dues'][1]['amount']?>, currently pro-rated at $<?=$this->vars['dues'][1]['prorated']['a']?> to the end of the calendar year.</h4></p>
+            <? endif; ?>
+            
+            <? if( $this->vars['dues'][6]['amount'] == $this->vars['dues'][6]['prorated']['a']): ?>
+               <p><h4>Attorneys in practice for less than 6 years: $<?=$this->vars['dues'][6]['amount']?></h4></p>
+            <? else: ?>
+               <p><h4>Attorneys in practice for 6 years or more: $<?=$this->vars['dues'][6]['amount']?>, currently pro-rated at $<?=$this->vars['dues'][6]['prorated']['a']?> to the end of the calendar year.</h4></p>
+            <? endif; ?>
+            
+            <? if( $this->vars['dues']['publicDefender']['amount'] == $this->vars['dues']['publicDefender']['prorated']['a']): ?>
+               <p><h4>Attorneys in practice as Public Defenders: $<?=$this->vars['dues']['publicDefender']['amount']?></h4></p>
+            <? else: ?>
+               <p><h4>Attorneys in practice as Public Defenders: $<?=$this->vars['dues']['publicDefender']['amount']?>, currently pro-rated at $<?=$this->vars['dues']['publicDefender']['prorated']['a']?> to the end of the calendar year.</h4></p>
+            <? endif; ?>
+            
+            
             </div>
          </div>
-         -->
+         
          <!-- END PAGE HEADER-->
          <!-- BEGIN PAGE CONTENT-->
          <div class="row-fluid">
