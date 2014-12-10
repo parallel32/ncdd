@@ -551,6 +551,11 @@ $app->get('/application/update-member/{memberId}', function ($memberId, Request 
 		
 	return $app['view']->render('application/update-member', 'default', $view_vars);
 })->value('memberId','');
+
+/**
+RENEWAL SUBMISSIONS HERE
+
+*/
 $app->post('/application/update-member/{memberId}', function ($memberId, Request $request) use ($app) {
 
 	//get the user logged in
@@ -1578,84 +1583,87 @@ $app->get('/application/autopay', function (Request $request) use ($app) {
 		    } 
 		    $amount = ($amount <= 0) ? 0:$amount;
 		    
-		    /////////////////////////////////////////////////
-			// activate a manual charge and create receipt //
-			/////////////////////////////////////////////////
+		    ////////////////////////////////////////////////////////////////////////////////
+			// activate a manual charge and create receipt - only if the declineCount = 0 //
+			// if it's more than zero then the card must be updated 					  //
+			////////////////////////////////////////////////////////////////////////////////
 
-			$doc['memberId'] = $application['memberId'];
-			$doc['ownerId'] = $application['_id'];
-			$doc['ownerClass'] = $application['class'];
-			$doc['description'] = 'INV-'.time();
-			$doc['title'] = $application['type'];
-			$doc['firstName'] = $application['firstName'];
-			$doc['lastName'] = $application['lastName'];
-			$doc['email'] = $application['email'];
-			$doc['phone'] = (!empty($application['phone'])) ? $application['phone']: $location['phone'];
-			$doc['addressLine1'] = (!empty($application['address1'])) ? $application['address1']: $location['addressLine1'];
-			$doc['addressLine2'] = (!empty($application['address2'])) ? $application['address2']: $location['addressLine2'];
-			$doc['city'] = (!empty($application['city'])) ? $application['city']: $location['city'];
-			$doc['stateProvinceRegion'] = (!empty($application['state'])) ? $application['state']: $location['state'];
-			$doc['zipPostalCode'] = (!empty($application['postalCode'])) ? $application['postalCode']: $location['zip'];
-			$doc['country'] = (!empty($application['country'])) ? $application['country']: $location['country'];
-			$doc['amount'] = $amount;
-			$doc['expMonth'] = $member['payment']['expMonth'];
-			$doc['expYear'] = $member['payment']['expYear'];
-			$doc['number'] = str_replace('.x', '', $member['payment']['number']);
-			//$doc['number'] = $member['payment']['number'];
-			$doc['cvc'] = $member['payment']['cvc'];
-			$doc['name'] = $member['payment']['name'];
+		    if(array_key_exists('payment', $member) && array_key_exists('declineCount', $member['payment']) && ($member['payment']['declineCount'] == 0 || empty($member['payment']['declineCount']))){
+				$doc['memberId'] = $application['memberId'];
+				$doc['ownerId'] = $application['_id'];
+				$doc['ownerClass'] = $application['class'];
+				$doc['description'] = 'INV-'.time();
+				$doc['title'] = $application['type'];
+				$doc['firstName'] = $application['firstName'];
+				$doc['lastName'] = $application['lastName'];
+				$doc['email'] = $application['email'];
+				$doc['phone'] = (!empty($application['phone'])) ? $application['phone']: $location['phone'];
+				$doc['addressLine1'] = (!empty($application['address1'])) ? $application['address1']: $location['addressLine1'];
+				$doc['addressLine2'] = (!empty($application['address2'])) ? $application['address2']: $location['addressLine2'];
+				$doc['city'] = (!empty($application['city'])) ? $application['city']: $location['city'];
+				$doc['stateProvinceRegion'] = (!empty($application['state'])) ? $application['state']: $location['state'];
+				$doc['zipPostalCode'] = (!empty($application['postalCode'])) ? $application['postalCode']: $location['zip'];
+				$doc['country'] = (!empty($application['country'])) ? $application['country']: $location['country'];
+				$doc['amount'] = $amount;
+				$doc['expMonth'] = $member['payment']['expMonth'];
+				$doc['expYear'] = $member['payment']['expYear'];
+				$doc['number'] = str_replace('.x', '', $member['payment']['number']);
+				//$doc['number'] = $member['payment']['number'];
+				$doc['cvc'] = $member['payment']['cvc'];
+				$doc['name'] = $member['payment']['name'];
 
 
-			$payment = new Model\Payment($doc,$app);
-			
-			if($amount <= 0){
-				$app['validateModel']($app, $payment,$groups=array('manual'));
-				$paymentId = $payment->manualCharge();
-				$tpaymnt = $member['payment'];
-		    	$tpaymnt['declineCount'] = 0;
-		    	$tmem = new Model\Member(array('_id'=>$application['memberId'],'payment'=>$tpaymnt),$app);
-		    	$tmem->saveSafe();
-			}else{
-				$app['validateModel']($app, $payment,$groups=array('cc'));
-				try {
-					$paymentId = $payment->charge();	
+				$payment = new Model\Payment($doc,$app);
+				
+				if($amount <= 0){
+					$app['validateModel']($app, $payment,$groups=array('manual'));
+					$paymentId = $payment->manualCharge();
 					$tpaymnt = $member['payment'];
 			    	$tpaymnt['declineCount'] = 0;
 			    	$tmem = new Model\Member(array('_id'=>$application['memberId'],'payment'=>$tpaymnt),$app);
 			    	$tmem->saveSafe();
-				} catch (Exception $e) {
-					$tpaymnt = $member['payment'];
-			    	$tpaymnt['declineCount'] = (array_key_exists('declineCount', $tpaymnt)) ? $tpaymnt['declineCount']+1: 1;
-			    	$tmem = new Model\Member(array('_id'=>$application['memberId'],'payment'=>$tpaymnt),$app);
-			    	$tmem->saveSafe();
-					return new Response(json_encode(array('message'=>"appId:".$application['_id']." failed due to invalid card")), 400,array('Content-Type' => 'application/json'));
+				}else{
+					$app['validateModel']($app, $payment,$groups=array('cc'));
+					try {
+						$paymentId = $payment->charge();	
+						$tpaymnt = $member['payment'];
+				    	$tpaymnt['declineCount'] = 0;
+				    	$tmem = new Model\Member(array('_id'=>$application['memberId'],'payment'=>$tpaymnt),$app);
+				    	$tmem->saveSafe();
+					} catch (Exception $e) {
+						$tpaymnt = $member['payment'];
+				    	$tpaymnt['declineCount'] = (array_key_exists('declineCount', $tpaymnt)) ? $tpaymnt['declineCount']+1: 1;
+				    	$tmem = new Model\Member(array('_id'=>$application['memberId'],'payment'=>$tpaymnt),$app);
+				    	$tmem->saveSafe();
+						return new Response(json_encode(array('message'=>"appId:".$application['_id']." failed due to invalid card")), 400,array('Content-Type' => 'application/json'));
+					}
+					
 				}
-				
-			}
 
-			///////////////////////////////
-			// mark the application paid //
-			///////////////////////////////
-			switch ($application['class']) {
-				case 'NewMemberApplication': // old deprecated
-				case 'ApplyNewMember':
-				case 'ApplyNewSustainingMember':
-					$appl = new Model\Apply(array('_id'=>$application['_id'], 'paymentId'=>$paymentId), $app);
-				    break;		
-				case 'UpdateMember':
-					$appl = new Model\UpdateMember(array('_id'=>$application['_id'], 'paymentId'=>$paymentId,'memberId'=>$application['memberId']), $app);
-					break;
-				case 'UpdateFoundingMember':
-					$appl = new Model\UpdateFoundingMember(array('_id'=>$application['_id'], 'paymentId'=>$paymentId,'memberId'=>$application['memberId']), $app);
-					break;
-				case 'UpdateSustainingMember':
-					$appl = new Model\UpdateSustainingMember(array('_id'=>$application['_id'], 'paymentId'=>$paymentId,'memberId'=>$application['memberId']), $app);
-					break;
-			}
-		   	$appl->markPaid(false);
+				///////////////////////////////
+				// mark the application paid //
+				///////////////////////////////
+				switch ($application['class']) {
+					case 'NewMemberApplication': // old deprecated
+					case 'ApplyNewMember':
+					case 'ApplyNewSustainingMember':
+						$appl = new Model\Apply(array('_id'=>$application['_id'], 'paymentId'=>$paymentId), $app);
+					    break;		
+					case 'UpdateMember':
+						$appl = new Model\UpdateMember(array('_id'=>$application['_id'], 'paymentId'=>$paymentId,'memberId'=>$application['memberId']), $app);
+						break;
+					case 'UpdateFoundingMember':
+						$appl = new Model\UpdateFoundingMember(array('_id'=>$application['_id'], 'paymentId'=>$paymentId,'memberId'=>$application['memberId']), $app);
+						break;
+					case 'UpdateSustainingMember':
+						$appl = new Model\UpdateSustainingMember(array('_id'=>$application['_id'], 'paymentId'=>$paymentId,'memberId'=>$application['memberId']), $app);
+						break;
+				}
+			   	$appl->markPaid(false);
 
-			// return the application id to the xhr
-			$apps_paid[] = $application['_id'];
+				// return the application id to the xhr
+				$apps_paid[] = $application['_id'];
+			}// endif delineCount == 0
 		endif;
 	endforeach;
 	endif;

@@ -40,7 +40,7 @@
             <? if(true):?>
             <script>
             jQuery(document).ready(function() {    
-               /*
+               //*
                $('.auto-pay').click(function(e){
                   e.preventDefault();
                   io.saw.FormGet.activate({postUrl:'/application/autopay'
@@ -52,7 +52,8 @@
                         
                      }
                   });
-               });*/
+               });//*/
+               /*
                setInterval(function(){ 
                   io.saw.FormGet.activate({postUrl:'/application/autopay'
                      ,blockUI:'no'
@@ -65,9 +66,10 @@
                      }
                   });
                }, 15000);
+            //*/
             });     
             </script>
-            <!--<input type="button" class="btn auto-pay" value="autopay">-->
+            <input type="button" class="btn auto-pay" value="autopay">
             <? endif; ?>
             <h1>1. Renewals</h1>
             <div class="row-fluid">

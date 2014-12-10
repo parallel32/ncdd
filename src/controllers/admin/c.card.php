@@ -64,10 +64,16 @@ $card->post('/edit', function (Request $request) use ($app) {
 	
 	$payment = new Model\PaymentLite($document, $app);
 	
-	if(strpos($document['number'], '...') === false)
+	if(strpos($document['number'], '...') === false){
 		$app['validateModel']($app,$payment);
+		$payment->number = $payment->number.'.x';
+	}else{
+		$member = new Model\Member(array('_id'=>$userId),$app);
+		$member = $member->findById();
+		if(array_key_exists('payment', $member) && array_key_exists('number', $member['payment']))
+			$payment->number = $member['payment']['number'];
+	}	
 	
-	$payment->number = $payment->number.'.x';
 	$payment->expYear = substr($payment->expYear, -2);
 	$member = new Model\Member(array('_id'=>$userId,'payment'=>$payment),$app);
 	

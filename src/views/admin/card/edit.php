@@ -74,6 +74,20 @@
                         <!--/span-->
                      </div>
                      <br><br>
+                     <h3 class="form-section">Designate if this card can be stored and re-used.</h3>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label"></label>
+                              <div class="controls">
+                                 <input style="margin-left:1px;" <?=(array_key_exists('renewalREUSE',$this->vars['payment'])) ? ($this->vars['payment']['renewalREUSE'] == "yes") ? ' checked' :'' : '';?> type="radio" name="doc[renewalREUSE]" value="yes">&nbsp;&nbsp;Yes, allow this card to be re-used when needed.<br/><br/>
+                                 <input style="margin-left:1px;" <?=(array_key_exists('renewalREUSE',$this->vars['payment'])) ? ($this->vars['payment']['renewalREUSE'] == "no" || empty($this->vars['payment']['renewalREUSE'])) ? ' checked' :'' : '';?> type="radio" name="doc[renewalREUSE]" value="no">&nbsp;&nbsp;No, do not re-use this card for automatic payments.<br/><br/>
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <br><br>
                      <? endif; ?>
 
 
