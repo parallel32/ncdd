@@ -59,7 +59,7 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                      <!-- BEGIN EXAMPLE TABLE PORTLET-->
                      <div class="portlet box red">
                         <div class="portlet-title" id="application">
-                           <div class="caption"><i class="icon-user"></i>Your credit card has been declined.  Please check the information we have on file for you.</div>
+                           <div class="caption"><i class="icon-user"></i>Your credit card has been <b>declined</b>.  Please check the information we have on file for you.</div>
                         </div>
                         <div class="portlet-body">
                            <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
@@ -81,6 +81,35 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                   </div>
                </div>
                <? endif; ?>
+               <? if($this->app['renewal_card_expiration_date']()): ?>
+               <div id="approved-applications" class="row-fluid">
+                  <div class="span12">
+                     <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                     <div class="portlet box red">
+                        <div class="portlet-title" id="application">
+                           <div class="caption"><i class="icon-user"></i>Your credit card has <b>expired</b>.  Please check the information we have on file for you.</div>
+                        </div>
+                        <div class="portlet-body">
+                           <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                           <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
+                              <thead>
+                                 <tr role="row">
+                                    <th class=""></th>
+                                 </tr>
+                              </thead>
+                              <tbody role="alert" aria-live="polite" aria-relevant="all">
+                                 <tr class="gradeX odd">
+                                    <td class=" "><a class="btn blue" href="/card"><i class="icon-credit-card"></i> Manage your credit card on file. Click here.</a></td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                     <!-- END EXAMPLE TABLE PORTLET-->
+                  </div>
+               </div>
+               <? endif; ?>
+
                <? if(!empty($this->vars['applications']) && $allow): ?>
                <div id="approved-applications" class="row-fluid">
                   <div class="span12">
@@ -119,11 +148,13 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
 
             <? if(!$this->app['renewal_payment_failure']()):?>
                <!--/ APPROVED APPLICATIONS -->
+            <? if(false):?>
             <div class="row-fluid">
                <div class="span12">
                   <a class="btn blue" href="/card"><i class="icon-credit-card"></i> Manage your credit card on file. Click here.</a>
                </div>
             </div>
+            <? endif; ?>
 
             <div class="row-fluid">
                <div class="span12">

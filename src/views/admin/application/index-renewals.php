@@ -209,7 +209,7 @@
                         <div class="caption"><i class="icon-user"></i>Applications Approved and Unpaid</div>
                      </div>
                      <div class="portlet-body">
-                        <p class="alert alert-info"><b>Only records with a "Chk" value in the "Pay By" column will remain here.  All others should have a "CC" value and will be automatically processed by the automated script.  You will not have to pay them manually.</b></p>
+                        <p class="alert alert-info"><b>Only records with a "Chk" value in the "Pay By" column will remain here.  All others should have a "CC" value and will be automatically processed by the automated script.  You will not have to pay them manually.  If you notice any records here with the "CC" value, please just wait a little while the autopayment process picks them up the next time it runs.</b></p>
                         <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
