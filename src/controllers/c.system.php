@@ -284,4 +284,20 @@ $app->post('/content-formatter', function (Request $request) use ($app) {
 	return new Response($content, 200,array('Content-Type' => 'text/html'));
 });
 
+
+////////////////////
+// RENEWAL CHECKS //
+// card exp date, 
+// card decline nag-ware, 
+// if an active renewal is present and is unpaid and it's past Jan 31st-disable all features.
+////////////////////
+$app['renewal_payment_failure'] = $app->protect(function () use ($app) {
+	$user = Model\User::getUserAccessLevelBySession($app);
+	if($user['accessLevel'] != ADMIN){
+		return $renewal_payment_failure = false;
+	}else{
+		return $renewal_payment_failure = false;
+	}
+});
+
 return $app;

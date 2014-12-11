@@ -88,6 +88,7 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                   </div>
                </div>
                <? endif; ?>
+            <? if(!$this->app['renewal_payment_failure']()):?>
                <!--/ APPROVED APPLICATIONS -->
             <div class="row-fluid">
                <div class="span12">
@@ -373,6 +374,7 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                <!--/ PRIVATE PAGES (RECENT) -->
             <? endif; ?>
             </div>
+         <? endif; // renewal_payment_failure ?>
          </div>
          <!-- END PAGE CONTAINER-->    
       </div>

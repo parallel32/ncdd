@@ -55,7 +55,7 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
          </li>
          <? endif; ?>
          
-         <? if($accessLevel >= MEMBER):?>
+         <? if($accessLevel >= MEMBER && !$this->app['renewal_payment_failure']()):?>
             <li class="<? echo (strpos($this->vars['active'], 'Members') !== false) ? 'active open':'';?>">
                <a href="javascript:;">
                <i class="icon-group"></i> 
@@ -119,7 +119,7 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                </a>
             </li>
          <? endif; ?>
-         <? if($accessLevel >= MEMBER):?>
+         <? if($accessLevel >= MEMBER && !$this->app['renewal_payment_failure']()):?>
             <li class="<? echo ($this->vars['active'] == 'Pages') ? 'active':'';?>">
                <a href="<?=($accessLevel == MEMBER) ? '/page/all' : '/page/';?>">
                <i class="icon-copy"></i> 
@@ -229,7 +229,7 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                <? echo ($this->vars['active'] == 'Payment') ? '<span class="selected"></span>':'';?>
                </a>
             </li>
-            <? if($accessLevel == MEMBER):?>
+            <? if($accessLevel == MEMBER && !$this->app['renewal_payment_failure']()):?>
             <li class="<? echo ($this->vars['active'] == 'Card') ? 'active':'';?>">
                <a href="/card">
                <i class="icon-credit-card"></i> 

@@ -100,6 +100,7 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 			$view_vars['delegate']=$delegate;
 			
 			array_push($view_vars['crumbs'],array('name'=>'Editor','href'=>'/'));
+
 			return $app['view']->render('dashboards/member', 'default', $view_vars);
 			break;
 	}
