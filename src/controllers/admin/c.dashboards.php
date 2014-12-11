@@ -84,7 +84,8 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 			
 			$apply = new Model\Apply(array(),$app);
 			$applications = $apply->fetchByMember('APPROVED',0,5);
-			$view_vars['applications']=$applications;
+
+			$view_vars['applications']=(array_key_exists('renewal', $member) && array_key_exists('payByCheck', $member['renewal']) && $member['renewal']['payByCheck'] == 'yes') ? $applications: '';
 
 			$blog = new Model\Blog(array(),$app);
 			$blogs = $blog->fetchByStatus('PUBLISH','yes',0,5);

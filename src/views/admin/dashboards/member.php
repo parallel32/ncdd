@@ -67,7 +67,6 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                               <thead>
                                  <tr role="row">
                                     <th class="hidden-480">Date Approved</th>
-                                    <th class="hidden-480">Application Type</th>
                                     <th class=""></th>
                                  </tr>
                               </thead>
@@ -75,8 +74,7 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                                  <? if(!empty($this->vars['applications'])): foreach($this->vars['applications'] as $application): ?>
                                  <tr class="gradeX odd">
                                     <td class="hidden-480 "><?=$application['approvedDate']['monthDay'].' '.$application['approvedDate']['shortTime']?></td>
-                                    <td class="center hidden-480 "><?=$application['type']?></td>
-                                    <td class=" "><a data-id="<?=$application['_id']?>" class="btn blue mini pay"><i class=" "></i> Pay Membership Dues</a></td>
+                                    <td class=" "><a data-id="<?=$application['_id']?>" class="btn blue pay"><i class=" "></i> Pay Membership Dues</a></td>
                                  </tr>
                                  <? endforeach;?>
                                  <? else: ?>
@@ -93,7 +91,7 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                <!--/ APPROVED APPLICATIONS -->
             <div class="row-fluid">
                <div class="span12">
-                  <a class="btn blue" href="/card"><i class="icon-credit-card"></i> Please browse here to manage your credit card on file with us.</a>
+                  <a class="btn blue" href="/card"><i class="icon-credit-card"></i> Manage your credit card on file. Click here.</a>
                </div>
             </div>
 
