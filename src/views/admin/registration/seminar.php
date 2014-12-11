@@ -38,7 +38,7 @@ endif; ?>
             <div class="span12">
                
                <? if($this->vars['seminar']['register']['currentStatus'] < \Saw\Model\SeminarRegister::$status['OFF']):?>
-               <? if(array_key_exists('registerNotice', $this->vars['seminar']) && !empty($this->vars['seminar']['registerNotice'])):?>
+               <? if(is_array($this->vars['seminar']) && array_key_exists('registerNotice', $this->vars['seminar']) && !empty($this->vars['seminar']['registerNotice'])):?>
                <div class="alert alert-info text-center">
                   <h2><strong>NOTICE:</strong> <br><?=$this->vars['seminar']['registerNotice']?></h2>
                </div>
