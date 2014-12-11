@@ -80,6 +80,8 @@
                <a class="btn red mini view card">cc</a>  =  NOT to be re-used
                <br>
                <a class="btn purple mini view card">cc</a> = to be re-used
+               <br>
+               <a class="btn purple mini view card">cc(1)</a><a class="btn red mini view card">cc(1)</a> = number of times card was declined
             </p>
             <h1>1. Renewals</h1>
             <div class="row-fluid">

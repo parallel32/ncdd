@@ -305,5 +305,19 @@ $app['renewal_payment_failure'] = $app->protect(function () use ($app) {
 		return false;
 	}
 });
+$app['renewal_card_decline'] = $app->protect(function () use ($app) {
+	$user = Model\User::getUserAccessLevelBySession($app);
+	if($user['accessLevel'] != ADMIN){
+		$member = new Model\Member(array('_id'=>$user['_id']),$app);
+		$member = $member->findById();
+		if(array_key_exists('payment',$member) && array_key_exists('declineCount',$member['payment']) && $member['payment']['declineCount'] > 0){
+			return true;
+		}else{
+			return false;
+		}
+	}else{
+		return false;
+	}
+});
 
 return $app;
