@@ -294,9 +294,15 @@ $app->post('/content-formatter', function (Request $request) use ($app) {
 $app['renewal_payment_failure'] = $app->protect(function () use ($app) {
 	$user = Model\User::getUserAccessLevelBySession($app);
 	if($user['accessLevel'] != ADMIN){
-		return $renewal_payment_failure = false;
+		$member = new Model\Member(array('_id'=>$user['_id']),$app);
+		$member = $member->findById();
+		if(array_key_exists('paidDate',$member['renewal']) && empty($member['renewal']['paidDate']) && strtotime('now') > strtotime('January 31, '.(date('Y')+1))){
+			return true;
+		}else{
+			return false;
+		}
 	}else{
-		return $renewal_payment_failure = false;
+		return false;
 	}
 });
 
