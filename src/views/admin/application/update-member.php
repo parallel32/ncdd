@@ -548,14 +548,22 @@
                            <div class="controls">
                               <input style="margin-left:1px;" type="radio" name="doc[payByCheck]" value="yes">&nbsp;&nbsp;Yes, I intend to pay by check.<br/><br/>
                               <input style="margin-left:1px;" type="radio" name="doc[payByCheck]" value="no">&nbsp;&nbsp;No, I intend to pay my membership dues online with my credit card.<br/><br/>
-                              <input style="margin-left:1px;" type="radio" name="doc[payByCheck]" checked value="no-store">&nbsp;&nbsp;I intend to pay my membership dues online with my credit card.  Please also store my credit card for future convenience.<br/><br/>
+                              <!--<input style="margin-left:1px;" type="radio" name="doc[payByCheck]" checked value="no-store">&nbsp;&nbsp;I intend to pay my membership dues online with my credit card.  Please also store my credit card for future convenience.<br/><br/>-->
                               <!--Upon submission of this form and subsequent approval of your renewal, you will receive an email with instructions on how to pay your dues.-->
                            </div>
                         </div>
                      </div>
                      <!--/span-->
                   </div>
-                  
+                  <div class="row-fluid">
+                     <div class="span10 ">
+                        <p class="alert alert-info">
+                        <b>I authorize the NCDD to store my credit card for future Annual Dues payments.</b>
+                        <span class="control-group"><span class="controls"><input type="checkbox" name="doc[termsAcknowledgement]" class="termsAcknowledgement" value="yes">Yes, I agree.</span></span>
+                     </p>
+                     </div>
+                     
+                  </div>
 
 
 
@@ -801,7 +809,7 @@
                      <input type="hidden" class="amount" name="doc[payment][amount]" value="">
                      <input type="hidden" class="cardType" name="doc[payment][cardType]" value="">
                      <input type="hidden" class="token" name="doc[payment][token]" value="">
-                     <h3 class="form-section">6. Pay By Credit Card</h3>
+                     <h3 class="form-section">Credit Card</h3>
                      <p>To pay by check, please scroll to the end of the form and click the blue button.</p>
                      <div class="row-fluid">
                         <div class="span12 ">
@@ -965,39 +973,6 @@
                      
                   </div>
                   <!--/ PAYMENT ELEMENT -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                  <div class="row-fluid">
-                     <div class="span10 ">
-                        &nbsp;
-                     </div>
-                  </div>
-                  <div class="row-fluid">
-                     <div class="span10 ">
-                        <p class="alert alert-info">
-                        <b>Additionally, you authorize us to retain the information that you have given us for our records, including member's address, licensing, contact information, and optionally credit card information that we may use for the limited purposes described above, such as renewal payments of your membership dues and to communicate with you and to send announcements pertinent to your membership.</b>
-                        <span class="control-group"><span class="controls"><input type="checkbox" name="doc[termsAcknowledgement]" class="termsAcknowledgement" value="yes">Yes, I agree.</span></span>
-                     </p>
-                     </div>
-                     
-                  </div>
-                  
-
-
-
 
                   <!-- SUCCESSFUL SAVE MODAL -->
                   <div id="save-success" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="save-success-label" aria-hidden="true">

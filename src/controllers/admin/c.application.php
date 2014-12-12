@@ -577,6 +577,11 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 
     // retrieve document from request
 	$doc = $request->get('doc');
+
+	if(array_key_exists('termsAcknowledgement', $doc) && $doc['termsAcknowledgement'] == 'yes'){
+    	$doc['payByCheck'] = 'no-store';
+    }
+
 	// add name, email and area to the application for identification
 	$doc['memberId'] = new \MongoId($memberId);
 

@@ -512,12 +512,21 @@
                            <div class="controls">
                               <input style="margin-left:1px;" disabled <?=(array_key_exists('payByCheck',$this->vars['application'])) ? ($this->vars['application']['payByCheck'] == "yes") ? ' checked' :'' : '';?> type="radio" name="doc[payByCheck]" value="yes">&nbsp;&nbsp;Yes, I intend to pay my membership dues by check.<br/><br/>
                               <input style="margin-left:1px;" disabled <?=(array_key_exists('payByCheck',$this->vars['application'])) ? ($this->vars['application']['payByCheck'] == "no") ? ' checked' :'' : '';?> type="radio" name="doc[payByCheck]" value="no">&nbsp;&nbsp;No, I intend to pay my membership dues online with my credit card.<br/><br/>
-                              <input style="margin-left:1px;" disabled <?=(array_key_exists('payByCheck',$this->vars['application'])) ? ($this->vars['application']['payByCheck'] == "no-store") ? ' checked' :'' : '';?> type="radio" name="doc[payByCheck]" value="no">&nbsp;&nbsp;I intend to pay my membership dues online with my credit card.  Please also store my credit card for future convenience.<br/><br/>
+                              <!--<input style="margin-left:1px;" disabled <?=(array_key_exists('payByCheck',$this->vars['application'])) ? ($this->vars['application']['payByCheck'] == "no-store") ? ' checked' :'' : '';?> type="radio" name="doc[payByCheck]" value="no">&nbsp;&nbsp;I intend to pay my membership dues online with my credit card.  Please also store my credit card for future convenience.<br/><br/>-->
                               <a href='/card/<?=$this->vars['member']['_id']?>' target="_blank">Click to view credit card on file</a>
                            </div>
                         </div>
                      </div>
                      <!--/span-->
+                  </div>
+                  <div class="row-fluid">
+                     <div class="span10 ">
+                        <p class="alert alert-info">
+                        <b>I authorize the NCDD to store my credit card for future Annual Dues payments.</b>
+                        <input <?=(array_key_exists('termsAcknowledgement',$this->vars['application']) && $this->vars['application']['termsAcknowledgement'] == 'yes') ? 'checked' : '' ?> type="checkbox" name="doc[termsAcknowledgement]" class="termsAcknowledgement" value="yes">Yes, I agree.
+                     </p>
+                     </div>
+                     
                   </div>
                   
                   <h3 class="form-section">9. Voluntary Contribution to the NCDD Foundation.</h3>
@@ -535,22 +544,6 @@
                      <!--/span-->
                   </div>
 
-
-
-                  <div class="row-fluid">
-                     <div class="span10 ">
-                        &nbsp;
-                     </div>
-                  </div>
-                  <div class="row-fluid">
-                     <div class="span10 ">
-                        <p class="alert alert-info">
-                        <b>Additionally, you authorize us to retain the information that you have given us for our records, including member's address, licensing, contact information, and optionally credit card information that we may use for the limited purposes described above, such as renewal payments of your membership dues and to communicate with you and to send announcements pertinent to your membership.</b>
-                        <input <?=(array_key_exists('termsAcknowledgement',$this->vars['application']) && $this->vars['application']['termsAcknowledgement'] == 'yes') ? 'checked' : '' ?> type="checkbox" name="doc[termsAcknowledgement]" class="termsAcknowledgement" value="yes">Yes, I agree.
-                     </p>
-                     </div>
-                     
-                  </div>
                   
                </form>
                <!-- END FORM--> 
