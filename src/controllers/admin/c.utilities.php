@@ -17,6 +17,116 @@ use TTools\App;
 $utilities = $app['controllers_factory'];
 $utilities->before($mustbeADMIN);
 
+/////////////////////////////////////////////////////
+// AVVO SCRUB DUPLICATES AND EXISTING NCDD MEMBERS //
+/////////////////////////////////////////////////////
+$utilities->get('/scrubmembers', function () use ($app) {
+    return false;
+    
+    // example record:
+    // "Brett M Bloomston","Bloomston & Basgier","2151 Highland Avenue South","Suite 310","Birmingham, AL 35205"," Office:  205-212-9700  Fax:  205-212-9701 "
+
+    ini_set('memory_limit','1024M');
+    
+    $fields = array();
+    $fields[]='name';
+    $fields[]='officename';
+    $fields[]='address1';
+    $fields[]='address2';
+    $fields[]='citystatezip';
+    $fields[]='phone';
+    $fields[]='fax';
+    
+    //*
+    $cnt = 1;    // total csv records
+    $row = 1;
+    $ncdd = 0;
+    $woncdd = 0; // w/o ncdd members
+    $wdups  = 0; // w/  duplicate records
+    $wodups = 0; // w/o duplicate records
+    $officecleared = 0; // office name cleared because it contained the word appointment
+    $new_output = array();
+    if (($fp = fopen("/var/www/upload/avvo_attorneys_scrubbed.csv", "w")) !== FALSE) {
+        if (($handle = fopen("/var/www/upload/avvo_attorneys.csv", "r")) !== FALSE) {
+            while (($data = fgetcsv($handle)) !== FALSE) {
+                $num = count($data);
+                //echo "<p> $num fields in line $row: <br /></p>\n";
+                $row++;
+                for ($c=0; $c < $num; $c++) {
+                    $output[$row][$fields[$c]] = trim($data[$c]);
+                    //echo $data[$c] . "<br />\n";
+                }
+                if(!empty($output[$row]['name']) && strlen($output[$row]['name']) > 0){
+                    //echo "<pre>";print_r($output[$row]);echo "</pre>";
+                    $tmp = explode(' ', $output[$row]['name']);
+                    $out = $tmp[0].' '.$tmp[count($tmp)-1];
+                    $member = new Model\Member(array(), $app);
+                    $results = $member->search($out);
+                    if(!empty($results)){
+                        //$message = count($results).' members found.';
+                        $ncdd++;
+                        //echo "<pre>";print_r($output[$row]);echo "</pre>";
+                        //echo '<pre>';print_r($message);echo '</pre>';
+                    }else{
+                        //$message = 'No members matched that name, therefore add them to the new list';
+
+                        $woncdd++;
+
+                        if($row > 2){
+                            $current = $output[$row];
+                            unset($current['officename']);
+                            unset($current['address1']);
+                            unset($current['address2']);
+                            unset($current['citystatezip']);
+                            unset($current['phone']);
+                            unset($current['fax']);
+
+                            $previous = $output[$row-1];
+                            unset($previous['officename']);
+                            unset($previous['address1']);
+                            unset($previous['address2']);
+                            unset($previous['citystatezip']);
+                            unset($previous['phone']);
+                            unset($previous['fax']);
+
+                            if(json_encode($current) == json_encode($previous)){
+                                $wdups++;
+                            }else{
+                                if(strpos(strtolower($output[$row]['officename']), 'appointment') !== false){
+                                    unset($output[$row]['officename']);
+                                    $officecleared++;
+                                }
+                                fputcsv($fp, $output[$row]);
+                                echo '<pre>';print_r($output[$row]);echo '</pre>';
+                                $wodups++;
+                            }
+                            
+                        }
+                        
+                        /*
+8504 - no dups and first record kept - FINAL
+9738  - json enoding just name and officename and comparing (still a few dups)
+10928 - json ecoding the whole record and comparing (still dups)
+10958 w/o ncdd members  
+
+                        */
+
+                    }
+                    
+                    $cnt++;    
+                }
+                
+            }
+            fclose($handle);
+        }
+    }
+    fclose($fp);
+    //*
+
+    return new Response('cool: '.$cnt.' members total of which '.$ncdd.' are NCDD members making the new total = '.$woncdd.' followed with '.$wdups.' duplicates making the new new total = '.$wodups.' ... and office name cleared: '.$officecleared.' times because the word appointment was used in it',200,array('Content-Type' => 'text/html')); 
+});
+
+
 ////////////////////////////////////////////////////
 // move the payment records to the member objects //
 ////////////////////////////////////////////////////
