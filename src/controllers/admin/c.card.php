@@ -44,7 +44,9 @@ $card->get('/{userId}', function ($userId, Request $request) use ($app) {
 	if(is_array($member) && array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && array_key_exists('number', $member['payment'])){
 		$member['payment']['cvc'] = str_replace('.x', '', $member['payment']['cvc']);
 		$member['payment']['number'] = str_replace('.x', '', $member['payment']['number']);
-		$member['payment']['number'] = (!empty($member['payment']['number'])) ? '...'.substr($member['payment']['number'], -4) :'';
+		if($accessLevel < ADMIN){
+			$member['payment']['number'] = (!empty($member['payment']['number'])) ? '...'.substr($member['payment']['number'], -4) :'';	
+		}		
 		$view_vars['payment'] = $member['payment'];
 	}else{
 		$view_vars['payment'] = array();
