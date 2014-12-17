@@ -19,7 +19,7 @@
                                         <ul class="dropdown-menu" role="menu" aria-labelledby="memberDropDown">
                                             <li role="menuitem">
                                                 <form>
-                                                    <p>Welcome, <?=$user['displayName']?> </p>
+                                                    <p>Welcome, <?=(array_key_exists('displayName', $user)) ? $user['displayName']: '';?> </p>
                                                     <a class="btn" href="https://<?=SAW_ADMIN_WEBSITE ?>" class="pull-right">Go To Member Portal</a>
                                                     <a class="btn" href="https://<?=SAW_ADMIN_WEBSITE ?>/logout" class="pull-right">Log Out</a>
                                                 </form>

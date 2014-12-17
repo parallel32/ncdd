@@ -266,7 +266,7 @@ $app->get('/application/new-member-admin', function (Request $request) use ($app
 });
 /**
 
-updated new member application submittal form
+new member application submittal form - UPDATED
 
 */
 $app->post('/application/new-member', function (Request $request) use ($app) {
@@ -346,15 +346,16 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 		// email/payment-thankyou
 		if($is_admin){
 			$application->currentStatus = Model\Apply::$status['APPROVED'];
+			$applicationId = $application->insert();
+			$_POST['applicationId'] = $applicationId->__toString();
 		}
-		$applicationId = $application->insert();
-		$_POST['applicationId'] = $applicationId->__toString();
+		
 
 		if($is_admin == false):
 		    // payment stuff BEGIN
 		    $paymentId = new \stdClass();
 			$validation_group = ($doc['payment']['currentPaymentType'] == Model\Payment::$paymentType['CREDIT']) ? 'cc' : 'check';		
-			$doc['payment']['ownerId'] = $applicationId;
+			$doc['payment']['ownerId'] = new \MongoId(); // temporary to get past validation
 			$doc['payment']['ownerClass'] = 'ApplyNewMember';
 		endif;
 		
@@ -365,6 +366,18 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 
 			// validate the payment
 			$app['validateModel']($app, $payment,$groups=array($validation_group));
+			
+			// insert the application
+			$applicationId = $application->insert();
+			$_POST['applicationId'] = $applicationId->__toString();
+
+			// redo the payment object to fill in all attributes just before charge.
+			$doc['payment']['ownerId'] = $applicationId;
+			$doc['payment']['ownerClass'] = 'ApplyNewMember';
+			$doc['amount'] = $amt;
+			$doc['payment']['amount'] = $amt;
+			$payment = new Model\Payment($doc['payment'],$app);
+
 			$application->paymentId = $payment->charge();
 			// payment stuff END
 		endif;
@@ -682,7 +695,7 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 	$member['renewal']['approvedDate'] = new Model\Date($app, 'now'); 
 	$member['renewal']['applicationId'] = $app_id; 
 	$member['renewal']['contributionPaymentId'] = $paymentId; 
-	$member['renewal']['payByCheck'] = $doc['payByCheck'];
+	$member['renewal']['payByCheck'] = (array_key_exists('payByCheck', $doc)) ? $doc['payByCheck']: '';
 
 	$renewal = new Model\Renewal($member['renewal'],$app);
 	$renewal->setRenewalByMember($member['_id']);

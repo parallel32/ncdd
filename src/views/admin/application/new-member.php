@@ -798,7 +798,7 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                         <div class="control-group">
                            <label class="control-label">If you have a promo code please enter it here:</label>
                            <div class="controls">
-                              <input type="text" name="doc[promocode]" class="m-wrap span12 promocode">
+                              <input type="text" name="doc[promocode]" class="m-wrap span12 promocode" value="NCDD2014">
                               <input type="hidden" id="promocodetype" value="discount">
                            </div>
                         </div>
@@ -885,7 +885,9 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                   <div id="payment-information" class="">
                      <h3 class="form-section">10. Payment Information</h3>
                      <div class="row-fluid">
+                        <? if(false):?>
                         <h4>Please select a payment method:</h4>
+                        <? endif; ?>
                         <button id="pay-by-cc" type="button" class="btn blue pay-by-cc">Pay by Credit Card</button>
                         <? if(false): ?>
                         <button id="pay-by-check" type="button" class="btn blue pay-by-check">Pay by Check</button>
