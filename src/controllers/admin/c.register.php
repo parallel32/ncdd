@@ -255,6 +255,7 @@ $app->get('/registration/seminar/{seminarId}/{slug}', function ($seminarId, $slu
 $app->post('/registration/seminar', function (Request $request) use ($app) {
 	// retrieve document from request
 	$doc = $request->get('doc'); 
+	$doc['userAgent'] = $request->headers->get('User-Agent');
 	// get and set the suppress email check
 	$user = $app['session']->get('user');
 	$user['suppress_emails'] = $request->get('suppress_emails');

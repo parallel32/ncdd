@@ -32,6 +32,7 @@ class RegistrationSeminar extends Registration {
 	public $deposit; // the amount for the initial deposit
 	public $depositDueDate; // the due date for payment of the remainer of the deposit
 	public $registrationNumber; // the scholarship registration number
+	public $userAgent;
 
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
@@ -77,6 +78,7 @@ class RegistrationSeminar extends Registration {
         $this->depositDueDate = $doc['depositDueDate'];
         $this->depositQuestion = $doc['depositQuestion'];
         $this->registrationNumber = $doc['registrationNumber'];
+        $this->userAgent = $doc['userAgent'];
 	}
 	
 	/**
@@ -100,6 +102,7 @@ class RegistrationSeminar extends Registration {
 		$this->depositDueDate = $this->depositDueDate ?: new \stdClass();
 		$this->depositQuestion = $this->depositQuestion ?: 'no';
 		$this->registrationNumber = $this->registrationNumber ?: 'no';
+		$this->userAgent = $this->userAgent ?: '';
 	}
 	
 	public function insert(){

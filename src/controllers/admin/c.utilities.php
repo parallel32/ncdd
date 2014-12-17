@@ -15,7 +15,7 @@ use Cocur\Slugify\Slugify;
 use TTools\App;
 
 $utilities = $app['controllers_factory'];
-$utilities->before($mustbeADMIN);
+$utilities->before($mustbeMEMBER);
 
 /////////////////////////////////////////////////////
 // AVVO SCRUB DUPLICATES AND EXISTING NCDD MEMBERS //
@@ -1362,7 +1362,7 @@ $utilities->get('/gdrive', function () use ($app, $checkPermissions) {
 
 // view user sessions
 $utilities->get('/viewusersessions/{userId}', function ($userId) use ($app) {
-    return false;
+    
     if (empty($userId)) {
         $user_id = call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$app);
         if(!empty($user_id)) {
@@ -1373,12 +1373,6 @@ echo '<pre>';print_r(session_id());echo '</pre>';
 echo '<pre>';print_r($_SESSION);echo '</pre>';
     //$query = array('user_id'=>new \MongoId($userId));
 
-    $regex = new MongoRegex('/'.$userId.'/i');
-    $query = array('data'=>$regex);
-    $query = array('_id'=>'23rred3vbdihd13nrsa7ca1rl3');
-    $sessions = $app['mongo']->find('session', $query, $fields=array(),$slaveOkay=true);
-
-echo '<pre>';print_r($sessions);echo '</pre>';
     /*
     $session_string = $sessions['data']->bin;
 
@@ -1403,8 +1397,8 @@ echo '<pre>';print_r($sessions);echo '</pre>';
 
     $query = array('_id'=>new \MongoId($userId));
     $user = $app['mongo']->findOne('user', $query, $fields=array(),$slaveOkay=true);
-echo '<pre>';print_r($user);echo '</pre>';
-    return $app['view']->render('utilities/view_user_session',array('sessions'=>$sessions,'user'=>$user));
+
+    return $app['view']->render('utilities/view_user_session','blank',array('user'=>$user));
     
 })->value('userId', '');
 /*

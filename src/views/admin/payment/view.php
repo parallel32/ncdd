@@ -46,7 +46,7 @@ $user = call_user_func(function($app){ $user = $app['session']->get('user'); ret
                            <div class="control-group ">
                               <label class="control-label">Order Id</label>
                               <div class="controls">
-                                 <input type="text" value="<?=$this->vars['payment']['orderId']?>" readonly class="m-wrap span8 name">
+                                 <input type="text" value="<?=(is_array($this->vars['payment']) && array_key_exists('orderId',$this->vars['payment'])) ? $this->vars['payment']['orderId']: ''?>" readonly class="m-wrap span8 name">
                               </div>
                            </div>
                         </div>
