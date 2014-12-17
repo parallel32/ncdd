@@ -114,9 +114,13 @@ class PaymentLite extends Model {
 		$this->token = $doc['token'];  
 		$this->expMonth = $doc['expMonth'];
 		$this->expYear = $doc['expYear'];        
-		$this->cardType = $doc['cardType'];        
+		$this->cardType = $doc['cardType'];
+		// strip non digits
+		if(!empty($doc['number'])){
+			$doc['number'] = filter_var($doc['number'],FILTER_SANITIZE_NUMBER_INT);
+		}
 		$this->number = (strpos($this->number, '...') !== false) ? '' : (string)$doc['number'];
-		$this->cvc = $doc['cvc'];
+		$this->cvc = (!empty($doc['cvc']) && strpos($doc['cvc'], '.x') === false) ? $doc['cvc'].'.x': $doc['cvc'];
 		$this->checkNumber = $doc['checkNumber'];
 		$this->accountType = $doc['accountType'];
 		$this->accountNumber = $doc['accountNumber'];

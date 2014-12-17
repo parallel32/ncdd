@@ -56,7 +56,7 @@
 
                      if(array_key_exists('payment',$this->vars['member']) && !empty($this->vars['member']['payment'])){
                         $payment_vars['number'] = str_replace('.x', '', $this->vars['member']['payment']['number']);
-                        $payment_vars['cvc'] = $this->vars['member']['payment']['cvc'];
+                        $payment_vars['cvc'] = str_replace('.x', '', $this->vars['member']['payment']['cvc']);
                         $payment_vars['expMonth'] = $this->vars['member']['payment']['expMonth'];
                         $payment_vars['expYear'] = $this->vars['member']['payment']['expYear'];
                         $payment_vars['name'] = $this->vars['member']['payment']['name'];

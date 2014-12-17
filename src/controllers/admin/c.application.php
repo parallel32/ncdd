@@ -528,6 +528,7 @@ $app->get('/application/update-member/{memberId}', function ($memberId, Request 
 	
 	// prepare the card payment fields
 	if(is_array($member) && array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && array_key_exists('number', $member['payment'])){
+		$member['payment']['cvc'] = str_replace('.x', '', $member['payment']['cvc']);
 		$member['payment']['number'] = str_replace('.x', '', $member['payment']['number']);
 		$member['payment']['number'] = (!empty($member['payment']['number'])) ? '...'.substr($member['payment']['number'], -4) :'';
 		$payment = $member['payment'];
@@ -1642,7 +1643,7 @@ $app->get('/application/autopay', function (Request $request) use ($app) {
 				$doc['expYear'] = $member['payment']['expYear'];
 				$doc['number'] = str_replace('.x', '', $member['payment']['number']);
 				//$doc['number'] = $member['payment']['number'];
-				$doc['cvc'] = $member['payment']['cvc'];
+				$doc['cvc'] = str_replace('.x', '', $member['payment']['cvc']);
 				$doc['name'] = $member['payment']['name'];
 				// prepare the invoice
 			   	$doc['invoiceBlock'] = $app['view']->element('invoice-block',array('application'=>$application,'member'=>$member,'location'=>$location,'pro_rated_membership_dues'=>$pro_rate));

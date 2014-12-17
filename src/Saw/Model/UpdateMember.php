@@ -46,7 +46,7 @@ class UpdateMember extends Apply {
 		$metadata->addPropertyConstraint('executedPrintedName', new Constraints\NotBlank(array('message'=>'cannot be blank','groups' => array('update_member'))));
 		$metadata->addPropertyConstraint('membershipDues', new Constraints\NotBlank(array('message'=>'cannot be blank','groups' => array('update_member'))));
 		$metadata->addConstraint(new Callback(array('methods' => array('explain'),'groups' => array('update_member'))));
-		$metadata->addConstraint(new Callback(array('methods' => array('termsAckValidate'),'groups' => array('update_member'))));
+		//$metadata->addConstraint(new Callback(array('methods' => array('termsAckValidate'),'groups' => array('update_member'))));
 	}
 	public function termsAckValidate(ExecutionContext $context){
 		if(empty($this->termsAcknowledgement) || $this->termsAcknowledgement == false || $this->termsAcknowledgement == 'no'){
