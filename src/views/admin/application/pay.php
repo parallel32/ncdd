@@ -54,7 +54,12 @@
                      $payment_vars['redirect_label'] = 'Go To Applications';
                      $payment_vars['redirect_url'] = '/applications';
 
-                     if(array_key_exists('payment',$this->vars['member']) && !empty($this->vars['member']['payment'])){
+                     if(is_array($this->vars['member']) 
+                        && array_key_exists('payment',$this->vars['member']) 
+                        && !empty($this->vars['member']['payment'])
+                        && is_array($this->vars['member']['payment'])
+                        && array_key_exists('number',$this->vars['member']['payment']) 
+                     ){
                         $payment_vars['number'] = str_replace('.x', '', $this->vars['member']['payment']['number']);
                         $payment_vars['cvc'] = str_replace('.x', '', $this->vars['member']['payment']['cvc']);
                         $payment_vars['expMonth'] = $this->vars['member']['payment']['expMonth'];
