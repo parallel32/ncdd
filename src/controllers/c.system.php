@@ -296,7 +296,7 @@ $app['renewal_payment_failure'] = $app->protect(function () use ($app) {
 	if($user['accessLevel'] != ADMIN){
 		$member = new Model\Member(array('_id'=>$user['_id']),$app);
 		$member = $member->findById();
-		if(array_key_exists('paidDate',$member['renewal']) && empty($member['renewal']['paidDate']) && strtotime('now') > strtotime('January 31, '.(date('Y')+1))){
+		if(is_array($member['renewal']) && array_key_exists('paidDate',$member['renewal']) && empty($member['renewal']['paidDate']) && strtotime('now') > strtotime('January 31, '.(date('Y')+1))){
 			return true;
 		}else{
 			return false;
@@ -310,7 +310,7 @@ $app['renewal_card_decline'] = $app->protect(function () use ($app) {
 	if($user['accessLevel'] != ADMIN){
 		$member = new Model\Member(array('_id'=>$user['_id']),$app);
 		$member = $member->findById();
-		if(array_key_exists('payment',$member) && array_key_exists('declineCount',$member['payment']) && $member['payment']['declineCount'] > 0){
+		if(is_array($member) && array_key_exists('payment',$member) && array_key_exists('declineCount',$member['payment']) && $member['payment']['declineCount'] > 0){
 			return true;
 		}else{
 			return false;
@@ -324,7 +324,7 @@ $app['renewal_card_expiration_date'] = $app->protect(function () use ($app) {
 	if($user['accessLevel'] != ADMIN){
 		$member = new Model\Member(array('_id'=>$user['_id']),$app);
 		$member = $member->findById();
-		if(array_key_exists('payment',$member) && array_key_exists('expMonth',$member['payment']) && $member['payment']['expMonth'] && strtotime('now') > strtotime($member['payment']['expMonth'].'/01/'.$member['payment']['expYear'])){
+		if(is_array($member) && array_key_exists('payment',$member) && array_key_exists('expMonth',$member['payment']) && $member['payment']['expMonth'] && strtotime('now') > strtotime($member['payment']['expMonth'].'/01/'.$member['payment']['expYear'])){
 			return true;
 		}else{
 			return false;
