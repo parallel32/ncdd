@@ -14,31 +14,34 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
 
 
             <? if(array_key_exists('renewal',$this->vars)): ?>
-            <? if(!empty($this->vars['renewal']) && $this->vars['renewal']['currentStatus'] < \Saw\Model\Renewal::$status['SUBMITTED']): ?>
-               <h3 class="form-section alert alert-error">Please prepare your membership <?=(\Saw\Model\Member::$membership['GENERAL MEMBER'] == $this->vars['currentMembership']) ? 'renewal form': 'update form';?></h3>
-               <?
-                  switch ($this->vars['currentMembership']) {
-                     case \Saw\Model\Member::$membership['GENERAL MEMBER']:
-                        $apptype = 'update-member';
-                        break;
-                     case \Saw\Model\Member::$membership['SUSTAINING MEMBER']:
-                        $apptype = 'update-sustaining-member';
-                        break;
-                     case \Saw\Model\Member::$membership['FOUNDING MEMBER']:
-                        $apptype = 'update-founding-member';
-                        break;                        
-                     default:
-                        $apptype = 'update-member';
-                        break;
-                  }
-               ?>
-               <span><a data-apptype="<?=$apptype?>" data-id="<?=call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$this->app);?>" class="btn green large renewal"><i class=" icon-pencil"></i> Click Here to Submit Your Renewal Form.</a></span>
-               <br><br>
+               <? if(!empty($this->vars['renewal']) && $this->vars['renewal']['currentStatus'] < \Saw\Model\Renewal::$status['SUBMITTED']): ?>
+                  <h3 class="form-section alert alert-error">Please prepare your membership <?=(\Saw\Model\Member::$membership['GENERAL MEMBER'] == $this->vars['currentMembership']) ? 'renewal form': 'update form';?></h3>
+                  <?
+                     switch ($this->vars['currentMembership']) {
+                        case \Saw\Model\Member::$membership['GENERAL MEMBER']:
+                           $apptype = 'update-member';
+                           break;
+                        case \Saw\Model\Member::$membership['SUSTAINING MEMBER']:
+                           $apptype = 'update-sustaining-member';
+                           break;
+                        case \Saw\Model\Member::$membership['FOUNDING MEMBER']:
+                           $apptype = 'update-founding-member';
+                           break;                        
+                        default:
+                           $apptype = 'update-member';
+                           break;
+                     }
+                  ?>
+                  <span><a data-apptype="<?=$apptype?>" data-id="<?=call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$this->app);?>" class="btn green large renewal"><i class=" icon-pencil"></i> Click Here to Submit Your Renewal Form.</a></span>
+                  <br><br>
 
-            <? elseif (!empty($this->vars['renewal']) && $this->vars['renewal']['currentStatus'] == \Saw\Model\Renewal::$status['SUBMITTED']): ?>
-               <h3 class="form-section">Your membership <?=(\Saw\Model\Member::$membership['GENERAL MEMBER'] == $this->vars['currentMembership']) ? 'renewal form': 'update form';?> has been submitted and is awaiting approval.</h3>
-               <br><br>
-            <? endif; ?>
+               <? elseif (!empty($this->vars['renewal']) && $this->vars['renewal']['currentStatus'] == \Saw\Model\Renewal::$status['SUBMITTED']): ?>
+                  <h3 class="form-section">Your membership <?=(\Saw\Model\Member::$membership['GENERAL MEMBER'] == $this->vars['currentMembership']) ? 'renewal form': 'update form';?> has been submitted and is awaiting approval.</h3>
+                  <br><br>
+               <? elseif (!empty($this->vars['renewal']) && $this->vars['renewal']['currentStatus'] == \Saw\Model\Renewal::$status['PAID']): ?>
+                  <h3 class="form-section alert alert-success">Your membership <?=(\Saw\Model\Member::$membership['GENERAL MEMBER'] == $this->vars['currentMembership']) ? 'renewal form': 'update form';?> has been paid and your <b>membership renewal</b> process is <b>complete</b>.  We thank you for your continued membership with us.</h3>
+                  <br><br>
+               <? endif; ?>
             <? endif; ?>
 
             <!-- APPROVED APPLICATIONS -->
