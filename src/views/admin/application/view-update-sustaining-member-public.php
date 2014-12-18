@@ -480,15 +480,6 @@
                      <!--/span-->
                   </div>
 
-                  <div class="row-fluid">
-                     <div class="span10 ">
-                        <p class="alert alert-info">
-                        <b>I authorize the NCDD to store my credit card for future Annual Dues payments.</b>
-                        <input <?=(array_key_exists('termsAcknowledgement',$this->vars['application']) && $this->vars['application']['termsAcknowledgement'] == 'yes') ? 'checked' : '' ?> type="checkbox" name="doc[termsAcknowledgement]" class="termsAcknowledgement" value="yes">Yes, I agree.
-                        </p>
-                     </div>
-                     
-                  </div>
                   
                   
                   <h3 class="form-section">9. Voluntary Contribution to the NCDD Foundation.</h3>

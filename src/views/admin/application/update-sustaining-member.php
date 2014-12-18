@@ -759,20 +759,6 @@
 
 
 
-                  <div class="row-fluid">
-                     <div class="span10 ">
-                        &nbsp;
-                     </div>
-                  </div>
-                  <div class="row-fluid">
-                     <div class="span10 ">
-                        <p class="alert alert-info">
-                        <b>I authorize the NCDD to store my credit card for future Annual Dues payments.</b>
-                        <span class="control-group"><span class="controls"><input type="checkbox" name="doc[termsAcknowledgement]" class="termsAcknowledgement" value="yes">Yes, I agree.</span></span>
-                     </p>
-                     </div>
-                     
-                  </div>
                   
 
 

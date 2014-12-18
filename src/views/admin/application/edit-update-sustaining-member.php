@@ -547,15 +547,6 @@
                      <!--/span-->
                   </div>
 
-                  <div class="row-fluid">
-                     <div class="span10 ">
-                        <p class="alert alert-info">
-                        <b>Additionally, you authorize us to retain the information that you have given us for our records, including member's address, licensing, contact information, and optionally credit card information that we may use for the limited purposes described above, such as renewal payments of your membership dues and to communicate with you and to send announcements pertinent to your membership.</b>
-                        <span class="control-group"><span class="controls"><input <?=(array_key_exists('termsAcknowledgement',$this->vars['application']) && $this->vars['application']['termsAcknowledgement'] == 'yes') ? 'checked' : '' ?> type="checkbox" name="doc[termsAcknowledgement]" class="termsAcknowledgement" value="yes">Yes, I agree.</span></span>
-                     </p>
-                     </div>
-                     
-                  </div>
                   <h3 class="form-section">9. Voluntary Contribution to the NCDD Foundation.</h3>
                   <div class="row-fluid charity-div ">
                      <div class="span6 ">
