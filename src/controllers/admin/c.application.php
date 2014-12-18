@@ -380,6 +380,16 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 
 			$application->paymentId = $payment->charge();
 			// payment stuff END
+
+			// save the application
+			$app_id = $application->insert();		
+			if(array_key_exists('payByCheck',$doc) && strpos($doc['payByCheck'], 'no') !== false){
+				// save the card
+				$paymentlite->number = $paymentlite->number.'.x';
+				$paymentlite->expYear = substr($paymentlite->expYear, -2);
+				$memberobj = new Model\Member(array('_id'=>$memberId,'payment'=>$paymentlite),$app);
+				$memberobj->saveSafe();
+			}
 		endif;
 
 
@@ -391,6 +401,8 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 		$papplication = new Model\ApplyNewMember(array('_id'=>$applicationId), $app);
 		$papplication = $papplication->findById();
 		$paymentlite = new Model\PaymentLite($doc['payment'],$app);
+		$paymentlite->renewalREUSE = ($doc['termsAcknowledgement'] == 'yes') ? 'yes' : 'no';
+
 		$member = new Model\Member(array('_id'=>$papplication['memberId'],'payment'=>$paymentlite),$app);
 		$member->saveSafe();
 		$ppayment = new Model\Payment(array('_id'=>$application->paymentId,'memberId'=>$papplication['memberId']),$app);
