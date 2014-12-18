@@ -596,7 +596,7 @@
                   <div class="row-fluid">
                      <div class="span10 ">
                         <p class="alert alert-info">
-                        <b>Additionally, you authorize us to retain the information that you have given us for our records, including member's address, licensing, contact information, and optionally credit card information that we may use for the limited purposes described above, such as renewal payments of your membership dues and to communicate with you and to send announcements pertinent to your membership.</b>
+                        <b>I authorize the NCDD to store my credit card for future Annual Dues payments.</b>
                         <span class="control-group"><span class="controls"><input type="checkbox" name="doc[termsAcknowledgement]" class="termsAcknowledgement" value="yes">Yes, I agree.</span></span>
                         </p>
                      </div>
