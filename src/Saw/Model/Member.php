@@ -453,7 +453,7 @@ class Member extends User {
 					$result[$i]['currentMembership'] = $value['member']['currentMembership'];
 					$result[$i]['currentFacultyPosition'] = $value['member']['currentFacultyPosition'];
 					$result[$i]['boardCertified'] = $value['member']['boardCertified'];
-					$result[$i]['boardCertifiedSr'] = $value['member']['boardCertifiedSr'];
+					$result[$i]['boardCertifiedSr'] = (array_key_exists('boardCertifiedSr',$value['member'])) ? $value['member']['boardCertifiedSr']: '';
 					$result[$i]['staff'] = (array_key_exists('staff',$value['member'])) ? $value['member']['staff']: '';
 					$result[$i]['listed'] = $value['member']['listed'];
 					$result[$i]['websites'] = $value['member']['websites'];
