@@ -384,7 +384,7 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 			// save the application
 			$app_id = $application->insert();		
 			if(array_key_exists('payByCheck',$doc) && strpos($doc['payByCheck'], 'no') !== false){
-				// save the card
+				// save the card 
 				$paymentlite->number = $paymentlite->number.'.x';
 				$paymentlite->expYear = substr($paymentlite->expYear, -2);
 				$memberobj = new Model\Member(array('_id'=>$memberId,'payment'=>$paymentlite),$app);
@@ -655,7 +655,12 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
     // save the application
 	$app_id = $application->insert();		
 	if(array_key_exists('payByCheck',$doc) && strpos($doc['payByCheck'], 'no') !== false){
-		// save the card
+		// save the card - retain membership credit if exists!
+		$tmpmem = new Model\Member(array('_id'=>$memberId),$app);
+		$tmpmem = $tmpmem->findById();
+		$tmprenewalcredit = (is_array($tmpmem['payment']) && array_key_exists('renewalCredit', $tmpmem['payment'])) ? $tmpmem['payment']['renewalCredit']: '';
+		if(!empty($tmprenewalcredit))
+			$paymentlite->renewalCredit = $tmprenewalcredit;
 		$paymentlite->number = $paymentlite->number.'.x';
 		$paymentlite->expYear = substr($paymentlite->expYear, -2);
 		$memberobj = new Model\Member(array('_id'=>$memberId,'payment'=>$paymentlite),$app);
@@ -1635,11 +1640,10 @@ $app->get('/application/autopay', function (Request $request) use ($app) {
 		    
 		    $amount = $amount-$discount-$discount2;
 		    if($amount < 0 && !empty($discount2)){
-		    	$tpaymnt = $member['payment'];
-		    	$tpaymnt['renewalCredit'] = abs($amount);
-		    	$tmem = new Model\Member(array('_id'=>$application['memberId'],'payment'=>$tpaymnt),$app);
-		    	$tmem->saveSafe();
-		    } 
+		    	$member['payment']['renewalCredit'] = abs($amount);
+		    }else if($amount > 0 && !empty($discount2)){
+		    	$member['payment']['renewalCredit'] = '-';
+		    }
 		    $amount = ($amount <= 0) ? 0:$amount;
 		    
 		    ////////////////////////////////////////////////////////////////////////////////
