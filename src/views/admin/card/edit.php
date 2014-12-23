@@ -385,10 +385,26 @@ jQuery(document).ready(function() {
          cardSave();
       }
    });
-   $('#saw-form .btn.save').click(function(e){
-      cardSave();
+   
+   var DELAY = 500, clicks = 0, timer = null;
+   $(function(){
+       $('#saw-form .btn.save').on("click", function(e){
+           clicks++;  //count clicks
+           if(clicks === 1) {
+               timer = setTimeout(function() {
+                   cardSave();  //perform single-click action    
+                   clicks = 0;             //after action performed, reset counter
+               }, DELAY);
+           } else {
+               clearTimeout(timer);    //prevent single-click action
+               cardSave();  //perform double-click action
+               clicks = 0;             //after action performed, reset counter
+           }
+       })
+       .on("dblclick", function(e){
+           e.preventDefault();  //cancel system double-click event
+       });
    });
-
 
 });      
 </script>
