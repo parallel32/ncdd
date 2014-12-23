@@ -1638,6 +1638,7 @@ $app->get('/application/autopay', function (Request $request) use ($app) {
 		       $amount = $application['membershipDues'];
 		    endif;
 		    
+		    $new_renewal_credit = null;
 		    $amount = $amount-$discount-$discount2;
 		    if($amount < 0 && !empty($discount2)){
 		    	$new_renewal_credit = abs($amount);
@@ -1682,7 +1683,8 @@ $app->get('/application/autopay', function (Request $request) use ($app) {
 					$paymentId = $payment->manualCharge();
 					$tpaymnt = $member['payment'];
 			    	$tpaymnt['declineCount'] = 0;
-			    	$tpaymnt['renewalCredit'] = $new_renewal_credit;
+			    	if(!is_null($new_renewal_credit))
+			    		$tpaymnt['renewalCredit'] = $new_renewal_credit;
 			    	$tmem = new Model\Member(array('_id'=>$application['memberId'],'payment'=>$tpaymnt),$app);
 			    	$tmem->saveSafe();
 				}else{
@@ -1691,7 +1693,8 @@ $app->get('/application/autopay', function (Request $request) use ($app) {
 						$paymentId = $payment->charge();	
 						$tpaymnt = $member['payment'];
 				    	$tpaymnt['declineCount'] = 0;
-				    	$tpaymnt['renewalCredit'] = $new_renewal_credit;
+				    	if(!is_null($new_renewal_credit))
+				    		$tpaymnt['renewalCredit'] = $new_renewal_credit;
 				    	$tmem = new Model\Member(array('_id'=>$application['memberId'],'payment'=>$tpaymnt),$app);
 				    	$tmem->saveSafe();
 					} catch (Exception $e) {
