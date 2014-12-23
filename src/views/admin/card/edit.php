@@ -321,7 +321,7 @@ jQuery(document).ready(function() {
       
       // validate card number
       $('#saw-form .number').blur(function(){
-         validateCardNumber($(this));
+         //validateCardNumber($(this));
       });
       // validate cvc check
       $('#saw-form .cvc').blur(function(){

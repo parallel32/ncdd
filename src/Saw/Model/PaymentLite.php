@@ -74,36 +74,38 @@ class PaymentLite extends Model {
 		
 		  // Strip any non-digits (useful for credit card numbers with spaces and hyphens)
 		  $number=preg_replace('/\D/', '', $this->number);
+		  $this->number = $number;
+		  if(false):
+			  // Set the string length and parity
+			  $number_length=strlen($number);
+			  $parity=$number_length % 2;
 
-		  // Set the string length and parity
-		  $number_length=strlen($number);
-		  $parity=$number_length % 2;
+			  // Loop through each digit and do the maths
+			  $total=0;
+			  for ($i=0; $i<$number_length; $i++) {
+			    $digit=$number[$i];
+			    // Multiply alternate digits by two
+			    if ($i % 2 == $parity) {
+			      $digit*=2;
+			      // If the sum is two digits, add them together (in effect)
+			      if ($digit > 9) {
+			        $digit-=9;
+			      }
+			    }
+			    // Total up the digits
+			    $total+=$digit;
+			  }
 
-		  // Loop through each digit and do the maths
-		  $total=0;
-		  for ($i=0; $i<$number_length; $i++) {
-		    $digit=$number[$i];
-		    // Multiply alternate digits by two
-		    if ($i % 2 == $parity) {
-		      $digit*=2;
-		      // If the sum is two digits, add them together (in effect)
-		      if ($digit > 9) {
-		        $digit-=9;
-		      }
-		    }
-		    // Total up the digits
-		    $total+=$digit;
-		  }
+			  // If the total mod 10 equals 0, the number is valid
+			  
 
-		  // If the total mod 10 equals 0, the number is valid
-		  
-
-		if($total % 10 != 0){
-			if(strpos($this->number, '...') === false){
-				$propertyPath = $context->getPropertyPath().'number';
-        		$context->addViolationAtPath($propertyPath,'This card number is either invalid or it is one we do not accept.', array(), null);
-        	}
-		}
+			if($total % 10 != 0){
+				if(strpos($this->number, '...') === false){
+					$propertyPath = $context->getPropertyPath().'number';
+	        		$context->addViolationAtPath($propertyPath,'This card number is either invalid or it is one we do not accept.', array(), null);
+	        	}
+			}
+		endif; 
 	}	
 	public function __construct($doc, Application $app){
 		parent::__construct($app);

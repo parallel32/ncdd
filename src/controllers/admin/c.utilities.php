@@ -126,6 +126,125 @@ $utilities->get('/scrubmembers', function () use ($app) {
     return new Response('cool: '.$cnt.' members total of which '.$ncdd.' are NCDD members making the new total = '.$woncdd.' followed with '.$wdups.' duplicates making the new new total = '.$wodups.' ... and office name cleared: '.$officecleared.' times because the word appointment was used in it',200,array('Content-Type' => 'text/html')); 
 });
 
+/////////////////////////////////////////////////////
+// AVVO SCRUB DUPLICATES AND EXISTING NCDD MEMBERS //
+/////////////////////////////////////////////////////
+$utilities->get('/scrubtcdlamembers', function () use ($app) {
+    
+    // example record:
+    // "Brett M Bloomston","Bloomston & Basgier","2151 Highland Avenue South","Suite 310","Birmingham, AL 35205"," Office:  205-212-9700  Fax:  205-212-9701 "
+
+    ini_set('memory_limit','1024M');
+    
+    $fields = array();
+    $fields[]='name';
+    $fields[]='officename';
+    $fields[]='address1';
+    $fields[]='address2';
+    $fields[]='citystatezip';
+    $fields[]='phone';
+    $fields[]='fax';
+    $fields[]='email';
+    $fields[]='website';
+    
+    //*
+    $cnt = 1;    // total csv records
+    $row = 1;
+    $ncdd = 0;
+    $woncdd = 0; // w/o ncdd members
+    $wdups  = 0; // w/  duplicate records
+    $wodups = 0; // w/o duplicate records
+    $officecleared = 0; // office name cleared because it contained the word appointment
+    $new_output = array();
+    $member = new Model\Member(array(), $app);
+    $results = $member->search('TX');
+    if (($fp = fopen("/var/www/upload/tcdla_attorneys_scrubbed.csv", "w")) !== FALSE) {
+        if (($handle = fopen("/var/www/upload/tcdla_attorneys.csv", "r")) !== FALSE) {
+            while (($data = fgetcsv($handle)) !== FALSE) {
+                $num = count($data);
+                //echo "<p> $num fields in line $row: <br /></p>\n";
+                $row++;
+                for ($c=0; $c < $num; $c++) {
+                    $output[$row][$fields[$c]] = trim($data[$c]);
+                    //echo $data[$c] . "<br />\n";
+                }
+                if(array_key_exists('address1', $output[$row])){
+                    if(!empty($output[$row]['name']) && strlen($output[$row]['name']) > 0){
+                        //echo "<pre>";print_r($output[$row]);echo "</pre>";
+                        $tmp = explode(' ', $output[$row]['name']);
+                        $first = trim($tmp[0]);
+                        $last = trim($tmp[count($tmp)-1]);
+
+                        for ($i=0; $i < count($results); $i++) { 
+                            if(strtolower($results[$i]['firstName']) == strtolower($first) && strtolower($results[$i]['lastName']) == strtolower($last)){
+                                $ncdd++;
+                                unset($output[$row]);
+                            }
+                        }
+                        
+                        $cnt++;    
+                    }
+                }else{
+                    unset($output[$row]);
+                }
+                
+            }
+            fclose($handle);
+        }
+    }
+    $output = array_values($output);
+
+    $fields = array();
+    $fields[]='name';
+    $fields[]='address1';
+    $fields[]='address2';
+    $fields[]='citystatezip';
+    $fields[]='phone';
+    $fields[]='extra';
+    $row = 0;
+    $avvo_texas_count = 0;
+    $avvo_texas_removed = 0;
+    // now check the avvo list and remove any duplicates
+    if (($handle = fopen("/var/www/upload/avvo_attorneys.csv", "r")) !== FALSE) {
+        while (($data = fgetcsv($handle)) !== FALSE) {
+            $num = count($data);
+            $row++;
+            for ($c=0; $c < $num; $c++) {
+                $avvo_output[$row][$fields[$c]] = trim($data[$c]);
+                //echo $data[$c] . "<br />\n";
+            }
+
+            if(strpos($avvo_output[$row]['citystatezip'], 'TX') !== false){
+                $avvo_texas_count++;
+                // now remove records from $output that are in the avvo texas list
+                $avvo_name = explode(' ', $avvo_output[$row]['name']);
+                $avvo_name = $avvo_name[0].' '.$avvo_name[count($avvo_name)-1];
+                for ($j=0; $j < count($output); $j++) { 
+                    $tcdla_name = explode(' ', $output[$j]['name']);
+                    $tcdla_name = $tcdla_name[0].' '.$tcdla_name[count($tcdla_name)-1];
+                    if($avvo_name == $tcdla_name){
+                        $unset[] = $j;
+                        $avvo_texas_removed++;
+                    }
+                }
+            }
+        }
+    }
+    foreach ($unset as $key => $value) {
+        unset($output[$value]);
+    }
+    foreach ($output as $key => $value) {
+        fputcsv($fp, $value);
+        echo '<pre>';print_r($value);echo '</pre>';
+    }
+    
+    
+    fclose($fp);
+    //*
+
+    return new Response('cool: output total:'.count($output).' total TX avvo:'.$avvo_texas_count.' total TX avvo removed:'.$avvo_texas_removed.' '.$cnt.' members total of which '.$ncdd.' are NCDD members making the new total = '.$woncdd.' followed with '.$wdups.' duplicates making the new new total = '.$wodups.' ... and office name cleared: '.$officecleared.' times because the word appointment was used in it',200,array('Content-Type' => 'text/html')); 
+});
+
 
 ////////////////////////////////////////////////////
 // move the payment records to the member objects //
