@@ -14,10 +14,15 @@ use Saw\Model;
 
 
 // login view
-$app->get('/login', function (Request $request) use ($app) {
-	$view_vars = array('flash'=>Model\User::getFlash($app));
+$app->get('/login/{e}/{pp}', function ($e, $pp, Request $request) use ($app) {
+	$view_vars = array(
+		'flash'=>Model\User::getFlash($app)
+		,'e'=>$request->get('e')
+		,'pp'=>$request->get('pp')
+	);
+	
 	return $app['view']->render('','login',$view_vars);	
-});
+})->value('e','')->value('pp','');
 // login post
 $app->post('/login', function (Request $request) use ($app) {
 	

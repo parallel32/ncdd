@@ -103,7 +103,7 @@ class Payment extends Model {
 		$metadata->addPropertyConstraint('zipPostalCodeShipping', new Constraints\NotBlank(array('groups' => array('product-purchase'))));
 		$metadata->addPropertyConstraint('countryShipping', new Constraints\NotBlank(array('groups' => array('product-purchase'))));
 		
-		$metadata->addPropertyConstraint('phone', new Constraints\NotBlank(array('groups' => array('check','cc','manual','product-purchase'))));
+		//$metadata->addPropertyConstraint('phone', new Constraints\NotBlank(array('groups' => array('product-purchase'))));
 		$metadata->addPropertyConstraint('email', new Constraints\NotBlank(array('groups' => array('check','cc','manual','product-purchase'))));
 		$metadata->addPropertyConstraint('email', new Constraints\Email(array('message'=>'invalid email','groups' => array('check','cc','manual','product-purchase'))));
 		

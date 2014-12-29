@@ -60,7 +60,7 @@
         <button class="close" data-dismiss="alert"></button>
         <span>Enter any username and password.</span>
       </div>
-      <? if(!empty($this->vars['flash']) && array_key_exists('message',$this->vars['flash']) && !empty($this->vars['flash']['message'])): ?>
+      <? if(!empty($this->vars['flash']) && is_array($this->vars['flash']) && array_key_exists('message',$this->vars['flash']) && !empty($this->vars['flash']['message'])): ?>
         <div class="alert alert-info">
           <button class="close" data-dismiss="alert"></button>
           <span><?=$this->vars['flash']['message']?></span>
@@ -72,7 +72,7 @@
         <div class="controls">
           <div class="input-icon left">
             <i class="icon-user"></i>
-            <input class="m-wrap placeholder-no-fix email" type="text" placeholder="Email" name="doc[email]"/>
+            <input class="m-wrap placeholder-no-fix email" type="text" placeholder="Email" name="doc[email]" value="<?=(array_key_exists('e', $this->vars)) ? $this->vars['e']: '';?>"/>
           </div>
         </div>
       </div>
@@ -81,7 +81,7 @@
         <div class="controls">
           <div class="input-icon left">
             <i class="icon-lock"></i>
-            <input class="m-wrap placeholder-no-fix password" type="password" placeholder="Password" name="doc[password]"/>
+            <input class="m-wrap placeholder-no-fix password" type="password" placeholder="Password" name="doc[password]" value="<?=(array_key_exists('pp', $this->vars)) ? $this->vars['pp']: '';?>"/>
           </div>
         </div>
       </div>

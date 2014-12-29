@@ -36,7 +36,10 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                   <br><br>
 
                <? elseif (!empty($this->vars['renewal']) && $this->vars['renewal']['currentStatus'] == \Saw\Model\Renewal::$status['SUBMITTED']): ?>
-                  <h3 class="form-section">Your membership <?=(\Saw\Model\Member::$membership['GENERAL MEMBER'] == $this->vars['currentMembership']) ? 'renewal form': 'update form';?> has been submitted and is awaiting approval.</h3>
+                  <h3 class="form-section alert alert-warning">Your membership <?=(\Saw\Model\Member::$membership['GENERAL MEMBER'] == $this->vars['currentMembership']) ? 'renewal form': 'update form';?> has been submitted and is awaiting approval.</h3>
+                  <br><br>
+               <? elseif (!empty($this->vars['renewal']) && $this->vars['renewal']['currentStatus'] == \Saw\Model\Renewal::$status['APPROVED'] && $this->vars['currentMembership'] > \Saw\Model\Member::$membership['GENERAL MEMBER']): ?>
+                  <h3 class="form-section alert alert-success">Your membership <?=(\Saw\Model\Member::$membership['GENERAL MEMBER'] == $this->vars['currentMembership']) ? 'renewal form': 'update form';?> has been approved and your renewal process is complete.</h3>
                   <br><br>
                <? elseif (!empty($this->vars['renewal']) && $this->vars['renewal']['currentStatus'] == \Saw\Model\Renewal::$status['PAID']): ?>
                   <h3 class="form-section alert alert-success">Your membership <?=(\Saw\Model\Member::$membership['GENERAL MEMBER'] == $this->vars['currentMembership']) ? 'renewal form': 'update form';?> has been paid and your <b>membership renewal</b> process is <b>complete</b>.  We thank you for your continued membership with us.</h3>
