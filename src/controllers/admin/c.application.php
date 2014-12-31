@@ -603,6 +603,7 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 
     // retrieve document from request
 	$doc = $request->get('doc');
+	$doc['userAgent'] = $request->headers->get('User-Agent');
 
 	if(array_key_exists('termsAcknowledgement', $doc) && $doc['termsAcknowledgement'] == 'yes'){
     	$doc['payByCheck'] = 'no-store';
