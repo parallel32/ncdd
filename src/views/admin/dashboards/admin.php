@@ -325,7 +325,22 @@
                      </a>                 
                   </div>
                </div>
-               
+               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                  <div class="dashboard-stat blue">
+                     <div class="visual">
+                        <i class="icon-hideme"><?=$this->vars['ncdd2015promocode'];?></i>
+                     </div>
+                     <div class="details">
+                        <div class="number"><font><font></font>NCDD2015 Promo</font></div>
+                        <div class="desc"><font><font>
+                           
+                        </font></font></div>
+                     </div>
+                     <a class="more" href="/applications#ncdd2015"><font><font>
+                     Go </font></font><i class="m-icon-swapright m-icon-white"></i>
+                     </a>                 
+                  </div>
+               </div>
             </div>
                
 

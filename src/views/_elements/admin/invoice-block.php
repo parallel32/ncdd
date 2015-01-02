@@ -54,9 +54,10 @@
 
                         <?
                         $discount = 0;
-                        // EARLY BIRD DISCOUNT FOR 2014 
+                        // EARLY BIRD DISCOUNT FOR 2014 .. is now over
+                        /*
                         if($application['type'] == 'UPDATE MEMBER APPLICATION'
-                            /*&& strtotime($application['approvedDate']['iso']) < strtotime('December 31, 2014')*/
+                            //&& strtotime($application['approvedDate']['iso']) < strtotime('December 31, 2014')
                             && array_key_exists('payment', $member) && array_key_exists('renewalREUSE', $member['payment']) && $member['payment']['renewalREUSE'] == 'yes'
                             && array_key_exists('payment', $member) && array_key_exists('number', $member['payment']) && !empty($member['payment']['number'])
                             && $application['membershipDues'] > 50
@@ -70,7 +71,10 @@
                            <td class="hidden-480">-$50</td>
                            <td>-$50</td>
                         </tr>
-                        <? endif; ?>
+                        <? 
+                        endif; 
+                        //*/
+                        ?>
                         <?
                         // CREDIT DISCOUNT FOR MEMBERS WHO HOLD A CREDIT WITH US
                         $discount2 = 0;

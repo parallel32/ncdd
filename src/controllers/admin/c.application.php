@@ -221,10 +221,10 @@ $app->get('/application/downloads/{file}', function ($file, Request $request) us
 $app->post('/application/promocode', function (Request $request) use ($app) {
 	// retrieve document from request
     $doc = $request->get('doc');
-    if(!empty($doc['promocode']) && (strtoupper($doc['promocode']) == 'NCDD2014' || strtoupper($doc['promocode']) == 'TRIAL')){
+    if(!empty($doc['promocode']) && (strtoupper($doc['promocode']) == 'NCDD2015' || strtoupper($doc['promocode']) == 'TRIAL')){
     	$valid = 'yes';
     	$message = 'Valid Promo Code.';
-    	$type = (strtoupper($doc['promocode']) == 'NCDD2014') ? 'discount': 'trial';
+    	$type = (strtoupper($doc['promocode']) == 'NCDD2015') ? 'discount': 'trial';
     }else{
     	$type = '';
     	$valid = 'no';
@@ -309,13 +309,13 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 	$yilp = $application->yearsInLawPractice;
 	$now = date('Y',strtotime('today'));
 	if($now - $yilp >= 6){
-		$amt = (empty($doc['promocode']) || $doc['promocode'] == 'NCDD2014') ? $dues[6]['amount']: $dues[6]['prorated']['a'];
+		$amt = (empty($doc['promocode']) || $doc['promocode'] == 'NCDD2015') ? $dues[6]['amount']: $dues[6]['prorated']['a'];
 	}elseif ($now - $yilp < 6){
-		$amt = (empty($doc['promocode']) || $doc['promocode'] == 'NCDD2014') ? $dues[1]['amount']: $dues[1]['prorated']['a'];
+		$amt = (empty($doc['promocode']) || $doc['promocode'] == 'NCDD2015') ? $dues[1]['amount']: $dues[1]['prorated']['a'];
 	}
 	if($application->publicDefender == 'yes'){
 		$amt = $dues['publicDefender']['prorated']['a'];
-		$amt = (empty($doc['promocode']) || $doc['promocode'] == 'NCDD2014') ? $dues['publicDefender']['amount']: $dues['publicDefender']['prorated']['a'];
+		$amt = (empty($doc['promocode']) || $doc['promocode'] == 'NCDD2015') ? $dues['publicDefender']['amount']: $dues['publicDefender']['prorated']['a'];
 	}
 
 
@@ -1340,7 +1340,22 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 	$paid = $application->fetchByDatePaid(90, $offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
 
 	$ncddtrialpromocode = $application->fetchByStatus('TRIAL',$offset, $limit,$filter=array('promocode'=>'TRIAL'));
+	$ncdd2015promocode = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('promocode'=>'NCDD2015'));
 	$ncdd2014promocode = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('promocode'=>'NCDD2014'));
+	if(!empty($ncdd2015promocode)):
+	for ($i=0; $i < count($ncdd2015promocode); $i++) { 
+		switch ($ncdd2015promocode[$i]['class']) {
+	    	case 'ApplyNewMember':
+	    		$reference = new Model\ReferenceMember(array('applicationId'=>$ncdd2015promocode[$i]['_id']), $app);
+	    		break;
+	    	case 'ApplyNewSustainingMember':
+	    		$reference = new Model\ReferenceSustainingMember(array('applicationId'=>$ncdd2015promocode[$i]['_id']), $app);
+	    		break;
+	    	
+	    }
+	    $ncdd2015promocode[$i]['new_references'] = array('total'=>$reference->getTotalSubmissions(),'max'=>$reference->getMaxSubmissions());
+	}
+	endif;
 	if(!empty($ncdd2014promocode)):
 	for ($i=0; $i < count($ncdd2014promocode); $i++) { 
 		switch ($ncdd2014promocode[$i]['class']) {
@@ -1356,7 +1371,7 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 	}
 	endif;
 	$date = new Model\Date($app,'9/16/2014 5:00 PM');
-	$newlypaid = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION')),'promocode'=>array('$nin'=>array('NCDD2014','TRIAL')),'paidDate.date'=>array('$gte'=> new \MongoDate(strtotime($date->iso)))));
+	$newlypaid = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION')),'promocode'=>array('$nin'=>array('NCDD2015','NCDD2014','TRIAL')),'paidDate.date'=>array('$gte'=> new \MongoDate(strtotime($date->iso)))));
 	if(!empty($newlypaid)):
 	for ($i=0; $i < count($newlypaid); $i++) { 
 		switch ($newlypaid[$i]['class']) {
@@ -1389,6 +1404,7 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 						,'approved'=>$approved
 						,'trial'=>$trial
 						,'paid'=>$paid
+						,'ncdd2015promocode'=>$ncdd2015promocode
 						,'ncdd2014promocode'=>$ncdd2014promocode
 						,'ncddtrialpromocode'=>$ncddtrialpromocode
 						,'newlypaid'=>$newlypaid
@@ -1612,15 +1628,17 @@ $app->get('/application/autopay', function (Request $request) use ($app) {
 					break;
 			}
 
-			// EARLY BIRD DISCOUNT FOR 2014 
+			// EARLY BIRD DISCOUNT FOR 2014 -- is now over..
 			$discount = 0;
+			/*
 			if($application['type'] == 'UPDATE MEMBER APPLICATION'
-			    /*&& strtotime($application['approvedDate']['iso']) < strtotime('December 31, 2014')*/
+			    //&& strtotime($application['approvedDate']['iso']) < strtotime('December 31, 2014')
 			    && array_key_exists('payment', $member) && array_key_exists('renewalREUSE', $member['payment']) && $member['payment']['renewalREUSE'] == 'yes'
 			    && $application['membershipDues'] > 50
 			): 
 				$discount = 50;
 			endif;
+			//*/
 			 // CREDIT DISCOUNT FOR MEMBERS WHO HOLD A CREDIT WITH US
 			$discount2 = 0;
 			if(array_key_exists('payment',$member) 

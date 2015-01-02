@@ -798,7 +798,7 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                         <div class="control-group">
                            <label class="control-label">If you have a promo code please enter it here:</label>
                            <div class="controls">
-                              <input type="text" name="doc[promocode]" class="m-wrap span12 promocode" value="NCDD2014">
+                              <input type="text" name="doc[promocode]" class="m-wrap span12 promocode" value="">
                               <input type="hidden" id="promocodetype" value="discount">
                            </div>
                         </div>

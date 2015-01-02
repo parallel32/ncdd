@@ -104,7 +104,22 @@
                      </a>                 
                   </div>
                </div>
-               
+               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                  <div class="dashboard-stat blue">
+                     <div class="visual">
+                        <i class="icon-hideme"><?=(!empty($this->vars['ncdd2015promocode'])) ? count($this->vars['ncdd2015promocode']): 0;?></i>
+                     </div>
+                     <div class="details">
+                        <div class="number"><font><font></font>NCDD2015 Promo</font></div>
+                        <div class="desc"><font><font>
+                           
+                        </font></font></div>
+                     </div>
+                     <a class="more" href="#ncdd2015"><font><font>
+                     Click to scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
+                     </a>                 
+                  </div>
+               </div>
             </div>
             
             <div class="row-fluid">
@@ -197,6 +212,60 @@
                                  <td class=" ">
                                     <a data-id="<?=$application['_id']?>" class="btn blue mini view"><i class=" "></i> Application</a>
                                     <a data-id="<?=(!empty($application['memberId'])) ? (string)$application['memberId'] : ''?>" class="btn blue mini view member"><i class=" "></i> Member</a>
+                                 </td>
+                              </tr>
+                              <? endforeach;?>
+                              <? else: ?>
+                                 <td colspan="6">None.</td>
+                              <? endif;?>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div><a name="ncdd2015"></a>
+                  <!-- END EXAMPLE TABLE PORTLET-->
+               </div>
+            </div>
+
+            <div class="row-fluid">
+               <div class="span12">
+                  
+                  <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                  <div class="portlet box blue">
+                     <div class="portlet-title" id="application">
+                        <div class="caption"><i class="icon-user"></i>NCDD2015 Promo</div>
+                     </div>
+                     <div class="portlet-body">
+                        <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                        <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
+                           <thead>
+                              <tr role="row">
+                                 <th class="">Name</th>
+                                 <th class="hidden-phone">Email</th>
+                                 <th class="hidden-480">Area</th>
+                                 <th class="hidden-480">Date Paid</th>
+                                 <th class="hidden-480">References</th>
+                                 <th class=""></th>
+                              </tr>
+                           </thead>
+                           <tbody role="alert" aria-live="polite" aria-relevant="all">
+                              <? if(!empty($this->vars['ncdd2015promocode'])): foreach($this->vars['ncdd2015promocode'] as $application): ?>
+                              <tr class="gradeX odd">
+                                 <? $middleName = (!empty($application['middleName'])) ? ' '.$application['middleName'].' ':' '; ?>
+                                 <td class=" "><?=$application['firstName'].$middleName.$application['lastName']?></td>
+                                 <td class="hidden-phone "><?=$application['email']?></td>
+                                 <td class="hidden-480 "><?=$application['city'].', '.$application['state']?></td>
+                                 <td class="hidden-480 "><?=$application['paidDate']['monthDay'].' '.$application['paidDate']['shortTime']?></td>
+                                 <td class="hidden-phone">
+                                    <? if($application['new_references']['total'] >= $application['new_references']['max']): ?>
+                                    <span class="label label-success"><?=$application['new_references']['total'].' of '.$application['new_references']['max']?></span>
+                                    <? else: ?>
+                                    <span class="label label-important"><?=$application['new_references']['total'].' of '.$application['new_references']['max']?></span>
+                                    <? endif; ?>
+                                    <a href="https://<?=SAW_ADMIN_WEBSITE?>/reference/<?=$application['_id']?>/<?=$application['firstName'].'-'.$application['lastName']?>" target="_blank">Reference form</a>
+                                 </td>
+                                 <td class=" ">
+                                    <a data-id="<?=$application['_id']?>" class="btn blue mini view"><i class=" "></i> Application</a>
+                                    <a data-id="<?=$application['paymentId']?>" class="btn blue mini view payment"><i class=" "></i> Payment</a>
                                  </td>
                               </tr>
                               <? endforeach;?>

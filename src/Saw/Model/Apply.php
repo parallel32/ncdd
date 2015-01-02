@@ -274,23 +274,6 @@ class Apply extends Model {
 		if(!empty($filter)){
 			$query = array_merge($filter, $query);
 		}
-		switch ($status) {
-			case 'SUBMITTED':
-				$sort=array('submittedDate.date'=>-1);
-				break;
-			case 'APPROVED':
-				$sort=array('approvedDate.date'=>-1);
-				break;
-			case 'PAID':
-				$sort=array('paidDate.date'=>-1);
-				break;
-			case 'TRIAL':
-				$sort=array('trial.startDate.date'=>-1);
-				break;
-			default:
-				$sort=array('_id'=>-1);
-				break;
-		}
 		$result = $this->count($query,$slaveOkay=true);
 		return $result;
 
