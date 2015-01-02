@@ -221,10 +221,10 @@ $app->get('/application/downloads/{file}', function ($file, Request $request) us
 $app->post('/application/promocode', function (Request $request) use ($app) {
 	// retrieve document from request
     $doc = $request->get('doc');
-    if(!empty($doc['promocode']) && (strtoupper($doc['promocode']) == 'NCDD2015' || strtoupper($doc['promocode']) == 'TRIAL')){
+    if(!empty($doc['promocode']) && (strtoupper($doc['promocode']) == 'NCDD2015' || strtoupper($doc['promocode']) == 'NCDD2014' || strtoupper($doc['promocode']) == 'TRIAL')){
     	$valid = 'yes';
     	$message = 'Valid Promo Code.';
-    	$type = (strtoupper($doc['promocode']) == 'NCDD2015') ? 'discount': 'trial';
+    	$type = (strtoupper($doc['promocode']) == 'NCDD2015' || strtoupper($doc['promocode']) == 'NCDD2014') ? 'discount'.'-'.strtoupper($doc['promocode']): 'trial';
     }else{
     	$type = '';
     	$valid = 'no';
@@ -309,9 +309,9 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 	$yilp = $application->yearsInLawPractice;
 	$now = date('Y',strtotime('today'));
 	if($now - $yilp >= 6){
-		$amt = ($doc['promocode'] == 'NCDD2015' || (array_key_exists('termsAcknowledgement',$doc) && $doc['termsAcknowledgement'] == 'yes')) ? $dues[6]['amount']-50: $dues[6]['prorated']['a'];
+		$amt = ($doc['promocode'] == 'NCDD2015') ? $dues[6]['amount']-50: $dues[6]['prorated']['a'];
 	}elseif ($now - $yilp < 6){
-		$amt = ($doc['promocode'] == 'NCDD2015' || (array_key_exists('termsAcknowledgement',$doc) && $doc['termsAcknowledgement'] == 'yes')) ? $dues[1]['amount']-50: $dues[1]['prorated']['a'];
+		$amt = ($doc['promocode'] == 'NCDD2015') ? $dues[1]['amount']-50: $dues[1]['prorated']['a'];
 	}
 	if($application->publicDefender == 'yes'){
 		$amt = $dues['publicDefender']['prorated']['a'];
@@ -320,7 +320,7 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 		//*/
 	}
 
-	
+
 
 	if($doc['promocode'] == 'TRIAL'){
 		$trial_doc['startDate'] = 'now';
@@ -1654,9 +1654,9 @@ $app->get('/application/autopay', function (Request $request) use ($app) {
 					break;
 			}
 
-			// EARLY BIRD DISCOUNT FOR 2014 -- is now over..
+			// EARLY BIRD DISCOUNT FOR 2014 -- is not over..
 			$discount = 0;
-			/*
+			//*
 			if($application['type'] == 'UPDATE MEMBER APPLICATION'
 			    //&& strtotime($application['approvedDate']['iso']) < strtotime('December 31, 2014')
 			    && array_key_exists('payment', $member) && array_key_exists('renewalREUSE', $member['payment']) && $member['payment']['renewalREUSE'] == 'yes'

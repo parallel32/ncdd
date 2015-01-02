@@ -54,8 +54,8 @@
 
                         <?
                         $discount = 0;
-                        // EARLY BIRD DISCOUNT FOR 2014 .. is now over
-                        /*
+                        // EARLY BIRD DISCOUNT FOR 2014 .. is not over
+                        ///*
                         if($application['type'] == 'UPDATE MEMBER APPLICATION'
                             //&& strtotime($application['approvedDate']['iso']) < strtotime('December 31, 2014')
                             && array_key_exists('payment', $member) && array_key_exists('renewalREUSE', $member['payment']) && $member['payment']['renewalREUSE'] == 'yes'
@@ -76,7 +76,7 @@
                         //*/
                         ?>
                         <?
-                        $discount = 0;
+                        $discount3 = 0;
                         // NCDD2015 NEW MEMBER PROMO
                         //*
                         if($application['type'] == 'NEW MEMBER APPLICATION'
@@ -84,9 +84,9 @@
                             //&& array_key_exists('payment', $member) && array_key_exists('renewalREUSE', $member['payment']) && $member['payment']['renewalREUSE'] == 'yes'
                             && array_key_exists('payment', $member) && array_key_exists('number', $member['payment']) && !empty($member['payment']['number'])
                             && $application['membershipDues'] > 50
-                            && ($application['promocode'] == 'NCDD2015' || array_key_exists('payment', $member) && array_key_exists('renewalREUSE', $member['payment']) && $member['payment']['renewalREUSE'] == 'yes')
+                            && ($application['promocode'] == 'NCDD2015')
                         ): 
-                           $discount = 50;
+                           $discount3 = 50;
                         ?>
                         <tr>
                            <td>Discount</td>
@@ -141,7 +141,7 @@
                <div class="row-fluid">
                   <div class="span12 invoice-block">
                      <ul class="unstyled amounts">
-                        <li><strong>Total:</strong> $<?$amount = $amount-$discount-$discount2; echo ($amount <= 0) ? 0:$amount;?></li>
+                        <li><strong>Total:</strong> $<?$amount = $amount-$discount-$discount2-$discount3; echo ($amount <= 0) ? 0:$amount;?></li>
                      </ul>
                   </div>
                </div>

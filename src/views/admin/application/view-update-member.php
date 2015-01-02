@@ -493,9 +493,9 @@
 
                   
                   <h3 class="form-section">Check which applies to your membership:</h3>
-                  <!-- EARLY BIRD DISCOUNT FOR 2014
-                  <p class="alert alert-info"><b>As an added incentive to pay your dues early and sign up for automatic renewal, complete your Membership Renewal by December 31, 2014 and you will receive an automatic $50 off your 2015 Annual dues.</b></p>
-                  -->
+                  <!-- EARLY BIRD DISCOUNT FOR 2014 -->
+                  <p class="alert alert-info"><b>As an added incentive to pay your dues early and sign up for automatic renewal, complete your Membership Renewal by February 15, 2015 and you will receive an automatic $50 off your 2015 Annual dues.</b></p>
+
                   <div class="row-fluid">
                      <div class="span12 ">
                         <div class="control-group">
