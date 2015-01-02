@@ -85,76 +85,126 @@
             </p>
             <h1>1. Renewals</h1>
             <div class="row-fluid">
-                  <div class="responsive span6" data-tablet="span6" data-desktop="span6">
-                     <div class="dashboard-stat red">
-                        <div class="visual">
-                           <i class="icon-hideme"><?=(is_array($this->vars['renewals']['unsubmitted'])) ? count($this->vars['renewals']['unsubmitted']) : 0;?></i>
-                        </div>
-                        <div class="details">
-                           <div class="number"><font><font>
-                              Unsubmitted
-                           </font></font></div>
-                           <div class="desc"><font><font>                           
-                              
-                           </font></font></div>
-                        </div>
-                        <a class="more" href="#unsubmitted"><font><font>
-                        Click To Scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
-                        </a>                 
+               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                  <div class="dashboard-stat red">
+                     <div class="visual">
+                        <i class="icon-hideme"><?=(is_array($this->vars['renewals']['unsubmitted'])) ? count($this->vars['renewals']['unsubmitted']) : 0;?></i>
                      </div>
-                  </div>
-                  <div class="responsive span6" data-tablet="span6" data-desktop="span6">
-                     <div class="dashboard-stat blue">
-                        <div class="visual">
-                           <i class="icon-hide-me"><span class="number"><?=(is_array($this->vars['renewals']['submitted'])) ? count($this->vars['renewals']['submitted']) : 0;?></span></i>
-                        </div>
-                        <div class="details">
-                           <div class="number"><font><font></font>Submitted</font></div>
-                           <div class="desc"><font><font></font></font></div>
-                        </div>
-                        <a class="more" href="#submitted"><font><font>
-                        Click To Scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
-                        </a>                 
+                     <div class="details">
+                        <div class="number"><font><font>
+                           Unsubmitted
+                        </font></font></div>
+                        <div class="desc"><font><font>                           
+                           
+                        </font></font></div>
                      </div>
+                     <a class="more" href="#unsubmitted"><font><font>
+                     Click To Scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
+                     </a>                 
                   </div>
+               </div>
+               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                  <div class="dashboard-stat blue">
+                     <div class="visual">
+                        <i class="icon-hide-me"><span class="number"><?=(is_array($this->vars['renewals']['submitted'])) ? count($this->vars['renewals']['submitted']) : 0;?></span></i>
+                     </div>
+                     <div class="details">
+                        <div class="number"><font><font></font>Submitted</font></div>
+                        <div class="desc"><font><font></font></font></div>
+                     </div>
+                     <a class="more" href="#submitted"><font><font>
+                     Click To Scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
+                     </a>                 
+                  </div>
+               </div>
             </div>
             <div class="row-fluid">
-                  <div class="responsive span6" data-tablet="span6" data-desktop="span6">
-                     <div class="dashboard-stat yellow">
-                        <div class="visual">
-                           <i class="icon-hideme"><?=(is_array($this->vars['renewals']['approved'])) ? count($this->vars['renewals']['approved']) : 0;?></i>
-                        </div>
-                        <div class="details">
-                           <div class="number"><font><font></font>Unpaid</font></div>
-                           <div class="desc"><font><font>
-                              
-                           </font></font></div>
-                        </div>
-                        <a class="more" href="#unpaid"><font><font>
-                        Click to scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
-                        </a>                 
+               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                  <div class="dashboard-stat yellow">
+                     <div class="visual">
+                        <i class="icon-hideme"><?=(is_array($this->vars['renewals']['approved'])) ? count($this->vars['renewals']['approved']) : 0;?></i>
+                     </div>
+                     <div class="details">
+                        <div class="number"><font><font></font>Unpaid</font></div>
+                        <div class="desc"><font><font>
+                           
+                        </font></font></div>
+                     </div>
+                     <a class="more" href="#unpaid"><font><font>
+                     Click to scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
+                     </a>                 
+                  </div>
+               </div>
+               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                  <a name="submitted"></a>
+                  <div class="dashboard-stat green">
+                     <div class="visual">
+                        <i class="icon-hideme"><?=(is_array($this->vars['renewals']['paid'])) ? count($this->vars['renewals']['paid']) : 0;?></i>
+                     </div>
+                     <div class="details">
+                        <div class="number"><font><font>Paid</font></font></div>
+                        <div class="desc"><font><font>
+                           
+                        </font></font></div>
+                     </div>
+                     <a class="more" href="#paid"><font><font>
+                     click to scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
+                     </a>                 
+                  </div><a name="submitted"></a>
+               </div>   
+            </div>
+
+
+
+            <div class="row-fluid">
+               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                  <div class="dashboard-stat yellow">
+                     <div class="visual">
+                        <i class="icon-hideme"><?=$this->vars['renewals']['unpaidbycheck'];?></i>
+                     </div>
+                     <div class="details">
+                        <div class="number"><font><font></font>Unpaid (check)</font></div>
+                        <div class="desc"><font><font></font></font></div>
                      </div>
                   </div>
-                  <div class="responsive span6" data-tablet="span6" data-desktop="span6">
-                     <a name="submitted"></a>
-                     <div class="dashboard-stat green">
-                        <div class="visual">
-                           <i class="icon-hideme"><?=(is_array($this->vars['renewals']['paid'])) ? count($this->vars['renewals']['paid']) : 0;?></i>
-                        </div>
-                        <div class="details">
-                           <div class="number"><font><font>Paid</font></font></div>
-                           <div class="desc"><font><font>
-                              
-                           </font></font></div>
-                        </div>
-                        <a class="more" href="#paid"><font><font>
-                        click to scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
-                        </a>                 
-                     </div><a name="submitted"></a>
-                  </div>
-                  
                </div>
-            
+               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                  <div class="dashboard-stat green">
+                     <div class="visual">
+                        <i class="icon-hideme"><?=$this->vars['renewals']['paidbycheck'];?></i>
+                     </div>
+                     <div class="details">
+                        <div class="number"><font><font></font>Paid (check)</font></div>
+                        <div class="desc"><font><font></font></font></div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="row-fluid">
+               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                  <div class="dashboard-stat red">
+                     <div class="visual">
+                        <i class="icon-hideme"><?=$this->vars['renewals']['paidbycc'];?></i>
+                     </div>
+                     <div class="details">
+                        <div class="number"><font><font></font>Paid (CC)</font></div>
+                        <div class="desc"><font><font></font></font></div>
+                     </div>
+                  </div>
+               </div>
+               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                  <div class="dashboard-stat purple">
+                     <div class="visual">
+                        <i class="icon-hideme"><?=$this->vars['renewals']['paidbyccrecurr'];?></i>
+                     </div>
+                     <div class="details">
+                        <div class="number"><font><font></font>Paid (CC w/Recurring)</font></div>
+                        <div class="desc"><font><font></font></font></div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
             <div class="row-fluid">
                <div class="span12">
                   <!-- BEGIN EXAMPLE TABLE PORTLET-->

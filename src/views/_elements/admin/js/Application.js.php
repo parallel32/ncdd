@@ -245,10 +245,7 @@
 				   }
 				});
 			},500,$(this));
-
-			
         });
-
 	};
 	Application.newSustainingMemberInit = function(){
 		$('#saw-form input').keypress(function (e) {

@@ -1393,6 +1393,50 @@ class Member extends User {
 		return $result;
 
 	}
+
+    public function fetchByPaymentStatus($status, $membership=array(), $offset=0,$limit=100,$filter=array()){
+
+    	switch ($status) {
+    		case 'unpaid-PAYBYCHECK':
+    			$query = array('status'=>USER_STATUS_ACTIVE,
+						'renewal.currentStatus'=>Renewal::$status['APPROVED'],
+						'renewal.payByCheck'=>'yes',
+						'currentMembership'=>array('$in'=>$membership));		
+    			break;
+    		case 'paid-PAYBYCHECK':
+    			$query = array('status'=>USER_STATUS_ACTIVE,
+						'renewal.currentStatus'=>Renewal::$status['PAID'],
+						'renewal.payByCheck'=>'yes',
+						'currentMembership'=>array('$in'=>$membership));
+    			break;
+    		case 'paid-CC':
+    			$query = array('status'=>USER_STATUS_ACTIVE,
+						'renewal.currentStatus'=>Renewal::$status['PAID'],
+						'payment.renewalREUSE'=>array('$ne'=>'yes'),
+						'currentMembership'=>array('$in'=>$membership));
+    			break;
+    		case 'paid-CCRECUR':
+    			$query = array('status'=>USER_STATUS_ACTIVE,
+						'renewal.currentStatus'=>Renewal::$status['PAID'],
+						'payment.renewalREUSE'=>'yes',
+						'currentMembership'=>array('$in'=>$membership));
+    			break;    		
+    	}
+
+		
+		if(!empty($filter)){
+			$query = array_merge($filter, $query);
+		}
+		$fields = array('displayName'=>true
+						,'_id'=>true
+						,'renewal'=>true
+						,'payment'=>true
+						);
+		
+		$result = $this->find($query,$fields,$slaveOkay=true,array(),(int)$offset,(int)$limit);
+		return count($result);
+
+	}
     public function fetchByRenewalDonations($offset=0,$limit=100){
 		$query = array('renewal'=>array('$exists'=>true),
 						'renewal.contributionPaymentId'=>array('$ne'=>null));
