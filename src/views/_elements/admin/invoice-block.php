@@ -76,6 +76,30 @@
                         //*/
                         ?>
                         <?
+                        $discount = 0;
+                        // NCDD2015 NEW MEMBER PROMO
+                        //*
+                        if($application['type'] == 'NEW MEMBER APPLICATION'
+                            //&& strtotime($application['approvedDate']['iso']) < strtotime('December 31, 2014')
+                            //&& array_key_exists('payment', $member) && array_key_exists('renewalREUSE', $member['payment']) && $member['payment']['renewalREUSE'] == 'yes'
+                            && array_key_exists('payment', $member) && array_key_exists('number', $member['payment']) && !empty($member['payment']['number'])
+                            && $application['membershipDues'] > 50
+                            && ($application['promocode'] == 'NCDD2015' || array_key_exists('payment', $member) && array_key_exists('renewalREUSE', $member['payment']) && $member['payment']['renewalREUSE'] == 'yes')
+                        ): 
+                           $discount = 50;
+                        ?>
+                        <tr>
+                           <td>Discount</td>
+                           <td class="hidden-480">NCDD2015 Promo Discount</td>
+                           <td class="hidden-480">1</td>
+                           <td class="hidden-480">-$50</td>
+                           <td>-$50</td>
+                        </tr>
+                        <? 
+                        endif; 
+                        //*/
+                        ?>
+                        <?
                         // CREDIT DISCOUNT FOR MEMBERS WHO HOLD A CREDIT WITH US
                         $discount2 = 0;
                         if(array_key_exists('payment',$member) 

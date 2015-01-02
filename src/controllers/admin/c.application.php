@@ -309,16 +309,18 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 	$yilp = $application->yearsInLawPractice;
 	$now = date('Y',strtotime('today'));
 	if($now - $yilp >= 6){
-		$amt = (empty($doc['promocode']) || $doc['promocode'] == 'NCDD2015') ? $dues[6]['amount']: $dues[6]['prorated']['a'];
+		$amt = ($doc['promocode'] == 'NCDD2015' || (array_key_exists('termsAcknowledgement',$doc) && $doc['termsAcknowledgement'] == 'yes')) ? $dues[6]['amount']-50: $dues[6]['prorated']['a'];
 	}elseif ($now - $yilp < 6){
-		$amt = (empty($doc['promocode']) || $doc['promocode'] == 'NCDD2015') ? $dues[1]['amount']: $dues[1]['prorated']['a'];
+		$amt = ($doc['promocode'] == 'NCDD2015' || (array_key_exists('termsAcknowledgement',$doc) && $doc['termsAcknowledgement'] == 'yes')) ? $dues[1]['amount']-50: $dues[1]['prorated']['a'];
 	}
 	if($application->publicDefender == 'yes'){
 		$amt = $dues['publicDefender']['prorated']['a'];
+		/* NCDD2015 promo doesn't apply to public defenders
 		$amt = (empty($doc['promocode']) || $doc['promocode'] == 'NCDD2015') ? $dues['publicDefender']['amount']: $dues['publicDefender']['prorated']['a'];
+		//*/
 	}
 
-
+	
 
 	if($doc['promocode'] == 'TRIAL'){
 		$trial_doc['startDate'] = 'now';
@@ -398,14 +400,38 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 		$response = $app['applicationEmails']($app,$applicationId,$context='new-member-welcome',$request);
 
 		// save the card by getting the memberId first
-		$papplication = new Model\ApplyNewMember(array('_id'=>$applicationId), $app);
-		$papplication = $papplication->findById();
+
+		$papply = new Model\ApplyNewMember(array('_id'=>$applicationId), $app);
+		$papplication = $papply->findById();
 		$paymentlite = new Model\PaymentLite($doc['payment'],$app);
 		$paymentlite->renewalREUSE = ($doc['termsAcknowledgement'] == 'yes') ? 'yes' : 'no';
 
 		$member = new Model\Member(array('_id'=>$papplication['memberId'],'payment'=>$paymentlite),$app);
 		$member->saveSafe();
-		$ppayment = new Model\Payment(array('_id'=>$application->paymentId,'memberId'=>$papplication['memberId']),$app);
+
+		// for generating the invoice block
+			$member = $member->findById();		
+			$location = new Model\Location(array('member'=>array('_id'=>$papplication['memberId'])), $app);
+			$location = $location->getByMemberId();
+			
+			switch ($papplication['class']) {
+				case 'NewMemberApplication': // old deprecated
+				case 'ApplyNewMember':
+				case 'ApplyNewSustainingMember':
+					$pro_rate = $papply->proRate();
+				    break;		
+				case 'UpdateMember':
+				case 'UpdateFoundingMember':
+				case 'UpdateSustainingMember':
+					$pro_rate = array('q'=>0,'a'=>0);
+					break;
+			}
+		// end for generating the invoice block
+		$ppayment = new Model\Payment(array(
+			'_id'=>$application->paymentId
+			,'memberId'=>$papplication['memberId']
+			,'invoiceBlock'=>$app['view']->element('invoice-block',array('application'=>$papplication,'member'=>$member,'location'=>$location,'pro_rated_membership_dues'=>$pro_rate))
+		),$app);
 		$ppayment->saveSafe();
 		
 
