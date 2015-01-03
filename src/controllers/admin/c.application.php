@@ -1455,6 +1455,7 @@ $app->get('/renewals/{offset}/{limit}', function ($offset, $limit, Request $requ
 		,'paidbycc'=>$member->fetchByPaymentStatus('paid-CC',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']), $offset, $limit)
 		,'paidbyccrecurr'=>$member->fetchByPaymentStatus('paid-CCRECUR',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']), $offset, $limit)
 	);
+	
 	$updates_founding = array(
 		'unsubmitted'=>$member->fetchByRenewalStatus('UNSUBMITTED',array(Model\Member::$membership['FOUNDING MEMBER']),$offset, $limit)
 		,'submitted'=>$member->fetchByRenewalStatus('SUBMITTED',array(Model\Member::$membership['FOUNDING MEMBER']),$offset, $limit)

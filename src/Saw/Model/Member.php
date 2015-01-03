@@ -1398,28 +1398,36 @@ class Member extends User {
 
     	switch ($status) {
     		case 'unpaid-PAYBYCHECK':
-    			$query = array('status'=>USER_STATUS_ACTIVE,
-						'renewal.currentStatus'=>Renewal::$status['APPROVED'],
-						'renewal.payByCheck'=>'yes',
-						'currentMembership'=>array('$in'=>$membership));		
+    			$query = array('status'=>USER_STATUS_ACTIVE
+						,'renewal.currentStatus'=>Renewal::$status['APPROVED']
+						,'renewal.payByCheck'=>'yes'
+						,'currentMembership'=>array('$in'=>$membership)
+						);		
     			break;
     		case 'paid-PAYBYCHECK':
-    			$query = array('status'=>USER_STATUS_ACTIVE,
-						'renewal.currentStatus'=>Renewal::$status['PAID'],
-						'renewal.payByCheck'=>'yes',
-						'currentMembership'=>array('$in'=>$membership));
+    			$query = array('status'=>USER_STATUS_ACTIVE
+						,'renewal.currentStatus'=>Renewal::$status['PAID']
+						,'renewal.payByCheck'=>'yes'
+						,'currentMembership'=>array('$in'=>$membership)
+						);
     			break;
     		case 'paid-CC':
-    			$query = array('status'=>USER_STATUS_ACTIVE,
-						'renewal.currentStatus'=>Renewal::$status['PAID'],
-						'payment.renewalREUSE'=>array('$ne'=>'yes'),
-						'currentMembership'=>array('$in'=>$membership));
+    			$query = array('status'=>USER_STATUS_ACTIVE
+						,'renewal.currentStatus'=>Renewal::$status['PAID']
+						,'payment.renewalREUSE'=>array('$ne'=>'yes')
+						,'payment.number'=>array('$exists'=>true)
+						,'$where'=>'this.payment.number.length > 3'
+						,'currentMembership'=>array('$in'=>$membership)
+						);
     			break;
     		case 'paid-CCRECUR':
-    			$query = array('status'=>USER_STATUS_ACTIVE,
-						'renewal.currentStatus'=>Renewal::$status['PAID'],
-						'payment.renewalREUSE'=>'yes',
-						'currentMembership'=>array('$in'=>$membership));
+    			$query = array('status'=>USER_STATUS_ACTIVE
+						,'renewal.currentStatus'=>Renewal::$status['PAID']
+						,'payment.renewalREUSE'=>'yes'
+						,'payment.number'=>array('$exists'=>true)
+						,'$where'=>'this.payment.number.length > 3'
+						,'currentMembership'=>array('$in'=>$membership)
+						);
     			break;    		
     	}
 
@@ -1434,6 +1442,56 @@ class Member extends User {
 						);
 		
 		$result = $this->find($query,$fields,$slaveOkay=true,array(),(int)$offset,(int)$limit);
+		
+		if($status == 'paid-CC'){
+			$fields = array('_id'=>true);	
+			$query1 = array('status'=>USER_STATUS_ACTIVE
+						,'renewal.currentStatus'=>Renewal::$status['PAID']
+						,'currentMembership'=>array('$in'=>$membership)
+						);
+			$result1 = $this->find($query1,$fields,$slaveOkay=true,array(),(int)$offset,(int)$limit);
+			for ($i=0; $i < count($result1); $i++) { 
+				$result1[$i] = $result1[$i]['_id']->__toString();
+			}
+			$query2 = array('status'=>USER_STATUS_ACTIVE
+						,'renewal.currentStatus'=>Renewal::$status['PAID']
+						,'renewal.payByCheck'=>'yes'
+						,'currentMembership'=>array('$in'=>$membership)
+						);
+			$result2 = $this->find($query2,$fields,$slaveOkay=true,array(),(int)$offset,(int)$limit);
+			for ($i=0; $i < count($result2); $i++) { 
+				$result2[$i] = $result2[$i]['_id']->__toString();
+			}
+			$query3 = array('status'=>USER_STATUS_ACTIVE
+						,'renewal.currentStatus'=>Renewal::$status['PAID']
+						,'payment.renewalREUSE'=>array('$ne'=>'yes')
+						,'payment.number'=>array('$exists'=>true)
+						,'$where'=>'this.payment.number.length > 3'
+						,'currentMembership'=>array('$in'=>$membership)
+						);
+			$result3 = $this->find($query3,$fields,$slaveOkay=true,array(),(int)$offset,(int)$limit);
+			for ($i=0; $i < count($result3); $i++) { 
+				$result3[$i] = $result3[$i]['_id']->__toString();
+			}
+			
+			$query4 = array('status'=>USER_STATUS_ACTIVE
+						,'renewal.currentStatus'=>Renewal::$status['PAID']
+						,'payment.renewalREUSE'=>'yes'
+						,'payment.number'=>array('$exists'=>true)
+						,'$where'=>'this.payment.number.length > 3'
+						,'currentMembership'=>array('$in'=>$membership)
+						);
+			$result4 = $this->find($query4,$fields,$slaveOkay=true,array(),(int)$offset,(int)$limit);
+			for ($i=0; $i < count($result4); $i++) { 
+				$result4[$i] = $result4[$i]['_id']->__toString();
+			}
+			
+			
+			$final = array_diff($result1, $result2, $result3, $result4);
+			$result = array_merge($result,$final);
+			
+		}
+		
 		return count($result);
 
 	}
