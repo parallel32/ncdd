@@ -17,6 +17,70 @@ use TTools\App;
 $utilities = $app['controllers_factory'];
 $utilities->before($mustbeMEMBER);
 
+//////////////////////////////////////////////////////////////////////////////////
+// reconcile renewals with payment records                                      //
+// some applications checked the allow card on file but didn't get the discount //
+//////////////////////////////////////////////////////////////////////////////////
+$utilities->get('/reconcilerenewals', function () use ($app) {
+    //return false;
+    $cnt = 0;
+    $wrong = array();
+    
+    $member = new Model\Member($doc=array(), $app);    
+    $paidmembers = $member->fetchByRenewalStatus('PAID',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']), 0, 1000);
+
+    foreach ($paidmembers as $member){
+        $location = new Model\Location($doc=array('member'=>array('_id'=>$member['_id'])), $app);
+        $location = $location->getByMemberId();
+
+        $application = new Model\Apply(array('_id'=>$member['renewal']['applicationId']), $app);
+        $application = $application->findById();
+        if($application['class'] == 'UpdateMember' && $application['termsAcknowledgement'] == 'yes'){
+            $payment = new Model\Payment(array('_id'=>$application['paymentId']), $app);
+            $paymentarr = $payment->findById();
+            
+            if($member['payment']['renewalREUSE'] == 'yes' && $paymentarr['amount'] > 50 && $paymentarr['amount'] > ($application['membershipDues'] - 50)){
+                // this is wrong. and need to update
+                $wrong[$cnt]['member'] = $member;
+                $wrong[$cnt]['payment'] = $paymentarr;
+                $cnt++;
+                //*
+                $payment->amount = $application['membershipDues'] - 50;
+                $payment->orderTotal = $application['membershipDues'] - 50;
+
+                $pro_rate = array('q'=>0,'a'=>0);
+                switch ($application['class']) {
+                    case 'NewMemberApplication': // old deprecated
+                    case 'ApplyNewMember':
+                    case 'ApplyNewSustainingMember':
+                        $pro_rate = $apply->proRate();
+                        break;      
+                    case 'UpdateMember':
+                    case 'UpdateFoundingMember':
+                    case 'UpdateSustainingMember':
+                        $pro_rate = array('q'=>0,'a'=>0);
+                        break;
+                }
+                echo '<pre>';print_r($member['displayName']);echo '</pre>';
+                echo '<pre>';print_r($member['payment']);echo '</pre>';
+                echo '<pre><B>BEFORE</B>';print_r($payment->invoiceBlock);echo '</pre>';
+                $payment->invoiceBlock = $app['view']->element('invoice-block',array('application'=>$application,'member'=>$member,'location'=>$location,'pro_rated_membership_dues'=>$pro_rate));
+                echo '<pre><B>AFTER</B>';print_r($payment->invoiceBlock);echo '</pre>';
+                $payment->saveSafe();
+                //*/
+
+            }// endif wrong stuff
+
+        }
+        
+
+    }
+    echo '<pre>wrong count:';print_r(count($wrong));echo '</pre>';
+    //echo '<pre>wrong';print_r($wrong);echo '</pre>';
+    return new Response('',200,array('Content-Type' => 'text/html')); 
+    
+});
+
 /////////////////////////////////////////////////////
 // AVVO SCRUB DUPLICATES AND EXISTING NCDD MEMBERS //
 /////////////////////////////////////////////////////

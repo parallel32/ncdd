@@ -210,12 +210,35 @@ class Model {
 		return self::$app['mongo']->update($document, $this->collection, $criteria, $multiple=true, $upsert=false, $options=array('fsync'=>false));
 		return false;
 	}
-	public function findById($id='_id', $slaveOkay=true){
-		$query = array($id=>$this->$id);
-		$result = self::$app['mongo']->findOne($this->collection, $query, $fields=array(),$slaveOkay);
+	public function findById($id='_id', $fields=array(), $slaveOkay=true){
+		if(strpos($id, '.') !== false){
+			$tmp = explode('.', $id);
+			$tmp_id = array_pop($this->$tmp[0]);
+			$query = array($id=>$tmp_id);
+		}else{
+			$query = array($id=>$this->$id);	
+		}
+		
+		$result = self::$app['mongo']->findOne($this->collection, $query, $fields,$slaveOkay);
 		if(!empty($result)):
 			// late static binding
 			static::__construct($result,Model::$app);//calling __construct of the class that was instantiated not __construct of this class Model
+			return $result;
+		else:
+			return false;
+		endif;
+	}
+	public function findAllById($id='_id', $fields=array(), $sort=array(), $slaveOkay=true,$offset=0,$limit=20){
+		if(strpos($id, '.') !== false){
+			$tmp = explode('.', $id);
+			$tmp_id = array_pop($this->$tmp[0]);
+			$query = array($id=>$tmp_id);
+		}else{
+			$query = array($id=>$this->$id);	
+		}
+		
+		$result = self::$app['mongo']->find($this->collection, $query, $fields,$slaveOkay,$offset,$limit,$sort);
+		if(!empty($result)):
 			return $result;
 		else:
 			return false;
