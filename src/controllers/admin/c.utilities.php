@@ -22,7 +22,7 @@ $utilities->before($mustbeMEMBER);
 // some applications checked the allow card on file but didn't get the discount //
 //////////////////////////////////////////////////////////////////////////////////
 $utilities->get('/reconcilerenewals', function () use ($app) {
-    //return false;
+    return false;
     $cnt = 0;
     $wrong = array();
     
