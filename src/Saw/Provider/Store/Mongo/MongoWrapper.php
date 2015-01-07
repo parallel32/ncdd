@@ -206,6 +206,9 @@ class MongoWrapper
 		else
 			$collection->setReadPreference(\MongoClient::RP_SECONDARY);
 		
+		if(!is_array($fields)){
+			$fields = array();
+		}
 		$result_arr = $collection->findOne($query, $fields);
 
 		if(!empty($result_arr)):
