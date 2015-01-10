@@ -1440,6 +1440,207 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 ->value('offset','0')
 ->value('limit','10000')
 ->before($mustbeADMIN);
+////////////////////////////////////////////
+// RENEWALS - CONTACT INFORMATION UPDATES //
+////////////////////////////////////////////
+$app->get('/renewalscontacts/{offset}/{limit}', function ($offset, $limit, Request $request) use ($app) {
+	$member = new Model\Member($doc=array(), $app);
+	$renewals = array(
+		'submitted'=>$member->fetchByRenewalStatus('SUBMITTED',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']),$offset, $limit)
+		,'approved'=>$member->fetchByRenewalStatus('APPROVED',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']),$offset, $limit)
+		,'paid'=>$member->fetchByRenewalStatus('PAID',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']), $offset, $limit)
+	);
+	$renewalsc = array();
+	$cnt = 0;
+	for ($i=0; $i < count($renewals['submitted']); $i++) { 
+		$renewalsc[$cnt]['applicationId'] = $renewals['submitted'][$i]['renewal']['applicationId'];
+		$renewalsc[$cnt]['_id'] = $renewals['submitted'][$i]['_id'];
+		$cnt++;
+	}
+	for ($i=0; $i < count($renewals['approved']); $i++) { 
+		$renewalsc[$cnt]['applicationId'] = $renewals['approved'][$i]['renewal']['applicationId'];
+		$renewalsc[$cnt]['_id'] = $renewals['approved'][$i]['_id'];
+		$cnt++;
+	}
+	for ($i=0; $i < count($renewals['paid']); $i++) { 
+		$renewalsc[$cnt]['applicationId'] = $renewals['paid'][$i]['renewal']['applicationId'];
+		$renewalsc[$cnt]['_id'] = $renewals['paid'][$i]['_id'];
+		$cnt++;
+	}
+	// retrieve applications whose contact info has been updated
+	$r = array();
+	for ($i=0; $i < count($renewalsc); $i++) { 
+		
+		$apply = new Model\Apply($doc=array('_id'=>$renewalsc[$i]['applicationId']), $app);
+		$a = $apply->findById();
+		
+		if(!empty($a)){
+			$member = new Model\Member($doc=array('_id'=>$renewalsc[$i]['_id']), $app);
+			$member = $member->findById();
+
+			$location = new Model\Location($doc=array('member'=>array('_id'=>$renewalsc[$i]['_id'])), $app);
+			$location = $location->getByMemberId();
+
+			
+			/* field map...
+
+			$member['displayName'] == $a['firstName'].' '.$a['middleName'].' '.$a['lastName']
+			$member['email'] == $a['email']
+			$member['barNumber'] == $a['barNumber']
+			$a['addToListServ']
+			$member['listServEmail'] == $a['listServEmail']
+			
+
+			$location['name'] == $a['firmName']
+			$location['addressLine1'] == $a['address1']
+			$location['addressLine2'] == $a['address2']
+			$location['city'] == $a['city']
+			$location['state'] == $a['state']
+			$location['zip'] == $a['postalCode']
+			$location['country'] == $a['country']
+			$location['phone'] == $a['phone']
+			$location['fax'] == $a['fax']
+			
+			*/
+			if($member['email'] == 'pewittlaw@gmail.com'){
+				//echo '<pre>';print_r($a);echo '</pre>';
+				//echo '<pre>';print_r($member);echo '</pre>';
+			}
+			// remove applications from the list which are false positives meaning the update is pointless because it's an update of the same values
+			// what remains should be the applications that truly have updated contact information
+			$popfalse = 0;
+			$popfalse_email = 0;
+			$popfalse_bar = 0;
+			$popfalse_listserv = 0;
+			$popfalse_firmname = 0;
+			$popfalse_address = 0;
+			$popfalse_phone = 0;
+			if(!empty($a['firstName']) || !empty($a['middleName']) || !empty($a['lastName'])){ 
+				
+				$tmp = explode(' ', $member['displayName']);
+				if(count($tmp) > 2){
+					if($member['displayName'] != $a['firstName'].' '.$a['middleName'].' '.$a['lastName']){
+						$popfalse++;
+					}
+				}elseif(count($tmp) <= 2){
+					if($member['displayName'] != $a['firstName'].' '.$a['lastName']){
+						$popfalse++;
+					}
+				}
+
+				
+			}
+			if(!empty($a['email']) 
+				&& $member['email'] != $a['email']){
+				$popfalse++;
+				$popfalse_email++;
+			}
+			if(!empty($a['barNumber']) 
+				&& $member['barNumber'] != $a['barNumber']){
+				$popfalse++;
+				$popfalse_bar++;
+			}
+			if((!empty($a['listServEmail']) 
+				&& $member['listServEmail'] != $a['listServEmail'])
+				|| ($a['addToListServ'] == 'yes') && !empty($a['listServEmail']) && $member['listServEmail'] == $a['listServEmail']){
+				$popfalse++;
+				$popfalse_listserv++;
+			}
+			if(!empty($a['firmName']) 
+				&& $location['name'] != $a['firmName']){
+				$popfalse++;
+				$popfalse_firmname++;
+			}
+
+			if(!empty($a['address1']) 
+				&& $location['addressLine1'] != $a['address1']){
+				$popfalse++;
+				$popfalse_address++;
+			}
+			if(!empty($a['address2']) 
+				&& $location['addressLine2'] != $a['address2']){
+				$popfalse++;
+				$popfalse_address++;
+			}
+			if(!empty($a['city']) 
+				&& $location['city'] != $a['city']){
+				$popfalse++;
+				$popfalse_address++;
+			}
+			if(!empty($a['state']) 
+				&& $location['state'] != $a['state']){
+				$popfalse++;
+				$popfalse_address++;
+			}
+			if(!empty($a['postalcode']) 
+				&& $location['zip'] != $a['postalCode']){
+				$popfalse++;
+				$popfalse_address++;
+			}
+			if(!empty($a['country']) 
+				&& $location['country'] != $a['country']){
+				$popfalse++;
+				$popfalse_address++;
+			}
+
+			if(!empty($a['phone']) 
+				&& $location['phone'] != $a['phone']){
+				$popfalse++;
+				$popfalse_phone++;
+			}
+			if(!empty($a['fax']) 
+				&& $location['fax'] != $a['fax']){
+				$popfalse++;
+				$popfalse_phone++;
+			}
+
+			if($popfalse > 0){
+				$r[] = $member;
+			}
+			if($popfalse_email > 0){
+				$r_email[] = $member;
+			}
+			if($popfalse_bar > 0){
+				$r_bar[] = $member;
+			}
+			if($popfalse_listserv > 0){
+				$r_listserv[] = $member;
+			}
+			if($popfalse_firmname > 0){
+				$r_firmname[] = $member;
+			}
+			if($popfalse_address > 0){
+				$r_address[] = $member;
+			}
+			if($popfalse_phone > 0){
+				$r_phone[] = $member;
+			}
+
+		}
+	}
+	
+	
+	$crumbs = array(array('name'=>'Renewals','href'=>'/renewals')
+					,array('name'=>'Renewals - C','href'=>'/renewalscontacts'));
+	$view_vars = array(
+						 'active'=>'Applications/RenewalContacts'
+						,'page-plugin'=>'datatables'
+						,'headline'=>'Renewals - Contact Info Updates'
+						,'description'=>"View all renewals whose contact information has been updated."
+						,'crumbs'=>$crumbs
+						,'renewals'=>$r
+						,'renewals_email'=>$r_email
+						,'renewals_bar'=>$r_bar
+						,'renewals_listserv'=>$r_listserv
+						,'renewals_firmname'=>$r_firmname
+						,'renewals_address'=>$r_address
+						,'renewals_phone'=>$r_phone
+						);
+	return $app['view']->render('application/index-renewalscontacts', 'default', $view_vars);
+})
+->value('offset','0')
+->value('limit','20000')
+->before($mustbeADMIN);
 //////////////
 // RENEWALS //
 //////////////
@@ -1467,6 +1668,7 @@ $app->get('/renewals/{offset}/{limit}', function ($offset, $limit, Request $requ
 		,'approved'=>$member->fetchByRenewalStatus('APPROVED',array(Model\Member::$membership['SUSTAINING MEMBER']),$offset, $limit)
 	);
 	$donations = $member->fetchByRenewalDonations($offset, $limit);
+
 	$crumbs = array(array('name'=>'Renewals','href'=>'/renewals'));
 	$view_vars = array(
 						 'active'=>'Applications/Renewal'
