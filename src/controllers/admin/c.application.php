@@ -1440,6 +1440,28 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 ->value('offset','0')
 ->value('limit','10000')
 ->before($mustbeADMIN);
+//////////////////////////////////////////////////////////
+// RENEWALS - MEMBERS WITH A CREDIT FOR MEMBERSHIP FEES //
+//////////////////////////////////////////////////////////
+$app->get('/renewalscredits/{offset}/{limit}', function ($offset, $limit, Request $request) use ($app) {
+	$member = new Model\Member($doc=array(), $app);
+	$renewals = $member->fetchByRenewalCredit($offset, $limit);
+	
+	$crumbs = array(array('name'=>'Renewals','href'=>'/renewals')
+					,array('name'=>'Renewals - Credits','href'=>'/renewalscredits'));
+	$view_vars = array(
+						 'active'=>'Applications/RenewalContacts'
+						,'page-plugin'=>'datatables'
+						,'headline'=>'Renewals - Contact Info Updates'
+						,'description'=>"View all renewals whose contact information has been updated."
+						,'crumbs'=>$crumbs
+						,'renewals'=>$renewals
+						);
+	return $app['view']->render('application/index-renewalscredits', 'default', $view_vars);
+})
+->value('offset','0')
+->value('limit','20000')
+->before($mustbeADMIN);
 ////////////////////////////////////////////
 // RENEWALS - CONTACT INFORMATION UPDATES //
 ////////////////////////////////////////////

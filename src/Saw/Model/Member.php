@@ -1512,6 +1512,31 @@ class Member extends User {
 		return $result;
 
 	}
+    public function fetchByRenewalCredit($offset=0,$limit=100){
+		$query = array('payment.renewalCredit'=>array('$exists'=>true),
+						'payment.renewalCredit'=>array('$ne'=>null));
+		
+		$fields = array('displayName'=>true
+						,'email'=>true
+						,'primaryPhone'=>true
+						,'timeZone'=>true
+						,'_id'=>true
+						,'renewal'=>true
+						,'payment'=>true
+						);
+		$sort=array('lastName'=>11);
+		$result = $this->find($query,$fields,$slaveOkay=true,$sort,(int)$offset,(int)$limit);
+		$resultb = array();
+		for ($i=0; $i < count($result); $i++) { 
+			if($result[$i]['payment']['renewalCredit'] != '-' && strlen($result[$i]['payment']['renewalCredit']) > 1){
+				$resultb[] = $result[$i];	
+			}
+			
+		}
+		//error_log('fetch:'.print_r($result,true));
+		return $resultb;
+
+	}
     // route for this is in c.utilities.php
     public function removeMember(){
     	// delete member

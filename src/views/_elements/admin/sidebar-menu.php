@@ -45,6 +45,9 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                   <li class="<? echo ($this->vars['active'] == 'Applications/RenewalContacts') ? 'active':'';?>">
                      <a href="/renewalscontacts"><i class="icon-file-text"></i> Renewals - C</a>
                   </li>
+                  <li class="<? echo ($this->vars['active'] == 'Applications/RenewalCredits') ? 'active':'';?>">
+                     <a href="/renewalscredits"><i class="icon-file-text"></i> Renewals - Credits</a>
+                  </li>
                </ul>
             </li>
          <? endif; ?>
