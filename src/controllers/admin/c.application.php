@@ -1452,7 +1452,7 @@ $app->get('/renewalscredits/{offset}/{limit}', function ($offset, $limit, Reques
 	$view_vars = array(
 						 'active'=>'Applications/RenewalContacts'
 						,'page-plugin'=>'datatables'
-						,'headline'=>'Renewals - Contact Info Updates'
+						,'headline'=>'Renewals with credits'
 						,'description'=>"View all renewals whose contact information has been updated."
 						,'crumbs'=>$crumbs
 						,'renewals'=>$renewals
