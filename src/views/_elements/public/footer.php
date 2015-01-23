@@ -39,8 +39,9 @@
                         <span class="copyright pull-left">Copyright <?=date('Y')?>. All Rights Reserved by The NCDD.</span>
                         <ul class="pull-right socialNetwork">
                             <li class="socialNetworkItem"><span id="siteseal"><script type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=LGuEYlXQkUS4WD2iodHgQVfEd4QiaKligcqtG3KtcNTf1gWRNCDIIq"></script></span></li>
-                            <li class="socialNetworkItem"><a href="http://www.twitter.com/NCDDNews" class="socialNetworkLinl twitter" target="_blank"></a></li>                            
-                            <li class="socialNetworkItem"><a href="https://www.facebook.com/NationalCollegeforDUIDefense" class="socialNetworkLinl facebook" target="_blank"></a></li>                            
+                            <li class="socialNetworkItem"><a href="http://www.twitter.com/NCDDNews" class="socialNetworkLinl twitter" target="_blank"></a></li>
+                            <li class="socialNetworkItem"><a href="https://www.facebook.com/NationalCollegeforDUIDefense" class="socialNetworkLinl facebook" target="_blank"></a></li>
+                            <li class="socialNetworkItem"><a href="https://plus.google.com/107227306477084070339" rel="publisher" class="socialNetworkLinl googleplus" target="_blank"></a></li>
                         </ul>
                     </div>
                 </div>
