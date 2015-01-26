@@ -257,6 +257,16 @@
                                        <span class="help-block">Turn ON / OFF; whether to ask the previously attended seminars question.</span>
                                     </div>
                                  </div>
+                                 <div class="control-group">
+                                    <label class="control-label">RSVP Children Question</label>
+                                    <div class="controls">
+                                       <select name="doc[register][rsvpKidsQuestion]" class="span6 m-wrap rsvpKidsQuestion" data-placeholder="Choose a Category" tabindex="1">
+                                          <option value="ON" <?=(array_key_exists('register',$seminar) && array_key_exists('rsvpKidsQuestion',$seminar['register'])) ? ('ON' == $seminar['register']['rsvpKidsQuestion']) ? "selected" : "" : '';?>>ON</option>
+                                          <option value="OFF" <?=(array_key_exists('register',$seminar) && array_key_exists('rsvpKidsQuestion',$seminar['register'])) ? ('OFF' == $seminar['register']['rsvpKidsQuestion']) ? "selected" : "" : '';?>>OFF</option>
+                                       </select>
+                                       <span class="help-block">Turn ON / OFF; whether to ask the previously attended seminars question.</span>
+                                    </div>
+                                 </div>
                               </div>
                            </div>
 

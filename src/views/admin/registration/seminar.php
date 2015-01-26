@@ -241,6 +241,7 @@ endif; ?>
                      </div>
                      <!--/span-->
                   </div>
+                  <? if((array_key_exists('register',$this->vars['seminar']) && array_key_exists('rsvpKidsQuestion',$this->vars['seminar']['register']) && $this->vars['seminar']['register']['rsvpKidsQuestion'] == 'ON') || (array_key_exists('register',$this->vars['seminar']) && !array_key_exists('rsvpKidsQuestion',$this->vars['seminar']['register'])) ): ?>
                   <div class="row-fluid ">
                      <div class="span12 ">
                         <div class="control-group">
@@ -260,6 +261,7 @@ endif; ?>
                      </div>
                      <!--/span-->
                   </div>
+                  <? endif; ?>
                   <? endif; ?>
                   </br></br>
                   <h3 class="form-section">4. Attendance Certification Statement</h3>

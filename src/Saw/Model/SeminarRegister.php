@@ -27,6 +27,7 @@ class SeminarRegister extends Model {
 	public $scholarship;
 	public $rsvpQuestion; // on | off
 	public $attendanceQuestion; // on | off
+	public $rsvpKidsQuestion; // on | off
 
 
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
@@ -100,6 +101,7 @@ class SeminarRegister extends Model {
         $this->scholarship = $doc['scholarship'];
         $this->rsvpQuestion = $doc['rsvpQuestion'];
         $this->attendanceQuestion = $doc['attendanceQuestion'];
+        $this->rsvpKidsQuestion = $doc['rsvpKidsQuestion'];
 
 	}
 	
@@ -119,6 +121,7 @@ class SeminarRegister extends Model {
 		$this->scholarship = $this->scholarship ?: '';
 		$this->rsvpQuestion = $this->rsvpQuestion ?: 'yes';
 		$this->attendanceQuestion = $this->attendanceQuestion ?: 'no';
+		$this->rsvpKidsQuestion = $this->rsvpKidsQuestion ?: 'no';
 
 	}
 	

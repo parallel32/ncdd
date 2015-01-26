@@ -99,8 +99,8 @@ class Agenda extends Model {
 		endif;
 		return $results;
 	}
-	public function findById($id = '_id', $slaveOkay = true){
-		$results = $this->findOne($query=array('_id'=>$this->_id),$fields=array(),$slaveOkay=true,$sort=array('date.date'=>1),$offset=0,$limit=100);
+	public function findById($id = '_id', $fields = array(),$slaveOkay = true){
+		$results = $this->findOne($query=array('_id'=>$this->_id),$fields,$slaveOkay=true,$sort=array('date.date'=>1),$offset=0,$limit=100);
 		if(!empty($results)):
 			$t_arr = array();
 			foreach ($results['timeSlots'] as $timeSlot){
