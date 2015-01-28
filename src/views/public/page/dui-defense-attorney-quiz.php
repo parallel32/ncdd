@@ -3,10 +3,11 @@
 .borderMe {    display: block;    padding: 15px;    line-height: 20px;    border: 1px solid #ddd;    -webkit-border-radius: 4px;    -moz-border-radius: 4px;    border-radius: 4px;    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.055);    -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.055);    box-shadow: 0 1px 3px rgba(0,0,0,0.055);    -webkit-transition: all .2s ease-in-out;    -moz-transition: all .2s ease-in-out;    -o-transition: all .2s ease-in-out;    transition: all .2s ease-in-out;    margin: 5px 0 5px 0;}
 .applyBtn{    max-width:433px;    width:80%;    margin: 0 auto;    height:auto;}
 </style>
+
         <div class="row-fluid becomeAmember">
             <div class="title text-center">
                 <div class="bg">
-                    <h3>we help win more cases</h3>
+                    <h3><?=$this->vars['page']['headline']?></h3>
                 </div>
             </div>
         
@@ -18,114 +19,58 @@
                     <div class="row">
                         <h1 style="color:#53778D">Are You Ready to Join Us?  Take this Quiz..</h1>
                     </div>
+
                     <div class="row">
                         <ol class="quiz-list">
-                        <li class="question"> If administered correctly, the HGN test takes approximately how long to perform?<br><span class="answer">According to an article written by NCDD Fellow Troy McKinney <a href="https://<?=SAW_CONSUMER_WEBSITE?>/horizontal-gaze-nystagmus-how-it-works-how-to-challenge-and-exclude-it">“Horizontal Gaze Nystagmus - How it Works - How to Challenge and Exclude It”</a> it takes 82 seconds to correctly perform the HGN test.</li>
-                        <li class="question">According to NHTSA, speeding is one of the top 30 clues of impaired driving (true/false)<br><span class="answer">False. NHTSA manuals are made available to NCDD members that can establish this fact and more.</li>
-                        <li class="question">What effect does holding your breath have on a breath test result?<br><span class="answer">Holding your breath can cause the result to increase. Experts that have published articles on this subject frequently offer assistance to NCDD members.</li>
-                        <li class="question">What is the ‘sale of the house’ analogy in DUI closing arguments?<br><span class="answer">Credited to attorney and NCDD member Felipe Plascencia, the sale of the house analogy
-
-describes the trial as a house, the police officer as the owner, and the prosecutor as the real 
-
-estate agent. The jury is the potential buyer of the house that the prosecution and police are 
-
-attempting to convince to buy the house (which is represented to be in excellent condition). The 
-
-defense attorney is the home inspector who discovers the faults and defects within the house. 
-
-The faults and defects should create doubt in the minds of the buyers, who then issue a no sale 
-
-verdict (i.e. not guilty verdict). This and many other techniques are taught to NCDD members 
-
-through attendance at our NCDD seminars.</li>
-                        <li class="question">What effect does Ringer’s lactate have on blood alcohol testing?<br><span class="answer">It has no effect on whole blood testing. However if serum testing is employed using an
-
-enzymatic assay method (such as EMIT) then the use of Ringer’s lactate has been shown to 
-
-cause false-positives or artificially increased alcohol results. the NCDD virtual library contains 
-
-scientific articles that discuss this problem. By joining, an NCDD member receives access to 
-
-these materials.</li>
-                        <li class="question">The scientific ratio for determining whole blood alcohol content from a serum test is 1.18 (true/false)<br><span class="answer">False. There is actually a range of reported ratios that published scientific articles report
-
-as low as 1.10 and as high as 1.50. Members can visit the NCDD virtual library for the materials.</li>
-                        <li class="question">What does the Rho factor in Widmark’s formula stand for?<br><span class="answer">Widmark’s formula is used to determine a possible alcohol level at particular point in
-
-time using calculations based on factors such as weight, sex, amount of alcohol consumed, and 
-
-times. <br>The formula is A= c x p x r:
-<br>
-A= amount of alcohol in body (grams)
-<br>
-C= blood alcohol concentration (mg/g)
-<br>
-P= body weight (kilograms)
-<br>
-R= rho (or Widmark factor) which is the volume of distribution of alcohol.</li>
-                        <li class="question">The three phases of NHTSA’s DUI Detection are?<br><span class="answer">Found in the NHTSA DWI Detection and Standardized Field Sobriety Student Manuals,
-
-they are:
-<br>
-a. Vehicle in Motion
-<br>
-b. Personal Contact
-<br>
-c. Pre-arrest Screening</li>
-                        <li class="question">What are 5 of the 20 myths of breath testing?<br><span class="answer">This question is based on NCDD member Lenny Stamm’s published article entitled <a href="https://<?=SAW_CONSUMER_WEBSITE?>/the-top-20-myths-of-breath-blood-and-urine-testing-part-1-of-2">“THE TOP
-
-20 MYTHS OF BREATH, BLOOD AND URINE TESTING”</a>. Click on the title to learn about all 20 
-
-myths. These and many other articles are made available to NCDD members at no additional 
-
-cost.</li>
-                        <li class="question">What is 'salting out' and how does it effect a blood test’s accuracy?<br><span class="answer">A: The chemicals which are added to many blood samples taken by police, sodium fluoride and
-
-potassium oxalate, are salts. If too much is added, or the amount of blood placed into the tube 
-
-is less than the desired amount, then the ratio of salt to blood can become too high. This can 
-
-cause extra alcohol to leach into the air above the blood sample (i.e. headspace) in the blood 
-
-vial. If the laboratory uses the headspace method of analysis, the results will become artificially 
-
-high.</li>
-                        
+                        <li class="question"> If administered correctly, the HGN test takes approximately how long to perform?<br><span class="answer"></li>
+                        <li class="question">According to NHTSA, speeding is one of the top 30 clues of impaired driving (true/false)<br><span class="answer"></li>
+                        <li class="question">What effect does holding your breath have on a breath test result?<br><span class="answer"></li>
+                        <li class="question">What is the ‘sale of the house’ analogy in DUI closing arguments?<br><span class="answer"></li>
+                        <li class="question">What effect does Ringer’s lactate have on blood alcohol testing?<br><span class="answer"></li>
+                        <li class="question">The scientific ratio for determining whole blood alcohol content from a serum test is 1.18 (true/false)<br><span class="answer"></li>
+                        <li class="question">What does the Rho factor in Widmark’s formula stand for?<br><span class="answer"></li>
+                        <li class="question">The three phases of NHTSA’s DUI Detection are?<br><span class="answer"></li>
+                        <li class="question">What are 5 of the 20 myths of breath testing?<br><span class="answer"></li>
+                        <li class="question">What is 'salting out' and how does it effect a blood test’s accuracy?<br><span class="answer"></li>
                         </ol>
+                    </div>
+                    <div class="row">
+                        <a href="https://<?=SAW_CONSUMER_WEBSITE?>/dui-defense-attorney-quiz-answers"><img src="/assets/img/button-click-answers.png" class="applyBtn"></a>
                     </div>
                     <div class="row">
                         <h1 style="color:#53778D">Our members wrote the books on DUI Defense..</h1>
                     </div>
                     <div class="container">
-                        <style>
-                            .book-gallery ul {padding:0 0 0 0;margin:0 0 0 0;}
-                            .book-gallery ul li {list-style:none;margin-bottom:25px;}
-                            .book-gallery ul li img {cursor: pointer;}
-                            .book-gallery ul li {background: none; background-image:none;}
-                        </style>
-                        <div class="book-gallery">
+                    <style>
+                        .book-gallery ul {padding:0 0 0 0;margin:0 0 0 0;}
+                        .book-gallery ul li {list-style:none;margin-bottom:25px;}
+                        .book-gallery ul li img {cursor: pointer;}
+                        .book-gallery ul li {background: none; background-image:none;}
+                    </style>
+                    <div class="book-gallery">
+                        
                          <ul class="row">
-                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Edge Hunsucker - Oklahoma DUI Defense.jpg"/></li>
-                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/George Stein - Georgia DUI Law.png"/></li>
-                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Gerstenzang - Handling the DWI Case in New York.jpg"/></li>
-                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/James Campbell Defense of Speeding etc.jpg"/></li>
-                            </ul><ul class="row">
-                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/James Nesci - Arizona DUI Defense.jpg"/></li>
-                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Kirk Defending DUIs in Washington.jpg"/></li>
-                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Mishlove wisconsin-owi-defense-book.jpg"/></li>
-                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Oberman - Drunk Driving Defense.jpg"/></li>
-                            </ul><ul class="row">
-                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Oberman - Tennessee DUI Book High-Res.jpg"/></li>
-                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Oberman Taylor Drunk Driving Defense High Res.jpg"/></li>
-                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Phil Price Alabama DUI Handbook.jpg"/></li>
-                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Ramsell Book Low Res.jpg"/></li>
-                            </ul><ul class="row">
-                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Simons and Burglin  California Drunk Driving.gif"/></li>
-                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Stamm - Maryland DUI Law - Big.jpg"/></li>
-                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Texas DWI Defense Photo.png"/></li>
-                                  <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Whited - Drinking Driving Litigation Photo 2.jpg"/></li>
-                            </ul>
-                            <ul class="row">
+                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Edge Hunsucker - Oklahoma DUI Defense.jpg"/></li>
+                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/George Stein - Georgia DUI Law.png"/></li>
+                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Gerstenzang - Handling the DWI Case in New York.jpg"/></li>
+                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/James Campbell Defense of Speeding etc.jpg"/></li>
+                        </ul><ul class="row">
+                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/James Nesci - Arizona DUI Defense.jpg"/></li>
+                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Kirk Defending DUIs in Washington.jpg"/></li>
+                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Mishlove wisconsin-owi-defense-book.jpg"/></li>
+                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Oberman - Drunk Driving Defense.jpg"/></li>
+                        </ul><ul class="row">
+                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Oberman - Tennessee DUI Book High-Res.jpg"/></li>
+                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Oberman Taylor Drunk Driving Defense High Res.jpg"/></li>
+                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Phil Price Alabama DUI Handbook.jpg"/></li>
+                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Ramsell Book Low Res.jpg"/></li>
+                        </ul><ul class="row">
+                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Simons and Burglin  California Drunk Driving.gif"/></li>
+                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Stamm - Maryland DUI Law - Big.jpg"/></li>
+                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Texas DWI Defense Photo.png"/></li>
+                              <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Whited - Drinking Driving Litigation Photo 2.jpg"/></li>
+                        </ul>
+                        <ul class="row">
                                   <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/arizona dui defense.png"/></li>
                                   <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/colorado dui defense.png"/></li>
                                   <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/florida dui defense.png"/></li>
@@ -146,7 +91,7 @@ high.</li>
                             <ul class="row">
                                   <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img width="150" height="180" src="/assets/dui-law-books/Whited - Drinking Driving Litigation.jpg"/></li>  
                              </ul>
-                        </div>
+                    </div>
                     </div>
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                       <div class="modal-dialog">
@@ -307,7 +252,7 @@ high.</li>
                             </div>
                             <div id="closer"></div>
                             </div>
-                            jhall@hallrustomfritz.com
+                            
                     </div>
                     <div align="center" class="row">
                         <a href="https://<?=SAW_ADMIN_WEBSITE?>/application/new-member"><img src="/assets/img/quiz-btn.png" class="applyBtn"></a>

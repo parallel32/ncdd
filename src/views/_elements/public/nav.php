@@ -37,6 +37,8 @@
                                     <li><a href="https://<?=SAW_CONSUMER_WEBSITE?>/store">Store</a></li>
                                     <li class="sep"></li>
                                     <li><a href="/dui-laws-in-your-state">DUI Laws in your State</a></li>
+                                    <li class="sep"></li>
+                                    <li><a href="/dui-defense-attorney-quiz">Take the DUI Attorney Quiz</a></li>
 
                                 </ul>
                                  <ul class="pull-right nav navbar-form">
@@ -68,7 +70,7 @@
                                 </ul>
                                 <ul class="pull-right menu">
                                     <li><a href="/find-an-attorney" class="text-center">ATTORNEYS <small>Find One Nearby</small></a></li>
-                                    <li><a href="/we-help-win-more-cases" class="text-center">BECOME <br> A MEMBER</a></li>
+                                    <li><a href="https://<?=SAW_ADMIN_WEBSITE?>/application/new-member" class="text-center">BECOME <br> A MEMBER</a></li>
                                 </ul>
                             </div>
                         </div>
