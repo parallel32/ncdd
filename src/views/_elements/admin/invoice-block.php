@@ -104,7 +104,7 @@
                         <?
                         // CREDIT DISCOUNT FOR MEMBERS WHO HOLD A CREDIT WITH US
                         $discount2 = 0;
-                        if(array_key_exists('payment',$member) 
+                        if(is_array($member) && array_key_exists('payment',$member) 
                               && !empty($member['payment'])
                               && is_array($member['payment'])
                               && array_key_exists('renewalCredit',$member['payment'])
