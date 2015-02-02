@@ -379,12 +379,19 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 			$doc['amount'] = $amt;
 			$doc['payment']['amount'] = $amt;
 			$payment = new Model\Payment($doc['payment'],$app);
+			try {
 
-			$application->paymentId = $payment->charge();
+				$application->paymentId = $payment->charge();	
+			} catch (Exception $e) {
+				$app_remove = new Model\ApplyNewMember(array('_id'=>$applicationId), $app);
+				$app_remove->remove();
+				throw new \Saw\Exceptions\SawException(new \Saw\Exceptions\PaymentException(),$e->getMessage());
+			}
+			
 			// payment stuff END
 
 			// save the application
-			$app_id = $application->insert();		
+			//$app_id = $application->insert();			
 			if(array_key_exists('payByCheck',$doc) && strpos($doc['payByCheck'], 'no') !== false){
 				// save the card 
 				$paymentlite->number = $paymentlite->number.'.x';
