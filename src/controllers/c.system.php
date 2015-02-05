@@ -310,7 +310,7 @@ $app['renewal_card_decline'] = $app->protect(function () use ($app) {
 	if($user['accessLevel'] != ADMIN){
 		$member = new Model\Member(array('_id'=>$user['_id']),$app);
 		$member = $member->findById();
-		if(is_array($member) && array_key_exists('payment',$member) && array_key_exists('number',$member['payment']) && !empty($member['payment']['number']) && strlen($member['payment']['number']) > 4 && array_key_exists('declineCount',$member['payment']) && $member['payment']['declineCount'] > 0){
+		if(is_array($member) && array_key_exists('payment',$member) && is_array($member['payment']) && array_key_exists('number',$member['payment']) && !empty($member['payment']['number']) && strlen($member['payment']['number']) > 4 && array_key_exists('declineCount',$member['payment']) && $member['payment']['declineCount'] > 0){
 			return true;
 		}else{
 			return false;
