@@ -201,7 +201,7 @@ endif; ?>
                   </div>
                   <!-- END ADDRESS -->
                   <h3 class="form-section">3. Registration Details</h3>
-                  <? if((array_key_exists('register',$this->vars['seminar']) && array_key_exists('attendanceQuestion',$this->vars['seminar']['register']) && $this->vars['seminar']['register']['attendanceQuestion'] == 'ON') || (array_key_exists('register',$this->vars['seminar']) && !array_key_exists('attendanceQuestion',$this->vars['seminar']['register'])) ): ?>
+                  <? if((is_array($this->vars['seminar']) && array_key_exists('register',$this->vars['seminar']) && is_array($this->vars['seminar']['register']) && array_key_exists('attendanceQuestion',$this->vars['seminar']['register']) && $this->vars['seminar']['register']['attendanceQuestion'] == 'ON') || (is_array($this->vars['seminar']) && array_key_exists('register',$this->vars['seminar']) && is_array($this->vars['seminar']['register']) && !array_key_exists('attendanceQuestion',$this->vars['seminar']['register'])) ): ?>
                   <div class="row-fluid ">
                      <div class="span12 ">
                         <div class="control-group">
@@ -225,7 +225,7 @@ endif; ?>
                      </div>
                      <!--/span-->
                   </div>
-                  <? if((array_key_exists('register',$this->vars['seminar']) && array_key_exists('rsvpQuestion',$this->vars['seminar']['register']) && $this->vars['seminar']['register']['rsvpQuestion'] == 'ON') || (array_key_exists('register',$this->vars['seminar']) && !array_key_exists('rsvpQuestion',$this->vars['seminar']['register'])) ): ?>
+                  <? if((is_array($this->vars['seminar']) && array_key_exists('register',$this->vars['seminar']) && is_array($this->vars['seminar']['register']) && array_key_exists('rsvpQuestion',$this->vars['seminar']['register']) && $this->vars['seminar']['register']['rsvpQuestion'] == 'ON') || (is_array($this->vars['seminar']) && array_key_exists('register',$this->vars['seminar']) && is_array($this->vars['seminar']['register']) && !array_key_exists('rsvpQuestion',$this->vars['seminar']['register'])) ): ?>
                   <div class="row-fluid ">
                      <div class="span12 ">
                         <div class="control-group">
@@ -241,7 +241,7 @@ endif; ?>
                      </div>
                      <!--/span-->
                   </div>
-                  <? if((array_key_exists('register',$this->vars['seminar']) && array_key_exists('rsvpKidsQuestion',$this->vars['seminar']['register']) && $this->vars['seminar']['register']['rsvpKidsQuestion'] == 'ON') || (array_key_exists('register',$this->vars['seminar']) && !array_key_exists('rsvpKidsQuestion',$this->vars['seminar']['register'])) ): ?>
+                  <? if((is_array($this->vars['seminar']) && array_key_exists('register',$this->vars['seminar']) && is_array($this->vars['seminar']) && array_key_exists('rsvpKidsQuestion',$this->vars['seminar']['register']) && $this->vars['seminar']['register']['rsvpKidsQuestion'] == 'ON') || (is_array($this->vars['seminar']) && array_key_exists('register',$this->vars['seminar']) && is_array($this->vars['seminar']) && !array_key_exists('rsvpKidsQuestion',$this->vars['seminar']['register'])) ): ?>
                   <div class="row-fluid ">
                      <div class="span12 ">
                         <div class="control-group">
@@ -287,7 +287,7 @@ endif; ?>
                   </div>
                   </br></br>
                   <h3 class="form-section">5. Payment</h3>
-                  <? if(array_key_exists('register',$this->vars['seminar']) && array_key_exists('scholarship',$this->vars['seminar']['register']) && $this->vars['seminar']['register']['scholarship'] == 'ON'): ?>
+                  <? if(is_array($this->vars['seminar']) && array_key_exists('register',$this->vars['seminar']) && is_array($this->vars['seminar']['register']) && array_key_exists('scholarship',$this->vars['seminar']['register']) && $this->vars['seminar']['register']['scholarship'] == 'ON'): ?>
                   <h4>Scholarship</h4>
                   <div id="scholarship-group" class="row-fluid addr ">
                      <div class="span12 ">
@@ -320,7 +320,7 @@ endif; ?>
                         </div>
                      </div>
                      <!--/span-->
-                     <? if(array_key_exists('hardCopyPrice',$this->vars['seminar']['register']) && !empty($this->vars['seminar']['register']['hardCopyPrice'])): ?>
+                     <? if(is_array($this->vars['seminar']['register']) && array_key_exists('hardCopyPrice',$this->vars['seminar']['register']) && !empty($this->vars['seminar']['register']['hardCopyPrice'])): ?>
                      <div class="span6 ">
                         <div class="control-group">
                            <label class="control-label" >Would you like to pre-order a hard copy of the materials?</label>
@@ -337,7 +337,7 @@ endif; ?>
                      <!--/span-->
                      <? endif; ?>
                   </div>
-                  <? if(array_key_exists('deposit',$this->vars['seminar']['register']) && !empty($this->vars['seminar']['register']['deposit'])): ?>
+                  <? if(is_array($this->vars['seminar']['register']) && array_key_exists('deposit',$this->vars['seminar']['register']) && !empty($this->vars['seminar']['register']['deposit'])): ?>
                   <br><br>
                   <div id="deposit-group" class="row-fluid addr ">
                      <div class="span12 ">
