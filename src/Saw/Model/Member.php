@@ -1397,7 +1397,7 @@ class Member extends User {
     public function fetchByRenewalStatusPaymentType($status, $membership=array(), $offset=0,$limit=100,$filter=array()){
 		$query = array('status'=>USER_STATUS_ACTIVE,
 						'renewal.currentStatus'=>Renewal::$status[$status],
-						'renewal.payByCheck'=>array('$ne'=>array('yes')),
+						'renewal.payByCheck'=>array('$in'=>array('no','no-store','')),
 						'currentMembership'=>array('$in'=>$membership));
 		if(!empty($filter)){
 			$query = array_merge($filter, $query);
