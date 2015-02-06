@@ -1972,7 +1972,13 @@ $app->get('/application/autopay', function (Request $request) use ($app) {
 			    	$tmem = new Model\Member(array('_id'=>$application['memberId'],'payment'=>$tpaymnt),$app);
 			    	$tmem->saveSafe();
 				}else{
-					$app['validateModel']($app, $payment,$groups=array('cc'));
+					try {
+						$app['validateModel']($app, $payment,$groups=array('cc'));	
+					} catch (Exception $e) {
+						error_log(__FILE__.' '.__LINE__.' for variable: payment  ==>'.print_r($payment,true));
+						throw new \Saw\Exceptions\SawException(new \Saw\Exceptions\PaymentException(),$e->getMessage());
+					}
+					
 					try {
 						$paymentId = $payment->charge();	
 						$tpaymnt = $member['payment'];
