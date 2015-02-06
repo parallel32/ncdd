@@ -1394,6 +1394,42 @@ class Member extends User {
 
 	}
 
+    public function fetchByRenewalStatusPaymentType($status, $membership=array(), $offset=0,$limit=100,$filter=array()){
+		$query = array('status'=>USER_STATUS_ACTIVE,
+						'renewal.currentStatus'=>Renewal::$status[$status],
+						'renewal.payByCheck'=>'no',
+						'currentMembership'=>array('$in'=>$membership));
+		if(!empty($filter)){
+			$query = array_merge($filter, $query);
+		}
+		$fields = array('displayName'=>true
+						,'primaryPhone'=>true
+						,'email'=>true
+						,'timeZone'=>true
+						,'_id'=>true
+						,'renewal'=>true
+						,'payment'=>true
+						);
+		switch ($status) {
+			case 'SUBMITTED':
+				$sort=array('renewal.submittedDate.date'=>-1);
+				break;
+			case 'APPROVED':
+				$sort=array('renewal.approvedDate.date'=>-1);
+				break;
+			case 'PAID':
+				$sort=array('renewal.paidDate.date'=>-1);
+				break;
+			default:
+				$sort=array('lastName'=>1);
+				break;
+		}
+		$result = $this->find($query,$fields,$slaveOkay=true,$sort,(int)$offset,(int)$limit);
+		
+		return $result;
+
+	}
+
     public function fetchByPaymentStatus($status, $membership=array(), $offset=0,$limit=100,$filter=array()){
 
     	switch ($status) {
