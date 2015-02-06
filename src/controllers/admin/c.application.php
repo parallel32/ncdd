@@ -1851,7 +1851,7 @@ $app->get('/application/autopay', function (Request $request) use ($app) {
 	
 	$approved = $member->fetchByRenewalStatusPaymentType('APPROVED',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']),$offset, $limit);
 	$approvedc = count($approved);
-	$new_offset = ($offset+$limit > $approvedc) ? 0: $offset+$limit;
+	$new_offset = ($offset+$limit > $approved_count) ? 0: $offset+$limit;
 	$app['session']->set('autopay-offset',$new_offset);
 	error_log(__FILE__.' '.__LINE__.' for variable: offset  ==>'.print_r($offset,true));
 	error_log(__FILE__.' '.__LINE__.' for variable: limit  ==>'.print_r($limit,true));
