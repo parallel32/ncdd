@@ -1850,7 +1850,9 @@ $app->get('/application/autopay', function (Request $request) use ($app) {
 	error_log(__FILE__.' '.__LINE__.' for variable: actual count  ==>'.print_r($approvedc,true));
 	$new_offset = ($offset+$limit > $approvedc) ? 0: $offset+$limit;
 	$app['session']->set('autopay-offset',$new_offset);
-
+	error_log(__FILE__.' '.__LINE__.' for variable: offset+limit  ==>'.print_r($offset+$limit,true));
+	error_log(__FILE__.' '.__LINE__.' for variable: actual count  ==>'.print_r($approvedc,true));
+	error_log(__FILE__.' '.__LINE__.' for variable: new_offset  ==>'.print_r($new_offset,true));
 	$apps_paid = array();
 	if(!empty($approved)):
 	foreach($approved as $record):
