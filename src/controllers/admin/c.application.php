@@ -1842,7 +1842,7 @@ $app->get('/application/autopay', function (Request $request) use ($app) {
 	$member = new Model\Member($doc=array(), $app);	
 	$query = array('status'=>USER_STATUS_ACTIVE,
 					'renewal.currentStatus'=>Model\Renewal::$status['APPROVED'],
-					'renewal.payByCheck'=>'no',
+					'renewal.payByCheck'=>array('$ne'=>array('yes')),
 					'currentMembership'=>array('$in'=>array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER'])));
 	$approved_count = $member->count($query);
 
