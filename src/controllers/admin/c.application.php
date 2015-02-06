@@ -1840,19 +1840,15 @@ $app->get('/application/autopay', function (Request $request) use ($app) {
 	// get all the applications that must be paid and prepare the objects //
 	////////////////////////////////////////////////////////////////////////
 	$member = new Model\Member($doc=array(), $app);	
-	$query = array('status'=>USER_STATUS_ACTIVE,
-					'renewal.currentStatus'=>Model\Renewal::$status['APPROVED'],
-					'currentMembership'=>array('$in'=>array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER'])));
-	$approved_count = $member->count($query);
-
+	
 	$offset = $app['session']->get('autopay-offset');
 	$offset = (empty($offset)) ? 0 : $offset;
 	
 	$approved = $member->fetchByRenewalStatus('APPROVED',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']),$offset, $limit);
 	$approvedc = count($approved);
-	error_log(__FILE__.' '.__LINE__.' for variable: count  ==>'.print_r($approved_count,true));
+	error_log(__FILE__.' '.__LINE__.' for variable: offset+limit  ==>'.print_r($offset+$limit,true));
 	error_log(__FILE__.' '.__LINE__.' for variable: actual count  ==>'.print_r($approvedc,true));
-	$new_offset = ($offset+$limit > $approved_count) ? 0: $offset+$limit;
+	$new_offset = ($offset+$limit > $approvedc) ? 0: $offset+$limit;
 	$app['session']->set('autopay-offset',$new_offset);
 
 	$apps_paid = array();
