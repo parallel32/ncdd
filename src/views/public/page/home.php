@@ -47,6 +47,11 @@
                                         }(document, 'script', 'facebook-jssdk'));</script>
                                         <div class="fb-like" data-href="https://www.facebook.com/NationalCollegeforDUIDefense" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
                                     </div>
+                                    <br>
+                                    <div class="text-center">
+                                        <!-- Place this tag where you want the widget to render. -->
+                                        <div class="g-page" data-width="375" data-href="//plus.google.com/u/0/107227306477084070339" data-layout="landscape" data-showtagline="false" data-showcoverphoto="false" data-rel="publisher"></div>
+                                    </div>
 
                                 </div>
                                 <div class="tab-pane" id="nationallyRecognized">
@@ -2871,3 +2876,14 @@ The alcohol breath test is the most commonly used form of alcohol testing eviden
                             </div>
                     </div>
                     </div>
+
+
+
+                    <!-- Place this tag after the last widget tag. -->
+                                        <script type="text/javascript">
+                                          (function() {
+                                            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                                            po.src = 'https://apis.google.com/js/platform.js';
+                                            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+                                          })();
+                                        </script>
