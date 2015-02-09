@@ -555,7 +555,7 @@ $app->get('/registrations/seminar/{seminarId}/{offset}/{limit}', function ($semi
 	$registration = new Model\RegistrationSeminar($doc=array(), $app);
 	$submitted = $registration->fetchByStatusSeminar($seminarId,'SUBMITTED',$offset, $limit);
 	$scholarship = $registration->fetchByStatusSeminar($seminarId,'SCHOLARSHIP',$offset, $limit);
-	$deposit = $registration->fetchByStatusSeminar($seminarId,'DEPOSIT',$offset, $limit);
+	//$deposit = $registration->fetchByStatusSeminar($seminarId,'DEPOSIT',$offset, $limit);
 	$depositbalance = $registration->fetchByStatusSeminar($seminarId,'DEPOSITBALANCE',$offset, $limit);
 	$paid = $registration->fetchByStatusSeminar($seminarId,'PAID',$offset, $limit);
 	$crumbs = array(array('name'=>'Seminars','href'=>'/seminar')
@@ -568,7 +568,7 @@ $app->get('/registrations/seminar/{seminarId}/{offset}/{limit}', function ($semi
 						,'description'=>''
 						,'crumbs'=>$crumbs
 						,'submitted'=>$submitted
-						,'deposit'=>$deposit
+						//,'deposit'=>$deposit
 						,'depositbalance'=>$depositbalance
 						,'scholarship'=>$scholarship
 						,'paid'=>$paid);
