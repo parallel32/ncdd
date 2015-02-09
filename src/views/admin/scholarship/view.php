@@ -155,7 +155,7 @@
                         <div class="control-group">
                            <label class="control-label" >Postal Code</label>
                            <div class="controls">
-                              <input type="text" id="zip" name="doc[postalCode]" class="m-wrap span12 postalCode" value="<?=$this->vars['scholarship']['postalCode']?>" readonly> 
+                              <input type="text" id="zip" name="doc[postalCode]" class="m-wrap span12 postalCode" value="<?if(strlen($this->vars['scholarship']['postalCode']) < 5){echo str_pad($this->vars['scholarship']['postalCode'],5,'0',STR_PAD_LEFT);}else if(strlen($this->vars['scholarship']['postalCode']) > 5 && strlen($this->vars['scholarship']['postalCode']) < 9){str_pad($this->vars['scholarship']['postalCode'],9,'0',STR_PAD_LEFT);}else{echo $this->vars['scholarship']['postalCode'];}?>" readonly> 
                            </div>
                         </div>
                      </div>

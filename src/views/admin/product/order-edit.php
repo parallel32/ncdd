@@ -137,7 +137,7 @@
                               <div class="control-group ">
                                  <label class="control-label">Zip/Postal Code</label>
                                  <div class="controls">
-                                    <span class="text-info"><?=$this->vars['order']['payment']['zipPostalCodeShipping']?></span>
+                                    <span class="text-info"><?if(strlen($this->vars['order']['payment']['zipPostalCodeShipping']) < 5){echo str_pad($this->vars['order']['payment']['zipPostalCodeShipping'],5,'0',STR_PAD_LEFT);}else if(strlen($this->vars['order']['payment']['zipPostalCodeShipping']) > 5 && strlen($this->vars['order']['payment']['zipPostalCodeShipping']) < 9){str_pad($this->vars['order']['payment']['zipPostalCodeShipping'],9,'0',STR_PAD_LEFT);}else{echo $this->vars['order']['payment']['zipPostalCodeShipping'];}?></span>
                                  </div>
                               </div>
                            </div>

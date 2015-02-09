@@ -597,7 +597,7 @@
                                              data-addressLineTwo="<?=$location['addressLine2']?>" 
                                              data-city="<?=$location['city']?>" 
                                              data-state="<?=$location['state']?>" 
-                                             data-zip="<?=$location['zip']?>" 
+                                             data-zip="<?if(strlen($location['zip']) < 5){echo str_pad($location['zip'],5,'0',STR_PAD_LEFT);}else if(strlen($location['zip']) > 5 && strlen($location['zip']) < 9){str_pad($location['zip'],9,'0',STR_PAD_LEFT);}else{echo $location['zip'];}?>" 
                                              data-country="<?=$location['country']?>" 
                                              data-raw="<?=$location['raw']?>"
                                              data-mode="save" 

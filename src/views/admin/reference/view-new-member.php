@@ -131,7 +131,7 @@ Governing, <b>GENERAL MEMBERSHIP</b> as adopted and approved by the National Col
                         <div class="control-group">
                            <label class="control-label" ><strong>Postal Code</strong></label>
                            <div class="controls">
-                              <input disabled type="text" id="zip" name="doc[postalCode]" class="m-wrap span12 postalCode" value="<?=$this->vars['reference']['postalCode']?>"> 
+                              <input disabled type="text" id="zip" name="doc[postalCode]" class="m-wrap span12 postalCode" value="<?if(strlen($this->vars['reference']['postalCode']) < 5){echo str_pad($this->vars['reference']['postalCode'],5,'0',STR_PAD_LEFT);}else if(strlen($this->vars['reference']['postalCode']) > 5 && strlen($this->vars['reference']['postalCode']) < 9){str_pad($this->vars['reference']['postalCode'],9,'0',STR_PAD_LEFT);}else{echo $this->vars['reference']['postalCode'];}?>"> 
                            </div>
                         </div>
                      </div>

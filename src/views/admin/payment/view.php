@@ -202,7 +202,7 @@ $user = call_user_func(function($app){ $user = $app['session']->get('user'); ret
                            <div class="control-group ">
                               <label class="control-label">Zip/PostalCode</label>
                               <div class="controls">
-                                 <input type="text" value="<?=$this->vars['payment']['zipPostalCode']?>" readonly class="m-wrap span8 zipPostalCode">
+                                 <input type="text" value="<?if(strlen($this->vars['payment']['zipPostalCode']) < 5){echo str_pad($this->vars['payment']['zipPostalCode'],5,'0',STR_PAD_LEFT);}else if(strlen($this->vars['payment']['zipPostalCode']) > 5 && strlen($this->vars['payment']['zipPostalCode']) < 9){str_pad($this->vars['payment']['zipPostalCode'],9,'0',STR_PAD_LEFT);}else{echo $this->vars['payment']['zipPostalCode'];}?>" readonly class="m-wrap span8 zipPostalCode">
                               </div>
                            </div>
                         </div>

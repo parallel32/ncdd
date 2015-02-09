@@ -191,7 +191,7 @@
                                    <div class="control-group ">
                                       <label class="control-label">Zip/PostalCode</label>
                                       <div class="controls">
-                                         <input type="text" name="doc[zipPostalCode]" class="m-wrap span8 zipPostalCode" value="<?=(array_key_exists('location', $this->vars) ) ? $this->vars['location']['zip']: '';?>">
+                                         <input type="text" name="doc[zipPostalCode]" class="m-wrap span8 zipPostalCode" value="<?if(array_key_exists('location', $this->vars) ){<?if(strlen($this->vars['location']['zip']) < 5){echo str_pad($this->vars['location']['zip'],5,'0',STR_PAD_LEFT);}else if(strlen($this->vars['location']['zip']) > 5 && strlen($this->vars['location']['zip']) < 9){str_pad($this->vars['location']['zip'],9,'0',STR_PAD_LEFT);}else{echo $this->vars['location']['zip'];}?>}?>">
                                       </div>
                                    </div>
                                 </div>

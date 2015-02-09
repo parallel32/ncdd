@@ -206,7 +206,7 @@ img.thumbnail{ max-width: 100%;}
                   <strong class="muted"><?=$location['name']?></strong><br>
                   <?=$location['addressLine1']?><br>
                   <? if(!empty($location['addressLine2'])) { ?> <?=$location['addressLine2']?><br> <? } ?>
-                  <?=$location['city']?>, <?=$location['state']?> <?=$location['zip']?> <br>
+                  <?=$location['city']?>, <?=$location['state']?> <?if(strlen($location['zip']) < 5){echo str_pad($location['zip'],5,'0',STR_PAD_LEFT);}else if(strlen($location['zip']) > 5 && strlen($location['zip']) < 9){str_pad($location['zip'],9,'0',STR_PAD_LEFT);}else{echo $location['zip'];}?> <br>
                   <? if (!empty($location['phone'])): ?><strong>Office: </strong> <?=$location['phone']?><br><? endif; ?>
                   <? if (!empty($location['tollFree'])): ?><strong>Toll Free: </strong> <?=$location['tollFree']?><br><? endif; ?>
                   <? if (!empty($location['fax'])): ?><strong>Fax: </strong> <?=$location['fax']?><br><? endif; ?>

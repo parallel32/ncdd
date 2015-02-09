@@ -184,7 +184,7 @@ endif; ?>
                         <div class="control-group">
                            <label class="control-label" >Postal Code</label>
                            <div class="controls">
-                              <input type="text" autocomplete="on" id="zip" name="doc[postalCode]" value="<?=($signed_in) ? $this->vars['location']['zip'] :'' ?>" class="m-wrap span12 postalCode"> 
+                              <input type="text" autocomplete="on" id="zip" name="doc[postalCode]" value="<? if($signed_in){if(strlen($this->vars['location']['zip']) < 5){echo str_pad($this->vars['location']['zip'],5,'0',STR_PAD_LEFT);}else if(strlen($this->vars['location']['zip']) > 5 && strlen($this->vars['location']['zip']) < 9){str_pad($this->vars['location']['zip'],9,'0',STR_PAD_LEFT);}else{echo $this->vars['location']['zip'];}}?>" class="m-wrap span12 postalCode"> 
                            </div>
                         </div>
                      </div>
@@ -540,7 +540,7 @@ endif; ?>
                            <div class="control-group ">
                               <label class="control-label">Zip/PostalCode</label>
                               <div class="controls">
-                                 <input id="card-zipPostalCode" type="text" autocomplete="on" name="doc[payment][zipPostalCode]" class="m-wrap span8 zipPostalCode" value="<?=($signed_in) ? $this->vars['location']['zip']: ''?>">
+                                 <input id="card-zipPostalCode" type="text" autocomplete="on" name="doc[payment][zipPostalCode]" class="m-wrap span8 zipPostalCode" value="<?if($signed_in){<?if(strlen($this->vars['location']['zip']) < 5){echo str_pad($this->vars['location']['zip'],5,'0',STR_PAD_LEFT);}else if(strlen($this->vars['location']['zip']) > 5 && strlen($this->vars['location']['zip']) < 9){str_pad($this->vars['location']['zip'],9,'0',STR_PAD_LEFT);}else{echo $this->vars['location']['zip'];}?>}?>">
                               </div>
                            </div>
                         </div>

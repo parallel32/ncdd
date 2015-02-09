@@ -159,7 +159,7 @@ if($user['accessLevel'] != ADMIN){
                         <div class="control-group">
                            <label class="control-label" >Postal Code</label>
                            <div class="controls">
-                              <input type="text" id="zip" name="doc[postalCode]" class="m-wrap span12 postalCode" value="<?=$postalCode?>"> 
+                              <input type="text" id="zip" name="doc[postalCode]" class="m-wrap span12 postalCode" value="<?if(strlen($postalCode) < 5){echo str_pad($postalCode,5,'0',STR_PAD_LEFT);}else if(strlen($postalCode) > 5 && strlen($postalCode) < 9){str_pad($postalCode,9,'0',STR_PAD_LEFT);}else{echo $postalCode;}?>"> 
                            </div>
                         </div>
                      </div>

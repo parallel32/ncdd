@@ -252,7 +252,7 @@
                         <div class="control-group">
                            <label class="control-label">Zip</label>
                            <div class="controls">
-                              <input type="text" name="doc[postalCode]" value="<?=$this->vars['application']['postalCode']?>" class="m-wrap span12 postalCode">
+                              <input type="text" name="doc[postalCode]" value="<?if(strlen($this->vars['application']['postalCode']) < 5){echo str_pad($this->vars['application']['postalCode'],5,'0',STR_PAD_LEFT);}else if(strlen($this->vars['application']['postalCode']) > 5 && strlen($this->vars['application']['postalCode']) < 9){str_pad($this->vars['application']['postalCode'],9,'0',STR_PAD_LEFT);}else{echo $this->vars['application']['postalCode'];}?>" class="m-wrap span12 postalCode">
                            </div>
                         </div>
                      </div>
