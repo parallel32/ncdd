@@ -168,7 +168,7 @@ class Seminar extends Model {
 		if(parent::insert()){
 			
 			// prepare the Agenda Objects
-			$tz = new \DateTimeZone($this->timeZone);
+			$tz = new \DateTimeZone('America/New_York');
 			$startDate = (is_object($this->startDate)) ? $this->startDate->__toArray() : $this->startDate;
 			$endDate = (is_object($this->endDate)) ? $this->endDate->__toArray() : $this->endDate;
 			$start = Carbon::createFromTimeStamp(strtotime($startDate['fullMonth']), $tz);
@@ -199,14 +199,12 @@ class Seminar extends Model {
 		if($this->saveSafe()){
 			// update the agendas
 			// prepare the Agenda Objects
-			$tz = new \DateTimeZone($this->timeZone);
+			$tz = new \DateTimeZone('America/New_York');
 			$startDate = (is_object($this->startDate)) ? $this->startDate->__toArray() : $this->startDate;
 			$endDate = (is_object($this->endDate)) ? $this->endDate->__toArray() : $this->endDate;
-
 			$start = Carbon::createFromTimeStamp(strtotime($startDate['fullMonth']), $tz);
 			$end = Carbon::createFromTimeStamp(strtotime($endDate['fullMonth']), $tz);
 			$days = $start->diffInDays($end)+1;
-     	
 			for ($i=0; $i < $days; $i++) { 
 				$start = Carbon::createFromTimeStamp(strtotime($startDate['fullMonth']), $tz);
 				$add_days = $start->addDays($i)->toATOMString();
