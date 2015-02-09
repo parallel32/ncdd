@@ -158,8 +158,8 @@
                                     $end = \Carbon\Carbon::createFromTimeStamp(strtotime($application['trial']['endDate']['fullMonth']), $application['trial']['timeZone']);
                                  ?>
 
-                                 <td class="hidden-480 "><b><?=$start->diffForHumans()?></b><br>(<?=$application['trial']['startDate']['monthDay']?>)</td>
-                                 <td class="hidden-480 "><b><?=$end->diffForHumans()?></b><br>(<?=$application['trial']['endDate']['monthDay']?>)</td>
+                                 <td class="hidden-480 "><b><?=$start->diffForHumans()?></b><br>(<?=$application['trial']['startDate']['fullMonth']?>)</td>
+                                 <td class="hidden-480 "><b><?=$end->diffForHumans()?></b><br>(<?=$application['trial']['endDate']['fullMonth']?>)</td>
                                  <td class="center hidden-480 "><?=(array_key_exists('promocode', $application)) ? $application['promocode']:'' ?></td>
                                  <td class="center hidden-480 "><?=$application['type']?></td>
                                  <td class=" ">
