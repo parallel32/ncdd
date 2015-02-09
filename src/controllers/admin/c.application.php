@@ -221,7 +221,7 @@ $app->get('/application/downloads/{file}', function ($file, Request $request) us
 $app->post('/application/promocode', function (Request $request) use ($app) {
 	// retrieve document from request
     $doc = $request->get('doc');
-    if(!empty($doc['promocode']) && (strtoupper($doc['promocode']) == 'NCDD2015' || strtoupper($doc['promocode']) == 'NCDD2014' || strtoupper($doc['promocode']) == 'TRIAL')){
+    if(!empty($doc['promocode']) && (strtoupper($doc['promocode']) == 'NCDD2015' || strtoupper($doc['promocode']) == 'NCDD2014' || strtoupper($doc['promocode']) == 'TRIAL' || strtoupper($doc['promocode']) == 'DIVTRIAL' || strtoupper($doc['promocode']) == 'RFTRIAL' || strtoupper($doc['promocode']) == 'PDTRIAL')){
     	$valid = 'yes';
     	$message = 'Valid Promo Code.';
     	$type = (strtoupper($doc['promocode']) == 'NCDD2015' || strtoupper($doc['promocode']) == 'NCDD2014') ? 'discount'.'-'.strtoupper($doc['promocode']): 'trial';
@@ -322,7 +322,7 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 
 
 
-	if($doc['promocode'] == 'TRIAL'){
+	if($doc['promocode'] == 'TRIAL' || $doc['promocode'] == 'DIVTRIAL' || $doc['promocode'] == 'PDTRIAL' || $doc['promocode'] == 'RFTRIAL'){
 		$trial_doc['startDate'] = 'now';
 		$trial_doc['endDate'] = "+1 year";
 		$trial_doc['referredBy'] = $doc['referredBy'];
@@ -1372,7 +1372,7 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 	$trial = $application->fetchByStatus('TRIAL',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
 	$paid = $application->fetchByDatePaid(90, $offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
 
-	$ncddtrialpromocode = $application->fetchByStatus('TRIAL',$offset, $limit,$filter=array('promocode'=>'TRIAL'));
+	$ncddtrialpromocode = $application->fetchByStatus('TRIAL',$offset, $limit,$filter=array('promocode'=>array('$in'=>array('TRIAL','DIVTRIAL','PDTRIAL','RFTRIAL'))));
 	$ncdd2015promocode = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('promocode'=>'NCDD2015'));
 	$ncdd2014promocode = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('promocode'=>'NCDD2014'));
 	if(!empty($ncdd2015promocode)):
@@ -1404,7 +1404,7 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 	}
 	endif;
 	$date = new Model\Date($app,'9/16/2014 5:00 PM');
-	$newlypaid = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION')),'promocode'=>array('$nin'=>array('NCDD2015','NCDD2014','TRIAL')),'paidDate.date'=>array('$gte'=> new \MongoDate(strtotime($date->iso)))));
+	$newlypaid = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION')),'promocode'=>array('$nin'=>array('NCDD2015','NCDD2014','TRIAL','DIVTRIAL','PDTRIAL','RFTRIAL')),'paidDate.date'=>array('$gte'=> new \MongoDate(strtotime($date->iso)))));
 	if(!empty($newlypaid)):
 	for ($i=0; $i < count($newlypaid); $i++) { 
 		switch ($newlypaid[$i]['class']) {
