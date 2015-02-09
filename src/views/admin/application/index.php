@@ -211,7 +211,9 @@
                                  <td class="center hidden-480 "><?=$application['type']?></td>
                                  <td class=" ">
                                     <a data-id="<?=$application['_id']?>" class="btn blue mini view"><i class=" "></i> Application</a>
+                                    <?if(!empty($application['memberId'])):?>
                                     <a data-id="<?=(!empty($application['memberId'])) ? (string)$application['memberId'] : ''?>" class="btn blue mini view member"><i class=" "></i> Member</a>
+                                    <? endif; ?>
                                  </td>
                               </tr>
                               <? endforeach;?>
