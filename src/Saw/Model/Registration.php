@@ -101,7 +101,7 @@ class Registration extends Model {
 	}
 	
 	public function findByEmail(){
-		$query = array('email'=>trim(strtolower($this->email)));
+		$query = array('seminarId'=>$this->seminarId,'email'=>trim(strtolower($this->email)));
         $fields = array('_id'=>1);
 		$result = self::$app['mongo']->findOne($this->collection, $query, $fields, $slaveOkay=true);
 		
