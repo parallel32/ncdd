@@ -45,7 +45,7 @@ class RegistrationSeminar extends Registration {
 	}
 	public function previouslyAttended(ExecutionContext $context){
 		
-		if($this->previouslyAttendedExists == 'yes' && empty($this->previouslyAttended)){
+		if($this->previouslyAttendedExists == 'yes' && $this->previouslyAttended != 0 && empty($this->previouslyAttended)){
 			$propertyPath = $context->getPropertyPath().'previouslyAttended';
         	$context->addViolationAtPath($propertyPath,'Please enter how many times you have previously attended this seminar.', array(), null);
 		}
