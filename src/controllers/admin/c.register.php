@@ -285,6 +285,14 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 	*/
 	$paymentId = new \stdClass();	
 	$rs = new Model\RegistrationSeminar($doc,$app);
+
+	if(!empty($doc['email']) && $rs->findByEmail()){
+    	$response_arr = array('message'=>"Our records indicate you have already submitted a registration.  If you believe this message is in error please contact NCDD directly.",
+                              "invalidFields"=>array(array('name'=>'email','message'=>'Our records indicate you have already submitted a registration.  If you believe this message is in error please contact NCDD directly.')));
+        return new Response(json_encode($response_arr), 403,array('Content-Type' => 'application/json'));
+    }
+
+
 	$app['validateModel']($app, $rs);
 	$rs_id = $rs->insert();
 		
