@@ -1612,6 +1612,47 @@ class Member extends User {
 		return $result;
 	}
 
+	public function fetchRenewalForCSV($status, $membership=array(), $offset=0,$limit=10000,$filter=array()){
+
+
+		$query = array('status'=>USER_STATUS_ACTIVE,
+						'renewal.currentStatus'=>Renewal::$status[$status],
+						'currentMembership'=>array('$in'=>$membership));
+		if(!empty($filter)){
+			$query = array_merge($filter, $query);
+		}
+		$fields = array('firstName'=>true
+						,'middleName'=>true
+						,'lastName'=>true
+						,'primaryPhone'=>true
+						,'email'=>true
+						);
+		$results = $this->find($query,$fields,$slaveOkay=true,$sort=array(),(int)$offset,(int)$limit);
+		
+
+		$fields=array(
+			'addressLine1'=>1
+			,'addressLine2'=>1
+			,'city'=>1
+			,'state'=>1
+			,'zip'=>1
+			,'country'=>1
+		);
+
+		for ($i=0; $i < count($results); $i++) { 
+			$query = array('member._id'=>$results[$i]['_id']);
+			$res = self::$app['mongo']->findOne('location',$query,$fields,$slaveOkay=true,$offset=0,$limit=4000,$sort=array());
+			$results[$i]['addressLine1'] = $res['addressLine1'];
+			$results[$i]['addressLine2'] = $res['addressLine2'];
+			$results[$i]['city'] = $res['city'];
+			$results[$i]['state'] = $res['state'];
+			$results[$i]['zip'] = $res['zip'];
+			$results[$i]['country'] = $res['country'];
+		}
+
+		return $results;
+	}
+
     // route for this is in c.utilities.php
     public function removeMember(){
     	// delete member

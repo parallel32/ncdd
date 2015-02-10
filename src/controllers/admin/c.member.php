@@ -31,20 +31,29 @@ $member->get('/streamcsv/{members}', function ($members, Request $request) use (
 		case 'pd':
 			$res = $member->fetchForCSV(Model\Member::$membership['PUBLIC DEFENDER']);
 			break;		
+		case 'r-u':
+			$res = $member->fetchRenewalForCSV('UNSUBMITTED',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']));
+			break;		
 	}
 	
-	$csv = '';		
+	$csv = '';	
+	if(is_array($res) && !empty($res)):	
     foreach ($res as $key => $value) {
 		unset($value['_id']);
     	unset($value['id']);
-    	$value2 = $value['member'];
-    	unset($value['member']);
+    	if(array_key_exists('member', $value)){
+    		$value2 = $value['member'];
+	    	unset($value['member']);
+	    	$new_value = array_merge($value,$value2);	
+    	}else{
+    		$new_value = $value;
+    	}
     	
-    	$new_value = array_merge($value,$value2);
     	$line = implode(',', $new_value);
     	$csv.= $line.PHP_EOL;
 	}
-	
+	endif;
+
     return new Response($csv, 200, array('Content-Type' => 'text/csv'));
     //return $app['view']->render('member/search', 'blank', $view_vars);
 

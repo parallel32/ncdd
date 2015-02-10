@@ -356,6 +356,9 @@
                   <div class="portlet box red">
                      <div class="portlet-title" id="application">
                         <div class="caption"><i class="icon-user"></i>Applications Unsubmitted</div>
+                        <div class="actions">
+                           <a id="" class="btn blue view" href="/member/streamcsv/r-u">Download CSV</a>
+                        </div>
                      </div>
                      <div id="applications-to-approve" class="portlet-body">
                         <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
