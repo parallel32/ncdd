@@ -77,7 +77,7 @@ class Change extends Model {
 
 		foreach ($new_values as $key => $value) {
 			if(!empty($value)){
-				if(!is_array($value) && !is_object($value) && $value !== $original_values[$key]){
+				if(!is_array($value) && !is_object($value) && array_key_exists($key, $original_values) && $value !== $original_values[$key]){
 					$change_values[$key] = $value;
 				}
 			}
