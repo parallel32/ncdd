@@ -16,7 +16,7 @@ $app->get('/change/{offset}/{limit}', function ($offset,$limit, Request $request
 	
 	$change = new Model\Change(array(),$app);
 	$changes = $change->fetch($offset, $limit);
-    $count = count($changes);
+    $count = (empty($changes)) ? 0 : count($changes);
     $crumbs = array(array('name'=>'Members','href'=>'/member/search')
                     ,array('name'=>'Change','href'=>'/change')
                     );
