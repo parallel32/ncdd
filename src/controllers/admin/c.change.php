@@ -16,10 +16,11 @@ $app->get('/change/{offset}/{limit}', function ($offset,$limit, Request $request
 	
 	$change = new Model\Change(array(),$app);
 	$changes = $change->fetch($offset, $limit);
-
+    $count = count($changes);
     $crumbs = array(array('name'=>'Members','href'=>'/member/search')
                     ,array('name'=>'Change','href'=>'/change')
                     );
+
     $view_vars = array(
                          'active'=>'Change/index'
                         ,'page-plugin'=>'datatables'
@@ -27,7 +28,7 @@ $app->get('/change/{offset}/{limit}', function ($offset,$limit, Request $request
                         ,'description'=>""
                         ,'crumbs'=>$crumbs
                         ,'changes'=>$changes
-                        ,'count'=>count($changes)
+                        ,'count'=>$count
                         );
     return $app['view']->render('change/index', 'default', $view_vars);
 
