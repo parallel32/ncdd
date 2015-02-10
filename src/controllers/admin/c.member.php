@@ -124,6 +124,10 @@ $member->post('/edit', function (Request $request) use ($app) {
     $member = new Model\Member($document, $app);
     // validate the model
     $app['validateModel']($app,$member);
+    //record the change
+    $res = Model\Change::check($member, $member->displayName,$app);
+
+
     $member->saveEdit();
     
     return new Response(json_encode(array('message' => 'Member details have saved successfully.')), 200,array('Content-Type' => 'application/json'));

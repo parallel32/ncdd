@@ -91,6 +91,12 @@ $app->post('/location/{id}/edit', function ($id, Request $request) use ($app) {
     
     $location = new Model\Location($doc,$app);
     $app['validateModel']($app,$location);
+
+    // need to get a name to attach the change record
+    $loc_res = $location->findOne(array('_id'=>$location->_id));
+    //record the change
+    $res = Model\Change::check($location,$loc_res['member']['displayName'],$app);
+
     $location->saveSafe();
     
     return new Response(json_encode(array('message' => 'saved successfully.')), 200,array('Content-Type' => 'application/json'));

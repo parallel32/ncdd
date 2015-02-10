@@ -38,6 +38,7 @@ $app = require __DIR__.'/controllers/admin/c.topic.php';
 $app = require __DIR__.'/controllers/admin/c.stateseminar.php';
 $app = require __DIR__.'/controllers/admin/c.reference.php';
 $app = require __DIR__.'/controllers/admin/c.delegate.php';
+$app = require __DIR__.'/controllers/admin/c.change.php';
 
 /**
  * Before Filter

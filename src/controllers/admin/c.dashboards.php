@@ -68,6 +68,10 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 			$view_vars['bcsr']=$member->searchCount('Board Certified Sr');
 			$view_vars['fr']=$member->searchCount('Former Regents');
 
+			//changes
+			$change = new Model\Change(array(),$app);
+			$view_vars['changes']=$change->fetch($offset=0, $limit=10);
+
 			array_push($view_vars['crumbs'],array('name'=>'Admin','href'=>'/'));
 			return $app['view']->render('dashboards/admin', 'default', $view_vars);
 			break;
