@@ -1044,6 +1044,13 @@ $app->post('/application/edit', function (Request $request) use ($app) {
 		    	$response_status = 400;
 		    }else{
 		    	$member = $application->saveEdit();	
+		    	// now need to update the payment type on the original member record
+		    	if(array_key_exists('payByCheck', $doc)){
+		    		$apply = new Model\Apply(array('_id'=>$doc['_id']),$app);
+		    		$apply = $apply->findById();
+		    		$mem = new Model\Member(array('_id'=>$apply['memberId']),$app);
+		    		$mem->updateByCriteria(array('$set'=>array('renewal.payByCheck'=>$doc['payByCheck'])), array('_id'=>$apply['memberId']));
+		    	}
 		    	$label = 'Application Saved';
 		    	$message = 'Application Successfully Saved.';
 		    	$response_status = 200;
@@ -1056,6 +1063,13 @@ $app->post('/application/edit', function (Request $request) use ($app) {
 			$app['validateModel']($app,$application,$groups=array('update_member'));
 	
 			$member = $application->saveEdit();	
+			// now need to update the payment type on the original member record
+	    	if(array_key_exists('payByCheck', $doc)){
+	    		$apply = new Model\Apply(array('_id'=>$doc['_id']),$app);
+	    		$apply = $apply->findById();
+	    		$mem = new Model\Member(array('_id'=>$apply['memberId']),$app);
+	    		$mem->updateByCriteria(array('$set'=>array('renewal.payByCheck'=>$doc['payByCheck'])), array('_id'=>$apply['memberId']));
+	    	}
 	    	$label = 'Application Saved';
 	    	$message = 'Application Successfully Saved.';
 	    	$response_status = 200;
