@@ -64,6 +64,52 @@
                   </div>
                </div>
 
+               
+               <? if(false):?>
+               <h1>CSV Downloads</h1>
+               <!-- CHANGES (RECENT) -->
+               <div class="row-fluid">
+                  <div class="span12">
+                     <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                     <div class="portlet box blue">
+                        <div class="portlet-title" id="page">
+                           <div class="caption"><i class="icon-copy"></i></div>
+                           <div class="actions">
+                              
+                           </div>
+                        </div>
+                        <div class="portlet-body">
+                           <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                           <table class="table table-striped table-bordered table-hover dataTable" id="changes" aria-describedby="sample_1_info">
+                              <tbody role="alert" aria-live="polite" aria-relevant="all">
+                                 <tr class="gradeX odd">
+                                    <td class=" ">General Members</td>
+                                    <td class=" "><a class="btn blue mini view" href="/member/steamcsv/gm"><i class=" "></i> Download CSV</a></td>
+                                 </tr>
+                                 <tr class="gradeX odd">
+                                    <td class=" ">Sustaining Members</td>
+                                    <td class=" "><a class="btn blue mini view" href="/member/steamcsv/sm"><i class=" "></i> Download CSV</a></td>
+                                 </tr>
+                                 <tr class="gradeX odd">
+                                    <td class=" ">Founding Members</td>
+                                    <td class=" "><a class="btn blue mini view" href="/member/steamcsv/fm"><i class=" "></i> Download CSV</a></td>
+                                 </tr>
+                                 <tr class="gradeX odd">
+                                    <td class=" ">Public Defenders</td>
+                                    <td class=" "><a class="btn blue mini view" href="/member/steamcsv/pd"><i class=" "></i> Download CSV</a></td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                     <!-- END EXAMPLE TABLE PORTLET-->
+                  </div>
+               </div>
+               <div class="clearfix"></div>
+               <!--/ CHANGES (RECENT) -->
+               <? endif; ?>
+
+
                <h1>Members</h1>
                <!-- BEGIN DASHBOARD STATS -->
                <div class="row-fluid">

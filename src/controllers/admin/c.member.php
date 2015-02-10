@@ -14,6 +14,34 @@ use Saw\Model;
 $member = $app['controllers_factory'];
 $member->before($mustbeMEMBER);
 
+$member->get('/streamcsv/{members}', function ($members, Request $request) use ($app) {
+	
+	$member = new Model\Member(array(),$app);
+	switch ($members) {
+		case 'gm':
+			$res = $member->fetchForCSV(Model\Member::$membersip['GENERAL MEMBER']);
+			break;
+		case 'sm':
+			$res = $member->fetchForCSV(Model\Member::$membersip['SUSTAINING MEMBER']);
+			break;
+		case 'fm':
+			$res = $member->fetchForCSV(Model\Member::$membersip['FOUNDING MEMBER']);
+			break;
+		case 'pd':
+			$res = $member->fetchForCSV(Model\Member::$membersip['PUBLIC DEFENDER']);
+			break;
+		
+	}
+	
+	$csv = array();
+	foreach ($res as $key => $value) {
+		$csv_arr[] = implode(',', $value).PHP_EOL;
+	}
+
+    return $app->stream($stream, 200, array('Content-Type' => 'text/csv'));
+
+})->value('members','');
+
 $member->get('/search', function (Request $request) use ($app) {
 	// retrieve from query string
     $query = $request->get('query');

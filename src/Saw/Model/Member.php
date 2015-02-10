@@ -1573,6 +1573,47 @@ class Member extends User {
 		return $resultb;
 
 	}
+
+	public function fetchForCSV($membership,$filter=array()){
+
+		$fields=array('member._id'=>1
+					,'member.firstName'=>1
+					,'member.middleName'=>1
+					,'member.lastName'=>1
+					,'member.primaryPhone'=>1
+					,'member.email'=>1
+					,'member.websites'=>1
+					,'addressLine1'=>1
+					,'addressLine2'=>1
+					,'city'=>1
+					,'state'=>1
+					,'zip'=>1
+					,'country'=>1
+					);
+		
+		switch ($membership) {
+			case self::$membersip['PUBLIC DEFENDER']:
+				$query = array('member.currentMembership'=>self::$membership['PUBLIC DEFENDER'],'member.listed'=>1);
+				$query = array_merge($filter, $query);
+				break;
+			case self::$membersip['SUSTAINING MEMBER']:
+				$query = array('member.currentMembership'=>self::$membership['SUSTAINING MEMBER'],'member.listed'=>1);
+				$query = array_merge($filter, $query);
+				break;
+			case self::$membersip['GENERAL MEMBER']:
+				$query = array('member.currentMembership'=>self::$membership['GENERAL MEMBER'],'member.listed'=>1);
+				$query = array_merge($filter, $query);
+				break;
+			case self::$membersip['FOUNDING MEMBER']:
+				$query = array('member.currentMembership'=>self::$membership['FOUNDING MEMBER'],'member.listed'=>1);
+				$query = array_merge($filter, $query);
+				break;
+		}
+		
+		$result = self::$app['mongo']->find('location',$query,$fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.lastName'=>1));
+		return $result;
+	}
+
     // route for this is in c.utilities.php
     public function removeMember(){
     	// delete member
