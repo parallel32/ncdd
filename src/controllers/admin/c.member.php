@@ -17,28 +17,36 @@ $member->before($mustbeMEMBER);
 $member->get('/streamcsv/{members}', function ($members, Request $request) use ($app) {
 	
 	$member = new Model\Member(array(),$app);
+	error_log(__FILE__.' '.__LINE__.' for variable: membership  ==>'.print_r(Model\Member::$membership['GENERAL MEMBER'],true));
 	switch ($members) {
 		case 'gm':
-			$res = $member->fetchForCSV(Model\Member::$membersip['GENERAL MEMBER']);
+			$res = $member->fetchForCSV(Model\Member::$membership['GENERAL MEMBER']);
 			break;
 		case 'sm':
-			$res = $member->fetchForCSV(Model\Member::$membersip['SUSTAINING MEMBER']);
+			$res = $member->fetchForCSV(Model\Member::$membership['SUSTAINING MEMBER']);
 			break;
 		case 'fm':
-			$res = $member->fetchForCSV(Model\Member::$membersip['FOUNDING MEMBER']);
+			$res = $member->fetchForCSV(Model\Member::$membership['FOUNDING MEMBER']);
 			break;
 		case 'pd':
-			$res = $member->fetchForCSV(Model\Member::$membersip['PUBLIC DEFENDER']);
-			break;
-		
+			$res = $member->fetchForCSV(Model\Member::$membership['PUBLIC DEFENDER']);
+			break;		
 	}
 	
-	$csv = array();
-	foreach ($res as $key => $value) {
-		$csv_arr[] = implode(',', $value).PHP_EOL;
+	$csv = '';		
+    foreach ($res as $key => $value) {
+		unset($value['_id']);
+    	unset($value['id']);
+    	$value2 = $value['member'];
+    	unset($value['member']);
+    	
+    	$new_value = array_merge($value,$value2);
+    	$line = implode(',', $new_value);
+    	$csv.= $line.PHP_EOL;
 	}
-
-    return $app->stream($stream, 200, array('Content-Type' => 'text/csv'));
+	
+    return new Response($csv, 200, array('Content-Type' => 'text/csv'));
+    //return $app['view']->render('member/search', 'blank', $view_vars);
 
 })->value('members','');
 

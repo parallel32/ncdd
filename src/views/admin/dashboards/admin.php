@@ -65,7 +65,7 @@
                </div>
 
                
-               <? if(false):?>
+               <? if(true):?>
                <h1>CSV Downloads</h1>
                <!-- CHANGES (RECENT) -->
                <div class="row-fluid">
@@ -84,19 +84,19 @@
                               <tbody role="alert" aria-live="polite" aria-relevant="all">
                                  <tr class="gradeX odd">
                                     <td class=" ">General Members</td>
-                                    <td class=" "><a class="btn blue mini view" href="/member/steamcsv/gm"><i class=" "></i> Download CSV</a></td>
+                                    <td class=" "><a class="btn blue mini view" href="/member/streamcsv/gm"><i class=" "></i> Download CSV</a></td>
                                  </tr>
                                  <tr class="gradeX odd">
                                     <td class=" ">Sustaining Members</td>
-                                    <td class=" "><a class="btn blue mini view" href="/member/steamcsv/sm"><i class=" "></i> Download CSV</a></td>
+                                    <td class=" "><a class="btn blue mini view" href="/member/streamcsv/sm"><i class=" "></i> Download CSV</a></td>
                                  </tr>
                                  <tr class="gradeX odd">
                                     <td class=" ">Founding Members</td>
-                                    <td class=" "><a class="btn blue mini view" href="/member/steamcsv/fm"><i class=" "></i> Download CSV</a></td>
+                                    <td class=" "><a class="btn blue mini view" href="/member/streamcsv/fm"><i class=" "></i> Download CSV</a></td>
                                  </tr>
                                  <tr class="gradeX odd">
                                     <td class=" ">Public Defenders</td>
-                                    <td class=" "><a class="btn blue mini view" href="/member/steamcsv/pd"><i class=" "></i> Download CSV</a></td>
+                                    <td class=" "><a class="btn blue mini view" href="/member/streamcsv/pd"><i class=" "></i> Download CSV</a></td>
                                  </tr>
                               </tbody>
                            </table>

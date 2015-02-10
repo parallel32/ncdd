@@ -1576,13 +1576,12 @@ class Member extends User {
 
 	public function fetchForCSV($membership,$filter=array()){
 
-		$fields=array('member._id'=>1
-					,'member.firstName'=>1
+		$fields=array(
+					'member.firstName'=>1
 					,'member.middleName'=>1
 					,'member.lastName'=>1
 					,'member.primaryPhone'=>1
 					,'member.email'=>1
-					,'member.websites'=>1
 					,'addressLine1'=>1
 					,'addressLine2'=>1
 					,'city'=>1
@@ -1592,25 +1591,24 @@ class Member extends User {
 					);
 		
 		switch ($membership) {
-			case self::$membersip['PUBLIC DEFENDER']:
+			case self::$membership['PUBLIC DEFENDER']:
 				$query = array('member.currentMembership'=>self::$membership['PUBLIC DEFENDER'],'member.listed'=>1);
 				$query = array_merge($filter, $query);
 				break;
-			case self::$membersip['SUSTAINING MEMBER']:
+			case self::$membership['SUSTAINING MEMBER']:
 				$query = array('member.currentMembership'=>self::$membership['SUSTAINING MEMBER'],'member.listed'=>1);
 				$query = array_merge($filter, $query);
 				break;
-			case self::$membersip['GENERAL MEMBER']:
+			case self::$membership['GENERAL MEMBER']:
 				$query = array('member.currentMembership'=>self::$membership['GENERAL MEMBER'],'member.listed'=>1);
 				$query = array_merge($filter, $query);
 				break;
-			case self::$membersip['FOUNDING MEMBER']:
+			case self::$membership['FOUNDING MEMBER']:
 				$query = array('member.currentMembership'=>self::$membership['FOUNDING MEMBER'],'member.listed'=>1);
 				$query = array_merge($filter, $query);
 				break;
 		}
-		
-		$result = self::$app['mongo']->find('location',$query,$fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.lastName'=>1));
+		$result = self::$app['mongo']->find('location',$query,$fields,$slaveOkay=true,$offset=0,$limit=4000,$sort=array('member.lastName'=>1));
 		return $result;
 	}
 

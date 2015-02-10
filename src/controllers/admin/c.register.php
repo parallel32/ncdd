@@ -301,9 +301,17 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 		$doc['payment']['ownerId'] = $rs_id;
 		$doc['payment']['ownerClass'] = 'RegistrationSeminar';
 
-		$payment = new Model\Payment($doc['payment'],$app);
-		$app['validateModel']($app, $payment,$groups=array('cc'));
-		$paymentId = $payment->charge();
+		
+			$payment = new Model\Payment($doc['payment'],$app);
+			$app['validateModel']($app, $payment,$groups=array('cc'));
+		try {
+			$paymentId = $payment->charge();	
+		} catch (Exception $e) {
+			error_log(__FILE__.' '.__LINE__.' for variable: e  ==>'.print_r($e->getMessage(),true));
+			$rgis = new Model\Registration(array('_id'=>$rs_id),$app);			
+			$rgis->remove();
+			throw new \Saw\Exceptions\SawException(new \Saw\Exceptions\PaymentException(),"The transaction failed.  Please check your card information and try again.");
+		}		
 		
 	}
 	if(array_key_exists('currentStatus', $doc) && $doc['currentStatus'] == Model\Registration::$status['SCHOLARSHIP']){

@@ -607,6 +607,7 @@ EOT;
 	 */
 	public function charge(){
 		try {
+			//throw new \Saw\Exceptions\SawException(new Exceptions\DomainException(),"The transaction failed.  Please try again. Processing Message: FAAAAAIIIILLLLLEEED Code:");
 			//*
 			// FDGG charge request AND response
 			$this->expMonth = str_pad($this->expMonth, 2, '0', STR_PAD_LEFT); 
