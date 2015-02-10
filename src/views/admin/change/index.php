@@ -76,7 +76,7 @@
                                  </tr>
                                  <? endforeach;?>
                                  <? else: ?>
-                                    <td colspan="5">No pages at the moment.</td>
+                                    <td colspan="5">No changes at the moment.</td>
                                  <? endif;?>
                               </tbody>
                            </table>
