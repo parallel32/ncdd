@@ -294,11 +294,11 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 
 
 	$app['validateModel']($app, $rs);
-	$rs_id = $rs->insert();
+	
 		
 	if ($doc['currentPaymentType'] == Model\Registration::$paymentType['CREDIT']) {
 		
-		$doc['payment']['ownerId'] = $rs_id;
+		$doc['payment']['ownerId'] = '';
 		$doc['payment']['ownerClass'] = 'RegistrationSeminar';
 
 		
@@ -306,10 +306,13 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 			$app['validateModel']($app, $payment,$groups=array('cc'));
 		try {
 			$paymentId = $payment->charge();	
+			$rs_id = $rs->insert();
+			$payment_update = new Model\Payment(array('ownerId'=>$rs_id,'_id'=>$paymentId),$app);
+			$payment_update->saveSafe();
 		} catch (Exception $e) {
 			error_log(__FILE__.' '.__LINE__.' for variable: e  ==>'.print_r($e->getMessage(),true));
-			$rgis = new Model\Registration(array('_id'=>$rs_id),$app);			
-			$rgis->remove();
+			//$rgis = new Model\Registration(array('_id'=>$rs_id),$app);			
+			//$rgis->remove();
 			throw new \Saw\Exceptions\SawException(new \Saw\Exceptions\PaymentException(),"The transaction failed.  Please check your card information and try again.");
 		}		
 		

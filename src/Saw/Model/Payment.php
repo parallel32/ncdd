@@ -108,8 +108,8 @@ class Payment extends Model {
 		$metadata->addPropertyConstraint('email', new Constraints\Email(array('message'=>'invalid email','groups' => array('check','cc','manual','product-purchase'))));
 		
 		// product-purchase group isn't required here because the payment must validate before an Order record can be created
-		$metadata->addPropertyConstraint('ownerId', new Constraints\NotBlank(array('groups' => array('cc','manual')))); 
-		$metadata->addPropertyConstraint('ownerClass', new Constraints\NotBlank(array('groups' => array('cc','manual'))));
+		//$metadata->addPropertyConstraint('ownerId', new Constraints\NotBlank(array('groups' => array('cc','manual')))); 
+		//$metadata->addPropertyConstraint('ownerClass', new Constraints\NotBlank(array('groups' => array('cc','manual'))));
 		
 		$metadata->addPropertyConstraint('description', new Constraints\NotBlank(array('groups' => array('check','cc','manual','product-purchase'))));
 		$metadata->addPropertyConstraint('title', new Constraints\NotBlank(array('groups' => array('check','cc','manual','product-purchase'))));
