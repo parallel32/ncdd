@@ -294,7 +294,7 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 
 
 	$app['validateModel']($app, $rs);
-	
+	$rs_id = '';
 		
 	if ($doc['currentPaymentType'] == Model\Registration::$paymentType['CREDIT']) {
 		
