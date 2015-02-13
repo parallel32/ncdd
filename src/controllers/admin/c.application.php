@@ -290,9 +290,16 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
     $doc['userAgent'] = $request->headers->get('User-Agent');
 
 	$application = new Model\ApplyNewMember($doc, $app);
+	$mem = new Model\Member(array('email'=>$doc['email']),$app);
+
 	if(!empty($doc['email']) && $application->findByEmail()){
     	$response_arr = array('message'=>"Our records indicate you have already submitted an application.  Please Log-in if you are looking for another Application or contact NCDD directly.",
                               "invalidFields"=>array(array('name'=>'email','message'=>'Our records indicate you have already submitted an application.  Please Log-in if you are looking for another Application or contact NCDD directly.')));
+        return new Response(json_encode($response_arr), 403,array('Content-Type' => 'application/json'));
+    }
+    if(!empty($doc['email']) && $mem->findByEmail()){
+    	$response_arr = array('message'=>"Our records indicate you are already a member.  Please Log-in or contact NCDD directly.",
+                              "invalidFields"=>array(array('name'=>'email','message'=>'Our records indicate you are already a member.  Please Log-in or contact NCDD directly.')));
         return new Response(json_encode($response_arr), 403,array('Content-Type' => 'application/json'));
     }
 
