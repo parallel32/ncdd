@@ -567,7 +567,7 @@ $app->get('/registrations/seminar/{seminarId}/{offset}/{limit}', function ($semi
 	$submitted = $registration->fetchByStatusSeminar($seminarId,'SUBMITTED',$offset, $limit);
 	$scholarship = $registration->fetchByStatusSeminar($seminarId,'SCHOLARSHIP',$offset, $limit);
 	//$deposit = $registration->fetchByStatusSeminar($seminarId,'DEPOSIT',$offset, $limit);
-	$depositbalance = $registration->fetchByStatusSeminar($seminarId,'DEPOSITBALANCE',$offset, $limit);
+	$depositbalance = $registration->fetchDepositStatus($seminarId,$offset, $limit);
 	$paid = $registration->fetchByStatusSeminar($seminarId,'PAID',$offset, $limit);
 	$crumbs = array(array('name'=>'Seminars','href'=>'/seminar')
 					,array('name'=>$seminar['headline'],'href'=>'/seminar/view/'.$seminar['_id'])

@@ -154,6 +154,29 @@ class RegistrationSeminar extends Registration {
 		return $result;
 
 	}
+
+	public function fetchDepositStatus($seminarId, $offset=0,$limit=100){
+		$seminarId = (is_object($seminarId)) ? $seminarId : new \MongoId($seminarId);
+		$query = array('seminarId'=>$seminarId,'currentStatus'=>array('$in'=>array(self::$status['DEPOSIT'],self::$status['DEPOSITBALANCE'])));
+		$fields = array('name'=>true
+						,'email'=>true
+						,'phone'=>true
+						,'currentStatus'=>true
+						,'currentPaymentType'=>true
+						,'class'=>true
+						,'submittedDate'=>true
+						,'paidDate'=>true
+						,'_id'=>true
+						,'memberId'=>true
+						,'paymentId'=>true
+						,'seminarId'=>true
+						);
+		$sort=array('submittedDate.date'=>-1);
+		$result = $this->find($query,$fields,$slaveOkay=true,$sort,(int)$offset,(int)$limit);
+		//error_log('fetch:'.print_r($result,true));
+		return $result;
+
+	}
 	
 		
 }
