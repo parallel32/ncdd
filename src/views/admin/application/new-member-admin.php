@@ -713,6 +713,7 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                      <!--/span--
                   </div>
                   -->
+
                   <div class="row-fluid">
                      <div class="span6 ">
                         <div class="control-group">
@@ -725,7 +726,7 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                      </div>
                      <!--/span-->
                   </div>
-                  </div>
+                  
                   <h3 class="form-section">8. Promotional Code</h3>
                   <div class="row-fluid">
                      <div class="span6 ">
@@ -747,7 +748,9 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                      </p>
                      </div>
                   </div>
-                  
+
+                  </div>
+
                   
                   
                   
