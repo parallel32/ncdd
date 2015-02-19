@@ -122,6 +122,11 @@ $app->get('/', function (Request $request) use ($app) {
 	return new Response($app['view']->render('page/home', 'content',$view_vars), 200,array('Content-Type' => 'text/html', 'Expires'=>gmdate("D, d M Y H:i:s", time() -15552000) . " GMT"));
 });
 
+$app->get('/r7vvqIM.html', function (Request $request) use ($app) {
+	
+	return new Response('r7vvqIM', 200,array('Content-Type' => 'text/html', 'Expires'=>gmdate("D, d M Y H:i:s", time() -15552000) . " GMT"));
+});
+
 $app->get('/dui-news', function (Request $request) use ($app) {
 	$view_vars['slogan_block'] = '';
 	$page_vars = $app['get_pages']('dui-news');
