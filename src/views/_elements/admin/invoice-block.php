@@ -84,7 +84,7 @@
                             //&& array_key_exists('payment', $member) && array_key_exists('renewalREUSE', $member['payment']) && $member['payment']['renewalREUSE'] == 'yes'
                             && is_array($member) && array_key_exists('payment', $member) 
                             && is_array($member['payment']) && array_key_exists('number', $member['payment']) 
-                            && !empty($member['payment']['number'])
+                            //&& !empty($member['payment']['number'])
                             && $application['membershipDues'] > 50
                             && ($application['promocode'] == 'NCDD2015')
                         ): 
