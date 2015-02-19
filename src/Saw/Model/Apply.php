@@ -265,7 +265,14 @@ class Apply extends Model {
 				break;
 		}
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort,(int)$offset,(int)$limit);
-		//error_log('fetch:'.print_r($result,true));
+		
+		// include the member payment record
+		for ($i=0; $i < count($result); $i++) { 
+			$member = new Member(array('_id'=>$result[$i]['memberId']),self::$app);
+			$member = $member->findById();
+			$result[$i]['member'] = $member;
+		}
+
 		return $result;
 
 	}
@@ -344,6 +351,14 @@ class Apply extends Model {
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('paidDate.date'=>-1),(int)$offset,(int)$limit);
 		//error_log('fetch:'.print_r($query,true));
 		//error_log('result:'.print_r($result,true));
+
+		// include the member payment record
+		for ($i=0; $i < count($result); $i++) { 
+			$member = new Member(array('_id'=>$result[$i]['memberId']),self::$app);
+			$member = $member->findById();
+			$result[$i]['member'] = $member;
+		}
+		
 		return $result;
 
 	}

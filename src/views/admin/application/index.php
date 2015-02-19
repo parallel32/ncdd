@@ -134,6 +134,7 @@
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
                               <tr role="row">
+                                 <th class=""></th>
                                  <th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-480">Status</th>
@@ -148,7 +149,10 @@
                               <? if(!empty($this->vars['trial'])): foreach($this->vars['trial'] as $application): ?>
                               <tr class="gradeX odd <?=(array_key_exists('currentStatus',$application['trial'])) ? ( \Saw\Model\Trial::$status['ACTIVE'] == $application['trial']['currentStatus']) ? 'success' :'error' : 'warning';?>">
                                  <? $middleName = (!empty($application['middleName'])) ? ' '.$application['middleName'].' ':' '; ?>
-                                 <td class=" "><?=$application['firstName'].$middleName.$application['lastName']?></td>
+                                 <? $declineCount = (is_array($application['member']) && array_key_exists('payment',$application['member']) && is_array($application['member']['payment']) && !empty($application['member']['payment']) && array_key_exists('declineCount',$application['member']['payment']) && $application['member']['payment']['declineCount'] > 0) ? '('.$application['member']['payment']['declineCount'].')': ''; ?>
+                                 <? $renewalREUSE = (is_array($application['member']) && array_key_exists('payment',$application['member']) && is_array($application['member']['payment']) && !empty($application['member']['payment']) && array_key_exists('renewalREUSE',$application['member']['payment']) && $application['member']['payment']['renewalREUSE'] == 'yes') ? 'purple': 'red'; ?>
+                                 <td class=" "><?=(is_array($application['member']) && array_key_exists('payment',$application['member']) && is_array($application['member']['payment']) && !empty($application['member']['payment']) && !empty($application['member']['payment']['number']) && !empty($application['member']['payment']['cvc'])) ? '<a data-id="'.$application['member']['_id'].'" class="btn '.$renewalREUSE.' mini view card">cc'.$declineCount.'</a>':'' ?></td><td class=" "><?=$application['firstName'].$middleName.$application['lastName']?></td>
+
                                  <td class="hidden-phone"><?=$application['email']?></td>
                                  <td class="hidden-480 "><?=(array_key_exists('currentStatus',$application['trial'])) ? \Saw\Model\Trial::$statusReversed[$application['trial']['currentStatus']]: 'no status set';?></td>
 
@@ -191,6 +195,7 @@
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
                               <tr role="row">
+                                 <th class=""></th>
                                  <th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-480">Area</th>
@@ -203,7 +208,9 @@
                               <? if(!empty($this->vars['approved'])): foreach($this->vars['approved'] as $application): ?>
                               <tr class="gradeX odd">
                                  <? $middleName = (!empty($application['middleName'])) ? ' '.$application['middleName'].' ':' '; ?>
-                                 <td class=" "><?=$application['firstName'].$middleName.$application['lastName']?></td>
+                                 <? $declineCount = ( is_array($application['member']) && array_key_exists('payment',$application['member']) && is_array($application['member']['payment']) && !empty($application['member']['payment']) && array_key_exists('declineCount',$application['member']['payment']) && $application['member']['payment']['declineCount'] > 0) ? '('.$application['member']['payment']['declineCount'].')': ''; ?>
+                                 <? $renewalREUSE = (is_array($application['member']) && array_key_exists('payment',$application['member']) && is_array($application['member']['payment']) && !empty($application['member']['payment']) && array_key_exists('renewalREUSE',$application['member']['payment']) && $application['member']['payment']['renewalREUSE'] == 'yes') ? 'purple': 'red'; ?>
+                                 <td class=" "><?=(is_array($application['member']) && array_key_exists('payment',$application['member']) && is_array($application['member']['payment']) && !empty($application['member']['payment']) && !empty($application['member']['payment']['number']) && !empty($application['member']['payment']['cvc'])) ? '<a data-id="'.$application['member']['_id'].'" class="btn '.$renewalREUSE.' mini view card">cc'.$declineCount.'</a>':'' ?></td><td class=" "><?=$application['firstName'].$middleName.$application['lastName']?></td>
                                  <td class="hidden-phone"><?=$application['email']?></td>
                                  <td class="hidden-480 "><?=$application['city'].', '.$application['state']?></td>
                                  <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($application['approvedDate']['fullDateTime']), $application['timeZone']); ?>
@@ -241,6 +248,7 @@
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
                               <tr role="row">
+                                 <th class=""></th>
                                  <th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-480">Area</th>
@@ -253,7 +261,9 @@
                               <? if(!empty($this->vars['ncdd2015promocode'])): foreach($this->vars['ncdd2015promocode'] as $application): ?>
                               <tr class="gradeX odd">
                                  <? $middleName = (!empty($application['middleName'])) ? ' '.$application['middleName'].' ':' '; ?>
-                                 <td class=" "><?=$application['firstName'].$middleName.$application['lastName']?></td>
+                                 <? $declineCount = (is_array($application['member']) && array_key_exists('payment',$application['member']) && is_array($application['member']['payment']) && !empty($application['member']['payment']) && array_key_exists('declineCount',$application['member']['payment']) && $application['member']['payment']['declineCount'] > 0) ? '('.$application['member']['payment']['declineCount'].')': ''; ?>
+                                 <? $renewalREUSE = (is_array($application['member']) && array_key_exists('payment',$application['member']) && is_array($application['member']['payment']) && !empty($application['member']['payment']) && array_key_exists('renewalREUSE',$application['member']['payment']) && $application['member']['payment']['renewalREUSE'] == 'yes') ? 'purple': 'red'; ?>
+                                 <td class=" "><?=(is_array($application['member']) && array_key_exists('payment',$application['member']) && is_array($application['member']['payment']) && !empty($application['member']['payment']) && !empty($application['member']['payment']['number']) && !empty($application['member']['payment']['cvc'])) ? '<a data-id="'.$application['member']['_id'].'" class="btn '.$renewalREUSE.' mini view card">cc'.$declineCount.'</a>':'' ?></td><td class=" "><?=$application['firstName'].$middleName.$application['lastName']?></td>
                                  <td class="hidden-phone "><?=$application['email']?></td>
                                  <td class="hidden-480 "><?=$application['city'].', '.$application['state']?></td>
                                  <td class="hidden-480 "><?=$application['paidDate']['monthDay'].' '.$application['paidDate']['shortTime']?></td>
@@ -295,6 +305,7 @@
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
                               <tr role="row">
+                                 <th class=""></th>
                                  <th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-480">Area</th>
@@ -307,7 +318,9 @@
                               <? if(!empty($this->vars['ncdd2014promocode'])): foreach($this->vars['ncdd2014promocode'] as $application): ?>
                               <tr class="gradeX odd">
                                  <? $middleName = (!empty($application['middleName'])) ? ' '.$application['middleName'].' ':' '; ?>
-                                 <td class=" "><?=$application['firstName'].$middleName.$application['lastName']?></td>
+                                 <? $declineCount = (is_array($application['member']) && array_key_exists('payment',$application['member']) && is_array($application['member']['payment']) && !empty($application['member']['payment']) && array_key_exists('declineCount',$application['member']['payment']) && $application['member']['payment']['declineCount'] > 0) ? '('.$application['member']['payment']['declineCount'].')': ''; ?>
+                                 <? $renewalREUSE = (is_array($application['member']) && array_key_exists('payment',$application['member']) && is_array($application['member']['payment']) && !empty($application['member']['payment']) && array_key_exists('renewalREUSE',$application['member']['payment']) && $application['member']['payment']['renewalREUSE'] == 'yes') ? 'purple': 'red'; ?>
+                                 <td class=" "><?=(is_array($application['member']) && array_key_exists('payment',$application['member']) && is_array($application['member']['payment']) && !empty($application['member']['payment']) && !empty($application['member']['payment']['number']) && !empty($application['member']['payment']['cvc'])) ? '<a data-id="'.$application['member']['_id'].'" class="btn '.$renewalREUSE.' mini view card">cc'.$declineCount.'</a>':'' ?></td><td class=" "><?=$application['firstName'].$middleName.$application['lastName']?></td>
                                  <td class="hidden-phone "><?=$application['email']?></td>
                                  <td class="hidden-480 "><?=$application['city'].', '.$application['state']?></td>
                                  <td class="hidden-480 "><?=$application['paidDate']['monthDay'].' '.$application['paidDate']['shortTime']?></td>
@@ -348,6 +361,7 @@
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
                               <tr role="row">
+                                 <th class=""></th>
                                  <th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-480">Area</th>
@@ -360,7 +374,9 @@
                               <? if(!empty($this->vars['newlypaid'])): foreach($this->vars['newlypaid'] as $application): ?>
                               <tr class="gradeX odd">
                                  <? $middleName = (!empty($application['middleName'])) ? ' '.$application['middleName'].' ':' '; ?>
-                                 <td class=" "><?=$application['firstName'].$middleName.$application['lastName']?></td>
+                                 <? $declineCount = (is_array($application['member']) && array_key_exists('payment',$application['member']) && is_array($application['member']['payment']) && !empty($application['member']['payment']) && array_key_exists('declineCount',$application['member']['payment']) && $application['member']['payment']['declineCount'] > 0) ? '('.$application['member']['payment']['declineCount'].')': ''; ?>
+                                 <? $renewalREUSE = (is_array($application['member']) && array_key_exists('payment',$application['member']) && is_array($application['member']['payment']) && !empty($application['member']['payment']) && array_key_exists('renewalREUSE',$application['member']['payment']) && $application['member']['payment']['renewalREUSE'] == 'yes') ? 'purple': 'red'; ?>
+                                 <td class=" "><?=(is_array($application['member']) && array_key_exists('payment',$application['member']) && is_array($application['member']['payment']) && !empty($application['member']['payment']) && !empty($application['member']['payment']['number']) && !empty($application['member']['payment']['cvc'])) ? '<a data-id="'.$application['member']['_id'].'" class="btn '.$renewalREUSE.' mini view card">cc'.$declineCount.'</a>':'' ?></td><td class=" "><?=$application['firstName'].$middleName.$application['lastName']?></td>
                                  <td class="hidden-phone "><?=$application['email']?></td>
                                  <td class="hidden-480 "><?=$application['city'].', '.$application['state']?></td>
                                  <td class="hidden-480 "><?=$application['paidDate']['monthDay'].' '.$application['paidDate']['shortTime']?></td>
