@@ -725,18 +725,27 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                      </div>
                      <!--/span-->
                   </div>
+                  </div>
                   <h3 class="form-section">8. Promotional Code</h3>
                   <div class="row-fluid">
                      <div class="span6 ">
                         <div class="control-group">
-                           <label class="control-label">If you have a promo code please enter it here:</label>
+                           <label class="control-label">Enter the promo code NCDD2015 to obtain the $50 discount and free 2013 digital copy of the NHTSA Sobriety Testing Participant Manual with agreement for automated dues renewal. Does not apply to public defender dues. Some restrictions to membership apply. See ncdd.com for full membership eligibility requirements. Offer expires March 15, 2015. </label>
                            <div class="controls">
                               <input type="text" name="doc[promocode]" class="m-wrap span12 promocode">
-                              <input type="hidden" id="promocodetype" value="discount">
+                              <input type="hidden" id="promocodetype">
                            </div>
                         </div>
                      </div>
                      <!--/span-->
+                  </div>
+                  <div id="promocodeverification" class="row-fluid hide">
+                     <div class="span10 ">
+                        <p class="alert alert-info">
+                        <b>I authorize the NCDD to store my credit card for future Annual Dues payments.</b>
+                        <span class="control-group"><span class="controls"><input type="checkbox" name="doc[termsAcknowledgement]" class="termsAcknowledgement" value="yes">Yes, I agree.</span></span>
+                     </p>
+                     </div>
                   </div>
                   
                   
@@ -816,15 +825,6 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                      </div>
                      <br><br>
                   <br>
-                  <div class="row-fluid">
-                     <div class="span10 ">
-                        <p class="alert alert-info">
-                        <b>I authorize the NCDD to store my credit card for future Annual Dues payments.</b>
-                        <span class="control-group"><span class="controls"><input type="checkbox" name="doc[termsAcknowledgement]" class="termsAcknowledgement" value="yes">Yes, I agree.</span></span>
-                        </p>
-                     </div>
-                     
-                  </div>
                   
                   <div class="row-fluid">
                      <div class="span10 ">

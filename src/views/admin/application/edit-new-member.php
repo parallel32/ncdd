@@ -711,7 +711,7 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                   <div class="row-fluid">
                      <div class="span6 ">
                         <div class="control-group">
-                           <label class="control-label">If you have a promo code please enter it here:</label>
+                           <label class="control-label">Enter the promo code NCDD2015 to obtain the $50 discount and free 2013 digital copy of the NHTSA Sobriety Testing Participant Manual with agreement for automated dues renewal. Does not apply to public defender dues. Some restrictions to membership apply. See ncdd.com for full membership eligibility requirements. Offer expires March 15, 2015. </label>
                            <div class="controls">
                               <input type="text" name="doc[promocode]" class="m-wrap span12 promocode" value="<?=(array_key_exists('promocode', $this->vars['application'])) ? $this->vars['application']['promocode'] : ''?>">
                               <input type="hidden" id="promocodetype" value="discount">

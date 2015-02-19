@@ -305,6 +305,15 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 
     // validate the application
     $app['validateModel']($app,$application);
+    if(!empty($doc['promocode']) && array_key_exists('termsAcknowledgement', $doc) && $doc['termsAcknowledgement'] != 'yes'){
+    	$response_arr = array('message'=>"Please check the authorization checkbox above and agree in order to use the promo code.",
+                              "invalidFields"=>array(array('name'=>'termsAcknowledgement','message'=>'Please check the authorization checkbox above and agree in order to use the promo code.')
+                              								,array('name'=>'promocode','message'=>'')
+                              ));
+        return new Response(json_encode($response_arr), 403,array('Content-Type' => 'application/json'));
+    }
+    
+
     
     // re-calculate the amount in case the amount gets compromised on the way up to the server
 	$dues = array();

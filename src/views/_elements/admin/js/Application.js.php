@@ -23,7 +23,7 @@
         }else{
         	the_element.addClass('error');
    			if(the_element.find('.help-block.error').length == 0){
-   				the_element.append('<span for="yearsInLawPractice" class="help-block error " style="">Please enter a valid year only.  Alpha characters and full dates will cause this to keep appearing. </span>');
+   				the_element.append('<span for="yearsInLawPractice" class="help-block error " style="">Please enter a valid year only.  Alpha characters and full dates will cause this error to keep appearing. </span>');
    			}
         }
         publicdefenderlogic();
@@ -216,7 +216,7 @@
         	yearsinlawpracticelogic();        	
         	promocodelogic();
         });
-        $('#saw-form .promocode').keyup(function(){
+        $('.promocode').keyup(function(){
         	window.clearTimeout(window.promocodetimeoutid);//cancel previous timer so they don't queue up when you're typing
 			window.promocodetimeoutid = window.setTimeout(function(theThis){ // delay so it's not in every key-up stroke
 				if(theThis.val().length == 0){
@@ -225,20 +225,23 @@
 	        	io.saw.FormPost.activate({postUrl:'/application/promocode'
 				   ,blockUI:'no'
 				   ,serializeSelector:'.promocode'
+				   ,formName:''
 				   ,postOnComplete:function(responseObj,responseStatus){}
 				   ,postOnSuccess:function(responseObj){
-				   		var the_element = $('#saw-form .control-group :input.promocode').parents('.control-group');
+				   		var the_element = $('.control-group :input.promocode').parents('.control-group');
 				   		if(responseObj.valid == 'yes'){
 				   			$('#promocodetype').val(responseObj.type);
 				   			the_element.addClass('success');
 				   			if(the_element.find('.help-block.success').length == 0){
 				   				the_element.append('<span for="promocode" class="help-block success " style="">'+responseObj.message+'</span>');
+				   				$('#promocodeverification').show();
 				   			}
 				   		}
 				   		if(responseObj.valid == 'no'){
 				   			$('#promocodetype').val('invalid');
 				   			the_element.find('.help-block.success').remove();
 							the_element.removeClass('success');
+							$('#promocodeverification').hide();
 				   		}
 					yearsinlawpracticelogic();
 					promocodelogic();   		
