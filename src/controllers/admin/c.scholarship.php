@@ -44,16 +44,16 @@ $app->post('/scholarship/apply', function (Request $request) use ($app) {
     // validate the model
     $app['validateModel']($app,$scholarship);
 
-    if($scholarship->findByEmail()){
+    /*if($scholarship->findByEmail()){
     	$label = 'Success, but...';
     	$message = 'Our records indicate you have already submitted a scholarship.  Please contact NCDD directly if you are looking for another scholarship.';
     	$response_status = 400;
-    }else{
+    }else{*/
     	$scholarship->insert();
     	$label = 'Your scholarship was received.  Thank you.';
     	$message = 'Thank you for your interest in NCDD.  Your scholarship has been submitted.  You will be notified by the College when it is approved or if there are any questions.';
     	$response_status = 200;
-    }
+    /*}*/
     return new Response(json_encode(array('message' => $message,'label'=>$label)), $response_status,array('Content-Type' => 'application/json'));
 })->after(function (Request $request, Response $response, Silex\Application $app) {
 		if((int)$response->getStatusCode() == 200):
