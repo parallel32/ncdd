@@ -32,8 +32,10 @@ class SeminarRegister extends Model {
 
 
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
-		$metadata->addPropertyConstraint('maxRegistrations', new Constraints\Type(array('type'=>'numeric','message'=>'Please input only numbers.')));
 		$metadata->addConstraint(new Callback(array(
+            'methods' => array('isValidMaxRegistration'),
+        )));
+        $metadata->addConstraint(new Callback(array(
             'methods' => array('isValidPrice'),
         )));
         $metadata->addConstraint(new Callback(array(
@@ -41,6 +43,17 @@ class SeminarRegister extends Model {
         )));
 	}
 
+	/**
+	 * validator helper function
+	*/
+	public function isValidMaxRegistration(ExecutionContext $context){
+		
+		if(!empty($this->maxRegistrations) && !is_numeric($this->maxRegistrations)){
+            $propertyPath = $context->getPropertyPath().'depositDueDate';
+        	$context->addViolationAtPath($propertyPath,'Only numbers are allowed.', array(), null);
+		}
+		
+	}
 	/**
 	 * validator helper function
 	*/
