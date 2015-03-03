@@ -235,6 +235,9 @@
 				   			if(the_element.find('.help-block.success').length == 0){
 				   				the_element.append('<span for="promocode" class="help-block success " style="">'+responseObj.message+'</span>');
 				   				$('#promocodeverification').show();
+				   				if(responseObj.type == 'trial'){
+				   					$('#promocodeverification').hide();
+				   				}
 				   			}
 				   		}
 				   		if(responseObj.valid == 'no'){
