@@ -267,6 +267,13 @@
                                        <span class="help-block">Turn ON / OFF; whether to ask the previously attended seminars question.</span>
                                     </div>
                                  </div>
+                                 <div class="control-group">
+                                    <label class="control-label">Max Registrations</label>
+                                    <div class="controls">
+                                       <input type="text" name="doc[register][maxRegistrations]" value="<?=(is_array($seminar['register']) && array_key_exists('maxRegistrations',$seminar['register']) && !empty($seminar['register']['maxRegistrations'])) ? $seminar['register']['maxRegistrations'] : '';?>" data-required="1" class="span6 m-wrap maxRegistrations">
+                                       <span class="help-block">When this is set, a max registration limit will be imposed and once reached the registration form will convert to a non-payment registrstion form that will populate the waiting list.</span>
+                                    </div>
+                                 </div>
                               </div>
                            </div>
 

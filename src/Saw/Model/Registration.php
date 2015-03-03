@@ -14,8 +14,8 @@ use Symfony\Component\Validator\ExecutionContext;
 class Registration extends Model {
 	
 	public $collection = 'registration';
-	static public $status = array('SUBMITTED'=>10,'DEPOSIT'=>20,'DEPOSITBALANCE'=>30,'PAID'=>40,'SCHOLARSHIP'=>50);
-	static public $statusReversed = array(10=>'SUBMITTED',20=>'DEPOSIT',30=>'DEPOSITBALANCE',40=>'PAID',50=>'SCHOLARSHIP');
+	static public $status = array('SUBMITTED'=>10,'WAITLIST'=>15,'DEPOSIT'=>20,'DEPOSITBALANCE'=>30,'PAID'=>40,'SCHOLARSHIP'=>50);
+	static public $statusReversed = array(10=>'SUBMITTED',15=>'WAITLIST',20=>'DEPOSIT',30=>'DEPOSITBALANCE',40=>'PAID',50=>'SCHOLARSHIP');
 	public $currentStatus;
 	static public $paymentType = array('CHECK'=>10,'CREDIT'=>40,'SCHOLARSHIP'=>60);
 	static public $paymentTypeReversed = array(10=>'CHECK',40=>'CREDIT',60=>'SCHOLARSHIP');

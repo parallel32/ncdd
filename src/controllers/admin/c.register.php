@@ -226,10 +226,11 @@ $app->get('/registration/{paymentId}/pay/{registrationId}', function ($paymentId
     return new Response(json_encode(array('message' => 'Paid successfully')), 200,array('Content-Type' => 'application/json'));
 })->before($mustbeMEMBER);
 
-
+/**
 //////////////////////////////
 // NEW SEMINAR REGISTRATION //
 //////////////////////////////
+*/
 $app->get('/registration/seminar/{seminarId}/{slug}', function ($seminarId, $slug, Request $request) use ($app) {
 
 	// attempt to determine if the user is logged in
@@ -245,10 +246,26 @@ $app->get('/registration/seminar/{seminarId}/{slug}', function ($seminarId, $slu
 
 	$seminar = new Model\Seminar(array('_id'=>$seminarId),$app);
 	$seminar = $seminar->findById();
-	$view_vars = array('seminar'=>$seminar,
-						'member'=>$member,
-						'location'=>$location,
-						'layout_title'=>'Registration for '.$seminar['headline']
+	$registration = new Model\RegistrationSeminar($doc=array(), $app);
+	$depositbalance = $registration->fetchDepositStatus($seminarId,$offset=0, $limit=10000);
+	$paid = $registration->fetchByStatusSeminar($seminarId,'PAID',$offset=0, $limit=10000);
+	
+	$paid = (!empty($paid)) ? count($paid) : 0;
+    $deposit = (!empty($depositbalance)) ? count($depositbalance) : 0;
+    $total = $paid + $deposit;
+    if(array_key_exists('maxRegistrations', $seminar['register']) 
+       && !empty($seminar['register']['maxRegistrations']) 
+       && $seminar['register']['maxRegistrations'] == $total):
+    	$activate_waitlist = true;
+    else:
+    	$activate_waitlist = false;
+    endif;
+
+	$view_vars = array('seminar'=>$seminar
+						,'member'=>$member
+						,'location'=>$location
+						,'layout_title'=>'Registration for '.$seminar['headline']
+						,'activate_waitlist'=>$activate_waitlist
 	);
 	return $app['view']->render('registration/seminar', 'blank',$view_vars);
 });
@@ -261,79 +278,147 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 	$user['suppress_emails'] = $request->get('suppress_emails');
 	$app['session']->set('user',$user);
 
-	$registrationFee = $doc['registrationFee'];
-	$hardCopy = (array_key_exists('hardCopy',$doc)) ? $doc['hardCopy'] : '';
-	$hardCopyFee = (array_key_exists('hardCopyFee',$doc)) ? $doc['hardCopyFee'] : '';
-	if($hardCopy == 'NO'){
-		$hardCopyFee = 0;
-	}
-	$depositQuestion = (array_key_exists('depositQuestion',$doc)) ? $doc['depositQuestion'] : '';
-	if($depositQuestion == 'yes'){
-		$registrationFee = $doc['deposit'];
-		$doc['currentStatus'] = Model\Registration::$status['DEPOSIT'];
-	}
 
-	if(array_key_exists('registrationNumber', $doc) && Model\Scholarship::checkRegNum((int)$doc['registrationNumber'],$app)){
-		$registrationFee = 0;
-		$doc['currentStatus'] = Model\Registration::$status['SCHOLARSHIP'];
-	}
 
-	$doc['total'] = (int)$hardCopyFee+(int)$registrationFee;
+
+	///////////////
+	// wait list //
+	///////////////
+	$seminar = new Model\Seminar(array('_id'=>$doc['seminarId']),$app);
+	$seminar = $seminar->findById();
+	$registration = new Model\RegistrationSeminar(array(), $app);
+	$depositbalance = $registration->fetchDepositStatus($doc['seminarId'],$offset=0, $limit=10000);
+	$paid = $registration->fetchByStatusSeminar($doc['seminarId'],'PAID',$offset=0, $limit=10000);
 	
-	/**
-	
-	*/
-	$paymentId = new \stdClass();	
-	$rs = new Model\RegistrationSeminar($doc,$app);
+	$paid = (!empty($paid)) ? count($paid) : 0;
+    $deposit = (!empty($depositbalance)) ? count($depositbalance) : 0;
+    $total = $paid + $deposit;
+    if(array_key_exists('maxRegistrations', $seminar['register']) 
+       && !empty($seminar['register']['maxRegistrations']) 
+       && $seminar['register']['maxRegistrations'] == $total):
+    	$activate_waitlist = true;
+    	$_POST['activate_waitlist'] = true;
+    else:
+    	$activate_waitlist = false;
+	    $_POST['activate_waitlist'] = false;
+    endif;
 
-	if(!empty($doc['email']) && $rs->findByEmail()){
-    	$response_arr = array('message'=>"Our records indicate you have already submitted a registration.  If you believe this message is in error please contact NCDD directly.",
-                              "invalidFields"=>array(array('name'=>'email','message'=>'Our records indicate you have already submitted a registration.  If you believe this message is in error please contact NCDD directly.')));
-        return new Response(json_encode($response_arr), 403,array('Content-Type' => 'application/json'));
-    }
 
 
-	$app['validateModel']($app, $rs);
-	$rs_id = '';
-		
-	if ($doc['currentPaymentType'] == Model\Registration::$paymentType['CREDIT']) {
-		
-		$doc['payment']['ownerId'] = '';
-		$doc['payment']['ownerClass'] = 'RegistrationSeminar';
 
-		
-			$payment = new Model\Payment($doc['payment'],$app);
-			$app['validateModel']($app, $payment,$groups=array('cc'));
-		try {
-			$paymentId = $payment->charge();	
-			$rs_id = $rs->insert();
-			$payment_update = new Model\Payment(array('ownerId'=>$rs_id,'_id'=>$paymentId),$app);
-			$payment_update->saveSafe();
-		} catch (Exception $e) {
-			error_log(__FILE__.' '.__LINE__.' for variable: e  ==>'.print_r($e->getMessage(),true));
-			//$rgis = new Model\Registration(array('_id'=>$rs_id),$app);			
-			//$rgis->remove();
-			throw new \Saw\Exceptions\SawException(new \Saw\Exceptions\PaymentException(),"The transaction failed.  Please check your card information and try again.");
-		}		
-		
-	}
-	if(array_key_exists('currentStatus', $doc) && $doc['currentStatus'] == Model\Registration::$status['SCHOLARSHIP']){
-		$user = $app['session']->get('user');
-	    if(is_array($user) && array_key_exists('accessLevel', $user) && ($user['accessLevel'] == ADMIN || ((is_array($user)) && array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') )) && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes'){
-			// don't send the email		
-		}else{
-			$app['seminarConfirmationEmail']($app,$rs_id);
+    /**
+	WAIT LIST
+	WAIT LIST
+	WAIT LIST
+	WAIT LIST
+	WAIT LIST
+    */
+    if($activate_waitlist == false):
+
+
+		$registrationFee = $doc['registrationFee'];
+		$hardCopy = (array_key_exists('hardCopy',$doc)) ? $doc['hardCopy'] : '';
+		$hardCopyFee = (array_key_exists('hardCopyFee',$doc)) ? $doc['hardCopyFee'] : '';
+		if($hardCopy == 'NO'){
+			$hardCopyFee = 0;
 		}
-	}
-	//*/
-	return new Response(json_encode(array(
-		'paymentId'=>$paymentId,
-		'registrationId'=>$rs_id,
-		'label'=>'Successful Registration',
-		'message'=>"Thank you, your Registration is complete.  You will receive an confirmation and receipt in the email address you provided.")), 200,array('Content-Type' => 'registration/json')
-	);
+		$depositQuestion = (array_key_exists('depositQuestion',$doc)) ? $doc['depositQuestion'] : '';
+		if($depositQuestion == 'yes'){
+			$registrationFee = $doc['deposit'];
+			$doc['currentStatus'] = Model\Registration::$status['DEPOSIT'];
+		}
+
+		if(array_key_exists('registrationNumber', $doc) && Model\Scholarship::checkRegNum((int)$doc['registrationNumber'],$app)){
+			$registrationFee = 0;
+			$doc['currentStatus'] = Model\Registration::$status['SCHOLARSHIP'];
+		}
+
+		$doc['total'] = (int)$hardCopyFee+(int)$registrationFee;
+		
+		/**
+		
+		*/
+		$paymentId = new \stdClass();	
+		$rs = new Model\RegistrationSeminar($doc,$app);
+
+		if(!empty($doc['email']) && $rs->findByEmail()){
+	    	$response_arr = array('message'=>"Our records indicate you have already submitted a registration.  If you believe this message is in error please contact NCDD directly.",
+	                              "invalidFields"=>array(array('name'=>'email','message'=>'Our records indicate you have already submitted a registration.  If you believe this message is in error please contact NCDD directly.')));
+	        return new Response(json_encode($response_arr), 403,array('Content-Type' => 'application/json'));
+	    }
+
+
+		$app['validateModel']($app, $rs);
+		$rs_id = '';
+			
+		if ($doc['currentPaymentType'] == Model\Registration::$paymentType['CREDIT']) {
+			
+			$doc['payment']['ownerId'] = '';
+			$doc['payment']['ownerClass'] = 'RegistrationSeminar';
+
+			
+				$payment = new Model\Payment($doc['payment'],$app);
+				$app['validateModel']($app, $payment,$groups=array('cc'));
+			try {
+				$paymentId = $payment->charge();	
+				$rs_id = $rs->insert();
+				$payment_update = new Model\Payment(array('ownerId'=>$rs_id,'_id'=>$paymentId),$app);
+				$payment_update->saveSafe();
+			} catch (Exception $e) {
+				error_log(__FILE__.' '.__LINE__.' for variable: e  ==>'.print_r($e->getMessage(),true));
+				//$rgis = new Model\Registration(array('_id'=>$rs_id),$app);			
+				//$rgis->remove();
+				throw new \Saw\Exceptions\SawException(new \Saw\Exceptions\PaymentException(),"The transaction failed.  Please check your card information and try again.");
+			}		
+			
+		}
+		if(array_key_exists('currentStatus', $doc) && $doc['currentStatus'] == Model\Registration::$status['SCHOLARSHIP']){
+			$user = $app['session']->get('user');
+		    if(is_array($user) && array_key_exists('accessLevel', $user) && ($user['accessLevel'] == ADMIN || ((is_array($user)) && array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') )) && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes'){
+				// don't send the email		
+			}else{
+				$app['seminarConfirmationEmail']($app,$rs_id);
+			}
+		}
+		//*/
+		return new Response(json_encode(array(
+			'paymentId'=>$paymentId,
+			'registrationId'=>$rs_id,
+			'label'=>'Successful Registration',
+			'message'=>"Thank you, your Registration is complete.  You will receive an confirmation and receipt in the email address you provided.")), 200,array('Content-Type' => 'registration/json')
+		);
+	
+
+
+	else:
+	
+
+		$doc['currentStatus'] = Model\Registration::$status['WAITLIST'];
+		$rs = new Model\RegistrationSeminar($doc,$app);
+		
+		if(!empty($doc['email']) && $rs->findByEmail()){
+	    	$response_arr = array('message'=>"Our records indicate you have already submitted a registration.  If you believe this message is in error please contact NCDD directly.",
+	                              "invalidFields"=>array(array('name'=>'email','message'=>'Our records indicate you have already submitted a registration.  If you believe this message is in error please contact NCDD directly.')));
+	        return new Response(json_encode($response_arr), 403,array('Content-Type' => 'application/json'));
+	    }
+		$app['validateModel']($app, $rs);
+		
+		$rs_id = $rs->insert();
+
+		return new Response(json_encode(array(
+			'paymentId'=>'',
+			'registrationId'=>$rs_id,
+			'label'=>'Successful Registration',
+			'message'=>"Thank you, your Registration is complete.  You will receive an confirmation and receipt in the email address you provided.")), 200,array('Content-Type' => 'registration/json')
+		);
+	
+
+
+	endif; // activate wait list end
 
 })->after(function (Request $request, Response $response, Silex\Application $app) {
+		
+	if($_POST['activate_waitlist'] == false):
 		//*
 		if((int)$response->getStatusCode() == 200):
 	    	$doc = $request->get('doc');
@@ -411,6 +496,7 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 			//*/
 	    endif;
 	    //*/
+	endif; // activate wait list
 });
 
 
@@ -422,14 +508,34 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 $app->get('/registration/{id}/view', function ($id, Request $request) use ($app) {
 	
 	$registration = new Model\Registration($doc=array('_id'=>$id), $app);
-	$registration = $registration->findById();
+	$reg_arry = $registration->findById();
 	
-	$seminar = new Model\Seminar(array('_id'=>$registration['seminarId']),$app);
+	$seminar = new Model\Seminar(array('_id'=>$reg_arry['seminarId']),$app);
 	$seminar = $seminar->findById();
 
+	///////////////
+	// wait list //
+	///////////////
+	$registrationseminar = new Model\RegistrationSeminar($doc=array(), $app);
+	$depositbalance = $registrationseminar->fetchDepositStatus($reg_arry['seminarId'],$offset=0, $limit=10000);
+	$paid = $registrationseminar->fetchByStatusSeminar($reg_arry['seminarId'],'PAID',$offset=0, $limit=10000);
+	
+	$paid = (!empty($paid)) ? count($paid) : 0;
+    $deposit = (!empty($depositbalance)) ? count($depositbalance) : 0;
+    $total = $paid + $deposit;
+    if(array_key_exists('maxRegistrations', $seminar['register']) 
+       && !empty($seminar['register']['maxRegistrations']) 
+       && $seminar['register']['maxRegistrations'] == $total):
+    	$activate_waitlist = true;
+    else:
+    	$activate_waitlist = false;
+    endif;
+
+
+
 	$crumbs = array(array('name'=>'Registrations','href'=>'/registrations/seminar/'.$seminar['_id'])
-					,array('name'=>$registration['name'],'href'=>'/registration/'.$id.'/view')
-					,array('name'=>$registration['type'],'href'=>'/registration/'.$id.'/view')
+					,array('name'=>$reg_arry['name'],'href'=>'/registration/'.$id.'/view')
+					,array('name'=>$reg_arry['type'],'href'=>'/registration/'.$id.'/view')
 					);
 	$view_vars = array(
 						 'active'=>'Seminar'
@@ -437,10 +543,11 @@ $app->get('/registration/{id}/view', function ($id, Request $request) use ($app)
 						,'headline'=>'Registrations'
 						,'description'=>"View all registration here."
 						,'crumbs'=>$crumbs
-						,'registration'=>$registration
+						,'registration'=>$reg_arry
 						,'seminar'=>$seminar
+						,'activate_waitlist'=>$activate_waitlist
 						);
-	switch ($registration['class']) {
+	switch ($reg_arry['class']) {
 		case 'RegistrationSeminar':
 			return $app['view']->render('registration/seminar-view', 'default', $view_vars);		
 			break;
@@ -569,6 +676,7 @@ $app->get('/registrations/seminar/{seminarId}/{offset}/{limit}', function ($semi
 	//$deposit = $registration->fetchByStatusSeminar($seminarId,'DEPOSIT',$offset, $limit);
 	$depositbalance = $registration->fetchDepositStatus($seminarId,$offset, $limit);
 	$paid = $registration->fetchByStatusSeminar($seminarId,'PAID',$offset, $limit);
+	$waitlist = $registration->fetchByStatusSeminar($seminarId,'WAITLIST',$offset, $limit);
 	$crumbs = array(array('name'=>'Seminars','href'=>'/seminar')
 					,array('name'=>$seminar['headline'],'href'=>'/seminar/view/'.$seminar['_id'])
 					,array('name'=>'Registrations','href'=>'/registrations/seminar/'.$seminar['_id']));
@@ -582,7 +690,10 @@ $app->get('/registrations/seminar/{seminarId}/{offset}/{limit}', function ($semi
 						//,'deposit'=>$deposit
 						,'depositbalance'=>$depositbalance
 						,'scholarship'=>$scholarship
-						,'paid'=>$paid);
+						,'paid'=>$paid
+						,'waitlist'=>$waitlist
+						,'seminar'=>$seminar
+						);
 	return $app['view']->render('registration/seminar-index', 'default', $view_vars);
 })
 ->value('offset','0')

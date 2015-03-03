@@ -105,8 +105,35 @@
                
             </div>
 
-            
-
+            <? 
+            $paid = (!empty($this->vars['paid'])) ? count($this->vars['paid']) : 0;
+            $deposit = (!empty($this->vars['depositbalance'])) ? count($this->vars['depositbalance']) : 0;
+            $total = $paid + $deposit;
+            if(array_key_exists('maxRegistrations', $this->vars['seminar']['register']) 
+               && !empty($this->vars['seminar']['register']['maxRegistrations']) 
+               && $this->vars['seminar']['register']['maxRegistrations'] == $total):
+            ?>
+            <div class="row-fluid">
+               
+               <div class="responsive span12 align-right" data-tablet="span12" data-desktop="span12">
+                  <div class="dashboard-stat blue">
+                     <div class="visual">
+                        <i class="icon-hideme"><?=$total?>/<?=$this->vars['seminar']['register']['maxRegistrations']?></i>
+                     </div>
+                     <div class="details">
+                        <div class="number"><font><font>Max Registrations Allowed</font></font></div>
+                        <div class="desc"><font><font>
+                           
+                        </font></font></div>
+                     </div>
+                     <a class="more" href="#waitlist"><font><font>
+                     scroll to waiting list </font></font><i class="m-icon-swapright m-icon-white"></i>
+                     </a>                 
+                  </div>
+               </div>
+               
+            </div>            
+            <? endif; ?>
 
             <div class="row-fluid">
                <div class="span12">
@@ -351,6 +378,59 @@
                </div>
             </div>
 
+            <?
+               if(array_key_exists('maxRegistrations', $this->vars['seminar']['register']) 
+               && !empty($this->vars['seminar']['register']['maxRegistrations']) 
+               && $this->vars['seminar']['register']['maxRegistrations'] == $total):
+            ?>
+
+            <div class="row-fluid">
+               <div class="span12">
+                  <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                  <div class="portlet box blue">
+                     <div class="portlet-title" id="registration">
+                        <div class="caption"><i class="icon-user"></i>Waiting List</div>
+                     </div>
+                     <div class="portlet-body">
+                        <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                        <table class="table table-striped table-bordered table-hover dataTable" id="registrations" aria-describedby="sample_1_info">
+                           <thead>
+                              <tr role="row">
+                                 <th class="">Name</th>
+                                 <th class="hidden-phone">Email</th>
+                                 <th class="hidden-480">Phone</th>
+                                 <th class="hidden-480">Date Submitted</th>
+                                 <th class=""></th>
+                              </tr>
+                           </thead>
+                           <tbody role="alert" aria-live="polite" aria-relevant="all">
+                              <? if(!empty($this->vars['waitlist'])): foreach($this->vars['waitlist'] as $registration): ?>
+                              <tr class="gradeX odd">
+                                 <td class=" "><?=$registration['name']?></td>
+                                 <td class="hidden-phone"><?=$registration['email']?></td>
+                                 <td class="hidden-480 "><?=$registration['phone']?></td>
+                                 <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($registration['submittedDate']['fullDateTime'])); ?>
+                                 <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$registration['submittedDate']['monthDay'].' '.$registration['submittedDate']['shortTime']?></td>
+                                 <td class=" ">
+                                    <a data-id="<?=$registration['_id']?>" class="btn blue mini view registration"><i class=" "></i> Registration</a>
+                                    <? if(!empty($registration['memberId'])): ?>
+                                    <a data-id="<?=$registration['memberId']?>" class="btn blue mini view member"><i class=" "></i> Member</a>
+                                    <? endif; ?>
+                                 </td>
+                              </tr>
+                              <? endforeach;?>
+                              <? else: ?>
+                                 <td colspan="6">None.</td>
+                              <? endif;?>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div><a name="waitlist"></a>
+                  <!-- END EXAMPLE TABLE PORTLET-->
+               </div>
+            </div>
+
+            <? endif; ?>
          </div>
          <!-- END PAGE CONTAINER-->    
       </div>

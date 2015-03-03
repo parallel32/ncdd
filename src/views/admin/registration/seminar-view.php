@@ -207,6 +207,11 @@
                      <!--/span-->
                   </div>
                   </br></br>
+               
+
+               <? if($this->vars['activate_waitlist'] == false): ?>
+
+
                   <h3 class="form-section">5. Payment</h3>
                   <? if(array_key_exists('register',$this->vars['seminar']) && array_key_exists('scholarship',$this->vars['seminar']['register']) && $this->vars['seminar']['register']['scholarship'] == 'ON'): ?>
                   <h4>Scholarship</h4>
@@ -285,14 +290,25 @@
                      </div>
                      <!--/span-->
                   </div>
+
+               
+
+               <? endif; // activate wait list ?>
+
+
+
+
                   <div class="alert alert-error hide">
                      <button class="close" data-dismiss="alert"></button>
                      You have some form errors. Please check below.
                   </div>
                   
                   <div class="form-actions text-center">
-                     <? if($this->vars['registration']['currentStatus'] < \Saw\Model\Registration::$status['PAID']): ?>
+                     <? if($this->vars['registration']['currentStatus'] < \Saw\Model\Registration::$status['PAID'] && $this->vars['activate_waitlist'] == false): ?>
                      <button type="button" data-id="<?=$this->vars['registration']['_id']?>" class="btn green pay"><i class="icon-money"></i> Mark Paid</button>
+                     <? endif; ?>
+                     <? if (false && $this->vars['activate_waitlist'] == true): ?>
+                     <button type="button" data-id="<?=$this->vars['registration']['_id']?>" class="btn blue waitlist"><i class="icon-money"></i> Move Member Off Wait List</button>
                      <? endif; ?>
                      <button type="button" data-id="<?=$this->vars['registration']['_id']?>" class="btn blue edit"><i class="icon-pencil"></i> Edit</button>
                      <button type="button" data-id="<?=$this->vars['seminar']['_id']?>" class="btn view cancel">Cancel and Go Back</button>

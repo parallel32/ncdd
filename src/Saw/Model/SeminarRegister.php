@@ -28,9 +28,11 @@ class SeminarRegister extends Model {
 	public $rsvpQuestion; // on | off
 	public $attendanceQuestion; // on | off
 	public $rsvpKidsQuestion; // on | off
+	public $maxRegistrations; // max number of registrations
 
 
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
+		$metadata->addPropertyConstraint('maxRegistrations', new Constraints\Type(array('type'=>'numeric','message'=>'Please input only numbers.')));
 		$metadata->addConstraint(new Callback(array(
             'methods' => array('isValidPrice'),
         )));
@@ -102,6 +104,7 @@ class SeminarRegister extends Model {
         $this->rsvpQuestion = $doc['rsvpQuestion'];
         $this->attendanceQuestion = $doc['attendanceQuestion'];
         $this->rsvpKidsQuestion = $doc['rsvpKidsQuestion'];
+        $this->maxRegistrations = $doc['maxRegistrations'];
 
 	}
 	
@@ -122,6 +125,7 @@ class SeminarRegister extends Model {
 		$this->rsvpQuestion = $this->rsvpQuestion ?: 'yes';
 		$this->attendanceQuestion = $this->attendanceQuestion ?: 'no';
 		$this->rsvpKidsQuestion = $this->rsvpKidsQuestion ?: 'no';
+		$this->maxRegistrations = $this->maxRegistrations ?: 'no';
 
 	}
 	
