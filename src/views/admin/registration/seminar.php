@@ -273,31 +273,36 @@ endif; ?>
                   </div>
                   <? endif; ?>
                   <? endif; ?>
-                  </br></br>
-                  <h3 class="form-section">4. Attendance Certification Statement</h3>
-                  <div class="row-fluid">
-                     <div class="span12 ">
-                        <div class="control-group">
-                           <label class="control-label">I acknowledge that the National College for DUI Defense does not allow attendance by jurists or prosecutors except upon special written invitation.  Accordingly, I hereby certify that I am not a full time judicial officer or full time prosecutor and that I am actively engaged in the defense of criminal cases.  Any Reference to the Summer Session, for advertising purposes, can only be used as “conducted at Harvard Law School” or “held on premises of Harvard Law School.” Registrant herein accepts and understands he/she cannot infer or use the term of graduated, nor taught at, or attended Harvard Law School. Any such use of the Harvard Law School name is acknowledged to be prohibited.
-                           </br>
-                           </label>
-                           </br>
-                           <label class="control-label">By printing your name you acknowledge the above statements.</label>
-                           <div class="controls">
-                              <div class="input-prepend input-append">
-                                 <span class="add-on">Printed Name </span>
-                                 <input name="doc[attendanceCertificationStatement]" class="m-wrap span12 attendanceCertificationStatement" type="text" autocomplete="on" placeholder="">
-                                 <span class="add-on">, on this <? $date = new \DateTime(); echo $date->format('dS');?> day of <?echo $date->format('F');?>, 20<?echo $date->format('y');?></span>
-                              </div>
-                           </div>
-                           
-                        </div>
-                     </div>
-                     <!--/span-->
-                  </div>
+
+                  
 
 
                   <? if($this->vars['activate_waitlist'] == false): ?>
+
+
+
+                     </br></br>
+                     <h3 class="form-section">4. Attendance Certification Statement</h3>
+                     <div class="row-fluid">
+                        <div class="span12 ">
+                           <div class="control-group">
+                              <label class="control-label">I acknowledge that the National College for DUI Defense does not allow attendance by jurists or prosecutors except upon special written invitation.  Accordingly, I hereby certify that I am not a full time judicial officer or full time prosecutor and that I am actively engaged in the defense of criminal cases.  Any Reference to the Summer Session, for advertising purposes, can only be used as “conducted at Harvard Law School” or “held on premises of Harvard Law School.” Registrant herein accepts and understands he/she cannot infer or use the term of graduated, nor taught at, or attended Harvard Law School. Any such use of the Harvard Law School name is acknowledged to be prohibited.
+                              </br>
+                              </label>
+                              </br>
+                              <label class="control-label">By printing your name you acknowledge the above statements.</label>
+                              <div class="controls">
+                                 <div class="input-prepend input-append">
+                                    <span class="add-on">Printed Name </span>
+                                    <input name="doc[attendanceCertificationStatement]" class="m-wrap span12 attendanceCertificationStatement" type="text" autocomplete="on" placeholder="">
+                                    <span class="add-on">, on this <? $date = new \DateTime(); echo $date->format('dS');?> day of <?echo $date->format('F');?>, 20<?echo $date->format('y');?></span>
+                                 </div>
+                              </div>
+                              
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
 
 
                      </br></br>

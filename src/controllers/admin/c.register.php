@@ -394,6 +394,7 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 	
 
 		$doc['currentStatus'] = Model\Registration::$status['WAITLIST'];
+		$doc['attendanceCertificationStatement'] = '[blank]'; 
 		$rs = new Model\RegistrationSeminar($doc,$app);
 		
 		if(!empty($doc['email']) && $rs->findByEmail()){
