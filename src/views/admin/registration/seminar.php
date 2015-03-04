@@ -586,6 +586,61 @@ endif; ?>
                      </div>
                      <!--/ PAYMENT ELEMENT -->
 
+                  
+
+
+                  <? else: ?>
+                  
+
+
+                     <h3 class="form-section">4. Credit Card Information</h3>
+                     <h4 class="text-info"><b>Please note, your card will only be charged if a space becomes available.</b></h4>
+                     <br>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Your name as it appears on the card</label>
+                              <div class="controls">
+                                 <input id="card-name" type="text" autocomplete="on" name="doc[payment][name]" class="m-wrap span8 name" value="<?=($signed_in) ? $this->vars['member']['firstName'].$middleName.$this->vars['member']['lastName']: ''?>">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Credit Card Number</label>
+                              <div class="controls">
+                                 <input id="card-number" type="text" autocomplete="on" name="doc[payment][number]" class="m-wrap span8 number">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">CVC Code</label>
+                              <div class="controls">
+                                 <input id="card-cvc" type="text" autocomplete="on" name="doc[payment][cvc]" class="m-wrap span8 cvc">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Expiration Date</label>
+                              <div class="controls">
+                                 <select id="card-expMonth" class="span4 expMonth" name="doc[payment][expMonth]"></select>
+                                 <select id="card-expYear" class="span4 expYear" name="doc[payment][expYear]"></select>
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
 
                   <? endif; //end activate waitlist ?>
 

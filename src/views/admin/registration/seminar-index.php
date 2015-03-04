@@ -106,6 +106,7 @@
             </div>
 
             <? 
+            $waitlist = (!empty($this->vars['waitlist'])) ? count($this->vars['waitlist']) : 0;
             $paid = (!empty($this->vars['paid'])) ? count($this->vars['paid']) : 0;
             $deposit = (!empty($this->vars['depositbalance'])) ? count($this->vars['depositbalance']) : 0;
             $total = $paid + $deposit;
@@ -122,7 +123,7 @@
                      </div>
                      <div class="details">
                         <div class="number"><font><font>Max Registrations Allowed</font></font></div>
-                        <div class="desc"><font><font>
+                        <div class="desc"><font>wait list total = <?=$waitlist?></font>
                            
                         </font></font></div>
                      </div>

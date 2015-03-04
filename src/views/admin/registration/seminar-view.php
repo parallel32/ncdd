@@ -189,27 +189,33 @@
                   <? endif; ?>
                   <? endif; ?>
                   </br></br>
-                  <h3 class="form-section">4. Attendance Certification Statement</h3>
-                  <div class="row-fluid">
-                     <div class="span12 ">
-                        <div class="control-group">
-                           <label class="control-label">I acknowledge that the National College for DUI Defense does not allow attendance by jurists or prosecutors except upon special written invitation.  Accordingly, I hereby certify that I am not a full time judicial officer or full time prosecutor and that I am actively engaged in the defense of criminal cases.  Any Reference to the Summer Session, for advertising purposes, can only be used as “conducted at Harvard Law School” or “held on premises of Harvard Law School.” Registrant herein accepts and understands he/she cannot infer or use the term of graduated, nor taught at, or attended Harvard Law School. Any such use of the Harvard Law School name is acknowledged to be prohibited.
-                           </br>
-                           </label>
-                           </br>
-                           <label class="control-label">By printing your name you acknowledge the above statements.</label>
-                           <div class="controls">
-                              <input disabled name="doc[attendanceCertificationStatement]" value="<?=$this->vars['registration']['attendanceCertificationStatement']?>" class="m-wrap span12 attendanceCertificationStatement" type="text" placeholder="">
-                           </div>
-                           
-                        </div>
-                     </div>
-                     <!--/span-->
-                  </div>
-                  </br></br>
-               
 
-               <? if($this->vars['activate_waitlist'] == false): ?>
+
+                  <? if($this->vars['activate_waitlist'] == false): ?>
+
+
+
+                     <h3 class="form-section">4. Attendance Certification Statement</h3>
+                     <div class="row-fluid">
+                        <div class="span12 ">
+                           <div class="control-group">
+                              <label class="control-label">I acknowledge that the National College for DUI Defense does not allow attendance by jurists or prosecutors except upon special written invitation.  Accordingly, I hereby certify that I am not a full time judicial officer or full time prosecutor and that I am actively engaged in the defense of criminal cases.  Any Reference to the Summer Session, for advertising purposes, can only be used as “conducted at Harvard Law School” or “held on premises of Harvard Law School.” Registrant herein accepts and understands he/she cannot infer or use the term of graduated, nor taught at, or attended Harvard Law School. Any such use of the Harvard Law School name is acknowledged to be prohibited.
+                              </br>
+                              </label>
+                              </br>
+                              <label class="control-label">By printing your name you acknowledge the above statements.</label>
+                              <div class="controls">
+                                 <input disabled name="doc[attendanceCertificationStatement]" value="<?=$this->vars['registration']['attendanceCertificationStatement']?>" class="m-wrap span12 attendanceCertificationStatement" type="text" placeholder="">
+                              </div>
+                              
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     </br></br>
+                  
+
+               
 
 
                   <h3 class="form-section">5. Payment</h3>
@@ -291,8 +297,87 @@
                      <!--/span-->
                   </div>
 
-               
+               <? else: ?>
 
+                  <h3 class="form-section">4. Credit Card Information</h3>
+                     <h4 class="text-info"><b>Please note, your card will only be charged if a space becomes available.</b></h4>
+                     <br>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Your name as it appears on the card</label>
+                              <div class="controls">
+                                 <input id="card-name" type="text" autocomplete="on" name="doc[payment][name]" class="m-wrap span8 name" value="<?=(array_key_exists('tempPayment', $this->vars['registration']) && is_array($this->vars['registration']['tempPayment'])) ? $this->vars['registration']['tempPayment']['name']:'' ;?>">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Credit Card Number</label>
+                              <div class="controls">
+                                 <input id="card-number" type="text" autocomplete="on" name="doc[payment][number]" class="m-wrap span8 number" value="<?=(array_key_exists('tempPayment', $this->vars['registration']) && is_array($this->vars['registration']['tempPayment'])) ? $this->vars['registration']['tempPayment']['number']:'' ;?>">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">CVC Code</label>
+                              <div class="controls">
+                                 <input id="card-cvc" type="text" autocomplete="on" name="doc[payment][cvc]" class="m-wrap span8 cvc" value="<?=(array_key_exists('tempPayment', $this->vars['registration']) && is_array($this->vars['registration']['tempPayment'])) ? $this->vars['registration']['tempPayment']['cvc']:'' ;?>">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Expiration Date</label>
+                              <div class="controls">
+                                 <select id="card-expMonth" class="span4 expMonth" name="doc[payment][expMonth]"></select>
+                                 <select id="card-expYear" class="span4 expYear" name="doc[payment][expYear]"></select>
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <script>
+                     jQuery(document).ready(function() { 
+
+                        // prepare the month dropdown
+                        var select = $("#saw-form .expMonth"),
+                        month = new Date().getMonth() + 1;
+                        for (var i = 1; i <= 12; i++) {
+                           select.append($("<option value='"+i+"' "+(month === i ? "selected" : "")+">"+i+"</option>"))
+                        }
+
+                        // prepare the year dropdown
+                        var select = $("#saw-form .expYear"),
+                        year = new Date().getFullYear();
+
+                        for (var i = 0; i < 12; i++) {
+                           select.append($("<option value='"+(i + year)+"' "+(i === 0 ? "selected" : "")+">"+(i + year)+"</option>"))
+                        }  
+                        
+                        <?
+                        $expMonth = (array_key_exists('tempPayment', $this->vars['registration']) && is_array($this->vars['registration']['tempPayment'])) ? $this->vars['registration']['tempPayment']['expMonth']:'' ;
+                        $expYear = (array_key_exists('tempPayment', $this->vars['registration']) && is_array($this->vars['registration']['tempPayment'])) ? $this->vars['registration']['tempPayment']['expYear']:'' ;
+                        ?>
+                        <? if(isset($expMonth) && !empty($expMonth)): ?>
+                           // STORE CARD STUFF
+                           var smonth = '<?=$expMonth?>';
+                           var syear = '<?=$expYear?>';
+                           $('#card-expMonth option[value='+smonth+']').attr('selected', 'selected');
+                           $('#card-expYear option[value='+syear+']').attr('selected', true);
+                        <? endif; ?>
+                     });      
+                     </script>
                <? endif; // activate wait list ?>
 
 
