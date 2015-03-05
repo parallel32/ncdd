@@ -315,7 +315,6 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
     */
     if($activate_waitlist == false):
 
-
 		$registrationFee = $doc['registrationFee'];
 		$hardCopy = (array_key_exists('hardCopy',$doc)) ? $doc['hardCopy'] : '';
 		$hardCopyFee = (array_key_exists('hardCopyFee',$doc)) ? $doc['hardCopyFee'] : '';
@@ -334,25 +333,22 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 		}
 
 		$doc['total'] = (int)$hardCopyFee+(int)$registrationFee;
-		
 		/**
 		
 		*/
 		$paymentId = new \stdClass();	
 		$rs = new Model\RegistrationSeminar($doc,$app);
-
 		if(!empty($doc['email']) && $rs->findByEmail()){
 	    	$response_arr = array('message'=>"Our records indicate you have already submitted a registration.  If you believe this message is in error please contact NCDD directly.",
 	                              "invalidFields"=>array(array('name'=>'email','message'=>'Our records indicate you have already submitted a registration.  If you believe this message is in error please contact NCDD directly.')));
 	        return new Response(json_encode($response_arr), 403,array('Content-Type' => 'application/json'));
 	    }
 
-
 		$app['validateModel']($app, $rs);
 		$rs_id = '';
-			
+
+
 		if ($doc['currentPaymentType'] == Model\Registration::$paymentType['CREDIT']) {
-			
 			$doc['payment']['ownerId'] = '';
 			$doc['payment']['ownerClass'] = 'RegistrationSeminar';
 
@@ -364,6 +360,20 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 				$rs_id = $rs->insert();
 				$payment_update = new Model\Payment(array('ownerId'=>$rs_id,'_id'=>$paymentId),$app);
 				$payment_update->saveSafe();
+			} catch (Exception $e) {
+				error_log(__FILE__.' '.__LINE__.' for variable: e  ==>'.print_r($e->getMessage(),true));
+				//$rgis = new Model\Registration(array('_id'=>$rs_id),$app);			
+				//$rgis->remove();
+				throw new \Saw\Exceptions\SawException(new \Saw\Exceptions\PaymentException(),"The transaction failed.  Please check your card information and try again.");
+			}		
+			
+		}
+		if ($doc['currentPaymentType'] == Model\Registration::$paymentType['CHECK']) {
+			$doc['payment']['ownerId'] = '';
+			$doc['payment']['ownerClass'] = 'RegistrationSeminar';
+
+			try {
+				$rs_id = $rs->insert();
 			} catch (Exception $e) {
 				error_log(__FILE__.' '.__LINE__.' for variable: e  ==>'.print_r($e->getMessage(),true));
 				//$rgis = new Model\Registration(array('_id'=>$rs_id),$app);			
@@ -391,7 +401,6 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 
 
 	else:
-	
 
 		$doc['currentStatus'] = Model\Registration::$status['WAITLIST'];
 		$doc['attendanceCertificationStatement'] = '[blank]'; 
