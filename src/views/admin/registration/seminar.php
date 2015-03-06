@@ -886,6 +886,8 @@ jQuery(document).ready(function() {
             $('#verify-reg-num').addClass('blue').removeClass('green').html('Verify Scholarship Registration Number');
             $('#payment-form-scholarship').hide();
             $('#payment-form').show();
+            $('.btn.credit').show();
+            $('.btn.check').show();            
          }
          ,postOnSuccess:function(responseObj){
             $('#verify-reg-num').addClass('green').removeClass('blue').html('<i class="icon-ok"></i> Verified');
@@ -893,8 +895,8 @@ jQuery(document).ready(function() {
             $('#payment-form-scholarship').show();
             $('#payment-form').hide();
             $('#payment-form-check').hide();
-            $('.btn.credit').show();
-            $('.btn.check').show();            
+            $('.btn.credit').hide();
+            $('.btn.check').hide();            
             $('#scholarship-group .control-group').removeClass('error');
             $('#scholarship-group .controls span').hide().html('');
          }

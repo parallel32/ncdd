@@ -19,7 +19,6 @@ $app['seminarConfirmationEmail'] = $app->protect(function ($app,$registrationId)
 	$seminar = new Model\Seminar(array('_id'=>$registration['seminarId']),$app);
 	$seminar = $seminar->findById();
 	$seminar['description'] = $app['prepare_content']($seminar['description']);
-	
     // email welcome message
 	$subject = 'NCDD Seminar Confirmation';
 	$to = $registration['email'];
@@ -369,6 +368,20 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 			
 		}
 		if ($doc['currentPaymentType'] == Model\Registration::$paymentType['CHECK']) {
+			$doc['payment']['ownerId'] = '';
+			$doc['payment']['ownerClass'] = 'RegistrationSeminar';
+
+			try {
+				$rs_id = $rs->insert();
+			} catch (Exception $e) {
+				error_log(__FILE__.' '.__LINE__.' for variable: e  ==>'.print_r($e->getMessage(),true));
+				//$rgis = new Model\Registration(array('_id'=>$rs_id),$app);			
+				//$rgis->remove();
+				throw new \Saw\Exceptions\SawException(new \Saw\Exceptions\PaymentException(),"The transaction failed.  Please check your card information and try again.");
+			}		
+			
+		}
+		if ($doc['currentPaymentType'] == Model\Registration::$paymentType['SCHOLARSHIP']) {
 			$doc['payment']['ownerId'] = '';
 			$doc['payment']['ownerClass'] = 'RegistrationSeminar';
 

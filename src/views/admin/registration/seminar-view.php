@@ -397,7 +397,7 @@
                      <? endif; ?>
                      <button type="button" data-id="<?=$this->vars['registration']['_id']?>" class="btn blue edit"><i class="icon-pencil"></i> Edit</button>
                      <button type="button" data-id="<?=$this->vars['seminar']['_id']?>" class="btn view cancel">Cancel and Go Back</button>
-                     <? if($this->vars['registration']['currentStatus'] <= \Saw\Model\Registration::$status['PAID']): ?>
+                     <? if($this->vars['registration']['currentStatus'] <= \Saw\Model\Registration::$status['SCHOLARSHIP']): ?>
                      <button type="button" data-id="<?=$this->vars['registration']['_id']?>" class="btn red delete">Delete</button>
                      <? endif; ?>
                   </div>
