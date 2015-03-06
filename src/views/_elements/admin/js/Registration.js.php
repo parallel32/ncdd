@@ -90,17 +90,21 @@
 		var DELAY = 500, clicks = 0, timer = null;
 		$(function(){
 		    $('.submit-registration').on("click", function(e){
-		        clicks++;  //count clicks
-		        if(clicks === 1) {
-		            timer = setTimeout(function() {
-		                io.saw.Registration.register();  //perform single-click action    
-		                clicks = 0;             //after action performed, reset counter
-		            }, DELAY);
-		        } else {
-		            clearTimeout(timer);    //prevent single-click action
-		            io.saw.Registration.register();  //perform double-click action
-		            clicks = 0;             //after action performed, reset counter
-		        }
+		    	if($('#currentPaymentType').val() === ''){
+			    	alert('Please click a Payment Option - before you can submit.');
+			    }else{
+			        clicks++;  //count clicks
+			        if(clicks === 1) {
+			            timer = setTimeout(function() {
+			                io.saw.Registration.register();  //perform single-click action    
+			                clicks = 0;             //after action performed, reset counter
+			            }, DELAY);
+			        } else {
+			            clearTimeout(timer);    //prevent single-click action
+			            io.saw.Registration.register();  //perform double-click action
+			            clicks = 0;             //after action performed, reset counter
+			        }
+			    }
 		    })
 		    .on("dblclick", function(e){
 		        e.preventDefault();  //cancel system double-click event

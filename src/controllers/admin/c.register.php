@@ -326,11 +326,6 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 			$doc['currentStatus'] = Model\Registration::$status['DEPOSIT'];
 		}
 
-		if(array_key_exists('registrationNumber', $doc) && Model\Scholarship::checkRegNum((int)$doc['registrationNumber'],$app)){
-			$registrationFee = 0;
-			$doc['currentStatus'] = Model\Registration::$status['SCHOLARSHIP'];
-		}
-
 		$doc['total'] = (int)$hardCopyFee+(int)$registrationFee;
 		/**
 		
@@ -385,7 +380,28 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 			$doc['payment']['ownerId'] = '';
 			$doc['payment']['ownerClass'] = 'RegistrationSeminar';
 
+			// add the registration fields
+			$doc['scholarship']['for'] = $seminar['headline'];
+			$doc['scholarship']['barNumber'] = $doc['barNumber'];
+			$doc['scholarship']['name'] = $doc['name'];
+			$doc['scholarship']['phone'] = $doc['phone'];
+			$doc['scholarship']['fax'] = $doc['fax'];
+			$doc['scholarship']['email'] = $doc['email'];
+			$doc['scholarship']['address1'] = $doc['address1'];
+			$doc['scholarship']['address2'] = $doc['address2'];
+			$doc['scholarship']['city'] = $doc['city'];
+			$doc['scholarship']['state'] = $doc['state'];
+			$doc['scholarship']['postalCode'] = $doc['postalCode'];
+			$doc['scholarship']['country'] = $doc['country'];
+		    $scholarship = new Model\Scholarship($doc['scholarship'], $app);
+		    // validate the scholarship model
+		    $app['validateModel']($app,$scholarship);
+
+		    $doc['currentStatus'] = Model\Registration::$status['SCHOLARSHIP'];
+		    $doc['total'] = 0;
+		    $rs = new Model\RegistrationSeminar($doc,$app);
 			try {
+				$rs->scholarshipId = $scholarship->insert();
 				$rs_id = $rs->insert();
 			} catch (Exception $e) {
 				error_log(__FILE__.' '.__LINE__.' for variable: e  ==>'.print_r($e->getMessage(),true));
@@ -538,6 +554,13 @@ $app->get('/registration/{id}/view', function ($id, Request $request) use ($app)
 	$seminar = new Model\Seminar(array('_id'=>$reg_arry['seminarId']),$app);
 	$seminar = $seminar->findById();
 
+	/////////////////
+	// scholarship //
+	/////////////////
+	if(array_key_exists('scholarshipId',$reg_arry) && !empty($reg_arry['scholarshipId'])){
+		$scholarship = new Model\Scholarship(array('_id'=>$reg_arry['scholarshipId']),$app);
+		$reg_arry['scholarship'] = $scholarship->findById();
+	}
 	///////////////
 	// wait list //
 	///////////////
@@ -593,6 +616,13 @@ $app->get('/registration/{id}/edit', function ($id, Request $request) use ($app)
 	$registration = $registration->findById();
 	$seminar = new Model\Seminar(array('_id'=>$registration['seminarId']),$app);
 	$seminar = $seminar->findById();
+	/////////////////
+	// scholarship //
+	/////////////////
+	if(array_key_exists('scholarshipId',$registration) && !empty($registration['scholarshipId'])){
+		$scholarship = new Model\Scholarship(array('_id'=>$registration['scholarshipId']),$app);
+		$registration['scholarship'] = $scholarship->findById();
+	}
 
 	$crumbs = array(array('name'=>'Registrations','href'=>'/registrations/seminar/'.$seminar['_id'])
 					,array('name'=>$registration['name'],'href'=>'/registration/'.$id.'/view')
@@ -631,8 +661,25 @@ $app->post('/registration/edit', function (Request $request) use ($app) {
 	
 	// validate the model
 	$app['validateModel']($app,$registration);
-	
 	$registration->saveEdit();	
+    
+
+	// add the registration fields
+	$doc['scholarship']['barNumber'] = $doc['barNumber'];
+	$doc['scholarship']['name'] = $doc['name'];
+	$doc['scholarship']['phone'] = $doc['phone'];
+	$doc['scholarship']['fax'] = $doc['fax'];
+	$doc['scholarship']['email'] = $doc['email'];
+	$doc['scholarship']['address1'] = $doc['address1'];
+	$doc['scholarship']['address2'] = $doc['address2'];
+	$doc['scholarship']['city'] = $doc['city'];
+	$doc['scholarship']['state'] = $doc['state'];
+	$doc['scholarship']['postalCode'] = $doc['postalCode'];
+	$doc['scholarship']['country'] = $doc['country'];
+    $scholarship = new Model\Scholarship($doc['scholarship'], $app);
+    $app['validateModel']($app,$scholarship);
+    $scholarship->saveEdit();
+
     $label = 'Registration Saved';
     $message = 'Registration Successfully Saved.';
     $response_status = 200;
@@ -698,6 +745,22 @@ $app->get('/registrations/seminar/{seminarId}/{offset}/{limit}', function ($semi
 	$registration = new Model\RegistrationSeminar($doc=array(), $app);
 	$submitted = $registration->fetchByStatusSeminar($seminarId,'SUBMITTED',$offset, $limit);
 	$scholarship = $registration->fetchByStatusSeminar($seminarId,'SCHOLARSHIP',$offset, $limit);
+	$scholarships_toapprove = array();
+	$scholarships_approved = array();
+	for ($i=0; $i < count($scholarship); $i++) { 
+		if(array_key_exists('scholarshipId',$scholarship[$i]) && !empty($scholarship[$i]['scholarshipId'])){
+			$s = new Model\Scholarship(array('_id'=>$scholarship[$i]['scholarshipId']),$app);
+			$s = $s->findById();
+			if($s['currentStatus'] == Model\Scholarship::$status['SUBMITTED']){
+				$scholarships_toapprove[] = $scholarship[$i];
+			}elseif($s['currentStatus'] == Model\Scholarship::$status['APPROVED']){
+				$scholarships_approved[] = $scholarship[$i];
+			}
+		}else{
+			$scholarships_approved[] = $scholarship[$i];
+		}
+	}
+	
 	//$deposit = $registration->fetchByStatusSeminar($seminarId,'DEPOSIT',$offset, $limit);
 	$depositbalance = $registration->fetchDepositStatus($seminarId,$offset, $limit);
 	$paid = $registration->fetchByStatusSeminar($seminarId,'PAID',$offset, $limit);
@@ -715,6 +778,8 @@ $app->get('/registrations/seminar/{seminarId}/{offset}/{limit}', function ($semi
 						//,'deposit'=>$deposit
 						,'depositbalance'=>$depositbalance
 						,'scholarship'=>$scholarship
+						,'scholarships_toapprove'=>$scholarships_toapprove
+						,'scholarships_approved'=>$scholarships_approved
 						,'paid'=>$paid
 						,'waitlist'=>$waitlist
 						,'seminar'=>$seminar

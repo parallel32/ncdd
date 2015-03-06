@@ -105,7 +105,11 @@
 			document.location.href='/member/'+$(this).attr('data-id')+'/edit';
 		});		
 	};
-	
+	Scholarship.approveInitSpecial = function(){
+		$('#saw-form .btn.green.approve').click(function(e){
+			approve($(this).attr('data-id'));
+		});
+	};
 	Scholarship.approveInit = function(){
 		$('#saw-form .btn.green.approve').click(function(e){
 			approve($(this).attr('data-id'));

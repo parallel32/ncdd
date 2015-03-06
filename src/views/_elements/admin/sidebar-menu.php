@@ -51,15 +51,6 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                </ul>
             </li>
          <? endif; ?>
-         <? if($accessLevel >= EDITOR):?>
-         <li class="<? echo ($this->vars['active'] == 'Scholarship') ? 'active':'';?>">
-            <a href="/scholarships">
-            <i class="icon-star"></i> 
-            <span class="title">Scholarships</span>
-            <? echo ($this->vars['active'] == 'Scholarship') ? '<span class="selected"></span>':'';?>
-            </a>
-         </li>
-         <? endif; ?>
          
          <? if($accessLevel >= MEMBER && !$this->app['renewal_payment_failure']()):?>
             <li class="<? echo (strpos($this->vars['active'], 'Members') !== false) ? 'active open':'';?>">

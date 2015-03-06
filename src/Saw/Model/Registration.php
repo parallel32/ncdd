@@ -231,7 +231,9 @@ class Registration extends Model {
     		self::$app['mongo']->remove(array('_id'=>$result['contributionPaymentId']), 'payment', $justOne=false, $options=array('fsync'=>true));
     	}
     	// purge scholarship
-    	self::$app['mongo']->remove(array('registrationNumber'=>$result['registrationNumber']), 'scholarship', $justOne=false, $options=array('fsync'=>true));
+    	if(array_key_exists('scholarshipId',$result)){
+    		self::$app['mongo']->remove(array('_id'=>$result['scholarshipId']), 'scholarship', $justOne=false, $options=array('fsync'=>true));
+    	}
 
     	// delete member
     	parent::remove();

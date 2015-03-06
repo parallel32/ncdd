@@ -70,7 +70,7 @@
             
             <div class="row-fluid">
                
-               <div class="responsive span6 align-right" data-tablet="span6" data-desktop="span6">
+               <div class="responsive span12 align-right" data-tablet="span12" data-desktop="span12">
                   <div class="dashboard-stat green">
                      <div class="visual">
                         <i class="icon-hideme"><?=(!empty($this->vars['paid'])) ? count($this->vars['paid']) : 0;?></i>
@@ -86,10 +86,31 @@
                      </a>                 
                   </div>
                </div>
+               
+            </div>
+
+            <div class="row-fluid">
+               
+               <div class="responsive span6 align-right" data-tablet="span6" data-desktop="span6">
+                  <div class="dashboard-stat red">
+                     <div class="visual">
+                        <i class="icon-hideme"><?=(!empty($this->vars['scholarships_toapprove'])) ? count($this->vars['scholarships_toapprove']) : 0;?></i>
+                     </div>
+                     <div class="details">
+                        <div class="number"><font><font>Scholarships to Approve</font></font></div>
+                        <div class="desc"><font><font>
+                           
+                        </font></font></div>
+                     </div>
+                     <a class="more" href="#scholarshiptoapprove"><font><font>
+                     click to scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
+                     </a>                 
+                  </div>
+               </div>
                <div class="responsive span6" data-tablet="span6" data-desktop="span6">
                   <div class="dashboard-stat purple">
                      <div class="visual">
-                        <i class="icon-hideme"><?=(!empty($this->vars['scholarship'])) ? count($this->vars['scholarship']) : 0;?></i>
+                        <i class="icon-hideme"><?=(!empty($this->vars['scholarships_approved'])) ? count($this->vars['scholarships_approved']) : 0;?></i>
                      </div>
                      <div class="details">
                         <div class="number"><font><font>Scholarships</font></font></div>
@@ -104,6 +125,7 @@
                </div>
                
             </div>
+
 
             <? 
             $waitlist = (!empty($this->vars['waitlist'])) ? count($this->vars['waitlist']) : 0;
@@ -334,9 +356,9 @@
             <div class="row-fluid">
                <div class="span12">
                   <!-- BEGIN EXAMPLE TABLE PORTLET-->
-                  <div class="portlet box purple">
+                  <div class="portlet box red">
                      <div class="portlet-title" id="registration">
-                        <div class="caption"><i class="icon-user"></i>Scholarships</div>
+                        <div class="caption"><i class="icon-user"></i>Scholarships to Approve</div>
                      </div>
                      <div class="portlet-body">
                         <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
@@ -352,7 +374,55 @@
                               </tr>
                            </thead>
                            <tbody role="alert" aria-live="polite" aria-relevant="all">
-                              <? if(!empty($this->vars['scholarship'])): foreach($this->vars['scholarship'] as $registration): ?>
+                              <? if(!empty($this->vars['scholarships_toapprove'])): foreach($this->vars['scholarships_toapprove'] as $registration): ?>
+                              <tr class="gradeX odd">
+                                 <td class=" "><?=$registration['name']?></td>
+                                 <td class="hidden-phone"><?=$registration['email']?></td>
+                                 <td class="hidden-480 "><?=$registration['phone']?></td>
+                                 <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($registration['submittedDate']['fullDateTime'])); ?>
+                                 <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$registration['submittedDate']['monthDay'].' '.$registration['submittedDate']['shortTime']?></td>
+                                 <td class="center hidden-480 "><?=\Saw\Model\Registration::$paymentTypeReversed[$registration['currentPaymentType']];?></td>
+                                 <td class=" ">
+                                    <a data-id="<?=$registration['_id']?>" class="btn blue mini view registration"><i class=" "></i> Registration</a>
+                                    <? if(!empty($registration['memberId'])): ?>
+                                    <a data-id="<?=$registration['memberId']?>" class="btn blue mini view member"><i class=" "></i> Member</a>
+                                    <? endif; ?>
+                                 </td>
+                              </tr>
+                              <? endforeach;?>
+                              <? else: ?>
+                                 <td colspan="6">None.</td>
+                              <? endif;?>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div><a name="registrationspaid"></a>
+                  <!-- END EXAMPLE TABLE PORTLET-->
+               </div>
+            </div>
+
+            <div class="row-fluid">
+               <div class="span12">
+                  <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                  <div class="portlet box purple">
+                     <div class="portlet-title" id="registration">
+                        <div class="caption"><i class="icon-user"></i>Scholarships Approved</div>
+                     </div>
+                     <div class="portlet-body">
+                        <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                        <table class="table table-striped table-bordered table-hover dataTable" id="registrations" aria-describedby="sample_1_info">
+                           <thead>
+                              <tr role="row">
+                                 <th class="">Name</th>
+                                 <th class="hidden-phone">Email</th>
+                                 <th class="hidden-480">Phone</th>
+                                 <th class="hidden-480">Date Submitted</th>
+                                 <th class="hidden-480">Payment Type</th>
+                                 <th class=""></th>
+                              </tr>
+                           </thead>
+                           <tbody role="alert" aria-live="polite" aria-relevant="all">
+                              <? if(!empty($this->vars['scholarships_approved'])): foreach($this->vars['scholarships_approved'] as $registration): ?>
                               <tr class="gradeX odd">
                                  <td class=" "><?=$registration['name']?></td>
                                  <td class="hidden-phone"><?=$registration['email']?></td>

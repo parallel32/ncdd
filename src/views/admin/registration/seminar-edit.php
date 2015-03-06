@@ -21,6 +21,9 @@ endif; ?>
                <form id="saw-form" class="horizontal-form portlet">
                   <input type="hidden" name="doc[_id]" value="<?=$this->vars['registration']['_id']?>">
                   <input type="hidden" name="doc[class]" value="<?=$this->vars['registration']['class']?>">
+                  <?if(array_key_exists('scholarship',$this->vars['registration'])): ?>
+                  <input type="hidden" name="doc[scholarship][_id]" value="<?=$this->vars['registration']['scholarshipId']?>">
+                  <?endif;?>
                   
                   <h3 class="form-section">1. Your Information</h3>
                   <div class="row-fluid">
@@ -305,6 +308,143 @@ endif; ?>
                      </div>
                      <!--/span-->
                   </div>
+
+
+                  <?if(array_key_exists('scholarship',$this->vars['registration'])): ?>
+                     <h3 class="form-section">6. Scholarship Registration</h3>
+                     <h4 class="form-section">a.</h4>
+                     <div class="row-fluid">
+                        <div class="span12">
+                           <div class="control-group">
+                              <label class="control-label">Number of years in law practice:</label>
+                              <div class="controls">
+                                 <input type="text" name="doc[scholarship][yearsInLawPractice]" class="m-wrap span12 yearsInLawPractice" value="<?=$this->vars['registration']['scholarship']['yearsInLawPractice']?>">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <h4 class="form-section">b.</h4>
+                     <div class="row-fluid">
+                        <div class="span12">
+                           <div class="control-group">
+                              <label class="control-label">Number of years in the NCDD:</label>
+                              <div class="controls">
+                                 <input type="text" name="doc[scholarship][yearsInNCDD]" class="m-wrap span12 yearsInNCDD" value="<?=$this->vars['registration']['scholarship']['yearsInNCDD']?>">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <h4 class="form-section">c.</h4>
+                     <div class="row-fluid">
+                        <div class="span12">
+                           <div class="control-group">
+                              <label class="control-label">Approximate number of DUI/DWI jury trials and non-jury trials you have handled:</label>
+                              <div class="controls">
+                                 <select class="small m-wrap numberDUITrialsHandeled" name="doc[scholarship][numberDUITrialsHandeled]">
+                                    <option value="10" <?=($this->vars['registration']['scholarship']['numberDUITrialsHandeled'] == 10) ? 'selected':''?>>Fewer than 10</option>
+                                    <option value="11" <?=($this->vars['registration']['scholarship']['numberDUITrialsHandeled'] == 11) ? 'selected':''?>>11 to 30</option>
+                                    <option value="31" <?=($this->vars['registration']['scholarship']['numberDUITrialsHandeled'] == 31) ? 'selected':''?>>31 or more</option>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <h4 class="form-section">d.</h4>
+                     <div class="row-fluid">
+                        <div class="span6 ">
+                           <div class="control-group">
+                              <label class="control-label">Have you ever been arrested for any crime?</label>
+                              <div class="controls">
+                                 <select class="small m-wrap everBeenArrested" name="doc[scholarship][everBeenArrested]">
+                                    <option value="no" <?=($this->vars['registration']['scholarship']['everBeenArrested']=='no') ? 'selected':''?>>No</option>
+                                    <option value="yes" <?=($this->vars['registration']['scholarship']['everBeenArrested']=='yes') ? 'selected':''?>>Yes</option>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                        <div class="span6 ">
+                           <div class="control-group">
+                              <label class="control-label">If "Yes", please explain  and provide the final disposition of the case including whether or not you received a "deferred" or "diverted" disposition.</label>
+                              <div class="controls">
+                                 <textarea rows="5" class="span12 everBeenArrestedExplain" name="doc[scholarship][everBeenArrestedExplain]"><?=$this->vars['registration']['scholarship']['everBeenArrestedExplain']?></textarea>
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <h4 class="form-section">e.</h4>
+                     <div class="row-fluid">
+                        <div class="span6 ">
+                           <div class="control-group">
+                              <label class="control-label"><b>(i)</b> Has your Bar Association or licensing authority conducted any investigation or inquiry based upon complaints?</label><br>
+                              <label class="control-label"><b>(ii))</b> Have you ever been subject to disciplinary action by your bar association or licensing authority?</label><br>
+                              <label class="control-label"><b>(iii)</b> Has your license to practice law ever been suspended or revoked for any period of time?</label><br>
+                              <div class="controls">
+                                 <select class="small m-wrap everInvestigation" name="doc[scholarship][everInvestigation]">
+                                    <option value="no" <?=($this->vars['registration']['scholarship']['everInvestigation']=='no') ? 'selected':''?>>No</option>
+                                    <option value="yes" <?=($this->vars['registration']['scholarship']['everInvestigation']=='yes') ? 'selected':''?>>Yes</option>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                        <div class="span6 ">
+                           <div class="control-group">
+                              <label class="control-label">If your answer is "Yes" to any portion of question 6, please explain:</label>
+                              <div class="controls">
+                                 <textarea rows="5" class="span12 everInvestigationExplain" name="doc[scholarship][everInvestigationExplain]"><?=$this->vars['registration']['scholarship']['everInvestigationExplain']?></textarea>
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <h4 class="form-section">f.</h4>
+                     <div class="row-fluid">
+                        <div class="span6 ">
+                           <div class="control-group">
+                              <label class="control-label">Are you presently serving, in any capacity, either part time or full time in a law enforcement or prosecution agency (Example: reserve duty officer or municipal prosecutor)? </label>
+                              <div class="controls">
+                                 <select class="small m-wrap everLawEnforcement" name="doc[scholarship][everLawEnforcement]">
+                                    <option value="no" <?=($this->vars['registration']['scholarship']['everLawEnforcement']=='no') ? 'selected':''?>>No</option>
+                                    <option value="yes" <?=($this->vars['registration']['scholarship']['everLawEnforcement']=='yes') ? 'selected':''?>>Yes</option>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                        <div class="span6 ">
+                           <div class="control-group">
+                              <label class="control-label">If "Yes", please explain.</label>
+                              <div class="controls">
+                                 <textarea rows="5" class="span12 everLawEnforcementExplain" name="doc[scholarship][everLawEnforcementExplain]"><?=$this->vars['registration']['scholarship']['everLawEnforcementExplain']?></textarea>
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <h4 class="form-section">g.</h4>
+                     <div class="row-fluid">
+                        <div class="span12 ">
+                           <div class="control-group">
+                              <label class="control-label">Please take a moment to explain your reasons for requesting a scholarship. </label>
+                              <div class="controls">
+                                 <textarea rows="5" class="span12 reasonForScholarship" name="doc[scholarship][reasonForScholarship]"><?=$this->vars['registration']['scholarship']['reasonForScholarship']?></textarea>
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                        
+                     </div>
+
+
+                  <? endif; ?>
+
+
+
                   <div class="alert alert-error hide">
                         <button class="close" data-dismiss="alert"></button>
                         You have some form errors. Please check below.

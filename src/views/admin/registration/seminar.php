@@ -87,7 +87,7 @@ endif; ?>
                <form id="saw-form" class="horizontal-form portlet">
                   <input type="hidden" class="seminarId" name="doc[seminarId]" value="<?=$this->vars['seminar']['_id']?>">
                   <input type="hidden" class="memberId" name="doc[memberId]" value="<?=($signed_in) ? $this->vars['member']['_id']: '';?>">
-                  <input id="currentPaymentType" type="hidden" name="doc[currentPaymentType]" value="<?=\Saw\Model\Registration::$paymentType['CREDIT']?>">
+                  <input id="currentPaymentType" type="hidden" name="doc[currentPaymentType]" value="<?/*\Saw\Model\Registration::$paymentType['CREDIT']*/?>">
                   <input id="paymentId" type="hidden" name="doc[paymentId]" value="">
                   
                   <h3 class="form-section">1. Your Information</h3>
@@ -306,23 +306,7 @@ endif; ?>
 
 
                      </br></br>
-                     <h3 class="form-section">5. Payment</h3>
-                     <? if(is_array($this->vars['seminar']) && array_key_exists('register',$this->vars['seminar']) && is_array($this->vars['seminar']['register']) && array_key_exists('scholarship',$this->vars['seminar']['register']) && $this->vars['seminar']['register']['scholarship'] == 'ON'): ?>
-                     <h4>Scholarship</h4>
-                     <div id="scholarship-group" class="row-fluid addr ">
-                        <div class="span12 ">
-                           <div class="control-group">
-                              <label class="control-label" >If you've applied for a scholarship, please enter your scholarship's registration number below:</label>
-                              <div class="controls">
-                                 <input name="doc[registrationNumber]" id="registrationNumber" type="text" autocomplete="on" value="" class="m-wrap span4">
-                                 <a id="verify-reg-num" class="btn blue">Verify Scholarship Registration Number</a>
-                                 <span class="help-block"></span>
-                              </div>
-                           </div>
-                        </div>
-                        <!--/span-->
-                     </div>
-                     <? endif; ?>
+                     <h3 class="form-section">5. Registration Fees</h3>
                      <div class="row-fluid addr ">
                         <div class="span6 ">
                            <div class="control-group">
@@ -395,6 +379,23 @@ endif; ?>
                      </br>
                      
                      
+
+                     <h3 class="form-section">Payment Options</h3>
+                     <div class="row-fluid">
+                        <div class="span12 ">
+                           <? if($this->vars['activate_waitlist'] == false): ?>
+                              <button type="button" class="btn blue check">Click to Pay By Check</button>
+                              <button type="button" class="btn blue credit">Click to Pay by Credit Card</button>
+                              <? if(is_array($this->vars['seminar']) && array_key_exists('register',$this->vars['seminar']) && is_array($this->vars['seminar']['register']) && array_key_exists('scholarship',$this->vars['seminar']['register']) && $this->vars['seminar']['register']['scholarship'] == 'ON'): ?>
+                              <button type="button" class="btn purple scholarship">Click to Apply for a Scholarship</button>
+                              <? endif; ?>
+                           <? endif; ?>
+
+                        </div>
+                     </div>
+                     <br><br>
+
+
                      <!-- PAYMENT ELEMENT -->
                      <style>
                      .card {
@@ -420,7 +421,7 @@ endif; ?>
                      background-image: url('/assets/img/card-discover.gif');
                      }
                      </style>
-                     <div id="payment-form">
+                     <div id="payment-form" class="hide">
                         
                         <input type="hidden" class="memberId" name="doc[payment][memberId]" value="<?=($signed_in) ? $this->vars['member']['_id']: '';?>">
                         <input type="hidden" class="description" name="doc[payment][description]" value="<?='INV-'.time();?>">
@@ -428,6 +429,7 @@ endif; ?>
                         <input type="hidden" class="amount" name="doc[payment][amount]" value="<?=($signed_in) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>">
                         <input type="hidden" class="cardType" name="doc[payment][cardType]" value="">
                         <input type="hidden" class="token" name="doc[payment][token]" value="">
+
                         <h3 class="form-section">6. Pay By Credit Card</h3>
                         <p>To pay by check, please scroll to the end of the form and click the blue button.</p>
                         <div class="row-fluid">
@@ -681,11 +683,132 @@ endif; ?>
                   </div>
                   <div  id="payment-form-scholarship" class="hide">
                      <h3 class="form-section">6. Scholarship Registration</h3>
+                     <h4 class="form-section">a.</h4>
                      <div class="row-fluid">
-                        <div class="span12 ">
-                           <h4 class="form-section">Your registration fee is taken care of by your scholarship.  You do not owe anything.</h4>
+                        <div class="span12">
+                           <div class="control-group">
+                              <label class="control-label">Number of years in law practice:</label>
+                              <div class="controls">
+                                 <input type="text" name="doc[scholarship][yearsInLawPractice]" class="m-wrap span12 yearsInLawPractice">
+                              </div>
+                           </div>
                         </div>
                         <!--/span-->
+                     </div>
+                     <h4 class="form-section">b.</h4>
+                     <div class="row-fluid">
+                        <div class="span12">
+                           <div class="control-group">
+                              <label class="control-label">Number of years in the NCDD:</label>
+                              <div class="controls">
+                                 <input type="text" name="doc[scholarship][yearsInNCDD]" class="m-wrap span12 yearsInNCDD">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <h4 class="form-section">c.</h4>
+                     <div class="row-fluid">
+                        <div class="span12">
+                           <div class="control-group">
+                              <label class="control-label">Approximate number of DUI/DWI jury trials and non-jury trials you have handled:</label>
+                              <div class="controls">
+                                 <select class="small m-wrap numberDUITrialsHandeled" name="doc[scholarship][numberDUITrialsHandeled]">
+                                    <option value="10">Fewer than 10</option>
+                                    <option value="11">11 to 30</option>
+                                    <option value="31">31 or more</option>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <h4 class="form-section">d.</h4>
+                     <div class="row-fluid">
+                        <div class="span6 ">
+                           <div class="control-group">
+                              <label class="control-label">Have you ever been arrested for any crime?</label>
+                              <div class="controls">
+                                 <select class="small m-wrap everBeenArrested" name="doc[scholarship][everBeenArrested]">
+                                    <option value="no">No</option>
+                                    <option value="yes">Yes</option>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                        <div class="span6 ">
+                           <div class="control-group">
+                              <label class="control-label">If "Yes", please explain  and provide the final disposition of the case including whether or not you received a "deferred" or "diverted" disposition.</label>
+                              <div class="controls">
+                                 <textarea rows="5" class="span12 everBeenArrestedExplain" name="doc[scholarship][everBeenArrestedExplain]"></textarea>
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <h4 class="form-section">e.</h4>
+                     <div class="row-fluid">
+                        <div class="span6 ">
+                           <div class="control-group">
+                              <label class="control-label"><b>(i)</b> Has your Bar Association or licensing authority conducted any investigation or inquiry based upon complaints?</label><br>
+                              <label class="control-label"><b>(ii))</b> Have you ever been subject to disciplinary action by your bar association or licensing authority?</label><br>
+                              <label class="control-label"><b>(iii)</b> Has your license to practice law ever been suspended or revoked for any period of time?</label><br>
+                              <div class="controls">
+                                 <select class="small m-wrap everInvestigation" name="doc[scholarship][everInvestigation]">
+                                    <option value="no">No</option>
+                                    <option value="yes">Yes</option>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                        <div class="span6 ">
+                           <div class="control-group">
+                              <label class="control-label">If your answer is "Yes" to any portion of question 6, please explain:</label>
+                              <div class="controls">
+                                 <textarea rows="5" class="span12 everInvestigationExplain" name="doc[scholarship][everInvestigationExplain]"></textarea>
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <h4 class="form-section">f.</h4>
+                     <div class="row-fluid">
+                        <div class="span6 ">
+                           <div class="control-group">
+                              <label class="control-label">Are you presently serving, in any capacity, either part time or full time in a law enforcement or prosecution agency (Example: reserve duty officer or municipal prosecutor)? </label>
+                              <div class="controls">
+                                 <select class="small m-wrap everLawEnforcement" name="doc[scholarship][everLawEnforcement]">
+                                    <option value="no">No</option>
+                                    <option value="yes">Yes</option>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                        <div class="span6 ">
+                           <div class="control-group">
+                              <label class="control-label">If "Yes", please explain.</label>
+                              <div class="controls">
+                                 <textarea rows="5" class="span12 everLawEnforcementExplain" name="doc[scholarship][everLawEnforcementExplain]"></textarea>
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <h4 class="form-section">g.</h4>
+                     <div class="row-fluid">
+                        <div class="span12 ">
+                           <div class="control-group">
+                              <label class="control-label">Please take a moment to explain your reasons for requesting a scholarship. </label>
+                              <div class="controls">
+                                 <textarea rows="5" class="span12 reasonForScholarship" name="doc[scholarship][reasonForScholarship]"></textarea>
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                        
                      </div>
                   </div>
 
@@ -704,8 +827,6 @@ endif; ?>
                         <? } ?>
                         
                         <? if($this->vars['activate_waitlist'] == false): ?>
-                           <button type="button" class="btn blue check">Pay By Check</button>
-                           <button type="button" class="btn blue credit hide">Pay by Credit Card</button>
                            <button type="button" class="btn green submit-registration"><i class="icon-ok"></i> Submit Registration</button>
                         <? else: ?>
                            <button type="button" class="btn blue submit-registration"><i class="icon-ok"></i> Submit Registration for the Waiting List</button>
@@ -784,7 +905,7 @@ endif; ?>
    Payment.initiateRegistration = function () {
       $('.submit-registration').html('<i class="icon-time"></i> Processing your registration..');
       $('.submit-registration').attr("disabled", "disabled");
-      io.saw.Registration.doRegistration();
+      io.saw.Registration.doRegistration();     
    }
    Payment.hold_card = '';
    Payment.init = function(){
@@ -877,67 +998,40 @@ jQuery(document).ready(function() {
           return [curtop];
       }
    }
-   verify_scholarship_reg_num = function (){
-      io.saw.FormGet.activate({postUrl:'/scholarship/check/regnum/'+$('#registrationNumber').val()
-         ,postOnComplete:function(responseObj,responseStatus){}
-         ,postOnErrors:function(responseObj){
-            $('#scholarship-group .controls span').show().html(responseObj.errors);
-            $('#scholarship-group .control-group').addClass('error');
-            $('#verify-reg-num').addClass('blue').removeClass('green').html('Verify Scholarship Registration Number');
-            $('#payment-form-scholarship').hide();
-            $('#payment-form').show();
-            $('.btn.credit').show();
-            $('.btn.check').show();            
-         }
-         ,postOnSuccess:function(responseObj){
-            $('#verify-reg-num').addClass('green').removeClass('blue').html('<i class="icon-ok"></i> Verified');
-            $('#currentPaymentType').val(<?=\Saw\Model\Registration::$paymentType['SCHOLARSHIP']?>);
-            $('#payment-form-scholarship').show();
-            $('#payment-form').hide();
-            $('#payment-form-check').hide();
-            $('.btn.credit').hide();
-            $('.btn.check').hide();            
-            $('#scholarship-group .control-group').removeClass('error');
-            $('#scholarship-group .controls span').hide().html('');
-         }
-      });
-   }
-   // verify scholarship button clicked
-   $('#verify-reg-num').click(function(e){
-      verify_scholarship_reg_num();
-   });
-   $('#registrationNumber').keypress(function (e) {
-         if (e.which == 13) {
-            verify_scholarship_reg_num();
-         }
-   });
    // pay by check button clicked
    $('.btn.check').click(function(e){
       $('#currentPaymentType').val(<?=\Saw\Model\Registration::$paymentType['CHECK']?>);
-      $('#payment-form-scholarship').hide();
-      $('#payment-form-check').show();
-      $('#payment-form').hide();
-      $(this).hide();
-      $('.btn.credit').show();
+      $('#payment-form-scholarship').hide("slow");
+      $('#payment-form-check').show("slow");
+      $('#payment-form').hide("slow");     
       var targetElement = document.getElementById('payment-form-check');
       window.setTimeout(function() {
         window.scroll(0, io.saw.Payment.findPos(targetElement));
-      }, 5);
+      }, 1000);
    });
    // pay by credit card button clicked
    $('.btn.credit').click(function(e){
       $('#currentPaymentType').val(<?=\Saw\Model\Registration::$paymentType['CREDIT']?>);
-      $('#payment-form-scholarship').hide();
-      $('#payment-form').show();
-      $('#payment-form-check').hide();
-      $(this).hide();
-      $('.btn.check').show();
+      $('#payment-form-scholarship').hide("slow");
+      $('#payment-form').show("show");
+      $('#payment-form-check').hide("slow");      
       var targetElement = document.getElementById('payment-form');
       window.setTimeout(function() {
         window.scroll(0, io.saw.Payment.findPos(targetElement));
-      }, 5);
+      }, 1000);
    });
-
+   // pay by scholarship button clicked
+   $('.btn.scholarship').click(function(e){
+      $('#currentPaymentType').val(<?=\Saw\Model\Registration::$paymentType['SCHOLARSHIP']?>);
+      $('#payment-form-scholarship').show("slow");
+      $('#payment-form-check').hide("slow");
+      $('#payment-form').hide("slow");      
+      var targetElement = document.getElementById('payment-form-scholarship');
+      window.setTimeout(function() {
+        window.scroll(0, io.saw.Payment.findPos(targetElement));
+      }, 1000);
+   });
+   
 });      
 </script>
 <? endif; ?>

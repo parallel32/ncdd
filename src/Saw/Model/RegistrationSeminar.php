@@ -34,6 +34,7 @@ class RegistrationSeminar extends Registration {
 	public $registrationNumber; // the scholarship registration number
 	public $userAgent;
 	public $tempPayment;
+	public $scholarshipId;
 
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
@@ -81,6 +82,7 @@ class RegistrationSeminar extends Registration {
         $this->registrationNumber = $doc['registrationNumber'];
         $this->userAgent = $doc['userAgent'];
         $this->tempPayment = $doc['tempPayment'];
+        $this->scholarshipId = $doc['scholarshipId'];
 	}
 	
 	/**
@@ -106,6 +108,7 @@ class RegistrationSeminar extends Registration {
 		$this->registrationNumber = $this->registrationNumber ?: 'no';
 		$this->userAgent = $this->userAgent ?: '';
 		$this->tempPayment = $this->tempPayment ?: new \stdClass();
+		$this->scholarshipId = $this->scholarshipId ?: new \stdClass();
 	}
 	
 	public function insert(){
@@ -140,6 +143,7 @@ class RegistrationSeminar extends Registration {
 						,'memberId'=>true
 						,'paymentId'=>true
 						,'seminarId'=>true
+						,'scholarshipId'=>true
 						);
 		switch ($status) {
 			case 'SUBMITTED':
