@@ -102,7 +102,7 @@
                            
                         </font></font></div>
                      </div>
-                     <a class="more" href="#scholarshiptoapprove"><font><font>
+                     <a class="more" href="#scholarshipstoapprove"><font><font>
                      click to scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
                      </a>                 
                   </div>
@@ -118,7 +118,7 @@
                            
                         </font></font></div>
                      </div>
-                     <a class="more" href="#scholarship"><font><font>
+                     <a class="more" href="#scholarships"><font><font>
                      click to scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
                      </a>                 
                   </div>
@@ -348,7 +348,7 @@
                            </tbody>
                         </table>
                      </div>
-                  </div>
+                  </div><a name="registrationspaid"></a>
                   <!-- END EXAMPLE TABLE PORTLET-->
                </div>
             </div>
@@ -396,7 +396,7 @@
                            </tbody>
                         </table>
                      </div>
-                  </div><a name="registrationspaid"></a>
+                  </div><a name="scholarshipstoapprove"></a>
                   <!-- END EXAMPLE TABLE PORTLET-->
                </div>
             </div>
@@ -444,7 +444,7 @@
                            </tbody>
                         </table>
                      </div>
-                  </div><a name="registrationspaid"></a>
+                  </div><a name="scholarships"></a>
                   <!-- END EXAMPLE TABLE PORTLET-->
                </div>
             </div>
