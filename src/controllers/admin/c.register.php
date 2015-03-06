@@ -748,16 +748,18 @@ $app->get('/registrations/seminar/{seminarId}/{offset}/{limit}', function ($semi
 	$scholarships_toapprove = array();
 	$scholarships_approved = array();
 	for ($i=0; $i < count($scholarship); $i++) { 
-		if(is_array($scholarship) && array_key_exists('scholarshipId',$scholarship[$i]) && !empty($scholarship[$i]['scholarshipId'])){
-			$s = new Model\Scholarship(array('_id'=>$scholarship[$i]['scholarshipId']),$app);
-			$s = $s->findById();
-			if($s['currentStatus'] == Model\Scholarship::$status['SUBMITTED']){
-				$scholarships_toapprove[] = $scholarship[$i];
-			}elseif($s['currentStatus'] == Model\Scholarship::$status['APPROVED']){
+		if(is_array($scholarship)){
+			if(array_key_exists('scholarshipId',$scholarship[$i]) && !empty($scholarship[$i]['scholarshipId'])){
+				$s = new Model\Scholarship(array('_id'=>$scholarship[$i]['scholarshipId']),$app);
+				$s = $s->findById();
+				if($s['currentStatus'] == Model\Scholarship::$status['SUBMITTED']){
+					$scholarships_toapprove[] = $scholarship[$i];
+				}elseif($s['currentStatus'] == Model\Scholarship::$status['APPROVED']){
+					$scholarships_approved[] = $scholarship[$i];
+				}
+			}else{
 				$scholarships_approved[] = $scholarship[$i];
 			}
-		}else{
-			$scholarships_approved[] = $scholarship[$i];
 		}
 	}
 	
