@@ -66,7 +66,7 @@
                               <br>
                               <br>
                               <?if(array_key_exists('register',$seminar) && array_key_exists('scholarship',$seminar['register']) && $seminar['register']['scholarship'] == 'ON'): ?>
-                              <a class="btn green scholarship-apply" href="<?=$seminar['registerUrl']?>">
+                              <a class="btn green register-seminar" data-name="<?=$slug?>" data-id="<?=$seminar['_id']?>">
                                 Apply For a Scholarship <i class="icon-star"></i>
                               </a>
                               <br>
