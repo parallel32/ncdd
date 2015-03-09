@@ -1295,7 +1295,7 @@ $app->post('/application/payment', function (Request $request) use ($app) {
 		$doc['invoiceBlock'] = $app['view']->element('invoice-block',array('application'=>$application,'member'=>$member,'location'=>$location,'pro_rated_membership_dues'=>$pro_rate));
 	}
 
-
+	$doc['currentPaymentType'] = Model\Payment::$paymentType['CHECK'];
 	$payment = new Model\Payment($doc,$app);
 	$app['validateModel']($app, $payment,$groups=array('manual'));
 	$paymentId = $payment->manualCharge();
@@ -1336,7 +1336,16 @@ $app->get('/application/{paymentId}/pay/{applicationId}/{resetSession}', functio
 			$application = new Model\Apply(array('_id'=>$applicationId, 'paymentId'=>$paymentId), $app);
 		    break;		
 		case 'UpdateMember':
-			$application = new Model\UpdateMember(array('_id'=>$applicationId, 'paymentId'=>$paymentId,'memberId'=>$application['memberId']), $app);
+
+			// need to determine if a renewal was paid by CC or Chk and update the renewal document in the member record.
+			$payment = new Model\Payment($doc=array('_id'=>$paymentId), $app);
+			$payment = $payment->findById();
+			$pay_by_check = ($payment['currentPaymentType'] == Model\Payment::$paymentType['CHECK']) ? 'yes':'no';
+error_log(__FILE__.' '.__LINE__.' for variable: pay_by_check  ==>'.print_r($pay_by_check,true));
+error_log(__FILE__.' '.__LINE__.' for variable: payment  ==>'.print_r($payment,true));
+			$application = new Model\UpdateMember(array('_id'=>$applicationId, 'paymentId'=>$paymentId,'memberId'=>$application['memberId'],'payByCheck'=>$pay_by_check), $app);
+			$application->saveSafe();
+
 			break;
 		case 'UpdateFoundingMember':
 			$application = new Model\UpdateFoundingMember(array('_id'=>$applicationId, 'paymentId'=>$paymentId,'memberId'=>$application['memberId']), $app);

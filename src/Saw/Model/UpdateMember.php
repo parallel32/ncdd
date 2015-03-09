@@ -188,6 +188,9 @@ class UpdateMember extends Apply {
 		$member['renewal']['currentStatus'] = Renewal::$status['PAID'];
 		$member['renewal']['paidDate'] = new Date(self::$app, 'now', $this->timeZone); 
 		$member['renewal']['paymentId'] = $this->paymentId; 
+		if(!empty($this->payByCheck)){
+			$member['renewal']['payByCheck'] = $this->payByCheck; 
+		}
 		
 		$renewal = new Renewal($member['renewal'],self::$app);
 		$renewal->setRenewalByMember($member['_id']);

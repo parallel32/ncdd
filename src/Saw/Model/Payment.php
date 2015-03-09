@@ -734,6 +734,7 @@ error_log('for variable: this->amount  ==>'.print_r($this->amount,true));
 			$this->transactionId = new \MongoId();
 			$paymentId = $this->insert();			
 			$this->markOwnerClassPaid($paymentId);
+
 			return $paymentId;
 		} catch (\Exception $e) {
 			throw new \Saw\Exceptions\SawException(new Exceptions\DomainException(),"The transaction failed.  Please try again. Processing Message: ".$e->getMessage()." Code:".$e->getCode());
