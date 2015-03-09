@@ -1439,18 +1439,21 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 	}
 	endif;
 	$date = new Model\Date($app,'9/16/2014 5:00 PM');
-	$newlypaid = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION')),'promocode'=>array('$nin'=>array('NCDD2015','NCDD2014','TRIAL','DIVTRIAL','PDTRIAL','RFTRIAL')),'paidDate.date'=>array('$gte'=> new \MongoDate(strtotime($date->iso)))));
-	if(!empty($newlypaid)):
-	for ($i=0; $i < count($newlypaid); $i++) { 
-		switch ($newlypaid[$i]['class']) {
+	$end2014 =  new Model\Date($app,'12/31/2014 11:59 PM');
+	$end2015 =  new Model\Date($app,'12/31/2015 11:59 PM');
+	$newlypaid2014 = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION')),'promocode'=>array('$nin'=>array('NCDD2015','NCDD2014','TRIAL','DIVTRIAL','PDTRIAL','RFTRIAL')),'paidDate.date'=>array('$gte'=> new \MongoDate(strtotime($date->fullDateTime)), '$lte'=> new \MongoDate(strtotime($end2014->fullDateTime)))));
+	$newlypaid2015 = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION')),'promocode'=>array('$nin'=>array('NCDD2015','NCDD2014','TRIAL','DIVTRIAL','PDTRIAL','RFTRIAL')),'paidDate.date'=>array('$gte'=> new \MongoDate(strtotime($end2014->fullDateTime)), '$lte'=> new \MongoDate(strtotime($end2015->fullDateTime)))));
+	if(!empty($newlypaid2014)):
+	for ($i=0; $i < count($newlypaid2014); $i++) { 
+		switch ($newlypaid2014[$i]['class']) {
 	    	case 'NewMemberApplication':
 	    	case 'ApplyNewMember':
-	    		$reference = new Model\ReferenceMember(array('applicationId'=>$newlypaid[$i]['_id']), $app);
+	    		$reference = new Model\ReferenceMember(array('applicationId'=>$newlypaid2014[$i]['_id']), $app);
 	    		$total = $reference->getTotalSubmissions();
 	    		$max = $reference->getMaxSubmissions();
 	    		break;
 	    	case 'ApplyNewSustainingMember':
-	    		$reference = new Model\ReferenceSustainingMember(array('applicationId'=>$newlypaid[$i]['_id']), $app);
+	    		$reference = new Model\ReferenceSustainingMember(array('applicationId'=>$newlypaid2014[$i]['_id']), $app);
 	    		$total = $reference->getTotalSubmissions();
 	    		$max = $reference->getMaxSubmissions();
 	    		break;
@@ -1459,7 +1462,29 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 	    		$max = 0;
 	    		break;	    	
 	    }
-	    $newlypaid[$i]['new_references'] = array('total'=>$total,'max'=>$max);
+	    $newlypaid2014[$i]['new_references'] = array('total'=>$total,'max'=>$max);
+	}
+	endif;
+	if(!empty($newlypaid2015)):
+	for ($i=0; $i < count($newlypaid2015); $i++) { 
+		switch ($newlypaid2015[$i]['class']) {
+	    	case 'NewMemberApplication':
+	    	case 'ApplyNewMember':
+	    		$reference = new Model\ReferenceMember(array('applicationId'=>$newlypaid2015[$i]['_id']), $app);
+	    		$total = $reference->getTotalSubmissions();
+	    		$max = $reference->getMaxSubmissions();
+	    		break;
+	    	case 'ApplyNewSustainingMember':
+	    		$reference = new Model\ReferenceSustainingMember(array('applicationId'=>$newlypaid2015[$i]['_id']), $app);
+	    		$total = $reference->getTotalSubmissions();
+	    		$max = $reference->getMaxSubmissions();
+	    		break;
+	    	default:
+	    		$total = 0;
+	    		$max = 0;
+	    		break;	    	
+	    }
+	    $newlypaid2015[$i]['new_references'] = array('total'=>$total,'max'=>$max);
 	}
 	endif;
 	$crumbs = array(array('name'=>'Applications','href'=>'/applications'));
@@ -1475,7 +1500,8 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 						,'ncdd2015promocode'=>$ncdd2015promocode
 						,'ncdd2014promocode'=>$ncdd2014promocode
 						,'ncddtrialpromocode'=>$ncddtrialpromocode
-						,'newlypaid'=>$newlypaid
+						,'newlypaid2014'=>$newlypaid2014
+						,'newlypaid2015'=>$newlypaid2015
 	);
 	return $app['view']->render('application/index', 'default', $view_vars);
 })
