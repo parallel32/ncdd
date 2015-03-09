@@ -339,39 +339,6 @@
                   </div>
                </div>
                <div class="responsive span6" data-tablet="span6" data-desktop="span6">
-                  <div class="dashboard-stat purple">
-                     <div class="visual">
-                        <i class="icon-hide-me"><span class="number"><?=$this->vars['trial'];?></span></i>
-                     </div>
-                     <div class="details">
-                        <div class="number"><font><font></font>Trial Mode</font></div>
-                        <div class="desc"><font><font></font></font></div>
-                     </div>
-                     <a class="more" href="/applications#trial"><font><font>
-                     Go </font></font><i class="m-icon-swapright m-icon-white"></i>
-                     </a>                 
-                  </div>
-               </div>
-            </div>
-            
-            <div class="row-fluid">
-               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
-                  <div class="dashboard-stat blue">
-                     <div class="visual">
-                        <i class="icon-hideme"><?=$this->vars['newlypaid'];?></i>
-                     </div>
-                     <div class="details">
-                        <div class="number"><font><font></font>Paid w/o Promo</font></div>
-                        <div class="desc"><font><font>
-                           
-                        </font></font></div>
-                     </div>
-                     <a class="more" href="/applications#paidwopromo"><font><font>
-                     Go </font></font><i class="m-icon-swapright m-icon-white"></i>
-                     </a>                 
-                  </div>
-               </div>
-               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
                   <div class="dashboard-stat blue">
                      <div class="visual">
                         <i class="icon-hideme"><?=$this->vars['ncdd2015promocode'];?></i>
@@ -388,8 +355,59 @@
                   </div>
                </div>
             </div>
+            
+            <div class="row-fluid">
+               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                  <div class="dashboard-stat blue">
+                     <div class="visual">
+                        <i class="icon-hideme"><?=$this->vars['newlypaid2014'];?></i>
+                     </div>
+                     <div class="details">
+                        <div class="number"><font><font></font>Paid w/o Promo '14</font></div>
+                        <div class="desc"><font><font>
+                           
+                        </font></font></div>
+                     </div>
+                     <a class="more" href="/applications#paidwopromo"><font><font>
+                     Go </font></font><i class="m-icon-swapright m-icon-white"></i>
+                     </a>                 
+                  </div>
+               </div>
+               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                  <div class="dashboard-stat blue">
+                     <div class="visual">
+                        <i class="icon-hideme"><?=$this->vars['newlypaid2015'];?></i>
+                     </div>
+                     <div class="details">
+                        <div class="number"><font><font></font>Paid w/o Promo '15</font></div>
+                        <div class="desc"><font><font>
+                           
+                        </font></font></div>
+                     </div>
+                     <a class="more" href="/applications#paidwopromo"><font><font>
+                     Go </font></font><i class="m-icon-swapright m-icon-white"></i>
+                     </a>                 
+                  </div>
+               </div>
                
-
+            </div>
+               
+            <div class="row-fluid">
+               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                  <div class="dashboard-stat purple">
+                     <div class="visual">
+                        <i class="icon-hide-me"><span class="number"><?=$this->vars['trial'];?></span></i>
+                     </div>
+                     <div class="details">
+                        <div class="number"><font><font></font>Trial Mode</font></div>
+                        <div class="desc"><font><font></font></font></div>
+                     </div>
+                     <a class="more" href="/applications#trial"><font><font>
+                     Go </font></font><i class="m-icon-swapright m-icon-white"></i>
+                     </a>                 
+                  </div>
+               </div>
+            </div>
 
 
 

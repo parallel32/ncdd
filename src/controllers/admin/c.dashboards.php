@@ -41,7 +41,10 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 			$view_vars['ncdd2015promocode']=$apply->countByStatus('PAID',$filter=array('promocode'=>'NCDD2015'));
 			$view_vars['ncdd2014promocode']=$apply->countByStatus('PAID',$filter=array('promocode'=>'NCDD2014'));
 			$date = new Model\Date($app,'9/16/2014 5:00 PM');
-			$view_vars['newlypaid']=$apply->countByStatus('PAID',$filter=array('promocode'=>array('$nin'=>array('NCDD2015','NCDD2014','TRIAL')),'paidDate.date'=>array('$gte'=> new \MongoDate(strtotime($date->iso)))));
+			$end2014 =  new Model\Date($app,'12/31/2014 11:59 PM');
+			$end2015 =  new Model\Date($app,'12/31/2015 11:59 PM');
+			$view_vars['newlypaid2014']=$apply->countByStatus('PAID',$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION')),'promocode'=>array('$nin'=>array('NCDD2015','NCDD2014','TRIAL','DIVTRIAL','PDTRIAL','RFTRIAL')),'paidDate.date'=>array('$gte'=> new \MongoDate(strtotime($date->fullDateTime)), '$lte'=> new \MongoDate(strtotime($end2014->fullDateTime)))));
+			$view_vars['newlypaid2015']=$apply->countByStatus('PAID',$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION')),'promocode'=>array('$nin'=>array('NCDD2015','NCDD2014','TRIAL','DIVTRIAL','PDTRIAL','RFTRIAL')),'paidDate.date'=>array('$gte'=> new \MongoDate(strtotime($end2014->fullDateTime)), '$lte'=> new \MongoDate(strtotime($end2015->fullDateTime)))));
 	
 			$blog = new Model\Blog(array(),$app);
 			$blogs = $blog->countByStatus('REVIEW','no',0,5);
