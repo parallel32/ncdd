@@ -322,6 +322,7 @@ error_log('for variable: orderTotal  ==>'.print_r($this->orderTotal,true));
 error_log('for variable: shippingTotal  ==>'.print_r($this->shippingTotal,true));
 $this->addressLine1 = htmlentities($this->addressLine1);
 $this->addressLine2 = htmlentities($this->addressLine2);
+$this->name = htmlentities($this->name);
 $body .= <<< EOT
         <v1:Payment>
           <v1:ChargeTotal>{$this->amount}</v1:ChargeTotal>
