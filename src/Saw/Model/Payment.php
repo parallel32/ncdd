@@ -104,8 +104,8 @@ class Payment extends Model {
 		$metadata->addPropertyConstraint('countryShipping', new Constraints\NotBlank(array('groups' => array('product-purchase'))));
 		
 		//$metadata->addPropertyConstraint('phone', new Constraints\NotBlank(array('groups' => array('product-purchase'))));
-		$metadata->addPropertyConstraint('email', new Constraints\NotBlank(array('groups' => array('check','cc','manual','product-purchase'))));
-		$metadata->addPropertyConstraint('email', new Constraints\Email(array('message'=>'invalid email','groups' => array('check','cc','manual','product-purchase'))));
+		//$metadata->addPropertyConstraint('email', new Constraints\NotBlank(array('groups' => array('check','cc','manual','product-purchase'))));
+		//$metadata->addPropertyConstraint('email', new Constraints\Email(array('message'=>'invalid email','groups' => array('check','cc','manual','product-purchase'))));
 		
 		// product-purchase group isn't required here because the payment must validate before an Order record can be created
 		//$metadata->addPropertyConstraint('ownerId', new Constraints\NotBlank(array('groups' => array('cc','manual')))); 
