@@ -643,7 +643,9 @@ endif; ?>
                         </div>
                         <!--/span-->
                      </div>
-
+                     <script>
+                     $('#currentPaymentType').val('<?=\Saw\Model\Registration::$paymentType['CREDIT']?>');
+                     </script>
                   <? endif; //end activate waitlist ?>
 
 
