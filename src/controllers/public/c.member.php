@@ -101,15 +101,14 @@ $app->get('/badge/{id}/staff', function ($id, Request $request) use ($app, $imgU
 		
 });
 $app->get('/badge/{id}/delegate', function ($id, Request $request) use ($app, $imgUnavailable) {
-	
+	$badge_path = '';
 	// return the badge
 	$member = new Model\Member(array('_id'=>$id),$app);
 	$member = $member->findById();
 	$delegate = new Model\Delegate(array(), $app);
 	$delegate = $delegate->fetchByDelegate($id);
-	
 	if(!empty($delegate)){
-		$badge_path = Model\Member::$facultyBadge[$member['currentFacultyPosition']];
+		$badge_path = Model\Member::$facultyBadge[Model\Member::$facultyPosition['DELEGATE']];
 	}
 
 	if (!file_exists($badge_path)) {
