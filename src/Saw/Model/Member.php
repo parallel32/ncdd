@@ -486,9 +486,11 @@ class Member extends User {
 				break;
 			case 'Sustaining Members':
 				if($listedOnly){
-					$result = $this->find($query=array('currentMembership'=>self::$membership['SUSTAINING MEMBER'],'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+					//$result = $this->find($query=array('currentMembership'=>self::$membership['SUSTAINING MEMBER'],'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+					$result = $this->find($query=array('currentMembership'=>self::$membership['SUSTAINING MEMBER'],'listed'=>1),$fields,true,$sort=array('lastName'=>1,'firstName'=>1),$offset=0,$limit=3000);		
 				}else{
-					$result = $this->find($query=array('currentMembership'=>self::$membership['SUSTAINING MEMBER']),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+					//$result = $this->find($query=array('currentMembership'=>self::$membership['SUSTAINING MEMBER']),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+					$result = $this->find($query=array('currentMembership'=>self::$membership['SUSTAINING MEMBER']),$fields,true,$sort=array('lastName'=>1,'firstName'=>1),$offset=0,$limit=3000);		
 				}
 				break;
 			case 'General Members':
