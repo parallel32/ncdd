@@ -22,7 +22,7 @@ $utilities->before($mustbeMEMBER);
 // SET PRIMARY LOCATION //
 //////////////////////////
 $utilities->get('/set-primary-location', function () use ($app) {
-    
+    return false;
     //*
     ini_set('memory_limit','1024M');
 
