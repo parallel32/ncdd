@@ -117,7 +117,7 @@
 	                   	// rebind click event to the records....
 	                   	$('#practicestate-grid .delete').click(function(e){
 	                   		var the_this = $(this);
-							io.saw.FormGet.activate({postUrl:'/member/practicestate/'+$(this).attr('data-id')+'/delete'
+							io.saw.FormGet.activate({postUrl:'/member/'+$(this).attr('data-id')+'/practicestate/delete'
 								,postOnComplete:function(responseObj,responseStatus){}
 								,postOnSuccess:function(responseObj){
 									// remove the record from the grid
