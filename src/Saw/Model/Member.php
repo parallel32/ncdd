@@ -32,6 +32,7 @@ class Member extends User {
 	public $primaryPhone;
 	public $primaryFax;
 	public $languages;//array of values
+	public $practiceStates;
 	public $specializeIn; // open text field
 	public $aboutMe;
 	public $financialFees;
@@ -146,6 +147,7 @@ class Member extends User {
 		$this->primaryPhone = $doc['primaryPhone'];
 		$this->primaryFax = $doc['primaryFax'];
 		$this->languages = $doc['languages'];
+		$this->practiceStates = $doc['practiceStates'];
 		$this->specializeIn = $doc['specializeIn'];
 		$this->financialFees = $doc['financialFees'];
 		$this->financialPayment = $doc['financialPayment'];
@@ -238,6 +240,7 @@ class Member extends User {
 		$this->primaryPhone = $this->primaryPhone ?: '';
 		$this->primaryFax = $this->primaryFax ?: '';
 		$this->languages = $this->languages ?: array();
+		$this->practiceStates = $this->practiceStates ?: array();
 		$this->specializeIn = $this->specializeIn ?: '';
 		$this->financialFees = $this->financialFees ?: '';
 		$this->financialPayment = $this->financialPayment ?: '';
@@ -336,6 +339,23 @@ class Member extends User {
 		$result = $this->findOne($query=array('_id'=>$this->_id),$fields=array('languages'=>1));
 		$this->languages = $result['languages'];
 		return $result['languages'];
+	}
+	public function addPracticeState($practiceState){
+		// mongo atomic push onto the array
+		$criteria = array('_id'=>$this->_id);
+		$update_spec = array('$addToSet'=>array('practiceStates'=>$practiceState));
+		return self::$app['mongo']->update($update_spec, $this->collection, $criteria, $multiple=false, $upsert=false,$options=array('safe'=>true,'fsync'=>true));
+	}
+	public function removePracticeState($practiceState){
+		// mongo atomic push onto the array
+		$criteria = array('_id'=>$this->_id);
+		$update_spec = array('$pull'=>array('practiceStates'=>array('state'=>$practiceState)));
+		return self::$app['mongo']->update($update_spec, $this->collection, $criteria, $multiple=false, $upsert=false,$options=array('safe'=>true,'fsync'=>true));
+	}
+	public function getPracticeStates(){
+		$result = $this->findOne($query=array('_id'=>$this->_id),$fields=array('practiceStates'=>1));
+		$this->practiceStates = $result['practiceStates'];
+		return $result['practiceStates'];
 	}
 	public static function getAccountBySession(Application $app, $fields=array(),$collection=''){
 		
@@ -493,7 +513,7 @@ class Member extends User {
 				}
 				$i=0;
 				foreach ($result as $key => $value) {
-					$location_result = self::$app['mongo']->findOne('location', $query=array('member._id'=>$value['_id']),array('raw'=>true),$slaveOkay=true);
+					$location_result = self::$app['mongo']->findOne('location', $query=array('member._id'=>$value['_id'],'primary'=>11),array('raw'=>true),$slaveOkay=true);
 					$result[$i]['location'] = array('raw'=>$location_result['raw']);
 					$i++;
 				}
@@ -516,7 +536,7 @@ class Member extends User {
 				}
 				$i=0;
 				foreach ($result as $key => $value) {
-					$location_result = self::$app['mongo']->findOne('location', $query=array('member._id'=>$value['_id']),array('raw'=>true),$slaveOkay=true);
+					$location_result = self::$app['mongo']->findOne('location', $query=array('member._id'=>$value['_id'],'primary'=>11),array('raw'=>true),$slaveOkay=true);
 					$result[$i]['location'] = array('raw'=>$location_result['raw']);
 					$i++;
 				}
@@ -550,7 +570,7 @@ class Member extends User {
 				}
 				$i=0;
 				foreach ($result as $key => $value) {
-					$location_result = self::$app['mongo']->findOne('location', $query=array('member._id'=>$value['_id']),array('raw'=>true),$slaveOkay=true);
+					$location_result = self::$app['mongo']->findOne('location', $query=array('member._id'=>$value['_id'],'primary'=>11),array('raw'=>true),$slaveOkay=true);
 					$result[$i]['location'] = array('raw'=>$location_result['raw']);
 					$i++;
 				}
@@ -594,7 +614,7 @@ class Member extends User {
 				}
 				$i=0;
 				foreach ($result as $key => $value) {
-					$location_result = self::$app['mongo']->findOne('location', $query=array('member._id'=>$value['_id']),array('raw'=>true),$slaveOkay=true);
+					$location_result = self::$app['mongo']->findOne('location', $query=array('member._id'=>$value['_id'],'primary'=>11),array('raw'=>true),$slaveOkay=true);
 					$result[$i]['location'] = array('raw'=>$location_result['raw']);
 					$i++;
 				}
@@ -667,6 +687,12 @@ class Member extends User {
 				$result[$i]['boardCertifiedBadge'] = self::$boardCertifiedBadge;
 				$result[$i]['boardCertifiedBadgeSr'] = self::$boardCertifiedBadgeSr;
 				$result[$i]['staffBadge'] = self::$staffBadge;
+				// get primary location
+				$location = new Location(array(),self::$app);
+				$loc = $location->getPrimary($result[$i]['_id']);
+				if(!empty($loc) && is_array($loc)){
+					$result[$i]['location']['raw'] = $loc['raw'];
+				}
 			}
 		endif;
 		return $result;
@@ -738,6 +764,12 @@ class Member extends User {
 				$result[$i]['boardCertifiedBadge'] = self::$boardCertifiedBadge;
 				$result[$i]['boardCertifiedBadgeSr'] = self::$boardCertifiedBadgeSr;
 				$result[$i]['staffBadge'] = self::$staffBadge;
+				// get primary location
+				$location = new Location(array(),self::$app);
+				$loc = $location->getPrimary($result[$i]['_id']);
+				if(!empty($loc) && is_array($loc)){
+					$result[$i]['location']['raw'] = $loc['raw'];
+				}
 			}
 		endif;
 		
@@ -760,6 +792,8 @@ class Member extends User {
 					,'member.staff'=>1
 					,'member.websites'=>1
 					,'raw'=>1
+					,'city'=>1
+					,'addressLine1'=>1
 					);
 		// order number
 		$result = self::$app['mongo']->find('location',array('state'=>$state,'member.listed'=>1),$fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.currentOrder'=>-1,'member.joinDate.date'=>1,'member.orderNumState'=>1));
@@ -788,6 +822,12 @@ class Member extends User {
 			
 			$result[$i]['websites'] = $value['member']['websites'];
 			$result[$i]['location']['raw'] = $value['raw'];
+			// if the location found was a practice state, then find their primary address and serve that up.
+			if(empty($value['city']) && empty($value['addressLine1'])){
+				$loc = new Location(array(),self::$app);
+				$loc_primary = $loc->getPrimary($value['member']['_id']);
+				$result[$i]['location']['raw'] = $loc_primary['raw'];
+			}
 			$i++;
 		}
 		$_result = array();
@@ -817,6 +857,8 @@ class Member extends User {
 					,'member.staff'=>1
 					,'member.websites'=>1
 					,'raw'=>1
+					,'city'=>1
+					,'addressLine1'=>1
 					);
 		
 		$result = self::$app['mongo']->find('location',array('member.currentMembership'=>self::$membership['FOUNDING MEMBER'], 'state'=>$state,'member.listed'=>1),$fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.currentOrder'=>-1,'member.joinDate.date'=>1,'member.orderNumState'=>1));
@@ -843,6 +885,12 @@ class Member extends User {
 			
 			$result[$i]['websites'] = $value['member']['websites'];
 			$result[$i]['location']['raw'] = $value['raw'];
+			// if the location found was a practice state, then find their primary address and serve that up.
+			if(empty($value['city']) && empty($value['addressLine1'])){
+				$loc = new Location(array(),self::$app);
+				$loc_primary = $loc->getPrimary($value['member']['_id']);
+				$result[$i]['location']['raw'] = $loc_primary['raw'];
+			}
 			$i++;
 		}
 		$_result = array();
@@ -872,6 +920,8 @@ class Member extends User {
 					,'member.staff'=>1
 					,'member.websites'=>1
 					,'raw'=>1
+					,'city'=>1
+					,'addressLine1'=>1
 					);
 		
 		$result = self::$app['mongo']->find('location',array('member.currentMembership'=>self::$membership['SUSTAINING MEMBER'], 'state'=>$state,'member.listed'=>1),$fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.currentOrder'=>-1,'member.joinDate.date'=>1,'member.orderNumState'=>1));
@@ -898,6 +948,12 @@ class Member extends User {
 			
 			$result[$i]['websites'] = $value['member']['websites'];
 			$result[$i]['location']['raw'] = $value['raw'];
+			// if the location found was a practice state, then find their primary address and serve that up.
+			if(empty($value['city']) && empty($value['addressLine1'])){
+				$loc = new Location(array(),self::$app);
+				$loc_primary = $loc->getPrimary($value['member']['_id']);
+				$result[$i]['location']['raw'] = $loc_primary['raw'];
+			}
 			$i++;
 		}
 		$_result = array();
@@ -926,6 +982,8 @@ class Member extends User {
 					,'member.staff'=>1
 					,'member.websites'=>1
 					,'raw'=>1
+					,'city'=>1
+					,'addressLine1'=>1
 					);
 		
 		$result = self::$app['mongo']->find('location',array('member.staff'=>1,'member.currentFacultyPosition'=>array(
@@ -963,6 +1021,12 @@ class Member extends User {
 			
 			$result[$i]['websites'] = $value['member']['websites'];
 			$result[$i]['location']['raw'] = $value['raw'];
+			// if the location found was a practice state, then find their primary address and serve that up.
+			if(empty($value['city']) && empty($value['addressLine1'])){
+				$loc = new Location(array(),self::$app);
+				$loc_primary = $loc->getPrimary($value['member']['_id']);
+				$result[$i]['location']['raw'] = $loc_primary['raw'];
+			}
 			$i++;
 		}
 		$_result = array();
@@ -992,6 +1056,8 @@ class Member extends User {
 					,'member.staff'=>1
 					,'member.websites'=>1
 					,'raw'=>1
+					,'city'=>1
+					,'addressLine1'=>1
 					);
 		
 		$result = self::$app['mongo']->find('location',array('member.boardCertified'=>1, 'state'=>$state,'member.listed'=>1),$fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.currentOrder'=>-1,'member.joinDate.date'=>1,'member.orderNumState'=>1));
@@ -1018,6 +1084,12 @@ class Member extends User {
 			
 			$result[$i]['websites'] = $value['member']['websites'];
 			$result[$i]['location']['raw'] = $value['raw'];
+			// if the location found was a practice state, then find their primary address and serve that up.
+			if(empty($value['city']) && empty($value['addressLine1'])){
+				$loc = new Location(array(),self::$app);
+				$loc_primary = $loc->getPrimary($value['member']['_id']);
+				$result[$i]['location']['raw'] = $loc_primary['raw'];
+			}
 			$i++;
 		}
 		$_result = array();
@@ -1047,6 +1119,8 @@ class Member extends User {
 					,'member.staff'=>1
 					,'member.websites'=>1
 					,'raw'=>1
+					,'city'=>1
+					,'addressLine1'=>1
 					);
 		
 		$result = self::$app['mongo']->find('location',array('member.boardCertifiedSr'=>1, 'state'=>$state,'member.listed'=>1),$fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.currentOrder'=>-1,'member.joinDate.date'=>1,'member.orderNumState'=>1));
@@ -1073,6 +1147,12 @@ class Member extends User {
 			
 			$result[$i]['websites'] = $value['member']['websites'];
 			$result[$i]['location']['raw'] = $value['raw'];
+			// if the location found was a practice state, then find their primary address and serve that up.
+			if(empty($value['city']) && empty($value['addressLine1'])){
+				$loc = new Location(array(),self::$app);
+				$loc_primary = $loc->getPrimary($value['member']['_id']);
+				$result[$i]['location']['raw'] = $loc_primary['raw'];
+			}
 			$i++;
 		}
 		$_result = array();
@@ -1102,6 +1182,8 @@ class Member extends User {
 					,'member.staff'=>1
 					,'member.websites'=>1
 					,'raw'=>1
+					,'city'=>1
+					,'addressLine1'=>1
 					);
 		
 		$result = self::$app['mongo']->find('location',array('member.currentFacultyPosition'=>self::$facultyPosition['DELEGATE'], 'state'=>$state,'member.listed'=>1),$fields,$slaveOkay=true,$offset=0,$limit=3000,$sort=array('member.currentOrder'=>-1,'member.orderNum'=>1));
@@ -1129,6 +1211,12 @@ class Member extends User {
 			
 			$result[$i]['websites'] = $value['member']['websites'];
 			$result[$i]['location']['raw'] = $value['raw'];
+			// if the location found was a practice state, then find their primary address and serve that up.
+			if(empty($value['city']) && empty($value['addressLine1'])){
+				$loc = new Location(array(),self::$app);
+				$loc_primary = $loc->getPrimary($value['member']['_id']);
+				$result[$i]['location']['raw'] = $loc_primary['raw'];
+			}
 			$i++;
 		}
 		endif;

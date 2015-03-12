@@ -27,6 +27,7 @@ class Location extends Model {
 	public $hours;
 	public $ownerId;
 	public $member;
+	public $primary; // 11 = primary address, 22 = not primary address
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		/*$metadata->addPropertyConstraint('point', new Constraints\NotBlank(
@@ -35,11 +36,11 @@ class Location extends Model {
         $metadata->addPropertyConstraint('addressLine1', new Constraints\NotBlank(
             array('message'=>'An address is required.')
         ));
-        $metadata->addPropertyConstraint('city', new Constraints\NotBlank(
+   		$metadata->addPropertyConstraint('city', new Constraints\NotBlank(
             array('message'=>'A city is required.')
         ));
         $metadata->addPropertyConstraint('state', new Constraints\NotBlank(
-            array('message'=>'A state or province is required.')
+            array('message'=>'A state or province is required.','groups'=>array('ps'))
         ));
 	}
 
@@ -66,6 +67,7 @@ class Location extends Model {
 		$this->hours = $doc['hours'];
 		$this->ownerId = (!empty($doc['ownerId'])) ? (is_object($doc['ownerId'])) ? $doc['ownerId'] : new \MongoId($doc['ownerId']) : $doc['ownerId'];
 		$this->member = (is_object($member)) ? $member->__toArray(false) : $doc['member'];
+		$this->primary = $doc['primary'];
 
 	}
 	protected function prepareInsert(){
@@ -85,6 +87,7 @@ class Location extends Model {
 		$this->hours = $this->hours ?: '';
 		$this->ownerId = (!empty($this->ownerId)) ? (is_object($this->ownerId)) ? $this->ownerId : new \MongoId($this->ownerId) : new \stdClass();
 		$this->member = $this->member ?: new \StdClass();
+		$this->primary = $this->primary ?: 22;
 	}
 	public function insert(){
 		$this->prepareInsert();
@@ -96,17 +99,46 @@ class Location extends Model {
 	}
 	public function getByOwner($offset=0,$limit=100){
         $fields = array(); /* Need all fields for locations list table */
-		return $this->find($query=array('ownerId'=>$this->ownerId),$fields,$slaveOkay=true,$sort=array('_id'=>-1),$offset,$limit);
+		$locs = $this->find($query=array('ownerId'=>$this->ownerId),$fields,$slaveOkay=false,$sort=array('_id'=>-1),$offset,$limit);
+		$new_locs = array();
+		for ($i=0; $i < count($locs); $i++) { 
+			if(!empty($locs[$i]['addressLine1']) && !empty($locs[$i]['city'])):
+				$new_locs[] = $locs[$i];
+			endif;
+		}
+		return $new_locs;
 	}
 	public function getByMemberId($offset=0,$limit=100){
 		if(!empty($this->member['_id'])) $this->member['_id'] = (is_object($this->member['_id'])) ? $this->member['_id'] : new \MongoId($this->member['_id']);
         $fields = array(); /* Need all fields for locations list table */
 		return $this->findOne($query=array('member._id'=>$this->member['_id']),$fields,$slaveOkay=true,$sort=array('_id'=>-1),$offset,$limit);
 	}
+	public function getPrimary($memberId){
+		if(!empty($memberId)) $memberId = (is_object($memberId)) ? $memberId : new \MongoId($memberId);
+        $fields = array(); /* Need all fields for locations list table */
+		return $this->findOne($query=array('member._id'=>$memberId,'primary'=>11),$fields,$slaveOkay=true,$sort=array('_id'=>-1),$offset=0,$limit=1000);
+	}
 	public function updateMember($member){
 		$doc = array('$set'=>array('member'=>$member));
 		$criteria = array('ownerId'=>$this->ownerId);
 		return $this->updateByCriteria($doc, $criteria);
+	}
+	public function setFirstAsPrimary(){
+		$locs = $this->getByOwner();
+		$doc = array('$set'=>array('primary'=>11));
+		$criteria = array('_id'=>$locs[0]['_id']);
+		return $this->updateByCriteria($doc, $criteria);
+
+	}
+	public function setPrimary(){
+		$this->primary = 11;
+		$this->saveSafe();
+		$this->findById();
+		
+		$doc = array('$set'=>array('primary'=>22));
+		$criteria = array('ownerId'=>$this->member['_id'],'_id'=>array('$nin'=>array($this->_id)));
+		return $this->updateByCriteria($doc, $criteria);
+
 	}
 	    
 }

@@ -17,6 +17,38 @@ use TTools\App;
 $utilities = $app['controllers_factory'];
 $utilities->before($mustbeMEMBER);
 
+
+//////////////////////////
+// SET PRIMARY LOCATION //
+//////////////////////////
+$utilities->get('/set-primary-location', function () use ($app) {
+    
+    //*
+    ini_set('memory_limit','1024M');
+
+    $l_member = new Model\Member(array(),$app);
+    $members = $l_member->find(array(),array('_id'=>true),true,array(),0,30000);
+    //echo " <pre>members";print_r($members);echo "</pre>";
+    //*
+    $i=0;
+    $mc = count($members);
+    foreach ($members as $_member) {
+        
+        $location = new Model\Location(array('member'=>$_member), $app);
+        $loc = $location->getByMemberId();
+        if(!empty($loc['_id'])){
+            $location2 = new Model\Location(array('_id'=>$loc['_id']), $app);
+            $location2->setPrimary();
+        }
+
+        $i++;
+        error_log($mc.' - '.$i);
+    }
+    //*/
+
+    return new Response('cool',200,array('Content-Type' => 'text/html')); 
+});
+
 //////////////////////////////////////////////////////////////////////////////////
 // reconcile renewals with payment records                                      //
 // some applications checked the allow card on file but didn't get the discount //

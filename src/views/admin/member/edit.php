@@ -563,6 +563,204 @@
                      <!--/ SUCCESSFUL SAVE MODAL -->
 
                      <h3 class="form-section text-info"><strong>Additional Information</strong></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                     <!-- PRACTICESTATES -->
+                     <div class="row-fluid">
+                        <div class="span12">
+                           <div id="practicestate-grid" class="portlet box blue">
+                              <div class="portlet-title">
+                                 <div class="caption">Practice States - states you're able to practice law in</div>
+                                 <div class="actions">
+                                    <a class="btn green add"><i class=" icon-plus"></i> Add</a>
+                                 </div>
+                              </div>
+                              <div class="portlet-body">
+                                 <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                                 <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
+                                    <thead>
+                                       <tr role="row">
+                                          <th class="">State</th>
+                                          <th class=""></th>
+                                       </tr>
+                                    </thead>
+                                    <tbody role="alert" aria-live="polite" aria-relevant="all">
+                                       <? if(!empty($this->vars['member']['practiceStates'])): foreach($this->vars['member']['practiceStates'] as $practicestate): ?>
+                                       <tr class="gradeX odd">
+                                          <td id="<?=$practicestate['_id']?>" class=" "><?=$practicestate['raw']?></td>
+                                          <td class=" "><a data-name="<?=$practicestate['state']?>" data-id="<?=$practicestate['_id']?>" class="btn red mini delete"></i> Delete</a></td>
+                                       </tr>
+                                       <? endforeach;?>
+                                       <? else: ?>
+                                          <td id="practicestate-norecords" colspan="5">No records.</td>
+                                       <? endif;?>
+                                    </tbody>
+                                 </table>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+
+                     <!-- ADD PRACTICESTATES MODAL -->
+                     <div id="add-practicestate-modal" class="modal container hide fade" tabindex="-1" role="dialog" aria-labelledby="add-practicestate-modal-label" aria-hidden="true">
+                        <div class="modal-header">
+                           <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                           <h3 id="add-practicestate-modal-label">Add Practice State</h3>
+                        </div>
+                        <div class="modal-body">
+
+
+
+                           <form id="practicestate-form" class="horizontal-form">
+                              <!-- ERROR -->
+                              <div class="alert alert-error hide">
+                                 <button class="close" data-dismiss="alert"></button>
+                                 You have some form errors. Please check below.
+                              </div>
+                              <!--/ ERROR -->
+                              
+                              <!-- BEGIN ADDRESS -->
+                              <h3 class="form-section text-info"><strong>Enter the state in which you're able to practice law.</strong></h3>
+                              <div class="row-fluid addr ">
+                                 <div class="span6 ">
+                                    <div class="control-group">
+                                       <label class="control-label" >State / Province</label>
+                                       <div class="controls">
+                                          <input type="text" id="ps-state" name="doc[state]" class="m-wrap span12 state"> 
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <!--/span-->
+                              </div>
+                              <!--/row-->           
+                              <div class="row-fluid addr ">
+                                 <div class="span6 ">
+                                    <div class="control-group">
+                                       <label class="control-label" >Country</label>
+                                       <div class="controls">
+                                          <input type="text" id="ps-country" name="doc[country]" class="m-wrap span12 country"> 
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <!--/span-->
+                              </div>
+                              <h3 class="form-section text-info"><strong>Geocode Your State</strong></h3>
+                              <p>We attempt to determine the Latitude and Longitude of your state for furture searches based on nearby a client's location</p>
+                              <div class="row-fluid validateAddressPS">
+                                 <div class="span12 ">
+                                    <div class="control-group">
+                                       <label class="control-label" >Type in the state name and then click Submit for Geocoding:</label>
+                                       <div class="controls">
+                                          <input type="text" id="ps-geocodeaddress" class="m-wrap span12 geocode" >
+                                          <button type="button" class="btn blue geocodeaddress">Submit for Geocoding <i class="icon-globe"></i></button>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <input type="hidden" id="ps-mode">
+                              <input type="hidden" id="ps-_id">
+                              <input type="hidden" name="doc[raw]" id="ps-raw">
+                              <input type="hidden" name="doc[lat]" id="ps-lat">
+                              <input type="hidden" name="doc[lon]" id="ps-lon">
+                              <!-- BEGIN ADDRESS MODAL -->
+                              <div id="ps-address_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="address-modal-label" aria-hidden="true">
+                                 <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                    <h3 id="ps-address-modal-label">Select the State</h3>
+                                    <p>Select the state which you intend to use.</p>
+                                 </div>
+                                 <div class="modal-body">
+                                    <div class="row-fluid">
+                                          <div class="span12">
+                                             <!-- BEGIN SAMPLE TABLE PORTLET-->
+                                             <div class="portlet">
+                                                <div class="portlet-body">
+                                                   <table class="table table-striped table-bordered table-advance table-hover">
+                                                      <thead>
+                                                         <tr>
+                                                            <th> State</th>
+                                                            <th> </th>
+                                                         </tr>
+                                                      </thead>
+                                                      <tbody>
+                                                         <tr>
+                                                            <td class="highlight">
+                                                               Loading...
+                                                            </td>
+                                                            <td><a class="btn mini purple" 
+                                                               data-address=""
+                                                               data-city=""
+                                                               data-state=""
+                                                               data-zip=""
+                                                               data-country=""
+                                                               data-lat=""
+                                                               data-lon=""
+                                                               data-formattedaddress=""
+                                                               >SELECT</a></td>
+                                                         </tr>
+                                                      </tbody>
+                                                   </table>
+                                                </div>
+                                             </div>
+                                             <!-- END SAMPLE TABLE PORTLET-->
+                                          </div>
+                                       </div>
+                                 </div>
+                                 <div class="modal-footer">
+                                    <button class="btn address-cancel" aria-hidden="true">Cancel</button>
+                                 </div>
+                              </div>
+                              <!-- END ADDRESS MODAL -->
+                              <!-- END ADDRESS -->
+                              <!-- ERROR -->
+                              <div class="alert alert-error hide">
+                                 <button class="close" data-dismiss="alert"></button>
+                                 You have some form errors. Please check below.
+                              </div>
+                              <!--/ ERROR -->
+                              
+                           </form>     
+
+                        </div>
+                        <div class="modal-footer">
+                           <button type="button" data-member-id="<?=$this->vars['member']['_id']?>" class="btn green save"><i class="icon-ok"></i> Save</button>
+                           <button type="button" class="btn cancel">Cancel</button>
+                        </div>
+                     </div>
+                     <!--/ ADD PRACTICESTATES MODAL -->   
+                     <!--/ PRACTICESTATES -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                      <!-- LOCATION -->
                      <div class="row-fluid">
                         <div class="span12">
@@ -579,14 +777,20 @@
                                     <thead>
                                        <tr role="row">
                                           <th class="">Address</th>
+                                          <th class="">Primary</th>
                                           <th class=""></th>
                                        </tr>
                                     </thead>
                                     <tbody role="alert" aria-live="polite" aria-relevant="all">
-                                       <? if(!empty($this->vars['member']['locations'])): foreach($this->vars['member']['locations'] as $location): ?>
+                                       <? if(!empty($this->vars['member']['locations'])): foreach($this->vars['member']['locations'] as $location): 
+                                             if(!empty($location['addressLine1']) && !empty($location['city'])):
+                                       ?>
                                        <tr class="gradeX odd">
                                           <td id="<?=$location['_id']?>" class=" "><?=$location['raw']?></td>
-                                          <td class=" "><a id="edit-<?=$location['_id']?>" 
+                                          <td id="<?=$location['_id']?>" class=" primarycell"><?=(array_key_exists('primary', $location) && $location['primary'] == 11) ? '<i class="icon-check"></i>' : '';?></td>
+                                          <td class=" ">
+                                              <a data-id="<?=$location['_id']?>" class="btn yellow mini setprimary"></i> Set as Primary</a>
+                                             <a id="edit-<?=$location['_id']?>" 
                                              data-id="<?=$location['_id']?>" 
                                              data-name="<?=$location['name']?>" 
                                              data-hours="<?=$location['hours']?>" 
@@ -603,7 +807,9 @@
                                              data-mode="save" 
                                              class="btn blue mini edit"></i> Edit</a> <a data-id="<?=$location['_id']?>" class="btn red mini delete"></i> Delete</a></td>
                                        </tr>
-                                       <? endforeach;?>
+                                       <? 
+                                          endif;
+                                       endforeach;?>
                                        <? else: ?>
                                           <td id="location-norecords" colspan="5">No records.</td>
                                        <? endif;?>
@@ -753,7 +959,7 @@
                                     <div class="control-group">
                                        <label class="control-label" >Type in your full address and then click Submit for Geocoding:</label>
                                        <div class="controls">
-                                          <input type="text" id="geocodeaddress" class="m-wrap span12" >
+                                          <input type="text" id="geocodeaddress" class="m-wrap span12 geocode" >
                                           <button type="button" class="btn blue geocodeaddress">Submit for Geocoding <i class="icon-globe"></i></button>
                                        </div>
                                     </div>
@@ -1165,13 +1371,15 @@
          <!-- END PAGE -->
          <?=$this->element('js/Member.js',array('accessLevel'=>$accessLevel));?>
          <?=$this->element('js/Address.js');?>
+         <?=$this->element('js/AddressPS.js');?>
          <?=$this->element('js/ClearField.js');?>
 
          <script>
          jQuery(document).ready(function() {    
             io.saw.Member.init();
             io.saw.Address.init('#location-form');
-            io.saw.ClearField.init({formArr:['#location-form','#saw-form','#website-form','#language-form','#pa-form']});
+            io.saw.AddressPS.init('#practicestate-form');
+            io.saw.ClearField.init({formArr:['#practicestate-form','#location-form','#saw-form','#website-form','#language-form','#pa-form']});
          });      
          </script>
          <? $id = (array_key_exists('member',$this->vars)) ? $this->vars['member']['_id'] : '' ?>

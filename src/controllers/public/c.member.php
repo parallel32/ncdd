@@ -142,6 +142,7 @@ $app->get('/member/{id}/{slug}', function ($id, $slug, Request $request) use ($a
 	$location = new Model\Location(array('ownerId'=>$member['_id']),$app);
 	$locations = $location->getByOwner();
 	$member['locations'] = $locations;
+	$member['primary_location'] = $location->getPrimary($member['_id']);
 
 	$view_vars['member'] = $member;
 	$page_vars = $app['get_pages']('');

@@ -23,6 +23,186 @@
 			document.location.href='/';
 		});	
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		////////////////////
+		// PRACTICE STATE //
+		////////////////////
+		// practicestate grid buttons
+		$('#practicestate-grid .add').click(function(e){
+			$('#add-practicestate-modal :input').val('');//clear the modal
+			$('#add-practicestate-modal').modal({keyboard: false});
+		});
+		$('#practicestate-grid .delete').click(function(e){
+			var the_this = $(this);
+			io.saw.FormPost.activate({postUrl:'/member/'+$(this).attr('data-id')+'/practicestate/delete'
+				,serialized:'state='+$(this).attr('data-name')
+				,postOnComplete:function(responseObj,responseStatus){}
+				,postOnSuccess:function(responseObj){
+					// remove the record from the grid
+					$(the_this).parents('tr').remove();
+				}
+			});
+			
+		});		
+		$('#practicestate-grid .edit').click(function(e){
+			var the_this = $(this);
+			$('#add-practicestate-modal-label').html('Save Location');
+			// clear the modal first
+			$('#add-practicestate-modal :input').val('');
+			// set fields
+			$('#ps-_id').val($(this).attr('data-id'));
+			$('#ps-state').val($(this).attr('data-state'));
+			$('#ps-country').val($(this).attr('data-country'));
+			$('#ps-raw').val($(this).attr('data-raw'));
+			$('#ps-geocodeaddress').val($(this).attr('data-raw'));
+			$('#ps-mode').val($(this).attr('data-mode'));
+
+			$('#add-practicestate-modal').modal({keyboard: false});
+		});		
+		
+
+		// add practicestate modal buttons		
+		$('#add-practicestate-modal .save').click(function(e){
+			var full_address = $('#ps-state').val()+', '+$('#ps-country').val();
+			$('#ps-raw').val(full_address);
+			
+			if($('#ps-mode').val() == 'save'){
+				io.saw.FormPost.activate({postUrl:'/practicestate/'+$('#ps-_id').val()+'/edit'
+				   ,serializeSelector:':input'
+				   ,formName:'#practicestate-form'
+				   ,postOnComplete:function(responseObj,responseStatus){}
+				   ,postOnSuccess:function(responseObj){
+				   		$('#'+$('#ps-_id').val()).html($('#ps-raw').val());
+				   		$('#add-practicestate-modal').modal('hide');   		
+				   		$('#practicestate-norecords').remove();
+
+				   		// reset the data attributes with the current values from the form
+				   		$('#edit-'+$('#ps-_id').val()).attr('data-state',$('#ps-state').val());
+				   		$('#edit-'+$('#ps-_id').val()).attr('data-country',$('#ps-country').val());
+				   		$('#edit-'+$('#ps-_id').val()).attr('data-raw',$('#ps-raw').val());
+				   		$('#edit-'+$('#ps-_id').val()).attr('data-mode',$('#ps-mode').val());
+				   }
+				});
+			}else{ //add
+				io.saw.FormPost.activate({postUrl:'/member/'+$(this).attr('data-member-id')+'/practicestate/add'
+				   ,serializeSelector:':input'
+				   ,formName:'#practicestate-form'
+				   ,postOnComplete:function(responseObj,responseStatus){}
+				   ,postOnSuccess:function(responseObj){
+				   		$('#add-practicestate-modal').modal('hide');   		
+				   		$('#practicestate-norecords').remove();
+				   		// add the record to the grid.
+				   		html = '<tr class="gradeX odd">'+
+	                    '  <td id="'+responseObj.id.$id+'" class=" ">'+full_address+ '</td>'+
+	                    '  <td class=" ">'+
+	                    ' <a data-id="'+responseObj.id.$id+'" class="btn red mini delete"></i> Delete</a></td>'+
+	                   	'</tr>';
+	                   	$('#practicestate-grid tbody').append(html);
+
+	                   	// rebind click event to the records....
+	                   	$('#practicestate-grid .delete').click(function(e){
+	                   		var the_this = $(this);
+							io.saw.FormGet.activate({postUrl:'/member/practicestate/'+$(this).attr('data-id')+'/delete'
+								,postOnComplete:function(responseObj,responseStatus){}
+								,postOnSuccess:function(responseObj){
+									// remove the record from the grid
+									$(the_this).parents('tr').remove();
+								}
+							});
+							
+						});	
+						$('#practicestate-grid .edit').click(function(e){
+							var the_this = $(this);
+							$('#add-practicestate-modal-label').html('Save Location');
+							// clear the modal first
+							$('#add-practicestate-modal :input').val('');
+							// set fields
+							$('#ps-_id').val($(this).attr('data-id'));
+							$('#ps-state').val($(this).attr('data-state'));
+							$('#ps-country').val($(this).attr('data-country'));
+							$('#ps-raw').val($(this).attr('data-raw'));
+							$('#ps-geocodeaddress').val($(this).attr('data-raw'));
+							$('#ps-mode').val($(this).attr('data-mode'));
+
+							$('#add-practicestate-modal').modal({keyboard: false});
+						});		
+				   }
+				});
+			}
+			
+		});		
+		$('#add-practicestate-modal .cancel').click(function(e){
+			$('#add-practicestate-modal').modal('hide');
+		});		
+		
+		// auto fill the geocde address field
+		$('#ps-geocodeaddress').focus(function(e){
+			$('#ps-geocodeaddress').val($('#ps-state').val()+', '+$('#ps-country').val());
+		});
+		$('#ps-state').blur(function(e){
+			$('#ps-geocodeaddress').val($('#ps-state').val()+', '+$('#ps-country').val());
+		});
+		$('#ps-country').blur(function(e){
+			$('#ps-geocodeaddress').val($('#ps-state').val()+', '+$('#ps-country').val());
+		});
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		//////////////
 		// LOCATION //
 		//////////////
@@ -38,6 +218,18 @@
 				,postOnSuccess:function(responseObj){
 					// remove the record from the grid
 					$(the_this).parents('tr').remove();
+				}
+			});
+			
+		});		
+		$('#location-grid .setprimary').click(function(e){
+			var the_this = $(this);
+			io.saw.FormGet.activate({postUrl:'/member/location/'+$(this).attr('data-id')+'/primary'
+				,postOnComplete:function(responseObj,responseStatus){}
+				,postOnSuccess:function(responseObj){
+					// remove the record from the grid
+					$(the_this).parents('tbody').find('.primarycell').html('');	
+					$(the_this).parents('tr').find('.primarycell').html('<i class="icon-check"></i>');
 				}
 			});
 			
@@ -110,7 +302,10 @@
 				   		// add the record to the grid.
 				   		html = '<tr class="gradeX odd">'+
 	                    '  <td id="'+responseObj.id.$id+'" class=" ">'+full_address+ '</td>'+
-	                    '  <td class=" "><a id="edit-'+responseObj.id.$id+'" '+
+	                    '  <td id="'+responseObj.id.$id+'" class=" primarycell"></td>'+
+	                    '  <td class=" ">'+
+	                    '<a data-id="'+responseObj.id.$id+'" class="btn yellow mini setprimary"></i> Set as Primary</a>'+
+	                    '<a id="edit-'+responseObj.id.$id+'" '+
 	                    ' data-id="'+responseObj.id.$id+'" '+
 	                    ' data-name="'+$('#location-name').val()+'" '+
 	                    ' data-hours="'+$('#location-hours').val()+'" '+
@@ -143,6 +338,18 @@
 							});
 							
 						});	
+						$('#location-grid .setprimary').click(function(e){
+							var the_this = $(this);
+							io.saw.FormGet.activate({postUrl:'/member/location/'+$(this).attr('data-id')+'/primary'
+								,postOnComplete:function(responseObj,responseStatus){}
+								,postOnSuccess:function(responseObj){
+									// remove the record from the grid
+									$(the_this).parents('tbody').find('.primarycell').html('');	
+									$(the_this).parents('tr').find('.primarycell').html('<i class="icon-check"></i>');
+								}
+							});
+							
+						});
 						$('#location-grid .edit').click(function(e){
 							var the_this = $(this);
 							$('#add-location-modal-label').html('Save Location');

@@ -223,10 +223,90 @@ $member->get('/{userId}/edit-photo-crop', function ($userId, Request $request) u
 })->value('userId','');
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$member->post('/{id}/practicestate/add', function ($id, Request $request) use ($app) {
+	
+    // retrieve document from request
+    $doc = $request->get('doc');
+    if(empty($doc['lon']) && empty($doc['lat'])){
+    	$response_arr = array('message'=>"You must Geocode the state in order to save it.",
+                              "invalidFields"=>array(array('name'=>'geocode','message'=>'')));
+        return new Response(json_encode($response_arr), 403,array('Content-Type' => 'application/json'));
+    }
+    $doc['point'] = array($doc['lon'],$doc['lat']);
+    $doc['ownerId'] = $id;
+    
+    // get the member to embed
+	$member = new Model\Member(array('_id'=>$id), $app);
+	$doc['member'] = $member->findById();
+
+    $location = new Model\Location($doc,$app);
+    $app['validateModel']($app,$location,$groups=array('ps'));
+
+    $insert_id = $location->insert();
+
+    // get the member to embed
+    unset($doc['member']);
+    $doc['_id'] = $insert_id;
+	$ps = $member->addPracticeState($doc);
+	$member->getPracticeStates();
+	$member->saveEdit();    
+    
+    return new Response(json_encode(array('id'=>$insert_id, 'message' => 'added successfully.')), 200,array('Content-Type' => 'application/json'));
+});
+$member->post('/{id}/practicestate/delete', function ($id, Request $request) use ($app) {
+
+	$state = $request->get('state');
+	if(!empty($state)){
+		$location = new Model\Location(array('_id'=>$id), $app);
+	    $loc = $location->findById();
+	    $location->remove();
+	    
+		$member = new Model\Member(array('_id'=>$loc['member']['_id']), $app);
+		$member->removePracticeState($state);
+		$member->getPracticeStates();
+		$member->saveEdit();
+	}
+    return new Response(json_encode(array('message' => 'removed successfully.')), 200,array('Content-Type' => 'application/json'));
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 $member->post('/{id}/location/add', function ($id, Request $request) use ($app) {
 	
     // retrieve document from request
     $doc = $request->get('doc');
+    
+    if(empty($doc['lon']) && empty($doc['lat'])){
+    	$response_arr = array('message'=>"You must Geocode your address in order to save it.",
+                              "invalidFields"=>array(array('name'=>'geocode','message'=>'')));
+        return new Response(json_encode($response_arr), 403,array('Content-Type' => 'application/json'));
+    }
+
     $doc['point'] = array($doc['lon'],$doc['lat']);
     $doc['ownerId'] = $id;
     
@@ -243,7 +323,16 @@ $member->post('/{id}/location/add', function ($id, Request $request) use ($app) 
 });
 $member->get('/location/{id}/delete', function ($id, Request $request) use ($app) {
     $location = new Model\Location(array('_id'=>$id), $app);
+    $loc = $location->findById();
     $location->remove();
+    // now set the owner's other oldest location as the primary
+    $location = new Model\Location(array('ownerId'=>$loc['member']['_id']),$app);
+    $location->setFirstAsPrimary();
+    return new Response(json_encode(array('message' => 'removed successfully.')), 200,array('Content-Type' => 'application/json'));
+});
+$member->get('/location/{id}/primary', function ($id, Request $request) use ($app) {
+    $location = new Model\Location(array('_id'=>$id), $app);
+    $location->setPrimary();
     return new Response(json_encode(array('message' => 'removed successfully.')), 200,array('Content-Type' => 'application/json'));
 });
 

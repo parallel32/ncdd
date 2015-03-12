@@ -224,6 +224,7 @@ class ApplyNewSustainingMember extends Apply {
 		$loc_doc['country'] = $this->country;
 		$loc_doc['phone'] = $this->phone;
 		$loc_doc['fax'] = $this->fax;
+		$loc_doc['primary'] = 11;
 		$location = new Location($loc_doc, self::$app);
 
 		$member = new Member($mem_doc, self::$app, $location);

@@ -178,7 +178,9 @@ img.thumbnail{ max-width: 100%;}
             <br>
             <div class="container-fluid">
               <div class="row-fluid">
-                <? if(!empty($member['locations'])): ?>
+                <? if(array_key_exists('primary_location', $member) && !empty($member['primary_location'])): ?>
+                <div class="span6"><i class="icon-map-marker"></i>  <a href="/member/<?=$member['_id']?>/<?=$member['slug']?>"><?=$member['primary_location']['raw']?></a></div>
+                <? elseif(!empty($member['locations'])): ?>
                 <div class="span6"><i class="icon-map-marker"></i>  <a href="/member/<?=$member['_id']?>/<?=$member['slug']?>"><?=$member['locations'][0]['raw']?></a></div>
                 <? endif; ?>
                 <div class="span3">
