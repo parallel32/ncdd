@@ -564,7 +564,7 @@ $app->get('/registration/{id}/view', function ($id, Request $request) use ($app)
 	///////////////
 	// wait list //
 	///////////////
-	if($reg_array['currentStatus'] == Model\Registration::$status['WAITLIST']):
+	if($reg_arry['currentStatus'] == Model\Registration::$status['WAITLIST']):
     	$activate_waitlist = true;
     else:
     	$activate_waitlist = false;
