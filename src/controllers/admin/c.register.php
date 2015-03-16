@@ -564,16 +564,7 @@ $app->get('/registration/{id}/view', function ($id, Request $request) use ($app)
 	///////////////
 	// wait list //
 	///////////////
-	$registrationseminar = new Model\RegistrationSeminar($doc=array(), $app);
-	$depositbalance = $registrationseminar->fetchDepositStatus($reg_arry['seminarId'],$offset=0, $limit=10000);
-	$paid = $registrationseminar->fetchByStatusSeminar($reg_arry['seminarId'],'PAID',$offset=0, $limit=10000);
-	
-	$paid = (!empty($paid)) ? count($paid) : 0;
-    $deposit = (!empty($depositbalance)) ? count($depositbalance) : 0;
-    $total = $paid + $deposit;
-    if(array_key_exists('maxRegistrations', $seminar['register']) 
-       && !empty($seminar['register']['maxRegistrations']) 
-       && $seminar['register']['maxRegistrations'] == $total):
+	if($reg_array['currentStatus'] == Model\Registration::$status['WAITLIST']):
     	$activate_waitlist = true;
     else:
     	$activate_waitlist = false;
