@@ -376,7 +376,7 @@ EOT;
 		$result = curl_exec($ch); 
 		// closing cURL: 
 		curl_close($ch);
-
+		$xml_array = array();
 		//////////////////////////////////////////////////////////////////////////
 		// XML TO ARRAY 														//
 		// src: http://stackoverflow.com/questions/3630866/php-parse-xml-string //
@@ -446,7 +446,7 @@ EOT;
 	        }
 	    }
 	    //print_r($xml_array);  // for debugging and seeing the result well formatted in the ajax response
-	    error_log('for variable: xml_array  ==>'.print_r($xml_array,true));
+	    //error_log('for variable: xml_array  ==>'.print_r($xml_array,true));
 	    //////////////////
 		// XML TO ARRAY //
 		//////////////////
@@ -508,7 +508,7 @@ EOT;
 		
 		error_log('for variable: message  ==>'.print_r($message,true));
 		error_log('for variable: body  ==>'.print_r($body,true));
-		throw new \Exception($message);
+		//throw new \Exception($message);
 
 
 	    /**
