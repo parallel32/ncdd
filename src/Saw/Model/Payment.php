@@ -505,10 +505,10 @@ EOT;
 				$message = "Please try again because an error occured.  If it persists, please contact us.";
 			}
 		}
-		
+
 		error_log('for variable: message  ==>'.print_r($message,true));
 		error_log('for variable: body  ==>'.print_r($body,true));
-		//throw new \Exception($message);
+		throw new \Exception($message);
 
 
 	    /**
