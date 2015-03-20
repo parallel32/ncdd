@@ -226,7 +226,7 @@
                            </thead>
                            <tbody role="alert" aria-live="polite" aria-relevant="all">
                               <? if(!empty($this->vars['approved'])): foreach($this->vars['approved'] as $application): 
-                              if(!empty($application)){
+                              if(!empty($application['email'])){
                               ?>
                               <tr class="gradeX odd">
                                  <? $middleName = (!empty($application['middleName'])) ? ' '.$application['middleName'].' ':' '; ?>
