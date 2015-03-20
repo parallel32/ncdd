@@ -230,7 +230,16 @@
                                  <? $middleName = (!empty($application['middleName'])) ? ' '.$application['middleName'].' ':' '; ?>
                                  <? $declineCount = ( is_array($application['member']) && array_key_exists('payment',$application['member']) && is_array($application['member']['payment']) && !empty($application['member']['payment']) && array_key_exists('declineCount',$application['member']['payment']) && $application['member']['payment']['declineCount'] > 0) ? '('.$application['member']['payment']['declineCount'].')': ''; ?>
                                  <? $renewalREUSE = (is_array($application['member']) && array_key_exists('payment',$application['member']) && is_array($application['member']['payment']) && !empty($application['member']['payment']) && array_key_exists('renewalREUSE',$application['member']['payment']) && $application['member']['payment']['renewalREUSE'] == 'yes') ? 'purple': 'red'; ?>
+                                 <?
+                                    try {
+                                       
+                                 ?>
                                  <td class=" "><?=(is_array($application['member']) && array_key_exists('payment',$application['member']) && is_array($application['member']['payment']) && !empty($application['member']['payment']) && !empty($application['member']['payment']['number']) && !empty($application['member']['payment']['cvc'])) ? '<a data-id="'.$application['member']['_id'].'" class="btn '.$renewalREUSE.' mini view card">cc'.$declineCount.'</a>':'' ?></td><td class=" "><?=$application['firstName'].$middleName.$application['lastName']?></td>
+                                 <?
+                                 } catch (Exception $e) {
+                                       error_log(__FILE__.' '.__LINE__.' for variable: application  ==>'.print_r($application,true));  
+                                    }
+                                 ?>
                                  <td class="hidden-phone"><?=$application['email']?></td>
                                  <td class="hidden-480 "><?=$application['city'].', '.$application['state']?></td>
                                  <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($application['approvedDate']['fullDateTime']), $application['timeZone']); ?>
