@@ -254,7 +254,9 @@
                                     <? endif; ?>
                                  </td>
                               </tr>
-                              <? } 
+                              <? } else{
+                                 error_log(__FILE__.' '.__LINE__.' for variable: else application  ==>'.print_r($application,true));
+                              }
                                  endforeach;?>
                               <? else: ?>
                                  <td colspan="6">None.</td>
