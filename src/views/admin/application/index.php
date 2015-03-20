@@ -225,7 +225,9 @@
                               </tr>
                            </thead>
                            <tbody role="alert" aria-live="polite" aria-relevant="all">
-                              <? if(!empty($this->vars['approved'])): foreach($this->vars['approved'] as $application): ?>
+                              <? if(!empty($this->vars['approved'])): foreach($this->vars['approved'] as $application): 
+                              if(!empty($application)){
+                              ?>
                               <tr class="gradeX odd">
                                  <? $middleName = (!empty($application['middleName'])) ? ' '.$application['middleName'].' ':' '; ?>
                                  <? $declineCount = ( is_array($application['member']) && array_key_exists('payment',$application['member']) && is_array($application['member']['payment']) && !empty($application['member']['payment']) && array_key_exists('declineCount',$application['member']['payment']) && $application['member']['payment']['declineCount'] > 0) ? '('.$application['member']['payment']['declineCount'].')': ''; ?>
@@ -252,7 +254,8 @@
                                     <? endif; ?>
                                  </td>
                               </tr>
-                              <? endforeach;?>
+                              <? } 
+                                 endforeach;?>
                               <? else: ?>
                                  <td colspan="6">None.</td>
                               <? endif;?>
