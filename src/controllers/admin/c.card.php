@@ -64,11 +64,13 @@ $card->post('/edit', function (Request $request) use ($app) {
 	}else{
 		$userId = $document['userId'];
 	}
-	
+	$orig_member = new Model\Member(array('_id'=>$userId),$app);
+	$orig_member = $orig_member->findById();
+
 	$payment = new Model\PaymentLite($document, $app);
 	
-	if(strpos($document['number'], '...') === false){
-		$app['validateModel']($app,$payment);
+	if(strpos($document['number'], '...') === false && strlen($document['number']) > 13){
+		$app['validateModel']($app,$payment,array('cc'));
 		$payment->number = $payment->number.'.x';
 	}else{
 		$member = new Model\Member(array('_id'=>$userId),$app);
@@ -76,10 +78,18 @@ $card->post('/edit', function (Request $request) use ($app) {
 		if(array_key_exists('payment', $member) && array_key_exists('number', $member['payment']))
 			$payment->number = $member['payment']['number'];
 	}	
-	
+
 	$payment->expYear = substr($payment->expYear, -2);
+	$payment = $payment->__toArray();
+	// unset any values that are empty for overwrite safety
+	foreach ($payment as $key => $value) {
+		if(empty($value)){
+			unset($payment[$key]);
+		}
+	}
+	$payment = array_merge($orig_member['payment'],$payment);
+
 	$member = new Model\Member(array('_id'=>$userId,'payment'=>$payment),$app);
-	
 	$member->saveSafe();
 	
     return new Response(json_encode(array('userId'=>$userId, 'message' => 'Card details have saved successfully.')), 200,array('Content-Type' => 'application/json'));

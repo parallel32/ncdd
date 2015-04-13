@@ -217,7 +217,7 @@ class MongoWrapper
 			return false;
 		endif;
 		
-	}
+	}	
 	
 	public function aggregate($collection, $query=array(), $slaveOkay=true){
 		
