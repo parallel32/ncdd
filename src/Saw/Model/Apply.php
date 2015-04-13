@@ -265,12 +265,12 @@ class Apply extends Model {
 				break;
 		}
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort,(int)$offset,(int)$limit);
-		
 		// include the member payment record
 		for ($i=0; $i < count($result); $i++) { 
 			$member = new Member(array('_id'=>$result[$i]['memberId']),self::$app);
 			$member = $member->findById();
-			$result[$i]['member'] = $member;
+			if(!empty($member) && is_array($member))
+				$result[$i]['member'] = $member;
 		}
 
 		return $result;
@@ -356,7 +356,8 @@ class Apply extends Model {
 		for ($i=0; $i < count($result); $i++) { 
 			$member = new Member(array('_id'=>$result[$i]['memberId']),self::$app);
 			$member = $member->findById();
-			$result[$i]['member'] = $member;
+			if(!empty($member) && is_array($member))
+				$result[$i]['member'] = $member;
 		}
 		
 		return $result;
