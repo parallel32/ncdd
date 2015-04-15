@@ -643,7 +643,7 @@ $app->post('/registration/edit', function (Request $request) use ($app) {
 
 	// retrieve document from request
     $doc = $request->get('doc');
-    
+
 	switch ($doc['class']) {
 		case 'RegistrationSeminar':
 			$registration = new Model\RegistrationSeminar($doc, $app);
@@ -667,9 +667,13 @@ $app->post('/registration/edit', function (Request $request) use ($app) {
 	$doc['scholarship']['state'] = $doc['state'];
 	$doc['scholarship']['postalCode'] = $doc['postalCode'];
 	$doc['scholarship']['country'] = $doc['country'];
-    $scholarship = new Model\Scholarship($doc['scholarship'], $app);
-    $app['validateModel']($app,$scholarship);
-    $scholarship->saveEdit();
+	
+	$registration = $registration->findById();
+	if(array_key_exists('scholarshipId', $registration) && !empty($registration['scholarshipId'])){
+	    $scholarship = new Model\Scholarship($doc['scholarship'], $app);
+	    $app['validateModel']($app,$scholarship);
+	    $scholarship->saveEdit();
+	}
 
     $label = 'Registration Saved';
     $message = 'Registration Successfully Saved.';
