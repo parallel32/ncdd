@@ -88,7 +88,7 @@ $card->post('/edit', function (Request $request) use ($app) {
 		}
 	}
 	$payment = array_merge($orig_member['payment'],$payment);
-
+	$payment['declineCount'] = 0;
 	$member = new Model\Member(array('_id'=>$userId,'payment'=>$payment),$app);
 	$member->saveSafe();
 	
