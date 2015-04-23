@@ -174,6 +174,7 @@
                                           <option value="<?=\Saw\Model\SeminarRegister::$status['ON']?>" <?=(array_key_exists('register',$seminar) && array_key_exists('currentStatus',$seminar['register'])) ? (\Saw\Model\SeminarRegister::$status['ON'] == $seminar['register']['currentStatus']) ? "selected" : "" : '';?>><?=\Saw\Model\SeminarRegister::$statusReversed[\Saw\Model\SeminarRegister::$status['ON']]?></option>
                                        </select>
                                        <span class="help-block">Turn online registration ON / OFF</span>
+                                       <?=(array_key_exists('register',$seminar) && array_key_exists('currentStatus',$seminar['register']) && \Saw\Model\SeminarRegister::$status['MEMBERSONLY'] == $seminar['register']['currentStatus']) ? '<span class="help-block">bypass url: <b>https://'.SAW_ADMIN_WEBSITE.'/registration/seminar/'.$seminar['_id'].'/'.$seminar['slug'].'?nlpro='.date('Y').'</b></span>': '';?>
                                     </div>
                                  </div>
                                  <div class="control-group">

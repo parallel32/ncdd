@@ -231,7 +231,7 @@ $app->get('/registration/{paymentId}/pay/{registrationId}', function ($paymentId
 //////////////////////////////
 */
 $app->get('/registration/seminar/{seminarId}/{slug}', function ($seminarId, $slug, Request $request) use ($app) {
-
+	
 	// attempt to determine if the user is logged in
 	// admin will always return an empty set here because 
 	// his id is not stored in the database
@@ -266,6 +266,9 @@ $app->get('/registration/seminar/{seminarId}/{slug}', function ($seminarId, $slu
 						,'layout_title'=>'Registration for '.$seminar['headline']
 						,'activate_waitlist'=>$activate_waitlist
 	);
+	// attempt to get the promo querystring variable
+	$view_vars['nlpro'] = $request->get('nlpro');
+
 	return $app['view']->render('registration/seminar', 'blank',$view_vars);
 });
 $app->post('/registration/seminar', function (Request $request) use ($app) {
