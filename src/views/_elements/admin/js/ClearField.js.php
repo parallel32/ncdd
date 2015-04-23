@@ -16,16 +16,21 @@
 			$(formSelector+' input[type="text"]').keydown(function(){
 				var arrayOfClasses = $(this).attr('class').split(' ');
 			    var fieldName = arrayOfClasses[arrayOfClasses.length-1];
+			    if(fieldName == 'focus.inputmask'){
+			    	var fieldName = arrayOfClasses[arrayOfClasses.length-2];
+			    }
 			    window.keydownVal = $(formSelector+' .'+fieldName).val();
-			    
+		    
 			});
 			$(formSelector+' input[type="text"]').keyup(function(){
 				var arrayOfClasses = $(this).attr('class').split(' ');
 			    var fieldName = arrayOfClasses[arrayOfClasses.length-1];
 			    window.keyupVal = $(this).val();
 			    if(window.keydownVal.length > 0 && window.keyupVal.length == 0){
-			    	var hiddenField = '<input id="clearField-'+fieldName+'" type="hidden" name="doc[clearFields]['+fieldName+']" value="">';
-			    	$(this).closest('form').append(hiddenField);
+			    	if(fieldName != 'focus.inputmask'){
+				    	var hiddenField = '<input id="clearField-'+fieldName+'" type="hidden" name="doc[clearFields]['+fieldName+']" value="">';
+				    	$(this).closest('form').append(hiddenField);
+				    }
 			    	
 			    }
 			    if(window.keydownVal.length > 0 && window.keyupVal.length > 0){
@@ -37,6 +42,9 @@
 		$('textarea').keydown(function(){
 			var arrayOfClasses = $(this).attr('class').split(' ');
 		    var fieldName = arrayOfClasses[arrayOfClasses.length-1];
+		    if(fieldName == 'focus.inputmask'){
+		    	var fieldName = arrayOfClasses[arrayOfClasses.length-2];
+		    }
 		    window.keydownVal = $('.'+fieldName).val();
 		    
 		});
@@ -45,8 +53,10 @@
 		    var fieldName = arrayOfClasses[arrayOfClasses.length-1];
 		    window.keyupVal = $(this).val();
 		    if(window.keydownVal.length > 0 && window.keyupVal.length == 0){
-		    	var hiddenField = '<input id="clearField-'+fieldName+'" type="hidden" name="doc[clearFields]['+fieldName+']" value="">';
-		    	$(this).closest('form').append(hiddenField);
+		    	if(fieldName != 'focus.inputmask'){
+			    	var hiddenField = '<input id="clearField-'+fieldName+'" type="hidden" name="doc[clearFields]['+fieldName+']" value="">';
+			    	$(this).closest('form').append(hiddenField);
+			    }
 		    	
 		    }
 		    if(window.keydownVal.length > 0 && window.keyupVal.length > 0){

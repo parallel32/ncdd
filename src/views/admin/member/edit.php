@@ -1380,6 +1380,14 @@
             io.saw.Address.init('#location-form');
             io.saw.AddressPS.init('#practicestate-form');
             io.saw.ClearField.init({formArr:['#practicestate-form','#location-form','#saw-form','#website-form','#language-form','#pa-form']});
+            $.extend($.inputmask.defaults, {
+                'autounmask': true
+            });
+            $(".phone").inputmask("mask", {"mask": "(999) 999-9999"}); 
+            $(".fax").inputmask("mask", {"mask": "(999) 999-9999"}); 
+            $(".primaryPhone").inputmask("mask", {"mask": "(999) 999-9999"}); 
+            $(".primaryFax").inputmask("mask", {"mask": "(999) 999-9999"}); 
+            $(".tollFree").inputmask("mask", {"mask": "(999) 999-9999"}); 
          });      
          </script>
          <? $id = (array_key_exists('member',$this->vars)) ? $this->vars['member']['_id'] : '' ?>

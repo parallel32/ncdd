@@ -524,6 +524,11 @@ endif; ?>
                
             }
          });
+         $.extend($.inputmask.defaults, {
+             'autounmask': true
+         });
+         $(".phone").inputmask("mask", {"mask": "(999) 999-9999"}); 
+         $(".fax").inputmask("mask", {"mask": "(999) 999-9999"}); 
 
       });
       </script>
