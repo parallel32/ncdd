@@ -53,7 +53,7 @@ endif; ?>
                <? endif; ?>
 
 
-               <? if(!$signed_in):?>
+               <? if(!$signed_in && empty($this->vars['nlpro'])):?>
                <!-- BEGIN FORM-->
                <form id="signin-form" class="form-horizontal portlet" novalidate="novalidate">
                   <input type="hidden" name="doc[message]" value="You will be redirected back to the registration form after sign in.">
