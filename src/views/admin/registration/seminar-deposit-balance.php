@@ -41,7 +41,7 @@ endif; ?>
                <!-- BEGIN FORM-->
                <form id="signin-form" class="form-horizontal portlet" novalidate="novalidate">
                   <input type="hidden" name="doc[message]" value="You will be redirected back to the registration form after sign in.">
-                  <input type="hidden" name="doc[redirect]" value="/registration/seminar/<?=$this->vars['seminar']['_id']?>/<?=$this->vars['seminar']['slug']?>">
+                  <input type="hidden" name="doc[redirect]" value="/registration/seminar/deposit/<?=$this->vars['registration']['_id']?>">
 
                   <h3 class="form-section">Members, please sign in to facilitate registration.</h3>
                   <button type="button" class="btn blue signin"><i class="icon-key"></i> Sign In</button>
@@ -196,33 +196,17 @@ endif; ?>
                   </div>
                   <!-- END ADDRESS -->
                   
-                  <h3 class="form-section">3. Payment</h3>
-                  <div class="row-fluid addr ">
-                     <div class="span6 ">
-                        <div class="control-group">
-                           <label class="control-label" >Registration Fee</label>
-                           <div class="controls">
-                              <div class="input-prepend input-append">
-                                  <span class="add-on">$ </span>
-                                     <input id="registration_fee" type="text" disabled value="<?=$this->vars['registration']['registrationFeeOriginal']-$this->vars['registration']['deposit'] ?>" class="m-wrap span12"> 
-                                     <input name="doc[registrationFee]" type="hidden" value="<?=$this->vars['registration']['registrationFeeOriginal']-$this->vars['registration']['deposit'] ?>" class="m-wrap span12"> 
-                                     <input name="doc[registrationFeeOriginal]" type="hidden" value="<?=($signed_in) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>" class="m-wrap span12"> 
-                                  <span class="add-on">.00</span>
-                              </div>
-                              <span class="help-block">**CD of materials will be included in the registration fee.**</span>
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                  </div>
+                  <h3 class="form-section">3. Your Registration Fee Balance Is:</h3>
                   <div class="row-fluid addr ">
                      <div class="span12 ">
                         <div class="control-group">
-                           <label class="control-label" >Total Fee</label>
+                           <label class="control-label" ></label>
                            <div class="controls">
                               <div class="input-prepend input-append">
                                   <span class="add-on">$ </span>
                                      <input name="doc[total]" id="total" type="text" disabled value="<?=$this->vars['registration']['registrationFeeOriginal']-$this->vars['registration']['deposit'] ?>" class="m-wrap span12"> 
+                                     <input name="doc[registrationFee]" type="hidden" value="<?=$this->vars['registration']['registrationFeeOriginal']-$this->vars['registration']['deposit'] ?>" class="m-wrap span12"> 
+                                     <input name="doc[registrationFeeOriginal]" type="hidden" value="<?=($signed_in) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>" class="m-wrap span12"> 
                                   <span class="add-on">.00</span>
                               </div>
                            </div>

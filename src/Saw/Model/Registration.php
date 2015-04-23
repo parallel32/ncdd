@@ -216,11 +216,11 @@ class Registration extends Model {
 		//error_log('RegistrationSeminar markPaid result:'.print_r($result,true));
 		// mark the record as paid
 		$this->paidDate = new Date(self::$app,'now', 'America/New_York');
-		if($result['currentStatus'] == self::$status['SUBMITTED']){
+		if($result['currentStatus'] == self::$status['SUBMITTED'] || $result['currentStatus'] == self::$status['WAITLIST'] || $result['currentStatus'] == self::$status['DEPOSITBALANCE']){
 			$this->currentStatus = self::$status['PAID'];
 			$this->saveSafe();	
 		}		
-
+		return true;
 	}
 	public function remove(){
 		$result = $this->findOne(array('_id'=>$this->_id));

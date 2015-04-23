@@ -31,7 +31,7 @@ $app['seminarConfirmationEmail'] = $app->protect(function ($app,$registrationId)
 	if($registration['currentStatus'] == Model\Registration::$status['DEPOSIT'] || $registration['currentStatus'] == Model\Registration::$status['DEPOSITBALANCE']){
 		$body = str_replace("#balance_due#", '$'.((int)$registration['registrationFeeOriginal'] - (int)$registration['deposit']), $body);
 		$body = str_replace("#balance_due_date#", $registration['depositDueDate'], $body);
-		$body = str_replace("#payment_link#", 'https://'.SAW_ADMIN_WEBSITE.'/registration/seminar/deposit/'.$registrationId, $body);
+		$body = str_replace("#payment_link#", '<a href="https://'.SAW_ADMIN_WEBSITE.'/registration/seminar/deposit/'.$registrationId.'">https://'.SAW_ADMIN_WEBSITE.'/registration/seminar/deposit/'.$registrationId.'</a>', $body);
 	}
 	
 	$user = $app['session']->get('user');
@@ -195,18 +195,19 @@ $app->post('/registration/payment', function (Request $request) use ($app) {
 $app->get('/registration/{paymentId}/pay/{registrationId}', function ($paymentId, $registrationId, Request $request) use ($app) {
     
     $registration = new Model\Registration(array('_id'=>$registrationId, 'paymentId'=>$paymentId), $app);
-    $user = $app['session']->get('user');
+    $registration->markPaid();
+ 	
+    $payment = new Model\Payment(array('_id'=>$paymentId),$app);
+	$payment->findById();
+
+	// confirmation letter email
+	$user = $app['session']->get('user');
     if(is_array($user) && array_key_exists('accessLevel', $user) && ($user['accessLevel'] == ADMIN || ((is_array($user)) && array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') )) && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes'){
 		// don't send the email		
 	}else{
 		$app['seminarConfirmationEmail']($app,$registrationId);
 	}
-    $registration->markPaid();
-    
-    $payment = new Model\Payment(array('_id'=>$paymentId),$app);
-	$payment->findById();
-
-	// thank you receipt message
+    // thank you receipt message
 	$subject = 'NCDD Payment Received';
 	$to = $payment->email;
 	$view_vars = array('payment'=>$payment->__toArray()
@@ -223,7 +224,7 @@ $app->get('/registration/{paymentId}/pay/{registrationId}', function ($paymentId
 	}	
 
     return new Response(json_encode(array('message' => 'Paid successfully')), 200,array('Content-Type' => 'application/json'));
-})->before($mustbeMEMBER);
+});
 
 /**
 //////////////////////////////
@@ -333,7 +334,8 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 		/**
 		
 		*/
-		$paymentId = new \stdClass();	
+		$paymentId = new \stdClass();
+
 		$rs = new Model\RegistrationSeminar($doc,$app);
 		if(!empty($doc['email']) && $rs->findByEmail()){
 	    	$response_arr = array('message'=>"Our records indicate you have already submitted a registration.  If you believe this message is in error please contact NCDD directly.",

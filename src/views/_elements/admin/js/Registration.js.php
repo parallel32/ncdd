@@ -126,8 +126,8 @@
             'autounmask': true
         });
 
-        $("#phone").inputmask("mask", {"mask": "(999) 999-9999"}); //specifying fn & options
-        $("#fax").inputmask("mask", {"mask": "(999) 999-9999"}); //specifying fn & options
+        $(".phone").inputmask("mask", {"mask": "(999) 999-9999"}); //specifying fn & options
+        $(".fax").inputmask("mask", {"mask": "(999) 999-9999"}); //specifying fn & options
 	
         // payment
 		// $('#save-success .continue.payment').attr('data-insertid',responseObj.paymentId.$id);

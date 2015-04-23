@@ -85,6 +85,7 @@ endif; ?>
 
                <? else: ?>
                <form id="saw-form" class="horizontal-form portlet">
+                  <input type="hidden" class="nlpro" name="doc[nlpro]" value="<?=$this->vars['nlpro']?>">
                   <input type="hidden" class="seminarId" name="doc[seminarId]" value="<?=$this->vars['seminar']['_id']?>">
                   <input type="hidden" class="memberId" name="doc[memberId]" value="<?=($signed_in) ? $this->vars['member']['_id']: '';?>">
                   <input id="currentPaymentType" type="hidden" name="doc[currentPaymentType]" value="<?/*\Saw\Model\Registration::$paymentType['CREDIT']*/?>">
@@ -314,9 +315,9 @@ endif; ?>
                               <div class="controls">
                                  <div class="input-prepend input-append">
                                      <span class="add-on">$ </span>
-                                        <input id="registration_fee" type="text" autocomplete="on" disabled value="<?=($signed_in) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>" class="m-wrap span12"> 
-                                        <input name="doc[registrationFee]" type="hidden" value="<?=($signed_in) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>" class="m-wrap span12"> 
-                                        <input name="doc[registrationFeeOriginal]" type="hidden" value="<?=($signed_in) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>" class="m-wrap span12"> 
+                                        <input id="registration_fee" type="text" autocomplete="on" disabled value="<?=($signed_in || !empty($this->vars['nlpro'])) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>" class="m-wrap span12"> 
+                                        <input name="doc[registrationFee]" type="hidden" value="<?=($signed_in || !empty($this->vars['nlpro'])) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>" class="m-wrap span12"> 
+                                        <input name="doc[registrationFeeOriginal]" type="hidden" value="<?=($signed_in || !empty($this->vars['nlpro'])) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>" class="m-wrap span12"> 
                                      <span class="add-on">.00</span>
                                  </div>
                                  <span class="help-block">**CD of materials will be included in the registration fee.**</span>
@@ -367,8 +368,8 @@ endif; ?>
                               <div class="controls">
                                  <div class="input-prepend input-append">
                                      <span class="add-on">$ </span>
-                                        <input name="doc[total]" id="total" type="text" autocomplete="on" disabled value="<?=($signed_in) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>" class="m-wrap span12"> 
-                                        <input name="" id="total_orig" type="hidden" value="<?=($signed_in) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>" class="m-wrap span12"> 
+                                        <input name="doc[total]" id="total" type="text" autocomplete="on" disabled value="<?=($signed_in || !empty($this->vars['nlpro'])) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>" class="m-wrap span12"> 
+                                        <input name="" id="total_orig" type="hidden" value="<?=($signed_in || !empty($this->vars['nlpro'])) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>" class="m-wrap span12"> 
                                      <span class="add-on">.00</span>
                                  </div>
                               </div>
@@ -426,7 +427,7 @@ endif; ?>
                         <input type="hidden" class="memberId" name="doc[payment][memberId]" value="<?=($signed_in) ? $this->vars['member']['_id']: '';?>">
                         <input type="hidden" class="description" name="doc[payment][description]" value="<?='INV-'.time();?>">
                         <input type="hidden" class="title" name="doc[payment][title]" value="<?=$this->vars['seminar']['headline'].' - '.$this->vars['seminar']['location'].' - '.$this->vars['seminar']['startDate']['monthDay'].' - '.$this->vars['seminar']['endDate']['monthDay'].', '.$this->vars['seminar']['startDate']['year']?>">
-                        <input type="hidden" class="amount" name="doc[payment][amount]" value="<?=($signed_in) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>">
+                        <input type="hidden" class="amount" name="doc[payment][amount]" value="<?=($signed_in || !empty($this->vars['nlpro'])) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>">
                         <input type="hidden" class="cardType" name="doc[payment][cardType]" value="">
                         <input type="hidden" class="token" name="doc[payment][token]" value="">
 

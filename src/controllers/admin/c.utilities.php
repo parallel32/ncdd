@@ -15,7 +15,7 @@ use Cocur\Slugify\Slugify;
 use TTools\App;
 
 $utilities = $app['controllers_factory'];
-$utilities->before($mustbeMEMBER);
+
 
 
 //////////////////////////
