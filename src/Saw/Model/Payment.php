@@ -768,17 +768,25 @@ error_log('for variable: this->amount  ==>'.print_r($this->amount,true));
 				$registration = $registration->findById();
 				switch ($registration['currentStatus']) {
 					case Registration::$status['DEPOSIT']:
+						/* NO LONGER HANDLED HERE
 						$obj = new RegistrationSeminar(array('_id'=>$this->ownerId
 														,'currentStatus'=>Registration::$status['DEPOSITBALANCE']
 														,'paidDate'=> new Date(self::$app, 'now')
 														,'paymentId'=> $paymentId
 												),self::$app);
+						*/
+						$obj = new RegistrationSeminar(array('_id'=>$this->ownerId
+												),self::$app);
 						break;
 					case Registration::$status['DEPOSITBALANCE']:
+						/* NO LONGER HANDLED HERE
 						$obj = new RegistrationSeminar(array('_id'=>$this->ownerId
 														,'currentStatus'=>Registration::$status['PAID']
 														,'paidDate'=> new Date(self::$app, 'now')
 														,'paymentId'=> $paymentId
+												),self::$app);
+						*/
+						$obj = new RegistrationSeminar(array('_id'=>$this->ownerId
 												),self::$app);
 						break;
 					default:

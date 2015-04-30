@@ -1,3 +1,7 @@
+<?
+$registration = $this->vars['registration'];
+$seminar = $this->vars['seminar'];
+?>      
       <!-- BEGIN PAGE -->
       <div class="page-content">
          <!-- BEGIN PAGE CONTAINER-->
@@ -15,7 +19,7 @@
             <div class="row-fluid invoice">
                <div class="span12 alert">
                   <p><h3><b>Alternate payment method screen</b></h3></p>
-                  <p><h3>To pay by credit card on behalf of the member:</h3></p> <a class="btn blue" href="/registration/seminar/<?=$this->vars['registration']['_id']?>/pay"><i class="icon-money"></i> Goto the Credit Card Form</a>
+                  <p><h3>To pay by credit card on behalf of the member:</h3></p> <a class="btn blue" href="/registration/seminar/<?=$registration['_id']?>/pay"><i class="icon-money"></i> Goto the Credit Card Form</a>
                </div>
             </div>
             <hr />
@@ -24,7 +28,7 @@
                <div class="row-fluid invoice-logo">
                   <div class="span6 invoice-logo-space"><img src="/assets/img/ncdd-login2-logo.png" alt="" /> </div>
                   <div class="span6">
-                     <p>#<?=$this->vars['registration']['_id']?> / <? $date = new \DateTime(); echo $date->format('d');?> <?echo $date->format('M');?>, <?echo $date->format('Y');?> <span class="muted">Registration ID and Date</span></p>
+                     <p>#<?=$registration['_id']?> / <? $date = new \DateTime(); echo $date->format('d');?> <?echo $date->format('M');?>, <?echo $date->format('Y');?> <span class="muted">Registration ID and Date</span></p>
                   </div>
                </div>
                <hr />
@@ -32,21 +36,21 @@
                   <div class="span3">
                      <h4>Member:</h4>
                      <ul class="unstyled">
-                        <li><?=$this->vars['registration']['name']?></li>
+                        <li><?=$registration['name']?></li>
                         <li>
-                           <?=$this->vars['registration']['address1']?><?=(!empty($this->vars['registration']['address2'])) ?' '.$this->vars['registration']['address2'] :'' ;?>
-                           <?=$this->vars['registration']['city']?>, <?=$this->vars['registration']['state']?> <?=$this->vars['registration']['country']?>
+                           <?=$registration['address1']?><?=(!empty($registration['address2'])) ?' '.$registration['address2'] :'' ;?>
+                           <?=$registration['city']?>, <?=$registration['state']?> <?=$registration['country']?>
                         </li>
-                        <li>email: <?=$this->vars['registration']['email']?></li>
-                        <li>phone: <?=$this->vars['registration']['phone']?></li>
-                        <li>fax: <?=$this->vars['registration']['fax']?></li>
+                        <li>email: <?=$registration['email']?></li>
+                        <li>phone: <?=$registration['phone']?></li>
+                        <li>fax: <?=$registration['fax']?></li>
                      </ul>
                   </div>
                   <div class="span4">
                      <h4>About:</h4>
                      <ul class="unstyled">
-                        <li><?=$this->vars['registration']['type']?></li>
-                        <li><?=$this->vars['registration']['attendanceCertificationStatement']?></li>
+                        <li><?=$registration['type']?></li>
+                        <li><?=$registration['attendanceCertificationStatement']?></li>
                      </ul>
                   </div>
                   <div class="span4 invoice-payment">
@@ -69,45 +73,45 @@
                         </tr>
                      </thead>
                      <tbody>
-                        <? //echo "<pre>";print_r($this->vars['registration']);echo "</pre>";
-                           /*
-                           if(array_key_exists('deposit',$this->vars['seminar']['register'])
-                              && array_key_exists('depositQuestion',$this->vars['registration']) 
-                              && !empty($this->vars['registration']['deposit']) 
-                              && $this->vars['registration']['depositQuestion'] == 'yes'):
-                              //*/
-                           if($this->vars['registration']['currentStatus'] == \Saw\Model\Registration::$status['DEPOSIT']):
-                              
-                              $this->vars['registration']['registrationFee'] = $this->vars['registration']['deposit'];
+                        <? 
+                           
+                           $is_deposit = false;
+                           $is_balance_due = false;
+                           $is_full_payment = false;
+                           if(empty($registration['paymentId']) && (array_key_exists('depositPaymentId', $registration) && empty($registration['depositPaymentId']))) {
+                              $registration['registrationFee'] = $registration['deposit'];
                               $label = 'Registration Deposit';
-
-                           elseif($this->vars['registration']['currentStatus'] == \Saw\Model\Registration::$status['DEPOSITBALANCE']):
-                              $this->vars['registration']['registrationFee'] = (int)$this->vars['registration']['registrationFeeOriginal'] - (int)$this->vars['registration']['deposit'];
+                              $is_deposit = true;
+                           }else if(!empty($registration['paymentId']) || (array_key_exists('depositPaymentId', $registration) && !empty($registration['depositPaymentId']))){
+                              // a deposit has been paid so derive the amount
                               $label = 'Registration Balance Due';
-                           else:
+                              $registration['registrationFee'] = $registration['registrationFee'] - $seminar['register']['deposit'];
+                              $is_balance_due = true;
+                           }else{
                               $label = "Registration Full Payment";
-                           endif;
+                              $is_full_payment = true;
+                           }
                         ?>
                         <tr>
                            <td>1</td>
                            <td><?=$label?></td>
-                           <td class="hidden-480"><?=$this->vars['registration']['type']?></td>
+                           <td class="hidden-480"><?=$registration['type']?></td>
                            <td class="hidden-480">1</td>
-                           <td class="hidden-480">$<?=$this->vars['registration']['registrationFee']?></td>
-                           <td>$<?=$this->vars['registration']['registrationFee']?></td>
+                           <td class="hidden-480">$<?=$registration['registrationFee']?></td>
+                           <td>$<?=$registration['registrationFee']?></td>
                         </tr>
                         
-                        <? $amount = $this->vars['registration']['registrationFee']; ?>
-                        <? if(array_key_exists('hardCopy',$this->vars['registration']) && !empty($this->vars['registration']['hardCopy'])): ?>
-                        <? if($this->vars['registration']['hardCopy'] == 'YES'): 
+                        <? $amount = $registration['registrationFee']; ?>
+                        <? if($is_deposit && array_key_exists('hardCopy',$registration) && !empty($registration['hardCopy'])): ?>
+                        <? if($registration['hardCopy'] == 'YES'): 
                         ?>
                         <tr>
                            <td>2</td>
                            <td>Hard Copy</td>
                            <td class="hidden-480">Printed and Prepared Hard Copy</td>
                            <td class="hidden-480">1</td>
-                           <td class="hidden-480">$<?=$this->vars['registration']['hardCopyFee']?></td>
-                           <td>$<?=$this->vars['registration']['hardCopyFee']?></td>
+                           <td class="hidden-480">$<?=$registration['hardCopyFee']?></td>
+                           <td>$<?=$registration['hardCopyFee']?></td>
                         </tr>
                         <? endif; ?>
                         <? endif; ?>
@@ -117,10 +121,7 @@
                <div class="row-fluid">
                   <div class="span12 invoice-block">
                      <ul class="unstyled amounts">
-                        <? if($this->vars['registration']['currentStatus'] == \Saw\Model\Registration::$status['DEPOSITBALANCE']): 
-                           $this->vars['registration']['total'] = $this->vars['registration']['registrationFee'];
-                           endif; ?>
-                        <li><strong>Total:</strong> $<?=$this->vars['registration']['total']?></li>
+                        <li><strong>Total:</strong> $<?=$registration['registrationFee']?></li>
                      </ul>
                   </div>
                </div>
@@ -151,20 +152,20 @@
                      </div>
                      <!--/ ERROR -->
                      <?
-                     $memberId = $this->vars['registration']['memberId'];
-                     $ownerId = $this->vars['registration']['_id'];
-                     $ownerClass = $this->vars['registration']['class'];
+                     $memberId = $registration['memberId'];
+                     $ownerId = $registration['_id'];
+                     $ownerClass = $registration['class'];
                      $description = 'INV-'.time();
-                     $title = $label.' - '.$this->vars['registration']['type'].' - '.$this->vars['seminar']['headline'].' - '.$this->vars['seminar']['location'].' - '.$this->vars['seminar']['startDate']['monthDay'].' - '.$this->vars['seminar']['endDate']['monthDay'].', '.$this->vars['seminar']['startDate']['year'];
-                     $name = $this->vars['registration']['name'];
-                     $email = $this->vars['registration']['email'];
-                     $phone = $this->vars['registration']['phone'];
-                     $address1 = $this->vars['registration']['address1'];
-                     $address2 = $this->vars['registration']['address2'];
-                     $city = $this->vars['registration']['city'];
-                     $state = $this->vars['registration']['state'];
-                     $postalCode = $this->vars['registration']['postalCode'];
-                     $country = $this->vars['registration']['country'];
+                     $title = $label.' - '.$registration['type'].' - '.$this->vars['seminar']['headline'].' - '.$this->vars['seminar']['location'].' - '.$this->vars['seminar']['startDate']['monthDay'].' - '.$this->vars['seminar']['endDate']['monthDay'].', '.$this->vars['seminar']['startDate']['year'];
+                     $name = $registration['name'];
+                     $email = $registration['email'];
+                     $phone = $registration['phone'];
+                     $address1 = $registration['address1'];
+                     $address2 = $registration['address2'];
+                     $city = $registration['city'];
+                     $state = $registration['state'];
+                     $postalCode = $registration['postalCode'];
+                     $country = $registration['country'];
                      ?>
                      <input type="hidden" class="name" name="doc[name]" value="<?=$name?>">
                      <input type="hidden" class="memberId" name="doc[memberId]" value="<?=(!empty($memberId)) ? $memberId: ''?>">
@@ -181,7 +182,7 @@
                               <div class="controls">
                                  <div class="input-prepend input-append">
                                     <span class="add-on">$ </span>
-                                       <input type="text" name="doc[amount]" class="m-wrap span8 amount" value="<?=$this->vars['registration']['total']?>">
+                                       <input type="text" name="doc[amount]" class="m-wrap span8 amount" value="<?=$registration['registrationFee']?>">
                                     <span class="add-on">.00</span>
                                  </div>
                                  <span class="help-block">A receipt with this amount will be created.</span>
@@ -308,8 +309,8 @@
                         ?>
                         <input type="checkbox" name="suppress_emails" <?=(array_key_exists('suppress_emails',$user) && !empty($user['suppress_emails']))?'checked':'';?> value="yes">Suppress Emails.
                         <? } ?>
-                        <button data-registration-id="<?=$this->vars['registration']['_id']?>" type="button" class="btn green submit-payment"><i class="icon-ok"></i> Submit Payment</button>
-                        <button data-id="<?=$this->vars['registration']['_id']?>" type="button" class="btn cancel">Cancel and Go Back</button>
+                        <button data-registration-id="<?=$registration['_id']?>" type="button" class="btn green submit-payment"><i class="icon-ok"></i> Submit Payment</button>
+                        <button data-id="<?=$registration['_id']?>" type="button" class="btn cancel">Cancel and Go Back</button>
                      </div>
                   </form>
                   <!-- SUCCESSFUL SAVE MODAL -->
@@ -324,7 +325,7 @@
                      <div class="modal-footer">
                         <button class="btn blue continue payment" data-insertid="">View Receipt</button>
                         <button class="btn blue continue dashboard">Go To Dashboard</button>
-                        <button class="btn yellow continue registrations" data-id="<?=$this->vars['registration']['_id']?>" data-seminar-id="<?=$this->vars['seminar']['_id']?>">Go To Registrations</button>
+                        <button class="btn yellow continue registrations" data-id="<?=$registration['_id']?>" data-seminar-id="<?=$this->vars['seminar']['_id']?>">Go To Registrations</button>
                      </div>
                   </div>
                   <!--/ SUCCESSFUL SAVE MODAL -->

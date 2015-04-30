@@ -181,13 +181,15 @@
 			   		$('#payment-form .btn.green').prop("disabled",true);
 			   		$('#payment-form .btn.green').html('<i class="icon-ok"></i> Payment Successful');
 		            
-	               	$('#save-success .continue.payment').attr('data-insertid',responseObj.paymentId.$id);
-				   	io.saw.FormGet.activate({postUrl:'/registration/'+responseObj.paymentId.$id+'/pay/'+theThis.attr('data-registration-id')
-				    	,postOnComplete:function(responseObj,responseStatus){}
-				      	,postOnSuccess:function(responseObj){
-				         //document.location.href='/registrations';
-				      	}
-				   	});
+		            if(responseObj.hasOwnProperty('paymentId') && responseObj.paymentId.hasOwnProperty('$id')){
+		               	$('#save-success .continue.payment').attr('data-insertid',responseObj.paymentId.$id);
+					   	io.saw.FormGet.activate({postUrl:'/registration/'+responseObj.paymentId.$id+'/pay/'+theThis.attr('data-registration-id')
+					    	,postOnComplete:function(responseObj,responseStatus){}
+					      	,postOnSuccess:function(responseObj){
+					         //document.location.href='/registrations';
+					      	}
+					   	});
+					}
 			   }
 			   ,postOnErrors:function(responseObj){
 			   		$('#payment-form .btn.green').removeAttr("disabled");

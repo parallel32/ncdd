@@ -16,7 +16,7 @@
 <br/><?=$this->vars['seminar']['location']?>
 <br/><?=$this->vars['seminar']['startDate']['monthDay']?> - <?=$this->vars['seminar']['endDate']['monthDay']?>, <?=$this->vars['seminar']['startDate']['year']?>
 
-<br/><br/><h4 class="h4">Registration Details:</h4>
+<br/><br/><h4 class="h4">Registration Details:</h4><br/>
 <table>
 	<tr><td><strong>Registrant Name:</strong></td><td><?=$this->vars['registrantName']?></td></tr>
 	<? if((array_key_exists('register',$this->vars['seminar']) && array_key_exists('rsvpQuestion',$this->vars['seminar']['register']) && $this->vars['seminar']['register']['rsvpQuestion'] == 'ON') || (array_key_exists('register',$this->vars['seminar']) && !array_key_exists('rsvpQuestion',$this->vars['seminar']['register'])) ): ?>

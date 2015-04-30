@@ -290,9 +290,55 @@
                                  <td class="center hidden-480 "><?=\Saw\Model\Registration::$paymentTypeReversed[$registration['currentPaymentType']];?></td>
                                  <td class=" ">
                                     <a data-id="<?=$registration['_id']?>" class="btn blue mini view registration"><i class=" "></i> Registration</a>
-                                    <? if(!empty($registration['memberId'])): ?>
+                                 <? if(!empty($registration['memberId'])): ?>
                                     <a data-id="<?=$registration['memberId']?>" class="btn blue mini view member"><i class=" "></i> Member</a>
-                                    <? endif; ?>
+                                 <? endif; ?>
+                                 <? if(!empty($registration['memberId'])): ?>
+                                    <a data-id="<?=$registration['memberId']?>" data-url="/registration/seminar/<?=$this->vars['seminar']['_id']?>/<?=$this->vars['seminar']['slug']?>" class="btn mini yellow-stripe user-login">LogIn</a>
+                                 <? endif; ?>
+                                 <? if(!empty($registration['paymentId']) || (array_key_exists('depositPaymentId', $registration) && !empty($registration['depositPaymentId']))): ?>
+                                    <a data-id="<?
+                                    if (array_key_exists('depositPaymentId', $registration) && !empty($registration['depositPaymentId'])) {
+                                       echo $registration['depositPaymentId'];
+                                    }else if (!empty($registration['paymentId'])){
+                                       echo $registration['paymentId'];
+                                    }else{
+                                       echo '';
+                                    }
+                                    ?>" class="btn blue mini view payment"><i class=" "></i> Deposit</a>
+                                 <? endif; ?>
+                                 <?
+                                 $status = "Something's not right";
+                                 $is_deposit = false;
+                                 switch (\Saw\Model\Registration::$statusReversed[$registration['currentStatus']]) {
+                                    case 'DEPOSIT':
+                                    case 'DEPOSITBALANCE':
+                                       if(
+                                             !empty($registration['paymentId']) 
+                                             || (
+                                                   array_key_exists('depositPaymentId', $registration) 
+                                                   && !empty($registration['depositPaymentId'])
+                                                )
+                                           
+                                       ) {
+                                          $status = 'Deposit Received. Awaiting Balance Payment.';
+                                       }else{
+                                          $status = 'Deposit Payment Not Yet Received.';
+                                       }
+                                       $is_deposit = true;
+                                       break;
+                                    case 'SUBMITTED':
+                                       $status = 'Your registration has been received.';
+                                       break;
+                                    case 'WAITLIST':
+                                       $status = 'You are on the wait list.';
+                                       break;
+                                    case 'SCHOLARSHIP':
+                                       $status = 'We have received your scholarship request';
+                                       break;
+                                 }
+                                 echo "<pre>".$status."</pre>";
+                                 ?>
                                  </td>
                               </tr>
                               <? endforeach;?>
@@ -339,6 +385,9 @@
                                  <td class=" ">
                                     <a data-id="<?=$registration['_id']?>" class="btn blue mini view registration"><i class=" "></i> Registration</a>
                                     <a data-id="<?=$registration['paymentId']?>" class="btn blue mini view payment"><i class=" "></i> Payment</a>
+                                    <? if(array_key_exists('depositPaymentId', $registration) && !empty($registration['depositPaymentId'])): ?>
+                                    <a data-id="<?=$registration['depositPaymentId']?>" class="btn blue mini view payment"><i class=" "></i> Deposit</a>
+                                    <? endif; ?>
                                  </td>
                               </tr>
                               <? endforeach;?>
@@ -527,6 +576,20 @@ jQuery(document).ready(function() {
    $('#paid .yellow.view').click(function(e){
       e.preventDefault();
       document.location.href='/registrations/all';
+   });
+
+
+   $('td .user-login').click(function(e){
+      var the_url = $(this).attr('data-url');
+      io.saw.FormGet.activate({postUrl:'/authentication/shadologin/'+$(this).attr('data-id')
+         ,postOnComplete:function(responseObj,responseStatus){}
+         ,postOnSuccess:function(responseObj){
+            document.location.href = the_url;
+         }
+         ,postOnErrors:function(responseObj){
+            alert('Something failed trying to sign in as this user...this is an unlikely error with no logs.  Please recall what you did and email Mike.');
+         }
+      });
    });
 
 });      

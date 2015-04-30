@@ -20,7 +20,7 @@ $app['seminarConfirmationEmail'] = $app->protect(function ($app,$registrationId)
 	$seminar = $seminar->findById();
 	$seminar['description'] = $app['prepare_content']($seminar['description']);
     // email welcome message
-	$subject = 'NCDD Seminar Confirmation';
+	$subject = 'NCDD Seminar Registration Details';
 	$to = $registration['email'];
 	$view_vars = array('seminar'=>$seminar
 						,'registration'=>$registration
@@ -194,35 +194,9 @@ $app->post('/registration/payment', function (Request $request) use ($app) {
 // is making a payment on behalf of the member using the same credit card screen
 $app->get('/registration/{paymentId}/pay/{registrationId}', function ($paymentId, $registrationId, Request $request) use ($app) {
     
-    $registration = new Model\Registration(array('_id'=>$registrationId, 'paymentId'=>$paymentId), $app);
-    $registration->markPaid();
+    $registration = new Model\RegistrationSeminar(array('_id'=>$registrationId), $app);
+    $registration->markPaid($paymentId);
  	
-    $payment = new Model\Payment(array('_id'=>$paymentId),$app);
-	$payment->findById();
-
-	// confirmation letter email
-	$user = $app['session']->get('user');
-    if(is_array($user) && array_key_exists('accessLevel', $user) && ($user['accessLevel'] == ADMIN || ((is_array($user)) && array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') )) && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes'){
-		// don't send the email		
-	}else{
-		$app['seminarConfirmationEmail']($app,$registrationId);
-	}
-    // thank you receipt message
-	$subject = 'NCDD Payment Received';
-	$to = $payment->email;
-	$view_vars = array('payment'=>$payment->__toArray()
-						,'paymentId'=>$paymentId
-						,'email'=>$payment->email
-	);
-	$body = $app['view']->render('email/payment-thankyou','email', $view_vars);
-	
-	
-	if(is_array($user) && array_key_exists('accessLevel', $user) && ($user['accessLevel'] == ADMIN || ((is_array($user)) && array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') )) && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes'){
-		// don't send the email		
-	}else{
-		$app['sendMail']($subject, $body, $to);	
-	}	
-
     return new Response(json_encode(array('message' => 'Paid successfully')), 200,array('Content-Type' => 'application/json'));
 });
 
@@ -240,6 +214,19 @@ $app->get('/registration/seminar/{seminarId}/{slug}', function ($seminarId, $slu
 	if(!empty($member)){
 		$location = new Model\Location(array('ownerId'=>$member['_id']),$app);
 		$location = $location->findById('ownerId');
+
+		// determine if the member, who is signed in, has already made a deposit to this seminar and is coming back to do a balance payment
+		$registration = new Model\RegistrationSeminar($doc=array(), $app);
+		$depositbalance = $registration->fetchDepositStatus($seminarId,0, 10000);
+		if(!empty($depositbalance) && is_array($depositbalance)){
+			foreach ($depositbalance as $record) {
+				if($record['memberId'] == $member['_id']){
+					return $app->redirect('/registration/seminar/deposit/'.$record['_id']);		
+				}
+			}
+		}
+		
+		
 	}else{
 		$location = '';
 	}
@@ -272,6 +259,9 @@ $app->get('/registration/seminar/{seminarId}/{slug}', function ($seminarId, $slu
 
 	return $app['view']->render('registration/seminar', 'blank',$view_vars);
 });
+/**
+POST NEW REGISTRATION
+*/
 $app->post('/registration/seminar', function (Request $request) use ($app) {
 	// retrieve document from request
 	$doc = $request->get('doc'); 
@@ -280,8 +270,6 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 	$user = $app['session']->get('user');
 	$user['suppress_emails'] = $request->get('suppress_emails');
 	$app['session']->set('user',$user);
-
-
 
 
 	///////////////
@@ -307,15 +295,6 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
     endif;
 
 
-
-
-    /**
-	WAIT LIST
-	WAIT LIST
-	WAIT LIST
-	WAIT LIST
-	WAIT LIST
-    */
     if($activate_waitlist == false):
 
 		$registrationFee = $doc['registrationFee'];
@@ -327,20 +306,16 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 		$depositQuestion = (array_key_exists('depositQuestion',$doc)) ? $doc['depositQuestion'] : '';
 		if($depositQuestion == 'yes'){
 			$registrationFee = $doc['deposit'];
-			$doc['currentStatus'] = Model\Registration::$status['DEPOSIT'];
 		}
 
 		$doc['total'] = (int)$hardCopyFee+(int)$registrationFee;
-		/**
-		
-		*/
 		$paymentId = new \stdClass();
 
 		$rs = new Model\RegistrationSeminar($doc,$app);
 		if(!empty($doc['email']) && $rs->findByEmail()){
 	    	$response_arr = array('message'=>"Our records indicate you have already submitted a registration.  If you believe this message is in error please contact NCDD directly.",
 	                              "invalidFields"=>array(array('name'=>'email','message'=>'Our records indicate you have already submitted a registration.  If you believe this message is in error please contact NCDD directly.')));
-	        return new Response(json_encode($response_arr), 403,array('Content-Type' => 'application/json'));
+	        return new Response(json_encode($response_arr), 403,array('Content-Type' => 'application/json')); 
 	    }
 
 		$app['validateModel']($app, $rs);
@@ -348,14 +323,12 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 
 
 		if ($doc['currentPaymentType'] == Model\Registration::$paymentType['CREDIT']) {
-			$doc['payment']['ownerId'] = '';
-			$doc['payment']['ownerClass'] = 'RegistrationSeminar';
-
-			
+				$doc['payment']['ownerId'] = '';
+				$doc['payment']['ownerClass'] = 'RegistrationSeminar';
 				$payment = new Model\Payment($doc['payment'],$app);
 				$app['validateModel']($app, $payment,$groups=array('cc'));
 			try {
-				$paymentId = $payment->charge();	
+				$paymentId = $payment->charge();
 				$rs_id = $rs->insert();
 				$payment_update = new Model\Payment(array('ownerId'=>$rs_id,'_id'=>$paymentId),$app);
 				$payment_update->saveSafe();
@@ -373,6 +346,10 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 
 			try {
 				$rs_id = $rs->insert();
+				//*
+		    	// send registrant the email notification only if pay by check has been selected.
+	    		$app['seminarConfirmationEmail']($app,$rs_id);
+				//*/
 			} catch (Exception $e) {
 				error_log(__FILE__.' '.__LINE__.' for variable: e  ==>'.print_r($e->getMessage(),true));
 				//$rgis = new Model\Registration(array('_id'=>$rs_id),$app);			
@@ -408,6 +385,13 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 			try {
 				$rs->scholarshipId = $scholarship->insert();
 				$rs_id = $rs->insert();
+
+			    if(is_array($user) && array_key_exists('accessLevel', $user) && ($user['accessLevel'] == ADMIN || ((is_array($user)) && array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') )) && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes'){
+					// don't send the email
+				}else{
+					self::$app['seminarConfirmationEmail']($app,$rs_id);
+				}
+			
 			} catch (Exception $e) {
 				error_log(__FILE__.' '.__LINE__.' for variable: e  ==>'.print_r($e->getMessage(),true));
 				//$rgis = new Model\Registration(array('_id'=>$rs_id),$app);			
@@ -416,20 +400,13 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 			}		
 			
 		}
-		if(array_key_exists('currentStatus', $doc) && $doc['currentStatus'] == Model\Registration::$status['SCHOLARSHIP']){
-			$user = $app['session']->get('user');
-		    if(is_array($user) && array_key_exists('accessLevel', $user) && ($user['accessLevel'] == ADMIN || ((is_array($user)) && array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') )) && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes'){
-				// don't send the email		
-			}else{
-				$app['seminarConfirmationEmail']($app,$rs_id);
-			}
-		}
+		
 		//*/
 		return new Response(json_encode(array(
 			'paymentId'=>$paymentId,
 			'registrationId'=>$rs_id,
 			'label'=>'Successful Registration',
-			'message'=>"Thank you, your Registration is complete.  You will receive an confirmation and receipt in the email address you provided.")), 200,array('Content-Type' => 'registration/json')
+			'message'=>"Thank you, your Registration is complete.  You will receive a confirmation and receipt in the email address you provided.")), 200,array('Content-Type' => 'registration/json')
 		);
 	
 
@@ -455,7 +432,7 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 			'paymentId'=>'',
 			'registrationId'=>$rs_id,
 			'label'=>'Successful Registration',
-			'message'=>"Thank you, your Registration is complete.  You will receive an confirmation and receipt in the email address you provided.")), 200,array('Content-Type' => 'registration/json')
+			'message'=>"Thank you, your request to be added to the waitlist is complete.  You will be notified if a space becomes available.")), 200,array('Content-Type' => 'registration/json')
 		);
 	
 
@@ -518,28 +495,6 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 	    	$body = $app['view']->render('email/registration-seminar-admin','email', $view_vars);
 	    	$app['sendMail']($subject, $body, $to);
 
-	    	/**
-				This is no longer necessary
-	    	*/
-			/*
-	    	// send applicant the email notification (this is not the confirmation, which also includes the deposit)
-    		$subject = 'NCDD Seminar Registration Information';
-	    	$to = $doc['email'];
-	    	$view_vars = array('seminar'=>$seminar
-	    						,'rsvp'=>$rsvp
-	    						,'total'=>$doc['total']
-	    						,'total_reason'=>(array_key_exists('total_reason', $doc)) ? $doc['total_reason']:'' 
-	    						,'hardCopy'=>$hardCopy
-	    						,'hardCopyFee'=>$hardCopyFee
-	    						,'registrationFee'=>$doc['registrationFee']
-	    						,'registrantName'=>$doc['name']
-	    						,'paymentType'=>$paymentType
-	    						,'cardType'=>$cardType
-	    						,'cardNumber'=>$cardNumber
-	    	);
-	    	$body = $app['view']->render('email/registration-seminar-customer','email', $view_vars);
-	    	$app['sendMail']($subject, $body, $to);
-			//*/
 	    endif;
 	    //*/
 	endif; // activate wait list

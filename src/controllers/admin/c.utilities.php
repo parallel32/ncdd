@@ -18,6 +18,34 @@ $utilities = $app['controllers_factory'];
 
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// FIX SEMINAR REGISTRATIONS WHERE THERE WAS A PAYMENT THAT WASN'T FOREIGN KEYED TO THE REGISTRATION DOCUMENT //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$utilities->get('/update-seminar-reg-payments', function () use ($app) {
+    
+    //*
+    ini_set('memory_limit','1024M');
+
+    $payment = new Model\Payment(array(),$app);
+    $payments = $payment->find(array('ownerClass'=>'RegistrationSeminar'),$fields=array(),true,$sort=array('_id'=>1),0,100000);
+    //echo " <pre>payments";print_r($payments);echo "</pre>";
+    //*
+    $i=0;
+    $mc = count($payments);
+    foreach ($payments as $payment) {
+        
+
+        $registration = new Model\Registration(array('_id'=>$payment['ownerId'],'paymentId'=>$payment['_id']), $app);
+        $registration->saveSafe();
+
+        $i++;
+        error_log($mc.' - '.$i);
+    }
+    //*/
+
+    return new Response('cool',200,array('Content-Type' => 'text/html')); 
+});
+
 //////////////////////////
 // SET PRIMARY LOCATION //
 //////////////////////////

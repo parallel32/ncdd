@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints\Callback;
 use Symfony\Component\Validator\ExecutionContext;
 
 /**
- * Registration Model.
+ * Registration Model.x
  * This class is the base class for all registration-type forms to be submitted.
  */
 class Registration extends Model {
@@ -68,7 +68,7 @@ class Registration extends Model {
 		$this->paidDate = $doc['paidDate'];
 		if(!empty($doc['memberId'])) $this->memberId = (is_object($doc['memberId'])) ? $doc['memberId'] : new \MongoId($doc['memberId']);
 		if(!empty($doc['paymentId'])) $this->paymentId = (is_object($doc['paymentId'])) ? $doc['paymentId'] : new \MongoId($doc['paymentId']);
-		if(!empty($doc['contributionPaymentId'])) $this->paymentId = (is_object($doc['contributionPaymentId'])) ? $doc['contributionPaymentId'] : new \MongoId($doc['contributionPaymentId']);
+		if(!empty($doc['contributionPaymentId'])) $this->contributionPaymentId = (is_object($doc['contributionPaymentId'])) ? $doc['contributionPaymentId'] : new \MongoId($doc['contributionPaymentId']);
 		
 	}
 	
@@ -210,16 +210,12 @@ class Registration extends Model {
 
 	}
 	
-	public function markPaid(){
+	public function markPaid($paymentId){
 
-		$result = $this->findOne(array('_id'=>$this->_id),array('currentStatus'=>1));
-		//error_log('RegistrationSeminar markPaid result:'.print_r($result,true));
-		// mark the record as paid
-		$this->paidDate = new Date(self::$app,'now', 'America/New_York');
-		if($result['currentStatus'] == self::$status['SUBMITTED'] || $result['currentStatus'] == self::$status['WAITLIST'] || $result['currentStatus'] == self::$status['DEPOSITBALANCE']){
-			$this->currentStatus = self::$status['PAID'];
-			$this->saveSafe();	
-		}		
+		$this->paidDate = new Date(self::$app,'now');
+		$this->currentStatus = self::$status['PAID'];
+		$this->saveSafe();
+				
 		return true;
 	}
 	public function remove(){

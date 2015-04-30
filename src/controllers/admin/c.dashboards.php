@@ -112,6 +112,52 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
     		$delegate = $delegate->fetchByDelegate($user['_id']);
 			$view_vars['delegate']=$delegate;
 			
+			// determine if the member, who is signed in, has an outstanding balance on an upcoming seminar
+			$seminar = new Model\Seminar($doc=array(), $app);
+			$seminars = $seminar->find($query=array(),$fields=array(),true,$sort=array('startDate.date'=>1));
+			$seminar_deposit_notices = array();
+			if(!empty($seminars)){
+				foreach ($seminars as $seminar) {
+					$registration = new Model\RegistrationSeminar($doc=array(), $app);
+					
+					$depositbalance = $registration->fetchDepositStatus($seminar['_id'],0, 10000);
+					$waitlist = $registration->fetchByStatusSeminar($seminar['_id'],'WAITLIST',0,10000);
+					$submitted = $registration->fetchByStatusSeminar($seminar['_id'],'SUBMITTED',0,10000);
+					$scholarship = $registration->fetchByStatusSeminar($seminar['_id'],'SCHOLARSHIP',0,10000);
+					
+					if(!empty($depositbalance) && is_array($depositbalance)){
+						foreach ($depositbalance as $record) {
+							if($record['memberId'] == $member['_id']){
+								$seminar_deposit_notices[(string)$seminar['_id']] = array('seminar'=>$seminar,'registration'=>$record);
+							}
+						}
+					}
+					if(!empty($waitlist) && is_array($waitlist)){
+						foreach ($waitlist as $record) {
+							if($record['memberId'] == $member['_id']){
+								$seminar_deposit_notices[(string)$seminar['_id']] = array('seminar'=>$seminar,'registration'=>$record);
+							}
+						}
+					}
+					if(!empty($submitted) && is_array($submitted)){
+						foreach ($submitted as $record) {
+							if($record['memberId'] == $member['_id']){
+								$seminar_deposit_notices[(string)$seminar['_id']] = array('seminar'=>$seminar,'registration'=>$record);
+							}
+						}
+					}
+					if(!empty($scholarship) && is_array($scholarship)){
+						foreach ($scholarship as $record) {
+							if($record['memberId'] == $member['_id']){
+								$seminar_deposit_notices[(string)$seminar['_id']] = array('seminar'=>$seminar,'registration'=>$record);
+							}
+						}
+					}
+				} // endforeach
+			}
+			
+			$view_vars['seminar_deposit_notices'] = $seminar_deposit_notices;
+
 			array_push($view_vars['crumbs'],array('name'=>'Editor','href'=>'/'));
 
 			return $app['view']->render('dashboards/member', 'default', $view_vars);

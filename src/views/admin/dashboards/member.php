@@ -12,6 +12,92 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                </div>
             </div>
 
+            <? if(array_key_exists('seminar_deposit_notices',$this->vars) && !empty($this->vars['seminar_deposit_notices'])): ?>
+               <? if(is_array($this->vars['seminar_deposit_notices']) && count($this->vars['seminar_deposit_notices']) > 0):?>
+
+                  <div class="row-fluid">
+                     <div class="span12">
+                        <a name="submitted"></a>
+                        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                        <div class="portlet box red">
+                           <div class="portlet-title" id="registration">
+                              <div class="caption"><i class="icon-facetime-video"></i>Your Seminar Registrations At A Glance</div>
+                           </div>
+                           <div class="portlet-body">
+                              <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                              <table class="table table-striped table-bordered table-hover dataTable" id="registrations" aria-describedby="sample_1_info">
+                                 <thead>
+                                    <tr role="row">
+                                       <th class="">Seminar</th>
+                                       <th class="hidden-phone">Starts On</th>
+                                       <th class="hidden-480">Registered On</th>
+                                       <th class="hidden-480">Method of Payment</th>
+                                       <th class="hidden-480">Status</th>
+                                       <th class=""></th>
+                                    </tr>
+                                 </thead>
+                                 <tbody role="alert" aria-live="polite" aria-relevant="all">
+
+                                 <? foreach ($this->vars['seminar_deposit_notices'] as $notice): ?>
+                                    <tr class="gradeX odd">
+                                       <td class=" "><?=$notice['seminar']['headline']?></td>
+                                       <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($notice['seminar']['startDate']['fullDateTime'])); ?>
+                                       <td class="hidden-phone"><b><?=$human->diffForHumans()?></b><br><?=$notice['seminar']['startDate']['monthDay'].' '.$notice['seminar']['startDate']['shortTime']?></td>
+                                       <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($notice['registration']['submittedDate']['fullDateTime'])); ?>
+                                       <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$notice['registration']['submittedDate']['monthDay'].' '.$notice['registration']['submittedDate']['shortTime']?></td>
+                                       <? $payment_type = \Saw\Model\Registration::$paymentTypeReversed[$notice['registration']['currentPaymentType']]; ?>
+                                       <td class="center hidden-480 "><?=$payment_type;?></td>
+                                       <?
+                                       $status = 'Please contact NCDD.';
+                                       $is_deposit = false;
+                                       switch (\Saw\Model\Registration::$statusReversed[$notice['registration']['currentStatus']]) {
+                                          case 'DEPOSIT':
+                                          case 'DEPOSITBALANCE':
+                                             if(
+                                                   !empty($notice['registration']['paymentId']) 
+                                                   || (
+                                                         array_key_exists('depositPaymentId', $notice['registration']) 
+                                                         && !empty($notice['registration']['depositPaymentId'])
+                                                      )
+                                                 
+                                             ) {
+                                                $status = 'Deposit Received. Awaiting Balance Payment.';
+                                             }else{
+                                                $status = 'Deposit Payment Not Yet Received.';
+                                             }
+                                             $is_deposit = true;
+                                             break;
+                                          case 'SUBMITTED':
+                                             $status = 'Your registration has been received.';
+                                             break;
+                                          case 'WAITLIST':
+                                             $status = 'You are on the wait list.';
+                                             break;
+                                          case 'SCHOLARSHIP':
+                                             $status = 'We have received your scholarship request';
+                                             break;
+                                       }
+
+                                       ?>
+                                       <td class="center hidden-480 "><?=$status?></td>
+                                       <td class=" ">
+                                          <? if($is_deposit):?>
+                                          <a href="/registration/seminar/<?=$notice['seminar']['_id']?>/<?=$notice['seminar']['slug']?>" class="btn blue mini view registration"><i class=" "></i> Pay Balance Here</a>
+                                          <? endif; ?>
+                                       </td>
+                                    </tr>
+                                 <? endforeach; ?>
+
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div><a name="deposits"></a>
+                        <!-- END EXAMPLE TABLE PORTLET-->
+                     </div>
+                  </div>
+
+               <? endif; ?>
+            <? endif; ?>
 
             <? if(array_key_exists('renewal',$this->vars)): ?>
                <? if(!empty($this->vars['renewal']) && $this->vars['renewal']['currentStatus'] < \Saw\Model\Renewal::$status['SUBMITTED']): ?>

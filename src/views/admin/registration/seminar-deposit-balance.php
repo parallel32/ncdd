@@ -13,8 +13,10 @@ endif; ?>
                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                <h3 class="page-title text-center">
                   <a href="//<?=SAW_CONSUMER_WEBSITE?>"><img src="/assets/img/ncdd-login2-logo.png"></a>
-                  <br/>Seminar Deposit Payment Form
                </h3>
+               <div class="alert alert-info text-center">
+                  <h3><b>Registration Balance Due - Payment Form</b></h3>
+               </div>
                <h3 class="text-center">
                   <?=$this->vars['seminar']['headline']?>
                   <br/><?=$this->vars['seminar']['location']?>
@@ -453,7 +455,7 @@ endif; ?>
                   </div>
 
                      <div id="submit-registration-buttons" class="form-actions text-center">
-                        <button type="button" class="btn green submit-registration"><i class="icon-ok"></i> Submit Deposit Balance</button>
+                        <button type="button" class="btn green submit-registration"><i class="icon-ok"></i> Submit Balance Due</button>
                         <button type="button" class="btn cancel-registration">Cancel and Go Back</button>
                      </div>
 
