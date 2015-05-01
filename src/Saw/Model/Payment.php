@@ -764,6 +764,7 @@ error_log('for variable: this->amount  ==>'.print_r($this->amount,true));
 	public function markOwnerClassPaid($paymentId){
 		switch ($this->ownerClass) {
 			case 'RegistrationSeminar':
+			/* NO LONGER HANDLED HERE
 				$registration = new RegistrationSeminar(array('_id'=>$this->ownerId),self::$app);
 				$registration = $registration->findById();
 				switch ($registration['currentStatus']) {
@@ -774,7 +775,7 @@ error_log('for variable: this->amount  ==>'.print_r($this->amount,true));
 														,'paidDate'=> new Date(self::$app, 'now')
 														,'paymentId'=> $paymentId
 												),self::$app);
-						*/
+						///
 						$obj = new RegistrationSeminar(array('_id'=>$this->ownerId
 												),self::$app);
 						break;
@@ -785,7 +786,7 @@ error_log('for variable: this->amount  ==>'.print_r($this->amount,true));
 														,'paidDate'=> new Date(self::$app, 'now')
 														,'paymentId'=> $paymentId
 												),self::$app);
-						*/
+						///
 						$obj = new RegistrationSeminar(array('_id'=>$this->ownerId
 												),self::$app);
 						break;
@@ -798,6 +799,7 @@ error_log('for variable: this->amount  ==>'.print_r($this->amount,true));
 						break;
 				}
 				return $obj->saveSafe();
+			*/
 				break;
 			case 'ApplyNewMember':
 				$obj = new ApplyNewMember(array('_id'=>$this->ownerId
