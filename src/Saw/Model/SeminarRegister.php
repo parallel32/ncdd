@@ -22,6 +22,7 @@ class SeminarRegister extends Model {
 	public $confirmationLetter;
 	public $depositConfirmationLetter;
 	public $scholarshipConfirmationLetter;
+	public $scholarshipApprovedConfirmationLetter;
 	public $deposit; // the amount for the initial deposit
 	public $depositDueDate; // the due date for payment of the remainer of the deposit
 	public $scholarship;
@@ -111,6 +112,7 @@ class SeminarRegister extends Model {
 		$this->confirmationLetter = $doc['confirmationLetter'];
 		$this->depositConfirmationLetter = $doc['depositConfirmationLetter'];
 		$this->scholarshipConfirmationLetter = $doc['scholarshipConfirmationLetter'];
+		$this->scholarshipApprovedConfirmationLetter = $doc['scholarshipApprovedConfirmationLetter'];
 		$this->deposit = $doc['deposit'];
         $this->depositDueDate = $doc['depositDueDate'];
         $this->scholarship = $doc['scholarship'];
@@ -132,6 +134,7 @@ class SeminarRegister extends Model {
 		$this->confirmationLetter = $this->confirmationLetter ?: '';
 		$this->depositConfirmationLetter = $this->depositConfirmationLetter ?: '';
 		$this->scholarshipConfirmationLetter = $this->scholarshipConfirmationLetter ?: '';
+		$this->scholarshipApprovedConfirmationLetter = $this->scholarshipApprovedConfirmationLetter ?: '';
 		$this->deposit = $this->deposit ?: '';
 		$this->depositDueDate = $this->depositDueDate ?: '';
 		$this->scholarship = $this->scholarship ?: '';

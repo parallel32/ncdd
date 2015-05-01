@@ -32,6 +32,7 @@
 		$('#input-body-confletter').val($('#body-confletter').html());
 		$('#input-body-deposit-confletter').val($('#body-deposit-confletter').html());
 		$('#input-body-scholarship-confletter').val($('#body-scholarship-confletter').html());
+		$('#input-body-scholarship-approveletter').val($('#body-scholarship-approveletter').html());
 		
 		io.saw.FormPost.activate({postUrl:'/seminar/edit'
 		   ,formName:'#register-form'

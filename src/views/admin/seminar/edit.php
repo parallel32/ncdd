@@ -278,7 +278,7 @@
                               </div>
                            </div>
 
-                           <h3 class="form-section">Registration Confirmation Letter&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.get('body-confletter').execCommand('mcefocus',true);">Click to Edit</a></h3>
+                           <h3 class="form-section">Registration Letter&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.get('body-confletter').execCommand('mcefocus',true);">Click to Edit</a></h3>
                            <div class="alert alert-info"><p><b>Notice:</b> To include the registration total in the confirmation letter, type <b>#total#</b> below.  Reason being, it will vary depending on the price feilds above.<br>Also,it will be formatted with the dollar sign so you don't have to include that.</p>
                            </div>
                            <hr>
@@ -296,7 +296,7 @@
                            </div>
                            
                            
-                           <h3 class="form-section">Registration Confirmation Letter for Deposit&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.get('body-deposit-confletter').execCommand('mcefocus',true);">Click to Edit</a></h3>
+                           <h3 class="form-section">Deposit Letter&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.get('body-deposit-confletter').execCommand('mcefocus',true);">Click to Edit</a></h3>
                            <div class="alert alert-info"><p><b>Notice:</b> To include the registration total in the confirmation letter, type <b>#total#</b> below.  Reason being, it will vary depending on the price feilds above.<br>Also,it will be formatted with the dollar sign so you don't have to include that.</p>
                               <p>To include the depoosit specific information include these variables:
                                  <br>Registration balance due: <b>#balance_due#</b> (this will be formatted with the dollar sign, so you don't have to include it)
@@ -320,7 +320,7 @@
                            </div>
                            
 
-                           <h3 class="form-section">Registration Confirmation Letter for Scholarship&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.get('body-scholarship-confletter').execCommand('mcefocus',true);">Click to Edit</a></h3>
+                           <h3 class="form-section">Scholarship Submitted Letter&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.get('body-scholarship-confletter').execCommand('mcefocus',true);">Click to Edit</a></h3>
                            <div class="row-fluid">
                               <div class="span12 ">
                                  
@@ -329,6 +329,27 @@
                                  <?=(array_key_exists('register',$seminar)) ? (array_key_exists('scholarshipConfirmationLetter',$seminar['register'])) ? $seminar['register']['scholarshipConfirmationLetter'] : '' : '';?>
                               </div>
                               <input id="input-body-scholarship-confletter" type="hidden" name="doc[register][scholarshipConfirmationLetter]" value="">
+                                 
+                              </div>
+                              <!--/span-->
+                           </div>
+                           
+
+                           <h3 class="form-section">Scholarship Approved Letter&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.get('body-scholarship-approveletter').execCommand('mcefocus',true);">Click to Edit</a></h3>
+                           <div class="alert alert-info"><p><b>Notice:</b>To include scholarship specific information include these variables:
+                                 <br>Recipient's name: <b>#name#</b>
+                                 <br>What the scholarship is for: <b>#for#</b>
+                              </p>
+                           </div>
+                           <hr>
+                           <div class="row-fluid">
+                              <div class="span12 ">
+                                 
+                              <style>div.editable {margin: 0px 0px 0px 0px;padding: 5px 50px 5px 5px;} div.editable p {margin: 0px 0px 0px 0px;}</style>
+                              <div id="body-scholarship-approveletter" class="span12 editable" style="margin-left:0px;">
+                                 <?=(array_key_exists('register',$seminar)) ? (array_key_exists('scholarshipApprovedConfirmationLetter',$seminar['register'])) ? $seminar['register']['scholarshipApprovedConfirmationLetter'] : '' : '';?>
+                              </div>
+                              <input id="input-body-scholarship-approveletter" type="hidden" name="doc[register][scholarshipApprovedConfirmationLetter]" value="">
                                  
                               </div>
                               <!--/span-->

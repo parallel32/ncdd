@@ -336,28 +336,31 @@ $app->get('/scholarship/{id}/approve', function ($id,Request $request) use ($app
 	$scholarship = new Model\Scholarship(array('_id'=>$id), $app);
 	$scholarship->approve();
 	$scholarship->findById();
+	// get the seminar id
+	$reg = new Model\RegistrationSeminar(array('scholarshipId'=>new \MongoId($id)),$app);
+	$reg = $reg->findById('scholarshipId');
+	$seminar = new Model\Seminar(array('_id'=>$reg['seminarId']),$app);
+	$seminar = $seminar->findById();
+
+	$body = (!empty($seminar) && is_array($seminar) && array_key_exists('scholarshipApprovedConfirmationLetter', $seminar['register'])) ? $seminar['register']['scholarshipApprovedConfirmationLetter']: '';
     // email welcome message
 	$subject = 'Your NCDD Scholarship Has Been Approved';
 	$to = $scholarship->email;
-	$view_vars = array('name'=>$scholarship->name
-						,'for'=>$scholarship->for
-						,'registrationNumber'=>$scholarship->registrationNumber
-	);
-	$body = $app['view']->render('email/new-scholarship-approved','email', $view_vars);
 
+	$body = $app['view']->render('email/new-scholarship-approved','email', $view_vars=array('body'=>$body));
+	$body = str_replace('#name#', $scholarship->name, $body);
+	$body = str_replace('#for#', $scholarship->for, $body);
+	
 	$user = $app['session']->get('user');
 	$user['suppress_emails'] = $request->get('suppress_emails');
 	$app['session']->set('user',$user);
 	if(($user['accessLevel'] == ADMIN || ((is_array($user)) && array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') ) ) && $user['suppress_emails'] == 'yes'){
 		// do nothing
 	}else{
-		// temporarily disabled because Hunter and Rhea will manually send a letter out
-		//$app['sendMail']($subject, $body, $to);
+		$app['sendMail']($subject, $body, $to);
 	}
-	// get the seminar id
-	$reg = new Model\RegistrationSeminar(array('scholarshipId'=>$scholarship->_id),$app);
-	$reg = $reg->findById('scholarshipId');
-	return new Response(json_encode(array('message' => 'Approved successfully','seminarId'=>$reg['seminarId'])), 200,array('Content-Type' => 'application/json'));
+	
+	return new Response(json_encode(array('message' => 'Approved successfully','seminarId'=>$seminar['_id'])), 200,array('Content-Type' => 'application/json'));
 })->before($mustbeADMIN);
 ////////////
 // DELETE //
