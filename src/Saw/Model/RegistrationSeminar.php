@@ -285,5 +285,35 @@ class RegistrationSeminar extends Registration {
 
 	}
 	
+	public function moveWaitList($direction){
+		$result = $this->findOne(array('_id'=>$this->_id));
+
+		if(!empty($result) && is_array($result)){
+			
+			switch ($direction) {
+				case 'on':
+					$this->currentStatus = self::$status['WAITLIST'];
+					break;
+				case 'off':
+					$seminar = new Seminar(array('_id'=>$result['seminarId']),self::$app);
+					$seminar = $seminar->findById();
+					$this->currentStatus = self::$status['SUBMITTED'];
+					if(empty($result['memberId'])){
+						$this->registrationFee = $seminar['register']['nonMemberPrice'];
+						$this->total = $seminar['register']['nonMemberPrice'];
+					}else{
+						$this->registrationFee = $seminar['register']['memberPrice'];
+						$this->total = $seminar['register']['memberPrice'];
+					}
+					
+					break;
+			}
+
+			$this->saveSafe();
+			return $result['seminarId'];
+		}
+		return false;
+	}
+	
 		
 }

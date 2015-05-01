@@ -201,6 +201,14 @@
 	};
 	
 	Registration.manageInit = function(){
+		$('.offwaitlist').click(function(e){
+			e.preventDefault();
+			document.location.href='/registrations/offwaitlist/'+$(this).attr('data-id');
+		});
+		$('.onwaitlist').click(function(e){
+			e.preventDefault();
+			document.location.href='/registrations/onwaitlist/'+$(this).attr('data-id');
+		});
 		$('.manage-registration').click(function(e){
 			e.preventDefault();
 			document.location.href='/registrations/seminar/'+$(this).attr('data-id');

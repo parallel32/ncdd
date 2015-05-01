@@ -193,6 +193,7 @@
                                     <? if(!empty($registration['memberId'])): ?>
                                     <a data-id="<?=$registration['memberId']?>" class="btn blue mini view member"><i class=" "></i> Member</a>
                                     <? endif; ?>
+                                    <a data-id="<?=$registration['_id']?>" class="btn yellow mini view onwaitlist"><i class=" "></i> Move to Wait List</a>
                                  </td>
                               </tr>
                               <? endforeach;?>
@@ -305,7 +306,7 @@
                                     }else{
                                        echo '';
                                     }
-                                    ?>" class="btn blue mini view payment"><i class=" "></i> Deposit</a>
+                                    ?>" class="btn green mini view payment"><i class=" "></i> Deposit</a>
                                  <? endif; ?>
                                  <?
                                  $status = "Something's not right";
@@ -383,11 +384,12 @@
                                  <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$registration['paidDate']['monthDay'].' '.$registration['paidDate']['shortTime']?></td>
                                  <td class="center hidden-480 "><?=\Saw\Model\Registration::$paymentTypeReversed[$registration['currentPaymentType']];?></td>
                                  <td class=" ">
-                                    <a data-id="<?=$registration['_id']?>" class="btn blue mini view registration"><i class=" "></i> Registration</a>
-                                    <a data-id="<?=$registration['paymentId']?>" class="btn blue mini view payment"><i class=" "></i> Payment</a>
+                                    <a data-id="<?=$registration['paymentId']?>" class="btn green mini view payment"><i class=" "></i> Payment</a>
                                     <? if(array_key_exists('depositPaymentId', $registration) && !empty($registration['depositPaymentId'])): ?>
-                                    <a data-id="<?=$registration['depositPaymentId']?>" class="btn blue mini view payment"><i class=" "></i> Deposit</a>
+                                    <a data-id="<?=$registration['depositPaymentId']?>" class="btn green mini view payment"><i class=" "></i> Deposit</a>
                                     <? endif; ?>
+                                    <a data-id="<?=$registration['_id']?>" class="btn blue mini view registration"><i class=" "></i> Registration</a>
+                                    
                                  </td>
                               </tr>
                               <? endforeach;?>

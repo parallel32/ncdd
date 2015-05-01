@@ -190,33 +190,30 @@
                   <? endif; ?>
                   </br></br>
 
-
-                  <? if($this->vars['activate_waitlist'] == false): ?>
-
-
-
-                     <h3 class="form-section">4. Attendance Certification Statement</h3>
-                     <div class="row-fluid">
-                        <div class="span12 ">
-                           <div class="control-group">
-                              <label class="control-label">I acknowledge that the National College for DUI Defense does not allow attendance by jurists or prosecutors except upon special written invitation.  Accordingly, I hereby certify that I am not a full time judicial officer or full time prosecutor and that I am actively engaged in the defense of criminal cases.  Any Reference to the Summer Session, for advertising purposes, can only be used as “conducted at Harvard Law School” or “held on premises of Harvard Law School.” Registrant herein accepts and understands he/she cannot infer or use the term of graduated, nor taught at, or attended Harvard Law School. Any such use of the Harvard Law School name is acknowledged to be prohibited.
-                              </br>
-                              </label>
-                              </br>
-                              <label class="control-label">By printing your name you acknowledge the above statements.</label>
-                              <div class="controls">
-                                 <input disabled name="doc[attendanceCertificationStatement]" value="<?=$this->vars['registration']['attendanceCertificationStatement']?>" class="m-wrap span12 attendanceCertificationStatement" type="text" placeholder="">
-                              </div>
-                              
+                  <h3 class="form-section">4. Attendance Certification Statement</h3>
+                  <div class="row-fluid">
+                     <div class="span12 ">
+                        <div class="control-group">
+                           <label class="control-label">I acknowledge that the National College for DUI Defense does not allow attendance by jurists or prosecutors except upon special written invitation.  Accordingly, I hereby certify that I am not a full time judicial officer or full time prosecutor and that I am actively engaged in the defense of criminal cases.  Any Reference to the Summer Session, for advertising purposes, can only be used as “conducted at Harvard Law School” or “held on premises of Harvard Law School.” Registrant herein accepts and understands he/she cannot infer or use the term of graduated, nor taught at, or attended Harvard Law School. Any such use of the Harvard Law School name is acknowledged to be prohibited.
+                           </br>
+                           </label>
+                           </br>
+                           <label class="control-label">By printing your name you acknowledge the above statements.</label>
+                           <div class="controls">
+                              <input disabled name="doc[attendanceCertificationStatement]" value="<?=$this->vars['registration']['attendanceCertificationStatement']?>" class="m-wrap span12 attendanceCertificationStatement" type="text" placeholder="">
                            </div>
+                           
                         </div>
-                        <!--/span-->
                      </div>
-                     </br></br>
+                     <!--/span-->
+                  </div>
+                  </br></br>
                   
 
                
 
+
+                  <? if($this->vars['activate_waitlist'] == false): ?>
 
                   <h3 class="form-section">5. Payment</h3>
                   <div class="row-fluid addr ">
@@ -416,7 +413,7 @@
 
                <? else: /*waitlist else*/?>
 
-                  <h3 class="form-section">4. Credit Card Information</h3>
+                  <h3 class="form-section">5. Credit Card Information</h3>
                      <h4 class="text-info"><b>Please note, your card will only be charged if a space becomes available.</b></h4>
                      <br>
                      <div class="row-fluid">
@@ -509,8 +506,8 @@
                      <? if($this->vars['registration']['currentStatus'] < \Saw\Model\Registration::$status['PAID'] && $this->vars['activate_waitlist'] == false): ?>
                      <button type="button" data-id="<?=$this->vars['registration']['_id']?>" class="btn green pay"><i class="icon-money"></i> Mark Paid</button>
                      <? endif; ?>
-                     <? if (false && $this->vars['activate_waitlist'] == true): ?>
-                     <button type="button" data-id="<?=$this->vars['registration']['_id']?>" class="btn blue waitlist"><i class="icon-money"></i> Move Member Off Wait List</button>
+                     <? if ($this->vars['activate_waitlist'] == true): ?>
+                     <button type="button" data-id="<?=$this->vars['registration']['_id']?>" class="btn blue offwaitlist"><i class="icon-info"></i> Move Member Off Wait List</button>
                      <? endif; ?>
                      <button type="button" data-id="<?=$this->vars['registration']['_id']?>" class="btn blue edit"><i class="icon-pencil"></i> Edit</button>
                      <button type="button" data-id="<?=$this->vars['seminar']['_id']?>" class="btn view cancel">Cancel and Go Back</button>

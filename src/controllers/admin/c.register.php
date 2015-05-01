@@ -286,13 +286,27 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
     $total = $paid + $deposit;
     if(array_key_exists('maxRegistrations', $seminar['register']) 
        && !empty($seminar['register']['maxRegistrations']) 
-       && $seminar['register']['maxRegistrations'] == $total):
+       && $seminar['register']['maxRegistrations'] == $total){
     	$activate_waitlist = true;
     	$_POST['activate_waitlist'] = true;
-    else:
+
+    	// need to validate the credit card information to be sure it's not blank
+    	if(empty($doc['payment']['number']) || empty($doc['payment']['cvc'])){
+	    	$response_arr = array('message'=>"Please fill out the credit card information to secure your spot on the wait list.");
+	    	$response_arr['invalidFields'] = array();
+	    	if(empty($doc['payment']['number'])){
+	    		$response_arr['invalidFields'][] = array('name'=>'number','message'=>'Credit card number is required.');
+	    	}
+	        if(empty($doc['payment']['cvc'])){
+	    		$response_arr['invalidFields'][] = array('name'=>'cvc','message'=>'Credit card security code is required.');
+	    	}
+	        return new Response(json_encode($response_arr), 403,array('Content-Type' => 'application/json')); 
+	    }
+
+    }else{
     	$activate_waitlist = false;
 	    $_POST['activate_waitlist'] = false;
-    endif;
+    }
 
 
     if($activate_waitlist == false):
@@ -414,7 +428,6 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 	else:
 
 		$doc['currentStatus'] = Model\Registration::$status['WAITLIST'];
-		$doc['attendanceCertificationStatement'] = '[blank]'; 
 		$doc['tempPayment'] = $doc['payment'];
 		unset($doc['payment']);
 		$rs = new Model\RegistrationSeminar($doc,$app);
@@ -746,5 +759,23 @@ $app->get('/registrations/seminar/{seminarId}/{offset}/{limit}', function ($semi
 ->value('offset','0')
 ->value('limit','100')
 ->before($mustbeADMIN);
+
+$app->get('/registrations/offwaitlist/{registrationId}', function ($registrationId, Request $request) use ($app) {
+    
+    $registration = new Model\RegistrationSeminar(array('_id'=>$registrationId), $app);
+    $seminar_id = $registration->moveWaitList('off');
+ 	
+    return $app->redirect('/registrations/seminar/'.$seminar_id);
+});
+$app->get('/registrations/onwaitlist/{registrationId}', function ($registrationId, Request $request) use ($app) {
+    
+    $registration = new Model\RegistrationSeminar(array('_id'=>$registrationId), $app);
+    $seminar_id = $registration->moveWaitList('on');
+ 	
+    return $app->redirect('/registrations/seminar/'.$seminar_id);
+ 	
+    return new Response(json_encode(array('message' => 'Moved successfully')), 200,array('Content-Type' => 'application/json'));
+});
+
 
 return $app;
