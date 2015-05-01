@@ -22,7 +22,7 @@ $utilities = $app['controllers_factory'];
 // FIX SEMINAR REGISTRATIONS WHERE THERE WAS A PAYMENT THAT WASN'T FOREIGN KEYED TO THE REGISTRATION DOCUMENT //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $utilities->get('/update-seminar-reg-payments', function () use ($app) {
-    
+    return false;
     //*
     ini_set('memory_limit','1024M');
 
