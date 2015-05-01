@@ -167,7 +167,7 @@
 		io.saw.FormGet.activate({postUrl:'/scholarship/'+id+'/approve'+suppress_emails
 			,postOnComplete:function(responseObj,responseStatus){}
 			,postOnSuccess:function(responseObj){
-				document.location.href="/seminar/";
+				document.location.href='/registrations/seminar/'+responseObj.seminarId.$id;
 			}
 		});
 	};

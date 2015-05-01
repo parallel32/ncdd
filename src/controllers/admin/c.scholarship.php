@@ -354,7 +354,10 @@ $app->get('/scholarship/{id}/approve', function ($id,Request $request) use ($app
 		// temporarily disabled because Hunter and Rhea will manually send a letter out
 		//$app['sendMail']($subject, $body, $to);
 	}
-	return new Response(json_encode(array('message' => 'Approved successfully')), 200,array('Content-Type' => 'application/json'));
+	// get the seminar id
+	$reg = new Model\RegistrationSeminar(array('scholarshipId'=>$scholarship->_id),$app);
+	$reg = $reg->findById('scholarshipId');
+	return new Response(json_encode(array('message' => 'Approved successfully','seminarId'=>$reg['seminarId'])), 200,array('Content-Type' => 'application/json'));
 })->before($mustbeADMIN);
 ////////////
 // DELETE //

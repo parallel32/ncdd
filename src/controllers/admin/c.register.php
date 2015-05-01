@@ -403,7 +403,7 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 			    if(is_array($user) && array_key_exists('accessLevel', $user) && ($user['accessLevel'] == ADMIN || ((is_array($user)) && array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') )) && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes'){
 					// don't send the email
 				}else{
-					self::$app['seminarConfirmationEmail']($app,$rs_id);
+					$app['seminarConfirmationEmail']($app,$rs_id);
 				}
 			
 			} catch (Exception $e) {
