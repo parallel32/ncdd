@@ -134,7 +134,7 @@
             $total = $paid + $deposit;
             if(array_key_exists('maxRegistrations', $this->vars['seminar']['register']) 
                && !empty($this->vars['seminar']['register']['maxRegistrations']) 
-               && $this->vars['seminar']['register']['maxRegistrations'] == $total):
+               ):
             ?>
             <div class="row-fluid">
                
@@ -501,9 +501,10 @@
             </div>
 
             <?
+            error_log(__FILE__.' '.__LINE__.' for variable: max and total  ==>'.print_r($this->vars['seminar']['register']['maxRegistrations'].' and '.$total,true));
                if(array_key_exists('maxRegistrations', $this->vars['seminar']['register']) 
                && !empty($this->vars['seminar']['register']['maxRegistrations']) 
-               && $this->vars['seminar']['register']['maxRegistrations'] == $total):
+               ):
             ?>
 
             <div class="row-fluid">
