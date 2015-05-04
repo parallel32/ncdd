@@ -87,7 +87,7 @@
                         ?>
                         <tr>
                            <td>Discount</td>
-                           <td class="hidden-480">Sing up for automatic renewals Discount</td>
+                           <td class="hidden-480">Sign up for automatic renewals Discount</td>
                            <td class="hidden-480">1</td>
                            <td class="hidden-480">-$50</td>
                            <td>-$50</td>
