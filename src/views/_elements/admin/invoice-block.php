@@ -54,11 +54,10 @@
 
                         <?
                         $discount = 0;
-                        // EARLY BIRD DISCOUNT FOR 2014 .. is not over
-                        ///*
+                        // EARLY BIRD DISCOUNT FOR 2014 .. is finally over .. commented out May 4, 2015
+                        /*
                         if($application['type'] == 'UPDATE MEMBER APPLICATION'
-                            //&& strtotime($application['approvedDate']['iso']) < strtotime('December 31, 2014')
-                            && array_key_exists('payment', $member) && array_key_exists('renewalREUSE', $member['payment']) && $member['payment']['renewalREUSE'] == 'yes'
+                            && strtotime($application['approvedDate']['iso']) < strtotime('December 31, 2014')
                             && array_key_exists('payment', $member) && array_key_exists('number', $member['payment']) && !empty($member['payment']['number'])
                             && $application['membershipDues'] > 50
                         ): 
@@ -67,6 +66,28 @@
                         <tr>
                            <td>Discount</td>
                            <td class="hidden-480">Early Payment 2014 Discount</td>
+                           <td class="hidden-480">1</td>
+                           <td class="hidden-480">-$50</td>
+                           <td>-$50</td>
+                        </tr>
+                        <? 
+                        endif; 
+                        //*/
+                        ?>
+                        <?
+                        $discount4 = 0;
+                        // Sign up for automatic renewals and receive discount4
+                        //*
+                        if($application['type'] == 'UPDATE MEMBER APPLICATION'
+                            && array_key_exists('payment', $member) && array_key_exists('renewalREUSE', $member['payment']) && $member['payment']['renewalREUSE'] == 'yes'
+                            && array_key_exists('payment', $member) && array_key_exists('number', $member['payment']) && !empty($member['payment']['number'])
+                            && $application['membershipDues'] > 50
+                        ): 
+                           $discount4 = 50;
+                        ?>
+                        <tr>
+                           <td>Discount</td>
+                           <td class="hidden-480">Sing up for automatic renewals Discount</td>
                            <td class="hidden-480">1</td>
                            <td class="hidden-480">-$50</td>
                            <td>-$50</td>
@@ -143,7 +164,7 @@
                <div class="row-fluid">
                   <div class="span12 invoice-block">
                      <ul class="unstyled amounts">
-                        <li><strong>Total:</strong> $<?$amount = $amount-$discount-$discount2-$discount3; echo ($amount <= 0) ? 0:$amount;?></li>
+                        <li><strong>Total:</strong> $<?$amount = $amount-$discount-$discount2-$discount3-$discount4; echo ($amount <= 0) ? 0:$amount;?></li>
                      </ul>
                   </div>
                </div>
