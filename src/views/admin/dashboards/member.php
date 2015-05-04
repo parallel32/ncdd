@@ -82,7 +82,7 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                                        <td class="center hidden-480 "><?=$status?></td>
                                        <td class=" ">
                                           <? if($is_deposit):?>
-                                          <a href="/registration/seminar/<?=$notice['seminar']['_id']?>/<?=$notice['seminar']['slug']?>" class="btn blue mini view registration"><i class=" "></i> Pay Balance Here</a>
+                                          <a href="/registration/seminar/<?=$notice['seminar']['_id']?>/<?=$notice['seminar']['slug']?>" class="btn blue view registration"><i class=" "></i> Pay Balance Here</a>
                                           <? endif; ?>
                                        </td>
                                     </tr>

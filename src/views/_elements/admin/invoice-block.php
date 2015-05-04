@@ -86,7 +86,7 @@
                             && is_array($member['payment']) && array_key_exists('number', $member['payment']) 
                             //&& !empty($member['payment']['number'])
                             && $application['membershipDues'] > 50
-                            && ($application['promocode'] == 'NCDD2015')
+                            && ($application['promocode'] == 'NCDD2015-')
                         ): 
                            $discount3 = 50;
                         ?>

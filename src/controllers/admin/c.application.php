@@ -221,10 +221,10 @@ $app->get('/application/downloads/{file}', function ($file, Request $request) us
 $app->post('/application/promocode', function (Request $request) use ($app) {
 	// retrieve document from request
     $doc = $request->get('doc');
-    if(!empty($doc['promocode']) && (strtoupper($doc['promocode']) == 'NCDD2015' || strtoupper($doc['promocode']) == 'NCDD2014' || strtoupper($doc['promocode']) == 'TRIAL' || strtoupper($doc['promocode']) == 'DIVTRIAL' || strtoupper($doc['promocode']) == 'RFTRIAL' || strtoupper($doc['promocode']) == 'PDTRIAL')){
+    if(!empty($doc['promocode']) && (strtoupper($doc['promocode']) == 'NCDD2015-' || strtoupper($doc['promocode']) == 'NCDD2014-' || strtoupper($doc['promocode']) == 'TRIAL' || strtoupper($doc['promocode']) == 'DIVTRIAL' || strtoupper($doc['promocode']) == 'RFTRIAL' || strtoupper($doc['promocode']) == 'PDTRIAL')){
     	$valid = 'yes';
     	$message = 'Valid Promo Code.';
-    	$type = (strtoupper($doc['promocode']) == 'NCDD2015' || strtoupper($doc['promocode']) == 'NCDD2014') ? 'discount'.'-'.strtoupper($doc['promocode']): 'trial';
+    	$type = (strtoupper($doc['promocode']) == 'NCDD2015-' || strtoupper($doc['promocode']) == 'NCDD2014-') ? 'discount'.'-'.strtoupper($doc['promocode']): 'trial';
     }else{
     	$type = '';
     	$valid = 'no';
@@ -330,9 +330,9 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 	$yilp = $application->yearsInLawPractice;
 	$now = date('Y',strtotime('today'));
 	if($now - $yilp >= 6){
-		$amt = ($doc['promocode'] == 'NCDD2015') ? $dues[6]['amount']-50: $dues[6]['prorated']['a'];
+		$amt = ($doc['promocode'] == 'NCDD2015-') ? $dues[6]['amount']-50: $dues[6]['prorated']['a'];
 	}elseif ($now - $yilp < 6){
-		$amt = ($doc['promocode'] == 'NCDD2015') ? $dues[1]['amount']-50: $dues[1]['prorated']['a'];
+		$amt = ($doc['promocode'] == 'NCDD2015-') ? $dues[1]['amount']-50: $dues[1]['prorated']['a'];
 	}
 	if($application->publicDefender == 'yes'){
 		$amt = $dues['publicDefender']['prorated']['a'];

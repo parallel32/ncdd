@@ -46,7 +46,7 @@
 			if(promocodetype[1] == 'NCDD2014' && document.location.href.indexOf("update-member") > -1){
 				var promo_message = ' - 2015 Membership dues.  The remainder of 2014 is free with this promo code.  Please Continue to fill out the payment information.';
 			}
-			if(promocodetype[1] == 'NCDD2015'){
+			if(promocodetype[1] == 'NCDD2015-'){
 				var promo_message = ' - $50 discount when you allow us to keep your card on-file for membership renewals.  Please Continue to fill out the payment information.';
 			}
 
@@ -57,7 +57,7 @@
 	        	var yilp = new Date($('#saw-form .yearsInLawPractice').val(), 1,1).getFullYear();
 	        	var now = new Date().getFullYear();
 	        	if(now - yilp >= 6){
-	        		if(promocodetype[1] == 'NCDD2015'){
+	        		if(promocodetype[1] == 'NCDD2015-'){
 	        			var amount = window.gsix_amount-50; 
 		        	}else{
 		        		var amount = window.gsix_amount; 
@@ -65,7 +65,7 @@
 	        		$('.payment.amount').val(amount);
 	        		$('.payment.amount').html(amount+' - '+window.gsix_message+promo_message);
 	        	}else if (now - yilp < 6){
-	        		if(promocodetype[1] == 'NCDD2015'){
+	        		if(promocodetype[1] == 'NCDD2015-'){
 	        			var amount = window.lsix_amount-50; 
 		        	}else{
 		        		var amount = window.lsix_amount; 
