@@ -242,7 +242,7 @@ $app->get('/registration/seminar/{seminarId}/{slug}', function ($seminarId, $slu
     $total = $paid + $deposit;
     if(array_key_exists('maxRegistrations', $seminar['register']) 
        && !empty($seminar['register']['maxRegistrations']) 
-       && $seminar['register']['maxRegistrations'] == $total):
+       ):
     	$activate_waitlist = true;
     else:
     	$activate_waitlist = false;
@@ -286,7 +286,7 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
     $total = $paid + $deposit;
     if(array_key_exists('maxRegistrations', $seminar['register']) 
        && !empty($seminar['register']['maxRegistrations']) 
-       && $seminar['register']['maxRegistrations'] == $total){
+       ){
     	$activate_waitlist = true;
     	$_POST['activate_waitlist'] = true;
 
