@@ -892,6 +892,7 @@ endif; ?>
                   break;         
             }
             $('#saw-form .cardType').html(Stripe.cardType(card.val()));
+            Payment.hold_card = card.val();
          }else{
             // bootstrap field to red with error message
             card.parents('.control-group').addClass('error');
