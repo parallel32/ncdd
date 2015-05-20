@@ -213,7 +213,10 @@ $app->get('/registration/seminar/{seminarId}/{slug}', function ($seminarId, $slu
 	$member = Model\User::getUserBySession($app,'member');
 	if(!empty($member)){
 		$location = new Model\Location(array('ownerId'=>$member['_id']),$app);
-		$location = $location->findById('ownerId');
+		$location = $location->getPrimary($member['_id']);
+		if(empty($location)){
+			$location = $member['location'];
+		}
 
 		// determine if the member, who is signed in, has already made a deposit to this seminar and is coming back to do a balance payment
 		$registration = new Model\RegistrationSeminar($doc=array(), $app);
