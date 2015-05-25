@@ -122,7 +122,7 @@ $user_id = $user['user_id'];
 		$('#files').val(JSON.stringify(files));
 
 		tinymce.activeEditor.save();
-		$('#input-body').val($('#body').html());
+		$('#input-body').val(tinymce.activeEditor.getContent());
 
 		var posturl = posturl || '/topic/edit'
 		var blockuiformpost = blockuiformpost || 'yes'

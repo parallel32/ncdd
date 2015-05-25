@@ -187,7 +187,7 @@ $accessLevel = $user['accessLevel'];
         TODO
      */?>
 		tinymce.activeEditor.save();
-		$('#input-body').val($('#body').html());
+		$('#input-body').val(tinymce.activeEditor.getContent());
 		var posturl = posturl || '/delegate/edit'
 		var blockuiformpost = blockuiformpost || 'yes'
 		var postSuccess = postSuccess || function(responseObj){

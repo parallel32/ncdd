@@ -141,7 +141,7 @@ $user_id = $user['user_id'];
         TODO
      */?>
 		tinymce.activeEditor.save();
-		$('#input-body').val($('#body').html());
+		$('#input-body').val(tinymce.activeEditor.getContent());
 		var posturl = posturl || '/blog/<?=$this->vars['memberId']?>/edit'
 		var blockuiformpost = blockuiformpost || 'yes'
 		var postSuccess = postSuccess || function(responseObj){

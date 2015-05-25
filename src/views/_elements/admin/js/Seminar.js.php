@@ -2,7 +2,7 @@
 (function( Seminar, $, undefined ) {
 	Seminar.add = function(){
 		tinymce.activeEditor.save();
-		$('#input-body').val($('#body').html());
+		$('#input-body').val(tinymce.activeEditor.getContent());
 		io.saw.FormPost.activate({postUrl:'/seminar/add'
 		   ,serializeSelector:':input'
 		   ,postOnComplete:function(responseObj,responseStatus){}
@@ -15,7 +15,7 @@
 	};
 	Seminar.edit = function (){
 		tinymce.activeEditor.save();
-		$('#input-body').val($('#body').html());
+		$('#input-body').val(tinymce.activeEditor.getContent());
 
 		io.saw.FormPost.activate({postUrl:'/seminar/edit'
 		   ,serializeSelector:':input'
@@ -29,7 +29,7 @@
 	Seminar.registerEdit = function (){
 		
 		tinymce.activeEditor.save();
-		$('#input-body-confletter').val($('#body-confletter').html());
+		$('#input-body-confletter').val(tinymce.activeEditor.getContent());
 		$('#input-body-deposit-confletter').val($('#body-deposit-confletter').html());
 		$('#input-body-scholarship-confletter').val($('#body-scholarship-confletter').html());
 		$('#input-body-scholarship-approveletter').val($('#body-scholarship-approveletter').html());

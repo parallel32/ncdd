@@ -3,7 +3,7 @@
 	Agenda.save = function (){
 
 		tinymce.activeEditor.save();
-		$('#input-description').val($('#description').html());
+		$('#input-description').val(tinymce.activeEditor.getContent());
 
 		io.saw.FormPost.activate({postUrl:'/agenda/saveTimeSlot'
 		   ,formName:'#edit-form'
@@ -17,7 +17,7 @@
 	};
 	function remove (){
 		tinymce.activeEditor.save();
-		$('#input-description').val($('#description').html());
+		$('#input-description').val(tinymce.activeEditor.getContent());
 		io.saw.FormPost.activate({postUrl:'/agenda/removeTimeSlot'
 		   ,formName:'#delete-form'
 		   ,serializeSelector:':input'

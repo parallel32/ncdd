@@ -619,7 +619,7 @@
 	<? endif; ?>
 	Member.save = function (){
 		tinymce.activeEditor.save();
-		$('#input-body').val($('#body').html());
+		$('#input-body').val(tinymce.activeEditor.getContent());
 		io.saw.FormPost.activate({postUrl:'/member/edit'
 		   ,serializeSelector:':input'
 		   ,postOnComplete:function(responseObj,responseStatus){
