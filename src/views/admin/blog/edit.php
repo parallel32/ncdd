@@ -68,6 +68,184 @@
                            In fact, they may think they already read it.  
                            <br>Also, search engines have the ability to identify photos as duplicates.
                         </div>
+                        <div class="row-fluid">
+                           <div class="span12 ">
+
+                           <table class="table table-hover">
+                              <thead>
+                                 <tr>
+                                    <th colspan="3"><h3>How-To Videos</h3></th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr>
+                                    <td><!-- VIDEO MODAL -->
+                              <?$modal='video-a';?>
+                              <?$modal_title='How to Draft a Blog';?>
+                              <?$modal_src='https://www.youtube.com/embed/nuWium_5InI?rel=0';?>
+                              <style>.modal.video {width: 80%; /* respsonsive width */margin-left:-40%; /* width/2) */ }</style>
+                              <a id="<?=$modal?>" class="btn purple"><i class="icon-youtube-play"></i> <?=$modal_title?></a>
+                              <script>$('#<?=$modal?>').click(function(e){$('#<?=$modal?>-modal').modal({keyboard: false});});</script>
+                              <div id="<?=$modal?>-modal" class="modal hide fade video" tabindex="-1" role="dialog" aria-labelledby="save-modal-label" aria-hidden="true">
+                                 <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                    <h3 id="save-modal-label"><?=$modal_title?></h3>
+                                 </div>
+                                 <div class="modal-body">
+                                    <iframe width="100%" height="720" src="<?=$modal_src?>" frameborder="0" allowfullscreen></iframe>
+                                 </div>
+                              </div>
+                              <!--/ VIDEO MODAL --></td>
+                                    <td><!-- VIDEO MODAL -->
+                              <?$modal='video-b';?>
+                              <?$modal_title='How to Embed a Video';?>
+                              <?$modal_src='https://www.youtube.com/embed/uz-m5Z2E_lY?rel=0';?>
+                              <style>.modal.video {width: 80%; /* respsonsive width */margin-left:-40%; /* width/2) */ }</style>
+                              <a id="<?=$modal?>" class="btn purple"><i class="icon-youtube-play"></i> <?=$modal_title?></a>
+                              <script>$('#<?=$modal?>').click(function(e){$('#<?=$modal?>-modal').modal({keyboard: false});});</script>
+                              <div id="<?=$modal?>-modal" class="modal hide fade video" tabindex="-1" role="dialog" aria-labelledby="save-modal-label" aria-hidden="true">
+                                 <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                    <h3 id="save-modal-label"><?=$modal_title?></h3>
+                                 </div>
+                                 <div class="modal-body">
+                                    <iframe width="100%" height="720" src="<?=$modal_src?>" frameborder="0" allowfullscreen></iframe>
+                                 </div>
+                              </div>
+                              <!--/ VIDEO MODAL --></td>
+                                    <td><!-- VIDEO MODAL -->
+                              <?$modal='video-c';?>
+                              <?$modal_title='How to Embed a Video Link';?>
+                              <?$modal_src='https://www.youtube.com/embed/uz-m5Z2E_lY?rel=0';?>
+                              <style>.modal.video {width: 80%; /* respsonsive width */margin-left:-40%; /* width/2) */ }</style>
+                              <a id="<?=$modal?>" class="btn purple"><i class="icon-youtube-play"></i> <?=$modal_title?></a>
+                              <script>$('#<?=$modal?>').click(function(e){$('#<?=$modal?>-modal').modal({keyboard: false});});</script>
+                              <div id="<?=$modal?>-modal" class="modal hide fade video" tabindex="-1" role="dialog" aria-labelledby="save-modal-label" aria-hidden="true">
+                                 <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                    <h3 id="save-modal-label"><?=$modal_title?></h3>
+                                 </div>
+                                 <div class="modal-body">
+                                    <iframe width="100%" height="720" src="<?=$modal_src?>" frameborder="0" allowfullscreen></iframe>
+                                 </div>
+                              </div>
+                              <!--/ VIDEO MODAL --></td>
+                                 </tr>
+                                 <tr>
+                                    <td><!-- VIDEO MODAL -->
+                              <?$modal='video-d';?>
+                              <?$modal_title='How to Embed a Website Link';?>
+                              <?$modal_src='https://www.youtube.com/embed/uz-m5Z2E_lY?rel=0';?>
+                              <style>.modal.video {width: 80%; /* respsonsive width */margin-left:-40%; /* width/2) */ }</style>
+                              <a id="<?=$modal?>" class="btn purple"><i class="icon-youtube-play"></i> <?=$modal_title?></a>
+                              <script>$('#<?=$modal?>').click(function(e){$('#<?=$modal?>-modal').modal({keyboard: false});});</script>
+                              <div id="<?=$modal?>-modal" class="modal hide fade video" tabindex="-1" role="dialog" aria-labelledby="save-modal-label" aria-hidden="true">
+                                 <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                    <h3 id="save-modal-label"><?=$modal_title?></h3>
+                                 </div>
+                                 <div class="modal-body">
+                                    <iframe width="100%" height="720" src="<?=$modal_src?>" frameborder="0" allowfullscreen></iframe>
+                                 </div>
+                              </div>
+                              <!--/ VIDEO MODAL --></td>
+                                    <td><!-- VIDEO MODAL -->
+                              <?$modal='video-e';?>
+                              <?$modal_title='How to Embed an Uploaded Photo';?>
+                              <?$modal_src='https://www.youtube.com/embed/FxsCon2CR44?rel=0';?>
+                              <style>.modal.video {width: 80%; /* respsonsive width */margin-left:-40%; /* width/2) */ }</style>
+                              <a id="<?=$modal?>" class="btn purple"><i class="icon-youtube-play"></i> <?=$modal_title?></a>
+                              <script>$('#<?=$modal?>').click(function(e){$('#<?=$modal?>-modal').modal({keyboard: false});});</script>
+                              <div id="<?=$modal?>-modal" class="modal hide fade video" tabindex="-1" role="dialog" aria-labelledby="save-modal-label" aria-hidden="true">
+                                 <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                    <h3 id="save-modal-label"><?=$modal_title?></h3>
+                                 </div>
+                                 <div class="modal-body">
+                                    <iframe width="100%" height="720" src="<?=$modal_src?>" frameborder="0" allowfullscreen></iframe>
+                                 </div>
+                              </div>
+                              <!--/ VIDEO MODAL --></td>
+                                    <td><!-- VIDEO MODAL -->
+                              <?$modal='video-f';?>
+                              <?$modal_title='How to Embed an Uploaded File';?>
+                              <?$modal_src='https://www.youtube.com/embed/zvM2sJsw7bE?rel=0';?>
+                              <style>.modal.video {width: 80%; /* respsonsive width */margin-left:-40%; /* width/2) */ }</style>
+                              <a id="<?=$modal?>" class="btn purple"><i class="icon-youtube-play"></i> <?=$modal_title?></a>
+                              <script>$('#<?=$modal?>').click(function(e){$('#<?=$modal?>-modal').modal({keyboard: false});});</script>
+                              <div id="<?=$modal?>-modal" class="modal hide fade video" tabindex="-1" role="dialog" aria-labelledby="save-modal-label" aria-hidden="true">
+                                 <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                    <h3 id="save-modal-label"><?=$modal_title?></h3>
+                                 </div>
+                                 <div class="modal-body">
+                                    <iframe width="100%" height="720" src="<?=$modal_src?>" frameborder="0" allowfullscreen></iframe>
+                                 </div>
+                              </div>
+                              <!--/ VIDEO MODAL --></td>
+                                 </tr>
+                                 <tr>
+                                    <td><!-- VIDEO MODAL -->
+                              <?$modal='video-g';?>
+                              <?$modal_title='How to Embed an Virtual Forensic Library File';?>
+                              <?$modal_src='https://www.youtube.com/embed/XSSgJ86ZYns?rel=0';?>
+                              <style>.modal.video {width: 80%; /* respsonsive width */margin-left:-40%; /* width/2) */ }</style>
+                              <a id="<?=$modal?>" class="btn purple"><i class="icon-youtube-play"></i> <?=$modal_title?></a>
+                              <script>$('#<?=$modal?>').click(function(e){$('#<?=$modal?>-modal').modal({keyboard: false});});</script>
+                              <div id="<?=$modal?>-modal" class="modal hide fade video" tabindex="-1" role="dialog" aria-labelledby="save-modal-label" aria-hidden="true">
+                                 <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                    <h3 id="save-modal-label"><?=$modal_title?></h3>
+                                 </div>
+                                 <div class="modal-body">
+                                    <iframe width="100%" height="720" src="<?=$modal_src?>" frameborder="0" allowfullscreen></iframe>
+                                 </div>
+                              </div>
+                              <!--/ VIDEO MODAL --></td>
+                                    <td><!-- VIDEO MODAL -->
+                              <?$modal='video-h';?>
+                              <?$modal_title='How to Add a Main Picture';?>
+                              <?$modal_src='https://www.youtube.com/embed/ogpmPdAZTCE?rel=0';?>
+                              <style>.modal.video {width: 80%; /* respsonsive width */margin-left:-40%; /* width/2) */ }</style>
+                              <a id="<?=$modal?>" class="btn purple"><i class="icon-youtube-play"></i> <?=$modal_title?></a>
+                              <script>$('#<?=$modal?>').click(function(e){$('#<?=$modal?>-modal').modal({keyboard: false});});</script>
+                              <div id="<?=$modal?>-modal" class="modal hide fade video" tabindex="-1" role="dialog" aria-labelledby="save-modal-label" aria-hidden="true">
+                                 <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                    <h3 id="save-modal-label"><?=$modal_title?></h3>
+                                 </div>
+                                 <div class="modal-body">
+                                    <iframe width="100%" height="720" src="<?=$modal_src?>" frameborder="0" allowfullscreen></iframe>
+                                 </div>
+                              </div>
+                              <!--/ VIDEO MODAL --></td>
+                                    <td><!-- VIDEO MODAL -->
+                              <?$modal='video-i';?>
+                              <?$modal_title='How to Sumbit for Publishing';?>
+                              <?$modal_src='https://www.youtube.com/embed/Dswq3l6dK18?rel=0';?>
+                              <style>.modal.video {width: 80%; /* respsonsive width */margin-left:-40%; /* width/2) */ }</style>
+                              <a id="<?=$modal?>" class="btn purple"><i class="icon-youtube-play"></i> <?=$modal_title?></a>
+                              <script>$('#<?=$modal?>').click(function(e){$('#<?=$modal?>-modal').modal({keyboard: false});});</script>
+                              <div id="<?=$modal?>-modal" class="modal hide fade video" tabindex="-1" role="dialog" aria-labelledby="save-modal-label" aria-hidden="true">
+                                 <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                    <h3 id="save-modal-label"><?=$modal_title?></h3>
+                                 </div>
+                                 <div class="modal-body">
+                                    <iframe width="100%" height="720" src="<?=$modal_src?>" frameborder="0" allowfullscreen></iframe>
+                                 </div>
+                              </div>
+                              <!--/ VIDEO MODAL --></td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                              
+                              
+                              
+                              
+
+                           </div>
+                        </div>
                         <h3 class="form-section text-info"><strong>Headline</strong></h3>
                         <p>Create a short yet descriptive headline for your post.</p>
                         <div class="row-fluid">
@@ -157,7 +335,61 @@
                            todo 
                         */
                         ?>
-                        <h3 class="form-section text-info"><strong>Content</strong>&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.activeEditor.focus();">Click to Edit</a></h3>
+                        <h3 class="form-section text-info"><strong>Content</strong>&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.activeEditor.focus();">Click to Edit</a>
+                        <!-- VIDEO MODAL -->
+                           <?$modal='video-content';?>
+                           <?$modal_title='Editor How-To\'s';?>
+                           <?$modal_src='https://www.youtube.com/embed/_eZZkPhkIME?rel=0';?>
+                           <style>.modal.video {width: 80%; /* respsonsive width */margin-left:-40%; /* width/2) */ }</style>
+                           <a id="<?=$modal?>" class="btn purple"><i class="icon-youtube-play"></i> <?=$modal_title?></a>
+                           <script>$('#<?=$modal?>').click(function(e){$('#<?=$modal?>-modal').modal({keyboard: false});});</script>
+                           <div id="<?=$modal?>-modal" class="modal hide fade video" tabindex="-1" role="dialog" aria-labelledby="save-modal-label" aria-hidden="true">
+                              <div class="modal-header">
+                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                 <h3 id="save-modal-label"><?=$modal_title?></h3>
+                              </div>
+                              <div class="modal-body">
+                                 <script>
+                                    jQuery(document).ready(function() {    
+                                       $('#embed-video').click(function(e){
+                                          $('#howto-frame').attr('src','https://www.youtube.com/embed/_eZZkPhkIME?rel=0');
+                                       });
+                                       $('#embed-video-link').click(function(e){
+                                          $('#howto-frame').attr('src','https://www.youtube.com/embed/f_rt_YnNjGs?rel=0');
+                                       });
+                                       $('#embed-website-link').click(function(e){
+                                          $('#howto-frame').attr('src','https://www.youtube.com/embed/-ZOlUA4hOlw?rel=0');
+                                       });
+                                       $('#embed-photo').click(function(e){
+                                          $('#howto-frame').attr('src','https://www.youtube.com/embed/NpBs85diwS4?rel=0');
+                                       });
+                                       $('#embed-file').click(function(e){
+                                          $('#howto-frame').attr('src','https://www.youtube.com/embed/0jIi7jF-4aM?rel=0');
+                                       });
+                                       $('#embed-vfl').click(function(e){
+                                          $('#howto-frame').attr('src','https://www.youtube.com/embed/bjfYaF4Dt-Q?rel=0');
+                                       });
+
+                                    });      
+                                 </script>
+                                 <table class="table table-hover">
+                                 <tbody>
+                                    <tr>
+                                       <td><a id="embed-video" class="btn purple"><i class="icon-youtube-play"></i> Embed Video</a></td>
+                                       <td><a id="embed-video-link" class="btn purple"><i class="icon-youtube-play"></i> Embed Video Link</a></td>
+                                       <td><a id="embed-website-link" class="btn purple"><i class="icon-youtube-play"></i> Embed Website Link</a></td>
+                                    </tr>
+                                    <tr>
+                                       <td><a id="embed-photo" class="btn purple"><i class="icon-youtube-play"></i> Embed Photo</a></td>
+                                       <td><a id="embed-file" class="btn purple"><i class="icon-youtube-play"></i> Embed File</a></td>
+                                       <td><a id="embed-vfl" class="btn purple"><i class="icon-youtube-play"></i> Embed Virtual Library Link</a></td>
+                                    </tr>
+                                 </tbody>
+                                 </table>
+                                 <iframe id="howto-frame" width="100%" height="720" src="<?=$modal_src?>" frameborder="0" allowfullscreen></iframe>
+                              </div>
+                           </div>
+                           <!--/ VIDEO MODAL --></h3>
                         <div class="row-fluid">
                            <div class="span12 ">
                               <div class="control-group ">

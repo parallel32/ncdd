@@ -235,6 +235,109 @@
                         </div>
                         <? endif; ?>
 
+
+
+
+
+                        <table class="table table-hover">
+                        <thead>
+                           <tr>
+                              <th colspan="3"><h3>How-To Videos</h3></th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr>
+                              <td><!-- VIDEO MODAL -->
+                              <?$modal='video-a';?>
+                              <?$modal_title='Edit Profile Picture';?>
+                              <?$modal_src='https://www.youtube.com/embed/fT9z4yegOuA?rel=0';?>
+                              <style>.modal.video {width: 80%; /* respsonsive width */margin-left:-40%; /* width/2) */ }</style>
+                              <a id="<?=$modal?>" class="btn purple"><i class="icon-youtube-play"></i> <?=$modal_title?></a>
+                              <script>$('#<?=$modal?>').click(function(e){$('#<?=$modal?>-modal').modal({keyboard: false});});</script>
+                              <div id="<?=$modal?>-modal" class="modal hide fade video" tabindex="-1" role="dialog" aria-labelledby="save-modal-label" aria-hidden="true">
+                                 <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                    <h3 id="save-modal-label"><?=$modal_title?></h3>
+                                 </div>
+                                 <div class="modal-body">
+                                    <iframe width="100%" height="720" src="<?=$modal_src?>" frameborder="0" allowfullscreen></iframe>
+                                 </div>
+                              </div>
+                              <!--/ VIDEO MODAL --></td>
+                              <td><!-- VIDEO MODAL -->
+                              <?$modal='video-b';?>
+                              <?$modal_title='Crop Profile Picture';?>
+                              <?$modal_src='https://www.youtube.com/embed/9XojAlmeywY?rel=0';?>
+                              <style>.modal.video {width: 80%; /* respsonsive width */margin-left:-40%; /* width/2) */ }</style>
+                              <a id="<?=$modal?>" class="btn purple"><i class="icon-youtube-play"></i> <?=$modal_title?></a>
+                              <script>$('#<?=$modal?>').click(function(e){$('#<?=$modal?>-modal').modal({keyboard: false});});</script>
+                              <div id="<?=$modal?>-modal" class="modal hide fade video" tabindex="-1" role="dialog" aria-labelledby="save-modal-label" aria-hidden="true">
+                                 <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                    <h3 id="save-modal-label"><?=$modal_title?></h3>
+                                 </div>
+                                 <div class="modal-body">
+                                    <iframe width="100%" height="720" src="<?=$modal_src?>" frameborder="0" allowfullscreen></iframe>
+                                 </div>
+                              </div>
+                              <!--/ VIDEO MODAL --></td>
+                              <td><!-- VIDEO MODAL -->
+                              <?$modal='video-c';?>
+                              <?$modal_title='Update Profile Information';?>
+                              <?$modal_src='https://www.youtube.com/embed/O2jOxTwfTvs?rel=0';?>
+                              <style>.modal.video {width: 80%; /* respsonsive width */margin-left:-40%; /* width/2) */ }</style>
+                              <a id="<?=$modal?>" class="btn purple"><i class="icon-youtube-play"></i> <?=$modal_title?></a>
+                              <script>$('#<?=$modal?>').click(function(e){$('#<?=$modal?>-modal').modal({keyboard: false});});</script>
+                              <div id="<?=$modal?>-modal" class="modal hide fade video" tabindex="-1" role="dialog" aria-labelledby="save-modal-label" aria-hidden="true">
+                                 <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                    <h3 id="save-modal-label"><?=$modal_title?></h3>
+                                 </div>
+                                 <div class="modal-body">
+                                    <iframe width="100%" height="720" src="<?=$modal_src?>" frameborder="0" allowfullscreen></iframe>
+                                 </div>
+                              </div>
+                              <!--/ VIDEO MODAL --></td>
+                           </tr>
+                           <tr>
+                              <td><!-- VIDEO MODAL -->
+                              <?$modal='video-d';?>
+                              <?$modal_title='Update Office Address and Practice States';?>
+                              <?$modal_src='https://www.youtube.com/embed/cxZ-hcQ-oNo?rel=0';?>
+                              <style>.modal.video {width: 80%; /* respsonsive width */margin-left:-40%; /* width/2) */ }</style>
+                              <a id="<?=$modal?>" class="btn purple"><i class="icon-youtube-play"></i> <?=$modal_title?></a>
+                              <script>$('#<?=$modal?>').click(function(e){$('#<?=$modal?>-modal').modal({keyboard: false});});</script>
+                              <div id="<?=$modal?>-modal" class="modal hide fade video" tabindex="-1" role="dialog" aria-labelledby="save-modal-label" aria-hidden="true">
+                                 <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                    <h3 id="save-modal-label"><?=$modal_title?></h3>
+                                 </div>
+                                 <div class="modal-body">
+                                    <iframe width="100%" height="720" src="<?=$modal_src?>" frameborder="0" allowfullscreen></iframe>
+                                 </div>
+                              </div>
+                              <!--/ VIDEO MODAL --></td>
+                              <td colspan="2"><!-- VIDEO MODAL -->
+                              <?$modal='video-e';?>
+                              <?$modal_title='Update Lanuguages and Practice Areas';?>
+                              <?$modal_src='https://www.youtube.com/embed/XVTBE2pQnpk?rel=0';?>
+                              <style>.modal.video {width: 80%; /* respsonsive width */margin-left:-40%; /* width/2) */ }</style>
+                              <a id="<?=$modal?>" class="btn purple"><i class="icon-youtube-play"></i> <?=$modal_title?></a>
+                              <script>$('#<?=$modal?>').click(function(e){$('#<?=$modal?>-modal').modal({keyboard: false});});</script>
+                              <div id="<?=$modal?>-modal" class="modal hide fade video" tabindex="-1" role="dialog" aria-labelledby="save-modal-label" aria-hidden="true">
+                                 <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                    <h3 id="save-modal-label"><?=$modal_title?></h3>
+                                 </div>
+                                 <div class="modal-body">
+                                    <iframe width="100%" height="720" src="<?=$modal_src?>" frameborder="0" allowfullscreen></iframe>
+                                 </div>
+                              </div>
+                              <!--/ VIDEO MODAL --></td>
+                              
+                           </tr>
+                        </tbody>
+                        </table>
                         <h3 class="form-section text-info"><strong>Profile Photo</strong></h3>
                         <div class="row-fluid">
                            <div class="span4 ">

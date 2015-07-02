@@ -218,7 +218,7 @@ ul.sidebarlist li {
             
             <? if(!empty($this->vars['pics'][0]) || !empty($this->vars['pics'][1]) || !empty($this->vars['pics'][2])):?>
             <a name="photos"><h2>Photos</h2></a>
-            <div class="tc">
+            <div class="tc row-fluid">
                 <div class="span4"><p><?=(!empty($this->vars['pics'][0])) ? '<img width="280" src="'.$this->vars['pics'][0].'">' : ''?></p></div>
                 <div class="span4"><p><?=(!empty($this->vars['pics'][1])) ? '<img width="280" src="'.$this->vars['pics'][1].'">' : ''?></p></div>
                 <div class="span4"><p><?=(!empty($this->vars['pics'][2])) ? '<img width="280" src="'.$this->vars['pics'][2].'">' : ''?></p></div>
@@ -230,7 +230,7 @@ ul.sidebarlist li {
 
             <? if(!empty($this->vars['events'])): ?>
             <a name="events"><h2>Events</h2></a>                        
-            <div class=" tc ">
+            <div class=" tc row-fluid ">
                 <div class="span10">
                     <div class="row-fluid sessionSeminarsDetailPage">
                         <div class="pull-left span12 tab-content">

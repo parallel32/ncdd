@@ -16,7 +16,25 @@
             <div class="row-fluid">
                <div class="span12 blog-page">
                   <? $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user'); return $user['accessLevel'];},$this->app); ?>
-                  <h1> <? if($accessLevel == MEMBER): ?><small>Participate in the NCDD.com DUI Blog.  <br>Draft a blog post and submit it for publishing. </small><a class="btn green" href="/blog/<?=call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$this->app);?>/edit">Add a Blog Post <i class="icon-plus"></i></a><? endif; ?></h1> 
+                  <h1> <? if($accessLevel == MEMBER): ?><small>Participate in the NCDD.com DUI Blog.  <br>Draft a blog post and submit it for publishing. </small><a class="btn green" href="/blog/<?=call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$this->app);?>/edit">Add a Blog Post <i class="icon-plus"></i></a> 
+                     <!-- VIDEO MODAL -->
+                     <?$modal='video-a';?>
+                     <?$modal_title='How to Draft a Blog';?>
+                     <?$modal_src='https://www.youtube.com/embed/nuWium_5InI?rel=0';?>
+                     <style>.modal.video {width: 80%; /* respsonsive width */margin-left:-40%; /* width/2) */ }</style>
+                     <a id="<?=$modal?>" class="btn purple"><i class="icon-youtube-play"></i> <?=$modal_title?></a>
+                     <script>$('#<?=$modal?>').click(function(e){$('#<?=$modal?>-modal').modal({keyboard: false});});</script>
+                     <div id="<?=$modal?>-modal" class="modal hide fade video" tabindex="-1" role="dialog" aria-labelledby="save-modal-label" aria-hidden="true">
+                        <div class="modal-header">
+                           <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                           <h3 id="save-modal-label"><?=$modal_title?></h3>
+                        </div>
+                        <div class="modal-body">
+                           <iframe width="100%" height="720" src="<?=$modal_src?>" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                     </div>
+                     <!--/ VIDEO MODAL -->
+                  <? endif; ?></h1> 
                   <div class="row-fluid">
                      <div class="span9 article-block">
                         <h1>

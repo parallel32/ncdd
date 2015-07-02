@@ -443,6 +443,26 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                         <div class="portlet-title" id="blog">
                            <div class="caption"><i class="icon-edit"></i>Recent posts from the DUI Blog</div>
                            <div class="actions">
+                              
+
+                              <!-- VIDEO MODAL -->
+                              <?$modal='video-a';?>
+                              <?$modal_title='How to Draft a Blog';?>
+                              <?$modal_src='https://www.youtube.com/embed/nuWium_5InI?rel=0';?>
+                              <style>.modal.video {width: 80%; /* respsonsive width */margin-left:-40%; /* width/2) */ }</style>
+                              <a id="<?=$modal?>" class="btn purple"><i class="icon-youtube-play"></i> <?=$modal_title?></a>
+                              <script>$('#<?=$modal?>').click(function(e){$('#<?=$modal?>-modal').modal({keyboard: false});});</script>
+                              <div id="<?=$modal?>-modal" class="modal hide fade video" tabindex="-1" role="dialog" aria-labelledby="save-modal-label" aria-hidden="true">
+                                 <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                    <h3 id="save-modal-label"><?=$modal_title?></h3>
+                                 </div>
+                                 <div class="modal-body">
+                                    <iframe width="100%" height="720" src="<?=$modal_src?>" frameborder="0" allowfullscreen></iframe>
+                                 </div>
+                              </div>
+                              <!--/ VIDEO MODAL -->
+
                               <a href="/blog" class="btn yellow">View All</a>
                               <a href="" class="btn green draft-post" data-id="<?=call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$this->app);?>"><i class="icon-plus"></i> Draft a Blog Post</a>
                            </div>
