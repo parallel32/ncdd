@@ -7,3 +7,6 @@ sudo /bin/mv ./db-dump.tgz ./db-dump-$(date +'%b-%d-%Y-%T').tgz
 echo "##.. remove db-dump folder"
 sudo rm -rf ./db-dump
 echo "##..finished"
+
+## drop the database from the shell:  		#> mongo localhost:27242/ncdd --eval "db.dropDatabase();"
+## restore the database from the shell:  	#> mongorestore --port 27242 ./db-dump/ncdd/

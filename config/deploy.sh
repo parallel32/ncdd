@@ -24,3 +24,4 @@ git clean -f
 git checkout src/views/_elements/admin/js/
 git checkout src/views/_elements/public/js/
 #git checkout src/views/_elements/css/
+#mega millions 2 14 26 47 51 4
