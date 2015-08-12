@@ -1700,27 +1700,6 @@ $app->get('/renewalscontacts/{offset}/{limit}', function ($offset, $limit, Reque
 				$popfalse_fax++;
 			}
 
-			if($popfalse > 0){
-				$r[] = $member;
-			}
-			if($popfalse_email > 0){
-				$r_email[] = $member;
-			}
-			if($popfalse_bar > 0){
-				$r_bar[] = $member;
-			}
-			if($popfalse_listserv > 0){
-				$r_listserv[] = $member;
-			}
-			if($popfalse_firmname > 0){
-				$r_firmname[] = $member;
-			}
-			if($popfalse_address > 0){
-				$r_address[] = $member;
-			}
-			if($popfalse_phone > 0){
-				$r_phone[] = $member;
-			}
 
 		}
 	}
