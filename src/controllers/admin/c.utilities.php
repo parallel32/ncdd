@@ -22,7 +22,7 @@ $utilities = $app['controllers_factory'];
 // UPDATE MEMBER PROFILES WITH RENEWAL INFORMATION //
 /////////////////////////////////////////////////////
 $utilities->get('/update-member-profile-based-on-renewal', function () use ($app) {
-    
+    return false;
     /*
         Wayne Holcomb's application - just click approve
         https://admin.ncdd.com/application/54879a9454fe0b7166708fa5/view
