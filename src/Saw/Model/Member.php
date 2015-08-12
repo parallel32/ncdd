@@ -439,11 +439,7 @@ class Member extends User {
 
 		switch ($string) {
 			case 'AutoRenew':
-				if($listedOnly){
-					$result = $this->find($query=array('payment.renewalREUSE'=>'yes','listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
-				}else{
-					$result = $this->find($query=array('payment.renewalREUSE'=>'yes'),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
-				}
+				$result = $this->find($query=array('currentMembership'=>array('$lte'=>self::$membership['GENERAL MEMBER']),'payment.renewalREUSE'=>'yes','listed'=>1,'status'=>USER_STATUS_ACTIVE),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);
 				break;
 			case 'email':
 				$search = new \MongoRegex("/".$email."/i");
@@ -1247,11 +1243,11 @@ class Member extends User {
 		$result = array();
 		
 		switch ($string) {
-			case 'Auto-Renew':
+			case 'AutoRenew':
 				if($listedOnly){
-					$result = $this->count($query=array('payment.renewalREUSE'=>'yes','listed'=>1,'status'=>USER_STATUS_ACTIVE),true);		
+					$result = $this->count($query=array('currentMembership'=>array('$lte'=>self::$membership['GENERAL MEMBER']),'payment.renewalREUSE'=>'yes','listed'=>1,'status'=>USER_STATUS_ACTIVE),true);		
 				}else{
-					$result = $this->count($query=array('payment.renewalREUSE'=>'yes'),true);		
+					$result = $this->count($query=array('currentMembership'=>array('$lte'=>self::$membership['GENERAL MEMBER']),'payment.renewalREUSE'=>'yes'),true);		
 				}
 				break;
 			case 'Sustaining Members':

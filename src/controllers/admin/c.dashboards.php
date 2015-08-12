@@ -59,7 +59,7 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 			$view_vars['newOrders']=$new_orders;
 
 			$member = new Model\Member(array(),$app);
-			$view_vars['auto-renew']=$member->searchCount('Auto-Renew',false);
+			$view_vars['auto-renew']=$member->searchCount('AutoRenew',true);
 			$view_vars['sm']=$member->searchCount('Sustaining Members');
 			$view_vars['gm']=$member->searchCount('General Members');
 			$view_vars['fm']=$member->searchCount('Founding Members');
