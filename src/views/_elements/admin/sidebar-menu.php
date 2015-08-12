@@ -28,6 +28,16 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                <? echo ($this->vars['active'] == 'Dashboard') ? '<span class="selected"></span>':'';?>
                </a>
             </li>
+
+            <li class="start <? echo ($this->vars['active'] == 'CRV') ? 'active':'';?>">
+               <a href="/committee-report-videos">
+               <i class="icon-youtube-play"></i> 
+               <span class="title">Committee Videos</span>
+               <? echo ($this->vars['active'] == 'CRV') ? '<span class="selected"></span>':'';?>
+               </a>
+            </li>
+
+
          <? if($accessLevel >= EDITOR):?>
             <li class="<? echo (strpos($this->vars['active'], 'Application') !== false) ? 'active open':'open';?>">
                <a href="javascript:;">
