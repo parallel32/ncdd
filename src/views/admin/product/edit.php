@@ -168,7 +168,7 @@
                            <!--/span-->
                         </div>
 
-                        <h3 class="form-section text-info"><strong>Content</strong>&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.activeEditor.focus();">Click to Edit</a>
+                        <h3 class="form-section text-info"><strong>Description</strong>&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.activeEditor.focus();">Click to Edit</a>
                         <!-- VIDEO MODAL -->
                            <?$modal='video-a';?>
                            <?$modal_title='Editor How-To\'s';?>

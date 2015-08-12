@@ -253,7 +253,7 @@
                            </tbody>
                         </table>
                      </div>
-                  </div><a name="depositbalance"></a>
+                  </div>
                   <!-- END EXAMPLE TABLE PORTLET-->
                </div>
             </div>
@@ -265,7 +265,7 @@
                   <!-- BEGIN EXAMPLE TABLE PORTLET-->
                   <div class="portlet box yellow">
                      <div class="portlet-title" id="registration">
-                        <div class="caption"><i class="icon-user"></i>Deposits Balance (unpaid)</div>
+                        <div class="caption"><i class="icon-user"></i>Deposits Balance (unpaid)<a name="depositbalance"></a></div>
                      </div>
                      <div class="portlet-body">
                         <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
@@ -359,7 +359,7 @@
                   <!-- BEGIN EXAMPLE TABLE PORTLET-->
                   <div class="portlet box green">
                      <div class="portlet-title" id="registration">
-                        <div class="caption"><i class="icon-user"></i>Registrations Paid in Full</div>
+                        <div class="caption"><i class="icon-user"></i>Registrations Paid in Full<a name="registrationspaid"></a></div>
                      </div>
                      <div class="portlet-body">
                         <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
@@ -399,7 +399,7 @@
                            </tbody>
                         </table>
                      </div>
-                  </div><a name="registrationspaid"></a>
+                  </div>
                   <!-- END EXAMPLE TABLE PORTLET-->
                </div>
             </div>
@@ -409,7 +409,7 @@
                   <!-- BEGIN EXAMPLE TABLE PORTLET-->
                   <div class="portlet box red">
                      <div class="portlet-title" id="registration">
-                        <div class="caption"><i class="icon-user"></i>Scholarships to Approve</div>
+                        <div class="caption"><i class="icon-user"></i>Scholarships to Approve<a name="scholarshipstoapprove"></a></div>
                      </div>
                      <div class="portlet-body">
                         <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
@@ -447,7 +447,7 @@
                            </tbody>
                         </table>
                      </div>
-                  </div><a name="scholarshipstoapprove"></a>
+                  </div>
                   <!-- END EXAMPLE TABLE PORTLET-->
                </div>
             </div>
@@ -457,7 +457,7 @@
                   <!-- BEGIN EXAMPLE TABLE PORTLET-->
                   <div class="portlet box purple">
                      <div class="portlet-title" id="registration">
-                        <div class="caption"><i class="icon-user"></i>Scholarships Approved</div>
+                        <div class="caption"><i class="icon-user"></i>Scholarships Approved<a name="scholarships"></a></div>
                      </div>
                      <div class="portlet-body">
                         <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
@@ -495,7 +495,7 @@
                            </tbody>
                         </table>
                      </div>
-                  </div><a name="scholarships"></a>
+                  </div>
                   <!-- END EXAMPLE TABLE PORTLET-->
                </div>
             </div>

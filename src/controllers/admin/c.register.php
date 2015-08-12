@@ -161,7 +161,7 @@ $app->post('/registration/payment', function (Request $request) use ($app) {
 	$payment = new Model\Payment($doc,$app);
 	$app['validateModel']($app, $payment,$groups=array('manual'));
 	$paymentId = $payment->manualCharge();
-
+	
 	if (!empty($doc['donationamount']) && is_numeric($doc['donationamount'])) {
 		
 		$doc['title'] = $doc['title'].' - DONATION';

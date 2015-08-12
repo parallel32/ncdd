@@ -175,6 +175,7 @@ class UpdateMember extends Apply {
 		$this->approvedDate = new Date(self::$app,'now', $this->timeZone);
 		$this->saveSafe();
 
+		parent::updateMemberProfile($this->memberId);
 		
 		return $member;
 	}
@@ -195,7 +196,7 @@ class UpdateMember extends Apply {
 		$renewal = new Renewal($member['renewal'],self::$app);
 		$renewal->setRenewalByMember($member['_id']);
 
-		
+		parent::updateMemberProfile($this->memberId);
 
 	}
 	

@@ -18,6 +18,243 @@ $utilities = $app['controllers_factory'];
 
 
 
+/////////////////////////////////////////////////////
+// UPDATE MEMBER PROFILES WITH RENEWAL INFORMATION //
+/////////////////////////////////////////////////////
+$utilities->get('/update-member-profile-based-on-renewal', function () use ($app) {
+    
+    /*
+        Wayne Holcomb's application - just click approve
+        https://admin.ncdd.com/application/54879a9454fe0b7166708fa5/view
+
+        create the Virtual Forensic Library  - managed page with no section and copy and paste the content into it.
+        
+        RUN THIS ONE TIME
+        db.registration.update({_id:ObjectId('55c9159a54fe0b0c0a742c16')},{$set:{depositPaidDate:{},depositPaymentId:{}}}); db.registration.update({_id:ObjectId('55c9151f1f1d752b672c46f3')},{$set:{depositPaidDate:{},depositPaymentId:{}}});
+    */
+
+    //*
+    ini_set('memory_limit','1024M');
+
+    
+
+    $member = new Model\Member($doc=array(), $app);
+    $renewals = array(
+        'submitted'=>$member->fetchByRenewalStatus('SUBMITTED',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']),$offset=0, $limit=10000)
+        ,'approved'=>$member->fetchByRenewalStatus('APPROVED',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']),$offset=0, $limit=10000)
+        ,'paid'=>$member->fetchByRenewalStatus('PAID',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']), $offset=0, $limit=10000)
+    );
+    $renewalsc = array();
+    $cnt = 0;
+    for ($i=0; $i < count($renewals['submitted']); $i++) { 
+        $renewalsc[$cnt]['applicationId'] = $renewals['submitted'][$i]['renewal']['applicationId'];
+        $renewalsc[$cnt]['_id'] = $renewals['submitted'][$i]['_id'];
+        $cnt++;
+    }
+    for ($i=0; $i < count($renewals['approved']); $i++) { 
+        $renewalsc[$cnt]['applicationId'] = $renewals['approved'][$i]['renewal']['applicationId'];
+        $renewalsc[$cnt]['_id'] = $renewals['approved'][$i]['_id'];
+        $cnt++;
+    }
+    for ($i=0; $i < count($renewals['paid']); $i++) { 
+        $renewalsc[$cnt]['applicationId'] = $renewals['paid'][$i]['renewal']['applicationId'];
+        $renewalsc[$cnt]['_id'] = $renewals['paid'][$i]['_id'];
+        $cnt++;
+    }
+    // retrieve applications whose contact info has been updated
+    $r = array();
+    $cnt = 0;
+    for ($i=0; $i < count($renewalsc); $i++) { 
+        
+        $apply = new Model\Apply($doc=array('_id'=>$renewalsc[$i]['applicationId']), $app);
+        $a = $apply->findById();
+        
+        if(!empty($a)){
+            $new_doc = array();
+            $member = new Model\Member($doc=array('_id'=>$renewalsc[$i]['_id']), $app);
+            $member = $member->findById();
+
+            $location = new Model\Location($doc=array('member'=>array('_id'=>$renewalsc[$i]['_id'])), $app);
+            $loc = $location->getPrimary($renewalsc[$i]['_id']);
+            if(empty($loc)){
+                $locations = $location->findById('member._id'); 
+                if(count($locations) > 1){
+                    $location = array(); // no need to proceed because we won't know which one they're wanting to update.
+                }
+            }else{
+                $location = $loc;
+            }
+
+            $proceed = false;
+            $now = new Model\Date($app,'now');                
+            $change = new Model\Change(array(),$app);
+            $change_res_m = $change->find(array('context'=>'Member','belongsTo'=>$member['_id'],'date'=>array('$gte'=>new \MongoDate(strtotime($a['submittedDate']['fullDateTime'])),'$lt'=>new \MongoDate(strtotime($now->fullDateTime)))),$fields=array());
+            $change_res_l = $change->find(array('context'=>'Location','belongsTo'=>$member['_id'],'date'=>array('$gte'=>new \MongoDate(strtotime($a['submittedDate']['fullDateTime'])),'$lt'=>new \MongoDate(strtotime($now->fullDateTime)))),$fields=array());
+            /* field map...
+
+            $member['displayName'] == $a['firstName'].' '.$a['middleName'].' '.$a['lastName']
+            $member['email'] == $a['email']
+            $member['barNumber'] == $a['barNumber']
+            $a['addToListServ']
+            $member['listServEmail'] == $a['listServEmail']
+            
+
+            $location['name'] == $a['firmName']
+            $location['addressLine1'] == $a['address1']
+            $location['addressLine2'] == $a['address2']
+            $location['city'] == $a['city']
+            $location['state'] == $a['state']
+            $location['zip'] == $a['postalCode']
+            $location['country'] == $a['country']
+            $location['phone'] == $a['phone']
+            $location['fax'] == $a['fax']
+            
+            */
+            // remove applications from the list which are false positives meaning the update is pointless because it's an update of the same values
+            // what remains should be the applications that truly have updated contact information
+            $popfalse = 0;
+            $popfalse_email = 0;
+            $popfalse_bar = 0;
+            $popfalse_listserv = 0;
+            $popfalse_firmname = 0;
+            $popfalse_address = 0;
+            $popfalse_phone = 0;
+            if(!empty($a['firstName']) || !empty($a['middleName']) || !empty($a['lastName'])){ 
+                
+                $tmp = explode(' ', $member['displayName']);
+                if(count($tmp) > 2){
+                    if($member['displayName'] != $a['firstName'].' '.$a['middleName'].' '.$a['lastName']){
+                        
+                        if(is_array($change_res_m) && is_array($change_res_m['values']) && array_key_exists('displayName', $change_res_m['values'])){
+                            // do nothing cause the user has already done a change since they submitted their app
+                        }else{
+                            $new_doc['displayName'] = $a['firstName'].' '.$a['middleName'].' '.$a['lastName'];
+                        }
+                        
+                    }
+                }elseif(count($tmp) <= 2){
+                    if($member['displayName'] != $a['firstName'].' '.$a['lastName']){
+                        
+                        if(is_array($change_res_m) && is_array($change_res_m['values']) && array_key_exists('displayName', $change_res_m['values'])){
+                            // do nothing cause the user has already done a change since they submitted their app
+                        }else{
+                            $new_doc['displayName'] = $a['firstName'].' '.$a['lastName'];
+                        }
+
+                    }
+                }
+
+                
+            }
+            if(!empty($a['email']) 
+                && $member['email'] != $a['email']){
+
+                if(is_array($change_res_m) && is_array($change_res_m['values']) && array_key_exists('email', $change_res_m['values'])){
+                    // do nothing cause the user has already done a change since they submitted their app
+                }else{
+                    $new_doc['email'] = $a['email'];
+                }
+
+            }
+            if(!empty($a['barNumber']) 
+                && $member['barNumber'] != $a['barNumber']){
+                if(is_array($change_res_m) && is_array($change_res_m['values']) && array_key_exists('barNumber', $change_res_m['values'])){
+                    // do nothing cause the user has already done a change since they submitted their app
+                }else{
+                    $new_doc['barNumber'] = $a['barNumber'];
+                }
+            }
+            if(false && !empty($location)):
+                if(!empty($a['firmName']) 
+                    && $location['name'] != $a['firmName']){
+                    if(is_array($change_res_l) && is_array($change_res_l['values']) && array_key_exists('name', $change_res_l['values'])){
+                        // do nothing cause the user has already done a change since they submitted their app
+                    }else{
+                        $new_doc['location']['name'] = $a['firmName'];
+                    }
+                }
+
+                if(!empty($a['address1']) 
+                    && $location['addressLine1'] != $a['address1']){
+                    if(is_array($change_res_l) && is_array($change_res_l['values']) && array_key_exists('addressLine1', $change_res_l['values'])){
+                        // do nothing cause the user has already done a change since they submitted their app
+                    }else{
+                        $new_doc['location']['addressLine1'] = $a['address1'];
+                    }
+                }
+                if(!empty($a['address2']) 
+                    && $location['addressLine2'] != $a['address2']){
+                    if(is_array($change_res_l) && is_array($change_res_l['values']) && array_key_exists('addressLine2', $change_res_l['values'])){
+                        // do nothing cause the user has already done a change since they submitted their app
+                    }else{
+                        $new_doc['location']['addressLine2'] = $a['address2'];
+                    }
+                }
+                if(!empty($a['city']) 
+                    && $location['city'] != $a['city']){
+                    if(is_array($change_res_l) && is_array($change_res_l['values']) && array_key_exists('city', $change_res_l['values'])){
+                        // do nothing cause the user has already done a change since they submitted their app
+                    }else{
+                        $new_doc['location']['city'] = $a['city'];
+                    }
+                }
+                if(!empty($a['state']) 
+                    && $location['state'] != $a['state']){
+                    if(is_array($change_res_l) && is_array($change_res_l['values']) && array_key_exists('state', $change_res_l['values'])){
+                        // do nothing cause the user has already done a change since they submitted their app
+                    }else{
+                        $new_doc['location']['state'] = $a['state'];
+                    }
+                }
+                if(!empty($a['postalcode']) 
+                    && $location['zip'] != $a['postalCode']){
+                    if(is_array($change_res_l) && is_array($change_res_l['values']) && array_key_exists('zip', $change_res_l['values'])){
+                        // do nothing cause the user has already done a change since they submitted their app
+                    }else{
+                        $new_doc['location']['zip'] = $a['postalCode'];
+                    }
+                }
+                if(!empty($a['country']) 
+                    && $location['country'] != $a['country']){
+                    if(is_array($change_res_l) && is_array($change_res_l['values']) && array_key_exists('country', $change_res_l['values'])){
+                        // do nothing cause the user has already done a change since they submitted their app
+                    }else{
+                        $new_doc['location']['country'] = $a['country'];
+                    }
+                }
+
+                if(!empty($a['phone']) 
+                    && $location['phone'] != $a['phone']){
+                    if(is_array($change_res_l) && is_array($change_res_l['values']) && array_key_exists('phone', $change_res_l['values'])){
+                        // do nothing cause the user has already done a change since they submitted their app
+                    }else{
+                        $new_doc['location']['phone'] = $a['phone'];
+                    }
+                }
+                if(!empty($a['fax']) 
+                    && $location['fax'] != $a['fax']){
+                    if(is_array($change_res_l) && is_array($change_res_l['values']) && array_key_exists('fax', $change_res_l['values'])){
+                        // do nothing cause the user has already done a change since they submitted their app
+                    }else{
+                        $new_doc['location']['fax'] = $a['fax'];
+                    }
+                }
+            endif;
+
+            if(!empty($new_doc)){
+                $new_doc['_id'] = $member['_id'];
+                echo $cnt++;
+                echo "<pre>";print_r($new_doc);echo "</pre>";
+                $member = new Model\Member($new_doc,$app);
+                $member->saveEdit();
+            }
+        }
+    }
+    //*/
+echo "<pre>";print_r('renewals:'.count($renewalsc));echo "</pre>";
+    return new Response('cool',200,array('Content-Type' => 'text/html')); 
+});
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // FIX SEMINAR REGISTRATIONS WHERE THERE WAS A PAYMENT THAT WASN'T FOREIGN KEYED TO THE REGISTRATION DOCUMENT //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////

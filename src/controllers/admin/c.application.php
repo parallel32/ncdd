@@ -600,7 +600,13 @@ $app->get('/application/update-member/{memberId}', function ($memberId, Request 
 	
 
 	$location = new Model\Location($doc=array('member'=>array('_id'=>$memberId)), $app);
-	$location = $location->getByMemberId();
+	$loc = $location->getPrimary($memberId);
+	if(empty($loc)){
+		$location = $location->getByMemberId();	
+	}else{
+		$location = $loc;
+	}
+	
 
 	$member = new Model\Member($doc=array('_id'=>$memberId), $app);
 	$member = $member->findById();
@@ -1614,6 +1620,7 @@ $app->get('/renewalscontacts/{offset}/{limit}', function ($offset, $limit, Reque
 			$popfalse_firmname = 0;
 			$popfalse_address = 0;
 			$popfalse_phone = 0;
+			$popfalse_fax = 0;
 			if(!empty($a['firstName']) || !empty($a['middleName']) || !empty($a['lastName'])){ 
 				
 				$tmp = explode(' ', $member['displayName']);
@@ -1690,7 +1697,7 @@ $app->get('/renewalscontacts/{offset}/{limit}', function ($offset, $limit, Reque
 			if(!empty($a['fax']) 
 				&& $location['fax'] != $a['fax']){
 				$popfalse++;
-				$popfalse_phone++;
+				$popfalse_fax++;
 			}
 
 			if($popfalse > 0){

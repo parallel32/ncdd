@@ -130,6 +130,7 @@ class RegistrationSeminar extends Registration {
 		$registration = $this->findOne(array('_id'=>$this->_id),array(),$slaveOk=false);
 		$payment = new Payment(array('_id'=>$paymentId), self::$app);
 		$payment = $payment->findById();
+
 		$seminar = new Seminar(array('_id'=>$registration['seminarId']), self::$app);
 		$seminar = $seminar->findById();
 
@@ -152,26 +153,26 @@ class RegistrationSeminar extends Registration {
 		$total_is_balance_due = ($payment['amount'] == $balance_due) ? true : false;
 		$total_is_full_payment = ($payment['amount'] == $total_original_registration_fee) ? true : false;
 
-		error_log(__FILE__.' '.__LINE__.' for variable: is deposit  ==>'.print_r($total_is_deposit_fee,true));
-		error_log(__FILE__.' '.__LINE__.' for variable: is balance due  ==>'.print_r($total_is_balance_due,true));
-		error_log(__FILE__.' '.__LINE__.' for variable: is full payment  ==>'.print_r($total_is_full_payment,true));
-		error_log(__FILE__.' '.__LINE__.' for variable: is paymentId  ==>'.print_r($registration['paymentId'],true));
-		error_log(__FILE__.' '.__LINE__.' for variable: is depositPaymentId  ==>'.print_r((array_key_exists('depositPaymentId', $registration)) ? $registration['depositPaymentId'] : '',true));
-		error_log(__FILE__.' '.__LINE__.' for variable: is payment amount  ==>'.print_r($payment['amount'],true));
-		error_log(__FILE__.' '.__LINE__.' for variable: is total  ==>'.print_r($total,true));
-		error_log(__FILE__.' '.__LINE__.' for variable: is registration fee  ==>'.print_r($registration['registrationFee'],true));
-		error_log(__FILE__.' '.__LINE__.' for variable: is balance_due  ==>'.print_r($balance_due,true));
+		error_log(' for variable: is deposit  ==>'.print_r($total_is_deposit_fee,true));
+		error_log(' for variable: is balance due  ==>'.print_r($total_is_balance_due,true));
+		error_log(' for variable: is full payment  ==>'.print_r($total_is_full_payment,true));
+		error_log(' for variable: is paymentId  ==>'.print_r($registration['paymentId'],true));
+		error_log(' for variable: is depositPaymentId  ==>'.print_r((array_key_exists('depositPaymentId', $registration)) ? $registration['depositPaymentId'] : '',true));
+		error_log(' for variable: is payment amount  ==>'.print_r($payment['amount'],true));
+		error_log(' for variable: is total  ==>'.print_r($total,true));
+		error_log(' for variable: is registration fee  ==>'.print_r($registration['registrationFee'],true));
+		error_log(' for variable: is balance_due  ==>'.print_r($balance_due,true));
 		
 		// is this a deposit? .. total has to match a deposit fee and there can be no paymentid's recorded
-		if($total_is_deposit_fee && (empty($registration['paymentId']) && (array_key_exists('depositPaymentId', $registration) && empty($registration['depositPaymentId'])))){
-			error_log(__FILE__.' '.__LINE__.' for variable: thisvar  ==>'.print_r('AA',true));
+		if($total_is_deposit_fee && empty($registration['paymentId']) && $registration['deposit'] > 0 && ((array_key_exists('depositPaymentId', $registration) && empty($registration['depositPaymentId'])) || !array_key_exists('depositPaymentId', $registration))){
+			error_log(' for variable: thisvar  ==>'.print_r('AA',true));
 			$this->currentStatus = self::$status['DEPOSIT'];
 			$this->depositPaidDate = new Date(self::$app,'now', 'America/New_York');
 			$this->depositPaymentId = new \MongoId($paymentId);
 		}
 		// is this a balance payment? .. total has to match a balance payment and paymentId has to be there for legacy or depositPaymentId cannot be blank for new registrations
 		if($total_is_balance_due && (!empty($registration['paymentId']) || (array_key_exists('depositPaymentId', $registration) && !empty($registration['depositPaymentId'])))){
-			error_log(__FILE__.' '.__LINE__.' for variable: thisvar  ==>'.print_r('BB',true));
+			error_log(' for variable: thisvar  ==>'.print_r('BB',true));
 			$this->currentStatus = self::$status['PAID'];
 			$this->paidDate = new Date(self::$app,'now', 'America/New_York');
 			if(!empty($registration['paymentId'])){
@@ -184,7 +185,7 @@ class RegistrationSeminar extends Registration {
 		}
 		// is this a full upfront payment?
 		if($total_is_full_payment && (empty($registration['paymentId']) || ( empty($registration['paymentId']) && array_key_exists('depositPaymentId', $registration) && empty($registration['depositPaymentId'])))){
-			error_log(__FILE__.' '.__LINE__.' for variable: thisvar  ==>'.print_r('CC',true));
+			error_log(' for variable: thisvar  ==>'.print_r('CC',true));
 			$this->currentStatus = self::$status['PAID'];
 			$this->paidDate = new Date(self::$app,'now', 'America/New_York');
 			$this->paymentId = new \MongoId($paymentId);

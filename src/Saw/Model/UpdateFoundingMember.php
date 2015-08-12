@@ -109,6 +109,7 @@ class UpdateFoundingMember extends Apply {
 		$this->approvedDate = new Date(self::$app,'now', $this->timeZone);
 		$this->saveSafe();
 
+		parent::updateMemberProfile($this->memberId);
 		
 		return $member;
 	}

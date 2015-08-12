@@ -163,6 +163,27 @@
                      <!--/span-->
                   </div>
 
+                  <div class="row-fluid">
+                     <!--/span-->
+                     <div class="span12 ">
+                        <div class="control-group">
+                           <label class="control-label"><b>Websites:</b></label>
+                           <div class="controls">
+                              <table border="1" cellpadding="5">
+                                 <th>
+                                    <tr><td><b>Domain</b></td><td><b>Description</b></td></tr>
+                                 </th>
+                              <? foreach ($this->vars['member']['websites'] as $website) {
+                                 echo "<tr><td>".$website['website']."</td><td>".$website['websiteDesc']."</td></tr>";
+                              }
+                              ?>
+                              </table>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+
 
                   </br><hr></br>
 
@@ -309,6 +330,30 @@
                      </div>
                      <!--/span-->
                   </div>
+
+                  <? if(array_key_exists('websites', $this->vars['application'])){ ?>
+                  <div class="row-fluid">
+                     <!--/span-->
+                     <div class="span12 ">
+                        <div class="control-group">
+                           <label class="control-label"><b>Websites</b></label>
+                           <div class="controls">
+                              <table border="0" cellpadding="5" width="100%">
+                                 <th>
+                                    <tr><td><b>Domain</b></td><td><b>Description</b></td></tr>
+                                 </th>
+                              <?$i=0; foreach ($this->vars['application']['websites'] as $website) {
+                                 echo "<tr><td><input type='text' name='doc[websites][".$i."][website]' value='".$website['website']."' class='m-wrap span12'></td><td><input type='text' name='doc[websites][".$i."][websiteDesc]' value='".$website['websiteDesc']."' class='m-wrap span12'></td></tr>";
+                                 $i++;
+                              }
+                              ?>
+                              </table>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <? } ?>
                   <div class="row-fluid">
                      <div class="span6 ">
                         <div class="control-group">

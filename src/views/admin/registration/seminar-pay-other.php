@@ -78,7 +78,7 @@ $seminar = $this->vars['seminar'];
                            $is_deposit = false;
                            $is_balance_due = false;
                            $is_full_payment = false;
-                           if(empty($registration['paymentId']) && (array_key_exists('depositPaymentId', $registration) && empty($registration['depositPaymentId']))) {
+                           if(empty($registration['paymentId']) && $registration['deposit'] > 0 && ((array_key_exists('depositPaymentId', $registration) && empty($registration['depositPaymentId'])) || !array_key_exists('depositPaymentId', $registration))) {
                               $registration['registrationFee'] = $registration['deposit'];
                               $label = 'Registration Deposit';
                               $is_deposit = true;
@@ -113,6 +113,7 @@ $seminar = $this->vars['seminar'];
                            <td class="hidden-480">$<?=$registration['hardCopyFee']?></td>
                            <td>$<?=$registration['hardCopyFee']?></td>
                         </tr>
+                        <? $amount += $registration['hardCopyFee']; ?>
                         <? endif; ?>
                         <? endif; ?>
                      </tbody>
@@ -121,7 +122,7 @@ $seminar = $this->vars['seminar'];
                <div class="row-fluid">
                   <div class="span12 invoice-block">
                      <ul class="unstyled amounts">
-                        <li><strong>Total:</strong> $<?=$registration['registrationFee']?></li>
+                        <li><strong>Total:</strong> $<?=$amount?></li>
                      </ul>
                   </div>
                </div>
@@ -182,7 +183,7 @@ $seminar = $this->vars['seminar'];
                               <div class="controls">
                                  <div class="input-prepend input-append">
                                     <span class="add-on">$ </span>
-                                       <input type="text" name="doc[amount]" class="m-wrap span8 amount" value="<?=$registration['registrationFee']?>">
+                                       <input type="text" name="doc[amount]" class="m-wrap span8 amount" value="<?=$amount?>">
                                     <span class="add-on">.00</span>
                                  </div>
                                  <span class="help-block">A receipt with this amount will be created.</span>

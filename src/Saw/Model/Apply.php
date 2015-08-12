@@ -25,6 +25,7 @@ class Apply extends Model {
 	public $barNumber;
 	public $email;
 	public $website;
+	public $websites;
 	public $addToListServ;
 	public $listServEmail;
 	public $formattedAddress;
@@ -104,6 +105,7 @@ class Apply extends Model {
 		$this->barNumber = (string)$doc['barNumber'];
 		$this->email = $doc['email'];
 		$this->website = $doc['website'];
+		$this->websites = $doc['websites'];
 		$this->addToListServ = $doc['addToListServ'];
 		$this->listServEmail = $doc['listServEmail'];
 		$this->formattedAddress = $doc['formattedAddress'];
@@ -145,6 +147,7 @@ class Apply extends Model {
 		$this->barNumber = $this->barNumber ?: '';
 		$this->email = $this->email ?: '';
 		$this->website = $this->website ?: '';
+		$this->websites = $this->websites ?: '';
 		$this->addToListServ = $this->addToListServ ?: '';
 		$this->listServEmail = $this->listServEmail ?: '';
 		$this->formattedAddress = $this->formattedAddress ?: '';
@@ -397,6 +400,94 @@ class Apply extends Model {
 		if($resetSession){
 			$member->setUserSession();
 		}
+	}
+	
+	public function updateMemberProfile($memberId){
+
+		$apply = new Apply($doc=array('_id'=>$this->_id), self::$app);
+        $a = $apply->findById();
+        
+        if(!empty($a)){
+            $new_doc = array();
+            $member = new Member($doc=array('_id'=>$memberId), self::$app);
+            $member = $member->findById();
+
+            $location = new Location($doc=array('member'=>array('_id'=>$memberId)), self::$app);
+            $loc = $location->getPrimary($memberId);
+            if(empty($loc)){
+                $locations = $location->findById('member._id'); 
+                if(count($locations) > 1){
+                    $location = array(); // no need to proceed because we won't know which one they're wanting to update.
+                }
+            }else{
+                $location = $loc;
+            }
+
+            
+            $now = new Date(self::$app,'now');                
+            $change = new Change(array(),self::$app);
+            $change_res_m = $change->find(array('context'=>'Member','belongsTo'=>$member['_id'],'date'=>array('$gte'=>new \MongoDate(strtotime($a['submittedDate']['fullDateTime'])),'$lt'=>new \MongoDate(strtotime($now->fullDateTime)))),$fields=array());
+            $change_res_l = $change->find(array('context'=>'Location','belongsTo'=>$member['_id'],'date'=>array('$gte'=>new \MongoDate(strtotime($a['submittedDate']['fullDateTime'])),'$lt'=>new \MongoDate(strtotime($now->fullDateTime)))),$fields=array());
+            
+
+            if(!empty($a['firstName']) || !empty($a['middleName']) || !empty($a['lastName'])){ 
+                
+                $tmp = explode(' ', $member['displayName']);
+                if(count($tmp) > 2){
+                    if($member['displayName'] != $a['firstName'].' '.$a['middleName'].' '.$a['lastName']){
+                        
+                        if(is_array($change_res_m) && is_array($change_res_m['values']) && array_key_exists('displayName', $change_res_m['values'])){
+                            // do nothing cause the user has already done a change since they submitted their app
+                        }else{
+                            $new_doc['displayName'] = $a['firstName'].' '.$a['middleName'].' '.$a['lastName'];
+                        }
+                        
+                    }
+                }elseif(count($tmp) <= 2){
+                    if($member['displayName'] != $a['firstName'].' '.$a['lastName']){
+                        
+                        if(is_array($change_res_m) && is_array($change_res_m['values']) && array_key_exists('displayName', $change_res_m['values'])){
+                            // do nothing cause the user has already done a change since they submitted their app
+                        }else{
+                            $new_doc['displayName'] = $a['firstName'].' '.$a['lastName'];
+                        }
+
+                    }
+                }
+
+                
+            }
+            if(!empty($a['email']) 
+                && $member['email'] != $a['email']){
+
+                if(is_array($change_res_m) && is_array($change_res_m['values']) && array_key_exists('email', $change_res_m['values'])){
+                    // do nothing cause the user has already done a change since they submitted their app
+                }else{
+                    $new_doc['email'] = $a['email'];
+                }
+
+            }
+            if(!empty($a['barNumber']) 
+                && $member['barNumber'] != $a['barNumber']){
+                if(is_array($change_res_m) && is_array($change_res_m['values']) && array_key_exists('barNumber', $change_res_m['values'])){
+                    // do nothing cause the user has already done a change since they submitted their app
+                }else{
+                    $new_doc['barNumber'] = $a['barNumber'];
+                }
+            }
+            // check the websites
+        	if(array_key_exists('websites', $a)){
+        		$new_doc['websites'] = $a['websites'];
+        	}
+        	error_log('new_doc:'.print_r($new_doc,true));
+            if(!empty($new_doc)){
+
+                $new_doc['_id'] = $member['_id'];
+                $member = new Member($new_doc,self::$app);
+                $member->saveEdit();
+            }
+        }
+		return true;
 	}
 	
 	public function proRate($date=''){

@@ -14,6 +14,10 @@ use Saw\Model;
 
 $app->get('/vfl', function (Request $request) use ($app) {
 	
+	$page = new Model\Page($doc=array('slug'=>'virtual-forensic-library'), $app);
+	$result = $page->findById('slug');
+	$result['body'] = $app['prepare_content']($result['body']);
+
 	$crumbs = array(array('name'=>'Virtual Forensic Library','href'=>'/vfl')
 					);
 	$view_vars = array(
@@ -21,6 +25,7 @@ $app->get('/vfl', function (Request $request) use ($app) {
 						,'page-plugin'=>'datatables'
 						,'headline'=>'Virtual Forensic Library'
 						,'description'=>"Access the full forensic library here."
+						,'content'=>$result['body']
 						,'crumbs'=>$crumbs);
 
 	return $app['view']->render('vfl/index', 'default', $view_vars);

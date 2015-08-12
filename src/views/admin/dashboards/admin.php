@@ -271,6 +271,20 @@
                         </a>                 
                      </div>
                   </div>
+                  <div class="span3 responsive" data-tablet="span3" data-desktop="span3">
+                     <div class="dashboard-stat purple">
+                        <div class="visual">
+                           <i class="icon-hideme"><?=$this->vars['auto-renew']?></i>
+                        </div>
+                        <div class="details">
+                           <div class="number"></div>
+                           <div class="desc">Auto-Renew</div>
+                        </div>
+                        <a class="more" href="/member/search?query=AutoRenew">
+                        View <i class="m-icon-swapright m-icon-white"></i>
+                        </a>                 
+                     </div>
+                  </div>
                   
                </div>
                <!-- END DASHBOARD STATS -->
