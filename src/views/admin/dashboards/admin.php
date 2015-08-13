@@ -116,20 +116,6 @@
                   <div class="span3 responsive" data-tablet="span3" data-desktop="span3">
                      <div class="dashboard-stat blue">
                         <div class="visual">
-                           <i class="icon-hideme"><?=$this->vars['sm']?></i>
-                        </div>
-                        <div class="details">
-                           <div class="number"></div>
-                           <div class="desc">Sustaining Members</div>
-                        </div>
-                        <a class="more" href="/member/search?query=Sustaining%20Members">
-                        View <i class="m-icon-swapright m-icon-white"></i>
-                        </a>                 
-                     </div>
-                  </div>
-                  <div class="span3 responsive" data-tablet="span3" data-desktop="span3">
-                     <div class="dashboard-stat blue">
-                        <div class="visual">
                            <i class="icon-hideme"><?=$this->vars['gm']?></i>
                         </div>
                         <div class="details">
@@ -137,6 +123,20 @@
                            <div class="desc">General M's</div>
                         </div>
                         <a class="more" href="/member/search?query=General%20Members">
+                        View <i class="m-icon-swapright m-icon-white"></i>
+                        </a>                 
+                     </div>
+                  </div>
+                  <div class="span3 responsive" data-tablet="span3" data-desktop="span3">
+                     <div class="dashboard-stat blue">
+                        <div class="visual">
+                           <i class="icon-hideme"><?=$this->vars['pd']?></i>
+                        </div>
+                        <div class="details">
+                           <div class="number"></div>
+                           <div class="desc">Public Defenders</div>
+                        </div>
+                        <a class="more" href="/member/search?query=Public%20Defenders">
                         View <i class="m-icon-swapright m-icon-white"></i>
                         </a>                 
                      </div>
@@ -158,19 +158,34 @@
                   <div class="span3 responsive" data-tablet="span3" data-desktop="span3">
                      <div class="dashboard-stat blue">
                         <div class="visual">
-                           <i class="icon-hideme"><?=$this->vars['pd']?></i>
+                           <i class="icon-hideme"><?=$this->vars['sm']?></i>
                         </div>
                         <div class="details">
                            <div class="number"></div>
-                           <div class="desc">Public Defenders</div>
+                           <div class="desc">Sustaining Members</div>
                         </div>
-                        <a class="more" href="/member/search?query=Public%20Defenders">
+                        <a class="more" href="/member/search?query=Sustaining%20Members">
                         View <i class="m-icon-swapright m-icon-white"></i>
                         </a>                 
                      </div>
                   </div>
                </div>
                <div class="row-fluid">
+                  <div class="responsive span3" data-tablet="span3" data-desktop="span3">
+                     <div class="dashboard-stat blue">
+                        <div class="visual">
+                           <i class="icon-hide-me"><span class="number"><?=$this->vars['trial'];?></span></i>
+                        </div>
+                        <div class="details">
+                           <div class="number"><font><font></font>Trial Mode</font></div>
+                           <div class="desc"><font><font></font></font></div>
+                        </div>
+                        <a class="more" href="/applications#trial"><font><font>
+                        Go </font></font><i class="m-icon-swapright m-icon-white"></i>
+                        </a>                 
+                     </div>
+                  </div>
+               
                   <div class="span3 responsive" data-tablet="span3" data-desktop="span3">
                      <div class="dashboard-stat blue">
                         <div class="visual">
@@ -188,6 +203,20 @@
                   <div class="span3 responsive" data-tablet="span3" data-desktop="span3">
                      <div class="dashboard-stat blue">
                         <div class="visual">
+                           <i class="icon-hideme"><?=$this->vars['fr']?></i>
+                        </div>
+                        <div class="details">
+                           <div class="number"></div>
+                           <div class="desc">Former Regents</div>
+                        </div>
+                        <a class="more" href="/member/search?query=Former%20Regents">
+                        View <i class="m-icon-swapright m-icon-white"></i>
+                        </a>                 
+                     </div>
+                  </div>
+                  <div class="span3 responsive" data-tablet="span3" data-desktop="span3">
+                     <div class="dashboard-stat blue">
+                        <div class="visual">
                            <i class="icon-hideme"><?=$this->vars['f']?></i>
                         </div>
                         <div class="details">
@@ -195,34 +224,6 @@
                            <div class="desc">Fellows</div>
                         </div>
                         <a class="more" href="/member/search?query=Fellows">
-                        View <i class="m-icon-swapright m-icon-white"></i>
-                        </a>                 
-                     </div>
-                  </div>
-                  <div class="span3 responsive" data-tablet="span3" data-desktop="span3">
-                     <div class="dashboard-stat blue">
-                        <div class="visual">
-                           <i class="icon-hideme"><?=$this->vars['sd']?></i>
-                        </div>
-                        <div class="details">
-                           <div class="number"></div>
-                           <div class="desc">State Delegates</div>
-                        </div>
-                        <a class="more" href="/member/search?query=State%20Delegates">
-                        View <i class="m-icon-swapright m-icon-white"></i>
-                        </a>                 
-                     </div>
-                  </div>
-                  <div class="span3 responsive" data-tablet="span3" data-desktop="span3">
-                     <div class="dashboard-stat blue">
-                        <div class="visual">
-                           <i class="icon-hideme"><?=$this->vars['fa']?></i>
-                        </div>
-                        <div class="details">
-                           <div class="number"></div>
-                           <div class="desc">Faculty</div>
-                        </div>
-                        <a class="more" href="/member/search?query=Faculty">
                         View <i class="m-icon-swapright m-icon-white"></i>
                         </a>                 
                      </div>
@@ -260,17 +261,33 @@
                   <div class="span3 responsive" data-tablet="span3" data-desktop="span3">
                      <div class="dashboard-stat blue">
                         <div class="visual">
-                           <i class="icon-hideme"><?=$this->vars['fr']?></i>
+                           <i class="icon-hideme"><?=$this->vars['sd']?></i>
                         </div>
                         <div class="details">
                            <div class="number"></div>
-                           <div class="desc">Former Regents</div>
+                           <div class="desc">State Delegates</div>
                         </div>
-                        <a class="more" href="/member/search?query=Former%20Regents">
+                        <a class="more" href="/member/search?query=State%20Delegates">
                         View <i class="m-icon-swapright m-icon-white"></i>
                         </a>                 
                      </div>
                   </div>
+                  <div class="span3 responsive" data-tablet="span3" data-desktop="span3">
+                     <div class="dashboard-stat blue">
+                        <div class="visual">
+                           <i class="icon-hideme"><?=$this->vars['fa']?></i>
+                        </div>
+                        <div class="details">
+                           <div class="number"></div>
+                           <div class="desc">Faculty</div>
+                        </div>
+                        <a class="more" href="/member/search?query=Faculty">
+                        View <i class="m-icon-swapright m-icon-white"></i>
+                        </a>                 
+                     </div>
+                  </div>
+               </div>
+               <div class="row-fluid">
                   <div class="span3 responsive" data-tablet="span3" data-desktop="span3">
                      <div class="dashboard-stat purple">
                         <div class="visual">
@@ -285,7 +302,6 @@
                         </a>                 
                      </div>
                   </div>
-                  
                </div>
                <!-- END DASHBOARD STATS -->
 
@@ -405,33 +421,7 @@
                </div>
                
             </div>
-               
-            <div class="row-fluid">
-               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
-                  <div class="dashboard-stat purple">
-                     <div class="visual">
-                        <i class="icon-hide-me"><span class="number"><?=$this->vars['trial'];?></span></i>
-                     </div>
-                     <div class="details">
-                        <div class="number"><font><font></font>Trial Mode</font></div>
-                        <div class="desc"><font><font></font></font></div>
-                     </div>
-                     <a class="more" href="/applications#trial"><font><font>
-                     Go </font></font><i class="m-icon-swapright m-icon-white"></i>
-                     </a>                 
-                  </div>
-               </div>
-            </div>
-
-
-
-
-
-
-
-
-
-
+            
                <!-- PRIVATE PAGES (RECENT) -->
                <div class="row-fluid">
                   <div class="span12">
