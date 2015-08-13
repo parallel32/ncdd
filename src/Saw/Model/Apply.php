@@ -100,8 +100,8 @@ class Apply extends Model {
 		$this->firstName = $doc['firstName'];
 		$this->middleName = $doc['middleName'];
 		$this->lastName = $doc['lastName'];
-		$this->phone = $doc['phone'];
-		$this->fax = $doc['fax'];
+		$this->phone = (is_numeric($doc['phone'])) ? $app['format_phone_number']($doc['phone']): $doc['phone'];
+		$this->fax = (is_numeric($doc['fax'])) ? $app['format_phone_number']($doc['fax']): $doc['fax'];
 		$this->barNumber = (string)$doc['barNumber'];
 		$this->email = $doc['email'];
 		$this->website = $doc['website'];

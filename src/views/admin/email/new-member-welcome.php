@@ -31,10 +31,12 @@
 <br>
 <br>We sincerely thank you for your interest in joining us. I assure you that your participation and contribution in the College will be rewarding on both a professional and personal level.  If I can answer any questions concerning your membership, please do not hesitate to contact me at 334-264-1950 or rhea@ncdd.com.  
 <br>
+<? if(array_key_exists('paymentId', $this->vars) && !empty($this->vars['paymentId'])): ?>
 <br>To view the full details of your payment you may browse to the link below:
 <br>
 <br><a href="https://<?=SAW_ADMIN_WEBSITE?>/payment/<?=$this->vars['paymentId']?>/view" target="_blank">https://<?=SAW_ADMIN_WEBSITE?>/payment/<?=$this->vars['paymentId']?>/view</a>. 
 <br>
+<? endif; ?>
 <br>Sincerely,
 <br>
 <br>Rhea C. Kirk
