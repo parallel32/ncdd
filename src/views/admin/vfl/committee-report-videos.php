@@ -18,7 +18,21 @@
                     </div>
                   </div>
                 </div>
-                <div class="row-fluid">
+               <div class="row-fluid">
+                  <div class="span12">
+                     <div class="span12 text-center">
+                        <iframe width="853" height="480" src="https://www.youtube.com/embed/MshIAp7u1iY?rel=0" frameborder="0" allowfullscreen></iframe>
+                     </div>
+                  </div>
+               </div>
+               <div class="row-fluid">
+                  <div class="span12">
+                     <div class="span12 text-center">
+                        <iframe width="853" height="480" src="https://www.youtube.com/embed/LaX2AS1DdPk?rel=0" frameborder="0" allowfullscreen></iframe>
+                     </div>
+                  </div>
+               </div>
+               <div class="row-fluid">
                   <div class="span12">
                      <div class="span12 text-center">
                         <iframe width="853" height="480" src="https://www.youtube.com/embed/w5zQO_vZ_Wc?rel=0" frameborder="0" allowfullscreen></iframe>
@@ -35,35 +49,16 @@
                <div class="row-fluid">
                   <div class="span12">
                      <div class="span12 text-center">
-                        <iframe width="853" height="480" src="https://www.youtube.com/embed/MshIAp7u1iY?rel=0" frameborder="0" allowfullscreen></iframe>
-                     </div>
-                  </div>
-               </div>
-               <div class="row-fluid">
-                  <div class="span12">
-                     <div class="span12 text-center">
-                        <iframe width="853" height="480" src="https://www.youtube.com/embed/Z9AleFWjYcY?rel=0" frameborder="0" allowfullscreen></iframe>
-                     </div>
-                  </div>
-               </div>
-               <div class="row-fluid">
-                  <div class="span12">
-                     <div class="span12 text-center">
                         <iframe width="853" height="480" src="https://www.youtube.com/embed/n84pNdgH7KY?rel=0" frameborder="0" allowfullscreen></iframe>
                      </div>
                   </div>
                </div>
+               
+
                <div class="row-fluid">
                   <div class="span12">
                      <div class="span12 text-center">
-                        <iframe width="853" height="480" src="https://www.youtube.com/embed/LaX2AS1DdPk?rel=0" frameborder="0" allowfullscreen></iframe>
-                     </div>
-                  </div>
-               </div>
-               <div class="row-fluid">
-                  <div class="span12">
-                     <div class="span12 text-center">
-                        <iframe width="853" height="480" src="https://www.youtube.com/embed/ieb-9c0mtzk?rel=0" frameborder="0" allowfullscreen></iframe>
+                        <iframe width="853" height="480" src="https://www.youtube.com/embed/Z9AleFWjYcY?rel=0" frameborder="0" allowfullscreen></iframe>
                      </div>
                   </div>
                </div>
@@ -77,7 +72,7 @@
                <div class="row-fluid">
                   <div class="span12">
                      <div class="span12 text-center">
-
+                        <iframe width="853" height="480" src="https://www.youtube.com/embed/ieb-9c0mtzk?rel=0" frameborder="0" allowfullscreen></iframe>
                      </div>
                   </div>
                </div>
