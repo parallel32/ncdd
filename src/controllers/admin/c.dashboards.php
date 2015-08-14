@@ -230,8 +230,8 @@ $app->get('/dashboard/trialmembers', function (Request $request) use ($app) {
 				
 				// make sure they're not listed.
 				$member = new Model\Member(array('_id'=>$application['memberId'],'listed'=>'no'),$app);
-				$member->saveSafe();
-
+				$member->saveEdit();
+				
 				$end = \Carbon\Carbon::createFromTimeStamp(strtotime($application['trial']['endDate']['fullMonth']), $application['trial']['timeZone']);
 				$days = $end->diffInDays();
 				if( $days < 5 && $days > 1){
