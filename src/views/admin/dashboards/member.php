@@ -331,6 +331,7 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                <h3 class="form-section">Profile Information</h3>
                <span><a data-id="<?=call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$this->app);?>" class="btn blue large edit-profile"><i class=" icon-pencil"></i> Edit Your Profile</a></span>
                <br><br>
+               <?if($this->vars['trial_member'] == 'no'): ?>
                <h3 class="form-section">Website Badges</h3>
                <div class="row-fluid">
                   <div class="span6 ">
@@ -431,6 +432,7 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                   </div>
                   <!--/span-->
                </div>
+               <? endif; ?>
                <? endif; ?>
 
             <? if($accessLevel >= MEMBER):?>

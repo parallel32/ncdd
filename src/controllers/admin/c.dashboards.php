@@ -86,7 +86,12 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 		case UNPAIDMEMBER:
 		case MEMBER:
 			$member = new Model\Member(array('_id'=>$user['_id']),$app);
-			$member = $member->findById();			
+			$member = $member->findById();
+
+			$application = new Model\Apply($doc=array(), $app);
+			$trial = $application->fetchByStatus('TRIAL',$offset=0, $limit=1000,$filter=array('memberId'=>$member['_id'],'type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
+			$trial_member = (!empty($trial)) ? 'yes' : 'no';
+			$view_vars['trial_member']=$trial_member;	
 			$view_vars['renewal']=(array_key_exists('renewal',$member)) ? $member['renewal']: array();
 			$view_vars['currentMembership']=$member['currentMembership'];
 			$view_vars['member']=$member;
