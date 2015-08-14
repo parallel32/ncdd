@@ -176,6 +176,9 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 				error_log('forum topics published: '.file_get_contents('http://'.SAW_ADMIN_WEBSITE.'/topic/publish-schedule'));
 				// retry email Q
 				error_log('emails sent from the email queue: '.file_get_contents('http://'.SAW_ADMIN_WEBSITE.'/dashboard/emailq'));	
+				// fix active trial members - be sure they're de-listed and also send a notice when they're 2 days away from expiring
+				error_log('trial members expire notification and de-list fix: '.file_get_contents('http://'.SAW_ADMIN_WEBSITE.'/dashboard/trialmembers'));	
+
 			} catch (Exception $e) {
 				// no worries .. will just try again on the next chance.
 			}
@@ -205,6 +208,48 @@ $app->get('/dashboard/emailq', function (Request $request) use ($app) {
 		$count = 0;
 	}
 	return "emails sent from Q: ".$count;
+});
+
+// trial member tasks
+$app->get('/dashboard/trialmembers', function (Request $request) use ($app) {
+	
+	$now =  new Model\Date($app,'now');
+	$application = new Model\Apply($doc=array(), $app);
+	$trial = $application->fetchByStatus('TRIAL',$offset=0, $limit=1000,$filter=array('trial.endDate.date'=>array('$gte'=> new \MongoDate(strtotime($now->fullDateTime))),'type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
+
+	//*
+	if(is_array($trial) && count($trial) > 0){
+		$cnt = 0;
+		foreach($trial as $application):
+			try {
+				
+				// make sure they're not listed.
+				$member = new Model\Member(array('_id'=>$application['memberId'],'listed'=>'no'),$app);
+				$member->saveSafe();
+
+				$end = \Carbon\Carbon::createFromTimeStamp(strtotime($application['trial']['endDate']['fullMonth']), $application['trial']['timeZone']);
+				$days = $end->diffInDays();
+				if( $days < 5 && $days > 1){
+					// send
+					$email['to'] = $application['email'];
+					$email['subject'] = 'Your NCDD Trial Membership is expiring in '.$days.' days';
+					$email['body'] = $app['view']->render('email/new-member-trial-expiring','email', $view_vars=array('endDate'=>$application['trial']['endDate']['fullMonth']));;
+					$app['sendMail']($email['subject'], $email['body'], $email['to']);
+					$cnt++;
+				}
+				
+				
+			} catch (Exception $e) {
+				error_log('$e: '.print_r($e->getMessage(),true));
+				return "sending trial member expire notifications is failing..";
+			}
+		endforeach;
+		$count = count($trial);
+	}else{
+		$count = 0;
+	}
+	//*/
+	return "number of members in trial mode: ".$count." >>>>> number of emails sent:".$cnt;
 });
 
 return $app;

@@ -136,6 +136,11 @@ $member->get('/{userId}/edit', function ($userId, Request $request) use ($app) {
 
 	$member = new Model\Member($doc=array('_id'=>new MongoId($userId)), $app);
 	$member = $member->findById();
+
+	$application = new Model\Apply($doc=array(), $app);
+	$trial = $application->fetchByStatus('TRIAL',$offset=0, $limit=1000,$filter=array('memberId'=>$member['_id'],'type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
+	$trial_member = (!empty($trial)) ? 'yes' : 'no';
+
 	$member['membershipBadge'] = (!empty($member['currentMembership'])) ? Model\Member::$membershipBadge[$member['currentMembership']] : '';
 	$member['boardCertifiedBadge'] = Model\Member::$boardCertifiedBadge;
 	$member['boardCertifiedBadgeSr'] = Model\Member::$boardCertifiedBadgeSr;
@@ -159,6 +164,7 @@ $member->get('/{userId}/edit', function ($userId, Request $request) use ($app) {
 						,'description'=>"Edit a member"
 						,'crumbs'=>$crumbs
 						,'member'=>$member
+						,'trial_member'=>$trial_member
 						,'image'=>(!empty($member['image'])) ? $app['getImageURL']($member['image'],'small') : '/noprofileimage'
 						);
 	return $app['view']->render('member/edit', 'default', $view_vars);

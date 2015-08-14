@@ -384,7 +384,7 @@
                            </div>
                            <!--/span-->
                         </div>
-
+                        <?if($this->vars['trial_member'] == 'no'): ?>
                         <h3 class="form-section text-info"><strong>Membership Information</strong></h3>
                         <div class="row-fluid">
                            <div class="span6 ">
@@ -484,7 +484,7 @@
                            <!--/span-->
                         </div>
                         <? endif; ?>
-                        
+                        <? endif; ?>
                         <h3 class="form-section text-info"><strong>General Information</strong></h3>
                         <div class="row-fluid">
                            <div class="span4 ">
