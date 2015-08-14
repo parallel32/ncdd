@@ -339,7 +339,7 @@
                            <div class="control-group">
                               <label class="control-label">If "Yes", please explain  and provide the final disposition of the case including whether or not you received a "deferred" or "diverted" disposition.</label>
                               <div class="controls">
-                                 <textarea disabled rows="5" class="span12 everBeenArrestedExplain" name="doc[scholarship][everBeenArrestedExplain]"><?=$this->vars['registration']['scholarship']['everBeenArrestedExplain']?></textarea>
+                                 <p><?=$this->vars['registration']['scholarship']['everBeenArrestedExplain']?></p>
                               </div>
                            </div>
                         </div>
@@ -365,7 +365,7 @@
                            <div class="control-group">
                               <label class="control-label">If your answer is "Yes" to any portion of question 6, please explain:</label>
                               <div class="controls">
-                                 <textarea disabled rows="5" class="span12 everInvestigationExplain" name="doc[scholarship][everInvestigationExplain]"><?=$this->vars['registration']['scholarship']['everInvestigationExplain']?></textarea>
+                                 <p><?=$this->vars['registration']['scholarship']['everInvestigationExplain']?></p>
                               </div>
                            </div>
                         </div>
@@ -389,7 +389,7 @@
                            <div class="control-group">
                               <label class="control-label">If "Yes", please explain.</label>
                               <div class="controls">
-                                 <textarea disabled rows="5" class="span12 everLawEnforcementExplain" name="doc[scholarship][everLawEnforcementExplain]"><?=$this->vars['registration']['scholarship']['everLawEnforcementExplain']?></textarea>
+                                 <p><?=$this->vars['registration']['scholarship']['everLawEnforcementExplain']?></p>
                               </div>
                            </div>
                         </div>
@@ -401,7 +401,7 @@
                            <div class="control-group">
                               <label class="control-label">Please take a moment to explain your reasons for requesting a scholarship. </label>
                               <div class="controls">
-                                 <textarea disabled rows="5" class="span12 reasonForScholarship" name="doc[scholarship][reasonForScholarship]"><?=$this->vars['registration']['scholarship']['reasonForScholarship']?></textarea>
+                                 <p><?=$this->vars['registration']['scholarship']['reasonForScholarship']?></p>
                               </div>
                            </div>
                         </div>
