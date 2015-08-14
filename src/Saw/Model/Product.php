@@ -178,7 +178,7 @@ class Product extends Model {
 		if(!empty($category)) $category = (is_object($category)) ? $category : new \MongoId($category);
 		$query = (!empty($category)) ? array('category._id'=>$category,'currentStatus'=>array('$gte'=>self::$status['MEMBERSONLY'])): array();
 		$fields = array();
-		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('name'=>1),(int)$offset,(int)$limit);
+		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('name'=>-1),(int)$offset,(int)$limit);
 		return $result;
 
 	}
