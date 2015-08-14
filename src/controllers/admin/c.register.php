@@ -749,42 +749,46 @@ $app->get('/registrations/seminar/{seminarId}/{offset}/{limit}', function ($semi
 	
 	//$deposit = $registration->fetchByStatusSeminar($seminarId,'DEPOSIT',$offset, $limit);
 	$depositbalance = $registration->fetchDepositStatus($seminarId,$offset, $limit);
-	for ($i=0; $i < count($depositbalance); $i++) { 
-		if((array_key_exists('depositPaymentId', $depositbalance[$i]) && !empty($depositbalance[$i]['depositPaymentId']))){
-			$payment = new Model\Payment(array('_id'=>$depositbalance[$i]['depositPaymentId']),$app);
-			$payment = $payment->findbyId();
-			if(!empty($payment) && array_key_exists('fullResponse', $payment) && !empty($payment['fullResponse'])){
-				$depositbalance[$i]['depositPaymentType'] = 'cc';	
-			}elseif(!empty($payment)){
-				$depositbalance[$i]['depositPaymentType'] = 'chk';
+	if(!empty($depositbalance)){
+		for ($i=0; $i < count($depositbalance); $i++) { 
+			if((array_key_exists('depositPaymentId', $depositbalance[$i]) && !empty($depositbalance[$i]['depositPaymentId']))){
+				$payment = new Model\Payment(array('_id'=>$depositbalance[$i]['depositPaymentId']),$app);
+				$payment = $payment->findbyId();
+				if(!empty($payment) && array_key_exists('fullResponse', $payment) && !empty($payment['fullResponse'])){
+					$depositbalance[$i]['depositPaymentType'] = 'cc';	
+				}elseif(!empty($payment)){
+					$depositbalance[$i]['depositPaymentType'] = 'chk';
+				}
+				
 			}
 			
 		}
-		
 	}
 	$paid = $registration->fetchByStatusSeminar($seminarId,'PAID',$offset, $limit);
-	for ($i=0; $i < count($paid); $i++) { 
-		if((array_key_exists('depositPaymentId', $paid[$i]) && !empty($paid[$i]['depositPaymentId']))){
-			$payment = new Model\Payment(array('_id'=>$paid[$i]['depositPaymentId']),$app);
-			$payment = $payment->findbyId();
-			if(!empty($payment) && array_key_exists('fullResponse', $payment) && !empty($payment['fullResponse'])){
-				$paid[$i]['depositPaymentType'] = 'cc';	
-			}elseif(!empty($payment)){
-				$paid[$i]['depositPaymentType'] = 'chk';
+	if(!empty($paid)){
+		for ($i=0; $i < count($paid); $i++) { 
+			if((array_key_exists('depositPaymentId', $paid[$i]) && !empty($paid[$i]['depositPaymentId']))){
+				$payment = new Model\Payment(array('_id'=>$paid[$i]['depositPaymentId']),$app);
+				$payment = $payment->findbyId();
+				if(!empty($payment) && array_key_exists('fullResponse', $payment) && !empty($payment['fullResponse'])){
+					$paid[$i]['depositPaymentType'] = 'cc';	
+				}elseif(!empty($payment)){
+					$paid[$i]['depositPaymentType'] = 'chk';
+				}
+				
+			}
+			if((array_key_exists('paymentId', $paid[$i]) && !empty($paid[$i]['paymentId']))){
+				$payment = new Model\Payment(array('_id'=>$paid[$i]['paymentId']),$app);
+				$payment = $payment->findbyId();
+				if(!empty($payment) && array_key_exists('fullResponse', $payment) && !empty($payment['fullResponse'])){
+					$paid[$i]['remainderPaymentType'] = 'cc';	
+				}elseif(!empty($payment)){
+					$paid[$i]['remainderPaymentType'] = 'chk';
+				}
+				
 			}
 			
 		}
-		if((array_key_exists('paymentId', $paid[$i]) && !empty($paid[$i]['paymentId']))){
-			$payment = new Model\Payment(array('_id'=>$paid[$i]['paymentId']),$app);
-			$payment = $payment->findbyId();
-			if(!empty($payment) && array_key_exists('fullResponse', $payment) && !empty($payment['fullResponse'])){
-				$paid[$i]['remainderPaymentType'] = 'cc';	
-			}elseif(!empty($payment)){
-				$paid[$i]['remainderPaymentType'] = 'chk';
-			}
-			
-		}
-		
 	}
 	
 	$waitlist = $registration->fetchByStatusSeminar($seminarId,'WAITLIST',$offset, $limit);
