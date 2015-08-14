@@ -16,6 +16,14 @@
                <form id="saw-form" class="horizontal-form portlet">
                   <input type="hidden" class="registrationId" name="doc[registrationId]" value="<?=$this->vars['registration']['_id']?>">
                   
+                  <div class="row-fluid">
+                     <div class="span12 ">
+                        <h4><?=$this->vars['seminar']['headline']?> - <?=$this->vars['registration']['name']?> - <?=$this->vars['registration']['postalCode']?></h4>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  
+
                   <h3 class="form-section">1. Your Information</h3>
                   <div class="row-fluid">
                      <div class="span12 ">
