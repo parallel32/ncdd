@@ -1792,10 +1792,10 @@ $app->get('/applications/activate/renewals/{activate}', function ($activate, Req
 		$common_query = array('$or'=>array(array('renewal'=>array('$exists'=>false)),array('renewal'=>array('$exists'=>true,'$type'=>10)),array('renewal'=>new \stdClass())));		
 		//$common_query = array();
 
-		$gm_query = array('currentMembership'=>Model\Member::$membership['GENERAL MEMBER'],'status'=>USER_STATUS_ACTIVE);
-		$sm_query = array('currentMembership'=>Model\Member::$membership['SUSTAINING MEMBER'],'status'=>USER_STATUS_ACTIVE);
-		$fm_query = array('currentMembership'=>Model\Member::$membership['FOUNDING MEMBER'],'status'=>USER_STATUS_ACTIVE);
-		$pd_query = array('currentMembership'=>Model\Member::$membership['PUBLIC DEFENDER'],'status'=>USER_STATUS_ACTIVE);
+		$gm_query = array('currentMembership'=>Model\Member::$membership['GENERAL MEMBER'],'status'=>USER_STATUS_ACTIVE,'listed'=>'yes');
+		$sm_query = array('currentMembership'=>Model\Member::$membership['SUSTAINING MEMBER'],'status'=>USER_STATUS_ACTIVE,'listed'=>'yes');
+		$fm_query = array('currentMembership'=>Model\Member::$membership['FOUNDING MEMBER'],'status'=>USER_STATUS_ACTIVE,'listed'=>'yes');
+		$pd_query = array('currentMembership'=>Model\Member::$membership['PUBLIC DEFENDER'],'status'=>USER_STATUS_ACTIVE,'listed'=>'yes');
 		$gm_query = array_merge($common_query, $gm_query);
 		$sm_query = array_merge($common_query, $sm_query);
 		$fm_query = array_merge($common_query, $fm_query);
