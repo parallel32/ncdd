@@ -505,7 +505,8 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 			$cardNumber = ($doc['currentPaymentType'] == Model\Registration::$paymentType['CREDIT']) ? $doc['payment']['number'] : '' ;
 
 	    	// send admin the email notification
-	    	$subject = 'Seminar Registration Submitted';
+	    	$scholarship_text = ($doc['currentPaymentType'] == Model\Registration::$paymentType['SCHOLARSHIP']) ? ' - SCHOLARSHIP':'';
+	    	$subject = 'Seminar Registration Submitted'.$scholarship_text;
 	    	$to = SAW_ADMIN_EMAIL;
 	    	$view_vars = array('seminar'=>$seminar
 	    						,'rsvp'=>$rsvp
