@@ -276,7 +276,6 @@
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-480">Phone</th>
                                  <th class="hidden-480">Date Submitted</th>
-                                 <th class="hidden-480">Payment Type</th>
                                  <th class=""></th>
                               </tr>
                            </thead>
@@ -288,7 +287,6 @@
                                  <td class="hidden-480 "><?=$registration['phone']?></td>
                                  <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($registration['submittedDate']['fullDateTime'])); ?>
                                  <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$registration['submittedDate']['monthDay'].' '.$registration['submittedDate']['shortTime']?></td>
-                                 <td class="center hidden-480 "><?=\Saw\Model\Registration::$paymentTypeReversed[$registration['currentPaymentType']];?></td>
                                  <td class=" ">
                                     <a data-id="<?=$registration['_id']?>" class="btn blue mini view registration"><i class=" "></i> Registration</a>
                                  <? if(!empty($registration['memberId'])): ?>
@@ -306,7 +304,7 @@
                                     }else{
                                        echo '';
                                     }
-                                    ?>" class="btn green mini view payment"><i class=" "></i> Deposit</a>
+                                    ?>" class="btn green mini view payment"><i class=" "></i> Deposit <?=((array_key_exists('depositPaymentType', $registration) && !empty($registration['depositPaymentType']))) ? '('.$registration['depositPaymentType'].')': ''?></a>
                                  <? endif; ?>
                                  <?
                                  $status = "Something's not right";
@@ -370,7 +368,6 @@
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-480">Phone</th>
                                  <th class="hidden-480">Date Paid</th>
-                                 <th class="hidden-480">Payment Type</th>
                                  <th class=""></th>
                               </tr>
                            </thead>
@@ -382,12 +379,11 @@
                                  <td class="hidden-480 "><?=$registration['phone']?></td>
                                  <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($registration['paidDate']['fullDateTime'])); ?>
                                  <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$registration['paidDate']['monthDay'].' '.$registration['paidDate']['shortTime']?></td>
-                                 <td class="center hidden-480 "><?=\Saw\Model\Registration::$paymentTypeReversed[$registration['currentPaymentType']];?></td>
                                  <td class=" ">
                                     <a data-id="<?=$registration['_id']?>" class="btn blue mini view registration"><i class=" "></i> Registration</a>
-                                    <a data-id="<?=$registration['paymentId']?>" class="btn green mini view payment"><i class=" "></i> Payment</a>
+                                    <a data-id="<?=$registration['paymentId']?>" class="btn green mini view payment"><i class=" "></i> Payment <?=((array_key_exists('remainderPaymentType', $registration) && !empty($registration['remainderPaymentType']))) ? '('.$registration['remainderPaymentType'].')': ''?></a>
                                     <? if(array_key_exists('depositPaymentId', $registration) && !empty($registration['depositPaymentId'])): ?>
-                                    <a data-id="<?=$registration['depositPaymentId']?>" class="btn green mini view payment"><i class=" "></i> Deposit</a>
+                                    <a data-id="<?=$registration['depositPaymentId']?>" class="btn green mini view payment"><i class=" "></i> Deposit <?=((array_key_exists('depositPaymentType', $registration) && !empty($registration['depositPaymentType']))) ? '('.$registration['depositPaymentType'].')': ''?></a>
                                     <? endif; ?>
                                     
                                  </td>

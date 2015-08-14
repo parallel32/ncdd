@@ -28,7 +28,7 @@ class RegistrationSeminar extends Registration {
 	public $seminarId;
 	public $previouslyAttended;
 	public $previouslyAttendedExists;
-	public $depositQuestion; // yes | no
+	public $depositQuestion; // yes | card | no
 	public $deposit; // the amount for the initial deposit
 	public $depositPaymentId; // the paymentId for the initial deposit
 	public $depositDueDate; // the due date for payment of the remainer of the deposit
@@ -37,6 +37,7 @@ class RegistrationSeminar extends Registration {
 	public $userAgent;
 	public $tempPayment;
 	public $scholarshipId;
+	public $cardOnFile;
 
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
@@ -87,6 +88,7 @@ class RegistrationSeminar extends Registration {
         $this->userAgent = $doc['userAgent'];
         $this->tempPayment = $doc['tempPayment'];
         $this->scholarshipId = $doc['scholarshipId'];
+        $this->cardOnFile = $doc['cardOnFile'];
 	}
 	
 	/**
@@ -115,6 +117,7 @@ class RegistrationSeminar extends Registration {
 		$this->userAgent = $this->userAgent ?: '';
 		$this->tempPayment = $this->tempPayment ?: new \stdClass();
 		$this->scholarshipId = $this->scholarshipId ?: new \stdClass();
+		$this->cardOnFile = $this->cardOnFile ?: new \stdClass();
 	}
 	
 	public function insert(){

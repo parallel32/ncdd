@@ -94,7 +94,7 @@
 		});
 		
 		$('#payment-form .btn.cancel').click(function(e){
-			document.location.href='/';
+			history.go(-1);
 		});
 		$('#save-success .continue.payment').click(function(e){
 			document.location.href='/payment/'+$(this).attr('data-insertid')+'/view';

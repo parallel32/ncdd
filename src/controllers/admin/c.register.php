@@ -323,13 +323,18 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 			$hardCopyFee = 0;
 		}
 		$depositQuestion = (array_key_exists('depositQuestion',$doc)) ? $doc['depositQuestion'] : '';
-		if($depositQuestion == 'yes'){
+		if($depositQuestion == 'yes' || $depositQuestion == 'card'){
 			$registrationFee = $doc['deposit'];
 		}
 
 		$doc['total'] = (int)$hardCopyFee+(int)$registrationFee;
 		$paymentId = new \stdClass();
 
+		// save the credit card for the registration to use later when the final payment is due.
+		if($depositQuestion == 'card' && !empty($doc['memberId'])){ 
+			$payment_lite = new Model\PaymentLite($doc['payment'],$app);
+			$doc['cardOnFile'] = $payment_lite->__toArray();
+		}
 		$rs = new Model\RegistrationSeminar($doc,$app);
 		if(!empty($doc['email']) && $rs->findByEmail()){
 	    	$response_arr = array('message'=>"Our records indicate you have already submitted a registration.  If you believe this message is in error please contact NCDD directly.",
@@ -351,6 +356,10 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 				$rs_id = $rs->insert();
 				$payment_update = new Model\Payment(array('ownerId'=>$rs_id,'_id'=>$paymentId),$app);
 				$payment_update->saveSafe();
+
+				$registration = new Model\RegistrationSeminar(array('_id'=>$rs_id), $app);
+			    $registration->markPaid($paymentId);
+
 			} catch (Exception $e) {
 				error_log(__FILE__.' '.__LINE__.' for variable: e  ==>'.print_r($e->getMessage(),true));
 				//$rgis = new Model\Registration(array('_id'=>$rs_id),$app);			
@@ -477,7 +486,7 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 				$hardCopyFee = 0;
 			}
 			$depositQuestion = (array_key_exists('depositQuestion',$doc)) ? $doc['depositQuestion'] : '';
-			if($depositQuestion == 'yes'){
+			if($depositQuestion == 'yes' || $depositQuestion == 'card'){
 				$doc['registrationFee'] = $doc['deposit'];
 			}
 			$doc['total'] = (int)$hardCopyFee+(int)$doc['registrationFee'];
@@ -517,7 +526,9 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 	    //*/
 	endif; // activate wait list
 });
-
+/**
+END  -  POST NEW REGISTRATION
+*/
 
 
 /////////////////////////////
@@ -738,7 +749,44 @@ $app->get('/registrations/seminar/{seminarId}/{offset}/{limit}', function ($semi
 	
 	//$deposit = $registration->fetchByStatusSeminar($seminarId,'DEPOSIT',$offset, $limit);
 	$depositbalance = $registration->fetchDepositStatus($seminarId,$offset, $limit);
+	for ($i=0; $i < count($depositbalance); $i++) { 
+		if((array_key_exists('depositPaymentId', $depositbalance[$i]) && !empty($depositbalance[$i]['depositPaymentId']))){
+			$payment = new Model\Payment(array('_id'=>$depositbalance[$i]['depositPaymentId']),$app);
+			$payment = $payment->findbyId();
+			if(!empty($payment) && array_key_exists('fullResponse', $payment) && !empty($payment['fullResponse'])){
+				$depositbalance[$i]['depositPaymentType'] = 'cc';	
+			}elseif(!empty($payment)){
+				$depositbalance[$i]['depositPaymentType'] = 'chk';
+			}
+			
+		}
+		
+	}
 	$paid = $registration->fetchByStatusSeminar($seminarId,'PAID',$offset, $limit);
+	for ($i=0; $i < count($paid); $i++) { 
+		if((array_key_exists('depositPaymentId', $paid[$i]) && !empty($paid[$i]['depositPaymentId']))){
+			$payment = new Model\Payment(array('_id'=>$paid[$i]['depositPaymentId']),$app);
+			$payment = $payment->findbyId();
+			if(!empty($payment) && array_key_exists('fullResponse', $payment) && !empty($payment['fullResponse'])){
+				$paid[$i]['depositPaymentType'] = 'cc';	
+			}elseif(!empty($payment)){
+				$paid[$i]['depositPaymentType'] = 'chk';
+			}
+			
+		}
+		if((array_key_exists('paymentId', $paid[$i]) && !empty($paid[$i]['paymentId']))){
+			$payment = new Model\Payment(array('_id'=>$paid[$i]['paymentId']),$app);
+			$payment = $payment->findbyId();
+			if(!empty($payment) && array_key_exists('fullResponse', $payment) && !empty($payment['fullResponse'])){
+				$paid[$i]['remainderPaymentType'] = 'cc';	
+			}elseif(!empty($payment)){
+				$paid[$i]['remainderPaymentType'] = 'chk';
+			}
+			
+		}
+		
+	}
+	
 	$waitlist = $registration->fetchByStatusSeminar($seminarId,'WAITLIST',$offset, $limit);
 	$crumbs = array(array('name'=>'Seminars','href'=>'/seminar')
 					,array('name'=>$seminar['headline'],'href'=>'/seminar/view/'.$seminar['_id'])

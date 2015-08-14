@@ -139,14 +139,22 @@ $seminar = $this->vars['seminar'];
             <div class="row-fluid">
                <div class="span12">
                   <?
+                     $payment_vars['number'] = (array_key_exists('cardOnFile', $registration) && !empty($registration['cardOnFile'])) ? str_replace('.x', '', $registration['cardOnFile']['number']): '';
+                     $payment_vars['cvc'] = (array_key_exists('cardOnFile', $registration) && !empty($registration['cardOnFile'])) ? str_replace('.x', '', $registration['cardOnFile']['cvc']): '';
+                     $payment_vars['expMonth'] = (array_key_exists('cardOnFile', $registration) && !empty($registration['cardOnFile'])) ? $registration['cardOnFile']['expMonth']: '';
+                     $payment_vars['expYear'] = (array_key_exists('cardOnFile', $registration) && !empty($registration['cardOnFile'])) ? $registration['cardOnFile']['expYear']: '';
                      $payment_vars['memberId'] = $registration['memberId'];
                      $payment_vars['ownerId'] = $registration['_id'];
                      $payment_vars['ownerClass'] = $registration['class'];
                      $payment_vars['description'] = 'INV-'.time();
                      $payment_vars['title'] = $label.' - '.$registration['type'].' - '.$this->vars['seminar']['headline'].' - '.$this->vars['seminar']['location'].' - '.$this->vars['seminar']['startDate']['monthDay'].' - '.$this->vars['seminar']['endDate']['monthDay'].', '.$this->vars['seminar']['startDate']['year'];
                      $payment_vars['amount'] = $registration['registrationFee'];
-                     $payment_vars['firstName'] = $registration['name'];
-                     $payment_vars['lastName'] = '';
+                     if(array_key_exists('cardOnFile', $registration) && !empty($registration['cardOnFile'])){
+                        $payment_vars['name'] = $registration['cardOnFile']['name'];
+                     }else{
+                        $payment_vars['firstName'] = $registration['name'];
+                        $payment_vars['lastName'] = '';     
+                     }
                      $payment_vars['email'] = $registration['email'];
                      $payment_vars['phone'] = (!empty($registration['phone'])) ? $registration['phone']: $this->vars['location']['phone'];
                      $payment_vars['address1'] = (!empty($registration['address1'])) ? $registration['address1']: $this->vars['location']['addressLine1'];

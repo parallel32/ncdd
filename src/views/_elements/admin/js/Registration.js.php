@@ -226,11 +226,6 @@
 			document.location.href='/payment/'+$(this).attr('data-id')+'/view';
 		});
 		
-		// view screen buttons
-		$('#saw-form .btn.pay').click(function(e){
-			e.preventDefault();
-			document.location.href='/registration/seminar/'+$(this).attr('data-id')+'/pay-other';
-		});
 		//go to edit screen
 		$('#saw-form .edit').click(function(e){
 			e.preventDefault();

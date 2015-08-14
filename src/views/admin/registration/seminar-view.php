@@ -251,7 +251,8 @@
                         <div class="control-group">
                            <label class="control-label" >Would you like to make a desposit and pay the remainder later?</label>
                            <div class="controls">
-                              <input disabled style="margin-left:1px;" type="radio" name="doc[depositQuestion]" <?=(array_key_exists('depositQuestion',$this->vars['registration'])) ? ($this->vars['registration']['depositQuestion'] == 'yes') ?'checked' :'': '';?> value="yes">&nbsp;&nbsp;Yes, I would like to make a deposit now and pay the remainder <?=(array_key_exists('depositDueDate',$this->vars['seminar']['register'])) ? 'on '.$this->vars['seminar']['register']['depositDueDate'] :'later' ?>.<br/><br/>
+                              <input disabled style="margin-left:1px;" type="radio" name="doc[depositQuestion]" <?=(array_key_exists('depositQuestion',$this->vars['registration'])) ? ($this->vars['registration']['depositQuestion'] == 'yes') ?'checked' :'': '';?> value="yes">&nbsp;&nbsp;Yes, I would like to make a deposit now and pay the remainder <?=(array_key_exists('depositDueDate',$this->vars['seminar']['register'])) ? 'on <b>'.$this->vars['seminar']['register']['depositDueDate'].'</b>' :'later' ?>.<br/><br/>
+                              <input disabled style="margin-left:1px;" type="radio" name="doc[depositQuestion]" <?=(array_key_exists('depositQuestion',$this->vars['registration'])) ? ($this->vars['registration']['depositQuestion'] == 'card') ?'checked' :'': '';?> value="card">&nbsp;&nbsp;Yes, I would like to make a deposit now and pay the remainder <?=(array_key_exists('depositDueDate',$this->vars['seminar']['register'])) ? 'on <b>'.$this->vars['seminar']['register']['depositDueDate'].'</b>' :'later' ?> <u>automatically</u> using the credit card, which I will provide below.<br/><br/>
                               <input disabled style="margin-left:1px;" type="radio" name="doc[depositQuestion]" <?=(array_key_exists('depositQuestion',$this->vars['registration'])) ? ($this->vars['registration']['depositQuestion'] == 'no') ?'checked' :'': '';?> value="no">&nbsp;&nbsp;No thanks, I'll pay in full now.<br/><br/>
 
                               <input name="doc[deposit]" id="deposit" type="hidden" value="<?=(array_key_exists('deposit',$this->vars['seminar']['register'])) ? $this->vars['seminar']['register']['deposit'] :'' ?>" class="m-wrap span12"> 
@@ -504,7 +505,11 @@
                   
                   <div class="form-actions text-center">
                      <? if($this->vars['registration']['currentStatus'] < \Saw\Model\Registration::$status['PAID'] && $this->vars['activate_waitlist'] == false): ?>
-                     <button type="button" data-id="<?=$this->vars['registration']['_id']?>" class="btn green pay"><i class="icon-money"></i> Mark Paid</button>
+                     <? if(array_key_exists('cardOnFile', $this->vars['registration']) && !empty($this->vars['registration']['cardOnFile'])){?>
+                        <a class="btn green pay" href="/registration/seminar/<?=$this->vars['registration']['_id']?>/pay"><i class="icon-money"></i> Mark Paid</a>
+                     <? } else { ?>
+                        <a class="btn green pay" href="/registration/seminar/<?=$this->vars['registration']['_id']?>/pay-other"><i class="icon-money"></i> Mark Paid</a>
+                     <? } ?>
                      <? endif; ?>
                      <? if ($this->vars['activate_waitlist'] == true): ?>
                      <button type="button" data-id="<?=$this->vars['registration']['_id']?>" class="btn blue offwaitlist"><i class="icon-info"></i> Move Member Off Wait List</button>
