@@ -1555,7 +1555,17 @@ $app->get('/renewalscontacts/{offset}/{limit}', function ($offset, $limit, Reque
 		,'approved'=>$member->fetchByRenewalStatus('APPROVED',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']),$offset, $limit)
 		,'paid'=>$member->fetchByRenewalStatus('PAID',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']), $offset, $limit)
 	);
+	
 	$renewalsc = array();
+	
+	$r = array();
+	$r_email = array();
+	$r_bar = array();
+	$r_listserv = array();
+	$r_firmname = array();
+	$r_address = array();
+	$r_phone = array();
+
 	$cnt = 0;
 	for ($i=0; $i < count($renewals['submitted']); $i++) { 
 		$renewalsc[$cnt]['applicationId'] = $renewals['submitted'][$i]['renewal']['applicationId'];
