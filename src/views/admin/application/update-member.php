@@ -151,15 +151,6 @@
                         </div>
                      </div>
                      <!--/span-->
-                     <div class="span6 ">
-                        <div class="control-group">
-                           <label class="control-label"><b>Bar Number / State</b></label>
-                           <div class="controls">
-                              <?=$this->vars['member']['barNumber']?>
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
                   </div>
 
                   <div class="row-fluid">
@@ -319,15 +310,7 @@
                         </div>
                      </div>
                      <!--/span-->
-                     <div class="span6 ">
-                        <div class="control-group">
-                           <label class="control-label">Bar Number / State</label>
-                           <div class="controls">
-                              <input type="text" name="doc[barNumber]" value="" class="m-wrap span12 barNumber">
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
+                     
                   </div>
 
 
