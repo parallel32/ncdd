@@ -314,12 +314,14 @@ else:
 EOT;
 
 endif;
+/*
 error_log('for variable: name  ==>'.print_r($this->name,true));
 error_log('for variable: phone  ==>'.print_r($this->phone,true));
 error_log('for variable: email  ==>'.print_r($this->email,true));
 error_log('for variable: amount  ==>'.print_r($this->amount,true));
 error_log('for variable: orderTotal  ==>'.print_r($this->orderTotal,true));
 error_log('for variable: shippingTotal  ==>'.print_r($this->shippingTotal,true));
+//*/
 $this->addressLine1 = htmlentities($this->addressLine1);
 $this->addressLine2 = htmlentities($this->addressLine2);
 $this->name = htmlentities($this->name);
@@ -617,14 +619,14 @@ EOT;
 			$this->expMonth = str_pad($this->expMonth, 2, '0', STR_PAD_LEFT); 
 			$this->expYear = substr($this->expYear, -2);
 			$this->orderTotal = (!empty($this->orderTotal)) ? $this->orderTotal.'.00' : $this->amount.'.00';
-error_log('for variable: this->orderTotal  ==>'.print_r($this->orderTotal,true));
-error_log('for variable: this->amount  ==>'.print_r($this->amount,true));
+//error_log('for variable: this->orderTotal  ==>'.print_r($this->orderTotal,true));
+//error_log('for variable: this->amount  ==>'.print_r($this->amount,true));
 			$this->shippingTotal = (!empty($this->shippingTotal)) ? $this->shippingTotal.'.00' : '0.00';
-error_log('for variable: this->shippingTotal  ==>'.print_r($this->shippingTotal,true));			
+//error_log('for variable: this->shippingTotal  ==>'.print_r($this->shippingTotal,true));			
 			$this->amount = ($this->orderTotal + $this->shippingTotal) - $this->discountTotal;
-error_log('for variable: this->amount  ==>'.print_r($this->amount,true));
+//error_log('for variable: this->amount  ==>'.print_r($this->amount,true));
 			$this->amount = $this->amount.'.00';
-error_log('for variable: this->amount  ==>'.print_r($this->amount,true));
+//error_log('for variable: this->amount  ==>'.print_r($this->amount,true));
 			$this->orderTotal = $this->orderTotal - $this->discountTotal;
 			$this->transactionOrigin = 'ECI';
 			$this->invoiceNumber = new \MongoId();
