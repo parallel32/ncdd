@@ -257,6 +257,17 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
             <div class="row-fluid">
                <div class="span12">
                   <div class="span12">
+                     <h3 class="center"><b>Next NCDD Board Meeting<br>
+October 1 @ 1pm<br>
+Balagio Hotel - Michelangelo Room<br>
+Las Vegas, NV</b></h3>
+                  </div>
+               </div>
+            </div>
+
+            <div class="row-fluid">
+               <div class="span12">
+                  <div class="span12">
                      <h3>Please watch this video tutorial on how to utilize the Virtual Forensic Library.</h3>
                      <iframe width="640" height="480" src="//www.youtube.com/embed/OvM3pPAWJ9Q?rel=0" frameborder="0" allowfullscreen></iframe>
                   </div>
