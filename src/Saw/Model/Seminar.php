@@ -23,6 +23,7 @@ class Seminar extends Model {
 	public $location;
 	public $slug;
 	public $description;
+	public $attendanceCertStatement;
 	public $files; // array containing any files to be attached via upload.
 	public $image; // image object
 	public $register; // register object
@@ -137,6 +138,7 @@ class Seminar extends Model {
 		$this->endDate = (!empty($doc['endDate'])) ? (is_object($doc['endDate'])) ? $doc['endDate']->__toArray() : new Date(self::$app,$doc['endDate'], $this->timeZone)  : $doc['endDate'];
 		include_once __DIR__.'/../Provider/WordPress/ncdd-wp-includes.php';
 		$this->description = (!empty($doc['description'])) ? wptexturize(wpautop($doc['description'])) : '';
+		$this->attendanceCertStatement = (!empty($doc['attendanceCertStatement'])) ? wptexturize(wpautop($doc['attendanceCertStatement'])) : '';
 		$this->files = $doc['files'];
         $this->image = (is_object($doc['image'])) ? $doc['image']->__toArray() : $doc['image'];
         $this->register = (is_object($doc['register'])) ? $doc['register']->__toArray() : $doc['register'];
@@ -156,6 +158,7 @@ class Seminar extends Model {
 		$this->startDate = (!empty($this->startDate)) ? (is_object($this->startDate)) ? $this->startDate->__toArray() : $this->startDate  : new Date(self::$app,'now', $this->timeZone);
 		$this->endDate = (!empty($this->endDate)) ? (is_object($this->endDate)) ? $this->endDate->__toArray() : $this->endDate  : new Date(self::$app,'now', $this->timeZone);
 		$this->description = $this->description ?: '';
+		$this->attendanceCertStatement = $this->attendanceCertStatement ?: '';
 		$this->files = $this->files ?: array();
 		$this->image = (!empty($this->image)) ? (is_object($this->image)) ? $this->image->__toArray() : $this->image  : new \stdClass();
 		$this->register = (!empty($this->register)) ? (is_object($this->register)) ? $this->register->__toArray() : $this->register  : new \stdClass();

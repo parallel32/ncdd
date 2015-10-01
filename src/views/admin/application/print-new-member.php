@@ -3,11 +3,6 @@
          <!-- BEGIN PAGE CONTAINER-->
          <div class="container-fluid">
             <!-- BEGIN PAGE HEADER-->
-            <div class="row-fluid">
-               <div class="span12">
-                  <?=$this->element('page-title-and-bread-crumb');?>
-               </div>
-            </div>
             <!-- END PAGE HEADER-->
             <!-- BEGIN PAGE CONTENT-->
          <div class="row-fluid">
@@ -18,6 +13,8 @@
                      <button class="close" data-dismiss="alert"></button>
                      You have some form errors. Please check below.
                   </div>                  
+                  
+            
                   <h3 class="form-section">1.</h3>
                   <div class="row-fluid">
                      <div class="span4 ">
@@ -48,6 +45,93 @@
                      </div>
                      <!--/span-->
                   </div>
+                  
+
+                  <!-- BEGIN ADDRESS -->
+                  <div class="row-fluid addr ">
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label" >City</label>
+                           <div class="controls">
+                              <input disabled type="text" value="<?=$this->vars['application']['city']?>" id="city" class="m-wrap span12 city"> 
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label" >State / Province</label>
+                           <div class="controls">
+                              <input disabled type="text" value="<?=$this->vars['application']['state']?>" id="state" class="m-wrap span12 state"> 
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <!--/row-->           
+                  <div class="row-fluid addr ">
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label" >Postal Code</label>
+                           <div class="controls">
+                              <input disabled type="text" value="<?if(strlen($this->vars['application']['postalCode']) < 5){echo str_pad($this->vars['application']['postalCode'],5,'0',STR_PAD_LEFT);}else if(strlen($this->vars['application']['postalCode']) > 5 && strlen($this->vars['application']['postalCode']) < 9){str_pad($this->vars['application']['postalCode'],9,'0',STR_PAD_LEFT);}else{echo $this->vars['application']['postalCode'];}?>" id="zip" class="m-wrap span12 postalCode"> 
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label" >Country</label>
+                           <div class="controls">
+                              <input disabled type="text" value="<?=$this->vars['application']['country']?>" id="country" class="m-wrap span12 country"> 
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <div class="row-fluid validateAddress">
+                     <div class="span12 ">
+                        <div class="control-group">
+                           <label class="control-label" >Business Address</label>
+                           <div class="controls">
+                              <input disabled type="text" value="<?=$this->vars['application']['formattedAddress']?>" id="geocodeaddress" class="m-wrap span12 formattedAddress" >
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row-fluid addr ">
+                     <div class="span12 ">
+                        <div class="control-group">
+                           <label class="control-label" >Address 1</label>
+                           <div class="controls">
+                              <input disabled type="text" value="<?=$this->vars['application']['address1']?>" id="address1" class="m-wrap span12 address1">
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row-fluid addr ">
+                     <div class="span12 ">
+                        <div class="control-group">
+                           <label class="control-label" >Address 2</label>
+                           <div class="controls">
+                              <input disabled type="text" value="<?=$this->vars['application']['address2']?>" id="address2" class="m-wrap span12 address2">
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  
+                  <!-- END ADDRESS -->
+
+
+
+
+
+
+
+
+
+
+                  <hr>
                   <div class="row-fluid">
                      <div class="span6 ">
                         <div class="control-group">
@@ -143,81 +227,7 @@
                      </div>
                      <!--/span-->
                   </div>
-                  <!-- BEGIN ADDRESS -->
-                  <h3 class="form-section">Address</h3>
-                  <div class="row-fluid validateAddress">
-                     <div class="span12 ">
-                        <div class="control-group">
-                           <label class="control-label" >Business Address</label>
-                           <div class="controls">
-                              <input disabled type="text" value="<?=$this->vars['application']['formattedAddress']?>" id="geocodeaddress" class="m-wrap span12 formattedAddress" >
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="row-fluid addr ">
-                     <div class="span12 ">
-                        <div class="control-group">
-                           <label class="control-label" >Address 1</label>
-                           <div class="controls">
-                              <input disabled type="text" value="<?=$this->vars['application']['address1']?>" id="address1" class="m-wrap span12 address1">
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="row-fluid addr ">
-                     <div class="span12 ">
-                        <div class="control-group">
-                           <label class="control-label" >Address 2</label>
-                           <div class="controls">
-                              <input disabled type="text" value="<?=$this->vars['application']['address2']?>" id="address2" class="m-wrap span12 address2">
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="row-fluid addr ">
-                     <div class="span6 ">
-                        <div class="control-group">
-                           <label class="control-label" >City</label>
-                           <div class="controls">
-                              <input disabled type="text" value="<?=$this->vars['application']['city']?>" id="city" class="m-wrap span12 city"> 
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                     <div class="span6 ">
-                        <div class="control-group">
-                           <label class="control-label" >State / Province</label>
-                           <div class="controls">
-                              <input disabled type="text" value="<?=$this->vars['application']['state']?>" id="state" class="m-wrap span12 state"> 
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                  </div>
-                  <!--/row-->           
-                  <div class="row-fluid addr ">
-                     <div class="span6 ">
-                        <div class="control-group">
-                           <label class="control-label" >Postal Code</label>
-                           <div class="controls">
-                              <input disabled type="text" value="<?if(strlen($this->vars['application']['postalCode']) < 5){echo str_pad($this->vars['application']['postalCode'],5,'0',STR_PAD_LEFT);}else if(strlen($this->vars['application']['postalCode']) > 5 && strlen($this->vars['application']['postalCode']) < 9){str_pad($this->vars['application']['postalCode'],9,'0',STR_PAD_LEFT);}else{echo $this->vars['application']['postalCode'];}?>" id="zip" class="m-wrap span12 postalCode"> 
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                     <div class="span6 ">
-                        <div class="control-group">
-                           <label class="control-label" >Country</label>
-                           <div class="controls">
-                              <input disabled type="text" value="<?=$this->vars['application']['country']?>" id="country" class="m-wrap span12 country"> 
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                  </div>
                   
-                  <!-- END ADDRESS -->
                   <h3 class="form-section">2.</h3>
                   <div class="row-fluid">
                      <div class="span12">
@@ -543,7 +553,6 @@
                      </div>
                      <!--/span-->
                   </div>
-
                   <h3 class="form-section">7. AUTHORIZATION AND RELEASE</h3>
                   <div class="row-fluid">
                      <div class="span12">
@@ -616,14 +625,14 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                      </div>
                      <!--/span--
                   </div>
-               -->
+                  -->
                   <div class="row-fluid">
                      <div class="span6 ">
                         <div class="control-group">
                            <label class="control-label">Referred By:</label>
                            <div class="controls">
-                              <input disabled type="text" name="doc[referredBy]" value="<?=(array_key_exists('trial',$this->vars['application'])) ? (array_key_exists('referredBy',$this->vars['application']['trial'])) ? $this->vars['application']['trial']['referredBy'] : (array_key_exists('referredBy',$this->vars['application'])) ? $this->vars['application']['referredBy'] : '' : (array_key_exists('referredBy',$this->vars['application'])) ? $this->vars['application']['referredBy'] : '';?>" class="m-wrap span12 referredBy">
-                              <span class="help-block">If someone referred you, who is already a member, please type their name here.</span>
+                              <input disabled type="text" name="doc[referredBy]" value="<?=(array_key_exists('trial',$this->vars['application']) && !empty($this->vars['application']['trial'])) ? (array_key_exists('referredBy',$this->vars['application']['trial'])) ? $this->vars['application']['trial']['referredBy'] : (array_key_exists('referredBy',$this->vars['application'])) ? $this->vars['application']['referredBy'] : '' : (array_key_exists('referredBy',$this->vars['application'])) ? $this->vars['application']['referredBy'] : '';?>" class="m-wrap span12 referredBy">
+                              <span class="help-block">If someone referred you, who is already a member, please type in their name here.</span>
                            </div>
                         </div>
                      </div>
@@ -645,7 +654,6 @@ the   free  2015  dues  remainder   and      NCDD  Membership  Desktop  Statue. 
                      <!--/span-->
                   </div>
 
-
                   <br>
                   <div class="row-fluid">
                      <div class="span10 ">
@@ -666,11 +674,152 @@ the   free  2015  dues  remainder   and      NCDD  Membership  Desktop  Statue. 
                      </div>
                   </div>
                   
+                  
+                  <?if($this->vars['application']['currentStatus'] == \Saw\Model\Apply::$status['TRIAL'] && array_key_exists('trial',$this->vars['application'])):?>
+                  <div class="row-fluid">
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">Trial Started:</label>
+                           <div class="controls">
+                              <input id="startTrial" disabled type="text" value="<?=$this->vars['application']['trial']['startDate']['fullMonth']?>" class="m-wrap span12 trial">
+                              <?$start = \Carbon\Carbon::createFromTimeStamp(strtotime($this->vars['application']['trial']['startDate']['fullDateTime']), $this->vars['application']['trial']['timeZone']);?>
+                              <span class="help-block"><?=$start->diffForHumans();?></span>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">Trial Ends:</label>
+                           <div class="controls">
+                              <input id="startTrial" disabled type="text" value="<?=$this->vars['application']['trial']['endDate']['fullMonth']?>" class="m-wrap span12 trial">
+                              <?$end = \Carbon\Carbon::createFromTimeStamp(strtotime($this->vars['application']['trial']['endDate']['fullMonth']), $this->vars['application']['trial']['timeZone']);?>
+                              <span class="help-block"><?=$end->diffForHumans();?></span>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <? endif; ?>
+                  <div class="alert alert-error hide">
+                     <button class="close" data-dismiss="alert"></button>
+                     You have some form errors. Please check below.
+                  </div>
+                  
+                  <div class="form-actions text-center">
+                     <a class="btn" href="/application/<?=$this->vars['application']['_id']?>/view">Cancel and Go Back</a>
+                  </div>
+                  
                </form>
                <!-- END FORM--> 
 
-               
-
+               <!-- SUCCESSFUL SAVE MODAL -->
+               <div id="save-success" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="save-success-label" aria-hidden="true">
+                  <div class="modal-header">
+                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                     <h3 id="save-success-label">Successful Operation</h3>
+                  </div>
+                  <div class="modal-body">
+                     <p></p>
+                  </div>
+                  <div class="modal-footer">
+                     <button class="btn blue continue" data-insertid="">Return to NCDD.com</button>
+                  </div>
+               </div>
+               <!--/ SUCCESSFUL SAVE MODAL -->
+               <!-- DELETE MODAL -->
+               <div id="delete-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="delete-modal-label" aria-hidden="true">
+                  <div class="modal-header">
+                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                     <h3 id="delete-modal-label">Are you sure you want to delete this?</h3>
+                  </div>
+                  <div class="modal-body">
+                     <p>This delete action cannot be undone.</p>
+                  </div>
+                  <div class="modal-footer">
+                     <button class="btn red continue" data-id="<?=$this->vars['application']['_id']?>">Yes, Delete it.</button>
+                     <button class="btn cancel">Cancel</button>
+                  </div>
+               </div>
+               <!--/ DELETE MODAL -->
+               <!-- TRIAL MODAL -->
+               <div id="trial-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="trial-modal-label" aria-hidden="true">
+                  <div class="modal-header">
+                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                     <h3 id="trial-modal-label">Set the length of the trial.</h3>
+                  </div>
+                  <div class="modal-body">
+                     <form id="trial-form" class="horizontal-form portlet">
+                        <div class="alert alert-error hide">
+                           <button class="close" data-dismiss="alert"></button>
+                           You have some form errors. Please check below.
+                        </div>                  
+                        <div class="row-fluid">
+                           <div class="span6 ">
+                              <div class="control-group">
+                                 <label class="control-label">Referred By</label>
+                                 <div class="controls">
+                                    <input type="text" name="doc[referredBy]" value="<?=(array_key_exists('trial',$this->vars['application']) && !empty($this->vars['application']['trial'])) ? (array_key_exists('referredBy',$this->vars['application']['trial'])) ? $this->vars['application']['trial']['referredBy'] : (array_key_exists('referredBy',$this->vars['application'])) ? $this->vars['application']['referredBy'] : '' : (array_key_exists('referredBy',$this->vars['application'])) ? $this->vars['application']['referredBy'] : '';?>" class="m-wrap span12 referredBy">
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        <div class="row-fluid">
+                           <div class="span6 ">
+                              <div class="control-group">
+                                 <label class="control-label">Trial Length</label>
+                                 <div class="controls">
+                                    <select class=" m-wrap endDate" name="doc[endDate]">
+                                       <?
+                                          $ts = strtotime('now');
+                                          $option_a_ts = strtotime('June 30 '.date('Y'));
+                                          $option_b_ts = strtotime('December 30 '.date('Y'));
+                                          if($option_a_ts > $ts){
+                                             $year_a = date('Y');
+                                          }
+                                          if($option_a_ts < $ts){
+                                             $year_a = date('Y') + 1;
+                                          }
+                                          if($option_b_ts > $ts){
+                                             $year_b = date('Y');
+                                          }
+                                          if($option_b_ts < $ts){
+                                             $year_b = date('Y') + 1;
+                                          }
+                                       ?>
+                                       <option value="June 30 <?=$year_a?>">June 30 <?=$year_a?></option>
+                                       <option value="December 30 <?=$year_b?>">December 30 <?=$year_b?></option>
+                                       <option value="1 Month">1 Month</option>
+                                       <option value="2 Months">2 Months</option>
+                                       <option value="3 Months">3 Months</option>
+                                       <option value="4 Months">4 Months</option>
+                                       <option value="5 Months">5 Months</option>
+                                       <option value="6 Months">6 Months</option>
+                                       <option value="7 Months">7 Months</option>
+                                       <option value="8 Months">8 Months</option>
+                                       <option value="9 Months">9 Months</option>
+                                       <option value="10 Months">10 Months</option>
+                                       <option value="11 Months">11 Months</option>
+                                       <option value="12 Months">12 Months</option>
+                                    </select>
+                                    <span class="help-block">An email will be sent to the applicant and admin when the trial period expires.</span>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        <div class="alert alert-warning">
+                           Note: the system will email the applicant with their access credentials when confirm is clicked.
+                        </div> 
+                     </form>
+                  </div>
+                  <div class="modal-footer">
+                     <button class="btn green continue" data-id="<?=$this->vars['application']['_id']?>">Confirm and Begin Trial.</button>
+                     <button class="btn cancel">Cancel</button>
+                  </div>
+               </div>
+               <!--/ TRIAL MODAL -->
             </div>
          </div>
          <!-- END PAGE CONTENT-->
@@ -678,3 +827,9 @@ the   free  2015  dues  remainder   and      NCDD  Membership  Desktop  Statue. 
          <!-- END PAGE CONTAINER-->    
       </div>
       <!-- END PAGE -->
+      <?=$this->element('js/Application.js');?>
+      <script>
+      jQuery(document).ready(function() {    
+         io.saw.Application.approveInit();
+      });      
+      </script>

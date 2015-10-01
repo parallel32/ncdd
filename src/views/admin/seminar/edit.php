@@ -151,6 +151,19 @@
                               </div>
                               <!--/span-->
                            </div>
+                           <h3 class="form-section text-info"><strong>Attendance Certification Statement</strong>&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.get('body-acs').execCommand('mcefocus',true);">Click to Edit</a></h3>
+                           <div class="row-fluid">
+                              <div class="span12 ">
+                                 
+                              <style>div.editable {margin: 0px 0px 0px 0px;padding: 5px 50px 5px 5px;} div.editable p {margin: 0px 0px 0px 0px;}</style>
+                              <div id="body-acs" class="span12 editable" style="margin-left:0px;">
+                                 <?=(array_key_exists('attendanceCertStatement', $seminar)) ? $seminar['attendanceCertStatement'] : ''?>
+                              </div>
+                              <input id="input-body-acs" type="hidden" name="doc[attendanceCertStatement]" value="">
+                                 
+                              </div>
+                              <!--/span-->
+                           </div>
                            
                            
                            <div class="form-actions">

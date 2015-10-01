@@ -2,7 +2,8 @@
 (function( Seminar, $, undefined ) {
 	Seminar.add = function(){
 		tinymce.activeEditor.save();
-		$('#input-body').val(tinymce.activeEditor.getContent());
+		$('#input-body').val($('#body').html());
+		$('#input-body-acs').val($('#body-acs').html());
 		io.saw.FormPost.activate({postUrl:'/seminar/add'
 		   ,serializeSelector:':input'
 		   ,postOnComplete:function(responseObj,responseStatus){}
@@ -15,7 +16,9 @@
 	};
 	Seminar.edit = function (){
 		tinymce.activeEditor.save();
-		$('#input-body').val(tinymce.activeEditor.getContent());
+		$('#input-body').val($('#body').html());
+		$('#input-body-acs').val($('#body-acs').html());
+		
 
 		io.saw.FormPost.activate({postUrl:'/seminar/edit'
 		   ,serializeSelector:':input'

@@ -160,7 +160,7 @@
                <div class="responsive span6" data-tablet="span6" data-desktop="span6">
                   <div class="dashboard-stat yellow">
                      <div class="visual">
-                        <i class="icon-hideme"><?=$this->vars['renewals']['unpaidbycheck'];?></i>
+                        <i class="icon-hideme"><?=(is_array($this->vars['renewals']['unpaidbycheck'])) ? count($this->vars['renewals']['unpaidbycheck']) : 0;?></i>
                      </div>
                      <div class="details">
                         <div class="number"><font><font></font>Unpaid (check)</font></div>

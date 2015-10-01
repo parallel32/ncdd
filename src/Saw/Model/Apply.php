@@ -22,6 +22,8 @@ class Apply extends Model {
 	public $lastName;
 	public $phone;
 	public $fax;
+	public $cellphone;
+	public $textAlertsOpt;
 	public $barNumber;
 	public $email;
 	public $website;
@@ -100,8 +102,13 @@ class Apply extends Model {
 		$this->firstName = $doc['firstName'];
 		$this->middleName = $doc['middleName'];
 		$this->lastName = $doc['lastName'];
+		$doc['phone'] = str_replace('(', '', str_replace(')', '', str_replace('-', '', str_replace(' ', '', $doc['phone']))));
 		$this->phone = (is_numeric($doc['phone'])) ? $app['format_phone_number']($doc['phone']): $doc['phone'];
+		$doc['fax'] = str_replace('(', '', str_replace(')', '', str_replace('-', '', str_replace(' ', '', $doc['fax']))));
 		$this->fax = (is_numeric($doc['fax'])) ? $app['format_phone_number']($doc['fax']): $doc['fax'];
+		$doc['cellphone'] = str_replace('(', '', str_replace(')', '', str_replace('-', '', str_replace(' ', '', $doc['cellphone']))));
+		$this->cellphone = (is_numeric($doc['cellphone'])) ? $app['format_phone_number']($doc['cellphone']): $doc['cellphone'];
+		$this->textAlertsOpt = (string)$doc['textAlertsOpt'];
 		$this->barNumber = (string)$doc['barNumber'];
 		$this->email = $doc['email'];
 		$this->website = $doc['website'];
@@ -144,6 +151,8 @@ class Apply extends Model {
 		$this->lastName = $this->lastName ?: '';
 		$this->phone = $this->phone ?: '';
 		$this->fax = $this->fax ?: '';
+		$this->cellphone = $this->cellphone ?: '';
+		$this->textAlertsOpt = $this->textAlertsOpt ?: '';
 		$this->barNumber = $this->barNumber ?: '';
 		$this->email = $this->email ?: '';
 		$this->website = $this->website ?: '';

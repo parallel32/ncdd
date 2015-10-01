@@ -18,7 +18,16 @@
                      <button class="close" data-dismiss="alert"></button>
                      You have some form errors. Please check below.
                   </div>                  
-                  
+                  <div class="row-fluid">
+                     <div class="span12 ">
+                        <div class="control-group">
+                           <div class="controls">
+                              <a class="btn" href="/application/<?=$this->vars['application']['_id']?>/print"><i class="icon-print"></i> Print</a>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
                   <h3 class="form-section">Private URL for sharing this application.</h3>
                   <div class="row-fluid">
                      <div class="span12 ">
@@ -30,7 +39,7 @@
                      </div>
                      <!--/span-->
                   </div>
-
+                  
                   <h3 class="form-section">1.</h3>
                   <div class="row-fluid">
                      <div class="span4 ">
@@ -81,6 +90,31 @@
                      </div>
                      <!--/span-->
                   </div>
+                  <div class="row-fluid">
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">Cell Phone</label>
+                           <div class="controls">
+                              <input disabled type="text" name="doc[cellphone]" value="<?=(array_key_exists('cellphone', $this->vars['application'])) ? $this->vars['application']['cellphone'] : ''?>" class="m-wrap span12 cellphone">
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">Would you like to receive text alerts?</label>
+                           <div class="controls">
+                              <input disabled type="text" name="doc[textAlertsOpt]" value="<?=(array_key_exists('textAlertsOpt', $this->vars['application'])) ? $this->vars['application']['textAlertsOpt'] : ''?>" class="m-wrap span12 textAlertsOpt">
+                              
+                              <span class="help-block">Highly recommended.</span>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                     
+                  </div>
+                  
+
                   <div class="row-fluid">
                      <div class="span12 ">
                         <div class="control-group">
@@ -622,7 +656,9 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                   <div class="row-fluid">
                      <div class="span6 ">
                         <div class="control-group">
-                           <!--<label class="control-label">Enter the promo code NCDD2015 to obtain the $50 discount and free 2013 digital copy of the NHTSA Sobriety Testing Participant Manual with agreement for automated dues renewal. Does not apply to public defender dues. Some restrictions to membership apply. See ncdd.com for full membership eligibility requirements. Offer expires March 15, 2015. </label>-->
+                           <label class="control-label">Enter   the   promo code  EAGLE2016,  pay   your  2016  dues  in full, and   agree to automatic   dues  
+renewal  (charged to your  credit   card  annually beginning   with  your  2017  dues) in order to obtain   
+the   free  2015  dues  remainder   and      NCDD  Membership  Desktop  Statue.  Offer expires November 15, 2015. </label>
                            <div class="controls">
                               <input disabled type="text" name="doc[promocode]" class="m-wrap span12 promocode" value="<?=(array_key_exists('promocode', $this->vars['application'])) ? $this->vars['application']['promocode'] : ''?>">
                            </div>

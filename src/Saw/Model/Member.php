@@ -31,6 +31,8 @@ class Member extends User {
 	public $facebookUrl;
 	public $primaryPhone;
 	public $primaryFax;
+	public $cellphone;
+	public $textAlertsOpt;
 	public $languages;//array of values
 	public $practiceStates;
 	public $specializeIn; // open text field
@@ -144,8 +146,15 @@ class Member extends User {
 		$this->googlePlusUrl = $doc['googlePlusUrl'];
 		$this->twitterUrl = $doc['twitterUrl'];
 		$this->facebookUrl = $doc['facebookUrl'];
-		$this->primaryPhone = $doc['primaryPhone'];
-		$this->primaryFax = $doc['primaryFax'];
+
+		$doc['primaryPhone'] = str_replace('(', '', str_replace(')', '', str_replace('-', '', str_replace(' ', '', $doc['primaryPhone']))));
+		$this->primaryPhone = (is_numeric($doc['primaryPhone'])) ? $app['format_phone_number']($doc['primaryPhone']): $doc['primaryPhone'];
+		$doc['primaryFax'] = str_replace('(', '', str_replace(')', '', str_replace('-', '', str_replace(' ', '', $doc['primaryFax']))));
+		$this->primaryFax = (is_numeric($doc['primaryFax'])) ? $app['format_phone_number']($doc['primaryFax']): $doc['primaryFax'];
+		$doc['cellphone'] = str_replace('(', '', str_replace(')', '', str_replace('-', '', str_replace(' ', '', $doc['cellphone']))));
+		$this->cellphone = (is_numeric($doc['cellphone'])) ? $app['format_phone_number']($doc['cellphone']): $doc['cellphone'];
+		
+		$this->textAlertsOpt = $doc['textAlertsOpt'];
 		$this->languages = $doc['languages'];
 		$this->practiceStates = $doc['practiceStates'];
 		$this->specializeIn = $doc['specializeIn'];
@@ -239,6 +248,8 @@ class Member extends User {
 		$this->facebookUrl = $this->facebookUrl ?: '';
 		$this->primaryPhone = $this->primaryPhone ?: '';
 		$this->primaryFax = $this->primaryFax ?: '';
+		$this->cellphone = $this->cellphone ?: '';
+		$this->textAlertsOpt = $this->textAlertsOpt ?: '';
 		$this->languages = $this->languages ?: array();
 		$this->practiceStates = $this->practiceStates ?: array();
 		$this->specializeIn = $this->specializeIn ?: '';

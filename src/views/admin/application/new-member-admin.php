@@ -70,6 +70,32 @@
                      <!--/span-->
                   </div>
                   <div class="row-fluid">
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">Cell Phone</label>
+                           <div class="controls">
+                              <input type="text" name="doc[cellphone]" class="m-wrap span12 cellphone">
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">Would you like to receive text alerts?</label>
+                           <div class="controls">
+                              <select class="small m-wrap textAlertsOpt" name="doc[textAlertsOpt]">
+                                 <option value="yes">Yes</option>
+                                 <option value="no">No</option>
+                              </select>
+                              <span class="help-block">Highly recommended.</span>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                     
+                  </div>
+                  
+                  <div class="row-fluid">
                      <div class="span12 ">
                         <div class="control-group">
                            <label class="control-label">Bar Number / State</label>
@@ -731,7 +757,9 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                   <div class="row-fluid">
                      <div class="span6 ">
                         <div class="control-group">
-                           <!--<label class="control-label">Enter the promo code NCDD2015 to obtain the $50 discount and free 2013 digital copy of the NHTSA Sobriety Testing Participant Manual with agreement for automated dues renewal. Does not apply to public defender dues. Some restrictions to membership apply. See ncdd.com for full membership eligibility requirements. Offer expires March 15, 2015. </label>-->
+                           <label class="control-label">Enter   the   promo code  EAGLE2016,  pay   your  2016  dues  in full, and   agree to automatic   dues  
+renewal  (charged to your  credit   card  annually beginning   with  your  2017  dues) in order to obtain   
+the   free  2015  dues  remainder   and      NCDD  Membership  Desktop  Statue.  Offer expires November 15, 2015. </label>
                            <div class="controls">
                               <input type="text" name="doc[promocode]" class="m-wrap span12 promocode">
                               <input type="hidden" id="promocodetype">

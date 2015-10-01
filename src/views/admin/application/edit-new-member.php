@@ -70,6 +70,34 @@
                      </div>
                      <!--/span-->
                   </div>
+                  
+                  <div class="row-fluid">
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">Cell Phone</label>
+                           <div class="controls">
+                              <input type="text" name="doc[cellphone]" value="<?=(array_key_exists('cellphone', $this->vars['application'])) ? $this->vars['application']['cellphone'] : ''?>" class="m-wrap span12 cellphone">
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                     <div class="span6 ">
+                        <div class="control-group">
+                           <label class="control-label">Would you like to receive text alerts?</label>
+                           <div class="controls">
+                              <select class="small m-wrap textAlertsOpt" name="doc[textAlertsOpt]">
+                                 <option<?=(array_key_exists('textAlertsOpt', $this->vars['application']) && $this->vars['application']['textAlertsOpt'] == "no") ? ' selected' :'';?> value="no">No</option>
+                                 <option<?=(array_key_exists('textAlertsOpt', $this->vars['application']) && $this->vars['application']['textAlertsOpt'] == "yes") ? ' selected' :'';?> value="yes">Yes</option>
+                              </select>
+                              <span class="help-block">Highly recommended.</span>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                     
+                  </div>
+                  
+
                   <div class="row-fluid">
                      <div class="span12 ">
                         <div class="control-group">

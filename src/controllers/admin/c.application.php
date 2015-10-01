@@ -221,10 +221,10 @@ $app->get('/application/downloads/{file}', function ($file, Request $request) us
 $app->post('/application/promocode', function (Request $request) use ($app) {
 	// retrieve document from request
     $doc = $request->get('doc');
-    if(!empty($doc['promocode']) && (strtoupper($doc['promocode']) == 'NCDD2015-' || strtoupper($doc['promocode']) == 'NCDD2014-' || strtoupper($doc['promocode']) == 'TRIAL' || strtoupper($doc['promocode']) == 'DIVTRIAL' || strtoupper($doc['promocode']) == 'RFTRIAL' || strtoupper($doc['promocode']) == 'PDTRIAL')){
+    if(!empty($doc['promocode']) && (strtoupper($doc['promocode']) == 'EAGLE2016' || strtoupper($doc['promocode']) == 'NCDD2015-' || strtoupper($doc['promocode']) == 'NCDD2014-' || strtoupper($doc['promocode']) == 'TRIAL' || strtoupper($doc['promocode']) == 'DIVTRIAL' || strtoupper($doc['promocode']) == 'RFTRIAL' || strtoupper($doc['promocode']) == 'PDTRIAL')){
     	$valid = 'yes';
     	$message = 'Valid Promo Code.';
-    	$type = (strtoupper($doc['promocode']) == 'NCDD2015-' || strtoupper($doc['promocode']) == 'NCDD2014-') ? 'discount'.'-'.strtoupper($doc['promocode']): 'trial';
+    	$type = (strtoupper($doc['promocode']) == 'EAGLE2016' || strtoupper($doc['promocode']) == 'NCDD2015-' || strtoupper($doc['promocode']) == 'NCDD2014-') ? 'discount'.'-'.strtoupper($doc['promocode']): 'trial';
     }else{
     	$type = '';
     	$valid = 'no';
@@ -330,14 +330,14 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 	$yilp = $application->yearsInLawPractice;
 	$now = date('Y',strtotime('today'));
 	if($now - $yilp >= 6){
-		$amt = ($doc['promocode'] == 'NCDD2015-') ? $dues[6]['amount']-50: $dues[6]['prorated']['a'];
+		$amt = ($doc['promocode'] == 'EAGLE2016') ? $dues[6]['amount']: $dues[6]['prorated']['a'];
 	}elseif ($now - $yilp < 6){
-		$amt = ($doc['promocode'] == 'NCDD2015-') ? $dues[1]['amount']-50: $dues[1]['prorated']['a'];
+		$amt = ($doc['promocode'] == 'EAGLE2016') ? $dues[1]['amount']: $dues[1]['prorated']['a'];
 	}
 	if($application->publicDefender == 'yes'){
 		$amt = $dues['publicDefender']['prorated']['a'];
-		/* NCDD2015 promo doesn't apply to public defenders
-		$amt = (empty($doc['promocode']) || $doc['promocode'] == 'NCDD2015') ? $dues['publicDefender']['amount']: $dues['publicDefender']['prorated']['a'];
+		/* EAGLE2016 promo doesn't apply to public defenders
+		$amt = (empty($doc['promocode']) || $doc['promocode'] == 'EAGLE2016') ? $dues['publicDefender']['amount']: $dues['publicDefender']['prorated']['a'];
 		//*/
 	}
 
@@ -855,6 +855,44 @@ $app->get('/application/update-sustaining-member/{memberId}', function ($memberI
 ///////////////////////
 // GENERAL FUNCTIONS //
 ///////////////////////
+$app->get('/application/{id}/print', function ($id, Request $request) use ($app) {
+	
+	$application = new Model\Apply($doc=array('_id'=>$id), $app);
+	$application = $application->findById();
+
+	$location = new Model\Location($doc=array('member'=>array('_id'=>$application['memberId'])), $app);
+	$location = $location->getByMemberId();
+	$member = $location['member'];
+	
+	$crumbs = array(array('name'=>'Applications','href'=>'#')
+					,array('name'=>$application['firstName'].' '.$application['lastName'],'href'=>'#')
+					,array('name'=>$application['type'],'href'=>'#')
+					);
+	$view_vars = array(
+						 'active'=>'Application'
+						,'page-plugin'=>'datatables'
+						,'headline'=>'Private Application View'
+						,'description'=>""
+						,'crumbs'=>$crumbs
+						,'application'=>$application
+						,'location'=>$location
+						,'member'=>$member
+						);
+	switch ($application['class']) {
+		case 'NewMemberApplication': // old deprecated
+		case 'ApplyNewMember':
+			return $app['view']->render('application/print-new-member', 'blank', $view_vars);		
+			break;
+		default:
+			$msg = new \stdClass();
+			$msg->message = 'This Application cannot be found.';
+			$msg->resolveMessage = 'Please go back and try again or contact the Administrator if this problem persists.';
+			return $app['view']->render('errors/404','error', array('error'=>$msg));
+			break;
+	}
+	
+})->value('id','');
+
 $app->get('/application/{id}/view-public', function ($id, Request $request) use ($app) {
 	
 	$application = new Model\Apply($doc=array('_id'=>$id), $app);
@@ -1425,6 +1463,21 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 	$ncddtrialpromocode = $application->fetchByStatus('TRIAL',$offset, $limit,$filter=array('promocode'=>array('$in'=>array('TRIAL','DIVTRIAL','PDTRIAL','RFTRIAL'))));
 	$ncdd2015promocode = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('promocode'=>'NCDD2015'));
 	$ncdd2014promocode = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('promocode'=>'NCDD2014'));
+	$eagle2016promocode = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('promocode'=>'EAGLE2016'));
+	if(!empty($eagle2016promocode)):
+	for ($i=0; $i < count($eagle2016promocode); $i++) { 
+		switch ($eagle2016promocode[$i]['class']) {
+	    	case 'ApplyNewMember':
+	    		$reference = new Model\ReferenceMember(array('applicationId'=>$eagle2016promocode[$i]['_id']), $app);
+	    		break;
+	    	case 'ApplyNewSustainingMember':
+	    		$reference = new Model\ReferenceSustainingMember(array('applicationId'=>$eagle2016promocode[$i]['_id']), $app);
+	    		break;
+	    	
+	    }
+	    $eagle2016promocode[$i]['new_references'] = array('total'=>$reference->getTotalSubmissions(),'max'=>$reference->getMaxSubmissions());
+	}
+	endif;
 	if(!empty($ncdd2015promocode)):
 	for ($i=0; $i < count($ncdd2015promocode); $i++) { 
 		switch ($ncdd2015promocode[$i]['class']) {
@@ -1456,8 +1509,8 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 	$date = new Model\Date($app,'9/16/2014 5:00 PM');
 	$end2014 =  new Model\Date($app,'12/31/2014 11:59 PM');
 	$end2015 =  new Model\Date($app,'12/31/2015 11:59 PM');
-	$newlypaid2014 = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION')),'promocode'=>array('$nin'=>array('NCDD2015','NCDD2014')),'paidDate.date'=>array('$gte'=> new \MongoDate(strtotime($date->fullDateTime)), '$lte'=> new \MongoDate(strtotime($end2014->fullDateTime)))));
-	$newlypaid2015 = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION')),'promocode'=>array('$nin'=>array('NCDD2015','NCDD2014')),'paidDate.date'=>array('$gte'=> new \MongoDate(strtotime($end2014->fullDateTime)), '$lte'=> new \MongoDate(strtotime($end2015->fullDateTime)))));
+	$newlypaid2014 = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION')),'promocode'=>array('$nin'=>array('EAGLE2016','NCDD2015','NCDD2014')),'paidDate.date'=>array('$gte'=> new \MongoDate(strtotime($date->fullDateTime)), '$lte'=> new \MongoDate(strtotime($end2014->fullDateTime)))));
+	$newlypaid2015 = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION')),'promocode'=>array('$nin'=>array('EAGLE2016','NCDD2015','NCDD2014')),'paidDate.date'=>array('$gte'=> new \MongoDate(strtotime($end2014->fullDateTime)), '$lte'=> new \MongoDate(strtotime($end2015->fullDateTime)))));
 	if(!empty($newlypaid2014)):
 	for ($i=0; $i < count($newlypaid2014); $i++) { 
 		switch ($newlypaid2014[$i]['class']) {
@@ -1512,6 +1565,7 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 						,'approved'=>$approved
 						,'trial'=>$trial
 						,'paid'=>$paid
+						,'eagle2016promocode'=>$eagle2016promocode
 						,'ncdd2015promocode'=>$ncdd2015promocode
 						,'ncdd2014promocode'=>$ncdd2014promocode
 						,'ncddtrialpromocode'=>$ncddtrialpromocode

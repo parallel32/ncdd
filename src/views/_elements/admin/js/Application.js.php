@@ -49,6 +49,9 @@
 			if(promocodetype[1] == 'NCDD2015-'){
 				var promo_message = ' - $50 discount when you allow us to keep your card on-file for membership renewals.  Please Continue to fill out the payment information.';
 			}
+			if(promocodetype[1] == 'EAGLE2016'){
+				var promo_message = ' - 2015 Membership FREE when you pay your 2016 dues in full and allow us to keep your card on-file for membership renewals.  Please Continue to fill out the payment information.';
+			}
 
 			var the_element = $('#saw-form .control-group :input.yearsInLawPractice').parents('.control-group');
 	    	the_element.find('.help-block.error').remove();
@@ -57,16 +60,16 @@
 	        	var yilp = new Date($('#saw-form .yearsInLawPractice').val(), 1,1).getFullYear();
 	        	var now = new Date().getFullYear();
 	        	if(now - yilp >= 6){
-	        		if(promocodetype[1] == 'NCDD2015-'){
-	        			var amount = window.gsix_amount-50; 
+	        		if(promocodetype[1] == 'EAGLE2016'){
+	        			var amount = window.gsix_amount; 
 		        	}else{
 		        		var amount = window.gsix_amount; 
 		        	}
 	        		$('.payment.amount').val(amount);
 	        		$('.payment.amount').html(amount+' - '+window.gsix_message+promo_message);
 	        	}else if (now - yilp < 6){
-	        		if(promocodetype[1] == 'NCDD2015-'){
-	        			var amount = window.lsix_amount-50; 
+	        		if(promocodetype[1] == 'EAGLE2016'){
+	        			var amount = window.lsix_amount; 
 		        	}else{
 		        		var amount = window.lsix_amount; 
 		        	}

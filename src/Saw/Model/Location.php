@@ -61,9 +61,14 @@ class Location extends Model {
 		$this->state = $doc['state'];
         $this->zip = (string)$doc['zip'];
         $this->country = $doc['country'];
-		$this->phone = $doc['phone'];
-		$this->fax = $doc['fax'];
-		$this->tollFree = $doc['tollFree'];
+		
+		$doc['phone'] = str_replace('(', '', str_replace(')', '', str_replace('-', '', str_replace(' ', '', $doc['phone']))));
+		$this->phone = (is_numeric($doc['phone'])) ? $app['format_phone_number']($doc['phone']): $doc['phone'];
+		$doc['fax'] = str_replace('(', '', str_replace(')', '', str_replace('-', '', str_replace(' ', '', $doc['fax']))));
+		$this->fax = (is_numeric($doc['fax'])) ? $app['format_phone_number']($doc['fax']): $doc['fax'];
+		$doc['tollFree'] = str_replace('(', '', str_replace(')', '', str_replace('-', '', str_replace(' ', '', $doc['tollFree']))));
+		$this->tollFree = (is_numeric($doc['tollFree'])) ? $app['format_phone_number']($doc['tollFree']): $doc['tollFree'];
+		
 		$this->hours = $doc['hours'];
 		$this->ownerId = (!empty($doc['ownerId'])) ? (is_object($doc['ownerId'])) ? $doc['ownerId'] : new \MongoId($doc['ownerId']) : $doc['ownerId'];
 		$this->member = (is_object($member)) ? $member->__toArray(false) : $doc['member'];

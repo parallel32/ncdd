@@ -245,6 +245,8 @@ class ApplyNewMember extends Apply {
 		$mem_doc['email'] = $this->email;
 		$mem_doc['primaryPhone'] = $this->phone;
 		$mem_doc['primaryFax'] = $this->fax;
+		$mem_doc['cellphone'] = $this->cellphone;
+		$mem_doc['textAlertsOpt'] = $this->textAlertsOpt;
 		$mem_doc['websites'] = array(array('websiteDesc'=>'','website'=>Member::parseWebsite($this->website)));
 		if($trial){
 			$mem_doc['listed'] = 1;

@@ -14,7 +14,7 @@
                                         <? if(is_array($user) && array_key_exists('accessLevel', $user)){ ?>
                                         <a href="https://<?=SAW_ADMIN_WEBSITE ?>" class="dropdown-toggle" data-toggle="dropdown" id="memberDropDown">Welcome, <?=$user['displayName']?></a>
                                         <? } else { ?>
-                                        <a href="https://<?=SAW_ADMIN_WEBSITE ?>/login" >Member <b>Sign in</b></a>
+                                        <a href="https://<?=SAW_ADMIN_WEBSITE ?>/login" ><b>Sign in</b></a>
                                         <? } ?>
                                         <ul class="dropdown-menu" role="menu" aria-labelledby="memberDropDown">
                                             <li role="menuitem">
@@ -39,6 +39,10 @@
                                     <li><a href="/dui-laws-in-your-state">DUI Laws in your State</a></li>
                                     <li class="sep"></li>
                                     <li><a href="/dui-defense-attorney-quiz">Take the DUI Attorney Quiz</a></li>
+                                    <li class="sep"></li>
+                            <? if(false): ?>
+                                    <li><a href="https://<?=SAW_ADMIN_WEBSITE ?>/donate">Donate</a></li>
+                            <? endif; ?>
 
                                 </ul>
                                  <ul class="pull-right nav navbar-form">
