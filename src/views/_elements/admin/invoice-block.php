@@ -44,6 +44,25 @@
                         </tr>
                      </thead>
                      <tbody>
+                        <?
+                        if($application['type'] == 'NEW MEMBER APPLICATION'
+                            //&& strtotime($application['approvedDate']['iso']) < strtotime('December 31, 2014')
+                            //&& array_key_exists('payment', $member) && array_key_exists('renewalREUSE', $member['payment']) && $member['payment']['renewalREUSE'] == 'yes'
+                            && is_array($member) && array_key_exists('payment', $member) 
+                            && is_array($member['payment']) && array_key_exists('number', $member['payment']) 
+                            //&& !empty($member['payment']['number'])
+                            && $application['membershipDues'] > 50
+                            && ($application['promocode'] == 'EAGLE2016')
+                        ):
+                        ?>
+                        <tr>
+                           <td>Application</td>
+                           <td class="hidden-480">NEW MEMBER APPLICATION for 2016</td>
+                           <td class="hidden-480">1</td>
+                           <td class="hidden-480">$<?=$application['membershipDues']?></td>
+                           <td>$<?=$application['membershipDues']?></td>
+                        </tr>
+                     <? else : /*for the standard line item enter this else statement*/?>
                         <tr>
                            <td>Application</td>
                            <td class="hidden-480"><?=$application['type']?></td>
@@ -51,6 +70,7 @@
                            <td class="hidden-480">$<?=$application['membershipDues']?></td>
                            <td>$<?=$application['membershipDues']?></td>
                         </tr>
+                     <? endif; ?>
 
                         <?
                         $discount = 0;
@@ -118,7 +138,20 @@
                         <? endif; ?>
 
 
-
+               <?
+               if($application['type'] == 'NEW MEMBER APPLICATION'
+                   //&& strtotime($application['approvedDate']['iso']) < strtotime('December 31, 2014')
+                   //&& array_key_exists('payment', $member) && array_key_exists('renewalREUSE', $member['payment']) && $member['payment']['renewalREUSE'] == 'yes'
+                   && is_array($member) && array_key_exists('payment', $member) 
+                   && is_array($member['payment']) && array_key_exists('number', $member['payment']) 
+                   //&& !empty($member['payment']['number'])
+                   && $application['membershipDues'] > 50
+                   && ($application['promocode'] == 'EAGLE2016')
+               ):
+                  // do nothing .. meaning don't do the pro-rated discount
+                  $amount = $application['membershipDues'];
+               else:
+               ?>
                         <? if($pro_rated_membership_dues['q'] > 1): 
                            $amount = $pro_rated_membership_dues['a'];
                         ?>
@@ -132,6 +165,7 @@
                         <? else: 
                            $amount = $application['membershipDues'];
                          endif; ?>
+               <? endif; ?>
                          <?
                         $discount3 = 0;
                         // EAGLE2016 NEW MEMBER PROMO
@@ -151,8 +185,8 @@
                            <td>Discount</td>
                            <td class="hidden-480">EAGLE2016 Promo Discount - 2015 membership free</td>
                            <td class="hidden-480">1</td>
-                           <td class="hidden-480">-$<?=$pro_rated_membership_dues['a']?></td>
-                           <td>-$<?=$pro_rated_membership_dues['a']?></td>
+                           <td class="hidden-480">$0</td>
+                           <td>$0</td>
                         </tr>
                         <? 
                         endif; 
