@@ -357,8 +357,11 @@ jQuery(document).ready(function() {
 
    var smonth = '<?=(array_key_exists('expMonth',$this->vars['payment'])) ? $this->vars['payment']['expMonth']: '';?>';
    var syear = '<?=(array_key_exists('expYear',$this->vars['payment'])) ? $this->vars['payment']['expYear']: '';?>';
+   if(syear.length == 2){
+      syear = '20'+syear;
+   }
    $('#card-expMonth option[value='+smonth+']').attr('selected', 'selected');
-   $('#card-expYear option[value=20'+syear+']').attr('selected', true);
+   $('#card-expYear option[value='+syear+']').attr('selected', true);
 
    cardSave = function (){
       
