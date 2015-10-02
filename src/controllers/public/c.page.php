@@ -787,6 +787,19 @@ $app->get('/quiz', function (Request $request) use ($app) {
 	$view_vars = array_merge($page_vars,$view_vars);
 	return $app['view']->render('page/dui-defense-attorney-quiz', 'content', $view_vars);
 });
+$app->get('/eagle2016-promo', function (Request $request) use ($app) {
+	$slug = 'eagle2016-promo';
+	$page = new Model\Page($doc=array('slug'=>$slug), $app);
+	$page = $page->findById('slug');
+	$page['body'] = $app['prepare_content']($page['body']);
+
+	$view_vars = array('page'=>$page);
+	$view_vars['slogan_block'] = 'eagle2016-promo';
+
+	$page_vars = $app['get_pages']($slug);
+	$view_vars = array_merge($page_vars,$view_vars);
+	return $app['view']->render('page/eagle2016-promo', 'content', $view_vars);
+});
 $app->get('/we-help-win-more-cases', function (Request $request) use ($app) {
 	return $app->redirect('/dui-defense-attorney-quiz');
 });
