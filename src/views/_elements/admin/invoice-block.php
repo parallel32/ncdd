@@ -179,7 +179,7 @@
                             && $application['membershipDues'] > 50
                             && ($application['promocode'] == 'EAGLE2016')
                         ): 
-                           $discount3 = $pro_rated_membership_dues['a'];
+                           $discount3 = 0;//$pro_rated_membership_dues['a'];
                         ?>
                         <tr>
                            <td>Discount</td>

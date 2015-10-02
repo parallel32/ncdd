@@ -455,10 +455,11 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 					break;
 			}
 		// end for generating the invoice block
+		$invoice_block = $app['view']->element('invoice-block',array('application'=>$papplication,'member'=>$member,'location'=>$location,'pro_rated_membership_dues'=>$pro_rate));
 		$ppayment = new Model\Payment(array(
 			'_id'=>$application->paymentId
 			,'memberId'=>$papplication['memberId']
-			,'invoiceBlock'=>$app['view']->element('invoice-block',array('application'=>$papplication,'member'=>$member,'location'=>$location,'pro_rated_membership_dues'=>$pro_rate))
+			,'invoiceBlock'=>$invoice_block
 		),$app);
 		$ppayment->saveSafe();
 		
