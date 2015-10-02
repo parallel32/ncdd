@@ -185,7 +185,7 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 				// retry email Q
 				error_log('emails sent from the email queue: '.file_get_contents('http://'.SAW_ADMIN_WEBSITE.'/dashboard/emailq'));	
 				// fix active trial members - be sure they're de-listed and also send a notice when they're 2 days away from expiring
-				error_log('trial members expire notification and de-list fix: '.file_get_contents('http://'.SAW_ADMIN_WEBSITE.'/dashboard/trialmembers'));	
+				//error_log('trial members expire notification and de-list fix: '.file_get_contents('http://'.SAW_ADMIN_WEBSITE.'/dashboard/trialmembers'));	
 
 			} catch (Exception $e) {
 				// no worries .. will just try again on the next chance.
