@@ -568,9 +568,11 @@ jQuery(document).ready(function() {
             "dataProvider": [
             <? 
                $json = '';
-               foreach ($this->vars['graph']['result'] as $member) {
-                  $month = (strlen($member['_id']['month']) > 1) ? $member['_id']['month'] : '0'.$member['_id']['month'];
-                  $json.= '{"date":"'.$member['_id']['year'].'-'.$month.'-01","signups":'.$member['count'].'},';
+               if(array_key_exists('result', $this->vars['graph']) and is_array($this->vars['graph']['result'])){
+                  foreach ($this->vars['graph']['result'] as $member) {
+                     $month = (strlen($member['_id']['month']) > 1) ? $member['_id']['month'] : '0'.$member['_id']['month'];
+                     $json.= '{"date":"'.$member['_id']['year'].'-'.$month.'-01","signups":'.$member['count'].'},';
+                  }
                }
                echo $json;
             ?>

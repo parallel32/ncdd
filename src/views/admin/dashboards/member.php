@@ -253,7 +253,7 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                   &nbsp;
                </div>
             </div>
-
+<? if(false): ?>
             <div class="row-fluid">
                <div class="span12">
                   <div class="span12">
@@ -264,7 +264,7 @@ Las Vegas, NV</b></h3>
                   </div>
                </div>
             </div>
-
+<? endif; ?>
             <div class="row-fluid">
                <div class="span12">
                   <div class="span12">
