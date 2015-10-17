@@ -78,8 +78,8 @@
 	        	}
 
 	        	if($('#saw-form .publicDefender').val() == 'yes'){
-	        		var promo_message = ''; // NCDD2015 promo is not in effect for public defenders so promo message must be blank.
-		    		var amount = window.pd_amount; 
+	        		var promo_message = ' - This promo does not apply to Public Defenders.  Please pay the prorated amount for your membership fee.'; // NCDD2015 promo is not in effect for public defenders so promo message must be blank.
+		    		var amount = window.pd_prorated; 
 		    		$('.payment.amount').val(amount);
 		    		$('.payment.amount').html(amount+' - '+window.pd_message+promo_message);
 		    	}
