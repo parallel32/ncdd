@@ -221,7 +221,7 @@ $app->get('/application/downloads/{file}', function ($file, Request $request) us
 $app->post('/application/promocode', function (Request $request) use ($app) {
 	// retrieve document from request
     $doc = $request->get('doc');
-    if(!empty($doc['promocode']) && (strtoupper($doc['promocode']) == 'EAGLE2016' || strtoupper($doc['promocode']) == 'NCDD2015-' || strtoupper($doc['promocode']) == 'NCDD2014-' || strtoupper($doc['promocode']) == 'TRIAL' || strtoupper($doc['promocode']) == 'DIVTRIAL' || strtoupper($doc['promocode']) == 'RFTRIAL' || strtoupper($doc['promocode']) == 'PDTRIAL')){
+    if(!empty($doc['promocode']) && (strtoupper($doc['promocode']) == 'EAGLE2016' || strtoupper($doc['promocode']) == 'NCDD2015-' || strtoupper($doc['promocode']) == 'NCDD2014-' || strtoupper($doc['promocode']) == 'TRIAL' || strtoupper($doc['promocode']) == 'DIVTRIAL' || strtoupper($doc['promocode']) == 'RFTRIAL' || strtoupper($doc['promocode']) == 'PDTRIAL' || strtoupper($doc['promocode']) == 'ALLENTRAPP')){
     	$valid = 'yes';
     	$message = 'Valid Promo Code.';
     	$type = (strtoupper($doc['promocode']) == 'EAGLE2016' || strtoupper($doc['promocode']) == 'NCDD2015-' || strtoupper($doc['promocode']) == 'NCDD2014-') ? 'discount'.'-'.strtoupper($doc['promocode']): 'trial';
@@ -307,7 +307,7 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
     $app['validateModel']($app,$application);
     if(!empty($doc['promocode']) && array_key_exists('termsAcknowledgement', $doc) && $doc['termsAcknowledgement'] != 'yes'){
 
-    	if($doc['promocode'] == 'TRIAL' || $doc['promocode'] == 'DIVTRIAL' || $doc['promocode'] == 'PDTRIAL' || $doc['promocode'] == 'RFTRIAL'){
+    	if($doc['promocode'] == 'TRIAL' || $doc['promocode'] == 'DIVTRIAL' || $doc['promocode'] == 'PDTRIAL' || $doc['promocode'] == 'RFTRIAL' || $doc['promocode'] == 'ALLENTRAPP'){
     		//skip validation because the acknlowlegdement doesn't need to be checked
     	}else{
 	    	$response_arr = array('message'=>"Please check the authorization checkbox above and agree in order to use the promo code.",
@@ -339,13 +339,21 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 		/* EAGLE2016 promo doesn't apply to public defenders
 		$amt = (empty($doc['promocode']) || $doc['promocode'] == 'EAGLE2016') ? $dues['publicDefender']['amount']: $dues['publicDefender']['prorated']['a'];
 		//*/
+		// also erase the promo code so they don't get gouped in the promo code list
+		$doc['promocode'] = '';
 	}
 
 
 
-	if($doc['promocode'] == 'TRIAL' || $doc['promocode'] == 'DIVTRIAL' || $doc['promocode'] == 'PDTRIAL' || $doc['promocode'] == 'RFTRIAL'){
-		$trial_doc['startDate'] = 'now';
-		$trial_doc['endDate'] = "+1 year";
+	if($doc['promocode'] == 'TRIAL' || $doc['promocode'] == 'DIVTRIAL' || $doc['promocode'] == 'PDTRIAL' || $doc['promocode'] == 'RFTRIAL' || $doc['promocode'] == 'ALLENTRAPP'){
+		if($doc['promocode'] == 'ALLENTRAPP'){
+			$trial_doc['startDate'] = 'now';
+			$trial_doc['endDate'] = "December 31st, 2016";
+		}else{
+			$trial_doc['startDate'] = 'now';
+			$trial_doc['endDate'] = "+1 year";	
+		}
+		
 		$trial_doc['referredBy'] = $doc['referredBy'];
 		
 		$trial = new Model\Trial($trial_doc,$app);
@@ -1461,7 +1469,8 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 	$trial = $application->fetchByStatus('TRIAL',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
 	$paid = $application->fetchByDatePaid(90, $offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
 
-	$ncddtrialpromocode = $application->fetchByStatus('TRIAL',$offset, $limit,$filter=array('promocode'=>array('$in'=>array('TRIAL','DIVTRIAL','PDTRIAL','RFTRIAL'))));
+	$ncddtrialpromocode = $application->fetchByStatus('TRIAL',$offset, $limit,$filter=array('promocode'=>array('$in'=>array('TRIAL','DIVTRIAL','PDTRIAL','RFTRIAL','ALLENTRAPP'))));
+	$allentrapptrialpromocode = $application->fetchByStatus('TRIAL',$offset, $limit,$filter=array('promocode'=>array('$in'=>array('ALLENTRAPP'))));
 	$ncdd2015promocode = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('promocode'=>'NCDD2015'));
 	$ncdd2014promocode = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('promocode'=>'NCDD2014'));
 	$eagle2016promocode = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('promocode'=>'EAGLE2016'));
@@ -1570,6 +1579,7 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 						,'ncdd2015promocode'=>$ncdd2015promocode
 						,'ncdd2014promocode'=>$ncdd2014promocode
 						,'ncddtrialpromocode'=>$ncddtrialpromocode
+						,'allentrapptrialpromocode'=>$allentrapptrialpromocode
 						,'newlypaid2014'=>$newlypaid2014
 						,'newlypaid2015'=>$newlypaid2015
 	);
