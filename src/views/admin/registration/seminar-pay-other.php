@@ -74,7 +74,6 @@ $seminar = $this->vars['seminar'];
                      </thead>
                      <tbody>
                         <? 
-                           
                            $is_deposit = false;
                            $is_balance_due = false;
                            $is_full_payment = false;
@@ -102,7 +101,7 @@ $seminar = $this->vars['seminar'];
                         </tr>
                         
                         <? $amount = $registration['registrationFee']; ?>
-                        <? if($is_deposit && array_key_exists('hardCopy',$registration) && !empty($registration['hardCopy'])): ?>
+                        <? if(array_key_exists('hardCopy',$registration) && !empty($registration['hardCopy'])): ?>
                         <? if($registration['hardCopy'] == 'YES'): 
                         ?>
                         <tr>

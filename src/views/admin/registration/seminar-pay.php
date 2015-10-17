@@ -80,11 +80,10 @@ $seminar = $this->vars['seminar'];
                      </thead>
                      <tbody>
                         <? 
-                           
                            $is_deposit = false;
                            $is_balance_due = false;
                            $is_full_payment = false;
-                           if(empty($registration['paymentId']) && (array_key_exists('depositPaymentId', $registration) && empty($registration['depositPaymentId']))) {
+                           if(empty($registration['paymentId']) && $registration['deposit'] > 0 && ((array_key_exists('depositPaymentId', $registration) && empty($registration['depositPaymentId'])) || !array_key_exists('depositPaymentId', $registration))) {
                               $registration['registrationFee'] = $registration['deposit'];
                               $label = 'Registration Deposit';
                               $is_deposit = true;
@@ -107,7 +106,8 @@ $seminar = $this->vars['seminar'];
                            <td>$<?=$registration['registrationFee']?></td>
                         </tr>
                         
-                        <? if($is_deposit && array_key_exists('hardCopy',$registration) && !empty($registration['hardCopy'])): ?>
+                        <? $amount = $registration['registrationFee']; ?>
+                        <? if(array_key_exists('hardCopy',$registration) && !empty($registration['hardCopy'])): ?>
                         <? if($registration['hardCopy'] == 'YES'): 
                         ?>
                         <tr>
@@ -118,6 +118,7 @@ $seminar = $this->vars['seminar'];
                            <td class="hidden-480">$<?=$registration['hardCopyFee']?></td>
                            <td>$<?=$registration['hardCopyFee']?></td>
                         </tr>
+                        <? $amount += $registration['hardCopyFee']; ?>
                         <? endif; ?>
                         <? endif; ?>
                      </tbody>
@@ -148,7 +149,7 @@ $seminar = $this->vars['seminar'];
                      $payment_vars['ownerClass'] = $registration['class'];
                      $payment_vars['description'] = 'INV-'.time();
                      $payment_vars['title'] = $label.' - '.$registration['type'].' - '.$this->vars['seminar']['headline'].' - '.$this->vars['seminar']['location'].' - '.$this->vars['seminar']['startDate']['monthDay'].' - '.$this->vars['seminar']['endDate']['monthDay'].', '.$this->vars['seminar']['startDate']['year'];
-                     $payment_vars['amount'] = $registration['registrationFee'];
+                     $payment_vars['amount'] = $amount;
                      if(array_key_exists('cardOnFile', $registration) && !empty($registration['cardOnFile'])){
                         $payment_vars['name'] = $registration['cardOnFile']['name'];
                      }else{
