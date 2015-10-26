@@ -15,7 +15,7 @@ $app['applicationEmails'] = $app->protect(function ($app,$applicationId,$context
 
 	$apply = new Model\Apply(array('_id'=>$applicationId), $app);
 	$apply_arr = $apply->findById();
-
+error_log('apply_arr:'.print_r($apply_arr,true));
 	if($context == 'new-member-welcome'){
 		switch ($apply_arr['class']) {
 			case 'NewMemberApplication': // old deprecated
@@ -334,7 +334,7 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 	}elseif ($now - $yilp < 6){
 		$amt = ($doc['promocode'] == 'EAGLE2016') ? $dues[1]['amount']: $dues[1]['prorated']['a'];
 	}
-	if($application->publicDefender == 'yes'){
+	if($application->publicDefender == 'yes' && $doc['promocode'] == 'EAGLE2016'){
 		$amt = $dues['publicDefender']['prorated']['a'];
 		/* EAGLE2016 promo doesn't apply to public defenders
 		$amt = (empty($doc['promocode']) || $doc['promocode'] == 'EAGLE2016') ? $dues['publicDefender']['amount']: $dues['publicDefender']['prorated']['a'];
@@ -342,8 +342,6 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 		// also erase the promo code so they don't get gouped in the promo code list
 		$doc['promocode'] = '';
 	}
-
-
 
 	if($doc['promocode'] == 'TRIAL' || $doc['promocode'] == 'DIVTRIAL' || $doc['promocode'] == 'PDTRIAL' || $doc['promocode'] == 'RFTRIAL' || $doc['promocode'] == 'ALLENTRAPP'){
 		if($doc['promocode'] == 'ALLENTRAPP'){
@@ -355,9 +353,11 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 		}
 		
 		$trial_doc['referredBy'] = $doc['referredBy'];
+error_log('trial_doc:'.print_r($trial_doc,true));
 		
 		$trial = new Model\Trial($trial_doc,$app);
 
+error_log('trial:'.print_r($trial,true));
 		
 		$applicationId = $application->insert();
 		$_POST['applicationId'] = $applicationId->__toString();
@@ -369,6 +369,7 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 		// approve as trial
 		$response = $app['applicationEmails']($app,$applicationId,$context='new-member-trial',$request);
 	}else{
+		error_log('attempt to approve');
 		// approve
 		// sends email/new-member-welcome which now combines:
 		// email/new-member-applicant-submission + 
