@@ -18,6 +18,132 @@ $utilities = $app['controllers_factory'];
 
 
 
+//////////////////////////////////////////////////////////////////////////////////
+// members 
+// some applications checked the allow card on file but didn't get the discount //
+//////////////////////////////////////////////////////////////////////////////////
+$utilities->get('/memberswithoutautorenew', function () use ($app) {
+    
+    $cnt = 0;
+    $final_arr = array();
+
+    $member = new Model\Member($doc=array(), $app);    
+    $members = $member->find(array('status'=>2,'currentMembership'=>Model\Member::$membership['GENERAL MEMBER']),$fields=array(),true,array(),0,10000);
+
+    foreach ($members as $member){
+        $res_arr = array();
+        if(array_key_exists('payment', $member)){
+            if(is_array($member['payment'])){
+                if(array_key_exists('number', $member['payment'])){
+                    if(!empty($member['payment']['number'])){
+                        //do nothing
+                    }else{
+
+
+                        $res_arr['name'] = $member['displayName'];
+                        $res_arr['email'] = $member['email'];
+                        $loc = new Model\Location(array(),$app);
+                        $loc_res = $loc->find(array('ownerId'=>$member['_id']));
+                        if(is_array($loc_res) && !empty($loc_res)){
+                            $res_arr['address'] = $loc_res[0]['raw'];
+                        } else{
+                            $res_arr['address'] = array();
+                        }
+                        $final_arr[] = $res_arr;
+                        $cnt++;    
+                    }
+                    
+                }else{
+
+                    
+
+                    $res_arr['name'] = $member['displayName'];
+                    $res_arr['email'] = $member['email'];
+                    $loc = new Model\Location(array(),$app);
+                    $loc_res = $loc->find(array('ownerId'=>$member['_id']));
+                    if(is_array($loc_res) && !empty($loc_res)){
+                        $res_arr['address'] = $loc_res[0]['raw'];
+                    } else{
+                        $res_arr['address'] = array();
+                    }
+                    $final_arr[] = $res_arr;
+                    $cnt++;    
+                }
+            }else{
+                
+
+                    $res_arr['name'] = $member['displayName'];
+                    $res_arr['email'] = $member['email'];
+                    $loc = new Model\Location(array(),$app);
+                    $loc_res = $loc->find(array('ownerId'=>$member['_id']));
+                    if(is_array($loc_res) && !empty($loc_res)){
+                        $res_arr['address'] = $loc_res[0]['raw'];
+                    } else{
+                        $res_arr['address'] = array();
+                    }
+                    $final_arr[] = $res_arr;
+                    $cnt++;    
+            }
+        }else{
+            $res_arr['name'] = $member['displayName'];
+                    $res_arr['email'] = $member['email'];
+                    $loc = new Model\Location(array(),$app);
+                    $loc_res = $loc->find(array('ownerId'=>$member['_id']));
+                    if(is_array($loc_res) && !empty($loc_res)){
+                        $res_arr['address'] = $loc_res[0]['raw'];
+                    } else{
+                        $res_arr['address'] = array();
+                    }
+                    $final_arr[] = $res_arr;
+                    $cnt++;    
+        }
+
+
+    }
+    foreach ($final_arr as $value) {
+        echo implode('|', $value);echo "\r\n";
+    }
+    
+    return new Response('',200,array('Content-Type' => 'text/html')); 
+    
+});
+
+$utilities->get('/memberswithautorenew', function () use ($app) {
+    
+    $cnt = 0;
+    $final_arr = array();
+
+    $member = new Model\Member($doc=array(), $app);    
+    $members = $member->find(array('payment.renewalREUSE'=>'yes','status'=>2,'currentMembership'=>Model\Member::$membership['GENERAL MEMBER']),$fields=array(),true,array(),0,10000);
+    foreach ($members as $member){
+        if($member['payment']['renewalREUSE'] == 'yes'){
+            if(array_key_exists('number', $member['payment']) && !empty($member['payment']['number'])){
+                $res_arr = array();
+
+                $res_arr['name'] = $member['displayName'];
+                $res_arr['email'] = $member['email'];
+                $loc = new Model\Location(array(),$app);
+                $loc_res = $loc->find(array('ownerId'=>$member['_id']));
+                if(is_array($loc_res) && !empty($loc_res)){
+                    $res_arr['address'] = $loc_res[0]['raw'];
+                } else{
+                    $res_arr['address'] = array();
+                }
+                $final_arr[] = $res_arr;
+                $cnt++;    
+            }
+            
+        }
+
+    }
+    foreach ($final_arr as $value) {
+        echo implode('|', $value);echo "\r\n";
+    }
+    
+    return new Response('',200,array('Content-Type' => 'text/html')); 
+    
+});
+
 /////////////////////////////////////////////////////
 // UPDATE MEMBER PROFILES WITH RENEWAL INFORMATION //
 /////////////////////////////////////////////////////
