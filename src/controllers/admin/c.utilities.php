@@ -45,7 +45,7 @@ $utilities->get('/memberswithoutautorenew', function () use ($app) {
                         $loc = new Model\Location(array(),$app);
                         $loc_res = $loc->find(array('ownerId'=>$member['_id']));
                         if(is_array($loc_res) && !empty($loc_res)){
-                            $res_arr['address'] = $loc_res[0]['raw'];
+                            $res_arr['address'] = $loc_res[0]['addressLine1'].' '.$loc_res[0]['addressLine2'].' '.$loc_res[0]['city'].', '.$loc_res[0]['state'].' '.$loc_res[0]['zip'].' '.$loc_res[0]['country'];
                         } else{
                             $res_arr['address'] = array();
                         }
@@ -62,7 +62,7 @@ $utilities->get('/memberswithoutautorenew', function () use ($app) {
                     $loc = new Model\Location(array(),$app);
                     $loc_res = $loc->find(array('ownerId'=>$member['_id']));
                     if(is_array($loc_res) && !empty($loc_res)){
-                        $res_arr['address'] = $loc_res[0]['raw'];
+                        $res_arr['address'] = $loc_res[0]['addressLine1'].' '.$loc_res[0]['addressLine2'].' '.$loc_res[0]['city'].', '.$loc_res[0]['state'].' '.$loc_res[0]['zip'].' '.$loc_res[0]['country'];
                     } else{
                         $res_arr['address'] = array();
                     }
@@ -77,7 +77,7 @@ $utilities->get('/memberswithoutautorenew', function () use ($app) {
                     $loc = new Model\Location(array(),$app);
                     $loc_res = $loc->find(array('ownerId'=>$member['_id']));
                     if(is_array($loc_res) && !empty($loc_res)){
-                        $res_arr['address'] = $loc_res[0]['raw'];
+                        $res_arr['address'] = $loc_res[0]['addressLine1'].' '.$loc_res[0]['addressLine2'].' '.$loc_res[0]['city'].', '.$loc_res[0]['state'].' '.$loc_res[0]['zip'].' '.$loc_res[0]['country'];
                     } else{
                         $res_arr['address'] = array();
                     }
@@ -90,7 +90,7 @@ $utilities->get('/memberswithoutautorenew', function () use ($app) {
                     $loc = new Model\Location(array(),$app);
                     $loc_res = $loc->find(array('ownerId'=>$member['_id']));
                     if(is_array($loc_res) && !empty($loc_res)){
-                        $res_arr['address'] = $loc_res[0]['raw'];
+                        $res_arr['address'] = $loc_res[0]['addressLine1'].' '.$loc_res[0]['addressLine2'].' '.$loc_res[0]['city'].', '.$loc_res[0]['state'].' '.$loc_res[0]['zip'].' '.$loc_res[0]['country'];
                     } else{
                         $res_arr['address'] = array();
                     }
