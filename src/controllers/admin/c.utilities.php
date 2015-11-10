@@ -28,7 +28,7 @@ $utilities->get('/memberswithoutautorenew', function () use ($app) {
     $final_arr = array();
 
     $member = new Model\Member($doc=array(), $app);    
-    $members = $member->find(array('status'=>2,'currentMembership'=>Model\Member::$membership['GENERAL MEMBER']),$fields=array(),true,array(),0,10000);
+    $members = $member->find(array('listed'=>array('$ne'=>'no'),'status'=>2,'currentMembership'=>Model\Member::$membership['GENERAL MEMBER']),$fields=array(),true,array(),0,10000);
 
     foreach ($members as $member){
         $res_arr = array();
