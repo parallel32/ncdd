@@ -79,17 +79,7 @@ c. Pre-arrest Screening</li>
 myths. These and many other articles are made available to NCDD members at no additional 
 
 cost.</li>
-                        <li class="question">What is 'salting out' and how does it effect a blood test’s accuracy?<br><span class="answer">A: The chemicals which are added to many blood samples taken by police, sodium fluoride and
-
-potassium oxalate, are salts. If too much is added, or the amount of blood placed into the tube 
-
-is less than the desired amount, then the ratio of salt to blood can become too high. This can 
-
-cause extra alcohol to leach into the air above the blood sample (i.e. headspace) in the blood 
-
-vial. If the laboratory uses the headspace method of analysis, the results will become artificially 
-
-high.</li>
+                        <li class="question">What is 'salting out' and how does it effect a blood test’s accuracy?<br><span class="answer">A: The chemicals which are added to many blood samples taken by police, sodium fluoride and potassium oxalate, are salts. If too much is added, or the amount of blood placed into the tube is less than the desired amount, then the ratio of salt to blood can become too high. This can cause extra alcohol to leach into the air above the blood sample (i.e. headspace) in the blood vial. If the laboratory uses the headspace method of analysis, the results can become artificially high. Extra precautions must be taken by the lab to counter this phenomona. Dr. Alexander Robert Walker Forrest has written "it has been known for many years that the salting-out of Ethanol can occur in head space vials.  For example, in 1983 AW Jones demonstrated that a concentration of 10 milligrams per millilitre of Sodium Fluoride in whole blood would increase the concentration of Ethanol in the head space vial by 8.9%.  [Jones AW.(1983).... When I carried out similar experiments using Methanol as the internal standard an apparent rise in the alcohol concentration of about 7% was found when only 0.5 millilitres of sample was added to the RTA vial as compared to the recommended volume.  This was because the salting-out effect is greater for Ethanol than it is for Methanol in the head space vial. It has been suggested in the scientific literature, again by Professor A.W. Jones [(Jones AW).  Salting-out effect of sodium chloride and its influence on the analysis of Ethanol by head space gas chromatography.  Journal of Analytical Toxicology.  18 (5) : 292-3, 1994] that the salting-out phenomenon can be minimalised by diluting the sample and internal standard ten fold in the head space vial to reduce salting-out effects.  In fact, the data he presented demonstrate that the salting-out effect is not, in fact, totally abolished by this technique. " </li>
                         
                         </ol>
                     </div>
