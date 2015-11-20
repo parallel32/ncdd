@@ -213,8 +213,13 @@ $utilities->get('/memberswithautorenew', function () use ($app) {
 
     }
     echo "<pre>final_arr:";print_r(count($final_arr));echo "</pre>";
+    foreach ($final_arr as $value) {
+        echo implode('|', $value);echo "\r\n";
+    }
     echo "<pre>final_arr2:";print_r(count($final_arr2));echo "</pre>";
-
+    foreach ($final_arr as $value) {
+        echo implode('|', $value);echo "\r\n";
+    }
     $final_arr = array_diff_key($final_arr2,$final_arr);
     echo "<pre>final_arr:";print_r(count($final_arr));echo "</pre>";
     foreach ($final_arr as $value) {
