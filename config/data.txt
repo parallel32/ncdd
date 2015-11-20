@@ -1,688 +1,1213 @@
-
-9|19|no|Glen W. Neeley|gneeley@gmail.com|221 25th Street  Ogden, UT 84401 US
-4|16|no|Nors Davidson|norsdavidson@gmail.com|100 Montgomery Street, Suite 1600  San Francisco, CA 94104 US
-1|17|no|Charles M. McGowan|c.mcgowan.autolaw@gmail.com|227 Lewis Wharf  Boston, MA 2110 US
-7|18|no|Donald L. Blaszka, Jr.|don@germainelaw.com|23 Birch St 2nd Floor  Derry, NH 3038 US
-9|19|no|Adam D. Perlmutter|adp@pmlawnyc.com|260 Madison Avenue, Suite 1800  New York, NY 10016 US
-6|15|yes|Mitchell T. Foster|mitch@mitchfosterlaw.com|PO Box 798  Milford, MI 48381 US
-7|16|no|Gregory D. Oberhauser|gregory@oberhauserlaw.com|287 Appleton St., Suite 207  Lowell, MA 1852 US
 9|18|no|Charles L. Sifers|charles@siferslaw.com|401 N. Hudson, 2nd Floor  Oklahoma City, OK 73102 US
-6|17|no|Brian L. Leininger|brian@leininger-law.com|8826 Santa Fe Drive, Suite 214  Overland Park, KS 66212 US
-8|16|no|J. Chip Siegel|legalchip@hotmail.com|601 S 7th St  Las Vegas, NV 89101 US
 4|15|yes|Eric H. Sills|esills@nycap.rr.com|210 Great Oaks Blvd  Albany, NY 12203 US
-8|19|no|Bruce Robinson|bruceesq@gmail.com|25 Hooks Lane, Suite 302  Baltimore, MD 21208 US
+5|15|yes|D. Benjamin Sessions|ben@sessionsduilaw.com|1447 Peachtree Street, NE Suite 530 Atlanta, GA 30309 US
+9|19|no|Glen W. Neeley|gneeley@gmail.com|221 25th Street  Ogden, UT 84401 US
+||yes|Craig J. Rosenstein|craig@rosensteinlawgroup.com|8010 E. McDowell Rd., Ste. 111  Scottsdale, AZ 85257 US
+||yes|Todd F. La Neve|tlaneve@8777wvlaws.com|117 1/2 Nicholas Street  Clarksburg, WV 26301 US
+5|16|no|Douglas V. Hazelton|dvhazelton@aol.com|7900 Xerxes Avenue South Suite 1700 Bloomington, MN 55431 US
+||yes|Frederick T. Slone|slone@kaslone.com|3003 Minnesota Drive,  Suite 301,  Anchorage, AK 99503 US
 10|18|no|Steven M. Vaillancourt|steve@theouiguy.com|279 Main St.  Fitchburg, MA 1420 US
-3|16|no|Jon W. Woolsey|dui.lawyer@yahoo.com|16 Hop Ranch Ct  Santa Rosa, CA 95403 US
-2|20|no|Steven E. Kellis|steven@kellislaw.com|1500 John F. Kennedy Blvd Ste 900  Philadelphia, PA 19102 US
-11|17|no|Matthew T. Lindholm|mtlindholm@grllaw.com|440 Fairway Ste 210 West Des Moines, IA 50266 US
-4|17|no|Leonard D.  Harden|info@lenharden.com|104 Main St., Ste. 3  Lancaster, NH 3584 US
-2|18|no|Michael C. Tillotson|vaduilawyer@yahoo.com|13195 Warwick blvd Ste 2A  Newport News, VA 23602 US
-10|17|no|Michael J. Petro|mpetro.law@gmail.com|1215 N 500 West  Provo, UT 84604 US
-9|16|no|Brad Roth|bradroth@mchenrylaw.com|121 S 13th St Ste 702  Lincoln, NE 68501 US
-5|16|no|Joseph S. Passanise|joe@entrapped.com|2974 E. Battlefield  Springfield, MO 65804 US
-11|16|no|William J. Maze|william@duimaze.com|38777 Six Mile Rd., Ste. 110  Livonia, MI 48152 US
-3|18|no|J. Robin McKinney, Jr.|rob@robmckinneylaw.com|214 2nd Ave N Ste 103  Nashville, TN 37201 US
-2|20|no|Jonathan Rands|jrands@jonathanrands.com|1514 12th Street, Suite 100  Bellingham, WA 98225 US
+||yes|Scott E. Chambers|schambers@schmittrod.com|Schmittinger  Rodriguez, P.A. 414 S State St  Dover, DE 19901 US
+||yes|Bennie Ray|bennieeray@aol.com|710 W. 14th Street, Suite C  Austin, TX 78701 US
+||yes|Walter B. Fey|wbfey1@gmail.com|247 Court St.  Reno, NV 89501 US
+9|17|no|Patrick E. Maher|patmaherlaw@comcast.net|409 Washington Ave Ste 300  Towson, MD 21204 US
+||yes|John K. Fanney|john@fanneylaw.com|108 Park Ave., Suite 100  Raleigh, NC 27605 US
+2|17|no|James O. Ruane|jay@ruaneattorneys.com|1 Enterprise Dr  Shelton, CT 6484 US
+||yes|Brian E. Elkins|beelkins@cox.net|PO Box 766  Ketchum, ID 83340 US
 12|14|yes|Wendy Holton|wholton@mt.net|7 West 6th Avenue, Suite 4-N  Helena, MT 59601 US
-12|16|no|Jason Savela|jason@jasonsavela-law.com|250 Arapahoe Ave Ste 301  Boulder, CO 80302 US
-5|16|no|R. Hays Webb|hays@turnerwebb.com|2312 University Blvd.  Tuscaloosa, AL 35401 US
+||yes|Jay Norton|jay@nortonhare.com|9200 Indian Creek Parkway, Ste. 450  Overland Park, KS 66210 US
+10|17|no|John C. Collins|john@collinsdefenselaw.com|912 W. Fourth  Little Rock, AR 72201 US
+1|17|no|Michael A. DelSignore|mdelsign@yahoo.com|12 Welch Avenue, Suite 5   Stoughton, MA 2072 US
+||yes|Lauren B. Stuckert|lauren@mishlovelaw.com|4425 N Port Washington Rd. Ste 110  Milwaukee, WI 53212 US
+||yes|Patrick Mahaney|patrick@mahaneylaw.com|8191 Seaton Place  Montgomery, AL 36116 US
+7|18|no|Michael Bruckheim|michael@brucklaw.com|1629 K Street, NW Ste 300  Washington DC, DC 20006 US
+||yes|James L. Bates, Jr.|jamesbates@jamesbateslaw.com|2128 Front St.  Slidell, LA 70458 US
+10|16|no|Frank M. Mungo|frankmungo@fuse.net|7310 Turfway Road Suite 550 Florence, KY 41042 US
+||yes|Corinne J Magee|cmagee@mageelawfirm.com|6845 Elm St Ste. 515 McLean, VA  US
+8|16|no|William V. Cristman, Jr.|billcristman@gmail.com|2 Federal Street Suite 101 St. Albans, VT 5478 US
+12|17|no|Marcus D. Evans|marcusdevansatty@att.net|705 Azalea Drive  Waynesboro, MS 39367 US
+1|17|no|Patricia J. Smith|pjsmithlaw@yahoo.com|9088 Superior Ave. #105  Streetsboro, OH 44241 US
+4|18|no|Jonathan D Cohn|jcohn@gosglaw.com|210 Great Oaks Blvd.  Albany, NY 12203 US
+5|16|no|Michael J. Kennedy|capmotion@earthlink.net|82632-B Hwy. 111 Suite 3 Indio, CA 92201 US
+||yes|Alan R. Woodland|alanrwoodland@gmail.com|2200 Shawdowlake Dr  Oklahoma City, OK 73159 US
+10|15|yes|Eric Torberson|attorneyeric1@gmail.com|9442 N. Capital of Texas Hgwy Ste 500  Austin, TX 78759 US
+||yes|William K. Gullberg|bill@advocatesforu.com|122 W. Boston Ave., Ste. 200  Monmouth, IL 61462 US
+||yes|Paul Vincent Cannarella|paul@pvclaw.com|111 North Sixth Street  Hartsville, SC 29550 US
+2|17|no|John G. Leonard|jgldwi@yahoo.com|205 W. Court Street  Rome, NY 13440 US
+2|18|no|Michael C. Tillotson|vaduilawyer@yahoo.com|13195 Warwick blvd Ste 2A  Newport News, VA 23602 US
+||yes|J. Michael Solak|solak@shentel.net|102 South Kent St., Ste 2  Winchester, VA 22601 US
+||yes|Stephen C. Harris|steveharrislaw@verizon.net|PO Box 486 104 E Main St  Louisa, VA 23093 US
 4|17|no|T. Kevin Wilson|kevin@thewilsonlawfirm.org|The Wilson Law Firm 9300 Grant Avenue, Suite 301 Manassas, VA 20110 US
-8|16|no|Tim James|tjameslawyer@hotmail.com|115 South St  Nacogdoches, TX 75961 US
-12|16|no|Mark B. Polson|duiattorney@bellsouth.net|2824 Central Ave, Ste 150  Birmingham, AL 35209 US
-2|17|no|Aaron R. Bortel|abortellaw@aol.com|650 5th St Ste 508  San Francisco, CA 94107 US
-11|15|yes|Mindy H. McQueen|mindyjd2001-ncdd@yahoo.com|1000 Paseo Camarillo Ste 100  Camarillo, CA 93010 US
-3|18|no|Dennis Morgan|dmorgan@coopercargillchant.com|2935 White Mountain Hwy  North Conway, NH 3860 US
-2|16|no|Jeanne M. Normandeau|jnormandeau@duicentral.com|3780 Kilroy Airport Way  Suite 310 Long Beach , CA 90806 US
-8|18|no|Jeremy Zarzycki|jeremy@jzdefense.com|100 N. Stone Ave, Suite 502  Tucson, AZ 85701 US
+||yes|Robert F. Keefer|rkeefer@keefercard.com|871 Mockingbird Dr.  Harrisonburg, VA 22802 US
+||yes|Mark A. Foster|mfoster@fohlaw.com|3820 Oak Hill Rd  Evansville, IN 47711 US
+11|19|no|Robert J. Brunetti|brunettilawfirm@gmail.com|170 Old Country Rd., Ste. 610  Mineola, NY 11501 US
+||yes|Travis L. Noble, Jr.|tnoble@sindellaw.com|8000 Maryland, Ste. 350  Clayton, MO 63105 US
+3|16|no|Malcolm Anthony|malcolm@malcolmanthony.com|822 A1A N, Ste. 310  Ponte Vedra Beach, FL 32082 US
+2|15|yes|Nina M. Svoren|nsvoren@windstream.net|PO Box 1004  Toccoa, GA 30577 US
+||yes|Elmer H. Young III|ehyiii@comcast.net|609-C Ponder Place Dr.  Evans, GA 30809 US
+||yes|Sean A. Black|seanblack@blacklawoffices.com|141 W Savannah Street, Suite B  Toccoa, GA 30577 US
+8|19|no|Douglas G. Andrews|doug347@bellsouth.net|327 W York St  Savannah, GA 31401 US
+||yes|Erin H. Gerstenzang|erin@steinfirm.com|675 Ponce De Leon Ave. Suite 8500 Atlanta, GA 30308 US
+||yes|Christine A. Koehler|cak@koehlerandriddick.com|261 W Crogan St  Lawrenceville, GA 30046 US
+||yes|Andrew R. Bucher|ab@oviduiohio.com|1728 Allentown Road  Lima, OH 45805 US
+9|17|no|Frank Gomez|fgomez@htwwlaw.com|750 Hammond Dr Bldg 5 Ste 100  Atlanta, GA 30328 US
+3|16|no|Lawrence Kohn|lakohn@absolutely-not-guilty.com|750 Hammond Dr Ste 5-100  Atlanta, GA 30328 US
+4|16|no|David R. Savoy|davidrsavoy@gmail.com|327 Dahlonega St., Bldg. 1600  Cumming, GA 30040 US
+||yes|Jeffery C. Talley|jctalleylaw@hotmail.com|PO Drawer Q  Gainesville, GA 30503 US
+||yes|Marko L. Burgar|mlb@burgarlaw.com|P.O. Box 550221  Atlanta, GA 30355 US
+||yes|Thomas S. Barton|bartonlaw08@hotmail.com|829 Fairways Ct., Ste. 210  Stockbridge, GA 30281 US
+||yes|Jeffrey A. Rothman|jrothman@athenscriminaldefense.com|150 East Washington Street Suite B Athens, GA 30601 US
+||yes|Katherine Griffiths|trinagriffiths@bellsouth.net|1355 Peachtree St. NE, Ste. 150  Atlanta, GA 30309 US
+6|15|yes|Josh W. Thacker|thacker.josh@gmail.com|PO Box 256  Griffin, GA 30224-0007 US
+||yes|Cory E. Yager|cyager@htwwlaw.com|5 Concourse Pkwy. NE Suite 2340 Atlanta, GA 30328 US
+2|17|no|G.G. Joseph Kunes, Jr.|joe@kuneslaw.com|PO Box 985  Tifton, GA 31793 US
+||yes|Rebecca Kozycki|rebecca@dui-lawyer.com|448 E. Paces Ferry Rd.  Atlanta, GA 3035 US
+2|15|yes|Lon P. Kemeness|lonk@surfsouth.com|229 E. 2nd St.  Tifton, GA 31794 US
+||yes|Richard Nolan Blevins, Jr.|richard@cobbcountylaw.com|191 Roswell St.  Marietta, GA 30060 US
+||yes|Edwin L. Guyer|eggylaw@gmail.com|790 Pennlyn Pike Ste 302  Blue Bell, PA 19422 US
+3|15|yes|Robert S. Reiff|bobby@duilawoffice.com|2333 Brickell Boulevard, Suite A-1  Miami, FL 33129 US
+11|17|no|Christopher H. Cessna|mail@cessnalawoffice.com|2137 Lafayette Street  Denver, CO 80205 US
+||yes|Jerome B. Roselle|jerry@jerryroselle.com|125 S Howes 8th FL  Fort Collins, CO 80521 US
+2|20|no|Patricia L. Snyder|pat@psnyderlaw.com|PO Box 150099  Nashville, TN 37215 US
+||yes|Robert H. Lyons|lyons12@fuse.net|8310 Princeton-Glendale Rd  West Chester, OH 45069 US
+5|16|no|Chuck Strain|duiguy1@yahoo.com|639 Main St  Cincinnati, OH 45202-2514 US
+||yes|Larry J. Denny|ldpolo@aol.com|371 W 1st St  Dayton, OH 45402 US
+||yes|Robert M. Sutton|beachlawyer@earthlink.com|Physical: 1601 North Oak St., Ste 405 PO Box 2910  Myrtle Beach, SC 29577 US
+||yes|Gordon A. Senerius|gordonsenerius@seneriuslawfirm.com|517 N. Mcuffie St.  Anderson, SC 29622 US
+||yes|Johnny Gardner|johnny@johnnygardnerlaw.com|212 Main St.  Conway, SC 29526 US
+2|17|no|John L. Drennan|john@drennanlawfirm1.com|1350-B Chuck Dawley Blvd.  Mt Pleasant, SC 29464 US
+2|16|no|Regina Lane Scherer|lscherer@duicentral.com|Law Offices of Lawrence Taylor 3780 Kilroy Airport Way Ste 310 3780 Kilroy Airport Way Ste 310  Long Beach, CA 90806 US
+||yes|Nigel Witham|n.witham@wedodui.com|5000 E Spring St Ste 700  Long Beach, CA 90815 US
+10|19|no|jeffrey L. gold|wedodui@wedodui.com|5000 E Spring St Ste 700  Long Beach, CA 90815 US
+1|18|no|G. Rick Mueller|rick@sandiegodui.com|4660 La Jolla Village Drive, Suite 500  San Diego, CA 92122 US
+||yes|David G. Cohen|dcohen@lomab.com|1515 Lincoln Way  Auburn, CA 95603 US
 10|18|no|Robert L. Miller|rmiller@expertlawfirm.com|5020 Campus Dr.  Newport Beach, CA 92660 
+2|16|no|Jeanne M. Normandeau|jnormandeau@duicentral.com|3780 Kilroy Airport Way  Suite 310 Long Beach , CA 90806 US
+||yes|Jeffery Mehrens|mehrens@azdefender.com|645 N. 4th Ave., Suite B  Phoenix, AZ 85003 US
+||yes|Douglas T. Kans|dtkans@kanslaw.com|3800 American Blvd. W., Ste. 997  Bloomington, MN 55431 US
+||yes|Dave Stockwell|dave@stockwelllaw.com|PO Box 519  Norman, OK 73070 US
+5|15|yes|Richard  H. Wall|richardwall@coxinet.net|3750 West Main St. Ste. 222 Norman, OK 73072 US
+||yes|Scott R. Robbins|scottrobbins@hughesrobbins.com|2000 112th Ave., NE  Bellevue, WA 98004 US
+||yes|David N. Jolly|david@davidjollylaw.com|301 Prospect Street  Bellingham, WA 98225 US
+2|20|no|Jonathan Rands|jrands@jonathanrands.com|1514 12th Street, Suite 100  Bellingham, WA 98225 US
+||yes|John M. Brangwin|john@wblawfirm.com|517 N. Mission Ste 2A  Wenatchee, WA 98807 US
+||yes|Elizabeth A. Padula|lizanne@paduladefense.com|2320 130th Ave., NE, Bldg E., Ste 250  Bellevue, WA 98005 US
+10|19|no|Adam Tisdell|adam@tisdelllaw.com|821 S.W. 9th Ave Ste. 200 Amarillo, TX 79101 US
+||yes|Ross Palmie|palmier@att.net|9805 Louedd Rd  Houston, TX 77070 US
+||yes|Danny Easterling|eaepc@swbell.net|1018 Preston, 6th Floor  Houston, TX 77002 US
+||yes|Hoagie L. Karels|marlinlawyer@sbcglobal.net|129 Post Office Street  Marlin, TX 76661 US
+||yes|Ernest  Acevedo, III|e3@ernestacevedo.com|222 S Flores  San Antonio, TX 78204 US
+||yes|Abe Factor|abe@txis.net|5719 Airport Freeway  Fort Worth, TX 76117 US
+2|18|no|Ken M. Gibson|ken@attorneygibson.com|812 San Antonio St., Suite 100  Austin, TX 78701 US
+||yes|Eric Boeschenstein|attyericb@aol.com|99 W. Apple Ave  Suite A Muskegon, MI 49440 US
+||yes|Peter H. Lederman|plederman@lomurrolaw.com|100 Willowbrook Rd  Freehold, NJ 7728 US
+1|17|no|Andrea Amodeo-Vickery|aamodeovickery@aol.com|24 A Broad St  Nashua, NH 3064 US
+||yes|Neil Madden|neilmaddenlaw@verizon.net|Madden Law Office 14 Dorchester St  Boston, MA 2127 US
+||yes|Joseph Waldbaum|joseph@waldbaumlaw.com|100 Cummings Center, 536-H  Beverly, MA 1915 US
+||yes|J. Harrison Phillips, III|jhphillipsiii@aol.com|115 72nd St  Ocean City, MD 21842 US
+3|15|yes|Gary L. Medlin|glmedlin@swbell.net|1300 S University Dr Ste 602  Fort Worth, TX 76107 US
+10|19|no|John M. Watkins|mike@amarillofamilylaw.com|320 S. Polk #901 LB 26  Amarillo, TX 79101 US
+||yes|Stephen Lyle Hamilton|stephen@attorneyhamilton.com|802 Main Street  Lubbock, TX 79401 US
+8|16|no|Tim James|tjameslawyer@hotmail.com|115 South St  Nacogdoches, TX 75961 US
+||yes|Dan Shipp|danshipplaw@comcast.net|300 Vagneur Ln  Basalt, CO 81621 US
+4|16|no|Sara E. Compher-Rice|sara@tndui.com|550 W Main Ave Ste 730  Knoxville, TN 37902 US
+3|17|no|Charles E Laroue|lashlaroue7@aol.com|  , WA  US
+||yes|James W. McGee, Jr.|mcgeelawnc@gmail.com|213 Princess St.  Wilmington, NC 28401 US
+||yes|John D. Bryson|jbryson@wehwlaw.com|1912 Eastchester Dr Ste 400  High Point, NC 27265 US
+||yes|George V. Laughrun, II|gvern2@aol.com|301 S McDowell St Ste 602  Charlotte, NC 28204 US
+||yes|Ralph A. Hunt, Jr.|rahuntjr@aol.com|104 E. Main St.  Durham, NC 27701 US
+||yes|Walter I. "Butch" Jenkins III|wjenkins5@triad.rr.com|PO Box 1208  Biscoe, NC 27209 US
+||yes|J. Scott Smith|lawsmith@lawsmith.net|250 Executive Park Boulevard, Suite 100  Winston-Salem, NC 27103 US
+||yes|N. Cole Williams|nopc21@aol.com|205 N. Church Street  Durham, NC 27701 US
+||yes|A. Patrick Roberts|patrick@robertslawteam.com|203 W Millbrook Rd, Ste 200  Raleigh, NC 27609 US
+||yes|Christopher A. Connelly|cconnelly@connellydefense.com|101 N. McDowell St., Ste. 104  Charlotte, NC 28204 US
+6|15|yes|Kelly Farrish|kfarrish@kellyfarrishlaw.com|810 Sycamore St Sixth Floor  Cincinnati, OH 45202 US
 9|19|no|Gregory D. Fombelle|greg@fombelleandfombelle.com|241 W. Weaver Rd. Suite #230  Forsyth, IL 62535 US
 10|16|no|Robert P. Fahrendorf|rfahrendorf@renonvlaw.com|327 California Ave  Reno, NV 89509 US
-3|20|no|Michael R. Bartish|mike@springsteadbartish.com|15 Ionia, Ste. 520  Grand Rapids, MI 49503 US
-12|19|no|Gary Springstead|gary@springsteadbartish.com|28 A W. Main St.  Fremont, MI 49412 US
-10|16|no|Christopher W. Simpkins|chris@csimpkinslaw.com|315 Dwyer Ave.  San Antonio, TX 78204 US
-2|17|no|James O. Ruane|jay@ruaneattorneys.com|1 Enterprise Dr  Shelton, CT 6484 US
-3|16|no|Malcolm Anthony|malcolm@malcolmanthony.com|822 A1A N, Ste. 310  Ponte Vedra Beach, FL 32082 US
-11|17|no|Christopher H. Cessna|mail@cessnalawoffice.com|2137 Lafayette Street  Denver, CO 80205 US
-10|19|no|John M. Watkins|mike@amarillofamilylaw.com|320 S. Polk #901 LB 26  Amarillo, TX 79101 US
-4|16|no|Sara E. Compher-Rice|sara@tndui.com|550 W Main Ave Ste 730  Knoxville, TN 37902 US
-9|17|no|Patrick E. Maher|patmaherlaw@comcast.net|409 Washington Ave Ste 300  Towson, MD 21204 US
-6|15|yes|Kelly Farrish|kfarrish@kellyfarrishlaw.com|810 Sycamore St Sixth Floor  Cincinnati, OH 45202 US
-3|15|yes|Gary L. Medlin|glmedlin@swbell.net|1300 S University Dr Ste 602  Fort Worth, TX 76107 US
-5|15|yes|Richard  H. Wall|richardwall@coxinet.net|3750 West Main St. Ste. 222 Norman, OK 73072 US
-1|17|no|Andrea Amodeo-Vickery|aamodeovickery@aol.com|24 A Broad St  Nashua, NH 3064 US
-2|18|no|Ken M. Gibson|ken@attorneygibson.com|812 San Antonio St., Suite 100  Austin, TX 78701 US
-12|16|no|David G. Ridings|david@ridingslawgroup.com|211 Union Street, Suite 205  Nashville, TN 37201 US
-11|19|no|Theodore J Harvatin|ted@harvatinlaw.com|1100 South Fifth St.  Springfield, IL 62703 US
-1|18|no|G. Rick Mueller|rick@sandiegodui.com|4660 La Jolla Village Drive, Suite 500  San Diego, CA 92122 US
-2|20|no|Patricia L. Snyder|pat@psnyderlaw.com|PO Box 150099  Nashville, TN 37215 US
-5|16|no|Chuck Strain|duiguy1@yahoo.com|639 Main St  Cincinnati, OH 45202-2514 US
-11|19|no|Robert J. Brunetti|brunettilawfirm@gmail.com|170 Old Country Rd., Ste. 610  Mineola, NY 11501 US
-5|18|no|Patrick C. Cummings|mings7@hotmail.com|4067 Heatherstone Court  Fairfax, VA 22030 US
-12|16|no|Jeffery S. Crampton|jcrampton@grandlaw.com|940 Monroe Ave. NW, Ste. 250  Grand Rapids, MI 49503 US
-7|18|no|Matthew J. Olszewski|matt@flduigroup.com|200 East Robinson Street, Suite 1150,  Orlando, FL 32801 US
-7|17|no|Elliott Wilcox|elliott@duitrial.com|800 West Platt Street Suite #6 Tampa, FL 33606 US
-5|18|no|Jason Edge|jason@edgelawfirm.com|201 W. 5th St, Ste. 550  Tulsa, OK 74103 US
-5|18|no|Melanie Lander|mdl@edgelawfirm.com|201 W. 5th St., Ste. 550  Tulsa, OK 74103 US
-1|17|no|Aaron A. Nelson|anelson@doardrill.com|103 N. Knowles Ave., P.O. Box 388  New Richmond, WI 54017-0388 US
-3|15|yes|John Dell'Aquilo|johndellaquilo@helmerlegal.com|111 White Horse Pike  Haddon Heights, NJ 8035 US
-5|16|no|Liam Dixon|liam@dixonwins.com|556 W. Galena  Aurora, IL 60506 US
-3|18|no|Elizabeth  Parker|elizabeth@parkerjustice.com|3399 PGA Blvd Suite 150  Palm Beach Gardens, FL 33410 US
-9|19|no|Katherine E. Kennedy|kkennedy@themcshanefirm.com|3601 Vartan Way 2nd Floor  Harrisburg, PA 17110 US
-11|17|no|Christina L. Williams|christina@williams-criminallaw.com|319 S. Gillette St., Ste. 300  Gillette, WY 82716 US
-3|18|no|Manny Daskal|mdesq@sbcglobal.net|PO Box 593  Eureka, CA 95502 US
-2|17|no|Michael F. White|lawyer@vvm.com|100 Kasberg Dr., Ste. A  Temple, TX 76502 US
-10|15|yes|Thomas P. Lyden|tlyden@keatingandlyden.com|114 W. Magnolia Street` Suite 440 Bellingham, WA 98225 US
-1|18|no|Steven Rodemer|steve@pikespeaklaw.com|90 South Cascade Avenue Suite 1420 Colorado Springs, CO 80903 US
-3|15|yes|Robert S. Reiff|bobby@duilawoffice.com|2333 Brickell Boulevard, Suite A-1  Miami, FL 33129 US
-2|16|no|Regina Lane Scherer|lscherer@duicentral.com|Law Offices of Lawrence Taylor 3780 Kilroy Airport Way Ste 310 3780 Kilroy Airport Way Ste 310  Long Beach, CA 90806 US
-2|15|yes|Nina M. Svoren|nsvoren@windstream.net|PO Box 1004  Toccoa, GA 30577 US
-10|19|no|jeffrey L. gold|wedodui@wedodui.com|5000 E Spring St Ste 700  Long Beach, CA 90815 US
-5|16|no|Douglas V. Hazelton|dvhazelton@aol.com|7900 Xerxes Avenue South Suite 1700 Bloomington, MN 55431 US
-8|19|no|Douglas G. Andrews|doug347@bellsouth.net|327 W York St  Savannah, GA 31401 US
+||yes|Jerry H. Summers|jsummers@summersfirm.com|735 Broad St Ste 800  Chattanooga, TN 37402 US
+||yes|Aaron D. Hamrock|aaron@mccarthyandhamrock.com|1200 Valley West Dr  Ste 400 West Des Moines, IA 50266 US
+||yes|Kim William Riester|kriester@mdbbe.com|US Steel Tower Ste 4850, 600 Grant St  Pittsburgh, PA 15219 US
+||yes|Steve O. Gonzalez|sogbrdlaw@att.net|1520 East Hwy 6  Alvin, TX 77511 US
+||yes|Jim M. Medley|jmedleyoffice@yahoo.com|1208 Edwards St.  Houston, TX 77007 US
+3|18|no|Dennis Morgan|dmorgan@coopercargillchant.com|2935 White Mountain Hwy  North Conway, NH 3860 US
+11|15|yes|Mindy H. McQueen|mindyjd2001-ncdd@yahoo.com|1000 Paseo Camarillo Ste 100  Camarillo, CA 93010 US
+||yes|Joseph P. Rem Jr|jrem@remlawgroup.com|25 E Salem St Ste 400  Hackensack, NJ 7601 US
+||yes|Darryl W. Genis|support@ncdd.com|Three W Carrillo St Ste 203  Santa Barbara, CA 93101 US
+||yes|Douglas L. Wilder|doug@wilderfirm.com|3131 McKinney Ave., Ste. 600  Dallas, TX 75204 US
+2|17|no|Aaron R. Bortel|abortellaw@aol.com|650 5th St Ste 508  San Francisco, CA 94107 US
+||yes|Steven R. Adams|steven@notguiltyadams.com|8 West Ninth St.  Cincinnati, OH 45202 US
+5|16|no|R. Hays Webb|hays@turnerwebb.com|2312 University Blvd.  Tuscaloosa, AL 35401 US
+12|16|no|Mark B. Polson|duiattorney@bellsouth.net|2824 Central Ave, Ste 150  Birmingham, AL 35209 US
+12|16|no|Jason Savela|jason@jasonsavela-law.com|250 Arapahoe Ave Ste 301  Boulder, CO 80302 US
+||yes|Nicky Boatwright|nickyboatwright@mylubbocklawyer.com|1005 Broadway  Lubbock, TX 79401 US
+||yes|Christopher J. Angles|chris@angleslaw.com|1609 W. 92nd Street  Kansas City, MO 64114 US
+5|16|no|Joseph S. Passanise|joe@entrapped.com|2974 E. Battlefield  Springfield, MO 65804 US
+6|18|no|Andrea D. Hayduk|ahayduk@fandhlawfirm.com|100 W Martin Luther King Blvd  Chattanooga, TN 37402 US
+||yes|John Anastasio|john@psllaw.net|3601 SE Ocean Blvd Ste 203  Stuart, FL 34996 US
+||yes|Brett D. Schandelson|brett@tippandbuley.com|2200 Brooks St.  Missoula, MT 59806 US
+9|16|no|Brad Roth|bradroth@mchenrylaw.com|121 S 13th St Ste 702  Lincoln, NE 68501 US
+3|18|no|J. Robin McKinney, Jr.|rob@robmckinneylaw.com|214 2nd Ave N Ste 103  Nashville, TN 37201 US
+2|20|no|Steven E. Kellis|steven@kellislaw.com|1500 John F. Kennedy Blvd Ste 900  Philadelphia, PA 19102 US
+11|17|no|Matthew T. Lindholm|mtlindholm@grllaw.com|440 Fairway Ste 210 West Des Moines, IA 50266 US
+||yes|John Monahan|jcmonahan@verizon.net|204 Monroe St #105  Rockville, MD 20850 US
+4|17|no|Leonard D.  Harden|info@lenharden.com|104 Main St., Ste. 3  Lancaster, NH 3584 US
+||yes|Russel L. Jones|joneslaw@kdsi.net|101 East 5th Street PO Box 985 North Platte, NE 69101 US
+3|16|no|Jon W. Woolsey|dui.lawyer@yahoo.com|16 Hop Ranch Ct  Santa Rosa, CA 95403 US
+||yes|Ralph C. Buss|rcbuss@mwweb.com|168 E High St  Painesville, OH 44077 US
+8|19|no|Bruce Robinson|bruceesq@gmail.com|25 Hooks Lane, Suite 302  Baltimore, MD 21208 US
+||yes|Thomas Anelli|tanelli@anellixavier.com|269 W. Jefferson St.  Syracuse, NY 13202 US
+||yes|Randall B. Isenberg|defends4u@rbisenberg.com|4303 N Central Exp  Dallas, TX 75205 US
+||yes|Andrew Nolan|nolan@petersandnolan.com|851 Grand Ave.  Grand Junction, CO 81501 US
+||yes|Adam L.  Pearlman|adam@adampearlmanlaw.com|5740 Ralston St, Ste 302  Ventura, CA 93003 US
+||yes|John E. Stang|jstang@hulnicklaw.com|310 W Central Ste 111  Wichita, KS 67202 US
+11|16|no|William J. Maze|william@duimaze.com|38777 Six Mile Rd., Ste. 110  Livonia, MI 48152 US
+||yes|Timothy R. Tompkins|timtomp@yahoo.com|9401 W. 87th St., Ste. 201  Overland Park, KS 66212 US
+6|17|no|Brian L. Leininger|brian@leininger-law.com|8826 Santa Fe Drive, Suite 214  Overland Park, KS 66212 US
+||yes|Kenneth M. Clark|kclark@clarkpalaw.com|301 W. Central  Wichita, KS 67202 US
+||yes|Paul W. Burmaster|burmasterlaw@sbcglobal.net|8000 Foster  Overland Park, KS 66204 US
+||yes|John Eric Rapp|jrapp@hinklaw.com|301 N. Main St., Ste. 2000  Wichita, KS 67202 US
+||yes|Paul R. Oller|paul.oller@tolf.us|113 W 13th St  Hays, KS 67601 US
+||yes|Stephen T. Ariagno|ariagno@aol.com|328 N. Main  Wichita, KS 67202 US
+8|16|no|J. Chip Siegel|legalchip@hotmail.com|601 S 7th St  Las Vegas, NV 89101 US
+||yes|L. Scott Pejic|scott@dpjustice.com|1000 Washington St.  Michigan City, IN 46360 US
+||yes|William B. Mange|bill@billmangelaw.com|600 W. 13th St.  Austin, TX 78701 US
+||yes|Lee D. Cox|lee@leedcoxlawyer.com|201 South 11th St  Richmond, TX 77469 US
+7|16|no|Gregory D. Oberhauser|gregory@oberhauserlaw.com|287 Appleton St., Suite 207  Lowell, MA 1852 US
+||yes|Joseph  McGrath|joemcgrath@vatrafficcourtlawyer.com|2612 W Cary St  Richmond, VA 23220 US
+6|15|yes|Mitchell T. Foster|mitch@mitchfosterlaw.com|PO Box 798  Milford, MI 48381 US
+||yes|Richard L. Hartley|hartleylaw@gmail.com|15 Columbia St Ste 301  Bangor, ME 4401 US
+||yes|John E. Durkin|jdurkin@burnsbryant.com|255 Washington St  Dover, NH 3820 US
+||yes|David L. Valentini|david@valentinilaw.com|247 Third Ave South  Minneapolis, MN 55415 US
+9|19|no|Adam D. Perlmutter|adp@pmlawnyc.com|260 Madison Avenue, Suite 1800  New York, NY 10016 US
+||yes|John Frank Gibson|jfgibson@sbcglobal.net|207 S Main St  Monticello, AR 71655 US
+||yes|Peter Johnson|jjlaw2@earthlink.net|2125 Oak Grove Rd., Ste. 315  Walnut Creek, CA 94598 US
+||yes|Barry S. Jacobson|ticklaw@trafficticketdefense.com|26 Court St Ste 810  Brooklyn, NY 11242 US
+7|18|no|Donald L. Blaszka, Jr.|don@germainelaw.com|23 Birch St 2nd Floor  Derry, NH 3038 US
+1|17|no|Charles M. McGowan|c.mcgowan.autolaw@gmail.com|227 Lewis Wharf  Boston, MA 2110 US
+||yes|Garrett T. Ogata|info@gtogata.com|Law Office of Garrett T. Ogata, Esq. 3841 W Charleston, Ste 205  Las Vegas, NV 89102 US
+||yes|Jonathan J. Kirschner|trcoastlaw@aol.com|200 S Indian River Dr., Ste. 200  Fort Pierce, FL 34950 US
+10|17|no|Michael J. Petro|mpetro.law@gmail.com|1215 N 500 West  Provo, UT 84604 US
+||yes|Greg Law|gsl@princeyeates.com|5258 S. Pinemont Dr., Ste. B-110  Murray, UT 84123 US
+||yes|James E. Wasson|jwasson@pacbell.net|546 N. Golf Links Ave.  Fresno, CA 93737 US
+4|16|no|Nors Davidson|norsdavidson@gmail.com|100 Montgomery Street, Suite 1600  San Francisco, CA 94104 US
+||yes|Donald G. Drewry|dgdattorney@gmail.com|14895 E 14th St Ste 485  San Leandro, CA 94578 US
+||yes|Jackson Qlo Crum|jqcrum@yahoo.com|600 S Tyler St Ste 2010  Amarillo, TX 79101 US
+||yes|Paul G. Stracci|pstracci@jsilaw.com|250 E 90th Dr  Merrillville, IN 46410 US
 5|16|no|Craig Michael Sturm|sturmlawfirm@gmail.com|1010 Wilshire Blvd.,  Suite 1415 Los Angeles, CA 90017 US
+||yes|John J. Tenn|johntenn@tennandtenn.com|16 High Street,  Suite Three  Manchester, NH 3101 US
 1|19|no|Sharon Curtis|scurtis@sharoncurtislaw.com|1216 N Central Expressway, Ste. 205  McKinney, TX 75070 US
+||yes|Anthony Q. Coleman|tony@tonycolemanlaw.com|101 Park Ave., Ste. 300  Oklahoma City, OK 73102 US
+||yes|Zach Smith|zach@tulsaduiguy.com|1825 E. 15th St.  Tulsa, OK 74104 US
+8|16|no|Sonja R. Porter|ladyporteresq@yahoo.com|620 N Robinson Ave Ste 203  Oklahoma City, OK 73102 US
 8|19|no|Joel M. Mann|joelmannesq@yahoo.com|601 S 7th St  Las Vegas, NV 89101 US
+||yes|Kevin Leckerman|kl@leckermanlaw.com|1818 Market St., Ste 3740  Philadelphia, PA 19103 US
 1|16|no|Woody Thompson|woody@tandvlaw.com|2198 E Camelback Rd Ste 305  Phoenix, AZ 85016 US
+||yes|Matthew B. Nichols|mnichols@nicholswebb.com|1250 Forest Ave. Suite 10 Portland, ME 4103 US
+||yes|Steve W Hanna|steve@hanna-law.com|1528 6th Avenue  Moline, IL 61265 US
+||yes|Lisa Ann Anderson|lisaandersonlaw@aol.com|460 Harrison Ave.  Panama City, FL 32401 US
+||yes|Kevin K. Knake|kevin@rlalaw.com|322 N. Minnesota  Hastings, NE 68901 US
 4|16|no|Jason J. Sawyer|jason@sawyerlegal.com|110 Main St Ste 3A  Burlington, VT 5401 US
-1|17|no|Michael A. DelSignore|mdelsign@yahoo.com|12 Welch Avenue, Suite 5   Stoughton, MA 2072 US
 6|15|yes|Shawn R. Dominy|shawn@dominylaw.com|1900 Polaris Pkwy #450  Columbus, OH 43240 US
+||yes|Timothy R. Cisar|tcisar@cisarlawfirm.com|750 Bagnell Dam Blvd Ste A  Lake Ozark, MO 65049 US
+||yes|Cary L. Lackey|cary@carylackeylaw.com|45 W. Jefferson St., Ste. 501 Luhrs Tower Phoenix, AZ 85003 US
+||yes|Gilbert G. Garcia|gilbert@ggglawfirm.com|220 N Thompson Ste 202  Conroe, TX 77301 US
+||yes|Douglas W. Atkinson|doug@atkinsonandassociates.com|322 Metcalf  Conroe, TX 77301 US
 11|16|no|Tommy Bennett|tommylbennett@gmail.com|1000 Front St.  Conway, AR 72032 US
+||yes|Donald N. MacNeil|don@macneilfirm.com|10201 W Lincoln Hwy  Frankfort, IL 60423 US
+||yes|Kirk B. Obear|kirkobear@hotmail.com|603 South 8th St.  Sheboygan, WI 53081 US
 4|17|no|Rachel Kugel|rlkugel@gmail.com|1838 Scond Ave., Ste. 234  New York, NY 10128 US
+||yes|Michael Whipple|mwhipple@hallettwhipple.com|75 Market St., Ste. 502  Portland, ME 4101 US
+||yes|Matthew B. Alfreds|mbalfreds@mattalfreds.com|445 S. Decatur St.  Montgomery, AL 36104 US
 2|17|no|Joseph C. Kreps|jckreps@krepslawfirm.com|1932 Laurel Road, Suite 1-B  Birmingham, AL 35216 US
-9|16|no|Frank Gomez|fgomez@htwwlaw.com|750 Hammond Dr Bldg 5 Ste 100  Atlanta, GA 30328 US
 4|17|no|John J. Eastland|johneastland@suddenlink.net|924 W Houston St.  Tyler, TX 75702 US
+||yes|Mark R. Thiessen|mark@dwimark.com|1221 Studewood St  Houston, TX 77008 US
 7|15|yes|Jason P. Ramos|ramoslawoffice@sbcglobal.net|411 Hamilton Blvd., Suite 1600  Peoria, IL 61602 US
-1|15|yes|Peter Lorenz|lawyerlorenz2003@yahoo.com|250 S. Chestnut St., Ste. 23  Ravenna, OH 44266 US
-10|17|no|Barton W. Morris, Jr.|barton@michigancriminalattorney.com|201 E. Fourth  Royal Oak, MI 48067 US
 6|16|no|Leigh Ann Ann Bauer|leighann@leighannbauer.com|821 N. Street Suite 202 Anchorage, AK 99501 US
 4|20|no|Will Mitchell|will@willmitchelllaw.com|609 West 9th Street  Austin, TX 78701 US
-4|16|no|Charles T. Ganz|charles@ganzdefenselaw.com|1214 Heights Blvd.  Houston, TX 77008 US
+4|16|no|Charles T Ganz|charles@ganzdefenselaw.com|5300 Memorial Drive Suite 750 Houston, TX 77007 US
+||yes|Christopher J. Downey|chris@downeylawfirm.com|2814 Hamilton St  Houston, TX 77004 US
 9|15|yes|Lance E. Rollo|lerollo@yahoo.com|44 High Street  Morgantown, WV 26505 US
-3|16|no|Lawrence Kohn|lakohn@absolutely-not-guilty.com|750 Hammond Dr Ste 5-100  Atlanta, GA 30328 US
+4|18|no|Brett H. Hollett|brett@peaglerhollett.com|205 20th Street North, Suite 615  Birmingham, AL 35203 US
+4|18|no|Zachary J. Peagler|zachpeaglerhollett.com|205 20th Street North  Birmingham, AL 35203 US
+||yes|James Irby|james@jamesirby.com|120 E. Tennessee St.  Florence, AL 35630 US
+9|15|yes|Frank Stephen Ward|frank@alabamaduiattorney.com|217 Randolph Ave.  Huntsville, AL 35801 US
 7|18|no|Heidi Anderson|heidi@reliance-legal.com|1746 Cole Blvd., Ste. 225  Lakewood, CO 80401 US
-11|15|yes|Richard T. Jones|austindwilawyer@gmail.com|1302 West Ave.  Austin, TX 78701 US
 10|19|no|William T. Bly|wtb@williamblylaw.com|PO Box 1871  Biddeford, ME 4005 US
+||yes|Carleton  Penn III|cp@valawyers.com|10511 Judicial Dr  Fairfax, VA 22030 US
+||yes|Jonathan A. Kessous|jakessous@aol.com|312 S 4th Ave, 1st Floor  Highland Park, NJ 8904 US
 1|17|no|Richard F. Kodzis|rfkodzis@yahoo.com|PO Box 502  Millersville, MD 21108 US
+5|16|no|Troy J. Parrish|tj@troyjparrish.com|1112 Broadway St.  Mt. Vernon, IL 62864 US
+||yes|Brian Roberts|brian@brianrobertslaw.com|1106 W. Main St.  Carbondale, IL 62901 US
+||yes|George E. Lane III|gelanelaw@yahoo.com|87 Broad St  Weymouth, MA 2188 US
+||yes|Brian M. Sullivan|brian@sullivanpllc.com|3209 Rockefeller Ave.  Everett, WA 98201 US
+||yes|David M. Cantor|d.cantor@dmcantor.com|1 E Washington St Ste 1800  Phoenix, AZ 85004 US
 4|17|no|Stephen R. Biss|biss@lawyers.ca|470 Hensall Circle, Suite 303  Mississauga, ON L5A 3V4 CA
-1|17|no|Barry J. Sallinger|barry@sallingerlaw.com|820 E. Saint Mary Blvd.  Lafayette, LA 70503 US
+||yes|Jeffrey Sheridan|jsheridan@ssdpa.com|1380 Corporate Ctr. Crv., Ste. 320  Eagan, MN 55121 US
 11|16|no|Brad J. Williams|bjwilliams@gmail.com|1000 Front St.  Conway, AR 72032 US
-2|17|no|John G. Leonard|jgldwi@yahoo.com|205 W. Court Street  Rome, NY 13440 US
-4|16|no|David R. Savoy|davidrsavoy@gmail.com|327 Dahlonega St., Bldg. 1600  Cumming, GA 30040 US
 5|15|yes|Robert E. Battle|bob@bobbattlelaw.com|1506 Willow Lawn Dr., Ste. 121  Richmond, VA 23230 US
-6|17|no|Howard S. Stein|hstein@slsps.com|520 112th Ave. N. E., Ste. 101  Bellevue, WA 98004 US
+||yes|Mark R. Matney|mark@matneylawpllc.com|13195 Warwick Blvd., Ste. 2B  Newport News, VA 23602 US
+6|17|no|Howard S. Stein|support@ncdd.com|2840 Northup Way Suite 140 Bellevue, WA 98004 US
+||yes|Paul E. Mack|paul@shapiroandmack.com|7226 Lee Deforest Dr., Ste. 207  Columbia, MD 21046 US
+||yes|Jason A. Shapiro|jason@shapiroandmack.com|7726 Lee Deforest Dr., Ste. 207  Columbia, MD 21046 US
+||yes|David Zwanetz|davidz@shapiroandmack.com|7226 lee deforest drive suite 207 columbia, MD 21046 US
 9|19|no|Tim M. Barrouk|tmbarrouk@themcshanefirm.com|3601 Vartan Way 2nd Floor 2nd Floor Harrisburg, PA 17110 US
-5|15|yes|D. Benjamin Sessions|ben@sessionsduilaw.com|1447 Peachtree Street, NE Suite 530 Atlanta, GA 30309 US
-6|15|yes|Josh W. Thacker|thacker.josh@gmail.com|PO Box 256  Griffin, GA 30224-0007 US
+||yes|Michael C. Quimby|mike@youhurtwefight.com|4981 Atlantic Blvd.  Jacksonville, FL 32207 US
+||yes|Ronald E. Sholes|ron@ronsholespa.com|4981 Atlantic Blvd.  Jacksonville, FL 32207 US
 11|16|no|Karen O Gerstenzang|kgerstenza@aol.com|210 Great Oaks Blvd.  Albany, NY 12054 US
+||yes|Donald D. Cleveland|donald@ddclaw.net|201 E. Main St.  Lafayette, LA 70501 US
+4|18|no|Robert J. Landry|robert@landrylegal.com|PO Box 4255  Houma, LA 70360 US
+||yes|James G. Knipe III|jim@manassehandgill.com|8075 Jefferson Highway  Baton Rouge, LA 70809 US
+||yes|Alvin D. Hunt|adhunt@huntlawfirm.com|613 Alamo St.  Lake Charles, LA 70601 US
 3|17|no|Brendan M. Kelly|kellyfirm@qwestoffice.net|1904 Farnam Street Suite 101 Omaha, NE 68102 US
 3|16|no|Eric Sachs|eric@esachslaw.com|254 Pettit Ave.  Bellmore, NY 11710 US
-6|18|no|Andrea D. Hayduk|ahayduk@fandhlawfirm.com|100 W Martin Luther King Blvd  Chattanooga, TN 37402 US
+||yes|Paul B. Ahern|ahern@innocent.com|5101 Thimsen Ave., Ste 105  Minnetonka, MN 55345 US
 1|20|no|Mark K. Phillips|kellyleg2000@yahoo.com|114 S. Third St.  Boonville, IN 47601 US
 2|20|no|Thomas E. Lester|tlester@tlesterlaw.com|400 5th St., NW, Ste. 350  Washington, DC 20001 US
 5|15|yes|Paul Liam McGlone|pmcglone@mcglonelaw.com|10513 Judicial Dr., Suite 201  Fairfax, VA 22030 US
-2|17|no|G.G. Joseph Kunes, Jr.|joe@kuneslaw.com|PO Box 985  Tifton, GA 31793 US
 3|17|no|Ann Marie Thayer|ann@taylorlawco.com|10605 Judicial Dr., Ste. A-5  Fairfax, VA 22030 US
 9|19|no|Shawn M. Dorward|sdorward@themcshanefirm.com|3601 Vartan Way 2nd Floor  Harrisburg, PA 17110 US
 4|17|no|Ted Lothstein|info@lothsteinlaw.com|Lothstein Guerriero, PLLC 3 N. Spring Street  Concord, NH 3301 US
+||yes|Robert Ault|rob@waduidefense.com|1 Lake Bellevue Dr., Ste. 207  Bellevue, WA 98005 US
 12|17|no|Brian A. Schuh|brian@schuhlawfirm.com|1424 Main St.  Peckville, PA 18452 US
-5|16|no|Troy J. Parrish|tj@troyjparrish.com|1112 Broadway St.  Mt. Vernon, IL 62864 US
-11|16|no|Susannah M. Hall-Justice|susannah@halljustice.com|200 Ferry St., Ste A  Lafayette, IN 47901 US
-8|16|no|Sonja R. Porter|ladyporteresq@yahoo.com|620 N Robinson Ave Ste 203  Oklahoma City, OK 73102 US
-9|16|no|Diane M. Medina|diane@dimelaw.com|3625 Kennedy Avenue  Bakersfield, CA 93309 US
-1|16|no|William A. Young, Jr.|william@williamayoungjr.com|2820 Summer Oaks Dr.  Bartlett, TN 38134 US
-10|17|no|Brandi D. Collins|brandi@collinsdefenselaw.com|912 W. Fourth St.  Little Rock, AR 72201 US
-10|17|no|John C. Collins|john@collinsdefenselaw.com|912 W. Fourth  Little Rock, AR 72201 US
+2|18|no|Brent  de la Paz|brent@delapazlawfirm.com|214 Dwyer, Ste. 315  San Antonio, TX 78204 US
+6|17|no|Jeffrey L. Greco|jeff@greconeyland.com|261 Madison Ave #1200 12th Floor New York, NY 10016 US
+||yes|Lawrence (Larry A. Newman|newman.lawrence@gmail.com|504 N. Aurora St.  Ithaca, NY 14850 US
+9|16|no|Diane M. Medina|diane@dimelaw.com|1527 19th Street Suite 220 Bakersfield, CA 93301 US
+10|15|yes|J. B. Katz|jbkatzlaw@gmail.com|PO Box 5200  Breckenridge, CO 80424 US
 11|17|no|Richard A. Mulhearn|richard.mulhearn@charter.net|71 Elm St.  Worcester, MA 1609 US
 12|16|no|Christopher J. McCann|chris@cjmdefense.com|5220 Clark Ave., Ste. 347  Lakewood, CA 90712 US
-8|17|no|Brian Vincent Manchester|achiles300@yahoo.com|124 W. Bishop St.  Bellefonte, PA 16823 US
-8|17|no|Jerald Novak|jerry@iwindui.com|352 Center St.  Grayslake, IL 60030 US
-5|17|no|Jordan Lewis|jordan@jordanlewislaw.com|1914 N. Memorial Way  Houston, TX 77007 US
-4|18|no|Zachary J. Peagler|zachpeaglerhollett.com|205 20th Street North  Birmingham, AL 35203 US
-3|20|no|Patrick S. Ferris|patrick@ferris-legal.com|212 N. Madison Ave.  Douglas, GA 31533 US
-10|15|yes|J. B. Katz|jbkatzlaw@gmail.com|PO Box 5200  Breckenridge, CO 80424 US
-6|17|no|Jeffrey L. Greco|jeff@greconeyland.com|261 Madison Ave #1200 12th Floor New York, NY 10016 US
-4|18|no|Brett H. Hollett|brett@peaglerhollett.com|205 20th Street North, Suite 615  Birmingham, AL 35203 US
+||yes|David R. Erhard|de@stevericelaw.com|18 Carlisle St., Ste. 215  Gettysburg, PA 17325 US
+||yes|Bradley D. Myerson|cmylwyr@sover.net|5261 Main St.  Manchester Center, VT 5255 US
 7|17|no|Louis Shapiro|lou@loushapiro.com|1875 Century Park East  Los Angeles, CA 90067 US
-6|17|no|James C. Davis|jdavis@gohgfirm.com|210 Great Oaks Blvd.  Albany, NY 12203 US
-2|15|yes|Lon P. Kemeness|lonk@surfsouth.com|229 E. 2nd St.  Tifton, GA 31794 US
+||yes|Robert H. Humphrey|rhh@rhumphreylaw.com|8 Neck Road  Tiverton, RI 2878 US
+||yes|C. Ryan Gering|crgering@hulnicklaw.com|310 W. Central, Ste. 111  Wichita, KS 67202 US
+||yes|Charles V. Hardenbergh|van@vandefense.com|14 E. Nelson St., Ste. 100  Lexington, VA 24450 US
+||yes|Cole Sherard|csherard@penceandmac.com|501 East Garfield St. PO Box 1285 Laramie, WY 82070 US
 11|17|no|Joyce B. Bartizal|bartizal.law@gmail.com|3333 Warrenville Rd., Ste. 200  Lisle, IL 60532 US
-12|19|no|Riley Mulinix|riley@lawokc.com|210 Park Ave., Ste. 3030  Oklahoma City, OK 73102 US
-2|18|no|Brent  de la Paz|brent@delapazlawfirm.com|214 Dwyer, Ste. 315  San Antonio, TX 78204 US
-9|16|no|Joe Good III|joe@joegoodlaw.com|122 Coleman Blvd.  Mt. Pleasant, SC 29464 US
-3|17|no|David J. Tarrell|nelawyer@gmail.com|1823 Harney Street, Ste. 100  Omaha, NE 68102 US
-10|16|no|Frank M. Mungo|frankmungo@fuse.net|7310 Turfway Road Suite 550 Florence, KY 41042 US
+8|17|no|Jerald Novak|jerry@iwindui.com|352 Center St.  Grayslake, IL 60030 US
+||yes|Salvatore C. Miglore|migloreatlaw@yahoo.com|300 S. Carlton  S-130  Wheaton, IL 60187 US
+||yes|M. Christine Heins|mcheinslaw@frontier.com|1829 Walnut St., Ste. One  Murphysboro, IL 62966 US
+||yes|Robert E. Calesaric|rob@calesariclaw.com|35 S. Park Pl. Ste. 150  Newark, OH 43055 US
+||yes|William Cole|tahoelawyer@aol.com|PO Box 6329  Lake Tahoe, NV 89449 US
+6|17|no|James C. Davis|jdavis@gohgfirm.com|210 Great Oaks Blvd.  Albany, NY 12203 US
+3|20|no|Patrick S. Ferris|patrick@ferris-legal.com|212 N. Madison Ave.  Douglas, GA 31533 US
+||yes|Evan A. Watson|eaustinwatson@gmail.com|351-A Dahlongega St.  Cumming, GA 30040 US
+||yes|G. Scott Kanavos|scott@cklplaw.com|121 Broad St  Cleveland, TN 37364 US
+||yes|Dale A. Hayes, Jr.|dhayes@hayeslawnv.com|  , NV  US
+8|17|no|Brian Vincent Manchester|achiles300@yahoo.com|124 W. Bishop St.  Bellefonte, PA 16823 US
+||yes|L. Todd Wilson|todd@eaattorneys.com|1558 SW Nancy Way, Ste. 101  Bend, OR 97702 US
 11|15|yes|James B. Duncan III|duncanlawfirm@bellsouth.net|1450 Greene Street, Suite 222  Augusta, GA 30901 US
 12|17|no|Ann E. Parman|parmanlaw@cox.net|743 Walnut St., Ste. 201  Macon, GA 31201 US
-3|16|no|David P. Singer|david@attorney-concord.com|18 Main Street  Concord, MA 1742 US
-2|17|no|Robert Tiefenthaler|btief@hotmail.com|501 Pierce St. Ste. 210 Sioux City, IA 51101 US
-12|17|no|Luc Delporte|ldlegalworks@yahoo.com|P.O. Box 551045  Atlanta, GA 30355 US
-8|18|no|Scott Athen|scott@athenlaw.com|10451 Mill Run Cir Ste 400  Owings Mills, MD 21117 US
-2|17|no|Jeffrey T Oswald|joswald@hboattorneys.com|675 Deerwood Ave.  Neenah, WI 54956 US
-10|17|no|McKernan Kevin P.|kevin@kmckernan.com|7247 Amboy Road  Staten Island, NY 10307 US
+||yes|Steven Epstein|sepstein@barketmarion.com|666 Old Country Road, Suite 700  Garden City, NY 11530 US
 11|16|no|Marvin Leibovich|arklawyer@gmail.com|1000 Front St.  Conway, AR 72032 US
 3|17|no|Ann Toney|anntoneylaw@gmail.com|4101 East Louisiana Avenue Suite 104 Denver, CO 80246 US
-9|15|yes|Frank Stephen Ward|frank@alabamaduiattorney.com|217 Randolph Ave.  Huntsville, AL 35801 US
-8|16|no|William V. Cristman, Jr.|billcristman@gmail.com|2 Federal Street Suite 101 St. Albans, VT 5478 US
+||yes|James N. Dicks|james.dicks@me.com|400 S. Melrose Dr., Ste. 109  Vista, CA 92081 US
+||yes|James Phillips|jphillips@kplegalteam.com|509 W. Colonial Dr.  Orlando, FL 32804 US
+1|17|no|Barry J. Sallinger|barry@sallingerlaw.com|820 E. Saint Mary Blvd.  Lafayette, LA 70503 US
+||yes|Earl A. Vergara|earl.vergara@dialdui.com|128 S. County Farm Rd., Ste. F  Wheaton, IL 60187 US
 12|17|no|John S Sitzler|dui@sitzlerlaw.com|1487 Route 38 West  Hainesport, NJ 8036 US
-8|18|no|Justin M. Taylor|justin@steelcitylawgroup.com|300 Richard Arrington Jr. Blvd. N. Suite 305 Birmingham, AL 35203 US
-3|17|no|Charles E Laroue|lashlaroue7@aol.com|7650 S. McClintock Dr. Suite 103-381  Tempe, AZ 85284 US
+||yes|George F. McCranie, IV|georgemccranie@mccranielawfirm.com|301 E. Jackson St.  Douglas, Georgia 31533 US
 11|16|no|Christopher Kattenhorn|chris@cowanlawfirm.com|4040 Lake Washington Blvd., NE, Ste. 300  Kirkland, WA 98033 US
 6|15|yes|Matthew I. Terry|matt@terrydefense.com|1010 2nd Avenue 24th Floor San Diego, CA 92101 US
+3|18|no|Manny Daskal|mdesq@sbcglobal.net|PO Box 593  Eureka, CA 95502 US
+||yes|Frank Twarog|ftwarog@mhtpc.com|131 Main St.  Burlington, VT 5402 US
+||yes|David A. Garcia|dgarcia.esq@gmail.com|2117 Crompond Rd., Ste. 25  Cortlandt Manor, NY 10567 US
 5|15|yes|Paul J. Tafelski|paul@pjt-law.com|2525 S. Telegraph Rd., Ste. 100 771 N. Mill St., Plymouth, MI 48170 Bloomfield Hills, MI 48302 US
 4|19|no|Michael J. Letsen|lawyer14@hushmail.com|100 W. Main St.  Tazewell, VA 24651 US
-8|19|no|Joshua P. Fink|joshfink@alaska.net|632 Christensen Dr 100 Anchorage, AK 99501 US
+||yes|Travis G. Black|travis@travisblacklaw.com|1839 Iron Point Rd., Ste. 160  Folsom, CA 95630 US
+||yes|Brett McIntosh|brettm56@gmail.com|766 Hudson Ave.  Sarasota, FL 34236 US
 4|18|no|Peter A Rachesky|par@defiancelawfirm.com|PO Box 1459  Glenwood Springs, CO 81602 US
 11|17|no|Nancy C. Johnson|ncjonson@earthlink.net|12600 W. Colfax, Ste., C-400  Lakewood, CO 80215 US
-4|18|no|Robert J. Landry|robert@landrylegal.com|PO Box 4255  Houma, LA 70360 US
+||yes|Bryan DePowell|bdepowell@crisplegal.com|3540 N. Progress Ave., Ste. 209  Harrisburg, PA 17110 US
+||yes|John A. Adams|lawfirmofwaldorf@yahoo.com|3957 Saint Charles Pkwy., Suite D16  Waldorf, MD 20602 US
+||yes|Steven Dowding|s3dlaw@kdsi.net|2121 N. Webb Rd.  Grand Island, NE 68802 US
 11|19|no|William DiRenzo|galarneau99@yahoo.com|888 Southeast 3rd Avenue, Suite 402  Ft. Lauderdale, FL 33316 US
+||yes|John D. Wooton, Jr.|jody@wootonlaw.com|201 N. Kanawha St.  Beckley, WV 25801 US
+||yes|David R. Pence|pence.david4@gmail.com|PO Box 3667  Charleston, WV 25336 US
 6|17|no|Matthew J. DeLuca|mattdeluca@gmail.com|712 Main Street #2450  Houston, TX 77002 US
 9|18|no|Jonna M. Spilbor|ladylaw@jonnaspilbor.com|214 Main Street  Poughkeepsie, NY 12601 US
 12|15|yes|Mark Rosenfeld|mark@mrduila.com|8200 Wilshire Blvd 200 Beverly Hills, CA 90211 US
-2|17|no|John L. Drennan|john@drennanlawfirm1.com|1350-B Chuck Dawley Blvd.  Mt Pleasant, SC 29464 US
-7|18|no|Michael Bruckheim|michael@brucklaw.com|1629 K Street, NW Ste 300  Washington DC, DC 20006 US
+||yes|Jonathan Blecher|jonathan@blecherlaw.com|9150 S. Dadeland Blvd., Ste. 1010  Miami, FL 33156 US
+||yes|Clark Adams|cla_ada@bellsouth.net|PO Box 1582  Columbus, GA 31902 US
+||yes|Joe Saienni|saienni@saiennilaw.com|3420 East Shea Boulevard Suite 115 Phoenix, AZ 85028 US
+||yes|Glenn Magnell|gmagnell@stormkinglaw.com|162 Main St.  Goshen, NY 10924 US
 4|17|no|Amy Morell|amy@duigoddess.com|24301 Southland Dr., Ste. 620  Hayward, CA 94545 US
 12|16|no|Patrick J. Silva|pjsduilaw@yahoo.com|788 N. Arrowhead Ave.  San Bernardino, CA 92401 US
-2|18|no|John Michael Ogden|ogdenjm@gmail.com|257 E. Market St.  York, PA 17403 US
 4|16|no|claiborne H. ferguson|claiborne101@yahoo.com|294 Washington Ave.  Memphis, TN 38103 US
 1|18|no|Robert E. Ianuario|robert@ianuariolaw.com|419 Vardry St.  Greenville, SC 29601 US
+2|18|no|John Michael Ogden|ogdenjm@gmail.com|257 E. Market St.  York, PA 17403 US
 7|19|no|William Conwell|williamconwell@earthlink.net|95 Third Street  Lakeport, CA 95453 US
 5|19|no|Vicki A. Jensen|vjlawdui@att.net|24072 Myrtle St.  Hayward, CA 94541 US
-8|17|no|Sharon E Chirichillo|sharon@evergreendefenders.com|Smyth Landing, 1801 West Bay Dr NW Suite 207  Olympia, WA 98502 US
-10|15|yes|Eric Torberson|attorneyeric1@gmail.com|9442 N. Capital of Texas Hgwy Ste 500  Austin, TX 78759 US
+8|17|no|Sharon E Chirichillo|sharon@evergreendefenders.com|  , OR  US
+||yes|Nathan J. Dineen|nate@vhdlaw.com|W175N11086 Stonewood Dr  Germantown, WI  US
+||yes|Alex Stalvey|astalvey@bannisterwyatt.com|PO Box 10007  Greenville, SC 29603 US
+||yes|Ousama M. Rasheed|omrlaw@me.com|1024 2nd St., NW  Albuquerque, NM 87102 US
+||yes|Jedidiah J. Glazener|jedg@omrlaw.com|1024 2nd St., NW  Albuquerque, NM 87102 US
+||yes|Andrew Dean Popplewell|apopplewell@engandwoods.com|903 E Ash St.  Columbia, MO 65201 US
+1|18|no|Steven Rodemer|steve@pikespeaklaw.com|90 South Cascade Avenue Suite 1420 Colorado Springs, CO 80903 US
+||yes|Grant M. Scheiner|grant@scheinerlaw.com|2211 Norfolk St., Ste. 735  Houston, TX 77098 US
 6|17|no|Trent R. Buckallew|buckallew@crim-law.info|1201 S Alma School Ste 11550  Mesa, AZ 85210 US
+||yes|John Matthew Leavitt|jmleavitt@hulnicklaw.com|310 W. Central, Ste. 111  Wichita, KS 67202 US
 3|20|no|Brad E. Mazarin|brad.mazarin@gmail.com|277 Broadway, Ste. 706  New York, NY 10007 US
 4|16|no|E. David Reyes|duifirm@gmail.com|PO Box 390222  Edina, MN 55439 US
+||yes|Matthew G. Gallagher|matt@mgg-law.com|917 Franklin St., Fourth Floor  Houston, TX 77002 US
 10|15|yes|Jay B. Cohen|jay@blasslaw.com|917 Franklin, 4th Floor  Houston, TX 77002 US
 12|16|no|Karen L. Phillips|kphillips@nicholslaw.net|3452 E. Lake Lansing Rd.  East Lansing, MI 48823 US
 2|18|no|Steven M. Ward|steven.ward@steinfirm.com|1355 Peachtree St. NE, Ste. 150  Atlanta, GA 30309 US
 8|16|no|Nathan L. Johnson|natej@orrlaw.com|720 S. Colorado Blvd, Ste. 1110-N  Denver, CO 80246 US
+||yes|Michael Pham|pprincessdiane@aol.com|440 Louisiana St., Ste. 900  Houston, TX 77002 US
 4|17|no|Kyle G. Manikas|kyle.manikas@manikaslaw.com|10513 Judicial Dr., Ste. 203  Fairfax, VA 22030 US
 2|15|yes|Jeff Martin|jcmartinlaw@gmail.com|13195 Warwick Blvd., Ste. 2-A  Newport News, VA 23602 US
+||yes|Franklin Joyner|jrjoynerlaw@gmail.com|170 Second St.  Cheraw, SC 29520 US
 3|17|no|Kevin O'Grady|kevin@criminalandmilitarydefensehawaii.com|1136 Union Mall, Ste. 808  Honolulu, HI 98813 US
-10|19|no|Adam Tisdell|adam@tisdelllaw.com|821 S.W. 9th Ave Ste. 200 Amarillo, TX 79101 US
+||yes|Kimberly Lerner|kimberlylerner@yahoo.com|1 Old Country Rd., Ste. 125  Carle Place, NY 11514 US
+1|15|yes|Peter Lorenz|lawyerlorenz2003@yahoo.com|250 S. Chestnut St., Ste. 23  Ravenna, OH 44266 US
+10|17|no|Barton W. Morris, Jr.|barton@michigancriminalattorney.com|201 E. Fourth  Royal Oak, MI 48067 US
+||yes|Justin Spizman|justin@hawkinsduilaw.com|1535 Mount Vernon Road  Atlanta, GA 30338 US
+||yes|Michael Norris|mnorris@mminternet.com|120 Fishermans Wharf  Redondo, CA 90277 US
+||yes|Richard Stanley Miller|slschaefer1@comcast.net|10451 Mill Run Circle, Ste. 400  Owings Mill, MD 21117 US
 8|15|yes|Robert Lee Hamilton|robert@legalsaint.com|448 Redcliff Dr., Ste 222  Redding, CA 96002 US
 6|17|no|Donald Molnar|djm@molnarlawoffice.com|111 SW Columbia St Ste 1010  Portland, OR 97201 US
+||yes|Jody Wade|jody@youhurtwefight.com|4981 Atlantic Blvd  Jacksonville, FL 32207 US
+||yes|Jerri Mitchell-Tharp|rcbuss5@mwweb.com|168 E. High St.  Painesville, OH 44077 US
 2|19|no|Ronald M. Dinan|rondinan@aol.com|411 Russell Ave.  Santa Rosa, CA 95403 US
 7|17|no|Peter A. Mesich|pmesich@gmail.com|525 B St Ste 1500  San Diego, CA 92101 US
 4|15|yes|Joshua K. Douglass|josh@jdlawoffice.com|1431 Poyntz Ave  Manhattan, KS 66502 US
+||yes|John S. Schiro|john@jschiro.com|735 West Wisconsin Ave., 12th Floor  Milwaukee, WI 53233 US
 5|17|no|Kellee C. Parker|kparker@parkerlawcenter.com|500 N. State College Blvd., Ste. 1100  Orange, CA 92868 US
+||yes|Salim A. Khayoumi|salim@khayoumilawfirm.com|821 Silver Ave SW  Albuquerque, NM 87102 US
+||yes|Norman Charles Post III|chas@centralcarolinalawyers.com|205 Courtland Dr.  Sanford, NC 27331 US
+||yes|Jamison Koehler|jkoehler@koehlerlaw.net|601 Pennsylvania Avenue NW South Bldg., Ste. 900 Washington DC, DC 20004 US
 6|18|no|Joshua Tomsheck|josht@hoflandlaw.com|228 South 4th St.  Las Vegas, NV 89101 US
+||yes|Philip N. Petersen|philip@petersen-law.com|4508 Auburn Way N., Ste. A-100  Auburn, WA 98002 US
 7|17|no|Edward L. Cooley|edward.cooley@gmail.com|301 East Main Street Suite 650 Lexington, KY 40507 US
+11|16|no|Susannah M. Hall-Justice|susannah@halljustice.com|200 Ferry St., Ste A  Lafayette, IN 47901 US
+||yes|Shaunda Colleen Lynch|slynch@fohlaw.com|3820 Oak Hill Rd.  Evansville, IN 47711 US
+||yes|Andrew F. Cotrupi|andrew@cotrupilaw.com|428 Lafayette Rd.  Hampton, NH 3842 US
+||yes|Richard G. Salzman|richard@salzmanattorney.com|5621 Strand Blvd. Suite 101 Naples, FL 34110 US
+||yes|Joshua McDowell|josh@pikespeaklaw.com|2 N. Cascade Ave., Ste. 1220  Colorado Springs, CO 80903 US
+||yes|Matthew K. Hube|matt2ga@hotmail.com|14 Oak Street  Statesboro, GA 30458 US
 10|17|no|Scott A. Gorman|sgorman@gormanlawfirmnj.com|27 Warren St., Ste. 302  Hackensack, NJ 7601 US
-1|17|no|Patricia J. Smith|pjsmithlaw@yahoo.com|9088 Superior Ave. #105  Streetsboro, OH 44241 US
-9|15|yes|Sheri Pewitt|pewittlaw@gmail.com|720 Third Avenue, Suite 2015  Seattle, WA 98104 US
+||yes|Justin B. Hunter|jbh@hunterandprice.com|PO Box 277  Kenansville, NC 28349 US
+5|18|no|Patrick C. Cummings|mings7@hotmail.com|4067 Heatherstone Court  Fairfax, VA 22030 US
+10|15|yes|Thomas P. Lyden|tlyden@keatingandlyden.com|114 W. Magnolia Street` Suite 440 Bellingham, WA 98225 US
+||yes|Thomas M. Moran|moranlaw@msn.com|19 S. Bothwell, Ste. 100  Palatine, IL 60067 US
+||yes|Luke J. Nichols|lnichols@nicholsgreen.com|10521 Judicial Drive Suite 100 Fairfax, VA 22030 US
+12|19|no|Jeffery S. Crampton|jcrampton@grandlaw.com|940 Monroe Ave. NW, Ste. 250  Grand Rapids, MI 49503 US
+||yes|Richard J. Corbitt, III|corbittlaw@gmail.com|6440 North Central Expressway, Ste. 402  Dallas, TX 75206 US
+7|18|no|Matthew J. Olszewski|matt@flduigroup.com|200 East Robinson Street, Suite 1150,  Orlando, FL 32801 US
+7|17|no|Elliott Wilcox|elliott@duitrial.com|800 West Platt Street Suite #6 Tampa, FL 33606 US
+||yes|B. Alex Hyman|alex@thehymanlawgroup.com|1208 3rd Ave.  Conway, SC 29526 US
+12|16|no|David G. Ridings|david@ridingslawgroup.com|211 Union Street, Suite 205  Nashville, TN 37201 US
+11|19|no|Theodore J Harvatin|ted@harvatinlaw.com|1100 South Fifth St.  Springfield, IL 62703 US
+||yes|William T. McAdams|bill@mcadamslawoffice.com|822 7th St., Ste. 530  Greeley, CO 80631 US
+||yes|Shaun R. Marks|marks.shaun@gmail.com|653 S. Saginaw St., Ste. 216  Flint, MI 48502 US
+5|18|no|Jason Edge|jason@edgelawfirm.com|201 W. 5th St, Ste. 550  Tulsa, OK 74103 US
+5|18|no|Melanie Lander|mdl@edgelawfirm.com|201 W. 5th St., Ste. 550  Tulsa, OK 74103 US
+1|17|no|Aaron A. Nelson|anelson@doardrill.com|103 N. Knowles Ave., P.O. Box 388  New Richmond, WI 54017-0388 US
+||yes|David Golden|davidgoldenpa@aol.com|903 SE Central Parkway  Stuart, FL 34994 US
+3|15|yes|John Dell'Aquilo|johndellaquilo@helmerlegal.com|111 White Horse Pike  Haddon Heights, NJ 8035 US
+||yes|Edd K. Roberts III|eddk@eddkrobertslaw.com|5 West Hargett St., Ste. 1100  Raleigh, NC 27601 US
+5|16|no|Liam Dixon|liam@dixonwins.com|556 W. Galena  Aurora, IL 60506 US
+3|18|no|Elizabeth  Parker|elizabeth@parkerjustice.com|3399 PGA Blvd Suite 150  Palm Beach Gardens, FL 33410 US
+3|20|no|Michael R. Bartish|gary@springsteadbartish.com|15 Ionia, Ste. 520  Grand Rapids, MI 49503 US
+12|19|no|Gary Springstead|gary@springsteadbartish.com|15 Ionia Ave., S.W. #520  Grand Rapids, MI 49503 US
+10|16|no|Christopher W. Simpkins|chris@csimpkinslaw.com|315 Dwyer Ave.  San Antonio, TX 78204 US
+||yes|Nathaniel Evans|nevans@bsmlaw.com|116 Agnes Road  Knoxville, TN 37919 US
+9|19|no|Katherine E. Kennedy|kkennedy@themcshanefirm.com|3601 Vartan Way 2nd Floor  Harrisburg, PA 17110 US
 8|16|no|Mark E. Rappl|naylorlaw@hotmail.com|1111 Lincoln Mall, Ste. 300  Lincoln, NE 68508 US
 8|17|no|Jeffrey L. Wolff|jeff@jeffwolff.com|PO Box 708  Dahlonega, GA 30533 US
 4|18|no|John C Barnes|john@johnbarneslaw.com|5401 Kingston Pike Suite 500 Knoxville, TN 37919 US
 10|17|no|Ryan Bleau|ryanbleau@azdefense.com|216 N Main Ave  Tucson, AZ 85701 US
+||yes|Donald Lee Montgomery, Jr.|dmontgomery@sampclaw.com|8 East Liberty St.  Savannah, GA 31401 US
+||yes|William King Kalivas|wkalivas@carrolllawfirm.net|44 Markfield Dr., Ste. C  Charleston, SC 29407 US
 1|16|no|Mary Chartier|mary@alanechartier.com|403 Seymour Ave.  Lansing, MI 48933 US
+||yes|Andrew Parks|andrewparks@parksandbraxton.net|1041 Ives Dairy Rd., Ste. 137  Miami, FL 33179 US
 3|20|no|John R. Garey|john@johnrgarey.com|48 The Green  Dover, DE 19901 US
 5|15|yes|Carly A. Jehlen|cjehlen@mcglonelaw.com|10513 Judicial Dr., Ste. 201  Fairfax, VA 22030 US
-4|18|no|Jonathan D Cohn|jcohn@gosglaw.com|210 Great Oaks Blvd.  Albany, NY 12203 US
+||yes|J. Randall Cox|rcox@feldwass.com|PO Box 2418  Springfield, IL 62705 US
+||yes|Adam C. Russell|adam@russ911.com|309 Washington Street  Brighton, MA 2135 US
 10|17|no|Robert D. McMillin|robertdmcmillin@gmail.com|2128 Front St.  Slidell, LA 70458 US
+9|15|yes|Sheri Pewitt|pewittlaw@gmail.com|720 Third Avenue, Suite 2015  Seattle, WA 98104 US
 2|17|no|Ashley E. Killeen|akilleen@padrunkdrivinglawyers.com|Two Bala Plaza, Ste 300  Bala Cynwyd, PA 19004 US
 11|18|no|Barry S. Cohen|barrycohen@barrycohenlaw.com|N9661 Willow Rd.  Elkhart Lake, WI 53020 US
+||yes|Daniel Shaffer|lawyerdan@danielshafferlaw.com|405 Ridges Blvd., Ste. B  Grand Junction, CO 81507 US
+10|17|no|Brandi D. Collins|brandi@collinsdefenselaw.com|912 W. Fourth St.  Little Rock, AR 72201 US
+3|16|no|David P. Singer|david@attorney-concord.com|18 Main Street  Concord, MA 1742 US
+2|17|no|Robert Tiefenthaler|btief@hotmail.com|501 Pierce St. Ste. 210 Sioux City, IA 51101 US
+12|17|no|Luc Delporte|ldlegalworks@yahoo.com|P.O. Box 551045  Atlanta, GA 30355 US
+8|18|no|Scott Athen|scott@athenlaw.com|10451 Mill Run Cir Ste 400  Owings Mills, MD 21117 US
+||yes|Andrew H. Hanford|ahanford@live.com|32 Court Square SW  Graham, NC 27253 US
+||yes|Jackson Hilliard|jackson@hilliardlawoffice.com|238 E Davis Blvd #201  Tampa, FL 33606 US
+2|17|no|Jeffrey T Oswald|joswald@hboattorneys.com|675 Deerwood Ave.  Neenah, WI 54956 US
+10|17|no|McKernan Kevin P.|kevin@kmckernan.com|234 Franklin Ave  Nutley, NJ 7110 US
 3|20|no|Stephen T. Novick|snovick@knpclaw.com|60 State Street Suite 700 Boston, MA 2109 US
+||yes|Emily Bell|emily@mishlovelaw.com|4425 Northport Washington Rd., Ste.110  Glendale, WI 53212 US
 5|18|no|Joseph G. McGraw|mcgrawlaw@echoes.net|41 N. Main St. Suite 400 Carbondale, PA 18407 US
+||yes|Jerry  Brimberry, Jr.|jay.brimberry@att.net|408 N. Jackson St.  Albany, GA 31701 US
+||yes|John R. Watkins|john@aratalawfirm.com|116 E. Berry St., Lincoln Tower 14th Floor  Ft. Wayne, IN 46802 US
+||yes|Raymond W. Fraley, Jr.|ray@fraleyhill.com|PO Box 572  Fayetteville, TN 37334 US
+||yes|Philip Kalil|phil@germainelaw.com|23 Birch St.  Derry, NH 3038 US
+||yes|Joseph A. Lazzara|joe@lazzaralegal.com|5950 South Willow Dr., Ste. 250  Greenwood Village, CO 80111 US
+11|15|yes|Richard T. Jones|austindwilawyer@gmail.com|1302 West Ave.  Austin, TX 78701 US
+||yes|Andres S. Mejer|info@andresmejerlaw.com|9 Memorial Parkway, Ste. B  Long Branch, NJ 7740 US
+||yes|Kelsey Hunter|kelsey@travisblacklaw.com|1839 Iron Point Rd, Ste 160  Folsom, CA 95630 US
+||yes|Trevan V. Morrow|tmorrow@myoklg.com|1705 South Baltimore Ave  Tulsa, OK 74119 US
+5|17|no|Jordan Lewis|jordan@jordanlewislaw.com|1914 N. Memorial Way  Houston, TX 77007 US
+||yes|John C Nelson|johncnelson3@gmail.com|12 Monroe Street  Ellicottville, NY 14731 US
+||yes|Thomas D. Silverman|tom@silvermanlawoffices.com|804 Colorado Avenue, Ste. 201  Glenwood Spsrings, CO 81601 US
+8|18|no|Justin M. Taylor|justin@steelcitylawgroup.com|300 Richard Arrington Jr. Blvd. N. Suite 305 Birmingham, AL 35203 US
+||yes|Alisha Wood|alisha@duisandiego.com|3990 Old Town Ave. Ste. B109 San Diego, CA 92110 US
+8|19|no|Joshua P. Fink|joshfink@alaska.net|632 Christensen Dr 100 Anchorage, AK 99501 US
+2|17|no|Michael F. White|lawyer@vvm.com|100 Kasberg Dr., Ste. A  Temple, TX 76502 US
+1|16|no|William A. Young, Jr.|william@williamayoungjr.com|2820 Summer Oaks Dr.  Bartlett, TN 38134 US
+8|18|no|Jeremy Zarzycki|jeremy@jzdefense.com|100 N. Stone Ave, Suite 502  Tucson, AZ 85701 US
+9|16|no|Joe Good III|joe@joegoodlaw.com|122 Coleman Blvd.  Mt. Pleasant, SC 29464 US
+||yes|Gregory P. Jimeno|gjimeno@jimenogray.com|7310 Ritchie Highway, Ste. 900  Glen Burnie, MD 21061 US
+||yes|Frank C. Gray, Jr.|fgray@jimenogray.com|7310 Ritchie Highway, Ste. 900  Glen Burnie, MD 21061 US
+||yes|Jeffrey S. Hammel|jeff@jhammellaw.com|23 S. 1st St.  Belleville, IL 62220 US
+||yes|W. Lamar Fields|wlfields@fieldslawfirm.com|31 Montgomery St.  Savannah, GA 31401 US
+3|17|no|David J. Tarrell|nelawyer@gmail.com|1823 Harney Street, Ste. 100  Omaha, NE 68102 US
+||yes|F. William Powers|bill@powmac.ocom|2412 Arty Ave.  Charlotte, NC 28208 US
+12|19|no|Riley Mulinix|riley@lawokc.com|210 Park Ave., Ste. 3030  Oklahoma City, OK 73102 US
+||yes|Brian D. Joslyn|brian@joslynlawfirm.com|901 S High St  Columbus, OH 43206 US
+11|17|no|Christina L. Williams|christina@williams-criminallaw.com|319 S. Gillette St., Ste. 300  Gillette, WY 82716 US
+||yes|Karin Riley Porter|karin@pricebenowitz.com|10605 Judicial Dr., A-1 Suite 200 Fairfax, VA 22030 US
 2|18|no|T. Douglas Clifford|tdougattorney@yahoo.com|26 Benedict Ave.  Norwalk, OH 44857 US
 2|18|no|Diana Weiss Aizman|diana@aizmanlaw.com|16133 Ventura Blvd., Suite 645  Encino, CA 91436 US
+||yes|Sarah A. Churchill|schurchill@nicholswebb.com|1250 Forest Ave. Suite 10 Portland, ME 4103 US
+||yes|Melanie E. Beauchamp|melanie@beauchamplawoffice.com|4425 East Agave Road, #110  Phoenix, AZ 85044 US
 12|18|no|Douglas Bradley Loper|brad@loperlaw.net|111 W. 15th  Houston, TX 77008 US
 1|16|no|Jeffrey T. Kortes|jeff@wmdtlawyers.com|77 Monroe Center NW, Ste. 700  Grand Rapids, MI 49503 US
 7|15|yes|Robert R. McLendon, IV|robmclendon4@hotmail.com|150 Court Sq, Ste. C  Blakely, GA 39823 US
-10|17|no|Jonathan Rooker|jonathan_rooker@sbcglobal.net|2333 Merced St  Fresno, CA 93721 US
+3|17|no|Jonathan Rooker|jonathan_rooker@sbcglobal.net|2333 Merced St  Fresno, CA 93721 US
 11|19|no|Benjamin Hiltzheimer|bh@hiltzheimer.com|108 Park Avenue, Ste. 200  Raleigh, NC 27605 US
 7|18|no|John A. Campanella|campylaw@yahoo.com|901 H St., Ste. 301  Sacramento, CA 95814 US
 4|18|no|Alan Pearlman|pearlman@theelectroniclawyer.com|707 Skokie Boulevard, Ste. 600  Northbrook, IL 60062 US
 10|17|no|Michael A. Robinson|mar@criminalattorneyva.com|3950 Chain Bridge Rd., Ste 6  Fairfax, VA 22030 US
 8|16|no|Jeffrey G. Pierce|jeffrey.piercelaw@gmail.com|2016 Bienville Blvd.  Ocean Springs, MS 39564 US
 8|16|no|Ashley E. Morgan|ashley@ashleymorganlaw.com|310 S. St Marys, Ste. 1860  San Antonio, TX 78205 US
+||yes|Reese M. Stidham, IV|reese@howellandchristmas.com|250 Mathis Ferry Rd. Suite 102 Mt. Pleasant, SC 29464 US
 8|16|no|Richard A. Hernandez|rick@orrlaw.com|720 S. Colorado Blvd, Ste. 1110-N  Denver, CO 80246 US
 12|17|no|Joseph J. Higgins, III|jhiggins@duilawyer-massachusetts.com|306 Washington St.  Norwell, MA 2061 US
-7|15|yes|Matthew Murillo|matthew@murillolawyer.com|2068 Orange Tree Lane, Suite 222  Redlands, CA 92374 US
+7|15|yes|Matthew Murillo|matthew@murillolawyer.com|  , CA  US
 2|17|no|Patrick P. Carney|carney_law@yahoo.com|109 S. 5th St.  Norfolk, NE 68702 US
 10|17|no|Kent R. P. Gray|kentgraylaw@cs.com|31 N. Tejon, Ste. 310  Colorado Springs, CO 80903 US
 6|16|no|Michael DeBusk|michael.debusk@gmail.com|5344 N. Broadway, Ste. 101  Knoxville, TN 37918 US
+||yes|Corey Bryan|coreydanielbryan@yahoo.com|119 E. Three Notch St.  Andalusia, AL 36420 US
 5|17|no|Joseph J. Yoon|jyoon@yoonhuff.com|11325 Random Hills Dr., Ste. 360  Fairfax, VA 22030 US
-5|17|no|J. Lee Webb|jleewebb@htwwlaw.com|750 Hammond Dr., Bldg 5  Atlanta, GA 30328 US
+||yes|Kevin D. Camp|kevin@camplawfirm.com|1764 Lelia Dr.  Jackson, MS 39216 US
+5|17|no|J. Lee Webb|jleewebb@gmail.com|1055 Prince Avenue Suite 2 Athens, GA 30606 US
+||yes|James LeFante|jlefante@lefantelaw.com|456 Fulton St., Ste. 370  Peoria, IL 61602 US
+||yes|James V. Bickford, IV|jamesbickford@sandiegodui.net|110 W. C St., Ste. 2204  San Diego, CA 92101 US
 11|16|no|Joseph M. Gerstenzang|joe.gerstenzang@gmail.com|210 Great Oaks Blvd.  Albany, NY 12203 US
+||yes|Lauren R Angelos|lauren@angeloslawgroup.com|401 West A Street, Suite 1420C  San Diego, CA 92101 US
 1|16|no|John Naumovski|lawyer@valawhelp.com|2019 Cunningham Dr., Ste. 317  Hampton, VA 23666 US
+9|17|no|Jennifer M Gerstenzang|jennifer@gerstenzanglaw.com|533 2nd Street, Ste. 206  Encinitas, CA 92024 US
+||yes|Roxanne D. Blake|roxanne@mullinsandblake.om|2940 W. Sunset Ave., Ste D  Sprigndale, AR 72762 US
+||yes|Ryan Patrick Brown|ryan@ipoftexas.org|718 S.W. 16th Ave.  Amarillo, TX 79101 US
+||yes|Ulrich Gautier|ugautier@videoiron.ca|500 Place D'Armes, St. 2350  Montreal, QC H2y2W2 CA
+||yes|Leslie Sammis|lsammis@sammislawfirm.com|1005 N Marion St  Tampa, FL  US
 7|18|no|Paul Charlebois|sarrazin.charlebois@videotron.ca|162 Wellington St.  Gatineau, QC J8X-2J4 CA
 7|18|no|Mark Deniz|mark@denizdefense.com|2831 Camino Del Rio South, Suite 307  San Diego, CA 92108 US
+||yes|William G. Yarborough|wgyarborough@gmail.com|522 N. Church St.  Greenville, SC 29601 US
+||yes|James Abrenio|jabrenio@benglasslaw.com|3915 Old Lee Highway, Ste. 22-B  Fairfax, VA 22030 US
 3|16|no|Khalil Saman|legal@samanlaw.com|202 Travis St. Suite 309 Houston, TX 77002 US
+||yes|Ryan Shafer|ryan@joslynlawfirm.com|901 S. High St.  Columbus, OH 43206 US
+||yes|Stephen R. Glazer|support@ncdd.com|223 N. San Francisco, Ste. 102  Flagstaff, AZ 86001 US
 11|17|no|Johnny D. Houston. Jr.|johnnydhouston@gmail.com|3417 Dayton Blvd.  Chattanooga, TN 37415 US
 6|17|no|Tyler D. Helmond|thelmond@vzplaw.com|141 E. Washington St., Ste. 300  Indianpolis, IN 46204 US
 6|17|no|Betty Stroh|bstroh@landrylaw.net|23046 Avenida De La Carlota Suite 125 Laguna Hills, CA 92653 US
-2|18|no|DaSean A. Jones|djones@texasjoneslaw.com|112 W 4th St  Houston, TX 77007 US
-1|17|no|John C. Schleiffarth|john@jcsattorney.com|75 W Lockwood Ave 222 Webster Groves, MO  US
-9|16|no|Sandra L. Byrd|sandi@slbyrd.com|661 W Lake St Ste.2 Chicago, IL 60624 US
-10|16|no|John H. Bradley|john@strangbradley.com|10 E Doty St Ste. 621 Madison, WI 53703 US
-9|17|no|Ashley McMahan|ashley@ashleymcmahanlaw.com|201 17th street nw Suite 300 Atlanta, GA 30363 US
-1|17|no|Barry S. Edwards|bse@barrysedwardslaw.com|125 SE Main St Ste. 339 Minneapolis, MN 55414 US
-6|15|yes|Laurie Schmidt|laurie@criminaldefenseyouneed.com|600 Grant Street, Ste. 201 Denver, CO 80203 US
-1|20|no|Andrea Worden|aworden@wordenfirm.com|PO Box 207  Norman, OK 73069 USA
-5|15|yes|Matthew Marin|marin.matthew@gmail.com|127 Dorrance Street Penthouse Suite Providence, RI 2903 USA
-7|17|no|James Snell|jamessnell@snelllaw.com|316 S Lake Dr  Lexington, SC 29072 US
-10|17|no|Patrick Kunes|pkunes@gmail.com|230 2nd St E  Tifton, GA 31794 US
-12|16|no|Lauren E Scardella|lauren@samsachs.com|379 Princeton Hightstown Rd PO Box 968 East Windsor, NJ 8520 USA
-8|17|no|Sarah D Cho|sarah@sarahcholaw.com|10900 N.E. 8th St. Suite 1115  Bellevue, WA 98004 USA
-1|17|no|Allyson M Prejean|allyson@sallingerlaw.com|820 East St. Mary Boulevard  Lafayette, LA 70503 USA
-11|17|no|Robert J. Reeves|robert@rjrlaw.com|1012 Market Street Suite 205 Fort Mill, SC 29708 US
-11|17|no|KARL C. SEMAN|kcs@gslawyers.com|100 GARDEN CITY PLAZA SUITE 203 GARDEN CITY , NY 11530 US
-11|19|no|Christopher Matthew Buckalew|matt@looneyconrad.com|11767 Katy Fwy Ste. 740  Houston, TX 77079 US
-12|15|yes|Brian D. Sloan|sloan@mcdui.com|40 N. Central Ave., Suite 1400  Phoenix, AZ 85004 US
-7|16|no|Brian K. Schowalter|brianschowalter@durangoattorneys.com|101 West 9th Street Suite 1 Durango, CO 81301 US
-7|17|no|Bruce W. Sarbaugh|sarbaughlaw@aol.com|3223 Arapahoe Avenue, Suite 300  Boulder, CO 80303 US
-10|17|no|JESSE ADRIANCE|jesse.adriance@gmail.com|121 Broadway 550 San Diego, CA 92101 US
-7|16|no|Thomas Grajek|flcrimedefense@gmail.com|206 Easton Dr. Suite 102  Lakeland, FL 33803 USA
-5|15|yes|Felipe Plascencia|felipe@plascencialaw.com|15851 Whittier Blvd. 2nd Floor Whittier, CA 90603 US
-2|16|no|Jeffrey Collins Toothaker|jefftooth2000@yahoo.com|14 High Street P.O. Box 1984 Ellsworth, ME 4605 US
-5|16|no|Michael J. Kennedy|capmotion@earthlink.net|82632-B Hwy. 111 Suite 3 Indio, CA 92201 US
-12|16|no|Robert J. Schefter|rschefter@duiresults.com|105 Leader Heights Road  York, PA 17403 US
-12|15|yes|Stephen P. Pfeiffer|pfeiffer@wolriv.com|200 Bendix Road Suite 300  Virginia Beach, VA 23462 US
-1|19|no|John-Robert W Granger|johnr@grangerlawoffice.com|325 W. Franklin St. Suite 123 Tucson, AZ 85701 US
-4|16|no|Daniel A. Noll|dan@noll-law.com|930 E. Monroe  Springfield, IL 62701 US
-2|18|no|Gordon L. Fenderson|gfenderson@f-h-law.com|644 Cesery Blvd #310  jacksonville, FL 32211 US
-9|17|no|Matthew D. Bowe|mattbowelaw@gmail.com|18 Pleasant St.   Brunswick, ME 4011 US
-9|17|no|Dan Chambers|dchambers@clfca.com|2600 Michelson Drive Suite 1700 Irvine, CA 92612 U.S.
-6|18|no|Dana J. Oliver|dana@danaoliverlaw.com|1735 E. Washington St.  Colton, CA 92324 US
-9|16|no|Chad M. Oliver|cmo@chadoliverlaw.com|7751 Carondelet Avenue Suite 201 Clayton, MO 63105 US
-10|17|no|William D. Day|day@williamdaylaw.com|98 Church Street  Rockville, MD 20850 US
-7|16|no|Anthony D. Cotton|adcotton20@yahoo.com|1535 E. Racine Ave  Waukesha, WI 53186 US
-6|16|no|Casey Y. Meek|cmeek@josephhollander.com|3320 Mesa Way Suite E  Lawrence, KS 66049 US
-10|19|no|Ryan Travis Ramsayer|rramsayer@baronedefensefirm.com|280 N. Old Woodward Ave., Ste. 200  Birmingham, MI 48009 US
-9|17|no|Matthew A. Dodd|matt@doddlawfirmpc.com|32 Market Place, #5  Big Sky, MT 59716 US
-5|18|no|John P. Thygerson|jptesq@hotmail.com|8 Byington Place  Norwalk, CT 6850 US
-9|17|no|John H. Parker II|jhp2law@gmail.com|8 S. Third St.  5th Floor Memphis, TN 38103 US
-2|18|no|Scott M. Patterson|scott@thepattersonfirm.com|531 Roselane Street Suite 200 Marietta, GA 30060 US
-4|17|no|Mary E. Conn|mary@maryconnlaw.com|801 Congress Suite 350 Houston, TX 77002 US
-10|19|no|Sherry Levin Wallach|wallach@wallachrendo.com|239 Lexington Avenue  Mt. Kisco, NY 10549 US
-11|15|yes|Phillip W. Goff|lawyer@igotadwi.com|403 S. 6th St.  Kingsville, TX 78363 US
-5|17|no|Jack Mkhitarian|jackmk@me.com|1008 5th St. NW  Albuquerque, NM 87102 US
-5|15|yes|Kyla M. Lee|kyla@vancouvercriminallaw.com|210-837 Beatty Street  Vancouver, BC V6B2M6 CA
-8|16|no|Conor Hagerty|conor@orrlaw.com|720 S. Colorado Boulevard Suite 1110-N Denver, CO 80246 US
-8|19|no|Arnulfo D Hernandez|ahernandez@hdezlaw.com|1490 Lafayette Street Suite No. 307 Denver, CO 80218 US
-2|17|no|Carl A Irace|southforklaw@gmail.com|12 Gay Road #5128  East Hampton, NY 11937 US
-5|18|no|Kyle J. Worby|kyle@advocatesforu.com|122 West Boston Avenue Suite 200 Monmouth, IL 61462 US
-3|17|no|Sarah  M Schmeiser|sarah@traceywood.com|1 S Pinckney Street, Suite 950  Madison, WI 53703 US
-7|17|no|Mark A Busby|mbusby@vzplaw.com|141 E Washington Street, Suite 300  Indianapolis, IN 46204 US
-5|16|no|Thomas M Petersen|tpetersenesq@gmail.com|12020 Shamrock Plaza Suite 105 Omaha, NE 68154 US
-8|16|no|Kimberly J. Benjamin|kim@casscountytriallawyers.com|8019 E. 171st Street  Belton, MO 64012 US
-9|15|yes|David J. Dischley|david@dischleylaw.com|28 E. Lee Street  Warrenton, VA 20186 US
-1|17|no|Larry Forman|lforman30@gmail.com|138 S. 3rd St.  Louisville, KY 40202 US
-3|16|no|Neal A. Davis|info@houstoncriminaldefenselawyers.com|917 Franklin Street #600 Houston, TX 77002 US
-4|18|no|Todd A Snow|tsnow@snowlaw.net|514 E. Main St. P.O. Box 591 Waupun, WI 53963 US
-10|17|no|Pamela  Epperson Panasiuk|eppersonpanasiuklaw@gmail.com|1101 West 2nd Street  Little Rock, AR 72201 US
-2|18|no|Amanda Anderson Bright|abright@f-h-law.com|135 5th Ave SE Suite 200 Delray Beach, FL 33483 US
-11|16|no|Frank Walker|frank@frankwalkerlaw.com|428 Forbes Avenue, Ste 1800  Pittsburgh, PA 15219 US
-5|20|no|Michael H Fienman|support@philadelphiacriminalattorney.com|1608 Walnut St Ste 900  Philadelphia, PA 19103 US
-5|20|no|Bradley J Groene|support@cincinnaticriminalattorney.com|810 Sycamore St  Fl 3 Cincinnati, OH 45202 US
 10|15|yes|Mark D.  Dubiel|markdubiel@azbar.org|3420 E. Shea Suite 103 Phoenix, AZ 85028 US
+2|2018|no|Shane Peter Phelps|shane@shanephelpslaw.com|400 North Washington  Bryan, TX 77803 US
+10|2015|yes|Gerald  A Miller|gerald@geraldmiller.com|2915 South Wayzata Blvd   Minneapolis, MN 55405 United States
+2|2018|no|Michael Macht|mike@attymacht.com|61 N. Market St  Asheville, NC 28801 US
+3|18|no|Chad T. Hendricks|chad@randyreinhardt.com|788 N. Jefferson St. Suite 707 Milwaukee, WI 53202 US
+4|2018|no|Justin Lovely|justin@justiceislovely.com|804 N Oak St   Myrtle Beach , SC 29577 US
+7|2019|no|Katherine E Shipman|shipmanlawoffice@gmail.com|204 West Davis St.  Conroe, TX 77301 US
+3|2017|no|Adam M Vander Heyden|adam@duidoctor.com|6623 Las Vegas Boulevard South - #245  Las Vegas, NV 89119 USA
+1|2018|no|Arianne  M Espinueva|arianne@coreyevanparkerlaw.com|7700 Irvine Center Drive Suite 800 Irvine, CA 92618 US
 8|17|no|Greg Bell|gblegalca@yahoo.com|5663 Balboa Avenue Suite 433 San Diego, CA 92111 US
-1|17|no|Charles D.  Dresow|cdresow@gmail.com|P.O. Box 1420  Sausalito, CA 94966 US
-6|16|no|Jason Hicks|jasonhickslaw@gmail.com|104 N. Orlando Ave., Suite 201  Cocoa Beach, FL 32931 US
-4|16|no|Dagoberto  J Rodriguez|dago@rsfirm.net|9300 Peabody Street, Suite 208  Manassas, VA 20110 US
-11|15|yes|Steven  W Woods|steve@wblawfirm.com|517 N. Mission St, Suite 2A PO Box 4378 Wenatchee, WA 98801 US
-11|16|no|Matthew Phillip Konecky|mkonecky@bellsouth.net|4440 PGA Blvd. Suite 600  Palm Beach Gardens, FL 33410 US
-3|16|no|Russ Kofman|info@lebedinkofmanlaw.com|26 Broadway, Suite 2100  NY, NY 10004 US
+||yes|Chad R.  Maddox|cmaddox@gototrial.com|5120 E. La Palma Suite 207 Anaheim , CA 92807 US
+||yes|Jeffrey Ladd Foster|foster@fosterhanks.com|302 North Broad Street  Monroe, GA 30655 US
+3|2016|no|Ted Peter Hammel|thammel@brumund-jacobs.com|58 E. Clinton Street, Suite 200  Joliet, IL 60432 US
+9|2017|no|Helena L Jedziniak|hjecziniak@colelawfirmsc.com|1303 Ella Street  Anderson, SC 29621 US
+9|2015|yes|Sean Patrick Quinlan|spqesq@hotmail.com|2331 Market Street  Camp Hill, PA 17011 US
+7|2017|no|Demetrios J Skandalakis|mitchskan@gmail.com|4107 Beechwood Drive, NW  Atlanta, GA 30327 US
+3|2017|no|Gregory M. Wise|gmwise@wiselawfla.com|4300 Bayou Boulevard Suite 35 Pensacola, FL 32503 US
+10|2016|no|John R. Coniglio|john@conigliolawyer.com|490 Calle Principal  Monterey, CA 93940 US
+3|2015|yes|T. Micah Leddy|micah@leddylaw.com|2008 Lincoln Street  Columbia, SC 29201 US
+1|2018|no|Jeff Wertz|jeff@aspen-law.com|215 S. Monarch Street, Suite 303  Aspen, CO 81611 US
+2|2017|no|Todd Wylie Carpenter|toddcarpenteresq@gmail.com|4 Liberty Street  Poughkeepsie, NY 12601 US
+4|2017|no|Christopher M Eskew|chris@eskewlaw.com|1 N. Meridian Street Suite 600 Indianapolis, IN 46204 US
+10|2016|no|Christopher D Brough|christopherbrough@broughlaw.com|175 Magnolia Street, Suite 202  Spartanburg, SC 29306 US
+2|2019|no|Barbara S Foster|bfoster@bfoster-law.com|217 W York St  Savannah, GA 31401 US
+10|2016|no|Ryan A Stampfle|ryanstampfle@murraylaw.info|4214 Mayfair Street Suite B Myrtle Beach, SC 29577 US
+7|2015|yes|Andrew F Wehunt|andrew@wehuntlawfirm.com|327 Dahlonega Street Suite 304 Cumming, GA 30040 US
+8|2017|no|Kevin R Pettrey|kevinpettrey@gmail.com|485 S. Independence Blvd. Suite 104  Virginia Beach, VA 23452 US
+9|2019|no|ike lucero, jr|ikelucerojr@gmail.com|2145 Kipling Street  Lakewood, CO 80215 US
+3|2019|no|Lindsey M Scott|lindsey@lindseyscottlaw.net|2809 Hwy 69 North  Nederland, TX 77627 US
+11|2017|no|Roland  L.  Rillos|rolandrillos@rilloslaw.com|1 E. Washington St. Suite 500  Phoenix , AZ 85004 US
+2|2018|no|Alexander Fredrick Harper|alexharperlaw@gmail.com|  , CA  US
+7|17|no|Jerry J. Cox|jcox@kih.net|115 Richmond St.  Mt. Vernon , KY 40456 US
+4|2020|no|tigran martinian|tm@martinianlaw.com|2801 Cahuenga Blvd West  los angeles, CA 90068 US
+||yes|Andrew A. Achey|andrewacheylaw@gmail.com|302 E. Shady Lane  Logansport, IN 46947 US
+5|15|yes|Matthew Marin|marin.matthew@gmail.com|37 Bellevue Avenue 2nd Floor Newport, RI 2840 USA
+||yes|Cristine Beckwith|cristinebeckwith@outlook.com|1115 Tacoma Ave S  Tacoma, WA 98402 USA
+||yes|Thomas C. Speedie|tom@tomspeedielaw.com|238 East St. Louis Street  Nashville, IL 62263 US
+12|15|yes|Stephen P. Pfeiffer|pfeiffer@wolriv.com|200 Bendix Road Suite 300  Virginia Beach, VA 23462 US
+7|17|no|Bruce W. Sarbaugh|sarbaughlaw@aol.com|3223 Arapahoe Avenue, Suite 300  Boulder, CO 80303 US
+10|16|no|John H. Bradley|john@strangbradley.com|10 E Doty St Ste. 621 Madison, WI 53703 US
+10|17|no|Patrick Kunes|pkunes@gmail.com|230 2nd St E  Tifton, GA 31794 US
+1|17|no|Barry S. Edwards|bse@barrysedwardslaw.com|125 SE Main St Ste. 339 Minneapolis, MN 55414 US
+12|16|no|Robert J. Schefter|rschefter@duiresults.com|105 Leader Heights Road  York, PA 17403 US
+2|18|no|DaSean A. Jones|djones@texasjoneslaw.com|112 W 4th St  Houston, TX 77007 US
+||yes|Charles M Kinsey|ckinseylaw@gmail.com|5208 W. Broadway, Suite 200  Pearland, TX 77581 USA
+8|17|no|Sarah D Cho|sarah@sarahcholaw.com|10900 N.E. 8th St. Suite 1115  Bellevue, WA 98004 USA
+||yes|Stephen D Handy|stephen@stephenhandylaw.com|1409 Precinct Line Rd  Hurst, TX 76053 US
+||yes|James Abate|jabatelaw@gmail.com|1200 Rte 22 2000 Bridgewater, NJ 8807 US
+9|16|no|Sandra L. Byrd|sandi@slbyrd.com|661 W Lake St Ste.2 Chicago, IL 60624 US
+||yes|Roger L. Falk|roger_falk@sbcglobal.net|301 W Central Ave  Wichita, KS 67202 US
+5|15|yes|Felipe Plascencia|felipe@plascencialaw.com|15851 Whittier Blvd. 2nd Floor Whittier, CA 90603 US
+10|17|no|JESSE ADRIANCE|jesse.adriance@gmail.com|121 Broadway 550 San Diego, CA 92101 US
+||yes|James P. Casement|jim@casement.net|1595 Weld Rd Ste. 3 Elgin, IL 60123 US
+7|17|no|James Snell|jamessnell@snelllaw.com|316 S Lake Dr  Lexington, SC 29072 US
+||yes|Kimberly G. Tucker|kgt@kgtlaw.com|6500 International Parkway, Ste. 1700    Plano, TX 75093 USA
+||yes|Jonathan F. Marshall|jmarshall@jfmlaw.com|157 Broad Street  Red Bank, NJ 7701 US
+||yes|John A. O'Leary|oleary_email@yahoo.com|714 Calhoun Street  Columbia, SC 29201 US
+||yes|Jay E. Vincent|javincen@wyoming.com|606 East Washington Ave.  Riverton, WY 82501 USA
+9|17|no|Ashley McMahan|ashley@ashleymcmahanlaw.com|201 17th street nw Suite 300 Atlanta, GA 30363 US
+12|16|no|Lauren E Scardella|lauren@samsachs.com|379 Princeton Hightstown Rd PO Box 968 East Windsor, NJ 8520 USA
+||yes|Francis Farren|fefarren@farren-law.com|24 Prestbury Square  Newark, DE 19713 USA
 1|18|no|Bob Stitcher|bob@bobstitcher.com|313 S. Greene St., Suite 302  Greensboro, NC 27401 
-7|17|no|Thomas J Melanson|tmelanson@melansonlawoffice.com|79 St. James Street Suite 2 Kingston, NY 12401 US
-1|17|no|Justin D Maines|jd@thenyelawgroup.com|33 Bow Cir Suite A Hilton Head, SC 29928 US
-6|17|no|Scott T. Stotz|scott@stotzlaw.com|2068 Orange Tree Ln, Ste. 222  Redlands, CA 92374 US
-6|17|no|Mark S. Perry|mperry491@aol.com|269 Maplewood Drive SW  Calhoun, GA 30701 US
-11|17|no|Stephen T Bowling|stevebowling@stevebowling.com|700 Lavaca St. Suite 1400 Austin, TX 78701 US
-10|16|no|Bryan R Goodman|bgoodmanlawoffice@gmail.com|705 Douglas Street Suite 402 Sioux City, IA 51101 US
-10|15|yes|Nigel D Graham|nigel@lucielaw.com|315 E. Jackson Street PO Box 790 Macomb, IL 61455 US
-5|16|no|William B. Hankins, Jr.|hankinslaw@msn.com|The White House 6604 W. Saginaw Hwy. Lansing, MI 48917 US
-5|15|yes|m. James Jenkins|mjj7000@cox.net|1211 West Garden Street  Pensacola, FL 32502 US
-9|17|no|Anthony  Michael  Reyes|tony@rspclaw.com|1720 Carey Avenue, Suite 500  Cheyenne, WY 82001 US
-9|18|no|Eric J Benavides|benavides.eric@gmail.com|723 Main St. Suite: 802 Houston, TX 77002 US
-9|18|no|George C. Creal, Jr.|gcreal@georgialawyer.com|480 John Wesley Dobbs Ave NE Unit 190 Atlanta, GA 30312 US
-12|14|yes|Murray  W. Bell|mwbell@kirkwoodlaw.com|2435 Kimberly Road Suite 235 South Bettdendorf, IA 52722 US
-3|15|yes|Brandon K Moffitt|bmoffitt@moffittandphillips.com|204 Executive Ct., Suite 100  Little Rock, AR 72205 US
-10|16|no|William C. Gore Jr|bill@billgorelaw.com|115 Courthouse Square  Whiteville, NC 28472 US
-8|17|no|Robert M.  Nachamie|rnachamie@gmail.com|1011 Park Street, Suite 5, Suite 5, Peekskill, New York 10566  Peekskill, NY 10566 US
-10|17|no|Melissa L Mroczkowski|melissa.m@kirkobear.com|603 South 8th Street  Sheboygan, WI 53081 US
-3|15|yes|Leo M Mulvihill|leo@fishtownlaw.com|2424 E. York Street Suite 316 Philadelphia, PA 19125 US
-9|19|no|Daniel E Gavrin|danielgavrin@mindspring.com|6 Concourse Pkwy Suite 2920 Atlanta, GA 30328 US
-3|15|yes|Mark D Kargman|markkargman@yahoo.com|6215 Black Horse Pike  Egg Harbor Twp, NJ 8234 US
-4|18|no|Ryan D. Stump|ryan@randallstump.com|1800 Camden Road Suite 205 Charlotte, NC 28203 US
-2|18|no|Steven J Topazio|stopazio@topaziolaw.com|10 Winthrop Square, Suite 4100  Boston, MA 2110 US
-7|15|yes|David B Green|david@davidgreenlawfirm.com|535 East Street  Lake Charles, LA 70601 US
-8|18|no|Maureen  A Devine|mdlawfirm@comcast.net|28 South Street Suite 5 Hingham, MA 2043 US
-1|16|no|Sam C.  Adamo|samjr@samadamolaw.com|3200 Travis, 4th Floor  Houston, TX 77006 US
-3|17|no|Susan L Schoon|susanschoon@hotmail.com|200 N. Seguin Avenue  New Braunfels, TX 78130 US
-9|16|no|Jonathan W McConnell|jon@jonathanwmcconnell.com|328 East 1st Street North  Wichita, KS 67202 US
-3|17|no|Adam P. Nero|adam@traceywood.com|1 S. Pinckney St.  Suite 950 Madison, WI 53703 US
-8|17|no|Larry W Fouche|lwfouche@lwfouchelaw.com|3920 Arkwright Road, Suite 405 P. O. Box 18086 Macon, GA 31210 US
-6|17|no|Buta Biberaj|biberaj@biberaj-snow-law.com|7 East Market Street Suite 102 Leesburg, VA 20176 US
-2|17|no|Mr. Kelly V. Landers|kvl@bellsouth.net|315 26th Street  West Palm Beach, FL 33407 US
-7|17|no|Geoffrey R Willis|ryan@wjnpllc.com|1101 Haynes Street Suite 205 Raleigh, NC 27604 US
-8|16|no|J. Steven  House|jshouse@jshouselaw.com|222 S. Hamlton Street Suite 21 Madison, WI 53703 US
-10|16|no|Joerg F Jaeger|jfjaeger@yahoo.com|217 NE Ivanhoe Blvd  Orlando, FL 32804 US
-10|15|yes|Saul Brian Simmonds|simmonds@gws.ca|1200-363 Broadway Avenue  Winnipeg, MB R3C 0Y3 CA
-6|17|no|Nathanael A Horsley|nhorsleylaw@hotmail.com|135 Prominence Ct., Ste 130  Dawsonville, GA 30534 US
-8|15|yes|Richard B Lewis|ricky@chapman-lewis-swan.com|Box 428  501 First Street Clarksdale, MS 38614 US
-9|17|no|David Michael Munoz|michael@munozlawaz.com|2039 S. Mill Ave Suite A Tempe, AZ 85282 US
-7|16|no|John H Trevena|trevenalaw@aol.com|801 West Bay Drive Suite 509  Largo, FL 33770 US
-6|16|no|Kevin J. McDevitt|kevin@kjmcdevittlaw.com|Po Box 952   Leonardtown , MD 20650 US
-2|16|no|George Holton Yates|gyates@ghylaw.com|1023 Laskin Road Suite 101 Virginia Beach, VA 23451 US
-1|17|no|Steven R. Glasgow|clarklaw@frontiernet.net|93 Public Square P.O. Box 797 Monmouth, IL 61462 US
-5|15|yes|David H Thomas|dthomas@meeksthomas.com|511 South High Street  Columbus, OH 43215 US
-4|16|no|Charlie Condon|charlie@charliecondon.com|880 Johnnie Dodds Blvd., Ste. 1  Mount Pleasant, SC 29464 US
-11|15|yes|John Thomas Powers, Jr.|johnpowerslaw@yahoo.com|375 Commack Road, Ste. 202  Deer Park , NY 11729 US
-8|17|no|Philip G. Sayles|pgsayles@gmail.com|3221 Oakes Avenue  Everett, WA 98201 US
-9|15|yes|Hugh E Black, III|teddy@black-jameslaw.com|411 Cedar Road  Chesapeake, VA 23322 US
-11|15|yes|Mandeep S Chhabra|mandeep@marylanddui.com|116 B Cathedral Street  Annapolis, MD 21401 US
-2|17|no|Michael R Pandullo|michael@pandullolaw.com|700 South Third Street  Las Vegas, NV 89101 US
-1|18|no|Joseph J. Bell|joebell@gmail.com|150 Mineral Springs Drive P.O. Box 220 Rockaway, NJ 7801 US
-10|16|no|Marc J.  Victor|marc@attorneyforfreedom.com|3920 South Alma School Road Suite 5 Chandler, AZ 85248 US
-3|15|yes|Kenneth  D Burns|kburns@lawofficeofkennethburns.com|2537 Raeford Road Suite C Fayetteville, NC 28305 US
-5|18|no|Justin  J Ketchel|justin@justinketchellaw.com|429 4th Ave., Ste. 1600  Pittsburgh, PA 15215 US
-3|17|no|Marc A Grano|marcgrano@gmail.com|PO Box 3961  Las Vegas, NM 87701 US
-12|14|yes|William F Cummings|bill@billcummingsllc.com|129 East Second Street  Wichita, KS 67202 US
-10|15|yes|Russell W Crumbley|attyrussell@bellsouth.net|2304 Memorial Parkway SW  Huntsville, AL 35801 US
-7|15|yes|Brian  C.  Ducharme|bducharme@cogeco.net|251 Goyeau Street, Suite 405  Windsor, ON N9A 6V2 CA
-10|16|no|Tedia Gamino|tedia@gaminolawoffices.com|1746 S. Muskego Ave.  Milwaukee, WI 53204 US
-1|17|no|Mark T. Langston|mark@coloradodefender.com|1881 9th Street Suite 305 Boulder, CO 80302 US
-9|17|no|RONALD SKIP KELLY|kellyron01@yahoo.com|205 NW 63RD STREET SUITE 150  OKLAHOMA CITY, OK 73116 US
-10|19|no|floyd m buford jr.|fmbuford@mindspring.com|136 college street  macon, GA 31201 US
-3|16|no|Phil Studenberg|phil@philstudenberg.com|230 Main  Klamath Falls, OR 97601 US
-4|17|no|Ryan Christopher Atwell|ryan@atwelllaw.com|21 North Hanson Street Suite 102 Easton, MD 21601 US
-12|14|yes|jeremiah j denslow|jeremiah@gdalawfirm.com|130 W. Second St. Ste. 2000 Dayton, OH 45402 US
-3|18|no|Justin N Rosas|justin@justinrosas.com|10 Crater Lake Ave.  Medford, OR 97504 US
-7|17|no|Andrew J Cornick|cornick@smkclaw.com|1671 Jefferson Davis Highway Suite 201 Fredericksburg, VA 22401 US
-6|17|no|Thomas G Haren|tharen@sseg-law.com|26600 Detroit Road Suite 300 Westlake, OH 44145 US
-10|15|yes|Bradley Guthrie|guthrielaw@live.com|202 N College St Ste 1  Harrodsburg, KY 40330 US
-10|16|no|Christopher  J. Cassar|cjcassar@cassarlaw.com|13 East Carver Street  Huntington, NY 11743 US
-2|15|yes|Thomas S Peters|tom@petersassoc.com|10900 NE 4th St. Suite 2300 Bellevue, WA 98004 US
-2|15|yes|Richard F.  Blass|rblass@blass-law.com|770 N. Church Road Ste. H Elmhurst, IL 60126 US
-2|16|no|Russell B. McCormick|russell@rbmccormicklaw.com|437 E Monroe Street Suite 200  Jacksonville, FL 32202 US
-7|16|no|Scott D Henry|scott@duipractice.com|2201 E. Chapman Ave  Fullerton, CA 92831 US
+||yes|Brian J Lockwood|brian.lockwood@ymail.com|56 St. Joseph St., Suite 505 Mobile, AL 36602 US
 3|15|yes|James E Dunn|info@jamesdunn.com|620 Jefferson Avenue  Redwood City, CA 94063 US
-6|19|no|Joshua J Price|joshuajprice@defendingrights.com|3160 Camino Del Rio South Suite 300 San Diego, CA 92108 US
 11|15|yes|Donald  J Bartell|djbartell@pacbell.net|5053 La Mart Drive Suite 201 Riverside, CA 92507 US
 9|17|no|Scott  D Hughes|scott@scotthugheslaw.com|620 Newport Center Drive, Suite 1100  Newport Beach, CA 92660 US
-1|18|no|Aniko R Hoover|anikothelawyer@gmail.com|337 N. Vineyard Ave.  4th Floor Ontario, CA 91764 US
-4|17|no|andre robert belanger|andre@manassehandgill.com|8075 jefferson highway  baton rouge, LA 70809 US
-8|18|no|Keith T Koller|keith@kollerlegal.com|P.O. Box 14366  San Francisco, CA 94114 US
-9|17|no|Anthony J Lana|ajlforthedefense@cs.com|484 Delaware Avenue  Buffalo, NY 14202 US
-9|17|no|Lisa M Tome|ltome@meeksthomas.com|511 South High Street  Columbus, OH 43215 US
-4|16|no|James B Seplowitz|jseplowitz@foyseplowitz.com|105 Main Street  Hackensack, NJ 7601 US
-7|15|yes|Jonathan T. Tyack|jttyack@tblattorneys.com|536 South High Street  Columbus, OH 43215 US
-2|20|no|Ryan W.  Cummings|ryan@randrlawaz.com|PO Boxx 733  Scottsdale, AZ 85250 US
-2|15|yes|Michael J.  Crawford|mjc@michaeljcrawfordlaw.com|416 N. 14th St.  Corsicana, TX 75110 US
-6|17|no|Kenneth G. Leggett|kleggett@abilene.com|402 Cypress  #800 Abilene, TX 79601 US
-2|15|yes|Hope S. Marshall|hmarshall@whitearnolddowd.com|2025 Third Ave. North, Suite 500   Birmingham, AL 35203 US
+||yes|Eric J Weitzel|weitzelfiferlaw@gmail.com|220 E. Main Street  New Albany, IN 47150 US
 11|16|no|Ralph R.  Martinez|lalis994@aol.com|2900 Woodridge, Suite 202  Houston, TX 77087 US
-5|15|yes|Richard C Strong|richard@richardstronglaw.com|1308 Rosa L. Parks Blvd  Nashville, TN 37208 US
-7|17|no|Antonio J. Salazar|aj@ajsalazarlaw.com|P.O. Box 171  Alcalde, NM 87511 US
-7|18|no|T. Scott  Jones|tscottjones@banksandjones.com|2125 Middlebrook Pike  Knoxville, TN 37921 US
-4|18|no|Wayne A Fowler|waynefowlerlaw@gmail.com|9500 Ray White Rd Suite 200 Keller, TX 76244 US
-1|15|yes|Brett J. Riegel|brett@armlawyers.com|18 N. 8th St.  Stroudsburg, PA 18360 US
-11|15|yes|Rebecca G Thomason |lawyerthomason@gmail.com|501 North Jackson Ave P O Box 121 Russellville , AL 35653 US
-3|18|no|Daniel R. Perlman|daniel@danielperlmanlaw.com|6464 W. Sunset Blvd. Suite 1030 Los Angeles, CA 90028 US
-5|15|yes|John Eric Barnett|jeb61fulton@aol.com|2392 State Route 2139  Hickman, KY 42050 US
-5|16|no|Tai C. Bogan|taiboganlaw@gmail.com|1202 H Street, Suite D  Modesto, CA 95354 US
-10|15|yes|Bobby M.  Harges|hargeslaw@cox.net|1124 Eleventh Street  Gretna, LA 70053 US
-4|17|no|PATRICK TIM TIMONEY|tim@timoneylawoffice.com|808 South 2nd Street Floor 1 SPRINGFIELD, IL 62704 US
-5|17|no|Dale S. Gribow|dale@gribowlaw.com|73 061 El. Paseo Suite 220 Palm Desert, CA 92260 US
-11|16|no|Robert Tayac|rtayac@aol.com|505 Montgomery Street, 11th Floor  San Francisco, CA 94111 US
-5|17|no|Daniel R Scarbrough|dan@scarbrough-law.com|617 e. Lacy  Palestine, TX 75801 US
-2|17|no|Paul R Dec|ronnierae.law@gmail.com|1403 W. Broadway Avenue  Spokane, WA 99201 US
-9|15|yes|Daniel P.  Leavitt|danielpleavitt@yahoo.com|208 N. 2nd Avenue, P.O. Box 480  Hopewell, VA 23860 US
-10|17|no|Joshua D Nielsen|josh@nielsen-legal.com|576 Dellwood Rd.  Waynesville, NC 28786 US
-2|17|no|James W Bannister|jbannister@bannisterwyatt.com|PO Box 10007 (29603) 401 Pettigru St. (29601) Greenville, SC 29601 US
-12|16|no|Christina L Robinson|chris4aulaw@gmail.com|106 North Lena Street Suite 2 Dothan, AL 36303 US
-7|17|no|Edwin F Brooks|brooks@efbrooks.com|6 West Broad Street  Richmond, VA 23220 US
-9|19|no|Richard Roberts|rroberts@themcshanefirm.com|3601 vartan Way 2nd Floor Harrisburg, PA 17110 USA
+3|16|no|Phil Studenberg|phil@philstudenberg.com|230 Main  Klamath Falls, OR 97601 US
+11|15|yes|Mandeep S Chhabra|mandeep@marylanddui.com|116 B Cathedral Street  Annapolis, MD 21401 US
+5|15|yes|David H Thomas|dthomas@meeksthomas.com|511 South High Street  Columbus, OH 43215 US
+||yes|George T Campbell|gcampbell@backusmeyer.com|P.O. Box 516 116 Lowell Street Manchester, NH 3104 US
+9|17|no|David Michael Munoz|michael@munozlawaz.com|2039 S. Mill Ave Suite A Tempe, AZ 85282 US
+||yes|James J Harrington|jharrington@hlfnc.com|315 A N. Main St.  Monroe, NC 28112 US
+||yes|Robert  John Aiello|rjaiello@aiellocannick.com|69-06 Grand Avenue  Maspeth, NY 11378 US
+||yes|Robert Canada|criminallaw@sigecom.net|5111 Lincoln Ave  Evansville, IN 47715 US
+3|17|no|Sarah  M Schmeiser|sarah@traceywood.com|1 S Pinckney Street, Suite 950  Madison, WI 53703 US
+3|17|no|Adam P. Nero|adam@traceywood.com|1 S. Pinckney St.  Suite 950 Madison, WI 53703 US
 9|19|no|John Arose|jarose@themcshanefirm.com|3601 Vartan Way 2nd Floor Harrisburg, PA 17110 USA
-11|17|no|Andres R Guevara|andres@guevaracoloradolaw.com|5200 DTC Parkway, Suite 410  Greenwood Village, CO 80111 US
-8|18|no|George A Heym|george.heym@comcast.net|564 Forbes Ave, Suite 810  Pittsburgh, PA 15219 US
-7|17|no|Gaynell   Williams|gw@gaynellwilliamslaw.com|724 11th Street  Gretna, LA 70053 US
-1|17|no|Joseph M Tysel|jmtlaw@sbcglobal.net|2024 North Broadway, Suite 101  Santa Ana, CA 92706 US
-1|18|no|Worrick G Robinson|wrobinson@rrylaw.com|105 Broadway, Suite 300  Nashville, TN 37201 US
-5|15|yes|Clark R. Bell|clarkrbell@triad.rr.com|179 E. Salisbury Street  Asheboro, NC 27203 US
-5|16|no|Nathan D. Leonardo|nathan@leonardolawoffices.com|2 E. Congress St., #418  Tucson, AZ 85701 US
-1|17|no|DELMAR D WELDON|ddweldon@zerbegarnerlaw.com|15 W CENTER ST  LAWRENCEBURG, IN 47025 US
-2|16|no|Ricardo Bours|ricardo@boursesq.com|5055 E. Broadway Blvd: Suite C-214  Tucson, AZ 85711 US
-10|18|no|Ryan J Stevens|stevens@flagstaff-lawyer.com|609 N. Humphreys Street  Flagstaff, AZ 86001 US
-8|19|no|Walter M Reaves|walterreaves@att.net|100 North 6th St. Suite 802 Waco, TX 76701 US
-9|19|no|Michael A Giaramita|mgiaramita@themcshanefirm.com|3601 Vartan Way 2nd Floor Harrisburg, PA 17110 US
-2|18|no|Dov  W.  Lustig|dovlustiglaw@yahoo.com|240 Daines Street  Birmingham, MI 48009 US
-8|16|no|Lloyd C Suhr|lsuhr@suhrandlofgren.com|120 N. 3rd Street, Suite 175  Bismarck, ND 58501 US
-2|17|no|Michael R Neece|theneecelawfirm@gmail.com|108 East Main Ave. P.O. Box 1933 Gastonia, NC 28053 US
-6|17|no|Ingmar Goldson|igoldson@goldsonlawoffice.com|1 Research Court, Suite 450  Rockville, MD 20850 US
-10|17|no|Scotty J. Storey|sstorey@scottystorey.com|247 North Third Street  San Jose, CA 95112 US
-1|16|no|William S. Margulis|wmargulis@capessokol.com|7701 Forsyth 12th Floor St. Louis, MO 63105 USA
-6|17|no|Justin  A.  Barrett|jbarrett@st-tel.net|280 N Court   Colby, KS 67701 US
-3|17|no|John  Della Rocca|jcdr0927@aol.com|PNC Bank Building 1600 Market Street - Suite 1800 Philadelphia, PA 19103 US
-5|17|no|Richard E. Carrizales|richard@carrizaleslaw.com|1009 N. Central Expressway, Suite 800   Richardson, TX 75080 US
-8|16|no|Fred M Dry|info@freddry.com|One Northfield Plaza #300  Northfield, IL 60093 US
+||yes|Phil Baker|phil@philbakerlaw.com|407 S. Jefferson St.  La Grange, TX 78945 US
+11|15|yes|Steven  W Woods|steve@wblawfirm.com|517 N. Mission St, Suite 2A PO Box 4378 Wenatchee, WA 98801 US
+||yes|Chad J.  Wythers|chad@jsberrylaw.com|2650 North 48th Street  Lincoln, NE 68504 US
+10|15|yes|Bradley Guthrie|guthrielaw@live.com|202 N College St Ste 1  Harrodsburg, KY 40330 US
+||yes|Sam j Sliger|sam@mcdonaldcody.com|4005 Hwy 365 South  Alto, GA 30510 US
+||yes|James D.  Smith|dave@rosensteinlawgroup.com|8010 E. McDowell Rd. Suite 111 Scottsdale, AZ 85257 US
+3|16|no|Russ Kofman|info@lebedinkofmanlaw.com|26 Broadway, Suite 2100  NY, NY 10004 US
 12|2016|no|Iclem S Jaber|lawjaber@gmail.com|510 South Main St  Memphis, TN 38103 US
+||yes|JOHN J ZARYCH|office@zarychlaw.com|1555 Zion Road Suite 201 Northfield, NJ 8225 US
+||yes|Brenden T Shur|bshur@zarychlaw.com|  Northfield, NJ 8225 
+||yes|George "Birc" Morledge, IV|gbmorledge@gmail.com|1311 S. Broadway  Little Rock, AR 72202 US
+||yes|Alexander Benikov|ayb@benikovlaw.com|3317 E. Bell Road Suite 101-271  phoenix, AZ 85032 US
 6|2016|no|Samuel  M Barth|barth@fosterhanks.com|302 North Broad Street   Monroe, GA 30655 US
-2|2017|no|KATHERINE DRUMMOND|kdrummond@wkclawfirm.com|224 18th St Ste 400 Rock Island, IL 61201 US
-4|2017|no|Lyliane S Couture|lyliane.c@gmail.com|406 W Broadway, Suite D  Moses Lake, WA 98837 US
+||yes|Michael L McGlinchey|mmcglinchey@snet.net|Stevens, Harris, Guernsey & Quilliam, P.C. 351 Main Street Niantic, CT 6357 US
 11|2017|no|Paul M. Morgan|paulmorgantx@gmail.com|1305 Prairie St. Suite 100 Houston, TX 77002 US
 8|2016|no|Kurt R Dittmer|kurt@dittmer.com|P.O. Box 509 102 N Center St. La Harpe, IL 61450 US
-7|2016|no|Patrick W. O'Keefe II|okeefelawfirm@gmail.com|232 S Washington Sq Ste 120 Lansing, MI 48933 US
-7|2017|no|Bart Betteau|bart@betteau.com|1212 State Street  New Albany, IN 47150 US
+10|16|no|Christopher  J. Cassar|cjcassar@cassarlaw.com|13 East Carver Street  Huntington, NY 11743 US
 10|2017|no|Samuel A Byrd|sam@covertlawgroup.com|3828 Dayton Blvd  Chattanooga, TN 37415 US
 4|2017|no|David J Bruno|dbruno@bianchilawgroup.com|4 York Avenue, 2nd Floor  West Caldwell, NJ 7006 US
-3|16|no|ELEANOR DUFFY CLEARY|ellen@clearylawllc.com|1720 MAIN STREET, SUITE 303  COLUMBIA, SC 29201 US
-3|2016|no|Ted Peter Hammel|thammel@brumund-jacobs.com|58 E. Clinton Street, Suite 200  Joliet, IL 60432 US
 4|2017|no|Kenneth B Burkley|kenburkley@westmorelandlaw.com|35 West Pittsburgh Street PO Box 1063 Greensburg, PA 15601 US
-9|2015|yes|Randall Petrouske|rpetrouske@eversonlaw.com|414 S. Jefferson St  Green Bay, WI 54301 US
 4|2016|no|Joshua Marc Rudolph|jrudolph@rudolphlawfirm.com|600 West Germantown Pike Suite 400 Plymouth Meeting, PA 19462 US
-12|2016|no|Justin R. Arnold|jarnold@arnoldhooks.com|1125 E. Lamar St. PO Box 6540 Americus, GA 31709 US
-9|2017|no|Helena L Jedziniak|hjecziniak@colelawfirmsc.com|1303 Ella Street  Anderson, SC 29621 US
-2|2016|no|Joshua S Hill|josh@notguiltytx.com|4615 Southwest Freeway, Suite 600  Houston, TX 77027 US
-2|2018|no|Shane Peter Phelps|shane@shanephelpslaw.com|400 North Washington  Bryan, TX 77803 US
-9|2015|yes|Sean Patrick Quinlan|spqesq@hotmail.com|2331 Market Street  Camp Hill, PA 17011 US
 1|2016|no|Nicholas C. Howie|nhowieesq@hotmail.com|One Stiles Rd. Suite 103  Salem, NH 3079 US
 12|2019|no|Daniel A Krieger|dan@kriegerlawfirm.com|215 East Galveston Street  League City, TX 77573 US
-8|2016|no|Lloyd S.  van Oostenrijk|lloyd@vanolaw.com|19901 Southwest Freeway Suite 230 Sugar Land, TX 77479 US
-7|2015|yes|William C. DeNardo|bill@williamdenardolaw.com|1000 Germantown Pike Suite D3 Plymouth Meeting, PA 19462 US
-10|2015|yes|Gerald  A Miller|gerald@geraldmiller.com|2915 South Wayzata Blvd   Minneapolis, MN 55405 United States
-10|2016|no|Francis Starr Springer|springerlawoffice@gmail.com|1000 Highland Colony Parkway  Ridgeland, MS 39157 US
-9|2017|no|P. Adam Militello|adam@apmlawyer.com|6 South Main Street  Pittsford, NY 14534 US
+9|2017|no|P. Adam Militello|adam@chaseandmilitello.com|6 South Main Street  Pittsford, NY 14534 US
 2|2017|no|Justin C Olsinski|jco@jcolaw.com|216 N. McDowell St. Suite 200  Charlotte, NC 28204 US
 10|2016|no|James A Davis, II|jaustindavisii@gmail.com|215 North Main Street  Salisbury, NC 28144 US
-1|2017|no|Donald Jason Slider|jason@georgialawyerteam.com|298 East Washington Street  Athens, GA 30601 US
 10|2016|no|James A Davis|davislawfirmnc@gmail.com|215 North Main Street  Salisbury, NC 28144 US
-2|2018|no|Michael Macht|mike@attymacht.com|61 N. Market St  Asheville, NC 28801 US
-7|2017|no|Demetrios J Skandalakis|mitchskan@gmail.com|4107 Beechwood Drive, NW  Atlanta, GA 30327 US
+1|2017|no|Donald Jason Slider|jason@georgialawyerteam.com|298 East Washington Street  Athens, GA 30601 US
 12|2018|no|Richard A Portale|rportale@nycriminallawyer.net|11 Martine Avenue 8th Floor  White Plains, NY 10606 US
-3|18|no|Chad T. Hendricks|chad@randyreinhardt.com|788 N. Jefferson St. Suite 707 Milwaukee, WI 53202 US
-2|2016|no|Benjamin Martinez|benmartinezlaw@gmail.com|5531 W. Cermak Road  Cicero, IL 60804 US
-5|2017|no|Vijay R. Sharma|vsharma@vrslegal.com|5250 N. Old Orchard Rd. Ste 300 Skokie, IL 60077 US
-1|2020|no|MICHAEL D LEADER|criminallawleader@gmail.com|633 S ANDREWS AVE ST SUITE 201 FORT LAUDERDALE, FL 33301 US
-12|2016|no|Brandan J Davies|brandan@crwlawyers.com|7500 College Blvd Suite 700 Overland Park, KS 66210 US
 6|2016|no|Victor Mansour|victor@mansourlawpc.com|32000 Northwestern Hwy Suite 155 Farmington Hills, MI 48334 US
-3|2017|no|Michael Vincent  Laubshire|michael@laubshirelaw.com|455 St. Andrews Rd.  Ste. E-1  Columbia, SC 29210 US
-8|2016|no|William J Kennedy III|jkennedy@encattorneys.com|613 Cedar Street Suite A Beaufort, NC 28516 US
-12|2017|no|Dwayne M Green|dwayne@hamptongreenllc.com|602 Rutledge Avenue  Charleston, SC 29403 US
-4|2018|no|Justin Lovely|justin@justiceislovely.com|804 N Oak St   Myrtle Beach , SC 29577 US
-3|2017|no|Gregory M. Wise|gmwise@wiselawfla.com|4300 Bayou Boulevard Suite 35 Pensacola, FL 32503 US
 1|2015|yes|Amy S Lawrence|amy@justiceislovely.com|804 N Oak St   Myrtle Beach , SC 29577 US
+12|2017|no|Dwayne M Green|dwayne@hamptongreenllc.com|602 Rutledge Avenue  Charleston, SC 29403 US
 5|2016|no|Michael A Perez|michael@lomap.com|1047 North California  Chicago, IL 60622 US
 11|2019|no|Colleen M Glenn|colleen@colleenglenn.com|1101 6th Ave W Suite 109 Bradenton, FL 34205 US
-5|2019|no|Robert Webb|robert@webbdorazio.com|2551 Roswell Road, STE 201  Marietta, GA 30062 US
 7|2017|no|Luigi Vigliotti|lvigliotti@vigliottilaw.com|1225 Franklin Avenue Suite 325 Garden City, NY 11530 US
-10|2016|no|John R. Coniglio|john@conigliolawyer.com|490 Calle Principal  Monterey, CA 93940 US
 8|2016|no|Tyler M Allen|tyler@elkielaw.com|13034 N. Verde River Dr. Ste. 104  Fountain Hills, AZ 85268 US
 2|2017|no|Daniel J Larin|larinlaw@gmail.com|725 S. Adams, Suite 280  Birmingham, MI 48009 US
-3|2015|yes|T. Micah Leddy|micah@leddylaw.com|2008 Lincoln Street  Columbia, SC 29201 US
 11|2018|no|Timothy R Brown|timothyryanbrown@trblaw.com|1309 E. Montclair  Springfield, MO 65804 US
-2|2018|no|Alexander Fredrick Harper|alexharperlaw@gmail.com|420 Third Street #200  Oakland, CA 94607 US
+5|20|no|Michael H Fienman|support@philadelphiacriminalattorney.com|1608 Walnut St Ste 900  Philadelphia, PA 19103 US
 5|2017|no|Robert A Saunders|robert@wasatchdui.com|1910 Prospector Ave.  STE 201C Park City, UT 84060 US
-3|2017|no|Andrew William Wheeler|awheeler@vancouverlaw.net|902 Esther Street  Vancouver, WA 98660 US
 9|2016|no|John C Donovan|jcdonovanlaw@gmail.com|PO Box 59  Durham, NC 27702 US
 11|2016|no|Alexander A. Forrest|aforrest@fko-law.com|1011 Augusta Dr. Ste. 111  Houston, TX 77057 US
 5|2017|no|Matthew J Neufeld|neufeld_mj@yahoo.com|322 Metcalf   Conroe, TX 77301 US
-7|2016|no|Shahin Zamir|szamir@tiltonzamir.com|405 Main Ste 300  Houston, TX 77002 US
-1|2015|yes|Ryan P Sullivan|ryan@ryansullivanlaw.com|11 Kearney Square, Suite 201  Lowell, MA 1852 US
-1|2018|no|Louis D Leichter|louis@leichterlaw.com|1602 East 7th Street  Austin, TX 78702 US
 1|2017|no|Christopher J. Geier|chris@bftsclaw.com|612 North Street  Beaufort, SC 29902 US
 4|2016|no|Tina M Barberi|tina@barberilaw.com|7493 N. Ingram, Suite 103  Fresno, CA 93711 US
-7|2019|no|Katherine E Shipman|shipmanlawoffice@gmail.com|204 West Davis St.  Conroe, TX 77301 US
-11|2016|no|Joseph A Tang|jtang@jtanglaw.com|1055 E. Colorado Blvd. Suite 500 Pasadena, CA 91106 USA
-7|2015|yes|James P Tyack|jptyack@tblattorneys.com|536 South High Street  Columbus, OH 43215 US
 4|2016|no|Curtis A Sluder|curtis@sluderlaw.com|260 New Leicester Highway  Asheville, NC 28806 US
-7|2018|no|Jacob C Stidham|jacob@eppslegal.com|110 Samaritan Dr. Ste 205 Cumming, GA 30040 US
 10|2017|no|gary F churak|churaklaw@msnc.om|14310 Northbrook ste. 210  san antonio, TX 78232 US
-7|2018|no|Michael C. McGinnis|mike@schatzanderson.com|321 N. Mall Drive, Suite O-201  St. George, UT 84790 US
-8|2017|no|JAMES I DEVITT|jdevitt5757@gmail.com|10801 NATIONAL BL #403  L.A., CA 90064 US
-9|2017|no|Alexander F Ransom|alex@ransom-lawfirm.com|119 North Commercial Street Suite # 1420 Bellingham, WA 98225 US
-8|2017|no|J. Brooks Davis|brooks@jbrooksdavis.com|802 Coleman Blvd., #200  Mount Pleasant, SC 29464 US
-5|2018|no|Peter Stevenson|peter@peterstevensonlaw.com|1736 East Sunshine Street #705  Springfield, MO 65804 US
-1|2016|no|Adam D. Rossen|rossen@barnerrossen.com|6190 NW 11th St.  Sunrise, FL 33313 US
+7|2018|no|Jacob C Stidham|jacob@eppslegal.com|110 Samaritan Dr. Ste 205 Cumming, GA 30040 US
 2|2016|no|Amy S Okubo|amy@amyokubolaw.com|255 Weaver Park Road Suite 200 Longmont, CO 80501 US
-11|2015|yes|Amy E Chapman|amy@amychapmanlaw.com|703 2nd Street, Suite 407  Santa Rosa, CA 95404 US
+8|2017|no|J. Brooks Davis|brooks@jbrooksdavis.com|802 Coleman Blvd., #200  Mount Pleasant, SC 29464 US
+8|2017|no|JAMES I DEVITT|jdevitt5757@gmail.com|10801 NATIONAL BL #403  L.A., CA 90064 US
 8|2016|no|Patrick M Moriarty|patrick@moriartylegal.com|3500 - 188th Street SW, Ste. 502  Lynnwood, WA 98037 US
 11|2017|no|Thomas M.  Fleming|thomasfleminglaw@gmail.com|1255 Treat Blvd., Suite 300  Walnut Creek, CA 94597 US
-1|2018|no|Jeff Wertz|jeff@aspen-law.com|215 S. Monarch Street, Suite 303  Aspen, CO 81611 US
-7|2017|no|Robert F. Black|rblack@centralnjlawfirm.com|64 West Main Street  Freehold, NJ 7728 US
+5|15|yes|Clark R. Bell|clarkrbell@triad.rr.com|179 E. Salisbury Street  Asheboro, NC 27203 US
 2|2016|no|David K Gross|dave@stgattorneys.com|720 N 3rd St.  Suite 502 Wilmington, NC 28401 US
 9|2016|no|John K. Hinely|jhinely@hinelylaw.com|317 5th Street  Colusa, CA 95932 US
 12|2015|yes|Jason B Going|jbgoing@goinglawfirm.com|17 Junction Drive #143  Glen Carbon, IL 62034 US
 12|2017|no|John M Walsh|john@jmwalshlaw.com|2101 Pine Street  Philadelphia, PA 19103 US
 10|2015|yes|Teresa Ann McAdams|teresa@mcadams-law.com|674 W. Veterans Parkway, Suite d  Yorkville, IL 60560 US
-1|2017|no|Dontae L Bugg|dbugg@bugglawfirm.com|4103 Chain Bridge Road Suite 103 Fairfax, VA 22030 US
 1|2020|no|Brittany A. Peters|brittany@doddlawfirmpc.com|101 E Main St, Suite C  Bozeman, MT 59715 US
 5|2015|yes|Calvin J Whaley|cwhaley@parkmanlawfirm.com|1929 3rd Ave N Suite 700 Birmingham, AL 35203 US
-1|2018|no|Kevin R Cahill|kevin@cahillcriminaldefense.com|3900 E. Mexico Ave. Ste. 300 Denver, CO 80210 USA
 6|2018|no|Robert D. Lloyd|rlloyd@greeneandlloyd.com|4115 S. Meridian, Suite B  Puyallup, WA 98373 US
 9|2017|no|Ralph F Guerra|info@ralphguerra.com|4916 26th St. West Suite 100 Bradenton, FL 34207 US
-11|2017|no|Jake Johnson|jjohnson@tpm-law.com|5600 S. Quebec Street, Suite 220A  Greenwood Village, CO 80111 US
+||yes|Adam Palmer Sherman|asherman@lawyers-maine.com|11 Lisbon st., ste 202  Lewiston, ME 4240 US
 11|2017|no|Jeffrey M McCarthy|mccarthylaw@comcast.net|136 E. Ninth Street  Lockport, IL 60441 US
 6|2017|no|Kevin R Fisher|kevin@kevinfisherlegal.com|1800 Peachtree Street NW Suite 300 Atlanta, GA 30309 US
-6|2017|no|Brian L.  Duce|blducelaw@yahoo.com|1701 Grove St.   Marysville, WA 98270 US
+3|15|yes|Brandon K Moffitt|bmoffitt@moffittandphillips.com|204 Executive Ct., Suite 100  Little Rock, AR 72205 US
 8|2019|no|Matthew C Kunka|mattkunkaesq@gmail.com|25 Hooks Lane Suite 302 Baltimore, MD 21208 US
+||yes|Suesan A Miller|suesan@millerandkeylaw.com|79 Lawrenceville St.  McDonough, GA 30253 US
 6|2016|no|Richard E Walker|r.walker@stldwis.com|12444 Powerscourt Drive Suite 370 St. Louis, MO 63131 US
-1|2020|no|William L. Swank|swanklaw@me.com|Swank Law Group, LLC 675 Mansell Road, Ste 130 Roswell, GA 30076 US
 10|2017|no|Brenton D. Vincenzes|brent@vincenzeslaw.com|Vincenzes Law, PLLC 11325 Random Hills Road #360 Fairfax, VA 22030 US
 8|2017|no|Michael E Harbeson|harbesonlaw@gmail.com|5611 76th St W Suite A  Lakewood, WA 98499 US
-10|2019|no|Stephen Gustitis|gustitis@mac.com|102 East 26th Street  Bryan, TX 77803 US
 1|2018|no|Timothy Kelly|timkelly@live.com|600 Seventeenth Street Suite 2800 South Denver, CO 80202 US
 10|2017|no|Richard A.  Parolski|parolskilaw@comcast.net|6806 A Coastal Highway  Ocean City, MD 21842 US
-2|2019|no|Gregory J Boulahanis|gregoryjboulahanis@yahoo.com|21905 Garrison  Dearborn, MI 48124 US
-5|2016|no|Joshua D. Zelman|josh@zelmanpa.com|414 N Meridian Street  Tallahassee, FL 32301 US
-2|2017|no|Todd Wylie Carpenter|toddcarpenteresq@gmail.com|4 Liberty Street  Poughkeepsie, NY 12601 US
-8|2019|no|David S. Zuckerman|dave@zuckermanfirm.com|429 4th Avenue 1600 Law & Finance Bldg Pittsburgh, PA 15219 US
 12|2016|no|JohnPaul Ivec|jp@iveclaw.com|24820 Caton Farm Rd.  Plainfield, IL 60586 US
 2|2016|no|James G. Grimaldi|jim@grimaldilawoffice.com|303 S. Kickapoo St. Suite 3 Lincoln, IL 62656 US
-7|2018|no|Charles Nutley|nutleyc@gmail.com|1901 N Roselle Road Suite 800  Schaumburg, IL 60195 US
-8|2016|no|Sean Hightower|seanhightower@yahoo.com|115 South Street  Nacogdoches, TX 75961 US
-12|2016|no|Julie J Marburger|juliemarburger@bellsouth.net|800 East High Street  P.O. Box 444  Pottstown, PA 19464 US
-12|2015|yes|Jesse K Whitten|sam.van.eerden@gmail.com|1712 19th St., Ste 101  Bakersfield, CA 93301 US
-6|2017|no|Miller Leonard|miller@themillerleonardlawfirm.com|14143 Denver West Parkway, Suite 100  Golden, CO 80401 US
-11|2016|no|C. Sei-Hee Arii|seihee@ariilaw.com|401 East Jefferson St. Suite 208 Rockville, MD 20850 US
 8|2019|no|Robert A. Espinosa|bobesp@sbcglobal.net|1041 State Street  El Centro, CA 92243 US
 2|2020|no|Jude M Koenig|koeniglaw@gmail.com|Law Office of Jude M. Koenig 10075 West River St., Ste. 205 Truckee, CA 96161 US
-4|2017|no|Christopher M Eskew|chris@eskewlaw.com|1 N. Meridian Street Suite 600 Indianapolis, IN 46204 US
-7|2016|no|Nathan S Luna|nathan@tnlaw.org|1031 Westhaven Blvd.  Franklin, TN 37064 US
-10|2015|yes|Christopher A DeRango|cderango@sreenan-cain.com|321 W. State St. Suite 700 Rockford, IL 61101 US
-1|2020|no|William H. Burriss|hank@burrisslaw.com|907 Elmwood Avenue  Columbia, SC 29201 US
+11|2016|no|C. Sei-Hee Arii|seihee@ariilaw.com|401 East Jefferson St. Suite 208 Rockville, MD 20850 US
 3|2017|no|Colin A Daniels|cdaniels@rockindpc.com|28411 Northwestern Highway Suite 1150 SOUTHFIELD, MI 48034 US
+10|2015|yes|Christopher A DeRango|cderango@sreenan-cain.com|321 W. State St. Suite 700 Rockford, IL 61101 US
 2|2018|no|Daniel J Izquierdo|daniel@izlegal.com|2655 Le Jeune Rd Suite 700 Coral Gables, FL 33134 US
-10|2016|no|Christopher D Brough|christopherbrough@broughlaw.com|175 Magnolia Street, Suite 202  Spartanburg, SC 29306 US
-9|2016|no|John Weiland|john@caddellweiland.com|1360 E. Parham Rd. Suite 100 Richmond, VA 23228 US
-6|2017|no|Guy F Brown|guy@azlawguy.com|2398 E. Camelback Road Suite 210 Phoenix, AZ 85016 US
-6|2017|no|Jason D. Karpel|jason@schilllaw.com|8700 E Via De Ventura  Suite 210 Scottsdale , AZ 85258 US
-6|2017|no|Matthew S Hilscher|matt@azlawguy.com|2398 E. Camelback Road Suite 210 Phoenix, AZ 85016 US
-8|2016|no|Chad K Hemminger|chad@hemminger.com|470 Olde Worthington Rd Suite 200 Westerville, OH 43082 US
-3|15|yes|Francis J Patriarca|joepdefense@aol.com|387 Atwells Ave  Providence, RI 2909 US
-7|2015|yes|Jessica S Sisk|jsisklaw@gmail.com|303 East Broadway  Newport, TN 37821 US
 3|2015|yes|Matthew D. Lowe|mdlowe@dullandlowe.com|1116 E. Ohio St  Clinton, MO 64735 US
 6|2015|yes|Ryan Deck|ryandecklaw@gmail.com|107 N. Lampasas St  Round Rock, TX 78664 US
-12|2019|no|Robert H. Speer, Jr.|speerlaw@hotmail.com|100 Churchill Court Suite 102 Woodstock, GA 30188 US
-6|2017|no|Thomas C Thomasian|tct@thomasianlaw.com|55 Pine Street 2nd Floor Providence, RI 2903 US
-9|2016|no|Charles D Thompson|charles@cdthompsonlaw.com|4119 Montrose, Suite 200  Houston, TX 77006 US
+||yes|Matthew R Gunter|mgunter@kplegalteam.com|509 West Colonial Drive  Orlando, FL 32804 US
+||yes|Matthew H. Springmeyer|matt@duisandiego.com|3990 Old Town Ave Suite B109 San Diego, CA 92110 US
+||yes|Lauren D. McLane|lauren@paduladefense.com|2320 130th Ave NE Building E, Suite 250 Bellevue, WA 98005 US
 9|2017|no|J. Armando Edmiston|armando@aedmiston.com|609 w de leon street   tampa, FL 33606 US
+||yes|Tommy W  Hull|tommy@attorneyhamilton.com|112 South Loraine Ste. 505 Midland, TX 79701 US
+||yes|Joseph E. Carey|jcarey@careylawoffice.com|14300 Gallant Fox Lane Suite 223 Bowie, MD 20715 US
 3|2018|no|Steven F. Fairlie|steve@fairlielaw.net|1501 Lower State Road Suite 304 North Wales, PA 19454 US
-2|2019|no|Barbara S Foster|bfoster@bfoster-law.com|217 W York St  Savannah, GA 31401 US
-10|2015|yes|David  L Altman|info@toputcriminaldefenselawyer.com|20 North Main Street Suite 301 Saint George, UT 84770 US
-2|2017|no|Theodore P LeBlanc|ted.leblanc@lamsonlaw.com|136 Main Street  PO Box 1130 Prince Frederick , MD 20678 US
-9|2016|no|Douglas S.  Daniel|douglas@danielhudson.com|1815 San Pedro Ave.  San Antonio, TX 78212 US
-9|2018|no|Eric N Bernstein|ebern@georgialawyer.com|480 John Wesley Dobbs Ave, N.E., Unit 190 Atlanta, GA 30312 US
-11|2017|no|James J. Ransom, III|jamesransomlaw@gmail.com|2491 Pelham Parkway  Pelham, AL 35124 US
+8|2016|no|Sean Hightower|seanhightower@yahoo.com|115 South Street  Nacogdoches, TX 75961 US
 9|2017|no|Stuart D. Polizzi|stuartpolizzi@gmail.com|1426 Dahlgren Lane  Minooka, IL 60447 US
 4|2015|yes|Ben Hunsucker|ben@hunsuckerlaw.com|Hunsucker Legal Group 903 East McKinney Street Denton, TX 76209 US
-6|2015|yes|Martin B Schwartz|martin@martinschwartzlaw.com|8451 W. Linebaugh Ave  Tampa, FL 33625 US
-11|2019|no|Stephen D Benedetto|benedettolawfirm@gmail.com|2111 E. highland Ave., Suite 145  Phoenix, AZ 85016 US
-1|2018|no|Kevin S.  VanderWerff|ksvesq@gmail.com|10421 South Jordan Gateway Suite 600 South Jordan, UT 84095 US
-9|2016|no|Joseph F Hoelscher|joe@hoelscherlawoffice.com|115 E. Travis, Suite 1500  San Antonio, TX 78205 USA
-2|2016|no|Daniel M Mehler|danielmehlerlaw@gmail.com|115 E. Travis St. Suite 1500 San Antonio, TX 78205 US
+||yes|Robert J. Woods|rjw@invisimax.com|110 Main Street  Forest River, ND 58261 US
+||yes|COLLIN A EVANS|collin@evanscriminallawyer.com|917 Franklin St, Ste. 600  Houston, TX 77002 US
+||yes|Derek William Hansen|derek@arrestedmn.com|247 Third Avenue South   Minneapolis, MN 55415 US
 6|2019|no|Deborah N. Bedsole|gianniva.db@gmail.com|2100 Manchester Rd., Ste. 1070   Wheaton, IL 60187 US
 11|2018|no|Parker O.  Dixon|parker@dixonlawmemphis.com|895 S. Cooper St. Suite 8  Memphis, TN 38104 US
 2|2017|no|Richard C. Maloumian Jr|rcmjr03@aol.com|1515 Market Street   Suite 1200 Philadelphia, PA 19102 US
 11|2016|no|Nathaniel Scott Redmon|scott@michaelharwin.com|250 N. Meyer Ave.  Tucson, AZ 85701 US
 2|2017|no|Cory J Wood|woodlaw@live.com|645 SW 153rd ST, SUITE C-2  BURIEN, WA 98166 US
-8|2016|no|ERIC L. GAY|egay@sowegalaw.com|260 WHIGHAM DAIRY ROAD SUITE A BAINBRIDGE, GA 39817 US
-2|2018|no|Michael L. King|michael@kingcriminaldefense.com|1005 Broadway  Lubbock, TX 79401 USA
-10|2016|no|Ryan A Stampfle|ryanstampfle@murraylaw.info|4214 Mayfair Street Suite B Myrtle Beach, SC 29577 US
-7|2016|no|Derek  Brandon Simms|derekbsimms@gmail.com|Simms & Associates  608 37th Street South Birmingham, AL 35222 US
+9|16|no|Chad M. Oliver|cmo@chadoliverlaw.com|7751 Carondelet Avenue Suite 201 Clayton, MO 63105 US
+||yes|Stephen C. Higgins|stephen@fightyourcase.com|3426 W. Kennedy Blvd.  Tampa, FL 33609 US
 12|2017|no|Jon D Fox|jfox@fsalaw.com|Jenkintown Plaza 101 Greenwood Avenue, Fifth Floor Jenkintown, PA 19046 US
-7|2015|yes|Andrew F Wehunt|andrew@wehuntlawfirm.com|327 Dahlonega Street Suite 304 Cumming, GA 30040 US
 1|2019|no|Christopher B. Coughlin|cbc@coughlinlawgroup.com|7 Liberty Square - 2nd Floor  Boston, MA 2109 US
 4|2016|no|Matthew S Dawson|mdawson@lynchpine.com|One Park Row 5th Floor Providence, RI 2903 US
 7|2016|no|Guy R. Dotson, Jr.|gdotsonjr@usa.net|117 E Main St  Murfreesboro, TN 37130 US
-4|2019|no|William L Vig|billvig@gmail.com|1201 South 6th Street  Springfield, IL 62703 USA
-5|2018|no|R. Christian Malott|christianmalott@gmail.com|6802 Paragon Place Suite 410 Richmond, VA 23230 US
+5|15|yes|m. James Jenkins|mjj7000@cox.net|1211 West Garden Street  Pensacola, FL 32502 US
 3|2020|no|Amber V Bode|amberv@lawyers.com|1004 West Ave.  Austin, TX 78701 US
 6|2016|no|Philip L Wormdahl|phil@thesaltlakelawyers.com|10 Exchange Place Suite 622 Salt Lake City, UT 84111 US
-6|2017|no|Carl David Ceder|carl@cederlaw.com|701 East 15th Street, Suite 101  Plano, TX 75074 US
 1|2016|no|Patrick J Stangl|pstangl@stangllaw.com|6441 Enterprise Lane Suite 109 Madison, WI 53719 US
 3|2016|no|Arvin Ross|law@arvinross.com|300 - 10 Milner Business Ct  Toronto, ON M1B 3C6 CA
-1|2019|no|Richard Howell James|rilasaje@verizon.net|  , RI  US
 7|2017|no|Jared  T.  Hall|jhall@htwwlaw.com|750 Hammond Drive, Suite 5-100  Atlanta, GA 30328 US
-7|2019|no|Gregory M. Noble|gnoble@massdrunkdriving.com|306 Washington Street  Norwell, MA 2061 US
-12|2016|no|Ciara L Vesey|ciara@ciaravesey.com|1895 Middle Road, Suite 201  Bettendorf, IA 52722 US
 10|2015|yes|Bryan S Orihel|bryan@shawnbrownlaw.com|540 S St Mary's St  San Antonio, TX 78205 US
-8|2017|no|Kevin R Pettrey|kevinpettrey@gmail.com|485 S. Independence Blvd. Suite 104  Virginia Beach, VA 23452 US
 12|2016|no|David J. Shrager|david@shragerdefense.com|437 Grant Street Suite 617 Pittsburgh, PA 15219 US
 12|2015|yes|Henry M Anderson, Jr.|hankalaw@bellsouth.net|P O Box 1904 265 West Evans Street Sc 29501 Florence, SC 29501 US
 3|2015|yes|Peter S Fayne|pfayne@rosenberg-fayne.com|5402 Kenilworth Avenue  Riverdale, MD 20737 US
 11|2017|no|adam chaudry|adamchaudry@chaudrylaw.com|1414 Willowood Way  Marion, OH 43302 US
 12|2018|no|Gullermo  Lara|support@ncdd.com|310 S. Saint Mary's Street Suite 965 San Antonio, TX 78205 US
-2|2018|no|Carey Meldon|cmeldon@meldonlaw.com|703 n. Main street suite a gainesville, FL 32601 US
-9|2016|no|Arya Saleh|saleh@dcmdlaw.com|16901 Melford Blvd. Ste. 325 Bowie, MD 20715 US
+5|2017|no|Vijay R. Sharma|vsharma@vrslegal.com|5250 N. Old Orchard Rd. Ste 300 Skokie, IL 60077 US
 12|2017|no|Robert Samuel Gilligan|robert@minicklaw.com|258 N. Main Street, Suite D  Waynesville, NC 28786 US
+2|16|no|Russell B. McCormick|russell@rbmccormicklaw.com|437 E Monroe Street Suite 200  Jacksonville, FL 32202 US
 10|2016|no|Joseph Aragon|joseph.aragon.law@gmail.com|1307 Nueces St.  Austin, TX 78701 US
 3|2016|no|Michael  Anthony Delakas|mdelakas@atesh.com|11 Park Place Suite 1715 New York, NY 10007 US
-1|2020|no|Ken R. Smith|ken@kenrsmithlaw.com|544 Mulberry Street, Suite 209  Macon, GA 31201 US
-8|2016|no|Edward  Lee Meadows|info@meadowslaw.com|403 North Calhoun Street  Tallahassee, FL 32301 US
-3|2017|no|Adam M Vander Heyden|adam@duidoctor.com|6623 Las Vegas Boulevard South - #245  Las Vegas, NV 89119 USA
-1|2018|no|Corey Evan Parker|corey@coreyevanparkerlaw.com|7700 Irvine Center Drive Suite 800 Irvine, CA 92618 US
-9|2019|no|ike lucero, jr|ikelucerojr@gmail.com|803 4th Street, Suite P  pueblo, CO 81003 US
-5|2017|no|Victoria L Heyliger|hlo@heyligerlaw.com|10440 Little Patuxent Parkway Suite 900 Columbia,  21044 US
-4|2016|no|RC Pate|rc.pate@gmail.com|321 south flores  san antonio , TX 78204 US
-9|2016|no|John S Castro|jcastro@antoncastrolaw.com|Anton Castro Law 1219 N Franklin St Tampa, FL 33602 US
-12|15|yes|Ryan Withington Gertz|rgertz@gertzlawyers.com|2630 Liberty  Beaumont, TX 77702 US
+5|2017|no|Victoria L Heyliger|hlo@heyligerlaw.com|  , DC  US
+12|15|yes|Ryan Withington Gertz|rgertz@gertzlawyers.com|  , TX  US
 11|2017|no|James P Stanton|jps2ph@gmail.com|120 E Indiana Ave  DeLand , FL 33765 US
-7|2016|no|Lisa B Santos|lisa@denversdefenseattorney.net|1873 S. Bellaire St., Suite 200  Denver, CO 80222 USA
 6|2018|no|Timothy Campen|timo69@aol.com|2720 5th Ave., Suite I  San Diego, CA 92103 US
-1|2018|no|Arianne  M Espinueva|arianne@coreyevanparkerlaw.com|7700 Irvine Center Drive Suite 800 Irvine, CA 92618 US
+8|2016|no|ERIC L. GAY|egay@sowegalaw.com|260 WHIGHAM DAIRY ROAD SUITE A BAINBRIDGE, GA 39817 US
+9|2015|yes|Randall Petrouske|rpetrouske@eversonlaw.com|414 S. Jefferson St  Green Bay, WI 54301 US
 4|2018|no|Michael P Kelly|mike@mikepkelly.com|216 North River Street, Suite 570  Wilkes-Barre, PA 18702 US
+4|17|no|Ryan P Sullivan|ryan@ryansullivanlaw.com|11 Kearney Square, Suite 201  Lowell, MA 1852 US
+||yes|Anastacio  De La Cruz|delacruzlaw1@gmail.com|45250 Smurr St.  Indio, CA 92201 US
 1|2017|no|Michael J. Skinner|mike@skinnerlawfirm.net|15 W. Gay Street 1st Floor West Chester, PA 19380 US
-7|2016|no|Kenneth Neil Hamilton|ken@socodui.com|South Coast DUI Law Center 5740 Ralston St., Ste 300 Ventura, CA 93003 US
-3|2019|no|Lindsey M Scott|lindsey@lindseyscottlaw.net|2809 Hwy 69 North  Nederland, TX 77627 US
+7|2016|no|Kenneth Neil Hamilton|ken@socodui.com|  , CA  US
 10|2016|no|Paul Anthony Bauer, III|paul.bauer@pottstownattorney.com|2050 E.High Street  Pottstown, PA 19464 US
-11|2017|no|Roland  L.  Rillos|rolandrillos@rilloslaw.com|1 E. Washington St. Suite 500  Phoenix , AZ 85004 US
-3|2018|no|W. F. Casey Ebsary Jr.|centrallaw@gmail.com|2102 W. Cleveland St.  Tampa, FL 33606 US
+5|20|no|Bradley J Groene|support@cincinnaticriminalattorney.com|810 Sycamore St  Fl 3 Cincinnati, OH 45202 US
+6|2017|no|Brian L.  Duce|blducelaw@yahoo.com|1701 Grove St.   Marysville, WA 98270 US
+5|2018|no|R. Christian Malott|christianmalott@gmail.com|6802 Paragon Place Suite 410 Richmond, VA 23230 US
+1|17|no|Allyson M Prejean|allyson@sallingerlaw.com|820 East St. Mary Boulevard  Lafayette, LA 70503 USA
 8|18|no|Stephen Edge|stephen@edgelawfirm.com|201 West 5th Street Suite 550 Tulsa, OK 74103 US
-12|18|no|Leon A Geller|lglaw87@yahoo.com|200 A Monroe Suite100 Rockville, MD 20850 US
-7|19|no|Matthew Jay Ruff|matthew.ruff@sbcglobal.net|18411 Crenshaw Blvd, Suite 417  Torrance, CA 90504 US
-10|2018|no|Kevin  Munoz|munozkc@gmail.com|120 E. market street Suite 1200 Indianapolis, IN 46204 US
-8|2018|no|Edward J Sternisha|ed.sternisha@gmail.com|448 Leonard St NW  Grand Rapids, MI 49504 US
-7|17|no|Jerry J. Cox|jcox@kih.net|115 Richmond St.  Mt. Vernon , KY 40456 US
+||yes|Bill J. Baker II|bjbaker@bjbaker-law.com|303 W. Keetoowah  Tahleguah, OK 74464 US
 6|2016|no|Susan M Johnson|susanmjohnsonlaw@gmail.com|9 S. Augusta St.  Staunton , VA 24401 USA
+6|2016|no|Edward M Bourne|bournelawoffice@bellsouth.net|114 N. Madison Street  Owenton, KY 40359 US
+5|2018|no|Dennis P. Levin|levinlaw@gmail.com|5910 Landerbrook Drive Suite 200 Cleveland, OH 44124 US
+9|2016|no|Christopher  E Ward|ceward18@me.com|8312 Office Park Drive, Suite C  Douglasville, GA 30134 US
+5|2019|no|Daniel L Barton|dbarton@nbbolaw.com|Nolan Barton Bradford & Olmos, LLP 600 University Avenue Palo Alto, CA 94301 US
+1|2017|no|Justin W. Esworthy|jwe@tbhelaw.com|1 Olympic Place Suite 900 Towson, MD 21204 US
+5|2018|no|Marc A. Gibbons|mgibbonslaw@gmail.com|  , CA  US
+1|2020|no|Robert A Dees|ncdd32502@gmail.com|1620 West Garden Street  Pensacola, FL 32502 US
+7|2019|no|Michael J Wise|mike@wisechoicelaw.com|428 J Street #200 Sacramento, CA 95814 US
+11|2017|no|Suzanne M Ferguson|sf246972@gmail.com|27475 Ynez Road, Ste. 283  Temecula, CA 92591 US
+2|2017|no|Theodore P LeBlanc|ted.leblanc@lamsonlaw.com|136 Main Street  PO Box 1130 Prince Frederick , MD 20678 US
+11|2018|no|Aaron  P. Hommell|aaron@hommelllaw.com|781 Liberty Rd.  Flowood, MS 39232 US
+3|2018|no|Jason D Lawrence|jason@bettercalljlaw.com|723 Main Street Suite 700-10 Houston, TX 77002 US
+9|2019|no|Allan Howard  Rombro|allan@rombrolegal.com|4 sudbrook lane  baltimore, MD 21208 US
+6|19|no|Joshua J Price|joshuajprice@defendingrights.com|3160 Camino Del Rio South Suite 300 San Diego, CA 92108 US
+5|17|no|Richard E. Carrizales|richard@carrizaleslaw.com|1009 N. Central Expressway, Suite 800   Richardson, TX 75080 US
+1|16|no|William S. Margulis|wmargulis@capessokol.com|7701 Forsyth 12th Floor St. Louis, MO 63105 USA
+8|16|no|Lloyd C Suhr|lsuhr@suhrandlofgren.com|120 N. 3rd Street, Suite 175  Bismarck, ND 58501 US
+2|18|no|Dov  W.  Lustig|dovlustiglaw@yahoo.com|240 Daines Street  Birmingham, MI 48009 US
+8|19|no|Walter M Reaves|walterreaves@att.net|100 North 6th St. Suite 802 Waco, TX 76701 US
+10|18|no|Ryan J Stevens|stevens@flagstaff-lawyer.com|609 N. Humphreys Street  Flagstaff, AZ 86001 US
+2|16|no|Ricardo Bours|ricardo@boursesq.com|5055 E. Broadway Blvd: Suite C-214  Tucson, AZ 85711 US
+1|17|no|DELMAR D WELDON|ddweldon@zerbegarnerlaw.com|15 W CENTER ST  LAWRENCEBURG, IN 47025 US
+5|16|no|Nathan D. Leonardo|nathan@leonardolawoffices.com|2 E. Congress St., #418  Tucson, AZ 85701 US
+1|17|no|Joseph M Tysel|jmtlaw@sbcglobal.net|2024 North Broadway, Suite 101  Santa Ana, CA 92706 US
+7|17|no|Gaynell   Williams|gw@gaynellwilliamslaw.com|724 11th Street  Gretna, LA 70053 US
+11|17|no|Andres R Guevara|andres@guevaracoloradolaw.com|5200 DTC Parkway, Suite 410  Greenwood Village, CO 80111 US
+||yes|Arrin R Zadeh|az@tndui.com|550 Main Street, Suite 730  Knoxville, TN 37902 US
+2|17|no|James W Bannister|jbannister@bannisterwyatt.com|PO Box 10007 (29603) 401 Pettigru St. (29601) Greenville, SC 29601 US
+2|17|no|Paul R Dec|ronnierae.law@gmail.com|1403 W. Broadway Avenue  Spokane, WA 99201 US
+5|17|no|Daniel R Scarbrough|dan@scarbrough-law.com|617 e. Lacy  Palestine, TX 75801 US
+||yes|Shaffer   Cormell|scormell@gmail.com|1130 W Hobsonway  Blythe, CA 92225 US
+11|16|no|Robert Tayac|rtayac@aol.com|505 Montgomery Street, 11th Floor  San Francisco, CA 94111 US
+5|17|no|Dale S. Gribow|dale@gribowlaw.com|73 061 El. Paseo Suite 220 Palm Desert, CA 92260 US
+||yes|Andrew P.  Abood|andrew@aboodlaw.com|246 East Saginaw St. Ste. 1 East Lansing, MI 48823 US
+||yes|Carrie   J. Cousino|carrie@aboodlaw.com|246 East Saginaw St. Ste. 1 East Lansing, MI 48823 US
+10|15|yes|Bobby M.  Harges|hargeslaw@cox.net|1124 Eleventh Street  Gretna, LA 70053 US
+5|16|no|Tai C. Bogan|taiboganlaw@gmail.com|1202 H Street, Suite D  Modesto, CA 95354 US
+5|15|yes|John Eric Barnett|jeb61fulton@aol.com|2392 State Route 2139  Hickman, KY 42050 US
+||yes|Michael B. "Ben" Shields|bshields@whitepeckcarrington.com|P.O. Box 950  Mount Sterling, KY 40353 US
+1|15|yes|Brett J. Riegel|brett@armlawyers.com|18 N. 8th St.  Stroudsburg, PA 18360 US
+7|18|no|T. Scott  Jones|tscottjones@banksandjones.com|2125 Middlebrook Pike  Knoxville, TN 37921 US
+7|17|no|Antonio J. Salazar|aj@ajsalazarlaw.com|P.O. Box 171  Alcalde, NM 87511 US
+5|15|yes|Richard C Strong|richard@richardstronglaw.com|1308 Rosa L. Parks Blvd  Nashville, TN 37208 US
+2|15|yes|Hope S. Marshall|hmarshall@whitearnolddowd.com|2025 Third Ave. North, Suite 500   Birmingham, AL 35203 US
+6|17|no|Kenneth G. Leggett|kleggett@abilene.com|402 Cypress  #800 Abilene, TX 79601 US
+2|15|yes|Michael J.  Crawford|mjc@michaeljcrawfordlaw.com|416 N. 14th St.  Corsicana, TX 75110 US
+||yes|Robert F Gruler|robert@randrlawaz.com|5635 N. Scottsdale Road, Suite 170  Scottsdale, AZ 85250 US
+2|20|no|Ryan W.  Cummings|ryan@randrlawaz.com|PO Boxx 733  Scottsdale, AZ 85250 US
+7|15|yes|Jonathan T. Tyack|jttyack@tblattorneys.com|536 South High Street  Columbus, OH 43215 US
+4|16|no|James B Seplowitz|jseplowitz@foyseplowitz.com|105 Main Street  Hackensack, NJ 7601 US
+9|17|no|Anthony J Lana|ajlforthedefense@cs.com|484 Delaware Avenue  Buffalo, NY 14202 US
+4|17|no|andre robert belanger|andre@manassehandgill.com|8075 jefferson highway  baton rouge, LA 70809 US
+2|15|yes|Richard F.  Blass|rblass@blass-law.com|770 N. Church Road Ste. H Elmhurst, IL 60126 US
+2|15|yes|Thomas S Peters|tom@petersassoc.com|10900 NE 4th St. Suite 2300 Bellevue, WA 98004 US
+6|17|no|Thomas G Haren|tharen@sseg-law.com|26600 Detroit Road Suite 300 Westlake, OH 44145 US
+7|17|no|Andrew J Cornick|cornick@smkclaw.com|1671 Jefferson Davis Highway Suite 201 Fredericksburg, VA 22401 US
+3|18|no|Justin N Rosas|justin@justinrosas.com|10 Crater Lake Ave.  Medford, OR 97504 US
+12|14|yes|jeremiah j denslow|jeremiah@gdalawfirm.com|130 W. Second St. Ste. 2000 Dayton, OH 45402 US
+4|17|no|Ryan Christopher Atwell|ryan@atwelllaw.com|21 North Hanson Street Suite 102 Easton, MD 21601 US
+10|19|no|floyd m buford jr.|support@ncdd.com|136 college street  macon, GA 31201 US
+9|17|no|RONALD SKIP KELLY|kellyron01@yahoo.com|205 NW 63RD STREET SUITE 150  OKLAHOMA CITY, OK 73116 US
+1|17|no|Mark T. Langston|mark@coloradodefender.com|1881 9th Street Suite 305 Boulder, CO 80302 US
+10|16|no|Tedia Gamino|tedia@gaminolawoffices.com|1746 S. Muskego Ave.  Milwaukee, WI 53204 US
+10|15|yes|Russell W Crumbley|attyrussell@bellsouth.net|2304 Memorial Parkway SW  Huntsville, AL 35801 US
+12|14|yes|William F Cummings|bill@billcummingsllc.com|129 East Second Street  Wichita, KS 67202 US
+3|17|no|Marc A Grano|marcgrano@gmail.com|PO Box 3961  Las Vegas, NM 87701 US
+3|15|yes|Kenneth  D Burns|kburns@lawofficeofkennethburns.com|2537 Raeford Road Suite C Fayetteville, NC 28305 US
+10|16|no|Marc J.  Victor|marc@attorneyforfreedom.com|3920 South Alma School Road Suite 5 Chandler, AZ 85248 US
+1|18|no|Joseph J. Bell|joebell@gmail.com|150 Mineral Springs Drive P.O. Box 220 Rockaway, NJ 7801 US
+2|17|no|Michael R Pandullo|michael@pandullolaw.com|700 South Third Street  Las Vegas, NV 89101 US
+||yes|Andrew R. Safranko|ars@lamarchesafrankolaw.com|1539 Crescent Road PO Box 5437 Clifton Park, NY 12065 US
+9|15|yes|Hugh E Black, III|teddy@black-jameslaw.com|411 Cedar Road  Chesapeake, VA 23322 US
+11|15|yes|John Thomas Powers, Jr.|johnpowerslaw@yahoo.com|375 Commack Road, Ste. 202  Deer Park , NY 11729 US
+4|16|no|Charlie Condon|charlie@charliecondon.com|880 Johnnie Dodds Blvd., Ste. 1  Mount Pleasant, SC 29464 US
+1|17|no|Steven R. Glasgow|clarklaw@frontiernet.net|93 Public Square P.O. Box 797 Monmouth, IL 61462 US
+2|16|no|George Holton Yates|gyates@ghylaw.com|1023 Laskin Road Suite 101 Virginia Beach, VA 23451 US
+6|16|no|Kevin J. McDevitt|kevin@kjmcdevittlaw.com|Po Box 952   Leonardtown , MD 20650 US
+7|16|no|John H Trevena|trevenalaw@aol.com|801 West Bay Drive Suite 509  Largo, FL 33770 US
+8|15|yes|Richard B Lewis|ricky@chapman-lewis-swan.com|Box 428  501 First Street Clarksdale, MS 38614 US
+6|17|no|Nathanael A Horsley|nhorsleylaw@hotmail.com|135 Prominence Ct., Ste 130  Dawsonville, GA 30534 US
+10|16|no|Joerg F Jaeger|jfjaeger@yahoo.com|217 NE Ivanhoe Blvd  Orlando, FL 32804 US
+8|16|no|J. Steven  House|jshouse@jshouselaw.com|222 S. Hamlton Street Suite 21 Madison, WI 53703 US
+||yes|Brett Harrison|bretth@bainfiles.com|Bain, Files, Jarrett, Bain and Harrison, P.C. 109 W. Ferguson Tyler, TX 75702 US
+||yes|Paula  R. Henderson|phenderson@jamesahbell.com|10 Emory Place  Knoxville, TN 37917 US
+7|17|no|Geoffrey R Willis|ryan@wjnpllc.com|1101 Haynes Street Suite 205 Raleigh, NC 27604 US
+2|17|no|Mr. Kelly V. Landers|kvl@bellsouth.net|315 26th Street  West Palm Beach, FL 33407 US
+6|17|no|Buta Biberaj|biberaj@biberaj-snow-law.com|7 East Market Street Suite 102 Leesburg, VA 20176 US
+8|17|no|Larry W Fouche|lwfouche@lwfouchelaw.com|3920 Arkwright Road, Suite 405 P. O. Box 18086 Macon, GA 31210 US
+9|16|no|Jonathan W McConnell|jon@jonathanwmcconnell.com|328 East 1st Street North  Wichita, KS 67202 US
+3|17|no|Susan L Schoon|susanschoon@hotmail.com|200 N. Seguin Avenue  New Braunfels, TX 78130 US
+||yes|Roger W Smith, Jr.|rsmithjr@tharringtonsmith.com|150 Fayetteville Street PO Box 1151 Raleigh, NC 27601 US
+1|16|no|Sam C.  Adamo|samjr@samadamolaw.com|3200 Travis, 4th Floor  Houston, TX 77006 US
+7|15|yes|David B Green|david@davidgreenlawfirm.com|535 East Street  Lake Charles, LA 70601 US
+2|18|no|Steven J Topazio|stopazio@topaziolaw.com|10 Winthrop Square, Suite 4100  Boston, MA 2110 US
+4|18|no|Ryan D. Stump|ryan@randallstump.com|1800 Camden Road Suite 205 Charlotte, NC 28203 US
+3|15|yes|Mark D Kargman|markkargman@yahoo.com|6215 Black Horse Pike  Egg Harbor Twp, NJ 8234 US
+9|19|no|Daniel E Gavrin|danielgavrin@mindspring.com|6 Concourse Pkwy Suite 2920 Atlanta, GA 30328 US
+3|15|yes|Leo M Mulvihill|leo@fishtownlaw.com|2424 E. York Street Suite 316 Philadelphia, PA 19125 US
+10|17|no|Melissa L Mroczkowski|melissa.m@kirkobear.com|603 South 8th Street  Sheboygan, WI 53081 US
+8|17|no|Robert M.  Nachamie|rnachamie@gmail.com|1011 Park Street, Suite 5, Suite 5, Peekskill, New York 10566  Peekskill, NY 10566 US
+10|16|no|William C. Gore Jr|bill@billgorelaw.com|115 Courthouse Square  Whiteville, NC 28472 US
+||yes|Matthew R Meyer|mmeyer@mmeyerlaw.com|316 N. Milwaukee Street, Ste. 206  Milwaukee, WI 53202 US
+||yes|J Wesley McCollum, Jr|wes@mcwlegal.com|363-B East Glenn Ave  Auburn, AL 36830 US
+||yes|Bart C. Craytor|bcraytor@gmail.com|315 North Locust Street  Clarksville, TX 75426 US
+||yes|Brian P Dimmer|bpd@racinedefense.com|209 8th Street  Racine, WI 53403 US
+||yes|Mark  D. Richards|mdr@racinedefense.com|209 8th Street  Racine, WI 53403 US
+||yes|Jack A. Blakeslee|blakesleejack@yahoo.com|P.O. Box 284 421 West St. Caldwell, OH 43724 US
+9|19|no|Richard Roberts|rroberts@themcshanefirm.com|3601 vartan Way 2nd Floor Harrisburg, PA 17110 USA
+9|19|no|Michael A Giaramita|mgiaramita@themcshanefirm.com|3601 Vartan Way 2nd Floor Harrisburg, PA 17110 US
+5|16|no|Thomas M Petersen|tpetersenesq@gmail.com|12020 Shamrock Plaza Suite 105 Omaha, NE 68154 US
+11|16|no|Frank Walker|frank@frankwalkerlaw.com|428 Forbes Avenue, Ste 1800  Pittsburgh, PA 15219 US
+4|16|no|Daniel A. Noll|dan@noll-law.com|930 E. Monroe  Springfield, IL 62701 US
+10|19|no|Ryan Travis Ramsayer|rramsayer@baronedefensefirm.com|280 N. Old Woodward Ave., Ste. 200  Birmingham, MI 48009 US
+9|18|no|George C. Creal, Jr.|gcreal@georgialawyer.com|480 John Wesley Dobbs Ave NE Unit 190 Atlanta, GA 30312 US
+9|15|yes|David J. Dischley|david@dischleylaw.com|28 E. Lee Street  Warrenton, VA 20186 US
+||yes|George B. Ready|gbready@georgebreadyattorneys.com|175 East Commerce Street  Hernando, MS 38632 US
+||yes|Raymond P. Sciarrino|nylaw@myattorney.org|106 Main Street  Mount Morris, NY 14510 US
+7|17|no|Mark A Busby|markabusby73@gmail.com|141 E Washington Street, Suite 300  Indianapolis, IN 46204 US
+12|14|yes|Murray  W. Bell|mwbell@kirkwoodlaw.com|2435 Kimberly Road Suite 235 South Bettdendorf, IA 52722 US
+9|17|no|Matthew D. Bowe|mattbowelaw@gmail.com|18 Pleasant St.   Brunswick, ME 4011 US
+||yes|Chad Jenkins|cjenkins@popeandhudgens.com|1508 College Street P.O. Box 190 Newberry, SC 29108 US
+||yes|Bradley A. Keffer|keffer@kbindy.com|230 East Ohio Street Suite 600 Indianapolis, IN 46204 US
+4|18|no|Todd A Snow|tsnow@snowlaw.net|514 E. Main St. P.O. Box 591 Waupun, WI 53963 US
+11|17|no|KARL C. SEMAN|kcs@gslawyers.com|100 GARDEN CITY PLAZA SUITE 203 GARDEN CITY , NY 11530 US
+7|16|no|Thomas Grajek|flcrimedefense@gmail.com|206 Easton Dr. Suite 102  Lakeland, FL 33803 USA
+||yes|Laura K Wester|laura.wester@dui-lawyer.com|448 East Paces Ferry Road  Atlanta, GA 30305 US
+||yes|Robbie Matthew Ballard|ballard@fosterhanks.com|302 North Broad Steet  Monroe, GA 30655 US
+||yes|V Iyer|v@iyerlawoffice.com|3333 South Bannock St,  Suite 840 Englewood, CO 80110 US
+8|16|no|Conor Hagerty|conor@orrlaw.com|720 S. Colorado Boulevard Suite 1110-N Denver, CO 80246 US
+12|15|yes|Brian D. Sloan|sloan@mcdui.com|40 N. Central Ave., Suite 1400  Phoenix, AZ 85004 US
+5|15|yes|Kyla M. Lee|kyla@vancouvercriminallaw.com|210-837 Beatty Street  Vancouver, BC V6B2M6 CA
+8|19|no|Arnulfo D Hernandez|ahernandez@hdezlaw.com|1490 Lafayette Street Suite No. 307 Denver, CO 80218 US
+2|2017|no|KATHERINE DRUMMOND|kdrummond@wkclawfirm.com|224 18th St Ste 400 Rock Island, IL 61201 US
+4|2017|no|Lyliane S Couture|lyliane.c@gmail.com|406 W Broadway, Suite D  Moses Lake, WA 98837 US
+6|17|no|Scott T. Stotz|scott@stotzlaw.com|2068 Orange Tree Ln, Ste. 222  Redlands, CA 92374 US
+||yes|Chris E. Ambrose|chris@silvis-ambrose.com|220 S. Hansell Street  Thomasville, GA 31792 US
+5|17|no|Jack Mkhitarian|jackmk@me.com|1008 5th St. NW  Albuquerque, NM 87102 US
+10|19|no|Sherry Levin Wallach|wallach@wallachrendo.com|239 Lexington Avenue  Mt. Kisco, NY 10549 US
+6|16|no|Casey Y. Meek|cmeek@josephhollander.com|3320 Mesa Way Suite E  Lawrence, KS 66049 US
+7|2017|no|Bart Betteau|bart@betteau.com|1212 State Street  New Albany, IN 47150 US
+1|20|no|Andrea Worden|aworden@wordenfirm.com|PO Box 207  Norman, OK 73069 USA
+5|18|no|Kyle J. Worby|kyle@advocatesforu.com|809 West Detweiller Drive Suite 800 Peoria, IL 61615 US
+12|2016|no|Justin R. Arnold|jarnold@arnoldhooks.com|1125 E. Lamar St. PO Box 6540 Americus, GA 31709 US
+2|2016|no|Joshua S Hill|josh@notguiltytx.com|4615 Southwest Freeway, Suite 600  Houston, TX 77027 US
+8|2016|no|Lloyd S.  van Oostenrijk|lloyd@vanolaw.com|440 Louisiana Suite 900 Houston, TX 77002 US
+7|2015|yes|William C. DeNardo|bill@williamdenardolaw.com|1000 Germantown Pike Suite D3 Plymouth Meeting, PA 19462 US
+2|2016|no|Benjamin Martinez|benmartinezlaw@gmail.com|5531 W. Cermak Road  Cicero, IL 60804 US
+3|2017|no|Michael Vincent  Laubshire|michael@laubshirelaw.com|455 St. Andrews Rd.  Ste. E-1  Columbia, SC 29210 US
+8|2016|no|William J Kennedy III|jkennedy@encattorneys.com|613 Cedar Street Suite A Beaufort, NC 28516 US
+10|17|no|Pamela  Epperson Panasiuk|eppersonpanasiuklaw@gmail.com|1101 West 2nd Street  Little Rock, AR 72201 US
+5|18|no|John P. Thygerson|jptesq@hotmail.com|8 Byington Place  Norwalk, CT 6850 US
+9|17|no|Dan Chambers|dchambers@clfca.com|9107 Wilshire Boulevard Suite 450 Beverly Hills, California 90210 US
+3|2017|no|Andrew William Wheeler|awheeler@vancouverlaw.net|902 Esther Street  Vancouver, WA 98660 US
+7|2016|no|Shahin Zamir|szamir@tiltonzamir.com|405 Main Ste 300  Houston, TX 77002 US
+1|2018|no|Louis D Leichter|louis@leichterlaw.com|1602 East 7th Street  Austin, TX 78702 US
+11|2016|no|Joseph A Tang|jtang@jtanglaw.com|1055 E. Colorado Blvd. Suite 500 Pasadena, CA 91106 USA
+7|2015|yes|James P Tyack|jptyack@tblattorneys.com|536 South High Street  Columbus, OH 43215 US
+9|2017|no|Alexander F Ransom|alex@ransom-lawfirm.com|119 North Commercial Street Suite # 1420 Bellingham, WA 98225 US
+7|2018|no|Michael C. McGinnis|mike@schatzanderson.com|321 N. Mall Drive, Suite O-201  St. George, UT 84790 US
+5|2018|no|Peter Stevenson|peter@peterstevensonlaw.com|1736 East Sunshine Street #705  Springfield, MO 65804 US
+3|16|no|Neal A. Davis|info@houstoncriminaldefenselawyers.com|917 Franklin Street #600 Houston, TX 77002 US
+7|2017|no|Robert F. Black|rblack@centralnjlawfirm.com|64 West Main Street  Freehold, NJ 7728 US
+8|18|no|Keith T Koller|keith@kollerlegal.com|P.O. Box 14366  San Francisco, CA 94114 US
+1|17|no|Larry Forman|lforman30@gmail.com|138 S. 3rd St.  Louisville, KY 40202 US
+10|15|yes|Saul Brian Simmonds|simmonds@gws.ca|1200-363 Broadway Avenue  Winnipeg, MB R3C 0Y3 CA
+1|2020|no|William L. Swank|swanklaw@me.com|Swank Law Group, LLC 675 Mansell Road, Ste 130 Roswell, GA 30076 US
+2|2019|no|Gregory J Boulahanis|gregoryjboulahanis@yahoo.com|21905 Garrison  Dearborn, MI 48124 US
+11|2017|no|Jake Johnson|jjohnson@tpm-law.com|5600 S. Quebec Street, Suite 220A  Greenwood Village, CO 80111 US
+8|2019|no|David S. Zuckerman|dave@zuckermanfirm.com|429 4th Avenue 1600 Law & Finance Bldg Pittsburgh, PA 15219 US
+7|2018|no|Charles Nutley|nutleyc@gmail.com|1901 N Roselle Road Suite 800  Schaumburg, IL 60195 US
+9|17|no|Anthony  Michael  Reyes|tony@rspclaw.com|1720 Carey Avenue, Suite 500  Cheyenne, WY 82001 US
+12|2015|yes|Jesse K Whitten|sam.van.eerden@gmail.com|1712 19th St., Ste 101  Bakersfield, CA 93301 US
+8|16|no|Kimberly J. Benjamin|kim@casscountytriallawyers.com|8019 E. 171st Street  Belton, MO 64012 US
+6|18|no|Dana J. Oliver|dana@danaoliverlaw.com|1735 E. Washington St.  Colton, CA 92324 US
+7|2016|no|Nathan S Luna|nathan@tnlaw.org|1031 Westhaven Blvd.  Franklin, TN 37064 US
+9|18|no|Eric J Benavides|benavides.eric@gmail.com|723 Main St. Suite: 802 Houston, TX 77002 US
+1|2020|no|William H. Burriss|hank@burrisslaw.com|907 Elmwood Avenue  Columbia, SC 29201 US
+9|2016|no|John Weiland|john@caddellweiland.com|1360 E. Parham Rd. Suite 100 Richmond, VA 23228 US
+6|2017|no|Guy F Brown|guy@azlawguy.com|2398 E. Camelback Road Suite 210 Phoenix, AZ 85016 US
+6|2017|no|Matthew S Hilscher|matt@azlawguy.com|2398 E. Camelback Road Suite 210 Phoenix, AZ 85016 US
+8|2016|no|Chad K Hemminger|chad@hemminger.com|470 Olde Worthington Rd Suite 200 Westerville, OH 43082 US
+3|15|yes|Francis J Patriarca|joepdefense@aol.com|387 Atwells Ave  Providence, RI 2909 US
+7|2015|yes|Jessica S Sisk|jsisklaw@gmail.com|303 East Broadway  Newport, TN 37821 US
+6|15|yes|Laurie Schmidt|laurie@criminaldefenseyouneed.com|600 Grant Street, Ste. 201 Denver, CO 80203 US
+12|2019|no|Robert H. Speer, Jr.|speerlaw@hotmail.com|100 Churchill Court Suite 102 Woodstock, GA 30188 US
+6|2017|no|Thomas C Thomasian|tct@thomasianlaw.com|55 Pine Street 2nd Floor Providence, RI 2903 US
+7|17|no|Thomas J Melanson|tmelanson@melansonlawoffice.com|79 St. James Street Suite 2 Kingston, NY 12401 US
+6|2017|no|Miller Leonard|miller@themillerleonardlawfirm.com|14143 Denver West Parkway, Suite 100  Golden, CO 80401 US
+9|2016|no|Charles D Thompson|charles@cdthompsonlaw.com|4119 Montrose, Suite 200  Houston, TX 77006 US
+||yes|Brendan Michael Ahern|bahern@barketmarion.com|666 Old Country Road Seventh Floor Garden City, NY 11530 US
+||yes|Andrew R Lynch|andrew@atlnotguilty.com|150 East Ponce de Leon Avenue Suite 225 Decatur, GA 30030 US
+10|2015|yes|David  L Altman|info@toputcriminaldefenselawyer.com|20 North Main Street Suite 301 Saint George, UT 84770 US
+||yes|Joseph J. Kenneff|jjkenneff@comcast.net|246B Manor Avenue  Millersville , PA 17551 US
+||yes|Tangi A. Carter|carterlaw601@gmail.com|404 Hemphill Street  Hattiesburg, MS 39401 US
+||yes|Greg  N Watt|gwatt@kcmetrodefense.com|111 west 10th   Kansas City, MO 64105 US
+10|17|no|William D. Day|day@williamdaylaw.com|98 Church Street  Rockville, MD 20850 US
+9|2016|no|Douglas S.  Daniel|douglas@danielhudson.com|1815 San Pedro Ave.  San Antonio, TX 78212 US
+9|2018|no|Eric N Bernstein|ebern@georgialawyer.com|480 John Wesley Dobbs Ave, N.E., Unit 190 Atlanta, GA 30312 US
+12|2016|no|Julie J Marburger|juliemarburger@bellsouth.net|800 East High Street  P.O. Box 444  Pottstown, PA 19464 US
+6|2015|yes|Martin B Schwartz|martin@martinschwartzlaw.com|8451 W. Linebaugh Ave  Tampa, FL 33625 US
+||yes|Kimberly A Petta|kp@rhumphreylaw.com|Law Offices of Robert H. Humphrey 8 Neck Road Tiverton, RI 2878 US
+||yes|Sharon Renee Osborn|sharon@sosbornlaw.com|5140 Hiawatha Avenue  Minneapolis, MN 55417 US
+||yes|Cindy  S. Manning|cmanning@mlmlawpractice.com|153 Senoia Road  Peachtree City, GA 30269 US
+||yes|JOHN B CUNNINGHAM|john@newnanlaw.com|32 SOUTH COURT SQUARE P.O. BOX 220 NEWNAN, GA 30263 US
+||yes|David J Gregory|dgregory@driversdefensecounsel.com|7733 Forsyth Blvd, Ste 1100  St. Louis, MO 63105 US
+11|2019|no|Stephen D Benedetto|benedettolawfirm@gmail.com|2111 E. highland Ave., Suite 145  Phoenix, AZ 85016 US
+||yes|Bradley A. Rozzi|brozzi30@yahoo.com|200 Fourth Street  Logansport, IN 46947 USA
+1|2018|no|Kevin S.  VanderWerff|ksvesq@gmail.com|10421 South Jordan Gateway Suite 600 South Jordan, UT 84095 US
+9|2016|no|Joseph F Hoelscher|joe@hoelscherlawoffice.com|115 E. Travis, Suite 1500  San Antonio, TX 78205 USA
+6|17|no|Justin  A.  Barrett|jbarrett@st-tel.net|280 N Court   Colby, KS 67701 US
+4|18|no|Wayne A Fowler|waynefowlerlaw@gmail.com|9500 Ray White Rd Suite 200 Keller, TX 76244 US
+7|17|no|Edwin F Brooks|brooks@efbrooks.com|6 West Broad Street  Richmond, VA 23220 US
+11|16|no|Matthew Phillip Konecky|mkonecky@bellsouth.net|4440 PGA Blvd. Suite 600  Palm Beach Gardens, FL 33410 US
+2|18|no|Scott M. Patterson|scott@thepattersonfirm.com|531 Roselane Street Suite 200 Marietta, GA 30060 US
+1|19|no|John-Robert W Granger|johnr@grangerlawoffice.com|325 W. Franklin St. Suite 123 Tucson, AZ 85701 US
+12|16|no|Christina L Robinson|chris4aulaw@gmail.com|106 North Lena Street Suite 2 Dothan, AL 36303 US
+7|16|no|Brian K. Schowalter|brianschowalter@durangoattorneys.com|101 West 9th Street Suite 1 Durango, CO 81301 US
+1|17|no|John C. Schleiffarth|john@jcsattorney.com|75 W Lockwood Ave 222 Webster Groves, MO  US
+2|2018|no|Michael L. King|michael@kingcriminaldefense.com|1005 Broadway  Lubbock, TX 79401 USA
+4|17|no|Mary E. Conn|mary@maryconnlaw.com|55 River Street Suite 100 Santa Cruz, CA 95060 US
+6|17|no|Mark S. Perry|mperry491@aol.com|269 Maplewood Drive SW  Calhoun, GA 30701 US
+2|18|no|Amanda Anderson Bright|abright@f-h-law.com|135 5th Ave SE Suite 200 Delray Beach, FL 33483 US
+2|17|no|Michael R Neece|theneecelawfirm@gmail.com|108 East Main Ave. P.O. Box 1933 Gastonia, NC 28053 US
+7|16|no|Anthony D. Cotton|adcotton20@yahoo.com|1535 E. Racine Ave  Waukesha, WI 53186 US
+3|18|no|Daniel R. Perlman|daniel@danielperlmanlaw.com|6464 W. Sunset Blvd. Suite 1030 Los Angeles, CA 90028 US
+||yes|Benjamin N Griffitts|griffitts@livesaymyers.com|9408 Grant Avenue #402  Manassas, VA 20110 US
+||yes|Frank L. Slaughter, Jr. |flsjrlaw@yahoo.com|324 6th Street  Bristol, TN 37620 US
+2|18|no|Gordon L. Fenderson|gfenderson@f-h-law.com|644 Cesery Blvd #310  jacksonville, FL 32211 US
+10|16|no|Bryan R Goodman|bgoodmanlawoffice@gmail.com|705 Douglas Street Suite 402 Sioux City, IA 51101 US
+4|2019|no|William L Vig|billvig@gmail.com|1201 South 6th Street  Springfield, IL 62703 USA
+||yes|D. Michael Phillps|mptahoe2006@yahoo.com|305 Railroad Ave Suite 5  Nevada City, CA 95959 US
+1|2019|no|Richard Howell James|rilasaje@verizon.net|  , RI  US
+12|2016|no|Ciara L Vesey|ciara@ciaravesey.com|  , IA  US
+1|17|no|Justin D Maines|jd@thenyelawgroup.com|33 Bow Cir Suite A Hilton Head, SC 29928 US
+2|2018|no|Carey Meldon|cmeldon@meldonlaw.com|703 n. Main street suite a gainesville, FL 32601 US
+5|2016|no|Joshua D. Zelman|josh@zelmanpa.com|  , FL  US
+8|18|no|Maureen  A Devine|mdlawfirm@comcast.net|28 South Street Suite 5 Hingham, MA 2043 US
+5|16|no|William B. Hankins, Jr.|hankinslaw@msn.com|The White House 6604 W. Saginaw Hwy. Lansing, MI 48917 US
+7|15|yes|Brian  C.  Ducharme|bducharme@cogeco.net|251 Goyeau Street, Suite 405  Windsor, ON N9A 6V2 CA
+7|16|no|Scott D Henry|scott@duipractice.com|2201 E. Chapman Ave  Fullerton, CA 92831 US
+8|18|no|George A Heym|george.heym@comcast.net|564 Forbes Ave, Suite 810  Pittsburgh, PA 15219 US
+8|17|no|Philip G. Sayles|pgsayles@gmail.com|3221 Oakes Avenue  Everett, WA 98201 US
+4|17|no|PATRICK TIM TIMONEY|tim@timoneylawoffice.com|808 South 2nd Street Floor 1 SPRINGFIELD, IL 62704 US
+11|15|yes|Rebecca G Thomason |lawyerthomason@gmail.com|501 North Jackson Ave P O Box 121 Russellville , AL 35653 US
+9|17|no|Lisa M Tome|ltome@meeksthomas.com|511 South High Street  Columbus, OH 43215 US
+11|2015|yes|Amy E Chapman|amy@amychapmanlaw.com|703 2nd Street, Suite 407  Santa Rosa, CA 95404 US
+3|17|no|John  Della Rocca|jcdr0927@aol.com|PNC Bank Building 1600 Market Street - Suite 1800 Philadelphia, PA 19103 US
+8|16|no|Fred M Dry|info@freddry.com|One Northfield Plaza #300  Northfield, IL 60093 US
+6|17|no|Ingmar Goldson|igoldson@goldsonlawoffice.com|1 Research Court, Suite 450  Rockville, MD 20850 US
+9|15|yes|Daniel P.  Leavitt|danielpleavitt@yahoo.com|208 N. 2nd Avenue, P.O. Box 480  Hopewell, VA 23860 US
+||yes|Rock Lee|suhre01@gmail.com|101 W Ohio Street Suite 2000 Indianapolis, IN 46204 US
+||yes|scott b Pierson|scott@deewampler.com|2974 E. Battlefield   springfield, MO 65807 US
+10|17|no|Scotty J. Storey|sstorey@scottystorey.com|247 North Third Street  San Jose, CA 95112 US
+||yes|Joe Suhre|suhre.directories@gmail.com|600 Vine Street Suite 1004 Cincinnati, OH 45202 US
+8|2016|no|Edward  Lee Meadows|info@meadowslaw.com|403 North Calhoun Street  Tallahassee, FL 32301 US
+11|19|no|Christopher Matthew Buckalew|matt@looneyconrad.com|11767 Katy Fwy Ste. 740  Houston, TX 77079 US
+1|2018|no|Corey Evan Parker|corey@coreyevanparkerlaw.com|7700 Irvine Center Drive Suite 800 Irvine, CA 92618 US
+7|2016|no|Lisa B Santos|lisa@denversdefenseattorney.net|1873 S. Bellaire St., Suite 200  Denver, CO 80222 USA
+||yes|Benjamin B. Reed|brad@bbrlawoffices.com|291 Jarvis Street  Canton, GA 30114 US
+6|16|no|Jason Hicks|jasonhickslaw@gmail.com|104 N. Orlando Ave., Suite 201  Cocoa Beach, FL 32931 US
+1|18|no|Aniko R Hoover|anikothelawyer@gmail.com|337 N. Vineyard Ave.  4th Floor Ontario, CA 91764 US
+7|2019|no|Gregory M. Noble|gnoble@massdrunkdriving.com|306 Washington Street  Norwell, MA 2061 US
+3|2018|no|W. F. Casey Ebsary Jr.|centrallaw@gmail.com|2102 W. Cleveland St.  Tampa, FL 33606 US
+10|17|no|Joshua D Nielsen|josh@nielsen-legal.com|576 Dellwood Rd.  Waynesville, NC 28786 US
+2|2016|no|Daniel M Mehler|danielmehlerlaw@gmail.com|115 E. Travis St. Suite 1500 San Antonio, TX 78205 US
+2|17|no|Carl A Irace|southforklaw@gmail.com|12 Gay Road #5128  East Hampton, NY 11937 US
+6|2017|no|Carl David Ceder|carl@cederlaw.com|701 East 15th Street, Suite 101  Plano, TX 75074 US
+9|2016|no|Arya Saleh|saleh@dcmdlaw.com|16901 Melford Blvd. Ste. 325 Bowie, MD 20715 US
+10|15|yes|Nigel D Graham|nigel@lucielaw.com|315 E. Jackson Street PO Box 790 Macomb, IL 61455 US
+4|16|no|Dagoberto  J Rodriguez|dago@rsfirm.net|9300 Peabody Street, Suite 208  Manassas, VA 20110 US
+9|2016|no|John S Castro|jcastro@antoncastrolaw.com|Anton Castro Law 1219 N Franklin St Tampa, FL 33602 US
+1|2017|no|Dontae L Bugg|dbugg@bugglawfirm.com|4103 Chain Bridge Road Suite 103 Fairfax, VA 22030 US
+1|17|no|Charles D.  Dresow|cdresow@gmail.com|P.O. Box 1420  Sausalito, CA 94966 US
+10|2016|no|Francis Starr Springer|springerlawoffice@gmail.com|  , MS  US
+||yes|Douglas F Herring|dherring@herringdefense.com|475 Wall Street  Princeton, NJ 8540 US
+2|16|no|Jeffrey Collins Toothaker|jefftooth2000@yahoo.com|14 High Street P.O. Box 1984 Ellsworth, ME 4605 US
+||yes|Mitch S. Miers|mitchmiers@yahoo.com|700 NE Loop 820 Ste 216  Hurst, TX 76053 US
+1|2020|no|MICHAEL D LEADER|criminallawleader@gmail.com|633 S ANDREWS AVE ST SUITE 201 FORT LAUDERDALE, FL 33301 US
+||yes|James   Butler|jimbutlerlaw@att.net|1314 Texas  St. Suite 505 Houston, TX 77002 US
+5|18|no|Justin  J Ketchel|justin@justinketchellaw.com|429 4th Ave., Ste. 1600  Pittsburgh, PA 15215 US
+1|2016|no|Adam D. Rossen|rossen@barnerrossen.com|6190 NW 11th St.  Sunrise, FL 33313 US
+11|2017|no|James J. Ransom, III|jamesransomlaw@gmail.com|2491 Pelham Parkway  Pelham, AL 35124 US
+||yes|Andrew Michael Newman|anewman@greensborodwi.com|204 Muirs Chapel Road, Suite 100  Greensboro, NC 27410 US
+1|18|no|Worrick G Robinson|wrobinson@rrylaw.com|105 Broadway, Suite 300  Nashville, TN 37201 US
+10|2019|no|Stephen Gustitis|gustitis@mac.com|102 East 26th Street  Bryan, TX 77803 US
+9|20|no|Ken R. Smith|ken@kenrsmithlaw.com|544 Mulberry Street, Suite 209  Macon, GA 31201 US
+11|17|no|Robert J. Reeves|robert@rjrlaw.com|1012 Market Street Suite 205 Fort Mill, SC 29708 US
+6|2017|no|Jason D. Karpel|jason@schilllaw.com|8700 E Via De Ventura  Suite 210 Scottsdale , AZ 85258 US
+12|2016|no|Brandan J Davies|brandan@crwlawyers.com|7500 College Blvd Suite 700 Overland Park, KS 66210 US
+11|15|yes|Phillip W. Goff|lawyer@igotadwi.com|  , TX  US
+7|2016|no|Derek  Brandon Simms|derekbsimms@gmail.com|Simms & Associates  608 37th Street South Birmingham, AL 35222 US
+12|18|no|Leon A Geller|lglaw87@yahoo.com|200 A Monroe Suite100 Rockville, MD 20850 US
+10|2018|no|Kevin  Munoz|munozkc@gmail.com|120 E. market street Suite 1200 Indianapolis, IN 46204 US
+7|2016|no|Patrick W. O'Keefe II|okeefelawfirm@gmail.com|  , MI  US
 10|2019|no|Kevin G. Van Allen|kevin@cvaattorneys.com|10 University Drive  Geneseo, NY 14454 US
 9|2018|no|Nicole L True|nicole@garcia-true.com|1524 South Interstate 35 Suite 207 Austin, TX 78704 US
 11|2018|no|Kim C Burgess |kimcburgess@comcast.net|11828 Dublin Blvd. Suite H Dublin, CA 94568 US
+8|2018|no|Edward J Sternisha|ed.sternisha@gmail.com|  , MI  US
 1|2018|no|David Craig Sheldon|support@ncdd.com|669 W. Liberty Street  Medina, OH 44256 US
 7|2016|no|Anthony Gianacopoulos|tonyg@aglawfirm.net|75 North Street, Suite 320  Pittsfield, MA 1201 US
-6|2016|no|Edward M Bourne|bournelawoffice@bellsouth.net|114 N. Madison Street  Owenton, KY 40359 US
-8|2016|no|Christopher J Beardslee|chris.beardslee@youhurtwefight.com|4981 Atlantic Blvd.  Jacksonville, FL 32207 US
+4|2016|no|RC Pate|rc.pate@gmail.com|321 south flores  san antonio , TX 78204 US
 9|2019|no|Joel Nathan Leppard|joel@leppardlaw.com|1238 E. Concord Street  Orlando, FL 32803 US
+8|2016|no|Christopher J Beardslee|chris.beardslee@youhurtwefight.com|  , FL  US
+9|17|no|Matthew A. Dodd|matt@doddlawfirmpc.com|32 Market Place, #5  Big Sky, MT 59716 US
 9|2019|no|Geoff L Womack|glwomack@usa.net|402 Main Street 6th Floor Houston, TX 77002 US
+11|2019|no|Evan j kelly|ekelly@evan-kelly.com|138 west Gay Street  West Chester, PA 19380 US
+9|2017|no|Thomas E. Csider|csideratty@gmail.com|108 Washington Street, S.E.  Gainesville, GA 30501 US
+3|2019|no|C. Curtis Norcini|ccn@mmdlawfirm.com|  , PA  US
+7|2017|no|Matthew B. Smith|matt@matthewsmithlaw.com|110 East Jefferson St.  Monroe, NC 28112 US
+11|2017|no|Bryce Cook|bryce@protectingusall.com|404 S. Main  Jonesboro, AR 72401 US
+9|2019|no|Christopher M Lankford|chris@onyoursidetexas.com|1020 Macon St # 17  Fort Worth, TX 76102 US
+1|2016|no|Brian C Ashbach|brian@ashbachlawoffices.com|4025 80th Street Ne Suite B Marysville, WA 98270 US
+7|19|no|Matthew Jay Ruff|matthew.ruff@sbcglobal.net|18411 Crenshaw Blvd, Suite 417  Torrance, CA 90504 US
+6|2018|no|THOMAS T REYNOLDS|ttreynoldsatty@gmail.com|26619 Perdido Beach Boulevard 2nd Floor Zeke's Landing Marina Orange Beach, AL 36561 US
+9|2019|no|Matt C Pinsker|pinskerlaw@gmail.com|10132 W Broad St  Henrico, VA 23060 US
+12|2015|yes|David H Veile|dveile@sbdlaw.net|509 New Highway 96 West Suite 201  Franklin, TN 37064 US
+2|2018|no|Jordan Redavid|jordan@gr-lawfirm.com|1221 Brickell Ave Suite 900 Miami, FL 33131 US
+4|2019|no|Mazi Mazloom|mazi@mazilaw.com|250 Lawrence Street  Marietta, GA 30060 US
+3|20|no|Ibrahim J. Awad|ibrahim@theawadlawfirm.com|66 Lenox Pointe NE  Atlanta, GA 30324 US
+9|2020|no|Courtney T.  Henderson|chenderson@billamhenderson.com|  , KS  US
+3|2018|no|Jim Boness|jboness@jb-lawfirm.com|9 E Jefferson St  Joliet, IL 60432 US
+9|2016|no|Kevin J Kiernan|kiernan@skalawyers.com|101 West Main Street PO Box 1072 Clinton, NC 28328 US
+9|2020|no|Jason B Billam|jbillam@billamhenderson.com|  , MO  US
+2|2018|no|Scott Erik Edgett|scott@edgettlawfirm.com|101 East Park Blvd. Suite 230 Plano, TX 75074 US
+8|2016|no|Marina Medvin|marina@medvinlaw.com|1800 Diagonal Rd Ste 600 Alexandria, VA 22314 US
+11|2015|yes|Joseph P Lesniak|support@ncdd.com|1 Veterans Square, Suite 106  Media, PA 19063 US
+8|2018|no|Joel M. Bacher|jbacher269@gmail.com|269 Hamburg Turnpike  Wayne, NJ 7470 US
+8|2018|no|Christian Schwaner|schwanerc@msn.com|729 S. Cascade Ave.  colorado springs, CO 80903 US
+5|2018|no|BOBBY D MIMS|bobbymims@gmail.com|216 W. Erwin Street Suite 300A Tyler, TX 75702 US
+8|2018|no|Michael Raphael Cardinale|cardinalelawfirm@yahoo.com|8432 Brewerton Road, Suite 100  Cicero, NY 13039 USA
+3|2020|no|Stuart M Mones|smm@moneslaw.com|146 Nassau Street  Atlanta, GA 30303 US
+9|2018|no|Mario Blanch|mario@blanchlegal.com|440-65th Street  West New York, NJ 7093 US
+8|2017|no|Matthew A Spivey|mspivey15@gmail.com|142 Cherokee Street  Kingsport, TN 37660 US
+10|2017|no|Christopher A Grubbs|chris@thegrubbslawfirm.com|  , GA  US
+11|2019|no|Garrett A Taylor|garrett@northwestpalaw.com|2525 West 26th Street, Suite 202  Erie, PA 16506 US
+6|2017|no|Lewis M.  Silber|lewis@silberlaw.com|1680 East Gude Drive Suite 200 Rockville, MD 20850 US
+12|2016|no|Erik P Kaeding|kaedinglaw@outlook.com|25028 104th Ave SE  Kent, WA 98030 US
+6|2017|no|Cosmo J. Tedone|ctedone@aol.com|58 N. Chicago St., Suite 405  Joliet, IL 60432 US
+11|18|no|Stephen T Bowling|steve@dwiman.com|700 Lavaca St. Suite 1400 Austin, TX 78701 US
+3|2020|no|Ryan M King |ryan@johnson-osteryoung.com|226 SW 2nd Street   Gainesville , FL 32601 US
+4|2016|no|Timothy M. Flaherty|tflaherty1@hotmail.com|  , FL  US
+6|2020|no|Jason T. Komninos|jasontkesq@gmail.com|  , NJ  US
+2|2017|no|E. Michael Linscheid|michael@linscheidlaw.com|345 Franklin Street  San Francisco, CA 94102 US
+10|2020|no|Mark A Andrews|mandrews@markandrewslaw.com|638 Independence Parkway suite 240 Chesapeake, VA 23320 US
+1|2018|no|Michael J Alber|malber@alberlegal.com|5036 Jericho Turnpike, Suite 305  Commack, NY 11725 US
+1|2018|no|John O KNAPPMANN|john@knappmannlaw.com|2836 W Jefferson  Trenton, MI 48183 US
+6|2018|no|Kirk D Lewis|kirk@kirklewislaw.com|  , AZ  US
+3|2018|no|R. Patrick McPherson|mcphersonlawhawaii@gmail.com|1001 Bishop Street Suite 1330 Honolulu, HI 96813 US
+4|2016|no|Jason E. Thompson|jthompson@ferder.com|515 Higt St. S  Salem, OR 97301 US
+4|2018|no|Michelle L Bell|michellebelllaw@gmail.com|40 N. Central Ave.  Suite 1410 Phoenix, AZ 85004 US
+10|2017|no|Chung Y Lee|cyleelaw@gmail.com|23323 Enchanted Landing Ln  Katy, TX 77494 US
+9|2018|no|Demetrios C Pikrallidas|lawpik@aol.com|10605 Judicial Drive Building A4 Fairfax, VA 22030 US
+6|2018|no|stephen troy allen|allen0324@aol.com|5055 Canyon Crest Dr. 5055 Canyon Crest Drive riverside, CA 92507 US
+9|2018|no|Charles H. Williams|support@ncdd.com|  , WA  US
+5|2017|no|Matt A Hirsch|support@ncdd.com|17 Executive Park Drive, suite 115  Atlanta, GA 30329 US
+4|2020|no|Paul J Dickman|attorney@fuse.net|19 West Eleventh St.  Covington, KY 41011 US
+5|2018|no|Miranda J Mills|miranda@robertslawteam.com|112 S. Tryon Street, Suite 720  Charlotte, NC 28202 US
+9|17|no|John H. Parker II|jhp2law@gmail.com|1331 Union Avenue Suite 824 Memphis, TN 38104 US
+8|2018|no|James E Farmer|jefarmer@farmer-law.com|3475 Leonardtown Rd Suite 200  Waldorf, MD 20601 US
+2|2020|no|Matthew T Russell|matt@russellandhill.com|3811-A Broadway   Everett, WA 98201 US
+12|2017|no|Jesse Antonio Arana|jesse@jessearanalaw.com|8350 Florence Avenue Second Floor, Suite 700 Downey, CA 90240 US
+9|2019|no|Greg T. Hill|greg@greghillassociates.com|22850 Crenshaw Blvd., Suite 200  Torranc, CA 90505 US
+9|2018|no|Wilfredo Trivino-Perez|wtp@tpalawyers.com|10940 WILSHIRE BLVD. 16th floor WESTWOOD, CA 90024 US
+5|2018|no|Sergio H Benavides|sergio@your1stdefense.com|Law Office of Sergio H. Benavides 24301 Southland Drive, Ste. 605 D  Hayward, CA 94545 US
+3|2020|no|Joshua C Davis|josh.davis.law@gmail.com|300 west cherokee suite 102 enid, OK 73701 US
+4|2020|no|Eric  Leckie|ericleckie@leckielaw.com|999 Waterside Drive, STE 2525  Norfolk, VA 23510 US
+8|2018|no|Kirk M Tarman|ktarman@tarmanlaw.com|9333 Baseline Rd  Rancho Cucamonga, CA 91730 US
+3|2018|no|Elizabeth Bagert Carpenter|ebc@neworleans-criminal-defense.com|201 St. Charles Ave. Suite 2500 New Orleans, LA 70170 US
+8|2020|no|Gregory J Abella|greg@abellalaw.com|221 East 11th Street  Kansas City, MO 64106 US
+11|2017|no|Anna M Goodwin|anna.m.goodwin@gmail.com|107 E. Jefferson St., Suite C  Monroe, NC 28112 USA
+8|2017|no|Kyler E Ovard|kovard@sb-legal.net|155 N 400 W Suite 530  Salt Lake City, UT 84103 US
+7|2016|no|Jonathan G Jemming|j.jemming@gmail.com|  , UT  US
+11|2016|no|John L Buckley|john@buckleycriminallaw.com|3773 Cherry Creek N Dr Suite 575 Denver, CO 80209 US
+11|2018|no|Marianne F Auriemma|mfaesq@gmail.com|521 Lincoln Avenue  Maywood, NJ 7607 US
+11|2017|no|Christopher W Keyser|chris@keyserdefense.com|  , MN  US
+1|2018|no|Kevin R Cahill|kevin@cahillcriminaldefense.com|  , CO  US
+4|2020|no|Robert W. Dziech|rdziech@kellyfarrishlaw.com|810 Sycamore Street Sixth Floor Cincinnati, OH 45249 US
+4|2016|no|David E. Camic|david@camicjohnson.com|546 West Galena Bouelvard  Aurora, IL 60506 US
+4|2018|no|John P. Dolan|jpd@dolanlawoffices.com|45-915 Oasis St.  Indio, CA 92201 US
+9|2018|no|Melanie  N Roe|melanie_roe@verizon.net|41-750 Rancho Las Palmas Drive, Suite N-3  Rancho Mirage, CA 92270 US
+9|2018|no|Adam J Graves|attorneyadamgraves@gmail.com|1515 E. Tropicana Ave., Ste 530  Las Vegas, NV 89119 US
+4|2020|no|christopher m glew|glewkimlaw@yahoo.com|1851 East First Street Suite 840  Santa Ana, CA 92705 US
+3|2017|no|T. Charles James|cjames@lvjlawfirm.net|622 Eastside Boulevard  Hastings, NE 68901 US
+6|2018|no|Albert M Quirantes|amqmessages@hotmail.com|1815 NW 7th Street  Miami, FL 33125 US
+5|2017|no|Benjamin Theule|btheule@gmail.com|2445 5th Avenue, Ste. 330  San Diego, CA 92101 US
+1|2016|no|Christopher  Michael Redmann|credmann@redmannlawpc.com|400 E. Broadway Ave Ste. 410  Bismarck, ND 58501 US
+9|2018|no|Emilio Giovanni De Simone|emiliogd@gmail.com|15035 Silver Feather Circle  Broomfield, CO 80023 US
+5|2020|no|Ryan W Hardy|ryanwhardy@gmail.com|701 W. Belknap St.  Fort Worth, TX 76102 US
+9|2019|no|Omid A Azari|info@azarilawllc.com|304 Montgomery St  Laurel, MD 20707 US
+11|2019|no|Colt Knutson|support@ncdd.com|Suite B, 529 Humboldt Street P.O. Box 315 Manhattan, KS 66502 US
+2|2016|no|David R. Teddy|dteddy@teddyandmeekins.com|1219 Fallston Road  Shelby, NC 28150 US
+9|2016|no|Sean M Downs|sean@greccodowns.com|  , WA  US
+8|2016|no|Melvin R Grimes|melg@grimes-law.com|625 S. 6th St.  Las Vegas, NV 89101 US
+7|2018|no|Robert H Ambrose|ambroselegal@icloud.com|310 Fourth Ave S #5010  Minneapolis, MN 55415 US
+3|2018|no|Sean R Darvishi|www.defendmetexas@gmail.com|9898 Bissonnet St. Suite 373 Houston, TX 77036 US
+5|2020|no|Philip Andrew Holloway|philip@hollowaylawgroup.com|399 Washington Avenue NE  Marietta, GA 30060 US
+3|2016|no|Christy Marie Hall|christyhlaw@gmail.com|601 Lake Avenue, Suite 101  Racine, WI 53403 US
+8|2016|no|Bobby Shamuilian|bobby@tslawteam.com|9333 Baseline Road, Suite 100  Rancho Cucamonga, CA 91730 US
+8|2018|no|Alan Fowler|alan@alanfowlerlaw.com|300 Southard Street Suite #207 Key West, FL 33040 US
+8|2016|no|Mark M. Mack|macklawoffices@aol.com|281 Pierce Street  Kingston, PA 18704 US
+6|2017|no|Mary Moretti|mary@attorneyhamilton.com|802 Main Street  Lubbock, TX 79401 US
+10|2017|no|Scott C Silva|scott.silva@azbar.org|  , AZ  US
+4|2020|no|Stefano L. Molea|stefano@sandiegodefenselawfirm.com|1501 Fifth Avenue Suite 200 San Diego, CA 92101 US
+5|2020|no|Danielle Britt Mays|dbritt@cbjblawfirm.com|4350 South Lee Street  Buford, GA 30518 US
+3|2018|no|Chris Bugbee|chrisbugbee@bugbeelaw.com|1312 N. Monroe  Spokane, WA 99201 USA
+2|2018|no|Adam J Wax|adam@waxlawlv.com|400 South Fourth Street Suite 500 Las Vegas, NV 89101 US
+3|2020|no|Aaron D. Delgado|adelgado@communitylawfirm.com|227 Seabreeze Blvd.  Daytona Beach, FL 32118 US
+||yes|Stephen  H.  Miller|stevemlr@flash.net|704 E. 15th Street Suite 203 Plano, TX 75074 US
+7|2020|no|Robert B Botnick|botnicklaw@gmail.com|  , OH  US
+6|2019|no|Aaron M Black|aaron@aaronblacklaw.com|3219 East Camelback Road #573  Phoenix, AZ 85018 US
+11|2016|no|Michael D. "Mike" Birchmore|dui@mdbpc.com|266 Orvin Lance Drive Suite 106 Blue Ridge, GA 30513 US
+8|2017|no|Taos C Smith|taos@taossmithlaw.com|305 East Comanche  Norman, OK 73069 US
+8|2019|no|Victor P Stazzone|stazzmann@yahoo.com|1720 S. Bellaire St., Suite 807  Denver, CO 80222 US
+1|2018|no|Joshua LeRoy|jleroy@leroylawpa.com|224 Datura Street #1416  WPB, FL 33401 US
+4|2018|no|Sujata  Gibson|sujata@gibson-law.org|418 E. State Street  Ithaca, NY 14850 US
+10|2020|no|Michael S Eldredge|mselawoffices@gmail.com|19 E 2ND AVE STE C LEXINGTON, NC 27292 US
+7|2016|no|Lanny  K Begley|lanny@mimicoffey.com|3098 North Stemmons Freeway  Dallas , TX 75247 US
+12|2017|no|Clark J. Zimmermann|czimmermann@trevettcristo.com|2 State Street, Suite 1000  Rochester, NY 14614 US
+9|2016|no|Julie Chambers|julie@chamberslawllc.com|9120 Otis Avenue Suite 106A Indianapolis, IN 46216 US
+5|2019|no|Robert Webb|robert@webbdorazio.com|2551 Roswell Road, STE 201  Marietta, GA 30062 US
+9|2016|no|Thomas  E.  Pyles|pyleslawfirm@yahoo.com|2670 Crain Highway Suite 106 Waldorf, MD 20601 US
+3|16|no|ELEANOR DUFFY CLEARY|ellen@clearylawllc.com|  , SC  US
+8|2018|no|Daniel P Repka|daniel@repkalawllc.com|658 Grand Avenue, Suite 201  Saint Paul, MN 55105 US
+7|2020|no|Kiana Franulic|kfranulic@kflconsulting.com|400 Monroe Suite 290 Detroit, MI 48226 US
+2|2019|no|David  Ranz |dranz@feldmanlee.com|604 West Meeker Street, Stuite 206  Kent, WA 98032 US
+9|2016|no|Sasa Johnen|sasa@johnenlaw.com|222 South Hamilton Street Suite 3 Madison, WI 53703 US
+12|2019|no|Gail N Marr|gmarr@ymalaw.com|3554 Hulmeville Rd. Suite 102 Bensalem, PA 19020 US
+2|2018|no|Ross W Albers|rossalberslaw@gmail.com|77 E Main Street Suite 206 Westminster, MD 21157 US
+10|2016|no|Lawrence Michael Meltzer|larry@meltzerandbell.com|601-B North Dixie Highway   West Palm Beach, FL 33401 USA
+6|2016|no|Charles K. Kenyon|lawyer@addbalance.com|5555 Odana Road, Suite 101  Madison, WI 53719 US
+2|2016|no|Robert  K. Priscaro|priscarolaw@gmail.com|  , CA  US
+5|2018|no|Steven C Townsend|stownsend@pghlaw.com|  , PA  US
+||yes|Tony J. Brock|tbrock@brocklawoffices.com|5625 O St. Suite 109 Lincoln, NE 68510 US
+||yes|Joshua  E. Tanner|jtanner@brocklawoffices.com|5625 O St. Suite 109 Lincoln, NE 68510 US
+||yes|Julie Bear|jeb@reinschslattery.com|PO Box 489  Plattsmouth, NE 68048 US
+||yes|Mark S. Olivero|markolivero@aol.com|202 W. Berry St Ste 500  Ft Wayne, IN 46802 US
+||yes|Zaki Ali|zali@zakiali.com|522 West 8th St  Anderson, IN 46016 US
+||yes|George Paul van Duinwyk|dutch511@verizon.net|386 High St.  Fall Riveer, MA 2720 US
+3|18|no|Tracy D. Dudevoir|attytdude@verizon.net|84 Bowers St  Newton, MA 2460 US
+||yes|Eric Manuel Wicks|ewickslaw@yahoo.com|6451 Borasco Dr.  Suite 2606 Melbourne, FL 32940 US
+8|15|yes|Pamela A.W. King|pam.king@pubdef.state.mn.us|Minnesota State Public Defender Office 400 S. Broadway, Ste. 15  Rochester, MN 55904 US
+||yes|Edward N. Conter|contere@mail.maricopa.gov|620 W. Jackson St., Ste. 4015  Phoenix, AZ 85003 US
+||yes|Sharon Varnado-Rhodes|sharon.varnado.rhodes@kingcounty.gov|810 3rd Ave. Suite 800 Seattle, WA 98104 US
+3|2018|no|Stacey E Kennard|staceyk@bronxdefenders.org|The Bronx Defenders 360 E. 161st Street Bronx, NY 10451 US
+||yes|Nancy E. Pryor|nepryor911@att.net|40 S 4th Street  Fort Smith, AR 72901 US
+||yes|Gregory K Crain|grcrain@swbell.net|309 W. 3rd Street  Malvern, AR 72104 US
+4|18|no|Jennifer L Grant|jlgrant@franklincountyohio.gov|373 South High St. 12th Floor Columbus, OH 43215 US
+10|2017|no|Mark J Lang|mark@mlanglaw.com|251 St. Helens Street, Suite 22 PO Box 1611 Saint Helens, OR 97051 US
+6|2015|yes|Joseph M Dernbach|jmdernbach@gmail.com|2000 Main St, 3rd Floor P.O. Drawer 1980   Fort Myers, FL 33901 US
+2|2015|yes|H. Richard Hopkinson|richard.hopkinson@wyo.gov|PO Box 526 121 South 9th ST Worland, WY 82401 US
+12|2018|no|Keith D. Dayton|dayton.keith@yahoo.com|Suite 411 1 North Main Street Cortland, NY 13045 US
+7|2017|no|Kristen McLaughlin|km@mclaughlin-legal.com|55 Elliott Street  Danvers, MA 1923 US
+7|2016|no|Temika Leshawn Hampton|tlhamptonlaw@gmail.com|  , FL  US
+3|2016|no|Diana  E Salomon|dsalomon@browarddefender.org|201 Southeast 6th Street #3872  Fort Lauderdale, FL 33301 US
+8|17|no|Emily J Fisher|emily.fisher@yolocounty.org|814 North Street  Woodland, CA 95695 US
+1|17|no|RYAN D GLEASON|rgleason@co.cambria.pa.us|Cambria County Courthouse 200 South Center Street Ebensburg, PA 15931 US
+8|15|yes|john e cornett|john@cornettlawoffice.com|112 north court street  georgetown, KY 40324 US
+9|17|no|Katheryn  A Hickman|khickman@washoecounty.us|P.O. Box 11130   Reno, NV 89520 US
+7|17|no|Jacob A Vredenburgh |jake.vredenburgh@gmail.com|668 Madison Avenue  Albany, NY 12208 US
+5|15|yes|Michael F. Somoza|michael_somoza@att.net|848 Second Street, 3RD Floor  Gretna, LA 70053 US
+9|2019|no|Christen E Keller|christenkeller1@gmail.com|P.O. Box 8004 101 Bush Boulevard Sanford, FL 32773 US
+11|2016|no|E. Dean Stout|stoutlawcenter@gmail.com|PO Box 224  Evanston, WY 82931 US
+||yes|Kristin Waller|kwaller@jacksoncountygov.com|5000 Jackson Pkwy Suite 270  Jefferson, GA 30549 US
+3|18|no|Chandler R. Bridges|chandlerbridges.attorney@gmail.com|PO Box 4848  Marietta, GA 30061 US
+4|17|no|Juliette-Noor Haji|jhaji@legal-aid.org|120-46 Queens Blvd  Kew Gardens, NY 11415 US
+3|2016|no|Brian A Hobbs|brian.hobbs@fultoncountyga.gov|100 Peachtree St, NW Suite 1600 Atlanta, GA 30303 US
+4|2020|no|Daniel Wayne Bush|waynebushattorney@gmail.com|Post Office Drawer 1730  Leesville, LA 71496 US
+4|2017|no|Nichole Watt|nichole.watt@gmail.com|501 Sycamore Street Suite 333 Waterloo, IA 50703 US
+8|2016|no|Diane Grecco|diane@greccodowns.com|500 West 8th Street Suite 55 Vancouver, WA 98660 US
+3|2017|no|Camara L Mintz|camara.mintz@graciamintz.com|12817 Old Fort Rd Suite 304 Fort Washington, MD 20744 US
