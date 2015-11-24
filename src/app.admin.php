@@ -53,6 +53,6 @@ $app->before(function (Request $request) use ($app) {
  */
 $app->after(function (Request $request, Response $response) {
 	// this is needed for the site editor to issue posts to the admin website
-    //$response->headers->set('Access-Control-Allow-Origin', '*');
+    $response->headers->set('Access-Control-Allow-Origin', '*');
 });
 return $app;

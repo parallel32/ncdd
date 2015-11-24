@@ -17,7 +17,6 @@ use TTools\App;
 $utilities = $app['controllers_factory'];
 
 
-
 //////////////////////////////////////////////////////////////////////////////////
 // members 
 // some applications checked the allow card on file but didn't get the discount //
@@ -46,6 +45,7 @@ $utilities->get('/memberswithoutautorenew', function () use ($app) {
             if($application['currentStatus'] == \Saw\Model\Apply::$status['TRIAL'] && $days > 1){
                 // no nothing
             }else{
+                $res_arr['_id'] = $member['_id'];
                 $res_arr['name'] = $member['displayName'];
                 $res_arr['email'] = $member['email'];
                 $loc = new Model\Location(array(),$app);
@@ -66,6 +66,7 @@ $utilities->get('/memberswithoutautorenew', function () use ($app) {
                     if(array_key_exists('number', $member['payment'])){
                         if(!empty($member['payment']['number'])){
                             if($member['payment']['renewalREUSE'] == 'no'){
+                                $res_arr['_id'] = $member['_id'];
                                 $res_arr['name'] = $member['displayName'];
                                 $res_arr['email'] = $member['email'];
                                 $loc = new Model\Location(array(),$app);
@@ -84,6 +85,7 @@ $utilities->get('/memberswithoutautorenew', function () use ($app) {
                         }else{
 
 
+                            $res_arr['_id'] = $member['_id'];
                             $res_arr['name'] = $member['displayName'];
                             $res_arr['email'] = $member['email'];
                             $loc = new Model\Location(array(),$app);
@@ -101,6 +103,7 @@ $utilities->get('/memberswithoutautorenew', function () use ($app) {
 
                         
 
+                        $res_arr['_id'] = $member['_id'];
                         $res_arr['name'] = $member['displayName'];
                         $res_arr['email'] = $member['email'];
                         $loc = new Model\Location(array(),$app);
@@ -116,6 +119,7 @@ $utilities->get('/memberswithoutautorenew', function () use ($app) {
                 }else{
                     
 
+                        $res_arr['_id'] = $member['_id'];
                         $res_arr['name'] = $member['displayName'];
                         $res_arr['email'] = $member['email'];
                         $loc = new Model\Location(array(),$app);
@@ -129,21 +133,37 @@ $utilities->get('/memberswithoutautorenew', function () use ($app) {
                         $cnt++;    
                 }
             }else{
+                $res_arr['_id'] = $member['_id'];
                 $res_arr['name'] = $member['displayName'];
-                        $res_arr['email'] = $member['email'];
-                        $loc = new Model\Location(array(),$app);
-                        $loc_res = $loc->find(array('ownerId'=>$member['_id']));
-                        if(is_array($loc_res) && !empty($loc_res)){
-                            $res_arr['address'] = $loc_res[0]['addressLine1'].' '.$loc_res[0]['addressLine2'].' '.$loc_res[0]['city'].', '.$loc_res[0]['state'].' '.$loc_res[0]['zip'].' '.$loc_res[0]['country'];
-                        } else{
-                            $res_arr['address'] = array();
-                        }
-                        $final_arr[] = $res_arr;
-                        $cnt++;    
+                $res_arr['email'] = $member['email'];
+                $loc = new Model\Location(array(),$app);
+                $loc_res = $loc->find(array('ownerId'=>$member['_id']));
+                if(is_array($loc_res) && !empty($loc_res)){
+                    $res_arr['address'] = $loc_res[0]['addressLine1'].' '.$loc_res[0]['addressLine2'].' '.$loc_res[0]['city'].', '.$loc_res[0]['state'].' '.$loc_res[0]['zip'].' '.$loc_res[0]['country'];
+                } else{
+                    $res_arr['address'] = array();
+                }
+                $final_arr[] = $res_arr;
+                $cnt++;    
             }
         }
 
     }
+
+    // of this final_arr group, which ones are actually folks who paid by check
+    for ($i=0; $i < count($final_arr); $i++) { 
+        
+        $application = new Model\Apply(array('memberId'=>$final_arr[$i]['_id']),$app);
+        $application = $application->findById('memberId');
+        $payment = new Model\Payment(array('ownerId'=>$application['_id']),$app);
+        $payment = $payment->findById('ownerId');
+        if(!empty($payment) && is_array($payment) && array_key_exists('currentPaymentType', $payment) && $payment['currentPaymentType'] == Model\Payment::$paymentType['CHECK']){
+            $final_arr[$i]['CHECK'] = 'yes';
+        }else{
+            $final_arr[$i]['CHECK'] = 'no';
+        }
+    }
+
     foreach ($final_arr as $value) {
         echo implode('|', $value);echo "\r\n";
     }
