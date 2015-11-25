@@ -34,8 +34,8 @@ $utilities->get('/memberswithoutautorenew', function () use ($app) {
         $res_arr = array();
         
         // check if they are trial members and if so, skip them
-        $application = new Model\Apply(array('memberId'=>$member['_id']),$app);
-        $application = $application->findById('memberId');
+        $application = new Model\Apply(array(),$app);
+        $application = $application->find(array('memberId'=>$member['_id'],'class'=>'UpdateMember'),array(),true,array(),0,20000);
         if(!empty($application) && is_array($application) && array_key_exists('trial', $application) && is_array($application['trial']) && array_key_exists('endDate', $application['trial'])){
             
             $now =  new Model\Date($app,'now');
@@ -157,10 +157,37 @@ $utilities->get('/memberswithoutautorenew', function () use ($app) {
         $application = $application->findById('memberId');
         $payment = new Model\Payment(array('ownerId'=>$application['_id']),$app);
         $payment = $payment->findById('ownerId');
+        /*
         if(!empty($payment) && is_array($payment) && array_key_exists('currentPaymentType', $payment) && $payment['currentPaymentType'] == Model\Payment::$paymentType['CHECK']){
             $final_arr[$i]['CHECK'] = 'yes';
-        }else{
+        }elseif(!empty($payment) && is_array($payment) && array_key_exists('currentPaymentType', $payment) && $payment['currentPaymentType'] == Model\Payment::$paymentType['CREDIT']){
             $final_arr[$i]['CHECK'] = 'no';
+        }else{
+            $final_arr[$i]['CHECK'] = 'NA';
+            echo "<pre>";print_r($payment);echo "</pre>";
+        }
+        */
+        if(!empty($payment) && is_array($payment) && array_key_exists('type', $payment) && $payment['type'] == 'check'){
+            $final_arr[$i]['CHECK'] = 'yes';
+        }elseif(!empty($payment) && is_array($payment) && array_key_exists('type', $payment) && $payment['type'] == 'cc'){
+            $final_arr[$i]['CHECK'] = 'no';
+        }else{
+            if(!empty($payment) && is_array($payment) && array_key_exists('currentPaymentType', $payment) && $payment['currentPaymentType'] == Model\Payment::$paymentType['CHECK']){
+            $final_arr[$i]['CHECK'] = 'yes';
+            }elseif(!empty($payment) && is_array($payment) && array_key_exists('currentPaymentType', $payment) && $payment['currentPaymentType'] == Model\Payment::$paymentType['CREDIT']){
+                $final_arr[$i]['CHECK'] = 'no';
+            }else{
+                $final_arr[$i]['CHECK'] = 'NA';
+                if(!empty($payment)){
+                    echo "<pre>PAYMENT:";print_r($payment);echo "</pre>";    
+                }else if(!empty($application)){
+                    echo "<pre>APPLICATION:";print_r($application);echo "</pre>";
+                }else{
+                    echo "<pre>";print_r('NOTHING TO PRINT');echo "</pre>";
+                }
+
+                
+            }
         }
     }
 
