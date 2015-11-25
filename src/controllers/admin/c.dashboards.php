@@ -38,14 +38,15 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 			$view_vars['approved']=$apply->countByStatus('APPROVED',$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
 			$view_vars['trial']=$apply->countByStatus('TRIAL',$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
 			$view_vars['paid']=$apply->countByDatePaid(90, $filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
+			$view_vars['bonus2015promocode']=$apply->countByStatus('PAID',$filter=array('promocode'=>'BONUS2015'));
 			$view_vars['eagle2016promocode']=$apply->countByStatus('PAID',$filter=array('promocode'=>'EAGLE2016'));
 			$view_vars['ncdd2015promocode']=$apply->countByStatus('PAID',$filter=array('promocode'=>'NCDD2015'));
 			$view_vars['ncdd2014promocode']=$apply->countByStatus('PAID',$filter=array('promocode'=>'NCDD2014'));
 			$date = new Model\Date($app,'9/16/2014 5:00 PM');
 			$end2014 =  new Model\Date($app,'12/31/2014 11:59 PM');
 			$end2015 =  new Model\Date($app,'12/31/2015 11:59 PM');
-			$newlypaid2014 = $apply->fetchByStatus('PAID',$offset=0, $limit=10000,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION')),'promocode'=>array('$nin'=>array('EAGLE2016','NCDD2015','NCDD2014')),'paidDate.date'=>array('$gte'=> new \MongoDate(strtotime($date->fullDateTime)), '$lte'=> new \MongoDate(strtotime($end2014->fullDateTime)))));
-			$newlypaid2015 = $apply->fetchByStatus('PAID',$offset=0, $limit=10000,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION')),'promocode'=>array('$nin'=>array('EAGLE2016','NCDD2015','NCDD2014')),'paidDate.date'=>array('$gte'=> new \MongoDate(strtotime($end2014->fullDateTime)), '$lte'=> new \MongoDate(strtotime($end2015->fullDateTime)))));
+			$newlypaid2014 = $apply->fetchByStatus('PAID',$offset=0, $limit=10000,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION')),'promocode'=>array('$nin'=>array('BONUS2015','EAGLE2016','NCDD2015','NCDD2014')),'paidDate.date'=>array('$gte'=> new \MongoDate(strtotime($date->fullDateTime)), '$lte'=> new \MongoDate(strtotime($end2014->fullDateTime)))));
+			$newlypaid2015 = $apply->fetchByStatus('PAID',$offset=0, $limit=10000,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION')),'promocode'=>array('$nin'=>array('BONUS2015','EAGLE2016','NCDD2015','NCDD2014')),'paidDate.date'=>array('$gte'=> new \MongoDate(strtotime($end2014->fullDateTime)), '$lte'=> new \MongoDate(strtotime($end2015->fullDateTime)))));
 			$view_vars['newlypaid2014'] = $newlypaid2014;
 			$view_vars['newlypaid2015'] = $newlypaid2015;
 

@@ -52,7 +52,7 @@
                             && is_array($member['payment']) && array_key_exists('number', $member['payment']) 
                             //&& !empty($member['payment']['number'])
                             && $application['membershipDues'] > 50
-                            && ($application['promocode'] == 'EAGLE2016-')
+                            && ($application['promocode'] == 'BONUS2015')
                         ):
                         ?>
                         <tr>
@@ -146,7 +146,7 @@
                    && is_array($member['payment']) && array_key_exists('number', $member['payment']) 
                    //&& !empty($member['payment']['number'])
                    && $application['membershipDues'] > 50
-                   && ($application['promocode'] == 'EAGLE2016-')
+                   && ($application['promocode'] == 'BONUS2015')
                ):
                   // do nothing .. meaning don't do the pro-rated discount
                   $amount = $application['membershipDues'];
@@ -168,7 +168,7 @@
                <? endif; ?>
                          <?
                         $discount3 = 0;
-                        // EAGLE2016 NEW MEMBER PROMO
+                        // BONUS2015 NEW MEMBER PROMO
                         //*
                         if($application['type'] == 'NEW MEMBER APPLICATION'
                             //&& strtotime($application['approvedDate']['iso']) < strtotime('December 31, 2014')
@@ -177,13 +177,13 @@
                             && is_array($member['payment']) && array_key_exists('number', $member['payment']) 
                             //&& !empty($member['payment']['number'])
                             && $application['membershipDues'] > 50
-                            && ($application['promocode'] == 'EAGLE2016-')
+                            && ($application['promocode'] == 'BONUS2015')
                         ): 
                            $discount3 = 0;//$pro_rated_membership_dues['a'];
                         ?>
                         <tr>
                            <td>Discount</td>
-                           <td class="hidden-480">EAGLE2016 Promo Discount - 2015 membership free</td>
+                           <td class="hidden-480">BONUS2015 Promo Discount - 2015 membership free</td>
                            <td class="hidden-480">1</td>
                            <td class="hidden-480">$0</td>
                            <td>$0</td>
