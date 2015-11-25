@@ -33,39 +33,59 @@ $utilities->get('/memberswithoutautorenew', function () use ($app) {
     foreach ($members as $member){
         $res_arr = array();
         
-        // check if they are trial members and if so, skip them
-        $application = new Model\Apply(array(),$app);
-        $application = $application->find(array('memberId'=>$member['_id'],'class'=>'UpdateMember'),array(),true,array(),0,20000);
-        if(!empty($application) && is_array($application) && array_key_exists('trial', $application) && is_array($application['trial']) && array_key_exists('endDate', $application['trial'])){
-            
-            $now =  new Model\Date($app,'now');
-            $end = \Carbon\Carbon::createFromTimeStamp(strtotime($application['trial']['endDate']['fullMonth']), $application['trial']['timeZone']);
-            $days = $end->diffInDays();
-            
-            if($application['currentStatus'] == \Saw\Model\Apply::$status['TRIAL'] && $days > 1){
-                // no nothing
-            }else{
-                $res_arr['_id'] = $member['_id'];
-                $res_arr['name'] = $member['displayName'];
-                $res_arr['email'] = $member['email'];
-                $loc = new Model\Location(array(),$app);
-                $loc_res = $loc->find(array('ownerId'=>$member['_id']));
-                if(is_array($loc_res) && !empty($loc_res)){
-                    $res_arr['address'] = $loc_res[0]['addressLine1'].' '.$loc_res[0]['addressLine2'].' '.$loc_res[0]['city'].', '.$loc_res[0]['state'].' '.$loc_res[0]['zip'].' '.$loc_res[0]['country'];
-                } else{
-                    $res_arr['address'] = array();
+        if(!empty($member['renewal']) && is_array($member['renewal']) && array_key_exists('applicationId', $member['renewal'])){
+            // check if they are trial members and if so, skip them
+            $application = new Model\Apply(array('_id'=>$member['renewal']['applicationId']),$app);
+            $application = $application->findById();
+            if(!empty($application) && is_array($application) && array_key_exists('trial', $application) && is_array($application['trial']) && array_key_exists('endDate', $application['trial'])){
+                
+                $now =  new Model\Date($app,'now');
+                $end = \Carbon\Carbon::createFromTimeStamp(strtotime($application['trial']['endDate']['fullMonth']), $application['trial']['timeZone']);
+                $days = $end->diffInDays();
+                
+                if($application['currentStatus'] == \Saw\Model\Apply::$status['TRIAL'] && $days > 1){
+                    // no nothing
+                }else{
+                    $res_arr['_id'] = $member['_id'];
+                    $res_arr['name'] = $member['displayName'];
+                    $res_arr['email'] = $member['email'];
+                    $loc = new Model\Location(array(),$app);
+                    $loc_res = $loc->find(array('ownerId'=>$member['_id']));
+                    if(is_array($loc_res) && !empty($loc_res)){
+                        $res_arr['address'] = $loc_res[0]['addressLine1'].' '.$loc_res[0]['addressLine2'].' '.$loc_res[0]['city'].', '.$loc_res[0]['state'].' '.$loc_res[0]['zip'].' '.$loc_res[0]['country'];
+                    } else{
+                        $res_arr['address'] = array();
+                    }
+                    $final_arr[] = $res_arr;
+                    $cnt++;    
                 }
-                $final_arr[] = $res_arr;
-                $cnt++;    
-            }
 
-        }else{
+            }else{
 
-            if(array_key_exists('payment', $member)){
-                if(is_array($member['payment'])){
-                    if(array_key_exists('number', $member['payment'])){
-                        if(!empty($member['payment']['number'])){
-                            if($member['payment']['renewalREUSE'] == 'no'){
+                if(array_key_exists('payment', $member)){
+                    if(is_array($member['payment'])){
+                        if(array_key_exists('number', $member['payment'])){
+                            if(!empty($member['payment']['number'])){
+                                if($member['payment']['renewalREUSE'] == 'no'){
+                                    $res_arr['_id'] = $member['_id'];
+                                    $res_arr['name'] = $member['displayName'];
+                                    $res_arr['email'] = $member['email'];
+                                    $loc = new Model\Location(array(),$app);
+                                    $loc_res = $loc->find(array('ownerId'=>$member['_id']));
+                                    if(is_array($loc_res) && !empty($loc_res)){
+                                        $res_arr['address'] = $loc_res[0]['addressLine1'].' '.$loc_res[0]['addressLine2'].' '.$loc_res[0]['city'].', '.$loc_res[0]['state'].' '.$loc_res[0]['zip'].' '.$loc_res[0]['country'];
+                                    } else{
+                                        $res_arr['address'] = array();
+                                    }
+                                    $final_arr[] = $res_arr;
+                                    $cnt++;    
+                                }else{
+
+                                }
+                                //do nothing
+                            }else{
+
+
                                 $res_arr['_id'] = $member['_id'];
                                 $res_arr['name'] = $member['displayName'];
                                 $res_arr['email'] = $member['email'];
@@ -78,12 +98,11 @@ $utilities->get('/memberswithoutautorenew', function () use ($app) {
                                 }
                                 $final_arr[] = $res_arr;
                                 $cnt++;    
-                            }else{
-
                             }
-                            //do nothing
+                            
                         }else{
 
+                            
 
                             $res_arr['_id'] = $member['_id'];
                             $res_arr['name'] = $member['displayName'];
@@ -98,54 +117,40 @@ $utilities->get('/memberswithoutautorenew', function () use ($app) {
                             $final_arr[] = $res_arr;
                             $cnt++;    
                         }
-                        
                     }else{
-
                         
 
-                        $res_arr['_id'] = $member['_id'];
-                        $res_arr['name'] = $member['displayName'];
-                        $res_arr['email'] = $member['email'];
-                        $loc = new Model\Location(array(),$app);
-                        $loc_res = $loc->find(array('ownerId'=>$member['_id']));
-                        if(is_array($loc_res) && !empty($loc_res)){
-                            $res_arr['address'] = $loc_res[0]['addressLine1'].' '.$loc_res[0]['addressLine2'].' '.$loc_res[0]['city'].', '.$loc_res[0]['state'].' '.$loc_res[0]['zip'].' '.$loc_res[0]['country'];
-                        } else{
-                            $res_arr['address'] = array();
-                        }
-                        $final_arr[] = $res_arr;
-                        $cnt++;    
+                            $res_arr['_id'] = $member['_id'];
+                            $res_arr['name'] = $member['displayName'];
+                            $res_arr['email'] = $member['email'];
+                            $loc = new Model\Location(array(),$app);
+                            $loc_res = $loc->find(array('ownerId'=>$member['_id']));
+                            if(is_array($loc_res) && !empty($loc_res)){
+                                $res_arr['address'] = $loc_res[0]['addressLine1'].' '.$loc_res[0]['addressLine2'].' '.$loc_res[0]['city'].', '.$loc_res[0]['state'].' '.$loc_res[0]['zip'].' '.$loc_res[0]['country'];
+                            } else{
+                                $res_arr['address'] = array();
+                            }
+                            $final_arr[] = $res_arr;
+                            $cnt++;    
                     }
                 }else{
-                    
-
-                        $res_arr['_id'] = $member['_id'];
-                        $res_arr['name'] = $member['displayName'];
-                        $res_arr['email'] = $member['email'];
-                        $loc = new Model\Location(array(),$app);
-                        $loc_res = $loc->find(array('ownerId'=>$member['_id']));
-                        if(is_array($loc_res) && !empty($loc_res)){
-                            $res_arr['address'] = $loc_res[0]['addressLine1'].' '.$loc_res[0]['addressLine2'].' '.$loc_res[0]['city'].', '.$loc_res[0]['state'].' '.$loc_res[0]['zip'].' '.$loc_res[0]['country'];
-                        } else{
-                            $res_arr['address'] = array();
-                        }
-                        $final_arr[] = $res_arr;
-                        $cnt++;    
+                    $res_arr['_id'] = $member['_id'];
+                    $res_arr['name'] = $member['displayName'];
+                    $res_arr['email'] = $member['email'];
+                    $loc = new Model\Location(array(),$app);
+                    $loc_res = $loc->find(array('ownerId'=>$member['_id']));
+                    if(is_array($loc_res) && !empty($loc_res)){
+                        $res_arr['address'] = $loc_res[0]['addressLine1'].' '.$loc_res[0]['addressLine2'].' '.$loc_res[0]['city'].', '.$loc_res[0]['state'].' '.$loc_res[0]['zip'].' '.$loc_res[0]['country'];
+                    } else{
+                        $res_arr['address'] = array();
+                    }
+                    $final_arr[] = $res_arr;
+                    $cnt++;    
                 }
-            }else{
-                $res_arr['_id'] = $member['_id'];
-                $res_arr['name'] = $member['displayName'];
-                $res_arr['email'] = $member['email'];
-                $loc = new Model\Location(array(),$app);
-                $loc_res = $loc->find(array('ownerId'=>$member['_id']));
-                if(is_array($loc_res) && !empty($loc_res)){
-                    $res_arr['address'] = $loc_res[0]['addressLine1'].' '.$loc_res[0]['addressLine2'].' '.$loc_res[0]['city'].', '.$loc_res[0]['state'].' '.$loc_res[0]['zip'].' '.$loc_res[0]['country'];
-                } else{
-                    $res_arr['address'] = array();
-                }
-                $final_arr[] = $res_arr;
-                $cnt++;    
             }
+        }else{
+            // do nothing
+            echo "<pre>NO RENEWAL:";print_r($member);echo "</pre>";
         }
 
     }
