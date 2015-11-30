@@ -307,7 +307,7 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
     $app['validateModel']($app,$application);
     if(!empty($doc['promocode']) && array_key_exists('termsAcknowledgement', $doc) && $doc['termsAcknowledgement'] != 'yes'){
 
-    	if($doc['promocode'] == 'TRIAL' || $doc['promocode'] == 'DIVTRIAL' || $doc['promocode'] == 'PDTRIAL' || $doc['promocode'] == 'RFTRIAL' || $doc['promocode'] == 'ALLENTRAPP'){
+    	if($doc['promocode'] == 'BONUS2015' ||$doc['promocode'] == 'TRIAL' || $doc['promocode'] == 'DIVTRIAL' || $doc['promocode'] == 'PDTRIAL' || $doc['promocode'] == 'RFTRIAL' || $doc['promocode'] == 'ALLENTRAPP'){
     		//skip validation because the acknlowlegdement doesn't need to be checked
     	}else{
 	    	$response_arr = array('message'=>"Please check the authorization checkbox above and agree in order to use the promo code.",
