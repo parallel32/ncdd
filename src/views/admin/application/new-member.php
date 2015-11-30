@@ -1284,6 +1284,7 @@ jQuery(document).ready(function() {
    window.setInterval(calculatedues,1000);
 
    $('#pay-by-cc').trigger('click');
+   $('.promocode').keyup();
 });      
 </script>
 
