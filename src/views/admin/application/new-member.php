@@ -828,7 +828,7 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                            <label class="control-label">Enter   the   promo code  BONUS2015 and pay   your  2016  dues  in full in order to obtain   
 the   remainder of 2015 for free.  Offer expires December 31, 2015. </label>
                            <div class="controls">
-                              <input type="text" name="doc[promocode]" class="m-wrap span12 promocode" value="">
+                              <input type="text" name="doc[promocode]" class="m-wrap span12 promocode" value="BONUS2015">
                               <input type="hidden" id="promocodetype" value="">
                            </div>
                         </div>
