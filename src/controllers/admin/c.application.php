@@ -1475,6 +1475,22 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 	$ncdd2015promocode = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('promocode'=>'NCDD2015'));
 	$ncdd2014promocode = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('promocode'=>'NCDD2014'));
 	$eagle2016promocode = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('promocode'=>'EAGLE2016'));
+	$bonus2015promocode = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('promocode'=>'BONUS2015'));
+
+	if(!empty($bonus2015promocode)):
+	for ($i=0; $i < count($bonus2015promocode); $i++) { 
+		switch ($bonus2015promocode[$i]['class']) {
+	    	case 'ApplyNewMember':
+	    		$reference = new Model\ReferenceMember(array('applicationId'=>$bonus2015promocode[$i]['_id']), $app);
+	    		break;
+	    	case 'ApplyNewSustainingMember':
+	    		$reference = new Model\ReferenceSustainingMember(array('applicationId'=>$bonus2015promocode[$i]['_id']), $app);
+	    		break;
+	    	
+	    }
+	    $bonus2015promocode[$i]['new_references'] = array('total'=>$reference->getTotalSubmissions(),'max'=>$reference->getMaxSubmissions());
+	}
+	endif;
 	if(!empty($eagle2016promocode)):
 	for ($i=0; $i < count($eagle2016promocode); $i++) { 
 		switch ($eagle2016promocode[$i]['class']) {
@@ -1520,8 +1536,8 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 	$date = new Model\Date($app,'9/16/2014 5:00 PM');
 	$end2014 =  new Model\Date($app,'12/31/2014 11:59 PM');
 	$end2015 =  new Model\Date($app,'12/31/2015 11:59 PM');
-	$newlypaid2014 = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION')),'promocode'=>array('$nin'=>array('EAGLE2016','NCDD2015','NCDD2014')),'paidDate.date'=>array('$gte'=> new \MongoDate(strtotime($date->fullDateTime)), '$lte'=> new \MongoDate(strtotime($end2014->fullDateTime)))));
-	$newlypaid2015 = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION')),'promocode'=>array('$nin'=>array('EAGLE2016','NCDD2015','NCDD2014')),'paidDate.date'=>array('$gte'=> new \MongoDate(strtotime($end2014->fullDateTime)), '$lte'=> new \MongoDate(strtotime($end2015->fullDateTime)))));
+	$newlypaid2014 = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION')),'promocode'=>array('$nin'=>array('BONUS2015','EAGLE2016','NCDD2015','NCDD2014')),'paidDate.date'=>array('$gte'=> new \MongoDate(strtotime($date->fullDateTime)), '$lte'=> new \MongoDate(strtotime($end2014->fullDateTime)))));
+	$newlypaid2015 = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION')),'promocode'=>array('$nin'=>array('BONUS2015','EAGLE2016','NCDD2015','NCDD2014')),'paidDate.date'=>array('$gte'=> new \MongoDate(strtotime($end2014->fullDateTime)), '$lte'=> new \MongoDate(strtotime($end2015->fullDateTime)))));
 	if(!empty($newlypaid2014)):
 	for ($i=0; $i < count($newlypaid2014); $i++) { 
 		switch ($newlypaid2014[$i]['class']) {
@@ -1576,6 +1592,7 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 						,'approved'=>$approved
 						,'trial'=>$trial
 						,'paid'=>$paid
+						,'bonus2015promocode'=>$bonus2015promocode
 						,'eagle2016promocode'=>$eagle2016promocode
 						,'ncdd2015promocode'=>$ncdd2015promocode
 						,'ncdd2014promocode'=>$ncdd2014promocode
