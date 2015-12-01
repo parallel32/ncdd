@@ -149,8 +149,71 @@ $utilities->get('/memberswithoutautorenew', function () use ($app) {
                 }
             }
         }else{
-            // do nothing
-            echo "<pre>NO RENEWAL:";print_r($member);echo "</pre>";
+
+
+            // NO RENEWAL - which means check for a new member application
+            // must be a GENERAL MEMBER
+            if($member['currentMembership'] == Model\Member::$membership['GENERAL MEMBER']){
+
+                $nma = new Model\Apply(array('memberId'=>$member['_id']),$app);
+                $nma_res = $nma->findById('memberId');
+                
+                // first check if they paid  .... then how they paid and if credti card check the terms ack and then double check the card is actually on file.
+                if(!empty($nma_res['paymentId'])){
+                    $nam_pay = new Model\Payment(array('_id'=>$nma_res['paymentId']),$app);
+                    $nam_pay = $nam_pay->findById();
+                    if(array_key_exists('currentPaymentType', $nam_pay) && $nam_pay['currentPaymentType'] == Model\Payment::$paymentType['CREDIT']){
+                        if(array_key_exists('termsAcknowledgement', $nma_res) && !empty($nma_res['termsAcknowledgement']) && $nma_res['termsAcknowledgement'] == 'yes'){
+                            // then credit card should be on file...the next loop will check if it actually is on file
+                            //echo "<pre>NEW MEMBER ACKNOWLEDGED TO RE-USE CARD:";print_r($member);echo "</pre>";
+
+                        }else{
+                            // did not ack so should be on the list
+                            $res_arr['_id'] = $member['_id'];
+                            $res_arr['name'] = $member['displayName'];
+                            $res_arr['email'] = $member['email'];
+                            $loc = new Model\Location(array(),$app);
+                            $loc_res = $loc->find(array('ownerId'=>$member['_id']));
+                            if(is_array($loc_res) && !empty($loc_res)){
+                                $res_arr['address'] = $loc_res[0]['addressLine1'].' '.$loc_res[0]['addressLine2'].' '.$loc_res[0]['city'].', '.$loc_res[0]['state'].' '.$loc_res[0]['zip'].' '.$loc_res[0]['country'];
+                            } else{
+                                $res_arr['address'] = array();
+                            }
+                            $final_arr[] = $res_arr;
+                            $cnt++;  
+                        }
+                    }else{
+                        // paid by check so they're in
+                        $res_arr['_id'] = $member['_id'];
+                        $res_arr['name'] = $member['displayName'];
+                        $res_arr['email'] = $member['email'];
+                        $loc = new Model\Location(array(),$app);
+                        $loc_res = $loc->find(array('ownerId'=>$member['_id']));
+                        if(is_array($loc_res) && !empty($loc_res)){
+                            $res_arr['address'] = $loc_res[0]['addressLine1'].' '.$loc_res[0]['addressLine2'].' '.$loc_res[0]['city'].', '.$loc_res[0]['state'].' '.$loc_res[0]['zip'].' '.$loc_res[0]['country'];
+                        } else{
+                            $res_arr['address'] = array();
+                        }
+                        $final_arr[] = $res_arr;
+                        $cnt++;    
+                    }
+                }else{
+                    // NO payment on record or can't be found so they get on the list
+                    $res_arr['_id'] = $member['_id'];
+                    $res_arr['name'] = $member['displayName'];
+                    $res_arr['email'] = $member['email'];
+                    $loc = new Model\Location(array(),$app);
+                    $loc_res = $loc->find(array('ownerId'=>$member['_id']));
+                    if(is_array($loc_res) && !empty($loc_res)){
+                        $res_arr['address'] = $loc_res[0]['addressLine1'].' '.$loc_res[0]['addressLine2'].' '.$loc_res[0]['city'].', '.$loc_res[0]['state'].' '.$loc_res[0]['zip'].' '.$loc_res[0]['country'];
+                    } else{
+                        $res_arr['address'] = array();
+                    }
+                    $final_arr[] = $res_arr;
+                    $cnt++;        
+                }
+            }
+            
         }
 
     }
@@ -184,11 +247,11 @@ $utilities->get('/memberswithoutautorenew', function () use ($app) {
             }else{
                 $final_arr[$i]['CHECK'] = 'NA';
                 if(!empty($payment)){
-                    echo "<pre>PAYMENT:";print_r($payment);echo "</pre>";    
+                    //echo "<pre>PAYMENT:";print_r($payment);echo "</pre>";    
                 }else if(!empty($application)){
-                    echo "<pre>APPLICATION:";print_r($application);echo "</pre>";
+                    //echo "<pre>APPLICATION:";print_r($application);echo "</pre>";
                 }else{
-                    echo "<pre>";print_r('NOTHING TO PRINT');echo "</pre>";
+                    //echo "<pre>";print_r('NOTHING TO PRINT');echo "</pre>";
                 }
 
                 
