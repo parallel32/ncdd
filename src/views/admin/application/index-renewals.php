@@ -171,7 +171,7 @@
                <div class="responsive span6" data-tablet="span6" data-desktop="span6">
                   <div class="dashboard-stat green">
                      <div class="visual">
-                        <i class="icon-hideme"><?=$this->vars['renewals']['paidbycheck'];?></i>
+                        <i class="icon-hideme"><?=(is_array($this->vars['renewals']['paidbycheck'])) ? count($this->vars['renewals']['paidbycheck']) : 0;?></i>
                      </div>
                      <div class="details">
                         <div class="number"><font><font></font>Paid (check)</font></div>
@@ -184,7 +184,7 @@
                <div class="responsive span6" data-tablet="span6" data-desktop="span6">
                   <div class="dashboard-stat red">
                      <div class="visual">
-                        <i class="icon-hideme"><?=$this->vars['renewals']['paidbycc'];?></i>
+                        <i class="icon-hideme"><?=(is_array($this->vars['renewals']['paidbycc'])) ? count($this->vars['renewals']['paidbycc']) : 0;?></i>
                      </div>
                      <div class="details">
                         <div class="number"><font><font></font>Paid (CC)</font></div>
@@ -195,7 +195,7 @@
                <div class="responsive span6" data-tablet="span6" data-desktop="span6">
                   <div class="dashboard-stat purple">
                      <div class="visual">
-                        <i class="icon-hideme"><?=$this->vars['renewals']['paidbyccrecurr'];?></i>
+                        <i class="icon-hideme"><?=(is_array($this->vars['renewals']['paidbyccrecurr'])) ? count($this->vars['renewals']['paidbyccrecurr']) : 0;?></i>
                      </div>
                      <div class="details">
                         <div class="number"><font><font></font>Paid (CC w/Recurring)</font></div>

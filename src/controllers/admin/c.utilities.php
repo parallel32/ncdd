@@ -20,6 +20,27 @@ $utilities = $app['controllers_factory'];
 //////////////////////////////////////////////////////////////////////////////////
 // members 
 // some applications checked the allow card on file but didn't get the discount //
+
+// all the 2016 folks are new members
+
+// Anne Coria is a PD Trial and shouldn't be on the list
+// Bill J Baker II - paid with a check and doesn't owe anything until 2016
+// Carson Marcantel - same thing as Baker II paid up through 2016 
+// Donald Bartell - on auto renewal but has expired credit card
+// howard s. stein - on auto renew and has valid card on file
+// James E. Dunn - on auto renew and has expired card
+// Joshua Tanner - paid up through 2016 by check.
+// Joshua J Price - on auto-renew and current card on file.
+// Manzura Talapova - PDTrial .. shouldn't be on the list
+// Misty Buck - PDTrial .. should be on the list
+// S. Adam Long - paid with check through 2016
+// Scott D. Hughes - on auto-renew with a current credit card
+// Sharon Linville - PDTrial
+// Steven H. Miller - paid with check good through 2016
+// Steven Edge - auto renew with current credit card.
+// Thomas Nash - not on recurring but is paid through 2016
+// Tony Brock - paid with a check through 2016
+// 
 //////////////////////////////////////////////////////////////////////////////////
 $utilities->get('/memberswithoutautorenew', function () use ($app) {
     

@@ -1602,7 +1602,7 @@ class Member extends User {
 						);
 			$result1 = $this->find($query1,$fields,$slaveOkay=true,array(),(int)$offset,(int)$limit);
 			for ($i=0; $i < count($result1); $i++) { 
-				$result1[$i] = $result1[$i]['_id']->__toString();
+				$result1[$i] = (string)$result1[$i]['_id'];
 			}
 			$query2 = array('status'=>USER_STATUS_ACTIVE
 						,'renewal.currentStatus'=>Renewal::$status['PAID']
@@ -1611,7 +1611,7 @@ class Member extends User {
 						);
 			$result2 = $this->find($query2,$fields,$slaveOkay=true,array(),(int)$offset,(int)$limit);
 			for ($i=0; $i < count($result2); $i++) { 
-				$result2[$i] = $result2[$i]['_id']->__toString();
+				$result2[$i] = (string)$result2[$i]['_id'];
 			}
 			$query3 = array('status'=>USER_STATUS_ACTIVE
 						,'renewal.currentStatus'=>Renewal::$status['PAID']
@@ -1622,7 +1622,7 @@ class Member extends User {
 						);
 			$result3 = $this->find($query3,$fields,$slaveOkay=true,array(),(int)$offset,(int)$limit);
 			for ($i=0; $i < count($result3); $i++) { 
-				$result3[$i] = $result3[$i]['_id']->__toString();
+				$result3[$i] = (string)$result3[$i]['_id'];
 			}
 			
 			$query4 = array('status'=>USER_STATUS_ACTIVE
@@ -1634,12 +1634,17 @@ class Member extends User {
 						);
 			$result4 = $this->find($query4,$fields,$slaveOkay=true,array(),(int)$offset,(int)$limit);
 			for ($i=0; $i < count($result4); $i++) { 
-				$result4[$i] = $result4[$i]['_id']->__toString();
+				$result4[$i] = (string)$result4[$i]['_id'];
 			}
 			
 			
 			$final = array_diff($result1, $result2, $result3, $result4);
-			$result = array_merge($result,$final);
+			if(is_array($result)){
+				$result = array_merge($result,$final);
+			}else{
+				$result = $final;
+			}
+			
 			
 		}
 		
