@@ -1503,6 +1503,7 @@ class Member extends User {
 				$sort=array('lastName'=>1);
 				break;
 		}
+
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort,(int)$offset,(int)$limit);
 		
 		return $result;
@@ -1567,7 +1568,7 @@ class Member extends User {
 						,'renewal.currentStatus'=>Renewal::$status['PAID']
 						,'payment.renewalREUSE'=>array('$ne'=>'yes')
 						,'payment.number'=>array('$exists'=>true)
-						,'$where'=>'this.payment.number.length > 3'
+						//,'$where'=>'this.payment.number.length > 3'
 						,'currentMembership'=>array('$in'=>$membership)
 						);
     			break;
@@ -1576,7 +1577,7 @@ class Member extends User {
 						,'renewal.currentStatus'=>Renewal::$status['PAID']
 						,'payment.renewalREUSE'=>'yes'
 						,'payment.number'=>array('$exists'=>true)
-						,'$where'=>'this.payment.number.length > 3'
+						//,'$where'=>'this.payment.number.length > 3'
 						,'currentMembership'=>array('$in'=>$membership)
 						);
     			break;    		
@@ -1617,7 +1618,7 @@ class Member extends User {
 						,'renewal.currentStatus'=>Renewal::$status['PAID']
 						,'payment.renewalREUSE'=>array('$ne'=>'yes')
 						,'payment.number'=>array('$exists'=>true)
-						,'$where'=>'this.payment.number.length > 3'
+						//,'$where'=>'this.payment.number.length > 3'
 						,'currentMembership'=>array('$in'=>$membership)
 						);
 			$result3 = $this->find($query3,$fields,$slaveOkay=true,array(),(int)$offset,(int)$limit);
@@ -1629,7 +1630,7 @@ class Member extends User {
 						,'renewal.currentStatus'=>Renewal::$status['PAID']
 						,'payment.renewalREUSE'=>'yes'
 						,'payment.number'=>array('$exists'=>true)
-						,'$where'=>'this.payment.number.length > 3'
+						//,'$where'=>'this.payment.number.length > 3'
 						,'currentMembership'=>array('$in'=>$membership)
 						);
 			$result4 = $this->find($query4,$fields,$slaveOkay=true,array(),(int)$offset,(int)$limit);

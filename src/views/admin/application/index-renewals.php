@@ -854,7 +854,7 @@
 
             </br>            
             <div class="row-fluid">
-               <h1>4. Manage Renewal Activation</h1>
+               <h1>5. Manage Renewal Activation</h1>
                <a id="activate-renewals" class="btn green "><i class=" "></i> Activate Renewals</a>
                <a id="clear-renewals" class="btn yellow "><i class=" "></i> Clear Renewals</a>
             </div>

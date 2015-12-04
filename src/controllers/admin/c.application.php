@@ -1902,14 +1902,14 @@ $app->get('/applications/activate/renewals/{activate}', function ($activate, Req
 		$renewal = $renewal->__toArray();
 
 		// get the count of the updates to occur  /// $type 10 means a null type value
-		// actuall query db.member.find({$or:[{renewal:{$exists:false}},{renewal:{$exists:true,$type:10}},{renewal:{}}],status:2,currentMembership:10}).count();
+		// actuall query db.member.find({$or:[{renewal:{$exists:false}},{renewal:{$exists:true,$type:10}},{renewal:{}}],status:2,currentMembership:10,listed:1}).count();
 		$common_query = array('$or'=>array(array('renewal'=>array('$exists'=>false)),array('renewal'=>array('$exists'=>true,'$type'=>10)),array('renewal'=>new \stdClass())));		
 		//$common_query = array();
 
-		$gm_query = array('currentMembership'=>Model\Member::$membership['GENERAL MEMBER'],'status'=>USER_STATUS_ACTIVE,'listed'=>'yes');
-		$sm_query = array('currentMembership'=>Model\Member::$membership['SUSTAINING MEMBER'],'status'=>USER_STATUS_ACTIVE,'listed'=>'yes');
-		$fm_query = array('currentMembership'=>Model\Member::$membership['FOUNDING MEMBER'],'status'=>USER_STATUS_ACTIVE,'listed'=>'yes');
-		$pd_query = array('currentMembership'=>Model\Member::$membership['PUBLIC DEFENDER'],'status'=>USER_STATUS_ACTIVE,'listed'=>'yes');
+		$gm_query = array('currentMembership'=>Model\Member::$membership['GENERAL MEMBER'],'status'=>USER_STATUS_ACTIVE);
+		$sm_query = array('currentMembership'=>Model\Member::$membership['SUSTAINING MEMBER'],'status'=>USER_STATUS_ACTIVE);
+		$fm_query = array('currentMembership'=>Model\Member::$membership['FOUNDING MEMBER'],'status'=>USER_STATUS_ACTIVE);
+		$pd_query = array('currentMembership'=>Model\Member::$membership['PUBLIC DEFENDER'],'status'=>USER_STATUS_ACTIVE);
 		$gm_query = array_merge($common_query, $gm_query);
 		$sm_query = array_merge($common_query, $sm_query);
 		$fm_query = array_merge($common_query, $fm_query);
@@ -1933,12 +1933,32 @@ $app->get('/applications/activate/renewals/{activate}', function ($activate, Req
 			endforeach;
 		}
 
-		// one-time - prepare the folks who paid 2015 with a promo code - their renewal needs to be marked paid automatically
+		// one-time - prepare the folks who've already paid dues through promotions
+		/*
+			case 'paid-CC':
+    			$query = array('status'=>USER_STATUS_ACTIVE
+						,'renewal.currentStatus'=>Renewal::$status['PAID']
+						,'payment.renewalREUSE'=>array('$ne'=>'yes')
+						,'payment.number'=>array('$exists'=>true)
+						,'$where'=>'this.payment.number.length > 3'
+						,'currentMembership'=>array('$in'=>$membership)
+						);
+    			break;
+    		case 'paid-CCRECUR':
+    			$query = array('status'=>USER_STATUS_ACTIVE
+						,'renewal.currentStatus'=>Renewal::$status['PAID']
+						,'payment.renewalREUSE'=>'yes'
+						,'payment.number'=>array('$exists'=>true)
+						,'$where'=>'this.payment.number.length > 3'
+						,'currentMembership'=>array('$in'=>$membership)
+						);
+    			break;    		
+		*/
 		$application = new Model\Apply($doc=array(), $app);
-		$ncdd2014promocode = $application->fetchByStatus('PAID',0, 10000,$filter=array('promocode'=>'NCDD2014'));
+		$bonus2015promocode = $application->fetchByStatus('PAID',0, 10000,$filter=array('promocode'=>'BONUS2015'));
 		$promo_count = 0;
 		if(!empty($trial) && is_array($trial)){
-			foreach ($ncdd2014promocode as $record):
+			foreach ($bonus2015promocode as $record):
 				$doc['currentStatus'] = Model\Renewal::$status['PAID'];
 				$doc['applicationId'] = new \MongoId($record['_id']);
 				$doc['submittedDate'] = $record['submittedDate'];
@@ -1950,7 +1970,26 @@ $app->get('/applications/activate/renewals/{activate}', function ($activate, Req
 				$renewal->prepareInsert();
 				$renewal = $renewal->__toArray();
 
-				$ncdd2014promocode_update = $member->updateByCriteria(array('$set'=>array('renewal'=>$renewal)), array('_id'=>$record['memberId']));
+				$bonus2015promocode_update = $member->updateByCriteria(array('$set'=>array('renewal'=>$renewal)), array('_id'=>$record['memberId']));
+
+				$promo_count++;
+			endforeach;
+		}
+		$eagle2016promocode = $application->fetchByStatus('PAID',0, 10000,$filter=array('promocode'=>'EAGLE2016'));
+		if(!empty($trial) && is_array($trial)){
+			foreach ($eagle2016promocode as $record):
+				$doc['currentStatus'] = Model\Renewal::$status['PAID'];
+				$doc['applicationId'] = new \MongoId($record['_id']);
+				$doc['submittedDate'] = $record['submittedDate'];
+				$doc['approvedDate']  = $record['approvedDate'];
+				$doc['paidDate'] 	  = $record['paidDate'];
+				$doc['paymentId'] 	  = $record['paymentId'];
+
+				$renewal = new Model\Renewal($doc,$app);
+				$renewal->prepareInsert();
+				$renewal = $renewal->__toArray();
+
+				$eagle2016promocode_update = $member->updateByCriteria(array('$set'=>array('renewal'=>$renewal)), array('_id'=>$record['memberId']));
 
 				$promo_count++;
 			endforeach;
