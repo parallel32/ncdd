@@ -465,10 +465,7 @@
                   </div>
 
 
-                  <h3 class="form-section">Check which applies to your membership:</h3>
-                  <!-- EARLY BIRD DISCOUNT FOR 2014 -->
-                  <p class="alert alert-info"><b>As an added incentive, sign up for automatic renewals and you will receive an automatic $50 off your 2015 Annual dues.</b></p>
-
+                  <h3 class="form-section">Select which membership applies to you:</h3>
                   <div class="row-fluid">
                      <div class="span12 ">
                         <div class="control-group">
@@ -490,29 +487,46 @@
                      </div>
                      <!--/span-->
                   </div>
-                  <h3 class="form-section">Please confirm if you intend to pay by check:</h3>
+                  
+
+                  <h3 class="form-section">Promo Code</h3>
                   <div class="row-fluid">
-                     <div class="span12 ">
-                        <div class="control-group">
-                           <label class="control-label"></label>
+                     <div class="span6">
+                        <div class="control-group ">
+                           <label class="control-label">Enter the promo code RENEW2016, pay your dues in full and sign up for future membership dues auto-pay (if you haven't already) and receive the NCDD Membership Desktop Trophy.  Offer expires January 4th, 2016. </label>
                            <div class="controls">
-                              <input style="margin-left:1px;" disabled <?=(array_key_exists('payByCheck',$this->vars['application'])) ? ($this->vars['application']['payByCheck'] == "yes") ? ' checked' :'' : '';?> type="radio" name="doc[payByCheck]" value="yes">&nbsp;&nbsp;Yes, I intend to pay my membership dues by check.<br/><br/>
-                              <input style="margin-left:1px;" disabled <?=(array_key_exists('payByCheck',$this->vars['application'])) ? (strpos($this->vars['application']['payByCheck'], 'no') !== false) ? ' checked' :'' : '';?> type="radio" name="doc[payByCheck]" value="no">&nbsp;&nbsp;No, I intend to pay my membership dues online with my credit card.<br/><br/>
-                              <!--<input style="margin-left:1px;" disabled <?=(array_key_exists('payByCheck',$this->vars['application'])) ? ($this->vars['application']['payByCheck'] == "no-store") ? ' checked' :'' : '';?> type="radio" name="doc[payByCheck]" value="no">&nbsp;&nbsp;I intend to pay my membership dues online with my credit card.  Please also store my credit card for future convenience.<br/><br/>-->
-                              <a href='/card/<?=$this->vars['member']['_id']?>' target="_blank">Click to view credit card on file</a>
+                              <input disabled="" type="text" name="doc[renewalpromocode]" class="m-wrap span12 renewalpromocode" value="<?=(array_key_exists('renewalpromocode',$this->vars['application'])) ? $this->vars['application']['renewalpromocode']: ''?>">
+                              <input type="hidden" id="promocodetype" value="">
                            </div>
                         </div>
                      </div>
                      <!--/span-->
                   </div>
-                  <div class="row-fluid">
+                  
+                  <h3 class="form-section">Please confirm if you intend to pay by check:</h3>
+                  <div id="paybycheck" class="row-fluid">
+                     <div class="span12 alert alert-warning">
+                        <div class="control-group error">
+                           <label class="control-label"></label>
+                           <div class="controls">
+                              <input style="margin-left:1px;" disabled <?=(array_key_exists('payByCheck',$this->vars['application'])) ? ($this->vars['application']['payByCheck'] == "yes") ? ' checked' :'' : '';?> type="radio" name="doc[payByCheck]" value="yes">&nbsp;&nbsp;Yes, I intend to pay my membership dues by check.<br/><br/>
+                              <input style="margin-left:1px;" disabled <?=(array_key_exists('payByCheck',$this->vars['application'])) ? (strpos($this->vars['application']['payByCheck'], 'no') !== false) ? ' checked' :'' : '';?> type="radio" name="doc[payByCheck]" value="no">&nbsp;&nbsp;No, I intend to pay my membership dues online with my credit card.<br/><br/>
+                              <!--<input style="margin-left:1px;" disabled <?=(array_key_exists('payByCheck',$this->vars['application'])) ? ($this->vars['application']['payByCheck'] == "no-store") ? ' checked' :'' : '';?> type="radio" name="doc[payByCheck]" value="no-store">&nbsp;&nbsp;I intend to pay my membership dues online with my credit card.  Please also store my credit card for future convenience.<br/><br/>-->
+                              <a href='/card/<?=$this->vars['member']['_id']?>' target="_blank">Click to view credit card on file</a>
+                              <p id="paybycheck-instructions" class="hide">Because you are using the promocode, you must pay by credit card.  If you need to pay by check, clear out the promo code and select to pay by check.</p>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  
+                  <div id="promocodeverification" class="row-fluid ">
                      <div class="span10 ">
                         <p class="alert alert-info">
                         <b>I authorize the NCDD to store my credit card for future Annual Dues payments.</b>
-                        <input <?=(array_key_exists('termsAcknowledgement',$this->vars['application']) && $this->vars['application']['termsAcknowledgement'] == 'yes') ? 'checked' : '' ?> type="checkbox" name="doc[termsAcknowledgement]" class="termsAcknowledgement" value="yes">Yes, I agree.
+                        <span class="control-group"><span class="controls"><input disabled="disabled" <?=(array_key_exists('termsAcknowledgement',$this->vars['application']) && $this->vars['application']['termsAcknowledgement'] == 'yes') ? 'checked' : '' ?> type="checkbox" name="doc[termsAcknowledgement]" class="termsAcknowledgement" value="yes">Yes, I agree.</span></span>
                      </p>
                      </div>
-                     
                   </div>
                   
                   <h3 class="form-section">9. Voluntary Contribution to the NCDD Foundation.</h3>

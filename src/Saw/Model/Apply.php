@@ -297,6 +297,11 @@ class Apply extends Model {
 		return $result;
 
 	}
+	public function countByFilter($filter){
+		$result = $this->count($filter,$slaveOkay=true);
+		return $result;
+
+	}
 	public function fetchByMember($status, $offset=0,$limit=100){
 		$user = User::getUserAccessLevelBySession(self::$app);
 		$query = array('currentStatus'=>self::$status[$status]
@@ -336,11 +341,14 @@ class Apply extends Model {
 		return $result;
 
 	}
-	public function fetchByDatePaid($days=90, $offset=0,$limit=100,$filter=array()){
-		$query = array('currentStatus'=>self::$status['PAID']
-						,'paidDate.date'=>array('$lte'=>new \MongoDate(strtotime('now'))
-												,'$gte'=>new \MongoDate(strtotime('-'.$days.' day')))
+
+	public function fetchByDateRangeMember($memberId, $start,$end, $offset=0,$limit=100,$filter=array()){
+		$memberId = (is_object($memberId)) ? $memberId : new \MongoId($memberId);
+		$query = array('memberId'=>$memberId
+						,'paidDate.date'=>array('$lte'=>new \MongoDate(strtotime($start))
+												,'$gte'=>new \MongoDate(strtotime($end)))
 		);
+		
 		if(!empty($filter)){
 			$query = array_merge($filter, $query);
 		}
@@ -359,6 +367,41 @@ class Apply extends Model {
 						,'memberId'=>true
 						,'paymentId'=>true
 						,'references'=>true
+						,'termsAcknowledgement'=>true
+						);
+		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('_id'=>-1),(int)$offset,(int)$limit);
+		//error_log('fetch:'.print_r($query,true));
+		//error_log('result:'.print_r($result,true));
+
+		return $result;
+
+	}
+
+	public function fetchByDatePaid($days=90, $offset=0,$limit=100,$filter=array()){
+		$query = array('currentStatus'=>self::$status['PAID']
+						,'paidDate.date'=>array('$lte'=>new \MongoDate(strtotime('now'))
+												,'$gte'=>new \MongoDate(strtotime('-'.$days.' day')))
+		);
+		
+		if(!empty($filter)){
+			$query = array_merge($filter, $query);
+		}
+		$fields = array('firstName'=>true
+						,'middleName'=>true
+						,'lastName'=>true
+						,'email'=>true
+						,'city'=>true
+						,'state'=>true
+						,'type'=>true
+						,'class'=>true
+						,'submittedDate'=>true
+						,'paidDate'=>true
+						,'approvedDate'=>true
+						,'_id'=>true
+						,'memberId'=>true
+						,'paymentId'=>true
+						,'references'=>true
+						,'termsAcknowledgement'=>true
 						);
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('paidDate.date'=>-1),(int)$offset,(int)$limit);
 		//error_log('fetch:'.print_r($query,true));

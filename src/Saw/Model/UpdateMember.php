@@ -33,6 +33,7 @@ class UpdateMember extends Apply {
 	public $contributionAmount;
 	public $firmName;
 	public $payByCheck;
+	public $renewalpromocode;
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addPropertyConstraint('everBeenArrested', new Constraints\NotBlank(array('message'=>'cannot be blank','groups' => array('update_member'))));
@@ -41,18 +42,30 @@ class UpdateMember extends Apply {
 		$metadata->addPropertyConstraint('everInvestigation', new Constraints\NotBlank(array('message'=>'cannot be blank','groups' => array('update_member'))));
 		$metadata->addPropertyConstraint('everLawEnforcement', new Constraints\NotBlank(array('message'=>'cannot be blank','groups' => array('update_member'))));
 		$metadata->addPropertyConstraint('futureLawEnforcement', new Constraints\NotBlank(array('message'=>'cannot be blank','groups' => array('update_member'))));
+		$metadata->addPropertyConstraint('twoSeminarsAcknowledgement', new Constraints\NotBlank(array('message'=>'please acknowledge','groups' => array('update_member'))));
 		//$metadata->addPropertyConstraint('seminarAttendance', new Constraints\NotBlank(array('message'=>'cannot be blank','groups' => array('update_member'))));
 		$metadata->addPropertyConstraint('executed', new Constraints\NotBlank(array('message'=>'cannot be blank','groups' => array('update_member'))));
 		$metadata->addPropertyConstraint('executedPrintedName', new Constraints\NotBlank(array('message'=>'cannot be blank','groups' => array('update_member'))));
 		$metadata->addPropertyConstraint('membershipDues', new Constraints\NotBlank(array('message'=>'cannot be blank','groups' => array('update_member'))));
 		$metadata->addConstraint(new Callback(array('methods' => array('explain'),'groups' => array('update_member'))));
-		//$metadata->addConstraint(new Callback(array('methods' => array('termsAckValidate'),'groups' => array('update_member'))));
-		$metadata->addPropertyConstraint('payByCheck', new Constraints\NotBlank(array('message'=>'cannot be blank','groups' => array('update_member'))));
+		$metadata->addConstraint(new Callback(array('methods' => array('termsAckValidate'),'groups' => array('update_member'))));
+		$metadata->addConstraint(new Callback(array('methods' => array('checkPayByCheck'),'groups' => array('update_member'))));
+	}
+	public function checkPayByCheck(ExecutionContext $context){
+		// if valid promo code and eligble then cannot submit as a pay by check
+		$is_eligible = $this->checkPromoCodeEligibility();
+
+		if($is_eligible && ($this->payByCheck == 'yes' || $this->payByCheck == 'no-store')){
+			$propertyPath = $context->getPropertyPath().'payByCheck';
+			$context->addViolationAtPath($propertyPath,'When using the RENEW2016 promo code you cannot pay with a check. You must enter a credit card.  If you want to pay by check, please clear out the promo code first then select to pay by check.', array(), null);
+		}
 	}
 	public function termsAckValidate(ExecutionContext $context){
-		if(empty($this->termsAcknowledgement) || $this->termsAcknowledgement == false || $this->termsAcknowledgement == 'no'){
+		// first check if they entered a promocode && if they're authorized to use it and if so then they must check the acknowledgement
+		$is_eligible = $this->checkPromoCodeEligibility();
+		if($is_eligible && (empty($this->termsAcknowledgement) || $this->termsAcknowledgement == false || $this->termsAcknowledgement == 'no')){
 			$propertyPath = $context->getPropertyPath().'termsAcknowledgement';
-			$context->addViolationAtPath($propertyPath,'Please read and accept our terms in order to submit the application.', array(), null);
+			$context->addViolationAtPath($propertyPath,'When using the RENEW2016 promo code you must agree to this authorization', array(), null);
 		}
 	}
 	public function explain(ExecutionContext $context){
@@ -111,6 +124,7 @@ class UpdateMember extends Apply {
 		$this->contributionAmount = $doc['contributionAmount'];
 		$this->firmName = $doc['firmName'];
 		$this->payByCheck = $doc['payByCheck'];
+		$this->renewalpromocode = (array_key_exists('renewalpromocode', $doc) && !empty($doc['renewalpromocode'])) ? strtoupper($doc['renewalpromocode']) : $doc['renewalpromocode'];
 		
 
 	}
@@ -141,6 +155,7 @@ class UpdateMember extends Apply {
 		$this->contributionAmount = $this->contributionAmount ?: 0;
 		$this->firmName = $this->firmName ?: '';
 		$this->payByCheck = $this->payByCheck ?: '';
+		$this->renewalpromocode = $this->renewalpromocode ?: '';
 	}
 	public function insert(){
 		$this->prepareInsert();
@@ -149,6 +164,67 @@ class UpdateMember extends Apply {
         }else{
 			throw new Saw\Exceptions\SawException(new Saw\Model\Exceptions\DomainException(),"Adding failed.  Please try again.");
 		}
+	}
+	private function checkPromoCodeEligibility(){
+		$is_eligible = true;
+		if(!empty($this->renewalpromocode) && (strtoupper($this->renewalpromocode) == 'RENEW2016')){
+	    	if(!empty($this->_id)){
+	    		$tmp = new Apply(array('_id'=>$this->_id),self::$app);
+	    		$tmp = $tmp->findById();
+	    		$memberId = $tmp['memberId'];
+	    	}else{
+	    		$memberId = $this->memberId;	
+	    	}
+			
+			$valid = 'yes';
+	    	$message = 'Valid Promo Code.';
+	    	// is member eligible? - meaning is it their first time subscribing to auto-renew?
+	    	// if part of the EAGLE2016 promo then not eligible
+	    	$application = new Apply(array(),self::$app);
+			$eagle2016promocode = $application->fetchByStatus('PAID',$offset=0, $limit=10000,$filter=array('promocode'=>'EAGLE2016'));
+			foreach ($eagle2016promocode as $record) {
+				if((string)$record['memberId'] == $memberId){
+					$is_eligible = false;
+					$valid = 'no';
+					$message = 'Sorry, you cannot use this promo because you already received the EAGLE2016 promo';
+				}
+			}
+	    	// if have termsAcknowledge checked in last cycle's renewal form then not eligible
+			$apply = new Apply(array(),self::$app);
+			$query = array('termsAcknowledgement'=>'yes'
+							,'paidDate.date'=>array('$lte'=>new \MongoDate(strtotime('now'))
+													,'$gte'=>new \MongoDate(strtotime('-395 day')))
+			);
+			$renewals = $apply->find($query,$fields=array('memberId'=>1,'termsAcknowledgement'=>1),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=10000);
+
+			foreach ($renewals as $record) {
+				if($record['memberId'] == $memberId){
+					error_log('found it: '.print_r('found it',true));
+				}
+				if($record['termsAcknowledgement'] == 'yes' && $record['memberId'] == $memberId){
+					$is_eligible = false;
+					$valid = 'no';
+					$message = 'Sorry, you cannot use this promo because you already received a discount last time for signing up for auot-pay and we thank you for that!';
+				}
+			}
+
+	    	// if a public defender then not eligible
+			$member = new Member(array('_id'=>$memberId),self::$app);
+			$member = $member->findById();
+			if($member['currentMembership'] == Member::$membership['PUBLIC DEFENDER']){
+				$is_eligible = false;
+				$valid = 'no';
+				$message = 'Sorry, you cannot us this promo because you are a pulbic defender';
+			}
+	    	
+	    	$type = (strtoupper($this->renewalpromocode) == 'RENEW2016') ? 'discount'.'-'.strtoupper($this->renewalpromocode): '';
+	    }else{
+	    	$is_eligible = false;
+	    	$type = '';
+	    	$valid = 'no';
+	    	$message = 'Invalid Promo Code.';
+	    }
+	    return $is_eligible;
 	}
 	private function prepareExecuted($executed){
 		 $date = new \DateTime(); 

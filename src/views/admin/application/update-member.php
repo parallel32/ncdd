@@ -550,10 +550,7 @@
                   </div>
 
                   
-                  <h3 class="form-section">Check which applies to your membership:</h3>
-                  <!-- EARLY BIRD DISCOUNT FOR 2014 -->
-                  <p class="alert alert-info"><b>As an added incentive, sign up for automatic renewals and you will receive an automatic $50 off your 2015 Annual dues.</b></p>
-
+                  <h3 class="form-section">Select which membership applies to you:</h3>
                   <div class="row-fluid">
                      <div class="span12 ">
                         <div class="control-group">
@@ -569,55 +566,47 @@
                      </div>
                      <!--/span-->
                   </div>
-                  <h3 class="form-section">Please confirm if you intend to pay by check:</h3>
+                  
+
+                  <h3 class="form-section">Promo Code</h3>
                   <div class="row-fluid">
-                     <div class="span12 ">
-                        <div class="control-group">
+                     <div class="span6">
+                        <div class="control-group ">
+                           <label class="control-label">Enter the promo code RENEW2016, pay your dues in full and sign up for future membership dues auto-pay (if you haven't already) and receive the NCDD Membership Desktop Trophy.  Offer expires January 4th, 2016. </label>
+                           <div class="controls">
+                              <input type="text" name="doc[renewalpromocode]" class="m-wrap span12 renewalpromocode" value="">
+                              <input type="hidden" id="promocodetype" value="">
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  
+                  <h3 class="form-section">Please confirm if you intend to pay by check:</h3>
+                  <div id="paybycheck" class="row-fluid">
+                     <div class="span12 alert alert-warning">
+                        <div class="control-group error">
                            <label class="control-label"></label>
                            <div class="controls">
                               <input style="margin-left:1px;" type="radio" name="doc[payByCheck]" value="yes">&nbsp;&nbsp;Yes, I intend to pay by check.<br/><br/>
                               <input style="margin-left:1px;" type="radio" name="doc[payByCheck]" value="no" checked>&nbsp;&nbsp;No, I intend to pay my membership dues online with my credit card.<br/><br/>
                               <!--<input style="margin-left:1px;" type="radio" name="doc[payByCheck]" checked value="no-store">&nbsp;&nbsp;I intend to pay my membership dues online with my credit card.  Please also store my credit card for future convenience.<br/><br/>-->
                               <!--Upon submission of this form and subsequent approval of your renewal, you will receive an email with instructions on how to pay your dues.-->
+                              <p id="paybycheck-instructions" class="hide">Because you are using the promocode, you must pay by credit card.  If you need to pay by check, clear out the promo code and select to pay by check.</p>
                            </div>
                         </div>
                      </div>
                      <!--/span-->
                   </div>
-                  <div class="row-fluid">
+                  
+                  <div id="promocodeverification" class="row-fluid ">
                      <div class="span10 ">
                         <p class="alert alert-info">
                         <b>I authorize the NCDD to store my credit card for future Annual Dues payments.</b>
                         <span class="control-group"><span class="controls"><input type="checkbox" name="doc[termsAcknowledgement]" class="termsAcknowledgement" value="yes">Yes, I agree.</span></span>
                      </p>
                      </div>
-                     
                   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

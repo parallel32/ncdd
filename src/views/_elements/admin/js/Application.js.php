@@ -316,6 +316,68 @@
         $("#phone").inputmask("mask", {"mask": "(999) 999-9999"}); //specifying fn & options
         $("#fax").inputmask("mask", {"mask": "(999) 999-9999"}); //specifying fn & options
 
+        $('#paybycheck input[type=radio]').change(function() {
+        	
+			$('#paybycheck .alert').addClass('alert-warning');
+			$('#paybycheck .alert').removeClass('alert-danger');
+			$('#paybycheck-instructions').hide();
+	        if (this.value == 'yes') {
+	        	// if promocode have been validated .. cannot pay by check
+	        	if($('#promocodetype').val() != 'invalid' && $('#promocodetype').val().length > 0){
+	        		$('#paybycheck-instructions').show();
+	        		$('#paybycheck .alert').removeClass('alert-warning');
+	        		$('#paybycheck .alert').addClass('alert-danger');
+				}
+	            // hide i authorize
+	            $('#promocodeverification').hide();
+	        } else if (this.value == 'no') {
+	            // show the i authorize
+	            $('#promocodeverification').show();
+	        }
+	    });
+		$('.renewalpromocode').keyup(function(){
+        	window.clearTimeout(window.promocodetimeoutid);//cancel previous timer so they don't queue up when you're typing
+			window.promocodetimeoutid = window.setTimeout(function(theThis){ // delay so it's not in every key-up stroke
+				if(theThis.val().length == 0){
+	        		$('#promocodetype').val('');
+	        	}
+	        	io.saw.FormPost.activate({postUrl:'/application/renewal/promocode/validate'
+				   ,blockUI:'no'
+				   ,serializeSelector:'.renewalpromocode'
+				   ,formName:''
+				   ,postOnComplete:function(responseObj,responseStatus){}
+				   ,postOnSuccess:function(responseObj){
+				   		var the_element = $('.control-group :input.renewalpromocode').parents('.control-group');
+				   		if(responseObj.valid == 'yes'){
+				   			// force the check to be set to credit card
+				   			$("#paybycheck input[type=radio][value=no]").click();
+				   			$("#paybycheck input[type=radio][value=no]").click();
+
+				   			$('#promocodetype').val(responseObj.type);
+				   			$('#promocodeverification').show();
+				   			the_element.find('.help-block.error').remove();
+				   			the_element.addClass('success');
+				   			if(the_element.find('.help-block.success').length == 0){
+				   				the_element.append('<span for="renewalpromocode" class="help-block success " style="">'+responseObj.message+'</span>');
+				   			}
+				   		}
+				   		if(responseObj.valid == 'no'){
+				   			$('#promocodetype').val('invalid');
+				   			the_element.find('.help-block.success').remove();
+							the_element.removeClass('success');
+							$('#promocodeverification').hide();
+							the_element.append('<span for="renewalpromocode" class="help-block error " style="">'+responseObj.message+'</span>');
+				   		}
+				   		if(theThis.val().length == 0){
+			        		the_element.find('.help-block.success').remove();
+			        		the_element.find('.help-block.error').remove();
+			        	}
+					
+				   }
+				});
+			},500,$(this));
+        });
+		
 	};
 	Application.init = function(){
 		$('.btn.mini.view.card').click(function(e){
@@ -449,9 +511,69 @@
 			e.preventDefault();
 			document.location.href='/';
 		});
+		$('#paybycheck input[type=radio]').change(function() {
+			$('#paybycheck .alert').addClass('alert-warning');
+			$('#paybycheck .alert').removeClass('alert-danger');
+			$('#paybycheck-instructions').hide();
+	        if (this.value == 'yes') {
+	        	// if promocode have been validated .. cannot pay by check
+	        	if($('#promocodetype').val() != 'invalid' && $('#promocodetype').val().length > 0){
+	        		$('#paybycheck-instructions').show();
+	        		$('#paybycheck .alert').removeClass('alert-warning');
+	        		$('#paybycheck .alert').addClass('alert-danger');
+				}
+	            // hide i authorize
+	            $('#promocodeverification').hide();
+	        } else if (this.value == 'no') {
+	            // show the i authorize
+	            $('#promocodeverification').show();
+	        }
+	    });
+		$('.renewalpromocode').keyup(function(){
+        	window.clearTimeout(window.promocodetimeoutid);//cancel previous timer so they don't queue up when you're typing
+			window.promocodetimeoutid = window.setTimeout(function(theThis){ // delay so it's not in every key-up stroke
+				if(theThis.val().length == 0){
+	        		$('#promocodetype').val('');
+	        	}
+	        	io.saw.FormPost.activate({postUrl:'/application/renewal/promocode/validate'
+				   ,blockUI:'no'
+				   ,serializeSelector:'.renewalpromocode'
+				   ,formName:''
+				   ,postOnComplete:function(responseObj,responseStatus){}
+				   ,postOnSuccess:function(responseObj){
+				   		var the_element = $('.control-group :input.renewalpromocode').parents('.control-group');
+				   		if(responseObj.valid == 'yes'){
+				   			// force the check to be set to credit card
+				   			$("#paybycheck input[type=radio][value=no]").click();
+				   			$("#paybycheck input[type=radio][value=no]").click();
 
+				   			$('#promocodetype').val(responseObj.type);
+				   			$('#promocodeverification').show();
+				   			the_element.find('.help-block.error').remove();
+				   			the_element.addClass('success');
+				   			if(the_element.find('.help-block.success').length == 0){
+				   				the_element.append('<span for="renewalpromocode" class="help-block success " style="">'+responseObj.message+'</span>');
+				   			}
+				   		}
+				   		if(responseObj.valid == 'no'){
+				   			$('#promocodetype').val('invalid');
+				   			the_element.find('.help-block.success').remove();
+							the_element.removeClass('success');
+							$('#promocodeverification').hide();
+							the_element.append('<span for="renewalpromocode" class="help-block error " style="">'+responseObj.message+'</span>');
+				   		}
+				   		if(theThis.val().length == 0){
+			        		the_element.find('.help-block.success').remove();
+			        		the_element.find('.help-block.error').remove();
+			        	}
+					
+				   }
+				});
+			},500,$(this));
+        });
 		
 	};
+	
 	function remove (id){
 		io.saw.FormGet.activate({postUrl:'/application/'+id+'/delete'
 			,postOnComplete:function(responseObj,responseStatus){}

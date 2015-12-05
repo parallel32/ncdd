@@ -1505,7 +1505,19 @@ class Member extends User {
 		}
 
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort,(int)$offset,(int)$limit);
-		
+		if(!empty($result)):
+			for ($i=0; $i < count($result); $i++) { 
+				$apply = new Apply(array('_id'=>$result[$i]['renewal']['applicationId']),self::$app);
+				$apply = $apply->findById();
+				if(is_array($apply) && array_key_exists('renewalpromocode', $apply) && !empty($apply['renewalpromocode'])){
+					$result[$i]['renewalpromocode'] = $apply['renewalpromocode'];
+				}elseif(is_array($apply) && array_key_exists('promocode', $apply) && !empty($apply['promocode'])){
+					$result[$i]['renewalpromocode'] = $apply['promocode'];
+				}else{
+					$result[$i]['renewalpromocode'] = '';
+				}
+			}
+		endif;
 		return $result;
 
 	}

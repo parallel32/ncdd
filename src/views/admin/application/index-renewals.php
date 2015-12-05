@@ -206,6 +206,20 @@
             </div>
 
             <div class="row-fluid">
+               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                  <div class="dashboard-stat blue">
+                     <div class="visual">
+                        <i id='renew2016promocodecount' class="icon-hideme">loading..</i>
+                     </div>
+                     <div class="details">
+                        <div class="number"><font><font></font>RENEW2016</font></div>
+                        <div class="desc"><font><font></font></font></div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="row-fluid">
                <div class="span12">
                   <!-- BEGIN EXAMPLE TABLE PORTLET-->
                   <div class="portlet box blue">
@@ -217,7 +231,9 @@
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
                               <tr role="row">
-                                 <th class=""></th><th class="">Name</th>
+                                 <th class=""></th>
+                                 <th class=""></th>
+                                 <th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-phone">Phone</th>
                                  <th class="hidden-480">Date</th>
@@ -229,7 +245,19 @@
                               <tr class="gradeX odd ">
                                  <? $declineCount = (array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && array_key_exists('declineCount',$member['payment']) && $member['payment']['declineCount'] > 0) ? '('.$member['payment']['declineCount'].')': ''; ?>
                                  <? $renewalREUSE = (array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && array_key_exists('renewalREUSE',$member['payment']) && $member['payment']['renewalREUSE'] == 'yes') ? 'purple': 'red'; ?>
-                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn '.$renewalREUSE.' mini view card">cc'.$declineCount.'</a>':'' ?></td><td class=" "><?=$member['displayName']?></td>
+                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn '.$renewalREUSE.' mini view card">cc'.$declineCount.'</a>':'' ?></td>
+                                 <td class=" "><?
+                                 if(!empty($member['renewalpromocode'])){
+                                    if(strtolower($member['renewalpromocode']) == 'renew2016'){
+                                       echo '<a class="btn mini blue renewalpromocode">'.$member['renewalpromocode'].'</a>';
+                                    }else{
+                                       echo '<a class="btn mini blue promocode">'.$member['renewalpromocode'].'</a>';
+                                    }
+                                    
+                                 }else{
+                                       echo '';
+                                 }?></td>
+                                 <td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
                                  <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($member['renewal']['submittedDate']['fullDateTime']), $member['timeZone']); ?>
@@ -264,7 +292,9 @@
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
                               <tr role="row">
-                                 <th class=""></th><th class="">Name</th>
+                                 <th class=""></th>
+                                 <th class=""></th>
+                                 <th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-phone">Phone</th>
                                  <th class="hidden-phone">Pay By</th>
@@ -273,11 +303,23 @@
                               </tr>
                            </thead>
                            <tbody role="alert" aria-live="polite" aria-relevant="all">
-                              <? if(!empty($this->vars['renewals']['approved'])): foreach($this->vars['renewals']['approved'] as $member): ?>
+                              <? if(!empty($this->vars['renewals']['approved'])): foreach($this->vars['renewals']['approved'] as $member):?>
                               <tr class="gradeX odd">
                                  <? $declineCount = (array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && array_key_exists('declineCount',$member['payment']) && $member['payment']['declineCount'] > 0) ? '('.$member['payment']['declineCount'].')': ''; ?>
                                  <? $renewalREUSE = (array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && array_key_exists('renewalREUSE',$member['payment']) && $member['payment']['renewalREUSE'] == 'yes') ? 'purple': 'red'; ?>
-                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn '.$renewalREUSE.' mini view card">cc'.$declineCount.'</a>':'' ?></td><td class=" "><?=$member['displayName']?></td>
+                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn '.$renewalREUSE.' mini view card">cc'.$declineCount.'</a>':'' ?></td>
+                                 <td class=" "><?
+                                 if(!empty($member['renewalpromocode'])){
+                                    if(strtolower($member['renewalpromocode']) == 'renew2016'){
+                                       echo '<a class="btn mini blue renewalpromocode">'.$member['renewalpromocode'].'</a>';
+                                    }else{
+                                       echo '<a class="btn mini blue promocode">'.$member['renewalpromocode'].'</a>';
+                                    }
+                                    
+                                 }else{
+                                       echo '';
+                                 }?></td>
+                                 <td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
                                  <td class="hidden-phone"><?=($member['renewal']['payByCheck'] == 'yes') ? 'Chk': 'CC' ?></td>
@@ -315,7 +357,9 @@
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
                               <tr role="row">
-                                 <th class=""></th><th class="">Name</th>
+                                 <th class=""></th>
+                                 <th class=""></th>
+                                 <th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-phone">Phone</th>
                                  <th class="hidden-480">Date Paid</th>
@@ -327,7 +371,19 @@
                               <tr class="gradeX odd">
                                  <? $declineCount = (array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && array_key_exists('declineCount',$member['payment']) && $member['payment']['declineCount'] > 0) ? '('.$member['payment']['declineCount'].')': ''; ?>
                                  <? $renewalREUSE = (array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && array_key_exists('renewalREUSE',$member['payment']) && $member['payment']['renewalREUSE'] == 'yes') ? 'purple': 'red'; ?>
-                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn '.$renewalREUSE.' mini view card">cc'.$declineCount.'</a>':'' ?></td><td class=" "><?=$member['displayName']?></td>
+                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn '.$renewalREUSE.' mini view card">cc'.$declineCount.'</a>':'' ?></td>
+                                 <td class=" "><?
+                                 if(!empty($member['renewalpromocode'])){
+                                    if(strtolower($member['renewalpromocode']) == 'renew2016'){
+                                       echo '<a class="btn mini blue renewalpromocode">'.$member['renewalpromocode'].'</a>';
+                                    }else{
+                                       echo '<a class="btn mini blue promocode">'.$member['renewalpromocode'].'</a>';
+                                    }
+                                    
+                                 }else{
+                                       echo '';
+                                 }?></td>
+                                 <td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
                                  <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($member['renewal']['paidDate']['fullDateTime']), $member['timeZone']); ?>
@@ -365,7 +421,9 @@
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
                               <tr role="row">
-                                 <th class=""></th><th class="">Name</th>
+                                 <th class=""></th>
+                                 <th class=""></th>
+                                 <th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-phone">Phone</th>
                                  <th class=""></th>
@@ -376,7 +434,19 @@
                               <tr class="gradeX odd">
                                  <? $declineCount = (array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && array_key_exists('declineCount',$member['payment']) && $member['payment']['declineCount'] > 0) ? '('.$member['payment']['declineCount'].')': ''; ?>
                                  <? $renewalREUSE = (array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && array_key_exists('renewalREUSE',$member['payment']) && $member['payment']['renewalREUSE'] == 'yes') ? 'purple': 'red'; ?>
-                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn '.$renewalREUSE.' mini view card">cc'.$declineCount.'</a>':'' ?></td><td class=" "><?=$member['displayName']?></td>
+                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn '.$renewalREUSE.' mini view card">cc'.$declineCount.'</a>':'' ?></td>
+                                 <td class=" "><?
+                                 if(!empty($member['renewalpromocode'])){
+                                    if(strtolower($member['renewalpromocode']) == 'renew2016'){
+                                       echo '<a class="btn mini blue renewalpromocode">'.$member['renewalpromocode'].'</a>';
+                                    }else{
+                                       echo '<a class="btn mini blue promocode">'.$member['renewalpromocode'].'</a>';
+                                    }
+                                    
+                                 }else{
+                                       echo '';
+                                 }?></td>
+                                 <td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
                                  <td class=" "><a class="btn blue mini" href="/application/update-member/<?=$member['_id']?>"><i class=" "></i> View</a>
@@ -466,7 +536,9 @@
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
                               <tr role="row">
-                                 <th class=""></th><th class="">Name</th>
+                                 <th class=""></th>
+                                 <th class=""></th>
+                                 <th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-phone">Phone</th>
                                  <th class="hidden-480">Date</th>
@@ -478,7 +550,19 @@
                               <tr class="gradeX odd">
                                  <? $declineCount = (array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && array_key_exists('declineCount',$member['payment']) && $member['payment']['declineCount'] > 0) ? '('.$member['payment']['declineCount'].')': ''; ?>
                                  <? $renewalREUSE = (array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && array_key_exists('renewalREUSE',$member['payment']) && $member['payment']['renewalREUSE'] == 'yes') ? 'purple': 'red'; ?>
-                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn '.$renewalREUSE.' mini view card">cc'.$declineCount.'</a>':'' ?></td><td class=" "><?=$member['displayName']?></td>
+                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn '.$renewalREUSE.' mini view card">cc'.$declineCount.'</a>':'' ?></td>
+                                 <td class=" "><?
+                                 if(!empty($member['renewalpromocode'])){
+                                    if(strtolower($member['renewalpromocode']) == 'renew2016'){
+                                       echo '<a class="btn mini blue renewalpromocode">'.$member['renewalpromocode'].'</a>';
+                                    }else{
+                                       echo '<a class="btn mini blue promocode">'.$member['renewalpromocode'].'</a>';
+                                    }
+                                    
+                                 }else{
+                                       echo '';
+                                 }?></td>
+                                 <td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
                                  <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($member['renewal']['submittedDate']['fullDateTime']), $member['timeZone']); ?>
@@ -512,7 +596,9 @@
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
                               <tr role="row">
-                                 <th class=""></th><th class="">Name</th>
+                                 <th class=""></th>
+                                 <th class=""></th>
+                                 <th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-phone">Phone</th>
                                  <th class="hidden-480">Date Approved</th>
@@ -524,7 +610,19 @@
                               <tr class="gradeX odd">
                                  <? $declineCount = (array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && array_key_exists('declineCount',$member['payment']) && $member['payment']['declineCount'] > 0) ? '('.$member['payment']['declineCount'].')': ''; ?>
                                  <? $renewalREUSE = (array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && array_key_exists('renewalREUSE',$member['payment']) && $member['payment']['renewalREUSE'] == 'yes') ? 'purple': 'red'; ?>
-                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn '.$renewalREUSE.' mini view card">cc'.$declineCount.'</a>':'' ?></td><td class=" "><?=$member['displayName']?></td>
+                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn '.$renewalREUSE.' mini view card">cc'.$declineCount.'</a>':'' ?></td>
+                                 <td class=" "><?
+                                 if(!empty($member['renewalpromocode'])){
+                                    if(strtolower($member['renewalpromocode']) == 'renew2016'){
+                                       echo '<a class="btn mini blue renewalpromocode">'.$member['renewalpromocode'].'</a>';
+                                    }else{
+                                       echo '<a class="btn mini blue promocode">'.$member['renewalpromocode'].'</a>';
+                                    }
+                                    
+                                 }else{
+                                       echo '';
+                                 }?></td>
+                                 <td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
                                  <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($member['renewal']['approvedDate']['fullDateTime']), $member['timeZone']); ?>
@@ -558,7 +656,9 @@
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
                               <tr role="row">
-                                 <th class=""></th><th class="">Name</th>
+                                 <th class=""></th>
+                                 <th class=""></th>
+                                 <th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-phone">Phone</th>
                                  <th class=""></th>
@@ -569,7 +669,19 @@
                               <tr class="gradeX odd">
                                  <? $declineCount = (array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && array_key_exists('declineCount',$member['payment']) && $member['payment']['declineCount'] > 0) ? '('.$member['payment']['declineCount'].')': ''; ?>
                                  <? $renewalREUSE = (array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && array_key_exists('renewalREUSE',$member['payment']) && $member['payment']['renewalREUSE'] == 'yes') ? 'purple': 'red'; ?>
-                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn '.$renewalREUSE.' mini view card">cc'.$declineCount.'</a>':'' ?></td><td class=" "><?=$member['displayName']?></td>
+                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn '.$renewalREUSE.' mini view card">cc'.$declineCount.'</a>':'' ?></td>
+                                 <td class=" "><?
+                                 if(!empty($member['renewalpromocode'])){
+                                    if(strtolower($member['renewalpromocode']) == 'renew2016'){
+                                       echo '<a class="btn mini blue renewalpromocode">'.$member['renewalpromocode'].'</a>';
+                                    }else{
+                                       echo '<a class="btn mini blue promocode">'.$member['renewalpromocode'].'</a>';
+                                    }
+                                    
+                                 }else{
+                                       echo '';
+                                 }?></td>
+                                 <td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
                                  <td class=" "><a class="btn blue mini" href="/application/update-sustaining-member/<?=$member['_id']?>"><i class=" "></i> View</a>
@@ -659,7 +771,9 @@
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
                               <tr role="row">
-                                 <th class=""></th><th class="">Name</th>
+                                 <th class=""></th>
+                                 <th class=""></th>
+                                 <th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-phone">Phone</th>
                                  <th class="hidden-480">Date</th>
@@ -671,7 +785,19 @@
                               <tr class="gradeX odd">
                                  <? $declineCount = (array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && array_key_exists('declineCount',$member['payment']) && $member['payment']['declineCount'] > 0) ? '('.$member['payment']['declineCount'].')': ''; ?>
                                  <? $renewalREUSE = (array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && array_key_exists('renewalREUSE',$member['payment']) && $member['payment']['renewalREUSE'] == 'yes') ? 'purple': 'red'; ?>
-                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn '.$renewalREUSE.' mini view card">cc'.$declineCount.'</a>':'' ?></td><td class=" "><?=$member['displayName']?></td>
+                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn '.$renewalREUSE.' mini view card">cc'.$declineCount.'</a>':'' ?></td>
+                                 <td class=" "><?
+                                 if(!empty($member['renewalpromocode'])){
+                                    if(strtolower($member['renewalpromocode']) == 'renew2016'){
+                                       echo '<a class="btn mini blue renewalpromocode">'.$member['renewalpromocode'].'</a>';
+                                    }else{
+                                       echo '<a class="btn mini blue promocode">'.$member['renewalpromocode'].'</a>';
+                                    }
+                                    
+                                 }else{
+                                       echo '';
+                                 }?></td>
+                                 <td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
                                  <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($member['renewal']['submittedDate']['fullDateTime']), $member['timeZone']); ?>
@@ -705,7 +831,9 @@
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
                               <tr role="row">
-                                 <th class=""></th><th class="">Name</th>
+                                 <th class=""></th>
+                                 <th class=""></th>
+                                 <th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-phone">Phone</th>
                                  <th class="hidden-480">Date Approved</th>
@@ -717,7 +845,19 @@
                               <tr class="gradeX odd">
                                  <? $declineCount = (array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && array_key_exists('declineCount',$member['payment']) && $member['payment']['declineCount'] > 0) ? '('.$member['payment']['declineCount'].')': ''; ?>
                                  <? $renewalREUSE = (array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && array_key_exists('renewalREUSE',$member['payment']) && $member['payment']['renewalREUSE'] == 'yes') ? 'purple': 'red'; ?>
-                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn '.$renewalREUSE.' mini view card">cc'.$declineCount.'</a>':'' ?></td><td class=" "><?=$member['displayName']?></td>
+                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn '.$renewalREUSE.' mini view card">cc'.$declineCount.'</a>':'' ?></td>
+                                 <td class=" "><?
+                                 if(!empty($member['renewalpromocode'])){
+                                    if(strtolower($member['renewalpromocode']) == 'renew2016'){
+                                       echo '<a class="btn mini blue renewalpromocode">'.$member['renewalpromocode'].'</a>';
+                                    }else{
+                                       echo '<a class="btn mini blue promocode">'.$member['renewalpromocode'].'</a>';
+                                    }
+                                    
+                                 }else{
+                                       echo '';
+                                 }?></td>
+                                 <td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
                                  <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($member['renewal']['approvedDate']['fullDateTime']), $member['timeZone']); ?>
@@ -751,7 +891,9 @@
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
                               <tr role="row">
-                                 <th class=""></th><th class="">Name</th>
+                                 <th class=""></th>
+                                 <th class=""></th>
+                                 <th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-phone">Phone</th>
                                  <th class=""></th>
@@ -762,7 +904,19 @@
                               <tr class="gradeX odd">
                                  <? $declineCount = (array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && array_key_exists('declineCount',$member['payment']) && $member['payment']['declineCount'] > 0) ? '('.$member['payment']['declineCount'].')': ''; ?>
                                  <? $renewalREUSE = (array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && array_key_exists('renewalREUSE',$member['payment']) && $member['payment']['renewalREUSE'] == 'yes') ? 'purple': 'red'; ?>
-                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn '.$renewalREUSE.' mini view card">cc'.$declineCount.'</a>':'' ?></td><td class=" "><?=$member['displayName']?></td>
+                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn '.$renewalREUSE.' mini view card">cc'.$declineCount.'</a>':'' ?></td>
+                                 <td class=" "><?
+                                 if(!empty($member['renewalpromocode'])){
+                                    if(strtolower($member['renewalpromocode']) == 'renew2016'){
+                                       echo '<a class="btn mini blue renewalpromocode">'.$member['renewalpromocode'].'</a>';
+                                    }else{
+                                       echo '<a class="btn mini blue promocode">'.$member['renewalpromocode'].'</a>';
+                                    }
+                                    
+                                 }else{
+                                       echo '';
+                                 }?></td>
+                                 <td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
                                  <td class=" "><a class="btn blue mini" href="/application/update-founding-member/<?=$member['_id']?>"><i class=" "></i> View</a>
@@ -817,7 +971,9 @@
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
                               <tr role="row">
-                                 <th class=""></th><th class="">Name</th>
+                                 <th class=""></th>
+                                 <th class=""></th>
+                                 <th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-phone">Phone</th>
                                  <th class="hidden-480">Date </th>
@@ -829,7 +985,19 @@
                               <tr class="gradeX odd">
                                  <? $declineCount = (array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && array_key_exists('declineCount',$member['payment']) && $member['payment']['declineCount'] > 0) ? '('.$member['payment']['declineCount'].')': ''; ?>
                                  <? $renewalREUSE = (array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && array_key_exists('renewalREUSE',$member['payment']) && $member['payment']['renewalREUSE'] == 'yes') ? 'purple': 'red'; ?>
-                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn '.$renewalREUSE.' mini view card">cc'.$declineCount.'</a>':'' ?></td><td class=" "><?=$member['displayName']?></td>
+                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn '.$renewalREUSE.' mini view card">cc'.$declineCount.'</a>':'' ?></td>
+                                 <td class=" "><?
+                                 if(!empty($member['renewalpromocode'])){
+                                    if(strtolower($member['renewalpromocode']) == 'renew2016'){
+                                       echo '<a class="btn mini blue renewalpromocode">'.$member['renewalpromocode'].'</a>';
+                                    }else{
+                                       echo '<a class="btn mini blue promocode">'.$member['renewalpromocode'].'</a>';
+                                    }
+                                    
+                                 }else{
+                                       echo '';
+                                 }?></td>
+                                 <td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
                                  <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($member['renewal']['submittedDate']['fullDateTime']), $member['timeZone']); ?>
@@ -1008,6 +1176,8 @@ jQuery(document).ready(function() {
       e.preventDefault();
       document.location.href='/applications/all';
    });
+
+   $('#renew2016promocodecount').html($('.renewalpromocode').length);
 
 });      
 </script>

@@ -74,7 +74,7 @@
                                 </ul>
                                 <ul class="pull-right menu">
                                     <li><a href="/find-an-attorney" class="text-center">ATTORNEYS <small>Find One Nearby</small></a></li>
-                                    <li><a href="/eagle2016-promo" class="text-center">BECOME <br> A MEMBER</a></li>
+                                    <li><a href="https://<?=SAW_ADMIN_WEBSITE?>/application/new-member" class="text-center">BECOME <br> A MEMBER</a></li>
                                 </ul>
                             </div>
                         </div>

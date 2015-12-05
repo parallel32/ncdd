@@ -653,6 +653,64 @@ $app->get('/application/update-member/{memberId}', function ($memberId, Request 
 RENEWAL SUBMISSIONS HERE
 
 */
+$app->post('/application/renewal/promocode/validate', function (Request $request) use ($app) {
+	// retrieve document from request
+    $doc = $request->get('doc');
+    if(!empty($doc['renewalpromocode']) && (strtoupper($doc['renewalpromocode']) == 'RENEW2016')){
+    	$user = $app['session']->get('user');
+		$memberId = $user['user_id'];
+		$is_eligible = true;
+		$valid = 'yes';
+    	$message = 'Valid Promo Code.';
+    	// is member eligible? - meaning is it their first time subscribing to auto-renew?
+    	// if part of the EAGLE2016 promo then not eligible
+    	$application = new Model\Apply(array(),$app);
+		$eagle2016promocode = $application->fetchByStatus('PAID',$offset=0, $limit=10000,$filter=array('promocode'=>'EAGLE2016'));
+		foreach ($eagle2016promocode as $record) {
+			if((string)$record['memberId'] == $memberId){
+				$is_eligible = false;
+				$valid = 'no';
+				$message = 'Sorry, you cannot use this promo because you already received the EAGLE2016 promo';
+			}
+		}
+    	// if have termsAcknowledge checked in last cycle's renewal form then not eligible
+		$apply = new Model\Apply(array(),$app);
+		$query = array('termsAcknowledgement'=>'yes'
+						,'paidDate.date'=>array('$lte'=>new \MongoDate(strtotime('now'))
+												,'$gte'=>new \MongoDate(strtotime('-395 day')))
+		);
+		$renewals = $apply->find($query,$fields=array('memberId'=>1,'termsAcknowledgement'=>1),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=10000);
+
+		foreach ($renewals as $record) {
+			if($record['memberId'] == $memberId){
+				error_log('found it: '.print_r('found it',true));
+			}
+			if($record['termsAcknowledgement'] == 'yes' && $record['memberId'] == $memberId){
+				$is_eligible = false;
+				$valid = 'no';
+				$message = 'Sorry, you cannot use this promo because you already received a discount last time for signing up for auot-pay and we thank you for that!';
+			}
+		}
+
+    	// if a public defender then not eligible
+		$member = new Model\Member(array('_id'=>$memberId),$app);
+		$member = $member->findById();
+		if($member['currentMembership'] == Model\Member::$membership['PUBLIC DEFENDER']){
+			$is_eligible = false;
+			$valid = 'no';
+			$message = 'Sorry, you cannot us this promo because you are a pulbic defender';
+		}
+    	
+    	$type = (strtoupper($doc['renewalpromocode']) == 'RENEW2016') ? 'discount'.'-'.strtoupper($doc['renewalpromocode']): '';
+    }else{
+    	$type = '';
+    	$valid = 'no';
+    	$message = 'Invalid Promo Code.';
+    }
+    
+    return new Response(json_encode(array('valid'=>$valid, 'type'=>$type,'message' => $message)), 200,array('Content-Type' => 'application/json'));
+});
+
 $app->post('/application/update-member/{memberId}', function ($memberId, Request $request) use ($app) {
 
 	//get the user logged in
@@ -675,9 +733,9 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 	$doc = $request->get('doc');
 	$doc['userAgent'] = $request->headers->get('User-Agent');
 
-	if(array_key_exists('termsAcknowledgement', $doc) && $doc['termsAcknowledgement'] == 'yes'){
-    	$doc['payByCheck'] = 'no-store';
-    }
+	// if(array_key_exists('termsAcknowledgement', $doc) && $doc['termsAcknowledgement'] == 'yes'){
+ //    	$doc['payByCheck'] = 'no-store';
+ //    }
 
 	// add name, email and area to the application for identification
 	$doc['memberId'] = new \MongoId($memberId);
@@ -1673,9 +1731,9 @@ $app->get('/renewalscontacts/{offset}/{limit}', function ($offset, $limit, Reque
 		$a = $apply->findById();
 		
 		if(!empty($a)){
+
 			$member = new Model\Member($doc=array('_id'=>$renewalsc[$i]['_id']), $app);
 			$member = $member->findById();
-
 			$location = new Model\Location($doc=array('member'=>array('_id'=>$renewalsc[$i]['_id'])), $app);
 			$location = $location->getByMemberId();
 
@@ -1700,7 +1758,7 @@ $app->get('/renewalscontacts/{offset}/{limit}', function ($offset, $limit, Reque
 			$location['fax'] == $a['fax']
 			
 			*/
-			if($member['email'] == 'pewittlaw@gmail.com'){
+			if($member['email'] == 'johnson@emisonlaw.com'){
 				//echo '<pre>';print_r($a);echo '</pre>';
 				//echo '<pre>';print_r($member);echo '</pre>';
 			}
@@ -1730,65 +1788,65 @@ $app->get('/renewalscontacts/{offset}/{limit}', function ($offset, $limit, Reque
 				
 			}
 			if(!empty($a['email']) 
-				&& $member['email'] != $a['email']){
+				&& strtolower(trim($member['email'])) != strtolower(trim($a['email']))){
 				$popfalse++;
 				$popfalse_email++;
 			}
 			if(!empty($a['barNumber']) 
-				&& $member['barNumber'] != $a['barNumber']){
+				&& strtolower(trim($member['barNumber'])) != strtolower(trim($a['barNumber']))){
 				$popfalse++;
 				$popfalse_bar++;
 			}
 			if((!empty($a['listServEmail']) 
-				&& $member['listServEmail'] != $a['listServEmail'])
-				|| ($a['addToListServ'] == 'yes') && !empty($a['listServEmail']) && $member['listServEmail'] == $a['listServEmail']){
+				&& strtolower(trim($member['listServEmail'])) != strtolower(trim($a['listServEmail'])))
+				|| ($a['addToListServ'] == 'yes') && !empty($a['listServEmail']) && strtolower(trim($member['listServEmail'])) == strtolower(trim($a['listServEmail']))){
 				$popfalse++;
 				$popfalse_listserv++;
 			}
 			if(!empty($a['firmName']) 
-				&& $location['name'] != $a['firmName']){
+				&& strtolower(trim($location['name'])) != strtolower(trim($a['firmName']))){
 				$popfalse++;
 				$popfalse_firmname++;
 			}
 
 			if(!empty($a['address1']) 
-				&& $location['addressLine1'] != $a['address1']){
+				&& strtolower(trim($location['addressLine1'])) != strtolower(trim($a['address1']))){
 				$popfalse++;
 				$popfalse_address++;
 			}
 			if(!empty($a['address2']) 
-				&& $location['addressLine2'] != $a['address2']){
+				&& strtolower(trim($location['addressLine2'])) != strtolower(trim($a['address2']))){
 				$popfalse++;
 				$popfalse_address++;
 			}
 			if(!empty($a['city']) 
-				&& $location['city'] != $a['city']){
+				&& strtolower(trim($location['city'])) != strtolower(trim($a['city']))){
 				$popfalse++;
 				$popfalse_address++;
 			}
 			if(!empty($a['state']) 
-				&& $location['state'] != $a['state']){
+				&& strtolower(trim($location['state'])) != strtolower(trim($a['state']))){
 				$popfalse++;
 				$popfalse_address++;
 			}
 			if(!empty($a['postalcode']) 
-				&& $location['zip'] != $a['postalCode']){
+				&& strtolower(trim($location['zip'])) != strtolower(trim($a['postalCode']))){
 				$popfalse++;
 				$popfalse_address++;
 			}
 			if(!empty($a['country']) 
-				&& $location['country'] != $a['country']){
+				&& strtolower(trim($location['country'])) != strtolower(trim($a['country']))){
 				$popfalse++;
 				$popfalse_address++;
 			}
 
 			if(!empty($a['phone']) 
-				&& $location['phone'] != $a['phone']){
+				&& strtolower(trim($location['phone'])) != strtolower(trim($a['phone']))){
 				$popfalse++;
 				$popfalse_phone++;
 			}
 			if(!empty($a['fax']) 
-				&& $location['fax'] != $a['fax']){
+				&& strtolower(trim($location['fax'])) != strtolower(trim($a['fax']))){
 				$popfalse++;
 				$popfalse_fax++;
 			}
@@ -1845,6 +1903,7 @@ $app->get('/renewalscontacts/{offset}/{limit}', function ($offset, $limit, Reque
 //////////////
 $app->get('/renewals/{offset}/{limit}', function ($offset, $limit, Request $request) use ($app) {
 	$member = new Model\Member($doc=array(), $app);
+	$apply = new Model\Apply(array(),$app);
 	$renewals = array(
 		'unsubmitted'=>$member->fetchByRenewalStatus('UNSUBMITTED',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']),$offset, $limit)
 		,'submitted'=>$member->fetchByRenewalStatus('SUBMITTED',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']),$offset, $limit)
@@ -1855,7 +1914,6 @@ $app->get('/renewals/{offset}/{limit}', function ($offset, $limit, Request $requ
 		,'paidbycc'=>$member->fetchByPaymentStatus('paid-CC',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']), $offset, $limit)
 		,'paidbyccrecurr'=>$member->fetchByPaymentStatus('paid-CCRECUR',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']), $offset, $limit)
 	);
-	
 	$updates_founding = array(
 		'unsubmitted'=>$member->fetchByRenewalStatus('UNSUBMITTED',array(Model\Member::$membership['FOUNDING MEMBER']),$offset, $limit)
 		,'submitted'=>$member->fetchByRenewalStatus('SUBMITTED',array(Model\Member::$membership['FOUNDING MEMBER']),$offset, $limit)
@@ -1869,6 +1927,7 @@ $app->get('/renewals/{offset}/{limit}', function ($offset, $limit, Request $requ
 	$donations = $member->fetchByRenewalDonations($offset, $limit);
 
 	$crumbs = array(array('name'=>'Renewals','href'=>'/renewals'));
+
 	$view_vars = array(
 						 'active'=>'Applications/Renewal'
 						,'page-plugin'=>'datatables'
