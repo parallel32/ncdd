@@ -770,7 +770,8 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
     
     // validate the model
     $app['validateModel']($app,$application,$groups=array('update_member'));
-    if(array_key_exists('payByCheck',$doc) && strpos($doc['payByCheck'], 'no') !== false){
+    if((array_key_exists('payByCheck',$doc) && strpos($doc['payByCheck'], 'no') !== false) || (!empty($doc['paymentlite']['number']))){
+    	// this no-store has been deprecated
     	if($doc['payByCheck'] == 'no-store'){
     		$doc['paymentlite']['renewalREUSE'] = 'yes';
     	}
@@ -778,13 +779,8 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 	    $paymentlite = new Model\PaymentLite($doc['paymentlite'], $app);
     	$validate[] = array('model'=>$paymentlite,'groups'=>array('cc'));
     	$app['validateModel']($app,$validate);
-    }
-    
-    
-    // save the application
-	$app_id = $application->insert();		
-	if(array_key_exists('payByCheck',$doc) && strpos($doc['payByCheck'], 'no') !== false){
-		// save the card - retain membership credit if exists!
+
+    	// save the card - retain membership credit if exists!
 		$tmpmem = new Model\Member(array('_id'=>$memberId),$app);
 		$tmpmem = $tmpmem->findById();
 		$tmprenewalcredit = (is_array($tmpmem['payment']) && array_key_exists('renewalCredit', $tmpmem['payment'])) ? $tmpmem['payment']['renewalCredit']: '';
@@ -792,11 +788,17 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 			$paymentlite->renewalCredit = $tmprenewalcredit;
 		$paymentlite->number = $paymentlite->number.'.x';
 		$paymentlite->expYear = substr($paymentlite->expYear, -2);
+		if(array_key_exists('termsAcknowledgement', $doc) && !empty($doc['termsAcknowledgement']) && $doc['termsAcknowledgement'] == 'yes'){
+			$paymentlite->renewalREUSE = 'yes';
+		}
 		$memberobj = new Model\Member(array('_id'=>$memberId,'payment'=>$paymentlite),$app);
 		$memberobj->saveSafe();
-	}
+    }
+    
+    
+    // save the application
+	$app_id = $application->insert();		
 	
-
 	if ($doc['contributionCheck'] == 'yes') {
 		
 		$doc['payment']['ownerId'] = $app_id;
@@ -809,7 +811,7 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 		$paymentId = $payment->charge();
 
 		// thank you receipt message
-		$subject = 'NCDD Payment Received';
+		$subject = 'NCDD Contribution Payment Received';
 		$to = $payment->email;
 
 		$view_vars = array('payment'=>$payment->__toArray()
