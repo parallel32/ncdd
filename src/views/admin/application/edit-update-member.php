@@ -326,10 +326,13 @@
                                  <th>
                                     <tr><td><b>Domain</b></td><td><b>Description</b></td></tr>
                                  </th>
-                              <?$i=0; foreach ($this->vars['application']['websites'] as $website) {
+                              <?
+                              if(!empty($this->vars['application']['websites']) && is_array($this->vars['application']['websites'])):
+                              $i=0; foreach ($this->vars['application']['websites'] as $website) {
                                  echo "<tr><td><input type='text' name='doc[websites][".$i."][website]' value='".$website['website']."' class='m-wrap span12'></td><td><input type='text' name='doc[websites][".$i."][websiteDesc]' value='".$website['websiteDesc']."' class='m-wrap span12'></td></tr>";
                                  $i++;
                               }
+                              endif;
                               ?>
                               </table>
                            </div>
