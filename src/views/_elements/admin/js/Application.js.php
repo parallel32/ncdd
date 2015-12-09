@@ -560,11 +560,16 @@
 				   			the_element.find('.help-block.success').remove();
 							the_element.removeClass('success');
 							$('#promocodeverification').hide();
-							the_element.append('<span for="renewalpromocode" class="help-block error " style="">'+responseObj.message+'</span>');
+							the_element.append('<span for="renewalpromocode" class="help-block error " style="color:red">'+responseObj.message+'</span>');
+							$('.renewalpromocode').val('');
 				   		}
 				   		if(theThis.val().length == 0){
 			        		the_element.find('.help-block.success').remove();
-			        		the_element.find('.help-block.error').remove();
+			        		if(responseObj.valid == 'no'){
+			        			// don't clear it out
+			        		}else{
+			        			the_element.find('.help-block.error').remove();
+			        		}
 			        	}
 					
 				   }
