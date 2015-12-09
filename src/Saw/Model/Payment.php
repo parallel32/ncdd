@@ -449,6 +449,7 @@ EOT;
 	    }
 	    //print_r($xml_array);  // for debugging and seeing the result well formatted in the ajax response
 	    //error_log('for variable: xml_array  ==>'.print_r($xml_array,true));
+	    echo "<pre>";print_r($xml_array);echo "</pre>";
 	    //////////////////
 		// XML TO ARRAY //
 		//////////////////

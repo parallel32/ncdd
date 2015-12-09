@@ -25,7 +25,6 @@
 			$(formSelector+' input[type="text"]').keyup(function(){
 				var arrayOfClasses = $(this).attr('class').split(' ');
 			    var fieldName = arrayOfClasses[arrayOfClasses.length-1];
-			    console.log('field:'+fieldName);
 			    window.keyupVal = $(this).val();
 			    if(window.keydownVal.length > 0 && window.keyupVal.length == 0){
 			    	if(fieldName != 'focus.inputmask'){
