@@ -51,7 +51,7 @@
                             && is_array($member) && array_key_exists('payment', $member) 
                             && is_array($member['payment']) && array_key_exists('number', $member['payment']) 
                             //&& !empty($member['payment']['number'])
-                            && $application['membershipDues'] > 50
+                            && $application['membershipDues'] >= 50
                             && ($application['promocode'] == 'BONUS2015')
                         ):
                         ?>
@@ -145,7 +145,7 @@
                    && is_array($member) && array_key_exists('payment', $member) 
                    && is_array($member['payment']) && array_key_exists('number', $member['payment']) 
                    //&& !empty($member['payment']['number'])
-                   && $application['membershipDues'] > 50
+                   && $application['membershipDues'] >= 50
                    && ($application['promocode'] == 'BONUS2015')
                ):
                   // do nothing .. meaning don't do the pro-rated discount
@@ -176,7 +176,7 @@
                             && is_array($member) && array_key_exists('payment', $member) 
                             && is_array($member['payment']) && array_key_exists('number', $member['payment']) 
                             //&& !empty($member['payment']['number'])
-                            && $application['membershipDues'] > 50
+                            && $application['membershipDues'] >= 50
                             && ($application['promocode'] == 'BONUS2015')
                         ): 
                            $discount3 = 0;//$pro_rated_membership_dues['a'];
