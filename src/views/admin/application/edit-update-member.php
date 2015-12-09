@@ -685,8 +685,10 @@
       <!-- END PAGE -->
       <script src="/assets/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js" type="text/javascript"></script>   
       <?=$this->element('js/Application.js');?>
+      <?=$this->element('js/ClearField.js');?>
       <script>
-      jQuery(document).ready(function() {    
+      jQuery(document).ready(function() {
+         io.saw.ClearField.init({formArr:['#saw-form']});     
          io.saw.Application.editInit();
       });      
       </script>
