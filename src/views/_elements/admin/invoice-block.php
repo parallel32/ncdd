@@ -97,7 +97,7 @@
                         <?
                         $discount4 = 0;
                         // Sign up for automatic renewals and receive discount4
-                        //*
+                        /*
                         if($application['type'] == 'UPDATE MEMBER APPLICATION'
                             && array_key_exists('payment', $member) && array_key_exists('renewalREUSE', $member['payment']) && $member['payment']['renewalREUSE'] == 'yes'
                             && array_key_exists('payment', $member) && array_key_exists('number', $member['payment']) && !empty($member['payment']['number'])
