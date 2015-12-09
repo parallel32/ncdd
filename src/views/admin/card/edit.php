@@ -255,6 +255,9 @@
    <!-- END PAGE CONTAINER -->
 </div>
 <!-- END CONTAINER -->
+
+<?=$this->element('js/ClearField.js');?>
+
 <script>
 jQuery(document).ready(function() {    
 
@@ -335,7 +338,7 @@ jQuery(document).ready(function() {
 </script>
 <script>
 jQuery(document).ready(function() {    
-
+   io.saw.ClearField.init({formArr:['#saw-form']}); 
    // init the credit card fields
    io.saw.Payment.init()
    // prepare the month dropdown

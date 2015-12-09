@@ -59,6 +59,7 @@ $card->get('/{userId}', function ($userId, Request $request) use ($app) {
 $card->post('/edit', function (Request $request) use ($app) {
 	// retrieve document from request
     $document = $request->get('doc');
+
 	if(empty($document['userId'])){
 		$userId = call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$app);
 	}else{
@@ -82,8 +83,9 @@ $card->post('/edit', function (Request $request) use ($app) {
 	$payment->expYear = substr($payment->expYear, -2);
 	$payment = $payment->__toArray();
 	// unset any values that are empty for overwrite safety
+	// unless it's the renewalCredit
 	foreach ($payment as $key => $value) {
-		if(empty($value)){
+		if(empty($value) && $key != 'renewalCredit'){
 			unset($payment[$key]);
 		}
 	}
