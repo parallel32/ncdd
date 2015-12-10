@@ -169,29 +169,7 @@ class RegistrationSeminar extends Registration {
 		error_log(' ==>');
 		error_log(' ==>');
 		error_log(' ==>');
-/*		
-$total: 495, referer: https://local.admin.ncdd.com/registration/seminar/5594844c54fe0b9f6b742c16/2016-ncdd-winter-session-cannabis-and-cars-what-you-need-to-know-to-defend-a-marijuana-dui-case
-$base_fee: 495, referer: https://local.admin.ncdd.com/registration/seminar/5594844c54fe0b9f6b742c16/2016-ncdd-winter-session-cannabis-and-cars-what-you-need-to-know-to-defend-a-marijuana-dui-case
-$total_is_deposit_fee: , referer: https://local.admin.ncdd.com/registration/seminar/5594844c54fe0b9f6b742c16/2016-ncdd-winter-session-cannabis-and-cars-what-you-need-to-know-to-defend-a-marijuana-dui-case
-$hard_copy_fee: 50, referer: https://local.admin.ncdd.com/registration/seminar/5594844c54fe0b9f6b742c16/2016-ncdd-winter-session-cannabis-and-cars-what-you-need-to-know-to-defend-a-marijuana-dui-case
-$total_original_registration_fee: 545, referer: https://local.admin.ncdd.com/registration/seminar/5594844c54fe0b9f6b742c16/2016-ncdd-winter-session-cannabis-and-cars-what-you-need-to-know-to-defend-a-marijuana-dui-case
-$deposit_price: 50, referer: https://local.admin.ncdd.com/registration/seminar/5594844c54fe0b9f6b742c16/2016-ncdd-winter-session-cannabis-and-cars-what-you-need-to-know-to-defend-a-marijuana-dui-case
-$balance_due: 495, referer: https://local.admin.ncdd.com/registration/seminar/5594844c54fe0b9f6b742c16/2016-ncdd-winter-session-cannabis-and-cars-what-you-need-to-know-to-defend-a-marijuana-dui-case
-$total_is_full_payment: , referer: https://local.admin.ncdd.com/registration/seminar/5594844c54fe0b9f6b742c16/2016-ncdd-winter-session-cannabis-and-cars-what-you-need-to-know-to-defend-a-marijuana-dui-case
- paymentId  \t\t==>Array\n(\n)\n, referer: https://local.admin.ncdd.com/registration/seminar/5594844c54fe0b9f6b742c16/2016-ncdd-winter-session-cannabis-and-cars-what-you-need-to-know-to-defend-a-marijuana-dui-case
- depositPaymentId  \t==>Array\n(\n)\n, referer: https://local.admin.ncdd.com/registration/seminar/5594844c54fe0b9f6b742c16/2016-ncdd-winter-session-cannabis-and-cars-what-you-need-to-know-to-defend-a-marijuana-dui-case
-
-$total: 495, referer: https://local.admin.ncdd.com/registration/seminar/5594844c54fe0b9f6b742c16/2016-ncdd-winter-session-cannabis-and-cars-what-you-need-to-know-to-defend-a-marijuana-dui-case
-$base_fee: 495, referer: https://local.admin.ncdd.com/registration/seminar/5594844c54fe0b9f6b742c16/2016-ncdd-winter-session-cannabis-and-cars-what-you-need-to-know-to-defend-a-marijuana-dui-case
-$total_is_deposit_fee: , referer: https://local.admin.ncdd.com/registration/seminar/5594844c54fe0b9f6b742c16/2016-ncdd-winter-session-cannabis-and-cars-what-you-need-to-know-to-defend-a-marijuana-dui-case
-$hard_copy_fee: 0, referer: https://local.admin.ncdd.com/registration/seminar/5594844c54fe0b9f6b742c16/2016-ncdd-winter-session-cannabis-and-cars-what-you-need-to-know-to-defend-a-marijuana-dui-case
-$total_original_registration_fee: 495, referer: https://local.admin.ncdd.com/registration/seminar/5594844c54fe0b9f6b742c16/2016-ncdd-winter-session-cannabis-and-cars-what-you-need-to-know-to-defend-a-marijuana-dui-case
-$deposit_price: 0, referer: https://local.admin.ncdd.com/registration/seminar/5594844c54fe0b9f6b742c16/2016-ncdd-winter-session-cannabis-and-cars-what-you-need-to-know-to-defend-a-marijuana-dui-case
-$balance_due: 495, referer: https://local.admin.ncdd.com/registration/seminar/5594844c54fe0b9f6b742c16/2016-ncdd-winter-session-cannabis-and-cars-what-you-need-to-know-to-defend-a-marijuana-dui-case
-$total_is_full_payment: 1, referer: https://local.admin.ncdd.com/registration/seminar/5594844c54fe0b9f6b742c16/2016-ncdd-winter-session-cannabis-and-cars-what-you-need-to-know-to-defend-a-marijuana-dui-case
- paymentId  \t\t==>MongoId Object\n(\n    [$id] => 566948078a1632c51a000007\n)\n, referer: https://local.admin.ncdd.com/registration/seminar/5594844c54fe0b9f6b742c16/2016-ncdd-winter-session-cannabis-and-cars-what-you-need-to-know-to-defend-a-marijuana-dui-case
- depositPaymentId  \t==>Array\n(\n)\n, referer: https://local.admin.ncdd.com/registration/seminar/5594844c54fe0b9f6b742c16/2016-ncdd-winter-session-cannabis-and-cars-what-you-need-to-know-to-defend-a-marijuana-dui-case		*/
-		
+	
 		// is this a deposit? .. total has to match a deposit fee and there can be no paymentid's recorded
 		if($total_is_deposit_fee && empty($registration['paymentId']) && $registration['deposit'] > 0 && ((array_key_exists('depositPaymentId', $registration) && empty($registration['depositPaymentId'])) || !array_key_exists('depositPaymentId', $registration))){
 			error_log(' for variable: thisvar  ==>'.print_r('AA',true));
