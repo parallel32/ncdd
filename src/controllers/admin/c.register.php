@@ -20,7 +20,7 @@ $app['seminarConfirmationEmail'] = $app->protect(function ($app,$registrationId)
 	$seminar = $seminar->findById();
 	$seminar['description'] = $app['prepare_content']($seminar['description']);
     // email welcome message
-	$subject = 'NCDD Seminar Registration Details';
+	$subject = 'NCDD Seminar Confirmation';
 	$to = $registration['email'];
 	$view_vars = array('seminar'=>$seminar
 						,'registration'=>$registration

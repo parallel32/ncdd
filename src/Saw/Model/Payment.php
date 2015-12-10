@@ -314,7 +314,7 @@ else:
 EOT;
 
 endif;
-//*
+/*
 error_log('for variable: name  ==>'.print_r($this->name,true));
 error_log('for variable: phone  ==>'.print_r($this->phone,true));
 error_log('for variable: email  ==>'.print_r($this->email,true));
@@ -456,7 +456,7 @@ EOT;
 	        }
 	    }
 	    //print_r($xml_array);  // for debugging and seeing the result well formatted in the ajax response
-	    error_log('for variable: xml_array  ==>'.print_r($xml_array,true));
+	    //error_log('for variable: xml_array  ==>'.print_r($xml_array,true));
 	    //////////////////
 		// XML TO ARRAY //
 		//////////////////
