@@ -564,7 +564,7 @@
 							the_element.removeClass('success');
 							$('#promocodeverification').hide();
 							the_element.append('<span for="renewalpromocode" class="help-block error " style="color:red">'+responseObj.message+'</span>');
-							$('.renewalpromocode').val('');
+							
 				   		}
 				   		if(theThis.val().length == 0){
 			        		the_element.find('.help-block.success').remove();
