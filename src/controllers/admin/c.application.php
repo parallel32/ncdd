@@ -605,6 +605,9 @@ $app->post('/application/new-sustaining-member', function (Request $request) use
 ///////////////////////////////
 // UPDATE MEMBER APPLICATION //
 ///////////////////////////////
+/**
+RENEWAL 
+*/
 $app->get('/application/update-member/{memberId}', function ($memberId, Request $request) use ($app) {
 
 	//get the user logged in
@@ -653,11 +656,6 @@ $app->get('/application/update-member/{memberId}', function ($memberId, Request 
 	return $app['view']->render('application/update-member', 'default', $view_vars);
 })->value('memberId','');
 
-/**
-
-RENEWAL SUBMISSIONS HERE
-
-*/
 $app->post('/application/renewal/promocode/validate', function (Request $request) use ($app) {
 	// retrieve document from request
     $doc = $request->get('doc');
@@ -715,7 +713,11 @@ $app->post('/application/renewal/promocode/validate', function (Request $request
     
     return new Response(json_encode(array('valid'=>$valid, 'type'=>$type,'message' => $message)), 200,array('Content-Type' => 'application/json'));
 });
+/**
 
+RENEWAL SUBMISSIONS HERE
+
+*/
 $app->post('/application/update-member/{memberId}', function ($memberId, Request $request) use ($app) {
 
 	//get the user logged in
@@ -737,6 +739,17 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
     // retrieve document from request
 	$doc = $request->get('doc');
 	$doc['userAgent'] = $request->headers->get('User-Agent');
+
+	// check if the promocode is valid otherwise clear it
+	if(array_key_exists('renewalpromocode', $doc)){
+		if($doc['renewalpromocode'] == strtoupper('RENEW2016')){
+			// do nothing
+		}else{
+			// clear it
+			$doc['renewalpromocode'] = '';
+		}
+	}
+
 
 	// if(array_key_exists('termsAcknowledgement', $doc) && $doc['termsAcknowledgement'] == 'yes'){
  //    	$doc['payByCheck'] = 'no-store';
@@ -780,24 +793,35 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
     	if($doc['payByCheck'] == 'no-store'){
     		$doc['paymentlite']['renewalREUSE'] = 'yes';
     	}
-    	// prepare to save the credit card information 
-	    $paymentlite = new Model\PaymentLite($doc['paymentlite'], $app);
-    	$validate[] = array('model'=>$paymentlite,'groups'=>array('cc'));
-    	$app['validateModel']($app,$validate);
+    	// prepare to save the credit card information only if it's not an already saved card
 
-    	// save the card - retain membership credit if exists!
+    	if(strpos($doc['paymentlite']['number'], '...') !== false){
+    		// no need to re-validate since it's already saved
+    	}else{
+    		$paymentlite = new Model\PaymentLite($doc['paymentlite'], $app);
+	    	$validate[] = array('model'=>$paymentlite,'groups'=>array('cc'));
+	    	$app['validateModel']($app,$validate);	
+    	}
+	    
+
+    	// save the card and retain membership credit if exists - (only if not on file)
 		$tmpmem = new Model\Member(array('_id'=>$memberId),$app);
 		$tmpmem = $tmpmem->findById();
-		$tmprenewalcredit = (is_array($tmpmem['payment']) && array_key_exists('renewalCredit', $tmpmem['payment'])) ? $tmpmem['payment']['renewalCredit']: '';
-		if(!empty($tmprenewalcredit))
-			$paymentlite->renewalCredit = $tmprenewalcredit;
-		$paymentlite->number = $paymentlite->number.'.x';
-		$paymentlite->expYear = substr($paymentlite->expYear, -2);
-		if(array_key_exists('termsAcknowledgement', $doc) && !empty($doc['termsAcknowledgement']) && $doc['termsAcknowledgement'] == 'yes'){
-			$paymentlite->renewalREUSE = 'yes';
+
+		if(is_array($tmpmem['payment']) && array_key_exists('number', $tmpmem['payment']) && !empty($tmpmem['payment']['number'])){
+			// do nothing
+		}else{
+			$tmprenewalcredit = (is_array($tmpmem['payment']) && array_key_exists('renewalCredit', $tmpmem['payment'])) ? $tmpmem['payment']['renewalCredit']: '';
+			if(!empty($tmprenewalcredit))
+				$paymentlite->renewalCredit = $tmprenewalcredit;
+			$paymentlite->number = $paymentlite->number.'.x';
+			$paymentlite->expYear = substr($paymentlite->expYear, -2);
+			if(array_key_exists('termsAcknowledgement', $doc) && !empty($doc['termsAcknowledgement']) && $doc['termsAcknowledgement'] == 'yes'){
+				$paymentlite->renewalREUSE = 'yes';
+			}
+			$memberobj = new Model\Member(array('_id'=>$memberId,'payment'=>$paymentlite),$app);
+			$memberobj->saveSafe();
 		}
-		$memberobj = new Model\Member(array('_id'=>$memberId,'payment'=>$paymentlite),$app);
-		$memberobj->saveSafe();
     }
     
     
