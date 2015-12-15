@@ -52,7 +52,7 @@
                             && is_array($member['payment']) && array_key_exists('number', $member['payment']) 
                             //&& !empty($member['payment']['number'])
                             && $application['membershipDues'] >= 50
-                            && ($application['promocode'] == 'BONUS2015')
+                            && ($application['promocode'] == 'BONUS2015' || $application['promocode'] == 'EAGLE2016')
                         ):
                         ?>
                         <tr>
@@ -146,7 +146,7 @@
                    && is_array($member['payment']) && array_key_exists('number', $member['payment']) 
                    //&& !empty($member['payment']['number'])
                    && $application['membershipDues'] >= 50
-                   && ($application['promocode'] == 'BONUS2015')
+                   && ($application['promocode'] == 'BONUS2015' || $application['promocode'] == 'EAGLE2016')
                ):
                   // do nothing .. meaning don't do the pro-rated discount
                   $amount = $application['membershipDues'];
@@ -192,6 +192,32 @@
                         endif; 
                         //*/
                         ?>
+                        <?
+                        $discount3a = 0;
+                        // EAGLE015 NEW MEMBER PROMO
+                        //*
+                        if($application['type'] == 'NEW MEMBER APPLICATION'
+                            //&& strtotime($application['approvedDate']['iso']) < strtotime('December 31, 2014')
+                            //&& array_key_exists('payment', $member) && array_key_exists('renewalREUSE', $member['payment']) && $member['payment']['renewalREUSE'] == 'yes'
+                            && is_array($member) && array_key_exists('payment', $member) 
+                            && is_array($member['payment']) && array_key_exists('number', $member['payment']) 
+                            //&& !empty($member['payment']['number'])
+                            && $application['membershipDues'] >= 50
+                            && ($application['promocode'] == 'EAGLE2016')
+                        ): 
+                           $discount3a = 0;//$pro_rated_membership_dues['a'];
+                        ?>
+                        <tr>
+                           <td>Discount</td>
+                           <td class="hidden-480">EAGLE2016 Promo Discount - 2015 membership free</td>
+                           <td class="hidden-480">1</td>
+                           <td class="hidden-480">$0</td>
+                           <td>$0</td>
+                        </tr>
+                        <? 
+                        endif; 
+                        //*/
+                        ?>
                         
                      </tbody>
                   </table>
@@ -199,7 +225,7 @@
                <div class="row-fluid">
                   <div class="span12 invoice-block">
                      <ul class="unstyled amounts">
-                        <li><strong>Total:</strong> $<?$amount = $amount-$discount-$discount2-$discount3-$discount4; echo ($amount <= 0) ? 0:$amount;?></li>
+                        <li><strong>Total:</strong> $<?$amount = $amount-$discount-$discount2-$discount3-$discount3a-$discount4; echo ($amount <= 0) ? 0:$amount;?></li>
                      </ul>
                   </div>
                </div>

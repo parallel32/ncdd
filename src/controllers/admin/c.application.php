@@ -221,10 +221,10 @@ $app->get('/application/downloads/{file}', function ($file, Request $request) us
 $app->post('/application/promocode', function (Request $request) use ($app) {
 	// retrieve document from request
     $doc = $request->get('doc');
-    if(!empty($doc['promocode']) && (strtoupper($doc['promocode']) == 'BONUS2015' || strtoupper($doc['promocode']) == 'EAGLE2016-' || strtoupper($doc['promocode']) == 'NCDD2015-' || strtoupper($doc['promocode']) == 'NCDD2014-' || strtoupper($doc['promocode']) == 'TRIAL' || strtoupper($doc['promocode']) == 'DIVTRIAL' || strtoupper($doc['promocode']) == 'RFTRIAL' || strtoupper($doc['promocode']) == 'PDTRIAL' || strtoupper($doc['promocode']) == 'ALLENTRAPP')){
+    if(!empty($doc['promocode']) && (strtoupper($doc['promocode']) == 'BONUS2015' || strtoupper($doc['promocode']) == 'EAGLE2016' || strtoupper($doc['promocode']) == 'NCDD2015-' || strtoupper($doc['promocode']) == 'NCDD2014-' || strtoupper($doc['promocode']) == 'TRIAL' || strtoupper($doc['promocode']) == 'DIVTRIAL' || strtoupper($doc['promocode']) == 'RFTRIAL' || strtoupper($doc['promocode']) == 'PDTRIAL' || strtoupper($doc['promocode']) == 'ALLENTRAPP')){
     	$valid = 'yes';
     	$message = 'Valid Promo Code.';
-    	$type = (strtoupper($doc['promocode']) == 'BONUS2015' || strtoupper($doc['promocode']) == 'EAGLE2016-' || strtoupper($doc['promocode']) == 'NCDD2015-' || strtoupper($doc['promocode']) == 'NCDD2014-') ? 'discount'.'-'.strtoupper($doc['promocode']): 'trial';
+    	$type = (strtoupper($doc['promocode']) == 'BONUS2015' || strtoupper($doc['promocode']) == 'EAGLE2016' || strtoupper($doc['promocode']) == 'NCDD2015-' || strtoupper($doc['promocode']) == 'NCDD2014-') ? 'discount'.'-'.strtoupper($doc['promocode']): 'trial';
     }else{
     	$type = '';
     	$valid = 'no';
@@ -307,7 +307,7 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
     $app['validateModel']($app,$application);
     if(!empty($doc['promocode']) && array_key_exists('termsAcknowledgement', $doc) && $doc['termsAcknowledgement'] != 'yes'){
 
-    	if($doc['promocode'] == 'BONUS2015' ||$doc['promocode'] == 'TRIAL' || $doc['promocode'] == 'DIVTRIAL' || $doc['promocode'] == 'PDTRIAL' || $doc['promocode'] == 'RFTRIAL' || $doc['promocode'] == 'ALLENTRAPP'){
+    	if($doc['promocode'] == 'BONUS2015'  ||$doc['promocode'] == 'TRIAL' || $doc['promocode'] == 'DIVTRIAL' || $doc['promocode'] == 'PDTRIAL' || $doc['promocode'] == 'RFTRIAL' || $doc['promocode'] == 'ALLENTRAPP'){
     		//skip validation because the acknlowlegdement doesn't need to be checked
     	}else{
 	    	$response_arr = array('message'=>"Please check the authorization checkbox above and agree in order to use the promo code.",
@@ -330,11 +330,11 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 	$yilp = $application->yearsInLawPractice;
 	$now = date('Y',strtotime('today'));
 	if($now - $yilp >= 6){
-		$amt = ($doc['promocode'] == 'BONUS2015') ? $dues[6]['amount']: $dues[6]['prorated']['a'];
+		$amt = ($doc['promocode'] == 'BONUS2015' || $doc['promocode'] == 'EAGLE2016') ? $dues[6]['amount']: $dues[6]['prorated']['a'];
 	}elseif ($now - $yilp < 6){
-		$amt = ($doc['promocode'] == 'BONUS2015') ? $dues[1]['amount']: $dues[1]['prorated']['a'];
+		$amt = ($doc['promocode'] == 'BONUS2015' || $doc['promocode'] == 'EAGLE2016') ? $dues[1]['amount']: $dues[1]['prorated']['a'];
 	}
-	if($application->publicDefender == 'yes' && $doc['promocode'] == 'BONUS2015'){
+	if($application->publicDefender == 'yes' && ($doc['promocode'] == 'BONUS2015' || $doc['promocode'] == 'EAGLE2016')){
 		$amt = $dues['publicDefender']['prorated']['a'];
 		/* EAGLE2016 promo doesn't apply to public defenders
 		$amt = (empty($doc['promocode']) || $doc['promocode'] == 'EAGLE2016') ? $dues['publicDefender']['amount']: $dues['publicDefender']['prorated']['a'];
@@ -342,7 +342,7 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 		// also erase the promo code so they don't get gouped in the promo code list
 		//$doc['promocode'] = '';
 		
-		$amt = (empty($doc['promocode']) || $doc['promocode'] == 'BONUS2015') ? $dues['publicDefender']['amount']: $dues['publicDefender']['prorated']['a'];
+		$amt = (empty($doc['promocode']) || $doc['promocode'] == 'BONUS2015' || $doc['promocode'] == 'EAGLE2016') ? $dues['publicDefender']['amount']: $dues['publicDefender']['prorated']['a'];
 		// also erase the promo code so they don't get gouped in the promo code list
 		$doc['promocode'] = '';
 
