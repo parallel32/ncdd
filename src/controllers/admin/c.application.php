@@ -807,8 +807,9 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
     	// save the card and retain membership credit if exists - (only if not on file)
 		$tmpmem = new Model\Member(array('_id'=>$memberId),$app);
 		$tmpmem = $tmpmem->findById();
+		
 
-		if(is_array($tmpmem['payment']) && array_key_exists('number', $tmpmem['payment']) && !empty($tmpmem['payment']['number'])){
+		if(is_array($tmpmem['payment']) && array_key_exists('number', $tmpmem['payment']) && !empty($tmpmem['payment']['number']) && strlen($tmpmem['payment']['number']) > 10){
 			// do nothing
 		}else{
 			$tmprenewalcredit = (is_array($tmpmem['payment']) && array_key_exists('renewalCredit', $tmpmem['payment'])) ? $tmpmem['payment']['renewalCredit']: '';
