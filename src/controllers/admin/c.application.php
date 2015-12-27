@@ -2135,7 +2135,7 @@ AUTOPAY
 // this is called via xhr from the index-renewals.php view every 8 seconds 
 // and processes 3 records each time
 $app->get('/application/autopay', function (Request $request) use ($app) {
-	$limit = 3;
+	$limit = 13;
 	////////////////////////////////////////////////////////////////////////
 	// get all the applications that must be paid and prepare the objects //
 	////////////////////////////////////////////////////////////////////////
