@@ -810,7 +810,10 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 		
 
 		if(is_array($tmpmem['payment']) && array_key_exists('number', $tmpmem['payment']) && !empty($tmpmem['payment']['number']) && strlen($tmpmem['payment']['number']) > 10){
-			// do nothing
+			// make sure the renewalREUSE is true
+			$tmpmem['payment']['renewalREUSE'] = 'yes';
+			$memberobj = new Model\Member(array('_id'=>$memberId,'payment'=>$tmpmem['payment']),$app);
+			$memberobj->saveSafe();
 		}else{
 			$tmprenewalcredit = (is_array($tmpmem['payment']) && array_key_exists('renewalCredit', $tmpmem['payment'])) ? $tmpmem['payment']['renewalCredit']: '';
 			if(!empty($tmprenewalcredit))
