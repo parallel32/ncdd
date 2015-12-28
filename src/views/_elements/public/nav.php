@@ -38,7 +38,7 @@
                                     <li class="sep"></li>
                                     <li><a href="/dui-laws-in-your-state">DUI Laws in your State</a></li>
                                     <li class="sep"></li>
-                                    <li><a href="/dui-defense-attorney-quiz">Take the DUI Attorney Quiz</a></li>
+                                    <li><a href="/dui-defense-attorney-quiz">Take the Quiz</a></li>
                                     <li class="sep"></li>
                             <? if(false): ?>
                                     <li><a href="https://<?=SAW_ADMIN_WEBSITE ?>/donate">Donate</a></li>
