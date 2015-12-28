@@ -54,8 +54,9 @@ $utilities->get('/resendseminarconfirmationletter', function () use ($app) {
             $body = str_replace("#balance_due_date#", $registration['depositDueDate'], $body);
             $body = str_replace("#payment_link#", '<a href="https://'.SAW_ADMIN_WEBSITE.'/registration/seminar/deposit/'.$registrationId.'">https://'.SAW_ADMIN_WEBSITE.'/registration/seminar/deposit/'.$registrationId.'</a>', $body);
         }
+        echo "to:".$to."";
         echo "<br><br><br><br>".$body."<br><br><br><br>";
-        //$app['sendMail']($subject, $body, $to);
+        $app['sendMail']($subject, $body, $to);
     }
     return new Response('',200,array('Content-Type' => 'text/html')); 
 });
