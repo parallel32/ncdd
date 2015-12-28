@@ -144,7 +144,7 @@ class RegistrationSeminar extends Registration {
 				$total = $payment['amount'];
 			}
 			// first derive the total registration amount due
-			$accessLevel = call_user_func(function($aapp){ $user = $aapp['session']->get('user'); return $user['accessLevel'];},self::$app);
+			$accessLevel = call_user_func(function($aapp){ $user = $aapp['session']->get('user'); return (array_key_exists('accessLevel', $user)) ? $user['accessLevel'] : '';},self::$app);
 			$base_fee = (!empty($accessLevel)) ? $seminar['register']['memberPrice'] : $seminar['register']['nonMemberPrice'];
 		$total_is_deposit_fee = ($total < $base_fee) ? true : false;
 			$hard_copy_fee = ($registration['hardCopy'] == 'YES') ? $registration['hardCopyFee']: 0;
@@ -153,8 +153,8 @@ class RegistrationSeminar extends Registration {
 			$balance_due = (int)$total_original_registration_fee - (int)$deposit_price;
 		$total_is_full_payment = ($total == $base_fee) ? true : false;
 
-		error_log(' ==>');
-		error_log(' ==>');
+		// error_log(' ==>');
+		// error_log(' ==>');
 		error_log('$total: '.print_r($total,true));
 		error_log('$base_fee: '.print_r($base_fee,true));
 		error_log('$total_is_deposit_fee: '.print_r($total_is_deposit_fee,true));
@@ -165,10 +165,10 @@ class RegistrationSeminar extends Registration {
 		error_log('$total_is_full_payment: '.print_r($total_is_full_payment,true));
 		error_log(' paymentId  		==>'.print_r($registration['paymentId'],true));
 		error_log(' depositPaymentId  	==>'.print_r((array_key_exists('depositPaymentId', $registration)) ? $registration['depositPaymentId'] : '',true));
-		error_log(' ==>');
-		error_log(' ==>');
-		error_log(' ==>');
-		error_log(' ==>');
+		// error_log(' ==>');
+		// error_log(' ==>');
+		// error_log(' ==>');
+		// error_log(' ==>');
 	
 		// is this a deposit? .. total has to match a deposit fee and there can be no paymentid's recorded
 		if($total_is_deposit_fee && empty($registration['paymentId']) && $registration['deposit'] > 0 && ((array_key_exists('depositPaymentId', $registration) && empty($registration['depositPaymentId'])) || !array_key_exists('depositPaymentId', $registration))){

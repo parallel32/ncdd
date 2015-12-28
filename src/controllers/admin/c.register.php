@@ -352,6 +352,7 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 				$payment = new Model\Payment($doc['payment'],$app);
 				$app['validateModel']($app, $payment,$groups=array('cc'));
 			try {
+				
 				$paymentId = $payment->charge();
 				$rs_id = $rs->insert();
 				$payment_update = new Model\Payment(array('ownerId'=>$rs_id,'_id'=>$paymentId),$app);

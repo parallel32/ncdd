@@ -21,7 +21,7 @@
 			   			io.saw.FormGet.activate({postUrl:'/registration/'+responseObj.paymentId.$id+'/pay/'+responseObj.registrationId.$id
 					    	,postOnComplete:function(responseObj,responseStatus){}
 					      	,postOnSuccess:function(responseObj){
-					         //document.location.href='/registrations';
+					         
 					      	}
 					   	});
 					}
@@ -46,20 +46,13 @@
 			   ,postOnSuccess:function(responseObj){
 			   	    window.successful_reg_msg = responseObj.message;
 			   		
-			   		$('.submit-registration').html('<i class="icon-time"></i> Please Wait - Processing your confirmation letter..');
-			   		if(responseObj.hasOwnProperty('paymentId') && responseObj.paymentId.hasOwnProperty('$id')){
-			   			io.saw.FormGet.activate({postUrl:'/registration/'+responseObj.paymentId.$id+'/pay/'+responseObj.registrationId.$id
-					    	,postOnComplete:function(responseObj,responseStatus){}
-					      	,postOnSuccess:function(responseObj){
-					         //document.location.href='/registrations';
-						        $('#save-success .modal-body p').html(window.successful_reg_msg);
+			   			        $('#save-success .modal-body p').html(window.successful_reg_msg);
 						      	$('#save-success-label').html(responseObj.label);
 						      	$('#save-success').modal({keyboard: false});   		
 						      	//$('.submit-registration').prop("disabled",true);
 						   		$('.submit-registration').html('<i class="icon-ok"></i> Registration Successful');
-					      	}
-					   	});
-					}
+
+			    	
 			   }
 			   ,postOnErrors:function(responseObj){
 			   		$('#payment-form .number').val(io.saw.Payment.hold_card);
