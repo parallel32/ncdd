@@ -17,6 +17,50 @@ use TTools\App;
 $utilities = $app['controllers_factory'];
 
 
+// put in registration id's and send the confirmation letter to folks who didn't recieve it due to system glitches.
+$utilities->get('/resendseminarconfirmationletter', function () use ($app) {
+
+    $reg_arr[] = '56743ea71f1d75392a9c6671';
+    $reg_arr[] = '5669ac51a6ec61ba70f351aa';
+    $reg_arr[] = '5668c017a6ec611874f351aa';
+    $reg_arr[] = '5668a0cf54fe0b3758742c1b';
+    $reg_arr[] = '5666e4841f1d75a71bdb4c14';
+    $reg_arr[] = '5665bf5d54fe0bc310742c1a';
+    $reg_arr[] = '566256541f1d75ae7cd3e88d';
+    $reg_arr[] = '5660c5271f1d75e71dd3e88d';
+    $reg_arr[] = '5660b9f2a6ec61d748eaa08a';
+    $reg_arr[] = '564240f0a6ec61531195d1e7';
+    $reg_arr[] = '56423fa6a6ec61d10f95d1e7';
+
+    foreach ($reg_arr as $key => $value) {
+        $registrationId = $value;
+
+        $registration = new Model\Registration(array('_id'=>$registrationId), $app);
+        $registration = $registration->findById($id='_id', $slaveOkay=false);
+        $seminar = new Model\Seminar(array('_id'=>$registration['seminarId']),$app);
+        $seminar = $seminar->findById();
+        $seminar['description'] = $app['prepare_content']($seminar['description']);
+        // email welcome message
+        $subject = 'NCDD Seminar Confirmation';
+        $to = $registration['email'];
+        $view_vars = array('seminar'=>$seminar
+                            ,'registration'=>$registration
+        );
+        $body = $app['view']->render('email/registration-seminar-customer-confirmation','email', $view_vars);
+        $body = str_replace("#total#", '$'.$registration['total'], $body);
+
+        if($registration['currentStatus'] == Model\Registration::$status['DEPOSIT'] || $registration['currentStatus'] == Model\Registration::$status['DEPOSITBALANCE']){
+            $body = str_replace("#balance_due#", '$'.((int)$registration['registrationFeeOriginal'] - (int)$registration['deposit']), $body);
+            $body = str_replace("#balance_due_date#", $registration['depositDueDate'], $body);
+            $body = str_replace("#payment_link#", '<a href="https://'.SAW_ADMIN_WEBSITE.'/registration/seminar/deposit/'.$registrationId.'">https://'.SAW_ADMIN_WEBSITE.'/registration/seminar/deposit/'.$registrationId.'</a>', $body);
+        }
+        echo "<br><br><br><br>".$body."<br><br><br><br>";
+        //$app['sendMail']($subject, $body, $to);
+    }
+    return new Response('',200,array('Content-Type' => 'text/html')); 
+});
+
+
 //////////////////////////////////////////////////////////////////////////////////
 // members 
 // some applications checked the allow card on file but didn't get the discount //
