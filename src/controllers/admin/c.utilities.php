@@ -20,17 +20,17 @@ $utilities = $app['controllers_factory'];
 // put in registration id's and send the confirmation letter to folks who didn't recieve it due to system glitches.
 $utilities->get('/resendseminarconfirmationletter', function () use ($app) {
     return false;
-    $reg_arr[] = '56743ea71f1d75392a9c6671';
-    $reg_arr[] = '5669ac51a6ec61ba70f351aa';
-    $reg_arr[] = '5668c017a6ec611874f351aa';
-    $reg_arr[] = '5668a0cf54fe0b3758742c1b';
-    $reg_arr[] = '5666e4841f1d75a71bdb4c14';
-    $reg_arr[] = '5665bf5d54fe0bc310742c1a';
-    $reg_arr[] = '566256541f1d75ae7cd3e88d';
-    $reg_arr[] = '5660c5271f1d75e71dd3e88d';
-    $reg_arr[] = '5660b9f2a6ec61d748eaa08a';
-    $reg_arr[] = '564240f0a6ec61531195d1e7';
-    $reg_arr[] = '56423fa6a6ec61d10f95d1e7';
+    $reg_arr[] = '568194f51f1d75597baa2f50';
+    // $reg_arr[] = '5669ac51a6ec61ba70f351aa';
+    // $reg_arr[] = '5668c017a6ec611874f351aa';
+    // $reg_arr[] = '5668a0cf54fe0b3758742c1b';
+    // $reg_arr[] = '5666e4841f1d75a71bdb4c14';
+    // $reg_arr[] = '5665bf5d54fe0bc310742c1a';
+    // $reg_arr[] = '566256541f1d75ae7cd3e88d';
+    // $reg_arr[] = '5660c5271f1d75e71dd3e88d';
+    // $reg_arr[] = '5660b9f2a6ec61d748eaa08a';
+    // $reg_arr[] = '564240f0a6ec61531195d1e7';
+    // $reg_arr[] = '56423fa6a6ec61d10f95d1e7';
 
     foreach ($reg_arr as $key => $value) {
         $registrationId = $value;
