@@ -19,8 +19,8 @@ $utilities = $app['controllers_factory'];
 
 // put in registration id's and send the confirmation letter to folks who didn't recieve it due to system glitches.
 $utilities->get('/resendseminarconfirmationletter', function () use ($app) {
-    return false;
-    $reg_arr[] = '568194f51f1d75597baa2f50';
+    
+    $reg_arr[] = '5671c9ae1f1d75127d9c666d';
     // $reg_arr[] = '5669ac51a6ec61ba70f351aa';
     // $reg_arr[] = '5668c017a6ec611874f351aa';
     // $reg_arr[] = '5668a0cf54fe0b3758742c1b';
