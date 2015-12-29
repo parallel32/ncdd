@@ -144,7 +144,7 @@ class RegistrationSeminar extends Registration {
 				$total = $payment['amount'];
 			}
 			// first derive the total registration amount due
-			$accessLevel = call_user_func(function($aapp){ $user = $aapp['session']->get('user'); return (array_key_exists('accessLevel', $user)) ? $user['accessLevel'] : '';},self::$app);
+			$accessLevel = call_user_func(function($aapp){ $user = $aapp['session']->get('user'); return (array_key_exists('accessLevel', $user) && $user['accessLevel'] < ADMIN) ? $user['accessLevel'] : '';},self::$app);
 			$base_fee = (!empty($accessLevel)) ? $seminar['register']['memberPrice'] : $seminar['register']['nonMemberPrice'];
 		$total_is_deposit_fee = ($total < $base_fee) ? true : false;
 			$hard_copy_fee = ($registration['hardCopy'] == 'YES') ? $registration['hardCopyFee']: 0;
