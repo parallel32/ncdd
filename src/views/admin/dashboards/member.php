@@ -179,7 +179,7 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                      <!-- BEGIN EXAMPLE TABLE PORTLET-->
                      <div class="portlet box red">
                         <div class="portlet-title" id="application">
-                           <div class="caption"><i class="icon-user"></i>Your credit card has either <b>expired</b> will expire soon.  Please check the information we have on file for you.</div>
+                           <div class="caption"><i class="icon-user"></i>Your credit card has either <b>expired</b> or will expire soon.  Please check the information we have on file for you.</div>
                         </div>
                         <div class="portlet-body">
                            <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">

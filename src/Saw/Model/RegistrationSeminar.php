@@ -144,8 +144,8 @@ class RegistrationSeminar extends Registration {
 				$total = $payment['amount'];
 			}
 			// first derive the total registration amount due
-			$accessLevel = call_user_func(function($aapp){ $user = $aapp['session']->get('user'); return (array_key_exists('accessLevel', $user) && $user['accessLevel'] < ADMIN) ? $user['accessLevel'] : '';},self::$app);
-			$base_fee = (!empty($accessLevel)) ? $seminar['register']['memberPrice'] : $seminar['register']['nonMemberPrice'];
+			//$accessLevel = call_user_func(function($aapp){ $user = $aapp['session']->get('user'); return (array_key_exists('accessLevel', $user) && $user['accessLevel'] < ADMIN) ? $user['accessLevel'] : '';},self::$app);
+			$base_fee = (!empty($registration['memberId'])) ? $seminar['register']['memberPrice'] : $seminar['register']['nonMemberPrice'];
 		$total_is_deposit_fee = ($total < $base_fee) ? true : false;
 			$hard_copy_fee = ($registration['hardCopy'] == 'YES') ? $registration['hardCopyFee']: 0;
 			$total_original_registration_fee = $base_fee + $hard_copy_fee;
@@ -200,24 +200,23 @@ class RegistrationSeminar extends Registration {
 
 		// confirmation letter email
 		$user = self::$app['session']->get('user');
-	    if(is_array($user) && array_key_exists('accessLevel', $user) && ($user['accessLevel'] == ADMIN || ((is_array($user)) && array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') )) && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes'){
+	    if(is_array($user) && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes'){
 			// don't send the email		
 		}else{
 			$pp['seminarConfirmationEmail']($pp,$registration['_id']);
 		}
-	    // thank you receipt message
-		$subject = 'NCDD Payment Received';
-		$to = $payment['email'];
-		$view_vars = array('payment'=>$payment
-							,'paymentId'=>$paymentId
-							,'email'=>$payment['email']
-		);
-		$body = $pp['view']->render('email/payment-thankyou','email', $view_vars);
 		
-		
-		if(is_array($user) && array_key_exists('accessLevel', $user) && ($user['accessLevel'] == ADMIN || ((is_array($user)) && array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') )) && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes'){
+		// thank you and receipt email
+		if(is_array($user) && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes'){
 			// don't send the email		
 		}else{
+			$subject = 'NCDD Payment Received';
+			$to = $payment['email'];
+			$view_vars = array('payment'=>$payment
+								,'paymentId'=>$paymentId
+								,'email'=>$payment['email']
+			);
+			$body = $pp['view']->render('email/payment-thankyou','email', $view_vars);
 			$pp['sendMail']($subject, $body, $to);	
 		}
 

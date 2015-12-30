@@ -15,7 +15,7 @@ $app['applicationEmails'] = $app->protect(function ($app,$applicationId,$context
 
 	$apply = new Model\Apply(array('_id'=>$applicationId), $app);
 	$apply_arr = $apply->findById();
-error_log('apply_arr:'.print_r($apply_arr,true));
+	
 	if($context == 'new-member-welcome'){
 		switch ($apply_arr['class']) {
 			case 'NewMemberApplication': // old deprecated
