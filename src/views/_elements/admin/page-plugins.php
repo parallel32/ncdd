@@ -27,15 +27,15 @@
          break;
       case 'datatables':
          echo <<< EOT
-            <script type="text/javascript" src="{SAW_SSL_CDN}/assets/plugins/select2/select2.min.js"></script>
-            <script type="text/javascript" src="{SAW_SSL_CDN}/assets/plugins/data-tables/jquery.dataTables.js"></script>
-            <script type="text/javascript" src="{SAW_SSL_CDN}/assets/plugins/data-tables/DT_bootstrap.js"></script>
+            <script type="text/javascript" src="{$SAW_SSL_CDN}/assets/plugins/select2/select2.min.js"></script>
+            <script type="text/javascript" src="{$SAW_SSL_CDN}/assets/plugins/data-tables/jquery.dataTables.js"></script>
+            <script type="text/javascript" src="{$SAW_SSL_CDN}/assets/plugins/data-tables/DT_bootstrap.js"></script>
 
 EOT;
          break;
       case 'timeline':
          echo <<< EOT
-            <script type="text/javascript" src="{SAW_SSL_CDN}/assets/plugins/clockface/js/clockface.js"></script>
+            <script type="text/javascript" src="{$SAW_SSL_CDN}/assets/plugins/clockface/js/clockface.js"></script>
 EOT;
          break;
       case 'forms':
@@ -45,37 +45,37 @@ EOT;
          break;
       case 'chosen':
          echo <<< EOT
-            <script type="text/javascript" src="{SAW_SSL_CDN}/assets/plugins/chosen-bootstrap/chosen/chosen.jquery.min.js"></script>
+            <script type="text/javascript" src="{$SAW_SSL_CDN}/assets/plugins/chosen-bootstrap/chosen/chosen.jquery.min.js"></script>
 
 EOT;
          break;
       case 'multi-select':
          echo <<< EOT
-            <script type="text/javascript" src="{SAW_SSL_CDN}/assets/plugins/jquery-multi-select/js/jquery.multi-select.js"></script>   
+            <script type="text/javascript" src="{$SAW_SSL_CDN}/assets/plugins/jquery-multi-select/js/jquery.multi-select.js"></script>   
 
 EOT;
          break;
       case 'checkboxes':
          echo <<< EOT
-             <script type="text/javascript" src="{SAW_SSL_CDN}/assets/plugins/bootstrap-toggle-buttons/static/js/jquery.toggle.buttons.js"></script>
+             <script type="text/javascript" src="{$SAW_SSL_CDN}/assets/plugins/bootstrap-toggle-buttons/static/js/jquery.toggle.buttons.js"></script>
 
 EOT;
          break;
       case 'datepicker':
          echo <<< EOT
-              <script type="text/javascript" src="{SAW_SSL_CDN}/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+              <script type="text/javascript" src="{$SAW_SSL_CDN}/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 
 EOT;
          break;
       case 'editor1':
          echo <<< EOT
-            <script type="text/javascript" src="{SAW_SSL_CDN}/assets/snapeditor/snapeditor-1.9.0.js"></script>
+            <script type="text/javascript" src="{$SAW_SSL_CDN}/assets/snapeditor/snapeditor-1.9.0.js"></script>
             
 EOT;
          break;
       case 'editor':
          echo <<< EOT
-            <script type="text/javascript" src="{SAW_SSL_CDN}/assets/snapeditor2/snapeditor.js"></script>
+            <script type="text/javascript" src="{$SAW_SSL_CDN}/assets/snapeditor2/snapeditor.js"></script>
 
 EOT;
          break;
@@ -171,8 +171,8 @@ EOT;
             };
              
             </script>
-             <script src="{SAW_SSL_CDN}/assets/aloha/aloha/lib/require.js"></script>
-             <script src="{SAW_SSL_CDN}/assets/aloha/aloha/lib/aloha.js" data-aloha-plugins="common/ui,
+             <script src="{$SAW_SSL_CDN}/assets/aloha/aloha/lib/require.js"></script>
+             <script src="{$SAW_SSL_CDN}/assets/aloha/aloha/lib/aloha.js" data-aloha-plugins="common/ui,
                 common/format,
                             common/table,
                             common/list,
@@ -188,26 +188,26 @@ EOT;
       case 'fileupload':
          echo <<< EOT
             <!-- BEGIN:File Upload Plugin JS files-->
-            <script src="{SAW_SSL_CDN}/assets/plugins/jquery-file-upload/js/vendor/jquery.ui.widget.js"></script>
+            <script src="{$SAW_SSL_CDN}/assets/plugins/jquery-file-upload/js/vendor/jquery.ui.widget.js"></script>
             <!-- The Templates plugin is included to render the upload/download listings -->
-            <script src="{SAW_SSL_CDN}/assets/plugins/jquery-file-upload/js/vendor/tmpl.min.js"></script>
+            <script src="{$SAW_SSL_CDN}/assets/plugins/jquery-file-upload/js/vendor/tmpl.min.js"></script>
             <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
-            <script src="{SAW_SSL_CDN}/assets/plugins/jquery-file-upload/js/vendor/load-image.min.js"></script>
+            <script src="{$SAW_SSL_CDN}/assets/plugins/jquery-file-upload/js/vendor/load-image.min.js"></script>
             <!-- The Canvas to Blob plugin is included for image resizing functionality -->
-            <script src="{SAW_SSL_CDN}/assets/plugins/jquery-file-upload/js/vendor/canvas-to-blob.min.js"></script>
+            <script src="{$SAW_SSL_CDN}/assets/plugins/jquery-file-upload/js/vendor/canvas-to-blob.min.js"></script>
             <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
-            <script src="{SAW_SSL_CDN}/assets/plugins/jquery-file-upload/js/jquery.iframe-transport.js"></script>
+            <script src="{$SAW_SSL_CDN}/assets/plugins/jquery-file-upload/js/jquery.iframe-transport.js"></script>
             <!-- The basic File Upload plugin -->
-            <script src="{SAW_SSL_CDN}/assets/plugins/jquery-file-upload/js/jquery.fileupload.js"></script>
+            <script src="{$SAW_SSL_CDN}/assets/plugins/jquery-file-upload/js/jquery.fileupload.js"></script>
             <!-- The File Upload file processing plugin -->
-            <script src="{SAW_SSL_CDN}/assets/plugins/jquery-file-upload/js/jquery.fileupload-fp.js"></script>
+            <script src="{$SAW_SSL_CDN}/assets/plugins/jquery-file-upload/js/jquery.fileupload-fp.js"></script>
             <!-- The File Upload user interface plugin -->
-            <script src="{SAW_SSL_CDN}/assets/plugins/jquery-file-upload/js/jquery.fileupload-ui.js"></script>
+            <script src="{$SAW_SSL_CDN}/assets/plugins/jquery-file-upload/js/jquery.fileupload-ui.js"></script>
             <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE8+ -->
-            <!--[if gte IE 8]><script src="{SAW_SSL_CDN}/assets/plugins/jquery-file-upload/js/cors/jquery.xdr-transport.js"></script><![endif]-->
+            <!--[if gte IE 8]><script src="{$SAW_SSL_CDN}/assets/plugins/jquery-file-upload/js/cors/jquery.xdr-transport.js"></script><![endif]-->
             <!-- END:File Upload Plugin JS files-->
 
-            <script type="text/javascript" src="{SAW_SSL_CDN}/assets/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+            <script type="text/javascript" src="{$SAW_SSL_CDN}/assets/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
 
 
 EOT;
@@ -216,16 +216,16 @@ EOT;
          case 'crop':
          echo <<< EOT
             <!-- jcrop -->
-            <script src="{SAW_SSL_CDN}/assets/plugins/jcrop/js/jquery.Jcrop.min.js"></script>
+            <script src="{$SAW_SSL_CDN}/assets/plugins/jcrop/js/jquery.Jcrop.min.js"></script>
 
 
 EOT;
          case 'amcharts':
          echo <<< EOT
             <!-- amcharts -->
-            <script src="{SAW_SSL_CDN}/assets/plugins/amcharts/amcharts/amcharts.js" type="text/javascript"></script>
-            <script src="{SAW_SSL_CDN}/assets/plugins/amcharts/amcharts/serial.js" type="text/javascript"></script>
-            <script src="{SAW_SSL_CDN}/assets/plugins/amcharts/amcharts/themes/light.js" type="text/javascript"></script>
+            <script src="{$SAW_SSL_CDN}/assets/plugins/amcharts/amcharts/amcharts.js" type="text/javascript"></script>
+            <script src="{$SAW_SSL_CDN}/assets/plugins/amcharts/amcharts/serial.js" type="text/javascript"></script>
+            <script src="{$SAW_SSL_CDN}/assets/plugins/amcharts/amcharts/themes/light.js" type="text/javascript"></script>
             
 EOT;
          break;
