@@ -4,20 +4,20 @@
         <title></title>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="/assets/stylesheets/bootstrap.css?v=2" rel="stylesheet" media="screen">
-        <link href="/assets/stylesheets/bootstrap-responsive.css" rel="stylesheet">
-        <link href="/assets/stylesheets/screenv5.2.min.css" rel="stylesheet">  <!--4522, 3364-->
-        <link href="/assets/stylesheets/responsive.css" rel="stylesheet">
-        <script src="/assets/js/jquery-1.10.1.min.js"></script>
-        <script src="/assets/js/jquery.blockui.min.js"></script>
-        <script src="/assets/js/bootstrap.min.js"></script>
-        <script src="/assets/js/custom.js"></script>
+        <link href="<?=SAW_PUBLIC_SSL_CDN?>/assets/stylesheets/bootstrap.css?v=2" rel="stylesheet" media="screen">
+        <link href="<?=SAW_PUBLIC_SSL_CDN?>/assets/stylesheets/bootstrap-responsive.css" rel="stylesheet">
+        <link href="<?=SAW_PUBLIC_SSL_CDN?>/assets/stylesheets/screenv5.2.min.css" rel="stylesheet">  <!--4522, 3364-->
+        <link href="<?=SAW_PUBLIC_SSL_CDN?>/assets/stylesheets/responsive.css" rel="stylesheet">
+        <script src="<?=SAW_PUBLIC_SSL_CDN?>/assets/js/jquery-1.10.1.min.js"></script>
+        <script src="<?=SAW_PUBLIC_SSL_CDN?>/assets/js/jquery.blockui.min.js"></script>
+        <script src="<?=SAW_PUBLIC_SSL_CDN?>/assets/js/bootstrap.min.js"></script>
+        <script src="<?=SAW_PUBLIC_SSL_CDN?>/assets/js/custom.js"></script>
         <style>
         @font-face {
   font-family: 'Bree Serif';
   font-style: normal;
   font-weight: 400;
-  src: local('Bree Serif'), local('BreeSerif-Regular'), url(/assets/fonts/LQ7WLTaITDg4OSRuOZCps73hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+  src: local('Bree Serif'), local('BreeSerif-Regular'), url(<?=SAW_PUBLIC_SSL_CDN?>/assets/fonts/LQ7WLTaITDg4OSRuOZCps73hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
 }
             .mainMenu .tab-content .tab-pane{display:none}
 
@@ -36,7 +36,7 @@
 .dropdown-menu.discover.fullWidthDropDown.specialwidthsetting { padding:0 0 0 20px; width:30%;}
 .dropdown-menu.learn.fullWidthDropDown.specialwidthsetting { padding:0 0 0 20px; width:30%;}
         </style>
-            <link href="/assets/stylesheets/bootstrap-modal.css" rel="stylesheet" type="text/css"/>
+            <link href="<?=SAW_PUBLIC_SSL_CDN?>/assets/stylesheets/bootstrap-modal.css" rel="stylesheet" type="text/css"/>
 
     </head>
     <body>

@@ -55,7 +55,7 @@
 
                                 </div>
                                 <div class="tab-pane" id="nationallyRecognized">
-                                    <img src="/assets/img/certificate.png" alt="" class="pull-right certificate">
+                                    <img src="<?=SAW_PUBLIC_SSL_CDN?>/assets/img/certificate.png" alt="" class="pull-right certificate">
                                     <?=$this->vars['nr']['body']?>
                                     <!--
                                     <ul class="nationallyRecognizedInfo clearfix">
@@ -64,7 +64,7 @@
                                     </ul> -->
                                 </div>
                                 <div class="tab-pane" id="missionStatement">
-                                    <img src="/assets/img/missionStatementFoto.png" alt="" class="pull-right missionStatementFoto">
+                                    <img src="<?=SAW_PUBLIC_SSL_CDN?>/assets/img/missionStatementFoto.png" alt="" class="pull-right missionStatementFoto">
                                     <?=$this->vars['ms']['body']?>
                                 </div>
                                 
@@ -321,7 +321,7 @@ The alcohol breath test is the most commonly used form of alcohol testing eviden
                             </div>
                         </div>
                         <div class="attorneyContent">
-                        <link href='/assets/stylesheets/theCss_m.css?v=<?=time()?>' rel='stylesheet' type='text/css'>
+                        <link href='<?=SAW_PUBLIC_SSL_CDN?>/assets/stylesheets/theCss_m.css?v=<?=time()?>' rel='stylesheet' type='text/css'>
                          <script>
                             var map_config = {
                             'default':{
@@ -988,7 +988,7 @@ The alcohol breath test is the most commonly used form of alcohol testing eviden
                         }
 
                         </script>
-                        <script src="/assets/js/theJava.js"></script>
+                        <script src="<?=SAW_PUBLIC_SSL_CDN?>/assets/js/theJava.js"></script>
                         <script type="text/javascript">
                             $(function(){
                                 //*

@@ -2,7 +2,7 @@
                     <div class="row-fluid becomeAmember">
                         <div class="becomeAmemberContent">
                             <div class="span3">
-                                <img src="/assets/img/badges/boardcertified.png">
+                                <img src="<?=SAW_PUBLIC_SSL_CDN?>/assets/img/badges/boardcertified.png">
                             </div>
                             <div class="span9">
                                 <h2><a href="/apply-for-board-certification">Apply For Board Certification</a></h2>

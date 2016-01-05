@@ -7,7 +7,7 @@
             <div class="span12">
                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                <h3 class="page-title text-center">
-                  <img src="/assets/img/ncdd-login2-logo.png">
+                  <img src="<?=SAW_PUBLIC_SSL_CDN?>/assets/img/ncdd-login2-logo.png">
                   <br/>Store Purchase Receipt
                </h3>
                <p class="text-center">

@@ -8,7 +8,7 @@
 
 
 
-                        <script src="/assets/js/cloud-zoom.1.0.2.js"></script>
+                        <script src="<?=SAW_PUBLIC_SSL_CDN?>/assets/js/cloud-zoom.1.0.2.js"></script>
 
 
                         <div class="row-fluid discoverLearnPage NCDDListDetailPage">

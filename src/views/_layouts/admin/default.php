@@ -10,21 +10,21 @@
 	<meta content="" name="description" />
 	<meta content="" name="author" />
 	<!-- BEGIN GLOBAL MANDATORY STYLES -->
-	<link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-	<link href="/assets/plugins/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
-	<link href="/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-	<link href="/assets/css/style-metro.min.css" rel="stylesheet" type="text/css"/>
-	<link href="/assets/css/style.min.css" rel="stylesheet" type="text/css"/>
-	<link href="/assets/css/style-responsive.min.css" rel="stylesheet" type="text/css"/>
-	<link href="/assets/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color"/>
-	<link href="/assets/plugins/uniform/css/uniform.default.min.css" rel="stylesheet" type="text/css"/>
+	<link href="<?=SAW_SSL_CDN?>/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="<?=SAW_SSL_CDN?>/assets/plugins/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+	<link href="<?=SAW_SSL_CDN?>/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<link href="<?=SAW_SSL_CDN?>/assets/css/style-metro.min.css" rel="stylesheet" type="text/css"/>
+	<link href="<?=SAW_SSL_CDN?>/assets/css/style.min.css" rel="stylesheet" type="text/css"/>
+	<link href="<?=SAW_SSL_CDN?>/assets/css/style-responsive.min.css" rel="stylesheet" type="text/css"/>
+	<link href="<?=SAW_SSL_CDN?>/assets/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color"/>
+	<link href="<?=SAW_SSL_CDN?>/assets/plugins/uniform/css/uniform.default.min.css" rel="stylesheet" type="text/css"/>
 	<!-- END GLOBAL MANDATORY STYLES -->
 	<?=$this->element('page-styles')?>
-   	<link rel="shortcut icon" href="/assets/img/favicon.ico" />
+   	<link rel="shortcut icon" href="<?=SAW_SSL_CDN?>/assets/img/favicon.ico" />
 	<!-- jquery included here instead of in page level plugins section at the bottom because I need access to the document.ready function to 
    initialize page level scripts within the page itself -->
-   <script src="/assets/plugins/jquery-1.10.1.min.js" type="text/javascript"></script>   
-	<link href="/assets/plugins/bootstrap-modal/css/bootstrap-modal.min.css" rel="stylesheet" type="text/css"/>
+   <script src="<?=SAW_SSL_CDN?>/assets/plugins/jquery-1.10.1.min.js" type="text/javascript"></script>   
+	<link href="<?=SAW_SSL_CDN?>/assets/plugins/bootstrap-modal/css/bootstrap-modal.min.css" rel="stylesheet" type="text/css"/>
 
    <!-- define the namespace as early as possible to make it accessible to page level scripts defined in the page itself. -->
    <?=$this->element('js/Namespace.js');?>
@@ -43,7 +43,7 @@
 		 try {if ($buoop.ol) $buoop.ol();}catch (e) {} 
 		 var e = document.createElement("script"); 
 		 e.setAttribute("type", "text/javascript"); 
-		 e.setAttribute("src", "/assets/scripts/browser-update.org.update.js"); 
+		 e.setAttribute("src", "<?=SAW_SSL_CDN?>/assets/scripts/browser-update.org.update.js"); 
 		 document.body.appendChild(e); 
 		} 
 	</script> 
@@ -59,12 +59,12 @@
 			<div class="container-fluid">
 				<!-- BEGIN LOGO -->
 				<a class="brand" href="/" style="margin-top:-7px">
-				<img src="/assets/img/ncdd-dashboard-logo.png" alt="logo" />
+				<img src="<?=SAW_SSL_CDN?>/assets/img/ncdd-dashboard-logo.png" alt="logo" />
 				</a>
 				<!-- END LOGO -->
 				<!-- BEGIN RESPONSIVE MENU TOGGLER -->
 				<a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
-				<img src="/assets/img/menu-toggler.png" alt="" />
+				<img src="<?=SAW_SSL_CDN?>/assets/img/menu-toggler.png" alt="" />
 				</a>          
 				<!-- END RESPONSIVE MENU TOGGLER -->            
 				<!-- BEGIN TOP NAVIGATION MENU -->              

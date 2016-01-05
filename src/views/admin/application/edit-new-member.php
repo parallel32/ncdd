@@ -834,7 +834,7 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
          <!-- END PAGE CONTAINER-->    
       </div>
       <!-- END PAGE -->
-      <script src="/assets/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js" type="text/javascript"></script>   
+      <script src="<?=SAW_SSL_CDN?>/assets/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js" type="text/javascript"></script>   
       <?=$this->element('js/Application.js');?>
       <?=$this->element('js/Address.js');?>
       <script>

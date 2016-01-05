@@ -10,19 +10,19 @@
   <meta content="" name="description" />
   <meta content="" name="author" />
   <!-- BEGIN GLOBAL MANDATORY STYLES -->
-  <link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-  <link href="/assets/plugins/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
-  <link href="/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-  <link href="/assets/css/style-metro.css" rel="stylesheet" type="text/css"/>
-  <link href="/assets/css/style.css" rel="stylesheet" type="text/css"/>
-  <link href="/assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
-  <link href="/assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
-  <link href="/assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+  <link href="<?=SAW_SSL_CDN?>/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+  <link href="<?=SAW_SSL_CDN?>/assets/plugins/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+  <link href="<?=SAW_SSL_CDN?>/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+  <link href="<?=SAW_SSL_CDN?>/assets/css/style-metro.css" rel="stylesheet" type="text/css"/>
+  <link href="<?=SAW_SSL_CDN?>/assets/css/style.css" rel="stylesheet" type="text/css"/>
+  <link href="<?=SAW_SSL_CDN?>/assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+  <link href="<?=SAW_SSL_CDN?>/assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+  <link href="<?=SAW_SSL_CDN?>/assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
   <!-- END GLOBAL MANDATORY STYLES -->
   <!-- BEGIN PAGE LEVEL STYLES -->
-  <link href="/assets/css/pages/login-soft.css" rel="stylesheet" type="text/css"/>
+  <link href="<?=SAW_SSL_CDN?>/assets/css/pages/login-soft.css" rel="stylesheet" type="text/css"/>
   <!-- END PAGE LEVEL STYLES -->
-  <link rel="shortcut icon" href="/assets/img/favicon.ico" />
+  <link rel="shortcut icon" href="<?=SAW_SSL_CDN?>/assets/img/favicon.ico" />
 
 
 
@@ -36,7 +36,7 @@
      try {if ($buoop.ol) $buoop.ol();}catch (e) {} 
      var e = document.createElement("script"); 
      e.setAttribute("type", "text/javascript"); 
-     e.setAttribute("src", "/assets/scripts/browser-update.org.update.js"); 
+     e.setAttribute("src", "<?=SAW_SSL_CDN?>/assets/scripts/browser-update.org.update.js"); 
      document.body.appendChild(e); 
     } 
   </script> 
@@ -48,7 +48,7 @@
 <body class="login">
   <!-- BEGIN LOGO -->
   <div class="logo">
-    <img src="/assets/img/ncdd-login2-logo.png" alt="" /> 
+    <img src="<?=SAW_SSL_CDN?>/assets/img/ncdd-login2-logo.png" alt="" /> 
   </div>
   <!-- END LOGO -->
   <!-- BEGIN LOGIN -->
@@ -192,26 +192,26 @@
   <!-- END COPYRIGHT -->
   <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
   <!-- BEGIN CORE PLUGINS -->
-  <script src="/assets/plugins/jquery-1.10.1.min.js" type="text/javascript"></script>
-  <script src="/assets/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+  <script src="<?=SAW_SSL_CDN?>/assets/plugins/jquery-1.10.1.min.js" type="text/javascript"></script>
+  <script src="<?=SAW_SSL_CDN?>/assets/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
   <!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
-  <script src="/assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>      
-  <script src="/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="<?=SAW_SSL_CDN?>/assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>      
+  <script src="<?=SAW_SSL_CDN?>/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
   <!--[if lt IE 9]>
-  <script src="/assets/plugins/excanvas.min.js"></script>
-  <script src="/assets/plugins/respond.min.js"></script>  
+  <script src="<?=SAW_SSL_CDN?>/assets/plugins/excanvas.min.js"></script>
+  <script src="<?=SAW_SSL_CDN?>/assets/plugins/respond.min.js"></script>  
   <![endif]-->   
-  <script src="/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-  <script src="/assets/plugins/jquery.blockui.min.js" type="text/javascript"></script>  
-  <script src="/assets/plugins/jquery.cookie.min.js" type="text/javascript"></script>
-  <script src="/assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
+  <script src="<?=SAW_SSL_CDN?>/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+  <script src="<?=SAW_SSL_CDN?>/assets/plugins/jquery.blockui.min.js" type="text/javascript"></script>  
+  <script src="<?=SAW_SSL_CDN?>/assets/plugins/jquery.cookie.min.js" type="text/javascript"></script>
+  <script src="<?=SAW_SSL_CDN?>/assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
   <!-- END CORE PLUGINS -->
   <!-- BEGIN PAGE LEVEL PLUGINS -->
-  <script src="/assets/plugins/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
-  <script src="/assets/plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
+  <script src="<?=SAW_SSL_CDN?>/assets/plugins/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
+  <script src="<?=SAW_SSL_CDN?>/assets/plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
   <!-- END PAGE LEVEL PLUGINS -->
   <!-- BEGIN PAGE LEVEL SCRIPTS -->
-  <script src="/assets/scripts/app.js" type="text/javascript"></script>
+  <script src="<?=SAW_SSL_CDN?>/assets/scripts/app.js" type="text/javascript"></script>
   <!-- END PAGE LEVEL SCRIPTS --> 
   <?=$this->element('js/Namespace.js');?>
   <?=$this->element('js/BlockUI.Class.js');?>

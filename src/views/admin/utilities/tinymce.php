@@ -48,7 +48,7 @@
                 <!-- EDITOR -->
                 <!-- EDITOR -->
                 <!-- EDITOR -->
-                <script src="/assets/tinymce2/js/tinymce/tinymce.min.js"></script>
+                <script src="<?=SAW_SSL_CDN?>/assets/tinymce2/js/tinymce/tinymce.min.js"></script>
                 <script type="text/javascript">
                 jQuery(document).ready(function() {  
 

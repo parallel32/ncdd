@@ -14,7 +14,7 @@
             <div class="span12">
                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                <h3 class="page-title text-center">
-                  <img src="/assets/img/ncdd-login2-logo.png">
+                  <img src="<?=SAW_SSL_CDN?>/assets/img/ncdd-login2-logo.png">
                   <br/>Founding Member Update Form
                </h3>
                <p class="text-center">

@@ -1,6 +1,6 @@
 <div class="row-fluid invoice">
                <div class="row-fluid invoice-logo">
-                  <div class="span6 invoice-logo-space"><img src="/assets/img/ncdd-login2-logo.png" alt="" /> </div>
+                  <div class="span6 invoice-logo-space"><img src="<?=SAW_SSL_CDN?>/assets/img/ncdd-login2-logo.png" alt="" /> </div>
                   <div class="span6">
                      <p>#<?=$application['_id']?> / <? $date = new \DateTime(); echo $date->format('d');?> <?echo $date->format('M');?>, <?echo $date->format('Y');?> <span class="muted">Application ID and Date</span></p>
                   </div>

@@ -4,16 +4,16 @@
         <title></title>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="/assets/stylesheets/bootstrap.min.css" rel="stylesheet" media="screen">
-        <link href="/assets/stylesheets/bootstrap-responsive.min.css" rel="stylesheet">
-        <link href="/assets/stylesheets/screenv5.3.min.css" rel="stylesheet">  <!--4522, 3364-->
-        <link href="/assets/stylesheets/responsive.min.css" rel="stylesheet">
-        <script src="/assets/js/jquery-1.10.1.min.js"></script>
-        <script src="/assets/js/jquery.blockui.min.js"></script>
-        <script src="/assets/js/bootstrap.min.js"></script>
-        <script src="/assets/js/custom.js"></script>
-        <link href="/assets/stylesheets/layout-content.min.css" rel="stylesheet" type="text/css"/>
-        <link href="/assets/stylesheets/bootstrap-modal.min.css" rel="stylesheet" type="text/css"/>
+        <link href="<?=SAW_PUBLIC_SSL_CDN?>/assets/stylesheets/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="<?=SAW_PUBLIC_SSL_CDN?>/assets/stylesheets/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="<?=SAW_PUBLIC_SSL_CDN?>/assets/stylesheets/screenv5.3.min.css" rel="stylesheet">  <!--4522, 3364-->
+        <link href="<?=SAW_PUBLIC_SSL_CDN?>/assets/stylesheets/responsive.min.css" rel="stylesheet">
+        <script src="<?=SAW_PUBLIC_SSL_CDN?>/assets/js/jquery-1.10.1.min.js"></script>
+        <script src="<?=SAW_PUBLIC_SSL_CDN?>/assets/js/jquery.blockui.min.js"></script>
+        <script src="<?=SAW_PUBLIC_SSL_CDN?>/assets/js/bootstrap.min.js"></script>
+        <script src="<?=SAW_PUBLIC_SSL_CDN?>/assets/js/custom.js"></script>
+        <link href="<?=SAW_PUBLIC_SSL_CDN?>/assets/stylesheets/layout-content.min.css" rel="stylesheet" type="text/css"/>
+        <link href="<?=SAW_PUBLIC_SSL_CDN?>/assets/stylesheets/bootstrap-modal.min.css" rel="stylesheet" type="text/css"/>
     </head>
     <style>
         p img{padding:20px;}

@@ -4,16 +4,16 @@
         <title></title>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://<?=SAW_CONSUMER_WEBSITE?>/assets/stylesheets/bootstrap.css?v=2" rel="stylesheet" media="screen">
-        <link href="https://<?=SAW_CONSUMER_WEBSITE?>/assets/stylesheets/bootstrap-responsive.css" rel="stylesheet">
-        <link href="https://<?=SAW_CONSUMER_WEBSITE?>/assets/stylesheets/screenv5.2.min.css" rel="stylesheet">  <!--4522, 3364-->
-        <link href="https://<?=SAW_CONSUMER_WEBSITE?>/assets/stylesheets/responsive.css" rel="stylesheet">
+        <link href="<?=SAW_PUBLIC_SSL_CDN?>/assets/stylesheets/bootstrap.css?v=2" rel="stylesheet" media="screen">
+        <link href="<?=SAW_PUBLIC_SSL_CDN?>/assets/stylesheets/bootstrap-responsive.css" rel="stylesheet">
+        <link href="<?=SAW_PUBLIC_SSL_CDN?>/assets/stylesheets/screenv5.2.min.css" rel="stylesheet">  <!--4522, 3364-->
+        <link href="<?=SAW_PUBLIC_SSL_CDN?>/assets/stylesheets/responsive.css" rel="stylesheet">
         <style>
         @font-face {
   font-family: 'Bree Serif';
   font-style: normal;
   font-weight: 400;
-  src: local('Bree Serif'), local('BreeSerif-Regular'), url(https://<?=SAW_CONSUMER_WEBSITE?>/assets/fonts/LQ7WLTaITDg4OSRuOZCps73hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+  src: local('Bree Serif'), local('BreeSerif-Regular'), url(<?=SAW_PUBLIC_SSL_CDN?>/assets/fonts/LQ7WLTaITDg4OSRuOZCps73hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
 }
             .mainMenu .tab-content .tab-pane{display:none}
 
@@ -32,7 +32,7 @@
 .dropdown-menu.discover.fullWidthDropDown.specialwidthsetting { padding:0 0 0 20px; width:30%;}
 .dropdown-menu.learn.fullWidthDropDown.specialwidthsetting { padding:0 0 0 20px; width:30%;}
         </style>
-            <link href="https://<?=SAW_CONSUMER_WEBSITE?>/assets/stylesheets/bootstrap-modal.css" rel="stylesheet" type="text/css"/>
+            <link href="<?=SAW_PUBLIC_SSL_CDN?>/assets/stylesheets/bootstrap-modal.css" rel="stylesheet" type="text/css"/>
 
     </head>
     <body>

@@ -5,7 +5,7 @@
   font-family: 'Bree Serif';
   font-style: normal;
   font-weight: 400;
-  src: local('Bree Serif'), local('BreeSerif-Regular'), url(/assets/fonts/LQ7WLTaITDg4OSRuOZCps73hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+  src: local('Bree Serif'), local('BreeSerif-Regular'), url(<?=SAW_PUBLIC_SSL_CDN?>/assets/fonts/LQ7WLTaITDg4OSRuOZCps73hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
 }
 .mainMenu .tab-content .tab-pane{display:none}
 
@@ -293,7 +293,7 @@ ul.sidebarlist li {
                                         <? endif; ?>
                                     </div>
                                     <div class="span4 bc">
-                                        <a href="mailto:<?=$member['email']?>"><img src="/assets/img/contactme.png"></a>
+                                        <a href="mailto:<?=$member['email']?>"><img src="<?=SAW_PUBLIC_SSL_CDN?>/assets/img/contactme.png"></a>
                                         <br><br><br> <span class="phone"><a href="tel:<?=$member['primaryPhone']?>"><?=$member['primaryPhone']?></a></span>
                                         <div class="clear"></div>
                                         <? if(!empty($member['currentFacultyPosition'])): ?>
@@ -315,7 +315,7 @@ ul.sidebarlist li {
                                     <? endif; ?>
                                     
                                     <div class="span1 tr">
-                                        <a href="/member/<?=$member['_id']?>/<?=$member['slug']?>"><img src="/assets/img/fullprofile.png" class="pull-right"> </a>
+                                        <a href="/member/<?=$member['_id']?>/<?=$member['slug']?>"><img src="<?=SAW_PUBLIC_SSL_CDN?>/assets/img/fullprofile.png" class="pull-right"> </a>
                                     </div>
                                 </div>
                             </div>

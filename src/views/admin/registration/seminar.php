@@ -12,7 +12,7 @@ endif; ?>
             <div class="span12">
                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                <h3 class="page-title text-center">
-                  <a href="//<?=SAW_CONSUMER_WEBSITE?>"><img src="/assets/img/ncdd-login2-logo.png"></a>
+                  <a href="//<?=SAW_CONSUMER_WEBSITE?>"><img src="<?=SAW_SSL_CDN?>/assets/img/ncdd-login2-logo.png"></a>
                   <br/>Seminar Registration Form
                </h3>
                <h3 class="text-center">

@@ -16,9 +16,9 @@
 
 
 
-                <script src="/assets/redactor/jquery-2.0.3.min.js"></script>
-                <link rel="stylesheet" href="/assets/redactor/redactor.css" />
-                <script src="/assets/redactor/redactor.js"></script>
+                <script src="<?=SAW_SSL_CDN?>/assets/redactor/jquery-2.0.3.min.js"></script>
+                <link rel="stylesheet" href="<?=SAW_SSL_CDN?>/assets/redactor/redactor.css" />
+                <script src="<?=SAW_SSL_CDN?>/assets/redactor/redactor.js"></script>
 
 
                 <div id="page">

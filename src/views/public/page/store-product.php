@@ -16,10 +16,10 @@ endif;
                         
 
 
-                        <link href="/assets/stylesheets/jquery.formstyler.css" rel="stylesheet">
+                        <link href="<?=SAW_PUBLIC_SSL_CDN?>/assets/stylesheets/jquery.formstyler.css" rel="stylesheet">
 
-                        <script src="/assets/js/cloud-zoom.1.0.2.js"></script>
-                        <script src="/assets/js/jquery.formstyler.min.js"></script>
+                        <script src="<?=SAW_PUBLIC_SSL_CDN?>/assets/js/cloud-zoom.1.0.2.js"></script>
+                        <script src="<?=SAW_PUBLIC_SSL_CDN?>/assets/js/jquery.formstyler.min.js"></script>
 
                         <div class="row-fluid checkout">
                         <ul class="breadcrumb">

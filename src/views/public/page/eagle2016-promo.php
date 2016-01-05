@@ -6,11 +6,11 @@
                         </div>
                         <div class="becomeAmemberContent">
                             <div class="text-center">
-                                <a href="https://<?=SAW_ADMIN_WEBSITE?>/application/new-member"><img src="/assets/img/quiz-btn.png" class="applyBtn"></a>
+                                <a href="https://<?=SAW_ADMIN_WEBSITE?>/application/new-member"><img src="<?=SAW_PUBLIC_SSL_CDN?>/assets/img/quiz-btn.png" class="applyBtn"></a>
                             </div>
                             <?=$this->vars['page']['body']?>
                             <div class="text-center">
-                                <a href="https://<?=SAW_ADMIN_WEBSITE?>/application/new-member"><img src="/assets/img/quiz-btn.png" class="applyBtn"></a>
+                                <a href="https://<?=SAW_ADMIN_WEBSITE?>/application/new-member"><img src="<?=SAW_PUBLIC_SSL_CDN?>/assets/img/quiz-btn.png" class="applyBtn"></a>
                             </div>
                         </div>
                     </div>

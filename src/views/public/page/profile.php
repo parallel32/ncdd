@@ -3,7 +3,7 @@
   font-family: 'Bree Serif';
   font-style: normal;
   font-weight: 400;
-  src: local('Bree Serif'), local('BreeSerif-Regular'), url(/assets/fonts/LQ7WLTaITDg4OSRuOZCps73hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+  src: local('Bree Serif'), local('BreeSerif-Regular'), url(<?=SAW_PUBLIC_SSL_CDN?>/assets/fonts/LQ7WLTaITDg4OSRuOZCps73hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
 }
 .mainMenu .tab-content .tab-pane{display:none}
 
@@ -129,19 +129,19 @@ img.thumbnail{ max-width: 100%;}
                                 </ul>
                               </div>
                               <div class="span7 tr">
-                                <a href="mailto:<?=$member['email']?>" ><img src="/assets/img/contactme.png" alt="contact"></a><br><br>
+                                <a href="mailto:<?=$member['email']?>" ><img src="<?=SAW_PUBLIC_SSL_CDN?>/assets/img/contactme.png" alt="contact"></a><br><br>
                                 <ul class="socialicons">
                                   <? if(!empty($member['linkedInUrl'])): ?>
-                                  <li><a href="<?=$member['linkedInUrl']?>" target="_blank"><img src="/assets/img/ln.png" alt="linkedin"></a></li>
+                                  <li><a href="<?=$member['linkedInUrl']?>" target="_blank"><img src="<?=SAW_PUBLIC_SSL_CDN?>/assets/img/ln.png" alt="linkedin"></a></li>
                                   <? endif; ?>
                                   <? if(!empty($member['googlePlusUrl'])): ?>
-                                  <li><a href="<?=$member['googlePlusUrl']?>" target="_blank"><img src="/assets/img/gplus.png" alt="googleplus"></a></li>
+                                  <li><a href="<?=$member['googlePlusUrl']?>" target="_blank"><img src="<?=SAW_PUBLIC_SSL_CDN?>/assets/img/gplus.png" alt="googleplus"></a></li>
                                   <? endif; ?>
                                   <? if(!empty($member['twitterUrl'])): ?>
-                                  <li><a href="<?=$member['twitterUrl']?>" target="_blank"><img src="/assets/img/twitter.png" alt="tweets"></a></li>
+                                  <li><a href="<?=$member['twitterUrl']?>" target="_blank"><img src="<?=SAW_PUBLIC_SSL_CDN?>/assets/img/twitter.png" alt="tweets"></a></li>
                                   <? endif; ?>
                                   <? if(!empty($member['facebookUrl'])): ?>
-                                  <li><a href="<?=$member['facebookUrl']?>" target="_blank"><img src="/assets/img/fb.png" alt="fb"></a></li>
+                                  <li><a href="<?=$member['facebookUrl']?>" target="_blank"><img src="<?=SAW_PUBLIC_SSL_CDN?>/assets/img/fb.png" alt="fb"></a></li>
                                   <? endif; ?>
                                 </ul>
                                   <br>
@@ -273,8 +273,8 @@ img.thumbnail{ max-width: 100%;}
 <? if(!empty($member['practiceAreas'])): ?>
     <!-- PIE CHART -->
 <!-- http://www.flotcharts.org/flot/examples/series-pie/index.html -->
-<script type="text/javascript" src="/assets/js/jquery.flot.js"></script>
-<script type="text/javascript" src="/assets/js/jquery.flot.pie.js"></script>
+<script type="text/javascript" src="<?=SAW_PUBLIC_SSL_CDN?>/assets/js/jquery.flot.js"></script>
+<script type="text/javascript" src="<?=SAW_PUBLIC_SSL_CDN?>/assets/js/jquery.flot.pie.js"></script>
 <script type="text/javascript">
 
 $(function() {

@@ -32,8 +32,8 @@ $user_id = $user['user_id']; ?>
    endif;
 ?>
 
-         <link rel="stylesheet" type="text/css" href="/assets/plugins/jquery-multi-select/css/multi-select-metro.css" />
-         <script type="text/javascript" src="/assets/plugins/jquery-multi-select/js/jquery.multi-select.js"></script>   
+         <link rel="stylesheet" type="text/css" href="<?=SAW_SSL_CDN?>/assets/plugins/jquery-multi-select/css/multi-select-metro.css" />
+         <script type="text/javascript" src="<?=SAW_SSL_CDN?>/assets/plugins/jquery-multi-select/js/jquery.multi-select.js"></script>   
 
          <!-- BEGIN PAGE -->
          <div class="page-content">

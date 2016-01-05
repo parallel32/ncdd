@@ -97,6 +97,8 @@ define("SAW_BASE_URL",apache_getenv('SAW_BASE_URL'));
 define("SAW_IMAGE_BASE",apache_getenv('SAW_IMAGE_BASE'));
 define("SAW_CDN",apache_getenv('SAW_CDN'));
 define("SAW_SSL_CDN",apache_getenv('SAW_SSL_CDN'));
+define("SAW_PUBLIC_CDN",apache_getenv('SAW_PUBLIC_CDN'));
+define("SAW_PUBLIC_SSL_CDN",apache_getenv('SAW_PUBLIC_SSL_CDN'));
 define("SAW_CDN_IMAGE",apache_getenv('SAW_CDN_IMAGE'));
 define("SAW_SSL_CDN_IMAGE",apache_getenv('SAW_SSL_CDN_IMAGE'));
 

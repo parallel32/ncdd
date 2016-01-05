@@ -677,7 +677,7 @@
                         }
 
                         </script>
-                        <script src="/assets/js/theJava.js"></script>
+                        <script src="<?=SAW_PUBLIC_SSL_CDN?>/assets/js/theJava.js"></script>
                         <script type="text/javascript">
                             $(function(){
                                 /*

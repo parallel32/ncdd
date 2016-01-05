@@ -28,7 +28,7 @@
                                     <address><b>Fax:</b> 334-264-1920</address>
                                     <address><b>E-mail:</b> <a href="mailto:rhea@ncdd.com">rhea@ncdd.com</a></address>
                                 </div>
-                                <div class="smaillLogo"><img src="/assets/img/smallLogo.png" alt=""></div>
+                                <div class="smaillLogo"><img src="<?=SAW_PUBLIC_SSL_CDN?>/assets/img/smallLogo.png" alt=""></div>
                             </div>
                         </div>
                     </div>

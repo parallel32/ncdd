@@ -24,16 +24,16 @@
                           }
                           
                           .card.visa {
-                          background-image: url('/assets/img/card-visa.gif');
+                          background-image: url('<?=SAW_PUBLIC_SSL_CDN?>/assets/img/card-visa.gif');
                           }
                           .card.master {
-                          background-image: url('/assets/img/card-mastercard.gif');
+                          background-image: url('<?=SAW_PUBLIC_SSL_CDN?>/assets/img/card-mastercard.gif');
                           }
                           .card.amex {
-                          background-image: url('/assets/img/card-amex.gif');
+                          background-image: url('<?=SAW_PUBLIC_SSL_CDN?>/assets/img/card-amex.gif');
                           }
                           .card.discover {
-                          background-image: url('/assets/img/card-discover.gif');
+                          background-image: url('<?=SAW_PUBLIC_SSL_CDN?>/assets/img/card-discover.gif');
                           }
                           </style>
                           <form id="payment-form" class="horizontal-form portlet">
@@ -316,8 +316,8 @@
 <br><br>
 MasterCard, Visa and Discover credit cards have a 3 digit code printed on the back of the card while American Express cards have a 4 digit code printed on the front side of the card above the card number.</p>
 <br>
-<img src="/assets/img/cv_card.gif"><br><br>
-<img src="/assets/img/cv_amex_card.gif">
+<img src="<?=SAW_PUBLIC_SSL_CDN?>/assets/img/cv_card.gif"><br><br>
+<img src="<?=SAW_PUBLIC_SSL_CDN?>/assets/img/cv_amex_card.gif">
                              </div>
                              <div class="modal-footer">
                                 <button class="btn blue ok">Ok, close.</button>
@@ -370,4 +370,4 @@ MasterCard, Visa and Discover credit cards have a 3 digit code printed on the ba
                           <!--/ PAYMENT ELEMENT -->
                         <!-- END FORM--> 
                     </div>
-                    <script src="/assets/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js" type="text/javascript" ></script>
+                    <script src="<?=SAW_PUBLIC_SSL_CDN?>/assets/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js" type="text/javascript" ></script>

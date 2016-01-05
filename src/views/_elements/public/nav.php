@@ -48,7 +48,7 @@
                                  <ul class="pull-right nav navbar-form">
                                     <li><a href="/contact">Contact</a></li>
                                     <li class="sep"></li>
-                                    <li class="cart"><a href="https://<?=SAW_CONSUMER_WEBSITE?>/shopping-cart"><img src="/assets/img/cart.png" alt=""><sup id="sup-cart"><?=call_user_func(function($app){ $cart = $app['session']->get('shoppingcart'); return (is_array($cart) && !empty($cart) && count($cart) > 0) ? count($cart): '';},$this->app)?></sup></a></li>
+                                    <li class="cart"><a href="https://<?=SAW_CONSUMER_WEBSITE?>/shopping-cart"><img src="<?=SAW_PUBLIC_SSL_CDN?>/assets/img/cart.png" alt=""><sup id="sup-cart"><?=call_user_func(function($app){ $cart = $app['session']->get('shoppingcart'); return (is_array($cart) && !empty($cart) && count($cart) > 0) ? count($cart): '';},$this->app)?></sup></a></li>
                                     <li class="sep"></li>
                                     <li>
                                         <form ><input id="search-query" type="text" class="search span2" placeholder="search"><input id="search-button" type="submit" class="searchBtn" value=""></form>
@@ -251,7 +251,7 @@
                     <ul class="pull-right nav navbar-form">
                         <li><a href="/contact">Contact</a></li>
                         <li class="sep"></li>
-                        <li class="cart"><a href="/coming-soon"><img src="/assets/img/cart.png" alt=""><sup>3</sup></a></li>
+                        <li class="cart"><a href="/coming-soon"><img src="<?=SAW_PUBLIC_SSL_CDN?>/assets/img/cart.png" alt=""><sup>3</sup></a></li>
                         <li class="sep"></li>
                         <li>
                             <form action="/coming-soon"><input type="text" class="search span2" placeholder="search"><input type="submit" class="searchBtn" value=""></form>
