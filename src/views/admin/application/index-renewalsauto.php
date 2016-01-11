@@ -217,7 +217,7 @@
                               <? if(!empty($this->vars['paid'])): foreach($this->vars['paid'] as $item): ?>
                               <tr class="gradeX odd ">
                               <?if (true): ?>
-                                 <td class=" "><a data-id="<?=$item['record']['_id']?>" class="btn mini view card">cc</a></td>
+                                 <td class=" "></td>
                                  <td class="hidden-phone"><?=$item['record']['payment']['expMonth']?> / <?=$item['record']['payment']['expYear']?></td>
                                  <td class="hidden-phone"><?='...'.substr(str_replace('.x', '', $item['record']['payment']['number']), -4);?></td>
                                  <td class="hidden-phone"><?=$item['record']['name']?></td>
@@ -308,7 +308,7 @@
 <script>
 jQuery(document).ready(function() {
    $('.btn.card').live('click', function() {
-      $('#view-modal iframe').attr('src','/card/'+$(this).attr('data-id'));
+      $('#view-modal iframe').attr('src','/card/auto-renew/'+$(this).attr('data-id'));
       $('#view-modal').modal({keyboard: false});   
    });
    $('.btn.payment').live('click', function() {

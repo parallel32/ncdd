@@ -1934,9 +1934,12 @@ $app->get('/renewalscontacts/{offset}/{limit}', function ($offset, $limit, Reque
 ->value('limit','20000')
 ->before($mustbeADMIN);
 
-////////////////////////////////////////////
-// RENEWALS - CONTACT INFORMATION UPDATES //
-////////////////////////////////////////////
+/**
+AUTO-RENEW STARTS HERE
+*/
+///////////////////////
+// AUTO-RENEW - SEED //
+///////////////////////
 $app->get('/renewalsautoseed', function (Request $request) use ($app) {
 
 	// safety can't re-seed if records already there.
@@ -2130,9 +2133,9 @@ echo "<pre>final total ";print_r(count($final_arr['expired'])+count($final_arr['
 
 
 
-////////////////////////////////////////////
-// RENEWALS - CONTACT INFORMATION UPDATES //
-////////////////////////////////////////////
+///////////////////////
+// AUTO-RENEW - VIEW //
+///////////////////////
 $app->get('/renewalsauto/{offset}/{limit}', function ($offset, $limit, Request $request) use ($app) {
 
 	$ar = new Model\AutoRenew(array(),$app);
@@ -2156,6 +2159,23 @@ $app->get('/renewalsauto/{offset}/{limit}', function ($offset, $limit, Request $
 						,'declined'=>$declined
 						,'paid'=>$paid
 						);
+
+	return $app['view']->render('application/index-renewalsauto', 'default', $view_vars);
+})
+->value('offset','0')
+->value('limit','20000')
+->before($mustbeADMIN);
+
+/////////////////////////
+// AUTO-RENEW - CHARGE //
+/////////////////////////
+$app->get('/renewalsauto/charge', function ($offset, $limit, Request $request) use ($app) {
+
+	$ar = new Model\AutoRenew(array(),$app);
+	$valid = $ar->find(array('valid'=>'yes'),$fields=array(),$slaveOkay=true,$sort=array('record.payment.expYear'=>1,'record.payment.expMonth'=>1),$offset,$limit);
+	$expired = $ar->find(array('expired'=>'yes'),$fields=array(),$slaveOkay=true,$sort=array('record.payment.expYear'=>1,'record.payment.expMonth'=>1),$offset,$limit);
+	
+	
 
 	return $app['view']->render('application/index-renewalsauto', 'default', $view_vars);
 })
