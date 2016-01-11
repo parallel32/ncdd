@@ -105,7 +105,7 @@
                      click to scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
                      </a>                 
                   </div>
-               </div><a name="declined"></a>
+               </div>
             </div>
 
 
@@ -114,7 +114,7 @@
                   <!-- BEGIN EXAMPLE TABLE PORTLET-->
                   <div class="portlet box red">
                      <div class="portlet-title" id="application">
-                        <div class="caption">Declined</div>
+                        <div class="caption">Declined</div><a name="declined"></a>
                      </div>
                      <div class="portlet-body">
                         <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
@@ -147,7 +147,7 @@
                            </tbody>
                         </table>
                      </div>
-                  </div><a name="unpaid"></a>
+                  </div>
                   <!-- END EXAMPLE TABLE PORTLET-->
                </div>
             </div>            
@@ -157,7 +157,7 @@
                   <!-- BEGIN EXAMPLE TABLE PORTLET-->
                   <div class="portlet box blue">
                      <div class="portlet-title" id="application">
-                        <div class="caption">Valid</div>
+                        <div class="caption">Valid</div><a name="valid"></a>
                      </div>
                      <div class="portlet-body">
                         <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
@@ -189,7 +189,7 @@
                            </tbody>
                         </table>
                      </div>
-                  </div><a name="unpaid"></a>
+                  </div>
                   <!-- END EXAMPLE TABLE PORTLET-->
                </div>
             </div>            
@@ -199,7 +199,7 @@
                   <!-- BEGIN EXAMPLE TABLE PORTLET-->
                   <div class="portlet box green">
                      <div class="portlet-title" id="application">
-                        <div class="caption">Paid</div>
+                        <div class="caption">Paid</div><a name="paid"></a>
                      </div>
                      <div class="portlet-body">
                         <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
@@ -231,7 +231,7 @@
                            </tbody>
                         </table>
                      </div>
-                  </div><a name="unpaid"></a>
+                  </div>
                   <!-- END EXAMPLE TABLE PORTLET-->
                </div>
             </div>            
@@ -241,7 +241,7 @@
                   <!-- BEGIN EXAMPLE TABLE PORTLET-->
                   <div class="portlet box yellow">
                      <div class="portlet-title" id="application">
-                        <div class="caption">Expired</div>
+                        <div class="caption">Expired</div><a name="expired"></a>
                      </div>
                      <div class="portlet-body">
                         <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
@@ -273,7 +273,7 @@
                            </tbody>
                         </table>
                      </div>
-                  </div><a name="unpaid"></a>
+                  </div>
                   <!-- END EXAMPLE TABLE PORTLET-->
                </div>
             </div>            

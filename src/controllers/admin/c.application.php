@@ -2175,7 +2175,7 @@ $app->get('/renewalsauto/charge', function ($offset, $limit, Request $request) u
 	$valid = $ar->find(array('valid'=>'yes'),$fields=array(),$slaveOkay=true,$sort=array('record.payment.expYear'=>1,'record.payment.expMonth'=>1),$offset,$limit);
 	$expired = $ar->find(array('expired'=>'yes'),$fields=array(),$slaveOkay=true,$sort=array('record.payment.expYear'=>1,'record.payment.expMonth'=>1),$offset,$limit);
 	
-	
+		
 
 	return $app['view']->render('application/index-renewalsauto', 'default', $view_vars);
 })
