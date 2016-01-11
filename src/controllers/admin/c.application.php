@@ -1933,6 +1933,252 @@ $app->get('/renewalscontacts/{offset}/{limit}', function ($offset, $limit, Reque
 ->value('offset','0')
 ->value('limit','20000')
 ->before($mustbeADMIN);
+
+////////////////////////////////////////////
+// RENEWALS - CONTACT INFORMATION UPDATES //
+////////////////////////////////////////////
+$app->get('/renewalsautoseed', function (Request $request) use ($app) {
+
+	// safety can't re-seed if records already there.
+	$ar = new Model\AutoRenew(array(),$app);
+	$ar_res = $ar->find();
+	if(!empty($ar_res)){
+		return new Response('You have to purge AutoRenew in order to re-seed', 200,array('Content-Type' => 'text/html'));
+	}
+	// GROUP BY PROMOTION then based on the payment.renewalREUSE in the member record.
+
+	// INCLUDE
+	// New members with NCDD2015  (recieved $50 discount if they sign up for auto-renew)
+	// New members with NCDD2014  (recieved $50 discount if they sign up for auto-renew)
+	
+
+	// EXCLUDE 
+	// New members with EAGLE2016 (2016 prepaid - and should be on auto-renew)
+	// New Members with BONUS2015 (2016 prepaid - nothing about auto-renew)
+	// Renewals    with RENEW2016 (happening now) (checked auto-renew [they had to to use the promo]. they received an eagle trophy.  exluded NCDD2015 and Public Defenders)
+
+	// extreme filter - if card on file and haven't paid and not in exclude group then auto-renew
+
+	// sanity check - only pass renewals that don't already have a payment record (in case folks forgot about the promos and did it on their own)
+	// so, in that case I need to show them as paid here.
+
+	// finally, create a new status with a dashboard message after the payment has been made.
+	// let's not forget to send the email along with the payment receipt.
+
+	// DETAILS - calculate if card on file has already expired and show it or show when it does expire.
+	// 		   - sort the records based on credit card expiration date
+	//		   - group declined cards and show the error and link to pop-up to update card
+	//		   - make a separate script to run the cards on a schedule and print the schedule on the screen based on how many cards can run before the script timesout.
+
+	// TABLE COLUMNS
+	// before pay and after pay - promo | card badge linked to popup or no card badge (grey) | card exp date | card number | date promo used  | new member or renewal | member name | payment link to popup
+	// declined - 				  promo | card badge linked to popup or no card badge (grey) | card exp date | card number | date promo used  | new member or renewal | member name | gateway error
+
+	// the mongo query for everyone on autorenew and has a card on file.
+	// db.member.find({status:2,'payment.renewalREUSE':'yes',currentMembership:10,listed:1,'payment.number':{$ne:null}}).count();
+
+	$cnt = 0;
+    $final_arr = array();
+
+    $memberObj = new Model\Member($doc=array(), $app);    
+    $members = $memberObj->find(array('payment.renewalREUSE'=>'yes','status'=>USER_STATUS_ACTIVE,'currentMembership'=>Model\Member::$membership['GENERAL MEMBER']),$fields=array(),true,$sort=array('payment.expYear'=>-1,'payment.expMonth'=>-1),0,10000);
+    foreach ($members as $member){
+        if($member['payment']['renewalREUSE'] == 'yes'){
+            if(array_key_exists('number', $member['payment']) && !empty($member['payment']['number'])){
+                $res_arr = array();
+                $res_arr['_id'] = (string)$member['_id'];
+                $res_arr['expMonth'] = $member['payment']['expMonth'];
+                $res_arr['expYear'] = $member['payment']['expYear'];
+                
+                $date1 = strtotime($res_arr['expYear']."-".$res_arr['expMonth']."-01");
+                $date2 = strtotime("2016-01-01");
+                $res_arr['expired'] = ($date2 > $date1) ? 'yes' : 'no';
+
+                $res_arr['name'] = $member['displayName'];
+                $res_arr['email'] = $member['email'];
+                $res_arr['payment'] = $member['payment'];
+
+                if($res_arr['expired'] == 'yes'){
+                	$final_arr['expired'][(string)$member['_id']] = $res_arr;
+                }else{
+                	$final_arr['valid'][(string)$member['_id']] = $res_arr;
+                }
+                
+                $cnt++;    
+            }
+            
+        }
+
+    }
+echo "<pre>start ";echo ' expired:'.count($final_arr['expired']).' valid:'.count($final_arr['valid']);echo "</pre>";
+    // extract those who have already paid
+    $paid_arr = array();
+    foreach ($members as $member){
+        if(is_array($member['renewal']) && array_key_exists('paymentId', $member['renewal']) && !empty($member['renewal']['paymentId'])){
+                    
+            $paid_arr[(string)$member['_id']] = 'something';
+            
+        }
+
+    }
+    $final_arr['expired'] = array_diff_key($final_arr['expired'], $paid_arr);
+    $final_arr['valid'] = array_diff_key($final_arr['valid'], $paid_arr);
+echo "<pre>after paid ";echo ' expired:'.count($final_arr['expired']).' valid:'.count($final_arr['valid']);echo "</pre>";
+	// extract promos
+	// EAGLE2016
+	// RENEW2016
+	// BONUS2015
+    $promo_arr = array();
+    $application = new Model\Apply($doc=array(),$app);
+    $res = $application->find(array('promocode'=>array('$in'=>array('EAGLE2016','BONUS2015'))),$fields=array(),true,$sort=array(),0,10000);
+echo "<pre> eagle bonus: ";print_r(count($res));echo "</pre>";
+    if(is_array($res)  && !empty($res)){
+    	foreach($res as $item){
+    		$promo_arr[(string)$item['memberId']] = 'something';
+    	}
+    }
+    $res = $application->find(array('renewalpromocode'=>'RENEW2016'),$fields=array(),true,$sort=array(),0,10000);
+echo "<pre> renew: ";print_r(count($res));echo "</pre>";    
+    if(is_array($res)  && !empty($res)){
+    	foreach($res as $item){
+    		$promo_arr[(string)$item['memberId']] = 'something';
+    	}
+    }
+
+    $final_arr['expired'] = array_diff_key($final_arr['expired'], $promo_arr);
+    $final_arr['valid'] = array_diff_key($final_arr['valid'], $promo_arr);
+
+echo "<pre>after promos ";echo ' expired:'.count($final_arr['expired']).' valid:'.count($final_arr['valid']);echo "</pre>";
+	
+	// sanity check - make sure last years promos are included
+	
+	$last_year_promo_arr = array();
+    $application = new Model\Apply($doc=array(),$app);
+    $res = $application->find(array('promocode'=>array('$in'=>array('NCDD2015','NCDD2014'))),$fields=array(),true,$sort=array(),0,10000);
+echo "<pre> ncdd 2014 & 15: ";print_r(count($res));echo "</pre>";
+	$past_promo_arr = array();
+    if(is_array($res)  && !empty($res)){
+    	foreach($res as $item){
+    		if(!empty($item['memberId'])){
+    			$memberObj = new Model\Member($doc=array('_id'=>$item['memberId']), $app);    
+			    $member = $memberObj->findById();
+			    if(!empty($member)){
+				    
+				        if($member['payment']['renewalREUSE'] == 'yes'){
+				            if(array_key_exists('number', $member['payment']) && !empty($member['payment']['number'])){
+				                $res_arr = array();
+				                $res_arr['_id'] = (string)$member['_id'];
+				                $res_arr['expMonth'] = $member['payment']['expMonth'];
+				                $res_arr['expYear'] = $member['payment']['expYear'];
+				                
+				                $date1 = strtotime($res_arr['expYear']."-".$res_arr['expMonth']."-01");
+				                $date2 = strtotime("2016-01-01");
+				                $res_arr['expired'] = ($date2 > $date1) ? 'yes' : 'no';
+
+				                $res_arr['name'] = $member['displayName'];
+				                $res_arr['email'] = $member['email'];
+				                $res_arr['payment'] = $member['payment'];
+
+				                if($res_arr['expired'] == 'yes'){
+				                	$past_promo_arr['expired'][(string)$member['_id']] = $res_arr;
+				                }else{
+				                	$past_promo_arr['valid'][(string)$member['_id']] = $res_arr;
+				                }
+				                
+				                $cnt++;    
+				            }
+				            
+				        }
+
+				    
+				}
+    		}
+    		
+    	}
+    }
+echo "<pre> past promo arr expired: ";print_r(count($past_promo_arr['expired']));echo "</pre>";
+echo "<pre> past promo arr valid: ";print_r(count($past_promo_arr['valid']));echo "</pre>";
+	
+	$past_promo_arr['expired'] = array_diff_key($past_promo_arr['expired'], $final_arr['expired']);
+    $past_promo_arr['valid'] = array_diff_key($past_promo_arr['valid'], $final_arr['valid']);
+
+echo "<pre>after past promos ";echo ' expired:'.count($final_arr['expired']).' valid:'.count($final_arr['valid']);echo "</pre>";
+	
+	// add folks who should be in the list...
+	$final_arr['expired'] = array_merge($final_arr['expired'],$past_promo_arr['expired']);
+	$final_arr['valid'] = array_merge($final_arr['valid'],$past_promo_arr['valid']);
+
+echo "<pre>with sanity check including last years promos that got left out ";echo ' expired:'.count($final_arr['expired']).' valid:'.count($final_arr['valid']);echo "</pre>";
+
+echo "<pre>final total ";print_r(count($final_arr['expired'])+count($final_arr['valid']));echo "</pre>";
+	
+	foreach ($final_arr as $key => $value) {
+		foreach ($value as $record) {
+				
+			$ar_arr['record'] = $record;
+		    $ar_arr['expired'] = ($key == 'expired') ? 'yes' : 'no';
+		    $ar_arr['valid'] = ($key == 'valid') ? 'yes' : 'no';
+		    
+		    $ar = new Model\AutoRenew($ar_arr,$app);
+		    $ar->insert();
+		}
+	}
+
+	return new Response('', 200,array('Content-Type' => 'text/html'));
+})
+->before($mustbeADMIN);
+
+
+
+////////////////////////////////////////////
+// RENEWALS - CONTACT INFORMATION UPDATES //
+////////////////////////////////////////////
+$app->get('/renewalsauto/{offset}/{limit}', function ($offset, $limit, Request $request) use ($app) {
+
+	$ar = new Model\AutoRenew(array(),$app);
+	$ar_res = $ar->find(array(),$fields=array(),$slaveOkay=true,$sort=array(),$offset,$limit);
+	$valid = $ar->find(array('valid'=>'yes'),$fields=array(),$slaveOkay=true,$sort=array('record.payment.expYear'=>1,'record.payment.expMonth'=>1),$offset,$limit);
+	$expired = $ar->find(array('expired'=>'yes'),$fields=array(),$slaveOkay=true,$sort=array('record.payment.expYear'=>1,'record.payment.expMonth'=>1),$offset,$limit);
+	$declined = $ar->find(array('declined'=>'yes'),$fields=array(),$slaveOkay=true,$sort=array('record.payment.expYear'=>1,'record.payment.expMonth'=>1),$offset,$limit);
+	$paid = $ar->find(array('paid'=>'yes'),$fields=array(),$slaveOkay=true,$sort=array('paymentId'=>1),$offset,$limit);
+
+	$crumbs = array(array('name'=>'Renewals','href'=>'/renewals')
+					,array('name'=>'Renewals - Auto Renew','href'=>'/renewalsauto'));
+	$view_vars = array(
+						 'active'=>'Applications/RenewalAuto'
+						,'page-plugin'=>'datatables'
+						,'headline'=>'Renewals slated for auto-renew'
+						,'description'=>""
+						,'crumbs'=>$crumbs
+						,'ar_res'=>$ar_res
+						,'valid'=>$valid
+						,'expired'=>$expired
+						,'declined'=>$declined
+						,'paid'=>$paid
+						);
+
+	return $app['view']->render('application/index-renewalsauto', 'default', $view_vars);
+})
+->value('offset','0')
+->value('limit','20000')
+->before($mustbeADMIN);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //////////////
 // RENEWALS //
 //////////////

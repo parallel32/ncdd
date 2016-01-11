@@ -15,8 +15,8 @@ use Symfony\Component\Validator\ExecutionContext;
  */
 class Renewal extends Model {
 	
-	static public $status = array('UNSUBMITTED'=>5, 'SUBMITTED'=>10, 'APPROVED'=>20, 'PAID'=>40);
-	static public $statusReversed = array(5=>'UNSUBMITTED',10=>'SUBMITTED',20=>'APPROVED',40=>'PAID');
+	static public $status = array('UNSUBMITTED'=>5, 'AUTOPAY'=>8, 'SUBMITTED'=>10, 'APPROVED'=>20, 'PAID'=>40);
+	static public $statusReversed = array(5=>'UNSUBMITTED',8=>'AUTOPAY',10=>'SUBMITTED',20=>'APPROVED',40=>'PAID');
 	public $currentStatus;  // when the applicatoin is paid the status is reset.
 	public $year;
 	public $applicationId;  // when the renewal application is submitted this is set in the member record.
