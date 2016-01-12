@@ -643,8 +643,8 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                   <div class="row-fluid">
                      <div class="span6 ">
                         <div class="control-group">
-                           <label class="control-label">Enter   the   promo code  BONUS2015 and pay   your  2016  dues  in full in order to obtain   
-the   remainder of 2015 for free.  Offer expires December 31, 2015. </label>
+<!--                            <label class="control-label">Enter   the   promo code  BONUS2015 and pay   your  2016  dues  in full in order to obtain   
+the   remainder of 2015 for free.  Offer expires December 31, 2015. </label> -->
                            <div class="controls">
                               <input disabled type="text" name="doc[promocode]" class="m-wrap span12 promocode" value="<?=(array_key_exists('promocode', $this->vars['application'])) ? $this->vars['application']['promocode'] : ''?>">
                            </div>
