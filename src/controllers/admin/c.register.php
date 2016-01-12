@@ -816,7 +816,7 @@ $app->get('/registrations/seminar/{seminarId}/{offset}/{limit}', function ($semi
 	return $app['view']->render('registration/seminar-index', 'default', $view_vars);
 })
 ->value('offset','0')
-->value('limit','100')
+->value('limit','1000')
 ->before($mustbeADMIN);
 
 $app->get('/registrations/offwaitlist/{registrationId}', function ($registrationId, Request $request) use ($app) {
