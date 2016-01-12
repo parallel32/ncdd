@@ -639,6 +639,16 @@ $app->get('/application/update-member/{memberId}', function ($memberId, Request 
 		$payment = array();
 	}
 	
+	/////////////
+	// AUTO-PAY//
+	/////////////
+	// attempt to find the auto-pay created applicationId
+	// in order to bypass the payment stuff.
+	$is_autopay = false;
+	if(array_key_exists('applicationId', $member['renewal']) && !empty($member['renewal']['applicationId']) && $member['renewal']['currentStatus'] == Model\Renewal::$status['AUTOPAY']){
+		$is_autopay = true;
+	}
+
 	$crumbs = array(array('name'=>'Dashboard','href'=>'/')
 					,array('name'=>'Membership Renewal','href'=>'/application/update-member')
 					);
@@ -651,6 +661,7 @@ $app->get('/application/update-member/{memberId}', function ($memberId, Request 
 						,'member'=>$member
 						,'location'=>$location
 						,'payment'=>$payment
+						,'is_autopay'=>$is_autopay
 						);
 		
 	return $app['view']->render('application/update-member', 'default', $view_vars);
@@ -750,6 +761,16 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 		}
 	}
 
+	/////////////
+	// AUTO-PAY//
+	/////////////
+	// attempt to find the auto-pay created applicationId
+	// in order to bypass the payment stuff.
+	$is_autopay = false;
+	if(array_key_exists('applicationId', $member['renewal']) && !empty($member['renewal']['applicationId']) && $member['renewal']['currentStatus'] == Model\Renewal::$status['AUTOPAY']){
+		$is_autopay = true;
+	}
+
 
 	// if(array_key_exists('termsAcknowledgement', $doc) && $doc['termsAcknowledgement'] == 'yes'){
  //    	$doc['payByCheck'] = 'no-store';
@@ -768,6 +789,9 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 	$doc['currentStatus'] = Model\Apply::$status['APPROVED'];
 	$doc['approvedDate'] = new Model\Date($app, 'now');
 	$doc['submittedDate'] = new Model\Date($app, 'now');
+	if($is_autopay){
+		$doc['membershipDues'] = '-'; // just to get past the validation
+	}
 
 	$paymentId = null;	
 	$app_id = new \stdClass();	
@@ -788,49 +812,55 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
     
     // validate the model
     $app['validateModel']($app,$application,$groups=array('update_member'));
-    if((array_key_exists('payByCheck',$doc) && strpos($doc['payByCheck'], 'no') !== false) || (!empty($doc['paymentlite']['number']))){
-    	// this no-store has been deprecated
-    	if($doc['payByCheck'] == 'no-store'){
-    		$doc['paymentlite']['renewalREUSE'] = 'yes';
-    	}
-    	// prepare to save the credit card information only if it's not an already saved card
 
-    	if(strpos($doc['paymentlite']['number'], '...') !== false){
-    		// no need to re-validate since it's already saved
-    	}else{
-    		$paymentlite = new Model\PaymentLite($doc['paymentlite'], $app);
-	    	$validate[] = array('model'=>$paymentlite,'groups'=>array('cc'));
-	    	$app['validateModel']($app,$validate);	
-    	}
-	    
 
-    	// save the card and retain membership credit if exists - (only if not on file)
-		$tmpmem = new Model\Member(array('_id'=>$memberId),$app);
-		$tmpmem = $tmpmem->findById();
-		
+	if(!$is_autopay):
 
-		if(is_array($tmpmem['payment']) && array_key_exists('number', $tmpmem['payment']) && !empty($tmpmem['payment']['number']) && strlen($tmpmem['payment']['number']) > 10){
-			// make sure the renewalREUSE is true
-			$tmpmem['payment']['renewalREUSE'] = 'yes';
-			$memberobj = new Model\Member(array('_id'=>$memberId,'payment'=>$tmpmem['payment']),$app);
-			$memberobj->saveSafe();
-		}else{
-			$tmprenewalcredit = (is_array($tmpmem['payment']) && array_key_exists('renewalCredit', $tmpmem['payment'])) ? $tmpmem['payment']['renewalCredit']: '';
-			if(!empty($tmprenewalcredit))
-				$paymentlite->renewalCredit = $tmprenewalcredit;
-			$paymentlite->number = $paymentlite->number.'.x';
-			$paymentlite->expYear = substr($paymentlite->expYear, -2);
-			if(array_key_exists('termsAcknowledgement', $doc) && !empty($doc['termsAcknowledgement']) && $doc['termsAcknowledgement'] == 'yes'){
-				$paymentlite->renewalREUSE = 'yes';
+	    if((array_key_exists('payByCheck',$doc) && strpos($doc['payByCheck'], 'no') !== false) || (!empty($doc['paymentlite']['number']))){
+	    	// this no-store has been deprecated
+	    	if($doc['payByCheck'] == 'no-store'){
+	    		$doc['paymentlite']['renewalREUSE'] = 'yes';
+	    	}
+	    	// prepare to save the credit card information only if it's not an already saved card
+
+	    	if(strpos($doc['paymentlite']['number'], '...') !== false){
+	    		// no need to re-validate since it's already saved
+	    	}else{
+	    		$paymentlite = new Model\PaymentLite($doc['paymentlite'], $app);
+		    	$validate[] = array('model'=>$paymentlite,'groups'=>array('cc'));
+		    	$app['validateModel']($app,$validate);	
+	    	}
+		    
+
+	    	// save the card and retain membership credit if exists - (only if not on file)
+			$tmpmem = new Model\Member(array('_id'=>$memberId),$app);
+			$tmpmem = $tmpmem->findById();
+			
+
+			if(is_array($tmpmem['payment']) && array_key_exists('number', $tmpmem['payment']) && !empty($tmpmem['payment']['number']) && strlen($tmpmem['payment']['number']) > 10){
+				// make sure the renewalREUSE is true
+				$tmpmem['payment']['renewalREUSE'] = 'yes';
+				$memberobj = new Model\Member(array('_id'=>$memberId,'payment'=>$tmpmem['payment']),$app);
+				$memberobj->saveSafe();
+			}else{
+				$tmprenewalcredit = (is_array($tmpmem['payment']) && array_key_exists('renewalCredit', $tmpmem['payment'])) ? $tmpmem['payment']['renewalCredit']: '';
+				if(!empty($tmprenewalcredit))
+					$paymentlite->renewalCredit = $tmprenewalcredit;
+				$paymentlite->number = $paymentlite->number.'.x';
+				$paymentlite->expYear = substr($paymentlite->expYear, -2);
+				if(array_key_exists('termsAcknowledgement', $doc) && !empty($doc['termsAcknowledgement']) && $doc['termsAcknowledgement'] == 'yes'){
+					$paymentlite->renewalREUSE = 'yes';
+				}
+				$memberobj = new Model\Member(array('_id'=>$memberId,'payment'=>$paymentlite),$app);
+				$memberobj->saveSafe();
 			}
-			$memberobj = new Model\Member(array('_id'=>$memberId,'payment'=>$paymentlite),$app);
-			$memberobj->saveSafe();
-		}
-    }
-    
-    
-    // save the application
-	$app_id = $application->insert();		
+	    }
+	    
+	    
+	    // save the application
+		$app_id = $application->insert();	
+
+	endif; 	
 	
 	if ($doc['contributionCheck'] == 'yes') {
 		
@@ -870,20 +900,18 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 	}
 	
 	
-	
-	$member['renewal']['currentStatus'] = Model\Renewal::$status['APPROVED'];
+	$member['renewal']['currentStatus'] = ($is_autopay) ? Model\Renewal::$status['PAID']: Model\Renewal::$status['APPROVED'];;
 	$member['renewal']['submittedDate'] = new Model\Date($app, 'now'); 
-	$member['renewal']['approvedDate'] = new Model\Date($app, 'now'); 
-	$member['renewal']['applicationId'] = $app_id; 
+	$member['renewal']['approvedDate'] = new Model\Date($app, 'now');
 	$member['renewal']['contributionPaymentId'] = $paymentId; 
-	$member['renewal']['payByCheck'] = (array_key_exists('payByCheck', $doc)) ? $doc['payByCheck']: '';
+	if(!$is_autopay):
+		$member['renewal']['applicationId'] = $app_id; 
+		$member['renewal']['payByCheck'] = (array_key_exists('payByCheck', $doc)) ? $doc['payByCheck']: '';
+	endif;
 
 	$renewal = new Model\Renewal($member['renewal'],$app);
 	$renewal->setRenewalByMember($member['_id']);
 	
-
-	
-
 	return new Response(json_encode(array(
 		'label'=>'Your application was received.  Thank you.',
 		'message'=>'Thank you for your interest in NCDD.  Your application has been submitted.  You will be notified by the College if there are any questions or concerns that need to be addressed.')), 200,array('Content-Type' => 'registration/json')
@@ -2170,8 +2198,10 @@ $app->get('/renewalsauto/{offset}/{limit}', function ($offset, $limit, Request $
 // AUTO-RENEW - CHARGE //
 /////////////////////////
 $app->get('/renewalsautocharge', function (Request $request) use ($app) {
-	try {
-		
+	
+
+// DERIVE MEMBERSHIP DUES
+
 		$ar = new Model\AutoRenew(array(),$app);
 		$valid = $ar->find(array('valid'=>'yes'),$fields=array(),$slaveOkay=true,$sort=array('record.payment.expYear'=>1,'record.payment.expMonth'=>1),0,100000);
 		$expired = $ar->find(array('expired'=>'yes'),$fields=array(),$slaveOkay=true,$sort=array('record.payment.expYear'=>1,'record.payment.expMonth'=>1),0,100000);
@@ -2180,7 +2210,9 @@ $app->get('/renewalsautocharge', function (Request $request) use ($app) {
 		$valid_found = 0;
 		$valid_found2 = 0;
 		if(!empty($valid) && is_array($valid)):
-			foreach ($valid as $key => $value) {
+			for ($x=0; $x < count($valid); $x++) { 
+				$value = $valid[$x];
+
 				// derive membership dues:
 				// new app = yearsInLawPractice
 				// renewal = membershipDues - 6+ = $225, <6 $175, pd $50
@@ -2189,6 +2221,8 @@ $app->get('/renewalsautocharge', function (Request $request) use ($app) {
 				$um_res = $um->find(array('class'=>'UpdateMember','memberId'=>new \MongoId($value['record']['_id'])),array('membershipDues'=>1));
 				if(!empty($um_res)){
 					$valid_found++;
+					$membershipDues = $um_res[0]['membershipDues'];
+					$valid[$x]['membershipDues'] = $membershipDues;
 				}else{
 
 					// look in new member apps
@@ -2196,6 +2230,13 @@ $app->get('/renewalsautocharge', function (Request $request) use ($app) {
 					$nm_res = $nm->find(array('class'=>'ApplyNewMember','memberId'=>new \MongoId($value['record']['_id'])),array('yearsInLawPractice'=>1));
 					if(!empty($nm_res)){
 						$valid_found2++;
+						if(((int)date('Y') - (int)$nm_res[0]['yearsInLawPractice']) > 1000){
+							$membershipDues = ( (int)$nm_res[0]['yearsInLawPractice'] >= 6) ? 225 : 175;
+						}else{
+							$membershipDues = ( ((int)date('Y') - (int)$nm_res[0]['yearsInLawPractice']) >= 6) ? 225 : 175;
+						}
+						$valid[$x]['membershipDues'] = $membershipDues;
+						//error_log('A: '.print_r($membershipDues,true));
 					}else{
 						echo "<pre>";print_r($value['record']['_id']);echo "</pre>";
 					}
@@ -2209,7 +2250,11 @@ $app->get('/renewalsautocharge', function (Request $request) use ($app) {
 		$expired_found = 0;
 		$expired_found2 = 0;
 		if(!empty($expired) && is_array($expired)):
-			foreach ($expired as $key => $value) {
+			for ($x=0; $x < count($expired); $x++) { 
+				$value = $valid[$x];
+				// update the expYear in an attempt to charge the card
+				$expired[$x]['record']['payment']['expYear'] = 2017;
+				
 				// derive membership dues:
 				// new app = yearsInLawPractice
 				// renewal = membershipDues - 6+ = $225, <6 $175, pd $50
@@ -2218,6 +2263,8 @@ $app->get('/renewalsautocharge', function (Request $request) use ($app) {
 				$um_res = $um->find(array('class'=>'UpdateMember','memberId'=>new \MongoId($value['record']['_id'])),array('membershipDues'=>1));
 				if(!empty($um_res)){
 					$expired_found++;
+					$membershipDues = $um_res[0]['membershipDues'];
+					$expired[$x]['membershipDues'] = $membershipDues;
 				}else{
 
 					// look in new member apps
@@ -2225,8 +2272,15 @@ $app->get('/renewalsautocharge', function (Request $request) use ($app) {
 					$nm_res = $nm->find(array('class'=>'ApplyNewMember','memberId'=>new \MongoId($value['record']['_id'])),array('yearsInLawPractice'=>1));
 					if(!empty($nm_res)){
 						$expired_found2++;
+						if(((int)date('Y') - (int)$nm_res[0]['yearsInLawPractice']) > 1000){
+							$membershipDues = ( (int)$nm_res[0]['yearsInLawPractice'] >= 6) ? 225 : 175;
+						}else{
+							$membershipDues = ( ((int)date('Y') - (int)$nm_res[0]['yearsInLawPractice']) >= 6) ? 225 : 175;
+						}
+						$expired[$x]['membershipDues'] = $membershipDues;
+						//error_log('B: '.print_r($membershipDues,true));
 					}else{
-						echo "<pre>";print_r($value['record']['_id']);echo "</pre>";
+						//echo "<pre>";print_r($value['record']['_id']);echo "</pre>";
 					}
 				}
 				$i++;
@@ -2234,14 +2288,181 @@ $app->get('/renewalsautocharge', function (Request $request) use ($app) {
 		endif; 
 		echo "expired: ".$i." found:".$expired_found." found2:".$expired_found2."<br><br>";
 		
+// MEMBERSHIP DUES HAVE BEEN DERIVED
+// COMBINE THE ARRAYS since the expYear on the expired cards has been updated 
+		$finalArr = array_merge($valid,$expired);
 
-		return new Response('', 200,array('Content-Type' => 'text/html'));
+		for ($x=0; $x < 2; $x++) { 
+			$value = $finalArr[$x];
+
+			$memberId = $value['record']['_id'];
+			$member = new Model\Member(array('_id'=>$memberId),$app);
+			$member = $member->findById();
+			$location = new Model\Location(array('member'=>$member),$app);
+			$location = $location->getByMemberId();
 
 
 
-	} catch (Exception $e) {
-		debug_backtrace();
-	}
+// PREPARE APPLICATION				
+			$doc['memberId'] = new \MongoId($memberId);
+			$doc['email'] = $member['email'];
+			$doc['firstName'] = $member['firstName'];
+			$doc['lastName'] = $member['lastName'];
+			$doc['currentStatus'] = Model\Apply::$status['DRAFT'];
+			$doc['approvedDate'] = new \stdClass();
+			$doc['submittedDate'] = new \stdClass();
+			$doc['paidDate'] = new \stdClass();
+			$doc['paymentId'] = new \stdClass();
+			$doc['membershipDues'] = $value['membershipDues'];
+
+			$application = new Model\UpdateMember($doc, $app);
+			$app_id = $application->insert();	
+			
+// MAKE THE PAYMENT
+
+
+
+			/////////////////////////////////
+			// prepare their correct total //
+			/////////////////////////////////
+			$pro_rate = array('q'=>0,'a'=>0);
+			$discount = 0;
+			 // CREDIT DISCOUNT FOR MEMBERS WHO HOLD A CREDIT WITH US
+			$discount2 = 0;
+			if(array_key_exists('payment',$member) 
+			      && !empty($member['payment'])
+			      && is_array($member['payment'])
+			      && array_key_exists('renewalCredit',$member['payment'])
+			      && !empty($member['payment']['renewalCredit'])
+			      && $member['payment']['renewalCredit'] > 0
+			): 
+			   $discount2  = $member['payment']['renewalCredit'];
+			endif;
+		                       
+		    $amount = $value['membershipDues'];
+
+		    $new_renewal_credit = null;
+		    $amount = $amount-$discount-$discount2;
+		    if($amount < 0 && !empty($discount2)){
+		    	$new_renewal_credit = abs($amount);
+		    }else if($amount > 0 && !empty($discount2)){
+		    	$new_renewal_credit = '-';
+		    }
+		    $amount = ($amount <= 0) ? 0:$amount;
+		    
+		    ////////////////////////////////////////////////////////////////////////////////
+			// activate a manual charge and create receipt - only if the declineCount = 0 //
+			// if it's more than zero then the card must be updated 					  //
+			////////////////////////////////////////////////////////////////////////////////
+
+			$doc['memberId'] = $memberId;
+			$doc['ownerId'] = $app_id;
+			$doc['ownerClass'] = 'UpdateMember';
+			$doc['description'] = 'INV-'.time();
+			$doc['title'] = 'UPDATE MEMBER APPLICATION';
+			$doc['firstName'] = $member['firstName'];
+			$doc['lastName'] = $member['lastName'];
+			$doc['email'] = '';
+			$doc['phone'] = '';
+			$doc['addressLine1'] = $value['record']['payment']['addressLine1'];
+			$doc['addressLine2'] = $value['record']['payment']['addressLine2'];
+			$doc['city'] = $value['record']['payment']['city'];
+			$doc['stateProvinceRegion'] = $value['record']['payment']['stateProvinceRegion'];
+			$doc['zipPostalCode'] = $value['record']['payment']['zipPostalCode'];
+			$doc['country'] = $value['record']['payment']['country'];
+			$doc['amount'] = $amount;
+			$doc['expMonth'] = $value['record']['payment']['expMonth'];
+			$doc['expYear'] = $value['record']['payment']['expYear'];
+			$doc['number'] = str_replace('.x', '', $value['record']['payment']['number']);
+			//$doc['number'] = $member['payment']['number'];
+			$doc['cvc'] = str_replace('.x', '', $value['record']['payment']['cvc']);
+			$doc['name'] = $value['record']['payment']['name'];
+			// prepare the invoice
+			$application = new Model\Apply(array('_id'=>$app_id),$app);
+			$application = $application->findById($id='_id', $fields=array(), $slaveOkay=false);
+
+		   	$doc['invoiceBlock'] = $app['view']->element('invoice-block',array('application'=>$application,'member'=>$member,'location'=>$location,'pro_rated_membership_dues'=>$pro_rate));
+			$payment = new Model\Payment($doc,$app);
+
+			try {
+				$app['validateModel']($app, $payment,$groups=array('cc'));	
+			} catch (Exception $e) {
+				error_log(__FILE__.' '.__LINE__.' for variable: payment  ==>'.print_r($payment,true));
+				throw new \Saw\Exceptions\SawException(new \Saw\Exceptions\PaymentException(),$e->getMessage());
+			}
+			
+			try {
+
+
+				error_log(': '.print_r('AAA',true));
+				$paymentId = $payment->charge();	
+// update auto-renew record				
+				$ar_doc['_id'] = $value['_id'];
+				$ar_doc['paid'] = 'yes';
+				$ar_doc['expired'] = 'no';
+				$ar_doc['valid'] = 'no';
+				$ar_doc['declined'] = 'no';
+				$ar_doc['declinedMessage'] = '-';
+				$ar_doc['paymentId'] = $paymentId;
+				$ar = new Model\AutoRenew($ar_doc,$app);
+				$ar->saveSafe();
+// update application with paymentid and paid date
+				$appl = new Model\Apply(array('_id'=>$app_id, 'paymentId'=>$paymentId,'paidDate'=>new Model\Date($app, 'now')), $app);
+				$appl->saveSafe();
+// update member's renewal credit 
+				$tpaymnt = $member['payment'];
+		    	$tpaymnt['declineCount'] = 0;
+		    	if(!is_null($new_renewal_credit))
+		    		$tpaymnt['renewalCredit'] = $new_renewal_credit;
+		    	$tmem = new Model\Member(array('_id'=>$application['memberId'],'payment'=>$tpaymnt),$app);
+		    	$tmem->saveSafe();
+
+// PREPARE THE RENEWAL ARRAY IN THE MEMBER RECORD
+				$mem['renewal']['applicationId'] = $app_id; 
+				$mem['renewal']['currentStatus'] = Model\Renewal::$status['AUTOPAY'];
+				$mem['renewal']['submittedDate'] = new \stdClass();
+				$mem['renewal']['approvedDate'] = new \stdClass();
+				$mem['renewal']['paidDate'] = new Model\Date($app, 'now');
+				$mem['renewal']['paymentId'] = $paymentId;
+				$mem['renewal']['payByCheck'] = 'no';
+
+				$renewal = new Model\Renewal($mem['renewal'],$app);
+				$renewal->setRenewalByMember($memberId);
+
+
+// PREPARE TO SEND THE EMAIL
+				$subject = 'NCDD Membership Dues Payment Received';
+				$to = $member['email'];
+				$view_vars = array('firstName'=>$member['firstName']
+									,'middleName'=>(array_key_exists('middleName', $member)) ? $member['middleName'] : ''
+									,'lastName'=>$member['lastName']
+									,'membershipDues'=>$value['membershipDues']
+				);
+				$body = $app['view']->render('email/auto-pay-payment-thankyou','email', $view_vars);
+				
+				$app['sendMail']($subject, $body, $to);
+				
+			} catch (Exception $e) {
+				error_log(': '.print_r('BBB',true));
+				$ar_doc['_id'] = $value['_id'];
+				$ar_doc['paid'] = 'no';
+				$ar_doc['expired'] = 'no';
+				$ar_doc['valid'] = 'no';
+				$ar_doc['paymentId'] = new \stdClass();
+				$ar_doc['declined'] = 'yes';
+				$ar_doc['declinedMessage'] = $e->getMessage();
+				$ar = new Model\AutoRenew($ar_doc,$app);
+				$ar->saveSafe();
+
+			}
+
+
+		error_log('x '.$x.' of '.count($x));
+		} // end for
+
+
+	
+	return new Response('', 200,array('Content-Type' => 'text/html'));
 });
 
 
@@ -2576,7 +2797,7 @@ $app->get('/application/autopay', function (Request $request) use ($app) {
 				$doc['email'] = $application['email'];
 				$doc['phone'] = (!empty($application['phone'])) ? $application['phone']: $location['phone'];
 				$doc['addressLine1'] = (!empty($application['address1'])) ? $application['address1']: $member['payment']['addressLine1'];
-				$doc['addressLine2'] = (!empty($application['address2'])) ? $application['address2']: $member['payment']['addressLine2'];
+				$doc['addressLine2'] = (!empty($application['address2'])) ? $application['address2']: (array_key_exists('addressLine2', $member['payment'])) ? $member['payment']['addressLine2'] : '';
 				$doc['city'] = (!empty($application['city'])) ? $application['city']: $member['payment']['city'];
 				$doc['stateProvinceRegion'] = (!empty($application['state'])) ? $application['state']: $member['payment']['stateProvinceRegion'];
 				$doc['zipPostalCode'] = (!empty($application['postalCode'])) ? $application['postalCode']: $member['payment']['zipPostalCode'];

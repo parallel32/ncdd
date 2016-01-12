@@ -549,207 +549,211 @@
                      <!--/span-->
                   </div>
 
+                  <? if(array_key_exists('is_autopay', $this->vars) && $this->vars['is_autopay']): ?>
+                     
+                  <? else: ?>
+
                   
-                  <h3 class="form-section">Select which membership applies to you:</h3>
-                  <div class="row-fluid">
-                     <div class="span12 ">
-                        <div class="control-group">
-                           <label class="control-label"></label>
-                           <div class="controls">
-                              <select class=" m-wrap span12 membershipDues" name="doc[membershipDues]">
-                                 <option value="225">6 or more years in law practice ($225 annual dues)</option>
-                                 <option value="175">1-5 years in law practice ($175 annual dues) </option>
-                                 <option value="50"> Public Defender ($50 annual dues)</option>
-                              </select>
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                  </div>
-                  
-
-                  <h3 class="form-section">Promo Code</h3>
-                  <div class="row-fluid">
-                     <div class="span6">
-                        <div class="control-group ">
-                           <label class="control-label">Enter the promo code RENEW2016, pay your dues in full and sign up for future membership dues auto-pay (if you haven't already) and receive the NCDD Membership Desktop Trophy.  Offer expires January 4th, 2016. </label>
-                           <div class="controls">
-                              <input type="text" name="doc[renewalpromocode]" class="m-wrap span12 renewalpromocode" value="">
-                              <input type="hidden" id="promocodetype" value="">
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                  </div>
-                  
-                  <h3 class="form-section">Please confirm if you intend to pay by check:</h3>
-                  <div id="paybycheck" class="row-fluid">
-                     <div class="span12 alert alert-warning">
-                        <div class="control-group error">
-                           <label class="control-label"></label>
-                           <div class="controls">
-                              <input style="margin-left:1px;" type="radio" name="doc[payByCheck]" value="yes">&nbsp;&nbsp;Yes, I intend to pay by check.<br/><br/>
-                              <input style="margin-left:1px;" type="radio" name="doc[payByCheck]" value="no" checked>&nbsp;&nbsp;No, I intend to pay my membership dues online with my credit card.<br/><br/>
-                              <!--<input style="margin-left:1px;" type="radio" name="doc[payByCheck]" checked value="no-store">&nbsp;&nbsp;I intend to pay my membership dues online with my credit card.  Please also store my credit card for future convenience.<br/><br/>-->
-                              <!--Upon submission of this form and subsequent approval of your renewal, you will receive an email with instructions on how to pay your dues.-->
-                              <p id="paybycheck-instructions" class="hide">Because you are using the promocode, you must pay by credit card.  If you need to pay by check, clear out the promo code and select to pay by check.</p>
-                           </div>
-                        </div>
-                     </div>
-                     <!--/span-->
-                  </div>
-                  
-                  <div id="promocodeverification" class="row-fluid ">
-                     <div class="span10 ">
-                        <p class="alert alert-info">
-                        <b>I authorize the NCDD to store my credit card for future Annual Dues payments.</b>
-                        <span class="control-group"><span class="controls"><input type="checkbox" name="doc[termsAcknowledgement]" class="termsAcknowledgement" value="yes">Yes, I agree.</span></span>
-                     </p>
-                     </div>
-                  </div>
-
-
-
-
-
-                  <h3 class="form-section">If you intend to pay by credit card please provide your card details:</h3>
-                  <? if(array_key_exists('payment',$this->vars['member']) && !empty($this->vars['member']['payment']) && is_array($this->vars['member']['payment'])): 
-                        $this->vars['payment'] = $this->vars['member']['payment'];
-                     else:
-                        $this->vars['payment'] = array();
-                     endif;
-                  ?>
+                     <h3 class="form-section">Select which membership applies to you:</h3>
                      <div class="row-fluid">
                         <div class="span12 ">
                            <div class="control-group">
-                              <label class="control-label" for="type">We Accept</label>
+                              <label class="control-label"></label>
                               <div class="controls">
-                                 <span class="card visa" title="Visa">Visa</span>
-                                 <span class="card master" title="Mastercard">Mastercard</span>
-                                 <span class="card amex" title="American Express">American Express</span>
-                                 <span class="card discover" title="Discover">Discover</span>
+                                 <select class=" m-wrap span12 membershipDues" name="doc[membershipDues]">
+                                    <option value="225">6 or more years in law practice ($225 annual dues)</option>
+                                    <option value="175">1-5 years in law practice ($175 annual dues) </option>
+                                    <option value="50"> Public Defender ($50 annual dues)</option>
+                                 </select>
                               </div>
                            </div>
                         </div>
                         <!--/span-->
                      </div>
+                     
+                     
+                     <h3 class="form-section">Promo Code</h3>
                      <div class="row-fluid">
-                        <div class="span12 "><span class="cardType"></span></div>
-                     </div>
-                     <div class="row-fluid">
-                        <div class="span8 ">
+                        <div class="span6">
                            <div class="control-group ">
-                              <label class="control-label">Your name as it appears on the card</label>
+                              <label class="control-label">Enter the promo code RENEW2016, pay your dues in full and sign up for future membership dues auto-pay (if you haven't already) and receive the NCDD Membership Desktop Trophy.  Offer expires January 4th, 2016. </label>
                               <div class="controls">
-                                 <input type="text" name="doc[paymentlite][name]" class="m-wrap span8 paymentlite-name" value="<?=(array_key_exists('name',$this->vars['payment'])) ? $this->vars['payment']['name']: '';?>">
+                                 <input type="text" name="doc[renewalpromocode]" class="m-wrap span12 renewalpromocode" value="">
+                                 <input type="hidden" id="promocodetype" value="">
                               </div>
                            </div>
                         </div>
                         <!--/span-->
                      </div>
-                     <div class="row-fluid">
-                        <div class="span8 ">
-                           <div class="control-group ">
-                              <label class="control-label">Credit Card Number</label>
+                     
+                     <h3 class="form-section">Please confirm if you intend to pay by check:</h3>
+                     <div id="paybycheck" class="row-fluid">
+                        <div class="span12 alert alert-warning">
+                           <div class="control-group error">
+                              <label class="control-label"></label>
                               <div class="controls">
-                                 <input type="text" name="doc[paymentlite][number]" class="m-wrap span8 paymentlite-number" value="<?=(array_key_exists('number',$this->vars['payment'])) ? $this->vars['payment']['number']: '';?>">
+                                 <input style="margin-left:1px;" type="radio" name="doc[payByCheck]" value="yes">&nbsp;&nbsp;Yes, I intend to pay by check.<br/><br/>
+                                 <input style="margin-left:1px;" type="radio" name="doc[payByCheck]" value="no" checked>&nbsp;&nbsp;No, I intend to pay my membership dues online with my credit card.<br/><br/>
+                                 <!--<input style="margin-left:1px;" type="radio" name="doc[payByCheck]" checked value="no-store">&nbsp;&nbsp;I intend to pay my membership dues online with my credit card.  Please also store my credit card for future convenience.<br/><br/>-->
+                                 <!--Upon submission of this form and subsequent approval of your renewal, you will receive an email with instructions on how to pay your dues.-->
+                                 <p id="paybycheck-instructions" class="hide">Because you are using the promocode, you must pay by credit card.  If you need to pay by check, clear out the promo code and select to pay by check.</p>
                               </div>
                            </div>
                         </div>
                         <!--/span-->
                      </div>
-                     <div class="row-fluid">
-                        <div class="span8 ">
-                           <div class="control-group ">
-                              <label class="control-label">CVC Code</label>
-                              <div class="controls">
-                                 <input type="text" name="doc[paymentlite][cvc]" class="m-wrap span8 paymentlite-cvc" value="<?=(array_key_exists('cvc',$this->vars['payment'])) ? $this->vars['payment']['cvc']: '';?>">
-                              </div>
-                           </div>
+                     
+                     <div id="promocodeverification" class="row-fluid ">
+                        <div class="span10 ">
+                           <p class="alert alert-info">
+                           <b>I authorize the NCDD to store my credit card for future Annual Dues payments.</b>
+                           <span class="control-group"><span class="controls"><input type="checkbox" name="doc[termsAcknowledgement]" class="termsAcknowledgement" value="yes">Yes, I agree.</span></span>
+                        </p>
                         </div>
-                        <!--/span-->
-                     </div>
-                     <div class="row-fluid">
-                        <div class="span8 ">
-                           <div class="control-group ">
-                              <label class="control-label">Expiration Date</label>
-                              <div class="controls">
-                                 <select id="ccard-expMonth" class="span4 paymentlite-expMonth" name="doc[paymentlite][expMonth]"></select>
-                                 <select id="ccard-expYear" class="span4 paymentlite-expYear" name="doc[paymentlite][expYear]"></select>
-                              </div>
-                           </div>
-                        </div>
-                        <!--/span-->
-                     </div>
-                     <h3 class="form-section">Credit Card Billing Address</h3>
-                     <div class="row-fluid">
-                        <div class="span8 ">
-                           <div class="control-group ">
-                              <label class="control-label">Address Line 1</label>
-                              <div class="controls">
-                                 <input type="text" name="doc[paymentlite][addressLine1]" class="m-wrap span8 paymentlite-addressLine1" value="<?=(array_key_exists('addressLine1',$this->vars['payment'])) ? $this->vars['payment']['addressLine1']: '';?>">
-                              </div>
-                           </div>
-                        </div>
-                        <!--/span-->
-                     </div>
-                     <div class="row-fluid">
-                        <div class="span8 ">
-                           <div class="control-group ">
-                              <label class="control-label">Address Line 2</label>
-                              <div class="controls">
-                                 <input type="text" name="doc[paymentlite][addressLine2]" class="m-wrap span8 paymentlite-addressLine2" value="<?=(array_key_exists('addressLine2',$this->vars['payment'])) ? $this->vars['payment']['addressLine2']: '';?>">
-                              </div>
-                           </div>
-                        </div>
-                        <!--/span-->
-                     </div>
-                     <div class="row-fluid">
-                        <div class="span8 ">
-                           <div class="control-group ">
-                              <label class="control-label">City</label>
-                              <div class="controls">
-                                 <input type="text" name="doc[paymentlite][city]" class="m-wrap span8 paymentlite-city" value="<?=(array_key_exists('city',$this->vars['payment'])) ? $this->vars['payment']['city']: '';?>">
-                              </div>
-                           </div>
-                        </div>
-                        <!--/span-->
-                     </div>
-                     <div class="row-fluid">
-                        <div class="span8 ">
-                           <div class="control-group ">
-                              <label class="control-label">State/Province/Region</label>
-                              <div class="controls">
-                                 <input type="text" name="doc[paymentlite][stateProvinceRegion]" class="m-wrap span8 paymentlite-stateProvinceRegion" value="<?=(array_key_exists('stateProvinceRegion',$this->vars['payment'])) ? $this->vars['payment']['stateProvinceRegion']: '';?>">
-                              </div>
-                           </div>
-                        </div>
-                        <!--/span-->
-                     </div>
-                     <div class="row-fluid">
-                        <div class="span8 ">
-                           <div class="control-group ">
-                              <label class="control-label">Zip/PostalCode</label>
-                              <div class="controls">
-                                 <input type="text" name="doc[paymentlite][zipPostalCode]" class="m-wrap span8 paymentlite-zipPostalCode" value="<?if(array_key_exists('zipPostalCode',$this->vars['payment'])){if(strlen($this->vars['payment']['zipPostalCode']) < 5){echo str_pad($this->vars['payment']['zipPostalCode'],5,'0',STR_PAD_LEFT);}else if(strlen($this->vars['payment']['zipPostalCode']) > 5 && strlen($this->vars['payment']['zipPostalCode']) < 9){str_pad($this->vars['payment']['zipPostalCode'],9,'0',STR_PAD_LEFT);}else{echo $this->vars['payment']['zipPostalCode'];}}?>">
-                              </div>
-                           </div>
-                        </div>
-                        <!--/span-->
-                     </div>
-                     <div class="row-fluid">
-                        <div class="span8 ">
-                           <div class="control-group ">
-                              <label class="control-label">Country</label>
-                              <div class="controls">
-                                 <input type="text" name="doc[paymentlite][country]" class="m-wrap span8 paymentlite-country" value="<?=(array_key_exists('country',$this->vars['payment'])) ? $this->vars['payment']['country']: '';?>">
-                              </div>
-                           </div>
-                        </div>
-                        <!--/span-->
                      </div>
 
 
+
+
+
+                     <h3 class="form-section">If you intend to pay by credit card please provide your card details:</h3>
+                     <? if(array_key_exists('payment',$this->vars['member']) && !empty($this->vars['member']['payment']) && is_array($this->vars['member']['payment'])): 
+                           $this->vars['payment'] = $this->vars['member']['payment'];
+                        else:
+                           $this->vars['payment'] = array();
+                        endif;
+                     ?>
+                        <div class="row-fluid">
+                           <div class="span12 ">
+                              <div class="control-group">
+                                 <label class="control-label" for="type">We Accept</label>
+                                 <div class="controls">
+                                    <span class="card visa" title="Visa">Visa</span>
+                                    <span class="card master" title="Mastercard">Mastercard</span>
+                                    <span class="card amex" title="American Express">American Express</span>
+                                    <span class="card discover" title="Discover">Discover</span>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        <div class="row-fluid">
+                           <div class="span12 "><span class="cardType"></span></div>
+                        </div>
+                        <div class="row-fluid">
+                           <div class="span8 ">
+                              <div class="control-group ">
+                                 <label class="control-label">Your name as it appears on the card</label>
+                                 <div class="controls">
+                                    <input type="text" name="doc[paymentlite][name]" class="m-wrap span8 paymentlite-name" value="<?=(array_key_exists('name',$this->vars['payment'])) ? $this->vars['payment']['name']: '';?>">
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        <div class="row-fluid">
+                           <div class="span8 ">
+                              <div class="control-group ">
+                                 <label class="control-label">Credit Card Number</label>
+                                 <div class="controls">
+                                    <input type="text" name="doc[paymentlite][number]" class="m-wrap span8 paymentlite-number" value="<?=(array_key_exists('number',$this->vars['payment'])) ? $this->vars['payment']['number']: '';?>">
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        <div class="row-fluid">
+                           <div class="span8 ">
+                              <div class="control-group ">
+                                 <label class="control-label">CVC Code</label>
+                                 <div class="controls">
+                                    <input type="text" name="doc[paymentlite][cvc]" class="m-wrap span8 paymentlite-cvc" value="<?=(array_key_exists('cvc',$this->vars['payment'])) ? $this->vars['payment']['cvc']: '';?>">
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        <div class="row-fluid">
+                           <div class="span8 ">
+                              <div class="control-group ">
+                                 <label class="control-label">Expiration Date</label>
+                                 <div class="controls">
+                                    <select id="ccard-expMonth" class="span4 paymentlite-expMonth" name="doc[paymentlite][expMonth]"></select>
+                                    <select id="ccard-expYear" class="span4 paymentlite-expYear" name="doc[paymentlite][expYear]"></select>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        <h3 class="form-section">Credit Card Billing Address</h3>
+                        <div class="row-fluid">
+                           <div class="span8 ">
+                              <div class="control-group ">
+                                 <label class="control-label">Address Line 1</label>
+                                 <div class="controls">
+                                    <input type="text" name="doc[paymentlite][addressLine1]" class="m-wrap span8 paymentlite-addressLine1" value="<?=(array_key_exists('addressLine1',$this->vars['payment'])) ? $this->vars['payment']['addressLine1']: '';?>">
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        <div class="row-fluid">
+                           <div class="span8 ">
+                              <div class="control-group ">
+                                 <label class="control-label">Address Line 2</label>
+                                 <div class="controls">
+                                    <input type="text" name="doc[paymentlite][addressLine2]" class="m-wrap span8 paymentlite-addressLine2" value="<?=(array_key_exists('addressLine2',$this->vars['payment'])) ? $this->vars['payment']['addressLine2']: '';?>">
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        <div class="row-fluid">
+                           <div class="span8 ">
+                              <div class="control-group ">
+                                 <label class="control-label">City</label>
+                                 <div class="controls">
+                                    <input type="text" name="doc[paymentlite][city]" class="m-wrap span8 paymentlite-city" value="<?=(array_key_exists('city',$this->vars['payment'])) ? $this->vars['payment']['city']: '';?>">
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        <div class="row-fluid">
+                           <div class="span8 ">
+                              <div class="control-group ">
+                                 <label class="control-label">State/Province/Region</label>
+                                 <div class="controls">
+                                    <input type="text" name="doc[paymentlite][stateProvinceRegion]" class="m-wrap span8 paymentlite-stateProvinceRegion" value="<?=(array_key_exists('stateProvinceRegion',$this->vars['payment'])) ? $this->vars['payment']['stateProvinceRegion']: '';?>">
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        <div class="row-fluid">
+                           <div class="span8 ">
+                              <div class="control-group ">
+                                 <label class="control-label">Zip/PostalCode</label>
+                                 <div class="controls">
+                                    <input type="text" name="doc[paymentlite][zipPostalCode]" class="m-wrap span8 paymentlite-zipPostalCode" value="<?if(array_key_exists('zipPostalCode',$this->vars['payment'])){if(strlen($this->vars['payment']['zipPostalCode']) < 5){echo str_pad($this->vars['payment']['zipPostalCode'],5,'0',STR_PAD_LEFT);}else if(strlen($this->vars['payment']['zipPostalCode']) > 5 && strlen($this->vars['payment']['zipPostalCode']) < 9){str_pad($this->vars['payment']['zipPostalCode'],9,'0',STR_PAD_LEFT);}else{echo $this->vars['payment']['zipPostalCode'];}}?>">
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        <div class="row-fluid">
+                           <div class="span8 ">
+                              <div class="control-group ">
+                                 <label class="control-label">Country</label>
+                                 <div class="controls">
+                                    <input type="text" name="doc[paymentlite][country]" class="m-wrap span8 paymentlite-country" value="<?=(array_key_exists('country',$this->vars['payment'])) ? $this->vars['payment']['country']: '';?>">
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+
+                  <? endif; // is_autopay ?>
 
 
 

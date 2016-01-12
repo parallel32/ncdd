@@ -655,6 +655,7 @@ EOT;
 			$this->number = str_replace('-', '', $this->number);
 			$this->number = substr((string)$this->number,-4);
 			$this->cvc = '';
+			$this->paidDate = new Date(self::$app, 'now');
 
 			$paymentId = $this->insert();
 			$this->markOwnerClassPaid($paymentId);

@@ -100,7 +100,27 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
             <? endif; ?>
 
             <? if(array_key_exists('renewal',$this->vars)): ?>
-               <? if(!empty($this->vars['renewal']) && $this->vars['renewal']['currentStatus'] < \Saw\Model\Renewal::$status['SUBMITTED']): ?>
+               <? if (!empty($this->vars['renewal']) && $this->vars['renewal']['currentStatus'] == \Saw\Model\Renewal::$status['AUTOPAY']): ?>
+                  <h3 class="form-section alert alert-error">Thank you for signing up for auto-pay.  Your membership dues have been paid.  However, you must still prepare your membership <?=(\Saw\Model\Member::$membership['GENERAL MEMBER'] == $this->vars['currentMembership']) ? 'renewal form': 'update form';?></h3>
+                  <?
+                     switch ($this->vars['currentMembership']) {
+                        case \Saw\Model\Member::$membership['GENERAL MEMBER']:
+                           $apptype = 'update-member';
+                           break;
+                        case \Saw\Model\Member::$membership['SUSTAINING MEMBER']:
+                           $apptype = 'update-sustaining-member';
+                           break;
+                        case \Saw\Model\Member::$membership['FOUNDING MEMBER']:
+                           $apptype = 'update-founding-member';
+                           break;                        
+                        default:
+                           $apptype = 'update-member';
+                           break;
+                     }
+                  ?>
+                  <span><a data-apptype="<?=$apptype?>" data-id="<?=call_user_func(function($app){ $user = $app['session']->get('user'); return $user['user_id'];},$this->app);?>" class="btn green large renewal"><i class=" icon-pencil"></i> Click Here to Prepare and Submit.</a></span>
+                  <br><br>
+               <? elseif(!empty($this->vars['renewal']) && $this->vars['renewal']['currentStatus'] < \Saw\Model\Renewal::$status['SUBMITTED']): ?>
                   <h3 class="form-section alert alert-error">Please prepare your membership <?=(\Saw\Model\Member::$membership['GENERAL MEMBER'] == $this->vars['currentMembership']) ? 'renewal form': 'update form';?></h3>
                   <?
                      switch ($this->vars['currentMembership']) {
@@ -173,7 +193,7 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                   </div>
                </div>
                <? endif; ?>
-               <? if($this->app['renewal_card_expiration_date']()): ?>
+               <? if(false && $this->app['renewal_card_expiration_date']()): ?>
                <div id="approved-applications" class="row-fluid">
                   <div class="span12">
                      <!-- BEGIN EXAMPLE TABLE PORTLET-->
