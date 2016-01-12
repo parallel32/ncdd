@@ -2292,7 +2292,7 @@ $app->get('/renewalsautocharge', function (Request $request) use ($app) {
 // COMBINE THE ARRAYS since the expYear on the expired cards has been updated 
 		$finalArr = array_merge($valid,$expired);
 
-		for ($x=0; $x < 6; $x++) { 
+		for ($x=0; $x < 15; $x++) { 
 			$value = $finalArr[$x];
 
 			$memberId = $value['record']['_id'];
