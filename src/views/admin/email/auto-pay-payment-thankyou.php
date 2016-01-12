@@ -14,7 +14,7 @@
 <? $middleName = (!empty($this->vars['middleName'])) ? ' '.$this->vars['middleName'].' ':' '; ?>
 <br>Dear <?=$this->vars['firstName']?><?=$middleName?><?=$this->vars['lastName']?>,
 <br>
-<br>Your <?=date('Y')?> dues in the amoutn of $<?=$this->vars['membershipDues']?> have been charged.  Thank you for your payment.  Your membership renewal is NOT COMPLETE until we have also received your renewal form.
+<br>Your <?=date('Y')?> dues in the amount of $<?=$this->vars['membershipDues']?> have been charged.  Thank you for your payment.  Your membership renewal is NOT COMPLETE until we have also received your renewal form.
 <br/>
 <br>Please follow these simple instructions to submit your Membership Renewal Form:
 <br/>
