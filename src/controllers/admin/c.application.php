@@ -2150,7 +2150,7 @@ $app->get('/renewalsauto/{offset}/{limit}', function ($offset, $limit, Request $
 	$view_vars = array(
 						 'active'=>'Applications/RenewalAuto'
 						,'page-plugin'=>'datatables'
-						,'headline'=>'Renewals slated for auto-renew'
+						,'headline'=>'Members marked for auto-renew'
 						,'description'=>""
 						,'crumbs'=>$crumbs
 						,'ar_res'=>$ar_res
@@ -2169,19 +2169,80 @@ $app->get('/renewalsauto/{offset}/{limit}', function ($offset, $limit, Request $
 /////////////////////////
 // AUTO-RENEW - CHARGE //
 /////////////////////////
-$app->get('/renewalsauto/charge', function ($offset, $limit, Request $request) use ($app) {
+$app->get('/renewalsautocharge', function (Request $request) use ($app) {
+	try {
+		
+		$ar = new Model\AutoRenew(array(),$app);
+		$valid = $ar->find(array('valid'=>'yes'),$fields=array(),$slaveOkay=true,$sort=array('record.payment.expYear'=>1,'record.payment.expMonth'=>1),0,100000);
+		$expired = $ar->find(array('expired'=>'yes'),$fields=array(),$slaveOkay=true,$sort=array('record.payment.expYear'=>1,'record.payment.expMonth'=>1),0,100000);
+		
+		$i=0;
+		$valid_found = 0;
+		$valid_found2 = 0;
+		if(!empty($valid) && is_array($valid)):
+			foreach ($valid as $key => $value) {
+				// derive membership dues:
+				// new app = yearsInLawPractice
+				// renewal = membershipDues - 6+ = $225, <6 $175, pd $50
+				
+				$um = new Model\Apply(array(),$app);
+				$um_res = $um->find(array('class'=>'UpdateMember','memberId'=>new \MongoId($value['record']['_id'])),array('membershipDues'=>1));
+				if(!empty($um_res)){
+					$valid_found++;
+				}else{
 
-	$ar = new Model\AutoRenew(array(),$app);
-	$valid = $ar->find(array('valid'=>'yes'),$fields=array(),$slaveOkay=true,$sort=array('record.payment.expYear'=>1,'record.payment.expMonth'=>1),$offset,$limit);
-	$expired = $ar->find(array('expired'=>'yes'),$fields=array(),$slaveOkay=true,$sort=array('record.payment.expYear'=>1,'record.payment.expMonth'=>1),$offset,$limit);
-	
+					// look in new member apps
+					$nm = new Model\Apply(array(),$app);
+					$nm_res = $nm->find(array('class'=>'ApplyNewMember','memberId'=>new \MongoId($value['record']['_id'])),array('yearsInLawPractice'=>1));
+					if(!empty($nm_res)){
+						$valid_found2++;
+					}else{
+						echo "<pre>";print_r($value['record']['_id']);echo "</pre>";
+					}
+				}
+				$i++;
+			}	
+		endif; 
+		echo "valid: ".$i." found:".$valid_found." found2:".$valid_found2."<br><br>";
+
+		$i=0;
+		$expired_found = 0;
+		$expired_found2 = 0;
+		if(!empty($expired) && is_array($expired)):
+			foreach ($expired as $key => $value) {
+				// derive membership dues:
+				// new app = yearsInLawPractice
+				// renewal = membershipDues - 6+ = $225, <6 $175, pd $50
+				
+				$um = new Model\Apply(array(),$app);
+				$um_res = $um->find(array('class'=>'UpdateMember','memberId'=>new \MongoId($value['record']['_id'])),array('membershipDues'=>1));
+				if(!empty($um_res)){
+					$expired_found++;
+				}else{
+
+					// look in new member apps
+					$nm = new Model\Apply(array(),$app);
+					$nm_res = $nm->find(array('class'=>'ApplyNewMember','memberId'=>new \MongoId($value['record']['_id'])),array('yearsInLawPractice'=>1));
+					if(!empty($nm_res)){
+						$expired_found2++;
+					}else{
+						echo "<pre>";print_r($value['record']['_id']);echo "</pre>";
+					}
+				}
+				$i++;
+			}
+		endif; 
+		echo "expired: ".$i." found:".$expired_found." found2:".$expired_found2."<br><br>";
 		
 
-	return $app['view']->render('application/index-renewalsauto', 'default', $view_vars);
-})
-->value('offset','0')
-->value('limit','20000')
-->before($mustbeADMIN);
+		return new Response('', 200,array('Content-Type' => 'text/html'));
+
+
+
+	} catch (Exception $e) {
+		debug_backtrace();
+	}
+});
 
 
 

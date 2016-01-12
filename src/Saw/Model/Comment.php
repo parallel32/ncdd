@@ -63,7 +63,7 @@ class Comment extends Model {
 	}
 	public function reply($replyTo, $doc){
 		
-		$doc['_id'] = new \MongodId();
+		$doc['_id'] = new \MongoId();
 		$comment = new Comment($doc,self::$app);
 
 		$criteria = array('_id'=>$replyTo);
