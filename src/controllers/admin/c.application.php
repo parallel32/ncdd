@@ -2241,6 +2241,12 @@ $app->get('/renewalsautocharge', function (Request $request) use ($app) {
 						echo "<pre>";print_r($value['record']['_id']);echo "</pre>";
 					}
 				}
+				// sanity check for public defenders
+				$pd = new Model\Member(array('_id'=>$value['record']['_id']),$app);
+				$pd = $pd->findById();
+				if($pd['currentMembership'] == Model\Member::$membership['PUBLIC DEFENDER']){
+					$valid[$x]['membershipDues'] = 50;
+				}
 				$i++;
 			}	
 		endif; 
@@ -2282,6 +2288,12 @@ $app->get('/renewalsautocharge', function (Request $request) use ($app) {
 					}else{
 						//echo "<pre>";print_r($value['record']['_id']);echo "</pre>";
 					}
+				}
+				// sanity check for public defenders
+				$pd = new Model\Member(array('_id'=>$value['record']['_id']),$app);
+				$pd = $pd->findById();
+				if($pd['currentMembership'] == Model\Member::$membership['PUBLIC DEFENDER']){
+					$valid[$x]['membershipDues'] = 50;
 				}
 				$i++;
 			}
