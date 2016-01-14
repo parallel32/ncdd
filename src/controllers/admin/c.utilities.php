@@ -140,16 +140,27 @@ $utilities->get('/queryrenewalbyinterfacechanges', function () use ($app) {
     echo "<pre>K total:";print_r(count($result));echo "</pre>";
     $running_total+= count($result);
 
-    echo "<pre>";print_r($running_total);echo "</pre>";
+    echo "<pre>running total:";print_r($running_total);echo "</pre>";
+
+
+    $start  = 'Nov 5, 2014';
+    $end    = 'Jan 12, 2016';
+    $query  = array('class'=>'ApplyNewMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+
+    echo "<pre>inclusive total:";print_r(count($result));echo "</pre>";
+    
+
+
+
+
+
+
+
 
     $running_total = 0;
-
-
-
-
-
-
-    
     // Renewals
     echo "<pre>";print_r('RENEWALS:');echo "</pre>";
     $start  = 'Dec 4, 2014';
@@ -234,9 +245,17 @@ $utilities->get('/queryrenewalbyinterfacechanges', function () use ($app) {
     echo "<pre>H total:";print_r(count($result));echo "</pre>";
     $running_total+= count($result);
     
-    echo "<pre>";print_r($running_total);echo "</pre>";
+    echo "<pre>running total:";print_r($running_total);echo "</pre>";
     
+    $start  = 'Dec 4, 2014';
+    $end    = 'Jan 4, 2016';
+    $query  = array('class'=>'UpdateMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
 
+    echo "<pre>inclusive total:";print_r(count($result));echo "</pre>";
+    
 
     return new Response('',200,array('Content-Type' => 'text/html')); 
 });
