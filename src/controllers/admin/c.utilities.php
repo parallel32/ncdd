@@ -17,6 +17,232 @@ use TTools\App;
 $utilities = $app['controllers_factory'];
 
 
+/////////////////////////////////////////
+// query renewals by interface changes //
+/////////////////////////////////////////
+$utilities->get('/queryrenewalbyinterfacechanges', function () use ($app) {
+    //*
+    ini_set('memory_limit','1024M');
+    $running_total = 0;
+
+    // NEW MEMBERS
+    echo "<pre>";print_r('NEW MEMBERS');echo "</pre>";
+    $apply  = new Model\Apply(array(),$app);
+    
+    $start  = 'Nov 5, 2014';
+    $end    = 'Dec 4, 2014';
+    $query  = array('class'=>'ApplyNewMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+
+    echo "<pre>A total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+
+    
+    $start  = 'Dec 4, 2014';
+    $end    = 'Dec 17, 2014';
+    $query  = array('class'=>'ApplyNewMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+
+    echo "<pre>B total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+
+    $start  = 'Dec 17, 2014';
+    $end    = 'Dec 18, 2014';
+    $query  = array('class'=>'ApplyNewMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+
+    echo "<pre>C total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+
+    $start  = 'Dec 18, 2014';
+    $end    = 'Jan 2, 2015';
+    $query  = array('class'=>'ApplyNewMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+
+    echo "<pre>D total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+
+    $start  = 'Jan 2, 2015';
+    $end    = 'Feb 19, 2015';
+    $query  = array('class'=>'ApplyNewMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+
+    echo "<pre>E total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+
+    $start  = 'Feb 19, 2015';
+    $end    = 'May 4, 2015';
+    $query  = array('class'=>'ApplyNewMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+
+    echo "<pre>F total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+
+    $start  = 'May 4, 2015';
+    $end    = 'Oct 1, 2015';
+    $query  = array('class'=>'ApplyNewMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+
+    echo "<pre>G total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+
+    $start  = 'Oct 1, 2015';
+    $end    = 'Nov 23, 2015';
+    $query  = array('class'=>'ApplyNewMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+
+    echo "<pre>H total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+
+    $start  = 'Nov 23, 2015';
+    $end    = 'Nov 25, 2015';
+    $query  = array('class'=>'ApplyNewMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+
+    echo "<pre>I total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+
+    $start  = 'Nov 25, 2015';
+    $end    = 'Nov 30, 2015';
+    $query  = array('class'=>'ApplyNewMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+
+    echo "<pre>J total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+
+    $start  = 'Nov 30, 2015';
+    $end    = 'Jan 12, 2016';
+    $query  = array('class'=>'ApplyNewMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+
+    echo "<pre>K total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+
+    echo "<pre>";print_r($running_total);echo "</pre>";
+
+    $running_total = 0;
+
+
+
+
+
+
+    
+    // Renewals
+    echo "<pre>";print_r('RENEWALS:');echo "</pre>";
+    $start  = 'Dec 4, 2014';
+    $end    = 'Dec 9, 2014';
+    $query  = array('class'=>'UpdateMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+
+    echo "<pre>A total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+    
+    $start  = 'Dec 9, 2014';
+    $end    = 'Dec 10, 2014';
+    $query  = array('class'=>'UpdateMember','termsAcknowledgement'=>'yes','payByCheck'=>'no-store','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+
+    echo "<pre>B total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+    
+    $start  = 'Dec 10, 2014';
+    $end    = 'Dec 12, 2014';
+    $query  = array('class'=>'UpdateMember','termsAcknowledgement'=>'yes','payByCheck'=>'no-store','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+
+    echo "<pre>C total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+    
+    
+    $start  = 'Dec 12, 2014';
+    $end    = 'Jan 2, 2015';
+    $query  = array('class'=>'UpdateMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+
+    echo "<pre>D total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+    
+    
+    $start  = 'Jan 2, 2015';
+    $end    = 'Feb 27, 2015';
+    $query  = array('class'=>'UpdateMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+
+    echo "<pre>E total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+    
+    $start  = 'Feb 27, 2015';
+    $end    = 'May 4, 2015';
+    $query  = array('class'=>'UpdateMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+
+    echo "<pre>F total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+    
+    $start  = 'May 4, 2015';
+    $end    = 'Dec 5, 2015';
+    $query  = array('class'=>'UpdateMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+
+    echo "<pre>G total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+    
+    $start  = 'Dec 5, 2015';
+    $end    = 'Jan 4, 2016';
+    $query  = array('class'=>'UpdateMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+
+    echo "<pre>H total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+    
+    echo "<pre>";print_r($running_total);echo "</pre>";
+    
+
+
+    return new Response('',200,array('Content-Type' => 'text/html')); 
+});
+
+
+
 // put in registration id's and send the confirmation letter to folks who didn't recieve it due to system glitches.
 $utilities->get('/resendseminarconfirmationletter', function () use ($app) {
     return false;

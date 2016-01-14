@@ -1,0 +1,427 @@
+new members
+
+Nov 5th 2014 termsAcknowledgement appears in Apply.php and new-member.php:
+
+ <h3 class="form-section">10. Terms and Disclosures</h3>
+                    <div class="row-fluid">
+                       <div class="span12 ">
+ -                        <p></p>
+ -                        <p></p>
+ -                        <p class="text-center">
+ +                        <p class="">
+                          As is the policy of the NCDD, the application process shall not directly or indirectly discriminate against any applicant for reason of race, color, gender, age, religion, disability, national origin, ancestry, marital status, sexual orientation, parental status, military discharge status, or income status.
+                          </p>
+ +                        <p class="">
+ +                        In addition, you authorize us to retain the information that you have given us for our records, including member's address, licensing, contact information, and credit card information that we may use for the limited purposes described above, such as renewal payments of your membership dues and to communicate with you and to send announcements pertinent to your membership.
+ +                        </p>
+ +                        
+ +                     </div>
+ +                     <!--/span-->
+ +                  </div>
+ +                  <div class="row-fluid">
+ +                     <div class="span12">
+ +                        <div class="control-group">
+ +                           <div class="controls">
+ +                              <input type="checkbox" name="doc[termsAcknowledgement]" class="termsAcknowledgement" value="yes">Yes, I agree.
+ +                           </div>
+ +                        </div>
+                       </div>
+                       <!--/span-->
+                    </div>
+
+
+
+Dec 4th 2014 - moved the termsAcknowledgement checkbox closer to the statement.
+
+
+Dec 17th 2014 - hardcoded the NCDD2014 in the promocode field.
+
+                         <div class="control-group">
+                             <label class="control-label">If you have a promo code please enter it here:</label>
+                             <div class="controls">
+ -                              <input type="text" name="doc[promocode]" class="m-wrap span12 promocode">
+ +                              <input type="text" name="doc[promocode]" class="m-wrap span12 promocode" value="NCDD2014">
+                                <input type="hidden" id="promocodetype" value="discount">
+                             </div>
+                          </div>
+
+Dec 18th, 2014 - termsAcknowledgement is re-worded to be more simple just like renewals
+still just above the submit buttons.
+
+
+<div class="row-fluid">
+                       <div class="span10 ">
+                          <p class="alert alert-info">
+ -                        <b>Additionally, you authorize us to retain the information that you have given us for our records, including member's address, licensing, contact information, and optionally credit card information that we may use for the limited purposes described above, such as renewal payments of your membership dues and to communicate with you and to send announcements pertinent to your membership.</b>
+ +                        <b>I authorize the NCDD to store my credit card for future Annual Dues payments.</b>
+                          <span class="control-group"><span class="controls"><input type="checkbox" name="doc[termsAcknowledgement]" class="termsAcknowledgement" value="yes">Yes, I agree.</span></span>
+ -                        </p>
+ -                     </div>   
+ +                     </p>
+ +                     </div>
+                    </div>
+
+Jan 2, 2015 - removed the hard coded NCDD2014 promo
+
+<div class="control-group">
+                             <label class="control-label">If you have a promo code please enter it here:</label>
+                             <div class="controls">
+ -                              <input type="text" name="doc[promocode]" class="m-wrap span12 promocode" value="NCDD2014">
+ +                              <input type="text" name="doc[promocode]" class="m-wrap span12 promocode" value="">
+                                <input type="hidden" id="promocodetype" value="discount">
+                             </div>
+                          </div>
+
+
+
+Feb 19th 2015 - moved the termsAcknowledgement to section 8, the promo code section - didn't change the wording.
+added the NCDD2015 promo wording directly above the promo code field
+
+
+<h3 class="form-section">8. Promotional Code</h3>
+                    <div class="row-fluid">
+                       <div class="span6 ">
+                          <div class="control-group">
+ -                           <label class="control-label">If you have a promo code please enter it here:</label>
+ +                           <label class="control-label">Enter the promo code NCDD2015 to obtain the $50 discount and free 2013 digital copy of the NHTSA Sobriety Testing Participant Manual with agreement for automated dues renewal. Does not apply to public defender dues. Some restrictions to membership apply. See ncdd.com for full membership eligibility requirements. Offer expires March 15, 2015. </label>
+                             <div class="controls">
+                                <input type="text" name="doc[promocode]" class="m-wrap span12 promocode" value="">
+                                <input type="hidden" id="promocodetype" value="">
+                            </div>
+                         </div>
+                       </div>
+                       <!--/span-->
+                    </div>
+ -                  
+ +                  <div id="promocodeverification" class="row-fluid hide">
+ +                     <div class="span10 ">
+ +                        <p class="alert alert-info">
+ +                        <b>I authorize the NCDD to store my credit card for future Annual Dues payments.</b>
+ +                        <span class="control-group"><span class="controls"><input type="checkbox" name="doc[termsAcknowledgement]" class="termsAcknowledgement" value="yes">Yes, I agree.</span></span>
+ +                     </p>
+ +                     </div>
+ +                  </div>
+
+
+
+May 4th 2015 - removed the NCDD2015 promocode
+
+<h3 class="form-section">8. Promotional Code</h3>
+                    <div class="row-fluid">
+                       <div class="span6 ">
+                          <div class="control-group">
+ -                           <label class="control-label">Enter the promo code NCDD2015 to obtain the $50 discount and free 2013 digital copy of the NHTSA Sobriety Testing Participant Manual with agreement for automated dues renewal. Does not apply to public defender dues. Some restrictions to membership apply. See ncdd.com for full membership eligibility requirements. Offer expires March 15, 2015. </label>
+ +                           <!--<label class="control-label">Enter the promo code NCDD2015 to obtain the $50 discount and free 2013 digital copy of the NHTSA Sobriety Testing Participant Manual with agreement for automated dues renewal. Does not apply to public defender dues. Some restrictions to membership apply. See ncdd.com for full membership eligibility requirements. Offer expires March 15, 2015. </label>-->
+                             <div class="controls">
+                                <input type="text" name="doc[promocode]" class="m-wrap span12 promocode" value="">
+                                <input type="hidden" id="promocodetype" value="">
+
+
+
+Oct 1st, 2015 - EAGLE2016 deployed
+
+<h3 class="form-section">8. Promotional Code</h3>
+                    <div class="row-fluid">
+                       <div class="span6 ">
+                          <div class="control-group">
+ -                           <!--<label class="control-label">Enter the promo code NCDD2015 to obtain the $50 discount and free 2013 digital copy of the NHTSA Sobriety Testing Participant Manual with agreement for automated dues renewal. Does not apply to public defender dues. Some restrictions to membership apply. See ncdd.com for full membership eligibility requirements. Offer expires March 15, 2015. </label>-->
+ +                           <label class="control-label">Enter   the   promo code  EAGLE2016,  pay   your  2016  dues  in full, and   agree to automatic   dues  
+ +renewal  (charged to your  credit   card  annually beginning   with  your  2017  dues) in order to obtain   
+ +the   free  2015  dues  remainder   and      NCDD  Membership  Desktop  Statue.  Offer expires November 15, 2015. </label>
+                             <div class="controls">
+                                <input type="text" name="doc[promocode]" class="m-wrap span12 promocode" value="">
+                                <input type="hidden" id="promocodetype" value="">
+
+
+Nov 23rd, 2015 - EAGLE2016 removed.
+
+Nov 25th, 2015 - BONUS2015 added.
+
+Nov 30th, 2015 - BONUS2015 defaulted and forced the promocoded verification to the server to activate
+
+ <label class="control-label">Enter   the   promo code  BONUS2015 and pay   your  2016  dues  in full in order to obtain   
+  the   remainder of 2015 for free.  Offer expires December 31, 2015. </label>
+                             <div class="controls">
+ -                              <input type="text" name="doc[promocode]" class="m-wrap span12 promocode" value="">
+ +                              <input type="text" name="doc[promocode]" class="m-wrap span12 promocode" value="BONUS2015">
+                                <input type="hidden" id="promocodetype" value="">
+                             </div>
+                          </div>
+
+
+    window.setInterval(calculatedues,1000);
+  
+     $('#pay-by-cc').trigger('click');
+ +   $('.promocode').keyup();
+  });      
+  </script>
+
+
+Jan 12th 2016 - removed BONUS2015 - promocode and deactivated the aut-verify
+
+
+
+
+#########################################################
+#########################################################
+#########################################################
+
+update-members.php
+
+Dec 4th 2014 - termsAcknowledgement appears at the bottom of the form just above the submit buttons.  Additionally with a $50 discount if paid by December 31st.  Nothing about auto-renewal
+
+
+<label class="control-label"></label>
+                             <div class="controls">
+                                <select class=" m-wrap span12 membershipDues" name="doc[membershipDues]">
+ -                                 <option value="225">6 or more years in law practice ($225 annual dues)</option>
+ -                                 <option value="175">1-5 years in law practice ($175 annual dues) </option>
+ +                                 <option value="225">6 or more years in law practice ($225 annual dues - $50 off if paid by December 31st)</option>
+ +                                 <option value="175">1-5 years in law practice ($175 annual dues - $50 off if paid by December 31st) </option>
+                                   <option value="50"> Public Defender ($50 annual dues)</option>
+                                </select>
+                             </div>
+
+
+
+<div class="row-fluid">
+ +                     <div class="span10 ">
+ +                        &nbsp;
+ +                     </div>
+ +                  </div>
+ +                  <div class="row-fluid">
+ +                     <div class="span10 ">
+ +                        <p class="alert alert-info">
+ +                        <b>Additionally, you authorize us to retain the information that you have given us for our records, including member's address, licensing, contact information, and credit card information that we may use for the limited purposes described above, such as renewal payments of your membership dues and to communicate with you and to send announcements pertinent to your membership.</b>
+ +                        <span class="control-group"><span class="controls"><input type="checkbox" name="doc[termsAcknowledgement]" class="termsAcknowledgement" value="yes">Yes, I agree.</span></span>
+ +                     </p>
+ +                     </div>
+ +                     
+ +                  </div>                    
+
+
+
+
+
+
+
+
+
+
+
+Dec. 9th 1st update - added the first no-store credit card option  and termsAcknowledgement is still at the bottom of the page.
+
+ <h3 class="form-section">Check which applies to your membership:</h3>
+                   <div class="row-fluid">
+                      <div class="span12 ">
+                         <div class="control-group">
+                            <label class="control-label"></label>
+                            <div class="controls">
+                               <select class=" m-wrap span12 membershipDues" name="doc[membershipDues]">
+                                  <option value="225">6 or more years in law practice ($225 annual dues - $50 off if paid by December 31st)</option>
+                                  <option value="175">1-5 years in law practice ($175 annual dues - $50 off if paid by December 31st) </option>
+                                  <option value="50"> Public Defender ($50 annual dues)</option>
+                               </select>
+                            </div>
+                         </div>
+                      </div>
+                      <!--/span-->
+                   </div>
+                   <h3 class="form-section">Please confirm if you intend to pay by check:</h3>
+                   <div class="row-fluid">
+                      <div class="span12 ">
+                         <div class="control-group">
+                            <label class="control-label"></label>
+                             <div class="controls">
+                                <input style="margin-left:1px;" type="radio" name="doc[payByCheck]" value="yes">&nbsp;&nbsp;Yes, I intend to pay by check.<br/><br/>
+                                <input style="margin-left:1px;" type="radio" name="doc[payByCheck]" checked value="no">&nbsp;&nbsp;No, I intend to pay my membership dues online with my credit card.<br/><br/>
+ +                              <input style="margin-left:1px;" type="radio" name="doc[payByCheck]" checked value="no-store">&nbsp;&nbsp;I intend to pay my membership dues online with my credit card.  Please also store my credit card for future convenience.<br/><br/>
+                                <!--Upon submission of this form and subsequent approval of your renewal, you will receive an email with instructions on how to pay your dues.-->
+                             </div>
+                          </div>
+                      </div>
+                      <!--/span-->
+                   </div>
+
+
+
+
+
+
+
+
+
+Dec. 9th 2nd update every renewal is now auto-approved.
+
+no substantial code changes.
+
+
+
+
+
+
+
+
+
+Dec. 9th 3rd update Disclosure at the bottom with termsAcknowledgement was re-worded to include the word optionally use credit card information in the future
+
+<div class="row-fluid">
+                      <div class="span10 ">
+                         &nbsp;
+                      </div>
+                   </div>
+                    <div class="row-fluid">
+                       <div class="span10 ">
+                          <p class="alert alert-info">
+ -                        <b>Additionally, you authorize us to retain the information that you have given us for our records, including member's address, licensing, contact information, and credit card information that we may use for the limited purposes described above, such as renewal payments of your membership dues and to communicate with you and to send announcements pertinent to your membership.</b>
+ +                        <b>Additionally, you authorize us to retain the information that you have given us for our records, including member's address, licensing, contact information, and optionally credit card information that we may use for the limited purposes described above, such as renewal payments of your membership dues and to communicate with you and to send announcements pertinent to your membership.</b>
+                          <span class="control-group"><span class="controls"><input type="checkbox" name="doc[termsAcknowledgement]" class="termsAcknowledgement" value="yes">Yes, I agree.</span></span>
+                       </p>
+                       </div>
+                      
+                   </div>
+
+
+
+Dec 10th - presentation of the $50 discount was changed and the incentive to auto-renew wording was added.  the termsacknowledge check box was still at the bottom of the page.
+
+
+ <h3 class="form-section">Check which applies to your membership:</h3>
+ +                  <p class="alert alert-info"><b>As an added incentive to pay your dues early and sign up for automatic renewal, complete your Membership Renewal by December 31, 2014 and you will receive an automatic $50 off your 2015 Annual dues.</b></p>
+                    <div class="row-fluid">
+                       <div class="span12 ">
+                          <div class="control-group">
+                             <label class="control-label"></label>
+                             <div class="controls">
+                                <select class=" m-wrap span12 membershipDues" name="doc[membershipDues]">
+ -                                 <option value="225">6 or more years in law practice ($225 annual dues - $50 off if paid by December 31st)</option>
+ -                                 <option value="175">1-5 years in law practice ($175 annual dues - $50 off if paid by December 31st) </option>
+ +                                 <option value="225">6 or more years in law practice ($225 annual dues)</option>
+ +                                 <option value="175">1-5 years in law practice ($175 annual dues) </option>
+                                   <option value="50"> Public Defender ($50 annual dues)</option>
+                                </select>
+                             </div>
+                         </div>
+                      </div>
+                      <!--/span-->
+                   </div>
+
+
+Dec 12th - payByCheck no-store option removed from the confirmation if you intend to pay by check.  and moved the terms acknowledgement to just below the
+selection and began using it exclusively to determine if you were included in auto-renew.  terms acknowledgement was also drastcially re-worded.
+
+
+
+
+ <div class="row-fluid">
+                      <div class="span12 ">
+                         <div class="control-group">
+                            <label class="control-label"></label>
+                            <div class="controls">
+                               <select class=" m-wrap span12 membershipDues" name="doc[membershipDues]">
+                                  <option value="225">6 or more years in law practice ($225 annual dues)</option>
+                                  <option value="175">1-5 years in law practice ($175 annual dues) </option>
+                                  <option value="50"> Public Defender ($50 annual dues)</option>
+                               </select>
+                            </div>
+                         </div>
+                      </div>
+                      <!--/span-->
+                   </div>
+                   <h3 class="form-section">Please confirm if you intend to pay by check:</h3>
+                   <div class="row-fluid">
+                      <div class="span12 ">
+                         <div class="control-group">
+                            <label class="control-label"></label>
+                             <div class="controls">
+                                <input style="margin-left:1px;" type="radio" name="doc[payByCheck]" value="yes">&nbsp;&nbsp;Yes, I intend to pay by check.<br/><br/>
+                                <input style="margin-left:1px;" type="radio" name="doc[payByCheck]" value="no">&nbsp;&nbsp;No, I intend to pay my membership dues online with my credit card.<br/><br/>
+ -                              <input style="margin-left:1px;" type="radio" name="doc[payByCheck]" checked value="no-store">&nbsp;&nbsp;I intend to pay my membership dues online with my credit card.  Please also store my credit card for future convenience.<br/><br/>
+ +                              <!--<input style="margin-left:1px;" type="radio" name="doc[payByCheck]" checked value="no-store">&nbsp;&nbsp;I intend to pay my membership dues online with my credit card.  Please also store my credit card for future convenience.<br/><br/>-->
+                                <!--Upon submission of this form and subsequent approval of your renewal, you will receive an email with instructions on how to pay your dues.-->
+                             </div>
+                          </div>
+                       </div>
+                       <!--/span-->
+                    </div>
+ -                  
+ +                  <div class="row-fluid">
+ +                     <div class="span10 ">
+ +                        <p class="alert alert-info">
+ +                        <b>I authorize the NCDD to store my credit card for future Annual Dues payments.</b>
+ +                        <span class="control-group"><span class="controls"><input type="checkbox" name="doc[termsAcknowledgement]" class="termsAcknowledgement" value="yes">Yes, I agree.</span></span>
+ +                     </p>
+ +                     </div>
+ +                     
+ +                  </div>
+  
+
+
+
+Jan 2 2015 - the early renewal was extended from Dec 31st, 2014 to Feb 15th, 2015
+
+ <!-- EARLY BIRD DISCOUNT FOR 2014
+                    <p class="alert alert-info"><b>As an added incentive to pay your dues early and sign up for automatic renewal, complete your Membership Renewal by December 31, 2014 and you will receive an automatic $50 off your 2015 Annual dues.</b></p>
+ +                  -->
+
+
+Feb 27th 2015 - the early renewal was extended from Feb 15th, 2015 to Mar 15th, 2015
+
+-                  <p class="alert alert-info"><b>As an added incentive to pay your dues early and sign up for automatic renewal, complete your Membership Renewal by February 15, 2015 and you will receive an automatic $50 off your 2015 Annual dues.</b></p>
++                  <p class="alert alert-info"><b>As an added incentive to pay your dues early and sign up for automatic renewal, complete your Membership Renewal by March 15, 2015 and you will receive an automatic $50 off your 2015 Annual dues.</b></p>
+  
+
+
+May 4th, 2015 - early renewal was changed to a generic statement and deadlines were removed.
+
+ -                  <p class="alert alert-info"><b>As an added incentive to pay your dues early and sign up for automatic renewal, complete your Membership Renewal by March 15, 2015 and you will receive an automatic $50 off your 2015 Annual dues.</b></p>
+ +                  <p class="alert alert-info"><b>As an added incentive, sign up for automatic renewals and you will receive an automatic $50 off your 2015 Annual dues.</b></p>
+
+
+
+Dec. 5th 2015 - the early bird incentive was removed and replaced with the new promocode code: renewalpromocode   i.e. RENEW2016 - offer expires Jan 4th 2016.
+termsAcknowledgement remained the same.
+
+-                  <h3 class="form-section">Check which applies to your membership:</h3>
+-                  <!-- EARLY BIRD DISCOUNT FOR 2014 -->
+-                  <p class="alert alert-info"><b>As an added incentive, sign up for automatic renewals and you will receive an automatic $50 off your 2015 Annual dues.</b></p>
+-
+
+Jan 4, 2016 RENEW2016 expires
+
+
+
+
+
+
+
+Dec 4, 2014  card/edit.php was added w/o the radio renewalREUSE
+Dec 9, 2014  renewalREUSE was added to PaymentLite.php
+Dec 10, 2014 renewalRUSE radio option was added
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$class = UpdateMember  
+AND submitted between October 2014 and March 15, 2015
+AND termsAcknowledgement checked
+
+cross reference that with what is in the member.payment.renewalREUSE
+
+
+
+
+
+
+
