@@ -221,10 +221,10 @@ $app->get('/application/downloads/{file}', function ($file, Request $request) us
 $app->post('/application/promocode', function (Request $request) use ($app) {
 	// retrieve document from request
     $doc = $request->get('doc');
-    if(!empty($doc['promocode']) && (strtoupper($doc['promocode']) == 'BONUS2015-' || strtoupper($doc['promocode']) == 'EAGLE2016' || strtoupper($doc['promocode']) == 'NCDD2015-' || strtoupper($doc['promocode']) == 'NCDD2014-' || strtoupper($doc['promocode']) == 'TRIAL' || strtoupper($doc['promocode']) == 'DIVTRIAL' || strtoupper($doc['promocode']) == 'RFTRIAL' || strtoupper($doc['promocode']) == 'PDTRIAL' || strtoupper($doc['promocode']) == 'ALLENTRAPP')){
+    if(!empty($doc['promocode']) && (strtoupper($doc['promocode']) == 'BONUS2015-' || strtoupper($doc['promocode']) == 'EAGLE2016-' || strtoupper($doc['promocode']) == 'NCDD2015-' || strtoupper($doc['promocode']) == 'NCDD2014-' || strtoupper($doc['promocode']) == 'TRIAL' || strtoupper($doc['promocode']) == 'DIVTRIAL' || strtoupper($doc['promocode']) == 'RFTRIAL' || strtoupper($doc['promocode']) == 'PDTRIAL' || strtoupper($doc['promocode']) == 'ALLENTRAPP')){
     	$valid = 'yes';
     	$message = 'Valid Promo Code.';
-    	$type = (strtoupper($doc['promocode']) == 'BONUS2015-' || strtoupper($doc['promocode']) == 'EAGLE2016' || strtoupper($doc['promocode']) == 'NCDD2015-' || strtoupper($doc['promocode']) == 'NCDD2014-') ? 'discount'.'-'.strtoupper($doc['promocode']): 'trial';
+    	$type = (strtoupper($doc['promocode']) == 'BONUS2015-' || strtoupper($doc['promocode']) == 'EAGLE2016-' || strtoupper($doc['promocode']) == 'NCDD2015-' || strtoupper($doc['promocode']) == 'NCDD2014-') ? 'discount'.'-'.strtoupper($doc['promocode']): 'trial';
     }else{
     	$type = '';
     	$valid = 'no';
@@ -330,22 +330,22 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 	$yilp = $application->yearsInLawPractice;
 	$now = date('Y',strtotime('today'));
 	if($now - $yilp >= 6){
-		$amt = ($doc['promocode'] == 'BONUS2015-' || $doc['promocode'] == 'EAGLE2016') ? $dues[6]['amount']: $dues[6]['prorated']['a'];
+		$amt = ($doc['promocode'] == 'BONUS2015-' || $doc['promocode'] == 'EAGLE2016-') ? $dues[6]['amount']: $dues[6]['prorated']['a'];
 	}elseif ($now - $yilp < 6){
-		$amt = ($doc['promocode'] == 'BONUS2015-' || $doc['promocode'] == 'EAGLE2016') ? $dues[1]['amount']: $dues[1]['prorated']['a'];
+		$amt = ($doc['promocode'] == 'BONUS2015-' || $doc['promocode'] == 'EAGLE2016-') ? $dues[1]['amount']: $dues[1]['prorated']['a'];
 	}
-	if($application->publicDefender == 'yes' && ($doc['promocode'] == 'BONUS2015-' || $doc['promocode'] == 'EAGLE2016')){
+	if($application->publicDefender == 'yes'/* && ($doc['promocode'] == 'BONUS2015-' || $doc['promocode'] == 'EAGLE2016-')*/){
 		$amt = $dues['publicDefender']['prorated']['a'];
-		/* EAGLE2016 promo doesn't apply to public defenders
-		$amt = (empty($doc['promocode']) || $doc['promocode'] == 'EAGLE2016') ? $dues['publicDefender']['amount']: $dues['publicDefender']['prorated']['a'];
+		/* EAGLE2016- promo doesn't apply to public defenders
+		$amt = (empty($doc['promocode']) || $doc['promocode'] == 'EAGLE2016-') ? $dues['publicDefender']['amount']: $dues['publicDefender']['prorated']['a'];
 		//*/
 		// also erase the promo code so they don't get gouped in the promo code list
 		//$doc['promocode'] = '';
 		
-		$amt = (empty($doc['promocode']) || $doc['promocode'] == 'BONUS2015-' || $doc['promocode'] == 'EAGLE2016') ? $dues['publicDefender']['amount']: $dues['publicDefender']['prorated']['a'];
+		$amt = (empty($doc['promocode']) || $doc['promocode'] == 'BONUS2015-' || $doc['promocode'] == 'EAGLE2016-') ? $dues['publicDefender']['amount']: $dues['publicDefender']['prorated']['a'];
 		// also erase the promo code so they don't get gouped in the promo code list
 		$doc['promocode'] = '';
-
+error_log('pd $amt: '.print_r($amt,true));
 	}
 
 	if($doc['promocode'] == 'TRIAL' || $doc['promocode'] == 'DIVTRIAL' || $doc['promocode'] == 'PDTRIAL' || $doc['promocode'] == 'RFTRIAL' || $doc['promocode'] == 'ALLENTRAPP'){
@@ -677,9 +677,9 @@ $app->post('/application/renewal/promocode/validate', function (Request $request
 		$valid = 'yes';
     	$message = 'Valid Promo Code.';
     	// is member eligible? - meaning is it their first time subscribing to auto-renew?
-    	// if part of the EAGLE2016 promo then not eligible
+    	// if part of the EAGLE2016- promo then not eligible
     	$application = new Model\Apply(array(),$app);
-		$eagle2016promocode = $application->fetchByStatus('PAID',$offset=0, $limit=10000,$filter=array('promocode'=>'EAGLE2016'));
+		$eagle2016promocode = $application->fetchByStatus('PAID',$offset=0, $limit=10000,$filter=array('promocode'=>'EAGLE2016-'));
 		foreach ($eagle2016promocode as $record) {
 			if((string)$record['memberId'] == $memberId){
 				$is_eligible = false;
@@ -1984,7 +1984,7 @@ $app->get('/renewalsautoseed', function (Request $request) use ($app) {
 	
 
 	// EXCLUDE 
-	// New members with EAGLE2016 (2016 prepaid - and should be on auto-renew)
+	// New members with EAGLE2016- (2016 prepaid - and should be on auto-renew)
 	// New Members with BONUS2015 (2016 prepaid - nothing about auto-renew)
 	// Renewals    with RENEW2016 (happening now) (checked auto-renew [they had to to use the promo]. they received an eagle trophy.  exluded NCDD2015 and Public Defenders)
 
@@ -2056,7 +2056,7 @@ echo "<pre>start ";echo ' expired:'.count($final_arr['expired']).' valid:'.count
     $final_arr['valid'] = array_diff_key($final_arr['valid'], $paid_arr);
 echo "<pre>after paid ";echo ' expired:'.count($final_arr['expired']).' valid:'.count($final_arr['valid']);echo "</pre>";
 	// extract promos
-	// EAGLE2016
+	// EAGLE2016-
 	// RENEW2016
 	// BONUS2015
     $promo_arr = array();
