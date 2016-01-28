@@ -1971,13 +1971,19 @@ AUTO-RENEW STARTS HERE
 $app->get('/renewalsautoseed', function (Request $request) use ($app) {
 
 	ini_set('memory_limit','1024M');
-	
+
+	/*
 	// safety can't re-seed if records already there.
 	$ar = new Model\AutoRenew(array(),$app);
 	$ar_res = $ar->find();
 	if(!empty($ar_res)){
 		return new Response('You have to purge AutoRenew in order to re-seed', 200,array('Content-Type' => 'text/html'));
 	}
+	//*/
+
+
+
+
 	// GROUP BY PROMOTION then based on the payment.renewalREUSE in the member record.
 
 	// INCLUDE
