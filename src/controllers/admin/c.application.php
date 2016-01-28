@@ -839,7 +839,7 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 
 			if(is_array($tmpmem['payment']) && array_key_exists('number', $tmpmem['payment']) && !empty($tmpmem['payment']['number']) && strlen($tmpmem['payment']['number']) > 10){
 				// make sure the renewalREUSE is true
-				$tmpmem['payment']['renewalREUSE'] = 'yes';
+				//$tmpmem['payment']['renewalREUSE'] = 'yes';
 				$memberobj = new Model\Member(array('_id'=>$memberId,'payment'=>$tmpmem['payment']),$app);
 				$memberobj->saveSafe();
 			}else{
@@ -856,7 +856,7 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 			}
 	    }
 	    
-	    
+	    $mike;
 	    // save the application
 		$app_id = $application->insert();	
 
@@ -1972,7 +1972,7 @@ $app->get('/renewalsautoseed', function (Request $request) use ($app) {
 
 	ini_set('memory_limit','1024M');
 
-	/*
+	//*
 	// safety can't re-seed if records already there.
 	$ar = new Model\AutoRenew(array(),$app);
 	$ar_res = $ar->find();
@@ -2742,7 +2742,7 @@ echo "<pre>final total ";print_r(count($final_arr_audit['expired'])+count($final
 
 
 
-/*
+//*
 	foreach ($final_arr as $key => $value) {
 		foreach ($value as $record) {
 				
@@ -2754,7 +2754,7 @@ echo "<pre>final total ";print_r(count($final_arr_audit['expired'])+count($final
 		    $ar->insert();
 		}
 	}
-*/
+//*/
 	return new Response('', 200,array('Content-Type' => 'text/html'));
 })
 ->before($mustbeADMIN);
