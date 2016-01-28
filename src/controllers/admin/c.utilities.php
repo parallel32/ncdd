@@ -24,6 +24,7 @@ $utilities->get('/queryrenewalbyinterfacechanges', function () use ($app) {
     //*
     ini_set('memory_limit','1024M');
     $running_total = 0;
+    $member_res = array();
 
     // NEW MEMBERS
     echo "<pre>";print_r('NEW MEMBERS');echo "</pre>";
@@ -35,6 +36,10 @@ $utilities->get('/queryrenewalbyinterfacechanges', function () use ($app) {
                                                 ,'$lt'=>new \MongoDate(strtotime($end)))
         );
     $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
 
     echo "<pre>A total:";print_r(count($result));echo "</pre>";
     $running_total+= count($result);
@@ -46,7 +51,11 @@ $utilities->get('/queryrenewalbyinterfacechanges', function () use ($app) {
                                                 ,'$lt'=>new \MongoDate(strtotime($end)))
         );
     $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
-
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
     echo "<pre>B total:";print_r(count($result));echo "</pre>";
     $running_total+= count($result);
 
@@ -56,7 +65,11 @@ $utilities->get('/queryrenewalbyinterfacechanges', function () use ($app) {
                                                 ,'$lt'=>new \MongoDate(strtotime($end)))
         );
     $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
-
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
     echo "<pre>C total:";print_r(count($result));echo "</pre>";
     $running_total+= count($result);
 
@@ -66,7 +79,11 @@ $utilities->get('/queryrenewalbyinterfacechanges', function () use ($app) {
                                                 ,'$lt'=>new \MongoDate(strtotime($end)))
         );
     $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
-
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
     echo "<pre>D total:";print_r(count($result));echo "</pre>";
     $running_total+= count($result);
 
@@ -76,7 +93,11 @@ $utilities->get('/queryrenewalbyinterfacechanges', function () use ($app) {
                                                 ,'$lt'=>new \MongoDate(strtotime($end)))
         );
     $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
-
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
     echo "<pre>E total:";print_r(count($result));echo "</pre>";
     $running_total+= count($result);
 
@@ -86,7 +107,11 @@ $utilities->get('/queryrenewalbyinterfacechanges', function () use ($app) {
                                                 ,'$lt'=>new \MongoDate(strtotime($end)))
         );
     $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
-
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
     echo "<pre>F total:";print_r(count($result));echo "</pre>";
     $running_total+= count($result);
 
@@ -96,7 +121,11 @@ $utilities->get('/queryrenewalbyinterfacechanges', function () use ($app) {
                                                 ,'$lt'=>new \MongoDate(strtotime($end)))
         );
     $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
-
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
     echo "<pre>G total:";print_r(count($result));echo "</pre>";
     $running_total+= count($result);
 
@@ -106,7 +135,11 @@ $utilities->get('/queryrenewalbyinterfacechanges', function () use ($app) {
                                                 ,'$lt'=>new \MongoDate(strtotime($end)))
         );
     $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
-
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
     echo "<pre>H total:";print_r(count($result));echo "</pre>";
     $running_total+= count($result);
 
@@ -116,7 +149,11 @@ $utilities->get('/queryrenewalbyinterfacechanges', function () use ($app) {
                                                 ,'$lt'=>new \MongoDate(strtotime($end)))
         );
     $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
-
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
     echo "<pre>I total:";print_r(count($result));echo "</pre>";
     $running_total+= count($result);
 
@@ -126,7 +163,11 @@ $utilities->get('/queryrenewalbyinterfacechanges', function () use ($app) {
                                                 ,'$lt'=>new \MongoDate(strtotime($end)))
         );
     $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
-
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
     echo "<pre>J total:";print_r(count($result));echo "</pre>";
     $running_total+= count($result);
 
@@ -136,7 +177,11 @@ $utilities->get('/queryrenewalbyinterfacechanges', function () use ($app) {
                                                 ,'$lt'=>new \MongoDate(strtotime($end)))
         );
     $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
-
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
     echo "<pre>K total:";print_r(count($result));echo "</pre>";
     $running_total+= count($result);
 
@@ -149,7 +194,11 @@ $utilities->get('/queryrenewalbyinterfacechanges', function () use ($app) {
                                                 ,'$lt'=>new \MongoDate(strtotime($end)))
         );
     $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
-
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
     echo "<pre>inclusive total:";print_r(count($result));echo "</pre>";
     
 
@@ -169,7 +218,11 @@ $utilities->get('/queryrenewalbyinterfacechanges', function () use ($app) {
                                                 ,'$lt'=>new \MongoDate(strtotime($end)))
         );
     $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
-
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
     echo "<pre>A total:";print_r(count($result));echo "</pre>";
     $running_total+= count($result);
     
@@ -179,7 +232,11 @@ $utilities->get('/queryrenewalbyinterfacechanges', function () use ($app) {
                                                 ,'$lt'=>new \MongoDate(strtotime($end)))
         );
     $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
-
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
     echo "<pre>B total:";print_r(count($result));echo "</pre>";
     $running_total+= count($result);
     
@@ -189,7 +246,11 @@ $utilities->get('/queryrenewalbyinterfacechanges', function () use ($app) {
                                                 ,'$lt'=>new \MongoDate(strtotime($end)))
         );
     $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
-
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
     echo "<pre>C total:";print_r(count($result));echo "</pre>";
     $running_total+= count($result);
     
@@ -200,7 +261,11 @@ $utilities->get('/queryrenewalbyinterfacechanges', function () use ($app) {
                                                 ,'$lt'=>new \MongoDate(strtotime($end)))
         );
     $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
-
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
     echo "<pre>D total:";print_r(count($result));echo "</pre>";
     $running_total+= count($result);
     
@@ -211,7 +276,11 @@ $utilities->get('/queryrenewalbyinterfacechanges', function () use ($app) {
                                                 ,'$lt'=>new \MongoDate(strtotime($end)))
         );
     $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
-
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
     echo "<pre>E total:";print_r(count($result));echo "</pre>";
     $running_total+= count($result);
     
@@ -221,7 +290,11 @@ $utilities->get('/queryrenewalbyinterfacechanges', function () use ($app) {
                                                 ,'$lt'=>new \MongoDate(strtotime($end)))
         );
     $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
-
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
     echo "<pre>F total:";print_r(count($result));echo "</pre>";
     $running_total+= count($result);
     
@@ -231,7 +304,11 @@ $utilities->get('/queryrenewalbyinterfacechanges', function () use ($app) {
                                                 ,'$lt'=>new \MongoDate(strtotime($end)))
         );
     $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
-
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
     echo "<pre>G total:";print_r(count($result));echo "</pre>";
     $running_total+= count($result);
     
@@ -241,7 +318,11 @@ $utilities->get('/queryrenewalbyinterfacechanges', function () use ($app) {
                                                 ,'$lt'=>new \MongoDate(strtotime($end)))
         );
     $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
-
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
     echo "<pre>H total:";print_r(count($result));echo "</pre>";
     $running_total+= count($result);
     
@@ -253,10 +334,14 @@ $utilities->get('/queryrenewalbyinterfacechanges', function () use ($app) {
                                                 ,'$lt'=>new \MongoDate(strtotime($end)))
         );
     $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
-
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
     echo "<pre>inclusive total:";print_r(count($result));echo "</pre>";
     
-
+    echo "<pre>";print_r(count($member_res));echo "</pre>";
     return new Response('',200,array('Content-Type' => 'text/html')); 
 });
 

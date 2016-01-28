@@ -1970,6 +1970,8 @@ AUTO-RENEW STARTS HERE
 ///////////////////////
 $app->get('/renewalsautoseed', function (Request $request) use ($app) {
 
+	ini_set('memory_limit','1024M');
+	
 	// safety can't re-seed if records already there.
 	$ar = new Model\AutoRenew(array(),$app);
 	$ar_res = $ar->find();
@@ -2143,6 +2145,598 @@ echo "<pre>with sanity check including last years promos that got left out ";ech
 
 echo "<pre>final total ";print_r(count($final_arr['expired'])+count($final_arr['valid']));echo "</pre>";
 	
+
+	// now we have the final good array.
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	// now we run the audit array through the same exclusions
+	$running_total = 0;
+    $member_res = array();
+
+    // NEW MEMBERS
+    echo "<pre>";print_r('NEW MEMBERS');echo "</pre>";
+    $apply  = new Model\Apply(array(),$app);
+    
+    $start  = 'Nov 5, 2014';
+    $end    = 'Dec 4, 2014';
+    $query  = array('class'=>'ApplyNewMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+
+    echo "<pre>A total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+
+    
+    $start  = 'Dec 4, 2014';
+    $end    = 'Dec 17, 2014';
+    $query  = array('class'=>'ApplyNewMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
+    echo "<pre>B total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+
+    $start  = 'Dec 17, 2014';
+    $end    = 'Dec 18, 2014';
+    $query  = array('class'=>'ApplyNewMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
+    echo "<pre>C total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+
+    $start  = 'Dec 18, 2014';
+    $end    = 'Jan 2, 2015';
+    $query  = array('class'=>'ApplyNewMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
+    echo "<pre>D total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+
+    $start  = 'Jan 2, 2015';
+    $end    = 'Feb 19, 2015';
+    $query  = array('class'=>'ApplyNewMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
+    echo "<pre>E total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+
+    $start  = 'Feb 19, 2015';
+    $end    = 'May 4, 2015';
+    $query  = array('class'=>'ApplyNewMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
+    echo "<pre>F total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+
+    $start  = 'May 4, 2015';
+    $end    = 'Oct 1, 2015';
+    $query  = array('class'=>'ApplyNewMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
+    echo "<pre>G total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+
+    $start  = 'Oct 1, 2015';
+    $end    = 'Nov 23, 2015';
+    $query  = array('class'=>'ApplyNewMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
+    echo "<pre>H total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+
+    $start  = 'Nov 23, 2015';
+    $end    = 'Nov 25, 2015';
+    $query  = array('class'=>'ApplyNewMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
+    echo "<pre>I total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+
+    $start  = 'Nov 25, 2015';
+    $end    = 'Nov 30, 2015';
+    $query  = array('class'=>'ApplyNewMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
+    echo "<pre>J total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+
+    $start  = 'Nov 30, 2015';
+    $end    = 'Jan 12, 2016';
+    $query  = array('class'=>'ApplyNewMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
+    echo "<pre>K total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+
+    echo "<pre>running total:";print_r($running_total);echo "</pre>";
+
+
+    $start  = 'Nov 5, 2014';
+    $end    = 'Jan 12, 2016';
+    $query  = array('class'=>'ApplyNewMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
+    echo "<pre>inclusive total:";print_r(count($result));echo "</pre>";
+    
+
+    $running_total = 0;
+    // Renewals
+    echo "<pre>";print_r('RENEWALS:');echo "</pre>";
+    $start  = 'Dec 4, 2014';
+    $end    = 'Dec 9, 2014';
+    $query  = array('class'=>'UpdateMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
+    echo "<pre>A total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+    
+    $start  = 'Dec 9, 2014';
+    $end    = 'Dec 10, 2014';
+    $query  = array('class'=>'UpdateMember','termsAcknowledgement'=>'yes','payByCheck'=>'no-store','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
+    echo "<pre>B total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+    
+    $start  = 'Dec 10, 2014';
+    $end    = 'Dec 12, 2014';
+    $query  = array('class'=>'UpdateMember','termsAcknowledgement'=>'yes','payByCheck'=>'no-store','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
+    echo "<pre>C total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+    
+    
+    $start  = 'Dec 12, 2014';
+    $end    = 'Jan 2, 2015';
+    $query  = array('class'=>'UpdateMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
+    echo "<pre>D total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+    
+    
+    $start  = 'Jan 2, 2015';
+    $end    = 'Feb 27, 2015';
+    $query  = array('class'=>'UpdateMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
+    echo "<pre>E total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+    
+    $start  = 'Feb 27, 2015';
+    $end    = 'May 4, 2015';
+    $query  = array('class'=>'UpdateMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
+    echo "<pre>F total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+    
+    $start  = 'May 4, 2015';
+    $end    = 'Dec 5, 2015';
+    $query  = array('class'=>'UpdateMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
+    echo "<pre>G total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+    
+    $start  = 'Dec 5, 2015';
+    $end    = 'Jan 4, 2016';
+    $query  = array('class'=>'UpdateMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
+    echo "<pre>H total:";print_r(count($result));echo "</pre>";
+    $running_total+= count($result);
+    
+    echo "<pre>running total:";print_r($running_total);echo "</pre>";
+    
+    $start  = 'Dec 4, 2014';
+    $end    = 'Jan 4, 2016';
+    $query  = array('class'=>'UpdateMember','termsAcknowledgement'=>'yes','submittedDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $result = $apply->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+    for ($i=0; $i < count($result); $i++) { 
+        $tmp[(string)$result[$i]['_id']] = $result[$i];
+    }
+    $member_res = array_merge($member_res,$tmp);
+    
+    echo "<pre>inclusive total:";print_r(count($result));echo "</pre>";
+    
+    echo "<pre>";print_r(count($member_res));echo "</pre>";
+
+    foreach ($member_res as $member) {
+    	$memObj = new Model\Member(array('_id'=>$member['memberId']),$app);
+    	$members[] = $memObj->findById();
+    }
+
+
+
+
+
+
+
+
+	$cnt = 0;
+    $final_arr_audit = array();
+
+    foreach ($members as $member){
+        if($member['payment']['renewalREUSE'] == 'yes'){
+            if(array_key_exists('number', $member['payment']) && !empty($member['payment']['number'])){
+                $res_arr = array();
+                $res_arr['_id'] = (string)$member['_id'];
+                $res_arr['expMonth'] = $member['payment']['expMonth'];
+                $res_arr['expYear'] = $member['payment']['expYear'];
+                
+                $date1 = strtotime($res_arr['expYear']."-".$res_arr['expMonth']."-01");
+                $date2 = strtotime("2016-01-01");
+                $res_arr['expired'] = ($date2 > $date1) ? 'yes' : 'no';
+
+                $res_arr['name'] = $member['displayName'];
+                $res_arr['email'] = $member['email'];
+                $res_arr['payment'] = $member['payment'];
+
+                if($res_arr['expired'] == 'yes'){
+                	$final_arr_audit['expired'][(string)$member['_id']] = $res_arr;
+                }else{
+                	$final_arr_audit['valid'][(string)$member['_id']] = $res_arr;
+                }
+                
+                $cnt++;    
+            }
+            
+        }
+
+    }
+echo "<pre>start ";echo ' expired:'.count($final_arr_audit['expired']).' valid:'.count($final_arr_audit['valid']);echo "</pre>";
+    // extract those who have already paid
+    $paid_arr = array();
+    foreach ($members as $member){
+        if(is_array($member['renewal']) && array_key_exists('paymentId', $member['renewal']) && !empty($member['renewal']['paymentId'])){
+                    
+            $paid_arr[(string)$member['_id']] = 'something';
+            
+        }
+
+    }
+    $final_arr_audit['expired'] = array_diff_key($final_arr_audit['expired'], $paid_arr);
+    $final_arr_audit['valid'] = array_diff_key($final_arr_audit['valid'], $paid_arr);
+echo "<pre>after paid ";echo ' expired:'.count($final_arr_audit['expired']).' valid:'.count($final_arr_audit['valid']);echo "</pre>";
+	// extract promos
+	// EAGLE2016-
+	// RENEW2016
+	// BONUS2015
+    $promo_arr = array();
+    $application = new Model\Apply($doc=array(),$app);
+    $res = $application->find(array('promocode'=>array('$in'=>array('EAGLE2016','BONUS2015'))),$fields=array(),true,$sort=array(),0,10000);
+echo "<pre> eagle bonus: ";print_r(count($res));echo "</pre>";
+    if(is_array($res)  && !empty($res)){
+    	foreach($res as $item){
+    		$promo_arr[(string)$item['memberId']] = 'something';
+    	}
+    }
+    $res = $application->find(array('renewalpromocode'=>'RENEW2016'),$fields=array(),true,$sort=array(),0,10000);
+echo "<pre> renew: ";print_r(count($res));echo "</pre>";    
+    if(is_array($res)  && !empty($res)){
+    	foreach($res as $item){
+    		$promo_arr[(string)$item['memberId']] = 'something';
+    	}
+    }
+
+    $final_arr_audit['expired'] = array_diff_key($final_arr_audit['expired'], $promo_arr);
+    $final_arr_audit['valid'] = array_diff_key($final_arr_audit['valid'], $promo_arr);
+
+echo "<pre>after promos ";echo ' expired:'.count($final_arr_audit['expired']).' valid:'.count($final_arr_audit['valid']);echo "</pre>";
+	
+	// sanity check - make sure last years promos are included
+	
+	$last_year_promo_arr = array();
+    $application = new Model\Apply($doc=array(),$app);
+    $res = $application->find(array('promocode'=>array('$in'=>array('NCDD2015','NCDD2014'))),$fields=array(),true,$sort=array(),0,10000);
+echo "<pre> ncdd 2014 & 15: ";print_r(count($res));echo "</pre>";
+	$past_promo_arr = array();
+    if(is_array($res)  && !empty($res)){
+    	foreach($res as $item){
+    		if(!empty($item['memberId'])){
+    			$memberObj = new Model\Member($doc=array('_id'=>$item['memberId']), $app);    
+			    $member = $memberObj->findById();
+			    if(!empty($member)){
+				    
+				        if($member['payment']['renewalREUSE'] == 'yes'){
+				            if(array_key_exists('number', $member['payment']) && !empty($member['payment']['number'])){
+				                $res_arr = array();
+				                $res_arr['_id'] = (string)$member['_id'];
+				                $res_arr['expMonth'] = $member['payment']['expMonth'];
+				                $res_arr['expYear'] = $member['payment']['expYear'];
+				                
+				                $date1 = strtotime($res_arr['expYear']."-".$res_arr['expMonth']."-01");
+				                $date2 = strtotime("2016-01-01");
+				                $res_arr['expired'] = ($date2 > $date1) ? 'yes' : 'no';
+
+				                $res_arr['name'] = $member['displayName'];
+				                $res_arr['email'] = $member['email'];
+				                $res_arr['payment'] = $member['payment'];
+
+				                if($res_arr['expired'] == 'yes'){
+				                	$past_promo_arr['expired'][(string)$member['_id']] = $res_arr;
+				                }else{
+				                	$past_promo_arr['valid'][(string)$member['_id']] = $res_arr;
+				                }
+				                
+				                $cnt++;    
+				            }
+				            
+				        }
+
+				    
+				}
+    		}
+    		
+    	}
+    }
+echo "<pre> past promo arr expired: ";print_r(count($past_promo_arr['expired']));echo "</pre>";
+echo "<pre> past promo arr valid: ";print_r(count($past_promo_arr['valid']));echo "</pre>";
+	
+	$past_promo_arr['expired'] = array_diff_key($past_promo_arr['expired'], $final_arr_audit['expired']);
+    $past_promo_arr['valid'] = array_diff_key($past_promo_arr['valid'], $final_arr_audit['valid']);
+
+echo "<pre>after past promos ";echo ' expired:'.count($final_arr_audit['expired']).' valid:'.count($final_arr_audit['valid']);echo "</pre>";
+	
+	// add folks who should be in the list...
+	$final_arr_audit['expired'] = array_merge($final_arr_audit['expired'],$past_promo_arr['expired']);
+	$final_arr_audit['valid'] = array_merge($final_arr_audit['valid'],$past_promo_arr['valid']);
+
+echo "<pre>with sanity check including last years promos that got left out ";echo ' expired:'.count($final_arr_audit['expired']).' valid:'.count($final_arr_audit['valid']);echo "</pre>";
+
+echo "<pre>final total ";print_r(count($final_arr_audit['expired'])+count($final_arr_audit['valid']));echo "</pre>";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	// the end resulting arrays will then be diffed.  we will diff the coded array from the audit array and vice versa.  
+	// which ever result is greater will be the super set that will be added to the autorenew collection.
+
+
+	$final_arr;
+	$final_arr_audit;
+
+	// super set $final_arr
+	$res_coded['expired'] = array_diff_key($final_arr['expired'], $final_arr_audit['expired']);
+	$res_coded['valid'] = array_diff_key($final_arr['valid'], $final_arr_audit['valid']);
+	
+	echo "<pre>res_coded expired";print_r($res_coded['expired']);echo "</pre>";
+	echo "<pre>res_coded valid";print_r($res_coded['valid']);echo "</pre>";
+
+	// super set $final_arr_audit
+	$res_audit['expired'] = array_diff_key($final_arr_audit['expired'], $final_arr['expired']);
+	$res_audit['valid'] = array_diff_key($final_arr_audit['valid'], $final_arr['valid']);
+
+	echo "<pre>res_audit expired";print_r($res_audit['expired']);echo "</pre>";
+	echo "<pre>res_audit valid";print_r($res_audit['valid']);echo "</pre>";
+
+	echo "<pre>res_audit expired";print_r(count($res_audit['expired']));echo "</pre>";
+	echo "<pre>res_audit valid";print_r(count($res_audit['valid']));echo "</pre>";
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 	foreach ($final_arr as $key => $value) {
 		foreach ($value as $record) {
 				
@@ -2154,7 +2748,7 @@ echo "<pre>final total ";print_r(count($final_arr['expired'])+count($final_arr['
 		    $ar->insert();
 		}
 	}
-
+*/
 	return new Response('', 200,array('Content-Type' => 'text/html'));
 })
 ->before($mustbeADMIN);

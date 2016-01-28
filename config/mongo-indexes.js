@@ -5,6 +5,12 @@ db.page.ensureIndex({slug:1});
 db.page.ensureIndex({currentType:1});
 db.page.ensureIndex({section:1});
 db.page.ensureIndex({currentStatus:1});
+db.application.ensureIndex({currentStatus:1});
+db.member.ensureIndex({currentMembership:1});
+db.member.ensureIndex({currentOrder:1});
+db.member.ensureIndex({currentFacultyPosition:1});
+db.member.ensureIndex({listed:1});
+db.member.ensureIndex({joinDate:1});
 
 ///////////
 // examples:
