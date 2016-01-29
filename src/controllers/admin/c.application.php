@@ -645,7 +645,7 @@ $app->get('/application/update-member/{memberId}', function ($memberId, Request 
 	// attempt to find the auto-pay created applicationId
 	// in order to bypass the payment stuff.
 	$is_autopay = false;
-	if(array_key_exists('applicationId', $member['renewal']) && !empty($member['renewal']['applicationId']) && $member['renewal']['currentStatus'] == Model\Renewal::$status['AUTOPAY']){
+	if(is_array($member) && array_key_exists('applicationId', $member['renewal']) && !empty($member['renewal']['applicationId']) && $member['renewal']['currentStatus'] == Model\Renewal::$status['AUTOPAY']){
 		$is_autopay = true;
 	}
 

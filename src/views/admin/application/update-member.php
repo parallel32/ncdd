@@ -163,8 +163,11 @@
                                  <th>
                                     <tr><td><b>Domain</b></td><td><b>Description</b></td></tr>
                                  </th>
-                              <? foreach ($this->vars['member']['websites'] as $website) {
-                                 echo "<tr><td>".$website['website']."</td><td>".$website['websiteDesc']."</td></tr>";
+                              <? 
+                              if(is_array($this->vars['member']) && array_key_exists('websites', $this->vars['member'])){
+                                 foreach ($this->vars['member']['websites'] as $website) {
+                                    echo "<tr><td>".$website['website']."</td><td>".$website['websiteDesc']."</td></tr>";
+                                 }
                               }
                               ?>
                               </table>
@@ -324,9 +327,12 @@
                                  <th>
                                     <tr><td><b>Domain</b></td><td><b>Description</b></td></tr>
                                  </th>
-                              <? $i=0; foreach ($this->vars['member']['websites'] as $website) {
-                                 echo "<tr><td><input type='text' name='doc[websites][".$i."][website]' value='".$website['website']."' class='m-wrap span12'></td><td><input type='text' name='doc[websites][".$i."][websiteDesc]' value='".$website['websiteDesc']."' class='m-wrap span12'></td></tr>";
-                                 $i++;
+                              <? 
+                              if(is_array($this->vars['member']) && array_key_exists('websites', $this->vars['member'])){
+                                 $i=0; foreach ($this->vars['member']['websites'] as $website) {
+                                    echo "<tr><td><input type='text' name='doc[websites][".$i."][website]' value='".$website['website']."' class='m-wrap span12'></td><td><input type='text' name='doc[websites][".$i."][websiteDesc]' value='".$website['websiteDesc']."' class='m-wrap span12'></td></tr>";
+                                    $i++;
+                                 }
                               }
                               ?>
                               </table>
@@ -576,7 +582,7 @@
                      <div class="row-fluid">
                         <div class="span6">
                            <div class="control-group ">
-                              <label class="control-label">Enter the promo code RENEW2016, pay your dues in full and sign up for future membership dues auto-pay (if you haven't already) and receive the NCDD Membership Desktop Trophy.  Offer expires January 4th, 2016. </label>
+                              <!-- <label class="control-label">Enter the promo code RENEW2016, pay your dues in full and sign up for future membership dues auto-pay (if you haven't already) and receive the NCDD Membership Desktop Trophy.  Offer expires January 4th, 2016. </label> -->
                               <div class="controls">
                                  <input type="text" name="doc[renewalpromocode]" class="m-wrap span12 renewalpromocode" value="">
                                  <input type="hidden" id="promocodetype" value="">
@@ -617,7 +623,7 @@
 
 
                      <h3 class="form-section">If you intend to pay by credit card please provide your card details:</h3>
-                     <? if(array_key_exists('payment',$this->vars['member']) && !empty($this->vars['member']['payment']) && is_array($this->vars['member']['payment'])): 
+                     <? if(is_array($this->vars['member']) && array_key_exists('payment',$this->vars['member']) && !empty($this->vars['member']['payment']) && is_array($this->vars['member']['payment'])): 
                            $this->vars['payment'] = $this->vars['member']['payment'];
                         else:
                            $this->vars['payment'] = array();
@@ -1185,7 +1191,7 @@
                select.append($("<option value='"+(i + year)+"' "+(i === 0 ? "selected" : "")+">"+(i + year)+"</option>"))
             }
             
-         <? if(array_key_exists('payment',$this->vars['member']) && !empty($this->vars['member']['payment']) && is_array($this->vars['member']['payment'])): ?>
+         <? if(is_array($this->vars['member']) && array_key_exists('payment',$this->vars['member']) && !empty($this->vars['member']['payment']) && is_array($this->vars['member']['payment'])): ?>
             // STORE CARD STUFF
             var smonth = '<?=(array_key_exists('expMonth',$this->vars['payment'])) ? $this->vars['payment']['expMonth']: '';?>';
             var syear = '<?=(array_key_exists('expYear',$this->vars['payment'])) ? $this->vars['payment']['expYear']: '';?>';
