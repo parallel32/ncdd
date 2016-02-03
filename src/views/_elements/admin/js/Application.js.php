@@ -383,18 +383,18 @@
 		
 	};
 	Application.init = function(){
-		$('.btn.mini.view.card').click(function(e){
-			document.location.href='/card/'+$(this).attr('data-id');
-		});		
-		$('.btn.blue.mini.view').click(function(e){
-			document.location.href='/application/'+$(this).attr('data-id')+'/view';
-		});		
-		$('.btn.blue.mini.view.member').click(function(e){
-			document.location.href='/member/'+$(this).attr('data-id')+'/edit';
-		});		
-		$('.btn.blue.mini.view.payment').click(function(e){
-			document.location.href='/payment/'+$(this).attr('data-id')+'/view';
-		});		
+		// $('.btn.mini.view.card').click(function(e){
+		// 	document.location.href='/card/'+$(this).attr('data-id');
+		// });		
+		// $('.btn.blue.mini.view').click(function(e){
+		// 	document.location.href='/application/'+$(this).attr('data-id')+'/view';
+		// });		
+		// $('.btn.blue.mini.view.member').click(function(e){
+		// 	document.location.href='/member/'+$(this).attr('data-id')+'/edit';
+		// });		
+		// $('.btn.blue.mini.view.payment').click(function(e){
+		// 	document.location.href='/payment/'+$(this).attr('data-id')+'/view';
+		// });		
 	};
 	Application.paymentInit = function(){
 		$('#save-success .continue.payment').click(function(e){

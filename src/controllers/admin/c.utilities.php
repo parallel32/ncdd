@@ -17,6 +17,160 @@ use TTools\App;
 $utilities = $app['controllers_factory'];
 
 
+// fix the states in the member payment record
+$utilities->get('/fixmemberpaymentstate', function () use ($app) {
+    ini_set('memory_limit','1024M');
+    $stateMap = array();
+    $stateMap['Alabama']='AL';
+    $stateMap['Oklahoma']='OK';
+    $stateMap['Arizona']='AZ';
+    $stateMap['Washington']='WA';
+    $stateMap['Texas']='TX';
+    $stateMap['Maryland']='MD';
+    $stateMap['Georgia']='GA';
+    $stateMap['North Carolina']='NC';
+    $stateMap['West Virginia']='WV';
+    $stateMap['Utah']='UT';
+    $stateMap['Colorado']='CO';
+    $stateMap['Virginia']='VA';
+    $stateMap['Ohio']='OH';
+    $stateMap['Florida']='FL';
+    $stateMap['California']='CA';
+    $stateMap['Nevada']='NV';
+    $stateMap['Pennsylvania']='PA';
+    $stateMap['Indiana']='IN';
+    $stateMap['Tennessee']='TN';
+    $stateMap['Massachusetts']='MA';
+    $stateMap['Arkansas']='AR';
+    $stateMap['New York']='NY';
+    $stateMap['Illinois']='IL';
+    $stateMap['New Hampshire']='NH';
+    $stateMap['Mississippi']='MS';
+    $stateMap['Missouri']='MO';
+    $stateMap['South Carolina']='SC';
+    $stateMap['Minnesota']='MN';
+    $stateMap['Michigan']='MI';
+    $stateMap['Maine']='ME';
+    $stateMap['Idaho']='ID';
+    $stateMap['Kansas']='KS';
+    $stateMap['South Dakota']='SD';
+    $stateMap['Nebraska']='NE';
+    $stateMap['Iowa']='IO';
+    $stateMap['Montana']='MT';
+    $stateMap['New Jersey']='NJ';
+    $stateMap['Oregon']='OR';
+    $stateMap['Connecticut']='CT';
+    $stateMap['Wisconsin']='WI';
+    $stateMap['New Mexico']='NM';
+    $stateMap['Louisiana']='LA';
+    $stateMap['Delaware']='DE';
+    $stateMap['Alaska']='AL';
+    $stateMap['Wyoming']='WY';
+    $stateMap['Washington, D.C.']='DC';
+    $stateMap['Rhode Island']='RI';
+    $stateMap['Kentucky']='KY';
+    $stateMap['Vermont']='VT';
+    $stateMap['Ontario']='ON';
+    $stateMap['Hawaii']='HI';
+    $stateMap['Saskatchewan']='SK';
+    $stateMap['North Dakota']='ND';
+    $stateMap['Quebec']='QC';
+    // misspellings
+    $stateMap['Mo.']='MO';
+    $stateMap['Nebraksa']='NE';
+    $stateMap['ILLINOIS']='IL';
+    $stateMap['Ca.']='CA';
+    $stateMap['OKLAHOMA (OK)']='OK';
+    $stateMap['Alaska (AK)']='AK';
+    $stateMap['TX-Texas']='TX';
+    $stateMap['GA.']='GA';
+    $stateMap['Québec']='QC';
+    $stateMap['Michgan']='MI';
+    $stateMap['Wisconsnin']='WI';
+    $stateMap['NJ - New Jersey']='NJ';
+    $stateMap['mississippi']='MS';
+    $stateMap['Boca Raton, Florida']='FL';
+    $stateMap['Manitoba']='MB';
+    $stateMap['NEW JERSEY']='NJ';
+
+    $stateMap['colorado'] = 'CO';
+    $stateMap['maryland'] = 'MD';
+    $stateMap['TEXAS'] = 'TX';
+    $stateMap['TEXAS'] = 'TX';
+    $stateMap['WASHINGTON'] = 'WA';
+    $stateMap['New'] = '';
+    $stateMap['maryland'] = 'MD';
+    $stateMap['New YORK'] = 'NY';
+    $stateMap['GEORGIA'] = 'GA';
+    $stateMap['texas'] = 'TX';
+    $stateMap['District of Columbia'] = 'DC';
+    $stateMap['Select'] = '';
+    $stateMap['KANSAS'] = 'KS';
+    $stateMap['MISSOURI'] = 'MO';
+    $stateMap['texas'] = 'TX';
+    $stateMap['CA - California'] = 'CA';
+    $stateMap['CO - Colorado'] = 'CO';
+    $stateMap['michigan'] = 'MI';
+    $stateMap['IL - Illinois'] = 'IL';
+    $stateMap['NEW YORK'] = 'NY';
+    $stateMap['MISSOURI'] = 'MO';
+    $stateMap['IL - Illinois'] = 'IL';
+    $stateMap['South Carolin'] = 'SC';
+    $stateMap['GA - Georgia'] = 'GA';
+    $stateMap['florida'] = 'FL';
+    $stateMap['georgia'] = 'GA';
+    $stateMap['NEW YORK'] = 'NY';
+    $stateMap['District of Columbia'] = 'DC';
+    $stateMap['oklahoma'] = 'OK';
+    $stateMap['Caliofrnia'] = 'CA';
+    $stateMap['Texas, US'] = 'TX';
+    $stateMap['California (South)'] = 'CA';
+    
+
+    $states = array('alabama'=>'AL','alaska'=>'AK','arizona'=>'AZ','arkansas'=>'AR','california'=>'CA','colorado'=>'CO','connecticut'=>'CT','delaware'=>'DE','washington dc'=>'DC','florida'=>'FL','georgia'=>'GA','hawaii'=>'HI','idaho'=>'ID','illinois'=>'IL','indiana'=>'IN','iowa'=>'IA','kansas'=>'KS','kentucky'=>'KY','louisiana'=>'LA','maine'=>'ME','maryland'=>'MD','massachusetts'=>'MA','michigan'=>'MI','minnesota'=>'MN','mississippi'=>'MS','missouri'=>'MO','montana'=>'MT','nebraska'=>'NE','nevada'=>'NV','new hampshire'=>'NH','new jersey'=>'NJ','new mexico'=>'NM','new york'=>'NY','north carolina'=>'NC','north dakota'=>'ND','ohio'=>'OH','oklahoma'=>'OK','oregon'=>'OR','pennsylvania'=>'PA','rhode island'=>'RI','south carolina'=>'SC','south dakota'=>'SD','tennessee'=>'TN','texas'=>'TX','utah'=>'UT','vermont'=>'VT','virginia'=>'VA','washington'=>'WA','west virginia'=>'WV','wisconsin'=>'WI','wyoming'=>'WY','ontario'=>'ON','quebec'=>'QC','saskatchewan'=>'SK');
+
+    $member = new Model\Member(array(),$app);
+    $members = $member->find($query=array(),$fields=array('payment'=>1),true,$sort=array(),$offset=0,$limit=30000);
+
+    foreach ($members as $member) {
+        $state = '';
+        $i=0;
+        if(array_key_exists('payment',$member) && is_array($member['payment']) && array_key_exists('stateProvinceRegion', $member['payment'])){
+            $member['payment']['stateProvinceRegion'] = trim($member['payment']['stateProvinceRegion']);
+            if(strlen($member['payment']['stateProvinceRegion']) > 2){
+
+                
+                try {
+                    $state = $stateMap[$member['payment']['stateProvinceRegion']];    
+                } catch (Exception $e) {
+                    $i++;
+                }
+                if(empty($state)){
+                    try {
+                        $state = $states[strtolower($member['payment']['stateProvinceRegion'])];    
+                    } catch (Exception $e) {
+                        $i++;
+                    }
+                    
+                }
+                if($i>0){
+                    echo "<pre>".$member['_id'].' ';print_r($member['payment']['stateProvinceRegion']);echo "</pre>";
+                }else{
+                    $memObj = new Model\Member(array(),$app);
+                    $memObj->updateByCriteria(array('payment.stateProvinceRegion'=>$state), array('_id'=>$member['_id']));
+                }
+            }
+            
+        }
+    }
+
+    return new Response('',200,array('Content-Type' => 'text/html'));
+    
+});
+
+
+
+
 /////////////////////////////////////////
 // query renewals by interface changes //
 /////////////////////////////////////////

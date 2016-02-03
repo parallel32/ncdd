@@ -136,7 +136,60 @@
                                  <td class="hidden-phone"><?=$item['record']['payment']['expMonth']?> / <?=$item['record']['payment']['expYear']?></td>
                                  <td class="hidden-phone"><?='...'.substr(str_replace('.x', '', $item['record']['payment']['number']), -4);?></td>
                                  <td class="hidden-phone"><?=$item['record']['name']?></td>
-                                 <td class="hidden-phone"><?=$item['declinedMessage']?></td>                                 
+                                 <td class="hidden-phone declinemessage">
+                                 <?
+                                    // process decline message
+                                    if(strpos($item['declinedMessage'], 'Declined') !== false){
+                                       $tmp = explode('Declined', $item['declinedMessage']);
+                                       if(is_array($tmp) && !empty($tmp)){
+                                          $code = substr($tmp[1], 0,4);
+                                          error_log('$code: '.print_r($code,true));
+                                          $last['M'] = 'Card code matches.';
+                                          $last['N'] = 'Card code does not match.';
+                                          $last['P'] = 'Not processed';
+                                          $last['S'] = 'Merchant has indicated that the card code is not present on the card.';
+                                          $last['U'] = 'Issuer is not certified and/or has not provided encryption keys.';
+                                          $last['X'] = 'No response from the credit card association was received.';
+
+                                          if(strlen($code) == 4){
+                                             $firstthree['YYY'] = 'Address and zip code match.';
+                                             $firstthree['YYA'] = 'Address and zip code match.';
+                                             $firstthree['NYZ'] = 'Only the zip code matches';
+                                             $firstthree['YNA'] = 'Only the address matches.';
+                                             $firstthree['YNY'] = 'Only the address matches.';
+                                             $firstthree['NNN'] = 'Neither the address nor the zip code match.';
+                                             $firstthree['XXW'] = 'Card number not on file';
+                                             $firstthree['XXU'] = 'Address information not verified for domestic transaction.';
+                                             $firstthree['XXR'] = 'Retry - system unavailable.';
+                                             $firstthree['XXS'] = 'Service not supported.';
+                                             $firstthree['XXE'] = 'AVS not allowed for card type.';
+                                             $firstthree['XXG'] = 'Global non-AVS participant. Normally an international transaction.';
+                                             $firstthree['YNB'] = 'Street address matchesfor international transaction; Postal code not verified.';
+                                             $firstthree['NNC'] = 'Street address and Postal code not verified for international transaction.';
+                                             $firstthree['YYD'] = 'Street address and Postal code match for international transaction.';
+                                             $firstthree['YYF'] = 'Street address and Postal code match for international transaction. (UK Only)';
+                                             $firstthree['NNI'] = 'Address information not verified for international transaction.';
+                                             $firstthree['YYM'] = 'Street address and Postal code match for international transaction.';
+                                             $firstthree['NYP'] = 'Postal codes match for international transaction; Street address not verified.';
+                                             
+                                             $decoded_message = $firstthree[substr($code, 0,3)];
+                                             $decoded_message = $decoded_message.' '.$last[substr($code, -1,1)];
+                                                
+                                          }
+                                          if(strlen($code) < 4){
+                                             $firstthree['XX'] = 'Address verification has been requested, but not received.';
+
+                                             $decoded_message = $firstthree[substr($code, 0,2)];
+                                             $decoded_message = $decoded_message.' '.$last[substr($code, -1,1)];
+                                          }
+                                          
+                                          
+                                       }
+                                    }
+                                 ?>
+                                 <?=$item['declinedMessage'].'<br> <strong>'.$decoded_message.'</strong>'?>
+
+                                 </td>
                               <? endif; 
                               ?>
                               </tr>

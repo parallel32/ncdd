@@ -31,3 +31,27 @@ db.registration.update({_id:ObjectId('5683edd954fe0b5e79742c16')},{$set:{current
 
 
 
+
+// UPDATE THE COUNTRY CODE FOR FIRST DATA!
+
+// ncdd:PRIMARY> db.member.find({'payment.country':'usa'}).count()
+// 61
+// ncdd:PRIMARY> db.member.find({'payment.country':'USA'}).count()
+// 782
+// ncdd:PRIMARY> db.member.find({'payment.country':'United States'}).count()
+// 389
+
+
+db.member.update({'payment.country':'usa'},{$set:{'payment.country':'US'}},{multi:true})
+db.member.update({'payment.country':'USA'},{$set:{'payment.country':'US'}},{multi:true})
+db.member.update({'payment.country':'United States'},{$set:{'payment.country':'US'}},{multi:true})
+db.member.update({'payment.country':'us'},{$set:{'payment.country':'US'}},{multi:true})
+
+
+db.member.find({'payment.country':'usa'}).count()
+db.member.find({'payment.country':'USA'}).count()
+db.member.find({'payment.country':'United States'}).count()
+db.member.find({'payment.country':'U.S.A'}).count()
+db.member.find({'payment.country':'u.s.a'}).count()
+db.member.find({'payment.country':'us'}).count()
+db.member.find({'payment.country':'US'}).count()

@@ -1593,25 +1593,8 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 
 	$ncddtrialpromocode = $application->fetchByStatus('TRIAL',$offset, $limit,$filter=array('promocode'=>array('$in'=>array('TRIAL','DIVTRIAL','PDTRIAL','RFTRIAL','ALLENTRAPP'))));
 	$allentrapptrialpromocode = $application->fetchByStatus('TRIAL',$offset, $limit,$filter=array('promocode'=>array('$in'=>array('ALLENTRAPP'))));
-	$ncdd2015promocode = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('promocode'=>'NCDD2015'));
-	$ncdd2014promocode = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('promocode'=>'NCDD2014'));
 	$eagle2016promocode = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('promocode'=>'EAGLE2016'));
-	$bonus2015promocode = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('promocode'=>'BONUS2015'));
-
-	if(!empty($bonus2015promocode)):
-	for ($i=0; $i < count($bonus2015promocode); $i++) { 
-		switch ($bonus2015promocode[$i]['class']) {
-	    	case 'ApplyNewMember':
-	    		$reference = new Model\ReferenceMember(array('applicationId'=>$bonus2015promocode[$i]['_id']), $app);
-	    		break;
-	    	case 'ApplyNewSustainingMember':
-	    		$reference = new Model\ReferenceSustainingMember(array('applicationId'=>$bonus2015promocode[$i]['_id']), $app);
-	    		break;
-	    	
-	    }
-	    $bonus2015promocode[$i]['new_references'] = array('total'=>$reference->getTotalSubmissions(),'max'=>$reference->getMaxSubmissions());
-	}
-	endif;
+	
 	if(!empty($eagle2016promocode)):
 	for ($i=0; $i < count($eagle2016promocode); $i++) { 
 		switch ($eagle2016promocode[$i]['class']) {
@@ -1626,83 +1609,6 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 	    $eagle2016promocode[$i]['new_references'] = array('total'=>$reference->getTotalSubmissions(),'max'=>$reference->getMaxSubmissions());
 	}
 	endif;
-	if(!empty($ncdd2015promocode)):
-	for ($i=0; $i < count($ncdd2015promocode); $i++) { 
-		switch ($ncdd2015promocode[$i]['class']) {
-	    	case 'ApplyNewMember':
-	    		$reference = new Model\ReferenceMember(array('applicationId'=>$ncdd2015promocode[$i]['_id']), $app);
-	    		break;
-	    	case 'ApplyNewSustainingMember':
-	    		$reference = new Model\ReferenceSustainingMember(array('applicationId'=>$ncdd2015promocode[$i]['_id']), $app);
-	    		break;
-	    	
-	    }
-	    $ncdd2015promocode[$i]['new_references'] = array('total'=>$reference->getTotalSubmissions(),'max'=>$reference->getMaxSubmissions());
-	}
-	endif;
-	if(!empty($ncdd2014promocode)):
-	for ($i=0; $i < count($ncdd2014promocode); $i++) { 
-		switch ($ncdd2014promocode[$i]['class']) {
-	    	case 'ApplyNewMember':
-	    		$reference = new Model\ReferenceMember(array('applicationId'=>$ncdd2014promocode[$i]['_id']), $app);
-	    		break;
-	    	case 'ApplyNewSustainingMember':
-	    		$reference = new Model\ReferenceSustainingMember(array('applicationId'=>$ncdd2014promocode[$i]['_id']), $app);
-	    		break;
-	    	
-	    }
-	    $ncdd2014promocode[$i]['new_references'] = array('total'=>$reference->getTotalSubmissions(),'max'=>$reference->getMaxSubmissions());
-	}
-	endif;
-	$date = new Model\Date($app,'9/16/2014 5:00 PM');
-	$end2014 =  new Model\Date($app,'12/31/2014 11:59 PM');
-	$end2015 =  new Model\Date($app,'12/31/2015 11:59 PM');
-	$newlypaid2014 = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION')),'promocode'=>array('$nin'=>array('BONUS2015','EAGLE2016','NCDD2015','NCDD2014')),'paidDate.date'=>array('$gte'=> new \MongoDate(strtotime($date->fullDateTime)), '$lte'=> new \MongoDate(strtotime($end2014->fullDateTime)))));
-	$newlypaid2015 = $application->fetchByStatus('PAID',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION')),'promocode'=>array('$nin'=>array('BONUS2015','EAGLE2016','NCDD2015','NCDD2014')),'paidDate.date'=>array('$gte'=> new \MongoDate(strtotime($end2014->fullDateTime)), '$lte'=> new \MongoDate(strtotime($end2015->fullDateTime)))));
-	if(!empty($newlypaid2014)):
-	for ($i=0; $i < count($newlypaid2014); $i++) { 
-		switch ($newlypaid2014[$i]['class']) {
-	    	case 'NewMemberApplication':
-	    	case 'ApplyNewMember':
-	    		$reference = new Model\ReferenceMember(array('applicationId'=>$newlypaid2014[$i]['_id']), $app);
-	    		$total = $reference->getTotalSubmissions();
-	    		$max = $reference->getMaxSubmissions();
-	    		break;
-	    	case 'ApplyNewSustainingMember':
-	    		$reference = new Model\ReferenceSustainingMember(array('applicationId'=>$newlypaid2014[$i]['_id']), $app);
-	    		$total = $reference->getTotalSubmissions();
-	    		$max = $reference->getMaxSubmissions();
-	    		break;
-	    	default:
-	    		$total = 0;
-	    		$max = 0;
-	    		break;	    	
-	    }
-	    $newlypaid2014[$i]['new_references'] = array('total'=>$total,'max'=>$max);
-	}
-	endif;
-	if(!empty($newlypaid2015)):
-	for ($i=0; $i < count($newlypaid2015); $i++) { 
-		switch ($newlypaid2015[$i]['class']) {
-	    	case 'NewMemberApplication':
-	    	case 'ApplyNewMember':
-	    		$reference = new Model\ReferenceMember(array('applicationId'=>$newlypaid2015[$i]['_id']), $app);
-	    		$total = $reference->getTotalSubmissions();
-	    		$max = $reference->getMaxSubmissions();
-	    		break;
-	    	case 'ApplyNewSustainingMember':
-	    		$reference = new Model\ReferenceSustainingMember(array('applicationId'=>$newlypaid2015[$i]['_id']), $app);
-	    		$total = $reference->getTotalSubmissions();
-	    		$max = $reference->getMaxSubmissions();
-	    		break;
-	    	default:
-	    		$total = 0;
-	    		$max = 0;
-	    		break;	    	
-	    }
-	    $newlypaid2015[$i]['new_references'] = array('total'=>$total,'max'=>$max);
-	}
-	endif;
 	$crumbs = array(array('name'=>'Applications','href'=>'/applications'));
 	$view_vars = array(
 						 'active'=>'Applications/New'
@@ -1713,14 +1619,9 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 						,'approved'=>$approved
 						,'trial'=>$trial
 						,'paid'=>$paid
-						,'bonus2015promocode'=>$bonus2015promocode
 						,'eagle2016promocode'=>$eagle2016promocode
-						,'ncdd2015promocode'=>$ncdd2015promocode
-						,'ncdd2014promocode'=>$ncdd2014promocode
 						,'ncddtrialpromocode'=>$ncddtrialpromocode
 						,'allentrapptrialpromocode'=>$allentrapptrialpromocode
-						,'newlypaid2014'=>$newlypaid2014
-						,'newlypaid2015'=>$newlypaid2015
 	);
 	return $app['view']->render('application/index', 'default', $view_vars);
 })
@@ -2543,6 +2444,19 @@ echo "<pre>start ";echo ' expired:'.count($final_arr_audit['expired']).' valid:'
         }
 
     }
+
+    // need to first save the members who have paid and are in the final_arr_audit list so I can update their payment.renewalREUSE later
+    $paid_arr_r = array();
+    foreach ($final_arr_audit['expired'] as $key => $value) {
+    	if(array_key_exists($key, $paid_arr)){
+    		$paid_arr_r[$key] = 'yes';
+    	}
+    }
+    foreach ($final_arr_audit['valid'] as $key => $value) {
+    	if(array_key_exists($key, $paid_arr)){
+    		$paid_arr_r[$key] = 'yes';
+    	}
+    }
     $final_arr_audit['expired'] = array_diff_key($final_arr_audit['expired'], $paid_arr);
     $final_arr_audit['valid'] = array_diff_key($final_arr_audit['valid'], $paid_arr);
 echo "<pre>after paid ";echo ' expired:'.count($final_arr_audit['expired']).' valid:'.count($final_arr_audit['valid']);echo "</pre>";
@@ -2675,12 +2589,15 @@ echo "<pre>final total ";print_r(count($final_arr_audit['expired'])+count($final
 
 
 	
-	// the end resulting arrays will then be diffed.  we will diff the coded array from the audit array and vice versa.  
+	// the end resulting arrays will then be diffed.  i will diff the coded array from the audit array and vice versa.  
 	// which ever result is greater will be the super set that will be added to the autorenew collection.
 
 
 	$final_arr;
 	$final_arr_audit;
+
+	echo "<pre>final_arr count";print_r(count($final_arr['valid'])+count($final_arr['expired']));echo "</pre>";
+	echo "<pre>final_arr_audit count";print_r(count($final_arr_audit['valid'])+count($final_arr_audit['expired']));echo "</pre>";
 
 	// super set $final_arr
 	$res_coded['expired'] = array_diff_key($final_arr['expired'], $final_arr_audit['expired']);
@@ -2696,8 +2613,8 @@ echo "<pre>final total ";print_r(count($final_arr_audit['expired'])+count($final
 	echo "<pre>res_audit expired";print_r($res_audit['expired']);echo "</pre>";
 	echo "<pre>res_audit valid";print_r($res_audit['valid']);echo "</pre>";
 
-	echo "<pre>res_audit expired";print_r(count($res_audit['expired']));echo "</pre>";
-	echo "<pre>res_audit valid";print_r(count($res_audit['valid']));echo "</pre>";
+	echo "<pre>res_audit expired count";print_r(count($res_audit['expired']));echo "</pre>";
+	echo "<pre>res_audit valid count";print_r(count($res_audit['valid']));echo "</pre>";
 
 	
 
@@ -2742,18 +2659,37 @@ echo "<pre>final total ";print_r(count($final_arr_audit['expired'])+count($final
 
 
 
-//*
-	foreach ($final_arr as $key => $value) {
+//* //
+	$m = 1;
+	foreach ($final_arr_audit as $key => $value) {
 		foreach ($value as $record) {
-				
+			
+			// need to reset each member's payment.renewalREUSE to 'yes' for each one of these members regardless of what it was.
+			$member = new Model\Member(array('_id'=>$record['_id']),$app);
+			$_update = $member->updateByCriteria(array('$set'=>array('payment.renewalREUSE'=>'yes')), array('_id'=>$member->_id));
+
 			$ar_arr['record'] = $record;
 		    $ar_arr['expired'] = ($key == 'expired') ? 'yes' : 'no';
 		    $ar_arr['valid'] = ($key == 'valid') ? 'yes' : 'no';
 		    
 		    $ar = new Model\AutoRenew($ar_arr,$app);
 		    $ar->insert();
+		    $m++;
 		}
 	}
+
+	// now need to reset all the paid people's payment.renewalREUSE because they were removed from the $final_arr_audit array.
+	// $paid_arr looks like this >> $paid_arr[(string)$member['_id']] = 'something';
+	$k = 1;
+	foreach ($paid_arr_r as $key => $value) {
+		// need to reset each member's payment.renewalREUSE to 'yes' for each one of these members regardless of what it was.
+		$member = new Model\Member(array('_id'=>$k),$app);
+		$_update = $member->updateByCriteria(array('$set'=>array('payment.renewalREUSE'=>'yes')), array('_id'=>$member->_id));		
+		$k++;
+	}
+
+	echo "<pre>Auto renew total:";print_r($m);echo "</pre>";
+	echo "<pre>Paid renewals total:";print_r($k);echo "</pre>";
 //*/
 	return new Response('', 200,array('Content-Type' => 'text/html'));
 })
@@ -2904,7 +2840,7 @@ $app->get('/renewalsautocharge', function (Request $request) use ($app) {
 // COMBINE THE ARRAYS since the expYear on the expired cards has been updated 
 		$finalArr = array_merge($valid,$expired);
 
-		for ($x=0; $x < 25; $x++) { 
+		for ($x=0; $x < 5; $x++) { 
 			$value = $finalArr[$x];
 
 			$memberId = $value['record']['_id'];
@@ -3105,9 +3041,6 @@ $app->get('/renewals/{offset}/{limit}', function ($offset, $limit, Request $requ
 		,'approved'=>$member->fetchByRenewalStatus('APPROVED',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']),$offset, $limit)
 		,'paid'=>$member->fetchByRenewalStatus('PAID',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']), $offset, $limit)
 		,'unpaidbycheck'=>$member->fetchByPaymentStatus('unpaid-PAYBYCHECK',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']), $offset, $limit)
-		,'paidbycheck'=>$member->fetchByPaymentStatus('paid-PAYBYCHECK',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']), $offset, $limit)
-		,'paidbycc'=>$member->fetchByPaymentStatus('paid-CC',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']), $offset, $limit)
-		,'paidbyccrecurr'=>$member->fetchByPaymentStatus('paid-CCRECUR',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']), $offset, $limit)
 	);
 	$updates_founding = array(
 		'unsubmitted'=>$member->fetchByRenewalStatus('UNSUBMITTED',array(Model\Member::$membership['FOUNDING MEMBER']),$offset, $limit)

@@ -41,7 +41,7 @@
                                  <td class="center hidden-480 "><?=$application['type']?></td>
                                  <td class=" ">
                                     <a data-id="<?=$application['_id']?>" class="btn blue mini view"><i class=" "></i> Application</a>
-                                    <a data-id="<?=$application['paymentId']?>" class="btn blue mini view payment"><i class=" "></i> Payment</a>
+                                    <a data-id="<?=$application['paymentId']?>" class="btn blue mini payment"><i class=" "></i> Payment</a>
                                  </td>
                               </tr>
                               <? endforeach;?>
@@ -79,6 +79,59 @@ jQuery(document).ready(function() {
       
    });
 
+
+});      
+</script>
+
+
+
+
+
+      <!-- EMAIL VIEW MODAL -->
+      <div class="modal container fade" id="view-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+           <div class="modal-dialog">
+               <div class="modal-content">
+                   <div class="modal-header">
+                       <h4 class="modal-title" id="view-label"></h4>
+                   </div>
+                   <div class="modal-body">
+                       <iframe src="" style="zoom:0.60" width="99.6%" height="1000" frameborder="0"></iframe>
+                   </div>
+                   <div class="modal-footer">
+                       <button class="btn default no">Close</button>
+                   </div>
+                 </div>
+           </div>
+       </div>
+      <!--/ EMAIL VIEW MODAL -->
+
+
+<script>
+jQuery(document).ready(function() {
+
+   $('.btn.card').live('click', function() {
+      $('#view-modal iframe').attr('src','/card/'+$(this).attr('data-id'));
+      $('#view-modal').modal({keyboard: false});   
+   });
+   $('.btn.payment').live('click', function() {
+      $('#view-modal iframe').attr('src','/payment/'+$(this).attr('data-id')+'/view');
+      $('#view-modal').modal({keyboard: false});   
+   });
+   $('#view-modal .btn.no').click(function(e){
+      $('#view-modal').modal('hide');
+   });
+
+   $('.btn.view').live('click', function() {
+      $('#view-modal iframe').attr('src','/application/'+$(this).attr('data-id')+'/view');
+      $('#view-modal').modal({keyboard: false});   
+   });
+   
+   $('.btn.view.member').live('click', function() {
+      $('#view-modal iframe').attr('src','/member/'+$(this).attr('data-id')+'/edit');
+      $('#view-modal').modal({keyboard: false});   
+   });
+   
+      
 
 });      
 </script>

@@ -59,7 +59,9 @@
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
                                  <td class="hidden-480 "><b><?=(array_key_exists('payment', $member) && array_key_exists('renewalCredit', $member['payment']) && !empty($member['payment']['renewalCredit'])) ? '$'.$member['payment']['renewalCredit'] : ''?></b></td>
                                  <td class=" ">
-                                    <a data-id="<?=(!empty($member['renewal']['applicationId'])) ? $member['renewal']['applicationId'] :'';?>" class="btn blue mini view"><i class=" "></i> Application</a>
+                                    <? if(!empty($member['renewal']['applicationId'])){?>
+                                    <a data-id="<?=$member['renewal']['applicationId']?>" class="btn blue mini view"><i class=" "></i> Application</a>
+                                    <? } ?>
                                     <a data-id="<?=$member['_id']?>" class="btn blue mini view member"><i class=" "></i> Member</a>
                                     <a data-id="<?=$member['_id']?>" class="btn mini yellow-stripe user-login">LogIn</a>
                                  </td>
@@ -118,6 +120,60 @@ jQuery(document).ready(function() {
       e.preventDefault();
       document.location.href='/applications/all';
    });
+
+});      
+</script>
+
+
+
+
+      <!-- EMAIL VIEW MODAL -->
+      <div class="modal container fade" id="view-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+           <div class="modal-dialog">
+               <div class="modal-content">
+                   <div class="modal-header">
+                       <h4 class="modal-title" id="view-label"></h4>
+                   </div>
+                   <div class="modal-body">
+                       <iframe src="" style="zoom:0.60" width="99.6%" height="1000" frameborder="0"></iframe>
+                   </div>
+                   <div class="modal-footer">
+                       <button class="btn default no">Close</button>
+                   </div>
+                 </div>
+           </div>
+       </div>
+      <!--/ EMAIL VIEW MODAL -->
+
+
+<script>
+jQuery(document).ready(function() {
+
+   $('.btn.card').live('click', function() {
+      $('#view-modal iframe').attr('src','/card/'+$(this).attr('data-id'));
+      $('#view-modal').modal({keyboard: false});   
+   });
+   $('.btn.payment').live('click', function() {
+      $('#view-modal iframe').attr('src','/payment/'+$(this).attr('data-id')+'/view');
+      $('#view-modal').modal({keyboard: false});   
+   });
+   $('#view-modal .btn.no').click(function(e){
+      $('#view-modal').modal('hide');
+   });
+
+   $('.btn.view').live('click', function() {
+      console.log('here')
+      console.log($(this).attr('data-id'))
+      $('#view-modal iframe').attr('src','/application/'+$(this).attr('data-id')+'/view');
+      $('#view-modal').modal({keyboard: false});   
+   });
+   
+   $('.btn.view.member').live('click', function() {
+      $('#view-modal iframe').attr('src','/member/'+$(this).attr('data-id')+'/edit');
+      $('#view-modal').modal({keyboard: false});   
+   });
+   
+      
 
 });      
 </script>
