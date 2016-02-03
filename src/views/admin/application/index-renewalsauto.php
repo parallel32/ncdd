@@ -140,6 +140,7 @@
                                  <?
                                     // process decline message
                                     if(strpos($item['declinedMessage'], 'Declined') !== false){
+                                       $decoded_message = '';
                                        $tmp = explode('Declined', $item['declinedMessage']);
                                        if(is_array($tmp) && !empty($tmp)){
                                           $code = substr($tmp[1], 0,4);
@@ -172,15 +173,23 @@
                                              $firstthree['YYM'] = 'Street address and Postal code match for international transaction.';
                                              $firstthree['NYP'] = 'Postal codes match for international transaction; Street address not verified.';
                                              
-                                             $decoded_message = $firstthree[substr($code, 0,3)];
-                                             $decoded_message = $decoded_message.' '.$last[substr($code, -1,1)];
+                                             if(array_key_exists(substr($code, 0,3), $firstthree)){
+                                                $decoded_message = $firstthree[substr($code, 0,3)];   
+                                             }
+                                             if(array_key_exists(substr($code, -1,1), $last)){
+                                                $decoded_message = $decoded_message.' '.$last[substr($code, -1,1)];
+                                             }
                                                 
                                           }
                                           if(strlen($code) < 4){
                                              $firstthree['XX'] = 'Address verification has been requested, but not received.';
 
-                                             $decoded_message = $firstthree[substr($code, 0,2)];
-                                             $decoded_message = $decoded_message.' '.$last[substr($code, -1,1)];
+                                             if(array_key_exists(substr($code, 0,2), $firstthree)){
+                                                $decoded_message = $firstthree[substr($code, 0,2)];   
+                                             }
+                                             if(array_key_exists(substr($code, -1,1), $last)){
+                                                $decoded_message = $decoded_message.' '.$last[substr($code, -1,1)];
+                                             }
                                           }
                                           
                                           
