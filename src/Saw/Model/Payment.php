@@ -332,6 +332,41 @@ $body .= <<< EOT
           <v1:Tax>0.00</v1:Tax>
           <v1:Shipping>{$this->shippingTotal}</v1:Shipping>
         </v1:Payment>
+        <v1:TransactionDetails>
+          <v1:UserID>{$this->memberId}</v1:UserID>
+          <v1:InvoiceNumber>{$this->invoiceNumber}</v1:InvoiceNumber>
+          <v1:OrderId>{$this->orderId}</v1:OrderId>
+          <v1:Ip>{$this->ipAddress}</v1:Ip>
+          <v1:Recurring>No</v1:Recurring>
+          <v1:TransactionOrigin>{$this->transactionOrigin}</v1:TransactionOrigin>
+          <v1:PONumber>{$this->poNumber}</v1:PONumber>
+          <v1:TaxExempt>Yes</v1:TaxExempt>
+          <v1:TerminalType>Unspecified</v1:TerminalType>
+          <v1:DeviceID>Web Browser</v1:DeviceID>
+        </v1:TransactionDetails>
+        <v1:Billing>
+          <v1:CustomerID>{$this->memberId}</v1:CustomerID>
+          <v1:Name>{$this->name}</v1:Name>
+          <v1:Address1>{$this->addressLine1}</v1:Address1>
+          <v1:Address2>{$this->addressLine2}</v1:Address2>
+          <v1:City>{$this->city}</v1:City>
+  		  <v1:State>{$this->stateProvinceRegion}</v1:State>
+		  <v1:Zip>{$this->zipPostalCode}</v1:Zip>
+		  <v1:Country>{$this->country}</v1:Country>
+		  <v1:Phone>{$this->phone}</v1:Phone>
+		  <v1:Fax></v1:Fax>
+		  <v1:Email>{$this->email}</v1:Email>
+        </v1:Billing>
+        <v1:Shipping>
+          <v1:Type> </v1:Type>
+          <v1:Name>{$this->name}</v1:Name>
+          <v1:Address1>{$this->addressLine1}</v1:Address1>
+          <v1:Address2>{$this->addressLine2}</v1:Address2>
+          <v1:City>{$this->city}</v1:City>
+  		  <v1:State>{$this->stateProvinceRegion}</v1:State>
+		  <v1:Zip>{$this->zipPostalCode}</v1:Zip>
+		  <v1:Country>{$this->country}</v1:Country>
+        </v1:Shipping>
       </v1:Transaction>
     </fdggwsapi:FDGGWSApiOrderRequest>
   </SOAP-ENV:Body>
