@@ -143,7 +143,7 @@
                                        $tmp = explode('Declined', $item['declinedMessage']);
                                        if(is_array($tmp) && !empty($tmp)){
                                           $code = substr($tmp[1], 0,4);
-                                          error_log('$code: '.print_r($code,true));
+                                          //error_log('$code: '.print_r($code,true));
                                           $last['M'] = 'Card code matches.';
                                           $last['N'] = 'Card code does not match.';
                                           $last['P'] = 'Not processed';
