@@ -155,6 +155,14 @@ class Payment extends Model {
 		$this->city = $doc['city'];
 		$this->stateProvinceRegion = $doc['stateProvinceRegion'];    	
         $this->zipPostalCode = $doc['zipPostalCode'];
+
+        if(strlen($this->zipPostalCode) < 5){
+        	$this->zipPostalCode = str_pad($this->zipPostalCode,5,'0',STR_PAD_LEFT);
+        }else if(strlen($this->zipPostalCode) > 5 && strlen($this->zipPostalCode) < 9){
+        	$this->zipPostalCode = str_pad($this->zipPostalCode,9,'0',STR_PAD_LEFT);
+        }
+
+
         $this->country = $doc['country'];
 		$this->addressLine1Shipping = $doc['addressLine1Shipping'];
         $this->addressLine2Shipping = $doc['addressLine2Shipping'];

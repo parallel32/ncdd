@@ -275,6 +275,51 @@ endif; ?>
                   <? endif; ?>
                   <? endif; ?>
 
+                  <? if((is_array($this->vars['seminar']) && array_key_exists('register',$this->vars['seminar']) && is_array($this->vars['seminar']) && array_key_exists('electivesQuestion',$this->vars['seminar']['register']) && $this->vars['seminar']['register']['electivesQuestion'] == 'ON') || (is_array($this->vars['seminar']) && array_key_exists('register',$this->vars['seminar']) && is_array($this->vars['seminar']) && !array_key_exists('electivesQuestion',$this->vars['seminar']['register'])) ): ?>
+                  <div class="row-fluid ">
+                     <div class="span12 ">
+                        <div class="control-group">
+                           <label class="control-label" >Select your first elective:</label>
+                           <div class="controls">
+                              <select name="doc[elective1]" class="span6 m-wrap elective1">
+                              <? 
+                                 $tmp_arr = explode(';', $this->vars['seminar']['register']['elective1Seed']);
+                                 foreach ($tmp_arr as $elective) {
+                              ?>
+                                    <option value="<?=trim($elective)?>"><?=trim($elective)?></option>
+                              <?
+                                 }
+                              ?>
+                              </select>
+                              <span class="help-block"></span>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <div class="row-fluid ">
+                     <div class="span12 ">
+                        <div class="control-group">
+                           <label class="control-label" >Select your second elective:</label>
+                           <div class="controls">
+                              <select name="doc[elective2]" class="span6 m-wrap elective2">
+                              <? 
+                                 $tmp_arr = explode(';', $this->vars['seminar']['register']['elective2Seed']);
+                                 foreach ($tmp_arr as $elective) {
+                              ?>
+                                    <option value="<?=trim($elective)?>"><?=trim($elective)?></option>
+                              <?
+                                 }
+                              ?>
+                              </select>
+                              <span class="help-block"></span>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <? endif; ?>
+                  
                   
                   </br></br>
                   <h3 class="form-section">4. Attendance Certification Statement</h3>

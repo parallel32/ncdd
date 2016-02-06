@@ -30,6 +30,9 @@ class SeminarRegister extends Model {
 	public $attendanceQuestion; // on | off
 	public $rsvpKidsQuestion; // on | off
 	public $maxRegistrations; // max number of registrations
+	public $electivesQuestion; // on | off
+	public $elective1Seed; // values for the first elective
+	public $elective2Seed; // values for the second elective
 
 
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
@@ -120,6 +123,9 @@ class SeminarRegister extends Model {
         $this->attendanceQuestion = $doc['attendanceQuestion'];
         $this->rsvpKidsQuestion = $doc['rsvpKidsQuestion'];
         $this->maxRegistrations = $doc['maxRegistrations'];
+        $this->electivesQuestion = $doc['electivesQuestion'];
+        $this->elective1Seed = $doc['elective1Seed'];
+        $this->elective2Seed = $doc['elective2Seed'];
 
 	}
 	
@@ -142,6 +148,9 @@ class SeminarRegister extends Model {
 		$this->attendanceQuestion = $this->attendanceQuestion ?: 'no';
 		$this->rsvpKidsQuestion = $this->rsvpKidsQuestion ?: 'no';
 		$this->maxRegistrations = $this->maxRegistrations ?: 'no';
+		$this->electivesQuestion = $this->electivesQuestion ?: 'no';
+		$this->elective1Seed = $this->elective1Seed ?: '';
+		$this->elective2Seed = $this->elective2Seed ?: '';
 
 	}
 	

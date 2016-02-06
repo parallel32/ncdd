@@ -196,6 +196,33 @@
                   </div>
                   <? endif; ?>
                   <? endif; ?>
+
+                  <? if((array_key_exists('register',$this->vars['seminar']) && is_array($this->vars['seminar']) && array_key_exists('electivesQuestion',$this->vars['seminar']['register']) && $this->vars['seminar']['register']['electivesQuestion'] == 'ON') || (is_array($this->vars['seminar']) && array_key_exists('register',$this->vars['seminar']) && is_array($this->vars['seminar']) && !array_key_exists('electivesQuestion',$this->vars['seminar']['register'])) ): ?>
+                  <div class="row-fluid ">
+                     <div class="span12 ">
+                        <div class="control-group">
+                           <label class="control-label" >Select your first elective:</label>
+                           <div class="controls">
+                              <input type="text" disabled name="doc[elective1]" value="<?=(array_key_exists('elective1',$this->vars['registration'])) ? $this->vars['registration']['elective1']:'' ?>" class="m-wrap span12 elective1"> 
+                              <span class="help-block"></span>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <div class="row-fluid ">
+                     <div class="span12 ">
+                        <div class="control-group">
+                           <label class="control-label" >Select your second elective:</label>
+                           <div class="controls">
+                              <input type="text" disabled name="doc[elective2]" value="<?=(array_key_exists('elective2',$this->vars['registration'])) ? $this->vars['registration']['elective2']:'' ?>" class="m-wrap span12 elective2"> 
+                              <span class="help-block"></span>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <? endif; ?>
                   </br></br>
 
                   <h3 class="form-section">4. Attendance Certification Statement</h3>

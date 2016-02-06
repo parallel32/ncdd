@@ -333,7 +333,7 @@
                                           <option value="ON" <?=(array_key_exists('register',$seminar) && array_key_exists('rsvpKidsQuestion',$seminar['register'])) ? ('ON' == $seminar['register']['rsvpKidsQuestion']) ? "selected" : "" : '';?>>ON</option>
                                           <option value="OFF" <?=(array_key_exists('register',$seminar) && array_key_exists('rsvpKidsQuestion',$seminar['register'])) ? ('OFF' == $seminar['register']['rsvpKidsQuestion']) ? "selected" : "" : '';?>>OFF</option>
                                        </select>
-                                       <span class="help-block">Turn ON / OFF; whether to ask the previously attended seminars question.</span>
+                                       <span class="help-block">Turn ON / OFF; whether to ask the RSVP children question.</span>
                                     </div>
                                  </div>
                                  <div class="control-group">
@@ -343,6 +343,31 @@
                                        <span class="help-block">When this is set, a max registration limit will be imposed and once reached the registration form will convert to a non-payment registrstion form that will populate the waiting list.</span>
                                     </div>
                                  </div>
+                                 <div class="control-group">
+                                    <label class="control-label">Electives Question</label>
+                                    <div class="controls">
+                                       <select name="doc[register][electivesQuestion]" class="span6 m-wrap electivesQuestion" data-placeholder="Choose a Category" tabindex="1">
+                                          <option value="OFF" <?=(array_key_exists('register',$seminar) && array_key_exists('electivesQuestion',$seminar['register'])) ? ('OFF' == $seminar['register']['electivesQuestion']) ? "selected" : "" : '';?>>OFF</option>
+                                          <option value="ON" <?=(array_key_exists('register',$seminar) && array_key_exists('electivesQuestion',$seminar['register'])) ? ('ON' == $seminar['register']['electivesQuestion']) ? "selected" : "" : '';?>>ON</option>                                          
+                                       </select>
+                                       <span class="help-block">Turn ON / OFF; the fields to list electives.</span>
+                                    </div>
+                                 </div>
+                                 <div class="control-group">
+                                    <label class="control-label">Elective Topic 1</label>
+                                    <div class="controls">
+                                       <textarea type="text" name="doc[register][elective1Seed]" class="span6 m-wrap elective1Seed"><?=(is_array($seminar['register']) && array_key_exists('elective1Seed',$seminar['register']) && !empty($seminar['register']['elective1Seed'])) ? $seminar['register']['elective1Seed'] : '';?></textarea>
+                                       <span class="help-block">List electives here separated by a semi-colon.</span>
+                                    </div>
+                                 </div>
+                                 <div class="control-group">
+                                    <label class="control-label">Elective Topic 2</label>
+                                    <div class="controls">
+                                       <textarea type="text" name="doc[register][elective2Seed]" class="span6 m-wrap elective2Seed"><?=(is_array($seminar['register']) && array_key_exists('elective2Seed',$seminar['register']) && !empty($seminar['register']['elective2Seed'])) ? $seminar['register']['elective2Seed'] : '';?></textarea>
+                                       <span class="help-block">List electives here separated by a semi-colon.</span>
+                                    </div>
+                                 </div>
+                                 
                               </div>
                            </div>
 

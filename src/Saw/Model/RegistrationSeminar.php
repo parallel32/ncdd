@@ -38,6 +38,8 @@ class RegistrationSeminar extends Registration {
 	public $tempPayment;
 	public $scholarshipId;
 	public $cardOnFile;
+	public $elective1;
+	public $elective2;
 
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
@@ -89,6 +91,8 @@ class RegistrationSeminar extends Registration {
         $this->tempPayment = $doc['tempPayment'];
         $this->scholarshipId = $doc['scholarshipId'];
         $this->cardOnFile = $doc['cardOnFile'];
+        $this->elective1 = $doc['elective1'];
+        $this->elective2 = $doc['elective2'];
 	}
 	
 	/**
@@ -118,6 +122,8 @@ class RegistrationSeminar extends Registration {
 		$this->tempPayment = $this->tempPayment ?: new \stdClass();
 		$this->scholarshipId = $this->scholarshipId ?: new \stdClass();
 		$this->cardOnFile = $this->cardOnFile ?: new \stdClass();
+		$this->elective1 = $this->elective1 ?: '';
+		$this->elective2 = $this->elective2 ?: '';
 	}
 	
 	public function insert(){
