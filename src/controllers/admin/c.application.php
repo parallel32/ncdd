@@ -2795,7 +2795,7 @@ $app->get('/renewalsautocharge', function (Request $request) use ($app) {
 		echo "<pre>count($expired):";print_r(count($expired));echo "</pre>";
 		if(!empty($expired) && is_array($expired)):
 			for ($x=0; $x < count($expired); $x++) { 
-				$value = $valid[$x];
+				$value = $expired[$x];
 				// update the expYear in an attempt to charge the card
 				$expired[$x]['record']['payment']['expYear'] = 2017;
 				
