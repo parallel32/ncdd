@@ -2048,29 +2048,6 @@ echo "<pre>with sanity check including last years promos that got left out ";ech
 	// extract those who have already paid
 	$memberObj = new Model\Member($doc=array(), $app);    
     $members = $memberObj->find(array('payment.renewalREUSE'=>'yes','status'=>USER_STATUS_ACTIVE,'currentMembership'=>Model\Member::$membership['GENERAL MEMBER']),$fields=array(),true,$sort=array('payment.expYear'=>-1,'payment.expMonth'=>-1),0,10000);
-    foreach ($members as $member){
-        if($member['payment']['renewalREUSE'] == 'yes'){
-            if(array_key_exists('number', $member['payment']) && !empty($member['payment']['number'])){
-                $res_arr = array();
-                $res_arr['_id'] = (string)$member['_id'];
-                $res_arr['expMonth'] = $member['payment']['expMonth'];
-                $res_arr['expYear'] = $member['payment']['expYear'];
-                
-                $date1 = strtotime($res_arr['expYear']."-".$res_arr['expMonth']."-01");
-                $date2 = strtotime("2016-01-01");
-                $res_arr['expired'] = ($date2 > $date1) ? 'yes' : 'no';
-
-                $res_arr['name'] = $member['displayName'];
-                $res_arr['email'] = $member['email'];
-                $res_arr['payment'] = $member['payment'];
-
-                
-                $cnt++;    
-            }
-            
-        }
-
-    }
     $paid_arr = array();
     foreach ($members as $member){
         if(is_array($member['renewal']) && array_key_exists('paymentId', $member['renewal']) && !empty($member['renewal']['paymentId'])){
@@ -2725,7 +2702,7 @@ echo "<pre>final total ";print_r(count($final_arr_audit['expired'])+count($final
 	$k = 1;
 	foreach ($paid_arr_r as $key => $value) {
 		// need to reset each member's payment.renewalREUSE to 'yes' for each one of these members regardless of what it was.
-		$member = new Model\Member(array('_id'=>$k),$app);
+		$member = new Model\Member(array('_id'=>$key),$app);
 		$_update = $member->updateByCriteria(array('$set'=>array('payment.renewalREUSE'=>'yes')), array('_id'=>$member->_id));		
 		$k++;
 	}
