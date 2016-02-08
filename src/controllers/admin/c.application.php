@@ -2790,9 +2790,6 @@ $app->get('/renewalsautocharge', function (Request $request) use ($app) {
 		$i=0;
 		$expired_found = 0;
 		$expired_found2 = 0;
-		echo "<pre>expired_found:";print_r($expired_found);echo "</pre>";
-		echo "<pre>expired_found2:";print_r($expired_found2);echo "</pre>";
-		echo "<pre>count($expired):";print_r(count($expired));echo "</pre>";
 		if(!empty($expired) && is_array($expired)):
 			for ($x=0; $x < count($expired); $x++) { 
 				$value = $expired[$x];
@@ -2838,11 +2835,14 @@ $app->get('/renewalsautocharge', function (Request $request) use ($app) {
 		endif; 
 		echo "expired: ".$i." found:".$expired_found." found2:".$expired_found2."<br><br>";
 		
+		echo "<pre>count($valid):";print_r(count($valid));echo "</pre>";
+		echo "<pre>count($expired):";print_r(count($expired));echo "</pre>";
+		
 // MEMBERSHIP DUES HAVE BEEN DERIVED
 // COMBINE THE ARRAYS since the expYear on the expired cards has been updated 
 		$finalArr = array_merge($valid,$expired);
-
-		for ($x=0; $x < 25; $x++) { 
+		$run = (count($finalArr) >= 25) ? 25: count($finalArr);
+		for ($x=0; $x < $run; $x++) { 
 			$value = $finalArr[$x];
 
 			$memberId = $value['record']['_id'];
