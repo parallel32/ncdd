@@ -2791,7 +2791,8 @@ $app->get('/renewalsautocharge', function (Request $request) use ($app) {
 		$expired_found = 0;
 		$expired_found2 = 0;
 		echo "<pre>expired_found:";print_r($expired_found);echo "</pre>";
-		echo "<pre>expired_found2";print_r($expired_found2);echo "</pre>";
+		echo "<pre>expired_found2:";print_r($expired_found2);echo "</pre>";
+		echo "<pre>count($expired):";print_r(count($expired));echo "</pre>";
 		if(!empty($expired) && is_array($expired)):
 			for ($x=0; $x < count($expired); $x++) { 
 				$value = $valid[$x];
