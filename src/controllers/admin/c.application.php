@@ -2787,7 +2787,8 @@ $app->get('/renewalsautocharge', function (Request $request) use ($app) {
 			}	
 		endif; 
 		echo "valid: ".$i." found:".$valid_found." found2:".$valid_found2."<br><br>";
-
+		echo "<pre>expired_found:";print_r($expired_found);echo "</pre>";
+		echo "<pre>expired_found2";print_r($expired_found2);echo "</pre>";
 		$i=0;
 		$expired_found = 0;
 		$expired_found2 = 0;
