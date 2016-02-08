@@ -1951,20 +1951,7 @@ $app->get('/renewalsautoseed', function (Request $request) use ($app) {
 
     }
 echo "<pre>start ";echo ' expired:'.count($final_arr['expired']).' valid:'.count($final_arr['valid']);echo "</pre>";
-    // extract those who have already paid
-    $paid_arr = array();
-    foreach ($members as $member){
-        if(is_array($member['renewal']) && array_key_exists('paymentId', $member['renewal']) && !empty($member['renewal']['paymentId'])){
-                    
-            $paid_arr[(string)$member['_id']] = 'something';
-            
-        }
-
-    }
-    $final_arr['expired'] = array_diff_key($final_arr['expired'], $paid_arr);
-    $final_arr['valid'] = array_diff_key($final_arr['valid'], $paid_arr);
-echo "<pre>after paid ";echo ' expired:'.count($final_arr['expired']).' valid:'.count($final_arr['valid']);echo "</pre>";
-	// extract promos
+    // extract promos
 	// EAGLE2016-
 	// RENEW2016
 	// BONUS2015
@@ -2049,6 +2036,55 @@ echo "<pre>after past promos ";echo ' expired:'.count($final_arr['expired']).' v
 	$final_arr['valid'] = array_merge($final_arr['valid'],$past_promo_arr['valid']);
 
 echo "<pre>with sanity check including last years promos that got left out ";echo ' expired:'.count($final_arr['expired']).' valid:'.count($final_arr['valid']);echo "</pre>";
+	
+	
+
+
+
+
+
+
+
+	// extract those who have already paid
+	$memberObj = new Model\Member($doc=array(), $app);    
+    $members = $memberObj->find(array('payment.renewalREUSE'=>'yes','status'=>USER_STATUS_ACTIVE,'currentMembership'=>Model\Member::$membership['GENERAL MEMBER']),$fields=array(),true,$sort=array('payment.expYear'=>-1,'payment.expMonth'=>-1),0,10000);
+    foreach ($members as $member){
+        if($member['payment']['renewalREUSE'] == 'yes'){
+            if(array_key_exists('number', $member['payment']) && !empty($member['payment']['number'])){
+                $res_arr = array();
+                $res_arr['_id'] = (string)$member['_id'];
+                $res_arr['expMonth'] = $member['payment']['expMonth'];
+                $res_arr['expYear'] = $member['payment']['expYear'];
+                
+                $date1 = strtotime($res_arr['expYear']."-".$res_arr['expMonth']."-01");
+                $date2 = strtotime("2016-01-01");
+                $res_arr['expired'] = ($date2 > $date1) ? 'yes' : 'no';
+
+                $res_arr['name'] = $member['displayName'];
+                $res_arr['email'] = $member['email'];
+                $res_arr['payment'] = $member['payment'];
+
+                
+                $cnt++;    
+            }
+            
+        }
+
+    }
+    $paid_arr = array();
+    foreach ($members as $member){
+        if(is_array($member['renewal']) && array_key_exists('paymentId', $member['renewal']) && !empty($member['renewal']['paymentId'])){
+                    
+            $paid_arr[(string)$member['_id']] = 'something';
+            
+        }
+
+    }
+    echo "<pre>paid_arr";print_r(count($paid_arr));echo "</pre>";
+    $final_arr['expired'] = array_diff_key($final_arr['expired'], $paid_arr);
+    $final_arr['valid'] = array_diff_key($final_arr['valid'], $paid_arr);
+echo "<pre>after paid ";echo ' expired:'.count($final_arr['expired']).' valid:'.count($final_arr['valid']);echo "</pre>";
+	
 
 echo "<pre>final total ";print_r(count($final_arr['expired'])+count($final_arr['valid']));echo "</pre>";
 	
@@ -2434,32 +2470,7 @@ echo "<pre>final total ";print_r(count($final_arr['expired'])+count($final_arr['
 
     }
 echo "<pre>start ";echo ' expired:'.count($final_arr_audit['expired']).' valid:'.count($final_arr_audit['valid']);echo "</pre>";
-    // extract those who have already paid
-    $paid_arr = array();
-    foreach ($members as $member){
-        if(is_array($member['renewal']) && array_key_exists('paymentId', $member['renewal']) && !empty($member['renewal']['paymentId'])){
-                    
-            $paid_arr[(string)$member['_id']] = 'something';
-            
-        }
-
-    }
-
-    // need to first save the members who have paid and are in the final_arr_audit list so I can update their payment.renewalREUSE later
-    $paid_arr_r = array();
-    foreach ($final_arr_audit['expired'] as $key => $value) {
-    	if(array_key_exists($key, $paid_arr)){
-    		$paid_arr_r[$key] = 'yes';
-    	}
-    }
-    foreach ($final_arr_audit['valid'] as $key => $value) {
-    	if(array_key_exists($key, $paid_arr)){
-    		$paid_arr_r[$key] = 'yes';
-    	}
-    }
-    $final_arr_audit['expired'] = array_diff_key($final_arr_audit['expired'], $paid_arr);
-    $final_arr_audit['valid'] = array_diff_key($final_arr_audit['valid'], $paid_arr);
-echo "<pre>after paid ";echo ' expired:'.count($final_arr_audit['expired']).' valid:'.count($final_arr_audit['valid']);echo "</pre>";
+    
 	// extract promos
 	// EAGLE2016-
 	// RENEW2016
@@ -2545,6 +2556,37 @@ echo "<pre>after past promos ";echo ' expired:'.count($final_arr_audit['expired'
 	$final_arr_audit['valid'] = array_merge($final_arr_audit['valid'],$past_promo_arr['valid']);
 
 echo "<pre>with sanity check including last years promos that got left out ";echo ' expired:'.count($final_arr_audit['expired']).' valid:'.count($final_arr_audit['valid']);echo "</pre>";
+	
+
+	// extract those who have already paid
+    $paid_arr = array();
+    foreach ($members as $member){
+        if(is_array($member['renewal']) && array_key_exists('paymentId', $member['renewal']) && !empty($member['renewal']['paymentId'])){
+                    
+            $paid_arr[(string)$member['_id']] = 'something';
+            
+        }
+
+    }
+
+    // need to first save the members who have paid and are in the final_arr_audit list so I can update their payment.renewalREUSE later
+    $paid_arr_r = array();
+    foreach ($final_arr_audit['expired'] as $key => $value) {
+    	if(array_key_exists($key, $paid_arr)){
+    		$paid_arr_r[$key] = 'yes';
+    	}
+    }
+    foreach ($final_arr_audit['valid'] as $key => $value) {
+    	if(array_key_exists($key, $paid_arr)){
+    		$paid_arr_r[$key] = 'yes';
+    	}
+    }
+    echo "<pre>paid_arr:";print_r(count($paid_arr));echo "</pre>";
+    $final_arr_audit['expired'] = array_diff_key($final_arr_audit['expired'], $paid_arr);
+    $final_arr_audit['valid'] = array_diff_key($final_arr_audit['valid'], $paid_arr);
+echo "<pre>after paid ";echo ' expired:'.count($final_arr_audit['expired']).' valid:'.count($final_arr_audit['valid']);echo "</pre>";
+
+
 
 echo "<pre>final total ";print_r(count($final_arr_audit['expired'])+count($final_arr_audit['valid']));echo "</pre>";
 
