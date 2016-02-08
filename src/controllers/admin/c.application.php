@@ -2841,11 +2841,10 @@ $app->get('/renewalsautocharge', function (Request $request) use ($app) {
 // MEMBERSHIP DUES HAVE BEEN DERIVED
 // COMBINE THE ARRAYS since the expYear on the expired cards has been updated 
 		$finalArr = array_merge($valid,$expired);
-		echo "<pre>";print_r($expired);echo "</pre>";
 		$run = (count($finalArr) >= 25) ? 25: count($finalArr);
 		for ($x=0; $x < $run; $x++) { 
 			$value = $finalArr[$x];
-
+echo "<pre>";print_r($value);echo "</pre>";
 			$memberId = $value['record']['_id'];
 			$member = new Model\Member(array('_id'=>$memberId),$app);
 			$member = $member->findById();
