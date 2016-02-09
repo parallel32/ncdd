@@ -19,6 +19,7 @@ $utilities = $app['controllers_factory'];
 // list of all duplicates
 $utilities->get('/preparerefundlist', function () use ($app) {
     //*
+    return false;
     ini_set('memory_limit','1024M');
 
     $pay  = new Model\Payment(array(),$app);
