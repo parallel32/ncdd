@@ -692,6 +692,205 @@ EOT;
 		}
 		
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/**
+	 * Initiate a credit card void - First Data considers a void when the transaction is canelled before the end of day batch is run
+	 */
+	public function void($orderId, $tdate){
+		
+$body = <<< EOT
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <SOAP-ENV:Header> </SOAP-ENV:Header>
+  <SOAP-ENV:Body>
+    <fdggwsapi:FDGGWSApiOrderRequest xmlns:v1="http://secure.linkpt.net/fdggwsapi/schemas_us/v1" xmlns:fdggwsapi="http://secure.linkpt.net/fdggwsapi/schemas_us/fdggwsapi">
+      <v1:Transaction>
+EOT;
+$body .= <<< EOT
+        <v1:CreditCardTxType>
+			<v1:Type>void</v1:Type>
+		</v1:CreditCardTxType>
+EOT;
+$body .= <<< EOT
+
+        <v1:TransactionDetails>
+          <v1:OrderId>{$orderId}</v1:OrderId>
+          <v1:TDate>{$tdate}</v1:TDate>
+        </v1:TransactionDetails>
+      </v1:Transaction>
+    </fdggwsapi:FDGGWSApiOrderRequest>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+EOT;
+		$ch = $this->prepareCurl($body);
+		// calling cURL and saving the SOAP response message in a variable which 
+		// contains a string like "<SOAP-ENV:Envelope ...>...</SOAP-ENV:Envelope>":
+		$result = curl_exec($ch); 
+
+		error_log('');
+		error_log('');
+		error_log('');
+		error_log('curl_exec $result: '.print_r($result,true));
+		error_log('');
+		error_log('');
+		error_log('');
+		// closing cURL: 
+		curl_close($ch);
+		$xml_array = array();
+		//////////////////////////////////////////////////////////////////////////
+		// XML TO ARRAY 														//
+		// src: http://stackoverflow.com/questions/3630866/php-parse-xml-string //
+		//////////////////////////////////////////////////////////////////////////
+		$xml_parser = xml_parser_create();
+	    xml_parse_into_struct($xml_parser, $result, $vals);
+	    xml_parser_free($xml_parser);
+	    
+	    $_tmp='';
+	    foreach ($vals as $xml_elem) {
+	        $x_tag=$xml_elem['tag'];
+	        $x_level=$xml_elem['level'];
+	        $x_type=$xml_elem['type'];
+	        if ($x_level!=1 && $x_type == 'close') {
+	            if (isset($multi_key[$x_tag][$x_level]))
+	                $multi_key[$x_tag][$x_level]=1;
+	            else
+	                $multi_key[$x_tag][$x_level]=0;
+	        }
+	        if ($x_level!=1 && $x_type == 'complete') {
+	            if ($_tmp==$x_tag)
+	                $multi_key[$x_tag][$x_level]=1;
+	            $_tmp=$x_tag;
+	        }
+	    }
+	    
+	    foreach ($vals as $xml_elem) {
+	        $x_tag=$xml_elem['tag'];
+	        $x_level=$xml_elem['level'];
+	        $x_type=$xml_elem['type'];
+	        if ($x_type == 'open')
+	            $level[$x_level] = $x_tag;
+	        $start_level = 1;
+	        $php_stmt = '$xml_array';
+	        if ($x_type=='close' && $x_level!=1)
+	            $multi_key[$x_tag][$x_level]++;
+	        while ($start_level < $x_level) {
+	            $php_stmt .= '[$level['.$start_level.']]';
+	            if (isset($multi_key[$level[$start_level]][$start_level]) && $multi_key[$level[$start_level]][$start_level])
+	                $php_stmt .= '['.($multi_key[$level[$start_level]][$start_level]-1).']';
+	            $start_level++;
+	        }
+	        $add='';
+	        if (isset($multi_key[$x_tag][$x_level]) && $multi_key[$x_tag][$x_level] && ($x_type=='open' || $x_type=='complete')) {
+	            if (!isset($multi_key2[$x_tag][$x_level]))
+	                $multi_key2[$x_tag][$x_level]=0;
+	            else
+	                $multi_key2[$x_tag][$x_level]++;
+	            $add='['.$multi_key2[$x_tag][$x_level].']';
+	        }
+	        if (isset($xml_elem['value']) && trim($xml_elem['value'])!='' && !array_key_exists('attributes', $xml_elem)) {
+	            if ($x_type == 'open')
+	                $php_stmt_main=$php_stmt.'[$x_type]'.$add.'[\'content\'] = $xml_elem[\'value\'];';
+	            else
+	                $php_stmt_main=$php_stmt.'[$x_tag]'.$add.' = $xml_elem[\'value\'];';
+	            eval($php_stmt_main);
+	        }
+	        if (array_key_exists('attributes', $xml_elem)) {
+	            if (isset($xml_elem['value'])) {
+	                $php_stmt_main=$php_stmt.'[$x_tag]'.$add.'[\'content\'] = $xml_elem[\'value\'];';
+	                eval($php_stmt_main);
+	            }
+	            foreach ($xml_elem['attributes'] as $key=>$value) {
+	                $php_stmt_att=$php_stmt.'[$x_tag]'.$add.'[$key] = $value;';
+	                eval($php_stmt_att);
+	            }
+	        }
+	    }
+	    echo "<pre>";print_r($xml_array);echo "</pre>";  // for debugging and seeing the result well formatted in the ajax response
+	    switch (trim($xml_array['SOAP-ENV:ENVELOPE']['SOAP-ENV:BODY']['FDGGWSAPI:FDGGWSAPIORDERRESPONSE']['FDGGWSAPI:TRANSACTIONRESULT'])) {
+	    	case 'APPROVED':
+	    		return true;
+	    		break;
+	    	case 'DECLINED':
+	    	case 'FAILED':
+	    		return false;
+	    		break;
+	    	
+	    	default:
+	    		return $xml_array['SOAP-ENV:ENVELOPE']['SOAP-ENV:BODY']['FDGGWSAPI:FDGGWSAPIORDERRESPONSE'];
+	    		break;
+	    }
+	    /*   APPROVED
+		Array
+(
+    [SOAP-ENV:ENVELOPE] => Array
+        (
+            [XMLNS:SOAP-ENV] => http://schemas.xmlsoap.org/soap/envelope/
+            [SOAP-ENV:BODY] => Array
+                (
+                    [FDGGWSAPI:FDGGWSAPIORDERRESPONSE] => Array
+                        (
+                            [XMLNS:FDGGWSAPI] => http://secure.linkpt.net/fdggwsapi/schemas_us/fdggwsapi
+                            [FDGGWSAPI:COMMERCIALSERVICEPROVIDER] => CSI
+                            [FDGGWSAPI:TRANSACTIONTIME] => Mon Feb 08 18:56:57 2016
+                            [FDGGWSAPI:TRANSACTIONID] => 1586179056
+                            [FDGGWSAPI:PROCESSORREFERENCENUMBER] => OK242C
+                            [FDGGWSAPI:PROCESSORRESPONSEMESSAGE] => APPROVED
+                            [FDGGWSAPI:ORDERID] => 56b92b1a8a1632fd11000002
+                            [FDGGWSAPI:APPROVALCODE] => OK242C1586179056:YNBnull:
+                            [FDGGWSAPI:AVSRESPONSE] => YNBnull
+                            [FDGGWSAPI:TDATE] => 1454975772
+                            [FDGGWSAPI:TRANSACTIONRESULT] => APPROVED
+                            [FDGGWSAPI:PROCESSORRESPONSECODE] => A
+                        )
+
+                )
+
+        )
+
+)
+	    //*/
+		
+		/*	FAILED
+		Array
+(
+    [SOAP-ENV:ENVELOPE] => Array
+        (
+            [XMLNS:SOAP-ENV] => http://schemas.xmlsoap.org/soap/envelope/
+            [SOAP-ENV:BODY] => Array
+                (
+                    [FDGGWSAPI:FDGGWSAPIORDERRESPONSE] => Array
+                        (
+                            [XMLNS:FDGGWSAPI] => http://secure.linkpt.net/fdggwsapi/schemas_us/fdggwsapi
+                            [FDGGWSAPI:TRANSACTIONTIME] => Mon Feb 08 18:57:21 2016
+                            [FDGGWSAPI:PROCESSORREFERENCENUMBER] => OK242C
+                            [FDGGWSAPI:ERRORMESSAGE] => Transaction can not be voided because it is not in Captured state.
+                            [FDGGWSAPI:ORDERID] => 56b92b1a8a1632fd11000002
+                            [FDGGWSAPI:TDATE] => 1454975772
+                            [FDGGWSAPI:TRANSACTIONRESULT] => FAILED
+                            [FDGGWSAPI:PROCESSORRESPONSECODE] => A
+                        )
+
+                )
+
+        )
+
+)
+		//*/
+	    
+		
+	}
 	/**
 	 * Issue a credit card refund on a previous charge
 	 * NOTE: currently not in use.

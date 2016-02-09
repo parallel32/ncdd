@@ -16,6 +16,64 @@ use TTools\App;
 
 $utilities = $app['controllers_factory'];
 
+// list of all duplicates
+$utilities->get('/preparerefundlist', function () use ($app) {
+    //*
+    ini_set('memory_limit','1024M');
+
+    $pay  = new Model\Payment(array(),$app);
+    
+    $start  = 'Dec 1, 2015';
+    $end    = 'Feb 9, 2016';
+    $query  = array('ownerClass'=>'UpdateMember','paidDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+                                                ,'$lt'=>new \MongoDate(strtotime($end)))
+        );
+    $results = $pay->find($query,$fields=array(),$slaveOkay=true,$sort=array('_id'=>1),(int)$offset=0,(int)$limit=100000);
+    $tmp = array();
+    $tmp_refund = array();
+    $refund = 0;
+    foreach ($results as $result) {
+        unset($result['invoiceBlock']);
+        if(strpos($result['title'], 'Charitable') === false){
+
+            if(array_key_exists($result['name'], $tmp)){
+                
+                $tmp[$result['name']] = $tmp[$result['name']]+1;
+                if(is_array($tmp[$result['name']]) && array_key_exists('payment', $tmp[$result['name']])){
+                    $tmp_refund[(string)$result['memberId']]['payment'][] = $result;
+                }else{
+                    $tmp_refund[(string)$result['memberId']] = array('charges'=>$tmp[$result['name']], 'name'=>$result['name'], 'payment'=>array($result));
+                }
+                
+                $refund++;
+            }else{
+                $tmp[$result['name']] = 1;    
+            }
+        }
+        
+    }
+    //echo "<pre>";print_r($refund);echo "</pre>";
+    echo "<pre>";print_r($tmp_refund);echo "</pre>";
+    echo "<pre>";print_r(count($tmp_refund));echo "</pre>";
+if(true):
+    $res = 0;
+    foreach ($tmp_refund as $memberId => $payment_record) {
+        foreach ($payment_record['payment'] as $thepayment) {
+
+            if(strpos($thepayment['fullResponse']['FDGGWSAPI:TRANSACTIONTIME'], 'Mon Feb 08') !== false){
+                $payment = new Model\Payment(array(),$app);
+                $response = $payment->void($thepayment['fullResponse']['FDGGWSAPI:ORDERID'],$thepayment['fullResponse']['FDGGWSAPI:TDATE']);
+                echo "<pre>";print_r($response);echo "</pre>";
+                $res++;
+            }
+
+        }
+    }
+    echo "<pre>number voided:";print_r($res);echo "</pre>";
+endif;
+    return new Response('',200,array('Content-Type' => 'text/html')); 
+});
+
 
 // fix the states in the member payment record
 $utilities->get('/fixmemberpaymentstate', function () use ($app) {
