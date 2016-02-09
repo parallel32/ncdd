@@ -2715,6 +2715,53 @@ echo "<pre>final total ";print_r(count($final_arr_audit['expired'])+count($final
 ->before($mustbeADMIN);
 
 
+$app->get('/renewalsautoseedsanitycheckagainstpayments', function ($offset, $limit, Request $request) use ($app) {
+
+	$ar = new Model\AutoRenew(array(),$app);
+	$res_autorenew = $ar->find(array(),$fields=array(),$slaveOkay=true,$sort=array(),0,100000);
+	
+	$pay  = new Model\Payment(array(),$app);
+    
+    
+    $i=0;
+    $res=0;
+	if(!empty($res_autorenew) && is_array($res_autorenew)){
+		for ($x=0; $x < count($res_autorenew); $x++) { 
+			$value = $res_autorenew[$x];
+			$memberId = new \MongoId($value['record']['_id']);
+
+			$start  = 'Dec 1, 2015';
+		    $end    = 'Feb 10, 2016';
+		    $query  = array('memberId'=>$memberId,'ownerClass'=>'UpdateMember','paidDate.date'=>array(
+		    	'$gte'=>new \MongoDate(strtotime($start))
+		        ,'$lt'=>new \MongoDate(strtotime($end)))
+		    );
+		    $pay_res = $pay->find($query,$fields=array(),$slaveOkay=true,$sort=array(),(int)$offset=0,(int)$limit=100000);
+		    if(!empty($pay_res)){
+		    	echo "<table cellspacing='5'>";
+			    $res = 0;
+			    foreach ($pay_res as $thepayment) {
+
+	                $memObj = new Model\Member(array('_id'=>$thepayment['memberId']),$app);
+	                $memObj->findById();
+	                echo "<tr>";
+	                echo "<td>".$memObj->displayName.'</td><td> pfb </td><td>'.$thepayment['name'].'</td><td>'.$thepayment['_id'].'</td>';
+	                echo "</tr>";
+	                $res++;
+		        	$del_ar = new Model\AutoRenew(array('_id'=>$value['_id']),$app);
+		        	$del_ar->delete();
+			    }
+			    echo "</table>";
+		    }
+
+		}
+	}
+	return new Response('total autorenew:'.count($res_autorenew).' total dups:'.$res,200,array('Content-Type' => 'text/html'));
+})
+->value('offset','0')
+->value('limit','20000')
+->before($mustbeADMIN);
+
 
 ///////////////////////
 // AUTO-RENEW - VIEW //
