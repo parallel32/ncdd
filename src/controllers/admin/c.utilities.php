@@ -19,7 +19,7 @@ $utilities = $app['controllers_factory'];
 // list of all duplicates
 $utilities->get('/preparerefundlist', function () use ($app) {
     //*
-    return false;
+    //return false;
     ini_set('memory_limit','1024M');
 
     $pay  = new Model\Payment(array(),$app);
@@ -54,22 +54,31 @@ $utilities->get('/preparerefundlist', function () use ($app) {
         
     }
     //echo "<pre>";print_r($refund);echo "</pre>";
-    echo "<pre>";print_r($tmp_refund);echo "</pre>";
-    echo "<pre>";print_r(count($tmp_refund));echo "</pre>";
+    //echo "<pre>";print_r($tmp_refund);echo "</pre>";
+    //echo "<pre>";print_r(count($tmp_refund));echo "</pre>";
 if(true):
+    echo "<table cellspacing='5'>";
     $res = 0;
     foreach ($tmp_refund as $memberId => $payment_record) {
         foreach ($payment_record['payment'] as $thepayment) {
 
             if(strpos($thepayment['fullResponse']['FDGGWSAPI:TRANSACTIONTIME'], 'Mon Feb 08') !== false){
+                /*// do the void
                 $payment = new Model\Payment(array(),$app);
                 $response = $payment->void($thepayment['fullResponse']['FDGGWSAPI:ORDERID'],$thepayment['fullResponse']['FDGGWSAPI:TDATE']);
                 echo "<pre>";print_r($response);echo "</pre>";
+                //*/
+                $memObj = new Model\Member(array('_id'=>$thepayment['memberId']),$app);
+                $memObj->findById();
+                echo "<tr>";
+                echo "<td>".$memObj->displayName.'</td><td> pfb </td><td>'.$thepayment['name'].'</td>';
+                echo "</tr>";
                 $res++;
             }
 
         }
     }
+    echo "</table>";
     echo "<pre>number voided:";print_r($res);echo "</pre>";
 endif;
     return new Response('',200,array('Content-Type' => 'text/html')); 
