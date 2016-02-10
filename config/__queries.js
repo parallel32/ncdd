@@ -55,3 +55,9 @@ db.member.find({'payment.country':'U.S.A'}).count()
 db.member.find({'payment.country':'u.s.a'}).count()
 db.member.find({'payment.country':'us'}).count()
 db.member.find({'payment.country':'US'}).count()
+
+
+db.autorenew.remove({ "_id" : ObjectId("56ba4fc4a6ec610b2da6d537") });
+db.autorenew.remove({ "_id" : ObjectId("56ba4fbea6ec610b2da6d4e2") });
+db.autorenew.remove({ "_id" : ObjectId("56ba4fbea6ec610b2da6d4e0") });
+db.autorenew.remove({ "_id" : ObjectId("56ba4fbfa6ec610b2da6d4e7") });
