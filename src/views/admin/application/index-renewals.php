@@ -314,7 +314,7 @@
                      <div class="portlet-title" id="application">
                         <div class="caption"><i class="icon-user"></i>Applications Paid</div>
                         <div class="actions">
-                           <a class="btn yellow view"><i class=" icon-eye-open"></i> View All</a>
+                           <!-- <a class="btn yellow view"><i class=" icon-eye-open"></i> View All</a> -->
                         </div>
                      </div>
                      <div class="portlet-body">

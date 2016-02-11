@@ -14,7 +14,7 @@
                <div class="responsive span12" data-tablet="span12" data-desktop="span12">
                   <div class="dashboard-stat purple">
                      <div class="visual">
-                        <i class="icon-hideme"><?=(is_array($this->vars['ar_res'])) ? count($this->vars['ar_res']) : 0;?></i>
+                        <i class="icon-hideme"><?=$this->vars['grand_total'];?></i>
                      </div>
                      <div class="details">
                         <div class="number"><font><font>
@@ -132,7 +132,7 @@
                               <? if(!empty($this->vars['declined'])): foreach($this->vars['declined'] as $item): ?>
                               <tr class="gradeX odd ">
                               <?if (true): ?>
-                                 <td class=" "><a data-id="<?=$item['record']['_id']?>" class="btn mini view card">cc</a></td>
+                                 <td class=" "><a data-id="<?=$item['record']['_id']?>" class="btn mini card">cc</a></td>
                                  <td class="hidden-phone"><?=$item['record']['payment']['expMonth']?> / <?=$item['record']['payment']['expYear']?></td>
                                  <td class="hidden-phone"><?='...'.substr(str_replace('.x', '', $item['record']['payment']['number']), -4);?></td>
                                  <td class="hidden-phone"><?=$item['record']['name']?></td>
@@ -237,7 +237,7 @@
                               <? if(!empty($this->vars['valid'])): foreach($this->vars['valid'] as $item): ?>
                               <tr class="gradeX odd ">
                               <?if (true): ?>
-                                 <td class=" "><a data-id="<?=$item['record']['_id']?>" class="btn mini view card">cc</a></td>
+                                 <td class=" "><a data-id="<?=$item['record']['_id']?>" class="btn mini card">cc</a></td>
                                  <td class="hidden-phone"><?=$item['record']['payment']['expMonth']?> / <?=$item['record']['payment']['expYear']?></td>
                                  <td class="hidden-phone"><?='...'.substr(str_replace('.x', '', $item['record']['payment']['number']), -4);?></td>
                                  <td class="hidden-phone"><?=$item['record']['name']?></td>
@@ -256,35 +256,57 @@
                </div>
             </div>            
          </div>
-         <div class="row-fluid">
+         <div class="row-fluid" id="paid">
                <div class="span12">
                   <!-- BEGIN EXAMPLE TABLE PORTLET-->
                   <div class="portlet box green">
                      <div class="portlet-title" id="application">
-                        <div class="caption">Paid</div><a name="paid"></a>
+                        <div class="caption"><i class="icon-user"></i>Applications Paid</div>
+                        <div class="actions">
+                           <!-- <a class="btn yellow view"><i class=" icon-eye-open"></i> View All</a> -->
+                        </div>
                      </div>
                      <div class="portlet-body">
                         <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
                         <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
                            <thead>
                               <tr role="row">
-                                 <th class="">Card</th>
-                                 <th class="hidden-phone">ExpDate</th>
-                                 <th class="hidden-phone">Number</th>
-                                 <th class="hidden-480">Member</th>
+                                 <th class=""></th>
+                                 <th class=""></th>
+                                 <th class="">Name</th>
+                                 <th class="hidden-phone">Email</th>
+                                 <th class="hidden-phone">Phone</th>
+                                 <th class="hidden-480">Date Paid</th>
                                  <th class=""></th>
                               </tr>
                            </thead>
                            <tbody role="alert" aria-live="polite" aria-relevant="all">
-                              <? if(!empty($this->vars['paid'])): foreach($this->vars['paid'] as $item): ?>
-                              <tr class="gradeX odd ">
-                              <?if (true): ?>
-                                 <td class=" "></td>
-                                 <td class="hidden-phone"><?=$item['record']['payment']['expMonth']?> / <?=$item['record']['payment']['expYear']?></td>
-                                 <td class="hidden-phone"><?='...'.substr(str_replace('.x', '', $item['record']['payment']['number']), -4);?></td>
-                                 <td class="hidden-phone"><?=$item['record']['name']?></td>
-                                 <td class="hidden-phone"><a data-id="<?=$item['paymentId']?>" class="btn mini green payment">Payemnt</a></td>                                 
-                              <? endif; ?>
+                              <? if(!empty($this->vars['paid'])): foreach($this->vars['paid'] as $member): ?>
+                              <tr class="gradeX odd">
+                                 <? $declineCount = (array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && array_key_exists('declineCount',$member['payment']) && $member['payment']['declineCount'] > 0) ? '('.$member['payment']['declineCount'].')': ''; ?>
+                                 <? $renewalREUSE = (array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && array_key_exists('renewalREUSE',$member['payment']) && $member['payment']['renewalREUSE'] == 'yes') ? 'purple': 'red'; ?>
+                                 <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn '.$renewalREUSE.' mini cardpaid">cc'.$declineCount.'</a>':'' ?></td>
+                                 <td class=" "><?
+                                 if(!empty($member['renewalpromocode'])){
+                                    if(strtolower($member['renewalpromocode']) == 'renew2016'){
+                                       echo '<a class="btn mini blue renewalpromocode">'.$member['renewalpromocode'].'</a>';
+                                    }else{
+                                       echo '<a class="btn mini blue promocode">'.$member['renewalpromocode'].'</a>';
+                                    }
+                                    
+                                 }else{
+                                       echo '';
+                                 }?></td>
+                                 <td class=" "><?=$member['displayName']?></td>
+                                 <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
+                                 <td class="hidden-phone"><?=$member['primaryPhone']?></td>
+                                 <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($member['renewal']['paidDate']['fullDateTime']), $member['timeZone']); ?>
+                                 <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$member['renewal']['paidDate']['monthDay'].' '.$member['renewal']['paidDate']['shortTime']?></td><td class=" ">
+                                    <a data-id="<?=$member['renewal']['paymentId']?>" class="btn blue mini payment"><i class=" "></i> Payment</a>
+                                    <a data-id="<?=$member['renewal']['applicationId']?>" class="btn blue mini view"><i class=" "></i> Application</a>
+                                    <a data-id="<?=$member['_id']?>" class="btn blue mini view member"><i class=" "></i> Member</a>
+                                    <a data-id="<?=$member['_id']?>" class="btn mini yellow-stripe user-login">LogIn</a>
+                                 </td>
                               </tr>
                               <? endforeach;?>
                               <? else: ?>
@@ -293,11 +315,10 @@
                            </tbody>
                         </table>
                      </div>
-                  </div>
+                  </div><a name="unsubmitted"></a>
                   <!-- END EXAMPLE TABLE PORTLET-->
                </div>
-            </div>            
-         </div>
+            </div>
          <div class="row-fluid">
                <div class="span12">
                   <!-- BEGIN EXAMPLE TABLE PORTLET-->
@@ -321,7 +342,7 @@
                               <? if(!empty($this->vars['expired'])): foreach($this->vars['expired'] as $item): ?>
                               <tr class="gradeX odd ">
                               <?if (true): ?>
-                                 <td class=" "><a data-id="<?=$item['record']['_id']?>" class="btn mini view card">cc</a></td>
+                                 <td class=" "><a data-id="<?=$item['record']['_id']?>" class="btn mini card">cc</a></td>
                                  <td class="hidden-phone"><?=$item['record']['payment']['expMonth']?> / <?=$item['record']['payment']['expYear']?></td>
                                  <td class="hidden-phone"><?='...'.substr(str_replace('.x', '', $item['record']['payment']['number']), -4);?></td>
                                  <td class="hidden-phone"><?=$item['record']['name']?></td>
@@ -369,6 +390,17 @@
 
 <script>
 jQuery(document).ready(function() {
+   $('td .user-login').click(function(e){
+                  io.saw.FormGet.activate({postUrl:'/authentication/shadologin/'+$(this).attr('data-id')
+                     ,postOnComplete:function(responseObj,responseStatus){}
+                     ,postOnSuccess:function(responseObj){
+                        document.location.href = '/';
+                     }
+                     ,postOnErrors:function(responseObj){
+                        alert('Something failed trying to sign in as this user...this is an unlikely error with no logs.  Please recall what you did and email Mike.');
+                     }
+                  });
+               });
    $('.btn.card').live('click', function() {
       $('#view-modal iframe').attr('src','/card/auto-renew/'+$(this).attr('data-id'));
       $('#view-modal').modal({keyboard: false});   
@@ -380,5 +412,40 @@ jQuery(document).ready(function() {
    $('#view-modal .btn.no').click(function(e){
       $('#view-modal').modal('hide');
    });
+});      
+</script>
+
+
+<script>
+jQuery(document).ready(function() {
+
+   $('.btn.cardpaid').live('click', function() {
+      $('#view-modal iframe').attr('src','/card/'+$(this).attr('data-id'));
+      $('#view-modal').modal({keyboard: false});   
+   });
+   $('.btn.payment').live('click', function() {
+      $('#view-modal iframe').attr('src','/payment/'+$(this).attr('data-id')+'/view');
+      $('#view-modal').modal({keyboard: false});   
+   });
+   $('#view-modal .btn.no').click(function(e){
+      $('#view-modal').modal('hide');
+   });
+
+   $('.btn.view').live('click', function() {
+      $('#view-modal iframe').attr('src','/application/'+$(this).attr('data-id')+'/view');
+      $('#view-modal').modal({keyboard: false});   
+   });
+   
+   $('.btn.view.member').live('click', function() {
+      $('#view-modal iframe').attr('src','/member/'+$(this).attr('data-id')+'/edit');
+      $('#view-modal').modal({keyboard: false});   
+   });
+   $('.btn.updatemember').live('click', function() {
+      $('#view-modal iframe').attr('src',$(this).attr('data-url')+$(this).attr('data-id'));
+      $('#view-modal').modal({keyboard: false});   
+   });
+   
+      
+
 });      
 </script>

@@ -2773,7 +2773,14 @@ $app->get('/renewalsauto/{offset}/{limit}', function ($offset, $limit, Request $
 	$valid = $ar->find(array('valid'=>'yes'),$fields=array(),$slaveOkay=true,$sort=array('record.payment.expYear'=>1,'record.payment.expMonth'=>1),$offset,$limit);
 	$expired = $ar->find(array('expired'=>'yes'),$fields=array(),$slaveOkay=true,$sort=array('record.payment.expYear'=>1,'record.payment.expMonth'=>1),$offset,$limit);
 	$declined = $ar->find(array('declined'=>'yes'),$fields=array(),$slaveOkay=true,$sort=array('record.payment.expYear'=>1,'record.payment.expMonth'=>1),$offset,$limit);
-	$paid = $ar->find(array('paid'=>'yes'),$fields=array(),$slaveOkay=true,$sort=array('paymentId'=>1),$offset,$limit);
+	//$paid = $ar->find(array('paid'=>'yes'),$fields=array(),$slaveOkay=true,$sort=array('paymentId'=>1),$offset,$limit);
+	$member = new Model\Member($doc=array(), $app);
+	$paid = $member->fetchByRenewalStatus('AUTOPAY',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']), $offset, $limit);
+	$grand_total = 0;
+	$grand_total += (is_array($valid)) ? count($valid) : 0;
+	$grand_total += (is_array($expired)) ? count($expired) : 0;
+	$grand_total += (is_array($declined)) ? count($declined) : 0;
+	$grand_total += (is_array($paid)) ? count($paid) : 0;
 
 	$crumbs = array(array('name'=>'Renewals','href'=>'/renewals')
 					,array('name'=>'Renewals - Auto Renew','href'=>'/renewalsauto'));
@@ -2788,6 +2795,7 @@ $app->get('/renewalsauto/{offset}/{limit}', function ($offset, $limit, Request $
 						,'expired'=>$expired
 						,'declined'=>$declined
 						,'paid'=>$paid
+						,'grand_total'=>$grand_total
 						);
 
 	return $app['view']->render('application/index-renewalsauto', 'default', $view_vars);
