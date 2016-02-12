@@ -2914,7 +2914,7 @@ $app->get('/renewalsautocharge', function (Request $request) use ($app) {
 		
 // MEMBERSHIP DUES HAVE BEEN DERIVED
 // COMBINE THE ARRAYS since the expYear on the expired cards has been updated 
-		$finalArr = array_merge($valid,$expired);
+		$finalArr = (is_array($expired) && is_array($valid)) ? array_merge($valid,$expired) : $valid;
 		$run = (count($finalArr) >= 10) ? 10: count($finalArr);
 		for ($x=0; $x < $run; $x++) { 
 			$value = $finalArr[$x];
