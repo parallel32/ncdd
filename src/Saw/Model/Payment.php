@@ -352,7 +352,29 @@ $body .= <<< EOT
           <v1:TerminalType>Unspecified</v1:TerminalType>
           <v1:DeviceID>Web Browser</v1:DeviceID>
         </v1:TransactionDetails>
-        
+        <v1:Billing>
+          <v1:CustomerID>{$this->memberId}</v1:CustomerID>
+          <v1:Name>{$this->name}</v1:Name>
+          <v1:Address1>{$this->addressLine1}</v1:Address1>
+          <v1:Address2>{$this->addressLine2}</v1:Address2>
+          <v1:City>{$this->city}</v1:City>
+  		  <v1:State>{$this->stateProvinceRegion}</v1:State>
+		  <v1:Zip>{$this->zipPostalCode}</v1:Zip>
+		  <v1:Country>{$this->country}</v1:Country>
+		  <v1:Phone>{$this->phone}</v1:Phone>
+		  <v1:Fax></v1:Fax>
+		  <v1:Email>{$this->email}</v1:Email>
+        </v1:Billing>
+        <v1:Shipping>
+          <v1:Type> </v1:Type>
+          <v1:Name>{$this->name}</v1:Name>
+          <v1:Address1>{$this->addressLine1}</v1:Address1>
+          <v1:Address2>{$this->addressLine2}</v1:Address2>
+          <v1:City>{$this->city}</v1:City>
+  		  <v1:State>{$this->stateProvinceRegion}</v1:State>
+		  <v1:Zip>{$this->zipPostalCode}</v1:Zip>
+		  <v1:Country>{$this->country}</v1:Country>
+        </v1:Shipping>
       </v1:Transaction>
     </fdggwsapi:FDGGWSApiOrderRequest>
   </SOAP-ENV:Body>
