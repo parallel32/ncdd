@@ -2813,7 +2813,7 @@ $app->get('/renewalsautocharge', function (Request $request) use ($app) {
 // DERIVE MEMBERSHIP DUES
 
 		$ar = new Model\AutoRenew(array(),$app);
-		$valid = array();//$ar->find(array('valid'=>'yes'),$fields=array(),$slaveOkay=true,$sort=array('record.payment.expYear'=>1,'record.payment.expMonth'=>1),0,100000);
+		$valid = $ar->find(array('valid'=>'yes'),$fields=array(),$slaveOkay=true,$sort=array('record.payment.expYear'=>1,'record.payment.expMonth'=>1),0,100000);
 		$expired = $ar->find(array('expired'=>'yes'),$fields=array(),$slaveOkay=true,$sort=array('record.payment.expYear'=>1,'record.payment.expMonth'=>1),0,100000);
 		
 		$i=0;
