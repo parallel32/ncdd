@@ -2813,7 +2813,7 @@ $app->get('/renewalsautocharge', function (Request $request) use ($app) {
 // DERIVE MEMBERSHIP DUES
 
 		$ar = new Model\AutoRenew(array(),$app);
-		$valid = $ar->find(array('valid'=>'yes'),$fields=array(),$slaveOkay=true,$sort=array('record.payment.expYear'=>1,'record.payment.expMonth'=>1),0,100000);
+		$valid = array();//$ar->find(array('valid'=>'yes'),$fields=array(),$slaveOkay=true,$sort=array('record.payment.expYear'=>1,'record.payment.expMonth'=>1),0,100000);
 		$expired = $ar->find(array('expired'=>'yes'),$fields=array(),$slaveOkay=true,$sort=array('record.payment.expYear'=>1,'record.payment.expMonth'=>1),0,100000);
 		
 		$i=0;
@@ -2902,20 +2902,20 @@ $app->get('/renewalsautocharge', function (Request $request) use ($app) {
 				$pd = new Model\Member(array('_id'=>$value['record']['_id']),$app);
 				$pd = $pd->findById();
 				if($pd['currentMembership'] == Model\Member::$membership['PUBLIC DEFENDER']){
-					$valid[$x]['membershipDues'] = 50;
+					$expired[$x]['membershipDues'] = 50;
 				}
 				$i++;
 			}
 		endif; 
 		echo "expired: ".$i." found:".$expired_found." found2:".$expired_found2."<br><br>";
 		
-		echo "<pre>count($valid):";print_r(count($valid));echo "</pre>";
-		echo "<pre>count($expired):";print_r(count($expired));echo "</pre>";
+		echo "<pre>count(valid):";print_r((!empty($valid) && is_array($valid)) ? count($valid) : 0);echo "</pre>";
+		echo "<pre>count(expired):";print_r(count($expired));echo "</pre>";
 		
 // MEMBERSHIP DUES HAVE BEEN DERIVED
 // COMBINE THE ARRAYS since the expYear on the expired cards has been updated 
 		$finalArr = array_merge($valid,$expired);
-		$run = (count($finalArr) >= 10) ? 10: count($finalArr);
+		$run = (count($finalArr) >= 1) ? 1: count($finalArr);
 		for ($x=0; $x < $run; $x++) { 
 			$value = $finalArr[$x];
 echo "<pre>";print_r($value);echo "</pre>";

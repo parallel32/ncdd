@@ -9,7 +9,7 @@
                </div>
             </div>
             <!-- END PAGE HEADER-->
-            <h3>Auto-renew script runs at the top of every hour until all records are marked paid</h3>
+            <h3>Everyone who opted in to Auto Pay</h3>
             <div class="row-fluid">
                <div class="responsive span12" data-tablet="span12" data-desktop="span12">
                   <div class="dashboard-stat purple">
