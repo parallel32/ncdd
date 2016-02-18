@@ -60,7 +60,6 @@ EOT;
 ?>
 <? 
 if(!empty($confirm_letter_body)){
-	echo $confirm_letter_header;
 	echo $confirm_letter_body;
 }
 echo $confirm_letter_footer;

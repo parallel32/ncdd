@@ -118,7 +118,7 @@
                                  <td class=" "><?=$email['subject']?></td>
                                  <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($email['sentDate']['fullDateTime']), $email['timeZone']); ?>
                                  <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$email['sentDate']['monthDay'].' '.$email['sentDate']['shortTime']?></td>
-                                 <td class=" "><a data-id="" class="btn blue mini view" href="/emailsent/<?=$email['_id']?>/view"><i class=" "></i> View</a></td>
+                                 <td class=" "><a data-id="<?=$email['_id']?>" class="btn blue mini view"><i class=" "></i> View</a></td>
                               </tr>
                               <? endforeach;?>
                               <? else: ?>
@@ -159,7 +159,7 @@
                                  <td class=" "><?=$email['subject']?></td>
                                  <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($email['sentDate']['fullDateTime']), $email['timeZone']); ?>
                                  <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$email['sentDate']['monthDay'].' '.$email['sentDate']['shortTime']?></td>
-                                 <td class=" "><a data-id="<?=$email['_id']?>" class="btn blue mini view" href="/emailsent/<?=$email['_id']?>/view"><i class=" "></i> View</a></td>
+                                 <td class=" "><a data-id="<?=$email['_id']?>" class="btn blue mini view"><i class=" "></i> View</a></td>
                               </tr>
                               <? endforeach;?>
                               <? else: ?>
@@ -193,6 +193,25 @@
       </div>
       <!--/ SUCCESSFUL SAVE MODAL -->
 
+      <!-- EMAIL VIEW MODAL -->
+      <div class="modal container fade" id="view-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+           <div class="modal-dialog">
+               <div class="modal-content">
+                   <div class="modal-header">
+                       <h4 class="modal-title" id="view-label"></h4>
+                   </div>
+                   <div class="modal-body">
+                       <iframe src="" style="zoom:0.60" width="99.6%" height="800" frameborder="0"></iframe>
+                   </div>
+                   <div class="modal-footer">
+                       <button class="btn default no">Close</button>
+                   </div>
+                 </div>
+           </div>
+       </div>
+      <!--/ EMAIL VIEW MODAL -->
+
+
 <script>
 jQuery(document).ready(function() {  
    window.saw_stateOrderNum = '';
@@ -212,7 +231,7 @@ jQuery(document).ready(function() {
                         '   <td class="">'+email.to+'</td>'+
                         '   <td class=" hidden-phone">'+email.subject+'</td>'+
                         '   <td class=" hidden-phone">'+email.sentDate.fullDateTime+'</td>'+
-                        '   <td><a class="btn mini green-stripe" href="/emailsent/'+email._id.$id+'/view">View</a></td>'+
+                        '   <td><a data-id="'+email._id.$id+'" class="btn mini view">View</a></td>'+
                         '   <!--<td><a class="btn mini blue-stripe edit" data-id="'+email._id.$id+'">Re-Send</a></td>-->'+
                         '</tr>';
                   $('#results tbody').append(html);
@@ -245,5 +264,20 @@ jQuery(document).ready(function() {
       window.saw_search();
    <? } ?>
    
+});      
+</script>
+
+
+<script>
+jQuery(document).ready(function() {
+
+   $('.btn.view').live('click', function() {
+      $('#view-modal iframe').attr('src','/emailsent/'+$(this).attr('data-id')+'/view');
+      $('#view-modal').modal({keyboard: false});   
+   });
+
+   $('#view-modal .btn.no').click(function(e){
+      $('#view-modal').modal('hide');
+   });
 });      
 </script>

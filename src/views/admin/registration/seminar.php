@@ -604,6 +604,7 @@ endif; ?>
                            </div>
                            <!--/span-->
                         </div>
+                     <? if(false): ?>
                         <h3 class="form-section">Credit Card Contact Information</h3>
                         <div class="row-fluid">
                            <div class="span8 ">
@@ -626,7 +627,8 @@ endif; ?>
                               </div>
                            </div>
                            <!--/span-->
-                        </div>                     
+                        </div>
+                     <? endif; ?>
                      </div>
                      <!--/ PAYMENT ELEMENT -->
 
