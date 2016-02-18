@@ -373,6 +373,7 @@
 
                            <h3 class="form-section">Registration Letter&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.get('body-confletter').execCommand('mcefocus',true);">Click to Edit</a></h3>
                            <div class="alert alert-info"><p><b>Notice:</b> To include the registration total in the confirmation letter, type <b>#total#</b> below.  Reason being, it will vary depending on the price feilds above.<br>Also,it will be formatted with the dollar sign so you don't have to include that.</p>
+                           <p>Recipient's name: <strong>#name#</strong> </p>
                            </div>
                            <hr>
                            <div class="row-fluid">
@@ -391,6 +392,7 @@
                            
                            <h3 class="form-section">Deposit Letter&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.get('body-deposit-confletter').execCommand('mcefocus',true);">Click to Edit</a></h3>
                            <div class="alert alert-info"><p><b>Notice:</b> To include the registration total in the confirmation letter, type <b>#total#</b> below.  Reason being, it will vary depending on the price feilds above.<br>Also,it will be formatted with the dollar sign so you don't have to include that.</p>
+                           <p>Recipient's name: <strong>#name#</strong> </p>
                               <p>To include the depoosit specific information include these variables:
                                  <br>Registration balance due: <b>#balance_due#</b> (this will be formatted with the dollar sign, so you don't have to include it)
                                  <br>Registration balance due date: <b>#balance_due_date#</b>
@@ -414,6 +416,9 @@
                            
 
                            <h3 class="form-section">Scholarship Submitted Letter&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.get('body-scholarship-confletter').execCommand('mcefocus',true);">Click to Edit</a></h3>
+                           <div class="alert alert-info"><p><b>Notice:</b>
+                           <p>Recipient's name: <strong>#name#</strong> </p>
+                           </div>
                            <div class="row-fluid">
                               <div class="span12 ">
                                  

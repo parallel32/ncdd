@@ -30,12 +30,6 @@
 	<? endif; ?>
 </table>
 
-<? 
-$confirm_letter_header = <<<EOT
-<br/><br/>Dear {$this->vars['registration']['name']},
-<br/>
-EOT;
-?>
 
 <? 
 $confirm_letter_body = '';

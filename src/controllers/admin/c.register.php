@@ -27,6 +27,7 @@ $app['seminarConfirmationEmail'] = $app->protect(function ($app,$registrationId)
 	);
 	$body = $app['view']->render('email/registration-seminar-customer-confirmation','email', $view_vars);
 	$body = str_replace("#total#", '$'.$registration['total'], $body);
+	$body = str_replace("#name#", '$'.$registration['name'], $body);
 
 	if($registration['currentStatus'] == Model\Registration::$status['DEPOSIT'] || $registration['currentStatus'] == Model\Registration::$status['DEPOSITBALANCE']){
 		$body = str_replace("#balance_due#", '$'.((int)$registration['registrationFeeOriginal'] - (int)$registration['deposit']), $body);
