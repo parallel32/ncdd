@@ -254,6 +254,7 @@ class Payment extends Model {
 	private function prepareCurl($body){
 
 		// initializing cURL with the FDGGWS API URL: 
+		error_log('SAW_FDGG_URL: '.print_r(SAW_FDGG_URL,true));
 		$ch = curl_init(SAW_FDGG_URL); 
 		// setting the request type to POST: 
 		curl_setopt($ch, CURLOPT_POST, 1); 
@@ -383,8 +384,11 @@ EOT;
 		$ch = $this->prepareCurl($body);
 		// calling cURL and saving the SOAP response message in a variable which 
 		// contains a string like "<SOAP-ENV:Envelope ...>...</SOAP-ENV:Envelope>":
+		
 		$result = curl_exec($ch); 
-
+		// approved resposne for testing when their testing system is down
+		//$result = '<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"><SOAP-ENV:Header/><SOAP-ENV:Body><fdggwsapi:FDGGWSApiOrderResponse xmlns:fdggwsapi="http://secure.linkpt.net/fdggwsapi/schemas_us/fdggwsapi"><fdggwsapi:CommercialServiceProvider>CSI</fdggwsapi:CommercialServiceProvider><fdggwsapi:TransactionTime>Tue Feb 16 17:00:34 2016</fdggwsapi:TransactionTime><fdggwsapi:TransactionID>1586194955</fdggwsapi:TransactionID><fdggwsapi:ProcessorReferenceNumber>OK242C</fdggwsapi:ProcessorReferenceNumber><fdggwsapi:ProcessorResponseMessage>APPROVED</fdggwsapi:ProcessorResponseMessage><fdggwsapi:ErrorMessage/><fdggwsapi:OrderId>56c39bfe8a1632f578000003</fdggwsapi:OrderId><fdggwsapi:ApprovalCode>OK242C1586194955:NNCY:</fdggwsapi:ApprovalCode><fdggwsapi:AVSResponse>NNCY</fdggwsapi:AVSResponse><fdggwsapi:TDate>1455660033</fdggwsapi:TDate><fdggwsapi:TransactionResult>APPROVED</fdggwsapi:TransactionResult><fdggwsapi:ProcessorResponseCode>A</fdggwsapi:ProcessorResponseCode><fdggwsapi:ProcessorApprovalCode/><fdggwsapi:CalculatedTax/><fdggwsapi:CalculatedShipping/><fdggwsapi:TransactionScore>ERROR</fdggwsapi:TransactionScore><fdggwsapi:FraudAction>Configuration Error.</fdggwsapi:FraudAction><fdggwsapi:AuthenticationResponseCode>Y</fdggwsapi:AuthenticationResponseCode></fdggwsapi:FDGGWSApiOrderResponse></SOAP-ENV:Body></SOAP-ENV:Envelope>';
+		
 		error_log('');
 		error_log('');
 		error_log('');
@@ -468,6 +472,7 @@ EOT;
 	    //////////////////
 		// XML TO ARRAY //
 		//////////////////
+		$default_msg = "Our processor refused the transaction.  Please, check your billing address, card number and card code and try again.  If it persists, please try another card or contact us.";
 		if(	
 			!empty($xml_array)
 			&& is_array($xml_array) 
@@ -480,9 +485,10 @@ EOT;
 			&& array_key_exists('FDGGWSAPI:TRANSACTIONRESULT', $xml_array['SOAP-ENV:ENVELOPE']['SOAP-ENV:BODY']['FDGGWSAPI:FDGGWSAPIORDERRESPONSE'])
 
 		){
-			error_log('for variable: here  ==>'.print_r('A',true));
+error_log('for variable: here  ==>'.print_r('A',true));
 			$response = $xml_array['SOAP-ENV:ENVELOPE']['SOAP-ENV:BODY']['FDGGWSAPI:FDGGWSAPIORDERRESPONSE'];
-			$default_msg = "An error has occured.  Please try again.  If it persists, please contact us.";
+			error_log('$response: '.print_r($response,true));
+			
 			switch ($response['FDGGWSAPI:TRANSACTIONRESULT']) {
 				case 'APPROVED':
 					return $response;
@@ -513,14 +519,14 @@ EOT;
 			&& array_key_exists('DETAIL', $xml_array['SOAP-ENV:ENVELOPE']['SOAP-ENV:BODY']['SOAP-ENV:FAULT'])
 
 		){
-			error_log('for variable: here  ==>'.print_r('B',true));
+error_log('for variable: here  ==>'.print_r('B',true));
 			$message = $xml_array['SOAP-ENV:ENVELOPE']['SOAP-ENV:BODY']['SOAP-ENV:FAULT']['DETAIL'];
 		}else{
-			error_log('for variable: here  ==>'.print_r('C',true));
+error_log('for variable: here  ==>'.print_r('C',true));
 			if(is_array($xml_array)){
-				$message = "An error has occured.  Please try again.  If it persists, please contact us."."<!--".implode('----', $xml_array)."-->";
+				$message = $default_msg;
 			}else{
-				$message = "Please try again because an error occured.  If it persists, please contact us.";
+				$message = $default_msg;
 			}
 		}
 
@@ -688,7 +694,7 @@ EOT;
 			//*/
 			
 		} catch (\Exception $e) {
-			throw new \Saw\Exceptions\SawException(new Exceptions\DomainException(),"The transaction failed.  Please try again. Processing Message: ".$e->getMessage()." Code:".$e->getCode());
+			throw new \Saw\Exceptions\SawException(new Exceptions\DomainException(),"".$e->getMessage()." Code:".$e->getCode());
 		}
 		
 	}

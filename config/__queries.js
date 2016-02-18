@@ -1,5 +1,5 @@
 // update the emails to all parallel32@gmail.com
-db.member.update({},{$set:{email:'parallel32@gmail.com'}},{multi:true});
+db.member.update({},{$set:{email:'parallel32+100@gmail.com'}},{multi:true});
 
 // link up a seminar registration to a payment
 db.registration.update({_id:ObjectId('565cf2b31f1d752b0ed3e88d')},{$set:{currentStatus:40,currentPaymentType:40,paymentId:ObjectId('565cf2b31f1d752b0ed3e88c'),paidDate:{"date" : ISODate("2015-12-01T01:06:59Z"),"checkError" : "2015-11-30","feed" : "11/30/2015","detail" : "11/30/2015","monthDay" : "November 30","iso" : "2015-11-30T20:06:59-05:00","fullDateTime" : "November 30, 2015 08:06 PM","fullMonth" : "November 30, 2015","shortMonth" : "Nov 30, 2015","dayOfWeek" : "Monday","shortDayOfWeek" : "Mon","year" : "2015","european" : "30/11/2015","europeanFullMonth" : "30 November, 2015","europeanShortMonth" : "30 Nov, 2015","shortTimeSlim" : "8:06pm","shortTime" : "8:06 pm","longTime" : "08:06 PM","militaryTime" : "20:06","timezone" : "America/New_York","month" : "November","leadingZeros" : "11-30-15","paymentGateway" : "20151130"}}});

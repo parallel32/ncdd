@@ -243,7 +243,7 @@ $app->get('/registration/seminar/{seminarId}/{slug}', function ($seminarId, $slu
 	$paid = (!empty($paid)) ? count($paid) : 0;
     $deposit = (!empty($depositbalance)) ? count($depositbalance) : 0;
     $total = $paid + $deposit;
-    if(array_key_exists('maxRegistrations', $seminar['register']) 
+    if(is_array($seminar['register']) && !empty($seminar['register']) && array_key_exists('maxRegistrations', $seminar['register']) 
        && !empty($seminar['register']['maxRegistrations']) 
        && $total >= $seminar['register']['maxRegistrations']
        ):

@@ -279,7 +279,7 @@ endif; ?>
                   <div class="row-fluid ">
                      <div class="span12 ">
                         <div class="control-group">
-                           <label class="control-label" >Select your first elective:</label>
+                           <label class="control-label" >Select your choice for the Friday 10:15 am 1st Elective Seminar:</label>
                            <div class="controls">
                               <select name="doc[elective1]" class="span6 m-wrap elective1">
                               <? 
@@ -300,7 +300,7 @@ endif; ?>
                   <div class="row-fluid ">
                      <div class="span12 ">
                         <div class="control-group">
-                           <label class="control-label" >Select your second elective:</label>
+                           <label class="control-label" >Select your choice for the Friday 11:15 am 2nd Elective Seminar:</label>
                            <div class="controls">
                               <select name="doc[elective2]" class="span6 m-wrap elective2">
                               <? 

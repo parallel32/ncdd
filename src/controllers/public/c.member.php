@@ -136,7 +136,7 @@ $app->get('/member/{id}/{slug}', function ($id, $slug, Request $request) use ($a
 	$member['boardCertifiedBadgeSr'] = Model\Member::$boardCertifiedBadgeSr;
 	$member['staff'] = ((array_key_exists('staff',$member)) ? $member['staff']: '') ? "Yes" : "No";
 	$member['staffBadge'] = Model\Member::$staffBadge;
-	$member['aboutMe'] = $app['prepare_content']($member['aboutMe']);
+	$member['aboutMe'] = (array_key_exists('aboutMe', $member)) ? $app['prepare_content']($member['aboutMe']) : '';
 
 	$location = new Model\Location(array('ownerId'=>$member['_id']),$app);
 	$locations = $location->getByOwner();
