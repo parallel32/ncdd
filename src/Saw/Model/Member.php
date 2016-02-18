@@ -1496,6 +1496,7 @@ class Member extends User {
 			case 'APPROVED':
 				$sort=array('renewal.approvedDate.date'=>-1);
 				break;
+			case 'AUTOPAY':
 			case 'PAID':
 				$sort=array('renewal.paidDate.date'=>-1);
 				break;
