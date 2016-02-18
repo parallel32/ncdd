@@ -368,7 +368,7 @@ endif; ?>
                         <? if(is_array($this->vars['seminar']['register']) && array_key_exists('hardCopyPrice',$this->vars['seminar']['register']) && !empty($this->vars['seminar']['register']['hardCopyPrice'])): ?>
                         <div class="span6 ">
                            <div class="control-group">
-                              <label class="control-label" >Would you like to pre-order a hard copy of the materials?</label>
+                              <label class="control-label" >Would you like to pre-order a hard copy of the materials? <br>(Materials will be provided on a thumb drive)</label>
                               <div class="controls">
                                  <select name="doc[hardCopy]" class="span6 m-wrap hardcopyYesNo">
                                     <option value="NO">NO</option>
