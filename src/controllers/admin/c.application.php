@@ -3108,7 +3108,12 @@ $app->get('/renewals-send-decline-followup-email', function (Request $request) u
 							,'securelink'=>'https://'.SAW_ADMIN_WEBSITE.'/renewals-autopay/'.$autorenew['_id']
 		);
 		$body = $app['view']->render('email/auto-pay-cc-decline-follow-up','email', $view_vars);
-		//echo "<pre>";print_r($body);echo "</pre>";
+		if(!empty($to)){
+			echo "<pre>";print_r($to);echo "</pre>";	
+		}else{
+			echo "<pre>";print_r('NO TO:'.$view_vars['securelink']);echo "</pre>";
+		}
+		
 		$app['sendMail']($subject, $body, $to);
 
 	}
