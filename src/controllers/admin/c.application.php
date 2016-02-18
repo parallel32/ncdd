@@ -3100,7 +3100,7 @@ $app->get('/renewals-send-decline-followup-email', function (Request $request) u
 		$member = $member->findById();
 
 
-		$subject = 'NCDD Renewal Membership';
+		$subject = 'NCDD Membership Auto Renewal';
 		$to = $member['email'];
 		$view_vars = array('firstName'=>$member['firstName']
 							,'middleName'=>(array_key_exists('middleName', $member)) ? $member['middleName'] : ''
