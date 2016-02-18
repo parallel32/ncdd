@@ -3109,9 +3109,9 @@ $app->get('/renewals-send-decline-followup-email', function (Request $request) u
 		);
 		$body = $app['view']->render('email/auto-pay-cc-decline-follow-up','email', $view_vars);
 		if(!empty($to)){
-			echo "<pre>";print_r($to);echo "</pre>";	
+			error_log('$to: '.print_r($to,true));
 		}else{
-			echo "<pre>";print_r('NO TO:'.$view_vars['securelink']);echo "</pre>";
+			error_log('securlink: '.print_r($view_vars['securelink'],true));
 		}
 		
 		$app['sendMail']($subject, $body, $to);
