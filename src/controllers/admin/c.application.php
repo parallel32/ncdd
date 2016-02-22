@@ -1101,6 +1101,7 @@ $app->get('/application/{id}/view', function ($id, Request $request) use ($app) 
 						,'member'=>$member
 						,'references'=>$references
 						);
+	
 	switch ($application['class']) {
 		case 'NewMemberApplication': // old deprecated
 		case 'ApplyNewMember':
