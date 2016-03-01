@@ -377,6 +377,47 @@ class Apply extends Model {
 
 	}
 
+	public function fetchByDatePaidRange($start, $finish, $offset=0,$limit=100,$filter=array()){
+		$query = array('currentStatus'=>self::$status['PAID']
+						,'paidDate.date'=>array('$gte'=>new \MongoDate(strtotime($start))
+												,'$lte'=>new \MongoDate(strtotime($finish)))
+		);
+		
+		if(!empty($filter)){
+			$query = array_merge($filter, $query);
+		}
+		$fields = array('firstName'=>true
+						,'middleName'=>true
+						,'lastName'=>true
+						,'email'=>true
+						,'city'=>true
+						,'state'=>true
+						,'type'=>true
+						,'class'=>true
+						,'submittedDate'=>true
+						,'paidDate'=>true
+						,'approvedDate'=>true
+						,'_id'=>true
+						,'memberId'=>true
+						,'paymentId'=>true
+						,'references'=>true
+						,'termsAcknowledgement'=>true
+						);
+		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('paidDate.date'=>-1),(int)$offset,(int)$limit);
+		//error_log('fetch:'.print_r($query,true));
+		//error_log('result:'.print_r($result,true));
+
+		// include the member payment record
+		for ($i=0; $i < count($result); $i++) { 
+			$member = new Member(array('_id'=>$result[$i]['memberId']),self::$app);
+			$member = $member->findById();
+			if(!empty($member) && is_array($member))
+				$result[$i]['member'] = $member;
+		}
+		
+		return $result;
+
+	}
 	public function fetchByDatePaid($days=90, $offset=0,$limit=100,$filter=array()){
 		$query = array('currentStatus'=>self::$status['PAID']
 						,'paidDate.date'=>array('$lte'=>new \MongoDate(strtotime('now'))

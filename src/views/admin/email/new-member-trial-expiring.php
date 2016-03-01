@@ -8,11 +8,11 @@
 									<table border="0" cellpadding="20" cellspacing="0" width="100%">
 										<tr>
 											<td valign="top">
-												<h2 class="h2">Your NCDD Trial Membership is Expiring.</h2>
+												<h2 class="h2">Your NCDD Trial Membership has expired.</h2>
 												<br />
 												<div class="textdark">
 <br/>
-<br/>Your trial period will end on <?=$this->vars['endDate']?>.
+<br/>Your trial period ended on <?=$this->vars['endDate']?>.
 <br/>
 We hope you have considered joining The National College for DUI Defense.
 <br/>

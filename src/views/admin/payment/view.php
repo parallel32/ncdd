@@ -103,6 +103,9 @@ $user = call_user_func(function($app){ $user = $app['session']->get('user'); ret
                      <? if($this->vars['payment']['type'] == 'check'): ?>
 
                      <? else: ?>
+                     <?
+                     if($this->vars['payment']['currentPaymentType'] == \Saw\Model\Payment::$paymentType['CREDIT']):
+                     ?>
                      <div class="row-fluid">
                         <div class="span8 ">
                            <div class="control-group ">
@@ -150,6 +153,79 @@ $user = call_user_func(function($app){ $user = $app['session']->get('user'); ret
                         </div>
                         <!--/span-->
                      </div>
+                     <? endif; ?>
+                     <?
+                     if($this->vars['payment']['currentPaymentType'] == \Saw\Model\Payment::$paymentType['ACH']):
+                     ?>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Check Number</label>
+                              <div class="controls">
+                                 <input type="text" value="<?=$this->vars['payment']['checkNumber']?>" readonly class="m-wrap span8 checkNumber">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Account Type</label>
+                              <div class="controls">
+                                 <input type="text" value="<?=$this->vars['payment']['accountType']?>" readonly class="m-wrap span8 accountType">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Account Number</label>
+                              <div class="controls">
+                                 <input type="text" value="<?=(strlen($this->vars['payment']['accountNumber']) > 5) ? substr($this->vars['payment']['accountNumber'], -4): $this->vars['payment']['accountNumber']?>" readonly class="m-wrap span8 accountNumber">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Routing Number</label>
+                              <div class="controls">
+                                 <input type="text" value="<?=$this->vars['payment']['routingNumber']?>" readonly class="m-wrap span8 routingNumber">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Driver License Number</label>
+                              <div class="controls">
+                                 <input type="text" value="<?=(strlen($this->vars['payment']['drivingLicenseNumber']) > 5) ? substr($this->vars['payment']['drivingLicenseNumber'], -4): $this->vars['payment']['drivingLicenseNumber']?>" readonly class="m-wrap span8 drivingLicenseNumber">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     <div class="row-fluid">
+                        <div class="span8 ">
+                           <div class="control-group ">
+                              <label class="control-label">Driver License State</label>
+                              <div class="controls">
+                                 <input type="text" value="<?=$this->vars['payment']['drivingLicenseState']?>" readonly class="m-wrap span8 drivingLicenseState">
+                              </div>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
+                     
+                     <? endif; ?>
+
                      <? endif; ?>
                      
                      <h3 class="form-section">Billing Address</h3>

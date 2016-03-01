@@ -141,9 +141,21 @@ jQuery(document).ready(function() {
           return [curtop];
       }
    }
-   // pay by check button clicked
+   // pay by ach button clicked
+   $('.btn.ach').click(function(e){
+      $('#currentPaymentType').val(<?=\Saw\Model\Registration::$paymentType['ACH']?>);
+      $('#payment-form-ach').show("slow");
+      $('#payment-form-scholarship').hide("slow");
+      $('#payment-form-check').hide("slow");
+      $('#payment-form').hide("slow");     
+      var targetElement = document.getElementById('payment-form-ach');
+      window.setTimeout(function() {
+        window.scroll(0, io.saw.Payment.findPos(targetElement));
+      }, 1000);
+   });
    $('.btn.check').click(function(e){
       $('#currentPaymentType').val(<?=\Saw\Model\Registration::$paymentType['CHECK']?>);
+      $('#payment-form-ach').hide("slow");
       $('#payment-form-scholarship').hide("slow");
       $('#payment-form-check').show("slow");
       $('#payment-form').hide("slow");     
@@ -155,8 +167,9 @@ jQuery(document).ready(function() {
    // pay by credit card button clicked
    $('.btn.credit').click(function(e){
       $('#currentPaymentType').val(<?=\Saw\Model\Registration::$paymentType['CREDIT']?>);
+      $('#payment-form-ach').hide("slow");
       $('#payment-form-scholarship').hide("slow");
-      $('#payment-form').show("show");
+      $('#payment-form').show("slow");
       $('#payment-form-check').hide("slow");      
       var targetElement = document.getElementById('payment-form');
       window.setTimeout(function() {
@@ -166,6 +179,7 @@ jQuery(document).ready(function() {
    // pay by scholarship button clicked
    $('.btn.scholarship').click(function(e){
       $('#currentPaymentType').val(<?=\Saw\Model\Registration::$paymentType['SCHOLARSHIP']?>);
+      $('#payment-form-ach').hide("slow");
       $('#payment-form-scholarship').show("slow");
       $('#payment-form-check').hide("slow");
       $('#payment-form').hide("slow");      

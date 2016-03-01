@@ -21,9 +21,8 @@
             </div>
          <div class="row-fluid">
             <div class="span12">
-               You can view your full receipt details online by clicking <a href="https://<?=SAW_CONSUMER_WEBSITE?>/shopping-cart/checkout/receipt/<?=$this->vars['order']['_id']?>" target="_blank">here</a> </a> <br>
+               You can view your full receipt details online by clicking <a href="https://<?=SAW_CONSUMER_WEBSITE?>/shopping-cart/checkout/receipt/<?=$this->vars['order']['_id']?>" target="_blank">here</a> </a> or by browsing to here: <a href="https://<?=SAW_CONSUMER_WEBSITE?>/shopping-cart/checkout/receipt/<?=$this->vars['order']['_id']?>" target="_blank">https://<?=SAW_CONSUMER_WEBSITE?>/shopping-cart/checkout/receipt/<?=$this->vars['order']['_id']?></a>
                <br>
-               Or browsing to here: https://<?=SAW_CONSUMER_WEBSITE?>/shopping-cart/checkout/receipt/<?=$this->vars['order']['_id']?>
             </div>
          </div>
          <!-- END PAGE HEADER-->

@@ -38,10 +38,10 @@
                   <a name="approve"></a>
                   <div class="dashboard-stat green">
                      <div class="visual">
-                        <i class="icon-hideme"><?=count($this->vars['paid']);?></i>
+                        <i class="icon-hideme"><?=(is_array($this->vars['paid'])) ? count($this->vars['paid']): 0;?></i>
                      </div>
                      <div class="details">
-                        <div class="number"><font><font>Paid (90 days)</font></font></div>
+                        <div class="number"><font><font>Paid YTD</font></font></div>
                         <div class="desc"><font><font>
                            
                         </font></font></div>
@@ -301,7 +301,7 @@
                   <!-- BEGIN EXAMPLE TABLE PORTLET-->
                   <div class="portlet box green">
                      <div class="portlet-title" id="application">
-                        <div class="caption"><i class="icon-user"></i>Paid 90 days back</div>
+                        <div class="caption"><i class="icon-user"></i>Paid Year to Date (YTD)</div>
                         <div class="actions">
                            <a class="btn yellow" href="/applications/all"><i class=" icon-eye-open"></i> View All</a>
                         </div>

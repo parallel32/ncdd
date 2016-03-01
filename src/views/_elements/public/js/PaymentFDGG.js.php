@@ -16,35 +16,6 @@
 		   }
 		}
 	}
-	function validateCardNumber(card){
-		if(Stripe.validateCardNumber(card.val())){
-			   card.parents('.control-group').removeClass('error');// remove the red highlight
-			   card.next().remove(); // remove the error text
-			   $('#payment-form .control-group').find('.help-block.error').remove(); // remove help blocks too
-			   $('#payment-form .card').css('backgroundPosition','0 -25px');
-			   switch (Stripe.cardType(card.val())){
-			      case 'Visa':
-			         $('#payment-form .card.visa').css('backgroundPosition','0 0px');
-			         break;
-			      case 'MasterCard':
-			         $('#payment-form .card.master').css('backgroundPosition','0 0px');
-			         break;
-			      case 'American Express':
-			         $('#payment-form .card.amex').css('backgroundPosition','0 0px');
-			         break;
-			      case 'Discover':
-			         $('#payment-form .card.discover').css('backgroundPosition','0 0px');
-			         break;		   
-			   }
-			   $('#payment-form .cardType').html(Stripe.cardType(card.val()));
-			}else{
-			   // bootstrap field to red with error message
-			   card.parents('.control-group').addClass('error');
-			   if(card.next('.help-inline').length == 0){
-			      card.after('<span class="help-inline">A valid card number is required.</span>');
-			   }
-			}
-	}
 	
 	Payment.hold_card = '';
 	Payment.charge = function (){
@@ -61,7 +32,7 @@
 		   ,serializeSelector:':input'
 		   ,blockUI:'no'
 		   ,postOnComplete:function(responseObj,responseStatus){
-		   		$('#payment-form .number').val(io.saw.Payment.hold_card);
+		   		//$('#payment-form .number').val(io.saw.Payment.hold_card);
 			   	if(responseStatus == 'success'){
 				
 				}else{
@@ -90,13 +61,11 @@
 		
 		$('#payment-form input').keypress(function (e) {
 			if (e.which == 13) {
-				validateCardNumber($('#payment-form .number'));
 				validateCVC($('#payment-form .cvc'));
 				Payment.charge();
 			}
 		});
 		$('#payment-button').click(function(e){
-			validateCardNumber($('#payment-form .number'));
 			validateCVC($('#payment-form .cvc'));
 			Payment.charge();
 		});
@@ -122,7 +91,6 @@
 
 		// validate card number
 		$('#payment-form .number').blur(function(){
-			validateCardNumber($(this));
 		});
 		// validate cvc check
 		$('#payment-form .cvc').blur(function(){

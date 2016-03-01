@@ -347,11 +347,18 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 		$rs_id = '';
 
 
-		if ($doc['currentPaymentType'] == Model\Registration::$paymentType['CREDIT']) {
+		if ($doc['currentPaymentType'] == Model\Registration::$paymentType['CREDIT'] || $doc['currentPaymentType'] == Model\Registration::$paymentType['ACH']) {
 				$doc['payment']['ownerId'] = '';
 				$doc['payment']['ownerClass'] = 'RegistrationSeminar';
+				$doc['payment']['currentPaymentType'] = $doc['currentPaymentType'];
 				$payment = new Model\Payment($doc['payment'],$app);
-				$app['validateModel']($app, $payment,$groups=array('cc'));
+				if($doc['currentPaymentType'] == Model\Registration::$paymentType['ACH']){
+					$app['validateModel']($app, $payment,$groups=array('ach'));	
+				}
+				if($doc['currentPaymentType'] == Model\Registration::$paymentType['CREDIT']){
+					$app['validateModel']($app, $payment,$groups=array('credit'));	
+				}
+				
 			try {
 				
 				$paymentId = $payment->charge();
@@ -366,7 +373,14 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 				error_log(__FILE__.' '.__LINE__.' for variable: e  ==>'.print_r($e->getMessage(),true));
 				//$rgis = new Model\Registration(array('_id'=>$rs_id),$app);			
 				//$rgis->remove();
-				throw new \Saw\Exceptions\SawException(new \Saw\Exceptions\PaymentException(),"The transaction failed.  Please check your card information and try again.");
+				if ($doc['currentPaymentType'] == Model\Registration::$paymentType['ACH']) {
+					$message_ = "Oops, our processor didn't like your check information.  Please make sure your routing number and account number, billing address are accurate and try again.  If this persists, please try another account or payment option.";
+				}
+				if ($doc['currentPaymentType'] == Model\Registration::$paymentType['CREDIT']) {
+					$message_ = "Oops, our processor didn't like your card information.  Please make sure your card number, cvc code, billing address are accurate and try again.  If this persists, please try another card or payment option.";
+				}
+				
+				throw new \Saw\Exceptions\SawException(new \Saw\Exceptions\PaymentException(),$message_);
 			}		
 			
 		}
@@ -758,7 +772,14 @@ $app->get('/registrations/seminar/{seminarId}/{offset}/{limit}', function ($semi
 				$payment = new Model\Payment(array('_id'=>$depositbalance[$i]['depositPaymentId']),$app);
 				$payment = $payment->findbyId();
 				if(!empty($payment) && array_key_exists('fullResponse', $payment) && !empty($payment['fullResponse'])){
-					$depositbalance[$i]['depositPaymentType'] = 'cc';	
+					
+					if($payment['currentPaymentType'] == Model\Payment::$paymentType['CREDIT']){
+						$depositbalance[$i]['depositPaymentType'] = 'cc';	
+					}
+					if($payment['currentPaymentType'] == Model\Payment::$paymentType['ACH']){
+						$depositbalance[$i]['depositPaymentType'] = 'ach';	
+					}
+					
 				}elseif(!empty($payment)){
 					$depositbalance[$i]['depositPaymentType'] = 'chk';
 				}
@@ -774,7 +795,13 @@ $app->get('/registrations/seminar/{seminarId}/{offset}/{limit}', function ($semi
 				$payment = new Model\Payment(array('_id'=>$paid[$i]['depositPaymentId']),$app);
 				$payment = $payment->findbyId();
 				if(!empty($payment) && array_key_exists('fullResponse', $payment) && !empty($payment['fullResponse'])){
-					$paid[$i]['depositPaymentType'] = 'cc';	
+					if($payment['currentPaymentType'] == Model\Payment::$paymentType['CREDIT']){
+						$paid[$i]['depositPaymentType'] = 'cc';		
+					}
+					if($payment['currentPaymentType'] == Model\Payment::$paymentType['ACH']){
+						$paid[$i]['depositPaymentType'] = 'ach';		
+					}
+					
 				}elseif(!empty($payment)){
 					$paid[$i]['depositPaymentType'] = 'chk';
 				}
@@ -784,7 +811,12 @@ $app->get('/registrations/seminar/{seminarId}/{offset}/{limit}', function ($semi
 				$payment = new Model\Payment(array('_id'=>$paid[$i]['paymentId']),$app);
 				$payment = $payment->findbyId();
 				if(!empty($payment) && array_key_exists('fullResponse', $payment) && !empty($payment['fullResponse'])){
-					$paid[$i]['remainderPaymentType'] = 'cc';	
+					if($payment['currentPaymentType'] == Model\Payment::$paymentType['CREDIT']){
+						$paid[$i]['remainderPaymentType'] = 'cc';	
+					}
+					if($payment['currentPaymentType'] == Model\Payment::$paymentType['ACH']){
+						$paid[$i]['remainderPaymentType'] = 'ach';		
+					}
 				}elseif(!empty($payment)){
 					$paid[$i]['remainderPaymentType'] = 'chk';
 				}

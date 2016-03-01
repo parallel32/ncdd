@@ -1154,6 +1154,12 @@ $app->get('/shopping-cart/checkout', function (Request $request) use ($app) {
 	}elseif(!is_array($user)){
 		$user = array();
 	}
+	// prepare the card payment fields
+	if(is_array($user) && array_key_exists('payment',$user) && is_array($user['payment']) && !empty($user['payment']) && array_key_exists('number', $user['payment'])){
+		$user['payment']['cvc'] = str_replace('.x', '', $user['payment']['cvc']);
+		$user['payment']['number'] = str_replace('.x', '', $user['payment']['number']);
+		$user['payment']['number'] = (!empty($user['payment']['number'])) ? '...'.substr($user['payment']['number'], -4) :'';
+	}
 	$view_vars['user'] = $user;
 	$view_vars = array_merge($page_vars,$view_vars);
 
@@ -1166,7 +1172,7 @@ $app->post('/shopping-cart/checkout', function (Request $request) use ($app) {
 		$order = new Model\Order(array('_id'=>$doc['orderId']),$app);
 		$order->delete();
 	}
-	
+		
 	$payment = new Model\Payment($doc,$app);
 	$app['validateModel']($app, $payment,$groups=array('product-purchase'));
 
@@ -1183,6 +1189,23 @@ $app->post('/shopping-cart/checkout', function (Request $request) use ($app) {
 	$doc['ownerId'] = $orderId;
 	$doc['ownerClass'] = "Order";
 	$doc['items'] = $order_doc['shoppingCart'];
+
+
+	if(strpos($doc['number'], '...') !== false){
+		$user = $app['session']->get('user');
+		if(is_object($user['user_id'])){
+			$member = new Model\Member(array('_id'=>$user['user_id']),$app);
+			$user = $member->findById();
+		}elseif(!is_array($user)){
+			$user = array();
+		}
+		// prepare the card payment fields
+		if(is_array($user) && array_key_exists('payment',$user) && is_array($user['payment']) && !empty($user['payment']) && array_key_exists('number', $user['payment'])){
+			$doc['number'] = str_replace('.x', '', $user['payment']['number']);
+		}
+		
+	}
+	
 	$payment = new Model\Payment($doc,$app);
 	$paymentId = $payment->charge();
 

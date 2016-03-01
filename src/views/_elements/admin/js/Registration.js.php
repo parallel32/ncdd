@@ -27,7 +27,7 @@
 					}
 			   }
 			   ,postOnErrors:function(responseObj){
-			   		$('#payment-form .number').val(io.saw.Payment.hold_card);
+			   		//$('#payment-form .number').val(io.saw.Payment.hold_card);
 			   		$('.submit-registration').removeAttr("disabled");
 					$('.submit-registration').html('<i class="icon-ok"></i> Oops, Payment Failed - try again');
 			   }
@@ -55,7 +55,7 @@
 			    	
 			   }
 			   ,postOnErrors:function(responseObj){
-			   		$('#payment-form .number').val(io.saw.Payment.hold_card);
+			   		//$('#payment-form .number').val(io.saw.Payment.hold_card);
 			   		$('.submit-registration').removeAttr("disabled");
 					$('.submit-registration').html('<i class="icon-ok"></i> Oops, Registration Failed - try again');
 			   }
@@ -70,6 +70,9 @@
 				break;
 		}
 		if($('#currentPaymentType').val() == <?=\Saw\Model\Registration::$paymentType['CREDIT']?>){
+			io.saw.Payment.initiateRegistration();
+		}
+		if($('#currentPaymentType').val() == <?=\Saw\Model\Registration::$paymentType['ACH']?>){
 			io.saw.Payment.initiateRegistration();
 		}
 		

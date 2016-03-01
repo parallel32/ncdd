@@ -426,7 +426,8 @@ endif; ?>
                      <div class="row-fluid">
                         <div class="span12 ">
                            <? if($this->vars['activate_waitlist'] == false): ?>
-                              <button type="button" class="btn blue check">Click to Pay By Check</button>
+                              <button type="button" class="btn blue check">Click to Pay By Mailing a Check</button>
+                              <button type="button" class="btn blue ach">Click to Pay By Check Online</button>
                               <button type="button" class="btn blue credit">Click to Pay by Credit Card</button>
                               <? if(is_array($this->vars['seminar']) && array_key_exists('register',$this->vars['seminar']) && is_array($this->vars['seminar']['register']) && array_key_exists('scholarship',$this->vars['seminar']['register']) && $this->vars['seminar']['register']['scholarship'] == 'ON'): ?>
                               <button type="button" class="btn purple scholarship">Click to Apply for a Scholarship</button>
@@ -463,6 +464,160 @@ endif; ?>
                      background-image: url('/assets/img/card-discover.gif');
                      }
                      </style>
+
+
+                     <div  id="payment-form-ach" class="hide">
+                        <input type="hidden" class="memberId" name="doc[payment][memberId]" value="<?=($signed_in) ? $this->vars['member']['_id']: '';?>">
+                        <input type="hidden" class="description" name="doc[payment][description]" value="<?='INV-'.time();?>">
+                        <input type="hidden" class="title" name="doc[payment][title]" value="<?=$this->vars['seminar']['headline'].' - '.$this->vars['seminar']['location'].' - '.$this->vars['seminar']['startDate']['monthDay'].' - '.$this->vars['seminar']['endDate']['monthDay'].', '.$this->vars['seminar']['startDate']['year']?>">
+                        <input type="hidden" class="amount" name="doc[payment][amount]" value="<?=($signed_in || !empty($this->vars['nlpro'])) ? $this->vars['seminar']['register']['memberPrice'] :$this->vars['seminar']['register']['nonMemberPrice'] ?>">
+
+                        <h3 class="form-section">6. Pay By Check Online</h3>
+                        <div class="row-fluid">
+                           <div class="span8 ">
+                              <div class="control-group ">
+                                 <label class="control-label">Your Check Number</label>
+                                 <div class="controls">
+                                    <input id="ach-checkNumber" type="text" autocomplete="on" name="doc[payment][checkNumber]" class="m-wrap span8 checkNumber" value="">
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        <div class="row-fluid">
+                           <div class="span8 ">
+                              <div class="control-group ">
+                                 <label class="control-label">Account Type</label>
+                                 <div class="controls">
+                                    <select id="ach-accountType" class="span4 accountType" name="doc[payment][accountType]">
+                                       <option value="pc">Primary Checking</option>
+                                       <option value="ps">Primary Savings</option>
+                                       <option value="bc">Backup Checking</option>
+                                       <option value="bs">Backup Savings</option>
+                                    </select>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        <div class="row-fluid">
+                           <div class="span8 ">
+                              <div class="control-group ">
+                                 <label class="control-label">Account Number</label>
+                                 <div class="controls">
+                                    <input id="ach-accountNumber" type="text" autocomplete="on" name="doc[payment][accountNumber]" class="m-wrap span8 accountNumber">
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        
+                        <div class="row-fluid">
+                           <div class="span8 ">
+                              <div class="control-group ">
+                                 <label class="control-label">Routing Number</label>
+                                 <div class="controls">
+                                    <input id="ach-routingNumber" type="text" autocomplete="on" name="doc[payment][routingNumber]" class="m-wrap span8 routingNumber">
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        
+                        <div class="row-fluid">
+                           <div class="span8 ">
+                              <div class="control-group ">
+                                 <label class="control-label">Driving License Number</label>
+                                 <div class="controls">
+                                    <input id="ach-drivingLicenseNumber" type="text" autocomplete="on" name="doc[payment][drivingLicenseNumber]" class="m-wrap span8 drivingLicenseNumber">
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        <div class="row-fluid">
+                           <div class="span8 ">
+                              <div class="control-group ">
+                                 <label class="control-label">Driving License State</label>
+                                 <div class="controls">
+                                    <input id="ach-drivingLicenseState" type="text" autocomplete="on" name="doc[payment][drivingLicenseState]" class="m-wrap span8 drivingLicenseState">
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        
+                        
+                        <h3 class="form-section">Billing Address</h3>
+                        <div class="row-fluid">
+                           <div class="span8 ">
+                              <div class="control-group ">
+                                 <label class="control-label">Address Line 1</label>
+                                 <div class="controls">
+                                    <input id="card-addressLine1" type="text" autocomplete="on" name="doc[payment][addressLine1]" class="m-wrap span8 addressLine1" value="<?=($signed_in) ? $this->vars['location']['addressLine1']: ''?>">
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        <div class="row-fluid">
+                           <div class="span8 ">
+                              <div class="control-group ">
+                                 <label class="control-label">Address Line 2</label>
+                                 <div class="controls">
+                                    <input id="card-addressLine2" type="text" autocomplete="on" name="doc[payment][addressLine2]" class="m-wrap span8 addressLine2" value="<?=($signed_in) ? $this->vars['location']['addressLine2']: ''?>">
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        <div class="row-fluid">
+                           <div class="span8 ">
+                              <div class="control-group ">
+                                 <label class="control-label">City</label>
+                                 <div class="controls">
+                                    <input id="card-city" type="text" autocomplete="on" name="doc[payment][city]" class="m-wrap span8 city" value="<?=($signed_in) ? $this->vars['location']['city']: ''?>">
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        <div class="row-fluid">
+                           <div class="span8 ">
+                              <div class="control-group ">
+                                 <label class="control-label">State/Province/Region</label>
+                                 <div class="controls">
+                                    <input id="card-stateProvinceRegion" type="text" autocomplete="on" name="doc[payment][stateProvinceRegion]" class="m-wrap span8 stateProvinceRegion" value="<?=($signed_in) ? $this->vars['location']['state']: ''?>">
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        <div class="row-fluid">
+                           <div class="span8 ">
+                              <div class="control-group ">
+                                 <label class="control-label">Zip/PostalCode</label>
+                                 <div class="controls">
+                                    <input id="card-zipPostalCode" type="text" autocomplete="on" name="doc[payment][zipPostalCode]" class="m-wrap span8 zipPostalCode" value="<?if($signed_in){if(strlen($this->vars['location']['zip']) < 5){echo str_pad($this->vars['location']['zip'],5,'0',STR_PAD_LEFT);}else if(strlen($this->vars['location']['zip']) > 5 && strlen($this->vars['location']['zip']) < 9){str_pad($this->vars['location']['zip'],9,'0',STR_PAD_LEFT);}else{echo $this->vars['location']['zip'];}}?>">
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        <div class="row-fluid">
+                           <div class="span8 ">
+                              <div class="control-group ">
+                                 <label class="control-label">Country</label>
+                                 <div class="controls">
+                                    <input id="card-country" type="text" autocomplete="on" name="doc[payment][country]" class="m-wrap span8 country" value="<?=($signed_in) ? $this->vars['location']['country']: ''?>">
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                     </div>
+
+
                      <div id="payment-form" class="hide">
                         
                         <input type="hidden" class="memberId" name="doc[payment][memberId]" value="<?=($signed_in) ? $this->vars['member']['_id']: '';?>">

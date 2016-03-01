@@ -8,6 +8,7 @@
                             <a href="/shopping-cart" class="checkoutBtn pull-right">Edit Shopping Cart</a>
                           </div>
                     </div>
+
                     <div class="row-fluid checkout" style="padding-top:5px;">
                         
                         <!-- BEGIN FORM-->
@@ -77,7 +78,7 @@
                                    <div class="control-group ">
                                       <label class="control-label">Your name as it appears on the card</label>
                                       <div class="controls">
-                                         <input type="text" name="doc[name]" class="m-wrap span8 name" value="<?=(!empty($this->vars['user']) && array_key_exists('displayName', $this->vars['user']) ) ? $this->vars['user']['displayName']: '';?>">
+                                         <input type="text" name="doc[name]" class="m-wrap span8 name" value="<?=(!empty($this->vars['user']) && is_array($this->vars['user']) && array_key_exists('payment', $this->vars['user']) && !empty($this->vars['user']['payment']) && is_array($this->vars['user']['payment'])) ? $this->vars['user']['payment']['name']: '';?>">
                                       </div>
                                    </div>
                                 </div>
@@ -88,7 +89,7 @@
                                    <div class="control-group ">
                                       <label class="control-label">Credit Card Number</label>
                                       <div class="controls">
-                                         <input type="text" name="doc[number]" class="m-wrap span8 number">
+                                         <input type="text" name="doc[number]" class="m-wrap span8 number" value="<?=(!empty($this->vars['user']) && is_array($this->vars['user']) && array_key_exists('payment', $this->vars['user']) && !empty($this->vars['user']['payment']) && is_array($this->vars['user']['payment'])) ? $this->vars['user']['payment']['number']: '';?>">
                                       </div>
                                    </div>
                                 </div>
@@ -99,7 +100,7 @@
                                    <div class="control-group ">
                                       <label class="control-label">Card Security Code <a id="cvv-dialog-btn" href="#">(what is this?)</a></label>
                                       <div class="controls">
-                                         <input type="text" name="doc[cvc]" class="m-wrap span8 cvc">
+                                         <input type="text" name="doc[cvc]" class="m-wrap span8 cvc" value="<?=(!empty($this->vars['user']) && is_array($this->vars['user']) && array_key_exists('payment', $this->vars['user']) && !empty($this->vars['user']['payment']) && is_array($this->vars['user']['payment'])) ? $this->vars['user']['payment']['cvc']: '';?>">
                                       </div>
                                       <span>What is this?</span>
                                    </div>

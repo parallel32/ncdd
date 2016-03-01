@@ -618,8 +618,11 @@
 	}
 	<? endif; ?>
 	Member.save = function (){
-		tinymce.activeEditor.save();
-		$('#input-body').val(tinymce.activeEditor.getContent());
+		if(tinymce.hasOwnProperty('activeEditor') && !!tinymce.activeEditor){
+			tinymce.activeEditor.save();	
+			$('#input-body').val(tinymce.activeEditor.getContent());
+		}		
+		
 		io.saw.FormPost.activate({postUrl:'/member/edit'
 		   ,serializeSelector:':input'
 		   ,postOnComplete:function(responseObj,responseStatus){

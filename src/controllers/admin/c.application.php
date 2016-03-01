@@ -629,6 +629,11 @@ $app->get('/application/update-member/{memberId}', function ($memberId, Request 
 	$member = new Model\Member($doc=array('_id'=>$memberId), $app);
 	$member = $member->findById();
 	
+
+	$locobj = new Model\Location(array('ownerId'=>$memberId),$app);
+	$locations = $locobj->getByOwner();
+	$member['locations'] = $locations;
+
 	// prepare the card payment fields
 	if(is_array($member) && array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && array_key_exists('number', $member['payment'])){
 		$member['payment']['cvc'] = str_replace('.x', '', $member['payment']['cvc']);
@@ -654,7 +659,7 @@ $app->get('/application/update-member/{memberId}', function ($memberId, Request 
 					);
 	$view_vars = array(
 						 'active'=>'Dashboard'
-						,'page-plugin'=>'datatables'
+						,'page-plugin'=>'datatables,editor'
 						,'headline'=>'Membership Renewal Form'
 						,'description'=>"Fill in and submit this application to begin your membership renewal process."
 						,'crumbs'=>$crumbs
@@ -724,7 +729,7 @@ $app->post('/application/renewal/promocode/validate', function (Request $request
     
     return new Response(json_encode(array('valid'=>$valid, 'type'=>$type,'message' => $message)), 200,array('Content-Type' => 'application/json'));
 });
-/**
+/*
 
 RENEWAL SUBMISSIONS HERE
 
@@ -750,6 +755,7 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
     // retrieve document from request
 	$doc = $request->get('doc');
 	$doc['userAgent'] = $request->headers->get('User-Agent');
+	$doc_orig = $doc;
 
 	// check if the promocode is valid otherwise clear it
 	if(array_key_exists('renewalpromocode', $doc)){
@@ -838,10 +844,12 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 			
 
 			if(is_array($tmpmem['payment']) && array_key_exists('number', $tmpmem['payment']) && !empty($tmpmem['payment']['number']) && strlen($tmpmem['payment']['number']) > 10){
-				// make sure the renewalREUSE is true
-				//$tmpmem['payment']['renewalREUSE'] = 'yes';
-				//$memberobj = new Model\Member(array('_id'=>$memberId,'payment'=>$tmpmem['payment']),$app);
-				//$memberobj->saveSafe();
+				// make sure the renewalREUSE is updated only if they check the box to yes...otherwise it's unchanged.
+				if(array_key_exists('termsAcknowledgement', $doc) && !empty($doc['termsAcknowledgement']) && $doc['termsAcknowledgement'] == 'yes'){
+					$tmpmem['payment']['renewalREUSE'] = 'yes';
+					$memberobj = new Model\Member(array('_id'=>$memberId,'payment'=>$tmpmem['payment']),$app);
+					$memberobj->saveSafe();
+				}
 			}else{
 				$tmprenewalcredit = (is_array($tmpmem['payment']) && array_key_exists('renewalCredit', $tmpmem['payment'])) ? $tmpmem['payment']['renewalCredit']: '';
 				if(!empty($tmprenewalcredit))
@@ -912,6 +920,41 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 	$renewal = new Model\Renewal($member['renewal'],$app);
 	$renewal->setRenewalByMember($member['_id']);
 	
+	// update member's profile
+	if(!empty($doc_orig['firstName'])){
+		$member = new Model\Member(array(
+			'_id'=>$memberId
+			,'firstName'=>$doc_orig['firstName']
+			)
+		,$app);
+		$member->saveSafe();
+	}
+	if(!empty($doc_orig['lastName'])){
+		$member = new Model\Member(array(
+			'_id'=>$memberId
+			,'lastName'=>$doc_orig['lastName']
+			)
+		,$app);
+		$member->saveSafe();
+	}
+	if(!empty($doc_orig['middleName'])){
+		$member = new Model\Member(array(
+			'_id'=>$memberId
+			,'middleName'=>$doc_orig['middleName']
+			)
+		,$app);
+		$member->saveSafe();
+	}
+	if(!empty($doc_orig['email'])){
+		$member = new Model\Member(array(
+			'_id'=>$memberId
+			,'email'=>$doc_orig['email']
+			)
+		,$app);
+		$member->saveSafe();
+	}
+
+
 	return new Response(json_encode(array(
 		'label'=>'Your application was received.  Thank you.',
 		'message'=>'Thank you for your interest in NCDD.  Your application has been submitted.  You will be notified by the College if there are any questions or concerns that need to be addressed.')), 200,array('Content-Type' => 'registration/json')
@@ -1590,7 +1633,7 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 	$application = new Model\Apply($doc=array(), $app);
 	$approved = $application->fetchByStatus('APPROVED',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
 	$trial = $application->fetchByStatus('TRIAL',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
-	$paid = $application->fetchByDatePaid(90, $offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
+	$paid = $application->fetchByDatePaidRange('Jan 1','now', $offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
 
 	$ncddtrialpromocode = $application->fetchByStatus('TRIAL',$offset, $limit,$filter=array('promocode'=>array('$in'=>array('TRIAL','DIVTRIAL','PDTRIAL','RFTRIAL','ALLENTRAPP'))));
 	$allentrapptrialpromocode = $application->fetchByStatus('TRIAL',$offset, $limit,$filter=array('promocode'=>array('$in'=>array('ALLENTRAPP'))));

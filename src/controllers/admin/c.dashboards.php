@@ -168,9 +168,10 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 				// retry email Q
 				error_log('emails sent from the email queue: '.file_get_contents('http://'.SAW_ADMIN_WEBSITE.'/dashboard/emailq'));	
 				// fix active trial members - be sure they're de-listed and also send a notice when they're 2 days away from expiring
-				//error_log('trial members expire notification and de-list fix: '.file_get_contents('http://'.SAW_ADMIN_WEBSITE.'/dashboard/trialmembers'));	
+				error_log('trial members expire notification and de-list fix: '.file_get_contents('http://'.SAW_ADMIN_WEBSITE.'/dashboard/trialmembers'));	
 
 			} catch (Exception $e) {
+				error_log('no worries .. will just try again on the next chance...error message:'.print_r($e->getMessage(),true));
 				// no worries .. will just try again on the next chance.
 			}
 			
@@ -206,28 +207,58 @@ $app->get('/dashboard/trialmembers', function (Request $request) use ($app) {
 	
 	$now =  new Model\Date($app,'now');
 	$application = new Model\Apply($doc=array(), $app);
-	$trial = $application->fetchByStatus('TRIAL',$offset=0, $limit=1000,$filter=array('trial.endDate.date'=>array('$gte'=> new \MongoDate(strtotime($now->fullDateTime))),'type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
+	$trial = $application->fetchByStatus('TRIAL',$offset=0, $limit=1000,$filter=array('trial.endDate.date'=>array('$lte'=> new \MongoDate(strtotime($now->fullDateTime))),'type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
 
 	//*
 	if(is_array($trial) && count($trial) > 0){
 		$cnt = 0;
+		$secondcnt = 0;
 		foreach($trial as $application):
 			try {
-				
+
 				// make sure they're not listed.
 				$member = new Model\Member(array('_id'=>$application['memberId'],'listed'=>'no'),$app);
 				$member->saveEdit();
 				
-				$end = \Carbon\Carbon::createFromTimeStamp(strtotime($application['trial']['endDate']['fullMonth']), $application['trial']['timeZone']);
-				$days = $end->diffInDays();
-				if( $days < 5 && $days > 1){
+				// check if they've already recieved their emails
+				$es = new Model\EmailSent(array(),$app);
+				$es = $es->fetchEmailSent($to=$application['email'],$subject='Your NCDD Trial Membership has expired');
+
+				if(is_array($es) && !empty($es)){
+					$count = (count($es) > 0) ? count($es) : 0;
+					if($count == 1){
+						$end = \Carbon\Carbon::createFromTimeStamp(strtotime($es[0]['sentDate']['fullMonth']), $es[0]['timeZone']);
+						$email_sent = $end->diffInDays();
+						//echo "<pre>";print_r($email_sent." ".$es[0]['sentDate']['fullMonth']);echo "</pre>";
+						if($email_sent == 7){
+							// send the second email.
+							//*
+							$email['to'] = $application['email'];
+							$email['subject'] = 'Your NCDD Trial Membership has expired';
+							$email['body'] = $app['view']->render('email/new-member-trial-expiring','email', $view_vars=array('endDate'=>$application['trial']['endDate']['fullMonth']));;
+							$app['sendMail']($email['subject'], $email['body'], $email['to']);
+							//*/	
+							$secondcnt++;	
+						}
+						
+					}elseif($count > 1){
+						//echo "<pre>";print_r('do nothing:'.$application['email']);echo "</pre>";
+						// do nothing because it means they got their second email already.
+					}
+					
+				}else{ // no emails have been sent so send the first.
 					// send
+					//*
 					$email['to'] = $application['email'];
-					$email['subject'] = 'Your NCDD Trial Membership is expiring in '.$days.' days';
+					$email['subject'] = 'Your NCDD Trial Membership has expired';
 					$email['body'] = $app['view']->render('email/new-member-trial-expiring','email', $view_vars=array('endDate'=>$application['trial']['endDate']['fullMonth']));;
 					$app['sendMail']($email['subject'], $email['body'], $email['to']);
+					//*/
 					$cnt++;
 				}
+				
+				
+			
 				
 				
 			} catch (Exception $e) {
@@ -240,7 +271,7 @@ $app->get('/dashboard/trialmembers', function (Request $request) use ($app) {
 		$count = 0;
 	}
 	//*/
-	return "number of members in trial mode: ".$count." >>>>> number of emails sent:".$cnt;
+	return "number of members in trial mode: ".$count." >>>>> number of first emails sent:".$cnt." >>>> second emails sent:".$secondcnt;
 });
 
 return $app;

@@ -86,6 +86,15 @@ class EmailSent extends Model {
 		return $result;
 	}
 
+	public function fetchEmailSent($to,$subject){
+
+		$fields = array();// get all fields
+		$result = array();
+		$regex = new \MongoRegex("/".$subject."/i");
+		$result = $this->find($query=array('to'=>$to,'subject'=>$regex),$fields,true,$sort=array('sentDate.date'=>-1),$offset=0,$limit=300000000);		
+
+		return $result;
+	}
 	public function search($string){
 
 		$fields = array();// get all fields

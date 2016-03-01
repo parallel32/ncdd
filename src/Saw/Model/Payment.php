@@ -14,8 +14,8 @@ use Symfony\Component\Validator\ExecutionContext;
 class Payment extends Model {
 	
 	public $collection = 'payment';
-	static public $paymentType = array('CHECK'=>10,'CREDIT'=>40);
-	static public $paymentTypeReversed = array(10=>'CHECK',40=>'CREDIT');
+	static public $paymentType = array('CHECK'=>10,'CREDIT'=>40,'ACH'=>50);
+	static public $paymentTypeReversed = array(10=>'CHECK',40=>'CREDIT',50=>'ACH');
 	public $currentPaymentType;
     public $type;
 	public $name;
@@ -84,18 +84,18 @@ class Payment extends Model {
 		$metadata->addPropertyConstraint('number', new Constraints\NotBlank(array('groups' => array('cc','product-purchase'))));
 		$metadata->addPropertyConstraint('cvc', new Constraints\NotBlank(array('groups' => array('cc','product-purchase'))));
 		
-		$metadata->addPropertyConstraint('checkNumber', new Constraints\NotBlank(array('groups' => array('check'))));
-		$metadata->addPropertyConstraint('accountType', new Constraints\NotBlank(array('groups' => array('check'))));
-		$metadata->addPropertyConstraint('accountNumber', new Constraints\NotBlank(array('groups' => array('check'))));
-		$metadata->addPropertyConstraint('routingNumber', new Constraints\NotBlank(array('groups' => array('check'))));
-		$metadata->addPropertyConstraint('drivingLicenseNumber', new Constraints\NotBlank(array('groups' => array('check'))));
-		$metadata->addPropertyConstraint('drivingLicenseState', new Constraints\NotBlank(array('groups' => array('check'))));
+		$metadata->addPropertyConstraint('checkNumber', new Constraints\NotBlank(array('groups' => array('ach','check'))));
+		$metadata->addPropertyConstraint('accountType', new Constraints\NotBlank(array('groups' => array('ach','check'))));
+		$metadata->addPropertyConstraint('accountNumber', new Constraints\NotBlank(array('groups' => array('ach','check'))));
+		$metadata->addPropertyConstraint('routingNumber', new Constraints\NotBlank(array('groups' => array('ach','check'))));
+		$metadata->addPropertyConstraint('drivingLicenseNumber', new Constraints\NotBlank(array('groups' => array('ach','check'))));
+		$metadata->addPropertyConstraint('drivingLicenseState', new Constraints\NotBlank(array('groups' => array('ach','check'))));
 		
-		$metadata->addPropertyConstraint('addressLine1', new Constraints\NotBlank(array('groups' => array('check','cc','manual','product-purchase'))));
-		$metadata->addPropertyConstraint('city', new Constraints\NotBlank(array('groups' => array('check','cc','manual','product-purchase'))));
-		$metadata->addPropertyConstraint('stateProvinceRegion', new Constraints\NotBlank(array('groups' => array('check','cc','manual','product-purchase'))));
-		$metadata->addPropertyConstraint('zipPostalCode', new Constraints\NotBlank(array('groups' => array('check','cc','manual','product-purchase'))));
-		$metadata->addPropertyConstraint('country', new Constraints\NotBlank(array('groups' => array('check','cc','manual','product-purchase'))));
+		$metadata->addPropertyConstraint('addressLine1', new Constraints\NotBlank(array('groups' => array('ach','check','cc','manual','product-purchase'))));
+		$metadata->addPropertyConstraint('city', new Constraints\NotBlank(array('groups' => array('ach','check','cc','manual','product-purchase'))));
+		$metadata->addPropertyConstraint('stateProvinceRegion', new Constraints\NotBlank(array('groups' => array('ach','check','cc','manual','product-purchase'))));
+		$metadata->addPropertyConstraint('zipPostalCode', new Constraints\NotBlank(array('groups' => array('ach','check','cc','manual','product-purchase'))));
+		$metadata->addPropertyConstraint('country', new Constraints\NotBlank(array('groups' => array('ach','check','cc','manual','product-purchase'))));
 		
 		$metadata->addPropertyConstraint('addressLine1Shipping', new Constraints\NotBlank(array('groups' => array('product-purchase'))));
 		$metadata->addPropertyConstraint('cityShipping', new Constraints\NotBlank(array('groups' => array('product-purchase'))));
@@ -104,17 +104,17 @@ class Payment extends Model {
 		$metadata->addPropertyConstraint('countryShipping', new Constraints\NotBlank(array('groups' => array('product-purchase'))));
 		
 		//$metadata->addPropertyConstraint('phone', new Constraints\NotBlank(array('groups' => array('product-purchase'))));
-		//$metadata->addPropertyConstraint('email', new Constraints\NotBlank(array('groups' => array('check','cc','manual','product-purchase'))));
-		//$metadata->addPropertyConstraint('email', new Constraints\Email(array('message'=>'invalid email','groups' => array('check','cc','manual','product-purchase'))));
+		//$metadata->addPropertyConstraint('email', new Constraints\NotBlank(array('groups' => array('ach','check','cc','manual','product-purchase'))));
+		//$metadata->addPropertyConstraint('email', new Constraints\Email(array('message'=>'invalid email','groups' => array('ach','check','cc','manual','product-purchase'))));
 		
 		// product-purchase group isn't required here because the payment must validate before an Order record can be created
 		//$metadata->addPropertyConstraint('ownerId', new Constraints\NotBlank(array('groups' => array('cc','manual')))); 
 		//$metadata->addPropertyConstraint('ownerClass', new Constraints\NotBlank(array('groups' => array('cc','manual'))));
 		
-		$metadata->addPropertyConstraint('description', new Constraints\NotBlank(array('groups' => array('check','cc','manual','product-purchase'))));
-		$metadata->addPropertyConstraint('title', new Constraints\NotBlank(array('groups' => array('check','cc','manual','product-purchase'))));
-		$metadata->addPropertyConstraint('amount', new Constraints\NotBlank(array('groups' => array('check','cc','manual','product-purchase'))));
-		$metadata->addConstraint(new Callback(array('methods' => array('checkAmount'),'groups' => array('check','cc','manual','product-purchase'))));
+		$metadata->addPropertyConstraint('description', new Constraints\NotBlank(array('groups' => array('ach','check','cc','manual','product-purchase'))));
+		$metadata->addPropertyConstraint('title', new Constraints\NotBlank(array('groups' => array('ach','check','cc','manual','product-purchase'))));
+		$metadata->addPropertyConstraint('amount', new Constraints\NotBlank(array('groups' => array('ach','check','cc','manual','product-purchase'))));
+		$metadata->addConstraint(new Callback(array('methods' => array('checkAmount'),'groups' => array('ach','check','cc','manual','product-purchase'))));
 
 	}
 	public function checkAmount(ExecutionContext $context){
@@ -292,7 +292,7 @@ $body = <<< EOT
       <v1:Transaction>
 EOT;
 
-if($this->currentPaymentType == self::$paymentType['CHECK']):
+if($this->currentPaymentType == self::$paymentType['ACH']):
 
 $body .= <<< EOT
         <v1:TeleCheckTxType>
@@ -381,6 +381,8 @@ $body .= <<< EOT
   </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>
 EOT;
+
+
 		$ch = $this->prepareCurl($body);
 		// calling cURL and saving the SOAP response message in a variable which 
 		// contains a string like "<SOAP-ENV:Envelope ...>...</SOAP-ENV:Envelope>":
@@ -472,7 +474,7 @@ EOT;
 	    //////////////////
 		// XML TO ARRAY //
 		//////////////////
-		$default_msg = "Our processor refused the transaction.  Please, check your billing address, card number and card code and try again.  If it persists, please try another card or contact us.";
+		$default_msg = "Oops.  Looks like our processor refused your card.  Please, check your billing address, card number, CVC code and try again.  If it persists, please try another card or contact us.";
 		if(	
 			!empty($xml_array)
 			&& is_array($xml_array) 
@@ -520,7 +522,7 @@ error_log('for variable: here  ==>'.print_r('A',true));
 
 		){
 error_log('for variable: here  ==>'.print_r('B',true));
-			$message = $xml_array['SOAP-ENV:ENVELOPE']['SOAP-ENV:BODY']['SOAP-ENV:FAULT']['DETAIL'];
+			$message = $default_msg;//$xml_array['SOAP-ENV:ENVELOPE']['SOAP-ENV:BODY']['SOAP-ENV:FAULT']['DETAIL'];
 		}else{
 error_log('for variable: here  ==>'.print_r('C',true));
 			if(is_array($xml_array)){
