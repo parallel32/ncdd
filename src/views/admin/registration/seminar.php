@@ -326,7 +326,7 @@ endif; ?>
                   <div class="row-fluid">
                      <div class="span12 ">
                         <div class="control-group">
-                           <label class="control-label"><?=(array_key_exists('attendanceCertStatement', $this->vars['seminar'])) ? $this->vars['seminar']['attendanceCertStatement'] : ''?>
+                           <label class="control-label"><?=(is_array($this->vars['seminar']) && array_key_exists('attendanceCertStatement', $this->vars['seminar'])) ? $this->vars['seminar']['attendanceCertStatement'] : ''?>
                            </br>
                            </label>
                            </br>
