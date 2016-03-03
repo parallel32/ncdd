@@ -283,6 +283,10 @@ ul.sidebarlist li {
                                         <? if( !empty($member['currentFacultyPosition']) && $member['currentFacultyPosition'] == \Saw\Model\Member::$facultyPositionReversed[\Saw\Model\Member::$facultyPosition['DELEGATE']]): ?>
                                         <img width="100" src="<?=SAW_PUBLIC_SSL_CDN?>/badge/<?=$member['_id']?>/exec" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
                                         <? endif; ?>
+                                        <? if($member['sciencesCurriculum'] =='Yes'): ?>
+                                        <img class="sheild" width="100" src="<?=SAW_PUBLIC_SSL_CDN?>/badge/<?=$member['_id']?>/sciencesCurriculum" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
+                                        <? endif; ?>
+                                        
                                     </div>
                                     <div class="span4 bc">
                                         <a href="mailto:<?=$member['email']?>"><img src="<?=SAW_PUBLIC_SSL_CDN?>/assets/img/contactme.png"></a>
