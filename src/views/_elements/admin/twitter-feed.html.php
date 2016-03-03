@@ -26,16 +26,16 @@
                         cTweet = function(obj){
                         $('#dui-news-hidden').html(obj.body);
                         
-                        $.each($('#dui-news-hidden .tweet.h-entry'),function(index, value){
+                        $.each($('#dui-news-hidden .timeline-TweetList-tweet'),function(index, value){
                            if(index == 5){
                               return false;
                            }
-                           var posted_time = $(value).find('time').attr('aria-label');
-                           var post_link = $(value).find('.u-url.permalink').attr('href');
-                           var profile_img = $(value).find('.header .profile img').attr('data-src-2x');
-                           var name = $(value).find('.header .profile .p-name').html();
-                           var handle = $(value).find('.header .profile .p-nickname').html();
-                           var tweet = $(value).find('.e-entry-content').html();
+                           var posted_time = $(value).find('.timeline-Tweet-timestamp time').attr('aria-label');
+                           var post_link = $(value).find('.timeline-Tweet-timestamp').attr('href');
+                           var profile_img = $(value).find('.Avatar').attr('data-src-2x');
+                           var name = $(value).find('.TweetAuthor-name').html();
+                           var handle = $(value).find('.TweetAuthor-screenName').html();
+                           var tweet = $(value).find('.timeline-Tweet-text').html();
                            
                            var new_tweet = ''+
                            '                        <div class="row-fluid portfolio-block">'+
