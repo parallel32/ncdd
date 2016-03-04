@@ -3651,6 +3651,351 @@ $app->post('/renewals-autopay', function (Request $request) use ($app) {
 
 
 
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+///  STANDARD RENEWAL FOLLOW UP SCREEN, POST CONTROLLER, EMAIL ROUTE THAT SENDS THE PRIVATE LINKS //  NOT AUTO PAY FOLLOW UP 
+////////////////////////////////////////////////////////////////////////////////////////////////////
+$app->get('/renewal-send-unsubmitted-followup-email', function (Request $request) use ($app) {
+
+	$member = new Model\Member(array(),$app);
+	$members = $member->fetchByRenewalStatus('UNSUBMITTED',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']),$offset=0, $limit=1000);
+	$i=0;
+	foreach ($members as $member) {
+
+		$subject = 'NCDD Membership Renewal Reminder';
+		$to = $member['email'];
+		$view_vars = array('displayName'=>$member['displayName']
+							,'securelink'=>'https://'.SAW_ADMIN_WEBSITE.'/renewal-follow-up/'.$member['_id']
+		);
+		$body = $app['view']->render('email/renewal-reminder','email', $view_vars);
+		if(!empty($to)){
+			error_log('$to: '.print_r($to,true));
+		}else{
+			error_log('securlink: '.print_r($view_vars['securelink'],true));
+		}
+echo "<pre>";print_r($body);echo "</pre>";		
+//		$app['sendMail']($subject, $body, $to);
+		error_log('$i: '.print_r($i,true));
+		$i++;
+	}
+
+	return new Response('', 200,array('Content-Type' => 'text/html'));
+})->before($mustbeADMIN);
+
+// screen
+$app->get('/renewal-follow-up/{renewId}', function ($renewId, Request $request) use ($app) {
+
+	$member = new Model\Member(array('_id'=>$renewId),$app);
+	$member = $member->findById();
+
+	if(is_array($member) && !empty($member['renewal']) && is_array($member['renewal']) && !empty($member['renewal']['paymentId'])){
+		$view_vars = array(
+						'headline'=>'Renewal Membership already paid'
+						,'description'=>"You're already paid up for this year.  Thank you."
+						,'member'=>$member
+						);
+		return $app['view']->render('application/renewal-follow-up-already-paid', 'blank', $view_vars);
+	}
+
+	
+
+
+	// derive membership dues:
+	// new app = yearsInLawPractice
+	// renewal = membershipDues - 6+ = $225, <6 $175, pd $50
+	$um = new Model\Apply(array(),$app);
+	$um_res = $um->find(array('class'=>'UpdateMember','memberId'=>$member['_id']),array('membershipDues'=>1));
+	if(!empty($um_res)){
+		$membershipDues = $um_res[0]['membershipDues'];
+	}else{
+
+		// look in new member apps
+		$nm = new Model\Apply(array(),$app);
+		$nm_res = $nm->find(array('class'=>'ApplyNewMember','memberId'=>$member['_id']),array('yearsInLawPractice'=>1));
+		if(!empty($nm_res)){
+			$expired_found2++;
+			if(((int)date('Y') - (int)$nm_res[0]['yearsInLawPractice']) > 1000){
+				$membershipDues = ( (int)$nm_res[0]['yearsInLawPractice'] >= 6) ? 225 : 175;
+			}else{
+				$membershipDues = ( ((int)date('Y') - (int)$nm_res[0]['yearsInLawPractice']) >= 6) ? 225 : 175;
+			}
+		}
+	}
+	// sanity check for public defenders
+	$pd = new Model\Member(array('_id'=>$member['_id']),$app);
+	$pd = $pd->findById();
+	if($pd['currentMembership'] == Model\Member::$membership['PUBLIC DEFENDER']){
+		$membershipDues = 50;
+	}
+
+
+	$view_vars = array(
+						'headline'=>'Membership Renewal'
+						,'description'=>"Renewa your membership now."
+						,'member'=>$member
+						,'membershipDues'=>$membershipDues
+						);
+	if(is_array($member) && array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && array_key_exists('number', $member['payment'])){
+		$member['payment']['cvc'] = str_replace('.x', '', $member['payment']['cvc']);
+		$member['payment']['number'] = str_replace('.x', '', $member['payment']['number']);
+		$member['payment']['number'] = (!empty($member['payment']['number'])) ? '...'.substr($member['payment']['number'], -4) :'';	
+		$view_vars['payment'] = $member['payment'];
+	}else{
+		$view_vars['payment'] = array();
+	}
+
+	return $app['view']->render('application/renewal-follow-up-pay', 'blank', $view_vars);
+    
+});
+
+// post 
+$app->post('/renewal-follow-up-pay', function (Request $request) use ($app) {
+	// retrieve document from request
+    $orig_doc = $request->get('doc');
+    $member = new Model\Member(array('_id'=>$orig_doc['_id']),$app);
+    $member = $member->findById();
+
+    // derive membership dues:
+	// new app = yearsInLawPractice
+	// renewal = membershipDues - 6+ = $225, <6 $175, pd $50
+	$um = new Model\Apply(array(),$app);
+	$um_res = $um->find(array('class'=>'UpdateMember','memberId'=>$member['_id']),array('membershipDues'=>1));
+	if(!empty($um_res)){
+		$membershipDues = $um_res[0]['membershipDues'];
+	}else{
+
+		// look in new member apps
+		$nm = new Model\Apply(array(),$app);
+		$nm_res = $nm->find(array('class'=>'ApplyNewMember','memberId'=>$member['_id']),array('yearsInLawPractice'=>1));
+		if(!empty($nm_res)){
+			$expired_found2++;
+			if(((int)date('Y') - (int)$nm_res[0]['yearsInLawPractice']) > 1000){
+				$membershipDues = ( (int)$nm_res[0]['yearsInLawPractice'] >= 6) ? 225 : 175;
+			}else{
+				$membershipDues = ( ((int)date('Y') - (int)$nm_res[0]['yearsInLawPractice']) >= 6) ? 225 : 175;
+			}
+		}
+	}
+	// sanity check for public defenders
+	$pd = new Model\Member(array('_id'=>$member['_id']),$app);
+	$pd = $pd->findById();
+	if($pd['currentMembership'] == Model\Member::$membership['PUBLIC DEFENDER']){
+		$membershipDues = 50;
+	}
+
+
+	// pay
+	
+
+	$location = new Model\Location(array('member'=>$member),$app);
+	$location = $location->getByMemberId();
+
+
+
+// PREPARE APPLICATION				
+	if(!empty($member['renewal']['applicationId'])){
+		$app_id = $member['renewal']['applicationId'];
+	}else{
+		
+		$orig_doc['memberId'] = $member['_id'];
+		$orig_doc['email'] = $member['email'];
+		$orig_doc['firstName'] = $member['firstName'];
+		$orig_doc['lastName'] = $member['lastName'];
+		$orig_doc['currentStatus'] = Model\Apply::$status['DRAFT'];
+		$orig_doc['approvedDate'] = new \stdClass();
+		$orig_doc['submittedDate'] = new \stdClass();
+		$orig_doc['paidDate'] = new \stdClass();
+		$orig_doc['paymentId'] = new \stdClass();
+		$orig_doc['membershipDues'] = $membershipDues;
+		$orig_doc['addToListServ'] = 'yes';
+		$orig_doc['payByCheck'] = 'no';
+
+		$application = new Model\UpdateMember($orig_doc, $app);
+		// validate the model
+    	$app['validateModel']($app,$application,$groups=array('update_member'));
+		$app_id = $application->insert();		
+	}
+	
+    
+	
+// MAKE THE PAYMENT
+
+	/////////////////////////////////
+	// prepare their correct total //
+	/////////////////////////////////
+	$pro_rate = array('q'=>0,'a'=>0);
+	$discount = 0;
+	 // CREDIT DISCOUNT FOR MEMBERS WHO HOLD A CREDIT WITH US
+	$discount2 = 0;
+	if(array_key_exists('payment',$member) 
+	      && !empty($member['payment'])
+	      && is_array($member['payment'])
+	      && array_key_exists('renewalCredit',$member['payment'])
+	      && !empty($member['payment']['renewalCredit'])
+	      && $member['payment']['renewalCredit'] > 0
+	): 
+	   $discount2  = $member['payment']['renewalCredit'];
+	endif;
+                       
+    $amount = $membershipDues;
+
+    $new_renewal_credit = null;
+    $amount = $amount-$discount-$discount2;
+    if($amount < 0 && !empty($discount2)){
+    	$new_renewal_credit = abs($amount);
+    }else if($amount > 0 && !empty($discount2)){
+    	$new_renewal_credit = '-';
+    }
+    $amount = ($amount <= 0) ? 0:$amount;
+    
+    ////////////////////////////////////////////////////////////////////////////////
+	// activate a manual charge and create receipt - only if the declineCount = 0 //
+	// if it's more than zero then the card must be updated 					  //
+	////////////////////////////////////////////////////////////////////////////////
+
+	$doc['memberId'] = $member['_id'];
+	$doc['ownerId'] = $app_id;
+	$doc['ownerClass'] = 'UpdateMember';
+	$doc['description'] = 'INV-'.time();
+	$doc['title'] = 'UPDATE MEMBER APPLICATION';
+	$doc['firstName'] = $member['firstName'];
+	$doc['lastName'] = $member['lastName'];
+	$doc['email'] = '';
+	$doc['phone'] = '';
+	$doc['addressLine1'] = $orig_doc['addressLine1'];
+	$doc['addressLine2'] = $orig_doc['addressLine2'];
+	$doc['city'] = $orig_doc['city'];
+	$doc['stateProvinceRegion'] = $orig_doc['stateProvinceRegion'];
+	$doc['zipPostalCode'] = $orig_doc['zipPostalCode'];
+	$doc['country'] = $orig_doc['country'];
+	$doc['amount'] = $amount;
+	$doc['expMonth'] = $orig_doc['expMonth'];
+	$doc['expYear'] = $orig_doc['expYear'];
+	$doc['number'] = str_replace('.x', '', (strpos($orig_doc['number'], '...') !== false) ? $member['payment']['number'] : $orig_doc['number']);
+	error_log('yyyyyyyyyy------yyyyyyyyyy-----yyyyyyyyyy------number: '.print_r($doc['number'],true));
+	//$doc['number'] = $member['payment']['number'];
+	$doc['cvc'] = str_replace('.x', '', $orig_doc['cvc']);
+	$doc['name'] = $orig_doc['name'];
+	// prepare the invoice
+	$application = new Model\Apply(array('_id'=>$app_id),$app);
+	$application = $application->findById($id='_id', $fields=array(), $slaveOkay=false);
+
+   	$doc['invoiceBlock'] = $app['view']->element('invoice-block',array('application'=>$application,'member'=>$member,'location'=>$location,'pro_rated_membership_dues'=>$pro_rate));
+	$payment = new Model\Payment($doc,$app);
+
+	try {
+		$app['validateModel']($app, $payment,$groups=array('cc'));	
+	} catch (Exception $e) {
+		error_log(__FILE__.' '.__LINE__.' for variable: payment  ==>'.print_r($payment,true));
+		throw new \Saw\Exceptions\SawException(new \Saw\Exceptions\PaymentException(),$e->getMessage());
+	}
+	
+	try {
+		$paymentId = $payment->charge();	
+	} catch (Exception $e) {
+		error_log('here.....yyyyyyyyyy: '.print_r('here.......yyyyyyyyyy',true));
+		$ar_doc['_id'] = $ar_res['_id'];
+		$ar_doc['paid'] = 'no';
+		$ar_doc['expired'] = 'no';
+		$ar_doc['valid'] = 'no';
+		$ar_doc['paymentId'] = new \stdClass();
+		$ar_doc['declined'] = 'yes';
+		$ar_doc['declinedMessage'] = $e->getMessage();
+		$ar = new Model\AutoRenew($ar_doc,$app);
+		$ar->saveSafe();
+
+		return new Response(json_encode(array('message' => $ar_doc['declinedMessage'])), 400,array('Content-Type' => 'application/json'));
+
+	}
+	try {
+
+// update application with paymentid and paid date
+		$appl = new Model\Apply(array('_id'=>$app_id,'currentStatus'=>Model\Apply::$status['PAID'],'paymentId'=>$paymentId,'paidDate'=>new Model\Date($app, 'now')), $app);
+		$appl->saveSafe();
+// update member's renewal credit 
+		$plite = new Model\PaymentLite($member['payment'],$app);
+		$tpaymnt = $plite->__toArray();
+    	$tpaymnt['declineCount'] = 0;
+
+    	if(!is_null($new_renewal_credit))
+    		$tpaymnt['renewalCredit'] = $new_renewal_credit;
+    	$tmem = new Model\Member(array('_id'=>$application['memberId'],'payment'=>$tpaymnt),$app);
+    	$tmem->saveSafe();
+
+// PREPARE THE RENEWAL ARRAY IN THE MEMBER RECORD
+		$mem['renewal']['applicationId'] = $app_id; 
+		$mem['renewal']['currentStatus'] = Model\Renewal::$status['PAID'];
+		$mem['renewal']['submittedDate'] = new \stdClass();
+		$mem['renewal']['approvedDate'] = new \stdClass();
+		$mem['renewal']['paidDate'] = new Model\Date($app, 'now');
+		$mem['renewal']['paymentId'] = $paymentId;
+		$mem['renewal']['payByCheck'] = 'no';
+
+		$renewal = new Model\Renewal($mem['renewal'],$app);
+		$renewal->setRenewalByMember($member['_id']);
+
+// PREPARE SERVER RESPONSE MESSAGE
+		$message = 'Thank you for renewing your NCDD membership.  An email confirmation has been sent to your address on file: '.$member['email'];
+
+// PREPARE TO SEND THE EMAIL
+		$subject = 'NCDD Membership Dues Payment Received';
+		$to = $member['email'];
+		$view_vars = array('firstName'=>$member['firstName']
+							,'middleName'=>(array_key_exists('middleName', $member)) ? $member['middleName'] : ''
+							,'lastName'=>$member['lastName']
+							,'membershipDues'=>$membershipDues
+		);
+		$body = $app['view']->render('email/renewal-paid-thank-you','email', $view_vars);
+		
+		$app['sendMail']($subject, $body, $to);
+
+		
+	} catch (Exception $e) {
+		error_log('exception cauhgt after successful credit card charge: '.print_r($e->getMessage(),true));	
+	}	
+
+	return new Response(json_encode(array('message' => $message)), 200,array('Content-Type' => 'application/json'));
+});
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///  END -------    STANDARD RENEWAL FOLLOW UP SCREEN, POST CONTROLLER, EMAIL ROUTE THAT SENDS THE PRIVATE LINKS //  NOT AUTO PAY FOLLOW UP 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //////////////
 // RENEWALS //
 //////////////

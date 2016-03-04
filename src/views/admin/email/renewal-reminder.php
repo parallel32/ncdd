@@ -11,8 +11,7 @@
 												<h2 class="h2"></h2>
 												<br />
 												<div class="textdark">
-<? $middleName = (!empty($this->vars['middleName'])) ? ' '.$this->vars['middleName'].' ':' '; ?>
-<br>Dear <?=$this->vars['firstName']?><?=$middleName?><?=$this->vars['lastName']?>,
+<br>Dear <?=$this->vars['displayName']?>,
 <br>
 <br>
 As you know, your membership dues were due on December 31st.  We also mailed an invoice to your office in November.
