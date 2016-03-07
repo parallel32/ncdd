@@ -3899,17 +3899,8 @@ $app->post('/renewal-follow-up-pay', function (Request $request) use ($app) {
 		$paymentId = $payment->charge();	
 	} catch (Exception $e) {
 		error_log('here.....yyyyyyyyyy: '.print_r('here.......yyyyyyyyyy',true));
-		$ar_doc['_id'] = $ar_res['_id'];
-		$ar_doc['paid'] = 'no';
-		$ar_doc['expired'] = 'no';
-		$ar_doc['valid'] = 'no';
-		$ar_doc['paymentId'] = new \stdClass();
-		$ar_doc['declined'] = 'yes';
-		$ar_doc['declinedMessage'] = $e->getMessage();
-		$ar = new Model\AutoRenew($ar_doc,$app);
-		$ar->saveSafe();
-
-		return new Response(json_encode(array('message' => $ar_doc['declinedMessage'])), 400,array('Content-Type' => 'application/json'));
+		
+		return new Response(json_encode(array('message' => $e->getMessage())), 400,array('Content-Type' => 'application/json'));
 
 	}
 	try {
