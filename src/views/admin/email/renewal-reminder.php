@@ -14,7 +14,7 @@
 <br>Dear <?=$this->vars['displayName']?>,
 <br>
 <br>
-As you know, your membership dues were due on December 31st.  We also mailed an invoice to your office in November.
+As you know, your membership dues were due on January 31st.  We also mailed an invoice to your office in November.
 <br>
 <br>
 On behalf of the Membership Committee, we would like to extend our invitation to renew your Membership with us. Maintaining active membership, recognizes your pursuits in the defense of those accused of alcohol and drug related charges.
