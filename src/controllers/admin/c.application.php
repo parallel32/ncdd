@@ -3688,7 +3688,7 @@ echo "<pre>";print_r($body);echo "</pre>";
 
 // screen
 $app->get('/renewal-follow-up/{renewId}', function ($renewId, Request $request) use ($app) {
-
+	$expired_found2 = 0;
 	$member = new Model\Member(array('_id'=>$renewId),$app);
 	$member = $member->findById();
 
@@ -3754,6 +3754,7 @@ $app->get('/renewal-follow-up/{renewId}', function ($renewId, Request $request) 
 
 // post 
 $app->post('/renewal-follow-up-pay', function (Request $request) use ($app) {
+	$expired_found2 = 0;
 	// retrieve document from request
     $orig_doc = $request->get('doc');
     $member = new Model\Member(array('_id'=>$orig_doc['_id']),$app);
