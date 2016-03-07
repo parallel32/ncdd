@@ -3663,6 +3663,7 @@ $app->get('/renewal-send-unsubmitted-followup-email', function (Request $request
 	$member = new Model\Member(array(),$app);
 	$members = $member->fetchByRenewalStatus('UNSUBMITTED',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']),$offset=0, $limit=1000);
 	$i=0;
+	echo "<pre>";print_r(count($members));echo "</pre>";
 	foreach ($members as $member) {
 
 		$subject = 'NCDD Membership Renewal Reminder';
@@ -3676,7 +3677,7 @@ $app->get('/renewal-send-unsubmitted-followup-email', function (Request $request
 		}else{
 			error_log('securlink: '.print_r($view_vars['securelink'],true));
 		}
-echo "<pre>";print_r($body);echo "</pre>";		
+echo "<pre>";print_r($body);echo "</pre>";
 		$app['sendMail']($subject, $body, $to);
 		error_log('$i: '.print_r($i,true));
 		$i++;
