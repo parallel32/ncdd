@@ -3677,7 +3677,7 @@ $app->get('/renewal-send-unsubmitted-followup-email', function (Request $request
 			error_log('securlink: '.print_r($view_vars['securelink'],true));
 		}
 echo "<pre>";print_r($body);echo "</pre>";		
-//		$app['sendMail']($subject, $body, $to);
+		$app['sendMail']($subject, $body, $to);
 		error_log('$i: '.print_r($i,true));
 		$i++;
 	}

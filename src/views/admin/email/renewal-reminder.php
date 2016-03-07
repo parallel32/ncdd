@@ -26,7 +26,7 @@ Please click the secure link below, which will direct you to ncdd.com, so that y
 <a href="<?=$this->vars['securelink']?>"><?=$this->vars['securelink']?></a>
 <br>
 <br>
-<br>If you have any questions, don't hesitate to cantact me.
+<br>If you have any questions, don't hesitate to contact me.
 <br>
 <br>Sincerely,
 <br>
