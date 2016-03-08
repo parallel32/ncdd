@@ -241,11 +241,15 @@
                                  if(is_array($member['renewal']['submittedDate']) && array_key_exists('fullDateTime', $member['renewal']['submittedDate'])){
                                     $human = \Carbon\Carbon::createFromTimeStamp(strtotime($member['renewal']['submittedDate']['fullDateTime']), $member['timeZone']); 
                                     $human = $human->diffForHumans();
+                                    $monthDay = $member['renewal']['submittedDate']['monthDay'];
+                                    $shortTime = $member['renewal']['submittedDate']['shortTime'];
                                  }else{
+                                    $monthDay = '';
+                                    $shortTime = '';
                                     $human = '';
                                  }
                                  ?>
-                                 <td class="hidden-480 "><b><?=$human?></b><br><?=$member['renewal']['submittedDate']['monthDay'].' '.$member['renewal']['submittedDate']['shortTime']?></td><td class=" ">
+                                 <td class="hidden-480 "><b><?=$human?></b><br><?=$monthDay.' '.$shortTime?></td><td class=" ">
                                     <a data-id="<?=$member['renewal']['applicationId']?>" class="btn blue mini view"><i class=" "></i> Application</a>
                                     <a data-id="<?=$member['_id']?>" class="btn blue mini view member"><i class=" "></i> Member</a>
                                     <a data-id="<?=$member['_id']?>" class="btn mini yellow-stripe user-login">LogIn</a>
