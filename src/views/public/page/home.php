@@ -243,7 +243,7 @@
                             <? endforeach; ?>
                         </ul>
                         <div class="text-center">
-                            <a href="/blog/tag/virtual-forensic-library" class="btn">All Posts</a>
+                            <a href="/blog/tag/virtual-forensic-library" class="btn">All Posts</a>&nbsp;&nbsp;<a href="https://<?=SAW_ADMIN_WEBSITE?>/vfl" class="btn">Access the Library</a>
                         </div>
                         <? else: ?>
                         <div class="text-center">
