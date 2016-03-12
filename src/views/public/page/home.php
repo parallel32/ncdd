@@ -161,6 +161,98 @@
                     </div>
                     <!--/ LATEST DUI BLOG POSTS -->
 
+                    <!-- LATEST MEMBER IN THE SPOTLIGHT BLOG POSTS -->
+                    <div class="row-fluid bottomPadding postsList">
+                        
+                        <div class="title text-center">
+                            <div class="bg">
+                                <h3>Members in the spotlight</h3>
+                            </div>
+                        </div>
+                        <? if(!empty($this->vars['mits'])): ?>
+                        <ul class="thumbnails">
+                            <? foreach($this->vars['mits'] as $post): ?>
+                            <li class="span3">
+                                <div class="thumbnail">
+                                    <? if(!empty($post['image'])): ?>
+                                    <a href="/blog/<?=$post['_id']?><?=$post['slug']?>"><img style="height:inherit;" src="<?=$post['image']['urls']['small']['SSLCDN'] ?>" alt=""></a>
+                                    <? endif; ?>
+                                    <div class="caption">
+                                        <h4><a href="/blog/<?=$post['_id']?><?=$post['slug']?>"><?=$post['headline']?></a></h4>
+                                        <ul class="info">
+                                            <li><?=$post['publishDate']['fullMonth']?></li>
+                                        </ul>
+                                        <? /**
+
+                                        */?>
+                                        <p><?if(strlen($post['body'])>=299){$post['body'] = strip_tags($post['body']); echo substr($post['body'],0,strpos($post['body'], ' ',299));?> ...<br><br><p class="text-center"><a href="/blog/<?=$post['_id']?><?=$post['slug']?>">Read More</a></p><?}else{ echo strip_tags($post['body']); }?></p>
+                                        <div class="autor">
+                                            <img src="<?=(!empty($post['author']['image'])) ? $post['author']['image']['urls']['small']['SSLCDN'] : '/noprofileimage';?>" alt="" class="avatar pull-left">
+                                            <? $middleName = (!empty($post['author']['middleName'])) ? ' '.$post['author']['middleName'].' ':' '; ?>
+                                            <div class="pull-left"><span>Posted By:</span><br><a href="/member/<?=$post['author']['_id']?>/<?=$post['author']['slug']?>"><?=$post['author']['firstName'].$middleName.$post['author']['lastName']?> </a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <? endforeach; ?>
+                        </ul>
+                        <div class="text-center">
+                            <a href="/blog/tag/member-in-the-spotlight" class="btn">All Posts</a>
+                        </div>
+                        <? else: ?>
+                        <div class="text-center">
+                            We currently have not published any posts.  Please try back later.
+                        </div>
+                        <? endif; ?>
+                    </div>
+                    <!--/ LATEST MEMBER IN THE SPOTLIGHT BLOG POSTS -->
+
+                    <!-- LATEST VFL BLOG POSTS -->
+                    <div class="row-fluid bottomPadding postsList">
+                        
+                        <div class="title text-center">
+                            <div class="bg">
+                                <h3>virtual forensic library</h3>
+                            </div>
+                        </div>
+                        <? if(!empty($this->vars['vfl'])): ?>
+                        <ul class="thumbnails">
+                            <? foreach($this->vars['vfl'] as $post): ?>
+                            <li class="span3">
+                                <div class="thumbnail">
+                                    <? if(!empty($post['image'])): ?>
+                                    <a href="/blog/<?=$post['_id']?><?=$post['slug']?>"><img style="height:inherit;" src="<?=$post['image']['urls']['small']['SSLCDN'] ?>" alt=""></a>
+                                    <? endif; ?>
+                                    <div class="caption">
+                                        <h4><a href="/blog/<?=$post['_id']?><?=$post['slug']?>"><?=$post['headline']?></a></h4>
+                                        <ul class="info">
+                                            <li><?=$post['publishDate']['fullMonth']?></li>
+                                        </ul>
+                                        <? /**
+
+                                        */?>
+                                        <p><?if(strlen($post['body'])>=299){$post['body'] = strip_tags($post['body']); echo substr($post['body'],0,strpos($post['body'], ' ',299));?> ...<br><br><p class="text-center"><a href="/blog/<?=$post['_id']?><?=$post['slug']?>">Read More</a></p><?}else{ echo strip_tags($post['body']); }?></p>
+                                        <div class="autor">
+                                            <img src="<?=(!empty($post['author']['image'])) ? $post['author']['image']['urls']['small']['SSLCDN'] : '/noprofileimage';?>" alt="" class="avatar pull-left">
+                                            <? $middleName = (!empty($post['author']['middleName'])) ? ' '.$post['author']['middleName'].' ':' '; ?>
+                                            <div class="pull-left"><span>Posted By:</span><br><a href="/member/<?=$post['author']['_id']?>/<?=$post['author']['slug']?>"><?=$post['author']['firstName'].$middleName.$post['author']['lastName']?> </a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <? endforeach; ?>
+                        </ul>
+                        <div class="text-center">
+                            <a href="/blog/tag/virtual-forensic-library" class="btn">All Posts</a>
+                        </div>
+                        <? else: ?>
+                        <div class="text-center">
+                            We currently have not published any posts.  Please try back later.
+                        </div>
+                        <? endif; ?>
+                    </div>
+                    <!--/ LATEST VFL BLOG POSTS -->
+
                     <!-- FEATURED PAGES -->
                     <div class="row-fluid bottomPadding postsList">
                         <div class="title text-center">

@@ -57,7 +57,14 @@
                                             <? } ?>
 
 
-                                            <p class="postDescr"><?=substr($post['body'],0,strpos($post['body'], ' ',500))?> ...<a href="/blog/<?=$post['_id']?><?=$post['slug']?>">read more</a></p>
+                                            <p class="postDescr"><? 
+                                                $txt_res = substr($post['body'],0,@strpos($post['body'], ' ',500));
+                                                if(strlen($txt_res) == 0){
+                                                    echo $post['body'];
+                                                }else{
+                                                    echo $txt_res;
+                                                }
+                                            ?> ...<a href="/blog/<?=$post['_id']?><?=$post['slug']?>">read more</a></p>
                                             <? $middleName = (!empty($post['author']['middleName'])) ? ' '.$post['author']['middleName'].' ':' '; ?>
                                             <div class="postInfo"><span class="postAuthor">Posted by <a href="/member/<?=$post['author']['_id']?><?=$post['author']['slug']?>"><?=$post['author']['firstName'].$middleName.$post['author']['lastName']?> </a></span></div>
                                         </div>

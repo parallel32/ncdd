@@ -307,8 +307,13 @@ class Blog extends Model {
 		return $result;
 
 	}
-	public function fetchPublished($offset=0,$limit=10000){
+	public function fetchPublished($offset=0,$limit=10000,$excludetags=array()){
 		$query = array('currentStatus'=>self::$status['PUBLISH']);
+		if(!empty($excludetags)){
+			$filter = array('tags.slug'=>array('$nin'=>$excludetags));
+			$query = array_merge($query,$filter);
+		}
+		
 		$fields = array();
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('publishDate.date'=>-1),(int)$offset,(int)$limit);
 		if(!empty($result)):

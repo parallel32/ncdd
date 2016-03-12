@@ -95,7 +95,7 @@ $app->get('/', function (Request $request) use ($app) {
 	$view_vars = array_merge($page_vars,$view_vars);
 
 	$blog = new Model\Blog(array(),$app);
-	$posts = $blog->fetchPublished(0,4);
+	$posts = $blog->fetchPublished(0,4,array('/virtual-forensic-library','/member-in-the-spotlight'));
 	if(!empty($posts)){
 		for ($i=0; $i < count($posts); $i++) { 
 			/**
@@ -105,6 +105,34 @@ $app->get('/', function (Request $request) use ($app) {
 		}
 	}
 	$view_vars['posts'] = $posts;
+
+	
+	// fetch member spotlight
+	$blog = new Model\Blog(array(),$app);
+	$mits = $blog->fetchTag($tag='member-in-the-spotlight', 0, 4);
+	if(!empty($mits)){
+		for ($i=0; $i < count($mits); $i++) { 
+			/**
+				todo
+			*/
+		    $mits[$i]['body'] = $app['prepare_content_remove_media']($mits[$i]['body']); 
+		}
+	}
+	$view_vars['mits'] = $mits;
+
+	// fetch VFL
+	$blog = new Model\Blog(array(),$app);
+	$vfl = $blog->fetchTag($tag='virtual-forensic-library', 0, 4);
+	if(!empty($vfl)){
+		for ($i=0; $i < count($vfl); $i++) { 
+			/**
+				todo
+			*/
+		    $vfl[$i]['body'] = $app['prepare_content_remove_media']($vfl[$i]['body']); 
+		}
+	}
+	$view_vars['vfl'] = $vfl;
+	
 
 	$seminar = new Model\Seminar($doc=array(), $app);
 	$seminars = $seminar->find($query=array(),$fields=array(),true,$sort=array('startDate.date'=>1),0,4);
