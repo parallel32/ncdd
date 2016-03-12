@@ -171,7 +171,7 @@ $app->get('/blog', function (Request $request) use ($app) {
 	$view_vars = array_merge($page_vars,$view_vars);
 
 	$blog = new Model\Blog(array(),$app);
-	$posts = $blog->fetchPublished(0,500);
+	$posts = $blog->fetchPublished(0,500,array('/virtual-forensic-library','/member-in-the-spotlight'));
 	if(!empty($posts)){
 		for ($i=0; $i < count($posts); $i++) { 
 			/**
