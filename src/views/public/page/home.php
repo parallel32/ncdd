@@ -313,7 +313,7 @@ The alcohol breath test is the most commonly used form of alcohol testing eviden
                     How it Works<br>
                     How to Challenge and <br>Exclude It</a></h4>
                                         <ul class="info">
-                                            <li>September 8, 2014</li>
+                                            <li>March 14, 2016</li>
                                         </ul>
                                         <p class="descr ">The majority of States recognize that the Horizontal Gaze Nystagmus (HGN) test is scientific evidence.<sup>i</sup> As a scientific test it generally requires expert testimony for admissibility. Even States that have found, as a matter of law, that the scientific basis for HGN and the general method of applying it are sufficiently reliable to allow admission without proof of these elements in each case, generally require some degree of proof that the test was administered correctly on the occasion in question. ...</p>
                                         <br>
