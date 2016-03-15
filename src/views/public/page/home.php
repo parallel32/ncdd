@@ -30,6 +30,7 @@
                             </div>
                             <div class="tab-content">
                                 <div class="tab-pane active " id="welcome">
+                                <iframe class="pull-right" height="70%" src="//www.youtube.com/embed/IgTzHmMDqng?rel=0" frameborder="0" allowfullscreen></iframe>
                                     <?=$this->vars['welcome']['body']?>
                                     <div class="text-center">
                                         <br><a href="https://twitter.com/NCDDNews" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @NCDDNews</a>&nbsp;&nbsp;
