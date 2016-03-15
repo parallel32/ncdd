@@ -267,7 +267,7 @@
                                     <div class="caption">
                                         <h4 class=""><a href="/we-help-win-more-cases">We Help Win More Cases</a></h4>
                                         <ul class="info">
-                                            <li>August 11, 2014</li>
+                                            <li>March 15, 2016</li>
                                         </ul>
                                         <p class="descr ">When you join the National College for DUI Defense, it’s like adding 1300 lawyers to your knowledge base and to your law firm. The NCDD listserver provides members access to lawyers and advice that will change a difficult case to one with copies of motions, ideas, and assistance unlike anything you may have received in the past. And you will win more cases.</p>
                                         <br>
@@ -278,9 +278,9 @@
                             <li class="span3">
                                 <div class="thumbnail">
                                     <div class="caption">
-                                        <h4 class=""><a href="/the-top-20-myths-of-breath-blood-and-urine-testing-part-1-of-2">The Top 20 Myths of Breaht, Blood and Urine Testing Part 1</a></h4>
+                                        <h4 class=""><a href="/the-top-20-myths-of-breath-blood-and-urine-testing-part-1-of-2">The Top 20 Myths of Breath, Blood and Urine Testing Part 1</a></h4>
                                         <ul class="info">
-                                            <li>August 11, 2014</li>
+                                            <li>March 15, 2016</li>
                                         </ul>
                                         <p class="descr">Myth #1: Breath means alveolar air
 The alcohol breath test is the most commonly used form of alcohol testing evidence in drunk driving prosecutions. Many articles praise the breath test as a highly accurate and reliable means of testing the amount of alcohol in the alveolar air of a person at the time of the test, assuming certain safeguards are met. ...</p>
@@ -298,7 +298,7 @@ The alcohol breath test is the most commonly used form of alcohol testing eviden
                                     <div class="caption">
                                         <h4 class=""><a href="/faculty">Our Faculty</a></h4>
                                         <ul class="info">
-                                            <li>August 12, 2014</li>
+                                            <li>March 15, 2016</li>
                                         </ul>
                                         <p class="descr ">We would like to introduce our Faculty.  Through their tireless efforts, they help make our Organization great.  Please browse our roster to find a Faculty Member near you.</p>
                                         <br>
