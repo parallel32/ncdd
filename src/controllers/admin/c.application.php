@@ -293,11 +293,13 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 	$mem = new Model\Member(array('email'=>$doc['email']),$app);
 
 	if(!empty($doc['email']) && $application->findByEmail()){
+		error_log('AAAAAAA: '.print_r('AAAAAAA',true));
     	$response_arr = array('message'=>"Our records indicate you have already submitted an application.  Please Log-in if you are looking for another Application or contact NCDD directly.",
                               "invalidFields"=>array(array('name'=>'email','message'=>'Our records indicate you have already submitted an application.  Please Log-in if you are looking for another Application or contact NCDD directly.')));
         return new Response(json_encode($response_arr), 403,array('Content-Type' => 'application/json'));
     }
     if(!empty($doc['email']) && $mem->findByEmail()){
+    	error_log('BBBBBB: '.print_r('BBBBBB',true));
     	$response_arr = array('message'=>"Our records indicate you are already a member.  Please Log-in or contact NCDD directly.",
                               "invalidFields"=>array(array('name'=>'email','message'=>'Our records indicate you are already a member.  Please Log-in or contact NCDD directly.')));
         return new Response(json_encode($response_arr), 403,array('Content-Type' => 'application/json'));
@@ -843,25 +845,16 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 			$tmpmem = $tmpmem->findById();
 			
 
-			if(is_array($tmpmem['payment']) && array_key_exists('number', $tmpmem['payment']) && !empty($tmpmem['payment']['number']) && strlen($tmpmem['payment']['number']) > 10){
-				// make sure the renewalREUSE is updated only if they check the box to yes...otherwise it's unchanged.
-				if(array_key_exists('termsAcknowledgement', $doc) && !empty($doc['termsAcknowledgement']) && $doc['termsAcknowledgement'] == 'yes'){
-					$tmpmem['payment']['renewalREUSE'] = 'yes';
-					$memberobj = new Model\Member(array('_id'=>$memberId,'payment'=>$tmpmem['payment']),$app);
-					$memberobj->saveSafe();
-				}
-			}else{
-				$tmprenewalcredit = (is_array($tmpmem['payment']) && array_key_exists('renewalCredit', $tmpmem['payment'])) ? $tmpmem['payment']['renewalCredit']: '';
-				if(!empty($tmprenewalcredit))
-					$paymentlite->renewalCredit = $tmprenewalcredit;
-				$paymentlite->number = $paymentlite->number.'.x';
-				$paymentlite->expYear = substr($paymentlite->expYear, -2);
-				if(array_key_exists('termsAcknowledgement', $doc) && !empty($doc['termsAcknowledgement']) && $doc['termsAcknowledgement'] == 'yes'){
-					$paymentlite->renewalREUSE = 'yes';
-				}
-				$memberobj = new Model\Member(array('_id'=>$memberId,'payment'=>$paymentlite),$app);
-				$memberobj->saveSafe();
+			$tmprenewalcredit = (is_array($tmpmem['payment']) && array_key_exists('renewalCredit', $tmpmem['payment'])) ? $tmpmem['payment']['renewalCredit']: '';
+			if(!empty($tmprenewalcredit))
+				$paymentlite->renewalCredit = $tmprenewalcredit;
+			$paymentlite->number = $paymentlite->number.'.x';
+			$paymentlite->expYear = substr($paymentlite->expYear, -2);
+			if(array_key_exists('termsAcknowledgement', $doc) && !empty($doc['termsAcknowledgement']) && $doc['termsAcknowledgement'] == 'yes'){
+				$paymentlite->renewalREUSE = 'yes';
 			}
+			$memberobj = new Model\Member(array('_id'=>$memberId,'payment'=>$paymentlite),$app);
+			$memberobj->saveSafe();
 	    }
 	    
 	    
