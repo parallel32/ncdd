@@ -39,6 +39,8 @@ class Promotion extends Model {
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addPropertyConstraint('code', new Constraints\NotBlank(array('message'=>'cannot be blank')));
+		$metadata->addPropertyConstraint('startDate', new Constraints\NotBlank(array('message'=>'cannot be blank')));
+		$metadata->addPropertyConstraint('endDate', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('discountAmt', new Constraints\Type(array('type'=>'numeric','message'=>'must be a number')));
 		$metadata->addPropertyConstraint('giftDollarValue', new Constraints\Type(array('type'=>'numeric','message'=>'must be a whole dollar value')));
 		$metadata->addConstraint(new Callback(array(
