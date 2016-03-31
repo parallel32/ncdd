@@ -39,6 +39,13 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
 
 
          <? if($accessLevel >= EDITOR):?>
+            <li class="start <? echo ($this->vars['active'] == 'Promotion') ? 'active':'';?>">
+               <a href="/promotion">
+               <i class="icon-bolt"></i> 
+               <span class="title">Promotions</span>
+               <? echo ($this->vars['active'] == 'Promotion') ? '<span class="selected"></span>':'';?>
+               </a>
+            </li>
             <li class="<? echo (strpos($this->vars['active'], 'Application') !== false) ? 'active open':'open';?>">
                <a href="javascript:;">
                <i class="icon-copy"></i> 

@@ -24,6 +24,7 @@ $app->mount('/category',		include __DIR__.'/controllers/admin/c.category.php');
 $app->mount('/drive',			include __DIR__.'/controllers/admin/c.drive.php');
 $app->mount('/emailsent',		include __DIR__.'/controllers/admin/c.emailsent.php');
 $app->mount('/card',			include __DIR__.'/controllers/admin/c.card.php');
+$app->mount('/promotion',		include __DIR__.'/controllers/admin/c.promotion.php');
 
 // unmounted controllers usually have several levels of access defined in the routes. 
 // i.e. some admin, some public, some member only.

@@ -124,7 +124,7 @@
                         </div>
                      </div>
                      <!--/span-->
-                     <div class="span6 ">
+                     <!-- <div class="span6 ">
                         <div class="control-group">
                            <label class="control-label">Would you like to receive text alerts?</label>
                            <div class="controls">
@@ -135,8 +135,9 @@
                               <span class="help-block">Highly recommended.</span>
                            </div>
                         </div>
-                     </div>
+                     </div> -->
                      <!--/span-->
+                     <input type="hidden" name="doc[textAlertsOpt]" class="m-wrap span12 textAlertsOpt" value="yes">
                      
                   </div>
                   
@@ -172,7 +173,7 @@
                      </div>
                      <!--/span-->
                   </div>
-                  <div class="row-fluid">
+                  <!-- <div class="row-fluid">
                      <div class="span6 ">
                         <div class="control-group">
                            <label class="control-label">Would you like to be added to the NCDD List Server?</label>
@@ -185,7 +186,6 @@
                            </div>
                         </div>
                      </div>
-                     <!--/span-->
                      <div class="span6 ">
                         <div class="control-group">
                            <label class="control-label">Listserv Email (if different from above)</label>
@@ -194,8 +194,9 @@
                            </div>
                         </div>
                      </div>
-                     <!--/span-->
-                  </div>
+                  </div> -->
+                  <input type="hidden" name="doc[listServEmail]" class="m-wrap span12 listServEmail" value="">
+                  <input type="hidden" name="doc[addToListServ]" class="m-wrap span12 addToListServ" value="yes">
                   <!-- BEGIN ADDRESS -->
                   <h3 class="form-section">Business Address</h3>
                   <div class="row-fluid addr ">
@@ -351,11 +352,21 @@ jQuery(document).ready(function() {
                   <!-- END ADDRESS -->
                   <h3 class="form-section">2.</h3>
                   <div class="row-fluid">
-                     <div class="span12">
+                     <div class="span6">
                         <div class="control-group">
                            <label class="control-label">How did you hear about the NCDD?</label>
                            <div class="controls">
-                              <input type="text" name="doc[hearAboutNCDD]" class="m-wrap span12 hearAboutNCDD">
+                              <select name="doc[hearAboutNCDD]" class="m-wrap span6 hearAboutNCDD">
+                              <option value="">Please select</option>
+                              <option value="Google">Google</option>
+                              <option value="Yahoo">Yahoo</option>
+                              <option value="Bing">Bing</option>
+                              <option value="Other Search Engine">Other Search Engine</option>
+                              <option value="Friend/Collegue">Friend/Collegue</option>
+                              <option value="Existing Member">Existing Member</option>
+                              <option value="Seminar">Seminar</option>
+                              <option value="NCDD Promotion">NCDD Promotion</option>
+                              </select>
                            </div>
                         </div>
                      </div>
@@ -363,11 +374,17 @@ jQuery(document).ready(function() {
                   </div>
                   <h3 class="form-section">3.</h3>
                   <div class="row-fluid">
-                     <div class="span12">
+                     <div class="span6">
                         <div class="control-group">
                            <label class="control-label">Year of admission to practice:</label>
                            <div class="controls">
-                              <input type="text" name="doc[yearsInLawPractice]" class="m-wrap span12 yearsInLawPractice">
+                              <select name="doc[yearsInLawPractice]" class="m-wrap span6 yearsInLawPractice">
+                              <option value="">Please select</option>
+                              <? for($i=(int)date('Y'); $i >= (int)date('Y')-20; $i--){ ?>
+                              <option value="<?=$i?>"><?=$i?></option>
+                              <? } ?>
+                              <option value="1995">More than 20 years ago</option>
+                              </select>
                            </div>
                         </div>
                      </div>
@@ -377,7 +394,7 @@ jQuery(document).ready(function() {
                   <div class="row-fluid">
                      <div class="span12">
                         <div class="control-group">
-                           <label class="control-label">Are you a Public Defender?</label>
+                           <label class="control-label">Are you a full time Public Defender?</label>
                            <div class="controls">
                               <select class="small m-wrap publicDefender" name="doc[publicDefender]">
                                  <option value="no">No</option>
@@ -688,7 +705,6 @@ jQuery(document).ready(function() {
                      <!--/span-->
                   </div>
             <? endif;?>
-                  <h3 class="form-section">6.</h3>
                   <div class="row-fluid">
                      <div class="span12 ">
                         <div class="control-group">
@@ -728,66 +744,9 @@ jQuery(document).ready(function() {
                      </div>
                      <!--/span-->
                   </div>
-
-                  <h3 class="form-section">7. AUTHORIZATION AND RELEASE</h3>
-                  <div class="row-fluid">
-                     <div class="span12">
-                        <h3 class="text-center"><u>PARTIES</u></h3>
-                        <p>
-                           <u>APPLICANT</u> - person applying for initial membership status or a present member applying for renewal of his or her membership status. </br><u>NCDD</u> - The National College for DUI Defense, Inc.
-                        </p>
-                        <h3 class="text-center"><u>ACKNOWLEDGEMENT</u></h3>
-                        <p>
-                           I understand and agree that as a condition of present and continuing membership in NCDD I shall immediately report all facts or circumstances relating thereto to the Executive Director of NCDD:
-                        </p>
-                        <p>
-a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess is suspended, terminated, revoked, or restricted, or if I am otherwise disciplined or censured by a licensing authority for the practice of law before any court or jurisdiction;
-<br>b.&nbsp;&nbsp;if I obtain employment with any prosecuting authority either by contract, or if part time or full time or;
-<br>c.&nbsp;&nbsp;if I am no longer in substantial current involvement in the practice area of DUI/DWI defense;
-<br>d.&nbsp;&nbsp;if I fail to attend one (or more) seminars every two (2) years either sponsored by NCDD or at a State/local seminar approved by NCDD; or
-<br>e.&nbsp;&nbsp;if I am no longer eligible for membership in NCDD under the bylaws as amended. 
-                        </p>
-                        <p>
-                           I hereby authorize NCDD to charge the debit or credit card that I may have on file for any and all membership dues for membership or other fees at the level and rate then in effect until such time as I notify the Executive Director of NCDD to cancel such authorization. All membership dues will be charged on the due date as set out in the rules governing membership. Cancellation of use of this method of payment is prospective only. Notice of cancellation must be delivered to the Executive Director in writing or by email at least 14 days prior to the due date of membership dues or fees.
-                        </p>
-                        <h3 class="text-center"><u>AUTHORIZE AND RELEASE</u></h3>
-                        <p>
-                           Applicant does by this document give consent for the NCDD to conduct an investigation into my character and fitness to be a member, and to make inquiries and request such information from third parties as, in the sole discretion of NCDD, may be necessary for such investigation. I further authorize the use of any and all such information in the course of the NCDD’s investigation and evaluation of my application for general membership and annual renewal.
-                        </p>
-                        <h3 class="text-center"><u>INITIAL MEMBERSHIP AND/OR RENEWAL</u></h3>
-                        <p>
-                           I authorize and request every person or entity, governmental or private, having opinions or knowledge about me, or control of any documents, information, or data pertaining to me, to furnish to the NCDD or its representative such opinions, knowledge, documents or data. Without limiting the previously described authority, I specifically authorize the release of records pertaining to my criminal history, files of any state or professional association regarding disciplinary proceedings and complaints against me, and records of educational institutions concerning me.
-                           </br></br>
-                           I hereby authorize all persons set out above to answer any inquiries from the NCDD concerning me, and I waive absolutely any privileges or privacy rights I may have which are applicable to any documents or information referred to above and sought pursuant to this authorization and release.
-                           </br></br>
-                           Notwithstanding any statement herein to the contrary, this Authorization and Release shall not operate to release any medical or mental health records relating to alcohol, drug or chemical dependency.
-                           </br></br>
-                           I hereby release, discharge and hold harmless the NCDD, its agents or representatives, and any person or entity and its agents or representatives, from any and all liability arising out of the furnishing or use of the opinions, knowledge, documents, records or other data released pursuant to this Authorization and Release.
-                           </br></br>
-                           A photocopy of this authorization shall be accepted with the same validity as the original.
-                           </br></br>
-                        </p>
-                     </div>
-                     <!--/span-->
-                  </div>
-                  <div class="row-fluid">
-                     <div class="span12 ">
-                        <div class="control-group">
-                           <label class="control-label">By printing your name you acknowledge this Authorization and Release.</label>
-                           <div class="controls">
-                              <div class="input-prepend input-append">
-                                 <span class="add-on">Printed Name </span>
-                                 <input name="doc[authorizationReleasePrintedName]" class="m-wrap span12 authorizationReleasePrintedName" type="text" placeholder="">
-                                 <? $date = new \DateTime(); $datee = $date->format('dS').' of '.$date->format('F').', 20'.$date->format('y'); ?>
-                                 <input name="doc[authorizationReleasePrintedNameDate]" class="m-wrap span12 authorizationReleasePrintedNameDate" type="hidden" value="<?=$datee?>">
-                                 <span class="add-on"> <?=$datee?></span>
-                              </div>
-                           </div>
-                           
-                        </div>
-                     </div>
-                     <!--/span-->
-                  </div>
+                  <input name="doc[authorizationReleasePrintedName]" class="m-wrap span12 authorizationReleasePrintedName" type="hidden" value="">
+                  <input name="doc[authorizationReleasePrintedNameDate]" class="m-wrap span12 authorizationReleasePrintedNameDate" type="hidden" value="">
+                  
                   
                   <!--
                   <div class="row-fluid">
@@ -836,12 +795,39 @@ the   remainder of 2015 for free.  Offer expires December 31, 2015. </label> -->
                      <!--/span-->
                   </div>
                   <div id="promocodeverification" class="row-fluid hide">
-                     <div class="span10 ">
+                     
+                  <?
+                  foreach ($this->vars['promos'] as $promo):
+                  ?>
+                  <div class="row-fluid">
+                     <div class="span6 promocodeblocks <?=strtoupper($promo['code'])?>">
+                        <p class="promo-discount">
+                           Discount: <b><?=($promo['currentType'] == \Saw\Model\Promotion::$type['MONEY']) ? "$": '';?><?=$promo['discountAmt']?><?=($promo['currentType'] == \Saw\Model\Promotion::$type['PERCENT']) ? "%": '';?></b>
+                        </p>
+                        <br>
+                        <? if($promo['optInOnOff'] == 'on'){?>
                         <p class="alert alert-info">
-                        <b>I authorize the NCDD to store my credit card for future Annual Dues payments.</b>
-                        <span class="control-group"><span class="controls"><input type="checkbox" name="doc[termsAcknowledgement]" class="termsAcknowledgement" value="yes">Yes, I agree.</span></span>
-                     </p>
+                           <b><?=$promo['optInDisclosure']?></b>
+                           <br><span class="control-group"><span class="controls"><input type="checkbox" name="doc[optIn]" class="optIn" value="yes">Yes, I agree.</span></span>
+                        </p>
+                        <? } ?>
+                     </div>                     
+                  </div>
+                  <div class="row-fluid">
+                     <div class="span6 promocodeblocks <?=strtoupper($promo['code'])?>">
+                        <? if($promo['gift'] == 'yes'){?>
+                        <p class="">
+                           <b><?=$promo['giftName']?></b>&nbsp;-&nbsp;A $<?=$promo['giftDollarValue']?> value.
+                           <br>
+                           <?=$promo['giftDesc']?>
+                           <br>
+                           <img src="<?=$this->app['getImageURL']($promo['image'],'small')?>" width="200">
+                        </p>
+                        <? } ?>
                      </div>
+                  </div>
+                  <? endforeach; ?>
+
                   </div>
                   
                   

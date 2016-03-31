@@ -20,6 +20,9 @@ class Promotion extends Model {
     static public $type = array('MONEY'=>10,'PERCENT'=>20);
 	static public $typeReversed = array(10=>'MONEY',20=>'PERCENT');
 	public $currentType;
+	static public $status = array('NEWMEMBER'=>10,'RENEWAL'=>20,'STORE'=>20);
+	static public $statusReversed = array(10=>'NEWMEMBER',20=>'RENEWAL',20=>'STORE');
+	public $currentStatus;
 	public $discountAmt; 			// based on type this is either a whole dollar amt or a percent
 	public $optIn; 					// yes | no - this is for the optin to keep the payment method on file.
 	public $optInDisclosure; 		// the actual disclosure statement
@@ -27,20 +30,27 @@ class Promotion extends Model {
 	public $paymentLite; 			// saved payment details
 	public $gift; 					// yes | no - is there a gift; if so display it
 	public $giftName;				// name of the gift
+	public $giftDesc;				// description of the gift
 	public $giftDollarValue;		// the dollar value for display purposes
 	public $image; 					// gift image
 	public $isActive; 				// yes | no (determined by start and end date automaticall but can also be overwritten)
 	public $add;
+	public $timeZone='America/New_York';
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addPropertyConstraint('code', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		$metadata->addPropertyConstraint('discountAmt', new Constraints\Type(array('type'=>'numeric','message'=>'must be a number')));  j ,m,..
+		$metadata->addPropertyConstraint('discountAmt', new Constraints\Type(array('type'=>'numeric','message'=>'must be a number')));
 		$metadata->addPropertyConstraint('giftDollarValue', new Constraints\Type(array('type'=>'numeric','message'=>'must be a whole dollar value')));
 		$metadata->addConstraint(new Callback(array(
-            'methods' => array('optInValid'),
+            'methods' => array('optInValid')
+            ,'groups' => array('onform')
         )));
         $metadata->addConstraint(new Callback(array(
-            'methods' => array('codeValid'),
+            'methods' => array('codeValid')
+            ,'groups' => array('onform')
+        )));
+        $metadata->addConstraint(new Callback(array(
+            'methods' => array('codeActive'),
         )));
         $metadata->addConstraint(new Callback(array(
             'methods' => array('isValidStartDate'),
@@ -48,21 +58,27 @@ class Promotion extends Model {
         $metadata->addConstraint(new Callback(array(
             'methods' => array('isValidEndDate'),
         )));
-
 	}
 	public function optInValid(ExecutionContext $context){
-	
 		if($this->optInOnOff == 'on' && empty($this->optIn)){
 			$propertyPath = $context->getPropertyPath().'optIn';
         	$context->addViolationAtPath($propertyPath,'You must accept our opt-in disclosure in order to receive the promotion', array(), null);
         }
 	}
-	public function codeValid(ExecutionContext $context){
+	public function codeActive(ExecutionContext $context){
 	
 		$result = $this->findOne($query=array('code'=>$this->code,'isActive'=>'yes'),$fields=array(),$slaveOkay=true);
 		if(!empty($result) && $result['_id'] != $this->_id){
 			$propertyPath = $context->getPropertyPath().'code';
         	$context->addViolationAtPath($propertyPath,'This promo code is already active in the system.  Please select another one or wait until the active one expires or deactivate it manually.', array(), null);
+        }
+	}
+	public function codeValid(ExecutionContext $context){
+	
+		$result = $this->findOne($query=array('code'=>$this->code,'isActive'=>'yes'),$fields=array(),$slaveOkay=true);
+		if(!empty($result) && $result['code'] != $this->code){
+			$propertyPath = $context->getPropertyPath().'code';
+        	$context->addViolationAtPath($propertyPath,'This promo code is invalid.  Please check the code and try again.', array(), null);
         }
 	}
 	/**
@@ -101,7 +117,7 @@ class Promotion extends Model {
 	/**
 	 * validator helper function
 	*/
-	public function isValidExpirationDate(ExecutionContext $context){
+	public function isValidEndDate(ExecutionContext $context){
 		$date = '';
 		if(is_object($this->endDate)){
 			$date = $this->endDate->checkError;
@@ -137,19 +153,42 @@ class Promotion extends Model {
 		parent::__construct($app);
 		$this->init($doc);
 		if(!empty($doc['_id'])) $this->_id = (is_object($doc['_id'])) ? $doc['_id'] : new \MongoId($doc['_id']);
-        $this->name = $doc['name'];
-        $this->image = $doc['image'];
+        $this->code = strtoupper($doc['code']);
+        $this->startDate = (!empty($doc['startDate'])) ? (is_object($doc['startDate'])) ? $doc['startDate']->__toArray() : new Date(self::$app,$doc['startDate'], $this->timeZone)  : $doc['startDate'];
+		$this->endDate = (!empty($doc['endDate'])) ? (is_object($doc['endDate'])) ? $doc['endDate']->__toArray() : new Date(self::$app,$doc['endDate'], $this->timeZone)  : $doc['endDate'];
         $this->currentType = $doc['currentType'];
-        $this->add = $doc['add'];
-		$this->slug = (empty($doc['slug']) && !empty($doc['name'])) ? self::slugify($doc['name']): $doc['slug'];
-		$this->slug = ($this->slug[0] != '/') ? '/'.$this->slug: $this->slug;
+        $this->discountAmt = $doc['discountAmt'];
+        $this->optIn = $doc['optIn'];
+		$this->optInDisclosure = $doc['optInDisclosure'];
+		$this->optInOnOff = $doc['optInOnOff'];
+		$this->paymentLite = $doc['paymentLite'];
+		$this->gift = $doc['gift'];
+		$this->giftName = $doc['giftName'];
+		$this->giftDesc = $doc['giftDesc'];
+		$this->giftDollarValue = $doc['giftDollarValue'];
+		$this->image = $doc['image'];
+		$this->isActive = $doc['isActive'];
+        $this->add = $doc['add'];		
 	}
 	protected function prepareInsert(){
-		$this->name = $this->name ?: '';
+		$this->code = $this->code ?: '';
+		$this->startDate = $this->startDate ?: new \stdClass();
+	    $this->endDate = $this->endDate ?: new \stdClass();
+		$this->currentType = $this->currentType ?: self::$type['MONEY'];
+		$this->currentStatus = $this->currentStatus ?: self::$status['NEWMEMBER'];
+		$this->discountAmt = $this->discountAmt ?: 0;
+		$this->optIn = $this->optIn ?: 'yes';
+		$this->optInDisclosure = $this->optInDisclosure ?: '';
+		$this->optInOnOff = $this->optInOnOff ?: 'on';
+		$this->paymentLite = $this->paymentLite ?: new \stdClass();
+		$this->gift = $this->gift ?: 'yes';
+		$this->giftName = $this->giftName ?: '';
+		$this->giftDesc = $this->giftDesc ?: '';
+		$this->giftDollarValue = $this->giftDollarValue ?: 0;
 		$this->image = $this->image ?: new \stdClass();
-		$this->currentType = $this->currentType ?: self::$type['BLOG'];
+		$this->isActive = $this->isActive ?: 'yes';
 		$this->add = $this->add ?: 'yes';
-		$this->slug = $this->slug ?: '';
+		
 	}
 	public function insert(){
 		$this->prepareInsert();
@@ -172,49 +211,47 @@ class Promotion extends Model {
 			return $this->_id;
 		}
 	}
+	public function isValid($code){
+		$code = strtoupper($code);
+        $fields = array();
+		$res = $this->findOne($query=array('code'=>$code,'isActive'=>'yes'),$fields,$slaveOkay=true,$sort=array(),$offset=0,$limit=1000);
+		return $res;
+	}
 	public function fetchByType($offset=0,$limit=1000){
         $fields = array();
-		$categories = $this->find($query=array('currentType'=>$this->currentType),$fields,$slaveOkay=true,$sort=array('name'=>1),$offset,$limit);
+		$categories = $this->find($query=array('currentType'=>$this->currentType),$fields,$slaveOkay=true,$sort=array('code'=>1),$offset,$limit);
 		return $categories;
 	}
 	public function fetchByTypeFormatted($offset=0,$limit=1000){
         $fields = array();
         $cat = array();
-		$categories = $this->find($query=array('currentType'=>$this->currentType),$fields,$slaveOkay=true,$sort=array('name'=>1),$offset,$limit);
+		$categories = $this->find($query=array('currentType'=>$this->currentType),$fields,$slaveOkay=true,$sort=array('code'=>1),$offset,$limit);
 		if(!empty($categories)){
 			foreach($categories as $category):
-				$cat[$category['_id']->__toString()] = $category['name'];
+				$cat[$category['_id']->__toString()] = $category['code'];
 			endforeach;
 			return $cat;
 		}else{
 			return array();
 		}
 	}
-	public function fetchByTypeFormattedSlug($offset=0,$limit=1000){
+	public function fetchByStatus($offset=0,$limit=1000){
+        $fields = array();
+		$categories = $this->find($query=array('currentStatus'=>$this->currentStatus),$fields,$slaveOkay=true,$sort=array('code'=>1),$offset,$limit);
+		return $categories;
+	}
+	public function fetchByStatusFormatted($offset=0,$limit=1000){
         $fields = array();
         $cat = array();
-		$categories = $this->find($query=array('currentType'=>$this->currentType),$fields,$slaveOkay=true,$sort=array('name'=>1),$offset,$limit);
+		$categories = $this->find($query=array('currentStatus'=>$this->currentStatus),$fields,$slaveOkay=true,$sort=array('code'=>1),$offset,$limit);
 		if(!empty($categories)){
 			foreach($categories as $category):
-				$cat[$category['_id']->__toString()] = array('name'=>$category['name'],'slug'=>$category['slug']);
+				$cat[$category['_id']->__toString()] = $category['code'];
 			endforeach;
 			return $cat;
 		}else{
 			return array();
 		}
-	}
-	public static function slugify($str){
-
-		$slugify = new \Cocur\Slugify\Slugify();//for iconv translit
-		
-		$arr = explode('/',$str);
-		for ($i=0; $i < count($arr); $i++) { 
-			$slug = $slugify->slugify($arr[$i]);
-			$arr[$i] = ($slug == 'n-a') ? '':$slug;
-		}
-		$slug = implode('/',$arr);
-		
-		return $slug;
 	}
 	public function delete(){
 

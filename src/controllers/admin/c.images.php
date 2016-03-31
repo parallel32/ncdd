@@ -282,6 +282,9 @@ $app['imageFactory'] = $app->protect(function ($context,$belongsTo,$parentAttr='
 		case 'category':
 			return new Model\ImageCategory($belongsTo);
 			break;
+		case 'promotion':
+			return new Model\ImagePromotion($belongsTo);
+			break;
 		case 'stateseminar':
 			return new Model\ImageStateSeminar($belongsTo);
 			break;
@@ -317,6 +320,9 @@ $app['imageParentFactory'] = $app->protect(function ($context,$belongsTo) use ($
 			break;
 		case 'category':
 			return new Model\Category(array('_id'=>$belongsTo),$app);
+			break;
+		case 'promotion':
+			return new Model\Promotion(array('_id'=>$belongsTo),$app);
 			break;
 		case 'stateseminar':
 			return new Model\StateSeminar(array('_id'=>$belongsTo),$app);

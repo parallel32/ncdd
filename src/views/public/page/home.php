@@ -1,19 +1,4 @@
-<style>
-.videoWrapper {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 */
-    padding-top: 0px;
-    height: 0;
-}
-.videoWrapper iframe {
-    padding-left: 10px;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 50%;
-}
-</style>
-
+<style>.videoWrapper {position: relative;padding-bottom: 56.25%; /* 16:9 */padding-top: 0px;height: 0;}.videoWrapper iframe {padding-left: 10px;top: 0;left: 0;width: 50%;height: 50%;}</style>
                     <div class="row-fluid welcome">
                         <div class="title text-center bigTitle">
                             <div class="bg">

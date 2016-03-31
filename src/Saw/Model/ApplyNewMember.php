@@ -43,6 +43,7 @@ class ApplyNewMember extends Apply {
 	public $referenceFormDownload;
 	public $publidDefender;
 	public $promocode;
+	
 
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
 		$metadata->addPropertyConstraint('hearAboutNCDD', new Constraints\NotBlank(array('message'=>'cannot be blank')));
@@ -179,6 +180,7 @@ class ApplyNewMember extends Apply {
 		$this->referenceFormDownload = $doc['referenceFormDownload'];
 		$this->publicDefender = (array_key_exists('publicDefender',$doc)) ? $doc['publicDefender'] : '';
 		$this->promocode = (array_key_exists('promocode',$doc)) ? strtoupper($doc['promocode']) : '';
+		
 
 	}
 	
@@ -217,6 +219,7 @@ class ApplyNewMember extends Apply {
 		$this->referenceFormDownload = $this->referenceFormDownload ?: '';
 		$this->publicDefender = $this->publicDefender ?: '';
 		$this->promocode = $this->promocode ?: '';
+		
 	}
 	public function insert(){
 		$this->prepareInsert();

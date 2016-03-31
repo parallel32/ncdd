@@ -230,6 +230,30 @@ $app->post('/application/promocode', function (Request $request) use ($app) {
     	$valid = 'no';
     	$message = 'Invalid Promo Code.';
     }
+    if(!empty($doc['promocode'])){
+    	if(strtoupper($doc['promocode']) == 'TRIAL' || strtoupper($doc['promocode']) == 'DIVTRIAL' || strtoupper($doc['promocode']) == 'RFTRIAL' || strtoupper($doc['promocode']) == 'PDTRIAL' || strtoupper($doc['promocode']) == 'ALLENTRAPP'){
+    		$valid = 'yes';
+	    	$message = 'Valid Promo Code.';
+	    	$type = 'trial';
+    	}else{
+	    	$promo = new Model\Promotion(array(),$app);
+	    	$res = $promo->isValid($doc['promocode']);
+	    	if(!empty($res)){
+	    		$valid = 'yes';
+		    	$message = 'Valid Promo Code.';
+		    	$type = strtoupper($doc['promocode']);
+		    	$amount = $res['discountAmt'];
+	    	}else{
+	    		$type = '';
+		    	$valid = 'no';
+		    	$message = 'Invalid Promo Code.';
+	    	}
+	    }
+    }else{
+    	$type = '';
+    	$valid = 'no';
+    	$message = 'Invalid Promo Code.';
+    }
     
     return new Response(json_encode(array('valid'=>$valid, 'type'=>$type,'message' => $message)), 200,array('Content-Type' => 'application/json'));
 });
@@ -241,8 +265,11 @@ $app->get('/application/new-member', function (Request $request) use ($app) {
 		$dues[$type]['amount'] = $amount;
 		$dues[$type]['prorated'] = $apply->proRate('today');
 	}
+
+	$promo = new Model\Promotion(array('isActive'=>'yes'),$app);
+	$promos = $promo->findAllById('isActive');
 	
-	return $app['view']->render('application/new-member', 'blank',array('dues'=>$dues));
+	return $app['view']->render('application/new-member', 'blank',array('dues'=>$dues,'promos'=>$promos));
 });
 $app->get('/application/new-member-admin', function (Request $request) use ($app) {
 
@@ -281,6 +308,10 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
     if(!array_key_exists('twoSeminarsAcknowledgement', $doc)){
     	$doc['twoSeminarsAcknowledgement'] = 'no';
     }
+
+    $doc['authorizationReleasePrintedName'] = $doc['executedPrintedName'];
+  	$doc['authorizationReleasePrintedNameDate'] = $doc['executedPrintedNameDate'];
+
     // promocode sanity check
     if(!array_key_exists('promocode', $doc)){
     	$doc['promocode'] = '';
@@ -307,8 +338,24 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 
     // validate the application
     $app['validateModel']($app,$application);
-    if(!empty($doc['promocode']) && array_key_exists('termsAcknowledgement', $doc) && $doc['termsAcknowledgement'] != 'yes'){
+    // validate the promo code
+    $promo_res = array();
+    if(!empty($doc['promocode'])){
 
+    	$promo = new Model\Promotion(array('code'=>$doc['promocode']),$app);
+    	$promo_res = $promo->findById('code');
+    	
+    	$promo_res['optIn'] = (array_key_exists('optIn', $doc)) ? $doc['optIn'] : '';
+    	$promo_res['code'] = $doc['promocode'];
+    	$promo = new Model\Promotion($promo_res,$app);
+    	$app['validateModel']($app,$promo,array('onform'));
+    	$application->promotion = $promo_res;
+    	// $response_arr = array('message'=>"Please check the authorization checkbox above and agree in order to use the promo code.",
+	    //                           "invalidFields"=>array(array('name'=>'optIn','message'=>'Please check the opt-in checkbox above and agree in order to use the promo code.')
+	    //                           								,array('name'=>'promocode','message'=>'')
+	    //                           ));
+	    //     return new Response(json_encode($response_arr), 403,array('Content-Type' => 'application/json'));
+    	/*
     	if($doc['promocode'] == 'BONUS2015-'  ||$doc['promocode'] == 'TRIAL' || $doc['promocode'] == 'DIVTRIAL' || $doc['promocode'] == 'PDTRIAL' || $doc['promocode'] == 'RFTRIAL' || $doc['promocode'] == 'ALLENTRAPP'){
     		//skip validation because the acknlowlegdement doesn't need to be checked
     	}else{
@@ -318,6 +365,7 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 	                              ));
 	        return new Response(json_encode($response_arr), 403,array('Content-Type' => 'application/json'));
 	    }
+	    */
     }
     
 
@@ -326,6 +374,19 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 	$dues = array();
 	foreach(Model\ApplyNewMember::$dues as $type => $amount){
 		$apply = new Model\Apply(array('membershipDues'=>$amount),$app);
+		// calculate the discount amount
+		if(!empty($promo_res)){
+	    	if(\Saw\Model\Promotion::$type['MONEY'] == $promo_res['currentType']){
+	    		if(!empty($promo_res['discountAmt']) && $promo_res['discountAmt'] > 0){
+	    			$amount = $amount - $promo_res['discountAmt'];
+	    		}
+	    	}
+	    	if(\Saw\Model\Promotion::$type['PERCENT'] == $promo_res['currentType']){
+	    		if(!empty($promo_res['discountAmt']) && $promo_res['discountAmt'] > 0){
+	    			$amount = $amount - ($amount * ($promo_res['discountAmt'])/100);
+	    		}
+	    	}
+		}
 		$dues[$type]['amount'] = $amount;
 		$dues[$type]['prorated'] = $apply->proRate('today');
 	}
@@ -419,6 +480,9 @@ error_log('trial:'.print_r($trial,true));
 			try {
 
 				$application->paymentId = $payment->charge();	
+				$payment_lite = $payment->__toArray();
+				$payment_lite['number'] = $doc['payment']['number'];
+				$promo_res['paymentLite'] = $payment_lite;
 			} catch (Exception $e) {
 				$app_remove = new Model\ApplyNewMember(array('_id'=>$applicationId), $app);
 				$app_remove->remove();
@@ -482,7 +546,7 @@ error_log('trial:'.print_r($trial,true));
 
 		if($is_admin == false):
 			// marking the application paid
-			$application = new Model\Apply(array('_id'=>$applicationId, 'paymentId'=>$application->paymentId), $app);
+			$application = new Model\Apply(array('_id'=>$applicationId, 'paymentId'=>$application->paymentId, 'promotion'=>$promo_res), $app);
 			$application->markPaid(false);
 		endif;
 
