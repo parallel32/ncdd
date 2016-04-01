@@ -18,8 +18,7 @@ $emailsent->get('/', function (Request $request) use ($app) {
 	
 	$emailsent = new Model\EmailSent(array(),$app);
 	$emails = $emailsent->find($query=array(),$fields=array('_id'=>1,'to'=>1,'subject'=>1,'sentDate'=>1,'timeZone'=>1),$slaveOkay=true,$sort=array('_id'=>-1),$offset=0,$limit=100000000);
-	$emailcnt = $emailsent->find($query=array(),$fields=array('to'=>1,'subject'=>1,'sentDate'=>1,'timeZone'=>1),$slaveOkay=true,$sort=array(),$offset=0,$limit=10000000000);
-	$emailcnt = (is_array($emailcnt)) ? count($emailcnt) : 0;
+	$emailcnt = (is_array($emails)) ? count($emails) : 0;
 	
 	$emailq = new Model\EmailQ(array(),$app);
 	$emailsq = $emailq->find($query=array(),$fields=array('_id'=>1,'to'=>1,'subject'=>1,'sentDate'=>1,'timeZone'=>1),$slaveOkay=true,$sort=array('_id'=>-1),$offset=0,$limit=100);
