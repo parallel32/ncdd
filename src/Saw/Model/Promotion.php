@@ -159,6 +159,7 @@ class Promotion extends Model {
         $this->startDate = (!empty($doc['startDate'])) ? (is_object($doc['startDate'])) ? $doc['startDate']->__toArray() : new Date(self::$app,$doc['startDate'], $this->timeZone)  : $doc['startDate'];
 		$this->endDate = (!empty($doc['endDate'])) ? (is_object($doc['endDate'])) ? $doc['endDate']->__toArray() : new Date(self::$app,$doc['endDate'], $this->timeZone)  : $doc['endDate'];
         $this->currentType = $doc['currentType'];
+        $this->currentStatus = $doc['currentStatus'];
         $this->discountAmt = $doc['discountAmt'];
         $this->optIn = $doc['optIn'];
 		$this->optInDisclosure = $doc['optInDisclosure'];
@@ -239,8 +240,9 @@ class Promotion extends Model {
 	}
 	public function fetchByStatus($offset=0,$limit=1000){
         $fields = array();
-		$categories = $this->find($query=array('currentStatus'=>$this->currentStatus),$fields,$slaveOkay=true,$sort=array('code'=>1),$offset,$limit);
-		return $categories;
+        $query = array('currentStatus'=>$this->currentStatus);
+		$res = $this->find($query,$fields,$slaveOkay=true,$sort=array('code'=>1),$offset,$limit);
+		return $res;
 	}
 	public function fetchByStatusFormatted($offset=0,$limit=1000){
         $fields = array();

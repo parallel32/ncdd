@@ -1710,6 +1710,41 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 	    $eagle2016promocode[$i]['new_references'] = array('total'=>$reference->getTotalSubmissions(),'max'=>$reference->getMaxSubmissions());
 	}
 	endif;
+
+	// PROMOTIONS
+	$promotion = new Model\Promotion(array('currentStatus'=>Model\Promotion::$status['NEWMEMBER']),$app);
+	$promotions = $promotion->fetchByStatus();
+	// count how many sign ups per promotion there have been.
+	$promos = array();
+	if(!empty($promotions) && is_array($promotions)):
+		foreach ($promotions as $promo) {
+			$obj = new Model\Apply(array(),$app);
+			$new_applications = $obj->find(array('promotion.code'=>$promo['code']),$fields=array(),$slaveOkay=true,$sort=array('_id'=>-1),$offset=0,$limit=10000);
+
+			for ($i=0; $i < count($new_applications); $i++) { 
+				
+				$member = new Model\Member(array('_id'=>$new_applications[$i]['memberId']),$app);
+				$member = $member->findById();
+				if(!empty($member) && is_array($member))
+					$new_applications[$i]['member'] = $member;
+
+				switch ($new_applications[$i]['class']) {
+			    	case 'ApplyNewMember':
+			    		$reference = new Model\ReferenceMember(array('applicationId'=>$new_applications[$i]['_id']), $app);
+			    		break;
+			    	case 'ApplyNewSustainingMember':
+			    		$reference = new Model\ReferenceSustainingMember(array('applicationId'=>$new_applications[$i]['_id']), $app);
+			    		break;
+			    	
+			    }
+			    $new_applications[$i]['new_references'] = array('total'=>$reference->getTotalSubmissions(),'max'=>$reference->getMaxSubmissions());
+
+			}
+
+			$promos[$promo['code']] = $new_applications;
+		}
+	endif;
+
 	$crumbs = array(array('name'=>'Applications','href'=>'/applications'));
 	$view_vars = array(
 						 'active'=>'Applications/New'
@@ -1723,6 +1758,7 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 						,'eagle2016promocode'=>$eagle2016promocode
 						,'ncddtrialpromocode'=>$ncddtrialpromocode
 						,'allentrapptrialpromocode'=>$allentrapptrialpromocode
+						,'promos'=>$promos
 	);
 	return $app['view']->render('application/index', 'default', $view_vars);
 })

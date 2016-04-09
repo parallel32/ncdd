@@ -54,32 +54,6 @@
                
             </div>
             
-            
-            <div class="row-fluid">
-            
-               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
-                  <div class="dashboard-stat blue">
-                     <div class="visual">
-                        <i class="icon-hideme"><?=(!empty($this->vars['eagle2016promocode'])) ? count($this->vars['eagle2016promocode']): 0;?></i>
-                     </div>
-                     <div class="details">
-                        <div class="number"><font><font></font>EAGLE2016 Promo</font></div>
-                        <div class="desc"><font><font>
-                           
-                        </font></font></div>
-                     </div>
-                     <a class="more" href="#eagle2016"><font><font>
-                     Click to scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
-                     </a>                 
-                  </div>
-               </div>               
-
-            </div>
-            
-            
-               
-
-            
             <div class="row-fluid">
                <div class="responsive span6" data-tablet="span6" data-desktop="span6">
                   <div class="dashboard-stat purple">
@@ -110,6 +84,86 @@
                   </div>
                </div>
             </div>
+
+            <div class="row-fluid">
+            
+               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                  <div class="dashboard-stat blue">
+                     <div class="visual">
+                        <i class="icon-hideme"><?=(!empty($this->vars['eagle2016promocode'])) ? count($this->vars['eagle2016promocode']): 0;?></i>
+                     </div>
+                     <div class="details">
+                        <div class="number"><font><font></font>EAGLE2016 Promo</font></div>
+                        <div class="desc"><font><font>
+                           
+                        </font></font></div>
+                     </div>
+                     <a class="more" href="#eagle2016"><font><font>
+                     Click to scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
+                     </a>                 
+                  </div>
+               </div>               
+
+            </div>
+            
+
+            <? 
+               if(array_key_exists('promos', $this->vars) && is_array($this->vars['promos']) && !empty($this->vars['promos'])):
+                  $i=0;
+                  foreach($this->vars['promos'] as $code => $promo):
+                     if ($i & 1) {
+            ?>
+               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                  <div class="dashboard-stat blue" style="background-color:orange;">
+                     <div class="visual">
+                        <i class="icon-hideme"><?=(!empty($this->vars['promos'][$code])) ? count($this->vars['promos'][$code]): 0;?></i>
+                     </div>
+                     <div class="details">
+                        <div class="number"><font><font></font><?=$code?></font></div>
+                        <div class="desc"><font><font>
+                           
+                        </font></font></div>
+                     </div>
+                     <a class="more" href="#<?=$code?>"><font><font>
+                     Click to scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
+                     </a>                 
+                  </div>
+               </div>               
+            <?
+                     } else {
+            ?>
+            <?
+               if(count($this->vars['promos']) < 2 && $i==0){
+                  echo '<div class="row-fluid">';
+               }
+            ?>
+               <div class="responsive span6" data-tablet="span6" data-desktop="span6">
+                  <div class="dashboard-stat blue" style="background-color:orange;">
+                     <div class="visual">
+                        <i class="icon-hideme"><?=(!empty($this->vars['promos'][$code])) ? count($this->vars['promos'][$code]): 0;?></i>
+                     </div>
+                     <div class="details">
+                        <div class="number"><font><font></font><?=$code?></font></div>
+                        <div class="desc"><font><font>
+                           
+                        </font></font></div>
+                     </div>
+                     <a class="more" href="#<?=$code?>"><font><font>
+                     Click to scroll </font></font><i class="m-icon-swapright m-icon-white"></i>
+                     </a>                 
+                  </div>
+               </div>               
+            </div>
+            <? 
+                  }
+                  $i++;
+                  endforeach;
+               endif;
+            ?>
+            
+            
+
+
             <div class="row-fluid">
                <div class="span12">
                   <!-- BEGIN EXAMPLE TABLE PORTLET-->
@@ -166,10 +220,11 @@
                            </tbody>
                         </table>
                      </div>
-                  </div><a name="unpaid"></a>
-                  <!-- END EXAMPLE TABLE PORTLET-->
-               </div>
+                  </div>
+               </div><a name="unpaid"></a>
+               <!-- END EXAMPLE TABLE PORTLET-->
             </div>
+         </div>
 
             <div class="row-fluid">
                <div class="span12">
@@ -232,10 +287,11 @@
                            </tbody>
                         </table>
                      </div>
-                  </div><a name="eagle2016"></a>
-                  <!-- END EXAMPLE TABLE PORTLET-->
-               </div>
+                  </div>
+               </div><a name="eagle2016"></a>
+               <!-- END EXAMPLE TABLE PORTLET-->
             </div>
+         </div>
 
             <div class="row-fluid">
                <div class="span12">
@@ -289,12 +345,103 @@
                            </tbody>
                         </table>
                      </div>
-                  </div><a name="paid90"></a>
-                  <!-- END EXAMPLE TABLE PORTLET-->
+                  </div>
                </div>
+               <!-- END EXAMPLE TABLE PORTLET-->
             </div>
+         </div>
 
 
+
+
+
+
+
+
+
+
+
+
+            
+
+
+            <? 
+               if(array_key_exists('promos', $this->vars) && is_array($this->vars['promos']) && !empty($this->vars['promos'])):
+                  $i=0;
+                  foreach($this->vars['promos'] as $code => $promo):
+            ?>   
+            
+            <a name="<?=$code?>"></a>
+            <div class="row-fluid">
+               <div class="span12">
+                  
+                  <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                  <div class="portlet box yellow" style="background-color: orange; ">
+                     <div class="portlet-title" id="application">
+                        <div class="caption"><i class="icon-user"></i><?=$code?></div>
+                     </div>
+                     <div class="portlet-body">
+                        <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                        <table class="table table-striped table-bordered table-hover dataTable" id="applications" aria-describedby="sample_1_info">
+                           <thead>
+                              <tr role="row">
+                                 <th class=""></th>
+                                 <th class="">Name</th>
+                                 <th class="hidden-phone">Email</th>
+                                 <th class="hidden-480">Area</th>
+                                 <th class="hidden-480">Date Paid</th>
+                                 <th class="hidden-480">References</th>
+                                 <th class=""></th>
+                              </tr>
+                           </thead>
+                           <tbody role="alert" aria-live="polite" aria-relevant="all">
+                              <? if(!empty($promo)): foreach($promo as $application): ?>
+                              <tr class="gradeX odd">
+                                 <? $middleName = (!empty($application['middleName'])) ? ' '.$application['middleName'].' ':' '; ?>
+                                 <? $declineCount = (is_array($application['member']) && array_key_exists('payment',$application['member']) && is_array($application['member']['payment']) && !empty($application['member']['payment']) && array_key_exists('declineCount',$application['member']['payment']) && $application['member']['payment']['declineCount'] > 0) ? '('.$application['member']['payment']['declineCount'].')': ''; ?>
+                                 <? $renewalREUSE = (is_array($application['member']) && array_key_exists('payment',$application['member']) && is_array($application['member']['payment']) && !empty($application['member']['payment']) && array_key_exists('renewalREUSE',$application['member']['payment']) && $application['member']['payment']['renewalREUSE'] == 'yes') ? 'purple': 'red'; ?>
+                                 <td class=" "><?=(is_array($application['member']) && array_key_exists('payment',$application['member']) && is_array($application['member']['payment']) && !empty($application['member']['payment']) && !empty($application['member']['payment']['number']) && !empty($application['member']['payment']['cvc'])) ? '<a data-id="'.$application['member']['_id'].'" class="btn '.$renewalREUSE.' mini card">cc'.$declineCount.'</a>':'' ?></td><td class=" "><?=$application['firstName'].$middleName.$application['lastName']?></td>
+                                 <td class="hidden-phone "><?=$application['email']?></td>
+                                 <td class="hidden-480 "><?=$application['city'].', '.$application['state']?></td>
+                                 <td class="hidden-480 "><?=$application['paidDate']['monthDay'].' '.$application['paidDate']['shortTime']?></td>
+                                 <td class="hidden-phone">
+                                    <? if($application['new_references']['total'] >= $application['new_references']['max']): ?>
+                                    <span class="label label-success"><?=$application['new_references']['total'].' of '.$application['new_references']['max']?></span>
+                                    <? else: ?>
+                                    <span class="label label-important"><?=$application['new_references']['total'].' of '.$application['new_references']['max']?></span>
+                                    <? endif; ?>
+                                    <a href="https://<?=SAW_ADMIN_WEBSITE?>/reference/<?=$application['_id']?>/<?=$application['firstName'].'-'.$application['lastName']?>" target="_blank">Reference form</a>
+                                 </td>
+                                 <td class=" ">
+                                    <a data-id="<?=$application['_id']?>" class="btn blue mini view"><i class=" "></i> Application</a>
+                                    <a data-id="<?=$application['paymentId']?>" class="btn blue mini payment"><i class=" "></i> Payment</a>
+                                 </td>
+                              </tr>
+                              <? endforeach;?>
+                              <? else: ?>
+                                 <td colspan="6">None.</td>
+                              <? endif;?>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+               <!-- END EXAMPLE TABLE PORTLET-->
+            </div>
+         </div>
+
+
+
+
+            <?      
+                  $i++;
+                  endforeach;
+               endif;
+            ?>
+
+
+
+            <a name="paid90"></a>
             <div class="row-fluid">
                <div class="span12">
                   
@@ -342,9 +489,10 @@
                         </table>
                      </div>
                   </div>
-                  <!-- END EXAMPLE TABLE PORTLET-->
                </div>
+               <!-- END EXAMPLE TABLE PORTLET-->
             </div>
+         </div>
             
 
 
@@ -393,6 +541,7 @@ jQuery(document).ready(function() {
                    </div>
                    <div class="modal-footer">
                        <button class="btn default no">Close</button>
+                       <a class="btn green popout" href="" target="_blank">Pop Out</a>
                    </div>
                  </div>
            </div>
@@ -405,23 +554,26 @@ jQuery(document).ready(function() {
 
    $('.btn.card').live('click', function() {
       $('#view-modal iframe').attr('src','/card/'+$(this).attr('data-id'));
+      $('#view-modal .popout').attr('href','/card/'+$(this).attr('data-id'));
       $('#view-modal').modal({keyboard: false});   
    });
    $('.btn.payment').live('click', function() {
       $('#view-modal iframe').attr('src','/payment/'+$(this).attr('data-id')+'/view');
+      $('#view-modal .popout').attr('href','/payment/'+$(this).attr('data-id')+'/view');
       $('#view-modal').modal({keyboard: false});   
    });
    $('#view-modal .btn.no').click(function(e){
       $('#view-modal').modal('hide');
    });
-
    $('.btn.view').live('click', function() {
       $('#view-modal iframe').attr('src','/application/'+$(this).attr('data-id')+'/view');
+      $('#view-modal .popout').attr('href','/application/'+$(this).attr('data-id')+'/view');
       $('#view-modal').modal({keyboard: false});   
    });
    
    $('.btn.view.member').live('click', function() {
       $('#view-modal iframe').attr('src','/member/'+$(this).attr('data-id')+'/edit');
+      $('#view-modal .popout').attr('href','/member/'+$(this).attr('data-id')+'/edit');
       $('#view-modal').modal({keyboard: false});   
    });
    
