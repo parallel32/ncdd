@@ -3229,7 +3229,7 @@ echo "<pre>";print_r($value);echo "</pre>";
 
 
 $app->get('/renewals-send-decline-followup-email', function (Request $request) use ($app) {
-//return false;
+return false;
 	$ar = new Model\AutoRenew(array('declined'=>'yes'),$app);
 	$ar_res = $ar->findAllById('declined', $fields=array(), $sort=array(), $slaveOkay=true,$offset=0,$limit=2000);
 	$i=0;
