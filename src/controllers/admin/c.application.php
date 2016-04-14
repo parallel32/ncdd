@@ -3805,6 +3805,7 @@ $app->get('/renewal-follow-up/{renewId}', function ($renewId, Request $request) 
 	// derive membership dues:
 	// new app = yearsInLawPractice
 	// renewal = membershipDues - 6+ = $225, <6 $175, pd $50
+	$membershipDues = 225;
 	$um = new Model\Apply(array(),$app);
 	$um_res = $um->find(array('class'=>'UpdateMember','memberId'=>$member['_id']),array('membershipDues'=>1));
 	if(!empty($um_res)){
