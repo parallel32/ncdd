@@ -3229,9 +3229,10 @@ echo "<pre>";print_r($value);echo "</pre>";
 
 
 $app->get('/renewals-send-decline-followup-email', function (Request $request) use ($app) {
-return false;
+//return false;
 	$ar = new Model\AutoRenew(array('declined'=>'yes'),$app);
 	$ar_res = $ar->findAllById('declined', $fields=array(), $sort=array(), $slaveOkay=true,$offset=0,$limit=2000);
+	$i=0;
 	foreach ($ar_res as $autorenew) {
 
 		$member = new Model\Member(array('_id'=>$autorenew['record']['_id']),$app);
@@ -3251,9 +3252,11 @@ return false;
 		}else{
 			error_log('securlink: '.print_r($view_vars['securelink'],true));
 		}
-		
+		echo "<pre>";print_r($to);echo "</pre>";
+		echo "<pre>";print_r($body);echo "</pre>";
 		$app['sendMail']($subject, $body, $to);
-
+		error_log('$i: '.print_r($i,true));
+		$i++;
 	}
 
 	return new Response('', 200,array('Content-Type' => 'text/html'));
