@@ -3228,57 +3228,6 @@ echo "<pre>";print_r($value);echo "</pre>";
 });
 
 
-$app->get('/renewals-send-decline-followup-email', function (Request $request) use ($app) {
-return false;
-	$ar = new Model\AutoRenew(array('declined'=>'yes'),$app);
-	$ar_res = $ar->findAllById('declined', $fields=array(), $sort=array(), $slaveOkay=true,$offset=0,$limit=2000);
-	$i=0;
-	foreach ($ar_res as $autorenew) {
-
-		$member = new Model\Member(array('_id'=>$autorenew['record']['_id']),$app);
-		$member = $member->findById();
-
-
-		$subject = 'NCDD Membership Auto Renewal';
-		$to = $member['email'];
-		$view_vars = array('firstName'=>$member['firstName']
-							,'middleName'=>(array_key_exists('middleName', $member)) ? $member['middleName'] : ''
-							,'lastName'=>$member['lastName']
-							,'securelink'=>'https://'.SAW_ADMIN_WEBSITE.'/renewals-autopay/'.$autorenew['_id']
-		);
-		$body = $app['view']->render('email/auto-pay-cc-decline-follow-up','email', $view_vars);
-		if(!empty($to)){
-			error_log('$to: '.print_r($to,true));
-		}else{
-			error_log('securlink: '.print_r($view_vars['securelink'],true));
-		}
-		echo "<pre>";print_r($to);echo "</pre>";
-		echo "<pre>";print_r($body);echo "</pre>";
-		$app['sendMail']($subject, $body, $to);
-		error_log('$i: '.print_r($i,true));
-		$i++;
-	}
-
-	return new Response('', 200,array('Content-Type' => 'text/html'));
-})->before($mustbeADMIN);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /////////////////////////
 // credit card screens // 
@@ -3413,6 +3362,47 @@ $card->post('/auto-renew/edit', function (Request $request) use ($app) {
 
 
 
+
+
+
+/////////////////////////////////////////////////
+// AUTO-RENEW SEND DECLINED CC FOLLOW UP EMAIL //
+///////////////////////////////////////////////// 
+$app->get('/renewals-send-decline-followup-email', function (Request $request) use ($app) {
+return false;
+	$ar = new Model\AutoRenew(array('declined'=>'yes'),$app);
+	$ar_res = $ar->findAllById('declined', $fields=array(), $sort=array(), $slaveOkay=true,$offset=0,$limit=2000);
+	$i=0;
+	foreach ($ar_res as $autorenew) {
+
+		$member = new Model\Member(array('_id'=>$autorenew['record']['_id']),$app);
+		$member = $member->findById();
+
+
+		$subject = 'NCDD Membership Auto Renewal';
+		$to = $member['email'];
+		$view_vars = array('firstName'=>$member['firstName']
+							,'middleName'=>(array_key_exists('middleName', $member)) ? $member['middleName'] : ''
+							,'lastName'=>$member['lastName']
+							,'securelink'=>'https://'.SAW_ADMIN_WEBSITE.'/renewals-autopay/'.$autorenew['_id']
+		);
+		$body = $app['view']->render('email/auto-pay-cc-decline-follow-up','email', $view_vars);
+		if(!empty($to)){
+			error_log('$to: '.print_r($to,true));
+		}else{
+			error_log('securlink: '.print_r($view_vars['securelink'],true));
+		}
+		echo "<pre>";print_r($to);echo "</pre>";
+		echo "<pre>";print_r($body);echo "</pre>";
+		$app['sendMail']($subject, $body, $to);
+		error_log('$i: '.print_r($i,true));
+		$i++;
+	}
+
+	return new Response('', 200,array('Content-Type' => 'text/html'));
+})->before($mustbeADMIN);
+
+
 // renewal auto-pay follow up to update thier card and pay
 // screen
 $app->get('/renewals-autopay/{autoRenewId}', function ($autoRenewId, Request $request) use ($app) {
@@ -3477,6 +3467,8 @@ $app->get('/renewals-autopay/{autoRenewId}', function ($autoRenewId, Request $re
 	}else{
 		$view_vars['payment'] = array();
 	}
+
+	$view_vars['post-url'] = '/renewals-autopay';
 
 	return $app['view']->render('application/renewal-cc-decline-follow-up', 'blank', $view_vars);
     
@@ -3749,9 +3741,107 @@ $app->post('/renewals-autopay', function (Request $request) use ($app) {
 
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
+///  STANDARD RENEWAL FOLLOW UP SCREEN, POST CONTROLLER, EMAIL ROUTE THAT SENDS THE PRIVATE LINKS //  NOT AUTO PAY FOLLOW UP 
+////////////////////////////////////////////////////////////////////////////////////////////////////
+$app->get('/renewal-send-declined-follow-up-email', function (Request $request) use ($app) {
+
+	$member = new Model\Member(array(),$app);
+	$members = $member->fetchByRenewalStatus('APPROVED',array(Model\Member::$membership['GENERAL MEMBER'],Model\Member::$membership['PUBLIC DEFENDER']),$offset=0, $limit=1000);
+	$i=0;
+	echo "<pre>";print_r(count($members));echo "</pre>";
+	foreach ($members as $member) {
+		if($member['renewal']['payByCheck'] != 'yes'){
+			$subject = 'NCDD Membership Renewal Card Decline';
+			$to = $member['email'];
+			$view_vars = array('displayName'=>$member['displayName']
+								,'securelink'=>'https://'.SAW_ADMIN_WEBSITE.'/renewal-cc-declined/'.$member['_id']
+			);
+			$body = $app['view']->render('email/renewal-cc-decline-follow-up','email', $view_vars);
+			if(!empty($to)){
+				error_log('$to: '.print_r($to,true));
+			}else{
+				error_log('securlink: '.print_r($view_vars['securelink'],true));
+			}
+	echo "<pre>";print_r($body);echo "</pre>";
+			$app['sendMail']($subject, $body, $to);
+			error_log('$i: '.print_r($i,true));
+			echo "<pre>";print_r($i);echo "</pre>";
+			$i++;
+		}
+	}
+
+	return new Response('', 200,array('Content-Type' => 'text/html'));
+})->before($mustbeADMIN);
+
+// screen
+$app->get('/renewal-cc-declined/{renewId}', function ($renewId, Request $request) use ($app) {
+	$expired_found2 = 0;
+	$member = new Model\Member(array('_id'=>$renewId),$app);
+	$member = $member->findById();
+
+	if(is_array($member) && !empty($member['renewal']) && is_array($member['renewal']) && !empty($member['renewal']['paymentId'])){
+		$view_vars = array(
+						'headline'=>'Renewal Membership already paid'
+						,'description'=>"You're already paid up for this year.  Thank you."
+						,'member'=>$member
+						);
+		return $app['view']->render('application/renewal-follow-up-already-paid', 'blank', $view_vars);
+	}
+
+	
 
 
+	// derive membership dues:
+	// new app = yearsInLawPractice
+	// renewal = membershipDues - 6+ = $225, <6 $175, pd $50
+	$membershipDues = 225;
+	$um = new Model\Apply(array(),$app);
+	$um_res = $um->find(array('class'=>'UpdateMember','memberId'=>$member['_id']),array('membershipDues'=>1));
+	if(!empty($um_res)){
+		$membershipDues = $um_res[0]['membershipDues'];
+	}else{
 
+		// look in new member apps
+		$nm = new Model\Apply(array(),$app);
+		$nm_res = $nm->find(array('class'=>'ApplyNewMember','memberId'=>$member['_id']),array('yearsInLawPractice'=>1));
+		if(!empty($nm_res)){
+			$expired_found2++;
+			if(((int)date('Y') - (int)$nm_res[0]['yearsInLawPractice']) > 1000){
+				$membershipDues = ( (int)$nm_res[0]['yearsInLawPractice'] >= 6) ? 225 : 175;
+			}else{
+				$membershipDues = ( ((int)date('Y') - (int)$nm_res[0]['yearsInLawPractice']) >= 6) ? 225 : 175;
+			}
+		}
+	}
+	// sanity check for public defenders
+	$pd = new Model\Member(array('_id'=>$member['_id']),$app);
+	$pd = $pd->findById();
+	if($pd['currentMembership'] == Model\Member::$membership['PUBLIC DEFENDER']){
+		$membershipDues = 50;
+	}
+
+
+	$view_vars = array(
+						'headline'=>'Membership Renewal'
+						,'description'=>"Renewa your membership now."
+						,'member'=>$member
+						,'membershipDues'=>$membershipDues
+						);
+	if(is_array($member) && array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && array_key_exists('number', $member['payment'])){
+		$member['payment']['cvc'] = str_replace('.x', '', $member['payment']['cvc']);
+		$member['payment']['number'] = str_replace('.x', '', $member['payment']['number']);
+		$member['payment']['number'] = (!empty($member['payment']['number'])) ? '...'.substr($member['payment']['number'], -4) :'';	
+		$view_vars['payment'] = $member['payment'];
+	}else{
+		$view_vars['payment'] = array();
+	}
+	$view_vars['post-url'] = '/renewal-follow-up-pay';
+	$view_vars['ar_res']['_id'] = $renewId;
+
+	return $app['view']->render('application/renewal-cc-decline-follow-up', 'blank', $view_vars);
+    
+});
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ///  STANDARD RENEWAL FOLLOW UP SCREEN, POST CONTROLLER, EMAIL ROUTE THAT SENDS THE PRIVATE LINKS //  NOT AUTO PAY FOLLOW UP 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -3862,8 +3952,10 @@ $app->post('/renewal-follow-up-pay', function (Request $request) use ($app) {
     // derive membership dues:
 	// new app = yearsInLawPractice
 	// renewal = membershipDues - 6+ = $225, <6 $175, pd $50
+	$membershipDues = 225;
 	$um = new Model\Apply(array(),$app);
 	$um_res = $um->find(array('class'=>'UpdateMember','memberId'=>$member['_id']),array('membershipDues'=>1));
+	error_log('$um_res: '.print_r($um_res,true));
 	if(!empty($um_res)){
 		$membershipDues = $um_res[0]['membershipDues'];
 	}else{
@@ -3871,6 +3963,7 @@ $app->post('/renewal-follow-up-pay', function (Request $request) use ($app) {
 		// look in new member apps
 		$nm = new Model\Apply(array(),$app);
 		$nm_res = $nm->find(array('class'=>'ApplyNewMember','memberId'=>$member['_id']),array('yearsInLawPractice'=>1));
+		error_log('$nm_res: '.print_r($nm_res,true));
 		if(!empty($nm_res)){
 			$expired_found2++;
 			if(((int)date('Y') - (int)$nm_res[0]['yearsInLawPractice']) > 1000){

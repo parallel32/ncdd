@@ -11,8 +11,7 @@
 												<h2 class="h2"></h2>
 												<br />
 												<div class="textdark">
-<? $middleName = (!empty($this->vars['middleName'])) ? ' '.$this->vars['middleName'].' ':' '; ?>
-<br>Dear <?=$this->vars['firstName']?><?=$middleName?><?=$this->vars['lastName']?>,
+<br>Dear <?=$this->vars['displayName']?>,
 <br>
 <br>
 Your credit card was declined when we attempted to renew your membership.

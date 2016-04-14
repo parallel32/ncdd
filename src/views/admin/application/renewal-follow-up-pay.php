@@ -741,7 +741,7 @@ jQuery(document).ready(function() {
                if(responseObj.hasOwnProperty('invalidFields') && responseObj.invalidFields.length > 0){
                   //normal error response.
                }else{
-                  $('.alert-error').html("<strong>Oops, looks like our payment processor refused something.  </strong>  Please check the following:  <br><br>1. The address matches exactly like your card's billing address.<br>2. The cvc code is accurate<br>3. The card number is accurate.<br><br><strong>Otherwise, please try another card.</strong>");
+                  $('.alert-error').html("<strong>Oops, looks like our payment processor refused something.  </strong>  Please check the following:  <br><br>1. The address matches exactly like your card's billing address.<br>2. The cvc code is accurate<br>3. The card number and expiration is accurate.<br><br><strong>Otherwise, please try another card.</strong>");
                   $('html, body').scrollTop( $(document).height() - $(window).height() );   
                }
                
