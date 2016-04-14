@@ -375,7 +375,7 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 	foreach(Model\ApplyNewMember::$dues as $type => $amount){
 		$apply = new Model\Apply(array('membershipDues'=>$amount),$app);
 		// calculate the discount amount
-		if(!empty($promo_res)){
+		if(is_array($promo_res) && !empty($promo_res) && array_key_exists('currentType', $promo_res)){
 	    	if(\Saw\Model\Promotion::$type['MONEY'] == $promo_res['currentType']){
 	    		if(!empty($promo_res['discountAmt']) && $promo_res['discountAmt'] > 0){
 	    			$amount = $amount - $promo_res['discountAmt'];
@@ -481,7 +481,8 @@ error_log('trial:'.print_r($trial,true));
 
 				$application->paymentId = $payment->charge();	
 				$payment_lite = $payment->__toArray();
-				$payment_lite['number'] = $doc['payment']['number'];
+				$payment_lite['number'] = $doc['payment']['number'].'.x';
+				$payment_lite['cvc'] = $doc['payment']['cvc'].'.x';
 				$promo_res['paymentLite'] = $payment_lite;
 			} catch (Exception $e) {
 				$app_remove = new Model\ApplyNewMember(array('_id'=>$applicationId), $app);

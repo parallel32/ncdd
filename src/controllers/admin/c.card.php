@@ -14,6 +14,108 @@ use Saw\Model;
 $card = $app['controllers_factory'];
 $card->before($mustbeMEMBER);
 
+
+///////////////////////
+//  AUTO-RENEW HOME  //
+///////////////////////
+
+// edit a card on file
+$card->get('/promotion/{status}/{id}', function ($status, $id, Request $request) use ($app) {
+	$member['payment'] = array();
+	switch ($status) {
+
+		case Model\Promotion::$status['NEWMEMBER']:
+			$application = new Model\Apply(array('_id'=>$id),$app);
+			$application = $application->findById();
+			$member['payment'] = $application['promotion']['paymentLite'] ;
+			break;
+		case Model\Promotion::$status['RENEWAL']:
+			
+			break;
+		case Model\Promotion::$status['STORE']:
+			
+			break;
+		case Model\Promotion::$status['SEMINAR']:
+			
+			break;
+		
+		
+	}
+	
+	$crumbs = array(array('name'=>'Card','href'=>'/card')
+					,array('name'=>'Manage credit card on file','href'=>'/card')
+	);
+	$view_vars = array(
+						 'active'=>'Card'
+						,'page-plugin'=>''
+						,'headline'=>'Edit card' 
+						,'description'=>"Edit card here"
+						,'crumbs'=>$crumbs
+						,'status'=>$status
+						,'id'=>$id
+						);
+	
+	if(is_array($member) && array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && array_key_exists('number', $member['payment'])){
+		$member['payment']['cvc'] = str_replace('.x', '', $member['payment']['cvc']);
+		$member['payment']['number'] = str_replace('.x', '', $member['payment']['number']);
+		$view_vars['payment'] = $member['payment'];
+	}else{
+		$view_vars['payment'] = array();
+	}
+
+	return $app['view']->render('card/promotion-edit', 'default', $view_vars);
+})->value('userId','');
+
+// add / save card 
+$card->post('/promotion/edit', function (Request $request) use ($app) {
+	// retrieve document from request
+    $document = $request->get('doc');
+    
+    $paymentLite = new Model\PaymentLite($document, $app);
+	
+	$app['validateModel']($app,$paymentLite,array('cc'));
+	$paymentLite->number = $paymentLite->number.'.x';
+	$paymentLite->expYear = substr($paymentLite->expYear, -2);
+	$paymentLite = $paymentLite->__toArray();
+	// unset any values that are empty for overwrite safety
+	// unless it's the renewalCredit
+	foreach ($paymentLite as $key => $value) {
+		if(empty($value) && $key != 'renewalCredit'){
+			unset($paymentLite[$key]);
+		}
+	}
+	$paymentLite['declineCount'] = 0;
+	
+	/////////////////////////////////
+	// now save the paymentLite document inside the promotion document inside the parent record
+	/////////////////////////////////
+	switch ($document['status']) {
+
+		case Model\Promotion::$status['NEWMEMBER']:
+			$appobj = new Model\Apply(array('_id'=>$document['id']),$app);
+			$application = $appobj->findById();
+			$application['promotion']['paymentLite'] = array_merge($application['promotion']['paymentLite'], $paymentLite);
+			$appobj = new Model\Apply($application,$app);
+			$appobj->saveSafe();
+			break;
+		case Model\Promotion::$status['RENEWAL']:
+			
+			break;
+		case Model\Promotion::$status['STORE']:
+			
+			break;
+		case Model\Promotion::$status['SEMINAR']:
+			
+			break;
+		
+		
+	}
+
+    return new Response(json_encode(array('message' => 'Card details have saved successfully.')), 200,array('Content-Type' => 'application/json'));
+});
+
+
+
 ///////////////////////
 //  AUTO-RENEW HOME  //
 ///////////////////////

@@ -20,9 +20,12 @@ class Promotion extends Model {
     static public $type = array('MONEY'=>10,'PERCENT'=>20);
 	static public $typeReversed = array(10=>'MONEY',20=>'PERCENT');
 	public $currentType;
-	static public $status = array('NEWMEMBER'=>10,'RENEWAL'=>20,'STORE'=>20);
-	static public $statusReversed = array(10=>'NEWMEMBER',20=>'RENEWAL',20=>'STORE');
+	static public $status = array('NEWMEMBER'=>10,'RENEWAL'=>20,'STORE'=>30,'SEMINAR'=>40);
+	static public $statusReversed = array(10=>'NEWMEMBER',20=>'RENEWAL',30=>'STORE',40=>'SEMINAR');
 	public $currentStatus;
+	static public $membership = array('PUBLIC DEFENDER'=>5,'GENERAL MEMBER'=>10,'SUSTAINING MEMBER'=>30,'FOUNDING MEMBER'=>40);
+	static public $membershipReversed = array(5=>'PUBLIC DEFENDER',10=>'GENERAL MEMBER',30=>'SUSTAINING MEMBER', 40=>'FOUNDING MEMBER');
+	public $currentMembership;
 	public $discountAmt; 			// based on type this is either a whole dollar amt or a percent
 	public $optIn; 					// yes | no - this is for the optin to keep the payment method on file.
 	public $optInDisclosure; 		// the actual disclosure statement
@@ -160,6 +163,7 @@ class Promotion extends Model {
 		$this->endDate = (!empty($doc['endDate'])) ? (is_object($doc['endDate'])) ? $doc['endDate']->__toArray() : new Date(self::$app,$doc['endDate'], $this->timeZone)  : $doc['endDate'];
         $this->currentType = $doc['currentType'];
         $this->currentStatus = $doc['currentStatus'];
+        $this->currentMembership = $doc['currentMembership'];
         $this->discountAmt = $doc['discountAmt'];
         $this->optIn = $doc['optIn'];
 		$this->optInDisclosure = $doc['optInDisclosure'];
@@ -179,6 +183,7 @@ class Promotion extends Model {
 	    $this->endDate = $this->endDate ?: new \stdClass();
 		$this->currentType = $this->currentType ?: self::$type['MONEY'];
 		$this->currentStatus = $this->currentStatus ?: self::$status['NEWMEMBER'];
+		$this->currentMembership = $this->currentMembership ?: '';
 		$this->discountAmt = $this->discountAmt ?: 0;
 		$this->optIn = $this->optIn ?: 'yes';
 		$this->optInDisclosure = $this->optInDisclosure ?: '';
