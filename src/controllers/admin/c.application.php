@@ -3777,6 +3777,7 @@ $app->get('/renewal-send-unsubmitted-followup-email', function (Request $request
 echo "<pre>";print_r($body);echo "</pre>";
 		$app['sendMail']($subject, $body, $to);
 		error_log('$i: '.print_r($i,true));
+		echo "<pre>";print_r($i);echo "</pre>";
 		$i++;
 	}
 
