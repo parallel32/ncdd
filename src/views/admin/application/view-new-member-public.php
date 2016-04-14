@@ -218,7 +218,7 @@
                   </div>
                   
                   <!-- END ADDRESS -->
-                  <h3 class="form-section">2.</h3>
+                  <h3 class="form-section">2.(old value)</h3>
                   <div class="row-fluid">
                      <div class="span12">
                         <div class="control-group">
@@ -230,13 +230,54 @@
                      </div>
                      <!--/span-->
                   </div>
-                  <h3 class="form-section">3.</h3>
+                  <h3 class="form-section">2.(new)</h3>
+                  <div class="row-fluid">
+                     <div class="span6">
+                        <div class="control-group">
+                           <label class="control-label">How did you hear about the NCDD?</label>
+                           <div class="controls">
+                              <select disabled name="doc[hearAboutNCDD]" class="m-wrap span6 hearAboutNCDD">
+                              <option value="">Please select</option>
+                              <option <?=($this->vars['application']['hearAboutNCDD'] == "Google") ? "selected":"" ?> value="Google">Google</option>
+                              <option <?=($this->vars['application']['hearAboutNCDD'] == "Yahoo") ? "selected":"" ?> value="Yahoo">Yahoo</option>
+                              <option <?=($this->vars['application']['hearAboutNCDD'] == "Bing") ? "selected":"" ?> value="Bing">Bing</option>
+                              <option <?=($this->vars['application']['hearAboutNCDD'] == "Other Search Engine") ? "selected":"" ?> value="Other Search Engine">Other Search Engine</option>
+                              <option <?=($this->vars['application']['hearAboutNCDD'] == "Friend/Collegue") ? "selected":"" ?> value="Friend/Collegue">Friend/Collegue</option>
+                              <option <?=($this->vars['application']['hearAboutNCDD'] == "Existing Member") ? "selected":"" ?> value="Existing Member">Existing Member</option>
+                              <option <?=($this->vars['application']['hearAboutNCDD'] == "Seminar") ? "selected":"" ?> value="Seminar">Seminar</option>
+                              <option <?=($this->vars['application']['hearAboutNCDD'] == "NCDD Promotion") ? "selected":"" ?> value="NCDD Promotion">NCDD Promotion</option>
+                              </select>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  <h3 class="form-section">3.(old value)</h3>
                   <div class="row-fluid">
                      <div class="span12">
                         <div class="control-group">
                            <label class="control-label">Year of admission to practice:</label>
                            <div class="controls">
-                              <input type="text" name="doc[yearsInLawPractice]" value="<?=$this->vars['application']['yearsInLawPractice']?>" class="m-wrap span12 yearsInLawPractice">
+                              <input disabled type="text" name="doc[yearsInLawPractice]" value="<?=$this->vars['application']['yearsInLawPractice']?>" class="m-wrap span12 yearsInLawPractice">
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+
+                  <h3 class="form-section">3.(new)</h3>
+                  <div class="row-fluid">
+                     <div class="span6">
+                        <div class="control-group">
+                           <label class="control-label">Year of admission to practice:</label>
+                           <div class="controls">
+                              <select disabled name="doc[yearsInLawPractice]" class="m-wrap span6 yearsInLawPractice">
+                              <option value="">Please select</option>
+                              <? for($i=(int)date('Y'); $i >= (int)date('Y')-20; $i--){ ?>
+                              <option <?=($this->vars['application']['yearsInLawPractice'] == $i) ? "selected":"" ?> value="<?=$i?>"><?=$i?></option>
+                              <? } ?>
+                              <option <?=($this->vars['application']['yearsInLawPractice'] == 1995) ? "selected":"" ?> value="1995">More than 20 years ago</option>
+                              </select>
                            </div>
                         </div>
                      </div>
@@ -630,40 +671,69 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                      <!--/span-->
                   </div>
 
-                  <h3 class="form-section">8. Promotional Code</h3>
+                  <h3 class="form-section">Promotional Code</h3>
                   <div class="row-fluid">
                      <div class="span6 ">
                         <div class="control-group">
 <!--                            <label class="control-label">Enter   the   promo code  BONUS2015 and pay   your  2016  dues  in full in order to obtain   
 the   remainder of 2015 for free.  Offer expires December 31, 2015. </label> -->
                            <div class="controls">
-                              <input disabled type="text" name="doc[promocode]" class="m-wrap span12 promocode" value="<?=(array_key_exists('promocode', $this->vars['application'])) ? $this->vars['application']['promocode'] : ''?>">
+                           <?
+                           // legacy
+                           if(array_key_exists('promocode', $this->vars['application'])) {
+                              $promocode = $this->vars['application']['promocode'];
+                           }else{
+                              $promocode = '';
+                           }
+                           // new stuff
+                           if(array_key_exists('promotion', $this->vars['application']) && is_array($this->vars['application']['promotion']) && !empty($this->vars['application']['promotion'])) {
+                              $promocode = $this->vars['application']['promotion']['code'];
+                           }else{
+                              $promocode = '';
+                           }
+
+                           ?>
+                              <input type="text" name="doc[promocode]" class="m-wrap span12 promocode" disabled value="<?=$promocode?>">
+                              <input type="hidden" id="promocodetype" value="">
                            </div>
                         </div>
                      </div>
                      <!--/span-->
                   </div>
-
-
-                  <br>
-                  <div class="row-fluid">
-                     <div class="span10 ">
-                        <p class="alert alert-info">
-                        <b>I authorize the NCDD to store my credit card for future Annual Dues payments.</b>
-                        <input <?=(array_key_exists('termsAcknowledgement',$this->vars['application']) && $this->vars['application']['termsAcknowledgement'] == 'yes') ? 'checked' : '' ?> type="checkbox" name="doc[termsAcknowledgement]" class="termsAcknowledgement" value="yes">Yes, I agree.
-                        </p>
-                     </div>
                      
-                  </div>
-                  
+                  <?
+                  if(array_key_exists('promotion', $this->vars['application']) && is_array($this->vars['application']['promotion']) && !empty($this->vars['application']['promotion'])) {
+                  ?>
                   <div class="row-fluid">
-                     <div class="span10 ">
-                        <p class="alert">
-                        <b>As is the policy of the NCDD, the application process shall not directly or indirectly discriminate against any applicant for reason of race, color, gender, age, religion, disability, national origin, ancestry, marital status, sexual orientation, parental status, military discharge status, or income status.</b>
+                     <div class="span6 promocodeblocks <?=strtoupper($this->vars['application']['promotion']['code'])?>">
+                     <? if($this->vars['application']['promotion']['discountAmt'] > 0): ?>
+                        <p class="promo-discount">
+                           Discount: <b><?=($this->vars['application']['promotion']['currentType'] == \Saw\Model\Promotion::$type['MONEY']) ? "$": '';?><?=$this->vars['application']['promotion']['discountAmt']?><?=($this->vars['application']['promotion']['currentType'] == \Saw\Model\Promotion::$type['PERCENT']) ? "%": '';?></b>
                         </p>
-                        
+                        <br>
+                     <? endif; ?>
+                        <? if($this->vars['application']['promotion']['optInOnOff'] == 'on'){?>
+                        <p class="alert alert-info">
+                           <b><?=$this->vars['application']['promotion']['optInDisclosure']?></b>
+                           <br><span class="control-group"><span class="controls"><input <?=($this->vars['application']['promotion']['optIn'] == 'yes') ? "checked" : "";?> type="checkbox" name="doc[optIn]" class="optIn" value="yes" disabled >Yes, I agree.</span></span>
+                        </p>
+                        <? } ?>
+                     </div>                     
+                  </div>
+                  <div class="row-fluid">
+                     <div class="span6 promocodeblocks <?=strtoupper($this->vars['application']['promotion']['code'])?>">
+                        <? if($this->vars['application']['promotion']['gift'] == 'yes'){?>
+                        <p class="">
+                           <b><?=$this->vars['application']['promotion']['giftName']?></b>&nbsp;-&nbsp;A $<?=$this->vars['application']['promotion']['giftDollarValue']?> value.
+                           <br>
+                           <?=$this->vars['application']['promotion']['giftDesc']?>
+                           <br>
+                           <img src="<?=$this->app['getImageURL']($this->vars['application']['promotion']['image'],'small')?>" width="200">
+                        </p>
+                        <? } ?>
                      </div>
                   </div>
+                  <? } ?>
                   
                </form>
                <!-- END FORM--> 

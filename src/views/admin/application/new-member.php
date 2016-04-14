@@ -780,7 +780,7 @@ jQuery(document).ready(function() {
                      </div>
                      <!--/span-->
                   </div>
-                  <h3 class="form-section">8. Promotional Code</h3>
+                  <h3 class="form-section">Promotional Code</h3>
                   <div class="row-fluid">
                      <div class="span6 ">
                         <div class="control-group">
@@ -801,10 +801,12 @@ the   remainder of 2015 for free.  Offer expires December 31, 2015. </label> -->
                   ?>
                   <div class="row-fluid">
                      <div class="span6 promocodeblocks <?=strtoupper($promo['code'])?>">
+                     <? if($promo['discountAmt'] > 0): ?>
                         <p class="promo-discount">
                            Discount: <b><?=($promo['currentType'] == \Saw\Model\Promotion::$type['MONEY']) ? "$": '';?><?=$promo['discountAmt']?><?=($promo['currentType'] == \Saw\Model\Promotion::$type['PERCENT']) ? "%": '';?></b>
                         </p>
                         <br>
+                     <? endif; ?>
                         <? if($promo['optInOnOff'] == 'on'){?>
                         <p class="alert alert-info">
                            <b><?=$promo['optInDisclosure']?></b>
@@ -900,13 +902,13 @@ the   remainder of 2015 for free.  Offer expires December 31, 2015. </label> -->
                      <input type="hidden" class="payment cardType" name="doc[payment][cardType]" value="">
                      <input type="hidden" class="payment currentPaymentType" name="doc[payment][currentPaymentType]" value="">
                      <input type="hidden" class="payment token" name="doc[payment][token]" value="">
-                     <h3 class="form-section">9. Payment Amount</h3>
+                     <h3 class="form-section">Payment Amount</h3>
                      <div class="row-fluid">
                         <h4>$<i class="payment amount"></i></h4>                        
                      </div>
                      <br><br>
                   <div id="payment-information" class="">
-                     <h3 class="form-section">10. Payment Information</h3>
+                     <h3 class="form-section">Payment Information</h3>
                      <div class="row-fluid">
                         <? if(false):?>
                         <h4>Please select a payment method:</h4>

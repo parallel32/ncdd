@@ -241,7 +241,7 @@
                   </div>
                   
                   <!-- END ADDRESS -->
-                  <h3 class="form-section">2.</h3>
+                  <h3 class="form-section">2.(old value)</h3>
                   <div class="row-fluid">
                      <div class="span12">
                         <div class="control-group">
@@ -253,18 +253,61 @@
                      </div>
                      <!--/span-->
                   </div>
-                  <h3 class="form-section">3.</h3>
+                  <h3 class="form-section">2.(new)</h3>
                   <div class="row-fluid">
-                     <div class="span12">
+                     <div class="span6">
                         <div class="control-group">
-                           <label class="control-label">Year of admission to practice:</label>
+                           <label class="control-label">How did you hear about the NCDD?</label>
                            <div class="controls">
-                              <input type="text" name="doc[yearsInLawPractice]" value="<?=$this->vars['application']['yearsInLawPractice']?>" class="m-wrap span12 yearsInLawPractice">
+                              <select disabled name="doc[hearAboutNCDD]" class="m-wrap span6 hearAboutNCDD">
+                              <option value="">Please select</option>
+                              <option <?=($this->vars['application']['hearAboutNCDD'] == "Google") ? "selected":"" ?> value="Google">Google</option>
+                              <option <?=($this->vars['application']['hearAboutNCDD'] == "Yahoo") ? "selected":"" ?> value="Yahoo">Yahoo</option>
+                              <option <?=($this->vars['application']['hearAboutNCDD'] == "Bing") ? "selected":"" ?> value="Bing">Bing</option>
+                              <option <?=($this->vars['application']['hearAboutNCDD'] == "Other Search Engine") ? "selected":"" ?> value="Other Search Engine">Other Search Engine</option>
+                              <option <?=($this->vars['application']['hearAboutNCDD'] == "Friend/Collegue") ? "selected":"" ?> value="Friend/Collegue">Friend/Collegue</option>
+                              <option <?=($this->vars['application']['hearAboutNCDD'] == "Existing Member") ? "selected":"" ?> value="Existing Member">Existing Member</option>
+                              <option <?=($this->vars['application']['hearAboutNCDD'] == "Seminar") ? "selected":"" ?> value="Seminar">Seminar</option>
+                              <option <?=($this->vars['application']['hearAboutNCDD'] == "NCDD Promotion") ? "selected":"" ?> value="NCDD Promotion">NCDD Promotion</option>
+                              </select>
                            </div>
                         </div>
                      </div>
                      <!--/span-->
                   </div>
+                  <h3 class="form-section">3.(old value)</h3>
+                  <div class="row-fluid">
+                     <div class="span12">
+                        <div class="control-group">
+                           <label class="control-label">Year of admission to practice:</label>
+                           <div class="controls">
+                              <input disabled type="text" name="doc[yearsInLawPractice]" value="<?=$this->vars['application']['yearsInLawPractice']?>" class="m-wrap span12 yearsInLawPractice">
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+
+                  <h3 class="form-section">3.(new)</h3>
+                  <div class="row-fluid">
+                     <div class="span6">
+                        <div class="control-group">
+                           <label class="control-label">Year of admission to practice:</label>
+                           <div class="controls">
+                              <select disabled name="doc[yearsInLawPractice]" class="m-wrap span6 yearsInLawPractice">
+                              <option value="">Please select</option>
+                              <? for($i=(int)date('Y'); $i >= (int)date('Y')-20; $i--){ ?>
+                              <option <?=($this->vars['application']['yearsInLawPractice'] == $i) ? "selected":"" ?> value="<?=$i?>"><?=$i?></option>
+                              <? } ?>
+                              <option <?=($this->vars['application']['yearsInLawPractice'] == 1995) ? "selected":"" ?> value="1995">More than 20 years ago</option>
+                              </select>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/span-->
+                  </div>
+                  
+                  
 
                   <h3 class="form-section">4.</h3>
                   <div class="row-fluid">
@@ -566,47 +609,6 @@
                      </div>
                      <!--/span-->
                   </div>
-                  <h3 class="form-section">7. AUTHORIZATION AND RELEASE</h3>
-                  <div class="row-fluid">
-                     <div class="span12">
-                        <h3 class="text-center"><u>PARTIES</u></h3>
-                        <p>
-                           <u>APPLICANT</u> - person applying for initial membership status or a present member applying for renewal of his or her membership status. </br><u>NCDD</u> - The National College for DUI Defense, Inc.
-                        </p>
-                        <h3 class="text-center"><u>ACKNOWLEDGEMENT</u></h3>
-                        <p>
-                           I understand and agree that as a condition of present and continuing membership in NCDD I shall immediately report all facts or circumstances relating thereto to the Executive Director of NCDD:
-                        </p>
-                        <p>
-a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess is suspended, terminated, revoked, or restricted, or if I am otherwise disciplined or censured by a licensing authority for the practice of law before any court or jurisdiction;
-<br>b.&nbsp;&nbsp;if I obtain employment with any prosecuting authority either by contract, or if part time or full time or;
-<br>c.&nbsp;&nbsp;if I am no longer in substantial current involvement in the practice area of DUI/DWI defense;
-<br>d.&nbsp;&nbsp;if I fail to attend one (or more) seminars every two (2) years either sponsored by NCDD or at a State/local seminar approved by NCDD; or
-<br>e.&nbsp;&nbsp;if I am no longer eligible for membership in NCDD under the bylaws as amended. 
-                        </p>
-                        <p>
-                           I hereby authorize NCDD to charge the debit or credit card that I may have on file for any and all membership dues for membership or other fees at the level and rate then in effect until such time as I notify the Executive Director of NCDD to cancel such authorization. All membership dues will be charged on the due date as set out in the rules governing membership. Cancellation of use of this method of payment is prospective only. Notice of cancellation must be delivered to the Executive Director in writing or by email at least 14 days prior to the due date of membership dues or fees.
-                        </p>
-                        <h3 class="text-center"><u>AUTHORIZE AND RELEASE</u></h3>
-                        <p>
-                           Applicant does by this document give consent for the NCDD to conduct an investigation into my character and fitness to be a member, and to make inquiries and request such information from third parties as, in the sole discretion of NCDD, may be necessary for such investigation. I further authorize the use of any and all such information in the course of the NCDD’s investigation and evaluation of my application for general membership and annual renewal.
-                        </p>
-                        <h3 class="text-center"><u>INITIAL MEMBERSHIP AND/OR RENEWAL</u></h3>
-                        <p>
-                           I authorize and request every person or entity, governmental or private, having opinions or knowledge about me, or control of any documents, information, or data pertaining to me, to furnish to the NCDD or its representative such opinions, knowledge, documents or data. Without limiting the previously described authority, I specifically authorize the release of records pertaining to my criminal history, files of any state or professional association regarding disciplinary proceedings and complaints against me, and records of educational institutions concerning me.
-                           </br></br>
-                           I hereby authorize all persons set out above to answer any inquiries from the NCDD concerning me, and I waive absolutely any privileges or privacy rights I may have which are applicable to any documents or information referred to above and sought pursuant to this authorization and release.
-                           </br></br>
-                           Notwithstanding any statement herein to the contrary, this Authorization and Release shall not operate to release any medical or mental health records relating to alcohol, drug or chemical dependency.
-                           </br></br>
-                           I hereby release, discharge and hold harmless the NCDD, its agents or representatives, and any person or entity and its agents or representatives, from any and all liability arising out of the furnishing or use of the opinions, knowledge, documents, records or other data released pursuant to this Authorization and Release.
-                           </br></br>
-                           A photocopy of this authorization shall be accepted with the same validity as the original.
-                           </br></br>
-                        </p>
-                     </div>
-                     <!--/span-->
-                  </div>
                   <div class="row-fluid">
                      <div class="span12 ">
                         <div class="control-group">
@@ -652,40 +654,120 @@ a.&nbsp;&nbsp;if any license or privilege to practice law that I hold or possess
                      <!--/span-->
                   </div>
 
-                  <h3 class="form-section">8. Promotional Code</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  <h3 class="form-section">Promotional Code</h3>
                   <div class="row-fluid">
                      <div class="span6 ">
                         <div class="control-group">
 <!--                            <label class="control-label">Enter   the   promo code  BONUS2015 and pay   your  2016  dues  in full in order to obtain   
 the   remainder of 2015 for free.  Offer expires December 31, 2015. </label> -->
                            <div class="controls">
-                              <input disabled type="text" name="doc[promocode]" class="m-wrap span12 promocode" value="<?=(array_key_exists('promocode', $this->vars['application'])) ? $this->vars['application']['promocode'] : ''?>">
+                           <?
+                           // legacy
+                           if(array_key_exists('promocode', $this->vars['application'])) {
+                              $promocode = $this->vars['application']['promocode'];
+                           }else{
+                              $promocode = '';
+                           }
+                           // new stuff
+                           if(array_key_exists('promotion', $this->vars['application']) && is_array($this->vars['application']['promotion']) && !empty($this->vars['application']['promotion'])) {
+                              $promocode = $this->vars['application']['promotion']['code'];
+                           }else{
+                              $promocode = '';
+                           }
+
+                           ?>
+                              <input type="text" name="doc[promocode]" class="m-wrap span12 promocode" disabled value="<?=$promocode?>">
+                              <input type="hidden" id="promocodetype" value="">
                            </div>
                         </div>
                      </div>
                      <!--/span-->
                   </div>
-
-                  <br>
-                  <div class="row-fluid">
-                     <div class="span10 ">
-                        <p class="alert alert-info">
-                        <b>I authorize the NCDD to store my credit card for future Annual Dues payments.</b>
-                        <input <?=(array_key_exists('termsAcknowledgement',$this->vars['application']) && $this->vars['application']['termsAcknowledgement'] == 'yes') ? 'checked' : '' ?> type="checkbox" name="doc[termsAcknowledgement]" class="termsAcknowledgement" value="yes">Yes, I agree.
-                        </p>
-                     </div>
                      
-                  </div>
-                  
+                  <?
+                  if(array_key_exists('promotion', $this->vars['application']) && is_array($this->vars['application']['promotion']) && !empty($this->vars['application']['promotion'])) {
+                  ?>
                   <div class="row-fluid">
-                     <div class="span10 ">
-                        <p class="alert">
-                        <b>As is the policy of the NCDD, the application process shall not directly or indirectly discriminate against any applicant for reason of race, color, gender, age, religion, disability, national origin, ancestry, marital status, sexual orientation, parental status, military discharge status, or income status.</b>
+                     <div class="span6 promocodeblocks <?=strtoupper($this->vars['application']['promotion']['code'])?>">
+                     <? if($this->vars['application']['promotion']['discountAmt'] > 0): ?>
+                        <p class="promo-discount">
+                           Discount: <b><?=($this->vars['application']['promotion']['currentType'] == \Saw\Model\Promotion::$type['MONEY']) ? "$": '';?><?=$this->vars['application']['promotion']['discountAmt']?><?=($this->vars['application']['promotion']['currentType'] == \Saw\Model\Promotion::$type['PERCENT']) ? "%": '';?></b>
                         </p>
-                        
+                        <br>
+                     <? endif; ?>
+                        <? if($this->vars['application']['promotion']['optInOnOff'] == 'on'){?>
+                        <p class="alert alert-info">
+                           <b><?=$this->vars['application']['promotion']['optInDisclosure']?></b>
+                           <br><span class="control-group"><span class="controls"><input <?=($this->vars['application']['promotion']['optIn'] == 'yes') ? "checked" : "";?> type="checkbox" name="doc[optIn]" class="optIn" value="yes" disabled >Yes, I agree.</span></span>
+                        </p>
+                        <? } ?>
+                     </div>                     
+                  </div>
+                  <div class="row-fluid">
+                     <div class="span6 promocodeblocks <?=strtoupper($this->vars['application']['promotion']['code'])?>">
+                        <? if($this->vars['application']['promotion']['gift'] == 'yes'){?>
+                        <p class="">
+                           <b><?=$this->vars['application']['promotion']['giftName']?></b>&nbsp;-&nbsp;A $<?=$this->vars['application']['promotion']['giftDollarValue']?> value.
+                           <br>
+                           <?=$this->vars['application']['promotion']['giftDesc']?>
+                           <br>
+                           <img src="<?=$this->app['getImageURL']($this->vars['application']['promotion']['image'],'small')?>" width="200">
+                        </p>
+                        <? } ?>
                      </div>
                   </div>
-                  
+                  <? } ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                   
                   <?if($this->vars['application']['currentStatus'] == \Saw\Model\Apply::$status['TRIAL'] && array_key_exists('trial',$this->vars['application'])):?>
                   <div class="row-fluid">
