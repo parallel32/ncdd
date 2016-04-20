@@ -407,7 +407,7 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
 		
 		$amt = (empty($doc['promocode']) || $doc['promocode'] == 'BONUS2015-' || $doc['promocode'] == 'EAGLE2016-') ? $dues['publicDefender']['amount']: $dues['publicDefender']['prorated']['a'];
 		// also erase the promo code so they don't get gouped in the promo code list
-		$doc['promocode'] = '';
+		//$doc['promocode'] = '';
 error_log('pd $amt: '.print_r($amt,true));
 	}
 
