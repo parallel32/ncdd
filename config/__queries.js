@@ -4,7 +4,128 @@ db.application.update({},{$set:{email:'parallel32+100@gmail.com'}},{multi:true})
 
 // link up a seminar registration to a payment
 db.registration.update({_id:ObjectId('565cf2b31f1d752b0ed3e88d')},{$set:{currentStatus:40,currentPaymentType:40,paymentId:ObjectId('565cf2b31f1d752b0ed3e88c'),paidDate:{"date" : ISODate("2015-12-01T01:06:59Z"),"checkError" : "2015-11-30","feed" : "11/30/2015","detail" : "11/30/2015","monthDay" : "November 30","iso" : "2015-11-30T20:06:59-05:00","fullDateTime" : "November 30, 2015 08:06 PM","fullMonth" : "November 30, 2015","shortMonth" : "Nov 30, 2015","dayOfWeek" : "Monday","shortDayOfWeek" : "Mon","year" : "2015","european" : "30/11/2015","europeanFullMonth" : "30 November, 2015","europeanShortMonth" : "30 Nov, 2015","shortTimeSlim" : "8:06pm","shortTime" : "8:06 pm","longTime" : "08:06 PM","militaryTime" : "20:06","timezone" : "America/New_York","month" : "November","leadingZeros" : "11-30-15","paymentGateway" : "20151130"}}});
-db.registration.update({_id:ObjectId('5655ce391f1d7532630ecf57')},{$set:{currentStatus:40,currentPaymentType:40,paymentId:ObjectId('5655ce391f1d7532630ecf56'),paidDate:{"date" : ISODate("2015-11-25T15:05:29Z"),"checkError" : "2015-11-25","feed" : "11/25/2015","detail" : "11/25/2015","monthDay" : "November 25","iso" : "2015-11-25T10:05:29-05:00","fullDateTime" : "November 25, 2015 10:05 AM","fullMonth" : "November 25, 2015","shortMonth" : "Nov 25, 2015","dayOfWeek" : "Wednesday","shortDayOfWeek" : "Wed","year" : "2015","european" : "25/11/2015","europeanFullMonth" : "25 November, 2015","europeanShortMonth" : "25 Nov, 2015","shortTimeSlim" : "10:05am","shortTime" : "10:05 am","longTime" : "10:05 AM","militaryTime" : "10:05","timezone" : "America/New_York","month" : "November","leadingZeros" : "11-25-15","paymentGateway" : "20151125"}}});
+db.registration.update({_id:ObjectId('57103911a6ec61b563342065')},{$set:{currentStatus:40,currentPaymentType:40,paymentId:ObjectId('57103911a6ec61b563342064'),paidDate:{"date" : ISODate("2016-04-15T00:42:57Z"),"checkError" : "2016-04-14","feed" : "4/14/2016","detail" : "4/14/2016","monthDay" : "April 14","iso" : "2016-04-14T20:42:57-04:00","fullDateTime" : "April 14, 2016 08:42 PM","fullMonth" : "April 14, 2016","shortMonth" : "Apr 14, 2016","dayOfWeek" : "Thursday","shortDayOfWeek" : "Thu","year" : "2016","european" : "14/4/2016","europeanFullMonth" : "14 April, 2016","europeanShortMonth" : "14 Apr, 2016","shortTimeSlim" : "8:42pm","shortTime" : "8:42 pm","longTime" : "08:42 PM","militaryTime" : "20:42","timezone" : "America/New_York","month" : "April","leadingZeros" : "04-14-16","paymentGateway" : "20160414"}}});
+
+
+
+db.registration.find({_id:ObjectId('57103911a6ec61b563342065')}).pretty()
+
+db.registration.update({_id:ObjectId('57103911a6ec61b563342065')},{$set:{memberId:ObjectId('54dff04054fe0ba36e708fab')}});
+
+
+
+
+
+{
+	"_id" : ObjectId("57103911a6ec61b563342065"),
+	"address1" : "303 East Broadway",
+	"address2" : "",
+	"attendanceCertificationStatement" : "Jessica Sisk, on this 14th day of April, 2016",
+	"barNumber" : 29905,
+	"cardOnFile" : {
+
+	},
+	"city" : "Newport",
+	"class" : "RegistrationSeminar",
+	"clearFields" : "",
+	"collection" : "registration",
+	"contributionPaymentId" : {
+
+	},
+	"country" : "United States",
+	"currentPaymentType" : 40,
+	"currentStatus" : 20,
+	"deposit" : 500,
+	"depositDueDate" : "July 1",
+	"depositPaidDate" : {
+		"date" : ISODate("2016-04-15T00:42:57Z"),
+		"checkError" : "2016-04-14",
+		"feed" : "4/14/2016",
+		"detail" : "4/14/2016",
+		"monthDay" : "April 14",
+		"iso" : "2016-04-14T20:42:57-04:00",
+		"fullDateTime" : "April 14, 2016 08:42 PM",
+		"fullMonth" : "April 14, 2016",
+		"shortMonth" : "Apr 14, 2016",
+		"dayOfWeek" : "Thursday",
+		"shortDayOfWeek" : "Thu",
+		"year" : "2016",
+		"european" : "14/4/2016",
+		"europeanFullMonth" : "14 April, 2016",
+		"europeanShortMonth" : "14 Apr, 2016",
+		"shortTimeSlim" : "8:42pm",
+		"shortTime" : "8:42 pm",
+		"longTime" : "08:42 PM",
+		"militaryTime" : "20:42",
+		"timezone" : "America/New_York",
+		"month" : "April",
+		"leadingZeros" : "04-14-16",
+		"paymentGateway" : "20160414"
+	},
+	"depositPaymentId" : ObejctId("57103911a6ec61b563342064"),
+	"depositQuestion" : "yes",
+	"elective1" : "Picking the Winning Jury",
+	"elective2" : "Suppression Motions: Winning it All Before Trial",
+	"email" : "jsisklaw@gmail.com",
+	"fax" : "(423) 623-3139",
+	"hardCopy" : "NO",
+	"hardCopyFee" : 50,
+	"memberId" : {
+
+	},
+	"name" : "Jessica Sisk",
+	"nameTag" : "Jessica Sisk",
+	"paidDate" : {
+		
+	},
+	"paymentId" : {},
+	"phone" : "(423) 623-3137",
+	"postalCode" : 37821,
+	"previouslyAttended" : "",
+	"previouslyAttendedExists" : "no",
+	"registrationFee" : 1500,
+	"registrationFeeOriginal" : 1500,
+	"registrationNumber" : "no",
+	"rsvp" : 1,
+	"rsvpkids" : "",
+	"scholarshipId" : {
+
+	},
+	"seminarId" : ObjectId("5677050254fe0b9324742c16"),
+	"state" : "Tennessee",
+	"submittedDate" : {
+		"date" : ISODate("2016-04-15T00:42:57Z"),
+		"checkError" : "2016-04-14",
+		"feed" : "4/14/2016",
+		"detail" : "4/14/2016",
+		"monthDay" : "April 14",
+		"iso" : "2016-04-14T20:42:57-04:00",
+		"fullDateTime" : "April 14, 2016 08:42 PM",
+		"fullMonth" : "April 14, 2016",
+		"shortMonth" : "Apr 14, 2016",
+		"dayOfWeek" : "Thursday",
+		"shortDayOfWeek" : "Thu",
+		"year" : "2016",
+		"european" : "14/4/2016",
+		"europeanFullMonth" : "14 April, 2016",
+		"europeanShortMonth" : "14 Apr, 2016",
+		"shortTimeSlim" : "8:42pm",
+		"shortTime" : "8:42 pm",
+		"longTime" : "08:42 PM",
+		"militaryTime" : "20:42",
+		"timezone" : "America/New_York",
+		"month" : "April",
+		"leadingZeros" : "04-14-16",
+		"paymentGateway" : "20160414"
+	},
+	"tempPayment" : {
+
+	},
+	"total" : 500,
+	"type" : "NEW SEMINAR REGISTRATION",
+	"userAgent" : "Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko"
+}
+
 
 
 
