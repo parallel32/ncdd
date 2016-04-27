@@ -217,7 +217,7 @@ class RegistrationSeminar extends Registration {
 			// don't send the email		
 		}else{
 			$subject = 'NCDD Payment Received';
-			$to = $payment['email'];
+			$to = $registration['email'];
 			$view_vars = array('payment'=>$payment
 								,'paymentId'=>$paymentId
 								,'email'=>$payment['email']
