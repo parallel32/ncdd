@@ -127,6 +127,26 @@
                            </div>
                            <!--/span-->
                         </div>
+                        <h3 class="form-section text-info"><strong>Membership Restrictions</strong></h3>
+                        <p>This allows you to resctrict the promotion to Members, Public Defenders, Non Members or no restrictions at all.</p>
+                        <div class="row-fluid">
+                           <div class="span12 ">
+                              <div class="control-group ">
+                                 <label class="control-label"></label>
+                                 <div class="controls">
+                                    <select name="doc[currentRestriction]" class="span10 m-wrap forum" data-placeholder="Discount Type" tabindex="1">
+                                       <? foreach(\Saw\Model\Promotion::$restrictionReversed as $key=>$value):
+                                       $selected = (!empty($this->vars['promotion']) && array_key_exists('currentRestriction', $this->vars['promotion']) && $this->vars['promotion']['currentRestriction'] == $key)? 'selected' : '';
+                                       ?>
+                                       <option <?=$selected?> value="<?=$key?>"><?=$value?></option>
+                                       <? endforeach; ?>
+                                    </select>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+
                         <h3 class="form-section text-info"><strong>Gift yes/no</strong></h3>
                         <p>Is there a gift associated with the promotion?  If so, set this to yes and fill in the gift name, dollar value of the gift and optionally a photo of the gift.</p>
                         <div class="row-fluid">

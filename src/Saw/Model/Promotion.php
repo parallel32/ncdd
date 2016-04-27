@@ -26,6 +26,9 @@ class Promotion extends Model {
 	static public $membership = array('PUBLIC DEFENDER'=>5,'GENERAL MEMBER'=>10,'SUSTAINING MEMBER'=>30,'FOUNDING MEMBER'=>40);
 	static public $membershipReversed = array(5=>'PUBLIC DEFENDER',10=>'GENERAL MEMBER',30=>'SUSTAINING MEMBER', 40=>'FOUNDING MEMBER');
 	public $currentMembership;
+	static public $restriction = array('NO RESTRICTIONS'=>5,'PUBLIC DEFENDERS'=>10,'NON MEMBERS'=>30,'MEMBERS'=>40);
+	static public $restrictionReversed = array(5=>'NO RESTRICTIONS',10=>'PUBLIC DEFENDERS',30=>'NON MEMBERS', 40=>'MEMBERS');
+	public $currentRestriction;		// restricted to:  members | publicdefenders | nonmembers | norestrictions
 	public $discountAmt; 			// based on type this is either a whole dollar amt or a percent
 	public $optIn; 					// yes | no - this is for the optin to keep the payment method on file.
 	public $optInDisclosure; 		// the actual disclosure statement
@@ -176,6 +179,7 @@ class Promotion extends Model {
 		$this->image = $doc['image'];
 		$this->isActive = $doc['isActive'];
         $this->add = $doc['add'];		
+        $this->currentRestriction = $doc['currentRestriction'];		
 	}
 	protected function prepareInsert(){
 		$this->code = $this->code ?: '';
@@ -196,7 +200,7 @@ class Promotion extends Model {
 		$this->image = $this->image ?: new \stdClass();
 		$this->isActive = $this->isActive ?: 'yes';
 		$this->add = $this->add ?: 'yes';
-		
+		$this->currentRestriction = $this->currentRestriction ?: array();		
 	}
 	public function insert(){
 		$this->prepareInsert();
