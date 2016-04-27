@@ -36,7 +36,7 @@
                                  <td class="center hidden-480 ">$<?=$payment['amount']?></td>
                                  <td class="hidden-480 "><?=$payment['paidDate']['fullMonth'].' '.$payment['paidDate']['shortTime']?></td>
                                  <td class=" ">
-                                    <a data-id="<?=$payment['_id']?>" class="btn blue mini view payment"><i class=" "></i> View</a>
+                                    <a href="/payment/<?=$payment['_id']?>/view" data-id="<?=$payment['_id']?>" class="btn blue mini view payment"><i class=" "></i> View</a>
                                  </td>
                               </tr>
                               <? endforeach;?>

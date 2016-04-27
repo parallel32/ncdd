@@ -130,7 +130,7 @@
 	};
 	Payment.indexInit = function(){
 		$('.btn.blue.mini.view').click(function(e){
-			document.location.href='/payment/'+$(this).attr('data-id')+'/view';
+			//document.location.href='/payment/'+$(this).attr('data-id')+'/view';
 		});	
 		$('.btn.cancel').click(function(e){
 			document.location.href='/payment';

@@ -332,7 +332,8 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 		$paymentId = new \stdClass();
 
 		// save the credit card for the registration to use later when the final payment is due.
-		if($depositQuestion == 'card' && !empty($doc['memberId'])){ 
+		//if($depositQuestion == 'card' && !empty($doc['memberId'])){ 
+		if($depositQuestion == 'card'){ 
 			$payment_lite = new Model\PaymentLite($doc['payment'],$app);
 			$doc['cardOnFile'] = $payment_lite->__toArray();
 		}
@@ -348,16 +349,16 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 
 
 		if ($doc['currentPaymentType'] == Model\Registration::$paymentType['CREDIT'] || $doc['currentPaymentType'] == Model\Registration::$paymentType['ACH']) {
-				$doc['payment']['ownerId'] = '';
-				$doc['payment']['ownerClass'] = 'RegistrationSeminar';
-				$doc['payment']['currentPaymentType'] = $doc['currentPaymentType'];
-				$payment = new Model\Payment($doc['payment'],$app);
-				if($doc['currentPaymentType'] == Model\Registration::$paymentType['ACH']){
-					$app['validateModel']($app, $payment,$groups=array('ach'));	
-				}
-				if($doc['currentPaymentType'] == Model\Registration::$paymentType['CREDIT']){
-					$app['validateModel']($app, $payment,$groups=array('credit'));	
-				}
+			$doc['payment']['ownerId'] = '';
+			$doc['payment']['ownerClass'] = 'RegistrationSeminar';
+			$doc['payment']['currentPaymentType'] = $doc['currentPaymentType'];
+			$payment = new Model\Payment($doc['payment'],$app);
+			if($doc['currentPaymentType'] == Model\Registration::$paymentType['ACH']){
+				$app['validateModel']($app, $payment,$groups=array('ach'));	
+			}
+			if($doc['currentPaymentType'] == Model\Registration::$paymentType['CREDIT']){
+				$app['validateModel']($app, $payment,$groups=array('credit'));	
+			}
 				
 			try {
 				
