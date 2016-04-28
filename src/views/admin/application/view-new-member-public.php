@@ -686,7 +686,7 @@ the   remainder of 2015 for free.  Offer expires December 31, 2015. </label> -->
                               $promocode = '';
                            }
                            // new stuff
-                           if(array_key_exists('promotion', $this->vars['application']) && is_array($this->vars['application']['promotion']) && !empty($this->vars['application']['promotion'])) {
+                           if(array_key_exists('promotion', $this->vars['application']) && is_array($this->vars['application']['promotion']) && !empty($this->vars['application']['promotion']) && is_array($this->vars['application']['promotion']) && array_key_exists('code',$this->vars['application']['promotion'])) {
                               $promocode = $this->vars['application']['promotion']['code'];
                            }else{
                               $promocode = '';
@@ -702,7 +702,7 @@ the   remainder of 2015 for free.  Offer expires December 31, 2015. </label> -->
                   </div>
                      
                   <?
-                  if(array_key_exists('promotion', $this->vars['application']) && is_array($this->vars['application']['promotion']) && !empty($this->vars['application']['promotion'])) {
+                  if(array_key_exists('promotion', $this->vars['application']) && is_array($this->vars['application']['promotion']) && !empty($this->vars['application']['promotion']) && is_array($this->vars['application']['promotion']) && array_key_exists('code',$this->vars['application']['promotion'])) {
                   ?>
                   <div class="row-fluid">
                      <div class="span6 promocodeblocks <?=strtoupper($this->vars['application']['promotion']['code'])?>">
