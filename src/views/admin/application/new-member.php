@@ -1122,7 +1122,7 @@ the   remainder of 2015 for free.  Offer expires December 31, 2015. </label> -->
                            <div class="control-group ">
                               <label class="control-label">City</label>
                               <div class="controls">
-                                 <input id="card-city" type="text" name="doc[payment][city]" class="m-wrap span8 payment city" value="">
+                                 <input id="card-city" type="text" name="doc[payment][city]" class="m-wrap span8 payment city billingcity" value="">
                               </div>
                            </div>
                         </div>
@@ -1133,7 +1133,7 @@ the   remainder of 2015 for free.  Offer expires December 31, 2015. </label> -->
                            <div class="control-group ">
                               <label class="control-label">State/Province/Region</label>
                               <div class="controls">
-                                 <input id="card-stateProvinceRegion" type="text" name="doc[payment][stateProvinceRegion]" class="m-wrap span8 payment stateProvinceRegion" value="">
+                                 <select id="card-stateProvinceRegion" name="doc[payment][stateProvinceRegion]" class="m-wrap span8 payment stateProvinceRegion billingstate"></select>
                               </div>
                            </div>
                         </div>
@@ -1155,7 +1155,10 @@ the   remainder of 2015 for free.  Offer expires December 31, 2015. </label> -->
                            <div class="control-group ">
                               <label class="control-label">Country</label>
                               <div class="controls">
-                                 <input id="card-country" type="text" name="doc[payment][country]" class="m-wrap span8 payment country" value="">
+                                 <select id="card-country" name="doc[payment][country]" class="m-wrap span8 payment country billingcountry">
+                                 <option value="US">USA</option>
+                                 <option value="CA">CANADA</option>
+                                 </select>
                               </div>
                            </div>
                         </div>
@@ -1242,7 +1245,27 @@ the   remainder of 2015 for free.  Offer expires December 31, 2015. </label> -->
 <!-- END CONTAINER -->
 <?=$this->element('js/Application.js');?>
 <?=$this->element('js/Address.js');?>
+<?=$this->element('js/CountryState.js');?>
 <script>
+jQuery(document).ready(function() {    
+   $('.billingcountry').change(function(e){
+        var $el = $('.billingstate');
+        $el.empty();
+        if($(this).val() == 'US'){
+            var list = usa;
+        }else{
+            var list = canada;
+        }
+        $.each(list, function(key,value) {
+          $el.append($("<option></option>")
+             .attr("value", value.short).text(value.name));
+        });
+    })
+    $.each(usa, function(key,value) {
+      $('.billingstate').append($("<option></option>")
+         .attr("value", value.short).text(value.name));
+    });
+});    
 calculatedues = function(){
    $('#calculate-dues').html('Please answer all the questions in order to calculate your membership dues.');
    var years = $('#saw-form .yearsInLawPractice').val();
@@ -1259,7 +1282,7 @@ calculatedues = function(){
       }
    }
    return true;
-};
+};  
 jQuery(document).ready(function() {    
    io.saw.Application.newMemberInit();
    io.saw.Address.init('#saw-form');
@@ -1275,30 +1298,6 @@ jQuery(document).ready(function() {
    //$('.promocode').keyup();
 });      
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script type="text/javascript">
 (function( Payment, $, undefined ) {
