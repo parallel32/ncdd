@@ -12,11 +12,11 @@
         	var yilp = new Date($('#saw-form .yearsInLawPractice').val(), 1,1).getFullYear();
         	var now = new Date().getFullYear();
         	if(now - yilp >= 6){
-        		var amount = (window.gsix_amount-window.gsix_prorated == window.gsix_amount) ? window.gsix_amount : window.gsix_prorated; 
+        		window.amount = (window.gsix_amount-window.gsix_prorated == window.gsix_amount) ? window.gsix_amount : window.gsix_prorated; 
         		$('.payment.amount').val(amount);
         		$('.payment.amount').html(amount+' - '+window.gsix_message);
         	}else if (now - yilp < 6){
-        		var amount = (window.lsix_amount-window.lsix_prorated == window.lsix_amount) ? window.lsix_amount : window.lsix_prorated; 
+        		window.amount = (window.lsix_amount-window.lsix_prorated == window.lsix_amount) ? window.lsix_amount : window.lsix_prorated; 
         		$('.payment.amount').val(amount);
         		$('.payment.amount').html(amount+' - '+window.lsix_message);
         	}
@@ -67,32 +67,20 @@
         	var yilp = new Date($('#saw-form .yearsInLawPractice').val(), 1,1).getFullYear();
         	var now = new Date().getFullYear();
         	if(now - yilp >= 6){
-        		if(promocodetype == 'BONUS2015-' || promocodetype == 'EAGLE2016-'){
-        			var amount = window.gsix_amount; 
-	        	}else{
-	        		var amount = window.gsix_amount; 
-	        	}
-
-        		$('.payment.amount').val(amount);
-        		$('.payment.amount').html(amount+' - '+window.gsix_message+promo_message);
+        		$('.payment.amount').val(window.amount);
+        		$('.payment.amount').html(window.amount+' - '+window.gsix_message+promo_message);
         	}else if (now - yilp < 6){
-        		if(promocodetype == 'BONUS2015-' || promocodetype == 'EAGLE2016-'){
-        			var amount = window.lsix_amount; 
-	        	}else{
-	        		var amount = window.lsix_amount; 
-	        	}
-        		$('.payment.amount').val(amount);
-        		$('.payment.amount').html(amount+' - '+window.lsix_message+promo_message);
+        		$('.payment.amount').val(window.amount);
+        		$('.payment.amount').html(window.amount+' - '+window.lsix_message+promo_message);
         	}
 
         	if($('#saw-form .publicDefender').val() == 'yes'){
-        		if(promocodetype == 'BONUS2015-' || promocodetype == 'BONUS2016'){
-        			var amount = window.pd_amount; 
-	        	}else{
-	        		var amount = window.pd_amount; 
-	        	}
-        		$('.payment.amount').val(amount);
-        		$('.payment.amount').html(amount+' - '+window.pd_message+promo_message);
+        		$('.payment.amount').val(window.amount);
+        		$('.payment.amount').html(window.amount+' - '+window.pd_message+promo_message);
+        		//is promocode valud for membership restrictions
+        		if(the_element.find('.help-block.error').length > 0){
+	   				the_element.find('.help-block.error').html(the_element.find('.help-block.error').html()+' ')
+	   			}
 	    	}
 
         }else{
@@ -246,6 +234,7 @@
 				   		if(responseObj.valid == 'yes'){
 				   			$('#promocodetype').val(responseObj.type);
 				   			the_element.addClass('success');
+				   			the_element.removeClass('error');
 				   			if(the_element.find('.help-block.success').length == 0){
 				   				the_element.append('<span for="promocode" class="help-block success " style="">'+responseObj.message+'</span>');
 				   				$('#promocodeverification').show();
@@ -266,6 +255,13 @@
 				   			the_element.find('.help-block.success').remove();
 							the_element.removeClass('success');
 							$('#promocodeverification').hide();
+
+							var the_element = $('.control-group :input.promocode').parents('.control-group');
+				   			the_element.addClass('error');
+				   			the_element.removeClass('success');
+							if(the_element.find('.help-block.error').length == 0){
+				   				the_element.append('<span for="promocode" class="help-block error " style="">'+responseObj.message+'</span>');				   				
+				   			}
 				   		}
 					yearsinlawpracticelogic();
 					promocodelogic();   		
