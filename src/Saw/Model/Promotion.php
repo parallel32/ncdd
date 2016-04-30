@@ -236,22 +236,35 @@ class Promotion extends Model {
 		$res = $this->findOne($query=array('code'=>$code,'isActive'=>'yes'),$fields,$slaveOkay=true,$sort=array(),$offset=0,$limit=1000);
 		
 		if(!empty($res) && is_array($res) && count($res) > 0 && $res['currentRestriction'] > self::$restriction['NO RESTRICTIONS']):
-
 			//static public $membership = array('PUBLIC DEFENDER'=>5,'GENERAL MEMBER'=>10,'SUSTAINING MEMBER'=>30,'FOUNDING MEMBER'=>40);
 			//static public $restriction = array('NO RESTRICTIONS'=>5,'PUBLIC DEFENDERS'=>10,'NON MEMBERS'=>30,'MEMBERS'=>40);
 
+			if($res['currentRestriction'] == self::$restriction['NO RESTRICTIONS']){
+				return true;
+			}
 			switch ($membership) {
 				case Member::$membership['PUBLIC DEFENDER']:
-					if($restriction)
-					break;
-				
-				default:
-					# code...
+					if($res['currentRestriction'] == self::$restriction['NON MEMBERS']){
+						return false;
+					}
+					if($res['currentRestriction'] == self::$restriction['PUBLIC DEFENDERS']){
+						return true;
+					}
+					break;	
+				case Member::$membership['FOUNDING MEMBER']:
+				case Member::$membership['GENERAL MEMBER']:
+				case Member::$membership['SUSTAINING MEMBER']:
+					if($res['currentRestriction'] == self::$restriction['NON MEMBERS']){
+						return false;
+					}
+					if($res['currentRestriction'] == self::$restriction['MEMBERS']){
+						return true;
+					}
 					break;
 			}
 		endif;
 		
-		return $res;
+		return false;
 	}
 	public function fetchByType($offset=0,$limit=1000){
         $fields = array();

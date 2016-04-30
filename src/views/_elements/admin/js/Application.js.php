@@ -30,12 +30,15 @@
         promocodelogic();
 	};
 	function publicdefenderlogic (){
-		if($('#saw-form .publicDefender').val() == 'yes'){
-    		var amount = (window.pd_amount-window.pd_prorated == window.pd_amount) ? window.pd_amount : window.pd_prorated; 
-    		$('.payment.amount').val(amount);
-    		$('.payment.amount').html(amount+' - '+window.pd_message);
-    		promocodelogic();
-    	}
+		if($('#saw-form .promocode').val().length > 0){
+			if($('#saw-form .publicDefender').val() == 'yes'){
+	    		var amount = (window.pd_amount-window.pd_prorated == window.pd_amount) ? window.pd_amount : window.pd_prorated; 
+	    		$('.payment.amount').val(amount);
+	    		$('.payment.amount').html(amount+' - '+window.pd_message);
+	    		promocodelogic();
+	    	}
+	    	checkPromocodeMembershipRestrictions();
+	    }
 	};
 	function promocodelogic (){
 		$('#payment-information').show();
@@ -139,6 +142,85 @@
 		   ,postOnSuccess:function(responseObj){}
 		});      
 	};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	function checkPromocodeMembershipRestrictions(){
+		setTimeout(function() {
+	        io.saw.FormPost.activate({postUrl:'/application/promocodeisvalidmemberhsip'
+			   ,blockUI:'no'
+			   ,serializeSelector:':input'
+			   ,postOnComplete:function(responseObj,responseStatus){}
+			   ,postOnSuccess:function(responseObj){
+			   		var the_element = $('.control-group :input.promocode').parents('.control-group');
+			   		if(responseObj.valid == 'yes'){
+			   			$('#promocodetype').val(responseObj.type);
+			   			the_element.addClass('success');
+			   			the_element.removeClass('error');
+			   			if(the_element.find('.help-block.success').length == 0){
+			   				the_element.append('<span for="promocode" class="help-block success " style="">'+responseObj.message+'</span>');
+			   				$('#promocodeverification').show();
+			   				$('.promocodeblocks').hide();
+			   				$('.'+responseObj.type).show();
+			   				if(responseObj.hasOwnProperty('amount') && responseObj.amount > 0){
+			   					window.promocodeamount = responseObj.amount;
+			   					$('.promo-discount').show();
+			   				}else{
+			   					$('.promo-discount').hide();
+			   					window.promocodeamount = 0;
+			   				}
+			   				
+			   			}
+			   		}
+			   		if(responseObj.valid == 'no'){
+			   			$('#promocodetype').val('invalid');
+			   			the_element.find('.help-block.success').remove();
+						the_element.removeClass('success');
+						$('#promocodeverification').hide();
+
+						var the_element = $('.control-group :input.promocode').parents('.control-group');
+			   			the_element.addClass('error');
+			   			the_element.removeClass('success');
+						if(the_element.find('.help-block.error').length == 0){
+			   				the_element.append('<span for="promocode" class="help-block error " style="">'+responseObj.message+'</span>');				   				
+			   			}
+			   		}
+			   }
+			});
+		}, 500);
+		
+	};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	function saveApplication (){
 		
 		var full_address = $('#address1').val()+' '+$('#address2').val()+' '+$('#city').val()+', '+$('#state').val()+' '+$('#zip').val()+', '+$('#country').val();

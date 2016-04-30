@@ -257,6 +257,35 @@ $app->post('/application/promocode', function (Request $request) use ($app) {
     
     return new Response(json_encode(array('valid'=>$valid, 'type'=>$type,'message' => $message)), 200,array('Content-Type' => 'application/json'));
 });
+////////////////////////////////////////////////////
+// check the membership restriction of promoocodes//
+////////////////////////////////////////////////////
+$app->post('/application/promocodeisvalidmemberhsip', function (Request $request) use ($app) {
+	// retrieve document from request
+    $doc = $request->get('doc');
+    
+    $promo = new Model\Promotion(array(),$app);
+	$res = $promo->isValid($doc['promocode']);
+	if(!empty($res)){
+		$mem = ($doc['publicDefender']=='yes') ? Model\Member::$membership['PUBLIC DEFENDER'] : Model\Member::$membership['GENERAL MEMBER'] ;
+		
+		if($promo->isValidMembership($doc['promocode'],$mem)){
+			$valid = 'yes';
+			$type = strtoupper($doc['promocode']);
+	    	$message = 'Valid for General Members.';
+		}else{
+			$valid = 'no';
+			$type='';
+	    	$message = 'Unfortunately, this promotion is not valid for Public Defenders.';
+		}
+	}else{
+		$valid = 'no';
+		$type='';
+    	$message = 'Invalid Promo Code.';
+	}
+    
+    return new Response(json_encode(array('valid'=>$valid, 'type'=>$type, 'message' => $message)), 200,array('Content-Type' => 'application/json'));
+});
 
 $app->get('/application/new-member', function (Request $request) use ($app) {
 
@@ -343,13 +372,23 @@ $app->post('/application/new-member', function (Request $request) use ($app) {
     if(!empty($doc['promocode'])){
 
     	$promo = new Model\Promotion(array('code'=>$doc['promocode']),$app);
-    	$promo_res = $promo->findById('code');
-    	
-    	$promo_res['optIn'] = (array_key_exists('optIn', $doc)) ? $doc['optIn'] : '';
-    	$promo_res['code'] = $doc['promocode'];
-    	$promo = new Model\Promotion($promo_res,$app);
-    	$app['validateModel']($app,$promo,array('onform'));
-    	$application->promotion = $promo_res;
+    	// what the membership translates to and if you should validate
+    	$mem = ($doc['publicDefender']=='yes') ? Model\Member::$membership['PUBLIC DEFENDER'] : Model\Member::$membership['GENERAL MEMBER'];
+
+    	if($promo->isValidMembership($doc['promocode'],$mem)){
+    		error_log(__FILE__.' '.__LINE__.' $mem: '.print_r($mem,true));
+    		error_log(__FILE__.' '.__LINE__.' $doc[promocode]: '.print_r($doc['promocode'],true));
+    		$promo_res = $promo->findById('code');    	
+	    	$promo_res['currentMembership'] = $mem;
+	    	$promo_res['optIn'] = (array_key_exists('optIn', $doc)) ? $doc['optIn'] : '';
+	    	$promo_res['code'] = $doc['promocode'];
+	    	
+	    	$promo = new Model\Promotion($promo_res,$app);
+	    	$app['validateModel']($app,$promo,array('onform'));
+	    	$application->promotion = $promo_res;
+	    }else{
+	    	error_log(__FILE__.' '.__LINE__.' : '.print_r('NOT VALID PROMO',true));
+	    }
     	// $response_arr = array('message'=>"Please check the authorization checkbox above and agree in order to use the promo code.",
 	    //                           "invalidFields"=>array(array('name'=>'optIn','message'=>'Please check the opt-in checkbox above and agree in order to use the promo code.')
 	    //                           								,array('name'=>'promocode','message'=>'')
