@@ -241,7 +241,7 @@ class Member extends User {
 		$this->barNumber = $this->barNumber ?: '';
 		$this->websites = $this->websites ?: new \StdClass();
 		$this->listServEmail = $this->listServEmail ?: '';
-		$this->listed = ($this->listed == 0) ? 0 : 1;
+		$this->listed = 1;
 		$this->currentMembership = $this->currentMembership ?: self::$membership['GENERAL MEMBER'];
 		$this->currentOrder = $this->currentOrder ?: self::$order['GENERAL MEMBER'];
 		$this->currentFacultyPosition = $this->currentFacultyPosition ?: 0;
