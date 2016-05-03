@@ -16,6 +16,96 @@ use TTools\App;
 
 $utilities = $app['controllers_factory'];
 
+
+// fix the listing of the new members.
+$utilities->get('/preparelocationlist', function () use ($app) {
+    //*
+    //return false;
+    ini_set('memory_limit','1024M');
+
+    //"state","latitude","longitude"
+    $state['AK'] = array(61.3850,-152.2683);
+    $state['AL'] = array(32.7990,-86.8073);
+    $state['AR'] = array(34.9513,-92.3809);
+    $state['AS'] = array(14.2417,-170.7197);
+    $state['AZ'] = array(33.7712,-111.3877);
+    $state['CA'] = array(36.1700,-119.7462);
+    $state['CO'] = array(39.0646,-105.3272);
+    $state['CT'] = array(41.5834,-72.7622);
+    $state['DC'] = array(38.8964,-77.0262);
+    $state['DE'] = array(39.3498,-75.5148);
+    $state['FL'] = array(27.8333,-81.7170);
+    $state['GA'] = array(32.9866,-83.6487);
+    $state['HI'] = array(21.1098,-157.5311);
+    $state['IA'] = array(42.0046,-93.2140);
+    $state['ID'] = array(44.2394,-114.5103);
+    $state['IL'] = array(40.3363,-89.0022);
+    $state['IN'] = array(39.8647,-86.2604);
+    $state['KS'] = array(38.5111,-96.8005);
+    $state['KY'] = array(37.6690,-84.6514);
+    $state['LA'] = array(31.1801,-91.8749);
+    $state['MA'] = array(42.2373,-71.5314);
+    $state['MD'] = array(39.0724,-76.7902);
+    $state['ME'] = array(44.6074,-69.3977);
+    $state['MI'] = array(43.3504,-84.5603);
+    $state['MN'] = array(45.7326,-93.9196);
+    $state['MO'] = array(38.4623,-92.3020);
+    $state['MP'] = array(14.8058,145.5505);
+    $state['MS'] = array(32.7673,-89.6812);
+    $state['MT'] = array(46.9048,-110.3261);
+    $state['NC'] = array(35.6411,-79.8431);
+    $state['ND'] = array(47.5362,-99.7930);
+    $state['NE'] = array(41.1289,-98.2883);
+    $state['NH'] = array(43.4108,-71.5653);
+    $state['NJ'] = array(40.3140,-74.5089);
+    $state['NM'] = array(34.8375,-106.2371);
+    $state['NV'] = array(38.4199,-117.1219);
+    $state['NY'] = array(42.1497,-74.9384);
+    $state['OH'] = array(40.3736,-82.7755);
+    $state['OK'] = array(35.5376,-96.9247);
+    $state['OR'] = array(44.5672,-122.1269);
+    $state['PA'] = array(40.5773,-77.2640);
+    $state['PR'] = array(18.2766,-66.3350);
+    $state['RI'] = array(41.6772,-71.5101);
+    $state['SC'] = array(33.8191,-80.9066);
+    $state['SD'] = array(44.2853,-99.4632);
+    $state['TN'] = array(35.7449,-86.7489);
+    $state['TX'] = array(31.1060,-97.6475);
+    $state['UT'] = array(40.1135,-111.8535);
+    $state['VA'] = array(37.7680,-78.2057);
+    $state['VI'] = array(18.0001,-64.8199);
+    $state['VT'] = array(44.0407,-72.7093);
+    $state['WA'] = array(47.3917,-121.5708);
+    $state['WI'] = array(44.2563,-89.6385);
+    $state['WV'] = array(38.4680,-80.9696);
+    $state['WY'] = array(42.7475,-107.2085);
+
+
+    $member = new Model\Member(array(),$app);
+    $members = $member->find($query=array('listed'=>1,'status'=>USER_STATUS_ACTIVE),$fields=array(),$slaveOkay=true,$sort=array(),$offset=0,$limit=10000);
+    $cnt = 0;
+    foreach ($members as $member) {
+        
+        $location = new Model\Location(array(),$app);
+        $res = $location->find($query=array('member._id'=>$member['_id']),$fields,$slaveOkay=true,$sort=array('_id'=>-1),$offset=0,$limit=100);
+        for ($i=0; $i < count($res); $i++) { 
+            if($res[$i]['member']['listed']==0){
+                error_log(__FILE__.' '.__LINE__.' res: '.print_r($cnt.' '.$member['displayName'],true));
+                $cnt++;
+                $location->updateByCriteria(array('$set'=>array('member.listed'=>1)), array('_id'=>$res[$i]['_id']));
+            }   
+        }
+    }
+error_log(__FILE__.' '.__LINE__.' $members: '.print_r(count($members),true));
+if(false):
+    
+endif;
+  
+    return new Response('',200,array('Content-Type' => 'text/html')); 
+});
+
+
+
 // list of all duplicates
 $utilities->get('/preparerefundlist', function () use ($app) {
     //*

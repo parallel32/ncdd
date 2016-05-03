@@ -376,7 +376,7 @@ class Member extends User {
 	}
 	public function getPracticeStates(){
 		$result = $this->findOne($query=array('_id'=>$this->_id),$fields=array('practiceStates'=>1));
-		if(array_key_exists('practiceStates', $result)){
+		if(is_array($result) && !empty($result) && array_key_exists('practiceStates', $result)){
 			$this->practiceStates = $result['practiceStates'];
 			return $result['practiceStates'];
 		}else{

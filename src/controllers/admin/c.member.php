@@ -153,6 +153,7 @@ $member->get('/{userId}/edit', function ($userId, Request $request) use ($app) {
 	$location = new Model\Location(array('ownerId'=>$userId),$app);
 	$locations = $location->getByOwner();
 	$member['locations'] = $locations;
+	
 	$crumbs = array(array('name'=>'Members','href'=>'/member/search')
 					,array('name'=>$member['firstName'].' '.$member['lastName'],'href'=>'/member/'.$userId.'/edit')
 					,array('name'=>'Edit','href'=>'/member/'.$userId.'/edit')
