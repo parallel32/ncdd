@@ -847,11 +847,18 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 		$user = $app['session']->get('user');
 		$memberId = $user['user_id'];
 	}
+
+	$member = new Model\Member(array('_id'=>$memberId),$app);
+	$member = $member->findById();
+
+	if(is_array($member) && !empty($member['renewal']) && is_array($member['renewal']) && !empty($member['renewal']['paymentId'])){
+		$response_arr = array('message'=>"Our records indicate your applicaton is already paid.  You are seeing this message because you may have viewied a cached version of another page.  In any case, this confirms your renewal is already paid.  On behalf of the NCDD, thank you for your continued membership!",
+                              "invalidFields"=>array(array('name'=>'email','message'=>'Our records indicate your applicaton is already paid.  You are seeing this message because you may have viewied a cached version of another page.  In any case, this confirms your renewal is already paid.  On behalf of the NCDD, thank you for your continued membership!')));
+        return new Response(json_encode($response_arr), 403,array('Content-Type' => 'application/json'));
+	}
 	
 	$location = new Model\Location($doc=array('member'=>array('_id'=>$memberId)), $app);
 	$location = $location->getByMemberId();
-	$member = new Model\Member($doc=array('_id'=>$memberId), $app);
-	$member = $member->findById();
 	if(empty($location)){
 		$location['city'] = '';
 		$location['state'] = '';
