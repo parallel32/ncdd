@@ -21,6 +21,7 @@ class Delegate extends Model {
 	static public $status = array('DRAFT'=>10,'PUBLISH'=>50);
 	static public $statusReversed = array(10=>'DRAFT',50=>'PUBLISH');
 	public $currentStatus;
+	public $regionalDelegateEmail;
 	public $country;
 	public $state;
 	public $abbr;
@@ -36,6 +37,12 @@ class Delegate extends Model {
 	public $timeZone = 'America/New_York';
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
+		$metadata->addPropertyConstraint('regionalDelegateEmail', new Constraints\NotBlank(
+			array('message'=>'cannot be blank','groups' => array('regional'))
+		));
+		$metadata->addPropertyConstraint('regionalDelegateEmail', new Constraints\Email(
+			array('message'=>'invalid email','groups' => array('regional'))
+		));
 		$metadata->addPropertyConstraint('body', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('slug', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addConstraint(new Callback(array(
@@ -59,6 +66,7 @@ class Delegate extends Model {
 
 		if(!empty($doc['_id'])) $this->_id = (is_object($doc['_id'])) ? $doc['_id'] : new \MongoId($doc['_id']);
       	$this->currentStatus = (!empty($doc['currentStatus'])) ? (int)$doc['currentStatus']: $doc['currentStatus'];
+		$this->regionalDelegateEmail = $doc['regionalDelegateEmail'];
 		$this->country = $doc['country'];
 		$this->state = $doc['state'];
 		$this->abbr = $doc['abbr'];
@@ -80,6 +88,7 @@ class Delegate extends Model {
 	*/
 	protected function prepareInsert(){
 		$this->currentStatus = $this->currentStatus ?: self::$status['DRAFT'];
+		$this->regionalDelegateEmail = $this->regionalDelegateEmail ?: '';
 		$this->country = $this->country ?: '';
 		$this->state = $this->state ?: '';
 		$this->abbr = $this->abbr ?: '';

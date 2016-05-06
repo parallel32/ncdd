@@ -610,12 +610,17 @@ error_log('trial:'.print_r($trial,true));
 	    	// send admin the email notification
 	    	$subject = 'General Member Application Form Submitted';
 	    	$to = SAW_ADMIN_EMAIL;
+	    	// cc state delegate and regional delegate if exists.
+	    	$delegate = new Model\Delegate(array(),$app);
+	    	$res = $delegate->fetchByState($doc['state'],$doc['country']);
+	    	
 	    	$view_vars = array('firstName'=>$doc['firstName']
 	    						,'middleName'=>$doc['middleName']
 	    						,'lastName'=>$doc['lastName']
 	    						,'city'=>$doc['city']
 	    						,'state'=>$doc['state']
 	    						,'email'=>$doc['email']
+	    						,'phone'=>$doc['phone']
 	    	);
 	    	$body = $app['view']->render('email/new-member','email', $view_vars);
 	    	if(!$suppress){$app['sendMail']($subject, $body, $to);}
@@ -851,12 +856,6 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 	$member = new Model\Member(array('_id'=>$memberId),$app);
 	$member = $member->findById();
 
-	if(is_array($member) && !empty($member['renewal']) && is_array($member['renewal']) && !empty($member['renewal']['paymentId'])){
-		$response_arr = array('message'=>"Our records indicate your applicaton is already paid.  You are seeing this message because you may have viewied a cached version of another page.  In any case, this confirms your renewal is already paid.  On behalf of the NCDD, thank you for your continued membership!",
-                              "invalidFields"=>array(array('name'=>'email','message'=>'Our records indicate your applicaton is already paid.  You are seeing this message because you may have viewied a cached version of another page.  In any case, this confirms your renewal is already paid.  On behalf of the NCDD, thank you for your continued membership!')));
-        return new Response(json_encode($response_arr), 403,array('Content-Type' => 'application/json'));
-	}
-	
 	$location = new Model\Location($doc=array('member'=>array('_id'=>$memberId)), $app);
 	$location = $location->getByMemberId();
 	if(empty($location)){
@@ -897,7 +896,6 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 
 	// add name, email and area to the application for identification
 	$doc['memberId'] = new \MongoId($memberId);
-
 	$doc['firstName'] = (empty($doc['firstName'])) ? $member['firstName'] : $doc['firstName'];
 	$doc['middleName'] = (empty($doc['middleName'])) ? (array_key_exists('middleName',$member)) ? $member['middleName']: '' : $doc['middleName'];
 	$doc['lastName'] = (empty($doc['lastName'])) ? $member['lastName'] : $doc['lastName'];
@@ -936,6 +934,12 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 	if(!$is_autopay):
 
 	    if((array_key_exists('payByCheck',$doc) && strpos($doc['payByCheck'], 'no') !== false) || (!empty($doc['paymentlite']['number']))){
+
+	    	if(is_array($member) && !empty($member['renewal']) && is_array($member['renewal']) && !empty($member['renewal']['paymentId'])){
+				$response_arr = array('message'=>"Our records indicate your applicaton is already paid.  On behalf of the NCDD, thank you for your continued membership!",
+		                              "invalidFields"=>array(array('name'=>'email','message'=>'Our records indicate your applicaton is already paid.  On behalf of the NCDD, thank you for your continued membership!')));
+		        return new Response(json_encode($response_arr), 403,array('Content-Type' => 'application/json'));
+			}
 	    	// this no-store has been deprecated
 	    	if($doc['payByCheck'] == 'no-store'){
 	    		$doc['paymentlite']['renewalREUSE'] = 'yes';
@@ -944,6 +948,7 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 
 	    	if(strpos($doc['paymentlite']['number'], '...') !== false){
 	    		// no need to re-validate since it's already saved
+	    		$paymentlite = new Model\PaymentLite($doc['paymentlite'], $app);
 	    	}else{
 	    		$paymentlite = new Model\PaymentLite($doc['paymentlite'], $app);
 		    	$validate[] = array('model'=>$paymentlite,'groups'=>array('cc'));

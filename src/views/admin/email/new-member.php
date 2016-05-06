@@ -16,6 +16,7 @@
 													<br/><?=$this->vars['firstName'].$middleName.$this->vars['lastName']?>
 													<br/><?=$this->vars['city'].', '.$this->vars['state']?>
 													<br/><?=$this->vars['email']?>
+													<br/><?=$this->vars['phone']?>
 													<br/>
 													<br/>
 													<br/>

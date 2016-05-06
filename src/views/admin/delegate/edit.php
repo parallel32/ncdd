@@ -76,6 +76,20 @@
                         <? if($accessLevel == ADMIN): ?>
                         <!-- MEMBER -->
                         <div class="row-fluid">
+                           <div class="span12 ">
+                              <div class="control-group">
+                                 <label class="control-label" >Regional Delegate Email</label>
+                                 <div class="controls">
+                                    <input type="text" name="doc[regionalDelegateEmail]" class="m-wrap span12 regionalDelegateEmail" value="<?=(!empty($this->vars['delegate']) && array_key_exists('regionalDelegateEmail',$this->vars['delegate'])) ? $this->vars['delegate']['regionalDelegateEmail']: ''?>">
+                                    <span class="help-block">Provide the email address of the Regional Delegate.  He / She will be cc'd on new member notification emails.</span>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="form-actions text-center">
+                           <button type='button' class='btn green save'><i class='icon-pencil'></i> Save.</button>
+                        </div>
+                        <div class="row-fluid">
                            <div class="span12">
                               <div id="member-grid" class="portlet box blue">
                                  <div class="portlet-title">

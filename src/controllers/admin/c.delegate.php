@@ -116,6 +116,14 @@ $app->post('/delegate/edit', function (Request $request) use ($app) {
 	    
     $delegate = new Model\Delegate($document,$app);
     $delegate->saveEdit();
+    
+    if(array_key_exists('regionalDelegateEmail', $document)):
+	    $delegate = new Model\Delegate($document, $app);
+	    // validate the model
+	   	$app['validateModel']($app,$delegate,array('regional'));
+	   	$delegate->saveEdit();
+	endif; 
+	
     return new Response(json_encode(array('delegateId'=>$document['_id'], 'message' => 'Delegate details have saved successfully.')), 200,array('Content-Type' => 'application/json'));
 })->before($mustbeMEMBER);
 
@@ -208,7 +216,6 @@ $app->get('/delegate/{id}/member/delete/{memberId}', function ($id, $memberId, R
 	
     return new Response(json_encode(array('message' => 'removed successfully.')), 200,array('Content-Type' => 'application/json'));
 })->before($mustbeADMIN);
-
 ///////////
 // event //
 ///////////
