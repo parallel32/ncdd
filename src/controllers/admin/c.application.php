@@ -612,8 +612,17 @@ error_log('trial:'.print_r($trial,true));
 	    	$to = SAW_ADMIN_EMAIL;
 	    	// cc state delegate and regional delegate if exists.
 	    	$delegate = new Model\Delegate(array(),$app);
-	    	$res = $delegate->fetchByState($doc['state'],$doc['country']);
-	    	
+	    	$state = strtolower($doc['state']);
+	    	$country = ($doc['country'] == 'US') ? 'usa':'canada';
+	    	$res = $delegate->fetchByState($state,$country);
+	    	if(!empty($res) && is_array($res)):
+	    		if(array_key_exists('regionalDelegateEmail', $res) && !empty($res['regionalDelegateEmail'])){
+	    			$to.=', '.$res['regionalDelegateEmail'];
+	    		}
+	    		foreach ($res['members'] as $member) {
+	    			$to.=', '.$member['email'];
+	    		}
+	    	endif;
 	    	$view_vars = array('firstName'=>$doc['firstName']
 	    						,'middleName'=>$doc['middleName']
 	    						,'lastName'=>$doc['lastName']

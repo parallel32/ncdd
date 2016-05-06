@@ -131,9 +131,8 @@ class Delegate extends Model {
 		if($allfields){
 			$fields = array();
 		}else{
-			$fields = array('_id'=>1,'members'=>1,'lastEditDate'=>1,'currentStatus'=>1);	
+			$fields = array('_id'=>1,'members'=>1,'lastEditDate'=>1,'currentStatus'=>1,'regionalDelegateEmail'=>1);	
 		}
-		
 		$result = $this->findOne($query,$fields);
 		return $result;
 	}

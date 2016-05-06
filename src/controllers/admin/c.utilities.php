@@ -18,6 +18,28 @@ $utilities = $app['controllers_factory'];
 
 
 // fix the listing of the new members.
+$utilities->get('/delegatetest', function () use ($app) {
+
+    $to = SAW_ADMIN_EMAIL;
+            // cc state delegate and regional delegate if exists.
+            $delegate = new Model\Delegate(array(),$app);
+            $state = strtolower('AL');
+            
+            $country = 'usa';
+            $res = $delegate->fetchByState($state,$country);
+            if(!empty($res) && is_array($res)):
+                if(array_key_exists('regionalDelegateEmail', $res) && !empty($res['regionalDelegateEmail'])){
+                    $to.=', '.$res['regionalDelegateEmail'];
+                }
+                foreach ($res['members'] as $member) {
+                    $to.=', '.$member['email'];
+                }
+            endif;
+
+echo "<pre>";print_r($to);echo "</pre>";
+    return new Response('',200,array('Content-Type' => 'text/html')); 
+});
+
 $utilities->get('/preparelocationlist', function () use ($app) {
     //*
     //return false;
