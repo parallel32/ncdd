@@ -1769,6 +1769,7 @@ class Member extends User {
 					,'member.lastName'=>1
 					,'member.primaryPhone'=>1
 					,'member.email'=>1
+					,'member.id'=>1
 					,'addressLine1'=>1
 					,'addressLine2'=>1
 					,'city'=>1
@@ -1779,24 +1780,40 @@ class Member extends User {
 		
 		switch ($membership) {
 			case self::$membership['PUBLIC DEFENDER']:
-				$query = array('member.currentMembership'=>self::$membership['PUBLIC DEFENDER'],'member.listed'=>1);
+				$query = array('member.currentMembership'=>self::$membership['PUBLIC DEFENDER'],'member.status'=>USER_STATUS_ACTIVE);
 				$query = array_merge($filter, $query);
 				break;
 			case self::$membership['SUSTAINING MEMBER']:
-				$query = array('member.currentMembership'=>self::$membership['SUSTAINING MEMBER'],'member.listed'=>1);
+				$query = array('member.currentMembership'=>self::$membership['SUSTAINING MEMBER'],'member.status'=>USER_STATUS_ACTIVE);
 				$query = array_merge($filter, $query);
 				break;
 			case self::$membership['GENERAL MEMBER']:
-				$query = array('member.currentMembership'=>self::$membership['GENERAL MEMBER'],'member.listed'=>1);
+				$query = array('member.currentMembership'=>self::$membership['GENERAL MEMBER'],'member.status'=>USER_STATUS_ACTIVE);
 				$query = array_merge($filter, $query);
 				break;
 			case self::$membership['FOUNDING MEMBER']:
-				$query = array('member.currentMembership'=>self::$membership['FOUNDING MEMBER'],'member.listed'=>1);
+				$query = array('member.currentMembership'=>self::$membership['FOUNDING MEMBER'],'member.status'=>USER_STATUS_ACTIVE);
 				$query = array_merge($filter, $query);
 				break;
 		}
 		$result = self::$app['mongo']->find('location',$query,$fields,$slaveOkay=true,$offset=0,$limit=4000,$sort=array('member.lastName'=>1));
-		return $result;
+		$res = array();
+		foreach ($result as $row) {
+			$res['firstName'] = $row['member']['firstName'];
+			$res['middleName'] = (array_key_exists('middleName', $row['member'])) ? $row['member']['middleName'] : '';
+			$res['lastName'] = $row['member']['lastName'];
+			$res['primaryPhone'] = $row['member']['primaryPhone'];
+			$res['email'] = $row['member']['email'];
+			$res['addressLine1'] = $row['addressLine1'];
+			$res['addressLine2'] = $row['addressLine2'];
+			$res['city'] = $row['city'];
+			$res['state'] = $row['state'];
+			$res['zip'] = $row['zip'];
+			$res['country'] = $row['country'];
+
+			$formatted[$row['member']['email']] = $res;
+		}
+		return $formatted;
 	}
 
 	public function fetchRenewalForCSV($status, $membership=array(), $offset=0,$limit=10000,$filter=array()){

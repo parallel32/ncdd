@@ -38,19 +38,13 @@ $member->get('/streamcsv/{members}', function ($members, Request $request) use (
 	
 	$csv = '';	
 	if(is_array($res) && !empty($res)):	
-    foreach ($res as $key => $value) {
-		unset($value['_id']);
-    	unset($value['id']);
-    	if(array_key_exists('member', $value)){
-    		$value2 = $value['member'];
-	    	unset($value['member']);
-	    	$new_value = array_merge($value,$value2);	
-    	}else{
-    		$new_value = $value;
+    foreach ($res as $row) {
+    	$line = '';
+    	foreach ($row as $key => $value) {
+    		$line.='"'.$value.'",';	
     	}
     	
-    	$line = implode(',', $new_value);
-    	$csv.= $line.PHP_EOL;
+    	$csv.= substr($line, 0, -1).PHP_EOL;
 	}
 	endif;
 
