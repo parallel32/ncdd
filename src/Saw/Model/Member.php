@@ -1302,63 +1302,63 @@ class Member extends User {
 		switch ($string) {
 			case 'AutoRenew':
 				if($listedOnly){
-					$result = $this->count($query=array('currentMembership'=>array('$lte'=>self::$membership['GENERAL MEMBER']),'payment.renewalREUSE'=>'yes','listed'=>1,'status'=>USER_STATUS_ACTIVE),true);		
+					$result = $this->count($query=array('currentMembership'=>array('$lte'=>self::$membership['GENERAL MEMBER']),'payment.renewalREUSE'=>'yes','status'=>USER_STATUS_ACTIVE),true);		
 				}else{
 					$result = $this->count($query=array('currentMembership'=>array('$lte'=>self::$membership['GENERAL MEMBER']),'payment.renewalREUSE'=>'yes'),true);		
 				}
 				break;
 			case 'Sustaining Members':
 				if($listedOnly){
-					$result = $this->count($query=array('currentMembership'=>self::$membership['SUSTAINING MEMBER'],'listed'=>1,'status'=>USER_STATUS_ACTIVE),true);		
+					$result = $this->count($query=array('currentMembership'=>self::$membership['SUSTAINING MEMBER'],'status'=>USER_STATUS_ACTIVE),true);		
 				}else{
 					$result = $this->count($query=array('currentMembership'=>self::$membership['SUSTAINING MEMBER']),true);		
 				}
 				break;
 			case 'General Members':
 				if($listedOnly){
-					$result = $this->count($query=array('currentMembership'=>self::$membership['GENERAL MEMBER'],'listed'=>1,'status'=>USER_STATUS_ACTIVE),true);		
+					$result = $this->count($query=array('currentMembership'=>self::$membership['GENERAL MEMBER'],'status'=>USER_STATUS_ACTIVE),true);		
 				}else{
 					$result = $this->count($query=array('currentMembership'=>self::$membership['GENERAL MEMBER']),true);		
 				}
 				break;
 			case 'Public Defenders':
 				if($listedOnly){
-					$result = $this->count($query=array('currentMembership'=>self::$membership['PUBLIC DEFENDER'],'listed'=>1,'status'=>USER_STATUS_ACTIVE),true);		
+					$result = $this->count($query=array('currentMembership'=>self::$membership['PUBLIC DEFENDER'],'status'=>USER_STATUS_ACTIVE),true);		
 				}else{
 					$result = $this->count($query=array('currentMembership'=>self::$membership['PUBLIC DEFENDER']),true);		
 				}
 				break;
 			case 'Founding Members':
 				if($listedOnly){
-					$result = $this->count($query=array('currentMembership'=>self::$membership['FOUNDING MEMBER'],'listed'=>1,'status'=>USER_STATUS_ACTIVE),true);		
+					$result = $this->count($query=array('currentMembership'=>self::$membership['FOUNDING MEMBER'],'status'=>USER_STATUS_ACTIVE),true);		
 				}else{
 					$result = $this->count($query=array('currentMembership'=>self::$membership['FOUNDING MEMBER']),true);		
 				}
 				break;
 			case 'Regents':
 				if($listedOnly){
-					$result = $this->count($query=array('currentFacultyPosition'=>array('$gt'=>self::$facultyPosition['DELEGATE'],'$lt'=>self::$facultyPosition['FELLOW']),'listed'=>1,'status'=>USER_STATUS_ACTIVE),true);		
+					$result = $this->count($query=array('currentFacultyPosition'=>array('$gt'=>self::$facultyPosition['DELEGATE'],'$lt'=>self::$facultyPosition['FELLOW']),'status'=>USER_STATUS_ACTIVE),true);		
 				}else{
 					$result = $this->count($query=array('currentFacultyPosition'=>array('$gt'=>self::$facultyPosition['DELEGATE'],'$lt'=>self::$facultyPosition['FELLOW'])),true);		
 				}
 				break;
 			case 'Fellows':
 				if($listedOnly){
-					$result = $this->count($query=array('currentFacultyPosition'=>self::$facultyPosition['FELLOW'],'listed'=>1,'status'=>USER_STATUS_ACTIVE),true);		
+					$result = $this->count($query=array('currentFacultyPosition'=>self::$facultyPosition['FELLOW'],'status'=>USER_STATUS_ACTIVE),true);		
 				}else{
 					$result = $this->count($query=array('currentFacultyPosition'=>self::$facultyPosition['FELLOW']),true);		
 				}
 				break;
 			case 'Former Regents':
 				if($listedOnly){
-					$result = $this->count($query=array('currentFacultyPosition'=>self::$facultyPosition['FORMER REGENT'],'listed'=>1,'status'=>USER_STATUS_ACTIVE),true);		
+					$result = $this->count($query=array('currentFacultyPosition'=>self::$facultyPosition['FORMER REGENT'],'status'=>USER_STATUS_ACTIVE),true);		
 				}else{
 					$result = $this->count($query=array('currentFacultyPosition'=>self::$facultyPosition['FORMER REGENT']),true);		
 				}
 				break;
 			case 'State Delegates':
 				if($listedOnly){
-					$result = $this->count($query=array('currentFacultyPosition'=>self::$facultyPosition['DELEGATE'],'listed'=>1,'status'=>USER_STATUS_ACTIVE),true);		
+					$result = $this->count($query=array('currentFacultyPosition'=>self::$facultyPosition['DELEGATE'],'status'=>USER_STATUS_ACTIVE),true);		
 				}else{
 					$result = $this->count($query=array('currentFacultyPosition'=>self::$facultyPosition['DELEGATE']),true);		
 				}
@@ -1380,7 +1380,6 @@ class Member extends User {
 								,self::$facultyPosition['FORMER REGENT']
 							)
 						)
-						,'listed'=>1
 						,'status'=>USER_STATUS_ACTIVE
 					),true);
 				}else{
@@ -1404,28 +1403,28 @@ class Member extends User {
 				break;
 			case 'Board Certified':
 				if($listedOnly){
-					$result = $this->count($query=array('boardCertified'=>1,'listed'=>1,'status'=>USER_STATUS_ACTIVE),true);		
+					$result = $this->count($query=array('boardCertified'=>1,'status'=>USER_STATUS_ACTIVE),true);		
 				}else{
 					$result = $this->count($query=array('boardCertified'=>1),true);		
 				}
 				break;
 			case 'Board Certified Sr':
 				if($listedOnly){
-					$result = $this->count($query=array('boardCertifiedSr'=>1,'listed'=>1,'status'=>USER_STATUS_ACTIVE),true);		
+					$result = $this->count($query=array('boardCertifiedSr'=>1,'status'=>USER_STATUS_ACTIVE),true);		
 				}else{
 					$result = $this->count($query=array('boardCertifiedSr'=>1),true);		
 				}
 				break;
 			case 'Staff':
 				if($listedOnly){
-					$result = $this->count($query=array('staff'=>1,'listed'=>1,'status'=>USER_STATUS_ACTIVE),true);		
+					$result = $this->count($query=array('staff'=>1,'status'=>USER_STATUS_ACTIVE),true);		
 				}else{
 					$result = $this->count($query=array('staff'=>1),true);		
 				}
 				break;
 			case 'Sciences Curriculum':
 				if($listedOnly){
-					$result = $this->count($query=array('sciencesCurriculum'=>1,'listed'=>1,'status'=>USER_STATUS_ACTIVE),true);		
+					$result = $this->count($query=array('sciencesCurriculum'=>1,'status'=>USER_STATUS_ACTIVE),true);		
 				}else{
 					$result = $this->count($query=array('sciencesCurriculum'=>1),true);		
 				}
@@ -1456,7 +1455,7 @@ class Member extends User {
 
 					$regex = new \MongoRegex($regex);
 					if($listedOnly){
-						$result = $this->count($query=array('displayName'=>$regex,'listed'=>1,'status'=>USER_STATUS_ACTIVE),true);		
+						$result = $this->count($query=array('displayName'=>$regex,'status'=>USER_STATUS_ACTIVE),true);		
 					}else{
 						$result = $this->count($query=array('displayName'=>$regex),true);		
 					}

@@ -9,6 +9,7 @@ use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Saw\Model;
 
 $member = $app['controllers_factory'];
@@ -48,7 +49,14 @@ $member->get('/streamcsv/{members}', function ($members, Request $request) use (
 	}
 	endif;
 
-    return new Response($csv, 200, array('Content-Type' => 'text/csv'));
+	$response = new Response($csv, 200, array('Content-Type' => 'text/csv'));
+	$d = $response->headers->makeDisposition(
+	    ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+	    $members.'.csv'
+	);
+	$response->headers->set('Content-Disposition', $d);
+    
+    return $response;
     //return $app['view']->render('member/search', 'blank', $view_vars);
 
 })->value('members','');
