@@ -30,13 +30,14 @@
         promocodelogic();
 	};
 	function publicdefenderlogic (){
+		if($('#saw-form .publicDefender').val() == 'yes'){
+    		window.amount = (window.pd_amount-window.pd_prorated == window.pd_amount) ? window.pd_amount : window.pd_prorated; 
+    		$('.payment.amount').val(amount);
+    		$('.payment.amount').html(amount+' - '+window.pd_message);
+    		
+    	}
 		if($('#saw-form .promocode').val().length > 0){
-			if($('#saw-form .publicDefender').val() == 'yes'){
-	    		var amount = (window.pd_amount-window.pd_prorated == window.pd_amount) ? window.pd_amount : window.pd_prorated; 
-	    		$('.payment.amount').val(amount);
-	    		$('.payment.amount').html(amount+' - '+window.pd_message);
-	    		promocodelogic();
-	    	}
+			promocodelogic();
 	    	checkPromocodeMembershipRestrictions();
 	    }
 	};
@@ -78,8 +79,8 @@
         	}
 
         	if($('#saw-form .publicDefender').val() == 'yes'){
-        		$('.payment.amount').val(window.amount);
-        		$('.payment.amount').html(window.amount+' - '+window.pd_message+promo_message);
+        		$('.payment.amount').val((window.pd_amount-window.pd_prorated == window.pd_amount) ? window.pd_amount : window.pd_prorated);
+        		$('.payment.amount').html((window.pd_amount-window.pd_prorated == window.pd_amount) ? window.pd_amount : window.pd_prorated+' - '+window.pd_message+promo_message);
         		//is promocode valud for membership restrictions
         		if(the_element.find('.help-block.error').length > 0){
 	   				the_element.find('.help-block.error').html(the_element.find('.help-block.error').html()+' ')
