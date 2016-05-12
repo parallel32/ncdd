@@ -1500,7 +1500,7 @@
 
          // add location modal buttons    
          $('#add-location-modal .save').click(function(e){
-         console.log('here'+$('#mode').val())
+         
             var full_address = $('#location-name').val()+' '+$('#address1').val()+' '+$('#address2').val()+' '+$('#city').val()+', '+$('#state').val()+' '+$('#zip').val()+', '+$('#country').val();
             $('#raw').val(full_address);
             
