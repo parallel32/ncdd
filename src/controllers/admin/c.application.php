@@ -1039,39 +1039,27 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 	$renewal->setRenewalByMember($member['_id']);
 	
 	// update member's profile
+	$membersaveprofile = array();
 	if(!empty($doc_orig['firstName'])){
-		$member = new Model\Member(array(
-			'_id'=>$memberId
-			,'firstName'=>$doc_orig['firstName']
-			)
-		,$app);
-		$member->saveSafe();
+		$membersaveprofile['firstName'] = $doc_orig['firstName'];
 	}
 	if(!empty($doc_orig['lastName'])){
-		$member = new Model\Member(array(
-			'_id'=>$memberId
-			,'lastName'=>$doc_orig['lastName']
-			)
-		,$app);
-		$member->saveSafe();
+		$membersaveprofile['lastName'] = $doc_orig['lastName'];
 	}
 	if(!empty($doc_orig['middleName'])){
-		$member = new Model\Member(array(
-			'_id'=>$memberId
-			,'middleName'=>$doc_orig['middleName']
-			)
-		,$app);
-		$member->saveSafe();
+		$membersaveprofile['middleName'] = $doc_orig['middleName'];
 	}
 	if(!empty($doc_orig['email'])){
-		$member = new Model\Member(array(
-			'_id'=>$memberId
-			,'email'=>$doc_orig['email']
-			)
-		,$app);
+		$membersaveprofile['email'] = $doc_orig['email'];
+	}
+	if(!empty($doc_orig['listServEmail'])){
+		$membersaveprofile['listServEmail'] = $doc_orig['listServEmail'];
+	}
+	if(!empty($membersaveprofile)){
+		$membersaveprofile['_id'] = $memberId;
+		$member = new Model\Member($membersaveprofile,$app);
 		$member->saveSafe();
 	}
-
 
 	return new Response(json_encode(array(
 		'label'=>'Your application was received.  Thank you.',
