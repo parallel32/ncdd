@@ -17,7 +17,7 @@ $user = call_user_func(function($app){ $user = $app['session']->get('user'); ret
             <div class="span12">
                   <!-- PAYMENT ELEMENT -->
                   <form id="payment-form" class="horizontal-form portlet">
-                     <?if(array_key_exists('invoiceBlock', $this->vars['payment'])): ?>
+                     <?if(is_array($this->vars['payment']) && !empty($this->vars['payment']) && array_key_exists('invoiceBlock', $this->vars['payment'])): ?>
                      <h3 class="form-section"><b>Invoice</b></h3>
                      <?=$this->vars['payment']['invoiceBlock']?>
                      <? endif; ?>
@@ -318,7 +318,7 @@ $user = call_user_func(function($app){ $user = $app['session']->get('user'); ret
                         </div>
                         <!--/span-->
                      </div>
-                     <? if($user['accessLevel'] >= EDITOR && array_key_exists('fullResponse',$this->vars['payment']) && !empty($this->vars['payment']['fullResponse'])){ ?>
+                     <? if($user['accessLevel'] >= EDITOR && is_array($this->vars['payment']) && !empty($this->vars['payment']) && array_key_exists('fullResponse',$this->vars['payment']) && !empty($this->vars['payment']['fullResponse'])){ ?>
                      <h3 class="form-section">First Data Global Gateway - Full Response</h3>
                      <div class="row-fluid">
                         <div class="span8 ">

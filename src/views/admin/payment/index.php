@@ -22,7 +22,8 @@
                            <thead>
                               <tr role="row">
                                  <th class="">Title</th>
-                                 <th class="hidden-480">Name</th>
+                                 <th class="hidden-480">For</th>
+                                 <th class="hidden-480">By</th>
                                  <th class="hidden-480">Amount</th>
                                  <th class="hidden-480">Paid Date</th>
                                  <th class=""></th>
@@ -32,7 +33,8 @@
                               <? if(!empty($this->vars['payments'])): foreach($this->vars['payments'] as $payment): ?>
                               <tr class="gradeX odd">
                                  <td class=" "><?=$payment['title']?></td>
-                                 <td class="hidden-480 "><?=$payment['name']?></td>
+                                 <td class="hidden-480 "><?=$payment['for']?></td>
+                                 <td class="hidden-480 "><?=$payment['by']?></td>
                                  <td class="center hidden-480 ">$<?=$payment['amount']?></td>
                                  <td class="hidden-480 "><?=$payment['paidDate']['fullMonth'].' '.$payment['paidDate']['shortTime']?></td>
                                  <td class=" ">

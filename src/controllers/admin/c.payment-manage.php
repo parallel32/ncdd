@@ -43,6 +43,35 @@ $app->get('/payment/{offset}/{limit}', function ($offset, $limit, Request $reque
 		$payment = new Model\Payment($doc=array(), $app);
 	}
 	$payments = $payment->fetchAll();
+	for ($i=0; $i < count($payments); $i++) { 
+
+		$payments[$i]['by'] = $payments[$i]['name'];
+		$payments[$i]['for'] = $payments[$i]['name'];
+		
+		switch ($payments[$i]['ownerClass']) {
+			case 'UpdateMember':
+			case 'ApplyNewMember':
+				$apply = new Model\Apply(array('_id'=>$payments[$i]['ownerId']),$app);
+				$application = $apply->findById();
+				if(!empty($application)):
+					$middleName = (array_key_exists('middleName', $application) && !empty($application['middleName'])) ? $application['middleName'].' ' : '';
+					$payments[$i]['for'] = $application['firstName'].' '.$middleName.$application['lastName'];
+				endif;
+				break;
+			case 'RegistrationSeminar':
+				$regsem = new Model\Registration(array('_id'=>$payments[$i]['ownerId']),$app);
+				$registration = $apply->findById();
+				if(!empty($registration)):
+					$middleName = (array_key_exists('middleName', $application) && !empty($application['middleName'])) ? $application['middleName'].' ' : '';
+					$payments[$i]['for'] = $registration['firstName'].' '.$middleName.$registration['lastName'];
+				endif;
+				break;
+			case 'Order':
+				$payments[$i]['for'] = $payments[$i]['name'];
+				break;
+			
+		}
+	}
 	$crumbs = array(array('name'=>'Payments','href'=>'/payment'));
 	$view_vars = array(
 						 'active'=>'Payment'
