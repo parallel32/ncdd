@@ -28,7 +28,7 @@
                            You have some form errors. Please check below.
                         </div>
                         <!--/ ERROR -->
-                        <? if($this->vars['currentType'] == $this->vars['type']['DYNAMIC']): ?>
+                        <? if($this->vars['currentType'] == $this->vars['type']['DYNAMIC'] || $this->vars['currentType'] == $this->vars['type']['ANNOUNCEMENT']): ?>
                         <h3 class="form-section text-info"><strong>Status</strong></h3>
                         <div class="row-fluid">
                            <div class="span12 ">
@@ -47,6 +47,7 @@
                            <!--/span-->
                         </div>
                         <? endif; ?>
+                        <? if($this->vars['currentType'] != $this->vars['type']['ANNOUNCEMENT']): ?>
                         <h3 class="form-section text-info"><strong>Section</strong></h3>
                         <div class="row-fluid">
                            <div class="span12 ">
@@ -65,7 +66,8 @@
                            </div>
                            <!--/span-->
                         </div>
-                        
+                        <?endif;?>
+
                         <h3 class="form-section text-info"><strong>Headline</strong></h3>
                         <div class="row-fluid">
                            <div class="span12 ">
@@ -78,6 +80,7 @@
                            </div>
                            <!--/span-->
                         </div>
+                        <? if($this->vars['currentType'] != $this->vars['type']['ANNOUNCEMENT']): ?>
                         <h3 class="form-section text-info"><strong>Page Url</strong></h3>
                         <div class="row-fluid">
                            <div class="span12 ">
@@ -92,7 +95,7 @@
                            </div>
                            <!--/span-->
                         </div>
-
+                        <? endif; ?>
                         <h3 class="form-section text-info"><strong>Body</strong>&nbsp;&nbsp;&nbsp;<a class="btn blue" href="javascript:tinymce.activeEditor.focus();">Click to Edit</a>
                         <!-- VIDEO MODAL -->
                            <?$modal='video-a';?>
@@ -186,7 +189,7 @@
                         </div>
                         <div class="modal-footer">
                            <button class="btn blue continue edit">Continue Editing</button>
-                           <button class="btn continue dashboard">Back to List of Pages</button>
+                           <button class="btn continue dashboard">Back to List of <?=($this->vars['currentType'] != $this->vars['type']['ANNOUNCEMENT']) ? 'Pages':'Announcements'?></button>
                         </div>
                      </div>
                      <!--/ SUCCESSFUL SAVE MODAL -->
@@ -206,5 +209,5 @@
          });
          </script>
          <? $id = (array_key_exists('page',$this->vars)) ? $this->vars['page']['_id'] : '' ?>
-         <?=$this->element('editor',array('_id'=>$id,'client_id'=>$this->vars['client_id'],'access_token'=>$this->vars['access_token']));?>
+         <?=$this->element('editor',array('_id'=>$id,'client_id'=>(array_key_exists('client_id', $this->vars)) ? $this->vars['client_id']: '','access_token'=>$this->vars['access_token']));?>
          

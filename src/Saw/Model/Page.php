@@ -115,6 +115,21 @@ class Page extends Model {
 	public function publish(){
 		$this->publishedDate = new Date(self::$app,'now');
 	}
+	public function fetchAnnouncement($offset=0,$limit=100,$status=''){
+		$query = array('currentType'=>self::$type['ANNOUNCEMENT']);
+		if(!empty($status)){
+			$query['currentStatus'] = $status;
+		}
+		$fields = array();
+		$result = $this->find($query,$fields,$slaveOkay=true,$sort=array('orderNum'=>1,'_id'=>-1,),(int)$offset,(int)$limit);
+		if(!empty($result)):
+			for ($i=0; $i < count($result); $i++) { 
+				$result[$i]['currentStatus'] = self::$statusReversed[$result[$i]['currentStatus']];
+			}
+		endif;
+		return $result;
+
+	}
 	public function fetchDynamic($offset=0,$limit=100){
 		$query = array('currentType'=>self::$type['DYNAMIC']);
 		$fields = array();

@@ -99,7 +99,10 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 			$page = new Model\Page(array(), $app);
     		$pages = $page->fetchByStatus('PRIVATE',0,5);
 			$view_vars['pages']=$pages;
+			$announcements = $page->fetchAnnouncement(0,10,Model\Page::$status['PUBLISHED']);
+		    $view_vars['announcements']=$announcements;
 
+			
 			$delegate = new Model\Delegate(array(), $app);
     		$delegate = $delegate->fetchByDelegate($user['_id']);
 			$view_vars['delegate']=$delegate;

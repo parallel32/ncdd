@@ -61,7 +61,7 @@ $app->get('/page/view/{slug}', function ($slug, Request $request) use ($app) {
 	
 	$page = new Model\Page($doc=array('slug'=>$slug), $app);
 	$page = $page->findById('slug');
-
+	$page['body'] = $app['prepare_content']($page['body']);
 	
 	$crumbs = array(array('name'=>'Pages','href'=>'/page/all')
 					,array('name'=>$page['headline'],'href'=>'/page/view/'.$slug)

@@ -28,6 +28,33 @@ $page->get('/', function (Request $request) use ($app) {
 						);
 	return $app['view']->render('page/index', 'default', $view_vars);
 });
+$page->get('/announcements', function (Request $request) use ($app) {
+	// retrieve from query string
+    $query = $request->get('query');
+
+	$crumbs = array(array('name'=>'Page','href'=>'/page/'));
+	$view_vars = array(
+						 'active'=>'Announcement'
+						,'page-plugin'=>'datatables'
+						,'headline'=>'Announcements'
+						,'description'=>"All announcements managed here."
+						,'crumbs'=>$crumbs
+						);
+	return $app['view']->render('page/announcement', 'default', $view_vars);
+});
+$page->get('/announcement', function (Request $request) use ($app) {
+	// retrieve document from request
+    $page = new Model\Page(array(), $app);
+    $results = $page->fetchAnnouncement();
+    //error_log('results:'.print_r($results,true));
+    if(!empty($results)){
+    	$message = count($results).' pages found.';
+    }else{
+    	$message = 'No pages matched that name.';
+    }
+    return new Response(json_encode(array('results'=>$results,'message' => $message)), 200,array('Content-Type' => 'application/json'));
+	
+});
 $page->get('/dynamic', function (Request $request) use ($app) {
 	// retrieve document from request
     $page = new Model\Page(array(), $app);
@@ -85,7 +112,7 @@ $page->get('/{slug}/{type}/edit/{headline}', function ($slug, $type, $headline, 
 					,array('name'=>'Edit','href'=>'/page/'.$slug.'/'.$type.'/edit')
 					);
 	$view_vars = array(
-						 'active'=>'Pages'
+						 'active'=>($type == 'ANNOUNCEMENT') ? 'Announcement': 'Pages'
 						,'page-plugin'=>'editor'
 						,'headline'=>'Pages'
 						,'description'=>"Edit a page"
@@ -105,6 +132,7 @@ $page->get('/{slug}/{type}/edit/{headline}', function ($slug, $type, $headline, 
 
 	return $app['view']->render('page/edit', 'default', $view_vars);
 })->value('slug','')->value('headline','');
+
 $page->post('/edit', function (Request $request) use ($app) {
 	// retrieve document from request
     $document = $request->get('doc');
@@ -115,6 +143,4 @@ $page->post('/edit', function (Request $request) use ($app) {
     
     return new Response(json_encode(array('message' => 'Page details have saved successfully.')), 200,array('Content-Type' => 'application/json'));
 });
-
-
 return $page;

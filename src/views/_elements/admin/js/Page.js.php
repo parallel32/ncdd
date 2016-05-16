@@ -29,13 +29,13 @@
 			Page.save();
 		});
 		$('#saw-form .btn.cancel').click(function(e){
-			document.location.href='/page/';			
+			document.location.href='<?=($this->vars['currentType'] != $this->vars['type']['ANNOUNCEMENT']) ? '/page/': '/page/announcements'?>';			
 		});
 		$('#save-modal .btn.continue.edit').click(function(e){
 			$('#save-modal').modal('hide');
 		});		
 		$('#save-modal .btn.continue.dashboard').click(function(e){
-			document.location.href='/page/';
+			document.location.href='<?=($this->vars['currentType'] != $this->vars['type']['ANNOUNCEMENT']) ? '/page/': '/page/announcements'?>';
 		});	
 
 	};

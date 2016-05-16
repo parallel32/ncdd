@@ -285,6 +285,41 @@ Las Vegas, NV</b></h3>
                </div>
             </div>
 <? endif; ?>
+            
+            <!-- PRIVATE PAGES (RECENT) -->
+            <?if(!empty($this->vars['pages'])):?>
+               <div class="row-fluid">
+                  <div class="span12">
+                     <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                     <div class="portlet box blue">
+                        <div class="portlet-title" id="page">
+                           <div class="caption"><i class="icon-copy"></i>Announcements</div>
+                           <div class="actions"></div>
+                        </div>
+                        <div class="portlet-body">
+                           <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                           <table class="table table-striped table-bordered table-hover dataTable" id="announcements" aria-describedby="sample_1_info">
+                              <tbody role="alert" aria-live="polite" aria-relevant="all">
+                                 <?foreach($this->vars['announcements'] as $page): ?>
+                                 <tr class="gradeX odd">
+                                    <td class=" ">
+                                       <h2><?=$page['headline']?></h2>
+                                       <p><?=date('F j, Y',$page['_id']->getTimestamp())?></p>
+                                       <p><?=$this->app['prepare_content']($page['body'])?></p>
+                                    </td>
+                                 </tr>
+                                 <? endforeach;?>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                     <!-- END EXAMPLE TABLE PORTLET-->
+                  </div>
+               </div>
+               <div class="clearfix"></div>
+               <!--/ PRIVATE PAGES (RECENT) -->
+            <? endif; ?>
+
             <div class="row-fluid">
                <div class="span12">
                   <div class="span12">
