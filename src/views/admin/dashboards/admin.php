@@ -335,6 +335,7 @@
                         <div class="portlet-title" id="page">
                            <div class="caption"><i class="icon-copy"></i>Changes (10 most recent)</div>
                            <div class="actions">
+                              <a class="btn blue view" href="/change/streamcsv"><i class=" "></i> Download CSV</a>
                               <a id="" class="btn yellow view" href="/change"><i class=" icon-eye-open"></i> View All</a>
                            </div>
                         </div>
