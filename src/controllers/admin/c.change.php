@@ -53,34 +53,56 @@ $app->get('/change/streamcsv', function (Request $request) use ($app) {
 $app->get('/change/streamcsvrawaddressonly', function (Request $request) use ($app) {
     
     $change = new Model\Change(array(),$app);
-    $changes = $change->fetchAddressChanges($offset=0, $limit=100000);
+    $changes = $change->fetchContactChanges($offset=0, $limit=100000);
     
     $csv = '';  
     if(is_array($changes) && !empty($changes)): 
     foreach ($changes as $row) {
+        $formatted_row['a-who'] = '';
+        //$formatted_row['b-primaryPhone'] = '';
+        //$formatted_row['c-primaryFax'] = '';
+        //$formatted_row['d-email'] = '';
+        $formatted_row['e-raw'] = '';
+        $formatted_row['f-addressLine1'] = '';
+        $formatted_row['g-addressLine2'] = '';
+        $formatted_row['h-city'] = '';
+        $formatted_row['i-state'] = '';
+        $formatted_row['j-zip'] = '';
+        $formatted_row['k-when'] = '';
+
         $formatted_row['a-who'] = $row['label'];
+
         foreach ($row['values'] as $key => $value) {
+            // if($key == 'primaryPhone'){
+            //     $formatted_row['b-primaryPhone'] = $value;
+            // }
+            // if($key == 'primaryFax'){
+            //     $formatted_row['c-primaryFax'] = $value;
+            // }
+            // if($key == 'email'){
+            //     $formatted_row['d-email'] = $value;
+            // }
             if($key == 'raw'){
-                $formatted_row['b-raw'] = $value;
+                $formatted_row['e-raw'] = $value;
             }
             if($key == 'addressLine1'){
-                $formatted_row['c-addressLine1'] = $value;
+                $formatted_row['f-addressLine1'] = $value;
             }
             if($key == 'addressLine2'){
-                $formatted_row['d-addressLine2'] = $value;
+                $formatted_row['g-addressLine2'] = $value;
             }
             if($key == 'city'){
-                $formatted_row['e-city'] = $value;
+                $formatted_row['h-city'] = $value;
             }
             if($key == 'state'){
-                $formatted_row['f-state'] = $value;
+                $formatted_row['i-state'] = $value;
             }
             if($key == 'zip'){
-                $formatted_row['g-zip'] = $value;
+                $formatted_row['j-zip'] = $value;
             }
             
         }
-        $formatted_row['h-when'] = $row['date']['fullDateTime'];
+        $formatted_row['k-when'] = $row['date']['fullDateTime'];
 
         $line = '';
         ksort($formatted_row);

@@ -63,7 +63,7 @@ class Change extends Model {
 		return $changes;
 	}
 
-	public function fetchAddressChanges($offset=0,$limit=10000){
+	public function fetchContactChanges($offset=0,$limit=10000){
         
 		$changes = $this->find($query=array('values.raw'=>array('$exists'=>true)),$fields=array(),$slaveOkay=true,$sort=array('_id'=>-1),$offset,$limit);
 		if(!empty($changes)){
