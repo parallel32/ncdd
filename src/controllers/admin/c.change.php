@@ -16,7 +16,7 @@ use Saw\Model;
 $app->get('/change/streamcsv', function (Request $request) use ($app) {
     
     $change = new Model\Change(array(),$app);
-    $changes = $change->fetch($offset=0, $limit=1000);
+    $changes = $change->fetch($offset=0, $limit=100000);
     
     $csv = '';  
     if(is_array($changes) && !empty($changes)): 
@@ -32,6 +32,60 @@ $app->get('/change/streamcsv', function (Request $request) use ($app) {
         $line = '';
         foreach ($formatted_row as $key => $value) {
             $line.=''.$value.'{}'; 
+        }
+        $csv.= substr($line, 0, -1).PHP_EOL;
+    }
+    endif;
+
+    $response = new Response($csv, 200, array('Content-Type' => 'text/csv'));
+    $d = $response->headers->makeDisposition(
+        ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+        'member-change-log.csv'
+    );
+    $response->headers->set('Content-Disposition', $d);
+    
+    return $response;
+    //return $app['view']->render('member/search', 'blank', $view_vars);
+
+})->before($mustbeADMIN);
+
+
+$app->get('/change/streamcsvrawaddressonly', function (Request $request) use ($app) {
+    
+    $change = new Model\Change(array(),$app);
+    $changes = $change->fetchAddressChanges($offset=0, $limit=100000);
+    
+    $csv = '';  
+    if(is_array($changes) && !empty($changes)): 
+    foreach ($changes as $row) {
+        $formatted_row['a-who'] = $row['label'];
+        foreach ($row['values'] as $key => $value) {
+            if($key == 'raw'){
+                $formatted_row['b-raw'] = $value;
+            }
+            if($key == 'addressLine1'){
+                $formatted_row['c-addressLine1'] = $value;
+            }
+            if($key == 'addressLine2'){
+                $formatted_row['d-addressLine2'] = $value;
+            }
+            if($key == 'city'){
+                $formatted_row['e-city'] = $value;
+            }
+            if($key == 'state'){
+                $formatted_row['f-state'] = $value;
+            }
+            if($key == 'zip'){
+                $formatted_row['g-zip'] = $value;
+            }
+            
+        }
+        $formatted_row['h-when'] = $row['date']['fullDateTime'];
+
+        $line = '';
+        ksort($formatted_row);
+        foreach ($formatted_row as $key => $value) {
+            $line.=''.$value.'|'; 
         }
         $csv.= substr($line, 0, -1).PHP_EOL;
     }

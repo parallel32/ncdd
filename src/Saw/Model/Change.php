@@ -63,6 +63,21 @@ class Change extends Model {
 		return $changes;
 	}
 
+	public function fetchAddressChanges($offset=0,$limit=10000){
+        
+		$changes = $this->find($query=array('values.raw'=>array('$exists'=>true)),$fields=array(),$slaveOkay=true,$sort=array('_id'=>-1),$offset,$limit);
+		if(!empty($changes)){
+			$i=0;
+			foreach ($changes as $change) {
+				$human = \Carbon\Carbon::createFromTimeStamp(strtotime($change['date']['fullDateTime']), $change['date']['timezone']);
+				$changes[$i]['timeAgo'] = $human->diffForHumans();
+				$i++;
+			}
+		}
+
+		return $changes;
+	}
+
 	// performs the check and inserts the changed values.  This is the only method that needs to be called.
 	public static function check($model,$label,$app){
 		$reflectionClass = new \ReflectionClass($model);

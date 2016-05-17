@@ -876,12 +876,23 @@ class Member extends User {
 				$loc_primary = $loc->getPrimary($value['member']['_id']);
 				$result[$i]['location']['raw'] = $loc_primary['raw'];
 			}
+			// pop any state delegates who are coming up in states that are not their primary
+			if($value['member']['currentFacultyPosition'] == self::$facultyPosition['DELEGATE']){
+				// check that searched for state is their primary state otherwise pop them off the results
+				$location = new Location(array(),self::$app);
+				$loc_res = $location->getPrimary($value['member']['_id']);
+				if(!empty($loc_res) && is_array($loc_res) && $state != $loc_res['state']){
+					unset($result[$i]);
+				}
+			}
 			$i++;
 		}
 		$_result = array();
 		if(!empty($result)):
 			for ($i=0; $i < count($result); $i++) {
-				$_result[(string)$result[$i]['_id']] = $result[$i];
+				if(array_key_exists($i, $result)){// this is put in place because there might have been a state delegate who needs to be pulled out of the listing because it's not his primary state
+					$_result[(string)$result[$i]['_id']] = $result[$i];
+				}
 			}
 
 		endif;
