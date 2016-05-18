@@ -287,7 +287,7 @@ Las Vegas, NV</b></h3>
 <? endif; ?>
             
             <!-- PRIVATE PAGES (RECENT) -->
-            <?if(array_key_exists('announcements', $this->vars) && !empty($this->vars['announcements']) && is_array($this->vars['announcement'])):?>
+            <?if(array_key_exists('announcements', $this->vars) && !empty($this->vars['announcements']) && is_array($this->vars['announcements'])):?>
                <div class="row-fluid">
                   <div class="span12">
                      <!-- BEGIN EXAMPLE TABLE PORTLET-->
