@@ -143,7 +143,27 @@
 		   ,postOnSuccess:function(responseObj){}
 		});      
 	};
-
+	function newExpertAdd (){
+		$('#saw-form .btn.green').prop('disabled', true);
+		var full_address = $('#address1').val()+' '+$('#address2').val()+' '+$('#city').val()+', '+$('#state').val()+' '+$('#zip').val()+', '+$('#country').val();
+		$('#raw').val(full_address);
+			
+		io.saw.FormPost.activate({postUrl:'/application/new-expert'
+		   ,serializeSelector:':input'
+		   ,invalidFieldsString:'no'
+		   ,postOnComplete:function(responseObj,responseStatus){
+			   	if(responseStatus == 'success'){
+					$('#save-success .modal-body p').html(responseObj.message);
+			      	$('#save-success-label').html(responseObj.label);
+			      	$('#save-success').modal({keyboard: false});   		
+			   	}else{
+			   		var responseObj = $.parseJSON(responseObj.responseText);
+			   	}
+			   	$('#saw-form .btn.green').prop('disabled', false);
+		   }
+		   ,postOnSuccess:function(responseObj){}
+		});      
+	};
 
 
 
@@ -352,6 +372,60 @@
 				});
 			},500,$(this));
         });
+	};
+	Application.newExpertInit = function(){
+		$('#saw-form input').keypress(function (e) {
+		   if (e.which == 13) {
+		   	  e.preventDefault();
+		      newExpertAdd();
+		   }
+		});
+		/*
+		$('#saw-form .btn.green').click(function(e){
+			e.preventDefault();
+			newExpertAdd();
+		});
+		*/
+
+		var DELAY = 500, clicks = 0, timer = null;
+		$(function(){
+		    $('#saw-form .btn.green').on("click", function(e){
+		        clicks++;  //count clicks
+		        if(clicks === 1) {
+		            timer = setTimeout(function() {
+		                newExpertAdd();  //perform single-click action    
+		                clicks = 0;             //after action performed, reset counter
+		            }, DELAY);
+		        } else {
+		            clearTimeout(timer);    //prevent single-click action
+		            newExpertAdd();  //perform double-click action
+		            clicks = 0;             //after action performed, reset counter
+		        }
+		    })
+		    .on("dblclick", function(e){
+		        e.preventDefault();  //cancel system double-click event
+		    });
+		});
+
+
+		$('#saw-form .cancel-go-back').click(function(e){
+			e.preventDefault();
+			document.location.href="https://<?=SAW_CONSUMER_WEBSITE?>";
+		});
+		$('#save-success .btn.continue').click(function(e){
+			e.preventDefault();
+			window.location.href="https://<?=SAW_CONSUMER_WEBSITE?>";
+		});
+
+		$.extend($.inputmask.defaults, {
+            'autounmask': true
+        });
+
+        $("#phone").inputmask("mask", {"mask": "(999) 999-9999"}); //specifying fn & options
+        $("#fax").inputmask("mask", {"mask": "(999) 999-9999"}); //specifying fn & options
+
+
+        
 	};
 	Application.newSustainingMemberInit = function(){
 		$('#saw-form input').keypress(function (e) {

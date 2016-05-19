@@ -213,6 +213,20 @@
                         </a>                 
                      </div>
                   </div>
+                  <div class="span3 responsive" data-tablet="span3" data-desktop="span3">
+                     <div class="dashboard-stat blue">
+                        <div class="visual">
+                           <i class="icon-hideme"><?=$this->vars['fa']?></i>
+                        </div>
+                        <div class="details">
+                           <div class="number"></div>
+                           <div class="desc">Faculty</div>
+                        </div>
+                        <a class="more" href="/member/search?query=Faculty">
+                        View <i class="m-icon-swapright m-icon-white"></i>
+                        </a>                 
+                     </div>
+                  </div>
                </div>
                <div class="row-fluid">
                   <div class="span3 responsive" data-tablet="span3" data-desktop="span3">
@@ -260,13 +274,13 @@
                   <div class="span3 responsive" data-tablet="span3" data-desktop="span3">
                      <div class="dashboard-stat blue">
                         <div class="visual">
-                           <i class="icon-hideme"><?=$this->vars['fa']?></i>
+                           <i class="icon-hideme"><?=$this->vars['exp']?></i>
                         </div>
                         <div class="details">
                            <div class="number"></div>
-                           <div class="desc">Faculty</div>
+                           <div class="desc">Experts</div>
                         </div>
-                        <a class="more" href="/member/search?query=Faculty">
+                        <a class="more" href="/member/search?query=Experts">
                         View <i class="m-icon-swapright m-icon-white"></i>
                         </a>                 
                      </div>

@@ -57,6 +57,7 @@ $app->get('/', function (Request $request) use ($app, $common_view_vars) {
 			$view_vars['bc']=$member->searchCount('Board Certified');
 			$view_vars['bcsr']=$member->searchCount('Board Certified Sr');
 			$view_vars['fr']=$member->searchCount('Former Regents');
+			$view_vars['exp']=$member->searchCount('Experts');
 
 			//changes
 			$change = new Model\Change(array(),$app);

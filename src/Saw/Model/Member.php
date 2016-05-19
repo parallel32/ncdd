@@ -44,18 +44,19 @@ class Member extends User {
 	public $orderNumState;
 
 	// order not relevant
-	static public $membership = array('PUBLIC DEFENDER'=>5,'GENERAL MEMBER'=>10,'SUSTAINING MEMBER'=>30,'FOUNDING MEMBER'=>40);
-	static public $membershipReversed = array(5=>'PUBLIC DEFENDER',10=>'GENERAL MEMBER',30=>'SUSTAINING MEMBER', 40=>'FOUNDING MEMBER');
+	static public $membership = array('EXPERT'=>3,'PUBLIC DEFENDER'=>5,'GENERAL MEMBER'=>10,'SUSTAINING MEMBER'=>30,'FOUNDING MEMBER'=>40);
+	static public $membershipReversed = array(3=>'EXPERT',5=>'PUBLIC DEFENDER',10=>'GENERAL MEMBER',30=>'SUSTAINING MEMBER', 40=>'FOUNDING MEMBER');
 	public $currentMembership;
-	static public $membershipBadge = array(5=>'./../../../www/ncdd.com/public_html/assets/img/badges/public-defender.png'
+	static public $membershipBadge = array(3=>'./../../../www/ncdd.com/public_html/assets/img/badges/expert.png'
+											,5=>'./../../../www/ncdd.com/public_html/assets/img/badges/public-defender.png'
 											,10=>'./../../../www/ncdd.com/public_html/assets/img/badges/general.png'
 											,20=>'./../../../www/ncdd.com/public_html/assets/img/badges/faculty.png'
 											,40=>'./../../../www/ncdd.com/public_html/assets/img/badges/founding.png'
 											,30=>'./../../../www/ncdd.com/public_html/assets/img/badges/sustaining.png'
 											);
 	// order descending
-	static public $order = array('DEAN'=>65,'FELLOW'=>60,'DEAN EMERITUS'=>58,'ASSISTANT DEAN'=>57,'SECRETARY'=>56,'TREASURER'=>55,'REGENT'=>50,'BOARD CERTIFIED SR'=>47,'BOARD CERTIFIED'=>45,'DELEGATE'=>43,'FOUNDING MEMBER'=>40,'SUSTAINING MEMBER'=>35,'FORMER REGENT'=>15,'GENERAL MEMBER'=>5,'PUBLIC DEFENDER'=>3);
-	static public $orderReversed = array(65=>'DEAN',60=>'FELLOW',58=>'DEAN EMERITUS',57=>'ASSISTANT DEAN',56=>'SECRETARY',55=>'TREASURER',50=>'REGENT',47=>'BOARD CERTIFIED SR',45=>'BOARD CERTIFIED',43=>'DELEGATE',40=>'FOUNDING MEMBER',35=>'SUSTAINING MEMBER',15=>'FORMER REGENT',5=>'GENERAL MEMBER',3=>'PUBLIC DEFENDER');
+	static public $order = array('DEAN'=>65,'FELLOW'=>60,'DEAN EMERITUS'=>58,'ASSISTANT DEAN'=>57,'SECRETARY'=>56,'TREASURER'=>55,'REGENT'=>50,'BOARD CERTIFIED SR'=>47,'BOARD CERTIFIED'=>45,'DELEGATE'=>43,'FOUNDING MEMBER'=>40,'SUSTAINING MEMBER'=>35,'FORMER REGENT'=>15,'GENERAL MEMBER'=>5,'PUBLIC DEFENDER'=>3,'EXPERT'=>1);
+	static public $orderReversed = array(65=>'DEAN',60=>'FELLOW',58=>'DEAN EMERITUS',57=>'ASSISTANT DEAN',56=>'SECRETARY',55=>'TREASURER',50=>'REGENT',47=>'BOARD CERTIFIED SR',45=>'BOARD CERTIFIED',43=>'DELEGATE',40=>'FOUNDING MEMBER',35=>'SUSTAINING MEMBER',15=>'FORMER REGENT',5=>'GENERAL MEMBER',3=>'PUBLIC DEFENDER',1=>'EXPERT');
 	public $currentOrder;
 	
 	// order descending
@@ -536,6 +537,13 @@ class Member extends User {
 					$result = $this->find($query=array('currentMembership'=>self::$membership['PUBLIC DEFENDER'],'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
 				}else{
 					$result = $this->find($query=array('currentMembership'=>self::$membership['PUBLIC DEFENDER']),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				}
+				break;
+			case 'Experts':
+				if($listedOnly){
+					$result = $this->find($query=array('currentMembership'=>self::$membership['EXPERT'],'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				}else{
+					$result = $this->find($query=array('currentMembership'=>self::$membership['EXPERT']),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
 				}
 				break;
 			case 'Founding Members':
@@ -1339,6 +1347,13 @@ class Member extends User {
 					$result = $this->count($query=array('currentMembership'=>self::$membership['PUBLIC DEFENDER']),true);		
 				}
 				break;
+			case 'Experts':
+				if($listedOnly){
+					$result = $this->count($query=array('currentMembership'=>self::$membership['EXPERT'],'status'=>USER_STATUS_ACTIVE),true);		
+				}else{
+					$result = $this->count($query=array('currentMembership'=>self::$membership['EXPERT']),true);		
+				}
+				break;
 			case 'Founding Members':
 				if($listedOnly){
 					$result = $this->count($query=array('currentMembership'=>self::$membership['FOUNDING MEMBER'],'status'=>USER_STATUS_ACTIVE),true);		
@@ -1789,6 +1804,10 @@ class Member extends User {
 					);
 		
 		switch ($membership) {
+			case self::$membership['EXPERT']:
+				$query = array('member.currentMembership'=>self::$membership['EXPERT'],'member.status'=>USER_STATUS_ACTIVE);
+				$query = array_merge($filter, $query);
+				break;
 			case self::$membership['PUBLIC DEFENDER']:
 				$query = array('member.currentMembership'=>self::$membership['PUBLIC DEFENDER'],'member.status'=>USER_STATUS_ACTIVE);
 				$query = array_merge($filter, $query);

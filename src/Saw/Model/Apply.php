@@ -192,10 +192,10 @@ class Apply extends Model {
 	public function findByEmail(){
 		$query = array('email'=>trim(strtolower($this->email)));
         $fields = array('_id'=>1);
-        error_log('$this->collection: '.print_r($this->collection,true));
-        error_log('$query: '.print_r($query,true));
+        //error_log('$this->collection: '.print_r($this->collection,true));
+        //error_log('$query: '.print_r($query,true));
 		$result = self::$app['mongo']->findOne($this->collection, $query, $fields, $slaveOkay=true);
-		error_log('$result: '.print_r($result,true));
+		//error_log('$result: '.print_r($result,true));
 		if(!empty($result)):
 			$this->_id = $result['_id'];
 			return true;

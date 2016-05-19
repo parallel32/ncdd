@@ -320,6 +320,115 @@ $app->get('/application/new-member-admin', function (Request $request) use ($app
 	);
 	return $app['view']->render('application/new-member-admin', 'default', $view_vars);
 });
+$app->get('/application/new-expert-admin', function (Request $request) use ($app) {
+
+	$crumbs = array(array('name'=>'Applications','href'=>'/applications')
+		,array('name'=>'(admin) Add New Expert','href'=>'/applications/new-expert-admin')
+	);
+	$view_vars = array(
+						 'active'=>'Applications/New'
+						,'page-plugin'=>'datatables'
+						,'headline'=>'Add a new expert'
+						,'description'=>"<a class='btn ' href='/applications'><i class=''></i> Cancel</a>"
+						,'crumbs'=>$crumbs
+	);
+	return $app['view']->render('application/new-expert-admin', 'default', $view_vars);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$app->post('/application/new-expert', function (Request $request) use ($app) {
+	
+	// retrieve document from request
+    $doc = $request->get('doc');
+    $doc['userAgent'] = $request->headers->get('User-Agent');
+
+	$application = new Model\ApplyNewMember($doc, $app);
+	$mem = new Model\Member(array('email'=>$doc['email']),$app);
+
+	if(!empty($doc['email']) && $application->findByEmail()){
+		error_log('AAAAAAA: '.print_r('AAAAAAA',true));
+    	$response_arr = array('message'=>"Our records indicate you have already submitted an application.  Please Log-in if you are looking for another Application or contact NCDD directly.",
+                              "invalidFields"=>array(array('name'=>'email','message'=>'Our records indicate you have already submitted an application.  Please Log-in if you are looking for another Application or contact NCDD directly.')));
+        return new Response(json_encode($response_arr), 403,array('Content-Type' => 'application/json'));
+    }
+    if(!empty($doc['email']) && $mem->findByEmail()){
+    	error_log('BBBBBB: '.print_r('BBBBBB',true));
+    	$response_arr = array('message'=>"Our records indicate you are already a member.  Please Log-in or contact NCDD directly.",
+                              "invalidFields"=>array(array('name'=>'email','message'=>'Our records indicate you are already a member.  Please Log-in or contact NCDD directly.')));
+        return new Response(json_encode($response_arr), 403,array('Content-Type' => 'application/json'));
+    }
+
+    $application->currentStatus = Model\Apply::$status['APPROVED'];
+	$applicationId = $application->insert();
+	$application->markPaid(false);
+	$_POST['applicationId'] = $applicationId->__toString();
+	
+	$label = 'Your application was received.  Thank you.';
+	$message = 'Thank you for your interest in NCDD.  Your application has been submitted.  Please check your inbox for your receipt and log-in information.';
+	$response_status = 200;
+    return new Response(json_encode(array('message' => $message,'label'=>$label)), $response_status,array('Content-Type' => 'application/json'));
+})->after(function (Request $request, Response $response, Silex\Application $app) {
+		if((int)$response->getStatusCode() == 200):
+			
+	    endif;
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
 
 new member application submittal form - UPDATED
@@ -1799,7 +1908,7 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 						 'active'=>'Applications/New'
 						,'page-plugin'=>'datatables'
 						,'headline'=>'Applications'
-						,'description'=>"<a class='btn green ' href='/application/new-member-admin'><i class='icon-plus'></i> New Member</a>"
+						,'description'=>"<a class='btn green ' href='/application/new-member-admin'><i class='icon-plus'></i> New Member</a>&nbsp;<a class='btn green ' href='/application/new-expert-admin'><i class='icon-plus'></i> New Expert</a>"
 						,'crumbs'=>$crumbs
 						,'approved'=>$approved
 						,'trial'=>$trial

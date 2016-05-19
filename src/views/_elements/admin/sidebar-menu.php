@@ -132,6 +132,9 @@ $accessLevel = call_user_func(function($app){ $user = $app['session']->get('user
                   <li class="<? echo ($this->vars['active'] == 'Members/src') ? 'active':'';?>">
                      <a href="/member/search?query=Public Defenders"><i class="icon-user"></i> Public Defenders</a>
                   </li>
+                  <li class="<? echo ($this->vars['active'] == 'Members/src') ? 'active':'';?>">
+                     <a href="/member/search?query=Experts"><i class="icon-user"></i> Experts</a>
+                  </li>
                </ul>
             </li>
          <? endif; ?>
