@@ -371,26 +371,16 @@ $app->post('/application/new-expert', function (Request $request) use ($app) {
     $doc = $request->get('doc');
     $doc['userAgent'] = $request->headers->get('User-Agent');
 
-	$application = new Model\ApplyNewMember($doc, $app);
 	$mem = new Model\Member(array('email'=>$doc['email']),$app);
 
-	if(!empty($doc['email']) && $application->findByEmail()){
-		error_log('AAAAAAA: '.print_r('AAAAAAA',true));
-    	$response_arr = array('message'=>"Our records indicate you have already submitted an application.  Please Log-in if you are looking for another Application or contact NCDD directly.",
-                              "invalidFields"=>array(array('name'=>'email','message'=>'Our records indicate you have already submitted an application.  Please Log-in if you are looking for another Application or contact NCDD directly.')));
-        return new Response(json_encode($response_arr), 403,array('Content-Type' => 'application/json'));
-    }
-    if(!empty($doc['email']) && $mem->findByEmail()){
+	if(!empty($doc['email']) && $mem->findByEmail()){
     	error_log('BBBBBB: '.print_r('BBBBBB',true));
     	$response_arr = array('message'=>"Our records indicate you are already a member.  Please Log-in or contact NCDD directly.",
                               "invalidFields"=>array(array('name'=>'email','message'=>'Our records indicate you are already a member.  Please Log-in or contact NCDD directly.')));
         return new Response(json_encode($response_arr), 403,array('Content-Type' => 'application/json'));
     }
 
-    $application->currentStatus = Model\Apply::$status['APPROVED'];
-	$applicationId = $application->insert();
-	$application->markPaid(false);
-	$_POST['applicationId'] = $applicationId->__toString();
+    
 	
 	$label = 'Your application was received.  Thank you.';
 	$message = 'Thank you for your interest in NCDD.  Your application has been submitted.  Please check your inbox for your receipt and log-in information.';
