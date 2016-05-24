@@ -1631,7 +1631,7 @@ class Member extends User {
 				$sort=array('lastName'=>1);
 				break;
 		}
-		error_log(__FILE__.' '.__LINE__.' $query: '.print_r($query,true));
+		
 		$result = $this->find($query,$fields,$slaveOkay=true,$sort,(int)$offset,(int)$limit);
 		
 		return $result;
