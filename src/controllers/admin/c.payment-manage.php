@@ -60,7 +60,7 @@ $app->get('/payment/{offset}/{limit}', function ($offset, $limit, Request $reque
 				break;
 			case 'RegistrationSeminar':
 				$regsem = new Model\Registration(array('_id'=>$payments[$i]['ownerId']),$app);
-				$registration = $apply->findById();
+				$registration = $regsem->findById();
 				if(!empty($registration)):
 					$middleName = (array_key_exists('middleName', $application) && !empty($application['middleName'])) ? $application['middleName'].' ' : '';
 					$payments[$i]['for'] = $registration['firstName'].' '.$middleName.$registration['lastName'];
