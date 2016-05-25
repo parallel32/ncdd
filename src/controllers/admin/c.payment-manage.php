@@ -62,7 +62,7 @@ $app->get('/payment/{offset}/{limit}', function ($offset, $limit, Request $reque
 				$regsem = new Model\Registration(array('_id'=>$payments[$i]['ownerId']),$app);
 				$registration = $regsem->findById();
 				if(!empty($registration)):
-					$middleName = (array_key_exists('middleName', $application) && !empty($application['middleName'])) ? $application['middleName'].' ' : '';
+					$middleName = (array_key_exists('middleName', $registration) && !empty($registration['middleName'])) ? $registration['middleName'].' ' : '';
 					$payments[$i]['for'] = $registration['firstName'].' '.$middleName.$registration['lastName'];
 				endif;
 				break;
