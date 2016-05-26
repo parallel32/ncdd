@@ -393,7 +393,11 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 				$rs_id = $rs->insert();
 				//*
 		    	// send registrant the email notification only if pay by check has been selected.
-	    		$app['seminarConfirmationEmail']($app,$rs_id);
+	    		if(is_array($user) && array_key_exists('accessLevel', $user) && ($user['accessLevel'] == ADMIN || ((is_array($user)) && array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') )) && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes'){
+					// don't send the email
+				}else{
+					$app['seminarConfirmationEmail']($app,$rs_id);
+				}
 				//*/
 			} catch (Exception $e) {
 				error_log(__FILE__.' '.__LINE__.' for variable: e  ==>'.print_r($e->getMessage(),true));

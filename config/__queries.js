@@ -43,7 +43,16 @@ db.registration.update({_id:ObjectId('571e75b454fe0b6a234b9602')},{$set:{memberI
 
 
 
+57444ae3a6ec61d84e65889b payment to delete
+db.payment.remove({_id:ObjectId('57444ae3a6ec61d84e65889b')})
 
+56b8d2ac1f1d75b2548d392e application to delete
+db.application.remove({_id:ObjectId('56b8d2ac1f1d75b2548d392e')})
+
+update mcginnis renewal record in member
+member.update({_id:ObjectId('54ca764c54fe0ba91f708fac')},{$set:{"renewal" : {"currentStatus" : 5,"year" : 2016,"applicationId" : [ ],"submittedDate" : [ ],"approvedDate" : [ ],"paidDate" : [ ],"paymentId" : [ ],"contributionPaymentId" : null,"payByCheck" : "","clearFields" : ""	}}});
+
+remove mcginnis from autopay
 
 
 
