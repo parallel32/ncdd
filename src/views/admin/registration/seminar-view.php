@@ -18,7 +18,7 @@
                   
                   <div class="row-fluid">
                      <div class="span12 ">
-                        <h4><?=$this->vars['seminar']['headline']?> - <?=$this->vars['registration']['name']?> - <?=$this->vars['registration']['postalCode']?></h4>
+                        <h4><?=(array_key_exists('scholarship',$this->vars['registration']) && is_array($this->vars['registration']['scholarship']) && !empty($this->vars['registration']['scholarship']['currentStatus'])) ? "<b>SHOLARSHIP-</b>" : ""; ?><?=$this->vars['seminar']['headline']?> - <?=$this->vars['registration']['name']?> - <?=$this->vars['registration']['postalCode']?></h4>
                      </div>
                      <!--/span-->
                   </div>
