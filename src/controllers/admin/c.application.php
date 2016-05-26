@@ -1110,7 +1110,9 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 
 	    	if(strpos($doc['paymentlite']['number'], '...') !== false){
 	    		// no need to re-validate since it's already saved
-	    		$paymentlite = new Model\PaymentLite($doc['paymentlite'], $app);
+	    		$tmpmem = new Model\Member(array('_id'=>$memberId),$app);
+				$tmpmem = $tmpmem->findById();
+	    		$paymentlite = new Model\PaymentLite($tmpmem['payment'], $app);
 	    	}else{
 	    		$paymentlite = new Model\PaymentLite($doc['paymentlite'], $app);
 		    	$validate[] = array('model'=>$paymentlite,'groups'=>array('cc'));
@@ -1122,7 +1124,7 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 			$tmpmem = new Model\Member(array('_id'=>$memberId),$app);
 			$tmpmem = $tmpmem->findById();
 			
-
+			
 			$tmprenewalcredit = (is_array($tmpmem['payment']) && array_key_exists('renewalCredit', $tmpmem['payment'])) ? $tmpmem['payment']['renewalCredit']: '';
 			if(!empty($tmprenewalcredit))
 				$paymentlite->renewalCredit = $tmprenewalcredit;
@@ -1131,6 +1133,7 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 			if(array_key_exists('termsAcknowledgement', $doc) && !empty($doc['termsAcknowledgement']) && $doc['termsAcknowledgement'] == 'yes'){
 				$paymentlite->renewalREUSE = 'yes';
 			}
+
 			$memberobj = new Model\Member(array('_id'=>$memberId,'payment'=>$paymentlite),$app);
 			$memberobj->saveSafe();
 	    }
