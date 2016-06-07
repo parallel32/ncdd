@@ -36,7 +36,8 @@ db.registration.update({_id:ObjectId('571e75b454fe0b6a234b9602')},{$set:{memberI
 
 
 
-
+move Adam Nero to unpaid
+db.member.update({_id:ObjectId('542c7075a6ec619a6f440aec')},{$set:{renewal:{"currentStatus" : 20,"year" : 2016,"applicationId" : ObjectId("56956d00a6ec61453a93d155"),"submittedDate" : {"date" : ISODate("2016-01-12T21:15:47Z"),"checkError" : "2016-01-12","feed" : "1/12/2016","detail" : "1/12/2016","monthDay" : "January 12","iso" : "2016-01-12T16:15:47-05:00","fullDateTime" : "January 12, 2016 04:15 PM","fullMonth" : "January 12, 2016","shortMonth" : "Jan 12, 2016","dayOfWeek" : "Tuesday","shortDayOfWeek" : "Tue","year" : "2016","european" : "12/1/2016","europeanFullMonth" : "12 January, 2016","europeanShortMonth" : "12 Jan, 2016","shortTimeSlim" : "4:15pm","shortTime" : "4:15 pm","longTime" : "04:15 PM","militaryTime" : "16:15","timezone" : "America/New_York","month" : "January","leadingZeros" : "01-12-16","paymentGateway" : "20160112"},"approvedDate" : {"date" : ISODate("2016-01-12T21:15:47Z"),"checkError" : "2016-01-12","feed" : "1/12/2016","detail" : "1/12/2016","monthDay" : "January 12","iso" : "2016-01-12T16:15:47-05:00","fullDateTime" : "January 12, 2016 04:15 PM","fullMonth" : "January 12, 2016","shortMonth" : "Jan 12, 2016","dayOfWeek" : "Tuesday","shortDayOfWeek" : "Tue","year" : "2016","european" : "12/1/2016","europeanFullMonth" : "12 January, 2016","europeanShortMonth" : "12 Jan, 2016","shortTimeSlim" : "4:15pm","shortTime" : "4:15 pm","longTime" : "04:15 PM","militaryTime" : "16:15","timezone" : "America/New_York","month" : "January","leadingZeros" : "01-12-16","paymentGateway" : "20160112"	},"paidDate" : {},"paymentId" : {},"contributionPaymentId" : null,"payByCheck" : "yes","clearFields" : ""}}})
 
 
 
