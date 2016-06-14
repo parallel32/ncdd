@@ -16,6 +16,7 @@ $app['seminarConfirmationEmail'] = $app->protect(function ($app,$registrationId)
 
 	$registration = new Model\Registration(array('_id'=>$registrationId), $app);
 	$registration = $registration->findById($id='_id', $slaveOkay=false);
+
 	$seminar = new Model\Seminar(array('_id'=>$registration['seminarId']),$app);
 	$seminar = $seminar->findById();
 	$seminar['description'] = $app['prepare_content']($seminar['description']);
@@ -26,7 +27,15 @@ $app['seminarConfirmationEmail'] = $app->protect(function ($app,$registrationId)
 						,'registration'=>$registration
 	);
 	$body = $app['view']->render('email/registration-seminar-customer-confirmation','email', $view_vars);
-	$body = str_replace("#total#", '$'.$registration['total'], $body);
+	
+	// to sub and replace the total we must check the status of the registration as it comes in
+	if($registration['currentStatus'] == Model\Registration::$status['DEPOSIT']){
+		$body = str_replace("#total#", '$'.$registration['deposit'], $body);
+	}
+	if($registration['currentStatus'] == Model\Registration::$status['PAID']){
+		$body = str_replace("#total#", '$'.$registration['registrationFeeOriginal'], $body);	
+	}
+	
 	$body = str_replace("#name#", $registration['name'], $body);
 
 	if($registration['currentStatus'] == Model\Registration::$status['DEPOSIT'] || $registration['currentStatus'] == Model\Registration::$status['DEPOSITBALANCE']){
