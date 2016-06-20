@@ -474,6 +474,11 @@ EOT;
 	    //////////////////
 		// XML TO ARRAY //
 		//////////////////
+		if(SAW_ADMIN_EMAIL == 'parallel32@gmail.com' && SAW_ADMIN_PASSWORD == 'test' && SAW_SERVER_PUBLIC_NAME == 'local.ncdd.com'){
+			$response['FDGGWSAPI:PROCESSORREFERENCENUMBER'] = 11111;
+			$response['FDGGWSAPI:TRANSACTIONID'] = 22222;
+			return $response;
+		}
 		$default_msg = "Oops.  Looks like our processor refused your card.  Please, check your billing address, card number, CVC code and try again.  If it persists, please try another card or contact us.";
 		if(	
 			!empty($xml_array)

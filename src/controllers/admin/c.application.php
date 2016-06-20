@@ -320,6 +320,42 @@ $app->get('/application/new-member-admin', function (Request $request) use ($app
 	);
 	return $app['view']->render('application/new-member-admin', 'default', $view_vars);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $app->get('/application/new-expert-admin', function (Request $request) use ($app) {
 
 	$crumbs = array(array('name'=>'Applications','href'=>'/applications')
@@ -334,63 +370,71 @@ $app->get('/application/new-expert-admin', function (Request $request) use ($app
 	);
 	return $app['view']->render('application/new-expert-admin', 'default', $view_vars);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 $app->post('/application/new-expert', function (Request $request) use ($app) {
 	
 	// retrieve document from request
     $doc = $request->get('doc');
     $doc['userAgent'] = $request->headers->get('User-Agent');
 
-	$application = new Model\ApplyNewMember($doc, $app);
-	$mem = new Model\Member(array('email'=>$doc['email']),$app);
+    $mem = new Model\Member($doc,$app);
 
-	if(!empty($doc['email']) && $application->findByEmail()){
-		error_log('AAAAAAA: '.print_r('AAAAAAA',true));
-    	$response_arr = array('message'=>"Our records indicate you have already submitted an application.  Please Log-in if you are looking for another Application or contact NCDD directly.",
-                              "invalidFields"=>array(array('name'=>'email','message'=>'Our records indicate you have already submitted an application.  Please Log-in if you are looking for another Application or contact NCDD directly.')));
-        return new Response(json_encode($response_arr), 403,array('Content-Type' => 'application/json'));
-    }
-    if(!empty($doc['email']) && $mem->findByEmail()){
+
+	if(!empty($doc['email']) && $mem->findByEmail()){
     	error_log('BBBBBB: '.print_r('BBBBBB',true));
     	$response_arr = array('message'=>"Our records indicate you are already a member.  Please Log-in or contact NCDD directly.",
                               "invalidFields"=>array(array('name'=>'email','message'=>'Our records indicate you are already a member.  Please Log-in or contact NCDD directly.')));
         return new Response(json_encode($response_arr), 403,array('Content-Type' => 'application/json'));
     }
 
-    $application->currentStatus = Model\Apply::$status['APPROVED'];
-	$applicationId = $application->insert();
-	$application->markPaid(false);
-	$_POST['applicationId'] = $applicationId->__toString();
+
+    
+
+
+    // prepare member record
+		$password = substr(time(),-4);
+		$mem_doc['password'] = $password;
+		$mem_doc['firstName'] = $doc['firstName'];
+		$mem_doc['middleName'] = $doc['middleName'];
+		$mem_doc['lastName'] = $doc['lastName'];
+		$mem_doc['email'] = $doc['email'];
+		$mem_doc['primaryPhone'] = $doc['phone'];
+		$mem_doc['primaryFax'] = $doc['fax'];
+		$mem_doc['cellphone'] = $doc['cellphone'];
+		$mem_doc['textAlertsOpt'] = $doc['textAlertsOpt'];
+		$mem_doc['websites'] = array(array('websiteDesc'=>'','website'=>Model\Member::parseWebsite($doc['website'])));
+		$mem_doc['currentMembership'] = Model\Member::$membership['EXPERT'];
+	    $mem_doc['currentOrder'] = Model\Member::$order['EXPERT'];
+	    $mem_doc['accessLevel'] = MEMBER;
+	    
+		// prepare location record
+		$loc_doc['raw'] = $doc['formattedAddress'];
+		$loc_doc['name'] = 'primary';
+		$loc_doc['point'] = array($doc['lon'], $doc['lat']);
+		$loc_doc['addressLine1'] = $doc['address1'];
+		$loc_doc['addressLine2'] = $doc['address2'];
+		$loc_doc['city'] = $doc['city'];
+		$loc_doc['state'] = $doc['state'];
+		$loc_doc['zip'] = $doc['postalCode'];
+		$loc_doc['country'] = $doc['country'];
+		$loc_doc['phone'] = $doc['phone'];
+		$loc_doc['fax'] = $doc['fax'];
+		$loc_doc['primary'] = 11;
+		$location = new Model\Location($loc_doc, $app);
+
+		$member = new Model\Member($mem_doc, $app, $location);
+		$mem_id = $member->insert();
+
+		$location->member = $member->__toArray(false);
+		$location->ownerId = $mem_id;
+		$location->insert();
+
+		$member = new Model\Member(array('_id'=>$mem_id,'accessLevel'=>MEMBER,'changeAccessLevelTo'=>MEMBER,'listed'=>1),$app);
+		$member->saveSafe();
+
+
+
+
+    
 	
 	$label = 'Your application was received.  Thank you.';
 	$message = 'Thank you for your interest in NCDD.  Your application has been submitted.  Please check your inbox for your receipt and log-in information.';
@@ -1066,7 +1110,9 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 
 	    	if(strpos($doc['paymentlite']['number'], '...') !== false){
 	    		// no need to re-validate since it's already saved
-	    		$paymentlite = new Model\PaymentLite($doc['paymentlite'], $app);
+	    		$tmpmem = new Model\Member(array('_id'=>$memberId),$app);
+				$tmpmem = $tmpmem->findById();
+	    		$paymentlite = new Model\PaymentLite($tmpmem['payment'], $app);
 	    	}else{
 	    		$paymentlite = new Model\PaymentLite($doc['paymentlite'], $app);
 		    	$validate[] = array('model'=>$paymentlite,'groups'=>array('cc'));
@@ -1078,7 +1124,7 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 			$tmpmem = new Model\Member(array('_id'=>$memberId),$app);
 			$tmpmem = $tmpmem->findById();
 			
-
+			
 			$tmprenewalcredit = (is_array($tmpmem['payment']) && array_key_exists('renewalCredit', $tmpmem['payment'])) ? $tmpmem['payment']['renewalCredit']: '';
 			if(!empty($tmprenewalcredit))
 				$paymentlite->renewalCredit = $tmprenewalcredit;
@@ -1087,6 +1133,7 @@ $app->post('/application/update-member/{memberId}', function ($memberId, Request
 			if(array_key_exists('termsAcknowledgement', $doc) && !empty($doc['termsAcknowledgement']) && $doc['termsAcknowledgement'] == 'yes'){
 				$paymentlite->renewalREUSE = 'yes';
 			}
+
 			$memberobj = new Model\Member(array('_id'=>$memberId,'payment'=>$paymentlite),$app);
 			$memberobj->saveSafe();
 	    }

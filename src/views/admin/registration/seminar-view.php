@@ -18,7 +18,7 @@
                   
                   <div class="row-fluid">
                      <div class="span12 ">
-                        <h4><?=$this->vars['seminar']['headline']?> - <?=$this->vars['registration']['name']?> - <?=$this->vars['registration']['postalCode']?></h4>
+                        <h4><?=(array_key_exists('scholarship',$this->vars['registration']) && is_array($this->vars['registration']['scholarship']) && !empty($this->vars['registration']['scholarship']['currentStatus'])) ? "<b>SHOLARSHIP-</b>" : ""; ?><?=$this->vars['seminar']['headline']?> - <?=$this->vars['registration']['name']?> - <?=$this->vars['registration']['postalCode']?></h4>
                      </div>
                      <!--/span-->
                   </div>
@@ -543,6 +543,12 @@
                   </div>
                   
                   <div class="form-actions text-center">
+                     <? $user = $this->app['session']->get('user');
+                        if($user['accessLevel'] == ADMIN || ((is_array($user)) && array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') )){  
+                     ?>
+                     <input type="checkbox" name="suppress_emails" <?=(array_key_exists('suppress_emails',$user) && !empty($user['suppress_emails']))?'checked':'';?> value="yes">Suppress Emails.
+                     <? } ?>
+
                      <? if($this->vars['registration']['currentStatus'] < \Saw\Model\Registration::$status['PAID'] && $this->vars['activate_waitlist'] == false): ?>
                      <? if(array_key_exists('cardOnFile', $this->vars['registration']) && !empty($this->vars['registration']['cardOnFile'])){?>
                         <a class="btn green pay" href="/registration/seminar/<?=$this->vars['registration']['_id']?>/pay"><i class="icon-money"></i> Mark Paid</a>

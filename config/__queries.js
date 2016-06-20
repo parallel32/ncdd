@@ -20,6 +20,194 @@ db.registration.update({_id:ObjectId('571e75b454fe0b6a234b9602')},{$set:{memberI
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+move Adam Nero to unpaid
+db.member.update({_id:ObjectId('542c7075a6ec619a6f440aec')},{$set:{renewal:{"currentStatus" : 20,"year" : 2016,"applicationId" : ObjectId("56956d00a6ec61453a93d155"),"submittedDate" : {"date" : ISODate("2016-01-12T21:15:47Z"),"checkError" : "2016-01-12","feed" : "1/12/2016","detail" : "1/12/2016","monthDay" : "January 12","iso" : "2016-01-12T16:15:47-05:00","fullDateTime" : "January 12, 2016 04:15 PM","fullMonth" : "January 12, 2016","shortMonth" : "Jan 12, 2016","dayOfWeek" : "Tuesday","shortDayOfWeek" : "Tue","year" : "2016","european" : "12/1/2016","europeanFullMonth" : "12 January, 2016","europeanShortMonth" : "12 Jan, 2016","shortTimeSlim" : "4:15pm","shortTime" : "4:15 pm","longTime" : "04:15 PM","militaryTime" : "16:15","timezone" : "America/New_York","month" : "January","leadingZeros" : "01-12-16","paymentGateway" : "20160112"},"approvedDate" : {"date" : ISODate("2016-01-12T21:15:47Z"),"checkError" : "2016-01-12","feed" : "1/12/2016","detail" : "1/12/2016","monthDay" : "January 12","iso" : "2016-01-12T16:15:47-05:00","fullDateTime" : "January 12, 2016 04:15 PM","fullMonth" : "January 12, 2016","shortMonth" : "Jan 12, 2016","dayOfWeek" : "Tuesday","shortDayOfWeek" : "Tue","year" : "2016","european" : "12/1/2016","europeanFullMonth" : "12 January, 2016","europeanShortMonth" : "12 Jan, 2016","shortTimeSlim" : "4:15pm","shortTime" : "4:15 pm","longTime" : "04:15 PM","militaryTime" : "16:15","timezone" : "America/New_York","month" : "January","leadingZeros" : "01-12-16","paymentGateway" : "20160112"	},"paidDate" : {},"paymentId" : {},"contributionPaymentId" : null,"payByCheck" : "yes","clearFields" : ""}}})
+
+
+
+
+
+
+57444ae3a6ec61d84e65889b payment to delete
+db.payment.remove({_id:ObjectId('57444ae3a6ec61d84e65889b')})
+
+56b8d2ac1f1d75b2548d392e application to delete
+db.application.remove({_id:ObjectId('56b8d2ac1f1d75b2548d392e')})
+
+update mcginnis renewal record in member
+member.update({_id:ObjectId('54ca764c54fe0ba91f708fac')},{$set:{"renewal" : {"currentStatus" : 5,"year" : 2016,"applicationId" : [ ],"submittedDate" : [ ],"approvedDate" : [ ],"paidDate" : [ ],"paymentId" : [ ],"contributionPaymentId" : null,"payByCheck" : "","clearFields" : ""	}}});
+
+remove mcginnis from autopay
+
+
+
+
+approved currentStatus = 20
+
+mcginnis: 54ca764c54fe0ba91f708fac
+anderson: 5208d5d69afe0b53323e8bd4
+
+
+update mcginnis member renewal to that of andersons
+db.member.update({_id:ObjectId('54ca764c54fe0ba91f708fac')},{$set:{renewal:{"currentStatus" : 20,"year" : 2016,"applicationId" : ObjectId("56b8d2ac1f1d75b2548d392e"),"submittedDate" : {},"approvedDate" : {"date" : ISODate("2016-02-08T17:38:55Z"),"checkError" : "2016-02-08","feed" : "2/8/2016","detail" : "2/8/2016","monthDay" : "February 8","iso" : "2016-02-08T12:38:55-05:00","fullDateTime" : "February 8, 2016 12:38 PM","fullMonth" : "February 8, 2016","shortMonth" : "Feb 8, 2016","dayOfWeek" : "Monday","shortDayOfWeek" : "Mon","year" : "2016","european" : "8/2/2016","europeanFullMonth" : "8 February, 2016","europeanShortMonth" : "8 Feb, 2016","shortTimeSlim" : "12:38pm","shortTime" : "12:38 pm","longTime" : "12:38 PM","militaryTime" : "12:38","timezone" : "America/New_York","month" : "February","leadingZeros" : "02-08-16","paymentGateway" : "20160208"	},"paidDate" : {},"paymentId" : {},"contributionPaymentId" : null,"payByCheck" : "yes","clearFields" : ""}}})
+
+
+update mcninnis application status to unpaid
+db.application.update({_id:ObjectId('56b8d2ac1f1d75b2548d392e')},{$set:{currentStats:20}})
+
+remove mcginnis from renewalauto table - match the record._id to his member._id "54ca764c54fe0ba91f708fac"  (no objectId)
+db.renewalauto.remove({'record._id':"54ca764c54fe0ba91f708fac"})
+
+
+this payment goes to steve anderson
+
+submit anderson s renewal
+
+update payment ownerId to anderson s renewal
+update payment memberId to anderson s member id
+update payment invoice block to Steve Anderson 
+db.payment.update({"_id" : ObjectId("56b8d2af1f1d75b2548d3932")},{$set:{ownerId:ObjectId('5744441d54fe0bb0700eefe8'),memberId:ObjectId('5208d5d69afe0b53323e8bd4'),invoiceBlock:'<div class=\"row-fluid invoice\">\n<div class=\"row-fluid invoice-logo\">\n<div class=\"span6 invoice-logo-space\"><img src=\"https://admin-ncdd.netdna-ssl.com/assets/img/ncdd-login2-logo.png\" alt=\"\" /> </div>\n<div class=\"span6\">\n<p>#56b8d2ac1f1d75b2548d392e / 08 Feb, 2016 <span class=\"muted\">Application ID and Date</span></p>\n</div>\n               </div>\n               <hr />\n               <div class=\"row-fluid\">\n<div class=\"span3\">\n<h4>Member:</h4>\n<ul class=\"unstyled\">\n<li>Steve Anderson</li>\n<li></li>\n<li>email: steve@schatzanderson.com</li>\n<li>phone: (801) 746-0447</li>\n<li>fax: (801) 746-3744</li>\n</ul>\n                  </div>\n                  <div class=\"span4\">\n<h4>About:</h4>\n<ul class=\"unstyled\">\n<li>UPDATE MEMBER APPLICATION</li>\n<li></li>\n</ul>\n                  </div>\n                  <div class=\"span4 invoice-payment\">\n<h4></h4>\n<ul class=\"unstyled\">\n\n</ul>\n                  </div>\n               </div>\n               <div class=\"row-fluid\">\n                  <table class=\"table table-striped table-hover\">\n<thead>\n<tr>\n<th>Item</th>\n<th class=\"hidden-480\">Description</th>\n<th class=\"hidden-480\">Quantity</th>\n<th class=\"hidden-480\">Unit Cost</th>\n<th>Total</th>\n</tr>\n                     </thead>\n                     <tbody>\n<tr>\n<td>Application</td>\n<td class=\"hidden-480\">UPDATE MEMBER APPLICATION</td>\n<td class=\"hidden-480\">1</td>\n<td class=\"hidden-480\">$225</td>\n<td>$225</td>\n</tr>\n                     \n\n\n\n                     </tbody>\n                  </table>\n               </div>\n               <div class=\"row-fluid\">\n                  <div class=\"span12 invoice-block\">\n                     <ul class=\"unstyled amounts\">\n<li><strong>Total:</strong> $225</li>\n                     </ul>\n                  </div>\n               </div>\n</div>\n            '}})
+
+update application to paid
+db.application.update({_id:ObjectId('5744441d54fe0bb0700eefe8')},{$set:{currentStats:40}})
+
+update member  renewal record to that of mcninnis and put in andersons applicationId (renewal)
+db.member.update({_id:ObjectId('5208d5d69afe0b53323e8bd4')},{$set:{renewal:{"currentStatus" : 40,"year" : 2016,"applicationId" : ObjectId("5744441d54fe0bb0700eefe8"),"submittedDate" : {},"approvedDate" : {},"paidDate" : {"date" : ISODate("2016-02-08T17:38:55Z"),"checkError" : "2016-02-08","feed" : "2/8/2016","detail" : "2/8/2016","monthDay" : "February 8","iso" : "2016-02-08T12:38:55-05:00","fullDateTime" : "February 8, 2016 12:38 PM","fullMonth" : "February 8, 2016","shortMonth" : "Feb 8, 2016","dayOfWeek" : "Monday","shortDayOfWeek" : "Mon","year" : "2016","european" : "8/2/2016","europeanFullMonth" : "8 February, 2016","europeanShortMonth" : "8 Feb, 2016","shortTimeSlim" : "12:38pm","shortTime" : "12:38 pm","longTime" : "12:38 PM","militaryTime" : "12:38","timezone" : "America/New_York","month" : "February","leadingZeros" : "02-08-16","paymentGateway" : "20160208"	},"paymentId" : ObjectId("56b8d2af1f1d75b2548d3932"),"contributionPaymentId" : null,"payByCheck" : "no","clearFields" : ""}}})
+
+
+
+
+
+
+The payment record
+{
+"_id" : ObjectId("56b8d2af1f1d75b2548d3932"),
+"collection" : "payment",
+"currentPaymentType" : 40,
+"type" : "",
+"name" : "Jessica Taylor",
+"token" : "",
+"expMonth" : 7,
+"expYear" : 18,
+"cardType" : "",
+"number" : 1062,
+"cvc" : "",
+"addressLine1" : "1425 South 700 East",
+"addressLine2" : "",
+"city" : "Salt Lake City",
+"stateProvinceRegion" : "Utah",
+	"zipPostalCode" : 84105,
+	"country" : "US",
+	"addressLine1Shipping" : null,
+	"addressLine2Shipping" : null,
+	"cityShipping" : null,
+	"stateProvinceRegionShipping" : null,
+	"zipPostalCodeShipping" : null,
+	"countryShipping" : null,
+	"phone" : "",
+	"email" : "",
+	"amount" : 225,
+	"orderTotal" : 225,
+	"shippingTotal" : 0,
+	"discountTotal" : "",
+	"description" : "INV-1454953132",
+	"title" : "UPDATE MEMBER APPLICATION",
+	"ownerId" : ObjectId("56b8d2ac1f1d75b2548d392e"),
+	"ownerClass" : "UpdateMember",
+	"transactionId" : 1628133983,
+	"paidDate" : {
+		"date" : ISODate("2016-02-08T17:38:55Z"),
+		"checkError" : "2016-02-08",
+		"feed" : "2/8/2016",
+		"detail" : "2/8/2016",
+		"monthDay" : "February 8",
+		"iso" : "2016-02-08T12:38:55-05:00",
+		"fullDateTime" : "February 8, 2016 12:38 PM",
+		"fullMonth" : "February 8, 2016",
+		"shortMonth" : "Feb 8, 2016",
+		"dayOfWeek" : "Monday",
+		"shortDayOfWeek" : "Mon",
+		"year" : "2016",
+		"european" : "8/2/2016",
+		"europeanFullMonth" : "8 February, 2016",
+		"europeanShortMonth" : "8 Feb, 2016",
+		"shortTimeSlim" : "12:38pm",
+		"shortTime" : "12:38 pm",
+		"longTime" : "12:38 PM",
+		"militaryTime" : "12:38",
+		"timezone" : "America/New_York",
+		"month" : "February",
+		"leadingZeros" : "02-08-16",
+		"paymentGateway" : "20160208"
+	},
+	"items" : [ ],
+	"memberId" : ObjectId("54ca764c54fe0ba91f708fac"),
+	"transactionOrigin" : "ECI",
+	"invoiceNumber" : ObjectId("56b8d2ac1f1d75b2548d392f"),
+	"orderId" : ObjectId("56b8d2ac1f1d75b2548d3931"),
+	"referenceNumber" : 266501,
+	"poNumber" : ObjectId("56b8d2ac1f1d75b2548d3930"),
+	"ipAddress" : "172.31.7.30",
+	"fullResponse" : {
+		"XMLNS:FDGGWSAPI" : "http://secure.linkpt.net/fdggwsapi/schemas_us/fdggwsapi",
+		"FDGGWSAPI:COMMERCIALSERVICEPROVIDER" : "FDMS",
+		"FDGGWSAPI:TRANSACTIONTIME" : "Mon Feb 08 12:38:55 2016",
+		"FDGGWSAPI:TRANSACTIONID" : "1628133983",
+		"FDGGWSAPI:PROCESSORREFERENCENUMBER" : "266501",
+		"FDGGWSAPI:PROCESSORRESPONSEMESSAGE" : "APPROVED",
+		"FDGGWSAPI:ORDERID" : "56b8d2ac1f1d75b2548d3931",
+		"FDGGWSAPI:APPROVALCODE" : "2665011628133983:YYYM:",
+		"FDGGWSAPI:AVSRESPONSE" : "YYYM",
+		"FDGGWSAPI:TDATE" : "1454953134",
+		"FDGGWSAPI:TRANSACTIONRESULT" : "APPROVED",
+		"FDGGWSAPI:PROCESSORRESPONSECODE" : "A",
+		"FDGGWSAPI:AUTHENTICATIONRESPONSECODE" : "XXX"
+	},
+	"checkNumber" : "",
+	"accountType" : "",
+	"accountNumber" : "",
+	"routingNumber" : "",
+	"drivingLicenseNumber" : "",
+	"drivingLicenseState" : "",
+	"invoiceBlock" : "<div class=\"row-fluid invoice\">\n               <div class=\"row-fluid invoice-logo\">\n                  <div class=\"span6 invoice-logo-space\"><img src=\"https://admin-ncdd.netdna-ssl.com/assets/img/ncdd-login2-logo.png\" alt=\"\" /> </div>\n                  <div class=\"span6\">\n                     <p>#56b8d2ac1f1d75b2548d392e / 08 Feb, 2016 <span class=\"muted\">Application ID and Date</span></p>\n                  </div>\n               </div>\n               <hr />\n               <div class=\"row-fluid\">\n                  <div class=\"span3\">\n                     <h4>Member:</h4>\n                     <ul class=\"unstyled\">\n<li>Michael McGinnis</li>\n<li></li>\n<li>email: mike@schatzanderson.com</li>\n<li>phone: (801) 834-6185</li>\n<li>fax: (435) 251-9780</li>\n                     </ul>\n                  </div>\n                  <div class=\"span4\">\n                     <h4>About:</h4>\n                     <ul class=\"unstyled\">\n<li>UPDATE MEMBER APPLICATION</li>\n<li></li>\n                     </ul>\n                  </div>\n                  <div class=\"span4 invoice-payment\">\n                     <h4></h4>\n                     <ul class=\"unstyled\">\n\n                     </ul>\n                  </div>\n               </div>\n               <div class=\"row-fluid\">\n                  <table class=\"table table-striped table-hover\">\n                     <thead>\n<tr>\n<th>Item</th>\n<th class=\"hidden-480\">Description</th>\n<th class=\"hidden-480\">Quantity</th>\n<th class=\"hidden-480\">Unit Cost</th>\n<th>Total</th>\n                        </tr>\n                     </thead>\n                     <tbody>\n<tr>\n<td>Application</td>\n<td class=\"hidden-480\">UPDATE MEMBER APPLICATION</td>\n<td class=\"hidden-480\">1</td>\n<td class=\"hidden-480\">$225</td>\n<td>$225</td>\n                        </tr>\n                     \n\n\n\n                     </tbody>\n                  </table>\n               </div>\n               <div class=\"row-fluid\">\n                  <div class=\"span12 invoice-block\">\n                     <ul class=\"unstyled amounts\">\n                        <li><strong>Total:</strong> $225</li>\n                     </ul>\n                  </div>\n               </div>\n</div>\n            ",
+	"clearFields" : ""
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
 	"_id" : ObjectId("57103911a6ec61b563342065"),
 	"address1" : "303 East Broadway",
@@ -134,8 +322,8 @@ db.registration.update({_id:ObjectId('571e75b454fe0b6a234b9602')},{$set:{memberI
 
 
 // invoice block updates
-db.payment.update({_id:ObjectId('560d452a54fe0bd865742c1c')},{$set:{invoiceBlock:'<div class="row-fluid invoice">               <div class="row-fluid invoice-logo">                  <div class="span6 invoice-logo-space"><img src="/assets/img/ncdd-login2-logo.png" alt="" /> </div>                  <div class="span6">                     <p>#560d452854fe0bd865742c18 / 01 Oct, 2015 <span class="muted">Application ID and Date</span></p>                  </div>               </div>               <hr />               <div class="row-fluid">                  <div class="span3">                     <h4>Member:</h4>                     <ul class="unstyled">                                                <li>Leon A Geller</li>                        <li>200 A Monroe Suite100 Rockville, MD 20850, US</li>                        <li>email: Lglaw87@yahoo.com</li>                        <li>phone: (301) 309-8001</li>                        <li>fax: (301) 309-8003 </li>                     </ul>                  </div>                  <div class="span4">                     <h4>About:</h4>                     <ul class="unstyled">                        <li>NEW MEMBER APPLICATION</li>                        <li>Executed at Las Vegas,nv, this 01st day of October, 2015</li>                     </ul>                  </div>                  <div class="span4 invoice-payment">                     <h4></h4>                     <ul class="unstyled">                                             </ul>                  </div>               </div>               <div class="row-fluid">                  <table class="table table-striped table-hover">                     <thead>                        <tr>                           <th>Item</th>                           <th class="hidden-480">Description</th>                           <th class="hidden-480">Quantity</th>                           <th class="hidden-480">Unit Cost</th>                           <th>Total</th>                        </tr>                     </thead>                     <tbody>                                                <tr>                           <td>Application</td>                           <td class="hidden-480">NEW MEMBER APPLICATION for 2016</td>                           <td class="hidden-480">1</td>                           <td class="hidden-480">$225</td>                           <td>$225</td>                        </tr>                                                                                                                                                             <tr>                           <td>Discount</td>                           <td class="hidden-480">EAGLE2016 Promo Discount - 2015 membership free</td>                           <td class="hidden-480">1</td>                           <td class="hidden-480">$0</td>                           <td>$0</td>                        </tr>                                                                     </tbody>                  </table>               </div>               <div class="row-fluid">                  <div class="span12 invoice-block">                     <ul class="unstyled amounts">                        <li><strong>Total:</strong> $225</li>                     </ul>                  </div>               </div>                           </div>'}});
-db.payment.update({_id:ObjectId('560d63f554fe0b757c742c1c')},{$set:{invoiceBlock:'	<div class="row-fluid invoice">               <div class="row-fluid invoice-logo">                  <div class="span6 invoice-logo-space"><img src="/assets/img/ncdd-login2-logo.png" alt="" /> </div>                  <div class="span6">                     <p>#560d7d771f1d7523092c46f3 / 01 Oct, 2015 <span class="muted">Application ID and Date</span></p>                  </div>               </div>               <hr />               <div class="row-fluid">                  <div class="span3">                     <h4>Member:</h4>                     <ul class="unstyled">                                                <li>Matthew Jay Ruff</li>                        <li>18411 Crenshaw Blvd, Suite 417 Torrance, CA 90504, US</li>                        <li>email: Matthew.ruff@sbcglobal.net</li>                        <li>phone: (310) 527-4100</li>                        <li>fax: (877) 221-1688</li>                     </ul>                  </div>                  <div class="span4">                     <h4>About:</h4>                     <ul class="unstyled">                        <li>NEW MEMBER APPLICATION</li>                        <li>Executed at Las Vegas, this 01st day of October, 2015</li>                     </ul>                  </div>                  <div class="span4 invoice-payment">                     <h4></h4>                     <ul class="unstyled">                                             </ul>                  </div>               </div>               <div class="row-fluid">                  <table class="table table-striped table-hover">                     <thead>                        <tr>                           <th>Item</th>                           <th class="hidden-480">Description</th>                           <th class="hidden-480">Quantity</th>                           <th class="hidden-480">Unit Cost</th>                           <th>Total</th>                        </tr>                     </thead>                     <tbody>                                                <tr>                           <td>Application</td>                           <td class="hidden-480">NEW MEMBER APPLICATION for 2016</td>                           <td class="hidden-480">1</td>                           <td class="hidden-480">$225</td>                           <td>$225</td>                        </tr>                                                                                                                                                             <tr>                           <td>Discount</td>                           <td class="hidden-480">EAGLE2016 Promo Discount - 2015 membership free</td>                           <td class="hidden-480">1</td>                           <td class="hidden-480">$0</td>                           <td>$0</td>                        </tr>                                                                     </tbody>                  </table>               </div>               <div class="row-fluid">                  <div class="span12 invoice-block">                     <ul class="unstyled amounts">                        <li><strong>Total:</strong> $225</li>                     </ul>                  </div>               </div>                           </div>'}});
+db.payment.update({_id:ObjectId('560d452a54fe0bd865742c1c')},{$set:{invoiceBlock:'<div class="row-fluid invoice">               <div class="row-fluid invoice-logo">                  <div class="span6 invoice-logo-space"><img src="/assets/img/ncdd-login2-logo.png" alt="" /> </div>                  <div class="span6">                     <p>#560d452854fe0bd865742c18 / 01 Oct, 2015 <span class="muted">Application ID and Date</span></p>                  </div>               </div>               <hr />               <div class="row-fluid">                  <div class="span3">                     <h4>Member:</h4>                     <ul class="unstyled"><li>Leon A Geller</li>                        <li>200 A Monroe Suite100 Rockville, MD 20850, US</li>                        <li>email: Lglaw87@yahoo.com</li>                        <li>phone: (301) 309-8001</li>                        <li>fax: (301) 309-8003 </li>                     </ul>                  </div>                  <div class="span4">                     <h4>About:</h4>                     <ul class="unstyled">                        <li>NEW MEMBER APPLICATION</li>                        <li>Executed at Las Vegas,nv, this 01st day of October, 2015</li>                     </ul>                  </div>                  <div class="span4 invoice-payment">                     <h4></h4>                     <ul class="unstyled">                                             </ul>                  </div>               </div>               <div class="row-fluid">                  <table class="table table-striped table-hover">                     <thead>                        <tr>                           <th>Item</th>                           <th class="hidden-480">Description</th>                           <th class="hidden-480">Quantity</th>                           <th class="hidden-480">Unit Cost</th>                           <th>Total</th>                        </tr>                     </thead>                     <tbody><tr>                           <td>Application</td>                           <td class="hidden-480">NEW MEMBER APPLICATION for 2016</td>                           <td class="hidden-480">1</td>                           <td class="hidden-480">$225</td>                           <td>$225</td>                        </tr>           <tr>                           <td>Discount</td>                           <td class="hidden-480">EAGLE2016 Promo Discount - 2015 membership free</td>                           <td class="hidden-480">1</td>                           <td class="hidden-480">$0</td>                           <td>$0</td>                        </tr>                                                                     </tbody>                  </table>               </div>               <div class="row-fluid">                  <div class="span12 invoice-block">                     <ul class="unstyled amounts">                        <li><strong>Total:</strong> $225</li>                     </ul>                  </div>               </div>                           </div>'}});
+db.payment.update({_id:ObjectId('560d63f554fe0b757c742c1c')},{$set:{invoiceBlock:'	<div class="row-fluid invoice">               <div class="row-fluid invoice-logo">                  <div class="span6 invoice-logo-space"><img src="/assets/img/ncdd-login2-logo.png" alt="" /> </div>                  <div class="span6">                     <p>#560d7d771f1d7523092c46f3 / 01 Oct, 2015 <span class="muted">Application ID and Date</span></p>                  </div>               </div>               <hr />               <div class="row-fluid">                  <div class="span3">                     <h4>Member:</h4>                     <ul class="unstyled">                                                <li>Matthew Jay Ruff</li>                        <li>18411 Crenshaw Blvd, Suite 417 Torrance, CA 90504, US</li>                        <li>email: Matthew.ruff@sbcglobal.net</li>                        <li>phone: (310) 527-4100</li>                        <li>fax: (877) 221-1688</li>                     </ul>                  </div>                  <div class="span4">                     <h4>About:</h4>                     <ul class="unstyled">                        <li>NEW MEMBER APPLICATION</li>                        <li>Executed at Las Vegas, this 01st day of October, 2015</li>                     </ul>                  </div>                  <div class="span4 invoice-payment">                     <h4></h4>                     <ul class="unstyled">                                             </ul>                  </div>               </div>               <div class="row-fluid">                  <table class="table table-striped table-hover">                     <thead>                        <tr>                           <th>Item</th>                           <th class="hidden-480">Description</th>                           <th class="hidden-480">Quantity</th>                           <th class="hidden-480">Unit Cost</th>                           <th>Total</th>                        </tr>                     </thead>                     <tbody>                                                <tr>                           <td>Application</td>                           <td class="hidden-480">NEW MEMBER APPLICATION for 2016</td>                           <td class="hidden-480">1</td>                           <td class="hidden-480">$225</td>                           <td>$225</td>                        </tr>                                                                <tr>                           <td>Discount</td>                           <td class="hidden-480">EAGLE2016 Promo Discount - 2015 membership free</td>                           <td class="hidden-480">1</td>                           <td class="hidden-480">$0</td>                           <td>$0</td>                        </tr>                                                                     </tbody>                  </table>               </div>               <div class="row-fluid">                  <div class="span12 invoice-block">                     <ul class="unstyled amounts">                        <li><strong>Total:</strong> $225</li>                     </ul>                  </div>               </div>                           </div>'}});
 
 
 db.payment.find({email:'rosemary@nocuffs.com'},{title:1,paidDate:1}).pretty();
