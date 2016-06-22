@@ -4305,12 +4305,13 @@ $app->post('/renewal-follow-up-pay', function (Request $request) use ($app) {
 		$appl = new Model\Apply(array('_id'=>$app_id,'currentStatus'=>Model\Apply::$status['PAID'],'paymentId'=>$paymentId,'paidDate'=>new Model\Date($app, 'now')), $app);
 		$appl->saveSafe();
 // update member's renewal credit 
-		$plite = new Model\PaymentLite($member['payment'],$app);
+		$plite = new Model\PaymentLite($orig_doc,$app);
 		$tpaymnt = $plite->__toArray();
     	$tpaymnt['declineCount'] = 0;
 
     	if(!is_null($new_renewal_credit))
     		$tpaymnt['renewalCredit'] = $new_renewal_credit;
+error_log(__FILE__.' '.__LINE__.' $tpaymnt: '.print_r($tpaymnt,true));
     	$tmem = new Model\Member(array('_id'=>$application['memberId'],'payment'=>$tpaymnt),$app);
     	$tmem->saveSafe();
 

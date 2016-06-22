@@ -259,6 +259,7 @@
                               <tr role="row">
                                  <th class=""></th>
                                  <th class=""></th>
+                                 <th class=""></th>
                                  <th class="">Name</th>
                                  <th class="hidden-phone">Email</th>
                                  <th class="hidden-phone">Phone</th>
@@ -284,6 +285,7 @@
                                  }else{
                                        echo '';
                                  }?></td>
+                                 <td class=" "><a target="_blank" href="/renewal-follow-up/<?=$member['_id']?>">Pay App</a></td>
                                  <td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
