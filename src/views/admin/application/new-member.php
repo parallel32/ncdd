@@ -797,39 +797,42 @@ the   remainder of 2015 for free.  Offer expires December 31, 2015. </label> -->
                   <div id="promocodeverification" class="row-fluid hide">
                      
                   <?
-                  foreach ($this->vars['promos'] as $promo):
-                  ?>
-                  <div class="row-fluid">
-                     <div class="span6 promocodeblocks <?=strtoupper($promo['code'])?>">
-                     <? if($promo['discountAmt'] > 0): ?>
-                        <p class="promo-discount">
-                           Discount: <b><?=($promo['currentType'] == \Saw\Model\Promotion::$type['MONEY']) ? "$": '';?><?=$promo['discountAmt']?><?=($promo['currentType'] == \Saw\Model\Promotion::$type['PERCENT']) ? "%": '';?></b>
-                        </p>
-                        <br>
-                     <? endif; ?>
-                        <? if($promo['optInOnOff'] == 'on'){?>
-                        <p class="alert alert-info">
-                           <b><?=$promo['optInDisclosure']?></b>
-                           <br><span class="control-group"><span class="controls"><input type="checkbox" name="doc[optIn]" class="optIn" value="yes">Yes, I agree.</span></span>
-                        </p>
-                        <? } ?>
-                     </div>                     
-                  </div>
-                  <div class="row-fluid">
-                     <div class="span6 promocodeblocks <?=strtoupper($promo['code'])?>">
-                        <? if($promo['gift'] == 'yes'){?>
-                        <p class="">
-                           <b><?=$promo['giftName']?></b>&nbsp;-&nbsp;A $<?=$promo['giftDollarValue']?> value.
+                  if(array_key_exists('promos',$this->vars) 
+                           && is_array($this->vars['promos']) 
+                           && !empty($this->vars['promos']) ):
+                     foreach ($this->vars['promos'] as $promo):
+                     ?>
+                     <div class="row-fluid">
+                        <div class="span6 promocodeblocks <?=strtoupper($promo['code'])?>">
+                        <? if($promo['discountAmt'] > 0): ?>
+                           <p class="promo-discount">
+                              Discount: <b><?=($promo['currentType'] == \Saw\Model\Promotion::$type['MONEY']) ? "$": '';?><?=$promo['discountAmt']?><?=($promo['currentType'] == \Saw\Model\Promotion::$type['PERCENT']) ? "%": '';?></b>
+                           </p>
                            <br>
-                           <?=$promo['giftDesc']?>
-                           <br>
-                           <img src="<?=$this->app['getImageURL']($promo['image'],'small')?>" width="200">
-                        </p>
-                        <? } ?>
+                        <? endif; ?>
+                           <? if($promo['optInOnOff'] == 'on'){?>
+                           <p class="alert alert-info">
+                              <b><?=$promo['optInDisclosure']?></b>
+                              <br><span class="control-group"><span class="controls"><input type="checkbox" name="doc[optIn]" class="optIn" value="yes">Yes, I agree.</span></span>
+                           </p>
+                           <? } ?>
+                        </div>                     
                      </div>
-                  </div>
-                  <? endforeach; ?>
-
+                     <div class="row-fluid">
+                        <div class="span6 promocodeblocks <?=strtoupper($promo['code'])?>">
+                           <? if($promo['gift'] == 'yes'){?>
+                           <p class="">
+                              <b><?=$promo['giftName']?></b>&nbsp;-&nbsp;A $<?=$promo['giftDollarValue']?> value.
+                              <br>
+                              <?=$promo['giftDesc']?>
+                              <br>
+                              <img src="<?=$this->app['getImageURL']($promo['image'],'small')?>" width="200">
+                           </p>
+                           <? } ?>
+                        </div>
+                     </div>
+                     <? endforeach; ?>
+                  <? endif; ?>
                   </div>
                   
                   

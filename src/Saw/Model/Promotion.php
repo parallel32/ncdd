@@ -224,9 +224,15 @@ class Promotion extends Model {
 		}
 	}
 	public function isValid($code){
+		//date range prep
+		$date = 'now';
+		$end = new \MongoDate(strtotime($date));
+
+		
 		$code = strtoupper($code);
         $fields = array();
-		$res = $this->findOne($query=array('code'=>$code,'isActive'=>'yes'),$fields,$slaveOkay=true,$sort=array(),$offset=0,$limit=1000);
+        $query = array('code'=>$code,'isActive'=>'yes','endDate.date'=>array('$gt'=>$end));
+		$res = $this->findOne($query,$fields,$slaveOkay=true,$sort=array(),$offset=0,$limit=1000);
 		return $res;
 	}
 	public function isValidMembership($code,$membership){
