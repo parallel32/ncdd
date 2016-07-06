@@ -82,7 +82,7 @@ endif; ?>
                   <div class="row-fluid">
                      <div class="span12 ">
                         <div class="control-group">
-                           <label class="control-label">For?</label>
+                           <label class="control-label"></label>
                            <div class="controls">
                               <input type="text" name="doc[for]" value="" class="m-wrap span12 for">
                            </div>

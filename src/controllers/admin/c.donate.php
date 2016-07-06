@@ -69,7 +69,7 @@ $app->post('/donate', function (Request $request) use ($app) {
 
 
 		// thank you receipt message
-		$subject = 'NCDD Payment Received';
+		$subject = 'NCDD Donation Received';
 		$to = $payment->email;
 
 		$view_vars = array('payment'=>$payment->__toArray()
@@ -93,7 +93,7 @@ $app->post('/donate', function (Request $request) use ($app) {
 
 
 	return new Response(json_encode(array(
-		'label'=>'Your donation was received.  Thank you.',
+		'label'=>'Your donation was received.  Thank you!',
 		'message'=>'Thank you for your generous donation to the NCDD.  An letter has been sent to your email address verifying your contribution.  Please let us know if you have any questions.')), 200,array('Content-Type' => 'registration/json')
 	);
 

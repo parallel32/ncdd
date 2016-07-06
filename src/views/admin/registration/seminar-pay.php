@@ -108,18 +108,19 @@ $seminar = $this->vars['seminar'];
                         
                         <? $amount = $registration['registrationFee']; ?>
                         <? if(array_key_exists('hardCopy',$registration) && !empty($registration['hardCopy'])): ?>
-                        <? if($registration['hardCopy'] == 'YES'): 
-                        ?>
-                        <tr>
-                           <td>2</td>
-                           <td>Hard Copy</td>
-                           <td class="hidden-480">Printed and Prepared Hard Copy</td>
-                           <td class="hidden-480">1</td>
-                           <td class="hidden-480">$<?=$registration['hardCopyFee']?></td>
-                           <td>$<?=$registration['hardCopyFee']?></td>
-                        </tr>
-                        <? $amount += $registration['hardCopyFee']; ?>
-                        <? endif; ?>
+                           <? if($registration['hardCopy'] == 'YES'): ?>
+                              <? if($is_balance_due == false): ?>
+                                 <tr>
+                                    <td>2</td>
+                                    <td>Hard Copy</td>
+                                    <td class="hidden-480">Printed and Prepared Hard Copy</td>
+                                    <td class="hidden-480">1</td>
+                                    <td class="hidden-480">$<?=$registration['hardCopyFee']?></td>
+                                    <td>$<?=$registration['hardCopyFee']?></td>
+                                 </tr>
+                                 <? $amount += $registration['hardCopyFee']; ?>
+                              <? endif; ?>
+                           <? endif; ?>
                         <? endif; ?>
                      </tbody>
                   </table>
@@ -127,7 +128,7 @@ $seminar = $this->vars['seminar'];
                <div class="row-fluid">
                   <div class="span12 invoice-block">
                      <ul class="unstyled amounts"> 
-                        <li><strong>Total:</strong> $<?=$registration['registrationFee']?></li>
+                        <li><strong>Total:</strong> $<?=$amount?></li>
                      </ul>
                   </div>
                </div>
