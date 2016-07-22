@@ -18,8 +18,16 @@ db.registration.update({_id:ObjectId('571e75b454fe0b6a234b9602')},{$set:{memberI
 
 
 
+//Michael P. Kelly's seminar balance paymentId, registrationId
+5776fe1aa6ec615c6306b979, 5747718d54fe0bd51f0eefec
+db.registration.update({_id:ObjectId('5747718d54fe0bd51f0eefec')},{$set:{currentStatus:40,currentPaymentType:40,paymentId:ObjectId('5776fe1aa6ec615c6306b979'),paidDate:{"date" : ISODate("2016-07-01T23:34:50Z"),"checkError" : "2016-07-01","feed" : "7/1/2016","detail" : "7/1/2016","monthDay" : "July 1","iso" : "2016-07-01T19:34:50-04:00","fullDateTime" : "July 1, 2016 07:34 PM","fullMonth" : "July 1, 2016","shortMonth" : "Jul 1, 2016","dayOfWeek" : "Friday","shortDayOfWeek" : "Fri","year" : "2016","european" : "1/7/2016","europeanFullMonth" : "1 July, 2016","europeanShortMonth" : "1 Jul, 2016","shortTimeSlim" : "7:34pm","shortTime" : "7:34 pm","longTime" : "07:34 PM","militaryTime" : "19:34","timezone" : "America/New_York","month" : "July","leadingZeros" : "07-01-16","paymentGateway" : "20160701"}}});
+//Leon A. Geller
+5784e8e9a6ec61a60aa0f674, 5730fabf1f1d758127b576a7
+db.registration.update({_id:ObjectId('5730fabf1f1d758127b576a7')},{$set:{currentStatus:40,currentPaymentType:40,paymentId:ObjectId('5784e8e9a6ec61a60aa0f674'),paidDate:{"date" : ISODate("2016-07-12T12:56:09Z"),"checkError" : "2016-07-12","feed" : "7/12/2016","detail" : "7/12/2016","monthDay" : "July 12","iso" : "2016-07-12T08:56:09-04:00","fullDateTime" : "July 12, 2016 08:56 AM","fullMonth" : "July 12, 2016","shortMonth" : "Jul 12, 2016","dayOfWeek" : "Tuesday","shortDayOfWeek" : "Tue","year" : "2016","european" : "12/7/2016","europeanFullMonth" : "12 July, 2016","europeanShortMonth" : "12 Jul, 2016","shortTimeSlim" : "8:56am","shortTime" : "8:56 am","longTime" : "08:56 AM","militaryTime" : "08:56","timezone" : "America/New_York","month" : "July","leadingZeros" : "07-12-16","paymentGateway" : "20160712"}}});
 
-
+// Michael A. Misa
+5783fe631f1d75444372ce41, 56ba50e21f1d75742f8d38d9
+db.registration.update({_id:ObjectId('56ba50e21f1d75742f8d38d9')},{$set:{currentStatus:40,currentPaymentType:40,paymentId:ObjectId('5783fe631f1d75444372ce41'),paidDate:{"date" : ISODate("2016-07-11T20:15:31Z"),"checkError" : "2016-07-11","feed" : "7/11/2016","detail" : "7/11/2016","monthDay" : "July 11","iso" : "2016-07-11T16:15:31-04:00","fullDateTime" : "July 11, 2016 04:15 PM","fullMonth" : "July 11, 2016","shortMonth" : "Jul 11, 2016","dayOfWeek" : "Monday","shortDayOfWeek" : "Mon","year" : "2016","european" : "11/7/2016","europeanFullMonth" : "11 July, 2016","europeanShortMonth" : "11 Jul, 2016","shortTimeSlim" : "4:15pm","shortTime" : "4:15 pm","longTime" : "04:15 PM","militaryTime" : "16:15","timezone" : "America/New_York","month" : "July","leadingZeros" : "07-11-16","paymentGateway" : "20160711"}}});
 
 
 

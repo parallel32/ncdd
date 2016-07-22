@@ -1,0 +1,21 @@
+#tz-purchase{
+    position: fixed;
+    left:-75px;
+    text-align: center;
+    width:75px;
+    height:165px;	z-index:999;
+    -webkit-transition:left 0.6s cubic-bezier(0.66, 2, 0.41, 0.96) 0s, background-color 0.3s ease-out 0s ;
+    -moz-transition: left 0.6s cubic-bezier(0.66, 2, 0.41, 0.96) 0s, background-color 0.3s ease-out 0s;
+    -ms-transition: left 0.6s cubic-bezier(0.66, 2, 0.41, 0.96) 0s, background-color 0.3s ease-out 0s;
+    -o-transition: left 0.6s cubic-bezier(0.66, 2, 0.41, 0.96) 0s, background-color 0.3s ease-out 0s;
+    transition: left 0.6s cubic-bezier(0.66, 2, 0.41, 0.96) 0s, background-color 0.3s ease-out 0s;
+}
+#tz-purchase img{
+    display:inline-block;
+    margin: 20px;
+    float: right;
+}
+#tz-purchase.active{
+    left: -20px;
+}
+

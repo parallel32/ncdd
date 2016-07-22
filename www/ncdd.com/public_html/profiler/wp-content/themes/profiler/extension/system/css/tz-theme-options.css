@@ -1,0 +1,238 @@
+body #setting_plazart_404_page_content .format-setting .format-setting-inner{
+    width: 100% !important;
+}
+body #setting_plazart_copyright .format-setting .format-setting-inner{
+    width: 100% !important;
+}
+body .format-setting .format-setting-inner{
+    width: 50% !important;
+}
+body #plazart_copyright_toolbar3{
+    display: none;
+}
+body #plazart_404_page_content_toolbar3{
+    display: none;
+}
+/*end custom textarea*/
+
+body #setting_plazart_TzFontDefault{
+    display: none;
+}
+body #setting_plazart_TzFontSquirrel{
+    display: none;
+}
+body #setting_plazart_TzFontFami{
+    display: none;
+}
+body #setting_plazart_TzFontFaminy{
+    display: none;
+}
+
+/*header font*/
+body #setting_plazart_TzFontHeadDefault{
+    display: none;
+}
+body #setting_plazart_TzFontHeadSquirrel{
+    display: none;
+}
+body #setting_plazart_TzFontHeadGoodurl{
+    display: none;
+}
+body #setting_plazart_TzFontFaminyHead{
+    display: none;
+}
+
+
+body #setting_plazart_TzFontMenuDefault{
+    display: none;
+}
+body #setting_plazart_TzFontMenuSquirrel{
+    display: none;
+}
+body #setting_plazart_TzFontMenuGoodurl{
+    display: none;
+}
+body #setting_plazart_TzFontFaminyMenu{
+    display: none;
+}
+
+
+/*custom font*/
+body #setting_plazart_TzFontCustomDefault{
+    display: none;
+}
+body #setting_plazart_TzFontCustomSquirrel{
+    display: none;
+}
+body #setting_plazart_TzFontCustomGoodurl{
+    display: none;
+}
+body #setting_plazart_TzFontFaminyCustom{
+    display: none;
+}
+body #setting_plazart_TZBackgroundColor{
+    display: none;
+}
+/*style option*/
+body #tab_TzFontMenu,
+body #tab_TzFontCustom,
+body #tab_TZBody,
+body #tab_TzFontHeader{
+    background: #EAEAEA;
+    border: 0;
+    display: none;
+
+}
+/*logo*/
+body div#setting_plazart_logoText{
+    display: none;
+}
+body div#setting_plazart_logoTextcolor{
+    display: none;
+}
+body div#setting_plazart_favicon{
+    display: none;
+}
+/* css background option*/
+body .background_pattern {
+    width: 40px;
+    height: 40px;
+    border-radius: 0;
+    padding: 2px;
+}
+body #setting_plazart_background_pattern .format-setting .format-setting-inner{
+    width: 100% !important;
+}
+
+
+
+/*style option*/
+body #page-ot_theme_options{
+    width: 80%;
+}
+body .wrap.settings-wrap .ui-tabs-nav{
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    width: 160px;
+}
+body #option-tree-sub-header{
+background-color: #f1f1f1  !important;
+}
+body #option-tree-settings-api .ui-tabs{
+    background: url("../images/ot-menu-bg2.png") repeat-y scroll 0 0 #f1f1f1 !important;
+}
+
+body .wrap.settings-wrap .ui-tabs-nav li.ui-state-active{
+
+    border: none;
+    background:  #ffffff !important;
+    margin-right: -0px;
+    border-radius: 0;
+}
+body .wrap.settings-wrap .ui-tabs-nav li.ui-state-active a{
+    color: #797979;
+
+}
+body .wrap.settings-wrap .ui-tabs-nav li{
+    border-bottom: 1px solid #D8D8D8;
+    border-top: 1px solid #FFFFFF;
+    color: #797979;
+    display: block;
+    font: bold 12px/18px sans-serif;
+    padding: 7px 10px;
+    text-decoration: none;
+
+}
+body .wrap.settings-wrap .ui-tabs-nav li a{
+    padding: 1px 5px 1px 27px;
+    font-weight: 600;
+    color: #555555;
+}
+body #option-tree-header{
+    border-radius: 2px 2px 0 0;
+}
+body .format-setting-label {
+
+    border-bottom: 1px solid #f1f1f1;
+    margin: 0 0 20px;
+    padding: 0px 0px 5px;
+    width: 100%;
+}
+body .format-setting-wrap{
+    border-bottom: 0;
+    padding-bottom: 20px;
+}
+body input.option-tree-ui-upload-input, input.option-tree-ui-input{
+    padding: 6px;
+}
+body .format-settings{
+    padding: 0 0 20px;
+}
+
+body #option-tree-settings-api .postbox{
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: medium none;
+    margin: 0px;
+    padding: 20px;
+}
+body #wpbody-content .metabox-holder{
+    padding-top: 0;
+}
+body #option-tree-settings-api .ui-tabs{
+    padding-bottom: 0;
+}
+body #option-tree-header #option-tree-version span{
+    display: none;
+}
+body .option-tree-ui-buttons{
+    background: #f1f1f1;
+    margin-top: 5px;
+}
+body .format-setting-inner input,
+body .format-setting-inner textarea,
+body .format-setting-inner select{
+    background: #f1f1f1;
+}
+body .format-setting-inner input:hover,
+body .format-setting-inner input:focus,
+body .format-setting-inner textarea:hover,
+body .format-setting-inner textarea:focus
+{
+    background: #ffffff;
+}
+body .select-wrapper{
+    background-color: #f1f1f1;
+}
+body .select-wrapper:hover,
+body .select-wrapper:focus{
+    background-color: #ffffff;
+}
+/* logo icon */
+body #tab_social_network a{
+    background: url("../images/social_links_icon.png") no-repeat left center;
+}
+body #tab_TZBackground a{
+    background: url("../images/icon-background.png") no-repeat left center;
+}
+body #tab_TZBlog a{
+    background: url("../images/icon-docs.png") no-repeat left center;
+}
+body #tab_TzGlobalOption a{
+    background: url("../images/global.png") no-repeat left center;
+}
+body #tab_google_analytics a{
+    background: url("../images/google_al.png") no-repeat left center;
+}
+body #tab_TzSyle a{
+    background: url("../images/font-style.png") no-repeat left center;
+}
+body #tab_copyright a{
+    background: url("../images/copyright.png") no-repeat left center;
+}
+body #tab_404 a{
+    background: url("../images/_error.png") no-repeat left center;
+}
+body #tab_logo a{
+    background: url("../images/logo_favicon.png") no-repeat left center;
+}

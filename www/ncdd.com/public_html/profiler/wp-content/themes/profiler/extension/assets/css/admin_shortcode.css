@@ -1,0 +1,11 @@
+/* about us*/
+.about-textarea{
+    width: 319px;
+}
+.about-item-input,
+.about-textarea{
+    font-size: 13px;
+}
+.fancybox-desktop{
+    margin-top: 28px !important;
+}

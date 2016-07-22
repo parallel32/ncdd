@@ -1,0 +1,16 @@
+.themeple_custom_menu_mega_menu{
+  display: none !important;
+}
+.nav li:hover .themeple_custom_menu_mega_menu{
+    display: block  !important;
+
+}
+.TzInner{
+    max-height: 350px;
+}
+.non_mega_menu{
+    display: none !important;
+}
+.nav li:hover .non_mega_menu{
+    display: block !important;
+}

@@ -30,7 +30,7 @@
                                 'upcolor':'#EBECED', //province's color when page loads
                                 'overcolor':'#99CC00', //province's color when mouse hover
                                 'downcolor':'#993366',//province's color when mouse clicking
-                                'enable':false,//true/false to enable/disable this province
+                                'enable':true,//true/false to enable/disable this province
                             },
                             'map_2':{
                                 'namesId':'BC',

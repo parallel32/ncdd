@@ -1,0 +1,74 @@
+/*portfolio-meta-boxes*/
+body p.search-box{
+    bottom: auto;
+    float: none;
+    height: auto;
+    margin-bottom: auto;
+    position: relative;
+    width: 98%;
+}
+body .wrap p.search-box{
+    float: right;
+    width: auto;
+}
+#page_meta_box{
+    display: none;
+}
+#page_meta_box h3.hndle span{
+    font-size: 18px ;
+}
+.no-remove{
+    display: none;
+}
+/*shortcode service*/
+.service_textarea{
+    width: 323px;
+}
+.download_textarea{
+    width: 323px;
+}
+.awards_textarea{
+    width: 323px;
+}
+.service-remove{
+    background: url("../images/remove-item.png") center center no-repeat scroll rgba(0, 0, 0, 0);
+    height: 50px;
+    position: absolute;
+    right: 0;
+    top: 30%;
+    width: 60px;
+
+}
+.service-remove:hover{
+    cursor: pointer;
+}
+/*working*/
+.alt_label{
+    font-size: 12px;
+    display: block;
+    cursor: progress;
+}
+#create_working{
+    width: 100%;
+}
+body #tab_logo a{
+    background: url("../images/logo_favicon.png") no-repeat left center;
+}
+body #tab_TZBlogSiderbar a{
+    background: url("../images/sidebar.png") no-repeat left center;
+}
+body #tab_TZPortfolio a{
+    background: url("../images/Portfolio.png") no-repeat left center;
+    background-size: 16px 16px;
+}
+body #tab_TZGallery a{
+    background: url("../images/gallery.png") no-repeat left center;
+    background-size: 16px 16px;
+}
+body #tab_TzCustomCss a{
+    background: url("../images/css.png") no-repeat left center;
+    background-size: 16px 16px;
+}
+body #tab_TZThemeColor a {
+    background: rgba(0, 0, 0, 0) url("../images/color.png") no-repeat scroll left center / 16px 16px;
+}
