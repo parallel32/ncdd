@@ -180,6 +180,7 @@ ul.sidebarlist li {
                                     <li><a href="/find-an-attorney/usa/wyoming">Wyoming </a></li>
 
                                     <li class="titleMap">Canada</li>
+                                    <li><a href="/find-an-attorney/cananda/alberta">Alberta </a></li>
                                     <li><a href="/find-an-attorney/cananda/ontario">Ontario </a></li>
                                     <li><a href="/find-an-attorney/cananda/quebec">Quebec </a></li>
                                 </ul>
