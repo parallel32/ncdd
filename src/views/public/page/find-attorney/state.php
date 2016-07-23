@@ -245,6 +245,7 @@ ul.sidebarlist li {
                         </ul>
                         <div class="country bc">Canada</div>
                         <ul class="sidebarlist bc">
+                        <li><a href="/find-an-attorney/cananda/alberta">Alberta </a></li>
                            <li><a href="/find-an-attorney/canada/ontario">Ontario </a></li>
                             <li><a href="/find-an-attorney/canada/quebec">Quebec </a></li>
                         </ul>
