@@ -865,7 +865,7 @@ class Member extends User {
 			$result[$i]['email'] = $value['member']['email'];
 			// do some extra processing with the values here
 			$result[$i]['image'] = (!empty($value['member']['image'])) ? $value['member']['image']['urls']['small']['SSLCDN'] : '/noprofileimage';
-			$result[$i]['currentMembership'] = (!empty($value['member']['currentMembership'])) ? self::$membershipReversed[$value['member']['currentMembership']] : '';;
+			$result[$i]['currentMembership'] = (!empty($value['member']['currentMembership'])) ? self::$membershipReversed[$value['member']['currentMembership']] : '';
 			$result[$i]['currentFacultyPosition'] = (!empty($value['member']['currentFacultyPosition'])) ? self::$facultyPositionReversed[$value['member']['currentFacultyPosition']] : '';
 			$result[$i]['boardCertified'] = ($value['member']['boardCertified']) ? "Yes" : "No";
 			$result[$i]['boardCertifiedSr'] = (array_key_exists('boardCertifiedSr', $value['member']) && $value['member']['boardCertifiedSr']) ? "Yes" : "No";
