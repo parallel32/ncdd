@@ -230,7 +230,7 @@ endif; ?>
                         <div class="control-group">
                            <label class="control-label" >Name for Name Tag</label>
                            <div class="controls">
-                              <input type="text" autocomplete="on" name="doc[nameTag]" value="<?=($signed_in) ? $this->vars['member']['firstName'].$middleName.$this->vars['member']['lastName'] :'' ?>" class="m-wrap span12 nameTag"> 
+                              <input type="text" autocomplete="on" name="doc[nameTag]" value="" class="m-wrap span12 nameTag"> 
                            </div>
                         </div>
                      </div>
