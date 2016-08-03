@@ -124,18 +124,19 @@
                         </div>
                      </div>
                      <!--/span-->
-                     <!-- <div class="span6 ">
+                     <div class="span6 ">
                         <div class="control-group">
                            <label class="control-label">Would you like to receive text alerts?</label>
                            <div class="controls">
                               <select class="small m-wrap textAlertsOpt" name="doc[textAlertsOpt]">
+                                 <option value=""></option>
                                  <option value="yes">Yes</option>
                                  <option value="no">No</option>
                               </select>
                               <span class="help-block">Highly recommended.</span>
                            </div>
                         </div>
-                     </div> -->
+                     </div>
                      <!--/span-->
                      <input type="hidden" name="doc[textAlertsOpt]" class="m-wrap span12 textAlertsOpt" value="yes">
                      
@@ -173,12 +174,13 @@
                      </div>
                      <!--/span-->
                   </div>
-                  <!-- <div class="row-fluid">
+                  <div class="row-fluid">
                      <div class="span6 ">
                         <div class="control-group">
                            <label class="control-label">Would you like to be added to the NCDD List Server?</label>
                            <div class="controls">
                               <select class="small m-wrap addToListServ" name="doc[addToListServ]">
+                                 <option value=""></option>
                                  <option value="yes">Yes</option>
                                  <option value="no">No</option>
                               </select>
@@ -194,7 +196,7 @@
                            </div>
                         </div>
                      </div>
-                  </div> -->
+                  </div>
                   <input type="hidden" name="doc[listServEmail]" class="m-wrap span12 listServEmail" value="">
                   <input type="hidden" name="doc[addToListServ]" class="m-wrap span12 addToListServ" value="yes">
                   <!-- BEGIN ADDRESS -->
