@@ -990,6 +990,10 @@ EOT;
 				$obj = new ApplyNewSustainingMember(array('_id'=>$this->ownerId),self::$app);
 				return $obj;
 				break;
+			case 'Donate':
+				$obj = new Donate(array('_id'=>$this->ownerId),self::$app);
+				return $obj;
+				break
 		}
 	}
 	public function markOwnerClassPaid($paymentId){
@@ -1043,6 +1047,15 @@ EOT;
 				break;
 			case 'ApplyNewSustainingMember':
 				$obj = new ApplyNewSustainingMember(array('_id'=>$this->ownerId
+														,'currentStatus'=>Apply::$status['PAID']
+														,'paidDate'=> new Date(self::$app, 'now')
+														,'paymentId'=> $paymentId
+												),self::$app);
+
+				return $obj->saveSafe();
+				break;
+			case 'Donate':
+				$obj = new Donate(array('_id'=>$this->ownerId
 														,'currentStatus'=>Apply::$status['PAID']
 														,'paidDate'=> new Date(self::$app, 'now')
 														,'paymentId'=> $paymentId

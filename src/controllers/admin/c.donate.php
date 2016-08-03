@@ -38,6 +38,9 @@ $app->get('/donate', function (Request $request) use ($app) {
 
 $app->post('/donate', function (Request $request) use ($app) {
 
+	$paymentId = null;	
+	$app_id = new \stdClass();	
+
     // retrieve document from request
 	$doc = $request->get('doc');
 	$doc['userAgent'] = $request->headers->get('User-Agent');
@@ -50,11 +53,12 @@ $app->post('/donate', function (Request $request) use ($app) {
 	$app['validateModel']($app,$donate,$groups=array(''));
 
 
+
     if(array_key_exists('currentPaymentType',$doc) && $doc['currentPaymentType'] == Model\Donate::$paymentType['CHECK']){
     	
     }else{
     	$doc['payment']['ownerId'] = $app_id;
-		$doc['payment']['ownerClass'] = 'UpdateMember';
+		$doc['payment']['ownerClass'] = 'Donate';
 
 		$payment = new Model\Payment($doc['payment'],$app);
 		
