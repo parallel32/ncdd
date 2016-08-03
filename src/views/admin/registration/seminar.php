@@ -1012,7 +1012,14 @@ endif; ?>
                         
                      </div>
                   </div>
-
+                     <div class="row-fluid">
+                        <div class="span12 ">
+                           <div class="control-group">
+                              <label class="control-label">By submission of this application, I grant NCDD the right to take photographs/video of me and my property in connection with the above-identified seminar. I authorize NCDD, its assigns and transferees to copyright, use and publish the same in print and/or electronically. I agree that NCDD may use images with or without my name and for any lawful purpose.</label>
+                           </div>
+                        </div>
+                        <!--/span-->
+                     </div>
                   <!-- ERROR -->
                      <div class="alert alert-error hide">
                         <button class="close" data-dismiss="alert"></button>
@@ -1035,7 +1042,7 @@ endif; ?>
                         
                         <button type="button" class="btn cancel-registration">Cancel and Go Back</button>
                      </div>
-               
+
                </form>
                <!-- END FORM--> 
                
