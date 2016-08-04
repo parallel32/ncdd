@@ -993,7 +993,7 @@ EOT;
 			case 'Donate':
 				$obj = new Donate(array('_id'=>$this->ownerId),self::$app);
 				return $obj;
-				break
+				break;
 		}
 	}
 	public function markOwnerClassPaid($paymentId){
