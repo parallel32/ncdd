@@ -48,4 +48,22 @@ $app->get('/committee-report-videos', function (Request $request) use ($app) {
 
 	return $app['view']->render('vfl/committee-report-videos', 'default', $view_vars);
 })->before($mustbeMEMBER);
+$app->get('/committee-report-videos-2015', function (Request $request) use ($app) {
+	
+	$page = new Model\Page($doc=array('slug'=>'committee-report-videos'), $app);
+	$result = $page->findById('slug');
+	$result['body'] = $app['prepare_content']($result['body']);
+
+	$crumbs = array(array('name'=>'Committee Report Videos','href'=>'/committee-report-videos')
+					);
+	$view_vars = array(
+						 'active'=>'CRV'
+						,'page-plugin'=>'datatables'
+						,'headline'=>'Committee Report Videos'
+						,'description'=>""
+						,'content'=>$result['body']
+						,'crumbs'=>$crumbs);
+
+	return $app['view']->render('vfl/committee-report-videos-2015', 'default', $view_vars);
+})->before($mustbeMEMBER);
 return $app;
