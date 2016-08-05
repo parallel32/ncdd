@@ -16,6 +16,97 @@ use TTools\App;
 
 $utilities = $app['controllers_factory'];
 
+// check email test
+/**
+REFERENCE https://www.sitepoint.com/exploring-phps-imap-library-1/
+**/
+$utilities->get('/checkemailtest', function () use ($app) {
+
+    /* connect to gmail */
+    $hostname = '{imap.zoho.com:993/imap/ssl}INBOX';
+    $username = 'customersupport@ferrallonthebench.com';
+    $password = 'fullTILT@27';
+
+    /* try to connect */
+    $inbox = imap_open($hostname,$username,$password) or die('Cannot connect to Gmail: ' . imap_last_error());
+error_log('IMAP CONNECTED');
+    /* grab emails */
+    $emails = imap_search($inbox,'UNSEEN');
+error_log('TOTAL UNREAD EMAILS:'.count($emails));
+    
+    $imap = $inbox;
+    $numMessages = imap_num_msg($imap);
+    for ($i = $numMessages; $i > ($numMessages - 20); $i--) {
+        $header = imap_header($imap, $i);
+
+        $fromInfo = $header->from[0];
+        $replyInfo = $header->reply_to[0];
+
+        $details = array(
+            "fromAddr" => (isset($fromInfo->mailbox) && isset($fromInfo->host))
+                ? $fromInfo->mailbox . "@" . $fromInfo->host : "",
+            "fromName" => (isset($fromInfo->personal))
+                ? $fromInfo->personal : "",
+            "replyAddr" => (isset($replyInfo->mailbox) && isset($replyInfo->host))
+                ? $replyInfo->mailbox . "@" . $replyInfo->host : "",
+            "replyName" => (isset($replyTo->personal))
+                ? $replyto->personal : "",
+            "subject" => (isset($header->subject))
+                ? $header->subject : "",
+            "udate" => (isset($header->udate))
+                ? $header->udate : ""
+        );
+
+        $uid = imap_uid($imap, $i);
+
+        echo "<ul>";
+        echo "<li><strong>From:</strong>" . $details["fromName"];
+        echo " " . $details["fromAddr"] . "</li>";
+        echo "<li><strong>Subject:</strong> " . $details["subject"] . "</li>";
+        $message = imap_body($inbox,$i);
+        echo "<li><strong>Message:</strong> <pre>" . print_r($message,true) . "</pre></li>";
+        echo "</ul>";
+
+    }
+    
+
+if(false):
+
+
+    /* if emails are returned, cycle through each... */
+    if($emails) {
+        
+        /* begin output var */
+        $output = '';
+        
+        /* put the newest emails on top */
+        rsort($emails);
+        
+        /* for every email... */
+        foreach($emails as $email_number) {
+            
+            /* get information specific to this email */
+            $overview = imap_fetch_overview($inbox,$email_number);
+            $headers = imap_fetchheader($inbox,$email_number);
+            $message = imap_body($inbox,$email_number);
+            if(strpos($message, 'cancel') !== false):
+                echo "<pre>overview:";print_r($overview);echo "</pre>";
+                echo "<pre>headers:";print_r($headers);echo "</pre>";
+                echo "<pre>message:";print_r($message);echo "</pre>";
+                echo "<hr>";
+            endif;
+        }
+        
+        echo $output;
+    } 
+
+endif; 
+
+
+    /* close the connection */
+    imap_close($inbox);
+    return new Response('',200,array('Content-Type' => 'text/html')); 
+});
 
 // fix the listing of the new members.
 $utilities->get('/delegatetest', function () use ($app) {
