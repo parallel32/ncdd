@@ -291,7 +291,7 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 	///////////////
 	$seminar = new Model\Seminar(array('_id'=>$doc['seminarId']),$app);
 	$seminar = $seminar->findById();
-	$registration = new Model\RegistrationSeminar(array(), $app);
+	$registration = new Model\RegistrationSeminar(array(), $app,$seminar);
 	$depositbalance = $registration->fetchDepositStatus($doc['seminarId'],$offset=0, $limit=10000);
 	$paid = $registration->fetchByStatusSeminar($doc['seminarId'],'PAID',$offset=0, $limit=10000);
 	
@@ -346,7 +346,7 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 			$payment_lite = new Model\PaymentLite($doc['payment'],$app);
 			$doc['cardOnFile'] = $payment_lite->__toArray();
 		}
-		$rs = new Model\RegistrationSeminar($doc,$app);
+		$rs = new Model\RegistrationSeminar($doc,$app,$seminar);
 		if(!empty($doc['email']) && $rs->findByEmail()){
 	    	$response_arr = array('message'=>"Our records indicate you have already submitted a registration.  If you believe this message is in error please contact NCDD directly.",
 	                              "invalidFields"=>array(array('name'=>'email','message'=>'Our records indicate you have already submitted a registration.  If you believe this message is in error please contact NCDD directly.')));
@@ -376,7 +376,7 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 				$payment_update = new Model\Payment(array('ownerId'=>$rs_id,'_id'=>$paymentId),$app);
 				$payment_update->saveSafe();
 
-				$registration = new Model\RegistrationSeminar(array('_id'=>$rs_id), $app);
+				$registration = new Model\RegistrationSeminar(array('_id'=>$rs_id), $app, $seminar);
 			    $registration->markPaid($paymentId);
 
 			} catch (Exception $e) {
@@ -439,7 +439,7 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 
 		    $doc['currentStatus'] = Model\Registration::$status['SCHOLARSHIP'];
 		    $doc['total'] = 0;
-		    $rs = new Model\RegistrationSeminar($doc,$app);
+		    $rs = new Model\RegistrationSeminar($doc,$app,$seminar);
 			try {
 				$rs->scholarshipId = $scholarship->insert();
 				$rs_id = $rs->insert();
@@ -474,7 +474,7 @@ $app->post('/registration/seminar', function (Request $request) use ($app) {
 		$doc['currentStatus'] = Model\Registration::$status['WAITLIST'];
 		$doc['tempPayment'] = $doc['payment'];
 		unset($doc['payment']);
-		$rs = new Model\RegistrationSeminar($doc,$app);
+		$rs = new Model\RegistrationSeminar($doc,$app,$seminar);
 		
 		if(!empty($doc['email']) && $rs->findByEmail()){
 	    	$response_arr = array('message'=>"Our records indicate you have already submitted a registration.  If you believe this message is in error please contact NCDD directly.",

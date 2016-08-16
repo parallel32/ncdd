@@ -40,6 +40,7 @@ class RegistrationSeminar extends Registration {
 	public $cardOnFile;
 	public $elective1;
 	public $elective2;
+	public $seminar; // the full seminar this registration is for - this has been added for validation only.
 
 	
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
@@ -48,6 +49,9 @@ class RegistrationSeminar extends Registration {
 		$metadata->addPropertyConstraint('attendanceCertificationStatement', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addConstraint(new Callback(array(
             'methods' => array('previouslyAttended'),
+        )));
+        $metadata->addConstraint(new Callback(array(
+            'methods' => array('validateElectives'),
         )));
 	}
 	public function previouslyAttended(ExecutionContext $context){
@@ -59,7 +63,28 @@ class RegistrationSeminar extends Registration {
 		
 	}
 	
-	public function __construct($doc, Application $app){
+	public function validateElectives(ExecutionContext $context){
+		
+		if(!empty($this->seminar) && is_array($this->seminar)){
+			if($this->seminar['register']['electivesQuestion'] == 'ON'){
+
+				if(empty($this->elective1)){
+					$propertyPath = $context->getPropertyPath().'elective1';
+		        	$context->addViolationAtPath($propertyPath,'Please enter how many times you have previously attended this seminar.', array(), null);		
+				}
+
+				if(empty($this->elective2)){
+					$propertyPath = $context->getPropertyPath().'elective2';
+		        	$context->addViolationAtPath($propertyPath,'Please enter how many times you have previously attended this seminar.', array(), null);		
+				}
+			}
+			
+			
+		}
+		
+	}
+	
+	public function __construct($doc, Application $app, $seminar=array()){
 		$this->previouslyAttendedExists = (array_key_exists('previouslyAttended',$doc)) ? 'yes': 'no';
 		parent::__construct($doc,$app);
 		$this->init($doc);
@@ -93,6 +118,8 @@ class RegistrationSeminar extends Registration {
         $this->cardOnFile = $doc['cardOnFile'];
         $this->elective1 = $doc['elective1'];
         $this->elective2 = $doc['elective2'];
+        $this->seminar = $seminar;
+        if(!empty($seminar)) $this->seminar = (is_object($seminar)) ? $seminar->__toArray() : $seminar;
 	}
 	
 	/**
