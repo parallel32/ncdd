@@ -4,7 +4,7 @@
 <!--[if IE 9]>    <html class="ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en-US"> <!--<![endif]-->
 <head>
-    <title>newspaper | Just another WordPress site</title>
+    <title>Justice Through Knowledge | NCDD est. 1995</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="pingback" href="/newspaper/xmlrpc.php" />
@@ -375,14 +375,7 @@ Header style 1
 
 
 	<!-- td weather source: cache -->		<div class="td-weather-top-widget" id="td_top_weather_uid">
-			<i class="td-icons rain-n"></i>
-			<div class="td-weather-now" data-block-uid="td_top_weather_uid">
-				<span class="td-big-degrees">22</span>
-				<span class="td-weather-unit">C</span>
-			</div>
-			<div class="td-weather-header">
-				<div class="td-weather-city">New York</div>
-			</div>
+			
 		</div>
 		        <div class="td_data_time">
             <div >
@@ -390,10 +383,13 @@ Header style 1
                 Saturday, July 9, 2016
             </div>
         </div>
-    <ul class="top-header-menu td_ul_login"><li class="menu-item"><a class="td-login-modal-js menu-item" href="#login-form" data-effect="mpf-td-login-effect">Sign in / Join</a><span class="td-sp-ico-login td_sp_login_ico_style"></span></li></ul><div class="menu-top-container"><ul id="menu-td-demo-top-menu" class="top-header-menu"><li id="menu-item-31" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-first td-menu-item td-normal-menu menu-item-31"><a href="#">Blog</a></li>
-<li id="menu-item-32" class="menu-item menu-item-type-custom menu-item-object-custom td-menu-item td-normal-menu menu-item-32"><a href="#">Forums</a></li>
-<li id="menu-item-33" class="menu-item menu-item-type-post_type menu-item-object-page td-menu-item td-normal-menu menu-item-33"><a href="/newspaper/?page_id=30">Contact</a></li>
-<li id="menu-item-34" class="menu-item menu-item-type-custom menu-item-object-custom td-menu-item td-normal-menu menu-item-34"><a href="https://themeforest.net/item/newspaper/5489609">Purchase Theme</a></li>
+    <ul class="top-header-menu td_ul_login"><li class="menu-item"><a class="td-login-modal-js menu-item" href="#login-form" data-effect="mpf-td-login-effect">Sign in / Join</a><span class="td-sp-ico-login td_sp_login_ico_style"></span></li></ul><div class="menu-top-container"><ul id="menu-td-demo-top-menu" class="top-header-menu"><li id="menu-item-31" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-first td-menu-item td-normal-menu menu-item-31"><a href="#">Dean's Message</a></li>
+<li id="menu-item-32" class="menu-item menu-item-type-custom menu-item-object-custom td-menu-item td-normal-menu menu-item-32"><a href="#">Blog</a></li>
+<li id="menu-item-33" class="menu-item menu-item-type-post_type menu-item-object-page td-menu-item td-normal-menu menu-item-33"><a href="#">Store</a></li>
+<li id="menu-item-34" class="menu-item menu-item-type-custom menu-item-object-custom td-menu-item td-normal-menu menu-item-34"><a href="#">DUI Laws in your State</a></li>
+<li id="menu-item-34" class="menu-item menu-item-type-custom menu-item-object-custom td-menu-item td-normal-menu menu-item-34"><a href="#">Take the Quiz</a></li>
+<li id="menu-item-34" class="menu-item menu-item-type-custom menu-item-object-custom td-menu-item td-normal-menu menu-item-34"><a href="#">Contact</a></li>
+<li id="menu-item-34" class="menu-item menu-item-type-custom menu-item-object-custom td-menu-item td-normal-menu menu-item-34"><a href="#">Cart</a></li>
 </ul></div></div>
         <div class="td-header-sp-top-widget">
     
@@ -408,13 +404,8 @@ Header style 1
             </a>
         </span>
         <span class="td-social-icon-wrap">
-            <a target="_blank" href="#" title="Vimeo">
-                <i class="td-icon-font td-icon-vimeo"></i>
-            </a>
-        </span>
-        <span class="td-social-icon-wrap">
-            <a target="_blank" href="#" title="VKontakte">
-                <i class="td-icon-font td-icon-vk"></i>
+            <a target="_blank" href="#" title="Google">
+                <i class="td-icon-font td-icon-googleplus"></i>
             </a>
         </span>
         <span class="td-social-icon-wrap">
@@ -468,8 +459,8 @@ Header style 1
         <div class="td-container td-header-row td-header-header">
             <div class="td-header-sp-logo">
                 <h1 class="td-logo">        <a class="td-main-logo" href="/newspaper/">
-            <img class="td-retina-data" data-retina="/newspaper/wp-content/uploads/2016/07/logo-header.png" src="/newspaper/wp-content/uploads/2016/07/logo-header.png" alt=""/>
-            <span class="td-visual-hidden">newspaper</span>
+            <img class="td-retina-data" data-retina="/newspaper/assets/logo-desktop.png" src="/newspaper/assets/logo-desktop.png" alt=""/>
+            <span class="td-visual-hidden">NCDD</span>
         </a>
     </h1>            </div>
             <div class="td-header-sp-recs">
@@ -486,10 +477,10 @@ Header style 1
     <div id="td-top-mobile-toggle"><a href="#"><i class="td-icon-font td-icon-mobile"></i></a></div>
     <div class="td-main-menu-logo td-logo-in-header">
         		<a class="td-mobile-logo td-sticky-header" href="/newspaper/">
-			<img src="/newspaper/wp-content/uploads/2016/07/logo-white.png" alt=""/>
+			<img src="/newspaper/assets/logo-mobile.png" alt=""/>
 		</a>
 			<a class="td-header-logo td-sticky-header" href="/newspaper/">
-			<img class="td-retina-data" data-retina="/newspaper/wp-content/uploads/2016/07/logo-header.png" src="/newspaper/wp-content/uploads/2016/07/logo-header.png" alt=""/>
+			<img class="td-retina-data" data-retina="/newspaper/assets/logo-desktop.png" src="/newspaper/assets/logo-desktop.png" alt=""/>
 		</a>
 	    </div>
     <div class="menu-td-demo-header-menu-container"><ul id="menu-td-demo-header-menu-1" class="sf-menu"><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-39 current_page_item menu-item-first td-menu-item td-normal-menu menu-item-53"><a href="/newspaper/">News</a></li>
@@ -769,31 +760,33 @@ tdBlocksArray.push(block_td_uid_16_578052fe54f7c);
 	<div class="td-block-row"><div class="td-trending-now-wrapper" id="td_uid_16_578052fe54f7c" data-start=""><div class="td-trending-now-title">Trending Now</div><div class="td-trending-now-display-area">
         <div class="td_module_trending_now td-trending-now-post-0 td-trending-now-post">
 
-            <h3 class="entry-title td-module-title"><a href="/newspaper/?p=117" rel="bookmark" title="Kim Kardashian Shows Off Deep Cleavage In Plunging Top &#038; Mini">Kim Kardashian Shows Off Deep Cleavage In Plunging Top &#038; Mini</a></h3>
+            <h3 class="entry-title td-module-title"><a href="#" rel="bookmark" title="2016 DWI Means Defend with Ingenuity-High Gear Defenses For Getting to Victory Lane.">2016 DWI Means Defend with Ingenuity-High Gear Defenses For Getting to Victory Lane.</a></h3>
         </div>
 
         
         <div class="td_module_trending_now td-trending-now-post-1 td-trending-now-post">
 
-            <h3 class="entry-title td-module-title"><a href="/newspaper/?p=122" rel="bookmark" title="Wind and solar power are even more expensive than is commonly thought">Wind and solar power are even more expensive than is commonly thought</a></h3>
+            <h3 class="entry-title td-module-title"><a href="/newspaper/?p=122" rel="bookmark" title="Update from the NCDD Forensics Committee">Update from the NCDD Forensics Committee</a></h3>
         </div>
 
         
         <div class="td_module_trending_now td-trending-now-post-2 td-trending-now-post">
 
-            <h3 class="entry-title td-module-title"><a href="/newspaper/?p=142" rel="bookmark" title="Android L Will Keep Your Secrets Safer">Android L Will Keep Your Secrets Safer</a></h3>
+            <h3 class="entry-title td-module-title"><a href="/newspaper/?p=142" rel="bookmark" title="Member in the Spotlight: Steve Oberman
+">Member in the Spotlight: Steve Oberman
+</a></h3>
         </div>
 
         
         <div class="td_module_trending_now td-trending-now-post-3 td-trending-now-post">
 
-            <h3 class="entry-title td-module-title"><a href="/newspaper/?p=145" rel="bookmark" title="Xbox One to launch in China this month after all">Xbox One to launch in China this month after all</a></h3>
+            <h3 class="entry-title td-module-title"><a href="/newspaper/?p=145" rel="bookmark" title="Accessing the Virtual Library. Tips from Your Virtual Librarian">Accessing the Virtual Library. Tips from Your Virtual Librarian</a></h3>
         </div>
 
         
         <div class="td_module_trending_now td-trending-now-post-4 td-trending-now-post">
 
-            <h3 class="entry-title td-module-title"><a href="/newspaper/?p=134" rel="bookmark" title="Announcing a specification for PHP">Announcing a specification for PHP</a></h3>
+            <h3 class="entry-title td-module-title"><a href="/newspaper/?p=134" rel="bookmark" title="We Help Win More Cases">We Help Win More Cases</a></h3>
         </div>
 
         </div><div class="td-next-prev-wrap"><a href="#"
@@ -1318,7 +1311,24 @@ tdBlocksArray.push(block_td_uid_49_578052feb3b8f);
         </div>
 
         
-	</div> <!-- ./td-block-span6 --></div><!--./row-fluid--></div><div class="td-next-prev-wrap"><a href="#" class="td-ajax-prev-page ajax-page-disabled" id="prev-page-td_uid_49_578052feb3b8f" data-td_block_id="td_uid_49_578052feb3b8f"><i class="td-icon-font td-icon-menu-left"></i></a><a href="#"  class="td-ajax-next-page" id="next-page-td_uid_49_578052feb3b8f" data-td_block_id="td_uid_49_578052feb3b8f"><i class="td-icon-font td-icon-menu-right"></i></a></div></div> <!-- ./block --></div></div><div class="wpb_column vc_column_container td-pb-span4"><div class="wpb_wrapper"><div class="td_block_wrap td_block_social_counter td_uid_64_578052febec45_rand td-pb-border-top"><h4 class="block-title"><span>STAY CONNECTED</span></h4><div class="td-social-list"><div class="td_social_type td-pb-margin-side td_social_facebook"><div class="td-social-box"><div class="td-sp td-sp-facebook"></div><span class="td_social_info">0</span><span class="td_social_info td_social_info_name">Fans</span><span class="td_social_button"><a href="https://www.facebook.com/tagDiv">Like</a></span></div></div><div class="td_social_type td-pb-margin-side td_social_twitter"><div class="td-social-box"><div class="td-sp td-sp-twitter"></div><span class="td_social_info">59,877</span><span class="td_social_info td_social_info_name">Followers</span><span class="td_social_button"><a href="https://twitter.com/envato">Follow</a></span></div></div><div class="td_social_type td-pb-margin-side td_social_youtube"><div class="td-social-box"><div class="td-sp td-sp-youtube"></div><span class="td_social_info">11,113</span><span class="td_social_info td_social_info_name">Subscribers</span><span class="td_social_button"><a href="https://www.youtube.com/envato">Subscribe</a></span></div></div><div class="clearfix"></div></div></div> <!-- ./block --><div class="td-a-rec td-a-rec-id-sidebar  "><span class="td-adspot-title">- Advertisement -</span><div class="td-all-devices"><a href="#"><img src="/newspaper/wp-content/uploads/2016/07/rec300.jpg"/></a></div></div><div class="td_block_wrap td_block_15 td_uid_66_578052febfcee_rand td_with_ajax_pagination td-pb-border-top"  data-td-block-uid="td_uid_66_578052febfcee" ><script>var block_td_uid_66_578052febfcee = new tdBlock();
+	</div> <!-- ./td-block-span6 --></div><!--./row-fluid--></div><div class="td-next-prev-wrap"><a href="#" class="td-ajax-prev-page ajax-page-disabled" id="prev-page-td_uid_49_578052feb3b8f" data-td_block_id="td_uid_49_578052feb3b8f"><i class="td-icon-font td-icon-menu-left"></i></a><a href="#"  class="td-ajax-next-page" id="next-page-td_uid_49_578052feb3b8f" data-td_block_id="td_uid_49_578052feb3b8f"><i class="td-icon-font td-icon-menu-right"></i></a></div></div> <!-- ./block --></div></div><div class="wpb_column vc_column_container td-pb-span4"><div class="wpb_wrapper"><div class="td_block_wrap td_block_social_counter td_uid_64_578052febec45_rand td-pb-border-top"><h4 class="block-title"><span>STAY CONNECTED</span></h4>
+
+    <div class="td-social-list">
+
+    <div class="td_social_type td-pb-margin-side td_social_googleplus"><div class="td-social-box"><div class="td-sp td-sp-googleplus"></div><span class="td_social_info"></span><span class="td_social_info td_social_info_name">Google Plus</span><span class="td_social_button"><a href="https://www.google.com/tagDiv">+1</a></span></div></div>
+
+    <div class="td_social_type td-pb-margin-side td_social_facebook"><div class="td-social-box"><div class="td-sp td-sp-facebook"></div><span class="td_social_info"></span><span class="td_social_info td_social_info_name">Facebook</span><span class="td_social_button"><a href="https://www.facebook.com/tagDiv">Like</a></span></div></div>
+
+    <div class="td_social_type td-pb-margin-side td_social_twitter"><div class="td-social-box"><div class="td-sp td-sp-twitter"></div><span class="td_social_info"></span><span class="td_social_info td_social_info_name">Twitter</span><span class="td_social_button"><a href="https://twitter.com/envato">Follow</a></span></div></div>
+
+    <div class="td_social_type td-pb-margin-side td_social_youtube"><div class="td-social-box"><div class="td-sp td-sp-youtube"></div><span class="td_social_info"></span><span class="td_social_info td_social_info_name">Youtube</span><span class="td_social_button"><a href="https://www.youtube.com/envato">Subscribe</a></span></div></div>
+
+    <div class="clearfix"></div>
+
+    </div>
+
+
+    </div> <!-- ./block --><div class="td-a-rec td-a-rec-id-sidebar  "><span class="td-adspot-title">- Advertisement -</span><div class="td-all-devices"><a href="#"><img src="/newspaper/wp-content/uploads/2016/07/rec300.jpg"/></a></div></div><div class="td_block_wrap td_block_15 td_uid_66_578052febfcee_rand td_with_ajax_pagination td-pb-border-top"  data-td-block-uid="td_uid_66_578052febfcee" ><script>var block_td_uid_66_578052febfcee = new tdBlock();
 block_td_uid_66_578052febfcee.id = "td_uid_66_578052febfcee";
 block_td_uid_66_578052febfcee.atts = '{"limit":"4","sort":"random_posts","post_ids":"","tag_slug":"","autors_id":"","installed_post_types":"","category_id":"","category_ids":"","custom_title":"MAKE IT MODERN","custom_url":"","show_child_cat":"","sub_cat_ajax":"","ajax_pagination":"next_prev","header_color":"","header_text_color":"","ajax_pagination_infinite_stop":"","td_column_number":1,"td_ajax_preloading":"","td_ajax_filter_type":"","td_ajax_filter_ids":"","td_filter_default_txt":"All","color_preset":"","border_top":"","class":"td_uid_66_578052febfcee_rand","offset":"","css":"","live_filter":"","live_filter_cur_post_id":"","live_filter_cur_post_author":""}';
 block_td_uid_66_578052febfcee.td_column_number = "1";
@@ -2261,7 +2271,7 @@ tdBlocksArray.push(block_td_uid_82_578052ff97325);
     <div class="td-footer-bottom-full">
         <div class="td-container">
             <div class="td-pb-row">
-                <div class="td-pb-span3"><aside class="footer-logo-wrap"><a href="/newspaper/"><img class="td-retina-data" src="/newspaper/wp-content/uploads/2016/07/logo-white.png" data-retina="/newspaper/wp-content/uploads/2016/07/logo-white.png" alt="" title=""/></a></aside></div><div class="td-pb-span5"><aside class="footer-text-wrap"><div class="block-title"><span>ABOUT US</span></div>Newspaper is your news, entertainment, music fashion website. We provide you with the latest breaking news and videos straight from the entertainment industry.<div class="footer-email-wrap">Contact us: <a href="mailto:contact@yoursite.com">contact@yoursite.com</a></div></aside></div><div class="td-pb-span4"><aside class="footer-social-wrap td-social-style-2"><div class="block-title"><span>FOLLOW US</span></div>
+                <div class="td-pb-span3"><aside class="footer-logo-wrap"><a href="#"><img class="td-retina-data" src="/newspaper/assets/logo-mobile.png" data-retina="/newspaper/assets/logo-mobile.png" alt="" title=""/></a></aside></div><div class="td-pb-span5"><aside class="footer-text-wrap"><div class="block-title"><span>ABOUT US</span></div>Newspaper is your news, entertainment, music fashion website. We provide you with the latest breaking news and videos straight from the entertainment industry.<div class="footer-email-wrap">Contact us: <a href="mailto:contact@yoursite.com">contact@yoursite.com</a></div></aside></div><div class="td-pb-span4"><aside class="footer-social-wrap td-social-style-2"><div class="block-title"><span>FOLLOW US</span></div>
         <span class="td-social-icon-wrap">
             <a target="_blank" href="#" title="Facebook">
                 <i class="td-icon-font td-icon-facebook"></i>
