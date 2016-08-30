@@ -675,7 +675,7 @@ tdBlocksArray.push(block_td_uid_18_578052fe69f90);
                 <span class="td-post-author-name"><a href="/newspaper/?author=1">newspaper</a> <span>-</span> </span>                <span class="td-post-date"><time class="entry-date updated td-module-date" datetime="2016-07-09T01:12:24+00:00" >July 9, 2016</time></span>                <div class="td-module-comments"><a href="/newspaper/?p=135#respond">0</a></div>            </div>
 
             <div class="td-excerpt">
-                The model is talking about booking her latest gig, modeling WordPress underwear in the brand latest Perfectly Fit campaign, which was shot by Lachian...            </div>
+                The model is talking about booking her latest gig, in the brand latest Perfectly Fit campaign, which was shot by Lachian...            </div>
 
             
         </div>
