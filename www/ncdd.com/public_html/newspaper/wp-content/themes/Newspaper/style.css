@@ -6244,13 +6244,13 @@ ul.sf-js-enabled > li > a > i.td-icon-menu-down:before {
   left: 0;
   opacity: 0.98;
   background: #333145;
-  background: -moz-linear-gradient(top, #333145 0%, #b8333e 100%);
-  background: -webkit-gradient(left top, left bottom, color-stop(0%, #333145), color-stop(100%, #b8333e));
-  background: -webkit-linear-gradient(top, #333145 0%, #b8333e 100%);
-  background: -o-linear-gradient(top, #333145 0%, #b8333e 100%);
-  background: -ms-linear-gradient(top, #333145 0%, #b8333e 100%);
-  background: linear-gradient(to bottom, #333145 0%, #b8333e 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333145', endColorstr='#b8333e', GradientType=0);
+  background: -moz-linear-gradient(top, #333145 0%, #4bbcf7 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, #333145), color-stop(100%, #4bbcf7));
+  background: -webkit-linear-gradient(top, #333145 0%, #4bbcf7 100%);
+  background: -o-linear-gradient(top, #333145 0%, #4bbcf7 100%);
+  background: -ms-linear-gradient(top, #333145 0%, #4bbcf7 100%);
+  background: linear-gradient(to bottom, #333145 0%, #4bbcf7 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333145', endColorstr='#4bbcf7', GradientType=0);
 }
 .td-search-close {
   text-align: right;
