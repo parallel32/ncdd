@@ -262,18 +262,18 @@ var td_ad_background_click_target="";
 
 <li id="menu-item-54" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-54 current_page_item menu-item-first"><a href="#">Discover<i class="td-icon-menu-right td-element-after"></i></a>
 <ul class="sub-menu">
-	<li id="menu-item-0" class="menu-item-0"><a href="/newspaper/?cat=7">New Look 2015</a></li>
-	<li class="menu-item-0"><a href="/newspaper/?cat=8">Street Fashion</a></li>
-	<li class="menu-item-0"><a href="/newspaper/?cat=9">Style Hunter</a></li>
-	<li class="menu-item-0"><a href="/newspaper/?cat=10">Vogue</a></li>
+	<li id="menu-item-0" class="menu-item-0"><a href="/newspaper/?cat=7">DUI Laws in your State</a></li>
+	<li class="menu-item-0"><a href="/newspaper/?cat=8">Dean's Message</a></li>
+	<li class="menu-item-0"><a href="/newspaper/?cat=9">Blog</a></li>
+	<li class="menu-item-0"><a href="/newspaper/?cat=10">State Delegates</a></li>
 </ul>
 </li>
 <li id="menu-item-56" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-56"><a href="#">Learn<i class="td-icon-menu-right td-element-after"></i></a>
 <ul class="sub-menu">
-	<li class="menu-item-0"><a href="/newspaper/?cat=13">Business</a></li>
-	<li class="menu-item-0"><a href="/newspaper/?cat=14">Health &amp; Fitness</a></li>
-	<li class="menu-item-0"><a href="/newspaper/?cat=15">Recipes</a></li>
-	<li class="menu-item-0"><a href="/newspaper/?cat=16">Travel</a></li>
+	<li class="menu-item-0"><a href="/newspaper/?cat=13">Apply for Board Certification</a></li>
+	<li class="menu-item-0"><a href="/newspaper/?cat=14">Breath Test Devices</a></li>
+	<li class="menu-item-0"><a href="/newspaper/?cat=15">DUI Defenses that Work</a></li>
+	<li class="menu-item-0"><a href="/newspaper/?cat=16">What You Must Know</a></li>
 </ul>
 </li>
 <li id="menu-item-57" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-57"><a href="#">Find Attorneys</a></li>
@@ -359,7 +359,7 @@ Header style 1
 		        <div class="td_data_time">
             <div >
 
-                Saturday, July 9, 2016
+                Tuesday, August 30, 2016
             </div>
         </div>
     <ul class="top-header-menu td_ul_login"><li class="menu-item"><a class="td-login-modal-js menu-item" href="#login-form" data-effect="mpf-td-login-effect">Sign in / Join</a><span class="td-sp-ico-login td_sp_login_ico_style"></span></li></ul><div class="menu-top-container"><ul id="menu-td-demo-top-menu" class="top-header-menu"><li id="menu-item-31" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-first td-menu-item td-normal-menu menu-item-31"><a href="#">Dean's Message</a></li>
