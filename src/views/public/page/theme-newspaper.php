@@ -232,13 +232,8 @@ var td_ad_background_click_target="";
             </a>
         </span>
         <span class="td-social-icon-wrap">
-            <a target="_blank" href="#" title="Vimeo">
-                <i class="td-icon-font td-icon-vimeo"></i>
-            </a>
-        </span>
-        <span class="td-social-icon-wrap">
-            <a target="_blank" href="#" title="VKontakte">
-                <i class="td-icon-font td-icon-vk"></i>
+            <a target="_blank" href="#" title="Google Plus">
+                <i class="td-icon-font td-icon-googleplus"></i>
             </a>
         </span>
         <span class="td-social-icon-wrap">
@@ -257,14 +252,15 @@ var td_ad_background_click_target="";
                 
     <div class="td-guest-wrap">
         <div class="td-menu-avatar"><div class="td-avatar-container"><img alt='' src='https://0.gravatar.com/avatar/?s=80&#038;d=mm&#038;r=g' srcset='https://0.gravatar.com/avatar/?s=160&amp;d=mm&amp;r=g 2x' class='avatar avatar-80 photo avatar-default' height='80' width='80' /></div></div>
-        <div class="td-menu-login"><a id="login-link-mob">Sign in</a></div>
+        <div class="td-menu-login"><a id="login-link-mob">Member Login</a></div>
     </div>
             </div>
         
         <!-- menu section -->
         <div class="td-mobile-content">
-            <div class="menu-td-demo-header-menu-container"><ul id="menu-td-demo-header-menu" class="td-mobile-main-menu"><li id="menu-item-53" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-39 current_page_item menu-item-first menu-item-53"><a href="/newspaper/">News</a></li>
-<li id="menu-item-54" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-54"><a href="#">Fashion<i class="td-icon-menu-right td-element-after"></i></a>
+            <div class="menu-td-demo-header-menu-container"><ul id="menu-td-demo-header-menu" class="td-mobile-main-menu">
+
+<li id="menu-item-54" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-54 current_page_item menu-item-first"><a href="#">Discover<i class="td-icon-menu-right td-element-after"></i></a>
 <ul class="sub-menu">
 	<li id="menu-item-0" class="menu-item-0"><a href="/newspaper/?cat=7">New Look 2015</a></li>
 	<li class="menu-item-0"><a href="/newspaper/?cat=8">Street Fashion</a></li>
@@ -272,8 +268,7 @@ var td_ad_background_click_target="";
 	<li class="menu-item-0"><a href="/newspaper/?cat=10">Vogue</a></li>
 </ul>
 </li>
-<li id="menu-item-55" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55"><a href="#">Gadgets</a></li>
-<li id="menu-item-56" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-56"><a href="#">Lifestyle<i class="td-icon-menu-right td-element-after"></i></a>
+<li id="menu-item-56" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-56"><a href="#">Learn<i class="td-icon-menu-right td-element-after"></i></a>
 <ul class="sub-menu">
 	<li class="menu-item-0"><a href="/newspaper/?cat=13">Business</a></li>
 	<li class="menu-item-0"><a href="/newspaper/?cat=14">Health &amp; Fitness</a></li>
@@ -281,24 +276,8 @@ var td_ad_background_click_target="";
 	<li class="menu-item-0"><a href="/newspaper/?cat=16">Travel</a></li>
 </ul>
 </li>
-<li id="menu-item-57" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-57"><a href="#">Video</a></li>
-<li id="menu-item-58" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-58"><a href="#">Homepages<i class="td-icon-menu-right td-element-after"></i></a>
-<ul class="sub-menu">
-	<li id="menu-item-59" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-59"><a href="/newspaper/?page_id=40">Homepage &#8211; Fashion</a></li>
-	<li id="menu-item-60" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-60"><a href="/newspaper/?page_id=41">Homepage &#8211; Blog</a></li>
-	<li id="menu-item-61" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-61"><a href="/newspaper/?page_id=42">Homepage &#8211; Video</a></li>
-	<li id="menu-item-62" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-62"><a href="/newspaper/?page_id=43">Homepage &#8211; Tech</a></li>
-	<li id="menu-item-63" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-63"><a href="/newspaper/?page_id=44">Homepage &#8211; Sport</a></li>
-	<li id="menu-item-64" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-64"><a href="/newspaper/?page_id=45">Homepage &#8211; Full Post Featured</a></li>
-	<li id="menu-item-65" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-65"><a href="/newspaper/?page_id=46">Homepage &#8211; Infinite Scroll</a></li>
-	<li id="menu-item-66" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-66"><a href="/newspaper/?page_id=47">Homepage &#8211; Newspaper</a></li>
-	<li id="menu-item-67" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-67"><a href="/newspaper/?page_id=48">Homepage &#8211; Newsmag</a></li>
-	<li id="menu-item-68" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68"><a href="/newspaper/?page_id=49">Homepage &#8211; Magazine</a></li>
-	<li id="menu-item-69" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-69"><a href="/newspaper/?page_id=50">Homepage &#8211; Loop</a></li>
-	<li id="menu-item-70" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-70"><a href="/newspaper/?page_id=51">Homepage &#8211; Big Slide</a></li>
-	<li id="menu-item-71" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71"><a href="/newspaper/?page_id=52">Homepage &#8211; Less Images</a></li>
-</ul>
-</li>
+<li id="menu-item-57" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-57"><a href="#">Find Attorneys</a></li>
+<li id="menu-item-53" class="menu-item menu-item-type-post_type menu-item-object-page page_item page-item-39 menu-item-53"><a href="">Become a Member</a></li>
 </ul></div>        </div>
     </div>
 
@@ -386,8 +365,6 @@ Header style 1
     <ul class="top-header-menu td_ul_login"><li class="menu-item"><a class="td-login-modal-js menu-item" href="#login-form" data-effect="mpf-td-login-effect">Sign in / Join</a><span class="td-sp-ico-login td_sp_login_ico_style"></span></li></ul><div class="menu-top-container"><ul id="menu-td-demo-top-menu" class="top-header-menu"><li id="menu-item-31" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-first td-menu-item td-normal-menu menu-item-31"><a href="#">Dean's Message</a></li>
 <li id="menu-item-32" class="menu-item menu-item-type-custom menu-item-object-custom td-menu-item td-normal-menu menu-item-32"><a href="#">Blog</a></li>
 <li id="menu-item-33" class="menu-item menu-item-type-post_type menu-item-object-page td-menu-item td-normal-menu menu-item-33"><a href="#">Store</a></li>
-<li id="menu-item-34" class="menu-item menu-item-type-custom menu-item-object-custom td-menu-item td-normal-menu menu-item-34"><a href="#">DUI Laws in your State</a></li>
-<li id="menu-item-34" class="menu-item menu-item-type-custom menu-item-object-custom td-menu-item td-normal-menu menu-item-34"><a href="#">Take the Quiz</a></li>
 <li id="menu-item-34" class="menu-item menu-item-type-custom menu-item-object-custom td-menu-item td-normal-menu menu-item-34"><a href="#">Contact</a></li>
 <li id="menu-item-34" class="menu-item menu-item-type-custom menu-item-object-custom td-menu-item td-normal-menu menu-item-34"><a href="#">Cart</a></li>
 </ul></div></div>
@@ -483,232 +460,24 @@ Header style 1
 			<img class="td-retina-data" data-retina="/newspaper/assets/logo-desktop.png" src="/newspaper/assets/logo-desktop.png" alt=""/>
 		</a>
 	    </div>
-    <div class="menu-td-demo-header-menu-container"><ul id="menu-td-demo-header-menu-1" class="sf-menu"><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-39 current_page_item menu-item-first td-menu-item td-normal-menu menu-item-53"><a href="/newspaper/">News</a></li>
-<li class="menu-item menu-item-type-custom menu-item-object-custom td-menu-item td-mega-menu menu-item-54"><a href="#">Fashion</a>
+    <div class="menu-td-demo-header-menu-container"><ul id="menu-td-demo-header-menu-1" class="sf-menu">
+
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children td-menu-item td-normal-menu menu-item-58"><a href="#">Discover</a>
 <ul class="sub-menu">
-	<li class="menu-item-0"><div class="td-container-border"><div class="td-mega-grid"><div class="td_block_wrap td_block_mega_menu td_uid_2_578052fe27f38_rand td_with_ajax_pagination td-pb-border-top"  data-td-block-uid="td_uid_2_578052fe27f38" ><script>var block_td_uid_2_578052fe27f38 = new tdBlock();
-block_td_uid_2_578052fe27f38.id = "td_uid_2_578052fe27f38";
-block_td_uid_2_578052fe27f38.atts = '{"limit":4,"sort":"","post_ids":"","tag_slug":"","autors_id":"","installed_post_types":"","category_id":"6","category_ids":"","custom_title":"","custom_url":"","show_child_cat":30,"sub_cat_ajax":"","ajax_pagination":"next_prev","header_color":"","header_text_color":"","ajax_pagination_infinite_stop":"","td_column_number":3,"td_ajax_preloading":"","td_ajax_filter_type":"td_category_ids_filter","td_ajax_filter_ids":"","td_filter_default_txt":"All","color_preset":"","border_top":"","class":"td_uid_2_578052fe27f38_rand","offset":"","css":"","live_filter":"","live_filter_cur_post_id":"","live_filter_cur_post_author":""}';
-block_td_uid_2_578052fe27f38.td_column_number = "3";
-block_td_uid_2_578052fe27f38.block_type = "td_block_mega_menu";
-block_td_uid_2_578052fe27f38.post_count = "4";
-block_td_uid_2_578052fe27f38.found_posts = "26";
-block_td_uid_2_578052fe27f38.header_color = "";
-block_td_uid_2_578052fe27f38.ajax_pagination_infinite_stop = "";
-block_td_uid_2_578052fe27f38.max_num_pages = "7";
-tdBlocksArray.push(block_td_uid_2_578052fe27f38);
-</script><div class="td_mega_menu_sub_cats"><div class="block-mega-child-cats"><a class="cur-sub-cat mega-menu-sub-cat-td_uid_2_578052fe27f38" id="td_uid_3_578052fe2b9f1" data-td_block_id="td_uid_2_578052fe27f38" data-td_filter_value="" href="/newspaper/?cat=6">All</a><a class="mega-menu-sub-cat-td_uid_2_578052fe27f38"  id="td_uid_4_578052fe2baaf" data-td_block_id="td_uid_2_578052fe27f38" data-td_filter_value="7" href="/newspaper/?cat=7">New Look 2015</a><a class="mega-menu-sub-cat-td_uid_2_578052fe27f38"  id="td_uid_5_578052fe2bb77" data-td_block_id="td_uid_2_578052fe27f38" data-td_filter_value="8" href="/newspaper/?cat=8">Street Fashion</a><a class="mega-menu-sub-cat-td_uid_2_578052fe27f38"  id="td_uid_6_578052fe2be9b" data-td_block_id="td_uid_2_578052fe27f38" data-td_filter_value="9" href="/newspaper/?cat=9">Style Hunter</a><a class="mega-menu-sub-cat-td_uid_2_578052fe27f38"  id="td_uid_7_578052fe2bfc6" data-td_block_id="td_uid_2_578052fe27f38" data-td_filter_value="10" href="/newspaper/?cat=10">Vogue</a></div></div><div id=td_uid_2_578052fe27f38 class="td_block_inner"><div class="td-mega-row"><div class="td-mega-span">
-        <div class="td_module_mega_menu td_mod_mega_menu">
-            <div class="td-module-image">
-                <div class="td-module-thumb"><a href="/newspaper/?p=142" rel="bookmark" title="Android L Will Keep Your Secrets Safer"><img width="218" height="150" class="entry-thumb" src="/newspaper/wp-content/uploads/2016/07/11-218x150.jpg" alt="" title="Android L Will Keep Your Secrets Safer"/></a></div>                <a href="/newspaper/?cat=10" class="td-post-category">Vogue</a>            </div>
-
-            <div class="item-details">
-                <h3 class="entry-title td-module-title"><a href="/newspaper/?p=142" rel="bookmark" title="Android L Will Keep Your Secrets Safer">Android L Will Keep Your Secrets Safer</a></h3>            </div>
-        </div>
-        </div><div class="td-mega-span">
-        <div class="td_module_mega_menu td_mod_mega_menu">
-            <div class="td-module-image">
-                <div class="td-module-thumb"><a href="/newspaper/?p=138" rel="bookmark" title="The hand rail is going a little faster than the moving sidewalk."><img width="218" height="150" class="entry-thumb" src="/newspaper/wp-content/uploads/2016/07/9-218x150.jpg" alt="" title="The hand rail is going a little faster than the moving sidewalk."/></a></div>                <a href="/newspaper/?cat=8" class="td-post-category">Street Fashion</a>            </div>
-
-            <div class="item-details">
-                <h3 class="entry-title td-module-title"><a href="/newspaper/?p=138" rel="bookmark" title="The hand rail is going a little faster than the moving sidewalk.">The hand rail is going a little faster than the moving&#8230;</a></h3>            </div>
-        </div>
-        </div><div class="td-mega-span">
-        <div class="td_module_mega_menu td_mod_mega_menu">
-            <div class="td-module-image">
-                <div class="td-module-thumb"><a href="/newspaper/?p=131" rel="bookmark" title="Audio Tour App Detour Steers You Away from the Typical Tourist Traps"><img width="218" height="150" class="entry-thumb" src="/newspaper/wp-content/uploads/2016/07/4-218x150.jpg" alt="" title="Audio Tour App Detour Steers You Away from the Typical Tourist Traps"/><span class="td-video-play-ico"><img width="40" height="40" class="td-retina" src="/newspaper/wp-content/themes/Newspaper/images/icons/ico-video-large.png" alt="video"/></span></a></div>                <a href="/newspaper/?cat=7" class="td-post-category">New Look 2015</a>            </div>
-
-            <div class="item-details">
-                <h3 class="entry-title td-module-title"><a href="/newspaper/?p=131" rel="bookmark" title="Audio Tour App Detour Steers You Away from the Typical Tourist Traps">Audio Tour App Detour Steers You Away from the Typical Tourist&#8230;</a></h3>            </div>
-        </div>
-        </div><div class="td-mega-span">
-        <div class="td_module_mega_menu td_mod_mega_menu">
-            <div class="td-module-image">
-                <div class="td-module-thumb"><a href="/newspaper/?p=122" rel="bookmark" title="Wind and solar power are even more expensive than is commonly thought"><img width="218" height="150" class="entry-thumb" src="/newspaper/wp-content/uploads/2016/07/2-218x150.jpg" alt="" title="Wind and solar power are even more expensive than is commonly thought"/><span class="td-video-play-ico"><img width="40" height="40" class="td-retina" src="/newspaper/wp-content/themes/Newspaper/images/icons/ico-video-large.png" alt="video"/></span></a></div>                <a href="/newspaper/?cat=10" class="td-post-category">Vogue</a>            </div>
-
-            <div class="item-details">
-                <h3 class="entry-title td-module-title"><a href="/newspaper/?p=122" rel="bookmark" title="Wind and solar power are even more expensive than is commonly thought">Wind and solar power are even more expensive than is commonly&#8230;</a></h3>            </div>
-        </div>
-        </div></div></div><div class="td-next-prev-wrap"><a href="#" class="td-ajax-prev-page ajax-page-disabled" id="prev-page-td_uid_2_578052fe27f38" data-td_block_id="td_uid_2_578052fe27f38"><i class="td-icon-font td-icon-menu-left"></i></a><a href="#"  class="td-ajax-next-page" id="next-page-td_uid_2_578052fe27f38" data-td_block_id="td_uid_2_578052fe27f38"><i class="td-icon-font td-icon-menu-right"></i></a></div><div class="clearfix"></div></div> <!-- ./block1 --></div></div></li>
+    <li class="menu-item menu-item-type-post_type menu-item-object-page td-menu-item td-normal-menu menu-item-70"><a href="/newspaper/?page_id=51">Homepage &#8211; Big Slide</a></li>
+    <li class="menu-item menu-item-type-post_type menu-item-object-page td-menu-item td-normal-menu menu-item-71"><a href="/newspaper/?page_id=52">Homepage &#8211; Less Images</a></li>
 </ul>
 </li>
-<li class="menu-item menu-item-type-custom menu-item-object-custom td-menu-item td-mega-menu menu-item-55"><a href="#">Gadgets</a>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children td-menu-item td-normal-menu menu-item-58"><a href="#">Learn</a>
 <ul class="sub-menu">
-	<li class="menu-item-0"><div class="td-container-border"><div class="td-mega-grid"><div class="td_block_wrap td_block_mega_menu td_uid_8_578052fe32806_rand td-no-subcats td_with_ajax_pagination td-pb-border-top"  data-td-block-uid="td_uid_8_578052fe32806" ><script>var block_td_uid_8_578052fe32806 = new tdBlock();
-block_td_uid_8_578052fe32806.id = "td_uid_8_578052fe32806";
-block_td_uid_8_578052fe32806.atts = '{"limit":"5","sort":"","post_ids":"","tag_slug":"","autors_id":"","installed_post_types":"","category_id":"11","category_ids":"","custom_title":"","custom_url":"","show_child_cat":30,"sub_cat_ajax":"","ajax_pagination":"next_prev","header_color":"","header_text_color":"","ajax_pagination_infinite_stop":"","td_column_number":3,"td_ajax_preloading":"","td_ajax_filter_type":"td_category_ids_filter","td_ajax_filter_ids":"","td_filter_default_txt":"All","color_preset":"","border_top":"","class":"td_uid_8_578052fe32806_rand","offset":"","css":"","live_filter":"","live_filter_cur_post_id":"","live_filter_cur_post_author":""}';
-block_td_uid_8_578052fe32806.td_column_number = "3";
-block_td_uid_8_578052fe32806.block_type = "td_block_mega_menu";
-block_td_uid_8_578052fe32806.post_count = "5";
-block_td_uid_8_578052fe32806.found_posts = "11";
-block_td_uid_8_578052fe32806.header_color = "";
-block_td_uid_8_578052fe32806.ajax_pagination_infinite_stop = "";
-block_td_uid_8_578052fe32806.max_num_pages = "3";
-tdBlocksArray.push(block_td_uid_8_578052fe32806);
-</script><div id=td_uid_8_578052fe32806 class="td_block_inner"><div class="td-mega-row"><div class="td-mega-span">
-        <div class="td_module_mega_menu td_mod_mega_menu">
-            <div class="td-module-image">
-                <div class="td-module-thumb"><a href="/newspaper/?p=136" rel="bookmark" title="How to drive growth through customer support"><img width="218" height="150" class="entry-thumb" src="/newspaper/wp-content/uploads/2016/07/7-218x150.jpg" alt="" title="How to drive growth through customer support"/></a></div>                <a href="/newspaper/?cat=11" class="td-post-category">Gadgets</a>            </div>
-
-            <div class="item-details">
-                <h3 class="entry-title td-module-title"><a href="/newspaper/?p=136" rel="bookmark" title="How to drive growth through customer support">How to drive growth through customer support</a></h3>            </div>
-        </div>
-        </div><div class="td-mega-span">
-        <div class="td_module_mega_menu td_mod_mega_menu">
-            <div class="td-module-image">
-                <div class="td-module-thumb"><a href="/newspaper/?p=121" rel="bookmark" title="Going Beyond Amazon: A New Model for Authors, Retailers, and Publishers"><img width="218" height="150" class="entry-thumb" src="/newspaper/wp-content/uploads/2016/07/10-218x150.jpg" alt="" title="Going Beyond Amazon: A New Model for Authors, Retailers, and Publishers"/></a></div>                <a href="/newspaper/?cat=11" class="td-post-category">Gadgets</a>            </div>
-
-            <div class="item-details">
-                <h3 class="entry-title td-module-title"><a href="/newspaper/?p=121" rel="bookmark" title="Going Beyond Amazon: A New Model for Authors, Retailers, and Publishers">Going Beyond Amazon: A New Model for Authors, Retailers, and Publishers</a></h3>            </div>
-        </div>
-        </div><div class="td-mega-span">
-        <div class="td_module_mega_menu td_mod_mega_menu">
-            <div class="td-module-image">
-                <div class="td-module-thumb"><a href="/newspaper/?p=127" rel="bookmark" title="UK to allow driverless cars on public roads in January"><img width="218" height="150" class="entry-thumb" src="/newspaper/wp-content/uploads/2016/07/14-218x150.jpg" alt="" title="UK to allow driverless cars on public roads in January"/></a></div>                <a href="/newspaper/?cat=11" class="td-post-category">Gadgets</a>            </div>
-
-            <div class="item-details">
-                <h3 class="entry-title td-module-title"><a href="/newspaper/?p=127" rel="bookmark" title="UK to allow driverless cars on public roads in January">UK to allow driverless cars on public roads in January</a></h3>            </div>
-        </div>
-        </div><div class="td-mega-span">
-        <div class="td_module_mega_menu td_mod_mega_menu">
-            <div class="td-module-image">
-                <div class="td-module-thumb"><a href="/newspaper/?p=113" rel="bookmark" title="StreetScore scores a street view based on how safe it looks to a human"><img width="218" height="150" class="entry-thumb" src="/newspaper/wp-content/uploads/2016/07/4-218x150.jpg" alt="" title="StreetScore scores a street view based on how safe it looks to a human"/></a></div>                <a href="/newspaper/?cat=11" class="td-post-category">Gadgets</a>            </div>
-
-            <div class="item-details">
-                <h3 class="entry-title td-module-title"><a href="/newspaper/?p=113" rel="bookmark" title="StreetScore scores a street view based on how safe it looks to a human">StreetScore scores a street view based on how safe it looks&#8230;</a></h3>            </div>
-        </div>
-        </div><div class="td-mega-span">
-        <div class="td_module_mega_menu td_mod_mega_menu">
-            <div class="td-module-image">
-                <div class="td-module-thumb"><a href="/newspaper/?p=89" rel="bookmark" title="50 Tips and Insights About Productivity, Happiness, and Life"><img width="218" height="150" class="entry-thumb" src="/newspaper/wp-content/uploads/2016/07/11-218x150.jpg" alt="" title="50 Tips and Insights About Productivity, Happiness, and Life"/></a></div>                <a href="/newspaper/?cat=11" class="td-post-category">Gadgets</a>            </div>
-
-            <div class="item-details">
-                <h3 class="entry-title td-module-title"><a href="/newspaper/?p=89" rel="bookmark" title="50 Tips and Insights About Productivity, Happiness, and Life">50 Tips and Insights About Productivity, Happiness, and Life</a></h3>            </div>
-        </div>
-        </div></div></div><div class="td-next-prev-wrap"><a href="#" class="td-ajax-prev-page ajax-page-disabled" id="prev-page-td_uid_8_578052fe32806" data-td_block_id="td_uid_8_578052fe32806"><i class="td-icon-font td-icon-menu-left"></i></a><a href="#"  class="td-ajax-next-page" id="next-page-td_uid_8_578052fe32806" data-td_block_id="td_uid_8_578052fe32806"><i class="td-icon-font td-icon-menu-right"></i></a></div><div class="clearfix"></div></div> <!-- ./block1 --></div></div></li>
-</ul>
-</li>
-<li class="menu-item menu-item-type-custom menu-item-object-custom td-menu-item td-mega-menu menu-item-56"><a href="#">Lifestyle</a>
-<ul class="sub-menu">
-	<li class="menu-item-0"><div class="td-container-border"><div class="td-mega-grid"><div class="td_block_wrap td_block_mega_menu td_uid_9_578052fe3782c_rand td_with_ajax_pagination td-pb-border-top"  data-td-block-uid="td_uid_9_578052fe3782c" ><script>var block_td_uid_9_578052fe3782c = new tdBlock();
-block_td_uid_9_578052fe3782c.id = "td_uid_9_578052fe3782c";
-block_td_uid_9_578052fe3782c.atts = '{"limit":4,"sort":"","post_ids":"","tag_slug":"","autors_id":"","installed_post_types":"","category_id":"12","category_ids":"","custom_title":"","custom_url":"","show_child_cat":30,"sub_cat_ajax":"","ajax_pagination":"next_prev","header_color":"","header_text_color":"","ajax_pagination_infinite_stop":"","td_column_number":3,"td_ajax_preloading":"","td_ajax_filter_type":"td_category_ids_filter","td_ajax_filter_ids":"","td_filter_default_txt":"All","color_preset":"","border_top":"","class":"td_uid_9_578052fe3782c_rand","offset":"","css":"","live_filter":"","live_filter_cur_post_id":"","live_filter_cur_post_author":""}';
-block_td_uid_9_578052fe3782c.td_column_number = "3";
-block_td_uid_9_578052fe3782c.block_type = "td_block_mega_menu";
-block_td_uid_9_578052fe3782c.post_count = "4";
-block_td_uid_9_578052fe3782c.found_posts = "39";
-block_td_uid_9_578052fe3782c.header_color = "";
-block_td_uid_9_578052fe3782c.ajax_pagination_infinite_stop = "";
-block_td_uid_9_578052fe3782c.max_num_pages = "10";
-tdBlocksArray.push(block_td_uid_9_578052fe3782c);
-</script><div class="td_mega_menu_sub_cats"><div class="block-mega-child-cats"><a class="cur-sub-cat mega-menu-sub-cat-td_uid_9_578052fe3782c" id="td_uid_10_578052fe38d28" data-td_block_id="td_uid_9_578052fe3782c" data-td_filter_value="" href="/newspaper/?cat=12">All</a><a class="mega-menu-sub-cat-td_uid_9_578052fe3782c"  id="td_uid_11_578052fe38e15" data-td_block_id="td_uid_9_578052fe3782c" data-td_filter_value="13" href="/newspaper/?cat=13">Business</a><a class="mega-menu-sub-cat-td_uid_9_578052fe3782c"  id="td_uid_12_578052fe38ed5" data-td_block_id="td_uid_9_578052fe3782c" data-td_filter_value="14" href="/newspaper/?cat=14">Health &amp; Fitness</a><a class="mega-menu-sub-cat-td_uid_9_578052fe3782c"  id="td_uid_13_578052fe38fa2" data-td_block_id="td_uid_9_578052fe3782c" data-td_filter_value="15" href="/newspaper/?cat=15">Recipes</a><a class="mega-menu-sub-cat-td_uid_9_578052fe3782c"  id="td_uid_14_578052fe39071" data-td_block_id="td_uid_9_578052fe3782c" data-td_filter_value="16" href="/newspaper/?cat=16">Travel</a></div></div><div id=td_uid_9_578052fe3782c class="td_block_inner"><div class="td-mega-row"><div class="td-mega-span">
-        <div class="td_module_mega_menu td_mod_mega_menu">
-            <div class="td-module-image">
-                <div class="td-module-thumb"><a href="/newspaper/?p=147" rel="bookmark" title="Health star ratings Kellogg reveals the cereal"><img width="218" height="150" class="entry-thumb" src="/newspaper/wp-content/uploads/2016/07/3-218x150.jpg" alt="" title="Health star ratings Kellogg reveals the cereal"/></a></div>                <a href="/newspaper/?cat=16" class="td-post-category">Travel</a>            </div>
-
-            <div class="item-details">
-                <h3 class="entry-title td-module-title"><a href="/newspaper/?p=147" rel="bookmark" title="Health star ratings Kellogg reveals the cereal">Health star ratings Kellogg reveals the cereal</a></h3>            </div>
-        </div>
-        </div><div class="td-mega-span">
-        <div class="td_module_mega_menu td_mod_mega_menu">
-            <div class="td-module-image">
-                <div class="td-module-thumb"><a href="/newspaper/?p=143" rel="bookmark" title="Gadget Ogling: Amazon on Fire, Virtual Reality, True Nature and Energy Relief"><img width="218" height="150" class="entry-thumb" src="/newspaper/wp-content/uploads/2016/07/2-218x150.jpg" alt="" title="Gadget Ogling: Amazon on Fire, Virtual Reality, True Nature and Energy Relief"/><span class="td-video-play-ico"><img width="40" height="40" class="td-retina" src="/newspaper/wp-content/themes/Newspaper/images/icons/ico-video-large.png" alt="video"/></span></a></div>                <a href="/newspaper/?cat=15" class="td-post-category">Recipes</a>            </div>
-
-            <div class="item-details">
-                <h3 class="entry-title td-module-title"><a href="/newspaper/?p=143" rel="bookmark" title="Gadget Ogling: Amazon on Fire, Virtual Reality, True Nature and Energy Relief">Gadget Ogling: Amazon on Fire, Virtual Reality, True Nature and Energy&#8230;</a></h3>            </div>
-        </div>
-        </div><div class="td-mega-span">
-        <div class="td_module_mega_menu td_mod_mega_menu">
-            <div class="td-module-image">
-                <div class="td-module-thumb"><a href="/newspaper/?p=145" rel="bookmark" title="Xbox One to launch in China this month after all"><img width="218" height="150" class="entry-thumb" src="/newspaper/wp-content/uploads/2016/07/1-218x150.jpg" alt="" title="Xbox One to launch in China this month after all"/></a></div>                <a href="/newspaper/?cat=12" class="td-post-category">Lifestyle</a>            </div>
-
-            <div class="item-details">
-                <h3 class="entry-title td-module-title"><a href="/newspaper/?p=145" rel="bookmark" title="Xbox One to launch in China this month after all">Xbox One to launch in China this month after all</a></h3>            </div>
-        </div>
-        </div><div class="td-mega-span">
-        <div class="td_module_mega_menu td_mod_mega_menu">
-            <div class="td-module-image">
-                <div class="td-module-thumb"><a href="/newspaper/?p=144" rel="bookmark" title="My work only allows Internet Explorer, so I have to manually"><img width="218" height="150" class="entry-thumb" src="/newspaper/wp-content/uploads/2016/07/4-218x150.jpg" alt="" title="My work only allows Internet Explorer, so I have to manually"/></a></div>                <a href="/newspaper/?cat=14" class="td-post-category">Health &amp; Fitness</a>            </div>
-
-            <div class="item-details">
-                <h3 class="entry-title td-module-title"><a href="/newspaper/?p=144" rel="bookmark" title="My work only allows Internet Explorer, so I have to manually">My work only allows Internet Explorer, so I have to manually</a></h3>            </div>
-        </div>
-        </div></div></div><div class="td-next-prev-wrap"><a href="#" class="td-ajax-prev-page ajax-page-disabled" id="prev-page-td_uid_9_578052fe3782c" data-td_block_id="td_uid_9_578052fe3782c"><i class="td-icon-font td-icon-menu-left"></i></a><a href="#"  class="td-ajax-next-page" id="next-page-td_uid_9_578052fe3782c" data-td_block_id="td_uid_9_578052fe3782c"><i class="td-icon-font td-icon-menu-right"></i></a></div><div class="clearfix"></div></div> <!-- ./block1 --></div></div></li>
-</ul>
-</li>
-<li class="menu-item menu-item-type-custom menu-item-object-custom td-menu-item td-mega-menu menu-item-57"><a href="#">Video</a>
-<ul class="sub-menu">
-	<li class="menu-item-0"><div class="td-container-border"><div class="td-mega-grid"><div class="td_block_wrap td_block_mega_menu td_uid_15_578052fe3c4b0_rand td-no-subcats td_with_ajax_pagination td-pb-border-top"  data-td-block-uid="td_uid_15_578052fe3c4b0" ><script>var block_td_uid_15_578052fe3c4b0 = new tdBlock();
-block_td_uid_15_578052fe3c4b0.id = "td_uid_15_578052fe3c4b0";
-block_td_uid_15_578052fe3c4b0.atts = '{"limit":"5","sort":"","post_ids":"","tag_slug":"","autors_id":"","installed_post_types":"","category_id":"17","category_ids":"","custom_title":"","custom_url":"","show_child_cat":30,"sub_cat_ajax":"","ajax_pagination":"next_prev","header_color":"","header_text_color":"","ajax_pagination_infinite_stop":"","td_column_number":3,"td_ajax_preloading":"","td_ajax_filter_type":"td_category_ids_filter","td_ajax_filter_ids":"","td_filter_default_txt":"All","color_preset":"","border_top":"","class":"td_uid_15_578052fe3c4b0_rand","offset":"","css":"","live_filter":"","live_filter_cur_post_id":"","live_filter_cur_post_author":""}';
-block_td_uid_15_578052fe3c4b0.td_column_number = "3";
-block_td_uid_15_578052fe3c4b0.block_type = "td_block_mega_menu";
-block_td_uid_15_578052fe3c4b0.post_count = "5";
-block_td_uid_15_578052fe3c4b0.found_posts = "15";
-block_td_uid_15_578052fe3c4b0.header_color = "";
-block_td_uid_15_578052fe3c4b0.ajax_pagination_infinite_stop = "";
-block_td_uid_15_578052fe3c4b0.max_num_pages = "3";
-tdBlocksArray.push(block_td_uid_15_578052fe3c4b0);
-</script><div id=td_uid_15_578052fe3c4b0 class="td_block_inner"><div class="td-mega-row"><div class="td-mega-span">
-        <div class="td_module_mega_menu td_mod_mega_menu">
-            <div class="td-module-image">
-                <div class="td-module-thumb"><a href="/newspaper/?p=146" rel="bookmark" title="SpringFest One Fashion Show at the University of Michigan"><img width="218" height="150" class="entry-thumb" src="/newspaper/wp-content/uploads/2016/07/18-218x150.jpg" alt="" title="SpringFest One Fashion Show at the University of Michigan"/></a></div>                <a href="/newspaper/?cat=17" class="td-post-category">Video</a>            </div>
-
-            <div class="item-details">
-                <h3 class="entry-title td-module-title"><a href="/newspaper/?p=146" rel="bookmark" title="SpringFest One Fashion Show at the University of Michigan">SpringFest One Fashion Show at the University of Michigan</a></h3>            </div>
-        </div>
-        </div><div class="td-mega-span">
-        <div class="td_module_mega_menu td_mod_mega_menu">
-            <div class="td-module-image">
-                <div class="td-module-thumb"><a href="/newspaper/?p=139" rel="bookmark" title="Creative decorating with houseplants, from floor to ceiling"><img width="218" height="150" class="entry-thumb" src="/newspaper/wp-content/uploads/2016/07/17-218x150.jpg" alt="" title="Creative decorating with houseplants, from floor to ceiling"/></a></div>                <a href="/newspaper/?cat=17" class="td-post-category">Video</a>            </div>
-
-            <div class="item-details">
-                <h3 class="entry-title td-module-title"><a href="/newspaper/?p=139" rel="bookmark" title="Creative decorating with houseplants, from floor to ceiling">Creative decorating with houseplants, from floor to ceiling</a></h3>            </div>
-        </div>
-        </div><div class="td-mega-span">
-        <div class="td_module_mega_menu td_mod_mega_menu">
-            <div class="td-module-image">
-                <div class="td-module-thumb"><a href="/newspaper/?p=132" rel="bookmark" title="How To Use Basic Design Principles To Decorate Your Home"><img width="218" height="150" class="entry-thumb" src="/newspaper/wp-content/uploads/2016/07/16-218x150.jpg" alt="" title="How To Use Basic Design Principles To Decorate Your Home"/></a></div>                <a href="/newspaper/?cat=17" class="td-post-category">Video</a>            </div>
-
-            <div class="item-details">
-                <h3 class="entry-title td-module-title"><a href="/newspaper/?p=132" rel="bookmark" title="How To Use Basic Design Principles To Decorate Your Home">How To Use Basic Design Principles To Decorate Your Home</a></h3>            </div>
-        </div>
-        </div><div class="td-mega-span">
-        <div class="td_module_mega_menu td_mod_mega_menu">
-            <div class="td-module-image">
-                <div class="td-module-thumb"><a href="/newspaper/?p=125" rel="bookmark" title="Bayside Ranch a perfect canvas for interior designer 2016"><img width="218" height="150" class="entry-thumb" src="/newspaper/wp-content/uploads/2016/07/15-218x150.jpg" alt="" title="Bayside Ranch a perfect canvas for interior designer 2016"/></a></div>                <a href="/newspaper/?cat=17" class="td-post-category">Video</a>            </div>
-
-            <div class="item-details">
-                <h3 class="entry-title td-module-title"><a href="/newspaper/?p=125" rel="bookmark" title="Bayside Ranch a perfect canvas for interior designer 2016">Bayside Ranch a perfect canvas for interior designer 2016</a></h3>            </div>
-        </div>
-        </div><div class="td-mega-span">
-        <div class="td_module_mega_menu td_mod_mega_menu">
-            <div class="td-module-image">
-                <div class="td-module-thumb"><a href="/newspaper/?p=111" rel="bookmark" title="Design better graphics with The Premium Photoshop Add-On Bundle"><img width="218" height="150" class="entry-thumb" src="/newspaper/wp-content/uploads/2016/07/17-218x150.jpg" alt="" title="Design better graphics with The Premium Photoshop Add-On Bundle"/></a></div>                <a href="/newspaper/?cat=17" class="td-post-category">Video</a>            </div>
-
-            <div class="item-details">
-                <h3 class="entry-title td-module-title"><a href="/newspaper/?p=111" rel="bookmark" title="Design better graphics with The Premium Photoshop Add-On Bundle">Design better graphics with The Premium Photoshop Add-On Bundle</a></h3>            </div>
-        </div>
-        </div></div></div><div class="td-next-prev-wrap"><a href="#" class="td-ajax-prev-page ajax-page-disabled" id="prev-page-td_uid_15_578052fe3c4b0" data-td_block_id="td_uid_15_578052fe3c4b0"><i class="td-icon-font td-icon-menu-left"></i></a><a href="#"  class="td-ajax-next-page" id="next-page-td_uid_15_578052fe3c4b0" data-td_block_id="td_uid_15_578052fe3c4b0"><i class="td-icon-font td-icon-menu-right"></i></a></div><div class="clearfix"></div></div> <!-- ./block1 --></div></div></li>
-</ul>
-</li>
-<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children td-menu-item td-normal-menu menu-item-58"><a href="#">Homepages</a>
-<ul class="sub-menu">
-	<li class="menu-item menu-item-type-post_type menu-item-object-page td-menu-item td-normal-menu menu-item-59"><a href="/newspaper/?page_id=40">Homepage &#8211; Fashion</a></li>
-	<li class="menu-item menu-item-type-post_type menu-item-object-page td-menu-item td-normal-menu menu-item-60"><a href="/newspaper/?page_id=41">Homepage &#8211; Blog</a></li>
-	<li class="menu-item menu-item-type-post_type menu-item-object-page td-menu-item td-normal-menu menu-item-61"><a href="/newspaper/?page_id=42">Homepage &#8211; Video</a></li>
-	<li class="menu-item menu-item-type-post_type menu-item-object-page td-menu-item td-normal-menu menu-item-62"><a href="/newspaper/?page_id=43">Homepage &#8211; Tech</a></li>
-	<li class="menu-item menu-item-type-post_type menu-item-object-page td-menu-item td-normal-menu menu-item-63"><a href="/newspaper/?page_id=44">Homepage &#8211; Sport</a></li>
-	<li class="menu-item menu-item-type-post_type menu-item-object-page td-menu-item td-normal-menu menu-item-64"><a href="/newspaper/?page_id=45">Homepage &#8211; Full Post Featured</a></li>
-	<li class="menu-item menu-item-type-post_type menu-item-object-page td-menu-item td-normal-menu menu-item-65"><a href="/newspaper/?page_id=46">Homepage &#8211; Infinite Scroll</a></li>
-	<li class="menu-item menu-item-type-post_type menu-item-object-page td-menu-item td-normal-menu menu-item-66"><a href="/newspaper/?page_id=47">Homepage &#8211; Newspaper</a></li>
-	<li class="menu-item menu-item-type-post_type menu-item-object-page td-menu-item td-normal-menu menu-item-67"><a href="/newspaper/?page_id=48">Homepage &#8211; Newsmag</a></li>
-	<li class="menu-item menu-item-type-post_type menu-item-object-page td-menu-item td-normal-menu menu-item-68"><a href="/newspaper/?page_id=49">Homepage &#8211; Magazine</a></li>
-	<li class="menu-item menu-item-type-post_type menu-item-object-page td-menu-item td-normal-menu menu-item-69"><a href="/newspaper/?page_id=50">Homepage &#8211; Loop</a></li>
 	<li class="menu-item menu-item-type-post_type menu-item-object-page td-menu-item td-normal-menu menu-item-70"><a href="/newspaper/?page_id=51">Homepage &#8211; Big Slide</a></li>
 	<li class="menu-item menu-item-type-post_type menu-item-object-page td-menu-item td-normal-menu menu-item-71"><a href="/newspaper/?page_id=52">Homepage &#8211; Less Images</a></li>
 </ul>
 </li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page page_item page-item-39 current_page_item menu-item-first td-menu-item td-normal-menu menu-item-53"><a href="/">Find an Attorney</a></li>
+
+<li class="menu-item menu-item-type-post_type menu-item-object-page page_item page-item-39 current_page_item menu-item-first td-menu-item td-normal-menu menu-item-53"><a href="/">Become a Member</a></li>
+
 </ul></div></div>
 
 
@@ -799,12 +568,12 @@ tdBlocksArray.push(block_td_uid_16_578052fe54f7c);
                                   data-moving="right"
                                   data-control-start=""><i class="td-icon-menu-right"></i></a></div></div></div><!--./row-fluid--></div></div> <!-- ./block --><div class="td_block_wrap td_block_big_grid_3 td_uid_17_578052fe5b5dd_rand td-grid-style-1 td-hover-1 td-pb-border-top"  data-td-block-uid="td_uid_17_578052fe5b5dd" ><div id=td_uid_17_578052fe5b5dd class="td_block_inner"><div class="td-big-grid-wrapper">
         <div class="td_module_mx5 td-animation-stack td-big-grid-post-0 td-big-grid-post td-big-thumb">
-            <div class="td-module-thumb"><a href="/newspaper/?p=76" rel="bookmark" title="Simple form creation and storage, built for developers."><img width="534" height="462" class="entry-thumb" src="/newspaper/wp-content/uploads/2016/07/13-534x462.jpg" alt="" title="Simple form creation and storage, built for developers."/></a></div>            <div class="td-meta-info-container">
+            <div class="td-module-thumb"><a href="#" rel="bookmark" title="Welcome to NCDD"><img width="534" height="462" class="entry-thumb" src="/newspaper/assets/welcome.png" alt="" title="Welcome to NCDD"/></a></div>            <div class="td-meta-info-container">
                 <div class="td-meta-align">
                     <div class="td-big-grid-meta">
-                        <a href="/newspaper/?cat=14" class="td-post-category">Health &amp; Fitness</a>                        <h3 class="entry-title td-module-title"><a href="/newspaper/?p=76" rel="bookmark" title="Simple form creation and storage, built for developers.">Simple form creation and storage, built for developers.</a></h3>                    </div>
+                        <h3 class="entry-title td-module-title"><a href="/newspaper/?p=76" rel="bookmark" title="Welcome to NCDD">Welcome to the NCDD</a></h3>                    </div>
                     <div class="td-module-meta-info">
-                        <span class="td-post-author-name"><a href="/newspaper/?author=1">newspaper</a> <span>-</span> </span>                        <span class="td-post-date"><time class="entry-date updated td-module-date" datetime="2016-07-09T01:12:18+00:00" >July 9, 2016</time></span>                    </div>
+                        <span class="td-post-author-name"><a href="/newspaper/?author=1">Justice Through Knowledge</a> <span>-</span> </span>                        <span class="td-post-date"><time class="entry-date updated td-module-date" datetime="2016-07-09T01:12:18+00:00" >Est. 1995</time></span>                    </div>
                 </div>
             </div>
 
@@ -812,10 +581,10 @@ tdBlocksArray.push(block_td_uid_16_578052fe54f7c);
 
         <div class="td-big-grid-scroll">
         <div class="td_module_mx11 td-animation-stack td-big-grid-post-1 td-big-grid-post td-medium-thumb">
-            <div class="td-module-thumb"><a href="/newspaper/?p=77" rel="bookmark" title="Robots helped inspire deep learning might become"><img width="533" height="261" class="entry-thumb" src="/newspaper/wp-content/uploads/2016/07/9-533x261.jpg" alt="" title="Robots helped inspire deep learning might become"/><span class="td-video-play-ico"><img width="40" height="40" class="td-retina" src="/newspaper/wp-content/themes/Newspaper/images/icons/ico-video-large.png" alt="video"/></span></a></div>            <div class="td-meta-info-container">
+            <div class="td-module-thumb"><a href="#" rel="bookmark" title="Join NCDD Apply Today"><img width="533" height="261" class="entry-thumb" src="/newspaper/assets/badges.png" alt="" title="Join NCDD Apply Today"/></a></div>            <div class="td-meta-info-container">
                 <div class="td-meta-align">
                     <div class="td-big-grid-meta">
-                        <a href="/newspaper/?cat=15" class="td-post-category">Recipes</a>                        <h3 class="entry-title td-module-title"><a href="/newspaper/?p=77" rel="bookmark" title="Robots helped inspire deep learning might become">Robots helped inspire deep learning might become</a></h3>                    </div>
+                        <h3 class="entry-title td-module-title"><a href="#" rel="bookmark" title="Join NCDD Apply Today">Join NCDD Apply Today</a></h3>                    </div>
                 </div>
             </div>
 
@@ -823,10 +592,10 @@ tdBlocksArray.push(block_td_uid_16_578052fe54f7c);
 
         
         <div class="td_module_mx6 td-animation-stack td-big-grid-post-2 td-big-grid-post td-small-thumb">
-            <div class="td-module-thumb"><a href="/newspaper/?p=78" rel="bookmark" title="Express Recipes: How to make Creamy Papaya Raita"><img width="265" height="198" class="entry-thumb" src="/newspaper/wp-content/uploads/2016/07/15-265x198.jpg" alt="" title="Express Recipes: How to make Creamy Papaya Raita"/></a></div>            <div class="td-meta-info-container">
+            <div class="td-module-thumb"><a href="#" rel="bookmark" title="American Bar Association Recognized"><img width="265" height="198" class="entry-thumb" src="/newspaper/assets/certificate.png" alt="" title="American Bar Association Recognized"/></a></div>            <div class="td-meta-info-container">
                 <div class="td-meta-align">
                     <div class="td-big-grid-meta">
-                        <a href="/newspaper/?cat=16" class="td-post-category">Travel</a>                        <h3 class="entry-title td-module-title"><a href="/newspaper/?p=78" rel="bookmark" title="Express Recipes: How to make Creamy Papaya Raita">Express Recipes: How to make Creamy Papaya Raita</a></h3>                    </div>
+                        <h3 class="entry-title td-module-title"><a href="#" rel="bookmark" title="American Bar Association Recognized">American Bar Association Recognized</a></h3>                    </div>
                 </div>
             </div>
 
@@ -835,10 +604,10 @@ tdBlocksArray.push(block_td_uid_16_578052fe54f7c);
 
         
         <div class="td_module_mx6 td-animation-stack td-big-grid-post-3 td-big-grid-post td-small-thumb">
-            <div class="td-module-thumb"><a href="/newspaper/?p=79" rel="bookmark" title="Apple Server Most Powerful rack optimized server"><img width="265" height="198" class="entry-thumb" src="/newspaper/wp-content/uploads/2016/07/10-265x198.jpg" alt="" title="Apple Server Most Powerful rack optimized server"/></a></div>            <div class="td-meta-info-container">
+            <div class="td-module-thumb"><a href="" rel="bookmark" title="Mission Statement"><img width="265" height="198" class="entry-thumb" src="/newspaper/assets/mission-statement.png" alt="" title="Mission Statement"/></a></div>            <div class="td-meta-info-container">
                 <div class="td-meta-align">
                     <div class="td-big-grid-meta">
-                        <a href="/newspaper/?cat=6" class="td-post-category">Fashion</a>                        <h3 class="entry-title td-module-title"><a href="/newspaper/?p=79" rel="bookmark" title="Apple Server Most Powerful rack optimized server">Apple Server Most Powerful rack optimized server</a></h3>                    </div>
+                        <h3 class="entry-title td-module-title"><a href="#" rel="bookmark" title="Mission Statement">Mission Statement</a></h3>                    </div>
                 </div>
             </div>
 
