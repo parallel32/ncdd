@@ -442,7 +442,7 @@ Header style 1
     </h1>            </div>
             <div class="td-header-sp-recs">
                 <div class="td-header-rec-wrap">
-    <div class="td-a-rec td-a-rec-id-header  "><div class="td-all-devices"><a href="#"><img src="/newspaper/wp-content/uploads/2016/07/rec728.jpg"/></a></div></div>
+    <div class="td-a-rec td-a-rec-id-header  "><div class="td-all-devices"><a href="#"><img src="/newspaper/assets/upcomingseminar.png"/></a></div></div>
 </div>            </div>
         </div>
     </div>
@@ -1972,75 +1972,11 @@ block_td_uid_81_578052ff92f0f.header_color = "";
 block_td_uid_81_578052ff92f0f.ajax_pagination_infinite_stop = "";
 block_td_uid_81_578052ff92f0f.max_num_pages = "3";
 tdBlocksArray.push(block_td_uid_81_578052ff92f0f);
-</script><h4 class="block-title"><span>EDITOR PICKS</span></h4><div id=td_uid_81_578052ff92f0f class="td_block_inner">
-
-	<div class="td-block-span12">
-
-        <div class="td_module_6 td_module_wrap td-animation-stack">
-
-        <div class="td-module-thumb"><a href="/newspaper/?p=76" rel="bookmark" title="Simple form creation and storage, built for developers."><img width="100" height="70" class="entry-thumb" src="/newspaper/wp-content/uploads/2016/07/13-100x70.jpg" alt="" title="Simple form creation and storage, built for developers."/></a></div>
-        <div class="item-details">
-            <h3 class="entry-title td-module-title"><a href="/newspaper/?p=76" rel="bookmark" title="Simple form creation and storage, built for developers.">Simple form creation and storage, built for developers.</a></h3>            <div class="td-module-meta-info">
-                                                <span class="td-post-date"><time class="entry-date updated td-module-date" datetime="2016-07-09T01:12:18+00:00" >July 9, 2016</time></span>                            </div>
-        </div>
-
-        </div>
-
-        
-	</div> <!-- ./td-block-span12 -->
-
-	<div class="td-block-span12">
-
-        <div class="td_module_6 td_module_wrap td-animation-stack">
-
-        <div class="td-module-thumb"><a href="/newspaper/?p=77" rel="bookmark" title="Robots helped inspire deep learning might become"><img width="100" height="70" class="entry-thumb" src="/newspaper/wp-content/uploads/2016/07/9-100x70.jpg" alt="" title="Robots helped inspire deep learning might become"/><span class="td-video-play-ico td-video-small"><img width="20" height="20" class="td-retina" src="/newspaper/wp-content/themes/Newspaper/images/icons/video-small.png" alt="video"/></span></a></div>
-        <div class="item-details">
-            <h3 class="entry-title td-module-title"><a href="/newspaper/?p=77" rel="bookmark" title="Robots helped inspire deep learning might become">Robots helped inspire deep learning might become</a></h3>            <div class="td-module-meta-info">
-                                                <span class="td-post-date"><time class="entry-date updated td-module-date" datetime="2016-07-09T01:12:18+00:00" >July 9, 2016</time></span>                            </div>
-        </div>
-
-        </div>
-
-        
-	</div> <!-- ./td-block-span12 -->
-
-	<div class="td-block-span12">
-
-        <div class="td_module_6 td_module_wrap td-animation-stack">
-
-        <div class="td-module-thumb"><a href="/newspaper/?p=78" rel="bookmark" title="Express Recipes: How to make Creamy Papaya Raita"><img width="100" height="70" class="entry-thumb" src="/newspaper/wp-content/uploads/2016/07/15-100x70.jpg" alt="" title="Express Recipes: How to make Creamy Papaya Raita"/></a></div>
-        <div class="item-details">
-            <h3 class="entry-title td-module-title"><a href="/newspaper/?p=78" rel="bookmark" title="Express Recipes: How to make Creamy Papaya Raita">Express Recipes: How to make Creamy Papaya Raita</a></h3>            <div class="td-module-meta-info">
-                                                <span class="td-post-date"><time class="entry-date updated td-module-date" datetime="2016-07-09T01:12:18+00:00" >July 9, 2016</time></span>                            </div>
-        </div>
-
-        </div>
-
-        
-	</div> <!-- ./td-block-span12 --></div></div> <!-- ./block -->                            </div>
-
-            <div class="td-pb-span4">
-                <div class="td_block_wrap td_block_7 td_uid_82_578052ff97325_rand td-pb-border-top"  data-td-block-uid="td_uid_82_578052ff97325" ><script>var block_td_uid_82_578052ff97325 = new tdBlock();
-block_td_uid_82_578052ff97325.id = "td_uid_82_578052ff97325";
-block_td_uid_82_578052ff97325.atts = '{"limit":3,"sort":"popular","post_ids":"","tag_slug":"","autors_id":"","installed_post_types":"","category_id":"","category_ids":"","custom_title":"POPULAR POSTS","custom_url":"","show_child_cat":"","sub_cat_ajax":"","ajax_pagination":"","header_color":"","header_text_color":"","ajax_pagination_infinite_stop":"","td_column_number":1,"td_ajax_preloading":"","td_ajax_filter_type":"","td_ajax_filter_ids":"","td_filter_default_txt":"All","color_preset":"","border_top":"","class":"td_uid_82_578052ff97325_rand","offset":"","css":"","live_filter":"","live_filter_cur_post_id":"","live_filter_cur_post_author":""}';
-block_td_uid_82_578052ff97325.td_column_number = "1";
-block_td_uid_82_578052ff97325.block_type = "td_block_7";
-block_td_uid_82_578052ff97325.post_count = "0";
-block_td_uid_82_578052ff97325.found_posts = "0";
-block_td_uid_82_578052ff97325.header_color = "";
-block_td_uid_82_578052ff97325.ajax_pagination_infinite_stop = "";
-block_td_uid_82_578052ff97325.max_num_pages = "0";
-tdBlocksArray.push(block_td_uid_82_578052ff97325);
-</script><h4 class="block-title"><span>POPULAR POSTS</span></h4><div id=td_uid_82_578052ff97325 class="td_block_inner"></div></div> <!-- ./block -->                            </div>
-
-            <div class="td-pb-span4">
-                <div class="td_block_wrap td_block_popular_categories td_uid_83_578052ff9febf_rand widget widget_categories td-pb-border-top"  data-td-block-uid="td_uid_83_578052ff9febf" ><h4 class="block-title"><span>POPULAR CATEGORY</span></h4><ul class="td-pb-padding-side"><li><a href="/newspaper/?cat=16">Travel<span class="td-cat-no">15</span></a></li><li><a href="/newspaper/?cat=17">Video<span class="td-cat-no">15</span></a></li><li><a href="/newspaper/?cat=11">Gadgets<span class="td-cat-no">11</span></a></li><li><a href="/newspaper/?cat=12">Lifestyle<span class="td-cat-no">11</span></a></li><li><a href="/newspaper/?cat=13">Business<span class="td-cat-no">11</span></a></li><li><a href="/newspaper/?cat=14">Health &amp; Fitness<span class="td-cat-no">11</span></a></li><li><a href="/newspaper/?cat=15">Recipes<span class="td-cat-no">11</span></a></li><li><a href="/newspaper/?cat=7">New Look 2015<span class="td-cat-no">10</span></a></li><li><a href="/newspaper/?cat=8">Street Fashion<span class="td-cat-no">10</span></a></li></ul></div> <!-- ./block -->                            </div>
-        </div>
-    </div>
+</script>
     <div class="td-footer-bottom-full">
         <div class="td-container">
             <div class="td-pb-row">
-                <div class="td-pb-span3"><aside class="footer-logo-wrap"><a href="#"><img class="td-retina-data" src="/newspaper/assets/logo-mobile.png" data-retina="/newspaper/assets/logo-mobile.png" alt="" title=""/></a></aside></div><div class="td-pb-span5"><aside class="footer-text-wrap"><div class="block-title"><span>ABOUT US</span></div>Newspaper is your news, entertainment, music fashion website. We provide you with the latest breaking news and videos straight from the entertainment industry.<div class="footer-email-wrap">Contact us: <a href="mailto:contact@yoursite.com">contact@yoursite.com</a></div></aside></div><div class="td-pb-span4"><aside class="footer-social-wrap td-social-style-2"><div class="block-title"><span>FOLLOW US</span></div>
+                <div class="td-pb-span3"><aside class="footer-logo-wrap"><a href="#"><img class="td-retina-data" src="/newspaper/assets/logo-mobile.png" data-retina="/newspaper/assets/logo-mobile.png" alt="" title=""/></a></aside></div><div class="td-pb-span5"><aside class="footer-text-wrap"><div class="block-title"><span>ABOUT US</span></div>The National College for DUI Defense®, Inc. (NCDD) is a professional, non-profit corporation dedicated to the improvement of the criminal defense bar, and to the dissemination of information to the public about DUI Defense Law as a specialty area of law practice.<div class="footer-email-wrap">Contact us: <a href="mailto:rhea@ncdd.com">rhea@ncdd.com</a></div></aside></div><div class="td-pb-span4"><aside class="footer-social-wrap td-social-style-2"><div class="block-title"><span>FOLLOW US</span></div>
         <span class="td-social-icon-wrap">
             <a target="_blank" href="#" title="Facebook">
                 <i class="td-icon-font td-icon-facebook"></i>
@@ -2052,13 +1988,8 @@ tdBlocksArray.push(block_td_uid_82_578052ff97325);
             </a>
         </span>
         <span class="td-social-icon-wrap">
-            <a target="_blank" href="#" title="Vimeo">
-                <i class="td-icon-font td-icon-vimeo"></i>
-            </a>
-        </span>
-        <span class="td-social-icon-wrap">
-            <a target="_blank" href="#" title="VKontakte">
-                <i class="td-icon-font td-icon-vk"></i>
+            <a target="_blank" href="#" title="Google Plus">
+                <i class="td-icon-font td-icon-googleplus"></i>
             </a>
         </span>
         <span class="td-social-icon-wrap">
@@ -2082,7 +2013,7 @@ tdBlocksArray.push(block_td_uid_82_578052ff97325);
 </ul></div>                </div>
 
                 <div class="td-pb-span5 td-sub-footer-copy">
-                    &copy; Newspaper WordPress Theme by TagDiv                </div>
+                    &copy; The National College for DUI Defense  </div>
             </div>
         </div>
     </div>
