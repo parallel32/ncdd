@@ -15,11 +15,30 @@
         		window.amount = (window.gsix_amount-window.gsix_prorated == window.gsix_amount) ? window.gsix_amount : window.gsix_prorated; 
         		$('.payment.amount').val(amount);
         		$('.payment.amount').html(amount+' - '+window.gsix_message);
+
+        		// here
+	        	if($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').length > 0 && window.promocodeisvalidmemberhsip == 'yes'){
+	        		
+	        		window.amount = $('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val(); 
+	        		$('.payment.amount').val($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val());
+	        		$('.payment.amount').html($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val()+' - '+window.gsix_message);	
+	        	}
         	}else if (now - yilp < 6){
         		window.amount = (window.lsix_amount-window.lsix_prorated == window.lsix_amount) ? window.lsix_amount : window.lsix_prorated; 
         		$('.payment.amount').val(amount);
         		$('.payment.amount').html(amount+' - '+window.lsix_message);
+
+        		// here
+	        	if($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').length > 0 && window.promocodeisvalidmemberhsip == 'yes'){
+	        		
+	        		window.amount = $('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val(); 
+	        		$('.payment.amount').val($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val());
+	        		$('.payment.amount').html($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val()+' - '+window.lsix_message);	
+	        	}
         	}
+
+        	
+
         }else{
         	the_element.addClass('error');
    			if(the_element.find('.help-block.error').length == 0){
@@ -35,6 +54,13 @@
     		$('.payment.amount').val(amount);
     		$('.payment.amount').html(amount+' - '+window.pd_message);
     		
+    		/// herererer
+    		if($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').length > 0 && window.promocodeisvalidmemberhsip == 'yes'){
+    			
+        		window.amount = $('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val(); 
+        		$('.payment.amount').val($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val());
+        		$('.payment.amount').html($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val()+' - '+window.pd_message);	
+        	}
     	}
 		if($('#saw-form .promocode').val().length > 0){
 			promocodelogic();
@@ -73,14 +99,35 @@
         	if(now - yilp >= 6){
         		$('.payment.amount').val(window.amount);
         		$('.payment.amount').html(window.amount+' - '+window.gsix_message+promo_message);
+
+        		// here
+	        	if($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').length > 0 && window.promocodeisvalidmemberhsip == 'yes'){
+	        		
+	        		$('.payment.amount').val($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val());
+	        		$('.payment.amount').html($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val()+' - '+window.gsix_message+promo_message);	
+	        	}
         	}else if (now - yilp < 6){
         		$('.payment.amount').val(window.amount);
         		$('.payment.amount').html(window.amount+' - '+window.lsix_message+promo_message);
+        		// here
+	        	if($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').length > 0 && window.promocodeisvalidmemberhsip == 'yes'){
+	        		
+	        		$('.payment.amount').val($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val());
+	        		$('.payment.amount').html($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val()+' - '+window.lsix_message+promo_message);	
+	        	}
         	}
 
         	if($('#saw-form .publicDefender').val() == 'yes'){
         		$('.payment.amount').val((window.pd_amount-window.pd_prorated == window.pd_amount) ? window.pd_amount : window.pd_prorated);
         		$('.payment.amount').html((window.pd_amount-window.pd_prorated == window.pd_amount) ? window.pd_amount : window.pd_prorated+' - '+window.pd_message+promo_message);
+
+        		// here
+	        	if($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').length > 0 && window.promocodeisvalidmemberhsip == 'yes'){
+	        		
+	        		$('.payment.amount').val($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val());
+	        		$('.payment.amount').html($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val()+' - '+window.pd_message+promo_message);	
+	        	}
+
         		//is promocode valud for membership restrictions
         		if(the_element.find('.help-block.error').length > 0){
 	   				the_element.find('.help-block.error').html(the_element.find('.help-block.error').html()+' ')
@@ -101,6 +148,8 @@
     		$('.payment.amount').html('0'+' - Trial membership.');
     		$('#payment-information').hide();
     	}
+
+
 	};
 	function newSustainingMemberAdd (){
 		
@@ -190,6 +239,7 @@
 			   ,postOnSuccess:function(responseObj){
 			   		var the_element = $('.control-group :input.promocode').parents('.control-group');
 			   		if(responseObj.valid == 'yes'){
+			   			window.promocodeisvalidmemberhsip = 'yes';
 			   			$('#promocodetype').val(responseObj.type);
 			   			the_element.addClass('success');
 			   			the_element.removeClass('error');
@@ -209,6 +259,7 @@
 			   			}
 			   		}
 			   		if(responseObj.valid == 'no'){
+			   			window.promocodeisvalidmemberhsip = 'no';
 			   			$('#promocodetype').val('invalid');
 			   			the_element.find('.help-block.success').remove();
 						the_element.removeClass('success');
@@ -221,6 +272,7 @@
 			   				the_element.append('<span for="promocode" class="help-block error " style="">'+responseObj.message+'</span>');				   				
 			   			}
 			   		}
+			   		promocodelogic();
 			   }
 			});
 		}, 500);

@@ -218,6 +218,65 @@
                            <!--/span-->
                         </div>
 
+
+
+
+
+
+
+
+
+
+                        <h3 class="form-section text-info"><strong>Membership Promotion yes/no</strong></h3>
+                        <p>Is there a membership promotion associated with the promotion?  If so, set this to yes and fill in the duration, dollar amount to be paid.  This overrides prorates and any other membership fee.</p>
+                        <div class="row-fluid">
+                           <div class="span12 ">
+                              <div class="control-group ">
+                                 <label class="control-label"></label>
+                                 <div class="controls">
+                                    <select name="doc[freeMembership]" class="span10 m-wrap forum" data-placeholder="" tabindex="1">
+                                       <option <?=(!empty($this->vars['promotion']) && $this->vars['promotion']['freeMembership'] == 'yes')? 'selected' : ''?> value="yes">Yes</option>
+                                       <option <?=(!empty($this->vars['promotion']) && $this->vars['promotion']['freeMembership'] == 'no')? 'selected' : ''?> value="no">No</option>
+                                    </select>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        <h3 class="form-section text-info"><strong>Membership Dollar Value</strong></h3>
+                        <p>Enter the value of the membership promotion as the dollar amount as a whole number.</p>
+                        <div class="row-fluid">
+                           <div class="span12 ">
+                              <div class="control-group ">
+                                 <label class="control-label"></label>
+                                 <div class="controls">
+                                    <input type="text" name="doc[freeMembershipPmtAmt]" value="<?=(!empty($this->vars['promotion']) && array_key_exists('freeMembershipPmtAmt',$this->vars['promotion'])) ? $this->vars['promotion']['freeMembershipPmtAmt']: ''?>" class="m-wrap span10 freeMembershipPmtAmt">
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        <h3 class="form-section text-info"><strong>Membership Renewal Date</strong></h3>
+                        <p>Simply type in a new date for the renewal date. E.g.: Feb 15, 2017.  Meaning it will renew at 11:59pm on this date.</p>
+                        <div class="row-fluid">
+                           <div class="span12 ">
+                              <div class="control-group ">
+                                 <label class="control-label"></label>
+                                 <div class="controls">
+                                    <input type="text" name="doc[freeMembershipRenewalDate]" value="<?=(!empty($this->vars['promotion']) && array_key_exists('freeMembershipRenewalDate',$this->vars['promotion'])) ? $this->vars['promotion']['freeMembershipRenewalDate']['fullMonth']: ''?>" class="m-wrap span10 freeMembershipRenewalDate">
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
+                        
+                        
+
+
+
+
+
+
                         <!-- ERROR -->
                         <div class="alert alert-error hide">
                            <button class="close" data-dismiss="alert"></button>

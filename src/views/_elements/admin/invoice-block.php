@@ -152,6 +152,13 @@
                   $amount = $application['membershipDues'];
                else:
                ?>
+                <? if(!empty($application['promocode']) && !empty($promo_res) && array_key_exists('freeMembership', $promo_res) && $promo_res['freeMembership'] == 'yes') :
+                    // do no pro-rated discounts && amount is 
+                    $amount = $promo_res['freeMembershipPmtAmt'];
+                  else:
+
+                ?>
+              
                         <? if($pro_rated_membership_dues['q'] > 1): 
                            $amount = $pro_rated_membership_dues['a'];
                         ?>
@@ -165,6 +172,7 @@
                         <? else: 
                            $amount = $application['membershipDues'];
                          endif; ?>
+                  <? endif; ?>
                <? endif; ?>
                          <?
                         $discount3 = 0;

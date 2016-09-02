@@ -272,11 +272,11 @@ $app->post('/application/promocodeisvalidmemberhsip', function (Request $request
 		if($promo->isValidMembership($doc['promocode'],$mem)){
 			$valid = 'yes';
 			$type = strtoupper($doc['promocode']);
-	    	$message = 'Valid for General Members.';
+	    	$message = 'Promotion code is valid.';
 		}else{
 			$valid = 'no';
 			$type='';
-	    	$message = 'Unfortunately, this promotion is not valid for Public Defenders.';
+	    	$message = 'Unfortunately, this promotion is not valid for a '.Model\Member::$membershipReversed[$mem].'.';
 		}
 	}else{
 		$valid = 'no';
@@ -652,8 +652,15 @@ error_log('trial:'.print_r($trial,true));
 		endif;
 		
 		if($is_admin == false):
+			// check if this is a membership type promotion and if so override the payment amount with that of the promotion
+		
+			if(!empty($promo_res) && array_key_exists('freeMembership', $promo_res) && $promo_res['freeMembership'] == 'yes'){
+				$amt = $promo_res['freeMembershipPmtAmt'];
+			}
+
 			$doc['amount'] = $amt;
-			$doc['payment']['amount'] = $amt;
+			$doc['payment']['amount'] = $amt;	
+
 			$payment = new Model\Payment($doc['payment'],$app);
 
 			// validate the payment
@@ -728,7 +735,7 @@ error_log('trial:'.print_r($trial,true));
 					break;
 			}
 		// end for generating the invoice block
-		$invoice_block = $app['view']->element('invoice-block',array('application'=>$papplication,'member'=>$member,'location'=>$location,'pro_rated_membership_dues'=>$pro_rate));
+		$invoice_block = $app['view']->element('invoice-block',array('promo_res'=>$promo_res,'application'=>$papplication,'member'=>$member,'location'=>$location,'pro_rated_membership_dues'=>$pro_rate));
 		$ppayment = new Model\Payment(array(
 			'_id'=>$application->paymentId
 			,'memberId'=>$papplication['memberId']

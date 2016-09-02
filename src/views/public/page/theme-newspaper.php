@@ -443,6 +443,7 @@ Header style 1
             <div class="td-header-sp-recs">
                 <div class="td-header-rec-wrap">
     <div class="td-a-rec td-a-rec-id-header  "><div class="td-all-devices"><a href="#"><img src="/newspaper/assets/upcomingseminar.png"/></a></div></div>
+    <!-- https://www.canva.com  FOR THE AD BANNER AT THE TOP -->
 </div>            </div>
         </div>
     </div>

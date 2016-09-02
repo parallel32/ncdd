@@ -804,6 +804,7 @@ the   remainder of 2015 for free.  Offer expires December 31, 2015. </label> -->
                            && !empty($this->vars['promos']) ):
                      foreach ($this->vars['promos'] as $promo):
                      ?>
+                     <input type="hidden" class="freeMembershipPmtAmt <?=strtolower($promo['code'])?>x" value="<?=(array_key_exists('freeMembershipPmtAmt', $promo)) ? $promo['freeMembershipPmtAmt']:''?>">
                      <div class="row-fluid">
                         <div class="span6 promocodeblocks <?=strtoupper($promo['code'])?>">
                         <? if($promo['discountAmt'] > 0): ?>

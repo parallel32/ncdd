@@ -38,6 +38,9 @@ class Promotion extends Model {
 	public $giftName;				// name of the gift
 	public $giftDesc;				// description of the gift
 	public $giftDollarValue;		// the dollar value for display purposes
+	public $freeMembership;			// yes | no - do you want to give free membership
+	public $freeMembershipRenewalDate; // how long will it last
+	public $freeMembershipPmtAmt;	// the dollar amount that must be paid in order to receive the free membership
 	public $image; 					// gift image
 	public $isActive; 				// yes | no (determined by start and end date automaticall but can also be overwritten)
 	public $add;
@@ -47,9 +50,15 @@ class Promotion extends Model {
 		$metadata->addPropertyConstraint('code', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('startDate', new Constraints\NotBlank(array('message'=>'cannot be blank')));
 		$metadata->addPropertyConstraint('endDate', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		$metadata->addPropertyConstraint('discountAmt', new Constraints\Type(array('type'=>'numeric','message'=>'must be a number')));
-		$metadata->addPropertyConstraint('giftDollarValue', new Constraints\Type(array('type'=>'numeric','message'=>'must be a whole dollar value')));
+		$metadata->addPropertyConstraint('discountAmt', new Constraints\Type(array('type'=>'numeric','message'=>'Must be a whole dollar value')));
+		$metadata->addPropertyConstraint('freeMembershipPmtAmt', new Constraints\Type(array('type'=>'numeric','message'=>'Must be a whole dollar value')));
 		$metadata->addConstraint(new Callback(array(
+            'methods' => array('membershipValid')
+        )));
+        $metadata->addConstraint(new Callback(array(
+            'methods' => array('giftValid')
+        )));
+        $metadata->addConstraint(new Callback(array(
             'methods' => array('optInValid')
             ,'groups' => array('onform')
         )));
@@ -71,6 +80,18 @@ class Promotion extends Model {
 		if($this->optInOnOff == 'on' && empty($this->optIn)){
 			$propertyPath = $context->getPropertyPath().'optIn';
         	$context->addViolationAtPath($propertyPath,'You must accept our opt-in disclosure in order to receive the promotion', array(), null);
+        }
+	}
+	public function membershipValid(ExecutionContext $context){
+		if($this->freeMembership == 'yes' && (empty($this->freeMembershipPmtAmt) || (floor($this->freeMembershipPmtAmt) != $this->freeMembershipPmtAmt))){
+			$propertyPath = $context->getPropertyPath().'freeMembershipPmtAmt';
+        	$context->addViolationAtPath($propertyPath,'Must be a whole dollar value', array(), null);
+        }
+	}
+	public function giftValid(ExecutionContext $context){
+		if($this->gift == 'yes' && (empty($this->giftDollarValue) || (floor($this->giftDollarValue) != $this->giftDollarValue))){
+			$propertyPath = $context->getPropertyPath().'giftDollarValue';
+        	$context->addViolationAtPath($propertyPath,'Must be a whole dollar value', array(), null);
         }
 	}
 	public function codeActive(ExecutionContext $context){
@@ -179,7 +200,11 @@ class Promotion extends Model {
 		$this->image = $doc['image'];
 		$this->isActive = $doc['isActive'];
         $this->add = $doc['add'];		
-        $this->currentRestriction = $doc['currentRestriction'];		
+        $this->currentRestriction = $doc['currentRestriction'];
+        $this->freeMembership = $doc['freeMembership'];
+		$this->freeMembershipRenewalDate = (!empty($doc['freeMembershipRenewalDate'])) ? (is_object($doc['freeMembershipRenewalDate'])) ? $doc['freeMembershipRenewalDate']->__toArray() : new Date(self::$app,$doc['freeMembershipRenewalDate'], $this->timeZone)  : $doc['freeMembershipRenewalDate'];
+		$this->freeMembershipPmtAmt = $doc['freeMembershipPmtAmt'];
+	
 	}
 	protected function prepareInsert(){
 		$this->code = $this->code ?: '';
@@ -197,6 +222,9 @@ class Promotion extends Model {
 		$this->giftName = $this->giftName ?: '';
 		$this->giftDesc = $this->giftDesc ?: '';
 		$this->giftDollarValue = $this->giftDollarValue ?: 0;
+		$this->freeMembership = $this->freeMembership ?: 'no';
+		$this->freeMembershipRenewalDate = $this->freeMembershipRenewalDate ?: new \stdClass();
+		$this->freeMembershipPmtAmt = $this->freeMembershipPmtAmt ?: 0;
 		$this->image = $this->image ?: new \stdClass();
 		$this->isActive = $this->isActive ?: 'yes';
 		$this->add = $this->add ?: 'yes';
