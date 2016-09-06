@@ -396,7 +396,9 @@
                            </thead>
                            <tbody role="alert" aria-live="polite" aria-relevant="all">
                               <? if(!empty($promo)): foreach($promo as $application): 
-                              if(is_array($application) && !empty($application)):?>
+                              if(is_array($application) && !empty($application)):
+error_log(__LINE__.'::$application::'.print_r($application,true));
+                                 ?>
                               <tr class="gradeX odd">
                                  <? $middleName = (!empty($application['middleName'])) ? ' '.$application['middleName'].' ':' '; ?>
                                  <? $declineCount = (is_array($application) && array_key_exists('member',$application) && is_array($application['member']) && array_key_exists('payment',$application['member']) && is_array($application['member']['payment']) && !empty($application['member']['payment']) && array_key_exists('declineCount',$application['member']['payment']) && $application['member']['payment']['declineCount'] > 0) ? '('.$application['member']['payment']['declineCount'].')': ''; ?>
