@@ -397,7 +397,6 @@
                            <tbody role="alert" aria-live="polite" aria-relevant="all">
                               <? if(!empty($promo)): foreach($promo as $application): 
                               if(is_array($application) && !empty($application) && array_key_exists('firstName', $application)):
-error_log(__LINE__.'::$application::'.print_r($application,true));
                                  ?>
                               <tr class="gradeX odd">
                                  <? $middleName = (!empty($application['middleName'])) ? ' '.$application['middleName'].' ':' '; ?>
@@ -423,6 +422,8 @@ error_log(__LINE__.'::$application::'.print_r($application,true));
                                     <a data-id="<?=$application['paymentId']?>" class="btn blue mini payment"><i class=" "></i> Payment</a>
                                  </td>
                               </tr>
+                           <? else: ?>
+                              <? error_log(__LINE__.'::$application::'.print_r($application,true)); ?>
                               <? endif; ?>
                               <? endforeach;?>
                               <? else: ?>
