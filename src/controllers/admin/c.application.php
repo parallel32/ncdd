@@ -1900,6 +1900,7 @@ $app->get('/applications/all/{offset}/{limit}', function ($offset, $limit, Reque
 
 $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $request) use ($app) {
 	$application = new Model\Apply($doc=array(), $app);
+	$submitted = $application->fetchByStatus('SUBMITTED',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW SUSTAINING MEMBER APPLICATION'))));
 	$approved = $application->fetchByStatus('APPROVED',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
 	$trial = $application->fetchByStatus('TRIAL',$offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
 	$paid = $application->fetchByDatePaidRange('Jan 1','now', $offset, $limit,$filter=array('type'=>array('$in'=>array('NEW MEMBER APPLICATION','NEW SUSTAINING MEMBER APPLICATION'))));
@@ -1965,6 +1966,7 @@ $app->get('/applications/{offset}/{limit}', function ($offset, $limit, Request $
 						,'description'=>"<a class='btn green ' href='/application/new-member-admin'><i class='icon-plus'></i> New Member</a>&nbsp;<a class='btn green ' href='/application/new-expert-admin'><i class='icon-plus'></i> New Expert</a>"
 						,'crumbs'=>$crumbs
 						,'approved'=>$approved
+						,'submitted'=>$submitted
 						,'trial'=>$trial
 						,'paid'=>$paid
 						,'eagle2016promocode'=>$eagle2016promocode
