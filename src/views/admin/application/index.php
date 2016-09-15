@@ -442,14 +442,16 @@
                               </tr>
                            </thead>
                            <tbody role="alert" aria-live="polite" aria-relevant="all">
-                              <? if(!empty($promo)): foreach($promo as $application): ?>
+                              <? if(!empty($promo)): foreach($promo as $application): 
+                              if(is_array($application) && !empty($application) && array_key_exists('firstName', $application)):
+                                 ?>
                               <tr class="gradeX odd">
                                  <? $middleName = (!empty($application['middleName'])) ? ' '.$application['middleName'].' ':' '; ?>
-                                 <? $declineCount = (is_array($application['member']) && array_key_exists('payment',$application['member']) && is_array($application['member']['payment']) && !empty($application['member']['payment']) && array_key_exists('declineCount',$application['member']['payment']) && $application['member']['payment']['declineCount'] > 0) ? '('.$application['member']['payment']['declineCount'].')': ''; ?>
+                                 <? $declineCount = (is_array($application) && array_key_exists('member',$application) && is_array($application['member']) && array_key_exists('payment',$application['member']) && is_array($application['member']['payment']) && !empty($application['member']['payment']) && array_key_exists('declineCount',$application['member']['payment']) && $application['member']['payment']['declineCount'] > 0) ? '('.$application['member']['payment']['declineCount'].')': ''; ?>
                                  <? 
                                     $renewalREUSE = (array_key_exists('promotion', $application) && !empty($application['promotion']) && $application['promotion']['optInOnOff'] == 'on' && $application['promotion']['optIn'] == 'yes') ? 'purple' : 'red';
                                  ?>
-                                 <td class=" "><?=(is_array($application['member']) && array_key_exists('payment',$application['member']) && is_array($application['member']['payment']) && !empty($application['member']['payment']) && !empty($application['member']['payment']['number']) && !empty($application['member']['payment']['cvc'])) ? '<a data-url="/card/promotion/'.\Saw\Model\Promotion::$status['NEWMEMBER'].'/'.$application['_id'].'" data-id="'.$application['_id'].'" class="btn '.$renewalREUSE.' mini card">cc'.$declineCount.'</a>':'' ?></td>
+                                 <td class=" "><?=(is_array($application) && array_key_exists('member',$application) && is_array($application['member']) && array_key_exists('payment',$application['member']) && is_array($application['member']['payment']) && !empty($application['member']['payment']) && !empty($application['member']['payment']['number']) && !empty($application['member']['payment']['cvc'])) ? '<a data-url="/card/promotion/'.\Saw\Model\Promotion::$status['NEWMEMBER'].'/'.$application['_id'].'" data-id="'.$application['_id'].'" class="btn '.$renewalREUSE.' mini card">cc'.$declineCount.'</a>':'' ?></td>
                                  <td class=" "><?=$application['firstName'].$middleName.$application['lastName']?></td>
                                  <td class="hidden-phone "><?=$application['email']?></td>
                                  <td class="hidden-480 "><?=$application['city'].', '.$application['state']?></td>
@@ -467,6 +469,9 @@
                                     <a data-id="<?=$application['paymentId']?>" class="btn blue mini payment"><i class=" "></i> Payment</a>
                                  </td>
                               </tr>
+                           <? else: ?>
+                              <? error_log(__LINE__.'::$application::'.print_r($application,true)); ?>
+                              <? endif; ?>
                               <? endforeach;?>
                               <? else: ?>
                                  <td colspan="6">None.</td>
