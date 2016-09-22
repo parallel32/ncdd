@@ -144,31 +144,31 @@ $app->get('/member/{id}/{slug}', function ($id, $slug, Request $request) use ($a
 	
 	// return the badge
 	$member = new Model\Member(array('_id'=>$id),$app);
-	$member = $member->finbById();
+	$member = $member->findById();
+	
+	$member['image'] = (!empty($member['image'])) ? $member['image']['urls']['small']['SSLCDN'] : '/noprofileimage';
+	$member['currentMembership'] = (!empty($member['currentMembership'])) ? Model\Member::$membershipReversed[$member['currentMembership']] : '';
+	$member['currentFacultyPosition'] = (!empty($member['currentFacultyPosition'])) ? Model\Member::$facultyPositionReversed[$member['currentFacultyPosition']] : '';
+	$member['boardCertified'] = (array_key_exists('boardCertified',$member) && $member['boardCertified']) ? "Yes" : "No";
+	$member['boardCertifiedBadge'] = Model\Member::$boardCertifiedBadge;
+	$member['boardCertifiedSr'] = (array_key_exists('boardCertifiedSr',$member) && $member['boardCertifiedSr']) ? "Yes" : "No";
+	$member['boardCertifiedBadgeSr'] = Model\Member::$boardCertifiedBadgeSr;
+	$member['staff'] = ((array_key_exists('staff',$member)) ? $member['staff']: '') ? "Yes" : "No";
+	$member['staffBadge'] = Model\Member::$staffBadge;
+	$member['sciencesCurriculum'] = ((array_key_exists('sciencesCurriculum',$member)) ? $member['sciencesCurriculum']: '') ? "Yes" : "No";
+	$member['sciencesCurriculumBadge'] = Model\Member::$sciencesCurriculumBadge;
+	$member['aboutMe'] = (array_key_exists('aboutMe', $member)) ? $app['prepare_content']($member['aboutMe']) : '';
 
-		$member['image'] = (!empty($member['image'])) ? $member['image']['urls']['small']['SSLCDN'] : '/noprofileimage';
-		$member['currentMembership'] = (!empty($member['currentMembership'])) ? Model\Member::$membershipReversed[$member['currentMembership']] : '';
-		$member['currentFacultyPosition'] = (!empty($member['currentFacultyPosition'])) ? Model\Member::$facultyPositionReversed[$member['currentFacultyPosition']] : '';
-		$member['boardCertified'] = (array_key_exists('boardCertified',$member) && $member['boardCertified']) ? "Yes" : "No";
-		$member['boardCertifiedBadge'] = Model\Member::$boardCertifiedBadge;
-		$member['boardCertifiedSr'] = (array_key_exists('boardCertifiedSr',$member) && $member['boardCertifiedSr']) ? "Yes" : "No";
-		$member['boardCertifiedBadgeSr'] = Model\Member::$boardCertifiedBadgeSr;
-		$member['staff'] = ((array_key_exists('staff',$member)) ? $member['staff']: '') ? "Yes" : "No";
-		$member['staffBadge'] = Model\Member::$staffBadge;
-		$member['sciencesCurriculum'] = ((array_key_exists('sciencesCurriculum',$member)) ? $member['sciencesCurriculum']: '') ? "Yes" : "No";
-		$member['sciencesCurriculumBadge'] = Model\Member::$sciencesCurriculumBadge;
-		$member['aboutMe'] = (array_key_exists('aboutMe', $member)) ? $app['prepare_content']($member['aboutMe']) : '';
+	$location = new Model\Location(array('ownerId'=>$member['_id']),$app);
+	$locations = $location->getByOwner();
+	$member['locations'] = $locations;
+	$member['primary_location'] = $location->getPrimary($member['_id']);
 
-		$location = new Model\Location(array('ownerId'=>$member['_id']),$app);
-		$locations = $location->getByOwner();
-		$member['locations'] = $locations;
-		$member['primary_location'] = $location->getPrimary($member['_id']);
+	$view_vars['member'] = $member;
+	$page_vars = $app['get_pages']('');
+	$view_vars = array_merge($page_vars,$view_vars);
 
-		$view_vars['member'] = $member;
-		$page_vars = $app['get_pages']('');
-		$view_vars = array_merge($page_vars,$view_vars);
-
-		return $app['view']->render('page/profile', 'content', $view_vars);
+	return $app['view']->render('page/profile', 'content', $view_vars);
 		
 });
 
