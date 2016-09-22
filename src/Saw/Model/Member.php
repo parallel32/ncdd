@@ -291,10 +291,8 @@ class Member extends User {
 		}
 	}
 	
-	public function finbByIdListed(){
-		
-		return $result = $this->find($query=array('_id'=>$this->_id,'listed'=>1),$fields=array(),true,$sort=array(),$offset=0,$limit=1);		
-
+	public function findByIdListed(){
+		return $this->findOne($query=array('_id'=>$this->_id,'listed'=>1),$fields=array(),$slaveOkay=true);		
 	}
 
 	public function saveEdit(){
