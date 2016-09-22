@@ -144,7 +144,7 @@ $app->get('/member/{id}/{slug}', function ($id, $slug, Request $request) use ($a
 	
 	// return the badge
 	$member = new Model\Member(array('_id'=>$id),$app);
-	$member = $member->finbByIdListed();
+	$member = $member->finbById();
 	if(!empty($member)){
 
 		$member['image'] = (!empty($member['image'])) ? $member['image']['urls']['small']['SSLCDN'] : '/noprofileimage';
