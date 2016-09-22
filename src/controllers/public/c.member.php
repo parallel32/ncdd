@@ -145,7 +145,6 @@ $app->get('/member/{id}/{slug}', function ($id, $slug, Request $request) use ($a
 	// return the badge
 	$member = new Model\Member(array('_id'=>$id),$app);
 	$member = $member->finbById();
-	if(!empty($member)){
 
 		$member['image'] = (!empty($member['image'])) ? $member['image']['urls']['small']['SSLCDN'] : '/noprofileimage';
 		$member['currentMembership'] = (!empty($member['currentMembership'])) ? Model\Member::$membershipReversed[$member['currentMembership']] : '';
@@ -170,9 +169,6 @@ $app->get('/member/{id}/{slug}', function ($id, $slug, Request $request) use ($a
 		$view_vars = array_merge($page_vars,$view_vars);
 
 		return $app['view']->render('page/profile', 'content', $view_vars);
-	}else{
-		return $app->redirect('/find-an-attorney');
-	}	
 		
 });
 
