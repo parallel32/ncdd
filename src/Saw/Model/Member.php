@@ -293,7 +293,7 @@ class Member extends User {
 	
 	public function finbByIdListed(){
 		
-		return $result = $this->find($query=array('_id'=>$this->_id,'listed'=>1),$fields,true,$sort=array(),$offset=0,$limit=1);		
+		return $result = $this->find($query=array('_id'=>$this->_id,'listed'=>1),$fields=array(),true,$sort=array(),$offset=0,$limit=1);		
 
 	}
 
