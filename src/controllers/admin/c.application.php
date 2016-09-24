@@ -284,6 +284,12 @@ $app->post('/application/promocodeisvalidmemberhsip', function (Request $request
     	$message = 'Invalid Promo Code.';
 	}
     
+    if(!empty($doc['promocode']) && (strtoupper($doc['promocode']) == 'TRIAL' || strtoupper($doc['promocode']) == 'DIVTRIAL' || strtoupper($doc['promocode']) == 'RFTRIAL' || strtoupper($doc['promocode']) == 'PDTRIAL' || strtoupper($doc['promocode']) == 'ALLENTRAPP')){
+    	$valid = 'yes';
+    	$message = 'Valid Promo Code.';
+    	$type = 'trial';
+    }
+
     return new Response(json_encode(array('valid'=>$valid, 'type'=>$type, 'message' => $message)), 200,array('Content-Type' => 'application/json'));
 });
 
