@@ -290,6 +290,11 @@ class Member extends User {
 			}
 		}
 	}
+	
+	public function findByIdListed(){
+		return $this->findOne($query=array('_id'=>$this->_id,'listed'=>1),$fields=array(),$slaveOkay=true);		
+	}
+
 	public function saveEdit(){
 		// save the member
 		$this->saveSafe();
