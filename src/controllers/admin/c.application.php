@@ -624,7 +624,7 @@ error_log('trial_doc:'.print_r($trial_doc,true));
 		$trial = new Model\Trial($trial_doc,$app);
 
 error_log('trial:'.print_r($trial,true));
-		
+
 		$applicationId = $application->insert();
 		$_POST['applicationId'] = $applicationId->__toString();
 

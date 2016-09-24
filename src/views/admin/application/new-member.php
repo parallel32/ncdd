@@ -197,7 +197,6 @@
                         </div>
                      </div>
                   </div>
-                  <input type="hidden" name="doc[listServEmail]" class="m-wrap span12 listServEmail" value="">
                   <input type="hidden" name="doc[addToListServ]" class="m-wrap span12 addToListServ" value="yes">
                   <!-- BEGIN ADDRESS -->
                   <h3 class="form-section">Business Address</h3>
