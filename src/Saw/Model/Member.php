@@ -81,6 +81,8 @@ class Member extends User {
 	public static $boardCertifiedBadgeSr = './../../../www/ncdd.com/public_html/assets/img/badges/boardcertifiedsr.png';
 	public $sciencesCurriculum; // yes | no
 	public static $sciencesCurriculumBadge = './../../../www/ncdd.com/public_html/assets/img/badges/sciencesCurriculum.png';
+	public $contributedSustainingMember; // yes | no
+	public static $contributedSustainingMemberBadge = './../../../www/ncdd.com/public_html/assets/img/badges/contributedSustainingMember.png';
 	public $listed;
 	public $joinDate;
 	public $timeZone='America/New_York';
@@ -230,6 +232,14 @@ class Member extends User {
 			$this->sciencesCurriculum = (int)$doc['sciencesCurriculum'];
 		}
 		
+		if(strtolower($doc['contributedSustainingMember']) == 'yes'){
+			$this->contributedSustainingMember = 1;
+		}else if(strtolower($doc['contributedSustainingMember']) == 'no'){
+			$this->contributedSustainingMember = 0;
+		}else if(is_numeric($doc['contributedSustainingMember'])){
+			$this->contributedSustainingMember = (int)$doc['contributedSustainingMember'];
+		}
+		
 		
 	}
 	
@@ -250,6 +260,7 @@ class Member extends User {
 		$this->boardCertifiedSr = $this->boardCertifiedSr ?: 0;
 		$this->staff = $this->staff ?: 0;
 		$this->sciencesCurriculum = $this->sciencesCurriculum ?: 0;
+		$this->contributedSustainingMember = $this->contributedSustainingMember ?: 0;
 		$this->joinDate = (!empty($this->joinDate)) ? (is_object($this->joinDate)) ? $this->joinDate->__toArray() : $this->joinDate  : new Date(self::$app,'now', $this->timeZone);
 		$this->timeZone = $this->timeZone ?: 'America/New_York';
 
@@ -458,6 +469,7 @@ class Member extends User {
 					,'boardCertifiedSr'=>1
 					,'staff'=>1
 					,'sciencesCurriculum'=>1
+					,'contributedSustainingMember'=>1
 					,'listed'=>1
 					,'websites'=>1
 					,'orderNum'=>1
@@ -512,6 +524,7 @@ class Member extends User {
 					$result[$i]['boardCertifiedSr'] = (array_key_exists('boardCertifiedSr',$value['member'])) ? $value['member']['boardCertifiedSr']: '';
 					$result[$i]['staff'] = (array_key_exists('staff',$value['member'])) ? $value['member']['staff']: '';
 					$result[$i]['sciencesCurriculum'] = (array_key_exists('sciencesCurriculum',$value['member'])) ? $value['member']['sciencesCurriculum']: '';
+					$result[$i]['contributedSustainingMember'] = (array_key_exists('contributedSustainingMember',$value['member'])) ? $value['member']['contributedSustainingMember']: '';
 					$result[$i]['listed'] = $value['member']['listed'];
 					$result[$i]['websites'] = $value['member']['websites'];
 					$result[$i]['orderNum'] = $value['member']['orderNum'];
@@ -694,6 +707,14 @@ class Member extends User {
 				}
 				break;
 			
+			case 'Contributed Sustaining Member':
+				if($listedOnly){
+					$result = $this->find($query=array('contributedSustainingMember'=>1,'listed'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				}else{
+					$result = $this->find($query=array('contributedSustainingMember'=>1),$fields,true,$sort=array('currentOrder'=>-1,'orderNum'=>1),$offset=0,$limit=3000);		
+				}
+				break;
+			
 			default:
 			/* regex parts
 
@@ -737,11 +758,13 @@ class Member extends User {
 				$result[$i]['boardCertifiedSr'] = (array_key_exists('boardCertifiedSr', $result[$i]) && $result[$i]['boardCertifiedSr']) ? "Yes" : "No";
 				$result[$i]['staff'] = ((array_key_exists('staff',$result[$i])) ? $result[$i]['staff']: '') ? "Yes" : "No";
 				$result[$i]['sciencesCurriculum'] = ((array_key_exists('sciencesCurriculum',$result[$i])) ? $result[$i]['sciencesCurriculum']: '') ? "Yes" : "No";
+				$result[$i]['contributedSustainingMember'] = ((array_key_exists('contributedSustainingMember',$result[$i])) ? $result[$i]['contributedSustainingMember']: '') ? "Yes" : "No";
 				$result[$i]['listed'] = ($result[$i]['listed']) ? "Yes" : "No";
 				$result[$i]['boardCertifiedBadge'] = self::$boardCertifiedBadge;
 				$result[$i]['boardCertifiedBadgeSr'] = self::$boardCertifiedBadgeSr;
 				$result[$i]['staffBadge'] = self::$staffBadge;
 				$result[$i]['sciencesCurriculumBadge'] = self::$sciencesCurriculumBadge;
+				$result[$i]['contributedSustainingMemberBadge'] = self::$contributedSustainingMemberBadge;
 				// get primary location
 				$location = new Location(array(),self::$app);
 				$loc = $location->getPrimary($result[$i]['_id']);
@@ -771,6 +794,7 @@ class Member extends User {
 					,'boardCertifiedSr'=>1
 					,'staff'=>1
 					,'sciencesCurriculum'=>1
+					,'contributedSustainingMember'=>1
 					,'listed'=>1
 					,'websites'=>1
 					,'orderNum'=>1
@@ -817,11 +841,13 @@ class Member extends User {
 				$result[$i]['boardCertifiedSr'] = (array_key_exists('boardCertifiedSr', $result[$i]) && $result[$i]['boardCertifiedSr']) ? "Yes" : "No";
 				$result[$i]['staff'] = ((array_key_exists('staff',$result[$i])) ? $result[$i]['staff']: '') ? "Yes" : "No";
 				$result[$i]['sciencesCurriculum'] = ((array_key_exists('sciencesCurriculum',$result[$i])) ? $result[$i]['sciencesCurriculum']: '') ? "Yes" : "No";
+				$result[$i]['contributedSustainingMember'] = ((array_key_exists('contributedSustainingMember',$result[$i])) ? $result[$i]['contributedSustainingMember']: '') ? "Yes" : "No";
 				$result[$i]['listed'] = ($result[$i]['listed']) ? "Yes" : "No";
 				$result[$i]['boardCertifiedBadge'] = self::$boardCertifiedBadge;
 				$result[$i]['boardCertifiedBadgeSr'] = self::$boardCertifiedBadgeSr;
 				$result[$i]['staffBadge'] = self::$staffBadge;
 				$result[$i]['sciencesCurriculumBadge'] = self::$sciencesCurriculumBadge;
+				$result[$i]['contributedSustainingMemberBadge'] = self::$contributedSustainingMemberBadge;
 				// get primary location
 				$location = new Location(array(),self::$app);
 				$loc = $location->getPrimary($result[$i]['_id']);
@@ -849,6 +875,7 @@ class Member extends User {
 					,'member.boardCertifiedSr'=>1
 					,'member.staff'=>1
 					,'member.sciencesCurriculum'=>1
+					,'member.contributedSustainingMember'=>1
 					,'member.websites'=>1
 					,'raw'=>1
 					,'city'=>1
@@ -878,8 +905,10 @@ class Member extends User {
 			$result[$i]['boardCertifiedBadgeSr'] = self::$boardCertifiedBadgeSr;
 			$result[$i]['staff'] = ((array_key_exists('staff',$value['member'])) ? $value['member']['staff']: '') ? "Yes" : "No";
 			$result[$i]['sciencesCurriculum'] = ((array_key_exists('sciencesCurriculum',$value['member'])) ? $value['member']['sciencesCurriculum']: '') ? "Yes" : "No";
+			$result[$i]['contributedSustainingMember'] = ((array_key_exists('contributedSustainingMember',$value['member'])) ? $value['member']['contributedSustainingMember']: '') ? "Yes" : "No";
 			$result[$i]['staffBadge'] = self::$staffBadge;
 			$result[$i]['sciencesCurriculumBadge'] = self::$sciencesCurriculumBadge;
+			$result[$i]['contributedSustainingMemberBadge'] = self::$contributedSustainingMemberBadge;
 			
 			$result[$i]['websites'] = $value['member']['websites'];
 			$result[$i]['location']['raw'] = $value['raw'];
@@ -928,6 +957,7 @@ class Member extends User {
 					,'member.boardCertifiedSr'=>1
 					,'member.staff'=>1
 					,'member.sciencesCurriculum'=>1
+					,'member.contributedSustainingMember'=>1
 					,'member.websites'=>1
 					,'raw'=>1
 					,'city'=>1
@@ -955,8 +985,10 @@ class Member extends User {
 			$result[$i]['boardCertifiedBadgeSr'] = self::$boardCertifiedBadgeSr;
 			$result[$i]['staff'] = ((array_key_exists('staff',$value['member'])) ? $value['member']['staff']: '') ? "Yes" : "No";
 			$result[$i]['sciencesCurriculum'] = ((array_key_exists('sciencesCurriculum',$value['member'])) ? $value['member']['sciencesCurriculum']: '') ? "Yes" : "No";
+			$result[$i]['contributedSustainingMember'] = ((array_key_exists('contributedSustainingMember',$value['member'])) ? $value['member']['contributedSustainingMember']: '') ? "Yes" : "No";
 			$result[$i]['staffBadge'] = self::$staffBadge;
 			$result[$i]['sciencesCurriculumBadge'] = self::$sciencesCurriculumBadge;
+			$result[$i]['contributedSustainingMemberBadge'] = self::$contributedSustainingMemberBadge;
 			
 			$result[$i]['websites'] = $value['member']['websites'];
 			$result[$i]['location']['raw'] = $value['raw'];
@@ -994,6 +1026,7 @@ class Member extends User {
 					,'member.boardCertifiedSr'=>1
 					,'member.staff'=>1
 					,'member.sciencesCurriculum'=>1
+					,'member.contributedSustainingMember'=>1
 					,'member.websites'=>1
 					,'raw'=>1
 					,'city'=>1
@@ -1021,8 +1054,10 @@ class Member extends User {
 			$result[$i]['boardCertifiedBadgeSr'] = self::$boardCertifiedBadgeSr;
 			$result[$i]['staff'] = ((array_key_exists('staff',$value['member'])) ? $value['member']['staff']: '') ? "Yes" : "No";
 			$result[$i]['sciencesCurriculum'] = ((array_key_exists('sciencesCurriculum',$value['member'])) ? $value['member']['sciencesCurriculum']: '') ? "Yes" : "No";
+			$result[$i]['contributedSustainingMember'] = ((array_key_exists('contributedSustainingMember',$value['member'])) ? $value['member']['contributedSustainingMember']: '') ? "Yes" : "No";
 			$result[$i]['staffBadge'] = self::$staffBadge;
 			$result[$i]['sciencesCurriculumBadge'] = self::$sciencesCurriculumBadge;
+			$result[$i]['contributedSustainingMemberBadge'] = self::$contributedSustainingMemberBadge;
 			
 			$result[$i]['websites'] = $value['member']['websites'];
 			$result[$i]['location']['raw'] = $value['raw'];
@@ -1059,6 +1094,7 @@ class Member extends User {
 					,'member.boardCertifiedSr'=>1
 					,'member.staff'=>1
 					,'member.sciencesCurriculum'=>1
+					,'member.contributedSustainingMember'=>1
 					,'member.websites'=>1
 					,'raw'=>1
 					,'city'=>1
@@ -1099,6 +1135,8 @@ class Member extends User {
 			$result[$i]['staffBadge'] = self::$staffBadge;
 			$result[$i]['sciencesCurriculum'] = ((array_key_exists('sciencesCurriculum',$value['member'])) ? $value['member']['sciencesCurriculum']: '') ? "Yes" : "No";
 			$result[$i]['sciencesCurriculumBadge'] = self::$sciencesCurriculumBadge;
+			$result[$i]['contributedSustainingMember'] = ((array_key_exists('contributedSustainingMember',$value['member'])) ? $value['member']['contributedSustainingMember']: '') ? "Yes" : "No";
+			$result[$i]['contributedSustainingMemberBadge'] = self::$contributedSustainingMemberBadge;
 			
 			$result[$i]['websites'] = $value['member']['websites'];
 			$result[$i]['location']['raw'] = $value['raw'];
@@ -1136,6 +1174,7 @@ class Member extends User {
 					,'member.boardCertifiedSr'=>1
 					,'member.staff'=>1
 					,'member.sciencesCurriculum'=>1
+					,'member.contributedSustainingMember'=>1
 					,'member.websites'=>1
 					,'raw'=>1
 					,'city'=>1
@@ -1165,6 +1204,8 @@ class Member extends User {
 			$result[$i]['staffBadge'] = self::$staffBadge;
 			$result[$i]['sciencesCurriculum'] = ((array_key_exists('sciencesCurriculum',$value['member'])) ? $value['member']['sciencesCurriculum']: '') ? "Yes" : "No";
 			$result[$i]['sciencesCurriculumBadge'] = self::$sciencesCurriculumBadge;
+			$result[$i]['contributedSustainingMember'] = ((array_key_exists('contributedSustainingMember',$value['member'])) ? $value['member']['contributedSustainingMember']: '') ? "Yes" : "No";
+			$result[$i]['contributedSustainingMemberBadge'] = self::$contributedSustainingMemberBadge;
 			
 			$result[$i]['websites'] = $value['member']['websites'];
 			$result[$i]['location']['raw'] = $value['raw'];
@@ -1202,6 +1243,7 @@ class Member extends User {
 					,'member.boardCertifiedSr'=>1
 					,'member.staff'=>1
 					,'member.sciencesCurriculum'=>1
+					,'member.contributedSustainingMember'=>1
 					,'member.websites'=>1
 					,'raw'=>1
 					,'city'=>1
@@ -1231,6 +1273,8 @@ class Member extends User {
 			$result[$i]['staffBadge'] = self::$staffBadge;
 			$result[$i]['sciencesCurriculum'] = ((array_key_exists('sciencesCurriculum',$value['member'])) ? $value['member']['sciencesCurriculum']: '') ? "Yes" : "No";
 			$result[$i]['sciencesCurriculumBadge'] = self::$sciencesCurriculumBadge;
+			$result[$i]['contributedSustainingMember'] = ((array_key_exists('contributedSustainingMember',$value['member'])) ? $value['member']['contributedSustainingMember']: '') ? "Yes" : "No";
+			$result[$i]['contributedSustainingMemberBadge'] = self::$contributedSustainingMemberBadge;
 			
 			$result[$i]['websites'] = $value['member']['websites'];
 			$result[$i]['location']['raw'] = $value['raw'];
@@ -1268,6 +1312,7 @@ class Member extends User {
 					,'member.boardCertifiedSr'=>1
 					,'member.staff'=>1
 					,'member.sciencesCurriculum'=>1
+					,'member.contributedSustainingMember'=>1
 					,'member.websites'=>1
 					,'raw'=>1
 					,'city'=>1
@@ -1298,6 +1343,8 @@ class Member extends User {
 			$result[$i]['staffBadge'] = self::$staffBadge;
 			$result[$i]['sciencesCurriculum'] = ((array_key_exists('sciencesCurriculum',$value['member'])) ? $value['member']['sciencesCurriculum']: '') ? "Yes" : "No";
 			$result[$i]['sciencesCurriculumBadge'] = self::$sciencesCurriculumBadge;
+			$result[$i]['contributedSustainingMember'] = ((array_key_exists('contributedSustainingMember',$value['member'])) ? $value['member']['contributedSustainingMember']: '') ? "Yes" : "No";
+			$result[$i]['contributedSustainingMemberBadge'] = self::$contributedSustainingMemberBadge;
 			
 			$result[$i]['websites'] = $value['member']['websites'];
 			$result[$i]['location']['raw'] = $value['raw'];
@@ -1458,6 +1505,14 @@ class Member extends User {
 					$result = $this->count($query=array('sciencesCurriculum'=>1,'status'=>USER_STATUS_ACTIVE),true);		
 				}else{
 					$result = $this->count($query=array('sciencesCurriculum'=>1),true);		
+				}
+				break;
+			
+			case 'Contributed Sustaining Member':
+				if($listedOnly){
+					$result = $this->count($query=array('contributedSustainingMember'=>1,'status'=>USER_STATUS_ACTIVE),true);		
+				}else{
+					$result = $this->count($query=array('contributedSustainingMember'=>1),true);		
 				}
 				break;
 			

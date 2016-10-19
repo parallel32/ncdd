@@ -122,6 +122,9 @@ img.thumbnail{ max-width: 100%;}
                                 <? if($member['sciencesCurriculum'] =='Yes'): ?>
                                 <img width="100" src="<?=SAW_PUBLIC_SSL_CDN?>/badge/<?=$member['_id']?>/sciencesCurriculum" alt="NCDD National College for DUI Defense: <?=$member['displayName']?>" title="NCDD National College for DUI Defense: <?=$member['displayName']?>" />
                                 <? endif; ?>
+                                <? if($member['contributedSustainingMember'] =='Yes'): ?>
+                                <img width="100" src="<?=SAW_PUBLIC_SSL_CDN?>/badge/<?=$member['_id']?>/contributedSustainingMember" alt="NCDD National College for DUI Defense: <?=$member['displayName']?>" title="NCDD National College for DUI Defense: <?=$member['displayName']?>" />
+                                <? endif; ?>
                                 
                             </div>
                             <div class="span5 contact">

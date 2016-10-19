@@ -294,6 +294,9 @@ ul.sidebarlist li {
                                         <? if($member['sciencesCurriculum'] =='Yes'): ?>
                                         <img class="sheild" width="100" src="<?=SAW_PUBLIC_SSL_CDN?>/badge/<?=$member['_id']?>/sciencesCurriculum" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
                                         <? endif; ?>
+                                        <? if($member['contributedSustainingMember'] =='Yes'): ?>
+                                        <img class="sheild" width="100" src="<?=SAW_PUBLIC_SSL_CDN?>/badge/<?=$member['_id']?>/contributedSustainingMember" alt="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" title="NCDD National College for DUI Defense: <?=$member['firstName']?><?=$middleName?><?=$member['lastName']?>" />
+                                        <? endif; ?>
                                         
                                     </div>
                                     <div class="span4 bc">

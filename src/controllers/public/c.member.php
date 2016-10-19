@@ -100,6 +100,25 @@ $app->get('/badge/{id}/staff', function ($id, Request $request) use ($app, $imgU
 	return new Response($file_contents, 200, array('Content-Type' => 'image/jpeg'));
 		
 });
+$app->get('/badge/{id}/contributedSustainingMember', function ($id, Request $request) use ($app, $imgUnavailable) {
+	
+	// return the badge
+	$member = new Model\Member(array('_id'=>$id),$app);
+	$member = $member->findById();
+	$badge_path = '';
+	if(!empty($member) && array_key_exists('contributedSustainingMember',$member) && $member['contributedSustainingMember'])
+		$badge_path = Model\Member::$contributedSustainingMemberBadge;
+
+	if (!file_exists($badge_path)) {
+        $img_path = $imgUnavailable;
+    }else{
+    	$img_path = $badge_path;
+    }
+	
+	$file_contents = file_get_contents($img_path);
+	return new Response($file_contents, 200, array('Content-Type' => 'image/jpeg'));
+		
+});
 $app->get('/badge/{id}/sciencesCurriculum', function ($id, Request $request) use ($app, $imgUnavailable) {
 	
 	// return the badge
@@ -156,6 +175,8 @@ $app->get('/member/{id}/{slug}', function ($id, $slug, Request $request) use ($a
 		$member['boardCertifiedBadgeSr'] = Model\Member::$boardCertifiedBadgeSr;
 		$member['staff'] = ((array_key_exists('staff',$member)) ? $member['staff']: '') ? "Yes" : "No";
 		$member['staffBadge'] = Model\Member::$staffBadge;
+		$member['contributedSustainingMember'] = ((array_key_exists('contributedSustainingMember',$member)) ? $member['contributedSustainingMember']: '') ? "Yes" : "No";
+		$member['contributedSustainingMemberBadge'] = Model\Member::$contributedSustainingMemberBadge;
 		$member['sciencesCurriculum'] = ((array_key_exists('sciencesCurriculum',$member)) ? $member['sciencesCurriculum']: '') ? "Yes" : "No";
 		$member['sciencesCurriculumBadge'] = Model\Member::$sciencesCurriculumBadge;
 		$member['aboutMe'] = (array_key_exists('aboutMe', $member)) ? $app['prepare_content']($member['aboutMe']) : '';
