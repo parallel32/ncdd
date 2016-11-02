@@ -30,6 +30,7 @@ $app['get_pages'] = $app->protect(function ($slug='') use($app) {
 });
 
 
+
 // new themes
 $app->get('/theme-home', function (Request $request) use ($app) {
 	$view_vars = array();
