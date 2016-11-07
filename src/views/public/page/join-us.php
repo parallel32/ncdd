@@ -19,7 +19,7 @@
                                             </tr>
                                             <tr>
                                                 <td>show books<br><img width="240px" src="<?=SAW_PUBLIC_SSL_CDN?>/assets/img/badges/boardcertified.png"></td>
-                                                <td><h2><a>NCDD boasts members who are the authors of nearly all the DUI Defense books written in every state.</a></h2></td>
+                                                <td><h2><a>NCDD boasts members who have authored nearly all the DUI Defense books for every state.</a></h2></td>
                                             </tr>
                                             <tr>
                                                 <td><h2>Participate in our members only seminars and leap frog your competition with winning strategies during court room litigation</h2></td>
