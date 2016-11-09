@@ -113,10 +113,10 @@
 								</div>
 								<div class="row-fluid margin-bottom-20">
 									<div class="span5 margin-bottom-20">
-										<h3><a>Get listed on ncdd.com, which is the Internet authority on DUI Defense, with eligibility to publish blogs with your name and backlinks to your website.</a></h3>
+										<h3><a>Get listed on ncdd.com-the Internet authority on DUI Defense, where you can publish blogs with your name and backlinks to your website.</a></h3>
 									</div>
 									<div class="span6 margin-bottom-20">
-										<img src="<?=SAW_SSL_CDN?>/assets/img/pages/img3.png" alt="">
+										<img src="<?=SAW_SSL_CDN?>/assets/img/landing/blog.png" alt="">
 									</div>
 								</div>
 								<hr>
@@ -126,10 +126,63 @@
 							<div class="container">
 								<div class="row-fluid">
 									<div class="span12">
-										<h3>H3</h3>
-										<p class="text-center">
-						                  centered text
-						               	</p>
+										<form id="saw-form" class="horizontal-form portlet">
+						                  <div class="alert alert-error hide">
+						                     <button class="close" data-dismiss="alert"></button>
+						                     You have some form errors. Please check below.
+						                  </div>                  
+						                  <h3 class="form-section">1.</h3>
+						                  <div class="row-fluid">
+						                     <div class="span4 ">
+						                        <div class="control-group">
+						                           <label class="control-label">First Name</label>
+						                           <div class="controls">
+						                              <input type="text" name="doc[firstName]" class="m-wrap span12 firstName">
+						                           </div>
+						                        </div>
+						                     </div>
+						                     <!--/span-->
+						                     <div class="span4 ">
+						                        <div class="control-group">
+						                           <label class="control-label">Middle Initial</label>
+						                           <div class="controls">
+						                              <input type="text" name="doc[middleName]" class="m-wrap span12 middleName">
+						                           </div>
+						                        </div>
+						                     </div>
+						                     <!--/span-->
+						                     <div class="span4 ">
+						                        <div class="control-group ">
+						                           <label class="control-label">Last Name</label>
+						                           <div class="controls">
+						                              <input type="text" name="doc[lastName]" class="m-wrap span12 lastName">
+						                           </div>
+						                        </div>
+						                     </div>
+						                     <!--/span-->
+						                  </div>
+						                  <div class="row-fluid">
+						                     <div class="span6 ">
+						                        <div class="control-group">
+						                           <label class="control-label">Telephone</label>
+						                           <div class="controls">
+						                              <input id="phone" type="text" name="doc[phone]" class="m-wrap span12 phone">
+						                           </div>
+						                        </div>
+						                     </div>
+						                     <!--/span-->
+						                     <div class="span6 ">
+						                        <div class="control-group ">
+						                           <label class="control-label">Facsimile</label>
+						                           <div class="controls">
+						                              <input id="fax" type="text" name="doc[fax]" class="m-wrap span12 fax">
+						                           </div>
+						                        </div>
+						                     </div>
+						                     <!--/span-->
+						                  </div>
+						                  
+
 									</div>
 								</div>
 							</div>
