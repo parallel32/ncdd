@@ -235,8 +235,8 @@
                                  <label class="control-label"></label>
                                  <div class="controls">
                                     <select name="doc[freeMembership]" class="span10 m-wrap forum" data-placeholder="" tabindex="1">
-                                       <option <?=(!empty($this->vars['promotion']) && $this->vars['promotion']['freeMembership'] == 'yes')? 'selected' : ''?> value="yes">Yes</option>
-                                       <option <?=(!empty($this->vars['promotion']) && $this->vars['promotion']['freeMembership'] == 'no')? 'selected' : ''?> value="no">No</option>
+                                       <option <?=(!empty($this->vars['promotion']) && array_key_exists('freeMembership', $this->vars['promotion']) && $this->vars['promotion']['freeMembership'] == 'yes')? 'selected' : ''?> value="yes">Yes</option>
+                                       <option <?=(!empty($this->vars['promotion']) && array_key_exists('freeMembership', $this->vars['promotion']) && $this->vars['promotion']['freeMembership'] == 'no')? 'selected' : ''?> value="no">No</option>
                                     </select>
                                  </div>
                               </div>

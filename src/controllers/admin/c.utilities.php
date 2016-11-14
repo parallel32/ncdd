@@ -1026,11 +1026,13 @@ $utilities->get('/memberswithoutautorenew', function () use ($app) {
                             $res_arr['address'] = array();
                             $loc = new Model\Location(array(),$app);
                             $loc_res = $loc->find(array('ownerId'=>$member['_id']));
-                            foreach ($loc_res as $loc) {
-                                if($loc['primary'] == 11){
-                                    $res_arr['address'] = $loc['addressLine1'].' '.$loc['addressLine2'].' '.$loc['city'].', '.$loc['state'].' '.$loc['zip'].' '.$loc['country'];
+                            if(is_array($loc_res) && !empty($loc_res)):
+                                foreach ($loc_res as $loc) {
+                                    if($loc['primary'] == 11){
+                                        $res_arr['address'] = $loc['addressLine1'].' '.$loc['addressLine2'].' '.$loc['city'].', '.$loc['state'].' '.$loc['zip'].' '.$loc['country'];
+                                    }
                                 }
-                            }
+                            endif;
                             if(empty($res_arr['address'])){
                                 // take the first address entered
                                 $res_arr['address'] = $loc_res[count($loc_res)-1]['addressLine1'].' '.$loc_res[count($loc_res)-1]['addressLine2'].' '.$loc_res[count($loc_res)-1]['city'].', '.$loc_res[count($loc_res)-1]['state'].' '.$loc_res[count($loc_res)-1]['zip'].' '.$loc_res[count($loc_res)-1]['country'];

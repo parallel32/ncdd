@@ -41,6 +41,7 @@ $app = require __DIR__.'/controllers/admin/c.reference.php';
 $app = require __DIR__.'/controllers/admin/c.delegate.php';
 $app = require __DIR__.'/controllers/admin/c.change.php';
 $app = require __DIR__.'/controllers/admin/c.donate.php';
+$app = require __DIR__.'/controllers/admin/c.join.php';
 
 /**
  * Before Filter

@@ -28,20 +28,6 @@ $page->get('/', function (Request $request) use ($app) {
 						);
 	return $app['view']->render('page/index', 'default', $view_vars);
 });
-$page->get('/join-us', function (Request $request) use ($app) {
-	// retrieve from query string
-    $query = $request->get('query');
-
-	$crumbs = array(array('name'=>'Page','href'=>'/page/'));
-	$view_vars = array(
-						 'active'=>'Announcement'
-						,'page-plugin'=>'datatables'
-						,'headline'=>'Announcements'
-						,'description'=>"All announcements managed here."
-						,'crumbs'=>$crumbs
-						);
-	return $app['view']->render('page/announcement', 'landing', $view_vars);
-});
 $page->get('/announcements', function (Request $request) use ($app) {
 	// retrieve from query string
     $query = $request->get('query');

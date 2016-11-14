@@ -30,6 +30,11 @@ $app['get_pages'] = $app->protect(function ($slug='') use($app) {
 });
 
 
+// join us page
+$app->get('/join', function (Request $request) use ($app) {
+	return $app->redirect('https://'.SAW_ADMIN_WEBSITE.'/join');
+});
+
 
 // new themes
 $app->get('/theme-home', function (Request $request) use ($app) {
