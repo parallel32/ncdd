@@ -1,4 +1,7 @@
 <!-- BEGIN CONTAINER -->   
+<?
+echo '<pre>';print_r($this->vars['dues']);echo '</pre>';
+?>
 <div class="page-container row-fluid">
    <!-- BEGIN PAGE CONTAINER-->
    <div class="container-fluid">

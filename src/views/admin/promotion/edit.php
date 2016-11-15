@@ -98,6 +98,22 @@
                            </div>
                            <!--/span-->
                         </div>
+                        <h3 class="form-section text-info"><strong>Discount on Prorated Fee</strong></h3>
+                        <p>Is the discount applied to the prorated fee or the full fee?  If set to no, then it's applied to the full fee.</p>
+                        <div class="row-fluid">
+                           <div class="span12 ">
+                              <div class="control-group ">
+                                 <label class="control-label"></label>
+                                 <div class="controls">
+                                    <select name="doc[proratedDiscount]" class="span10 m-wrap forum" data-placeholder="" tabindex="1">
+                                       <option <?=(!empty($this->vars['promotion']) && array_key_exists('proratedDiscount', $this->vars['promotion']) && $this->vars['promotion']['proratedDiscount'] == 'no')? 'selected' : ''?> value="no">No</option>
+                                       <option <?=(!empty($this->vars['promotion']) && array_key_exists('proratedDiscount', $this->vars['promotion']) && $this->vars['promotion']['proratedDiscount'] == 'yes')? 'selected' : ''?> value="yes">Yes</option>
+                                    </select>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--/span-->
+                        </div>
                         <h3 class="form-section text-info"><strong>Opt-In On/Off</strong></h3>
                         <p>Turn the opt-in on/off meaning show it or not.  Opt-in is whether to keep the payment method on file for future automated transactions.</p>
                         <div class="row-fluid">
@@ -155,8 +171,8 @@
                                  <label class="control-label"></label>
                                  <div class="controls">
                                     <select name="doc[gift]" class="span10 m-wrap forum" data-placeholder="" tabindex="1">
-                                       <option <?=(!empty($this->vars['promotion']) && $this->vars['promotion']['gift'] == 'yes')? 'selected' : ''?> value="yes">Yes</option>
                                        <option <?=(!empty($this->vars['promotion']) && $this->vars['promotion']['gift'] == 'no')? 'selected' : ''?> value="no">No</option>
+                                       <option <?=(!empty($this->vars['promotion']) && $this->vars['promotion']['gift'] == 'yes')? 'selected' : ''?> value="yes">Yes</option>                                       
                                     </select>
                                  </div>
                               </div>
@@ -235,8 +251,8 @@
                                  <label class="control-label"></label>
                                  <div class="controls">
                                     <select name="doc[freeMembership]" class="span10 m-wrap forum" data-placeholder="" tabindex="1">
-                                       <option <?=(!empty($this->vars['promotion']) && array_key_exists('freeMembership', $this->vars['promotion']) && $this->vars['promotion']['freeMembership'] == 'yes')? 'selected' : ''?> value="yes">Yes</option>
                                        <option <?=(!empty($this->vars['promotion']) && array_key_exists('freeMembership', $this->vars['promotion']) && $this->vars['promotion']['freeMembership'] == 'no')? 'selected' : ''?> value="no">No</option>
+                                       <option <?=(!empty($this->vars['promotion']) && array_key_exists('freeMembership', $this->vars['promotion']) && $this->vars['promotion']['freeMembership'] == 'yes')? 'selected' : ''?> value="yes">Yes</option>
                                     </select>
                                  </div>
                               </div>
@@ -263,7 +279,7 @@
                               <div class="control-group ">
                                  <label class="control-label"></label>
                                  <div class="controls">
-                                    <input type="text" name="doc[freeMembershipRenewalDate]" value="<?=(!empty($this->vars['promotion']) && array_key_exists('freeMembershipRenewalDate',$this->vars['promotion'])) ? $this->vars['promotion']['freeMembershipRenewalDate']['fullMonth']: ''?>" class="m-wrap span10 freeMembershipRenewalDate">
+                                    <input type="text" name="doc[freeMembershipRenewalDate]" value="<?=(!empty($this->vars['promotion']) && array_key_exists('freeMembershipRenewalDate',$this->vars['promotion']) && is_array($this->vars['promotion']['freeMembershipRenewalDate']) && array_key_exists('fullMonth', $this->vars['promotion']['freeMembershipRenewalDate'])) ? $this->vars['promotion']['freeMembershipRenewalDate']['fullMonth']: ''?>" class="m-wrap span10 freeMembershipRenewalDate">
                                  </div>
                               </div>
                            </div>

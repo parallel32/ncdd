@@ -43,6 +43,7 @@ class Promotion extends Model {
 	public $freeMembershipPmtAmt;	// the dollar amount that must be paid in order to receive the free membership
 	public $image; 					// gift image
 	public $isActive; 				// yes | no (determined by start and end date automaticall but can also be overwritten)
+	public $proratedDiscount; 		// yes | no (does this discount apply to the pro-rated fee or the full fee.  if "no" then the full fee)
 	public $add;
 	public $timeZone='America/New_York';
 	
@@ -199,6 +200,7 @@ class Promotion extends Model {
 		$this->giftDollarValue = $doc['giftDollarValue'];
 		$this->image = $doc['image'];
 		$this->isActive = $doc['isActive'];
+		$this->proratedDiscount = $doc['proratedDiscount'];
         $this->add = $doc['add'];		
         $this->currentRestriction = $doc['currentRestriction'];
         $this->freeMembership = $doc['freeMembership'];
@@ -227,6 +229,7 @@ class Promotion extends Model {
 		$this->freeMembershipPmtAmt = $this->freeMembershipPmtAmt ?: 0;
 		$this->image = $this->image ?: new \stdClass();
 		$this->isActive = $this->isActive ?: 'yes';
+		$this->proratedDiscount = $this->proratedDiscount ?: 'no';
 		$this->add = $this->add ?: 'yes';
 		$this->currentRestriction = $this->currentRestriction ?: array();		
 	}
