@@ -659,9 +659,20 @@ error_log('trial:'.print_r($trial,true));
 		
 		if($is_admin == false):
 			// check if this is a membership type promotion and if so override the payment amount with that of the promotion
-		
 			if(!empty($promo_res) && array_key_exists('freeMembership', $promo_res) && $promo_res['freeMembership'] == 'yes'){
 				$amt = $promo_res['freeMembershipPmtAmt'];
+			}
+
+			// check if this is a discount promotion and if so override the payment
+			if(!empty($promo_res) && array_key_exists('discountAmt', $promo_res) && (int)$promo_res['discountAmt'] > 0){
+				if($promo_res['currentType'] == Model\Promotion::$type['MONEY']){
+					$amt = $amt - (int)$promo_res['discountAmt'];
+				}
+				if($promo_res['currentType'] == Model\Promotion::$type['PERCENT']){
+					$amt_tmp = $amt * ((int)$promo_res['discountAmt'] / 100);
+					$amt = $amt - $amt_tmp;
+				}
+
 			}
 
 			$doc['amount'] = $amt;
@@ -742,6 +753,7 @@ error_log('trial:'.print_r($trial,true));
 			}
 		// end for generating the invoice block
 		$invoice_block = $app['view']->element('invoice-block',array('promo_res'=>$promo_res,'application'=>$papplication,'member'=>$member,'location'=>$location,'pro_rated_membership_dues'=>$pro_rate));
+error_log(__LINE__.'::invoice_block::'.print_r($invoice_block,true));
 		$ppayment = new Model\Payment(array(
 			'_id'=>$application->paymentId
 			,'memberId'=>$papplication['memberId']

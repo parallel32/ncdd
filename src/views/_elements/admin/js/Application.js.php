@@ -13,23 +13,50 @@
         	var now = new Date().getFullYear();
         	if(now - yilp >= 6){
         		window.amount = (window.gsix_amount-window.gsix_prorated == window.gsix_amount) ? window.gsix_amount : window.gsix_prorated; 
-        		$('.payment.amount').val(amount);
-        		$('.payment.amount').html(amount+' - '+window.gsix_message);
+
+        		if(parseInt($('.discountAmt.'+$('.promocode').val().toLowerCase()+'x').val()) > 0){
+        			//money type discount
+        			if(parseInt($('.currentType.'+$('.promocode').val().toLowerCase()+'x').val()) == 10){
+        				window.amount = window.amount - parseInt($('.discountAmt.'+$('.promocode').val().toLowerCase()+'x').val()); 
+        			}
+        			//percent type discount
+        			if(parseInt($('.currentType.'+$('.promocode').val().toLowerCase()+'x').val()) == 20){
+        				window.amount_temp = window.amount * parseInt($('.discountAmt.'+$('.promocode').val().toLowerCase()+'x').val())/100; 
+        				window.amount = window.amount - window.amount_temp;
+        			}
+	        		
+	        	}
+        		$('.payment.amount').val(window.amount);
+        		$('.payment.amount').html(window.amount+' - '+window.gsix_message);
 
         		// here
-	        	if($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').length > 0 && window.promocodeisvalidmemberhsip == 'yes'){
-	        		
+	        	if(parseInt($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val()) > 0){
 	        		window.amount = $('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val(); 
 	        		$('.payment.amount').val($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val());
 	        		$('.payment.amount').html($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val()+' - '+window.gsix_message);	
 	        	}
+	        	
+
         	}else if (now - yilp < 6){
         		window.amount = (window.lsix_amount-window.lsix_prorated == window.lsix_amount) ? window.lsix_amount : window.lsix_prorated; 
-        		$('.payment.amount').val(amount);
-        		$('.payment.amount').html(amount+' - '+window.lsix_message);
+        		
+        		if(parseInt($('.discountAmt.'+$('.promocode').val().toLowerCase()+'x').val()) > 0){
+        			//money type discount
+        			if(parseInt($('.currentType.'+$('.promocode').val().toLowerCase()+'x').val()) == 10){
+        				window.amount = window.amount - parseInt($('.discountAmt.'+$('.promocode').val().toLowerCase()+'x').val()); 
+        			}
+        			//percent type discount
+        			if(parseInt($('.currentType.'+$('.promocode').val().toLowerCase()+'x').val()) == 20){
+        				window.amount_temp = window.amount * parseInt($('.discountAmt.'+$('.promocode').val().toLowerCase()+'x').val())/100; 
+        				window.amount = window.amount - window.amount_temp;
+        			}
+	        		
+	        	}
+        		$('.payment.amount').val(window.amount);
+        		$('.payment.amount').html(window.amount+' - '+window.lsix_message);
 
         		// here
-	        	if($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').length > 0 && window.promocodeisvalidmemberhsip == 'yes'){
+	        	if(parseInt($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val()) > 0){
 	        		
 	        		window.amount = $('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val(); 
 	        		$('.payment.amount').val($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val());
@@ -51,11 +78,25 @@
 	function publicdefenderlogic (){
 		if($('#saw-form .publicDefender').val() == 'yes'){
     		window.amount = (window.pd_amount-window.pd_prorated == window.pd_amount) ? window.pd_amount : window.pd_prorated; 
-    		$('.payment.amount').val(amount);
-    		$('.payment.amount').html(amount+' - '+window.pd_message);
+		
+    		if(parseInt($('.discountAmt.'+$('.promocode').val().toLowerCase()+'x').val()) > 0){
+    			//money type discount
+    			if(parseInt($('.currentType.'+$('.promocode').val().toLowerCase()+'x').val()) == 10){
+    				window.amount = window.amount - $('.discountAmt.'+$('.promocode').val().toLowerCase()+'x').val(); 
+    			}
+    			//percent type discount
+    			if(parseInt($('.currentType.'+$('.promocode').val().toLowerCase()+'x').val()) == 20){
+    				window.amount_temp = window.amount * $('.discountAmt.'+$('.promocode').val().toLowerCase()+'x').val()/100; 
+    				window.amount = window.amount - window.amount_temp;
+    			}
+        		
+        	}
+
+    		$('.payment.amount').val(window.amount);
+    		$('.payment.amount').html(window.amount+' - '+window.pd_message);
     		
     		/// herererer
-    		if($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').length > 0 && window.promocodeisvalidmemberhsip == 'yes'){
+    		if(parseInt($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val()) > 0){
     			
         		window.amount = $('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val(); 
         		$('.payment.amount').val($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val());
@@ -101,16 +142,17 @@
         		$('.payment.amount').html(window.amount+' - '+window.gsix_message+promo_message);
 
         		// here
-	        	if($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').length > 0 && window.promocodeisvalidmemberhsip == 'yes'){
+	        	if(parseInt($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val()) > 0){
 	        		
 	        		$('.payment.amount').val($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val());
 	        		$('.payment.amount').html($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val()+' - '+window.gsix_message+promo_message);	
 	        	}
         	}else if (now - yilp < 6){
+        		
         		$('.payment.amount').val(window.amount);
         		$('.payment.amount').html(window.amount+' - '+window.lsix_message+promo_message);
         		// here
-	        	if($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').length > 0 && window.promocodeisvalidmemberhsip == 'yes'){
+	        	if(parseInt($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val()) > 0){
 	        		
 	        		$('.payment.amount').val($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val());
 	        		$('.payment.amount').html($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val()+' - '+window.lsix_message+promo_message);	
@@ -118,11 +160,25 @@
         	}
 
         	if($('#saw-form .publicDefender').val() == 'yes'){
+        		
+        		if(parseInt($('.discountAmt.'+$('.promocode').val().toLowerCase()+'x').val()) > 0){
+        			//money type discount
+        			if(parseInt($('.currentType.'+$('.promocode').val().toLowerCase()+'x').val()) == 10){
+        				window.pd_amount = window.pd_amount - $('.discountAmt.'+$('.promocode').val().toLowerCase()+'x').val(); 
+        			}
+        			//percent type discount
+        			if(parseInt($('.currentType.'+$('.promocode').val().toLowerCase()+'x').val()) == 20){
+        				window.pd_amount_temp = window.pd_amount * $('.discountAmt.'+$('.promocode').val().toLowerCase()+'x').val()/100; 
+        				window.pd_amount = window.pd_amount - window.amount_temp;
+        			}
+	        		
+	        	}
+
         		$('.payment.amount').val((window.pd_amount-window.pd_prorated == window.pd_amount) ? window.pd_amount : window.pd_prorated);
         		$('.payment.amount').html((window.pd_amount-window.pd_prorated == window.pd_amount) ? window.pd_amount : window.pd_prorated+' - '+window.pd_message+promo_message);
 
         		// here
-	        	if($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').length > 0 && window.promocodeisvalidmemberhsip == 'yes'){
+	        	if(parseInt($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val()) > 0){
 	        		
 	        		$('.payment.amount').val($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val());
 	        		$('.payment.amount').html($('.freeMembershipPmtAmt.'+$('.promocode').val().toLowerCase()+'x').val()+' - '+window.pd_message+promo_message);	
