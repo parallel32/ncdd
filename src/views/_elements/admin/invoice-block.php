@@ -63,12 +63,32 @@
                            <td>$<?=$application['membershipDues']?></td>
                         </tr>
                      <? else : /*for the standard line item enter this else statement*/?>
+                        <? $amount = $application['membershipDues']; ?>
+                       <? if(!empty($application['promocode']) && !empty($promo_res) && array_key_exists('freeMembership', $promo_res) && $promo_res['freeMembership'] == 'yes') :
+                            // do no pro-rated discounts && amount is 
+                            $amount = $promo_res['freeMembershipPmtAmt'];
+error_log(__LINE__.'A::amount::'.print_r($amount,true));
+                          elseif(!empty($application['promocode']) && !empty($promo_res) && array_key_exists('discountAmt', $promo_res) && (int)$promo_res['discountAmt'] > 0) :
+
+                              if($promo_res['currentType'] == \Saw\Model\Promotion::$type['MONEY']){
+                                $amount = $amount - (int)$promo_res['discountAmt'];
+error_log(__LINE__.'B::amount::'.print_r($amount,true));
+                              }
+                              if($promo_res['currentType'] == \Saw\Model\Promotion::$type['PERCENT']){
+                                $amount_tmp = $amount * ((int)$promo_res['discountAmt'] / 100);
+                                $amount = $amount - $amt_tmp;
+                              }
+
+error_log(__LINE__.'C::amount::'.print_r($amount,true));
+                          endif;
+
+                        ?>
                         <tr>
                            <td>Application</td>
                            <td class="hidden-480"><?=$application['type']?></td>
                            <td class="hidden-480">1</td>
-                           <td class="hidden-480">$<?=$application['membershipDues']?></td>
-                           <td>$<?=$application['membershipDues']?></td>
+                           <td class="hidden-480">$<?=$amount?></td>
+                           <td>$<?=$amount?></td>
                         </tr>
                      <? endif; ?>
 
@@ -152,15 +172,12 @@
                   $amount = $application['membershipDues'];
                else:
                ?>
-                <? if(!empty($application['promocode']) && !empty($promo_res) && array_key_exists('freeMembership', $promo_res) && $promo_res['freeMembership'] == 'yes') :
-                    // do no pro-rated discounts && amount is 
-                    $amount = $promo_res['freeMembershipPmtAmt'];
-                  else:
-
-                ?>
+                
               
                         <? if($pro_rated_membership_dues['q'] > 1): 
                            $amount = $pro_rated_membership_dues['a'];
+error_log(__LINE__.'D::amount::'.print_r($amount,true));
+
                         ?>
                         <tr>
                            <td>Discount</td>
@@ -170,9 +187,9 @@
                            <td>-$<?=$application['membershipDues']-$pro_rated_membership_dues['a']?></td>
                         </tr>
                         <? else: 
-                           $amount = $application['membershipDues'];
+                           //$amount = $application['membershipDues'];
+error_log(__LINE__.'E::amount::'.print_r($amount,true));                           
                          endif; ?>
-                  <? endif; ?>
                <? endif; ?>
                          <?
                         $discount3 = 0;

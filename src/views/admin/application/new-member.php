@@ -804,6 +804,8 @@ the   remainder of 2015 for free.  Offer expires December 31, 2015. </label> -->
                      foreach ($this->vars['promos'] as $promo):
                      ?>
                      <input type="hidden" class="freeMembershipPmtAmt <?=strtolower($promo['code'])?>x" value="<?=(array_key_exists('freeMembershipPmtAmt', $promo)) ? $promo['freeMembershipPmtAmt']:''?>">
+                     <input type="hidden" class="discountAmt <?=strtolower($promo['code'])?>x" value="<?=(array_key_exists('discountAmt', $promo)) ? $promo['discountAmt']:''?>">
+                     <input type="hidden" class="currentType <?=strtolower($promo['code'])?>x" value="<?=(array_key_exists('currentType', $promo)) ? $promo['currentType']:''?>">
                      <div class="row-fluid">
                         <div class="span6 promocodeblocks <?=strtoupper($promo['code'])?>">
                         <? if($promo['discountAmt'] > 0): ?>
@@ -866,6 +868,7 @@ the   remainder of 2015 for free.  Offer expires December 31, 2015. </label> -->
                   </style>
                   <script>
                   // less than six years
+                  window.amount = 0;
                   var lsix_amount = <?=$this->vars['dues'][1]['amount']?>;
                   var lsix_prorated = <?=$this->vars['dues'][1]['prorated']['a']?>;
                   var lsix_message = 'Attorneys in practice for less than 6 years';

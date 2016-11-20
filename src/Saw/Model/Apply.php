@@ -635,7 +635,7 @@ class Apply extends Model {
 					break;
 			}
 		} else if($curQuarter > 3 && $curQuarter <= 4){
-			if($curMonth == 12 && $curDay >= 10){
+			if($curMonth == 11 && $curDay >= 10){
 				switch ($this->membershipDues) {
 					case 175:
 						return array('q'=>1,'a'=>175);
