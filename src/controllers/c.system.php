@@ -158,27 +158,26 @@ $app['prepare_vfl'] = $app->protect(function (&$view_vars) use ($app) {
     
     $key = file_get_contents(GOOGLE_DRIVE_KEY_FILE_LOCATION);
 
-    // $cred = new Google_Auth_AssertionCredentials(
-    //     GOOGLE_DRIVE_SERVICE_ACCOUNT_NAME,
-    //     array(GOOGLE_DRIVE_API_SCOPE),
-    //     $key
-    // );
-    // $cred->sub = GOOGLE_DRIVE_PRN;
-    // $cred->prn = GOOGLE_DRIVE_PRN;
-    // $client->setAssertionCredentials($cred);
-    $client->setAuthConfig(GOOGLE_DRIVE_SERVICE_ACCOUNT_JSON_FILE_LOCATION);
+    $cred = new Google_Auth_AssertionCredentials(
+        GOOGLE_DRIVE_SERVICE_ACCOUNT_NAME,
+        array(GOOGLE_DRIVE_API_SCOPE),
+        $key
+    );
+    $cred->sub = GOOGLE_DRIVE_PRN;
+    $cred->prn = GOOGLE_DRIVE_PRN;
+    $client->setAssertionCredentials($cred);
 
     $session_service_token = $app['session']->get('service_token');
     if (isset($session_service_token)) {
         $client->setAccessToken($session_service_token);
-        if($client->isAccessTokenExpired()) {
-            $client->refreshTokenWithAssertion();
+        if($client->getAuth()->isAccessTokenExpired()) {
+            $client->getAuth()->refreshTokenWithAssertion($cred);
             $app['session']->set('service_token',$client->getAccessToken());
         }
     }else{
         $session_service_token = $client->getAccessToken();
         if(empty($session_service_token)){
-            $client->refreshTokenWithAssertion();
+            $client->getAuth()->refreshTokenWithAssertion($cred);
             $session_service_token = $client->getAccessToken();
             $app['session']->set('service_token',$session_service_token);
         }
@@ -196,11 +195,6 @@ $app['prepare_vfl'] = $app->protect(function (&$view_vars) use ($app) {
     } catch (Exception $e) {
       // do nothing so the page can keep loading the fall back is to not allow the 
       // vfl button on the editor to appear  
-    	$picker_view_vars = array(
-                         'access_token'=>''
-                        ,'client_id'=>GOOGLE_DRIVE_CLIENT_ID
-                        );
-	    $view_vars = array_merge($view_vars,$picker_view_vars);
     	error_log('excption in prepare_vfl:'.$e->getMessage());
     }
 });

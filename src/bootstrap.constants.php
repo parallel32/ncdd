@@ -22,7 +22,6 @@ define("GOOGLE_DRIVE_API_SCOPE", 'https://www.googleapis.com/auth/drive ');
 define("GOOGLE_DRIVE_CLIENT_ID", '380737956111-vtjukrbm82jupiugdtn4ala978286j37.apps.googleusercontent.com');
 define("GOOGLE_DRIVE_SERVICE_ACCOUNT_NAME", '380737956111-vtjukrbm82jupiugdtn4ala978286j37@developer.gserviceaccount.com');
 define("GOOGLE_DRIVE_KEY_FILE_LOCATION", '/var/www/ncdd/config/a1c0558c261497fbaff083cf33d794ba3b624c25-privatekey-ncdd-VFL-Search-Files.p12');
-define("GOOGLE_DRIVE_SERVICE_ACCOUNT_JSON_FILE_LOCATION", '/var/www/ncdd/config/google_api_client_creds/VFLSearchFiles-7c39f742cc87.json');
 define("GOOGLE_DRIVE_APPLICATION_NAME", "VFL Search Files");
 define("GOOGLE_DRIVE_PRN", 'mikeh@ncdd.com');
 // this can be a csv (comma separated value)
