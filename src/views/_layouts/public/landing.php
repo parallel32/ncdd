@@ -91,8 +91,8 @@
 									</div>
 									<div class="span6 margin-bottom-20">
 										<p class="text-center">
-											<img src="<?=SAW_SSL_CDN?>/assets/img/landing/seminar-1.png" alt="">
-											<img src="<?=SAW_SSL_CDN?>/assets/img/landing/seminar-3.png" alt="">
+											<img width="200px" src="<?=SAW_SSL_CDN?>/assets/img/landing/seminar-1.png" alt="">
+											<img width="200px" src="<?=SAW_SSL_CDN?>/assets/img/landing/seminar-3.png" alt="">
 										</p>
 									</div>
 								</div>
@@ -123,12 +123,14 @@
 							<div class="container">
 							<form id="saw-form" class="horizontal-form portlet">
 								<div class="row-fluid">
-									<div class="span6 blog-article">
+									<div class="span12 blog-article">
 		                              <h3><a style="text-decoration: none;">Why All Young Lawyers Should Attend NCDD's Summer Session</a></h3>
 										<p>I would not be the lawyer I am today without the NCDD.  The successes of other members have motivated me to work harder, take more risks, and be more fearless in the courtroom.  It has kept me on the fast-track to professional and personal success.  There have been bumps along the way, but the true friends I’ve made through the College have been there.  As members we are each other’s greatest supporters.  It’s an exciting time to be a new lawyer with your whole career ahead of you.  If you need a dose of inspiration, you’ll get it at the Summer Session.</p>
 										<p><!-- <img width="100" src="http://admin.ncdd.netdna-cdn.com/image/blog/579b90d054fe0b8d0e9fd05d/large/image?v=1469813067" alt="" style="text-align: left;"> --><strong>By Lauren Stuckert</strong> who is an NCDD Board Certified DUI Defense Specialist from Milwaukee, Wisconsin and also serves as the NCDD State Delegate of Wisconsin.  Learn more about Lauren <a href="https://ncdd.com/member/5208d6549afe0b53323e9493/lauren-b-stuckert"> right here.&nbsp;</a>. </p>
 		                           </div>
-									<div class="span6">
+		                        </div>
+								<div class="row-fluid">
+									<div class="span12">
 						                  <div class="alert alert-error hide">
 						                     <button class="close" data-dismiss="alert"></button>
 						                     You have some form errors. Please check below.
