@@ -13,7 +13,7 @@ use Saw\Model;
 
 
 $app->get('/join', function (Request $request) use ($app) {
-
+	
 	
 	return $app['view']->render('', 'landing', $view_vars=array());
 });
