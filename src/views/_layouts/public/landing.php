@@ -55,7 +55,7 @@
 							<div class="container">
 								<div class="row-fluid">
 									<div class="span5">
-										<h3><a>Be a part of the first and only nationally accredited institution able to certify DUI Defense Lawyers</a></h3>
+										<h3><a style="text-decoration: none;">Be a part of the first and only nationally accredited institution able to certify DUI Defense Lawyers.</a></h3>
 
 									</div>
 									<div class="span5  margin-bottom-20">
@@ -67,7 +67,7 @@
 								</div>
 								<div class="row-fluid margin-bottom-20">
 									<div class="span5 margin-bottom-20">
-										<h3><a>Join a community of hundreds of DUI Defense Attorneys with vast amounts of knowledge at your disposal</a></h3>
+										<h3><a style="text-decoration: none;">Join a community of hundreds of DUI Defense Attorneys with vast amounts of knowledge at your disposal.</a></h3>
 									</div>
 									<div class="span6 margin-bottom-20">
 										<img src="<?=SAW_SSL_CDN?>/assets/img/landing/ncdd-members.png" alt="">
@@ -75,7 +75,7 @@
 								</div>
 								<div class="row-fluid">
 									<div class="span5 margin-bottom-20">
-										<h3><a>NCDD boasts members who have authored nearly all the DUI Defense books</a></h3>
+										<h3><a style="text-decoration: none;">NCDD boasts members who have authored nearly all the DUI Defense books</a></h3>
 									</div>
 									<div class="span6">
 										<p class="text-center">
@@ -87,7 +87,7 @@
 								</div>
 								<div class="row-fluid margin-bottom-20">
 									<div class="span5 margin-bottom-20">
-										<h3><a>Participate in our members only seminars and leapfrog your competition with winning strategies during court room litigation</a></h3>
+										<h3><a style="text-decoration: none;">Participate in our members only seminars and leapfrog your competition with winning strategies during court room litigation.</a></h3>
 									</div>
 									<div class="span6 margin-bottom-20">
 										<p class="text-center">
@@ -98,7 +98,7 @@
 								</div>
 								<div class="row-fluid">
 									<div class="span5">
-										<h3><a>Validate your expertise with our nationally recognized and trademarked badges and add to your collection of accreditations.</a></h3>
+										<h3><a style="text-decoration: none;">Validate your expertise with our nationally recognized and trademarked badges and add to your collection of accreditations.</a></h3>
 									</div>
 									<div class="span6 margin-bottom-20">
 										<p class="text-center">
@@ -111,7 +111,7 @@
 								</div>
 								<div class="row-fluid margin-bottom-20">
 									<div class="span5 margin-bottom-20">
-										<h3><a>Get listed on ncdd.com, the Internet authority on DUI Defense, where you can publish blogs with your name and a backlink to your website.</a></h3>
+										<h3><a style="text-decoration: none;">Get listed on ncdd.com, the Internet authority on DUI Defense, where you can publish blogs with your name and a backlink to your website.</a></h3>
 									</div>
 									<div class="span6 margin-bottom-20">
 										<img src="<?=SAW_SSL_CDN?>/assets/img/landing/blog.png" alt="">
@@ -124,7 +124,7 @@
 							<div class="container">
 								<div class="row-fluid">
 									<div class="span6 blog-article">
-		                              <h3><a>Why All Young Lawyers Should Attend NCDD's Summer Session</a></h3>
+		                              <h3><a style="text-decoration: none;">Why All Young Lawyers Should Attend NCDD's Summer Session</a></h3>
 		                              	<p><img width="100" src="http://admin.ncdd.netdna-cdn.com/image/blog/579b90d054fe0b8d0e9fd05d/large/image?v=1469813067" alt=""><br>By Lauren Stuckert - a Board Certified DUI Defense Specialist from Milwaukee, Wisconsin and serves as State Delegate to the NCDD.  Learn more about Lauren <a href="https://ncdd.com/member/5208d6549afe0b53323e9493/lauren-b-stuckert"> right here.&nbsp;</a>. </p>
 
 										<p>I would not be the lawyer I am today without the NCDD.  The successes of other members have motivated me to work harder, take more risks, and be more fearless in the courtroom.  It has kept me on the fast-track to professional and personal success.  There have been bumps along the way, but the true friends I’ve made through the College have been there.  As members we are each other’s greatest supporters.  It’s an exciting time to be a new lawyer with your whole career ahead of you.  If you need a dose of inspiration, you’ll get it at the Summer Session.
@@ -136,7 +136,7 @@
 						                     <button class="close" data-dismiss="alert"></button>
 						                     You have some form errors. Please check below.
 						                  </div>                  
-						                  <h3 class="form-section"><a>JOIN US TODAY</a></h3>
+						                  <h3 class="form-section"><a style="text-decoration: none;">JOIN US TODAY</a></h3>
 						                  <div class="row-fluid">
 						                     <div class="span4 ">
 						                        <div class="control-group">
