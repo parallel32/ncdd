@@ -41,7 +41,7 @@
 		            <div class="span12">
 		               <!-- BEGIN PAGE TITLE & BREADCRUMB-->
 		               <h3 class="page-title text-center">
-		                  <a href="//local.ncdd.com"><img src="https://local.admin.ncdd.com/assets/img/ncdd-login2-logo.png"></a>
+		                  <a href="//local.ncdd.com"><img width="350px" src="https://local.admin.ncdd.com/assets/img/ncdd-login2-logo.png"></a>
 		                  <!-- <br>Join Us -->
 		               </h3>
 		               <!-- END PAGE TITLE & BREADCRUMB-->
@@ -87,7 +87,7 @@
 								</div>
 								<div class="row-fluid margin-bottom-20">
 									<div class="span5 margin-bottom-20">
-										<h3><a style="text-decoration: none;">Participate in our members only seminars and leapfrog your competition with winning strategies during court room litigation.</a></h3>
+										<h3><a style="text-decoration: none;">Participate in our members only seminars and leapfrog your competition during court room litigation with winning strategies.</a></h3>
 									</div>
 									<div class="span6 margin-bottom-20">
 										<p class="text-center">
@@ -98,7 +98,7 @@
 								</div>
 								<div class="row-fluid">
 									<div class="span5">
-										<h3><a style="text-decoration: none;">Validate your expertise with our nationally recognized and trademarked badges and add to your collection of accreditations.</a></h3>
+										<h3><a style="text-decoration: none;">Validate your expertise and add to your collection of accreditations with our nationally recognized, trademarked badges.</a></h3>
 									</div>
 									<div class="span6 margin-bottom-20">
 										<p class="text-center">
@@ -111,7 +111,7 @@
 								</div>
 								<div class="row-fluid margin-bottom-20">
 									<div class="span5 margin-bottom-20">
-										<h3><a style="text-decoration: none;">Get listed on ncdd.com, the Internet authority on DUI Defense, where you can publish blogs with your name and a backlink to your website.</a></h3>
+										<h3><a style="text-decoration: none;">Get listed on NCDD.COM, the Internet authority on DUI Defense, where you can publish blogs with your name and a backlink to your website.</a></h3>
 									</div>
 									<div class="span6 margin-bottom-20">
 										<img src="<?=SAW_SSL_CDN?>/assets/img/landing/blog.png" alt="">
@@ -125,8 +125,8 @@
 								<div class="row-fluid">
 									<div class="span12 blog-article">
 		                              <h3><a style="text-decoration: none;">Why All Young Lawyers Should Attend NCDD's Summer Session</a></h3>
-										<p>I would not be the lawyer I am today without the NCDD.  The successes of other members have motivated me to work harder, take more risks, and be more fearless in the courtroom.  It has kept me on the fast-track to professional and personal success.  There have been bumps along the way, but the true friends I’ve made through the College have been there.  As members we are each other’s greatest supporters.  It’s an exciting time to be a new lawyer with your whole career ahead of you.  If you need a dose of inspiration, you’ll get it at the Summer Session.</p>
-										<p><!-- <img width="100" src="http://admin.ncdd.netdna-cdn.com/image/blog/579b90d054fe0b8d0e9fd05d/large/image?v=1469813067" alt="" style="text-align: left;"> --><strong>By Lauren Stuckert</strong> who is an NCDD Board Certified DUI Defense Specialist from Milwaukee, Wisconsin and also serves as the NCDD State Delegate of Wisconsin.  Learn more about Lauren <a href="https://ncdd.com/member/5208d6549afe0b53323e9493/lauren-b-stuckert"> right here.&nbsp;</a>. </p>
+										<p>I would not be the lawyer I am today without the NCDD.  The successes of other members have motivated me to work harder, take more risks, and be more fearless in the courtroom.  It has kept me on the fast-track to professional and personal success.</p>
+										<p><!-- <img width="100" src="http://admin.ncdd.netdna-cdn.com/image/blog/579b90d054fe0b8d0e9fd05d/large/image?v=1469813067" alt="" style="text-align: left;"> --><strong>By Lauren Stuckert</strong> who is an NCDD Board Certified DUI Defense Specialist from Milwaukee and also serves as the NCDD State Delegate of Wisconsin.  Learn more about Lauren <a href="https://ncdd.com/member/5208d6549afe0b53323e9493/lauren-b-stuckert"> right here.&nbsp;</a> </p>
 		                           </div>
 		                        </div>
 								<div class="row-fluid">
@@ -218,13 +218,12 @@
 						                        </div>
 						                     </div>
 						                     <!--/span-->
-						                  </div>
-						                  <div class="row-fluid">
-						                     <div class="span12">
+						                     <div class="span6">
 						                        <div class="control-group">
 						                           <label class="control-label">Are you a full time Public Defender?</label>
 						                           <div class="controls">
 						                              <select class="small  publicDefender" name="doc[publicDefender]">
+						                                 <option value="">Please select</option>
 						                                 <option value="no">No</option>
 						                                 <option value="yes">Yes</option>
 						                              </select>
@@ -248,7 +247,7 @@
 					                     <div class="row-fluid">
 						                  	<div class="span6 ">
 						                        <div class="control-group">
-						                           <label class="control-label">Payment Amount</label>
+						                           <label class="control-label">Yearly Membership Fee:</label>
 						                           <div class="controls">
 						                           		<h4>$<i class="payment amount"></i></h4>
 						                           </div>
@@ -268,7 +267,7 @@
 						                  </style>
 						                  <div class="row-fluid">
 						                  	<div class="span12 ">
-						                        <h3>Billing Information:</h3>
+						                        <h3>Payment Information:</h3>
 						                     </div>
 						                  </div>
 						                  
@@ -282,6 +281,8 @@
 						                           </div>
 						                        </div>
 						                        <!--/span-->
+						                     </div>
+						                     <div class="row-fluid">
 						                        <div class="span6 ">
 						                           <div class="control-group ">
 						                              <label class="control-label">CVC Code <!-- <span class="help-block">(3 or 4 digit security code) </span> --></label>
@@ -331,7 +332,7 @@
 						                     </div>
 							                 <div class="row-fluid">
 							                    <div class="span10 ">
-							                       <div class="checker"><span><input type="checkbox" name="suppress_emails" value="yes"></span></div>
+							                       <div class="checker"><span><input type="checkbox" name="doc[tosAcknowledgement]" value="yes"></span></div>
 							                       I agree to the <a target="_blank" href="/become-a-member">Terms of Service</a>
 							                    </div>
 							                 </div>

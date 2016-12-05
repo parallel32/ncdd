@@ -29,15 +29,6 @@ $app['get_pages'] = $app->protect(function ($slug='') use($app) {
 	return $view_vars;
 });
 
-
-// join us page
-$app->get('/join', function (Request $request) use ($app) {
-	//return $app->redirect('https://'.SAW_ADMIN_WEBSITE.'/join');
-	
-	return $app['view']->render('', 'landing', $view_vars=array());
-});
-
-
 // new themes
 $app->get('/theme-home', function (Request $request) use ($app) {
 	$view_vars = array();

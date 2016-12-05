@@ -866,6 +866,9 @@ the   remainder of 2015 for free.  Offer expires December 31, 2015. </label> -->
                   background-image: url('/assets/img/card-discover.gif');
                   }
                   </style>
+                  <?
+                     echo '<pre>';print_r($this->vars['dues']);echo '</pre>';
+                  ?>
                   <script>
                   // less than six years
                   window.amount = 0;

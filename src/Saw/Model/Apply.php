@@ -50,17 +50,18 @@ class Apply extends Model {
 	public $trial;
 	public $referredBy;
 	public $userAgent;
+	public $tosAcknowledgement;
 	public $termsAcknowledgement;
 	public $twoSeminarsAcknowledgement;
 	public $promotion;
 
 	static public function loadValidatorMetadata(ClassMetadata $metadata){
-		$metadata->addPropertyConstraint('firstName', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		$metadata->addPropertyConstraint('lastName', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		$metadata->addPropertyConstraint('phone', new Constraints\NotBlank(array('message'=>'cannot be blank')));
+		$metadata->addPropertyConstraint('firstName', new Constraints\NotBlank(array('message'=>'cannot be blank','groups' => array('join'))));
+		$metadata->addPropertyConstraint('lastName', new Constraints\NotBlank(array('message'=>'cannot be blank','groups' => array('join'))));
+		$metadata->addPropertyConstraint('phone', new Constraints\NotBlank(array('message'=>'cannot be blank','groups' => array('join'))));
 		$metadata->addPropertyConstraint('barNumber', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		$metadata->addPropertyConstraint('email', new Constraints\NotBlank(array('message'=>'cannot be blank')));
-		$metadata->addPropertyConstraint('email', new Constraints\Email(array('message'=>'invalid email')));
+		$metadata->addPropertyConstraint('email', new Constraints\NotBlank(array('message'=>'cannot be blank','groups' => array('join'))));
+		$metadata->addPropertyConstraint('email', new Constraints\Email(array('message'=>'invalid email','groups' => array('join'))));
 		$metadata->addPropertyConstraint('listServEmail', new Constraints\Email(array('message'=>'invalid email','groups' => array('update_member'))));
 		$metadata->addPropertyConstraint('addToListServ', new Constraints\NotBlank(array('message'=>'cannot be blank','groups' => array('update_member'))));
 		$metadata->addPropertyConstraint('formattedAddress', new Constraints\NotBlank(array('message'=>'cannot be blank')));
@@ -72,6 +73,7 @@ class Apply extends Model {
 		//$metadata->addConstraint(new Callback(array('methods' => array('listServ'))));
 		$metadata->addConstraint(new Callback(array('methods' => array('latLonValidate'))));
 		//$metadata->addConstraint(new Callback(array('methods' => array('termsAckValidate'))));
+		$metadata->addConstraint(new Callback(array('methods' => array('tosAckValidate'),'groups' => array('join'))));
 	}
 	/* --commented out because it's no longer necessary
 	public function listServ(ExecutionContext $context){
@@ -91,6 +93,12 @@ class Apply extends Model {
 		if(empty($this->termsAcknowledgement) || $this->termsAcknowledgement == false || $this->termsAcknowledgement == 'no'){
 			$propertyPath = $context->getPropertyPath().'termsAcknowledgement';
 			$context->addViolationAtPath($propertyPath,'Please read and accept our terms in order to submit the application.', array(), null);
+		}
+	}
+	public function tosAckValidate(ExecutionContext $context){
+		if(empty($this->tosAcknowledgement) || $this->tosAcknowledgement == false || $this->tosAcknowledgement == 'no'){
+			$propertyPath = $context->getPropertyPath().'tosAcknowledgement';
+			$context->addViolationAtPath($propertyPath,'Please accept our Terms of Service.', array(), null);
 		}
 	}
 	
@@ -133,6 +141,7 @@ class Apply extends Model {
 		$this->membershipDues = $doc['membershipDues'];
 		$this->referredBy = $doc['referredBy'];
 		$this->userAgent = $doc['userAgent'];
+		$this->tosAcknowledgement = $doc['tosAcknowledgement'];
 		$this->termsAcknowledgement = $doc['termsAcknowledgement'];
 		$this->twoSeminarsAcknowledgement = $doc['twoSeminarsAcknowledgement'];
 		$this->trial = (is_object($doc['trial'])) ? $doc['trial']->__toArray(false) : $doc['trial'];
@@ -179,6 +188,7 @@ class Apply extends Model {
 		$this->trial = $this->trial ?: new \stdClass();
 		$this->promotion = $this->promotion ?: new \stdClass();
 		$this->userAgent = $this->userAgent ?: '';
+		$this->tosAcknowledgement = $this->tosAcknowledgement ?: '';
 		$this->termsAcknowledgement = $this->termsAcknowledgement ?: '';
 		$this->twoSeminarsAcknowledgement = $this->twoSeminarsAcknowledgement ?: '';
 
@@ -635,7 +645,7 @@ class Apply extends Model {
 					break;
 			}
 		} else if($curQuarter > 3 && $curQuarter <= 4){
-			if($curMonth == 11 && $curDay >= 10){
+			if($curMonth >= 12 && $curDay >= 0){
 				switch ($this->membershipDues) {
 					case 175:
 						return array('q'=>1,'a'=>175);

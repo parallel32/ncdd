@@ -4526,8 +4526,8 @@ $app->get('/applications/activate/renewals/{activate}', function ($activate, Req
     			break;    		
 		*/
 		$application = new Model\Apply($doc=array(), $app);
-		$bonus2015promocode = $application->fetchByStatus('PAID',0, 10000,$filter=array('promocode'=>'BONUS2015'));
 		$promo_count = 0;
+		/*$bonus2015promocode = $application->fetchByStatus('PAID',0, 10000,$filter=array('promocode'=>'BONUS2015'));
 		if(!empty($trial) && is_array($trial)){
 			foreach ($bonus2015promocode as $record):
 				$doc['currentStatus'] = Model\Renewal::$status['PAID'];
@@ -4546,7 +4546,8 @@ $app->get('/applications/activate/renewals/{activate}', function ($activate, Req
 				$promo_count++;
 			endforeach;
 		}
-		$eagle2016promocode = $application->fetchByStatus('PAID',0, 10000,$filter=array('promocode'=>'EAGLE2016'));
+		*/
+		/*$eagle2016promocode = $application->fetchByStatus('PAID',0, 10000,$filter=array('promocode'=>'EAGLE2016'));
 		if(!empty($trial) && is_array($trial)){
 			foreach ($eagle2016promocode as $record):
 				$doc['currentStatus'] = Model\Renewal::$status['PAID'];
@@ -4564,7 +4565,7 @@ $app->get('/applications/activate/renewals/{activate}', function ($activate, Req
 
 				$promo_count++;
 			endforeach;
-		}
+		}*/
 		
 
 
