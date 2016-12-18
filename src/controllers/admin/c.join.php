@@ -47,40 +47,12 @@ $app->post('/join', function (Request $request) use ($app) {
         return new Response(json_encode($response_arr), 403,array('Content-Type' => 'application/json'));
     }
 
-    // validate the application
+    // validate the application form fields
     $app['validateModel']($app,$application,$groups=array('join'));
     
     // validate the promotion
-    // incoming var sanity check
-    if(!array_key_exists('promocode', $doc)){
-    	$doc['promocode'] = '';
-    }else{
-    	$doc['promocode'] = strtoupper(trim($doc['promocode']));
-    }
-    $promo_res = array();
-    if(!empty($doc['promocode'])){
-
-    	$promo = new Model\Promotion(array('code'=>$doc['promocode']),$app);
-    	// what the membership translates to and if you should validate
-    	$mem = ($doc['publicDefender']=='yes') ? Model\Member::$membership['PUBLIC DEFENDER'] : Model\Member::$membership['GENERAL MEMBER'];
-
-    	if($promo->isValidMembership($doc['promocode'],$mem)){
-    		error_log(__FILE__.' '.__LINE__.' $mem: '.print_r($mem,true));
-    		error_log(__FILE__.' '.__LINE__.' $doc[promocode]: '.print_r($doc['promocode'],true));
-    		$promo_res = $promo->findById('code');    	
-	    	$promo_res['currentMembership'] = $mem;
-	    	$promo_res['optIn'] = (array_key_exists('optIn', $doc)) ? $doc['optIn'] : '';
-	    	$promo_res['code'] = $doc['promocode'];
-	    	
-	    	$promo = new Model\Promotion($promo_res,$app);
-	    	$app['validateModel']($app,$promo,array('onform'));
-	    	$application->promotion = $promo_res;
-	    }else{
-	    	error_log(__FILE__.' '.__LINE__.' : '.print_r('NOT VALID PROMO',true));
-	    }
-    }
+    $app['validatePromotion']($app,$doc);
     
-
     // process the payment
 
 
@@ -98,7 +70,6 @@ $app->post('/join', function (Request $request) use ($app) {
 			$user['suppress_emails'] = $request->get('suppress_emails');
 			$app['session']->set('user',$user);
 			$suppress = (!empty($user) && (is_array($user)) && array_key_exists('accesslevel', $user) && ($user['accessLevel'] == ADMIN || ((is_array($user)) && array_key_exists('enable_admin', $user) && ($user['enable_admin'] == 'ON') )) && array_key_exists('suppress_emails', $user) && $user['suppress_emails'] == 'yes') ? true: false;
-
 
 	    	$doc = $request->get('doc');
 	    	// send admin the email notification
@@ -126,7 +97,9 @@ $app->post('/join', function (Request $request) use ($app) {
 	    						,'phone'=>$doc['phone']
 	    	);
 	    	$body = $app['view']->render('email/new-member','email', $view_vars);
-	    	if(!$suppress){$app['sendMail']($subject, $body, $to);}
+	    	if(!$suppress){
+	    		$app['sendMail']($subject, $body, $to);
+	    	}
 
 	    	// send applicant the email notification
 	    	// deprecated - all emails are handeled in the controller body except the for the admin email above
@@ -148,7 +121,12 @@ $app->post('/join', function (Request $request) use ($app) {
 	endif;
 });
 
+// xhr validate the promotion when other fields change
+$app->post('/join/promocode-validate', function (Request $request) use ($app) {
+	
+	// retrieve document from request
+    $doc = $request->get('doc');
+    $app['validatePromotion']($app,$doc);
 
-
-
+});
 return $app;

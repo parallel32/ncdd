@@ -23,9 +23,14 @@
 	<link href="<?=SAW_SSL_CDN?>/assets/css/animate.css" rel="stylesheet" type="text/css"/>
 	<link rel="shortcut icon" href="<?=SAW_SSL_CDN?>/assets/img/favicon.ico" />
 	<!-- jquery included here instead of in page level plugins section at the bottom because I need access to the document.ready function to 
-   initialize page level scripts within the page itself -->
-   <script src="<?=SAW_SSL_CDN?>/assets/plugins/jquery-1.10.1.min.js" type="text/javascript"></script>   
+   	initialize page level scripts within the page itself -->
+   	<script src="<?=SAW_SSL_CDN?>/assets/plugins/jquery-1.10.1.min.js" type="text/javascript"></script>   
+   	<script src="<?=SAW_SSL_CDN?>/assets/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js" type="text/javascript" ></script>
 	<link href="<?=SAW_SSL_CDN?>/assets/plugins/bootstrap-modal/css/bootstrap-modal.min.css" rel="stylesheet" type="text/css"/>
+	<?=$this->element('js/Namespace.js');?>
+   	<?=$this->element('js/BlockUI.Class.js');?>
+   	<?=$this->element('js/FormPostClass.js');?>
+   	<?=$this->element('js/FormGetClass.js');?>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -41,7 +46,7 @@
 		            <div class="span12">
 		               <!-- BEGIN PAGE TITLE & BREADCRUMB-->
 		               <h3 class="page-title text-center">
-		                  <a href="//local.ncdd.com"><img width="350px" src="https://local.admin.ncdd.com/assets/img/ncdd-login2-logo.png"></a>
+		                  <a href="https://<?=SAW_CONSUMER_WEBSITE?>"><img width="350px" src="https://<?=SAW_ADMIN_WEBSITE?>/assets/img/ncdd-login2-logo.png"></a>
 		                  <!-- <br>Join Us -->
 		               </h3>
 		               <!-- END PAGE TITLE & BREADCRUMB-->
@@ -238,7 +243,6 @@
 					                              <label class="control-label">Promo Code</label>
 					                              <div class="controls">
 						                             <input type="text" name="doc[promocode]" class=" promocode" value="">
-						                             <input type="hidden" id="promocodetype" value="">
 						                          </div>
 					                           </div>
 					                        </div>
@@ -323,8 +327,8 @@
 						                           <div class="control-group ">
 						                              <label class="control-label">Expiration Date</label>
 						                              <div class="controls">
-						                                 <select id="card-expMonth" class=" payment expMonth" name="doc[payment][expMonth]"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11" selected="">11</option><option value="12">12</option></select>
-						                                 <select id="card-expYear" class=" payment expYear" name="doc[payment][expYear]"><option value="2016" selected="">2016</option><option value="2017">2017</option><option value="2018">2018</option><option value="2019">2019</option><option value="2020">2020</option><option value="2021">2021</option><option value="2022">2022</option><option value="2023">2023</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option><option value="2027">2027</option></select>
+						                                 <select id="card-expMonth" class=" payment expMonth" name="doc[payment][expMonth]"></select>
+						                                 <select id="card-expYear" class=" payment expYear" name="doc[payment][expYear]"></select>
 						                              </div>
 						                           </div>
 						                        </div>
@@ -332,7 +336,7 @@
 						                     </div>
 							                 <div class="row-fluid">
 							                    <div class="span10 ">
-							                       <div class="checker"><span><input type="checkbox" name="doc[tosAcknowledgement]" value="yes"></span></div>
+							                       <div class="checker"><span><input class="optIn tosAcknowledgement" type="checkbox" name="doc[tosAcknowledgement]" value="yes"></span></div>
 							                       I agree to the <a target="_blank" href="/become-a-member">Terms of Service</a>
 							                    </div>
 							                 </div>
@@ -376,7 +380,6 @@
 	<!-- END FOOTER -->
 	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 	<!-- BEGIN CORE PLUGINS -->
-	<script src="<?=SAW_SSL_CDN?>/assets/plugins/jquery-1.10.1.min.js" type="text/javascript"></script>
 	<script src="<?=SAW_SSL_CDN?>/assets/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
 	<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
 	<script src="<?=SAW_SSL_CDN?>/assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>      
@@ -396,6 +399,37 @@
 		   App.init();
 		});
 	</script>
+<?=$this->element('js/Join.js');?>
+<?/*$this->element('js/CountryState.js');*/?>
+<script>
+jQuery(document).ready(function() {    
+
+   // prepare the month dropdown
+   var select = $("#card-expMonth"),
+   month = new Date().getMonth() + 1;
+   for (var i = 1; i <= 12; i++) {
+      select.append($("<option value='"+i+"' "+(month === i ? "selected" : "")+">"+i+"</option>"))
+   }
+
+   // prepare the year dropdown
+   var select = $("#card-expYear"),
+   year = new Date().getFullYear();
+
+   for (var i = 0; i < 12; i++) {
+      select.append($("<option value='"+(i + year)+"' "+(i === 0 ? "selected" : "")+">"+(i + year)+"</option>"))
+   }
+   // end - init the credit card fields
+
+   $.extend($.inputmask.defaults, {
+   	'autounmask': true
+   });
+
+   $("#phone").inputmask("mask", {"mask": "(999) 999-9999"}); //specifying fn & options
+   $("#fax").inputmask("mask", {"mask": "(999) 999-9999"}); //specifying fn & options
+
+   io.saw.Join.init();
+});      
+</script>
 	<!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->

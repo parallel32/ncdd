@@ -104,8 +104,7 @@ class Promotion extends Model {
         }
 	}
 	public function codeValid(ExecutionContext $context){
-	
-		$result = $this->findOne($query=array('code'=>$this->code,'isActive'=>'yes'),$fields=array(),$slaveOkay=true);
+		$result = $this->isValid($this->code);
 		if(!empty($result) && $result['code'] != $this->code){
 			$propertyPath = $context->getPropertyPath().'code';
         	$context->addViolationAtPath($propertyPath,'This promo code is invalid.  Please check the code and try again.', array(), null);

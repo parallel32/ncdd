@@ -1,0 +1,85 @@
+<script type="text/javascript">
+(function( Join, $, undefined ) {
+	
+	Join.promocodetimeoutid = 0;
+
+	function checkPromocode(){
+		setTimeout(function() {
+	        io.saw.FormPost.activate({postUrl:'/join/promocode-validate'
+			   ,blockUI:'no'
+			   ,serializeSelector:':input'
+			   ,postOnComplete:function(responseObj,responseStatus){}
+			   ,postOnSuccess:function(responseObj){
+			   		
+			   }
+			});
+		}, 500);
+		
+	};
+	function purchase(){
+
+		io.saw.FormPost.activate({postUrl:'/join'
+		   ,serializeSelector:'.promocode'
+		   ,postOnComplete:function(responseObj,responseStatus){
+			   	if(responseStatus == 'success'){
+					$('#save-success .modal-body p').html(responseObj.message);
+			      	$('#save-success-label').html(responseObj.label);
+			      	$('#save-success').modal({keyboard: false});   		
+			   	}else{
+			   		var responseObj = $.parseJSON(responseObj.responseText);
+			   	}
+		   }
+		   ,postOnSuccess:function(responseObj){}
+		});      
+
+	};
+	Join.init = function(){
+		
+		$('#saw-form input').keypress(function (e) {
+		   if (e.which == 13) {
+		   	  e.preventDefault();
+		      newMemberAdd();
+		   }
+		});
+		var DELAY = 500, clicks = 0, timer = null;
+		$(function(){
+		    $('#saw-form .btn.green').on("click", function(e){
+		        clicks++;  //count clicks
+		        if(clicks === 1) {
+		            timer = setTimeout(function() {
+		                newMemberAdd();  //perform single-click action    
+		                clicks = 0;             //after action performed, reset counter
+		            }, DELAY);
+		        } else {
+		            clearTimeout(timer);    //prevent single-click action
+		            newMemberAdd();  //perform double-click action
+		            clicks = 0;             //after action performed, reset counter
+		        }
+		    })
+		    .on("dblclick", function(e){
+		        e.preventDefault();  //cancel system double-click event
+		    });
+		});
+
+		// mask the phone field
+		$.extend($.inputmask.defaults, {
+            'autounmask': true
+        });
+        $("#phone").inputmask("mask", {"mask": "(999) 999-9999"}); //specifying fn & options
+        $("#fax").inputmask("mask", {"mask": "(999) 999-9999"}); //specifying fn & options
+
+        // this calcutlates the membership fee based on profession and years in it
+        $('#saw-form .specialLogic').change(function(){
+        	
+        });
+        $('.promocode').keyup(function(){
+        	window.clearTimeout(io.saw.Join.promocodetimeoutid);//cancel previous timer so they don't queue up when you're typing
+			io.saw.Join.promocodetimeoutid = window.setTimeout(function(theThis){ // delay so it's not in every key-up stroke
+				checkPromocode();
+			},500,$(this));
+        });
+
+	};
+	
+}( io.saw.Join = io.saw.Join || {}, io.saw.jQuery || jQuery ));
+</script>
