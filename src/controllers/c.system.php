@@ -14,6 +14,7 @@ $app['validatePromotion'] = $app->protect(function ($app,$doc) {
     	$doc['promocode'] = strtoupper(trim($doc['promocode']));
     }
     $promo_res = array();
+    $doc['promocode'] = trim($doc['promocode']);
     if(!empty($doc['promocode'])){
 
     	$promo = new Model\Promotion(array('code'=>$doc['promocode']),$app);

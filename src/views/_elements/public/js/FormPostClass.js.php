@@ -85,7 +85,7 @@
 		                repeat: false
 		            });
 		            //*/
-		            jQuery('.error.pulsate').animate({backgroundColor: "#f2dede"},{duration:800}).delay(1000).animate({backgroundColor: "#fff"}).animate({color:'red'})
+		            //jQuery('.error.pulsate').animate({backgroundColor: "#f2dede"},{duration:800}).delay(1000).animate({backgroundColor: "#fff"}).animate({color:'red'})
 		        }
 		    }
 		    params.postOnComplete(response,status);

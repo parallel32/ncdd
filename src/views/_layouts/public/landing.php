@@ -103,7 +103,7 @@
 								</div>
 								<div class="row-fluid">
 									<div class="span5">
-										<h3><a style="text-decoration: none;">Validate your expertise and add to your collection of accreditations with our nationally recognized, trademarked badges.</a></h3>
+										<h3><a style="text-decoration: none;">Validate your expertise and add to your collection of accreditations with our nationally recognized, trademark badges.</a></h3>
 									</div>
 									<div class="span6 margin-bottom-20">
 										<p class="text-center">
@@ -334,13 +334,18 @@
 						                        </div>
 						                        <!--/span-->
 						                     </div>
-							                 <div class="row-fluid">
-							                    <div class="span10 ">
-							                       <div class="checker"><span><input class="optIn tosAcknowledgement" type="checkbox" name="doc[tosAcknowledgement]" value="yes"></span></div>
+						                     <div class="row-fluid" style="margin-top: 15px;">
+						                        <div class="span6 ">
+						                           <div class="control-group ">
+						                              <label class="control-label"></label>
+						                              <div class="controls">
+						                                 <input class="optIn tosAcknowledgement" type="checkbox" name="doc[tosAcknowledgement]" value="yes">
 							                       I agree to the <a target="_blank" href="/become-a-member">Terms of Service</a>
-							                    </div>
-							                 </div>
-
+						                              </div>
+						                           </div>
+						                        </div>
+						                        <!--/span-->
+						                     </div>
 							                 <div class="form-actions text-center">
 	                                             <button type="button" class="btn green">Submit Application</button>
 						                     	 <!-- <button type="button" class="btn cancel-go-back">Cancel and Go Back</button> -->
