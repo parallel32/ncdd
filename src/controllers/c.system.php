@@ -29,7 +29,6 @@ $app['validatePromotion'] = $app->protect(function ($app,$doc) {
 	    	
 	    	$promo = new Model\Promotion($promo_res,$app);
 	    	$app['validateModel']($app,$promo,array('onform'));
-	    	$application->promotion = $promo_res;
 	    }else{
 			
 			$invalidfields_message = "This promo code is not available with the membership you're trying to signup for.  Please contact us directly and we will assist you.";

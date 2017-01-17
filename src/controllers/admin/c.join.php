@@ -128,5 +128,9 @@ $app->post('/join/promocode-validate', function (Request $request) use ($app) {
     $doc = $request->get('doc');
     $app['validatePromotion']($app,$doc);
 
+    $label = 'Promo is Valid';
+	$message = 'The promo code is valid';
+	$response_status = 200;
+    return new Response(json_encode(array('message' => $message,'label'=>$label)), $response_status,array('Content-Type' => 'application/json'));
 });
 return $app;
