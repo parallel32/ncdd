@@ -194,30 +194,19 @@
 						                        <div class="control-group">
 						                           <label class="control-label">Year of admission to practice:</label>
 						                           <div class="controls">
-						                              <select name="doc[yearsInLawPractice]" class=" yearsInLawPractice">
+						                              <select name="doc[yearsInLawPractice]" class=" specialLogic yearsInLawPractice">
 						                              <option value="">Please select</option>
-	                                                    <option value="2016">2016</option>
-	                                                    <option value="2015">2015</option>
-	                                                    <option value="2014">2014</option>
-	                                                    <option value="2013">2013</option>
-	                                                    <option value="2012">2012</option>
-	                                                    <option value="2011">2011</option>
-	                                                    <option value="2010">2010</option>
-	                                                    <option value="2009">2009</option>
-	                                                    <option value="2008">2008</option>
-	                                                    <option value="2007">2007</option>
-	                                                    <option value="2006">2006</option>
-	                                                    <option value="2005">2005</option>
-	                                                    <option value="2004">2004</option>
-	                                                    <option value="2003">2003</option>
-	                                                    <option value="2002">2002</option>
-	                                                    <option value="2001">2001</option>
-	                                                    <option value="2000">2000</option>
-	                                                    <option value="1999">1999</option>
-	                                                    <option value="1998">1998</option>
-	                                                    <option value="1997">1997</option>
-	                                                    <option value="1996">1996</option>
-	                                                    <option value="1995">More than 20 years ago</option>
+						                              <?
+						                              $date = date('Y')+1;
+						                              for ($i=1; $i < 22; $i++) {
+						                              	$date2 = $date-$i;
+						                              	if($i == 21){
+						                              		echo '<option value="'.$date2.'">More than 20 years ago</option>';
+						                              	}else{
+						                              		echo '<option value="'.$date2.'">'.$date2.'</option>';	
+						                              	}						                              	
+						                              }
+						                              ?>
 						                              </select>
 						                           </div>
 						                        </div>
@@ -227,7 +216,7 @@
 						                        <div class="control-group">
 						                           <label class="control-label">Are you a full time Public Defender?</label>
 						                           <div class="controls">
-						                              <select class="small  publicDefender" name="doc[publicDefender]">
+						                              <select class="small specialLogic publicDefender" name="doc[publicDefender]">
 						                                 <option value="">Please select</option>
 						                                 <option value="no">No</option>
 						                                 <option value="yes">Yes</option>
@@ -400,33 +389,9 @@
 		});
 	</script>
 <?=$this->element('js/Join.js');?>
-<?/*$this->element('js/CountryState.js');*/?>
+<?/* ONLY NEEDED IF PAYEEZY NEEDS BILLING INFORMATION >> $this->element('js/CountryState.js');*/?>
 <script>
-jQuery(document).ready(function() {    
-
-   // prepare the month dropdown
-   var select = $("#card-expMonth"),
-   month = new Date().getMonth() + 1;
-   for (var i = 1; i <= 12; i++) {
-      select.append($("<option value='"+i+"' "+(month === i ? "selected" : "")+">"+i+"</option>"))
-   }
-
-   // prepare the year dropdown
-   var select = $("#card-expYear"),
-   year = new Date().getFullYear();
-
-   for (var i = 0; i < 12; i++) {
-      select.append($("<option value='"+(i + year)+"' "+(i === 0 ? "selected" : "")+">"+(i + year)+"</option>"))
-   }
-   // end - init the credit card fields
-
-   $.extend($.inputmask.defaults, {
-   	'autounmask': true
-   });
-
-   $("#phone").inputmask("mask", {"mask": "(999) 999-9999"}); //specifying fn & options
-   $("#fax").inputmask("mask", {"mask": "(999) 999-9999"}); //specifying fn & options
-
+jQuery(document).ready(function() {
    io.saw.Join.init();
 });      
 </script>
