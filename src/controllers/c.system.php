@@ -5,44 +5,82 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Saw\Model;
 use dflydev\markdown\MarkdownParser;
 
-// Logic for validating model fields
-$app['calculateDues'] = $app->protect(function ($app,$doc) {
+// Logic for validating membership fees in relation to everything
+// prorating, public defender or not, promotions, etc.
+$app['validateMembershipFee'] = $app->protect(function ($app,$doc) {
 	// incoming var sanity check
+    if(!array_key_exists('yearsInLawPractice', $doc)){
+    	$doc['yearsInLawPractice'] = '';
+    }else{
+    	$doc['yearsInLawPractice'] = trim($doc['yearsInLawPractice']);
+    }
     if(!array_key_exists('promocode', $doc)){
     	$doc['promocode'] = '';
     }else{
     	$doc['promocode'] = strtoupper(trim($doc['promocode']));
     }
     $promo_res = array();
+    $doc['promocode'] = trim($doc['promocode']);
     if(!empty($doc['promocode'])){
 
     	$promo = new Model\Promotion(array('code'=>$doc['promocode']),$app);
-    	// what the membership translates to and if you should validate
-    	$mem = ($doc['publicDefender']=='yes') ? Model\Member::$membership['PUBLIC DEFENDER'] : Model\Member::$membership['GENERAL MEMBER'];
 
-    	if($promo->isValidMembership($doc['promocode'],$mem)){
-    		$promo_res = $promo->findById('code');    	
-	    	$promo_res['currentMembership'] = $mem;
-	    	$promo_res['optIn'] = (array_key_exists('tosAcknowledgement', $doc)) ? $doc['tosAcknowledgement'] : '';
-	    	$promo_res['code'] = $doc['promocode'];
-	    	
-	    	$promo = new Model\Promotion($promo_res,$app);
-	    	$app['validateModel']($app,$promo,array('onform'));
-	    	$application->promotion = $promo_res;
-	    }else{
-			
-			$invalidfields_message = "This promo code is not available with the membership you're trying to signup for.  Please contact us directly and we will assist you.";
-			$all_fields = 	array(
-								array(
-									'name'=>'promocode'
-									,'message'=>"This promo code is not available with the membership you're trying to signup for.  Please contact us directly and we will assist you."
-								)
-							);
-			throw new Saw\Model\Exceptions\DomainException($invalidfields_message, $all_fields);
+    	// check if the promo is still valid date-wise or if it's a trial promo
+    	if(strtoupper($doc['promocode']) == 'TRIAL' 
+    		|| strtoupper($doc['promocode']) == 'DIVTRIAL' 
+    		|| strtoupper($doc['promocode']) == 'RFTRIAL' 
+    		|| strtoupper($doc['promocode']) == 'PDTRIAL' 
+    		|| strtoupper($doc['promocode']) == 'ALLENTRAPP'){
+    		// do nothing and return true.  promo is valid
+    		return true;
+    	}else{
+	    	$res = $promo->isValid($doc['promocode']);
+	    	if(!empty($res)){
+	    		$valid = 'yes';
+		    	$message = 'Valid Promo Code.';
+		    	$type = strtoupper($doc['promocode']);
+		    	$amount = $res['discountAmt'];
+	    	}else{
+	    		$invalidfields_message = "This promo code is not valid.";
+				$all_fields = 	array(
+									array(
+										'name'=>'promocode'
+										,'message'=>"This promo code is not valid."
+									)
+								);
+				throw new Saw\Model\Exceptions\DomainException($invalidfields_message, $all_fields);
+	    	}
 	    }
+    	// membership promotions
+    	if(is_array($doc) && !empty($doc) && array_key_exists('publicDefender', $doc)):
+
+	    	// what the membership translates to and if you should validate
+	    	$mem = ($doc['publicDefender']=='yes') ? Model\Member::$membership['PUBLIC DEFENDER'] : Model\Member::$membership['GENERAL MEMBER'];
+
+	    	if($promo->isValidMembership($doc['promocode'],$mem)){
+	    		$promo_res = $promo->findById('code');    	
+		    	$promo_res['currentMembership'] = $mem;
+		    	$promo_res['optIn'] = (array_key_exists('tosAcknowledgement', $doc)) ? $doc['tosAcknowledgement'] : '';
+		    	$promo_res['code'] = $doc['promocode'];
+		    	
+		    	$promo = new Model\Promotion($promo_res,$app);
+		    	$app['validateModel']($app,$promo,array('onform'));
+		    }else{
+				
+				$invalidfields_message = "This promo code is not available with the membership you're trying to signup for.  Please contact us directly and we will assist you.";
+				$all_fields = 	array(
+									array(
+										'name'=>'promocode'
+										,'message'=>"This promo code is not available with the membership you're trying to signup for.  Please contact us directly and we will assist you."
+									)
+								);
+				throw new Saw\Model\Exceptions\DomainException($invalidfields_message, $all_fields);
+		    }
+		    
+		 endif;
     }
 });
-// Logic for validating model fields
+// Logic for validating promotions
 $app['validatePromotion'] = $app->protect(function ($app,$doc) {
 	// incoming var sanity check
     if(!array_key_exists('promocode', $doc)){
@@ -51,32 +89,64 @@ $app['validatePromotion'] = $app->protect(function ($app,$doc) {
     	$doc['promocode'] = strtoupper(trim($doc['promocode']));
     }
     $promo_res = array();
+    $doc['promocode'] = trim($doc['promocode']);
     if(!empty($doc['promocode'])){
 
     	$promo = new Model\Promotion(array('code'=>$doc['promocode']),$app);
-    	// what the membership translates to and if you should validate
-    	$mem = ($doc['publicDefender']=='yes') ? Model\Member::$membership['PUBLIC DEFENDER'] : Model\Member::$membership['GENERAL MEMBER'];
 
-    	if($promo->isValidMembership($doc['promocode'],$mem)){
-    		$promo_res = $promo->findById('code');    	
-	    	$promo_res['currentMembership'] = $mem;
-	    	$promo_res['optIn'] = (array_key_exists('tosAcknowledgement', $doc)) ? $doc['tosAcknowledgement'] : '';
-	    	$promo_res['code'] = $doc['promocode'];
-	    	
-	    	$promo = new Model\Promotion($promo_res,$app);
-	    	$app['validateModel']($app,$promo,array('onform'));
-	    	$application->promotion = $promo_res;
-	    }else{
-			
-			$invalidfields_message = "This promo code is not available with the membership you're trying to signup for.  Please contact us directly and we will assist you.";
-			$all_fields = 	array(
-								array(
-									'name'=>'promocode'
-									,'message'=>"This promo code is not available with the membership you're trying to signup for.  Please contact us directly and we will assist you."
-								)
-							);
-			throw new Saw\Model\Exceptions\DomainException($invalidfields_message, $all_fields);
+    	// check if the promo is still valid date-wise or if it's a trial promo
+    	if(strtoupper($doc['promocode']) == 'TRIAL' 
+    		|| strtoupper($doc['promocode']) == 'DIVTRIAL' 
+    		|| strtoupper($doc['promocode']) == 'RFTRIAL' 
+    		|| strtoupper($doc['promocode']) == 'PDTRIAL' 
+    		|| strtoupper($doc['promocode']) == 'ALLENTRAPP'){
+    		// do nothing and return true.  promo is valid
+    		return true;
+    	}else{
+	    	$res = $promo->isValid($doc['promocode']);
+	    	if(!empty($res)){
+	    		$valid = 'yes';
+		    	$message = 'Valid Promo Code.';
+		    	$type = strtoupper($doc['promocode']);
+		    	$amount = $res['discountAmt'];
+	    	}else{
+	    		$invalidfields_message = "This promo code is not valid.";
+				$all_fields = 	array(
+									array(
+										'name'=>'promocode'
+										,'message'=>"This promo code is not valid."
+									)
+								);
+				throw new Saw\Model\Exceptions\DomainException($invalidfields_message, $all_fields);
+	    	}
 	    }
+    	// membership promotions
+    	if(is_array($doc) && !empty($doc) && array_key_exists('publicDefender', $doc)):
+
+	    	// what the membership translates to and if you should validate
+	    	$mem = ($doc['publicDefender']=='yes') ? Model\Member::$membership['PUBLIC DEFENDER'] : Model\Member::$membership['GENERAL MEMBER'];
+
+	    	if($promo->isValidMembership($doc['promocode'],$mem)){
+	    		$promo_res = $promo->findById('code');    	
+		    	$promo_res['currentMembership'] = $mem;
+		    	$promo_res['optIn'] = (array_key_exists('tosAcknowledgement', $doc)) ? $doc['tosAcknowledgement'] : '';
+		    	$promo_res['code'] = $doc['promocode'];
+		    	
+		    	$promo = new Model\Promotion($promo_res,$app);
+		    	$app['validateModel']($app,$promo,array('onform'));
+		    }else{
+				
+				$invalidfields_message = "This promo code is not available with the membership you're trying to signup for.  Please contact us directly and we will assist you.";
+				$all_fields = 	array(
+									array(
+										'name'=>'promocode'
+										,'message'=>"This promo code is not available with the membership you're trying to signup for.  Please contact us directly and we will assist you."
+									)
+								);
+				throw new Saw\Model\Exceptions\DomainException($invalidfields_message, $all_fields);
+		    }
+		    
+		 endif;
     }
 });
 // Logic for validating model fields

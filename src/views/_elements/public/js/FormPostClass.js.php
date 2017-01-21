@@ -63,7 +63,7 @@
 							'<span for="'+fieldObj.name+'" class="help-block error pulsate" style="">'+fieldObj.message+'</span>'
 							);
 						}
-						invalid_fields_str+='<li>'+fieldObj.name+'</li>';
+						//invalid_fields_str+='<li>'+fieldObj.name+'</li>';
 					});
 					if(params.attachInvalidFieldsToMessage == 'yes'){
 						$(params.formName+' .alert-error').removeClass('hide').html('<span>'+responseObj.message+'</span>'+invalid_fields_str);
@@ -85,7 +85,7 @@
 		                repeat: false
 		            });
 		            //*/
-		            jQuery('.error.pulsate').animate({backgroundColor: "#f2dede"},{duration:800}).delay(1000).animate({backgroundColor: "#fff"}).animate({color:'red'})
+		            //jQuery('.error.pulsate').animate({backgroundColor: "#f2dede"},{duration:800}).delay(1000).animate({backgroundColor: "#fff"}).animate({color:'red'})
 		        }
 		    }
 		    params.postOnComplete(response,status);

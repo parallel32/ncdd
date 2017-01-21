@@ -121,18 +121,16 @@ $app->post('/join', function (Request $request) use ($app) {
 	endif;
 });
 
-// xhr validate the membership dues when other fields change
-$app->post('/join/calculate-dues', function (Request $request) use ($app) {
+// xhr validate the membership fee
+$app->post('/join/membershipfee-validate', function (Request $request) use ($app) {
 	
 	// retrieve document from request
     $doc = $request->get('doc');
-    $app['calculateDues']($app,$doc);
+    $app['validateMembershipFee']($app,$doc);
 
-    $label = 'Thank you for your interest to the NCDD.  We extend our warmest welcome';
-	$message = 'Your payment has been processed.  Please check your inbox for your receipt and further instructions.  As a precaution, be sure to also check your inbox\'s SPAM folder.';
+    $fee = ;
 	$response_status = 200;
-    return new Response(json_encode(array('message' => $message,'label'=>$label)), $response_status,array('Content-Type' => 'application/json'));
-
+    return new Response(json_encode(array('fee' => $fee)), $response_status,array('Content-Type' => 'application/json'));
 });
 // xhr validate the promotion when other fields change
 $app->post('/join/promocode-validate', function (Request $request) use ($app) {
@@ -141,10 +139,9 @@ $app->post('/join/promocode-validate', function (Request $request) use ($app) {
     $doc = $request->get('doc');
     $app['validatePromotion']($app,$doc);
 
-    $label = 'Thank you for your interest to the NCDD.  We extend our warmest welcome';
-	$message = 'Your payment has been processed.  Please check your inbox for your receipt and further instructions.  As a precaution, be sure to also check your inbox\'s SPAM folder.';
+    $label = 'Promo is Valid';
+	$message = 'The promo code is valid';
 	$response_status = 200;
     return new Response(json_encode(array('message' => $message,'label'=>$label)), $response_status,array('Content-Type' => 'application/json'));
-
 });
 return $app;
