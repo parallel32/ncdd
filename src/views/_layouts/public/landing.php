@@ -136,10 +136,6 @@
 		                        </div>
 								<div class="row-fluid">
 									<div class="span12">
-						                  <div class="alert alert-error hide">
-						                     <button class="close" data-dismiss="alert"></button>
-						                     You have some form errors. Please check below.
-						                  </div>                  
 						                  <h3 class="form-section"><a style="text-decoration: none;">JOIN US TODAY</a></h3>
 						                  <div class="row-fluid">
 						                     <div class="span6 ">
@@ -339,13 +335,17 @@
 						                           <div class="control-group ">
 						                              <label class="control-label"></label>
 						                              <div class="controls">
-						                                 <input class="optIn tosAcknowledgement" type="checkbox" name="doc[tosAcknowledgement]" value="yes">
+						                                 <input class="optIn tosAcknowledgement" type="checkbox" checked name="doc[tosAcknowledgement]" value="yes">
 							                       I agree to the <a target="_blank" href="/become-a-member">Terms of Service</a>
 						                              </div>
 						                           </div>
 						                        </div>
 						                        <!--/span-->
 						                     </div>
+						                     <div class="alert alert-error hide">
+							                     <button class="close" data-dismiss="alert"></button>
+							                     You have some form errors. Please check below.
+							                  </div>
 							                 <div class="form-actions text-center">
 	                                             <button type="button" class="btn green">Submit Application</button>
 						                     	 <!-- <button type="button" class="btn cancel-go-back">Cancel and Go Back</button> -->

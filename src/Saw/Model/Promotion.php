@@ -29,7 +29,7 @@ class Promotion extends Model {
 	static public $restriction = array('NO RESTRICTIONS'=>5,'PUBLIC DEFENDERS'=>10,'NON MEMBERS'=>30,'MEMBERS'=>40);
 	static public $restrictionReversed = array(5=>'NO RESTRICTIONS',10=>'PUBLIC DEFENDERS',30=>'NON MEMBERS', 40=>'MEMBERS');
 	public $currentRestriction;		// restricted to:  members | publicdefenders | nonmembers | norestrictions
-	public $discountAmt; 			// based on type this is either a whole dollar amt or a percent
+	public $discountAmt; 			// based on currentType this is either a whole dollar amt or a percent
 	public $optIn; 					// yes | no - this is for the optin to keep the payment method on file.
 	public $optInDisclosure; 		// the actual disclosure statement
 	public $optInOnOff; 			// on | off - if on then optIn checkbox must be set 
@@ -79,7 +79,7 @@ class Promotion extends Model {
 	}
 	public function optInValid(ExecutionContext $context){
 		if($this->optInOnOff == 'on' && empty($this->optIn)){
-			$propertyPath = $context->getPropertyPath().'optIn';
+			$propertyPath = $context->getPropertyPath().'payment';
         	$context->addViolationAtPath($propertyPath,'You must accept our opt-in disclosure in order to receive the promotion', array(), null);
         }
 	}

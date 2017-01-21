@@ -8,14 +8,91 @@
 	        io.saw.FormPost.activate({postUrl:'/join/promocode-validate'
 			   ,blockUI:'no'
 			   ,serializeSelector:':input'
+			   ,postOnComplete:function(responseObj,responseStatus){
+			   	if($('.promocode').val().length == 0){
+					var the_element = $('.control-group :input.promocode').parents('.control-group');
+		   			the_element.removeClass('success');the_element.removeClass('error');
+		   			the_element.find('.help-block.success').remove();the_element.find('.help-block.error').remove();
+		   		}
+			   }
+			   ,postOnSuccess:function(responseObj){
+			   		var the_element = $('.control-group :input.promocode').parents('.control-group');
+		   			the_element.addClass('success');
+		   			the_element.removeClass('error');
+		   			if(the_element.find('.help-block.success').length == 0){
+		   				the_element.append('<span for="promocode" class="help-block success " style="">'+responseObj.message+'</span>');
+		   				if(responseObj.hasOwnProperty('amount') && responseObj.amount > 0){
+		   					$('.promo-discount').show();
+		   				}else{
+		   					$('.promo-discount').hide();
+		   				}
+		   			}
+			   }
+			   ,postOnErrors:function(responseObj){
+			   		var the_element = $('.control-group :input.promocode').parents('.control-group');
+		   			the_element.removeClass('success');
+		   			the_element.find('.help-block.success').remove();
+			   }
+			});
+		}, 500);
+	};
+
+
+
+
+
+	function checkPromocodeMembershipRestrictions(){
+		setTimeout(function() {
+	        io.saw.FormPost.activate({postUrl:'/application/promocodeisvalidmemberhsip'
+			   ,blockUI:'no'
+			   ,serializeSelector:':input'
 			   ,postOnComplete:function(responseObj,responseStatus){}
 			   ,postOnSuccess:function(responseObj){
-			   		
+			   		var the_element = $('.control-group :input.promocode').parents('.control-group');
+			   		if(responseObj.valid == 'yes'){
+			   			window.promocodeisvalidmemberhsip = 'yes';
+			   			$('#promocodetype').val(responseObj.type);
+			   			the_element.addClass('success');
+			   			the_element.removeClass('error');
+			   			if(the_element.find('.help-block.success').length == 0){
+			   				the_element.append('<span for="promocode" class="help-block success " style="">'+responseObj.message+'</span>');
+			   				$('#promocodeverification').show();
+			   				$('.promocodeblocks').hide();
+			   				$('.'+responseObj.type).show();
+			   				if(responseObj.hasOwnProperty('amount') && responseObj.amount > 0){
+			   					window.promocodeamount = responseObj.amount;
+			   					$('.promo-discount').show();
+			   				}else{
+			   					$('.promo-discount').hide();
+			   					window.promocodeamount = 0;
+			   				}
+			   				
+			   			}
+			   		}
+			   		if(responseObj.valid == 'no'){
+			   			window.promocodeisvalidmemberhsip = 'no';
+			   			$('#promocodetype').val('invalid');
+			   			the_element.find('.help-block.success').remove();
+						the_element.removeClass('success');
+						$('#promocodeverification').hide();
+
+						var the_element = $('.control-group :input.promocode').parents('.control-group');
+			   			the_element.addClass('error');
+			   			the_element.removeClass('success');
+						if(the_element.find('.help-block.error').length == 0){
+			   				the_element.append('<span for="promocode" class="help-block error " style="">'+responseObj.message+'</span>');				   				
+			   			}
+			   		}
+			   		promocodelogic();
 			   }
 			});
 		}, 500);
 		
 	};
+
+
+
+
 	function purchase(){
 
 		io.saw.FormPost.activate({postUrl:'/join'
