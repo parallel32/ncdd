@@ -128,7 +128,7 @@ $app->post('/join/membershipfee-validate', function (Request $request) use ($app
     $doc = $request->get('doc');
     $app['validateMembershipFee']($app,$doc);
 
-    $fee = ;
+    $fee = 111;
 	$response_status = 200;
     return new Response(json_encode(array('fee' => $fee)), $response_status,array('Content-Type' => 'application/json'));
 });

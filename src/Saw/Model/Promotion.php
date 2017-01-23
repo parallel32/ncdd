@@ -271,7 +271,7 @@ class Promotion extends Model {
         $fields = array();
 		$res = $this->findOne($query=array('code'=>$code,'isActive'=>'yes'),$fields,$slaveOkay=true,$sort=array(),$offset=0,$limit=1000);
 		
-		if(!empty($res) && is_array($res) && count($res) > 0 && $res['currentRestriction'] > self::$restriction['NO RESTRICTIONS']):
+		if(!empty($res) && is_array($res) && count($res) > 0 && $res['currentRestriction'] >= self::$restriction['NO RESTRICTIONS']):
 			//static public $membership = array('PUBLIC DEFENDER'=>5,'GENERAL MEMBER'=>10,'SUSTAINING MEMBER'=>30,'FOUNDING MEMBER'=>40);
 			//static public $restriction = array('NO RESTRICTIONS'=>5,'PUBLIC DEFENDERS'=>10,'NON MEMBERS'=>30,'MEMBERS'=>40);
 

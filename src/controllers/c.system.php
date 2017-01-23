@@ -8,6 +8,11 @@ use dflydev\markdown\MarkdownParser;
 // Logic for validating membership fees in relation to everything
 // prorating, public defender or not, promotions, etc.
 $app['validateMembershipFee'] = $app->protect(function ($app,$doc) {
+	
+	$return_arr['membershipFee'] = 0;
+	$return_arr['freeGift'] = '';
+	$return_arr['membershipFee'] = 0;
+
 	// incoming var sanity check
     if(!array_key_exists('yearsInLawPractice', $doc)){
     	$doc['yearsInLawPractice'] = '';
@@ -67,11 +72,11 @@ $app['validateMembershipFee'] = $app->protect(function ($app,$doc) {
 		    	$app['validateModel']($app,$promo,array('onform'));
 		    }else{
 				
-				$invalidfields_message = "This promo code is not available with the membership you're trying to signup for.  Please contact us directly and we will assist you.";
+				$invalidfields_message = "This promo code is not available with the membership you're trying to signup for.";
 				$all_fields = 	array(
 									array(
 										'name'=>'promocode'
-										,'message'=>"This promo code is not available with the membership you're trying to signup for.  Please contact us directly and we will assist you."
+										,'message'=>"This promo code is not available with the membership you're trying to signup for."
 									)
 								);
 				throw new Saw\Model\Exceptions\DomainException($invalidfields_message, $all_fields);
