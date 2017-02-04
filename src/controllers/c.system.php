@@ -13,8 +13,6 @@ $app['validateMembershipFee'] = $app->protect(function ($app,$doc) {
 	$return_arr['freeGift'] = '';
 	$return_arr['membershipFee'] = 0;
 
-
-
 	// validate the promo code
     $promo_res = array();
     if(!empty($doc['promocode'])){
