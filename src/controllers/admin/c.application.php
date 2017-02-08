@@ -2324,9 +2324,10 @@ echo "<pre>start ";echo ' expired:'.count($final_arr['expired']).' valid:'.count
 	// EAGLE2016-
 	// RENEW2016
 	// BONUS2015
+	// TROPHY2016
     $promo_arr = array();
     $application = new Model\Apply($doc=array(),$app);
-    $res = $application->find(array('promocode'=>array('$in'=>array('EAGLE2016','BONUS2015'))),$fields=array(),true,$sort=array(),0,10000);
+    $res = $application->find(array('promocode'=>array('$in'=>array('EAGLE2016','BONUS2015','TROPHY2016'))),$fields=array(),true,$sort=array(),0,10000);
 echo "<pre> eagle bonus: ";print_r(count($res));echo "</pre>";
     if(is_array($res)  && !empty($res)){
     	foreach($res as $item){
@@ -2821,9 +2822,10 @@ echo "<pre>start ";echo ' expired:'.count($final_arr_audit['expired']).' valid:'
 	// EAGLE2016-
 	// RENEW2016
 	// BONUS2015
+	// TROPHY2016
     $promo_arr = array();
     $application = new Model\Apply($doc=array(),$app);
-    $res = $application->find(array('promocode'=>array('$in'=>array('EAGLE2016','BONUS2015'))),$fields=array(),true,$sort=array(),0,10000);
+    $res = $application->find(array('promocode'=>array('$in'=>array('EAGLE2016','BONUS2015','TROPHY2016'))),$fields=array(),true,$sort=array(),0,10000);
 echo "<pre> eagle bonus: ";print_r(count($res));echo "</pre>";
     if(is_array($res)  && !empty($res)){
     	foreach($res as $item){
@@ -3099,8 +3101,8 @@ $app->get('/renewalsautoseedsanitycheckagainstpayments', function ($offset, $lim
 			$value = $res_autorenew[$x];
 			$memberId = new \MongoId($value['record']['_id']);
 
-			$start  = 'Dec 1, 2015';
-		    $end    = 'Feb 10, 2016';
+			$start  = 'Nov 1, 2016';
+		    $end    = 'Feb 10, 2017';
 		    $query  = array('memberId'=>$memberId,'ownerClass'=>'UpdateMember','paidDate.date'=>array(
 		    	'$gte'=>new \MongoDate(strtotime($start))
 		        ,'$lt'=>new \MongoDate(strtotime($end)))
@@ -3237,7 +3239,7 @@ $app->get('/renewalsautocharge', function (Request $request) use ($app) {
 			for ($x=0; $x < count($expired); $x++) { 
 				$value = $expired[$x];
 				// update the expYear in an attempt to charge the card
-				$expired[$x]['record']['payment']['expYear'] = 2017;
+				$expired[$x]['record']['payment']['expYear'] = 2018;
 				
 				// derive membership dues:
 				// new app = yearsInLawPractice
@@ -3600,7 +3602,7 @@ $card->post('/auto-renew/edit', function (Request $request) use ($app) {
 // AUTO-RENEW SEND DECLINED CC FOLLOW UP EMAIL //
 ///////////////////////////////////////////////// 
 $app->get('/renewals-send-decline-followup-email', function (Request $request) use ($app) {
-return false;
+//return false;
 	$ar = new Model\AutoRenew(array('declined'=>'yes'),$app);
 	$ar_res = $ar->findAllById('declined', $fields=array(), $sort=array(), $slaveOkay=true,$offset=0,$limit=2000);
 	$i=0;
