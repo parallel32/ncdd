@@ -13,6 +13,156 @@ $app['validateMembershipFee'] = $app->protect(function ($app,$doc) {
 	$return_arr['freeGift'] = '';
 	$return_arr['membershipFee'] = 0;
 
+	// validate the promo code
+    $promo_res = array();
+    if(!empty($doc['promocode'])){
+
+    	$promo = new Model\Promotion(array('code'=>$doc['promocode']),$app);
+    	// what the membership translates to and if you should validate
+    	$mem = ($doc['publicDefender']=='yes') ? Model\Member::$membership['PUBLIC DEFENDER'] : Model\Member::$membership['GENERAL MEMBER'];
+
+    	if($promo->isValidMembership($doc['promocode'],$mem)){
+    		error_log(__FILE__.' '.__LINE__.' $mem: '.print_r($mem,true));
+    		error_log(__FILE__.' '.__LINE__.' $doc[promocode]: '.print_r($doc['promocode'],true));
+    		$promo_res = $promo->findById('code');    	
+	    	$promo_res['currentMembership'] = $mem;
+	    	$promo_res['optIn'] = (array_key_exists('optIn', $doc)) ? $doc['optIn'] : '';
+	    	$promo_res['code'] = $doc['promocode'];
+	    	
+	    	$promo = new Model\Promotion($promo_res,$app);
+	    	$app['validateModel']($app,$promo,array('onform'));
+	    	$application->promotion = $promo_res;
+	    }else{
+	    	error_log(__FILE__.' '.__LINE__.' : '.print_r('NOT VALID PROMO',true));
+	    }
+    }
+    
+
+	$dues = array();
+	foreach(Model\ApplyNewMember::$dues as $type => $amount){
+		$apply = new Model\Apply(array('membershipDues'=>$amount),$app);
+		// calculate the discount amount
+		if(is_array($promo_res) && !empty($promo_res) && array_key_exists('currentType', $promo_res)){
+	    	if(\Saw\Model\Promotion::$type['MONEY'] == $promo_res['currentType']){
+	    		if(!empty($promo_res['discountAmt']) && $promo_res['discountAmt'] > 0){
+	    			$amount = $amount - $promo_res['discountAmt'];
+	    		}
+	    	}
+	    	if(\Saw\Model\Promotion::$type['PERCENT'] == $promo_res['currentType']){
+	    		if(!empty($promo_res['discountAmt']) && $promo_res['discountAmt'] > 0){
+	    			$amount = $amount - ($amount * ($promo_res['discountAmt'])/100);
+	    		}
+	    	}
+		}
+		$dues[$type]['amount'] = $amount;
+		$dues[$type]['prorated'] = $apply->proRate('today');
+	}
+	$yilp = $application->yearsInLawPractice;
+	$now = date('Y',strtotime('today'));
+	if($now - $yilp >= 6){
+		$amt = $dues[6]['prorated']['a'];
+	}elseif ($now - $yilp < 6){
+		$amt = $dues[1]['prorated']['a'];
+	}
+	if($application->publicDefender == 'yes'){
+		$amt = $dues['publicDefender']['prorated']['a'];
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	// incoming var sanity check
     if(!array_key_exists('yearsInLawPractice', $doc)){
     	$doc['yearsInLawPractice'] = '';
