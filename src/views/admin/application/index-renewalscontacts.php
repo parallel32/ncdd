@@ -147,8 +147,26 @@
                                  <td class=" "><?=(array_key_exists('payment',$member) && is_array($member['payment']) && !empty($member['payment']) && !empty($member['payment']['number']) && !empty($member['payment']['cvc'])) ? '<a data-id="'.$member['_id'].'" class="btn '.$renewalREUSE.' mini card">cc'.$declineCount.'</a>':'' ?></td><td class=" "><?=$member['displayName']?></td>
                                  <td class="hidden-phone"><a href="mailto:<?=$member['email']?>?subject=Re:Your NCDD Update Form"><?=$member['email']?></a></td>
                                  <td class="hidden-phone"><?=$member['primaryPhone']?></td>
-                                 <? $human = \Carbon\Carbon::createFromTimeStamp(strtotime($member['renewal']['submittedDate']['fullDateTime']), $member['timeZone']); ?>
-                                 <td class="hidden-480 "><b><?=$human->diffForHumans()?></b><br><?=$member['renewal']['submittedDate']['monthDay'].' '.$member['renewal']['submittedDate']['shortTime']?></td><td class=" ">
+                                 <? if(
+                                       is_array($member['renewal']['submittedDate']) 
+                                       && !empty($member['renewal']['submittedDate']) 
+                                       && array_key_exists('submittedDate', $member['renewal']['submittedDate'])):
+                                       
+                                       $human = \Carbon\Carbon::createFromTimeStamp(strtotime($member['renewal']['submittedDate']['fullDateTime']), $member['timeZone']); 
+                                 ?>
+                                 <b><?=$human->diffForHumans()?></b><br><?=$member['renewal']['submittedDate']['monthDay'].' '.$member['renewal']['submittedDate']['shortTime']?>
+                                 <?
+                                    else:
+                                       $the_date = '';
+                                    endif;
+
+                                 ?>
+                                 <? ?>
+
+                                 
+
+
+                                 <td class="hidden-480 "><?=$the_date?></td><td class=" ">
                                     <a data-id="<?=$member['renewal']['applicationId']?>" class="btn blue mini view"><i class=" "></i> Application</a>
                                     <a data-id="<?=$member['_id']?>" class="btn blue mini view member"><i class=" "></i> Member</a>
                                     <a data-id="<?=$member['_id']?>" class="btn mini yellow-stripe user-login">LogIn</a>
