@@ -139,8 +139,8 @@
                                  <td class="hidden-phone declinemessage">
                                  <?
                                     // process decline message
+                                    $decoded_message = '';
                                     if(strpos($item['declinedMessage'], 'Declined') !== false){
-                                       $decoded_message = '';
                                        $tmp = explode('Declined', $item['declinedMessage']);
                                        if(is_array($tmp) && !empty($tmp)){
                                           $code = substr($tmp[1], 0,4);
