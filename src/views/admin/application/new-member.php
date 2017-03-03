@@ -435,7 +435,7 @@ jQuery(document).ready(function() {
                   <div class="row-fluid">
                      <div class="span6">
                         <div class="control-group">
-                           <label class="control-label">I have not been the subject of a professional inquiry and have not had discipline imposed upon me by any jurisdiction in which I am licensed or permitted to practice. I also agree that I shall immediately report to the College any such inquiry or discipline as a condition of my continued membership in the College.</label>
+                           <label class="control-label">I have not received any sustained complaint, public reprimand, or had any discipline imposed on my by any jurisdiction in which I am licensed or permitted to practice. I also agree that I shall immediately report to the College any such inquiry or discipline as a condition of my continued membership in the College.</label>
                            <div class="controls">
                               <div class="success-toggle-button">
                                  <select class="small m-wrap everInvestigation" name="doc[everInvestigation]">
