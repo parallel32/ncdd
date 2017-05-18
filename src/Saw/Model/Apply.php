@@ -605,9 +605,9 @@ class Apply extends Model {
 		$curMonth = date("n", $date->getTimeStamp());
 		$curDay = date("j", $date->getTimeStamp());
 		$curQuarter = ceil($curMonth/3);
-		//error_log('curMonth:'.$curMonth);
-		//error_log('curQuarter:'.$curQuarter);
-		//error_log('curDay:'.$curDay);
+		error_log('curMonth:'.$curMonth);
+		error_log('curQuarter:'.$curQuarter);
+		error_log('curDay:'.$curDay);
 		if($curQuarter <= 1){
 			switch ($this->membershipDues) {
 				case 175:
