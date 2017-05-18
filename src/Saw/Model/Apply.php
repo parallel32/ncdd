@@ -623,7 +623,7 @@ class Apply extends Model {
 		} else if($curQuarter > 1 && $curQuarter <= 2){
 			switch ($this->membershipDues) {
 				case 175:
-					return array('q'=>2,'a'=>150);
+					return array('q'=>2,'a'=>125);
 					break;
 				case 225:
 					return array('q'=>2,'a'=>175);
