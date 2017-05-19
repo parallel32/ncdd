@@ -172,7 +172,7 @@ class RegistrationSeminar extends Registration {
 
 			// is there a hardcopy fee? if so remove it to isolate the total
 			if($registration['hardCopy'] == 'YES'){
-				$total = $payment['amount'] + 50 - $registration['hardCopyFee'];
+				$total = $payment['amount'] + $registration['hardCopyFee'] - $registration['hardCopyFee'];
 			}else{
 				$total = $payment['amount'];
 			}
