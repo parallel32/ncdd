@@ -1,4 +1,4 @@
 ncdd
 ====
 
-NCDD.com public and member sites.
+A public member site framework using php and silex
